@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Jan 27 23:10:03 2026
+-- Date        : Thu Jan 29 00:05:13 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.vhdl
@@ -33,7 +33,14 @@ entity ps_comp_ana_0_1_comp_burst is
     in_phase_1 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     in_phase_2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     in_phase_3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    err_no_data : out STD_LOGIC
+    err_no_data : out STD_LOGIC;
+    done : out STD_LOGIC;
+    sample : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    size : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    max_pos : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    max_env : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_ana_0_1_comp_burst : entity is "comp_burst";
@@ -47,444 +54,613 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 10 downto 0 );
     probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 10 downto 0 )
   );
   end component ila_0_HD8;
-  signal angle : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \^angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of angle : signal is std.standard.true;
-  signal check_env_down : STD_LOGIC;
-  attribute MARK_DEBUG of check_env_down : signal is std.standard.true;
-  signal check_env_up : STD_LOGIC;
-  attribute MARK_DEBUG of check_env_up : signal is std.standard.true;
+  attribute MARK_DEBUG of \^angle\ : signal is std.standard.true;
+  signal clear : STD_LOGIC;
+  signal \comp_burst.complete_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.complete_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.curr_size[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_done_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_done_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[6]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_done_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.done_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[0]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[10]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[1]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[2]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[3]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[4]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[5]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[6]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[7]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[8]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[9]\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \comp_burst.env_down_ptr_rep[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[3]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr_reg\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \comp_burst.env_up_adr_reg__0\ : STD_LOGIC_VECTOR ( 10 downto 2 );
+  signal \comp_burst.env_up_max_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \comp_burst.env_up_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.err_no_data_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.filling_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.filling_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_down_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_reg0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg00_out\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal \comp_burst.max_pos_reg2\ : STD_LOGIC_VECTOR ( 10 downto 1 );
+  signal \comp_burst.max_pos_reg[10]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_68\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_69\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_70\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_71\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_72\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_73\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_74\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_75\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_76\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_77\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_78\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_79\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_80\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_81\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_82\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_83\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_84\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_85\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_86\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_87\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_88\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_89\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_90\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_91\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_92\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_93\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_94\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_95\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_96\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_97\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_98\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_99\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_68\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_69\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_70\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_71\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_72\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_73\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_74\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_75\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_76\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_77\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_78\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_79\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_80\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_81\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_82\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_83\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_84\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_85\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_86\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_87\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_88\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_89\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_90\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_91\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_92\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_93\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_94\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_95\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_96\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_97\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_98\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_99\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_7\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[10]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[11]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[11]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.sample_counter_0[12]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[13]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[14]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[15]_i_4_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[5]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[6]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[6]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.sample_counter_0[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[9]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_counter_2[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_counter_3[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_ov_0_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.scan_start_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_13\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_14\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_15\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_9\ : STD_LOGIC;
   signal \comp_burst.wr_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.wr_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal comp_env : STD_LOGIC;
+  attribute MARK_DEBUG of comp_env : signal is std.standard.true;
   signal curr_size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of curr_size : signal is std.standard.true;
-  signal env_down_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_0 : signal is std.standard.true;
-  signal env_down_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_1 : signal is std.standard.true;
+  signal \^done\ : STD_LOGIC;
+  attribute MARK_DEBUG of done : signal is std.standard.true;
   signal env_down_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_2 : signal is std.standard.true;
   signal env_down_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_3 : signal is std.standard.true;
-  signal env_down_bits : STD_LOGIC_VECTOR ( 3 downto 0 );
-  attribute MARK_DEBUG of env_down_bits : signal is std.standard.true;
-  signal env_down_diff_003_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_102_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_201_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_300_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_done : STD_LOGIC;
-  attribute MARK_DEBUG of env_down_done : signal is std.standard.true;
+  signal env_down_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_down_ind : signal is std.standard.true;
+  signal env_down_max_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_down_max_ind : signal is std.standard.true;
+  signal env_down_max_ind1 : STD_LOGIC;
+  signal env_down_max_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_down_max_val : signal is std.standard.true;
   signal env_down_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of env_down_ptr : signal is std.standard.true;
+  signal env_down_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_down_val : signal is std.standard.true;
+  signal env_end_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_end_ind : signal is std.standard.true;
   signal env_in : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal env_up_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_0 : signal is std.standard.true;
-  signal env_up_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_1 : signal is std.standard.true;
+  signal env_start_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_start_ind : signal is std.standard.true;
   signal env_up_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_2 : signal is std.standard.true;
   signal env_up_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_3 : signal is std.standard.true;
-  signal env_up_bits : STD_LOGIC_VECTOR ( 3 downto 0 );
-  attribute MARK_DEBUG of env_up_bits : signal is std.standard.true;
-  signal env_up_diff_007_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_106_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_205_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_304_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_done : STD_LOGIC;
-  attribute MARK_DEBUG of env_up_done : signal is std.standard.true;
+  signal env_up_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_up_ind : signal is std.standard.true;
+  signal env_up_max_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_up_max_ind : signal is std.standard.true;
+  signal env_up_max_ind1 : STD_LOGIC;
+  signal env_up_max_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_up_max_val : signal is std.standard.true;
   signal env_up_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of env_up_ptr : signal is std.standard.true;
+  signal env_up_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_up_val : signal is std.standard.true;
   signal \^err_no_data\ : STD_LOGIC;
   attribute MARK_DEBUG of err_no_data : signal is std.standard.true;
-  signal filling : STD_LOGIC;
-  attribute MARK_DEBUG of filling : signal is std.standard.true;
-  signal freq : STD_LOGIC_VECTOR ( 19 downto 0 );
-  attribute MARK_DEBUG of freq : signal is std.standard.true;
+  signal \^freq\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of \^freq\ : signal is std.standard.true;
+  signal inc_env_sample : STD_LOGIC;
+  signal load_env : STD_LOGIC;
+  attribute MARK_DEBUG of load_env : signal is std.standard.true;
+  signal load_env_start : STD_LOGIC;
+  signal \^max_env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of \^max_env\ : signal is std.standard.true;
+  signal \^max_pos\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of \^max_pos\ : signal is std.standard.true;
   signal mem_wr : STD_LOGIC;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal phase_down_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of phase_down_ptr : signal is std.standard.true;
-  signal phase_up_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of phase_up_ptr : signal is std.standard.true;
-  signal run_env_down : STD_LOGIC;
-  attribute MARK_DEBUG of run_env_down : signal is std.standard.true;
-  signal run_env_up : STD_LOGIC;
-  attribute MARK_DEBUG of run_env_up : signal is std.standard.true;
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal \p_0_in__2\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__3\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__4\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__5\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__6\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal run_env : STD_LOGIC;
+  attribute MARK_DEBUG of run_env : signal is std.standard.true;
+  signal run_env5_out : STD_LOGIC;
+  signal run_env_end : STD_LOGIC;
+  attribute MARK_DEBUG of run_env_end : signal is std.standard.true;
+  signal run_env_end0 : STD_LOGIC;
+  signal run_env_start : STD_LOGIC;
+  attribute MARK_DEBUG of run_env_start : signal is std.standard.true;
+  signal run_env_start0 : STD_LOGIC;
+  signal \^sample\ : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal sample_counter_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of sample_counter_0 : signal is std.standard.true;
-  signal up_down_same : STD_LOGIC;
-  attribute MARK_DEBUG of up_down_same : signal is std.standard.true;
-  signal wr_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of wr_ptr : signal is std.standard.true;
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal scan_start : STD_LOGIC;
+  attribute MARK_DEBUG of scan_start : signal is std.standard.true;
+  signal \^size\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of \^size\ : signal is std.standard.true;
+  signal \NLW_comp_burst.env_down_max_val_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.env_up_max_val_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.max_pos_reg[7]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \NLW_comp_burst.mem_env_down_reg_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_env_down_reg_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_env_down_reg_DBITERR_UNCONNECTED\ : STD_LOGIC;
@@ -517,6 +693,10 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal \NLW_comp_burst.mem_env_up_reg_DOUTPBDOUTP_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_comp_burst.mem_env_up_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.mem_env_up_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \NLW_comp_burst.run_env_end_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.run_env_start_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.size_reg[10]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.size_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute KEEP : string;
   attribute KEEP of \comp_burst.angle_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -551,8 +731,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute mark_debug_string of \comp_burst.angle_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.angle_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.angle_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_burst.check_env_down_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.check_env_up_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.comp_env_reg\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[1]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[2]\ : label is "yes";
@@ -562,46 +741,201 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute KEEP of \comp_burst.curr_size_reg[6]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[7]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[8]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_0_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_0_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_1_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_1_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_2_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_2_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_3_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_3_reg[15]_i_2\ : label is 35;
-  attribute KEEP of \comp_burst.env_down_done_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[8]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_0_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_0_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_1_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_1_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_2_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_2_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_3_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_3_reg[15]_i_2\ : label is 35;
-  attribute KEEP of \comp_burst.env_up_done_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.done_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.done_reg\ : label is "yes";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_1\ : label is "soft_lutpair34";
+  attribute KEEP of \comp_burst.env_down_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[15]\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD : integer;
+  attribute COMPARATOR_THRESHOLD of \comp_burst.env_down_max_val_reg[15]_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.env_down_max_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair29";
+  attribute KEEP of \comp_burst.env_up_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[15]\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.env_up_max_val_reg[15]_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.env_up_max_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[1]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[2]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[3]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[4]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[1]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[2]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[3]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[4]_i_1\ : label is "soft_lutpair27";
+  attribute KEEP of \comp_burst.env_up_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[9]\ : label is "yes";
   attribute KEEP of \comp_burst.err_no_data_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.filling_reg\ : label is "yes";
-  attribute mark_debug_string of \comp_burst.filling_reg\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.freq_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[10]\ : label is "yes";
@@ -642,6 +976,66 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute mark_debug_string of \comp_burst.freq_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.freq_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.load_env_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[10]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[10]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[10]_i_2\ : label is 35;
+  attribute KEEP of \comp_burst.max_pos_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_burst.max_pos_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[9]\ : label is "yes";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_down_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -681,35 +1075,208 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute ram_offset of \comp_burst.mem_env_up_reg\ : label is 0;
   attribute ram_slice_begin of \comp_burst.mem_env_up_reg\ : label is 0;
   attribute ram_slice_end of \comp_burst.mem_env_up_reg\ : label is 63;
-  attribute KEEP of \comp_burst.run_env_down_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.run_env_up_reg\ : label is "yes";
-  attribute mark_debug_string of \comp_burst.run_env_up_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.run_env_end_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.run_env_end_reg\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.run_env_end_reg_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.run_env_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.run_env_start_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.run_env_start_reg\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.run_env_start_reg_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.sample_counter_0_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[10]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[11]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[12]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[13]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[14]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[15]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[2]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[3]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[4]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[5]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[6]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[7]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_burst.up_down_same_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[8]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[10]_i_2\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[9]_i_2\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[10]_i_2\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[4]_i_2\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[5]_i_2\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[9]_i_2\ : label is "soft_lutpair24";
+  attribute KEEP of \comp_burst.sample_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[32]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[33]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[34]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[35]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[36]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[37]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[38]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[39]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[40]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[41]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[42]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[43]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[44]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[45]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[46]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[47]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[48]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[49]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[50]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[51]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[52]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[53]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[54]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[55]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[56]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[57]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[58]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[59]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[60]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[61]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[62]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[63]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.scan_start_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[10]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.size_reg[10]_i_1\ : label is 35;
+  attribute KEEP of \comp_burst.size_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.size_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_burst.size_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[1]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[2]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[3]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[4]_i_1\ : label is "soft_lutpair28";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_0,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -717,13 +1284,20 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute x_core_info : string;
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
 begin
+  angle(15 downto 0) <= \^angle\(15 downto 0);
+  done <= \^done\;
   err_no_data <= \^err_no_data\;
+  freq(19 downto 0) <= \^freq\(19 downto 0);
+  max_env(15 downto 0) <= \^max_env\(15 downto 0);
+  max_pos(10 downto 0) <= \^max_pos\(10 downto 0);
+  sample(63 downto 0) <= \^sample\(63 downto 0);
+  size(10 downto 0) <= \^size\(10 downto 0);
 \comp_burst.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => burst,
       D => in_angle(0),
-      Q => angle(0),
+      Q => \^angle\(0),
       R => '0'
     );
 \comp_burst.angle_reg[10]\: unisim.vcomponents.FDRE
@@ -731,7 +1305,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(10),
-      Q => angle(10),
+      Q => \^angle\(10),
       R => '0'
     );
 \comp_burst.angle_reg[11]\: unisim.vcomponents.FDRE
@@ -739,7 +1313,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(11),
-      Q => angle(11),
+      Q => \^angle\(11),
       R => '0'
     );
 \comp_burst.angle_reg[12]\: unisim.vcomponents.FDRE
@@ -747,7 +1321,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(12),
-      Q => angle(12),
+      Q => \^angle\(12),
       R => '0'
     );
 \comp_burst.angle_reg[13]\: unisim.vcomponents.FDRE
@@ -755,7 +1329,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(13),
-      Q => angle(13),
+      Q => \^angle\(13),
       R => '0'
     );
 \comp_burst.angle_reg[14]\: unisim.vcomponents.FDRE
@@ -763,7 +1337,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(14),
-      Q => angle(14),
+      Q => \^angle\(14),
       R => '0'
     );
 \comp_burst.angle_reg[15]\: unisim.vcomponents.FDRE
@@ -771,7 +1345,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(15),
-      Q => angle(15),
+      Q => \^angle\(15),
       R => '0'
     );
 \comp_burst.angle_reg[1]\: unisim.vcomponents.FDRE
@@ -779,7 +1353,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(1),
-      Q => angle(1),
+      Q => \^angle\(1),
       R => '0'
     );
 \comp_burst.angle_reg[2]\: unisim.vcomponents.FDRE
@@ -787,7 +1361,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(2),
-      Q => angle(2),
+      Q => \^angle\(2),
       R => '0'
     );
 \comp_burst.angle_reg[3]\: unisim.vcomponents.FDRE
@@ -795,7 +1369,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(3),
-      Q => angle(3),
+      Q => \^angle\(3),
       R => '0'
     );
 \comp_burst.angle_reg[4]\: unisim.vcomponents.FDRE
@@ -803,7 +1377,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(4),
-      Q => angle(4),
+      Q => \^angle\(4),
       R => '0'
     );
 \comp_burst.angle_reg[5]\: unisim.vcomponents.FDRE
@@ -811,7 +1385,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(5),
-      Q => angle(5),
+      Q => \^angle\(5),
       R => '0'
     );
 \comp_burst.angle_reg[6]\: unisim.vcomponents.FDRE
@@ -819,7 +1393,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(6),
-      Q => angle(6),
+      Q => \^angle\(6),
       R => '0'
     );
 \comp_burst.angle_reg[7]\: unisim.vcomponents.FDRE
@@ -827,7 +1401,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(7),
-      Q => angle(7),
+      Q => \^angle\(7),
       R => '0'
     );
 \comp_burst.angle_reg[8]\: unisim.vcomponents.FDRE
@@ -835,7 +1409,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(8),
-      Q => angle(8),
+      Q => \^angle\(8),
       R => '0'
     );
 \comp_burst.angle_reg[9]\: unisim.vcomponents.FDRE
@@ -843,24 +1417,47 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(9),
-      Q => angle(9),
+      Q => \^angle\(9),
       R => '0'
     );
-\comp_burst.check_env_down_reg\: unisim.vcomponents.FDRE
+\comp_burst.comp_env_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => run_env_down,
-      Q => check_env_down,
+      D => load_env,
+      Q => comp_env,
       R => '0'
     );
-\comp_burst.check_env_up_reg\: unisim.vcomponents.FDRE
+\comp_burst.complete_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0004"
+    )
+        port map (
+      I0 => scan_start,
+      I1 => run_env5_out,
+      I2 => run_env_end,
+      I3 => run_env_start,
+      O => \comp_burst.complete_i_1_n_0\
+    );
+\comp_burst.complete_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => run_env_up,
-      Q => check_env_up,
+      D => \comp_burst.complete_i_1_n_0\,
+      Q => \comp_burst.complete_reg_n_0\,
       R => '0'
+    );
+\comp_burst.curr_size[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0C000CAE"
+    )
+        port map (
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      I1 => curr_size(0),
+      I2 => \comp_burst.curr_size[8]_i_2_n_0\,
+      I3 => mem_wr,
+      I4 => reset,
+      O => \comp_burst.curr_size[0]_i_1_n_0\
     );
 \comp_burst.curr_size[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -868,47 +1465,47 @@ begin
     )
         port map (
       I0 => reset,
-      I1 => wr_data,
+      I1 => mem_wr,
       O => \comp_burst.curr_size[8]_i_1_n_0\
     );
-\comp_burst.curr_size[8]_i_2\: unisim.vcomponents.LUT6
+\comp_burst.curr_size[8]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00000000FFFFFFFE"
+      INIT => X"55555554"
     )
         port map (
-      I0 => wr_ptr(6),
-      I1 => wr_ptr(5),
-      I2 => wr_ptr(4),
-      I3 => wr_ptr(3),
-      I4 => \comp_burst.curr_size[8]_i_3_n_0\,
-      I5 => wr_data,
+      I0 => mem_wr,
+      I1 => \comp_burst.curr_size[8]_i_3_n_0\,
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      I4 => \comp_burst.wr_ptr_reg\(1),
       O => \comp_burst.curr_size[8]_i_2_n_0\
     );
-\comp_burst.curr_size[8]_i_3\: unisim.vcomponents.LUT5
+\comp_burst.curr_size[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(2),
-      I3 => wr_ptr(8),
-      I4 => wr_ptr(7),
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      I3 => \comp_burst.wr_ptr_reg\(8),
+      I4 => \comp_burst.wr_ptr_reg\(2),
+      I5 => \comp_burst.wr_ptr_reg\(3),
       O => \comp_burst.curr_size[8]_i_3_n_0\
     );
 \comp_burst.curr_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(0),
+      CE => '1',
+      D => \comp_burst.curr_size[0]_i_1_n_0\,
       Q => curr_size(0),
-      R => \comp_burst.curr_size[8]_i_1_n_0\
+      R => '0'
     );
 \comp_burst.curr_size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(1),
+      D => \comp_burst.wr_ptr_reg\(1),
       Q => curr_size(1),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -916,7 +1513,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(2),
+      D => \comp_burst.wr_ptr_reg\(2),
       Q => curr_size(2),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -924,7 +1521,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(3),
+      D => \comp_burst.wr_ptr_reg\(3),
       Q => curr_size(3),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -932,7 +1529,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(4),
+      D => \comp_burst.wr_ptr_reg\(4),
       Q => curr_size(4),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -940,7 +1537,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(5),
+      D => \comp_burst.wr_ptr_reg\(5),
       Q => curr_size(5),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -948,7 +1545,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(6),
+      D => \comp_burst.wr_ptr_reg\(6),
       Q => curr_size(6),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -956,7 +1553,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(7),
+      D => \comp_burst.wr_ptr_reg\(7),
       Q => curr_size(7),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -964,1038 +1561,2172 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(8),
+      D => \comp_burst.wr_ptr_reg\(8),
       Q => curr_size(8),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
-\comp_burst.env_down_diff_0[15]_i_10\: unisim.vcomponents.LUT2
+\comp_burst.done_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"E"
     )
         port map (
-      I0 => min_env(8),
-      I1 => env_down_0(8),
-      O => \comp_burst.env_down_diff_0[15]_i_10_n_0\
+      I0 => \^done\,
+      I1 => \comp_burst.complete_reg_n_0\,
+      O => \comp_burst.done_i_1_n_0\
     );
-\comp_burst.env_down_diff_0[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_0(7),
-      O => \comp_burst.env_down_diff_0[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_0(6),
-      O => \comp_burst.env_down_diff_0[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_0(5),
-      O => \comp_burst.env_down_diff_0[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_0(4),
-      O => \comp_burst.env_down_diff_0[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_0(3),
-      O => \comp_burst.env_down_diff_0[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_0(2),
-      O => \comp_burst.env_down_diff_0[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_0(1),
-      O => \comp_burst.env_down_diff_0[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_0(0),
-      O => \comp_burst.env_down_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_0(15),
-      O => \comp_burst.env_down_diff_0[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_0(14),
-      O => \comp_burst.env_down_diff_0[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_0(13),
-      O => \comp_burst.env_down_diff_0[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_0(12),
-      O => \comp_burst.env_down_diff_0[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_0(11),
-      O => \comp_burst.env_down_diff_0[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_0(10),
-      O => \comp_burst.env_down_diff_0[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_0(9),
-      O => \comp_burst.env_down_diff_0[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_0_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.done_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => env_down_diff_003_out(15),
-      Q => env_down_bits(0),
+      D => \comp_burst.done_i_1_n_0\,
+      Q => \^done\,
       R => '0'
     );
-\comp_burst.env_down_diff_0_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_003_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_0[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_0[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_0[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_0[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_0[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_0[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_0[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_0[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_0_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_0[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_0[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_0[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_0[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_0[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_0[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_0[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_1(8),
-      O => \comp_burst.env_down_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_1(7),
-      O => \comp_burst.env_down_diff_1[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_1(6),
-      O => \comp_burst.env_down_diff_1[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_1(5),
-      O => \comp_burst.env_down_diff_1[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_1(4),
-      O => \comp_burst.env_down_diff_1[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_1(3),
-      O => \comp_burst.env_down_diff_1[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_1(2),
-      O => \comp_burst.env_down_diff_1[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_1(1),
-      O => \comp_burst.env_down_diff_1[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_1(0),
-      O => \comp_burst.env_down_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_1(15),
-      O => \comp_burst.env_down_diff_1[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_1(14),
-      O => \comp_burst.env_down_diff_1[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_1(13),
-      O => \comp_burst.env_down_diff_1[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_1(12),
-      O => \comp_burst.env_down_diff_1[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_1(11),
-      O => \comp_burst.env_down_diff_1[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_1(10),
-      O => \comp_burst.env_down_diff_1[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_1(9),
-      O => \comp_burst.env_down_diff_1[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_1_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_102_out(15),
-      Q => env_down_bits(1),
-      R => '0'
-    );
-\comp_burst.env_down_diff_1_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_102_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_1[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_1[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_1[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_1[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_1[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_1[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_1[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_1_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_1[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_1[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_1[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_1[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_1[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_1[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_1[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_2(8),
-      O => \comp_burst.env_down_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_2(7),
-      O => \comp_burst.env_down_diff_2[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_2(6),
-      O => \comp_burst.env_down_diff_2[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_2(5),
-      O => \comp_burst.env_down_diff_2[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_2(4),
-      O => \comp_burst.env_down_diff_2[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_2(3),
-      O => \comp_burst.env_down_diff_2[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_2(2),
-      O => \comp_burst.env_down_diff_2[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_2(1),
-      O => \comp_burst.env_down_diff_2[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_2(0),
-      O => \comp_burst.env_down_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_2(15),
-      O => \comp_burst.env_down_diff_2[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_2(14),
-      O => \comp_burst.env_down_diff_2[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_2(13),
-      O => \comp_burst.env_down_diff_2[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_2(12),
-      O => \comp_burst.env_down_diff_2[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_2(11),
-      O => \comp_burst.env_down_diff_2[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_2(10),
-      O => \comp_burst.env_down_diff_2[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_2(9),
-      O => \comp_burst.env_down_diff_2[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_2_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_201_out(15),
-      Q => env_down_bits(2),
-      R => '0'
-    );
-\comp_burst.env_down_diff_2_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_201_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_2[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_2[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_2[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_2[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_2[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_2[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_2[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_2_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_2[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_2[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_2[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_2[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_2[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_2[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_2[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_3(8),
-      O => \comp_burst.env_down_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_3(7),
-      O => \comp_burst.env_down_diff_3[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_3(6),
-      O => \comp_burst.env_down_diff_3[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_3(5),
-      O => \comp_burst.env_down_diff_3[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_3(4),
-      O => \comp_burst.env_down_diff_3[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_3(3),
-      O => \comp_burst.env_down_diff_3[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_3(2),
-      O => \comp_burst.env_down_diff_3[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_3(1),
-      O => \comp_burst.env_down_diff_3[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_3(0),
-      O => \comp_burst.env_down_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_3(15),
-      O => \comp_burst.env_down_diff_3[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_3(14),
-      O => \comp_burst.env_down_diff_3[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_3(13),
-      O => \comp_burst.env_down_diff_3[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_3(12),
-      O => \comp_burst.env_down_diff_3[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_3(11),
-      O => \comp_burst.env_down_diff_3[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_3(10),
-      O => \comp_burst.env_down_diff_3[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_3(9),
-      O => \comp_burst.env_down_diff_3[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_3_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_300_out(15),
-      Q => env_down_bits(3),
-      R => '0'
-    );
-\comp_burst.env_down_diff_3_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_300_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_3[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_3[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_3[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_3[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_3[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_3[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_3[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_3_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_3[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_3[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_3[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_3[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_3[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_3[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_3[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_down_done_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_down_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => check_env_down,
-      O => \comp_burst.env_down_done_i_1_n_0\
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      O => \comp_burst.env_down_adr[0]_i_1_n_0\
     );
-\comp_burst.env_down_done_i_2\: unisim.vcomponents.LUT4
+\comp_burst.env_down_adr[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFE"
+      INIT => X"9AFF9A00"
     )
         port map (
-      I0 => env_down_bits(1),
-      I1 => env_down_bits(0),
-      I2 => env_down_bits(3),
-      I3 => env_down_bits(2),
-      O => \comp_burst.env_down_done_i_2_n_0\
+      I0 => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      I2 => \comp_burst.env_down_adr[10]_i_2_n_0\,
+      I3 => load_env,
+      I4 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_down_adr[10]_i_1_n_0\
     );
-\comp_burst.env_down_done_reg\: unisim.vcomponents.FDRE
+\comp_burst.env_down_adr[10]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0004"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I1 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      O => \comp_burst.env_down_adr[10]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      O => \comp_burst.env_down_adr[1]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"A9FFA900"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => load_env,
+      I4 => curr_size(0),
+      O => \comp_burst.env_down_adr[2]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAA90000AAA9FFFF"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => load_env,
+      I5 => curr_size(1),
+      O => \comp_burst.env_down_adr[3]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I2 => \comp_burst.env_down_adr[4]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_adr[4]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[4]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      O => \comp_burst.env_down_adr[4]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => curr_size(1),
+      I1 => curr_size(2),
+      O => \comp_burst.env_down_adr[4]_i_3_n_0\
+    );
+\comp_burst.env_down_adr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6F606F606F60606F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      I1 => \comp_burst.env_down_adr[5]_i_2_n_0\,
+      I2 => load_env,
+      I3 => curr_size(3),
+      I4 => curr_size(2),
+      I5 => curr_size(1),
+      O => \comp_burst.env_down_adr[5]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      O => \comp_burst.env_down_adr[5]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6F60"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I1 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_adr[6]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[6]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[6]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"AAA9"
+    )
+        port map (
+      I0 => curr_size(4),
+      I1 => curr_size(3),
+      I2 => curr_size(1),
+      I3 => curr_size(2),
+      O => \comp_burst.env_down_adr[6]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9AFF9A00"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I2 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I3 => load_env,
+      I4 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[7]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I2 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I5 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      O => \comp_burst.env_down_adr[8]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      I2 => \comp_burst.env_down_adr[9]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_adr[9]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[9]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000010"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I2 => \comp_burst.env_down_adr[4]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I5 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      O => \comp_burst.env_down_adr[9]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_size(7),
+      I1 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[9]_i_3_n_0\
+    );
+\comp_burst.env_down_adr_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_down_done_i_2_n_0\,
-      Q => env_down_done,
-      R => \comp_burst.env_down_done_i_1_n_0\
+      D => \comp_burst.env_down_adr[0]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[10]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[1]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[1]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[2]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[3]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[4]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[5]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[6]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[7]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[8]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[9]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      Q => env_down_ind(0),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      Q => env_down_ind(10),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      Q => env_down_ind(1),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      Q => env_down_ind(2),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      Q => env_down_ind(3),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      Q => env_down_ind(4),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      Q => env_down_ind(5),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      Q => env_down_ind(6),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      Q => env_down_ind(7),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      Q => env_down_ind(8),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      Q => env_down_ind(9),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(0),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(0),
+      O => \comp_burst.env_down_max_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(10),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(10),
+      O => \comp_burst.env_down_max_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(1),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(1),
+      O => \comp_burst.env_down_max_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(2),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(2),
+      O => \comp_burst.env_down_max_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(3),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(3),
+      O => \comp_burst.env_down_max_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(4),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(4),
+      O => \comp_burst.env_down_max_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(5),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(5),
+      O => \comp_burst.env_down_max_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(6),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(6),
+      O => \comp_burst.env_down_max_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(7),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(7),
+      O => \comp_burst.env_down_max_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(8),
+      O => \comp_burst.env_down_max_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(9),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(9),
+      O => \comp_burst.env_down_max_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[0]_i_1_n_0\,
+      Q => env_down_max_ind(0),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[10]_i_1_n_0\,
+      Q => env_down_max_ind(10),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[1]_i_1_n_0\,
+      Q => env_down_max_ind(1),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[2]_i_1_n_0\,
+      Q => env_down_max_ind(2),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[3]_i_1_n_0\,
+      Q => env_down_max_ind(3),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[4]_i_1_n_0\,
+      Q => env_down_max_ind(4),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[5]_i_1_n_0\,
+      Q => env_down_max_ind(5),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[6]_i_1_n_0\,
+      Q => env_down_max_ind(6),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[7]_i_1_n_0\,
+      Q => env_down_max_ind(7),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[8]_i_1_n_0\,
+      Q => env_down_max_ind(8),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[9]_i_1_n_0\,
+      Q => env_down_max_ind(9),
+      R => '0'
+    );
+\comp_burst.env_down_max_val[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(0),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(0),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[0]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(10),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(10),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[10]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(11),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(11),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[11]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[12]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(12),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(12),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[12]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[13]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(13),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(13),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[13]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(14),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(14),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[14]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(15),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(15),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[15]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(1),
+      I1 => env_down_max_val(1),
+      I2 => env_down_val(0),
+      I3 => env_down_max_val(0),
+      O => \comp_burst.env_down_max_val[15]_i_10_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(15),
+      I1 => env_down_val(15),
+      I2 => env_down_max_val(14),
+      I3 => env_down_val(14),
+      O => \comp_burst.env_down_max_val[15]_i_11_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(13),
+      I1 => env_down_val(13),
+      I2 => env_down_max_val(12),
+      I3 => env_down_val(12),
+      O => \comp_burst.env_down_max_val[15]_i_12_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(11),
+      I1 => env_down_val(11),
+      I2 => env_down_max_val(10),
+      I3 => env_down_val(10),
+      O => \comp_burst.env_down_max_val[15]_i_13_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(9),
+      I1 => env_down_val(9),
+      I2 => env_down_max_val(8),
+      I3 => env_down_val(8),
+      O => \comp_burst.env_down_max_val[15]_i_14_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(7),
+      I1 => env_down_val(7),
+      I2 => env_down_max_val(6),
+      I3 => env_down_val(6),
+      O => \comp_burst.env_down_max_val[15]_i_15_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(5),
+      I1 => env_down_val(5),
+      I2 => env_down_max_val(4),
+      I3 => env_down_val(4),
+      O => \comp_burst.env_down_max_val[15]_i_16_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(3),
+      I1 => env_down_val(3),
+      I2 => env_down_max_val(2),
+      I3 => env_down_val(2),
+      O => \comp_burst.env_down_max_val[15]_i_17_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(1),
+      I1 => env_down_val(1),
+      I2 => env_down_max_val(0),
+      I3 => env_down_val(0),
+      O => \comp_burst.env_down_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(15),
+      I1 => env_down_max_val(15),
+      I2 => env_down_val(14),
+      I3 => env_down_max_val(14),
+      O => \comp_burst.env_down_max_val[15]_i_3_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(13),
+      I1 => env_down_max_val(13),
+      I2 => env_down_val(12),
+      I3 => env_down_max_val(12),
+      O => \comp_burst.env_down_max_val[15]_i_4_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(11),
+      I1 => env_down_max_val(11),
+      I2 => env_down_val(10),
+      I3 => env_down_max_val(10),
+      O => \comp_burst.env_down_max_val[15]_i_5_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(9),
+      I1 => env_down_max_val(9),
+      I2 => env_down_val(8),
+      I3 => env_down_max_val(8),
+      O => \comp_burst.env_down_max_val[15]_i_6_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(7),
+      I1 => env_down_max_val(7),
+      I2 => env_down_val(6),
+      I3 => env_down_max_val(6),
+      O => \comp_burst.env_down_max_val[15]_i_7_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(5),
+      I1 => env_down_max_val(5),
+      I2 => env_down_val(4),
+      I3 => env_down_max_val(4),
+      O => \comp_burst.env_down_max_val[15]_i_8_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(3),
+      I1 => env_down_max_val(3),
+      I2 => env_down_val(2),
+      I3 => env_down_max_val(2),
+      O => \comp_burst.env_down_max_val[15]_i_9_n_0\
+    );
+\comp_burst.env_down_max_val[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(1),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(1),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[1]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(2),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(2),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[2]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(3),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(3),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[3]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(4),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(4),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[4]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(5),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(5),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[5]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(6),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(6),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[6]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(7),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(7),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[7]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(8),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(8),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[8]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(9),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(9),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[9]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[0]_i_1_n_0\,
+      Q => env_down_max_val(0),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[10]_i_1_n_0\,
+      Q => env_down_max_val(10),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[11]_i_1_n_0\,
+      Q => env_down_max_val(11),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[12]_i_1_n_0\,
+      Q => env_down_max_val(12),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[13]_i_1_n_0\,
+      Q => env_down_max_val(13),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[14]_i_1_n_0\,
+      Q => env_down_max_val(14),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[15]_i_1_n_0\,
+      Q => env_down_max_val(15),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => env_down_max_ind1,
+      CO(6) => \comp_burst.env_down_max_val_reg[15]_i_2_n_1\,
+      CO(5) => \comp_burst.env_down_max_val_reg[15]_i_2_n_2\,
+      CO(4) => \comp_burst.env_down_max_val_reg[15]_i_2_n_3\,
+      CO(3) => \comp_burst.env_down_max_val_reg[15]_i_2_n_4\,
+      CO(2) => \comp_burst.env_down_max_val_reg[15]_i_2_n_5\,
+      CO(1) => \comp_burst.env_down_max_val_reg[15]_i_2_n_6\,
+      CO(0) => \comp_burst.env_down_max_val_reg[15]_i_2_n_7\,
+      DI(7) => \comp_burst.env_down_max_val[15]_i_3_n_0\,
+      DI(6) => \comp_burst.env_down_max_val[15]_i_4_n_0\,
+      DI(5) => \comp_burst.env_down_max_val[15]_i_5_n_0\,
+      DI(4) => \comp_burst.env_down_max_val[15]_i_6_n_0\,
+      DI(3) => \comp_burst.env_down_max_val[15]_i_7_n_0\,
+      DI(2) => \comp_burst.env_down_max_val[15]_i_8_n_0\,
+      DI(1) => \comp_burst.env_down_max_val[15]_i_9_n_0\,
+      DI(0) => \comp_burst.env_down_max_val[15]_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.env_down_max_val_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.env_down_max_val[15]_i_11_n_0\,
+      S(6) => \comp_burst.env_down_max_val[15]_i_12_n_0\,
+      S(5) => \comp_burst.env_down_max_val[15]_i_13_n_0\,
+      S(4) => \comp_burst.env_down_max_val[15]_i_14_n_0\,
+      S(3) => \comp_burst.env_down_max_val[15]_i_15_n_0\,
+      S(2) => \comp_burst.env_down_max_val[15]_i_16_n_0\,
+      S(1) => \comp_burst.env_down_max_val[15]_i_17_n_0\,
+      S(0) => \comp_burst.env_down_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_down_max_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[1]_i_1_n_0\,
+      Q => env_down_max_val(1),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[2]_i_1_n_0\,
+      Q => env_down_max_val(2),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[3]_i_1_n_0\,
+      Q => env_down_max_val(3),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[4]_i_1_n_0\,
+      Q => env_down_max_val(4),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[5]_i_1_n_0\,
+      Q => env_down_max_val(5),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[6]_i_1_n_0\,
+      Q => env_down_max_val(6),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[7]_i_1_n_0\,
+      Q => env_down_max_val(7),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[8]_i_1_n_0\,
+      Q => env_down_max_val(8),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[9]_i_1_n_0\,
+      Q => env_down_max_val(9),
+      R => '0'
     );
 \comp_burst.env_down_ptr[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"74"
     )
         port map (
-      I0 => env_down_ptr(0),
-      I1 => check_env_down,
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => load_env,
       I2 => curr_size(0),
-      O => \comp_burst.env_down_ptr[0]_i_1_n_0\
+      O => \p_0_in__6\(0)
     );
 \comp_burst.env_down_ptr[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"E22E"
+      INIT => X"909F"
     )
         port map (
-      I0 => curr_size(1),
-      I1 => check_env_down,
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      O => \comp_burst.env_down_ptr[1]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => load_env,
+      I3 => curr_size(1),
+      O => \p_0_in__6\(1)
     );
-\comp_burst.env_down_ptr[2]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.env_down_ptr[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FC03AAAA"
+      INIT => X"A9FFA900A900A9FF"
     )
         port map (
-      I0 => curr_size(2),
-      I1 => env_down_ptr(1),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(2),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[2]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(2),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => load_env,
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \p_0_in__6\(2)
     );
 \comp_burst.env_down_ptr[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFC0003AAAAAAAA"
+      INIT => X"AAA9FFFFAAA90000"
     )
         port map (
-      I0 => curr_size(3),
-      I1 => env_down_ptr(2),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      I4 => env_down_ptr(3),
-      I5 => check_env_down,
-      O => \comp_burst.env_down_ptr[3]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(3),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\,
+      O => \p_0_in__6\(3)
     );
-\comp_burst.env_down_ptr[4]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.env_down_ptr[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"B8B8B8B8B8B8B88B"
     )
         port map (
-      I0 => curr_size(4),
-      I1 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I2 => check_env_down,
-      I3 => env_down_ptr(4),
-      O => \comp_burst.env_down_ptr[4]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\,
+      I1 => load_env,
+      I2 => curr_size(4),
+      I3 => curr_size(3),
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \p_0_in__6\(4)
     );
-\comp_burst.env_down_ptr[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.env_down_ptr[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FC03AAAA"
+      INIT => X"B8"
     )
         port map (
-      I0 => curr_size(5),
-      I1 => env_down_ptr(4),
-      I2 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I3 => env_down_ptr(5),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[5]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\,
+      I1 => load_env,
+      I2 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \p_0_in__6\(5)
     );
-\comp_burst.env_down_ptr[6]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.env_down_ptr[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFC0003AAAAAAAA"
+      INIT => X"6F60"
     )
         port map (
-      I0 => curr_size(6),
-      I1 => env_down_ptr(5),
-      I2 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I3 => env_down_ptr(4),
-      I4 => env_down_ptr(6),
-      I5 => check_env_down,
-      O => \comp_burst.env_down_ptr[6]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(6),
+      I1 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \p_0_in__6\(6)
     );
-\comp_burst.env_down_ptr[6]_i_2\: unisim.vcomponents.LUT4
+\comp_burst.env_down_ptr[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"9A009AFF9AFF9A00"
     )
         port map (
-      I0 => env_down_ptr(2),
-      I1 => env_down_ptr(0),
-      I2 => env_down_ptr(1),
-      I3 => env_down_ptr(3),
-      O => \comp_burst.env_down_ptr[6]_i_2_n_0\
-    );
-\comp_burst.env_down_ptr[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FC03AAAA"
-    )
-        port map (
-      I0 => curr_size(7),
-      I1 => env_down_ptr(6),
-      I2 => \comp_burst.env_down_ptr[8]_i_2_n_0\,
-      I3 => env_down_ptr(7),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[7]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(7),
+      I1 => \comp_burst.env_down_ptr_reg\(6),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => load_env,
+      I4 => curr_size(7),
+      I5 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \p_0_in__6\(7)
     );
 \comp_burst.env_down_ptr[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFCAAAA0003AAAA"
+      INIT => X"AA9AFFFFAA9A0000"
     )
         port map (
-      I0 => curr_size(8),
-      I1 => env_down_ptr(6),
-      I2 => \comp_burst.env_down_ptr[8]_i_2_n_0\,
-      I3 => env_down_ptr(7),
-      I4 => check_env_down,
-      I5 => env_down_ptr(8),
-      O => \comp_burst.env_down_ptr[8]_i_1_n_0\
-    );
-\comp_burst.env_down_ptr[8]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => env_down_ptr(4),
-      I1 => env_down_ptr(2),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      I4 => env_down_ptr(3),
-      I5 => env_down_ptr(5),
-      O => \comp_burst.env_down_ptr[8]_i_2_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(8),
+      I1 => \comp_burst.env_down_ptr_reg\(7),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => \comp_burst.env_down_ptr_reg\(6),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \p_0_in__6\(8)
     );
 \comp_burst.env_down_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[0]_i_1_n_0\,
-      Q => env_down_ptr(0),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(0),
+      Q => \comp_burst.env_down_ptr_reg\(0),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[1]_i_1_n_0\,
-      Q => env_down_ptr(1),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(1),
+      Q => \comp_burst.env_down_ptr_reg\(1),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[2]_i_1_n_0\,
-      Q => env_down_ptr(2),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(2),
+      Q => \comp_burst.env_down_ptr_reg\(2),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[3]_i_1_n_0\,
-      Q => env_down_ptr(3),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(3),
+      Q => \comp_burst.env_down_ptr_reg\(3),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[4]_i_1_n_0\,
-      Q => env_down_ptr(4),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(4),
+      Q => \comp_burst.env_down_ptr_reg\(4),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[5]_i_1_n_0\,
-      Q => env_down_ptr(5),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(5),
+      Q => \comp_burst.env_down_ptr_reg\(5),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[6]_i_1_n_0\,
-      Q => env_down_ptr(6),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(6),
+      Q => \comp_burst.env_down_ptr_reg\(6),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[7]_i_1_n_0\,
-      Q => env_down_ptr(7),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(7),
+      Q => \comp_burst.env_down_ptr_reg\(7),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[8]_i_1_n_0\,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(8),
+      Q => \comp_burst.env_down_ptr_reg\(8),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[0]_i_1_n_0\,
+      Q => env_down_ptr(0),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[1]_i_1_n_0\,
+      Q => env_down_ptr(1),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[2]_i_1_n_0\,
+      Q => env_down_ptr(2),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[3]_i_1_n_0\,
+      Q => env_down_ptr(3),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[4]_i_1_n_0\,
+      Q => env_down_ptr(4),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[5]_i_1_n_0\,
+      Q => env_down_ptr(5),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[6]_i_1_n_0\,
+      Q => env_down_ptr(6),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[7]_i_1_n_0\,
+      Q => env_down_ptr(7),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[8]_i_2_n_0\,
       Q => env_down_ptr(8),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_rep[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"74"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => load_env,
+      I2 => curr_size(0),
+      O => \comp_burst.env_down_ptr_rep[0]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"909F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => load_env,
+      I3 => curr_size(1),
+      O => \comp_burst.env_down_ptr_rep[1]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A9FFA900A900A9FF"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(2),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => load_env,
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \comp_burst.env_down_ptr_rep[2]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAA9FFFFAAA90000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(3),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[3]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[3]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"A9"
+    )
+        port map (
+      I0 => curr_size(3),
+      I1 => curr_size(2),
+      I2 => curr_size(1),
+      O => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"B8B8B8B8B8B8B88B"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\,
+      I1 => load_env,
+      I2 => curr_size(4),
+      I3 => curr_size(3),
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \comp_burst.env_down_ptr_rep[4]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[4]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAAAA9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(4),
+      I1 => \comp_burst.env_down_ptr_reg\(3),
+      I2 => \comp_burst.env_down_ptr_reg\(1),
+      I3 => \comp_burst.env_down_ptr_reg\(0),
+      I4 => \comp_burst.env_down_ptr_reg\(2),
+      O => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\,
+      I1 => load_env,
+      I2 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \comp_burst.env_down_ptr_rep[5]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAAAAAAAA9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(5),
+      I1 => \comp_burst.env_down_ptr_reg\(4),
+      I2 => \comp_burst.env_down_ptr_reg\(2),
+      I3 => \comp_burst.env_down_ptr_reg\(0),
+      I4 => \comp_burst.env_down_ptr_reg\(1),
+      I5 => \comp_burst.env_down_ptr_reg\(3),
+      O => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAAAA9"
+    )
+        port map (
+      I0 => curr_size(5),
+      I1 => curr_size(4),
+      I2 => curr_size(2),
+      I3 => curr_size(1),
+      I4 => curr_size(3),
+      O => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\
+    );
+\comp_burst.env_down_ptr_rep[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6F60"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(6),
+      I1 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[6]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAAAAAAAA9"
+    )
+        port map (
+      I0 => curr_size(6),
+      I1 => curr_size(5),
+      I2 => curr_size(3),
+      I3 => curr_size(1),
+      I4 => curr_size(2),
+      I5 => curr_size(4),
+      O => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9A009AFF9AFF9A00"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(7),
+      I1 => \comp_burst.env_down_ptr_reg\(6),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => load_env,
+      I4 => curr_size(7),
+      I5 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[7]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => curr_size(5),
+      I1 => curr_size(3),
+      I2 => curr_size(1),
+      I3 => curr_size(2),
+      I4 => curr_size(4),
+      I5 => curr_size(6),
+      O => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"4F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I2 => load_env,
+      O => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(8),
+      I1 => \comp_burst.env_down_ptr_reg\(7),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => \comp_burst.env_down_ptr_reg\(6),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_down_ptr_rep[8]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(4),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => \comp_burst.env_down_ptr_reg\(3),
+      I5 => \comp_burst.env_down_ptr_reg\(5),
+      O => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"9A"
+    )
+        port map (
+      I0 => curr_size(8),
+      I1 => curr_size(7),
+      I2 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\
+    );
+\comp_burst.env_down_val[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_99\,
+      I1 => \comp_burst.mem_env_down_reg_n_83\,
+      I2 => env_down_3(0),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(0),
+      O => \comp_burst.env_down_val[0]_i_1_n_0\
+    );
+\comp_burst.env_down_val[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_89\,
+      I1 => \comp_burst.mem_env_down_reg_n_73\,
+      I2 => env_down_2(10),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(10),
+      O => \comp_burst.env_down_val[10]_i_1_n_0\
+    );
+\comp_burst.env_down_val[11]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_88\,
+      I1 => \comp_burst.mem_env_down_reg_n_72\,
+      I2 => env_down_2(11),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(11),
+      O => \comp_burst.env_down_val[11]_i_1_n_0\
+    );
+\comp_burst.env_down_val[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_71\,
+      I1 => env_down_2(12),
+      I2 => \comp_burst.mem_env_down_reg_n_87\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(12),
+      O => \comp_burst.env_down_val[12]_i_1_n_0\
+    );
+\comp_burst.env_down_val[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_70\,
+      I1 => env_down_2(13),
+      I2 => \comp_burst.mem_env_down_reg_n_86\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(13),
+      O => \comp_burst.env_down_val[13]_i_1_n_0\
+    );
+\comp_burst.env_down_val[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_85\,
+      I1 => \comp_burst.mem_env_down_reg_n_69\,
+      I2 => env_down_2(14),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(14),
+      O => \comp_burst.env_down_val[14]_i_1_n_0\
+    );
+\comp_burst.env_down_val[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_84\,
+      I1 => \comp_burst.mem_env_down_reg_n_68\,
+      I2 => env_down_3(15),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(15),
+      O => \comp_burst.env_down_val[15]_i_1_n_0\
+    );
+\comp_burst.env_down_val[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_98\,
+      I1 => \comp_burst.mem_env_down_reg_n_82\,
+      I2 => env_down_3(1),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(1),
+      O => \comp_burst.env_down_val[1]_i_1_n_0\
+    );
+\comp_burst.env_down_val[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_97\,
+      I1 => \comp_burst.mem_env_down_reg_n_81\,
+      I2 => env_down_2(2),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(2),
+      O => \comp_burst.env_down_val[2]_i_1_n_0\
+    );
+\comp_burst.env_down_val[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_96\,
+      I1 => \comp_burst.mem_env_down_reg_n_80\,
+      I2 => env_down_2(3),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(3),
+      O => \comp_burst.env_down_val[3]_i_1_n_0\
+    );
+\comp_burst.env_down_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_79\,
+      I1 => env_down_2(4),
+      I2 => \comp_burst.mem_env_down_reg_n_95\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(4),
+      O => \comp_burst.env_down_val[4]_i_1_n_0\
+    );
+\comp_burst.env_down_val[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_78\,
+      I1 => env_down_2(5),
+      I2 => \comp_burst.mem_env_down_reg_n_94\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(5),
+      O => \comp_burst.env_down_val[5]_i_1_n_0\
+    );
+\comp_burst.env_down_val[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_93\,
+      I1 => \comp_burst.mem_env_down_reg_n_77\,
+      I2 => env_down_2(6),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(6),
+      O => \comp_burst.env_down_val[6]_i_1_n_0\
+    );
+\comp_burst.env_down_val[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_92\,
+      I1 => \comp_burst.mem_env_down_reg_n_76\,
+      I2 => env_down_3(7),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(7),
+      O => \comp_burst.env_down_val[7]_i_1_n_0\
+    );
+\comp_burst.env_down_val[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_91\,
+      I1 => \comp_burst.mem_env_down_reg_n_75\,
+      I2 => env_down_3(8),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(8),
+      O => \comp_burst.env_down_val[8]_i_1_n_0\
+    );
+\comp_burst.env_down_val[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_90\,
+      I1 => \comp_burst.mem_env_down_reg_n_74\,
+      I2 => env_down_3(9),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(9),
+      O => \comp_burst.env_down_val[9]_i_1_n_0\
+    );
+\comp_burst.env_down_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[0]_i_1_n_0\,
+      Q => env_down_val(0),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[10]_i_1_n_0\,
+      Q => env_down_val(10),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[11]_i_1_n_0\,
+      Q => env_down_val(11),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[12]_i_1_n_0\,
+      Q => env_down_val(12),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[13]_i_1_n_0\,
+      Q => env_down_val(13),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[14]_i_1_n_0\,
+      Q => env_down_val(14),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[15]_i_1_n_0\,
+      Q => env_down_val(15),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[1]_i_1_n_0\,
+      Q => env_down_val(1),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[2]_i_1_n_0\,
+      Q => env_down_val(2),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[3]_i_1_n_0\,
+      Q => env_down_val(3),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[4]_i_1_n_0\,
+      Q => env_down_val(4),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[5]_i_1_n_0\,
+      Q => env_down_val(5),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[6]_i_1_n_0\,
+      Q => env_down_val(6),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[7]_i_1_n_0\,
+      Q => env_down_val(7),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[8]_i_1_n_0\,
+      Q => env_down_val(8),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[9]_i_1_n_0\,
+      Q => env_down_val(9),
+      R => '0'
+    );
+\comp_burst.env_end_ind[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(0),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(0),
+      O => \comp_burst.env_end_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(10),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(10),
+      O => \comp_burst.env_end_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(1),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(1),
+      O => \comp_burst.env_end_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(2),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(2),
+      O => \comp_burst.env_end_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(3),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(3),
+      O => \comp_burst.env_end_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(4),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(4),
+      O => \comp_burst.env_end_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(5),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(5),
+      O => \comp_burst.env_end_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(6),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(6),
+      O => \comp_burst.env_end_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(7),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(7),
+      O => \comp_burst.env_end_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(8),
+      O => \comp_burst.env_end_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(9),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(9),
+      O => \comp_burst.env_end_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_end_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[0]_i_1_n_0\,
+      Q => env_end_ind(0),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[10]_i_1_n_0\,
+      Q => env_end_ind(10),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[1]_i_1_n_0\,
+      Q => env_end_ind(1),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[2]_i_1_n_0\,
+      Q => env_end_ind(2),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[3]_i_1_n_0\,
+      Q => env_end_ind(3),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[4]_i_1_n_0\,
+      Q => env_end_ind(4),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[5]_i_1_n_0\,
+      Q => env_end_ind(5),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[6]_i_1_n_0\,
+      Q => env_end_ind(6),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[7]_i_1_n_0\,
+      Q => env_end_ind(7),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[8]_i_1_n_0\,
+      Q => env_end_ind(8),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[9]_i_1_n_0\,
+      Q => env_end_ind(9),
       R => '0'
     );
 \comp_burst.env_in_reg[0]\: unisim.vcomponents.FDRE
@@ -2510,1019 +4241,1987 @@ begin
       Q => env_in(9),
       R => '0'
     );
-\comp_burst.env_up_diff_0[15]_i_10\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(8),
-      I1 => env_up_0(8),
-      O => \comp_burst.env_up_diff_0[15]_i_10_n_0\
+      I0 => env_start_ind(0),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(0),
+      O => \comp_burst.env_start_ind[0]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_11\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"E"
     )
         port map (
-      I0 => min_env(7),
-      I1 => env_up_0(7),
-      O => \comp_burst.env_up_diff_0[15]_i_11_n_0\
+      I0 => comp_env,
+      I1 => scan_start,
+      O => \comp_burst.env_start_ind[10]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_12\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[10]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(6),
-      I1 => env_up_0(6),
-      O => \comp_burst.env_up_diff_0[15]_i_12_n_0\
+      I0 => env_start_ind(10),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(10),
+      O => \comp_burst.env_start_ind[10]_i_2_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_13\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(5),
-      I1 => env_up_0(5),
-      O => \comp_burst.env_up_diff_0[15]_i_13_n_0\
+      I0 => env_start_ind(1),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(1),
+      O => \comp_burst.env_start_ind[1]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_14\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(4),
-      I1 => env_up_0(4),
-      O => \comp_burst.env_up_diff_0[15]_i_14_n_0\
+      I0 => env_start_ind(2),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(2),
+      O => \comp_burst.env_start_ind[2]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_15\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(3),
-      I1 => env_up_0(3),
-      O => \comp_burst.env_up_diff_0[15]_i_15_n_0\
+      I0 => env_start_ind(3),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(3),
+      O => \comp_burst.env_start_ind[3]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_16\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(2),
-      I1 => env_up_0(2),
-      O => \comp_burst.env_up_diff_0[15]_i_16_n_0\
+      I0 => env_start_ind(4),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(4),
+      O => \comp_burst.env_start_ind[4]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_17\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(1),
-      I1 => env_up_0(1),
-      O => \comp_burst.env_up_diff_0[15]_i_17_n_0\
+      I0 => env_start_ind(5),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(5),
+      O => \comp_burst.env_start_ind[5]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_18\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(0),
-      I1 => env_up_0(0),
-      O => \comp_burst.env_up_diff_0[15]_i_18_n_0\
+      I0 => env_start_ind(6),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(6),
+      O => \comp_burst.env_start_ind[6]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_3\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(15),
-      I1 => env_up_0(15),
-      O => \comp_burst.env_up_diff_0[15]_i_3_n_0\
+      I0 => env_start_ind(7),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(7),
+      O => \comp_burst.env_start_ind[7]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_4\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(14),
-      I1 => env_up_0(14),
-      O => \comp_burst.env_up_diff_0[15]_i_4_n_0\
+      I0 => env_start_ind(8),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(8),
+      O => \comp_burst.env_start_ind[8]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_5\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(13),
-      I1 => env_up_0(13),
-      O => \comp_burst.env_up_diff_0[15]_i_5_n_0\
+      I0 => env_start_ind(9),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(9),
+      O => \comp_burst.env_start_ind[9]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_0(12),
-      O => \comp_burst.env_up_diff_0[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_0(11),
-      O => \comp_burst.env_up_diff_0[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_0(10),
-      O => \comp_burst.env_up_diff_0[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_0(9),
-      O => \comp_burst.env_up_diff_0[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_0_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_007_out(15),
-      Q => env_up_bits(0),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[0]_i_1_n_0\,
+      Q => env_start_ind(0),
       R => '0'
     );
-\comp_burst.env_up_diff_0_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_007_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_0[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_0[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_0[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_0[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_0[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_0[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_0[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_0[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_0_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_0[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_0[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_0[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_0[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_0[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_0[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_0[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_1(8),
-      O => \comp_burst.env_up_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_1(7),
-      O => \comp_burst.env_up_diff_1[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_1(6),
-      O => \comp_burst.env_up_diff_1[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_1(5),
-      O => \comp_burst.env_up_diff_1[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_1(4),
-      O => \comp_burst.env_up_diff_1[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_1(3),
-      O => \comp_burst.env_up_diff_1[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_1(2),
-      O => \comp_burst.env_up_diff_1[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_1(1),
-      O => \comp_burst.env_up_diff_1[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_1(0),
-      O => \comp_burst.env_up_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_1(15),
-      O => \comp_burst.env_up_diff_1[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_1(14),
-      O => \comp_burst.env_up_diff_1[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_1(13),
-      O => \comp_burst.env_up_diff_1[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_1(12),
-      O => \comp_burst.env_up_diff_1[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_1(11),
-      O => \comp_burst.env_up_diff_1[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_1(10),
-      O => \comp_burst.env_up_diff_1[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_1(9),
-      O => \comp_burst.env_up_diff_1[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_1_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_106_out(15),
-      Q => env_up_bits(1),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[10]_i_2_n_0\,
+      Q => env_start_ind(10),
       R => '0'
     );
-\comp_burst.env_up_diff_1_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_106_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_1[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_1[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_1[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_1[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_1[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_1[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_1[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_1_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_1[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_1[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_1[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_1[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_1[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_1[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_1[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_2(8),
-      O => \comp_burst.env_up_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_2(7),
-      O => \comp_burst.env_up_diff_2[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_2(6),
-      O => \comp_burst.env_up_diff_2[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_2(5),
-      O => \comp_burst.env_up_diff_2[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_2(4),
-      O => \comp_burst.env_up_diff_2[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_2(3),
-      O => \comp_burst.env_up_diff_2[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_2(2),
-      O => \comp_burst.env_up_diff_2[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_2(1),
-      O => \comp_burst.env_up_diff_2[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_2(0),
-      O => \comp_burst.env_up_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_2(15),
-      O => \comp_burst.env_up_diff_2[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_2(14),
-      O => \comp_burst.env_up_diff_2[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_2(13),
-      O => \comp_burst.env_up_diff_2[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_2(12),
-      O => \comp_burst.env_up_diff_2[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_2(11),
-      O => \comp_burst.env_up_diff_2[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_2(10),
-      O => \comp_burst.env_up_diff_2[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_2(9),
-      O => \comp_burst.env_up_diff_2[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_2_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_205_out(15),
-      Q => env_up_bits(2),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[1]_i_1_n_0\,
+      Q => env_start_ind(1),
       R => '0'
     );
-\comp_burst.env_up_diff_2_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_205_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_2[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_2[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_2[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_2[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_2[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_2[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_2[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_2_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_2[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_2[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_2[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_2[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_2[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_2[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_2[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_3(8),
-      O => \comp_burst.env_up_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_3(7),
-      O => \comp_burst.env_up_diff_3[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_3(6),
-      O => \comp_burst.env_up_diff_3[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_3(5),
-      O => \comp_burst.env_up_diff_3[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_3(4),
-      O => \comp_burst.env_up_diff_3[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_3(3),
-      O => \comp_burst.env_up_diff_3[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_3(2),
-      O => \comp_burst.env_up_diff_3[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_3(1),
-      O => \comp_burst.env_up_diff_3[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_3(0),
-      O => \comp_burst.env_up_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_3(15),
-      O => \comp_burst.env_up_diff_3[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_3(14),
-      O => \comp_burst.env_up_diff_3[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_3(13),
-      O => \comp_burst.env_up_diff_3[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_3(12),
-      O => \comp_burst.env_up_diff_3[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_3(11),
-      O => \comp_burst.env_up_diff_3[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_3(10),
-      O => \comp_burst.env_up_diff_3[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_3(9),
-      O => \comp_burst.env_up_diff_3[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_3_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_304_out(15),
-      Q => env_up_bits(3),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[2]_i_1_n_0\,
+      Q => env_start_ind(2),
       R => '0'
     );
-\comp_burst.env_up_diff_3_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_304_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_3[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_3[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_3[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_3[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_3[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_3[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_3[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_3_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_3[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_3[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_3[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_3[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_3[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_3[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_3[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_up_done_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => env_up_bits(1),
-      I1 => env_up_bits(0),
-      I2 => env_up_bits(3),
-      I3 => env_up_bits(2),
-      O => \comp_burst.env_up_done_i_1_n_0\
-    );
-\comp_burst.env_up_done_reg\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_done_i_1_n_0\,
-      Q => env_up_done,
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[3]_i_1_n_0\,
+      Q => env_start_ind(3),
+      R => '0'
     );
-\comp_burst.env_up_ptr[0]_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_start_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[4]_i_1_n_0\,
+      Q => env_start_ind(4),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[5]_i_1_n_0\,
+      Q => env_start_ind(5),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[6]_i_1_n_0\,
+      Q => env_start_ind(6),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[7]_i_1_n_0\,
+      Q => env_start_ind(7),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[8]_i_1_n_0\,
+      Q => env_start_ind(8),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[9]_i_1_n_0\,
+      Q => env_start_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => env_up_ptr(0),
-      O => \comp_burst.env_up_ptr[0]_i_1_n_0\
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      O => \p_0_in__1\(0)
+    );
+\comp_burst.env_up_adr[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(10),
+      I1 => \comp_burst.env_up_adr_reg__0\(8),
+      I2 => \comp_burst.env_up_adr_reg__0\(6),
+      I3 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I4 => \comp_burst.env_up_adr_reg__0\(7),
+      I5 => \comp_burst.env_up_adr_reg__0\(9),
+      O => \p_0_in__1\(10)
+    );
+\comp_burst.env_up_adr[10]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(5),
+      I1 => \comp_burst.env_up_adr_reg__0\(3),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg__0\(2),
+      I5 => \comp_burst.env_up_adr_reg__0\(4),
+      O => \comp_burst.env_up_adr[10]_i_2_n_0\
+    );
+\comp_burst.env_up_adr[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      O => \p_0_in__1\(1)
+    );
+\comp_burst.env_up_adr[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(2),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      O => \p_0_in__1\(2)
+    );
+\comp_burst.env_up_adr[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(3),
+      I1 => \comp_burst.env_up_adr_reg\(0),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg__0\(2),
+      O => \p_0_in__1\(3)
+    );
+\comp_burst.env_up_adr[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(4),
+      I1 => \comp_burst.env_up_adr_reg__0\(2),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg__0\(3),
+      O => \p_0_in__1\(4)
+    );
+\comp_burst.env_up_adr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(5),
+      I1 => \comp_burst.env_up_adr_reg__0\(3),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg__0\(2),
+      I5 => \comp_burst.env_up_adr_reg__0\(4),
+      O => \p_0_in__1\(5)
+    );
+\comp_burst.env_up_adr[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(6),
+      I1 => \comp_burst.env_up_adr_reg__0\(4),
+      I2 => \comp_burst.env_up_adr_reg__0\(2),
+      I3 => \comp_burst.env_up_adr[6]_i_2_n_0\,
+      I4 => \comp_burst.env_up_adr_reg__0\(3),
+      I5 => \comp_burst.env_up_adr_reg__0\(5),
+      O => \p_0_in__1\(6)
+    );
+\comp_burst.env_up_adr[6]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      O => \comp_burst.env_up_adr[6]_i_2_n_0\
+    );
+\comp_burst.env_up_adr[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(7),
+      I1 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I2 => \comp_burst.env_up_adr_reg__0\(6),
+      O => \p_0_in__1\(7)
+    );
+\comp_burst.env_up_adr[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(8),
+      I1 => \comp_burst.env_up_adr_reg__0\(6),
+      I2 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I3 => \comp_burst.env_up_adr_reg__0\(7),
+      O => \p_0_in__1\(8)
+    );
+\comp_burst.env_up_adr[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(9),
+      I1 => \comp_burst.env_up_adr_reg__0\(7),
+      I2 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I3 => \comp_burst.env_up_adr_reg__0\(6),
+      I4 => \comp_burst.env_up_adr_reg__0\(8),
+      O => \p_0_in__1\(9)
+    );
+\comp_burst.env_up_adr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(0),
+      Q => \comp_burst.env_up_adr_reg\(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(10),
+      Q => \comp_burst.env_up_adr_reg__0\(10),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(1),
+      Q => \comp_burst.env_up_adr_reg\(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(2),
+      Q => \comp_burst.env_up_adr_reg__0\(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(3),
+      Q => \comp_burst.env_up_adr_reg__0\(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(4),
+      Q => \comp_burst.env_up_adr_reg__0\(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(5),
+      Q => \comp_burst.env_up_adr_reg__0\(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(6),
+      Q => \comp_burst.env_up_adr_reg__0\(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(7),
+      Q => \comp_burst.env_up_adr_reg__0\(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(8),
+      Q => \comp_burst.env_up_adr_reg__0\(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(9),
+      Q => \comp_burst.env_up_adr_reg__0\(9),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg\(0),
+      Q => env_up_ind(0),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(10),
+      Q => env_up_ind(10),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg\(1),
+      Q => env_up_ind(1),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(2),
+      Q => env_up_ind(2),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(3),
+      Q => env_up_ind(3),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(4),
+      Q => env_up_ind(4),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(5),
+      Q => env_up_ind(5),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(6),
+      Q => env_up_ind(6),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(7),
+      Q => env_up_ind(7),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(8),
+      Q => env_up_ind(8),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(9),
+      Q => env_up_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(0),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(0),
+      O => \comp_burst.env_up_max_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(10),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(10),
+      O => \comp_burst.env_up_max_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(1),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(1),
+      O => \comp_burst.env_up_max_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(2),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(2),
+      O => \comp_burst.env_up_max_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(3),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(3),
+      O => \comp_burst.env_up_max_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(4),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(4),
+      O => \comp_burst.env_up_max_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(5),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(5),
+      O => \comp_burst.env_up_max_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(6),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(6),
+      O => \comp_burst.env_up_max_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(7),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(7),
+      O => \comp_burst.env_up_max_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(8),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(8),
+      O => \comp_burst.env_up_max_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(9),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(9),
+      O => \comp_burst.env_up_max_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[0]_i_1_n_0\,
+      Q => env_up_max_ind(0),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[10]_i_1_n_0\,
+      Q => env_up_max_ind(10),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[1]_i_1_n_0\,
+      Q => env_up_max_ind(1),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[2]_i_1_n_0\,
+      Q => env_up_max_ind(2),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[3]_i_1_n_0\,
+      Q => env_up_max_ind(3),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[4]_i_1_n_0\,
+      Q => env_up_max_ind(4),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[5]_i_1_n_0\,
+      Q => env_up_max_ind(5),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[6]_i_1_n_0\,
+      Q => env_up_max_ind(6),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[7]_i_1_n_0\,
+      Q => env_up_max_ind(7),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[8]_i_1_n_0\,
+      Q => env_up_max_ind(8),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[9]_i_1_n_0\,
+      Q => env_up_max_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_max_val[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(0),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(0),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[0]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(10),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(10),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[10]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(11),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(11),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[11]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[12]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(12),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(12),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[12]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[13]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(13),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(13),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[13]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(14),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(14),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[14]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(15),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(15),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[15]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(1),
+      I1 => env_up_max_val(1),
+      I2 => env_up_val(0),
+      I3 => env_up_max_val(0),
+      O => \comp_burst.env_up_max_val[15]_i_10_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(15),
+      I1 => env_up_val(15),
+      I2 => env_up_max_val(14),
+      I3 => env_up_val(14),
+      O => \comp_burst.env_up_max_val[15]_i_11_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(13),
+      I1 => env_up_val(13),
+      I2 => env_up_max_val(12),
+      I3 => env_up_val(12),
+      O => \comp_burst.env_up_max_val[15]_i_12_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(11),
+      I1 => env_up_val(11),
+      I2 => env_up_max_val(10),
+      I3 => env_up_val(10),
+      O => \comp_burst.env_up_max_val[15]_i_13_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(9),
+      I1 => env_up_val(9),
+      I2 => env_up_max_val(8),
+      I3 => env_up_val(8),
+      O => \comp_burst.env_up_max_val[15]_i_14_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(7),
+      I1 => env_up_val(7),
+      I2 => env_up_max_val(6),
+      I3 => env_up_val(6),
+      O => \comp_burst.env_up_max_val[15]_i_15_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(5),
+      I1 => env_up_val(5),
+      I2 => env_up_max_val(4),
+      I3 => env_up_val(4),
+      O => \comp_burst.env_up_max_val[15]_i_16_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(3),
+      I1 => env_up_val(3),
+      I2 => env_up_max_val(2),
+      I3 => env_up_val(2),
+      O => \comp_burst.env_up_max_val[15]_i_17_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(1),
+      I1 => env_up_val(1),
+      I2 => env_up_max_val(0),
+      I3 => env_up_val(0),
+      O => \comp_burst.env_up_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(15),
+      I1 => env_up_max_val(15),
+      I2 => env_up_val(14),
+      I3 => env_up_max_val(14),
+      O => \comp_burst.env_up_max_val[15]_i_3_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(13),
+      I1 => env_up_max_val(13),
+      I2 => env_up_val(12),
+      I3 => env_up_max_val(12),
+      O => \comp_burst.env_up_max_val[15]_i_4_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(11),
+      I1 => env_up_max_val(11),
+      I2 => env_up_val(10),
+      I3 => env_up_max_val(10),
+      O => \comp_burst.env_up_max_val[15]_i_5_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(9),
+      I1 => env_up_max_val(9),
+      I2 => env_up_val(8),
+      I3 => env_up_max_val(8),
+      O => \comp_burst.env_up_max_val[15]_i_6_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(7),
+      I1 => env_up_max_val(7),
+      I2 => env_up_val(6),
+      I3 => env_up_max_val(6),
+      O => \comp_burst.env_up_max_val[15]_i_7_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(5),
+      I1 => env_up_max_val(5),
+      I2 => env_up_val(4),
+      I3 => env_up_max_val(4),
+      O => \comp_burst.env_up_max_val[15]_i_8_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(3),
+      I1 => env_up_max_val(3),
+      I2 => env_up_val(2),
+      I3 => env_up_max_val(2),
+      O => \comp_burst.env_up_max_val[15]_i_9_n_0\
+    );
+\comp_burst.env_up_max_val[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(1),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(1),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[1]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(2),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(2),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[2]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(3),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(3),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[3]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(4),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(4),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[4]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(5),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(5),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[5]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(6),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(6),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[6]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(7),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(7),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[7]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(8),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(8),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[8]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(9),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(9),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[9]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[0]_i_1_n_0\,
+      Q => env_up_max_val(0),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[10]_i_1_n_0\,
+      Q => env_up_max_val(10),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[11]_i_1_n_0\,
+      Q => env_up_max_val(11),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[12]_i_1_n_0\,
+      Q => env_up_max_val(12),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[13]_i_1_n_0\,
+      Q => env_up_max_val(13),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[14]_i_1_n_0\,
+      Q => env_up_max_val(14),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[15]_i_1_n_0\,
+      Q => env_up_max_val(15),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => env_up_max_ind1,
+      CO(6) => \comp_burst.env_up_max_val_reg[15]_i_2_n_1\,
+      CO(5) => \comp_burst.env_up_max_val_reg[15]_i_2_n_2\,
+      CO(4) => \comp_burst.env_up_max_val_reg[15]_i_2_n_3\,
+      CO(3) => \comp_burst.env_up_max_val_reg[15]_i_2_n_4\,
+      CO(2) => \comp_burst.env_up_max_val_reg[15]_i_2_n_5\,
+      CO(1) => \comp_burst.env_up_max_val_reg[15]_i_2_n_6\,
+      CO(0) => \comp_burst.env_up_max_val_reg[15]_i_2_n_7\,
+      DI(7) => \comp_burst.env_up_max_val[15]_i_3_n_0\,
+      DI(6) => \comp_burst.env_up_max_val[15]_i_4_n_0\,
+      DI(5) => \comp_burst.env_up_max_val[15]_i_5_n_0\,
+      DI(4) => \comp_burst.env_up_max_val[15]_i_6_n_0\,
+      DI(3) => \comp_burst.env_up_max_val[15]_i_7_n_0\,
+      DI(2) => \comp_burst.env_up_max_val[15]_i_8_n_0\,
+      DI(1) => \comp_burst.env_up_max_val[15]_i_9_n_0\,
+      DI(0) => \comp_burst.env_up_max_val[15]_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.env_up_max_val_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.env_up_max_val[15]_i_11_n_0\,
+      S(6) => \comp_burst.env_up_max_val[15]_i_12_n_0\,
+      S(5) => \comp_burst.env_up_max_val[15]_i_13_n_0\,
+      S(4) => \comp_burst.env_up_max_val[15]_i_14_n_0\,
+      S(3) => \comp_burst.env_up_max_val[15]_i_15_n_0\,
+      S(2) => \comp_burst.env_up_max_val[15]_i_16_n_0\,
+      S(1) => \comp_burst.env_up_max_val[15]_i_17_n_0\,
+      S(0) => \comp_burst.env_up_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_up_max_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[1]_i_1_n_0\,
+      Q => env_up_max_val(1),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[2]_i_1_n_0\,
+      Q => env_up_max_val(2),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[3]_i_1_n_0\,
+      Q => env_up_max_val(3),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[4]_i_1_n_0\,
+      Q => env_up_max_val(4),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[5]_i_1_n_0\,
+      Q => env_up_max_val(5),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[6]_i_1_n_0\,
+      Q => env_up_max_val(6),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[7]_i_1_n_0\,
+      Q => env_up_max_val(7),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[8]_i_1_n_0\,
+      Q => env_up_max_val(8),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[9]_i_1_n_0\,
+      Q => env_up_max_val(9),
+      R => '0'
     );
 \comp_burst.env_up_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => env_up_ptr(0),
-      I1 => env_up_ptr(1),
-      O => \comp_burst.env_up_ptr[1]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      O => \p_0_in__5\(1)
     );
 \comp_burst.env_up_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"78"
+      INIT => X"6A"
     )
         port map (
-      I0 => env_up_ptr(0),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(2),
-      O => \comp_burst.env_up_ptr[2]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(2),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      O => \p_0_in__5\(2)
     );
 \comp_burst.env_up_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7F80"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => env_up_ptr(2),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(0),
-      I3 => env_up_ptr(3),
-      O => \comp_burst.env_up_ptr[3]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(3),
+      I1 => \comp_burst.env_up_ptr_reg\(0),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(2),
+      O => \p_0_in__5\(3)
     );
 \comp_burst.env_up_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFF8000"
+      INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => env_up_ptr(3),
-      I1 => env_up_ptr(0),
-      I2 => env_up_ptr(1),
-      I3 => env_up_ptr(2),
-      I4 => env_up_ptr(4),
-      O => \comp_burst.env_up_ptr[4]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(4),
+      I1 => \comp_burst.env_up_ptr_reg\(2),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(0),
+      I4 => \comp_burst.env_up_ptr_reg\(3),
+      O => \p_0_in__5\(4)
     );
 \comp_burst.env_up_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF80000000"
+      INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => env_up_ptr(2),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(0),
-      I3 => env_up_ptr(3),
-      I4 => env_up_ptr(4),
-      I5 => env_up_ptr(5),
-      O => \comp_burst.env_up_ptr[5]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \p_0_in__5\(5)
     );
 \comp_burst.env_up_ptr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I1 => env_up_ptr(6),
-      O => \comp_burst.env_up_ptr[6]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(6),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      O => \p_0_in__5\(6)
     );
 \comp_burst.env_up_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D2"
+      INIT => X"6A"
     )
         port map (
-      I0 => env_up_ptr(6),
-      I1 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I2 => env_up_ptr(7),
-      O => \comp_burst.env_up_ptr[7]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(7),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I2 => \comp_burst.env_up_ptr_reg\(6),
+      O => \p_0_in__5\(7)
     );
-\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"1"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => check_env_up,
-      O => \comp_burst.env_up_ptr[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr[8]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"DF20"
-    )
-        port map (
-      I0 => env_up_ptr(7),
-      I1 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I2 => env_up_ptr(6),
-      I3 => env_up_ptr(8),
-      O => \comp_burst.env_up_ptr[8]_i_2_n_0\
-    );
-\comp_burst.env_up_ptr[8]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
-    )
-        port map (
-      I0 => env_up_ptr(5),
-      I1 => env_up_ptr(2),
-      I2 => env_up_ptr(1),
-      I3 => env_up_ptr(0),
-      I4 => env_up_ptr(3),
-      I5 => env_up_ptr(4),
-      O => \comp_burst.env_up_ptr[8]_i_3_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(8),
+      I1 => \comp_burst.env_up_ptr_reg\(6),
+      I2 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I3 => \comp_burst.env_up_ptr_reg\(7),
+      O => \p_0_in__5\(8)
     );
 \comp_burst.env_up_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[0]_i_1_n_0\,
-      Q => env_up_ptr(0),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(0),
+      Q => \comp_burst.env_up_ptr_reg\(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[1]_i_1_n_0\,
-      Q => env_up_ptr(1),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(1),
+      Q => \comp_burst.env_up_ptr_reg\(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[2]_i_1_n_0\,
-      Q => env_up_ptr(2),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(2),
+      Q => \comp_burst.env_up_ptr_reg\(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[3]_i_1_n_0\,
-      Q => env_up_ptr(3),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(3),
+      Q => \comp_burst.env_up_ptr_reg\(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[4]_i_1_n_0\,
-      Q => env_up_ptr(4),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(4),
+      Q => \comp_burst.env_up_ptr_reg\(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[5]_i_1_n_0\,
-      Q => env_up_ptr(5),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(5),
+      Q => \comp_burst.env_up_ptr_reg\(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[6]_i_1_n_0\,
-      Q => env_up_ptr(6),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(6),
+      Q => \comp_burst.env_up_ptr_reg\(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[7]_i_1_n_0\,
-      Q => env_up_ptr(7),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(7),
+      Q => \comp_burst.env_up_ptr_reg\(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[8]_i_2_n_0\,
-      Q => env_up_ptr(8),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(8),
+      Q => \comp_burst.env_up_ptr_reg\(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
-\comp_burst.err_no_data_i_1\: unisim.vcomponents.LUT3
+\comp_burst.env_up_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(0),
+      Q => env_up_ptr(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\,
+      Q => env_up_ptr(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\,
+      Q => env_up_ptr(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\,
+      Q => env_up_ptr(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\,
+      Q => env_up_ptr(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\,
+      Q => env_up_ptr(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\,
+      Q => env_up_ptr(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\,
+      Q => env_up_ptr(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\,
+      Q => env_up_ptr(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"10"
+      INIT => X"1"
     )
         port map (
-      I0 => \^err_no_data\,
-      I1 => reset,
-      I2 => up_down_same,
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      O => \p_0_in__5\(0)
+    );
+\comp_burst.env_up_ptr_rep[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      O => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(2),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      O => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(3),
+      I1 => \comp_burst.env_up_ptr_reg\(0),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(2),
+      O => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(4),
+      I1 => \comp_burst.env_up_ptr_reg\(2),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(0),
+      I4 => \comp_burst.env_up_ptr_reg\(3),
+      O => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(6),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(7),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I2 => \comp_burst.env_up_ptr_reg\(6),
+      O => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => load_env,
+      O => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(1),
+      I1 => \comp_burst.env_up_adr_reg\(0),
+      O => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(8),
+      I1 => \comp_burst.env_up_ptr_reg\(6),
+      I2 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I3 => \comp_burst.env_up_ptr_reg\(7),
+      O => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\
+    );
+\comp_burst.env_up_val[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_99\,
+      I1 => \comp_burst.mem_env_up_reg_n_83\,
+      I2 => env_up_3(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(0),
+      O => \comp_burst.env_up_val[0]_i_1_n_0\
+    );
+\comp_burst.env_up_val[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_89\,
+      I1 => \comp_burst.mem_env_up_reg_n_73\,
+      I2 => env_up_3(10),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(10),
+      O => \comp_burst.env_up_val[10]_i_1_n_0\
+    );
+\comp_burst.env_up_val[11]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_72\,
+      I1 => env_up_2(11),
+      I2 => \comp_burst.mem_env_up_reg_n_88\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(11),
+      O => \comp_burst.env_up_val[11]_i_1_n_0\
+    );
+\comp_burst.env_up_val[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_87\,
+      I1 => \comp_burst.mem_env_up_reg_n_71\,
+      I2 => env_up_2(12),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(12),
+      O => \comp_burst.env_up_val[12]_i_1_n_0\
+    );
+\comp_burst.env_up_val[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_86\,
+      I1 => \comp_burst.mem_env_up_reg_n_70\,
+      I2 => env_up_2(13),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(13),
+      O => \comp_burst.env_up_val[13]_i_1_n_0\
+    );
+\comp_burst.env_up_val[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_69\,
+      I1 => env_up_2(14),
+      I2 => \comp_burst.mem_env_up_reg_n_85\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(14),
+      O => \comp_burst.env_up_val[14]_i_1_n_0\
+    );
+\comp_burst.env_up_val[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_68\,
+      I1 => env_up_2(15),
+      I2 => \comp_burst.mem_env_up_reg_n_84\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(15),
+      O => \comp_burst.env_up_val[15]_i_1_n_0\
+    );
+\comp_burst.env_up_val[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_98\,
+      I1 => \comp_burst.mem_env_up_reg_n_82\,
+      I2 => env_up_3(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(1),
+      O => \comp_burst.env_up_val[1]_i_1_n_0\
+    );
+\comp_burst.env_up_val[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_97\,
+      I1 => \comp_burst.mem_env_up_reg_n_81\,
+      I2 => env_up_3(2),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(2),
+      O => \comp_burst.env_up_val[2]_i_1_n_0\
+    );
+\comp_burst.env_up_val[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_80\,
+      I1 => env_up_2(3),
+      I2 => \comp_burst.mem_env_up_reg_n_96\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(3),
+      O => \comp_burst.env_up_val[3]_i_1_n_0\
+    );
+\comp_burst.env_up_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_95\,
+      I1 => \comp_burst.mem_env_up_reg_n_79\,
+      I2 => env_up_2(4),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(4),
+      O => \comp_burst.env_up_val[4]_i_1_n_0\
+    );
+\comp_burst.env_up_val[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_94\,
+      I1 => \comp_burst.mem_env_up_reg_n_78\,
+      I2 => env_up_2(5),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(5),
+      O => \comp_burst.env_up_val[5]_i_1_n_0\
+    );
+\comp_burst.env_up_val[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_77\,
+      I1 => env_up_2(6),
+      I2 => \comp_burst.mem_env_up_reg_n_93\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(6),
+      O => \comp_burst.env_up_val[6]_i_1_n_0\
+    );
+\comp_burst.env_up_val[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_76\,
+      I1 => env_up_2(7),
+      I2 => \comp_burst.mem_env_up_reg_n_92\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(7),
+      O => \comp_burst.env_up_val[7]_i_1_n_0\
+    );
+\comp_burst.env_up_val[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_91\,
+      I1 => \comp_burst.mem_env_up_reg_n_75\,
+      I2 => env_up_3(8),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(8),
+      O => \comp_burst.env_up_val[8]_i_1_n_0\
+    );
+\comp_burst.env_up_val[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_90\,
+      I1 => \comp_burst.mem_env_up_reg_n_74\,
+      I2 => env_up_3(9),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(9),
+      O => \comp_burst.env_up_val[9]_i_1_n_0\
+    );
+\comp_burst.env_up_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[0]_i_1_n_0\,
+      Q => env_up_val(0),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[10]_i_1_n_0\,
+      Q => env_up_val(10),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[11]_i_1_n_0\,
+      Q => env_up_val(11),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[12]_i_1_n_0\,
+      Q => env_up_val(12),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[13]_i_1_n_0\,
+      Q => env_up_val(13),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[14]_i_1_n_0\,
+      Q => env_up_val(14),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[15]_i_1_n_0\,
+      Q => env_up_val(15),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[1]_i_1_n_0\,
+      Q => env_up_val(1),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[2]_i_1_n_0\,
+      Q => env_up_val(2),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[3]_i_1_n_0\,
+      Q => env_up_val(3),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[4]_i_1_n_0\,
+      Q => env_up_val(4),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[5]_i_1_n_0\,
+      Q => env_up_val(5),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[6]_i_1_n_0\,
+      Q => env_up_val(6),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[7]_i_1_n_0\,
+      Q => env_up_val(7),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[8]_i_1_n_0\,
+      Q => env_up_val(8),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[9]_i_1_n_0\,
+      Q => env_up_val(9),
+      R => '0'
+    );
+\comp_burst.err_no_data_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"4440"
+    )
+        port map (
+      I0 => scan_start,
+      I1 => run_env5_out,
+      I2 => run_env_end,
+      I3 => run_env_start,
       O => \comp_burst.err_no_data_i_1_n_0\
     );
 \comp_burst.err_no_data_reg\: unisim.vcomponents.FDRE
@@ -3533,40 +6232,12 @@ begin
       Q => \^err_no_data\,
       R => '0'
     );
-\comp_burst.filling_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFE2"
-    )
-        port map (
-      I0 => \comp_burst.filling_i_2_n_0\,
-      I1 => wr_data,
-      I2 => filling,
-      I3 => burst,
-      O => \comp_burst.filling_i_1_n_0\
-    );
-\comp_burst.filling_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"4"
-    )
-        port map (
-      I0 => '1',
-      I1 => wr_data,
-      O => \comp_burst.filling_i_2_n_0\
-    );
-\comp_burst.filling_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_burst.filling_i_1_n_0\,
-      Q => filling,
-      R => '0'
-    );
 \comp_burst.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => burst,
       D => in_freq(0),
-      Q => freq(0),
+      Q => \^freq\(0),
       R => '0'
     );
 \comp_burst.freq_reg[10]\: unisim.vcomponents.FDRE
@@ -3574,7 +6245,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(10),
-      Q => freq(10),
+      Q => \^freq\(10),
       R => '0'
     );
 \comp_burst.freq_reg[11]\: unisim.vcomponents.FDRE
@@ -3582,7 +6253,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(11),
-      Q => freq(11),
+      Q => \^freq\(11),
       R => '0'
     );
 \comp_burst.freq_reg[12]\: unisim.vcomponents.FDRE
@@ -3590,7 +6261,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(12),
-      Q => freq(12),
+      Q => \^freq\(12),
       R => '0'
     );
 \comp_burst.freq_reg[13]\: unisim.vcomponents.FDRE
@@ -3598,7 +6269,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(13),
-      Q => freq(13),
+      Q => \^freq\(13),
       R => '0'
     );
 \comp_burst.freq_reg[14]\: unisim.vcomponents.FDRE
@@ -3606,7 +6277,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(14),
-      Q => freq(14),
+      Q => \^freq\(14),
       R => '0'
     );
 \comp_burst.freq_reg[15]\: unisim.vcomponents.FDRE
@@ -3614,7 +6285,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(15),
-      Q => freq(15),
+      Q => \^freq\(15),
       R => '0'
     );
 \comp_burst.freq_reg[16]\: unisim.vcomponents.FDRE
@@ -3622,7 +6293,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(16),
-      Q => freq(16),
+      Q => \^freq\(16),
       R => '0'
     );
 \comp_burst.freq_reg[17]\: unisim.vcomponents.FDRE
@@ -3630,7 +6301,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(17),
-      Q => freq(17),
+      Q => \^freq\(17),
       R => '0'
     );
 \comp_burst.freq_reg[18]\: unisim.vcomponents.FDRE
@@ -3638,7 +6309,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(18),
-      Q => freq(18),
+      Q => \^freq\(18),
       R => '0'
     );
 \comp_burst.freq_reg[19]\: unisim.vcomponents.FDRE
@@ -3646,7 +6317,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(19),
-      Q => freq(19),
+      Q => \^freq\(19),
       R => '0'
     );
 \comp_burst.freq_reg[1]\: unisim.vcomponents.FDRE
@@ -3654,7 +6325,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(1),
-      Q => freq(1),
+      Q => \^freq\(1),
       R => '0'
     );
 \comp_burst.freq_reg[2]\: unisim.vcomponents.FDRE
@@ -3662,7 +6333,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(2),
-      Q => freq(2),
+      Q => \^freq\(2),
       R => '0'
     );
 \comp_burst.freq_reg[3]\: unisim.vcomponents.FDRE
@@ -3670,7 +6341,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(3),
-      Q => freq(3),
+      Q => \^freq\(3),
       R => '0'
     );
 \comp_burst.freq_reg[4]\: unisim.vcomponents.FDRE
@@ -3678,7 +6349,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(4),
-      Q => freq(4),
+      Q => \^freq\(4),
       R => '0'
     );
 \comp_burst.freq_reg[5]\: unisim.vcomponents.FDRE
@@ -3686,7 +6357,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(5),
-      Q => freq(5),
+      Q => \^freq\(5),
       R => '0'
     );
 \comp_burst.freq_reg[6]\: unisim.vcomponents.FDRE
@@ -3694,7 +6365,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(6),
-      Q => freq(6),
+      Q => \^freq\(6),
       R => '0'
     );
 \comp_burst.freq_reg[7]\: unisim.vcomponents.FDRE
@@ -3702,7 +6373,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(7),
-      Q => freq(7),
+      Q => \^freq\(7),
       R => '0'
     );
 \comp_burst.freq_reg[8]\: unisim.vcomponents.FDRE
@@ -3710,7 +6381,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(8),
-      Q => freq(8),
+      Q => \^freq\(8),
       R => '0'
     );
 \comp_burst.freq_reg[9]\: unisim.vcomponents.FDRE
@@ -3718,7 +6389,523 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(9),
-      Q => freq(9),
+      Q => \^freq\(9),
+      R => '0'
+    );
+\comp_burst.inc_env_sample_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => load_env_start,
+      Q => inc_env_sample,
+      R => '0'
+    );
+\comp_burst.load_env_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => run_env,
+      Q => load_env,
+      R => '0'
+    );
+\comp_burst.load_env_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => run_env_start,
+      Q => load_env_start,
+      R => '0'
+    );
+\comp_burst.max_env_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(0),
+      Q => \^max_env\(0),
+      R => '0'
+    );
+\comp_burst.max_env_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(10),
+      Q => \^max_env\(10),
+      R => '0'
+    );
+\comp_burst.max_env_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(11),
+      Q => \^max_env\(11),
+      R => '0'
+    );
+\comp_burst.max_env_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(12),
+      Q => \^max_env\(12),
+      R => '0'
+    );
+\comp_burst.max_env_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(13),
+      Q => \^max_env\(13),
+      R => '0'
+    );
+\comp_burst.max_env_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(14),
+      Q => \^max_env\(14),
+      R => '0'
+    );
+\comp_burst.max_env_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(15),
+      Q => \^max_env\(15),
+      R => '0'
+    );
+\comp_burst.max_env_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(1),
+      Q => \^max_env\(1),
+      R => '0'
+    );
+\comp_burst.max_env_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(2),
+      Q => \^max_env\(2),
+      R => '0'
+    );
+\comp_burst.max_env_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(3),
+      Q => \^max_env\(3),
+      R => '0'
+    );
+\comp_burst.max_env_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(4),
+      Q => \^max_env\(4),
+      R => '0'
+    );
+\comp_burst.max_env_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(5),
+      Q => \^max_env\(5),
+      R => '0'
+    );
+\comp_burst.max_env_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(6),
+      Q => \^max_env\(6),
+      R => '0'
+    );
+\comp_burst.max_env_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(7),
+      Q => \^max_env\(7),
+      R => '0'
+    );
+\comp_burst.max_env_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(8),
+      Q => \^max_env\(8),
+      R => '0'
+    );
+\comp_burst.max_env_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(9),
+      Q => \^max_env\(9),
+      R => '0'
+    );
+\comp_burst.max_pos[10]_i_3\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => env_start_ind(10),
+      O => \comp_burst.max_pos[10]_i_3_n_0\
+    );
+\comp_burst.max_pos[10]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(10),
+      I1 => env_start_ind(9),
+      O => \comp_burst.max_pos[10]_i_4_n_0\
+    );
+\comp_burst.max_pos[10]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(9),
+      I1 => env_start_ind(8),
+      O => \comp_burst.max_pos[10]_i_5_n_0\
+    );
+\comp_burst.max_pos[10]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_up_max_ind(10),
+      I1 => env_down_max_ind(10),
+      O => \comp_burst.max_pos[10]_i_6_n_0\
+    );
+\comp_burst.max_pos[10]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(9),
+      I1 => env_up_max_ind(9),
+      O => \comp_burst.max_pos[10]_i_7_n_0\
+    );
+\comp_burst.max_pos[10]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(8),
+      I1 => env_up_max_ind(8),
+      O => \comp_burst.max_pos[10]_i_8_n_0\
+    );
+\comp_burst.max_pos[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(1),
+      I1 => env_start_ind(0),
+      O => \comp_burst.max_pos[7]_i_10_n_0\
+    );
+\comp_burst.max_pos[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(7),
+      I1 => env_up_max_ind(7),
+      O => \comp_burst.max_pos[7]_i_11_n_0\
+    );
+\comp_burst.max_pos[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(6),
+      I1 => env_up_max_ind(6),
+      O => \comp_burst.max_pos[7]_i_12_n_0\
+    );
+\comp_burst.max_pos[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(5),
+      I1 => env_up_max_ind(5),
+      O => \comp_burst.max_pos[7]_i_13_n_0\
+    );
+\comp_burst.max_pos[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(4),
+      I1 => env_up_max_ind(4),
+      O => \comp_burst.max_pos[7]_i_14_n_0\
+    );
+\comp_burst.max_pos[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(3),
+      I1 => env_up_max_ind(3),
+      O => \comp_burst.max_pos[7]_i_15_n_0\
+    );
+\comp_burst.max_pos[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(2),
+      I1 => env_up_max_ind(2),
+      O => \comp_burst.max_pos[7]_i_16_n_0\
+    );
+\comp_burst.max_pos[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(1),
+      I1 => env_up_max_ind(1),
+      O => \comp_burst.max_pos[7]_i_17_n_0\
+    );
+\comp_burst.max_pos[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(0),
+      I1 => env_up_max_ind(0),
+      O => \comp_burst.max_pos[7]_i_18_n_0\
+    );
+\comp_burst.max_pos[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(8),
+      I1 => env_start_ind(7),
+      O => \comp_burst.max_pos[7]_i_3_n_0\
+    );
+\comp_burst.max_pos[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(7),
+      I1 => env_start_ind(6),
+      O => \comp_burst.max_pos[7]_i_4_n_0\
+    );
+\comp_burst.max_pos[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(6),
+      I1 => env_start_ind(5),
+      O => \comp_burst.max_pos[7]_i_5_n_0\
+    );
+\comp_burst.max_pos[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(5),
+      I1 => env_start_ind(4),
+      O => \comp_burst.max_pos[7]_i_6_n_0\
+    );
+\comp_burst.max_pos[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(4),
+      I1 => env_start_ind(3),
+      O => \comp_burst.max_pos[7]_i_7_n_0\
+    );
+\comp_burst.max_pos[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(3),
+      I1 => env_start_ind(2),
+      O => \comp_burst.max_pos[7]_i_8_n_0\
+    );
+\comp_burst.max_pos[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(2),
+      I1 => env_start_ind(1),
+      O => \comp_burst.max_pos[7]_i_9_n_0\
+    );
+\comp_burst.max_pos_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(0),
+      Q => \^max_pos\(0),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(10),
+      Q => \^max_pos\(10),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[10]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.max_pos_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.max_pos_reg[10]_i_1_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.max_pos_reg[10]_i_1_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[10]_i_1_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1 downto 0) => \comp_burst.max_pos_reg2\(10 downto 9),
+      O(7 downto 3) => \NLW_comp_burst.max_pos_reg[10]_i_1_O_UNCONNECTED\(7 downto 3),
+      O(2 downto 0) => \comp_burst.max_pos_reg00_out\(10 downto 8),
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.max_pos[10]_i_3_n_0\,
+      S(1) => \comp_burst.max_pos[10]_i_4_n_0\,
+      S(0) => \comp_burst.max_pos[10]_i_5_n_0\
+    );
+\comp_burst.max_pos_reg[10]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.max_pos_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.max_pos_reg[10]_i_2_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.max_pos_reg[10]_i_2_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[10]_i_2_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1 downto 0) => env_down_max_ind(9 downto 8),
+      O(7 downto 3) => \NLW_comp_burst.max_pos_reg[10]_i_2_O_UNCONNECTED\(7 downto 3),
+      O(2 downto 0) => \comp_burst.max_pos_reg2\(10 downto 8),
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.max_pos[10]_i_6_n_0\,
+      S(1) => \comp_burst.max_pos[10]_i_7_n_0\,
+      S(0) => \comp_burst.max_pos[10]_i_8_n_0\
+    );
+\comp_burst.max_pos_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(1),
+      Q => \^max_pos\(1),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(2),
+      Q => \^max_pos\(2),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(3),
+      Q => \^max_pos\(3),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(4),
+      Q => \^max_pos\(4),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(5),
+      Q => \^max_pos\(5),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(6),
+      Q => \^max_pos\(6),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(7),
+      Q => \^max_pos\(7),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.max_pos_reg[7]_i_1_n_0\,
+      CO(6) => \comp_burst.max_pos_reg[7]_i_1_n_1\,
+      CO(5) => \comp_burst.max_pos_reg[7]_i_1_n_2\,
+      CO(4) => \comp_burst.max_pos_reg[7]_i_1_n_3\,
+      CO(3) => \comp_burst.max_pos_reg[7]_i_1_n_4\,
+      CO(2) => \comp_burst.max_pos_reg[7]_i_1_n_5\,
+      CO(1) => \comp_burst.max_pos_reg[7]_i_1_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \comp_burst.max_pos_reg2\(8 downto 1),
+      O(7 downto 0) => \comp_burst.max_pos_reg00_out\(7 downto 0),
+      S(7) => \comp_burst.max_pos[7]_i_3_n_0\,
+      S(6) => \comp_burst.max_pos[7]_i_4_n_0\,
+      S(5) => \comp_burst.max_pos[7]_i_5_n_0\,
+      S(4) => \comp_burst.max_pos[7]_i_6_n_0\,
+      S(3) => \comp_burst.max_pos[7]_i_7_n_0\,
+      S(2) => \comp_burst.max_pos[7]_i_8_n_0\,
+      S(1) => \comp_burst.max_pos[7]_i_9_n_0\,
+      S(0) => \comp_burst.max_pos[7]_i_10_n_0\
+    );
+\comp_burst.max_pos_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.max_pos_reg[7]_i_2_n_0\,
+      CO(6) => \comp_burst.max_pos_reg[7]_i_2_n_1\,
+      CO(5) => \comp_burst.max_pos_reg[7]_i_2_n_2\,
+      CO(4) => \comp_burst.max_pos_reg[7]_i_2_n_3\,
+      CO(3) => \comp_burst.max_pos_reg[7]_i_2_n_4\,
+      CO(2) => \comp_burst.max_pos_reg[7]_i_2_n_5\,
+      CO(1) => \comp_burst.max_pos_reg[7]_i_2_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => env_down_max_ind(7 downto 0),
+      O(7 downto 1) => \comp_burst.max_pos_reg2\(7 downto 1),
+      O(0) => \NLW_comp_burst.max_pos_reg[7]_i_2_O_UNCONNECTED\(0),
+      S(7) => \comp_burst.max_pos[7]_i_11_n_0\,
+      S(6) => \comp_burst.max_pos[7]_i_12_n_0\,
+      S(5) => \comp_burst.max_pos[7]_i_13_n_0\,
+      S(4) => \comp_burst.max_pos[7]_i_14_n_0\,
+      S(3) => \comp_burst.max_pos[7]_i_15_n_0\,
+      S(2) => \comp_burst.max_pos[7]_i_16_n_0\,
+      S(1) => \comp_burst.max_pos[7]_i_17_n_0\,
+      S(0) => \comp_burst.max_pos[7]_i_18_n_0\
+    );
+\comp_burst.max_pos_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(8),
+      Q => \^max_pos\(8),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(9),
+      Q => \^max_pos\(9),
       R => '0'
     );
 \comp_burst.mem_env_down_reg\: unisim.vcomponents.RAMB36E2
@@ -3754,7 +6941,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => env_down_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => \comp_burst.wr_ptr_reg\(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -3787,8 +6974,38 @@ begin
       DINBDIN(31 downto 0) => env_in(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 16) => env_down_1(15 downto 0),
-      DOUTADOUT(15 downto 0) => env_down_0(15 downto 0),
+      DOUTADOUT(31) => \comp_burst.mem_env_down_reg_n_68\,
+      DOUTADOUT(30) => \comp_burst.mem_env_down_reg_n_69\,
+      DOUTADOUT(29) => \comp_burst.mem_env_down_reg_n_70\,
+      DOUTADOUT(28) => \comp_burst.mem_env_down_reg_n_71\,
+      DOUTADOUT(27) => \comp_burst.mem_env_down_reg_n_72\,
+      DOUTADOUT(26) => \comp_burst.mem_env_down_reg_n_73\,
+      DOUTADOUT(25) => \comp_burst.mem_env_down_reg_n_74\,
+      DOUTADOUT(24) => \comp_burst.mem_env_down_reg_n_75\,
+      DOUTADOUT(23) => \comp_burst.mem_env_down_reg_n_76\,
+      DOUTADOUT(22) => \comp_burst.mem_env_down_reg_n_77\,
+      DOUTADOUT(21) => \comp_burst.mem_env_down_reg_n_78\,
+      DOUTADOUT(20) => \comp_burst.mem_env_down_reg_n_79\,
+      DOUTADOUT(19) => \comp_burst.mem_env_down_reg_n_80\,
+      DOUTADOUT(18) => \comp_burst.mem_env_down_reg_n_81\,
+      DOUTADOUT(17) => \comp_burst.mem_env_down_reg_n_82\,
+      DOUTADOUT(16) => \comp_burst.mem_env_down_reg_n_83\,
+      DOUTADOUT(15) => \comp_burst.mem_env_down_reg_n_84\,
+      DOUTADOUT(14) => \comp_burst.mem_env_down_reg_n_85\,
+      DOUTADOUT(13) => \comp_burst.mem_env_down_reg_n_86\,
+      DOUTADOUT(12) => \comp_burst.mem_env_down_reg_n_87\,
+      DOUTADOUT(11) => \comp_burst.mem_env_down_reg_n_88\,
+      DOUTADOUT(10) => \comp_burst.mem_env_down_reg_n_89\,
+      DOUTADOUT(9) => \comp_burst.mem_env_down_reg_n_90\,
+      DOUTADOUT(8) => \comp_burst.mem_env_down_reg_n_91\,
+      DOUTADOUT(7) => \comp_burst.mem_env_down_reg_n_92\,
+      DOUTADOUT(6) => \comp_burst.mem_env_down_reg_n_93\,
+      DOUTADOUT(5) => \comp_burst.mem_env_down_reg_n_94\,
+      DOUTADOUT(4) => \comp_burst.mem_env_down_reg_n_95\,
+      DOUTADOUT(3) => \comp_burst.mem_env_down_reg_n_96\,
+      DOUTADOUT(2) => \comp_burst.mem_env_down_reg_n_97\,
+      DOUTADOUT(1) => \comp_burst.mem_env_down_reg_n_98\,
+      DOUTADOUT(0) => \comp_burst.mem_env_down_reg_n_99\,
       DOUTBDOUT(31 downto 16) => env_down_3(15 downto 0),
       DOUTBDOUT(15 downto 0) => env_down_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_comp_burst.mem_env_down_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
@@ -3851,7 +7068,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => env_up_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => \comp_burst.wr_ptr_reg\(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -3884,8 +7101,38 @@ begin
       DINBDIN(31 downto 0) => env_in(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 16) => env_up_1(15 downto 0),
-      DOUTADOUT(15 downto 0) => env_up_0(15 downto 0),
+      DOUTADOUT(31) => \comp_burst.mem_env_up_reg_n_68\,
+      DOUTADOUT(30) => \comp_burst.mem_env_up_reg_n_69\,
+      DOUTADOUT(29) => \comp_burst.mem_env_up_reg_n_70\,
+      DOUTADOUT(28) => \comp_burst.mem_env_up_reg_n_71\,
+      DOUTADOUT(27) => \comp_burst.mem_env_up_reg_n_72\,
+      DOUTADOUT(26) => \comp_burst.mem_env_up_reg_n_73\,
+      DOUTADOUT(25) => \comp_burst.mem_env_up_reg_n_74\,
+      DOUTADOUT(24) => \comp_burst.mem_env_up_reg_n_75\,
+      DOUTADOUT(23) => \comp_burst.mem_env_up_reg_n_76\,
+      DOUTADOUT(22) => \comp_burst.mem_env_up_reg_n_77\,
+      DOUTADOUT(21) => \comp_burst.mem_env_up_reg_n_78\,
+      DOUTADOUT(20) => \comp_burst.mem_env_up_reg_n_79\,
+      DOUTADOUT(19) => \comp_burst.mem_env_up_reg_n_80\,
+      DOUTADOUT(18) => \comp_burst.mem_env_up_reg_n_81\,
+      DOUTADOUT(17) => \comp_burst.mem_env_up_reg_n_82\,
+      DOUTADOUT(16) => \comp_burst.mem_env_up_reg_n_83\,
+      DOUTADOUT(15) => \comp_burst.mem_env_up_reg_n_84\,
+      DOUTADOUT(14) => \comp_burst.mem_env_up_reg_n_85\,
+      DOUTADOUT(13) => \comp_burst.mem_env_up_reg_n_86\,
+      DOUTADOUT(12) => \comp_burst.mem_env_up_reg_n_87\,
+      DOUTADOUT(11) => \comp_burst.mem_env_up_reg_n_88\,
+      DOUTADOUT(10) => \comp_burst.mem_env_up_reg_n_89\,
+      DOUTADOUT(9) => \comp_burst.mem_env_up_reg_n_90\,
+      DOUTADOUT(8) => \comp_burst.mem_env_up_reg_n_91\,
+      DOUTADOUT(7) => \comp_burst.mem_env_up_reg_n_92\,
+      DOUTADOUT(6) => \comp_burst.mem_env_up_reg_n_93\,
+      DOUTADOUT(5) => \comp_burst.mem_env_up_reg_n_94\,
+      DOUTADOUT(4) => \comp_burst.mem_env_up_reg_n_95\,
+      DOUTADOUT(3) => \comp_burst.mem_env_up_reg_n_96\,
+      DOUTADOUT(2) => \comp_burst.mem_env_up_reg_n_97\,
+      DOUTADOUT(1) => \comp_burst.mem_env_up_reg_n_98\,
+      DOUTADOUT(0) => \comp_burst.mem_env_up_reg_n_99\,
       DOUTBDOUT(31 downto 16) => env_up_3(15 downto 0),
       DOUTBDOUT(15 downto 0) => env_up_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
@@ -3923,191 +7170,640 @@ begin
       Q => mem_wr,
       R => '0'
     );
-\comp_burst.run_env_down_i_1\: unisim.vcomponents.LUT6
+\comp_burst.run_env_end_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"EEEE2222EEEF2222"
+      INIT => X"2F20"
     )
         port map (
-      I0 => run_env_up,
-      I1 => filling,
-      I2 => up_down_same,
-      I3 => reset,
-      I4 => run_env_down,
-      I5 => env_down_done,
-      O => \comp_burst.run_env_down_i_1_n_0\
+      I0 => run_env_end,
+      I1 => run_env_end0,
+      I2 => comp_env,
+      I3 => run_env_end,
+      O => \comp_burst.run_env_end_i_1_n_0\
     );
-\comp_burst.run_env_down_reg\: unisim.vcomponents.FDRE
+\comp_burst.run_env_end_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(1),
+      I1 => env_down_val(1),
+      I2 => env_down_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_end_i_10_n_0\
+    );
+\comp_burst.run_env_end_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(15),
+      I1 => min_env(15),
+      I2 => env_down_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_end_i_11_n_0\
+    );
+\comp_burst.run_env_end_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(13),
+      I1 => min_env(13),
+      I2 => env_down_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_end_i_12_n_0\
+    );
+\comp_burst.run_env_end_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(11),
+      I1 => min_env(11),
+      I2 => env_down_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_end_i_13_n_0\
+    );
+\comp_burst.run_env_end_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(9),
+      I1 => min_env(9),
+      I2 => env_down_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_end_i_14_n_0\
+    );
+\comp_burst.run_env_end_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(7),
+      I1 => min_env(7),
+      I2 => env_down_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_end_i_15_n_0\
+    );
+\comp_burst.run_env_end_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(5),
+      I1 => min_env(5),
+      I2 => env_down_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_end_i_16_n_0\
+    );
+\comp_burst.run_env_end_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(3),
+      I1 => min_env(3),
+      I2 => env_down_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_end_i_17_n_0\
+    );
+\comp_burst.run_env_end_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(1),
+      I1 => min_env(1),
+      I2 => env_down_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_end_i_18_n_0\
+    );
+\comp_burst.run_env_end_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(15),
+      I1 => env_down_val(15),
+      I2 => env_down_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_end_i_3_n_0\
+    );
+\comp_burst.run_env_end_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(13),
+      I1 => env_down_val(13),
+      I2 => env_down_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_end_i_4_n_0\
+    );
+\comp_burst.run_env_end_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(11),
+      I1 => env_down_val(11),
+      I2 => env_down_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_end_i_5_n_0\
+    );
+\comp_burst.run_env_end_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(9),
+      I1 => env_down_val(9),
+      I2 => env_down_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_end_i_6_n_0\
+    );
+\comp_burst.run_env_end_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(7),
+      I1 => env_down_val(7),
+      I2 => env_down_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_end_i_7_n_0\
+    );
+\comp_burst.run_env_end_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(5),
+      I1 => env_down_val(5),
+      I2 => env_down_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_end_i_8_n_0\
+    );
+\comp_burst.run_env_end_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(3),
+      I1 => env_down_val(3),
+      I2 => env_down_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_end_i_9_n_0\
+    );
+\comp_burst.run_env_end_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.run_env_down_i_1_n_0\,
-      Q => run_env_down,
-      R => '0'
+      D => \comp_burst.run_env_end_i_1_n_0\,
+      Q => run_env_end,
+      S => scan_start
     );
-\comp_burst.run_env_up_i_1\: unisim.vcomponents.LUT6
+\comp_burst.run_env_end_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => run_env_end0,
+      CO(6) => \comp_burst.run_env_end_reg_i_2_n_1\,
+      CO(5) => \comp_burst.run_env_end_reg_i_2_n_2\,
+      CO(4) => \comp_burst.run_env_end_reg_i_2_n_3\,
+      CO(3) => \comp_burst.run_env_end_reg_i_2_n_4\,
+      CO(2) => \comp_burst.run_env_end_reg_i_2_n_5\,
+      CO(1) => \comp_burst.run_env_end_reg_i_2_n_6\,
+      CO(0) => \comp_burst.run_env_end_reg_i_2_n_7\,
+      DI(7) => \comp_burst.run_env_end_i_3_n_0\,
+      DI(6) => \comp_burst.run_env_end_i_4_n_0\,
+      DI(5) => \comp_burst.run_env_end_i_5_n_0\,
+      DI(4) => \comp_burst.run_env_end_i_6_n_0\,
+      DI(3) => \comp_burst.run_env_end_i_7_n_0\,
+      DI(2) => \comp_burst.run_env_end_i_8_n_0\,
+      DI(1) => \comp_burst.run_env_end_i_9_n_0\,
+      DI(0) => \comp_burst.run_env_end_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.run_env_end_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.run_env_end_i_11_n_0\,
+      S(6) => \comp_burst.run_env_end_i_12_n_0\,
+      S(5) => \comp_burst.run_env_end_i_13_n_0\,
+      S(4) => \comp_burst.run_env_end_i_14_n_0\,
+      S(3) => \comp_burst.run_env_end_i_15_n_0\,
+      S(2) => \comp_burst.run_env_end_i_16_n_0\,
+      S(1) => \comp_burst.run_env_end_i_17_n_0\,
+      S(0) => \comp_burst.run_env_end_i_18_n_0\
+    );
+\comp_burst.run_env_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFFFFFFFE0002"
+      INIT => X"2"
     )
         port map (
-      I0 => run_env_up,
-      I1 => env_up_done,
-      I2 => up_down_same,
-      I3 => reset,
-      I4 => \comp_burst.run_env_up_i_2_n_0\,
-      I5 => filling,
-      O => \comp_burst.run_env_up_i_1_n_0\
+      I0 => run_env,
+      I1 => run_env5_out,
+      O => \comp_burst.run_env_i_1_n_0\
     );
-\comp_burst.run_env_up_i_2\: unisim.vcomponents.LUT2
+\comp_burst.run_env_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => '1',
-      I1 => \comp_burst.run_env_up_reg0\,
-      O => \comp_burst.run_env_up_i_2_n_0\
+      I0 => env_down_ind(5),
+      I1 => env_down_ind(7),
+      I2 => env_down_ind(6),
+      I3 => env_down_ind(10),
+      I4 => \comp_burst.run_env_i_3_n_0\,
+      I5 => \comp_burst.run_env_i_4_n_0\,
+      O => run_env5_out
     );
-\comp_burst.run_env_up_i_3\: unisim.vcomponents.LUT3
+\comp_burst.run_env_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FE"
+      INIT => X"FFEF"
     )
         port map (
-      I0 => reset,
-      I1 => up_down_same,
-      I2 => env_up_done,
-      O => \comp_burst.run_env_up_reg0\
+      I0 => env_down_ind(3),
+      I1 => env_down_ind(2),
+      I2 => run_env,
+      I3 => env_down_ind(9),
+      O => \comp_burst.run_env_i_3_n_0\
     );
-\comp_burst.run_env_up_reg\: unisim.vcomponents.FDRE
+\comp_burst.run_env_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFEF"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => env_down_ind(4),
+      I2 => env_down_ind(1),
+      I3 => env_down_ind(0),
+      O => \comp_burst.run_env_i_4_n_0\
+    );
+\comp_burst.run_env_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.run_env_up_i_1_n_0\,
-      Q => run_env_up,
-      R => '0'
+      D => \comp_burst.run_env_i_1_n_0\,
+      Q => run_env,
+      S => scan_start
+    );
+\comp_burst.run_env_start_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2F20"
+    )
+        port map (
+      I0 => run_env_start,
+      I1 => run_env_start0,
+      I2 => comp_env,
+      I3 => run_env_start,
+      O => \comp_burst.run_env_start_i_1_n_0\
+    );
+\comp_burst.run_env_start_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(1),
+      I1 => min_env(1),
+      I2 => env_up_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_start_i_10_n_0\
+    );
+\comp_burst.run_env_start_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(15),
+      I1 => env_up_val(15),
+      I2 => min_env(14),
+      I3 => env_up_val(14),
+      O => \comp_burst.run_env_start_i_11_n_0\
+    );
+\comp_burst.run_env_start_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(13),
+      I1 => env_up_val(13),
+      I2 => min_env(12),
+      I3 => env_up_val(12),
+      O => \comp_burst.run_env_start_i_12_n_0\
+    );
+\comp_burst.run_env_start_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(11),
+      I1 => env_up_val(11),
+      I2 => min_env(10),
+      I3 => env_up_val(10),
+      O => \comp_burst.run_env_start_i_13_n_0\
+    );
+\comp_burst.run_env_start_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(9),
+      I1 => env_up_val(9),
+      I2 => min_env(8),
+      I3 => env_up_val(8),
+      O => \comp_burst.run_env_start_i_14_n_0\
+    );
+\comp_burst.run_env_start_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(7),
+      I1 => env_up_val(7),
+      I2 => min_env(6),
+      I3 => env_up_val(6),
+      O => \comp_burst.run_env_start_i_15_n_0\
+    );
+\comp_burst.run_env_start_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(5),
+      I1 => env_up_val(5),
+      I2 => min_env(4),
+      I3 => env_up_val(4),
+      O => \comp_burst.run_env_start_i_16_n_0\
+    );
+\comp_burst.run_env_start_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(3),
+      I1 => env_up_val(3),
+      I2 => min_env(2),
+      I3 => env_up_val(2),
+      O => \comp_burst.run_env_start_i_17_n_0\
+    );
+\comp_burst.run_env_start_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(1),
+      I1 => env_up_val(1),
+      I2 => min_env(0),
+      I3 => env_up_val(0),
+      O => \comp_burst.run_env_start_i_18_n_0\
+    );
+\comp_burst.run_env_start_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(15),
+      I1 => min_env(15),
+      I2 => env_up_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_start_i_3_n_0\
+    );
+\comp_burst.run_env_start_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(13),
+      I1 => min_env(13),
+      I2 => env_up_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_start_i_4_n_0\
+    );
+\comp_burst.run_env_start_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(11),
+      I1 => min_env(11),
+      I2 => env_up_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_start_i_5_n_0\
+    );
+\comp_burst.run_env_start_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(9),
+      I1 => min_env(9),
+      I2 => env_up_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_start_i_6_n_0\
+    );
+\comp_burst.run_env_start_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(7),
+      I1 => min_env(7),
+      I2 => env_up_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_start_i_7_n_0\
+    );
+\comp_burst.run_env_start_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(5),
+      I1 => min_env(5),
+      I2 => env_up_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_start_i_8_n_0\
+    );
+\comp_burst.run_env_start_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(3),
+      I1 => min_env(3),
+      I2 => env_up_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_start_i_9_n_0\
+    );
+\comp_burst.run_env_start_reg\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.run_env_start_i_1_n_0\,
+      Q => run_env_start,
+      S => scan_start
+    );
+\comp_burst.run_env_start_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => run_env_start0,
+      CO(6) => \comp_burst.run_env_start_reg_i_2_n_1\,
+      CO(5) => \comp_burst.run_env_start_reg_i_2_n_2\,
+      CO(4) => \comp_burst.run_env_start_reg_i_2_n_3\,
+      CO(3) => \comp_burst.run_env_start_reg_i_2_n_4\,
+      CO(2) => \comp_burst.run_env_start_reg_i_2_n_5\,
+      CO(1) => \comp_burst.run_env_start_reg_i_2_n_6\,
+      CO(0) => \comp_burst.run_env_start_reg_i_2_n_7\,
+      DI(7) => \comp_burst.run_env_start_i_3_n_0\,
+      DI(6) => \comp_burst.run_env_start_i_4_n_0\,
+      DI(5) => \comp_burst.run_env_start_i_5_n_0\,
+      DI(4) => \comp_burst.run_env_start_i_6_n_0\,
+      DI(3) => \comp_burst.run_env_start_i_7_n_0\,
+      DI(2) => \comp_burst.run_env_start_i_8_n_0\,
+      DI(1) => \comp_burst.run_env_start_i_9_n_0\,
+      DI(0) => \comp_burst.run_env_start_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.run_env_start_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.run_env_start_i_11_n_0\,
+      S(6) => \comp_burst.run_env_start_i_12_n_0\,
+      S(5) => \comp_burst.run_env_start_i_13_n_0\,
+      S(4) => \comp_burst.run_env_start_i_14_n_0\,
+      S(3) => \comp_burst.run_env_start_i_15_n_0\,
+      S(2) => \comp_burst.run_env_start_i_16_n_0\,
+      S(1) => \comp_burst.run_env_start_i_17_n_0\,
+      S(0) => \comp_burst.run_env_start_i_18_n_0\
     );
 \comp_burst.sample_counter_0[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"45"
+      INIT => X"08"
     )
         port map (
-      I0 => env_up_bits(0),
-      I1 => env_up_bits(1),
-      I2 => env_up_bits(2),
+      I0 => inc_env_sample,
+      I1 => run_env_start,
+      I2 => sample_counter_0(0),
       O => \comp_burst.sample_counter_0[0]_i_1_n_0\
     );
 \comp_burst.sample_counter_0[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3FFAAAA0C00AAAA"
-    )
-        port map (
-      I0 => in_sample(8),
-      I1 => sample_counter_0(8),
-      I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I3 => sample_counter_0(9),
-      I4 => run_env_up,
-      I5 => sample_counter_0(10),
-      O => \comp_burst.sample_counter_0[10]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[10]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
-    )
-        port map (
-      I0 => sample_counter_0(7),
-      I1 => sample_counter_0(4),
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(2),
-      I4 => sample_counter_0(5),
-      I5 => sample_counter_0(6),
-      O => \comp_burst.sample_counter_0[10]_i_2_n_0\
-    );
-\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"3ACA"
-    )
-        port map (
-      I0 => in_sample(9),
-      I1 => \comp_burst.sample_counter_0[11]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(11),
-      O => \comp_burst.sample_counter_0[11]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[11]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0800"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
       I0 => sample_counter_0(10),
       I1 => sample_counter_0(9),
       I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
       I3 => sample_counter_0(8),
-      O => \comp_burst.sample_counter_0[11]_i_2_n_0\
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(8),
+      O => \comp_burst.sample_counter_0[10]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[12]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"FF7FFFFFFFFFFFFF"
     )
         port map (
-      I0 => in_sample(10),
-      I1 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(12),
-      O => \comp_burst.sample_counter_0[12]_i_1_n_0\
+      I0 => sample_counter_0(6),
+      I1 => sample_counter_0(4),
+      I2 => sample_counter_0(3),
+      I3 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I4 => sample_counter_0(5),
+      I5 => sample_counter_0(7),
+      O => \comp_burst.sample_counter_0[10]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[12]_i_2\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => sample_counter_0(11),
+      I1 => \comp_burst.sample_counter_0[11]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(9),
+      O => \comp_burst.sample_counter_0[11]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[11]_i_2\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"F7FFFFFF"
     )
         port map (
-      I0 => sample_counter_0(11),
-      I1 => sample_counter_0(8),
-      I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I3 => sample_counter_0(9),
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(7),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(8),
       I4 => sample_counter_0(10),
-      O => \comp_burst.sample_counter_0[12]_i_2_n_0\
+      O => \comp_burst.sample_counter_0[11]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"3ACA"
+      INIT => X"9FFF9000"
     )
         port map (
-      I0 => in_sample(11),
-      I1 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(13),
+      I0 => sample_counter_0(12),
+      I1 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(10),
+      O => \comp_burst.sample_counter_0[12]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => sample_counter_0(13),
+      I1 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I2 => sample_counter_0(12),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(11),
       O => \comp_burst.sample_counter_0[13]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[14]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[14]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FAAC0AA"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => in_sample(12),
-      I1 => sample_counter_0(13),
-      I2 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I3 => run_env_up,
-      I4 => sample_counter_0(14),
+      I0 => sample_counter_0(14),
+      I1 => sample_counter_0(12),
+      I2 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I3 => sample_counter_0(13),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(12),
       O => \comp_burst.sample_counter_0[14]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.sample_counter_0[14]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"E"
+      INIT => X"F7FFFFFFFFFFFFFF"
     )
         port map (
-      I0 => run_env_up,
-      I1 => burst,
+      I0 => sample_counter_0(10),
+      I1 => sample_counter_0(8),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(7),
+      I4 => sample_counter_0(9),
+      I5 => sample_counter_0(11),
+      O => \comp_burst.sample_counter_0[14]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"EA"
+    )
+        port map (
+      I0 => burst,
+      I1 => inc_env_sample,
+      I2 => run_env_start,
       O => \comp_burst.sample_counter_0[15]_i_1_n_0\
     );
 \comp_burst.sample_counter_0[15]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FFFAAAAC000AAAA"
+      INIT => X"6AAAFFFF6AAA0000"
     )
         port map (
-      I0 => in_sample(13),
-      I1 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I2 => sample_counter_0(13),
+      I0 => sample_counter_0(15),
+      I1 => sample_counter_0(13),
+      I2 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
       I3 => sample_counter_0(14),
-      I4 => run_env_up,
-      I5 => sample_counter_0(15),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(13),
       O => \comp_burst.sample_counter_0[15]_i_2_n_0\
     );
 \comp_burst.sample_counter_0[15]_i_3\: unisim.vcomponents.LUT6
@@ -4116,140 +7812,174 @@ begin
     )
         port map (
       I0 => sample_counter_0(12),
-      I1 => sample_counter_0(10),
+      I1 => sample_counter_0(11),
       I2 => sample_counter_0(9),
       I3 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
       I4 => sample_counter_0(8),
-      I5 => sample_counter_0(11),
+      I5 => sample_counter_0(10),
       O => \comp_burst.sample_counter_0[15]_i_3_n_0\
     );
-\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.sample_counter_0[15]_i_4\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"8"
     )
         port map (
-      I0 => env_up_bits(0),
-      I1 => env_up_bits(1),
+      I0 => run_env_start,
+      I1 => inc_env_sample,
+      O => \comp_burst.sample_counter_0[15]_i_4_n_0\
+    );
+\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0880"
+    )
+        port map (
+      I0 => inc_env_sample,
+      I1 => run_env_start,
+      I2 => sample_counter_0(0),
+      I3 => sample_counter_0(1),
       O => \comp_burst.sample_counter_0[1]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT3
+\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"74"
+      INIT => X"6AFFFFFF6A000000"
     )
         port map (
       I0 => sample_counter_0(2),
-      I1 => run_env_up,
-      I2 => in_sample(0),
+      I1 => sample_counter_0(0),
+      I2 => sample_counter_0(1),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(0),
       O => \comp_burst.sample_counter_0[2]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[3]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2EE2"
+      INIT => X"6AAAFFFF6AAA0000"
     )
         port map (
-      I0 => in_sample(1),
-      I1 => run_env_up,
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(2),
+      I0 => sample_counter_0(3),
+      I1 => sample_counter_0(1),
+      I2 => sample_counter_0(2),
+      I3 => sample_counter_0(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(1),
       O => \comp_burst.sample_counter_0[3]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[4]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FAAC0AA"
-    )
-        port map (
-      I0 => in_sample(2),
-      I1 => sample_counter_0(3),
-      I2 => sample_counter_0(2),
-      I3 => run_env_up,
-      I4 => sample_counter_0(4),
-      O => \comp_burst.sample_counter_0[4]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"3FFFAAAAC000AAAA"
-    )
-        port map (
-      I0 => in_sample(3),
-      I1 => sample_counter_0(2),
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(4),
-      I4 => run_env_up,
-      I5 => sample_counter_0(5),
-      O => \comp_burst.sample_counter_0[5]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"CA3A"
-    )
-        port map (
-      I0 => in_sample(4),
-      I1 => \comp_burst.sample_counter_0[6]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(6),
-      O => \comp_burst.sample_counter_0[6]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[6]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7FFF"
+      INIT => X"A6FFFFFFA6000000"
     )
         port map (
       I0 => sample_counter_0(4),
       I1 => sample_counter_0(3),
-      I2 => sample_counter_0(2),
-      I3 => sample_counter_0(5),
-      O => \comp_burst.sample_counter_0[6]_i_2_n_0\
+      I2 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(2),
+      O => \comp_burst.sample_counter_0[4]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[7]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3ACA"
+      INIT => X"AA6AFFFFAA6A0000"
     )
         port map (
-      I0 => in_sample(5),
-      I1 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(7),
-      O => \comp_burst.sample_counter_0[7]_i_1_n_0\
+      I0 => sample_counter_0(5),
+      I1 => sample_counter_0(4),
+      I2 => sample_counter_0(3),
+      I3 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(3),
+      O => \comp_burst.sample_counter_0[5]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[7]_i_2\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[5]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"80000000"
+      INIT => X"7F"
+    )
+        port map (
+      I0 => sample_counter_0(1),
+      I1 => sample_counter_0(2),
+      I2 => sample_counter_0(0),
+      O => \comp_burst.sample_counter_0[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
     )
         port map (
       I0 => sample_counter_0(6),
-      I1 => sample_counter_0(5),
-      I2 => sample_counter_0(2),
-      I3 => sample_counter_0(3),
-      I4 => sample_counter_0(4),
-      O => \comp_burst.sample_counter_0[7]_i_2_n_0\
+      I1 => \comp_burst.sample_counter_0[6]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(4),
+      O => \comp_burst.sample_counter_0[6]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => in_sample(6),
-      I1 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(8),
+      I0 => sample_counter_0(4),
+      I1 => sample_counter_0(3),
+      I2 => sample_counter_0(1),
+      I3 => sample_counter_0(2),
+      I4 => sample_counter_0(0),
+      I5 => sample_counter_0(5),
+      O => \comp_burst.sample_counter_0[6]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => sample_counter_0(7),
+      I1 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(5),
+      O => \comp_burst.sample_counter_0[7]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => sample_counter_0(8),
+      I1 => sample_counter_0(7),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(6),
       O => \comp_burst.sample_counter_0[8]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[9]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CFAA30AA"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => in_sample(7),
-      I1 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I2 => sample_counter_0(8),
-      I3 => run_env_up,
-      I4 => sample_counter_0(9),
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(8),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(7),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(7),
       O => \comp_burst.sample_counter_0[9]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[9]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"DFFFFFFF"
+    )
+        port map (
+      I0 => sample_counter_0(5),
+      I1 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I2 => sample_counter_0(3),
+      I3 => sample_counter_0(4),
+      I4 => sample_counter_0(6),
+      O => \comp_burst.sample_counter_0[9]_i_2_n_0\
     );
 \comp_burst.sample_counter_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_up_done,
+      CE => \comp_burst.sample_counter_0[15]_i_1_n_0\,
       D => \comp_burst.sample_counter_0[0]_i_1_n_0\,
       Q => sample_counter_0(0),
       R => '0'
@@ -4305,7 +8035,7 @@ begin
 \comp_burst.sample_counter_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_up_done,
+      CE => \comp_burst.sample_counter_0[15]_i_1_n_0\,
       D => \comp_burst.sample_counter_0[1]_i_1_n_0\,
       Q => sample_counter_0(1),
       R => '0'
@@ -4374,430 +8104,2527 @@ begin
       Q => sample_counter_0(9),
       R => '0'
     );
-\comp_burst.up_down_same_i_1\: unisim.vcomponents.LUT3
+\comp_burst.sample_counter_1[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"7F40"
     )
         port map (
-      I0 => \comp_burst.up_down_same_i_2_n_0\,
-      I1 => \comp_burst.up_down_same_i_3_n_0\,
-      I2 => \comp_burst.up_down_same_i_4_n_0\,
-      O => \comp_burst.up_down_same_i_1_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => in_sample(14),
+      O => \p_0_in__2\(0)
     );
-\comp_burst.up_down_same_i_2\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => env_down_ptr(3),
-      I1 => env_up_ptr(3),
-      I2 => env_down_ptr(4),
-      I3 => env_up_ptr(4),
-      I4 => env_up_ptr(5),
-      I5 => env_down_ptr(5),
-      O => \comp_burst.up_down_same_i_2_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(10),
+      I1 => \comp_burst.sample_counter_1_reg\(9),
+      I2 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(8),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(24),
+      O => \p_0_in__2\(10)
     );
-\comp_burst.up_down_same_i_3\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"FF7FFFFFFFFFFFFF"
     )
         port map (
-      I0 => env_down_ptr(6),
-      I1 => env_up_ptr(6),
-      I2 => env_down_ptr(7),
-      I3 => env_up_ptr(7),
-      I4 => env_up_ptr(8),
-      I5 => env_down_ptr(8),
-      O => \comp_burst.up_down_same_i_3_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(6),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1_reg\(4),
+      I3 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(5),
+      I5 => \comp_burst.sample_counter_1_reg\(7),
+      O => \comp_burst.sample_counter_1[10]_i_2_n_0\
     );
-\comp_burst.up_down_same_i_4\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"9FFF9000"
     )
         port map (
-      I0 => env_down_ptr(0),
-      I1 => env_up_ptr(0),
-      I2 => env_down_ptr(1),
-      I3 => env_up_ptr(1),
-      I4 => env_up_ptr(2),
-      I5 => env_down_ptr(2),
-      O => \comp_burst.up_down_same_i_4_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(11),
+      I1 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(25),
+      O => \p_0_in__2\(11)
     );
-\comp_burst.up_down_same_reg\: unisim.vcomponents.FDRE
+\comp_burst.sample_counter_1[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(12),
+      I1 => \comp_burst.sample_counter_1_reg\(11),
+      I2 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(26),
+      O => \p_0_in__2\(12)
+    );
+\comp_burst.sample_counter_1[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AAAFFFF9AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(13),
+      I1 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(11),
+      I3 => \comp_burst.sample_counter_1_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(27),
+      O => \p_0_in__2\(13)
+    );
+\comp_burst.sample_counter_1[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(9),
+      I1 => \comp_burst.sample_counter_1_reg\(7),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(6),
+      I4 => \comp_burst.sample_counter_1_reg\(8),
+      I5 => \comp_burst.sample_counter_1_reg\(10),
+      O => \comp_burst.sample_counter_1[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(14),
+      I1 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(13),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(28),
+      O => \p_0_in__2\(14)
+    );
+\comp_burst.sample_counter_1[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"CAAA"
+    )
+        port map (
+      I0 => burst,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      O => \comp_burst.sample_counter_1[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_1[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(15),
+      I1 => \comp_burst.sample_counter_1_reg\(14),
+      I2 => \comp_burst.sample_counter_1_reg\(13),
+      I3 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(29),
+      O => \p_0_in__2\(15)
+    );
+\comp_burst.sample_counter_1[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0080000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(12),
+      I1 => \comp_burst.sample_counter_1_reg\(11),
+      I2 => \comp_burst.sample_counter_1_reg\(9),
+      I3 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(8),
+      I5 => \comp_burst.sample_counter_1_reg\(10),
+      O => \comp_burst.sample_counter_1[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_1[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(15),
+      O => \p_0_in__2\(1)
+    );
+\comp_burst.sample_counter_1[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(2),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => \comp_burst.sample_counter_1_reg\(0),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(16),
+      O => \p_0_in__2\(2)
+    );
+\comp_burst.sample_counter_1[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(3),
+      I1 => \comp_burst.sample_counter_1_reg\(2),
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(17),
+      O => \p_0_in__2\(3)
+    );
+\comp_burst.sample_counter_1[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(4),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(18),
+      O => \p_0_in__2\(4)
+    );
+\comp_burst.sample_counter_1[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(5),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1_reg\(4),
+      I3 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(19),
+      O => \p_0_in__2\(5)
+    );
+\comp_burst.sample_counter_1[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(2),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => \comp_burst.sample_counter_1_reg\(0),
+      O => \comp_burst.sample_counter_1[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(6),
+      I1 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(20),
+      O => \p_0_in__2\(6)
+    );
+\comp_burst.sample_counter_1[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(7),
+      I1 => \comp_burst.sample_counter_1_reg\(6),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(21),
+      O => \p_0_in__2\(7)
+    );
+\comp_burst.sample_counter_1[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(8),
+      I1 => \comp_burst.sample_counter_1_reg\(7),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(6),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(22),
+      O => \p_0_in__2\(8)
+    );
+\comp_burst.sample_counter_1[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(3),
+      I1 => \comp_burst.sample_counter_1_reg\(4),
+      I2 => \comp_burst.sample_counter_1_reg\(2),
+      I3 => \comp_burst.sample_counter_1_reg\(1),
+      I4 => \comp_burst.sample_counter_1_reg\(0),
+      I5 => \comp_burst.sample_counter_1_reg\(5),
+      O => \comp_burst.sample_counter_1[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(9),
+      I1 => \comp_burst.sample_counter_1_reg\(8),
+      I2 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(23),
+      O => \p_0_in__2\(9)
+    );
+\comp_burst.sample_counter_1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(0),
+      Q => \comp_burst.sample_counter_1_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(10),
+      Q => \comp_burst.sample_counter_1_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(11),
+      Q => \comp_burst.sample_counter_1_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(12),
+      Q => \comp_burst.sample_counter_1_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(13),
+      Q => \comp_burst.sample_counter_1_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(14),
+      Q => \comp_burst.sample_counter_1_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(15),
+      Q => \comp_burst.sample_counter_1_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(1),
+      Q => \comp_burst.sample_counter_1_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(2),
+      Q => \comp_burst.sample_counter_1_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(3),
+      Q => \comp_burst.sample_counter_1_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(4),
+      Q => \comp_burst.sample_counter_1_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(5),
+      Q => \comp_burst.sample_counter_1_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(6),
+      Q => \comp_burst.sample_counter_1_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(7),
+      Q => \comp_burst.sample_counter_1_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(8),
+      Q => \comp_burst.sample_counter_1_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(9),
+      Q => \comp_burst.sample_counter_1_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_counter_2[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F40"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => in_sample(30),
+      O => \p_0_in__3\(0)
+    );
+\comp_burst.sample_counter_2[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(10),
+      I1 => \comp_burst.sample_counter_2[10]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(40),
+      O => \p_0_in__3\(10)
+    );
+\comp_burst.sample_counter_2[10]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"DFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(8),
+      I1 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2_reg\(6),
+      I4 => \comp_burst.sample_counter_2_reg\(9),
+      O => \comp_burst.sample_counter_2[10]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(11),
+      I1 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(41),
+      O => \p_0_in__3\(11)
+    );
+\comp_burst.sample_counter_2[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(12),
+      I1 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(11),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(42),
+      O => \p_0_in__3\(12)
+    );
+\comp_burst.sample_counter_2[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(13),
+      I1 => \comp_burst.sample_counter_2_reg\(11),
+      I2 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(43),
+      O => \p_0_in__3\(13)
+    );
+\comp_burst.sample_counter_2[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FF7FFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(9),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_2_reg\(8),
+      I5 => \comp_burst.sample_counter_2_reg\(10),
+      O => \comp_burst.sample_counter_2[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(14),
+      I1 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(44),
+      O => \p_0_in__3\(14)
+    );
+\comp_burst.sample_counter_2[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EA2A2A2A"
+    )
+        port map (
+      I0 => burst,
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => \comp_burst.sample_ov_0_reg_n_0\,
+      I4 => \comp_burst.sample_ov_1_reg_n_0\,
+      O => \comp_burst.sample_counter_2[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_2[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(15),
+      I1 => \comp_burst.sample_counter_2_reg\(14),
+      I2 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(45),
+      O => \p_0_in__3\(15)
+    );
+\comp_burst.sample_counter_2[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(13),
+      I1 => \comp_burst.sample_counter_2_reg\(11),
+      I2 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(12),
+      O => \comp_burst.sample_counter_2[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_2[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(31),
+      O => \p_0_in__3\(1)
+    );
+\comp_burst.sample_counter_2[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(2),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => \comp_burst.sample_counter_2_reg\(0),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(32),
+      O => \p_0_in__3\(2)
+    );
+\comp_burst.sample_counter_2[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(3),
+      I1 => \comp_burst.sample_counter_2_reg\(2),
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(33),
+      O => \p_0_in__3\(3)
+    );
+\comp_burst.sample_counter_2[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(4),
+      I1 => \comp_burst.sample_counter_2_reg\(3),
+      I2 => \comp_burst.sample_counter_2[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(34),
+      O => \p_0_in__3\(4)
+    );
+\comp_burst.sample_counter_2[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(5),
+      I1 => \comp_burst.sample_counter_2_reg\(3),
+      I2 => \comp_burst.sample_counter_2_reg\(4),
+      I3 => \comp_burst.sample_counter_2[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(35),
+      O => \p_0_in__3\(5)
+    );
+\comp_burst.sample_counter_2[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(2),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => \comp_burst.sample_counter_2_reg\(0),
+      O => \comp_burst.sample_counter_2[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(6),
+      I1 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(36),
+      O => \p_0_in__3\(6)
+    );
+\comp_burst.sample_counter_2[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(7),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(37),
+      O => \p_0_in__3\(7)
+    );
+\comp_burst.sample_counter_2[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(8),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(38),
+      O => \p_0_in__3\(8)
+    );
+\comp_burst.sample_counter_2[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(3),
+      I1 => \comp_burst.sample_counter_2_reg\(4),
+      I2 => \comp_burst.sample_counter_2_reg\(2),
+      I3 => \comp_burst.sample_counter_2_reg\(1),
+      I4 => \comp_burst.sample_counter_2_reg\(0),
+      I5 => \comp_burst.sample_counter_2_reg\(5),
+      O => \comp_burst.sample_counter_2[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(9),
+      I1 => \comp_burst.sample_counter_2[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(39),
+      O => \p_0_in__3\(9)
+    );
+\comp_burst.sample_counter_2[9]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F7FF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(6),
+      I1 => \comp_burst.sample_counter_2_reg\(7),
+      I2 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(8),
+      O => \comp_burst.sample_counter_2[9]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(0),
+      Q => \comp_burst.sample_counter_2_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(10),
+      Q => \comp_burst.sample_counter_2_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(11),
+      Q => \comp_burst.sample_counter_2_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(12),
+      Q => \comp_burst.sample_counter_2_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(13),
+      Q => \comp_burst.sample_counter_2_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(14),
+      Q => \comp_burst.sample_counter_2_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(15),
+      Q => \comp_burst.sample_counter_2_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(1),
+      Q => \comp_burst.sample_counter_2_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(2),
+      Q => \comp_burst.sample_counter_2_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(3),
+      Q => \comp_burst.sample_counter_2_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(4),
+      Q => \comp_burst.sample_counter_2_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(5),
+      Q => \comp_burst.sample_counter_2_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(6),
+      Q => \comp_burst.sample_counter_2_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(7),
+      Q => \comp_burst.sample_counter_2_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(8),
+      Q => \comp_burst.sample_counter_2_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(9),
+      Q => \comp_burst.sample_counter_2_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_counter_3[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"3AAA"
+    )
+        port map (
+      I0 => in_sample(46),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      O => \p_0_in__4\(0)
+    );
+\comp_burst.sample_counter_3[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3[10]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_3_reg\(10),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(56),
+      O => \p_0_in__4\(10)
+    );
+\comp_burst.sample_counter_3[10]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"F7FFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(8),
+      I1 => \comp_burst.sample_counter_3_reg\(6),
+      I2 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(7),
+      I4 => \comp_burst.sample_counter_3_reg\(9),
+      O => \comp_burst.sample_counter_3[10]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(11),
+      I1 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(57),
+      O => \p_0_in__4\(11)
+    );
+\comp_burst.sample_counter_3[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(12),
+      I1 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(11),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(58),
+      O => \p_0_in__4\(12)
+    );
+\comp_burst.sample_counter_3[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(13),
+      I1 => \comp_burst.sample_counter_3_reg\(11),
+      I2 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(59),
+      O => \p_0_in__4\(13)
+    );
+\comp_burst.sample_counter_3[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0080000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(10),
+      I1 => \comp_burst.sample_counter_3_reg\(9),
+      I2 => \comp_burst.sample_counter_3_reg\(7),
+      I3 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_3_reg\(6),
+      I5 => \comp_burst.sample_counter_3_reg\(8),
+      O => \comp_burst.sample_counter_3[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(14),
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(60),
+      O => \p_0_in__4\(14)
+    );
+\comp_burst.sample_counter_3[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"80FFFFFF80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => \comp_burst.sample_ov_2_reg_n_0\,
+      I3 => inc_env_sample,
+      I4 => run_env_start,
+      I5 => burst,
+      O => \comp_burst.sample_counter_3[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_3[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(15),
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(14),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(61),
+      O => \p_0_in__4\(15)
+    );
+\comp_burst.sample_counter_3[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(13),
+      I1 => \comp_burst.sample_counter_3_reg\(11),
+      I2 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(12),
+      O => \comp_burst.sample_counter_3[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_3[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(0),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(47),
+      O => \p_0_in__4\(1)
+    );
+\comp_burst.sample_counter_3[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(2),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(48),
+      O => \p_0_in__4\(2)
+    );
+\comp_burst.sample_counter_3[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(3),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(2),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(49),
+      O => \p_0_in__4\(3)
+    );
+\comp_burst.sample_counter_3[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(4),
+      I1 => \comp_burst.sample_counter_3[4]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(50),
+      O => \p_0_in__4\(4)
+    );
+\comp_burst.sample_counter_3[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(2),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => \comp_burst.sample_counter_3_reg\(3),
+      O => \comp_burst.sample_counter_3[4]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(5),
+      I1 => \comp_burst.sample_counter_3[5]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(51),
+      O => \p_0_in__4\(5)
+    );
+\comp_burst.sample_counter_3[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(3),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(2),
+      I4 => \comp_burst.sample_counter_3_reg\(4),
+      O => \comp_burst.sample_counter_3[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(6),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(52),
+      O => \p_0_in__4\(6)
+    );
+\comp_burst.sample_counter_3[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(7),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(6),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(53),
+      O => \p_0_in__4\(7)
+    );
+\comp_burst.sample_counter_3[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(8),
+      I1 => \comp_burst.sample_counter_3_reg\(6),
+      I2 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(7),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(54),
+      O => \p_0_in__4\(8)
+    );
+\comp_burst.sample_counter_3[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(4),
+      I1 => \comp_burst.sample_counter_3_reg\(2),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(1),
+      I4 => \comp_burst.sample_counter_3_reg\(3),
+      I5 => \comp_burst.sample_counter_3_reg\(5),
+      O => \comp_burst.sample_counter_3[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(9),
+      I1 => \comp_burst.sample_counter_3[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(55),
+      O => \p_0_in__4\(9)
+    );
+\comp_burst.sample_counter_3[9]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"DFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(7),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(6),
+      I3 => \comp_burst.sample_counter_3_reg\(8),
+      O => \comp_burst.sample_counter_3[9]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(0),
+      Q => \comp_burst.sample_counter_3_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(10),
+      Q => \comp_burst.sample_counter_3_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(11),
+      Q => \comp_burst.sample_counter_3_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(12),
+      Q => \comp_burst.sample_counter_3_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(13),
+      Q => \comp_burst.sample_counter_3_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(14),
+      Q => \comp_burst.sample_counter_3_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(15),
+      Q => \comp_burst.sample_counter_3_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(1),
+      Q => \comp_burst.sample_counter_3_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(2),
+      Q => \comp_burst.sample_counter_3_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(3),
+      Q => \comp_burst.sample_counter_3_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(4),
+      Q => \comp_burst.sample_counter_3_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(5),
+      Q => \comp_burst.sample_counter_3_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(6),
+      Q => \comp_burst.sample_counter_3_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(7),
+      Q => \comp_burst.sample_counter_3_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(8),
+      Q => \comp_burst.sample_counter_3_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(9),
+      Q => \comp_burst.sample_counter_3_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_ov_0_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8FFF888880008888"
+    )
+        port map (
+      I0 => sample_counter_0(15),
+      I1 => \comp_burst.sample_ov_0_i_2_n_0\,
+      I2 => inc_env_sample,
+      I3 => run_env_start,
+      I4 => burst,
+      I5 => \comp_burst.sample_ov_0_reg_n_0\,
+      O => \comp_burst.sample_ov_0_i_1_n_0\
+    );
+\comp_burst.sample_ov_0_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => sample_counter_0(10),
+      I1 => sample_counter_0(11),
+      I2 => \comp_burst.sample_ov_0_i_3_n_0\,
+      I3 => sample_counter_0(14),
+      I4 => sample_counter_0(12),
+      I5 => sample_counter_0(13),
+      O => \comp_burst.sample_ov_0_i_2_n_0\
+    );
+\comp_burst.sample_ov_0_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_0_i_4_n_0\,
+      I1 => sample_counter_0(8),
+      I2 => sample_counter_0(7),
+      I3 => sample_counter_0(6),
+      I4 => \comp_burst.sample_ov_0_i_5_n_0\,
+      O => \comp_burst.sample_ov_0_i_3_n_0\
+    );
+\comp_burst.sample_ov_0_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(10),
+      I2 => sample_counter_0(11),
+      O => \comp_burst.sample_ov_0_i_4_n_0\
+    );
+\comp_burst.sample_ov_0_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0800000000000000"
+    )
+        port map (
+      I0 => sample_counter_0(2),
+      I1 => sample_counter_0(1),
+      I2 => sample_counter_0(0),
+      I3 => sample_counter_0(3),
+      I4 => sample_counter_0(4),
+      I5 => sample_counter_0(5),
+      O => \comp_burst.sample_ov_0_i_5_n_0\
+    );
+\comp_burst.sample_ov_0_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.up_down_same_i_1_n_0\,
-      Q => up_down_same,
-      R => \comp_burst.env_down_done_i_1_n_0\
+      D => \comp_burst.sample_ov_0_i_1_n_0\,
+      Q => \comp_burst.sample_ov_0_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_ov_1_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFBBA088A088A088"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => burst,
+      I2 => \comp_burst.sample_ov_0_reg_n_0\,
+      I3 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(15),
+      I5 => \comp_burst.sample_ov_1_i_2_n_0\,
+      O => \comp_burst.sample_ov_1_i_1_n_0\
+    );
+\comp_burst.sample_ov_1_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(11),
+      I1 => \comp_burst.sample_counter_1_reg\(10),
+      I2 => \comp_burst.sample_ov_1_i_3_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(13),
+      I4 => \comp_burst.sample_counter_1_reg\(12),
+      I5 => \comp_burst.sample_counter_1_reg\(14),
+      O => \comp_burst.sample_ov_1_i_2_n_0\
+    );
+\comp_burst.sample_ov_1_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_i_4_n_0\,
+      I1 => \comp_burst.sample_counter_1_reg\(8),
+      I2 => \comp_burst.sample_counter_1_reg\(6),
+      I3 => \comp_burst.sample_counter_1_reg\(7),
+      I4 => \comp_burst.sample_ov_1_i_5_n_0\,
+      O => \comp_burst.sample_ov_1_i_3_n_0\
+    );
+\comp_burst.sample_ov_1_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(10),
+      I1 => \comp_burst.sample_counter_1_reg\(9),
+      I2 => \comp_burst.sample_counter_1_reg\(11),
+      O => \comp_burst.sample_ov_1_i_4_n_0\
+    );
+\comp_burst.sample_ov_1_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => \comp_burst.sample_counter_1_reg\(2),
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(4),
+      I4 => \comp_burst.sample_counter_1_reg\(3),
+      I5 => \comp_burst.sample_counter_1_reg\(5),
+      O => \comp_burst.sample_ov_1_i_5_n_0\
+    );
+\comp_burst.sample_ov_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.sample_ov_1_i_1_n_0\,
+      Q => \comp_burst.sample_ov_1_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_ov_2_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B888"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_2_reg_n_0\,
+      I1 => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(15),
+      I3 => \comp_burst.sample_ov_2_i_2_n_0\,
+      O => \comp_burst.sample_ov_2_i_1_n_0\
+    );
+\comp_burst.sample_ov_2_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(11),
+      I1 => \comp_burst.sample_counter_2_reg\(10),
+      I2 => \comp_burst.sample_ov_2_i_3_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(13),
+      I4 => \comp_burst.sample_counter_2_reg\(12),
+      I5 => \comp_burst.sample_counter_2_reg\(14),
+      O => \comp_burst.sample_ov_2_i_2_n_0\
+    );
+\comp_burst.sample_ov_2_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_2_i_4_n_0\,
+      I1 => \comp_burst.sample_counter_2_reg\(8),
+      I2 => \comp_burst.sample_counter_2_reg\(6),
+      I3 => \comp_burst.sample_counter_2_reg\(7),
+      I4 => \comp_burst.sample_ov_2_i_5_n_0\,
+      O => \comp_burst.sample_ov_2_i_3_n_0\
+    );
+\comp_burst.sample_ov_2_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(10),
+      I1 => \comp_burst.sample_counter_2_reg\(9),
+      I2 => \comp_burst.sample_counter_2_reg\(11),
+      O => \comp_burst.sample_ov_2_i_4_n_0\
+    );
+\comp_burst.sample_ov_2_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => \comp_burst.sample_counter_2_reg\(2),
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(4),
+      I4 => \comp_burst.sample_counter_2_reg\(3),
+      I5 => \comp_burst.sample_counter_2_reg\(5),
+      O => \comp_burst.sample_ov_2_i_5_n_0\
+    );
+\comp_burst.sample_ov_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.sample_ov_2_i_1_n_0\,
+      Q => \comp_burst.sample_ov_2_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(0),
+      Q => \^sample\(0),
+      R => '0'
+    );
+\comp_burst.sample_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(10),
+      Q => \^sample\(10),
+      R => '0'
+    );
+\comp_burst.sample_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(11),
+      Q => \^sample\(11),
+      R => '0'
+    );
+\comp_burst.sample_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(12),
+      Q => \^sample\(12),
+      R => '0'
+    );
+\comp_burst.sample_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(13),
+      Q => \^sample\(13),
+      R => '0'
+    );
+\comp_burst.sample_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(14),
+      Q => \^sample\(14),
+      R => '0'
+    );
+\comp_burst.sample_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(15),
+      Q => \^sample\(15),
+      R => '0'
+    );
+\comp_burst.sample_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(0),
+      Q => \^sample\(16),
+      R => '0'
+    );
+\comp_burst.sample_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(1),
+      Q => \^sample\(17),
+      R => '0'
+    );
+\comp_burst.sample_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(2),
+      Q => \^sample\(18),
+      R => '0'
+    );
+\comp_burst.sample_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(3),
+      Q => \^sample\(19),
+      R => '0'
+    );
+\comp_burst.sample_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(1),
+      Q => \^sample\(1),
+      R => '0'
+    );
+\comp_burst.sample_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(4),
+      Q => \^sample\(20),
+      R => '0'
+    );
+\comp_burst.sample_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(5),
+      Q => \^sample\(21),
+      R => '0'
+    );
+\comp_burst.sample_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(6),
+      Q => \^sample\(22),
+      R => '0'
+    );
+\comp_burst.sample_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(7),
+      Q => \^sample\(23),
+      R => '0'
+    );
+\comp_burst.sample_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(8),
+      Q => \^sample\(24),
+      R => '0'
+    );
+\comp_burst.sample_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(9),
+      Q => \^sample\(25),
+      R => '0'
+    );
+\comp_burst.sample_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(10),
+      Q => \^sample\(26),
+      R => '0'
+    );
+\comp_burst.sample_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(11),
+      Q => \^sample\(27),
+      R => '0'
+    );
+\comp_burst.sample_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(12),
+      Q => \^sample\(28),
+      R => '0'
+    );
+\comp_burst.sample_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(13),
+      Q => \^sample\(29),
+      R => '0'
+    );
+\comp_burst.sample_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(2),
+      Q => \^sample\(2),
+      R => '0'
+    );
+\comp_burst.sample_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(14),
+      Q => \^sample\(30),
+      R => '0'
+    );
+\comp_burst.sample_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(15),
+      Q => \^sample\(31),
+      R => '0'
+    );
+\comp_burst.sample_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(0),
+      Q => \^sample\(32),
+      R => '0'
+    );
+\comp_burst.sample_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(1),
+      Q => \^sample\(33),
+      R => '0'
+    );
+\comp_burst.sample_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(2),
+      Q => \^sample\(34),
+      R => '0'
+    );
+\comp_burst.sample_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(3),
+      Q => \^sample\(35),
+      R => '0'
+    );
+\comp_burst.sample_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(4),
+      Q => \^sample\(36),
+      R => '0'
+    );
+\comp_burst.sample_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(5),
+      Q => \^sample\(37),
+      R => '0'
+    );
+\comp_burst.sample_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(6),
+      Q => \^sample\(38),
+      R => '0'
+    );
+\comp_burst.sample_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(7),
+      Q => \^sample\(39),
+      R => '0'
+    );
+\comp_burst.sample_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(3),
+      Q => \^sample\(3),
+      R => '0'
+    );
+\comp_burst.sample_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(8),
+      Q => \^sample\(40),
+      R => '0'
+    );
+\comp_burst.sample_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(9),
+      Q => \^sample\(41),
+      R => '0'
+    );
+\comp_burst.sample_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(10),
+      Q => \^sample\(42),
+      R => '0'
+    );
+\comp_burst.sample_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(11),
+      Q => \^sample\(43),
+      R => '0'
+    );
+\comp_burst.sample_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(12),
+      Q => \^sample\(44),
+      R => '0'
+    );
+\comp_burst.sample_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(13),
+      Q => \^sample\(45),
+      R => '0'
+    );
+\comp_burst.sample_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(14),
+      Q => \^sample\(46),
+      R => '0'
+    );
+\comp_burst.sample_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(15),
+      Q => \^sample\(47),
+      R => '0'
+    );
+\comp_burst.sample_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(0),
+      Q => \^sample\(48),
+      R => '0'
+    );
+\comp_burst.sample_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(1),
+      Q => \^sample\(49),
+      R => '0'
+    );
+\comp_burst.sample_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(4),
+      Q => \^sample\(4),
+      R => '0'
+    );
+\comp_burst.sample_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(2),
+      Q => \^sample\(50),
+      R => '0'
+    );
+\comp_burst.sample_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(3),
+      Q => \^sample\(51),
+      R => '0'
+    );
+\comp_burst.sample_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(4),
+      Q => \^sample\(52),
+      R => '0'
+    );
+\comp_burst.sample_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(5),
+      Q => \^sample\(53),
+      R => '0'
+    );
+\comp_burst.sample_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(6),
+      Q => \^sample\(54),
+      R => '0'
+    );
+\comp_burst.sample_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(7),
+      Q => \^sample\(55),
+      R => '0'
+    );
+\comp_burst.sample_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(8),
+      Q => \^sample\(56),
+      R => '0'
+    );
+\comp_burst.sample_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(9),
+      Q => \^sample\(57),
+      R => '0'
+    );
+\comp_burst.sample_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(10),
+      Q => \^sample\(58),
+      R => '0'
+    );
+\comp_burst.sample_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(11),
+      Q => \^sample\(59),
+      R => '0'
+    );
+\comp_burst.sample_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(5),
+      Q => \^sample\(5),
+      R => '0'
+    );
+\comp_burst.sample_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(12),
+      Q => \^sample\(60),
+      R => '0'
+    );
+\comp_burst.sample_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(13),
+      Q => \^sample\(61),
+      R => '0'
+    );
+\comp_burst.sample_reg[62]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(14),
+      Q => \^sample\(62),
+      R => '0'
+    );
+\comp_burst.sample_reg[63]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(15),
+      Q => \^sample\(63),
+      R => '0'
+    );
+\comp_burst.sample_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(6),
+      Q => \^sample\(6),
+      R => '0'
+    );
+\comp_burst.sample_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(7),
+      Q => \^sample\(7),
+      R => '0'
+    );
+\comp_burst.sample_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(8),
+      Q => \^sample\(8),
+      R => '0'
+    );
+\comp_burst.sample_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(9),
+      Q => \^sample\(9),
+      R => '0'
+    );
+\comp_burst.scan_start_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000055555554"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => \comp_burst.curr_size[8]_i_3_n_0\,
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      I4 => \comp_burst.wr_ptr_reg\(1),
+      I5 => reset,
+      O => \comp_burst.scan_start_i_1_n_0\
+    );
+\comp_burst.scan_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.scan_start_i_1_n_0\,
+      Q => scan_start,
+      R => '0'
+    );
+\comp_burst.size[10]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(8),
+      I1 => env_start_ind(8),
+      O => \comp_burst.size[10]_i_2_n_0\
+    );
+\comp_burst.size[10]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(7),
+      I1 => env_start_ind(7),
+      O => \comp_burst.size[10]_i_3_n_0\
+    );
+\comp_burst.size[10]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"D22D"
+    )
+        port map (
+      I0 => env_end_ind(9),
+      I1 => env_start_ind(9),
+      I2 => env_start_ind(10),
+      I3 => env_end_ind(10),
+      O => \comp_burst.size[10]_i_4_n_0\
+    );
+\comp_burst.size[10]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(8),
+      I1 => env_end_ind(8),
+      I2 => env_start_ind(9),
+      I3 => env_end_ind(9),
+      O => \comp_burst.size[10]_i_5_n_0\
+    );
+\comp_burst.size[10]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(7),
+      I1 => env_end_ind(7),
+      I2 => env_start_ind(8),
+      I3 => env_end_ind(8),
+      O => \comp_burst.size[10]_i_6_n_0\
+    );
+\comp_burst.size[7]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(4),
+      I1 => env_end_ind(4),
+      I2 => env_start_ind(5),
+      I3 => env_end_ind(5),
+      O => \comp_burst.size[7]_i_10_n_0\
+    );
+\comp_burst.size[7]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(3),
+      I1 => env_end_ind(3),
+      I2 => env_start_ind(4),
+      I3 => env_end_ind(4),
+      O => \comp_burst.size[7]_i_11_n_0\
+    );
+\comp_burst.size[7]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(2),
+      I1 => env_end_ind(2),
+      I2 => env_start_ind(3),
+      I3 => env_end_ind(3),
+      O => \comp_burst.size[7]_i_12_n_0\
+    );
+\comp_burst.size[7]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"96"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      I1 => env_start_ind(2),
+      I2 => env_end_ind(2),
+      O => \comp_burst.size[7]_i_13_n_0\
+    );
+\comp_burst.size[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      I1 => env_end_ind(1),
+      O => \comp_burst.size[7]_i_14_n_0\
+    );
+\comp_burst.size[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => env_end_ind(0),
+      I1 => env_start_ind(0),
+      O => \comp_burst.size[7]_i_15_n_0\
+    );
+\comp_burst.size[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(6),
+      I1 => env_start_ind(6),
+      O => \comp_burst.size[7]_i_2_n_0\
+    );
+\comp_burst.size[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(5),
+      I1 => env_start_ind(5),
+      O => \comp_burst.size[7]_i_3_n_0\
+    );
+\comp_burst.size[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(4),
+      I1 => env_start_ind(4),
+      O => \comp_burst.size[7]_i_4_n_0\
+    );
+\comp_burst.size[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(3),
+      I1 => env_start_ind(3),
+      O => \comp_burst.size[7]_i_5_n_0\
+    );
+\comp_burst.size[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(2),
+      I1 => env_start_ind(2),
+      O => \comp_burst.size[7]_i_6_n_0\
+    );
+\comp_burst.size[7]_i_7\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      O => \comp_burst.size[7]_i_7_n_0\
+    );
+\comp_burst.size[7]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(6),
+      I1 => env_end_ind(6),
+      I2 => env_start_ind(7),
+      I3 => env_end_ind(7),
+      O => \comp_burst.size[7]_i_8_n_0\
+    );
+\comp_burst.size[7]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(5),
+      I1 => env_end_ind(5),
+      I2 => env_start_ind(6),
+      I3 => env_end_ind(6),
+      O => \comp_burst.size[7]_i_9_n_0\
+    );
+\comp_burst.size_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_15\,
+      Q => \^size\(0),
+      R => '0'
+    );
+\comp_burst.size_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_13\,
+      Q => \^size\(10),
+      R => '0'
+    );
+\comp_burst.size_reg[10]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.size_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.size_reg[10]_i_1_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.size_reg[10]_i_1_n_6\,
+      CO(0) => \comp_burst.size_reg[10]_i_1_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1) => \comp_burst.size[10]_i_2_n_0\,
+      DI(0) => \comp_burst.size[10]_i_3_n_0\,
+      O(7 downto 3) => \NLW_comp_burst.size_reg[10]_i_1_O_UNCONNECTED\(7 downto 3),
+      O(2) => \comp_burst.size_reg[10]_i_1_n_13\,
+      O(1) => \comp_burst.size_reg[10]_i_1_n_14\,
+      O(0) => \comp_burst.size_reg[10]_i_1_n_15\,
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.size[10]_i_4_n_0\,
+      S(1) => \comp_burst.size[10]_i_5_n_0\,
+      S(0) => \comp_burst.size[10]_i_6_n_0\
+    );
+\comp_burst.size_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_14\,
+      Q => \^size\(1),
+      R => '0'
+    );
+\comp_burst.size_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_13\,
+      Q => \^size\(2),
+      R => '0'
+    );
+\comp_burst.size_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_12\,
+      Q => \^size\(3),
+      R => '0'
+    );
+\comp_burst.size_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_11\,
+      Q => \^size\(4),
+      R => '0'
+    );
+\comp_burst.size_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_10\,
+      Q => \^size\(5),
+      R => '0'
+    );
+\comp_burst.size_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_9\,
+      Q => \^size\(6),
+      R => '0'
+    );
+\comp_burst.size_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_8\,
+      Q => \^size\(7),
+      R => '0'
+    );
+\comp_burst.size_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.size_reg[7]_i_1_n_0\,
+      CO(6) => \comp_burst.size_reg[7]_i_1_n_1\,
+      CO(5) => \comp_burst.size_reg[7]_i_1_n_2\,
+      CO(4) => \comp_burst.size_reg[7]_i_1_n_3\,
+      CO(3) => \comp_burst.size_reg[7]_i_1_n_4\,
+      CO(2) => \comp_burst.size_reg[7]_i_1_n_5\,
+      CO(1) => \comp_burst.size_reg[7]_i_1_n_6\,
+      CO(0) => \comp_burst.size_reg[7]_i_1_n_7\,
+      DI(7) => \comp_burst.size[7]_i_2_n_0\,
+      DI(6) => \comp_burst.size[7]_i_3_n_0\,
+      DI(5) => \comp_burst.size[7]_i_4_n_0\,
+      DI(4) => \comp_burst.size[7]_i_5_n_0\,
+      DI(3) => \comp_burst.size[7]_i_6_n_0\,
+      DI(2) => \comp_burst.size[7]_i_7_n_0\,
+      DI(1) => env_start_ind(1),
+      DI(0) => env_end_ind(0),
+      O(7) => \comp_burst.size_reg[7]_i_1_n_8\,
+      O(6) => \comp_burst.size_reg[7]_i_1_n_9\,
+      O(5) => \comp_burst.size_reg[7]_i_1_n_10\,
+      O(4) => \comp_burst.size_reg[7]_i_1_n_11\,
+      O(3) => \comp_burst.size_reg[7]_i_1_n_12\,
+      O(2) => \comp_burst.size_reg[7]_i_1_n_13\,
+      O(1) => \comp_burst.size_reg[7]_i_1_n_14\,
+      O(0) => \comp_burst.size_reg[7]_i_1_n_15\,
+      S(7) => \comp_burst.size[7]_i_8_n_0\,
+      S(6) => \comp_burst.size[7]_i_9_n_0\,
+      S(5) => \comp_burst.size[7]_i_10_n_0\,
+      S(4) => \comp_burst.size[7]_i_11_n_0\,
+      S(3) => \comp_burst.size[7]_i_12_n_0\,
+      S(2) => \comp_burst.size[7]_i_13_n_0\,
+      S(1) => \comp_burst.size[7]_i_14_n_0\,
+      S(0) => \comp_burst.size[7]_i_15_n_0\
+    );
+\comp_burst.size_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_15\,
+      Q => \^size\(8),
+      R => '0'
+    );
+\comp_burst.size_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_14\,
+      Q => \^size\(9),
+      R => '0'
     );
 \comp_burst.wr_ptr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => wr_ptr(0),
-      O => \p_1_in__0\(0)
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      O => \p_0_in__0\(0)
     );
 \comp_burst.wr_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      O => \p_1_in__0\(1)
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      O => \p_0_in__0\(1)
     );
 \comp_burst.wr_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"78"
+      INIT => X"6A"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(2),
-      O => \p_1_in__0\(2)
+      I0 => \comp_burst.wr_ptr_reg\(2),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      O => \p_0_in__0\(2)
     );
 \comp_burst.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7F80"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => wr_ptr(2),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(3),
-      O => \p_1_in__0\(3)
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      O => \p_0_in__0\(3)
     );
 \comp_burst.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFF8000"
+      INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => wr_ptr(3),
-      I1 => wr_ptr(0),
-      I2 => wr_ptr(1),
-      I3 => wr_ptr(2),
-      I4 => wr_ptr(4),
-      O => \p_1_in__0\(4)
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(2),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(0),
+      I4 => \comp_burst.wr_ptr_reg\(3),
+      O => \p_0_in__0\(4)
     );
 \comp_burst.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF80000000"
+      INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => wr_ptr(2),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(3),
-      I4 => wr_ptr(4),
-      I5 => wr_ptr(5),
-      O => \p_1_in__0\(5)
+      I0 => \comp_burst.wr_ptr_reg\(5),
+      I1 => \comp_burst.wr_ptr_reg\(3),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      I3 => \comp_burst.wr_ptr_reg\(1),
+      I4 => \comp_burst.wr_ptr_reg\(2),
+      I5 => \comp_burst.wr_ptr_reg\(4),
+      O => \p_0_in__0\(5)
     );
 \comp_burst.wr_ptr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
-      I0 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I1 => wr_ptr(6),
-      O => \p_1_in__0\(6)
+      I0 => \comp_burst.wr_ptr_reg\(6),
+      I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
+      O => \p_0_in__0\(6)
     );
 \comp_burst.wr_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D2"
+      INIT => X"6A"
     )
         port map (
-      I0 => wr_ptr(6),
+      I0 => \comp_burst.wr_ptr_reg\(7),
       I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(7),
-      O => \p_1_in__0\(7)
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      O => \p_0_in__0\(7)
     );
 \comp_burst.wr_ptr[8]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => wr_data,
-      O => \comp_burst.wr_ptr[8]_i_1_n_0\
+      I0 => mem_wr,
+      O => clear
     );
 \comp_burst.wr_ptr[8]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"DF20"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => wr_ptr(7),
-      I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(6),
-      I3 => wr_ptr(8),
-      O => \p_1_in__0\(8)
+      I0 => \comp_burst.wr_ptr_reg\(8),
+      I1 => \comp_burst.wr_ptr_reg\(6),
+      I2 => \comp_burst.wr_ptr[8]_i_3_n_0\,
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      O => \p_0_in__0\(8)
     );
 \comp_burst.wr_ptr[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => wr_ptr(5),
-      I1 => wr_ptr(2),
-      I2 => wr_ptr(1),
-      I3 => wr_ptr(0),
-      I4 => wr_ptr(3),
-      I5 => wr_ptr(4),
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      I4 => \comp_burst.wr_ptr_reg\(4),
+      I5 => \comp_burst.wr_ptr_reg\(5),
       O => \comp_burst.wr_ptr[8]_i_3_n_0\
     );
 \comp_burst.wr_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(0),
-      Q => wr_ptr(0),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(0),
+      Q => \comp_burst.wr_ptr_reg\(0),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(1),
-      Q => wr_ptr(1),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(1),
+      Q => \comp_burst.wr_ptr_reg\(1),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(2),
-      Q => wr_ptr(2),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(2),
+      Q => \comp_burst.wr_ptr_reg\(2),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(3),
-      Q => wr_ptr(3),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(3),
+      Q => \comp_burst.wr_ptr_reg\(3),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(4),
-      Q => wr_ptr(4),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(4),
+      Q => \comp_burst.wr_ptr_reg\(4),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(5),
-      Q => wr_ptr(5),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(5),
+      Q => \comp_burst.wr_ptr_reg\(5),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(6),
-      Q => wr_ptr(6),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(6),
+      Q => \comp_burst.wr_ptr_reg\(6),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(7),
-      Q => wr_ptr(7),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(7),
+      Q => \comp_burst.wr_ptr_reg\(7),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(8),
-      Q => wr_ptr(8),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
-    );
-i_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(8)
-    );
-i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(7)
-    );
-i_10: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(7)
-    );
-i_11: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(6)
-    );
-i_12: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(5)
-    );
-i_13: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(4)
-    );
-i_14: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(3)
-    );
-i_15: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(2)
-    );
-i_16: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(1)
-    );
-i_17: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(0)
-    );
-i_2: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(6)
-    );
-i_3: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(5)
-    );
-i_4: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(4)
-    );
-i_5: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(3)
-    );
-i_6: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(2)
-    );
-i_7: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(1)
-    );
-i_8: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(0)
-    );
-i_9: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(8)
+      D => \p_0_in__0\(8),
+      Q => \comp_burst.wr_ptr_reg\(8),
+      R => clear
     );
 ila_i: component ila_0_HD8
      port map (
       clk => clk,
       probe0(0) => burst,
       probe1(15 downto 0) => sample_counter_0(15 downto 0),
-      probe10(0) => run_env_up,
-      probe11(0) => run_env_down,
-      probe12(0) => check_env_up,
-      probe13(0) => check_env_down,
-      probe14(0) => env_up_done,
-      probe15(0) => env_down_done,
-      probe16(8 downto 0) => curr_size(8 downto 0),
-      probe17(0) => up_down_same,
-      probe18(8 downto 0) => env_up_ptr(8 downto 0),
-      probe19(8 downto 0) => env_down_ptr(8 downto 0),
-      probe2(19 downto 0) => freq(19 downto 0),
-      probe20(8 downto 0) => phase_up_ptr(8 downto 0),
-      probe21(8 downto 0) => phase_down_ptr(8 downto 0),
-      probe22(15 downto 0) => min_env(15 downto 0),
-      probe23(15 downto 0) => env_up_0(15 downto 0),
-      probe24(15 downto 0) => env_up_1(15 downto 0),
-      probe25(15 downto 0) => env_up_2(15 downto 0),
-      probe26(15 downto 0) => env_up_3(15 downto 0),
-      probe27(15 downto 0) => env_down_0(15 downto 0),
-      probe28(15 downto 0) => env_down_1(15 downto 0),
-      probe29(15 downto 0) => env_down_2(15 downto 0),
-      probe3(15 downto 0) => angle(15 downto 0),
-      probe30(15 downto 0) => env_down_3(15 downto 0),
-      probe31(3 downto 0) => env_up_bits(3 downto 0),
-      probe32(3 downto 0) => env_down_bits(3 downto 0),
-      probe33(0) => \^err_no_data\,
-      probe4(8 downto 0) => wr_ptr(8 downto 0),
-      probe5(15 downto 0) => in_env_0(15 downto 0),
-      probe6(15 downto 0) => in_env_1(15 downto 0),
-      probe7(15 downto 0) => in_env_2(15 downto 0),
-      probe8(15 downto 0) => in_env_3(15 downto 0),
-      probe9(0) => filling
+      probe10(10 downto 0) => env_up_max_ind(10 downto 0),
+      probe11(10 downto 0) => env_down_max_ind(10 downto 0),
+      probe12(15 downto 0) => env_up_max_val(15 downto 0),
+      probe13(15 downto 0) => env_down_max_val(15 downto 0),
+      probe14(8 downto 0) => curr_size(8 downto 0),
+      probe15(10 downto 0) => env_up_ind(10 downto 0),
+      probe16(15 downto 0) => env_up_val(15 downto 0),
+      probe17(10 downto 0) => env_down_ind(10 downto 0),
+      probe18(15 downto 0) => env_down_val(15 downto 0),
+      probe19(0) => \^err_no_data\,
+      probe2(0) => scan_start,
+      probe20(0) => \^done\,
+      probe21(63 downto 0) => \^sample\(63 downto 0),
+      probe22(19 downto 0) => \^freq\(19 downto 0),
+      probe23(15 downto 0) => \^angle\(15 downto 0),
+      probe24(10 downto 0) => \^size\(10 downto 0),
+      probe25(10 downto 0) => \^max_pos\(10 downto 0),
+      probe26(15 downto 0) => \^max_env\(15 downto 0),
+      probe3(0) => run_env,
+      probe4(0) => load_env,
+      probe5(0) => comp_env,
+      probe6(0) => run_env_start,
+      probe7(0) => run_env_end,
+      probe8(10 downto 0) => env_start_ind(10 downto 0),
+      probe9(10 downto 0) => env_end_ind(10 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -4822,7 +10649,14 @@ entity \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
     in_phase_1 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     in_phase_2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     in_phase_3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    err_no_data : out STD_LOGIC
+    err_no_data : out STD_LOGIC;
+    done : out STD_LOGIC;
+    sample : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    size : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    max_pos : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    max_env : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ : entity is "comp_burst";
@@ -4836,444 +10670,613 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe24 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_ana_0_1_ila_0;
-  signal angle : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \^angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of angle : signal is std.standard.true;
-  signal check_env_down : STD_LOGIC;
-  attribute MARK_DEBUG of check_env_down : signal is std.standard.true;
-  signal check_env_up : STD_LOGIC;
-  attribute MARK_DEBUG of check_env_up : signal is std.standard.true;
+  attribute MARK_DEBUG of \^angle\ : signal is std.standard.true;
+  signal clear : STD_LOGIC;
+  signal \comp_burst.complete_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.complete_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.curr_size[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.curr_size[8]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_0_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_1_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_2_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_down_diff_3_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_down_done_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_done_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[6]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_ptr[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_0_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_1_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_2_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_up_diff_3_reg[15]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.env_up_done_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.done_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[4]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[9]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[0]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[10]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[1]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[2]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[3]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[4]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[5]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[6]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[7]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[8]\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr_reg_n_0_[9]\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.env_down_max_val_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \comp_burst.env_down_ptr_rep[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[3]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[5]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_end_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_start_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_adr_reg\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \comp_burst.env_up_adr_reg__0\ : STD_LOGIC_VECTOR ( 10 downto 2 );
+  signal \comp_burst.env_up_max_ind[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_ind[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.env_up_max_val_reg[15]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \comp_burst.env_up_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_val[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.err_no_data_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.filling_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.filling_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_down_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_up_reg0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[10]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg00_out\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal \comp_burst.max_pos_reg2\ : STD_LOGIC_VECTOR ( 10 downto 1 );
+  signal \comp_burst.max_pos_reg[10]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[10]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.max_pos_reg[7]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_68\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_69\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_70\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_71\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_72\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_73\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_74\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_75\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_76\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_77\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_78\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_79\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_80\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_81\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_82\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_83\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_84\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_85\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_86\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_87\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_88\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_89\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_90\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_91\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_92\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_93\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_94\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_95\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_96\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_97\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_98\ : STD_LOGIC;
+  signal \comp_burst.mem_env_down_reg_n_99\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_68\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_69\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_70\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_71\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_72\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_73\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_74\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_75\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_76\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_77\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_78\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_79\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_80\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_81\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_82\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_83\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_84\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_85\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_86\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_87\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_88\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_89\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_90\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_91\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_92\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_93\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_94\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_95\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_96\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_97\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_98\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_n_99\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.run_env_end_reg_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_18_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.run_env_start_reg_i_2_n_7\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[10]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[11]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[11]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.sample_counter_0[12]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[13]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[14]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[15]_i_4_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[5]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[6]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[6]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.sample_counter_0[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_0[9]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.up_down_same_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_0[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_counter_2[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_2_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_counter_3[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_3_reg\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \comp_burst.sample_ov_0_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_0_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_1_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_ov_2_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.scan_start_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[10]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.size[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_13\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_14\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_15\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.size_reg[10]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_10\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_11\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_12\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_13\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_14\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_15\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_8\ : STD_LOGIC;
+  signal \comp_burst.size_reg[7]_i_1_n_9\ : STD_LOGIC;
   signal \comp_burst.wr_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.wr_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal comp_env : STD_LOGIC;
+  attribute MARK_DEBUG of comp_env : signal is std.standard.true;
   signal curr_size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of curr_size : signal is std.standard.true;
-  signal env_down_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_0 : signal is std.standard.true;
-  signal env_down_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_1 : signal is std.standard.true;
+  signal \^done\ : STD_LOGIC;
+  attribute MARK_DEBUG of done : signal is std.standard.true;
   signal env_down_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_2 : signal is std.standard.true;
   signal env_down_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_down_3 : signal is std.standard.true;
-  signal env_down_bits : STD_LOGIC_VECTOR ( 3 downto 0 );
-  attribute MARK_DEBUG of env_down_bits : signal is std.standard.true;
-  signal env_down_diff_003_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_102_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_201_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_diff_300_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_down_done : STD_LOGIC;
-  attribute MARK_DEBUG of env_down_done : signal is std.standard.true;
+  signal env_down_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_down_ind : signal is std.standard.true;
+  signal env_down_max_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_down_max_ind : signal is std.standard.true;
+  signal env_down_max_ind1 : STD_LOGIC;
+  signal env_down_max_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_down_max_val : signal is std.standard.true;
   signal env_down_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of env_down_ptr : signal is std.standard.true;
+  signal env_down_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_down_val : signal is std.standard.true;
+  signal env_end_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_end_ind : signal is std.standard.true;
   signal env_in : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal env_up_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_0 : signal is std.standard.true;
-  signal env_up_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_1 : signal is std.standard.true;
+  signal env_start_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_start_ind : signal is std.standard.true;
   signal env_up_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_2 : signal is std.standard.true;
   signal env_up_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of env_up_3 : signal is std.standard.true;
-  signal env_up_bits : STD_LOGIC_VECTOR ( 3 downto 0 );
-  attribute MARK_DEBUG of env_up_bits : signal is std.standard.true;
-  signal env_up_diff_007_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_106_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_205_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_diff_304_out : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal env_up_done : STD_LOGIC;
-  attribute MARK_DEBUG of env_up_done : signal is std.standard.true;
+  signal env_up_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_up_ind : signal is std.standard.true;
+  signal env_up_max_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of env_up_max_ind : signal is std.standard.true;
+  signal env_up_max_ind1 : STD_LOGIC;
+  signal env_up_max_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_up_max_val : signal is std.standard.true;
   signal env_up_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of env_up_ptr : signal is std.standard.true;
+  signal env_up_val : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of env_up_val : signal is std.standard.true;
   signal \^err_no_data\ : STD_LOGIC;
   attribute MARK_DEBUG of err_no_data : signal is std.standard.true;
-  signal filling : STD_LOGIC;
-  attribute MARK_DEBUG of filling : signal is std.standard.true;
-  signal freq : STD_LOGIC_VECTOR ( 19 downto 0 );
-  attribute MARK_DEBUG of freq : signal is std.standard.true;
+  signal \^freq\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of \^freq\ : signal is std.standard.true;
+  signal inc_env_sample : STD_LOGIC;
+  signal load_env : STD_LOGIC;
+  attribute MARK_DEBUG of load_env : signal is std.standard.true;
+  signal load_env_start : STD_LOGIC;
+  signal \^max_env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of \^max_env\ : signal is std.standard.true;
+  signal \^max_pos\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of \^max_pos\ : signal is std.standard.true;
   signal mem_wr : STD_LOGIC;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal phase_down_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of phase_down_ptr : signal is std.standard.true;
-  signal phase_up_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of phase_up_ptr : signal is std.standard.true;
-  signal run_env_down : STD_LOGIC;
-  attribute MARK_DEBUG of run_env_down : signal is std.standard.true;
-  signal run_env_up : STD_LOGIC;
-  attribute MARK_DEBUG of run_env_up : signal is std.standard.true;
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal \p_0_in__2\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__3\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__4\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \p_0_in__5\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__6\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal run_env : STD_LOGIC;
+  attribute MARK_DEBUG of run_env : signal is std.standard.true;
+  signal run_env5_out : STD_LOGIC;
+  signal run_env_end : STD_LOGIC;
+  attribute MARK_DEBUG of run_env_end : signal is std.standard.true;
+  signal run_env_end0 : STD_LOGIC;
+  signal run_env_start : STD_LOGIC;
+  attribute MARK_DEBUG of run_env_start : signal is std.standard.true;
+  signal run_env_start0 : STD_LOGIC;
+  signal \^sample\ : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
   signal sample_counter_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of sample_counter_0 : signal is std.standard.true;
-  signal up_down_same : STD_LOGIC;
-  attribute MARK_DEBUG of up_down_same : signal is std.standard.true;
-  signal wr_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of wr_ptr : signal is std.standard.true;
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_0_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_1_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_2_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_down_diff_3_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_0_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_1_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_2_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal \NLW_comp_burst.env_up_diff_3_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal scan_start : STD_LOGIC;
+  attribute MARK_DEBUG of scan_start : signal is std.standard.true;
+  signal \^size\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  attribute MARK_DEBUG of \^size\ : signal is std.standard.true;
+  signal \NLW_comp_burst.env_down_max_val_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.env_up_max_val_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.max_pos_reg[10]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.max_pos_reg[7]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \NLW_comp_burst.mem_env_down_reg_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_env_down_reg_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_env_down_reg_DBITERR_UNCONNECTED\ : STD_LOGIC;
@@ -5306,6 +11309,10 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   signal \NLW_comp_burst.mem_env_up_reg_DOUTPBDOUTP_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_comp_burst.mem_env_up_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.mem_env_up_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \NLW_comp_burst.run_env_end_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.run_env_start_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_burst.size_reg[10]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_comp_burst.size_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute KEEP : string;
   attribute KEEP of \comp_burst.angle_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -5340,8 +11347,7 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   attribute mark_debug_string of \comp_burst.angle_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.angle_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.angle_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_burst.check_env_down_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.check_env_up_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.comp_env_reg\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[1]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[2]\ : label is "yes";
@@ -5351,46 +11357,201 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   attribute KEEP of \comp_burst.curr_size_reg[6]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[7]\ : label is "yes";
   attribute KEEP of \comp_burst.curr_size_reg[8]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_0_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_0_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_1_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_1_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_2_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_2_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_3_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_down_diff_3_reg[15]_i_2\ : label is 35;
-  attribute KEEP of \comp_burst.env_down_done_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_down_ptr_reg[8]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_0_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_0_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_1_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_1_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_2_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_2_reg[15]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_3_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.env_up_diff_3_reg[15]_i_2\ : label is 35;
-  attribute KEEP of \comp_burst.env_up_done_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.env_up_ptr_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.done_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.done_reg\ : label is "yes";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_1\ : label is "soft_lutpair22";
+  attribute KEEP of \comp_burst.env_down_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_down_max_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[15]\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD : integer;
+  attribute COMPARATOR_THRESHOLD of \comp_burst.env_down_max_val_reg[15]_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.env_down_max_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_max_val_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_down_val_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_end_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_end_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_start_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_start_ind_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair17";
+  attribute KEEP of \comp_burst.env_up_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_ind_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_up_max_ind_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[15]\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.env_up_max_val_reg[15]_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.env_up_max_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_max_val_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[2]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[3]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[4]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[2]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[3]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[4]_i_1\ : label is "soft_lutpair15";
+  attribute KEEP of \comp_burst.env_up_val_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_val_reg[9]\ : label is "yes";
   attribute KEEP of \comp_burst.err_no_data_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.filling_reg\ : label is "yes";
-  attribute mark_debug_string of \comp_burst.filling_reg\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.freq_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[10]\ : label is "yes";
@@ -5431,6 +11592,66 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   attribute mark_debug_string of \comp_burst.freq_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.freq_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.freq_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.load_env_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_env_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_env_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[10]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[10]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[10]_i_2\ : label is 35;
+  attribute KEEP of \comp_burst.max_pos_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[7]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.max_pos_reg[7]_i_2\ : label is 35;
+  attribute KEEP of \comp_burst.max_pos_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.max_pos_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.max_pos_reg[9]\ : label is "yes";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_down_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -5470,35 +11691,208 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   attribute ram_offset of \comp_burst.mem_env_up_reg\ : label is 0;
   attribute ram_slice_begin of \comp_burst.mem_env_up_reg\ : label is 0;
   attribute ram_slice_end of \comp_burst.mem_env_up_reg\ : label is 63;
-  attribute KEEP of \comp_burst.run_env_down_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.run_env_up_reg\ : label is "yes";
-  attribute mark_debug_string of \comp_burst.run_env_up_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.run_env_end_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.run_env_end_reg\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.run_env_end_reg_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.run_env_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.run_env_start_reg\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.run_env_start_reg\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.run_env_start_reg_i_2\ : label is 11;
+  attribute KEEP of \comp_burst.sample_counter_0_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[10]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[11]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[12]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[13]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[14]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[15]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[2]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[3]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[4]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[5]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[6]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[7]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_counter_0_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.sample_counter_0_reg[9]\ : label is "yes";
-  attribute KEEP of \comp_burst.up_down_same_reg\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[8]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[10]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[9]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[10]_i_2\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[4]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[5]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[9]_i_2\ : label is "soft_lutpair12";
+  attribute KEEP of \comp_burst.sample_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[32]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[33]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[34]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[35]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[36]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[37]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[38]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[39]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[40]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[41]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[42]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[43]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[44]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[45]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[46]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[47]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[48]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[49]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[50]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[51]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[52]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[53]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[54]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[55]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[56]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[57]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[58]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[59]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[60]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[61]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[62]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[63]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.sample_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.sample_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.scan_start_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[10]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.size_reg[10]_i_1\ : label is 35;
+  attribute KEEP of \comp_burst.size_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_burst.size_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_burst.size_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.size_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.size_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[1]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[2]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[3]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[4]_i_1\ : label is "soft_lutpair16";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_0,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -5506,13 +11900,20 @@ architecture STRUCTURE of \ps_comp_ana_0_1_comp_burst__xdcDup__1\ is
   attribute x_core_info : string;
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
 begin
+  angle(15 downto 0) <= \^angle\(15 downto 0);
+  done <= \^done\;
   err_no_data <= \^err_no_data\;
+  freq(19 downto 0) <= \^freq\(19 downto 0);
+  max_env(15 downto 0) <= \^max_env\(15 downto 0);
+  max_pos(10 downto 0) <= \^max_pos\(10 downto 0);
+  sample(63 downto 0) <= \^sample\(63 downto 0);
+  size(10 downto 0) <= \^size\(10 downto 0);
 \comp_burst.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => burst,
       D => in_angle(0),
-      Q => angle(0),
+      Q => \^angle\(0),
       R => '0'
     );
 \comp_burst.angle_reg[10]\: unisim.vcomponents.FDRE
@@ -5520,7 +11921,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(10),
-      Q => angle(10),
+      Q => \^angle\(10),
       R => '0'
     );
 \comp_burst.angle_reg[11]\: unisim.vcomponents.FDRE
@@ -5528,7 +11929,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(11),
-      Q => angle(11),
+      Q => \^angle\(11),
       R => '0'
     );
 \comp_burst.angle_reg[12]\: unisim.vcomponents.FDRE
@@ -5536,7 +11937,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(12),
-      Q => angle(12),
+      Q => \^angle\(12),
       R => '0'
     );
 \comp_burst.angle_reg[13]\: unisim.vcomponents.FDRE
@@ -5544,7 +11945,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(13),
-      Q => angle(13),
+      Q => \^angle\(13),
       R => '0'
     );
 \comp_burst.angle_reg[14]\: unisim.vcomponents.FDRE
@@ -5552,7 +11953,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(14),
-      Q => angle(14),
+      Q => \^angle\(14),
       R => '0'
     );
 \comp_burst.angle_reg[15]\: unisim.vcomponents.FDRE
@@ -5560,7 +11961,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(15),
-      Q => angle(15),
+      Q => \^angle\(15),
       R => '0'
     );
 \comp_burst.angle_reg[1]\: unisim.vcomponents.FDRE
@@ -5568,7 +11969,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(1),
-      Q => angle(1),
+      Q => \^angle\(1),
       R => '0'
     );
 \comp_burst.angle_reg[2]\: unisim.vcomponents.FDRE
@@ -5576,7 +11977,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(2),
-      Q => angle(2),
+      Q => \^angle\(2),
       R => '0'
     );
 \comp_burst.angle_reg[3]\: unisim.vcomponents.FDRE
@@ -5584,7 +11985,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(3),
-      Q => angle(3),
+      Q => \^angle\(3),
       R => '0'
     );
 \comp_burst.angle_reg[4]\: unisim.vcomponents.FDRE
@@ -5592,7 +11993,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(4),
-      Q => angle(4),
+      Q => \^angle\(4),
       R => '0'
     );
 \comp_burst.angle_reg[5]\: unisim.vcomponents.FDRE
@@ -5600,7 +12001,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(5),
-      Q => angle(5),
+      Q => \^angle\(5),
       R => '0'
     );
 \comp_burst.angle_reg[6]\: unisim.vcomponents.FDRE
@@ -5608,7 +12009,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(6),
-      Q => angle(6),
+      Q => \^angle\(6),
       R => '0'
     );
 \comp_burst.angle_reg[7]\: unisim.vcomponents.FDRE
@@ -5616,7 +12017,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(7),
-      Q => angle(7),
+      Q => \^angle\(7),
       R => '0'
     );
 \comp_burst.angle_reg[8]\: unisim.vcomponents.FDRE
@@ -5624,7 +12025,7 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(8),
-      Q => angle(8),
+      Q => \^angle\(8),
       R => '0'
     );
 \comp_burst.angle_reg[9]\: unisim.vcomponents.FDRE
@@ -5632,24 +12033,47 @@ begin
       C => clk,
       CE => burst,
       D => in_angle(9),
-      Q => angle(9),
+      Q => \^angle\(9),
       R => '0'
     );
-\comp_burst.check_env_down_reg\: unisim.vcomponents.FDRE
+\comp_burst.comp_env_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => run_env_down,
-      Q => check_env_down,
+      D => load_env,
+      Q => comp_env,
       R => '0'
     );
-\comp_burst.check_env_up_reg\: unisim.vcomponents.FDRE
+\comp_burst.complete_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0004"
+    )
+        port map (
+      I0 => scan_start,
+      I1 => run_env5_out,
+      I2 => run_env_end,
+      I3 => run_env_start,
+      O => \comp_burst.complete_i_1_n_0\
+    );
+\comp_burst.complete_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => run_env_up,
-      Q => check_env_up,
+      D => \comp_burst.complete_i_1_n_0\,
+      Q => \comp_burst.complete_reg_n_0\,
       R => '0'
+    );
+\comp_burst.curr_size[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0C000CAE"
+    )
+        port map (
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      I1 => curr_size(0),
+      I2 => \comp_burst.curr_size[8]_i_2_n_0\,
+      I3 => mem_wr,
+      I4 => reset,
+      O => \comp_burst.curr_size[0]_i_1_n_0\
     );
 \comp_burst.curr_size[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -5657,47 +12081,47 @@ begin
     )
         port map (
       I0 => reset,
-      I1 => wr_data,
+      I1 => mem_wr,
       O => \comp_burst.curr_size[8]_i_1_n_0\
     );
-\comp_burst.curr_size[8]_i_2\: unisim.vcomponents.LUT6
+\comp_burst.curr_size[8]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00000000FFFFFFFE"
+      INIT => X"55555554"
     )
         port map (
-      I0 => wr_ptr(6),
-      I1 => wr_ptr(5),
-      I2 => wr_ptr(4),
-      I3 => wr_ptr(3),
-      I4 => \comp_burst.curr_size[8]_i_3_n_0\,
-      I5 => wr_data,
+      I0 => mem_wr,
+      I1 => \comp_burst.curr_size[8]_i_3_n_0\,
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      I4 => \comp_burst.wr_ptr_reg\(1),
       O => \comp_burst.curr_size[8]_i_2_n_0\
     );
-\comp_burst.curr_size[8]_i_3\: unisim.vcomponents.LUT5
+\comp_burst.curr_size[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(2),
-      I3 => wr_ptr(8),
-      I4 => wr_ptr(7),
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      I3 => \comp_burst.wr_ptr_reg\(8),
+      I4 => \comp_burst.wr_ptr_reg\(2),
+      I5 => \comp_burst.wr_ptr_reg\(3),
       O => \comp_burst.curr_size[8]_i_3_n_0\
     );
 \comp_burst.curr_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(0),
+      CE => '1',
+      D => \comp_burst.curr_size[0]_i_1_n_0\,
       Q => curr_size(0),
-      R => \comp_burst.curr_size[8]_i_1_n_0\
+      R => '0'
     );
 \comp_burst.curr_size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(1),
+      D => \comp_burst.wr_ptr_reg\(1),
       Q => curr_size(1),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5705,7 +12129,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(2),
+      D => \comp_burst.wr_ptr_reg\(2),
       Q => curr_size(2),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5713,7 +12137,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(3),
+      D => \comp_burst.wr_ptr_reg\(3),
       Q => curr_size(3),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5721,7 +12145,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(4),
+      D => \comp_burst.wr_ptr_reg\(4),
       Q => curr_size(4),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5729,7 +12153,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(5),
+      D => \comp_burst.wr_ptr_reg\(5),
       Q => curr_size(5),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5737,7 +12161,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(6),
+      D => \comp_burst.wr_ptr_reg\(6),
       Q => curr_size(6),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5745,7 +12169,7 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(7),
+      D => \comp_burst.wr_ptr_reg\(7),
       Q => curr_size(7),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -5753,1038 +12177,2172 @@ begin
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(8),
+      D => \comp_burst.wr_ptr_reg\(8),
       Q => curr_size(8),
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
-\comp_burst.env_down_diff_0[15]_i_10\: unisim.vcomponents.LUT2
+\comp_burst.done_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"E"
     )
         port map (
-      I0 => min_env(8),
-      I1 => env_down_0(8),
-      O => \comp_burst.env_down_diff_0[15]_i_10_n_0\
+      I0 => \^done\,
+      I1 => \comp_burst.complete_reg_n_0\,
+      O => \comp_burst.done_i_1_n_0\
     );
-\comp_burst.env_down_diff_0[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_0(7),
-      O => \comp_burst.env_down_diff_0[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_0(6),
-      O => \comp_burst.env_down_diff_0[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_0(5),
-      O => \comp_burst.env_down_diff_0[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_0(4),
-      O => \comp_burst.env_down_diff_0[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_0(3),
-      O => \comp_burst.env_down_diff_0[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_0(2),
-      O => \comp_burst.env_down_diff_0[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_0(1),
-      O => \comp_burst.env_down_diff_0[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_0(0),
-      O => \comp_burst.env_down_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_0(15),
-      O => \comp_burst.env_down_diff_0[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_0(14),
-      O => \comp_burst.env_down_diff_0[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_0(13),
-      O => \comp_burst.env_down_diff_0[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_0(12),
-      O => \comp_burst.env_down_diff_0[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_0(11),
-      O => \comp_burst.env_down_diff_0[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_0(10),
-      O => \comp_burst.env_down_diff_0[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_0[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_0(9),
-      O => \comp_burst.env_down_diff_0[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_0_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.done_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => env_down_diff_003_out(15),
-      Q => env_down_bits(0),
+      D => \comp_burst.done_i_1_n_0\,
+      Q => \^done\,
       R => '0'
     );
-\comp_burst.env_down_diff_0_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_0_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_003_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_0[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_0[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_0[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_0[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_0[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_0[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_0[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_0[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_0_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_0_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_0_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_0[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_0[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_0[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_0[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_0[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_0[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_0[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_1(8),
-      O => \comp_burst.env_down_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_1(7),
-      O => \comp_burst.env_down_diff_1[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_1(6),
-      O => \comp_burst.env_down_diff_1[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_1(5),
-      O => \comp_burst.env_down_diff_1[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_1(4),
-      O => \comp_burst.env_down_diff_1[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_1(3),
-      O => \comp_burst.env_down_diff_1[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_1(2),
-      O => \comp_burst.env_down_diff_1[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_1(1),
-      O => \comp_burst.env_down_diff_1[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_1(0),
-      O => \comp_burst.env_down_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_1(15),
-      O => \comp_burst.env_down_diff_1[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_1(14),
-      O => \comp_burst.env_down_diff_1[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_1(13),
-      O => \comp_burst.env_down_diff_1[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_1(12),
-      O => \comp_burst.env_down_diff_1[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_1(11),
-      O => \comp_burst.env_down_diff_1[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_1(10),
-      O => \comp_burst.env_down_diff_1[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_1[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_1(9),
-      O => \comp_burst.env_down_diff_1[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_1_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_102_out(15),
-      Q => env_down_bits(1),
-      R => '0'
-    );
-\comp_burst.env_down_diff_1_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_1_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_102_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_1[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_1[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_1[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_1[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_1[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_1[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_1[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_1_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_1_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_1_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_1[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_1[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_1[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_1[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_1[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_1[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_1[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_2(8),
-      O => \comp_burst.env_down_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_2(7),
-      O => \comp_burst.env_down_diff_2[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_2(6),
-      O => \comp_burst.env_down_diff_2[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_2(5),
-      O => \comp_burst.env_down_diff_2[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_2(4),
-      O => \comp_burst.env_down_diff_2[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_2(3),
-      O => \comp_burst.env_down_diff_2[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_2(2),
-      O => \comp_burst.env_down_diff_2[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_2(1),
-      O => \comp_burst.env_down_diff_2[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_2(0),
-      O => \comp_burst.env_down_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_2(15),
-      O => \comp_burst.env_down_diff_2[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_2(14),
-      O => \comp_burst.env_down_diff_2[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_2(13),
-      O => \comp_burst.env_down_diff_2[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_2(12),
-      O => \comp_burst.env_down_diff_2[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_2(11),
-      O => \comp_burst.env_down_diff_2[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_2(10),
-      O => \comp_burst.env_down_diff_2[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_2[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_2(9),
-      O => \comp_burst.env_down_diff_2[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_2_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_201_out(15),
-      Q => env_down_bits(2),
-      R => '0'
-    );
-\comp_burst.env_down_diff_2_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_2_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_201_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_2[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_2[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_2[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_2[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_2[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_2[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_2[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_2_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_2_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_2_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_2[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_2[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_2[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_2[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_2[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_2[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_2[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_down_3(8),
-      O => \comp_burst.env_down_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_down_3(7),
-      O => \comp_burst.env_down_diff_3[15]_i_11_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_down_3(6),
-      O => \comp_burst.env_down_diff_3[15]_i_12_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_down_3(5),
-      O => \comp_burst.env_down_diff_3[15]_i_13_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_down_3(4),
-      O => \comp_burst.env_down_diff_3[15]_i_14_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_down_3(3),
-      O => \comp_burst.env_down_diff_3[15]_i_15_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_down_3(2),
-      O => \comp_burst.env_down_diff_3[15]_i_16_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_down_3(1),
-      O => \comp_burst.env_down_diff_3[15]_i_17_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_down_3(0),
-      O => \comp_burst.env_down_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_down_3(15),
-      O => \comp_burst.env_down_diff_3[15]_i_3_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_down_3(14),
-      O => \comp_burst.env_down_diff_3[15]_i_4_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_down_3(13),
-      O => \comp_burst.env_down_diff_3[15]_i_5_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_down_3(12),
-      O => \comp_burst.env_down_diff_3[15]_i_6_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_down_3(11),
-      O => \comp_burst.env_down_diff_3[15]_i_7_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_down_3(10),
-      O => \comp_burst.env_down_diff_3[15]_i_8_n_0\
-    );
-\comp_burst.env_down_diff_3[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_down_3(9),
-      O => \comp_burst.env_down_diff_3[15]_i_9_n_0\
-    );
-\comp_burst.env_down_diff_3_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => env_down_diff_300_out(15),
-      Q => env_down_bits(3),
-      R => '0'
-    );
-\comp_burst.env_down_diff_3_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_down_diff_3_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_down_diff_300_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_down_diff_3[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_down_diff_3[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_down_diff_3[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_down_diff_3[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_down_diff_3[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_down_diff_3[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_down_diff_3[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_down_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_down_diff_3_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_down_diff_3_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_down_diff_3_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_down_diff_3[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_down_diff_3[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_down_diff_3[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_down_diff_3[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_down_diff_3[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_down_diff_3[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_down_diff_3[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_down_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_down_done_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_down_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => check_env_down,
-      O => \comp_burst.env_down_done_i_1_n_0\
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      O => \comp_burst.env_down_adr[0]_i_1_n_0\
     );
-\comp_burst.env_down_done_i_2\: unisim.vcomponents.LUT4
+\comp_burst.env_down_adr[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFE"
+      INIT => X"9AFF9A00"
     )
         port map (
-      I0 => env_down_bits(1),
-      I1 => env_down_bits(0),
-      I2 => env_down_bits(3),
-      I3 => env_down_bits(2),
-      O => \comp_burst.env_down_done_i_2_n_0\
+      I0 => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      I2 => \comp_burst.env_down_adr[10]_i_2_n_0\,
+      I3 => load_env,
+      I4 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_down_adr[10]_i_1_n_0\
     );
-\comp_burst.env_down_done_reg\: unisim.vcomponents.FDRE
+\comp_burst.env_down_adr[10]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0004"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I1 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      O => \comp_burst.env_down_adr[10]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      O => \comp_burst.env_down_adr[1]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"A9FFA900"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => load_env,
+      I4 => curr_size(0),
+      O => \comp_burst.env_down_adr[2]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAA90000AAA9FFFF"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => load_env,
+      I5 => curr_size(1),
+      O => \comp_burst.env_down_adr[3]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I2 => \comp_burst.env_down_adr[4]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_adr[4]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[4]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      O => \comp_burst.env_down_adr[4]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[4]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => curr_size(1),
+      I1 => curr_size(2),
+      O => \comp_burst.env_down_adr[4]_i_3_n_0\
+    );
+\comp_burst.env_down_adr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6F606F606F60606F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      I1 => \comp_burst.env_down_adr[5]_i_2_n_0\,
+      I2 => load_env,
+      I3 => curr_size(3),
+      I4 => curr_size(2),
+      I5 => curr_size(1),
+      O => \comp_burst.env_down_adr[5]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      O => \comp_burst.env_down_adr[5]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6F60"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I1 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_adr[6]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[6]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[6]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"AAA9"
+    )
+        port map (
+      I0 => curr_size(4),
+      I1 => curr_size(3),
+      I2 => curr_size(1),
+      I3 => curr_size(2),
+      O => \comp_burst.env_down_adr[6]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9AFF9A00"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I2 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I3 => load_env,
+      I4 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[7]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I2 => \comp_burst.env_down_adr[8]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I2 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I5 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      O => \comp_burst.env_down_adr[8]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      I2 => \comp_burst.env_down_adr[9]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      I4 => load_env,
+      I5 => \comp_burst.env_down_adr[9]_i_3_n_0\,
+      O => \comp_burst.env_down_adr[9]_i_1_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000010"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      I2 => \comp_burst.env_down_adr[4]_i_2_n_0\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      I5 => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      O => \comp_burst.env_down_adr[9]_i_2_n_0\
+    );
+\comp_burst.env_down_adr[9]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => curr_size(7),
+      I1 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_adr[9]_i_3_n_0\
+    );
+\comp_burst.env_down_adr_reg[0]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_down_done_i_2_n_0\,
-      Q => env_down_done,
-      R => \comp_burst.env_down_done_i_1_n_0\
+      D => \comp_burst.env_down_adr[0]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[10]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[1]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[1]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_adr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[2]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[3]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[4]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[5]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[6]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[7]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[8]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      R => '0'
+    );
+\comp_burst.env_down_adr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr[9]_i_1_n_0\,
+      Q => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      Q => env_down_ind(0),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[10]\,
+      Q => env_down_ind(10),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      Q => env_down_ind(1),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[2]\,
+      Q => env_down_ind(2),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[3]\,
+      Q => env_down_ind(3),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[4]\,
+      Q => env_down_ind(4),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[5]\,
+      Q => env_down_ind(5),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[6]\,
+      Q => env_down_ind(6),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[7]\,
+      Q => env_down_ind(7),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[8]\,
+      Q => env_down_ind(8),
+      R => '0'
+    );
+\comp_burst.env_down_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_adr_reg_n_0_[9]\,
+      Q => env_down_ind(9),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(0),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(0),
+      O => \comp_burst.env_down_max_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(10),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(10),
+      O => \comp_burst.env_down_max_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(1),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(1),
+      O => \comp_burst.env_down_max_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(2),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(2),
+      O => \comp_burst.env_down_max_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(3),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(3),
+      O => \comp_burst.env_down_max_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(4),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(4),
+      O => \comp_burst.env_down_max_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(5),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(5),
+      O => \comp_burst.env_down_max_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(6),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(6),
+      O => \comp_burst.env_down_max_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(7),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(7),
+      O => \comp_burst.env_down_max_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(8),
+      O => \comp_burst.env_down_max_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_down_ind(9),
+      I1 => env_down_max_ind1,
+      I2 => scan_start,
+      I3 => env_down_max_ind(9),
+      O => \comp_burst.env_down_max_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_down_max_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[0]_i_1_n_0\,
+      Q => env_down_max_ind(0),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[10]_i_1_n_0\,
+      Q => env_down_max_ind(10),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[1]_i_1_n_0\,
+      Q => env_down_max_ind(1),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[2]_i_1_n_0\,
+      Q => env_down_max_ind(2),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[3]_i_1_n_0\,
+      Q => env_down_max_ind(3),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[4]_i_1_n_0\,
+      Q => env_down_max_ind(4),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[5]_i_1_n_0\,
+      Q => env_down_max_ind(5),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[6]_i_1_n_0\,
+      Q => env_down_max_ind(6),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[7]_i_1_n_0\,
+      Q => env_down_max_ind(7),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[8]_i_1_n_0\,
+      Q => env_down_max_ind(8),
+      R => '0'
+    );
+\comp_burst.env_down_max_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_down_max_ind[9]_i_1_n_0\,
+      Q => env_down_max_ind(9),
+      R => '0'
+    );
+\comp_burst.env_down_max_val[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(0),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(0),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[0]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(10),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(10),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[10]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(11),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(11),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[11]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[12]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(12),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(12),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[12]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[13]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(13),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(13),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[13]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(14),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(14),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[14]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(15),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(15),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[15]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(1),
+      I1 => env_down_max_val(1),
+      I2 => env_down_val(0),
+      I3 => env_down_max_val(0),
+      O => \comp_burst.env_down_max_val[15]_i_10_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(15),
+      I1 => env_down_val(15),
+      I2 => env_down_max_val(14),
+      I3 => env_down_val(14),
+      O => \comp_burst.env_down_max_val[15]_i_11_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(13),
+      I1 => env_down_val(13),
+      I2 => env_down_max_val(12),
+      I3 => env_down_val(12),
+      O => \comp_burst.env_down_max_val[15]_i_12_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(11),
+      I1 => env_down_val(11),
+      I2 => env_down_max_val(10),
+      I3 => env_down_val(10),
+      O => \comp_burst.env_down_max_val[15]_i_13_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(9),
+      I1 => env_down_val(9),
+      I2 => env_down_max_val(8),
+      I3 => env_down_val(8),
+      O => \comp_burst.env_down_max_val[15]_i_14_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(7),
+      I1 => env_down_val(7),
+      I2 => env_down_max_val(6),
+      I3 => env_down_val(6),
+      O => \comp_burst.env_down_max_val[15]_i_15_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(5),
+      I1 => env_down_val(5),
+      I2 => env_down_max_val(4),
+      I3 => env_down_val(4),
+      O => \comp_burst.env_down_max_val[15]_i_16_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(3),
+      I1 => env_down_val(3),
+      I2 => env_down_max_val(2),
+      I3 => env_down_val(2),
+      O => \comp_burst.env_down_max_val[15]_i_17_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_max_val(1),
+      I1 => env_down_val(1),
+      I2 => env_down_max_val(0),
+      I3 => env_down_val(0),
+      O => \comp_burst.env_down_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(15),
+      I1 => env_down_max_val(15),
+      I2 => env_down_val(14),
+      I3 => env_down_max_val(14),
+      O => \comp_burst.env_down_max_val[15]_i_3_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(13),
+      I1 => env_down_max_val(13),
+      I2 => env_down_val(12),
+      I3 => env_down_max_val(12),
+      O => \comp_burst.env_down_max_val[15]_i_4_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(11),
+      I1 => env_down_max_val(11),
+      I2 => env_down_val(10),
+      I3 => env_down_max_val(10),
+      O => \comp_burst.env_down_max_val[15]_i_5_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(9),
+      I1 => env_down_max_val(9),
+      I2 => env_down_val(8),
+      I3 => env_down_max_val(8),
+      O => \comp_burst.env_down_max_val[15]_i_6_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(7),
+      I1 => env_down_max_val(7),
+      I2 => env_down_val(6),
+      I3 => env_down_max_val(6),
+      O => \comp_burst.env_down_max_val[15]_i_7_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(5),
+      I1 => env_down_max_val(5),
+      I2 => env_down_val(4),
+      I3 => env_down_max_val(4),
+      O => \comp_burst.env_down_max_val[15]_i_8_n_0\
+    );
+\comp_burst.env_down_max_val[15]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_down_val(3),
+      I1 => env_down_max_val(3),
+      I2 => env_down_val(2),
+      I3 => env_down_max_val(2),
+      O => \comp_burst.env_down_max_val[15]_i_9_n_0\
+    );
+\comp_burst.env_down_max_val[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(1),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(1),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[1]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(2),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(2),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[2]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(3),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(3),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[3]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(4),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(4),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[4]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(5),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(5),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[5]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(6),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(6),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[6]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(7),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(7),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[7]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(8),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(8),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[8]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_down_max_val(9),
+      I1 => scan_start,
+      I2 => env_down_max_ind1,
+      I3 => env_down_val(9),
+      I4 => comp_env,
+      O => \comp_burst.env_down_max_val[9]_i_1_n_0\
+    );
+\comp_burst.env_down_max_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[0]_i_1_n_0\,
+      Q => env_down_max_val(0),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[10]_i_1_n_0\,
+      Q => env_down_max_val(10),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[11]_i_1_n_0\,
+      Q => env_down_max_val(11),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[12]_i_1_n_0\,
+      Q => env_down_max_val(12),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[13]_i_1_n_0\,
+      Q => env_down_max_val(13),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[14]_i_1_n_0\,
+      Q => env_down_max_val(14),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[15]_i_1_n_0\,
+      Q => env_down_max_val(15),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => env_down_max_ind1,
+      CO(6) => \comp_burst.env_down_max_val_reg[15]_i_2_n_1\,
+      CO(5) => \comp_burst.env_down_max_val_reg[15]_i_2_n_2\,
+      CO(4) => \comp_burst.env_down_max_val_reg[15]_i_2_n_3\,
+      CO(3) => \comp_burst.env_down_max_val_reg[15]_i_2_n_4\,
+      CO(2) => \comp_burst.env_down_max_val_reg[15]_i_2_n_5\,
+      CO(1) => \comp_burst.env_down_max_val_reg[15]_i_2_n_6\,
+      CO(0) => \comp_burst.env_down_max_val_reg[15]_i_2_n_7\,
+      DI(7) => \comp_burst.env_down_max_val[15]_i_3_n_0\,
+      DI(6) => \comp_burst.env_down_max_val[15]_i_4_n_0\,
+      DI(5) => \comp_burst.env_down_max_val[15]_i_5_n_0\,
+      DI(4) => \comp_burst.env_down_max_val[15]_i_6_n_0\,
+      DI(3) => \comp_burst.env_down_max_val[15]_i_7_n_0\,
+      DI(2) => \comp_burst.env_down_max_val[15]_i_8_n_0\,
+      DI(1) => \comp_burst.env_down_max_val[15]_i_9_n_0\,
+      DI(0) => \comp_burst.env_down_max_val[15]_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.env_down_max_val_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.env_down_max_val[15]_i_11_n_0\,
+      S(6) => \comp_burst.env_down_max_val[15]_i_12_n_0\,
+      S(5) => \comp_burst.env_down_max_val[15]_i_13_n_0\,
+      S(4) => \comp_burst.env_down_max_val[15]_i_14_n_0\,
+      S(3) => \comp_burst.env_down_max_val[15]_i_15_n_0\,
+      S(2) => \comp_burst.env_down_max_val[15]_i_16_n_0\,
+      S(1) => \comp_burst.env_down_max_val[15]_i_17_n_0\,
+      S(0) => \comp_burst.env_down_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_down_max_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[1]_i_1_n_0\,
+      Q => env_down_max_val(1),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[2]_i_1_n_0\,
+      Q => env_down_max_val(2),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[3]_i_1_n_0\,
+      Q => env_down_max_val(3),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[4]_i_1_n_0\,
+      Q => env_down_max_val(4),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[5]_i_1_n_0\,
+      Q => env_down_max_val(5),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[6]_i_1_n_0\,
+      Q => env_down_max_val(6),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[7]_i_1_n_0\,
+      Q => env_down_max_val(7),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[8]_i_1_n_0\,
+      Q => env_down_max_val(8),
+      R => '0'
+    );
+\comp_burst.env_down_max_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_max_val[9]_i_1_n_0\,
+      Q => env_down_max_val(9),
+      R => '0'
     );
 \comp_burst.env_down_ptr[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"74"
     )
         port map (
-      I0 => env_down_ptr(0),
-      I1 => check_env_down,
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => load_env,
       I2 => curr_size(0),
-      O => \comp_burst.env_down_ptr[0]_i_1_n_0\
+      O => \p_0_in__6\(0)
     );
 \comp_burst.env_down_ptr[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"E22E"
+      INIT => X"909F"
     )
         port map (
-      I0 => curr_size(1),
-      I1 => check_env_down,
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      O => \comp_burst.env_down_ptr[1]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => load_env,
+      I3 => curr_size(1),
+      O => \p_0_in__6\(1)
     );
-\comp_burst.env_down_ptr[2]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.env_down_ptr[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FC03AAAA"
+      INIT => X"A9FFA900A900A9FF"
     )
         port map (
-      I0 => curr_size(2),
-      I1 => env_down_ptr(1),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(2),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[2]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(2),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => load_env,
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \p_0_in__6\(2)
     );
 \comp_burst.env_down_ptr[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFC0003AAAAAAAA"
+      INIT => X"AAA9FFFFAAA90000"
     )
         port map (
-      I0 => curr_size(3),
-      I1 => env_down_ptr(2),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      I4 => env_down_ptr(3),
-      I5 => check_env_down,
-      O => \comp_burst.env_down_ptr[3]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(3),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\,
+      O => \p_0_in__6\(3)
     );
-\comp_burst.env_down_ptr[4]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.env_down_ptr[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"B8B8B8B8B8B8B88B"
     )
         port map (
-      I0 => curr_size(4),
-      I1 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I2 => check_env_down,
-      I3 => env_down_ptr(4),
-      O => \comp_burst.env_down_ptr[4]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\,
+      I1 => load_env,
+      I2 => curr_size(4),
+      I3 => curr_size(3),
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \p_0_in__6\(4)
     );
-\comp_burst.env_down_ptr[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.env_down_ptr[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FC03AAAA"
+      INIT => X"B8"
     )
         port map (
-      I0 => curr_size(5),
-      I1 => env_down_ptr(4),
-      I2 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I3 => env_down_ptr(5),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[5]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\,
+      I1 => load_env,
+      I2 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \p_0_in__6\(5)
     );
-\comp_burst.env_down_ptr[6]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.env_down_ptr[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFC0003AAAAAAAA"
+      INIT => X"6F60"
     )
         port map (
-      I0 => curr_size(6),
-      I1 => env_down_ptr(5),
-      I2 => \comp_burst.env_down_ptr[6]_i_2_n_0\,
-      I3 => env_down_ptr(4),
-      I4 => env_down_ptr(6),
-      I5 => check_env_down,
-      O => \comp_burst.env_down_ptr[6]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(6),
+      I1 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \p_0_in__6\(6)
     );
-\comp_burst.env_down_ptr[6]_i_2\: unisim.vcomponents.LUT4
+\comp_burst.env_down_ptr[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"9A009AFF9AFF9A00"
     )
         port map (
-      I0 => env_down_ptr(2),
-      I1 => env_down_ptr(0),
-      I2 => env_down_ptr(1),
-      I3 => env_down_ptr(3),
-      O => \comp_burst.env_down_ptr[6]_i_2_n_0\
-    );
-\comp_burst.env_down_ptr[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FC03AAAA"
-    )
-        port map (
-      I0 => curr_size(7),
-      I1 => env_down_ptr(6),
-      I2 => \comp_burst.env_down_ptr[8]_i_2_n_0\,
-      I3 => env_down_ptr(7),
-      I4 => check_env_down,
-      O => \comp_burst.env_down_ptr[7]_i_1_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(7),
+      I1 => \comp_burst.env_down_ptr_reg\(6),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => load_env,
+      I4 => curr_size(7),
+      I5 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \p_0_in__6\(7)
     );
 \comp_burst.env_down_ptr[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFCAAAA0003AAAA"
+      INIT => X"AA9AFFFFAA9A0000"
     )
         port map (
-      I0 => curr_size(8),
-      I1 => env_down_ptr(6),
-      I2 => \comp_burst.env_down_ptr[8]_i_2_n_0\,
-      I3 => env_down_ptr(7),
-      I4 => check_env_down,
-      I5 => env_down_ptr(8),
-      O => \comp_burst.env_down_ptr[8]_i_1_n_0\
-    );
-\comp_burst.env_down_ptr[8]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => env_down_ptr(4),
-      I1 => env_down_ptr(2),
-      I2 => env_down_ptr(0),
-      I3 => env_down_ptr(1),
-      I4 => env_down_ptr(3),
-      I5 => env_down_ptr(5),
-      O => \comp_burst.env_down_ptr[8]_i_2_n_0\
+      I0 => \comp_burst.env_down_ptr_reg\(8),
+      I1 => \comp_burst.env_down_ptr_reg\(7),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => \comp_burst.env_down_ptr_reg\(6),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \p_0_in__6\(8)
     );
 \comp_burst.env_down_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[0]_i_1_n_0\,
-      Q => env_down_ptr(0),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(0),
+      Q => \comp_burst.env_down_ptr_reg\(0),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[1]_i_1_n_0\,
-      Q => env_down_ptr(1),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(1),
+      Q => \comp_burst.env_down_ptr_reg\(1),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[2]_i_1_n_0\,
-      Q => env_down_ptr(2),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(2),
+      Q => \comp_burst.env_down_ptr_reg\(2),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[3]_i_1_n_0\,
-      Q => env_down_ptr(3),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(3),
+      Q => \comp_burst.env_down_ptr_reg\(3),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[4]_i_1_n_0\,
-      Q => env_down_ptr(4),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(4),
+      Q => \comp_burst.env_down_ptr_reg\(4),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[5]_i_1_n_0\,
-      Q => env_down_ptr(5),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(5),
+      Q => \comp_burst.env_down_ptr_reg\(5),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[6]_i_1_n_0\,
-      Q => env_down_ptr(6),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(6),
+      Q => \comp_burst.env_down_ptr_reg\(6),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[7]_i_1_n_0\,
-      Q => env_down_ptr(7),
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(7),
+      Q => \comp_burst.env_down_ptr_reg\(7),
       R => '0'
     );
 \comp_burst.env_down_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_down_ptr[8]_i_1_n_0\,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__6\(8),
+      Q => \comp_burst.env_down_ptr_reg\(8),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[0]_i_1_n_0\,
+      Q => env_down_ptr(0),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[1]_i_1_n_0\,
+      Q => env_down_ptr(1),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[2]_i_1_n_0\,
+      Q => env_down_ptr(2),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[3]_i_1_n_0\,
+      Q => env_down_ptr(3),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[4]_i_1_n_0\,
+      Q => env_down_ptr(4),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[5]_i_1_n_0\,
+      Q => env_down_ptr(5),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[6]_i_1_n_0\,
+      Q => env_down_ptr(6),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[7]_i_1_n_0\,
+      Q => env_down_ptr(7),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\,
+      D => \comp_burst.env_down_ptr_rep[8]_i_2_n_0\,
       Q => env_down_ptr(8),
+      R => '0'
+    );
+\comp_burst.env_down_ptr_rep[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"74"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => load_env,
+      I2 => curr_size(0),
+      O => \comp_burst.env_down_ptr_rep[0]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"909F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(0),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => load_env,
+      I3 => curr_size(1),
+      O => \comp_burst.env_down_ptr_rep[1]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A9FFA900A900A9FF"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(2),
+      I1 => \comp_burst.env_down_ptr_reg\(1),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => load_env,
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \comp_burst.env_down_ptr_rep[2]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAA9FFFFAAA90000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(3),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[3]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[3]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"A9"
+    )
+        port map (
+      I0 => curr_size(3),
+      I1 => curr_size(2),
+      I2 => curr_size(1),
+      O => \comp_burst.env_down_ptr_rep[3]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"B8B8B8B8B8B8B88B"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\,
+      I1 => load_env,
+      I2 => curr_size(4),
+      I3 => curr_size(3),
+      I4 => curr_size(1),
+      I5 => curr_size(2),
+      O => \comp_burst.env_down_ptr_rep[4]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[4]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAAAA9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(4),
+      I1 => \comp_burst.env_down_ptr_reg\(3),
+      I2 => \comp_burst.env_down_ptr_reg\(1),
+      I3 => \comp_burst.env_down_ptr_reg\(0),
+      I4 => \comp_burst.env_down_ptr_reg\(2),
+      O => \comp_burst.env_down_ptr_rep[4]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\,
+      I1 => load_env,
+      I2 => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\,
+      O => \comp_burst.env_down_ptr_rep[5]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAAAAAAAA9"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(5),
+      I1 => \comp_burst.env_down_ptr_reg\(4),
+      I2 => \comp_burst.env_down_ptr_reg\(2),
+      I3 => \comp_burst.env_down_ptr_reg\(0),
+      I4 => \comp_burst.env_down_ptr_reg\(1),
+      I5 => \comp_burst.env_down_ptr_reg\(3),
+      O => \comp_burst.env_down_ptr_rep[5]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[5]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAAAA9"
+    )
+        port map (
+      I0 => curr_size(5),
+      I1 => curr_size(4),
+      I2 => curr_size(2),
+      I3 => curr_size(1),
+      I4 => curr_size(3),
+      O => \comp_burst.env_down_ptr_rep[5]_i_3_n_0\
+    );
+\comp_burst.env_down_ptr_rep[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6F60"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(6),
+      I1 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I2 => load_env,
+      I3 => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[6]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAAAAAAAA9"
+    )
+        port map (
+      I0 => curr_size(6),
+      I1 => curr_size(5),
+      I2 => curr_size(3),
+      I3 => curr_size(1),
+      I4 => curr_size(2),
+      I5 => curr_size(4),
+      O => \comp_burst.env_down_ptr_rep[6]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9A009AFF9AFF9A00"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(7),
+      I1 => \comp_burst.env_down_ptr_reg\(6),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => load_env,
+      I4 => curr_size(7),
+      I5 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[7]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => curr_size(5),
+      I1 => curr_size(3),
+      I2 => curr_size(1),
+      I3 => curr_size(2),
+      I4 => curr_size(4),
+      I5 => curr_size(6),
+      O => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"4F"
+    )
+        port map (
+      I0 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I1 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I2 => load_env,
+      O => \comp_burst.env_down_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA9AFFFFAA9A0000"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(8),
+      I1 => \comp_burst.env_down_ptr_reg\(7),
+      I2 => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\,
+      I3 => \comp_burst.env_down_ptr_reg\(6),
+      I4 => load_env,
+      I5 => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_down_ptr_rep[8]_i_2_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => \comp_burst.env_down_ptr_reg\(4),
+      I1 => \comp_burst.env_down_ptr_reg\(2),
+      I2 => \comp_burst.env_down_ptr_reg\(0),
+      I3 => \comp_burst.env_down_ptr_reg\(1),
+      I4 => \comp_burst.env_down_ptr_reg\(3),
+      I5 => \comp_burst.env_down_ptr_reg\(5),
+      O => \comp_burst.env_down_ptr_rep[8]_i_3_n_0\
+    );
+\comp_burst.env_down_ptr_rep[8]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"9A"
+    )
+        port map (
+      I0 => curr_size(8),
+      I1 => curr_size(7),
+      I2 => \comp_burst.env_down_ptr_rep[7]_i_2_n_0\,
+      O => \comp_burst.env_down_ptr_rep[8]_i_4_n_0\
+    );
+\comp_burst.env_down_val[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_99\,
+      I1 => \comp_burst.mem_env_down_reg_n_83\,
+      I2 => env_down_3(0),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(0),
+      O => \comp_burst.env_down_val[0]_i_1_n_0\
+    );
+\comp_burst.env_down_val[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_89\,
+      I1 => \comp_burst.mem_env_down_reg_n_73\,
+      I2 => env_down_2(10),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(10),
+      O => \comp_burst.env_down_val[10]_i_1_n_0\
+    );
+\comp_burst.env_down_val[11]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_88\,
+      I1 => \comp_burst.mem_env_down_reg_n_72\,
+      I2 => env_down_2(11),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(11),
+      O => \comp_burst.env_down_val[11]_i_1_n_0\
+    );
+\comp_burst.env_down_val[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_71\,
+      I1 => env_down_2(12),
+      I2 => \comp_burst.mem_env_down_reg_n_87\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(12),
+      O => \comp_burst.env_down_val[12]_i_1_n_0\
+    );
+\comp_burst.env_down_val[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_70\,
+      I1 => env_down_2(13),
+      I2 => \comp_burst.mem_env_down_reg_n_86\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(13),
+      O => \comp_burst.env_down_val[13]_i_1_n_0\
+    );
+\comp_burst.env_down_val[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_85\,
+      I1 => \comp_burst.mem_env_down_reg_n_69\,
+      I2 => env_down_2(14),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(14),
+      O => \comp_burst.env_down_val[14]_i_1_n_0\
+    );
+\comp_burst.env_down_val[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_84\,
+      I1 => \comp_burst.mem_env_down_reg_n_68\,
+      I2 => env_down_3(15),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(15),
+      O => \comp_burst.env_down_val[15]_i_1_n_0\
+    );
+\comp_burst.env_down_val[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_98\,
+      I1 => \comp_burst.mem_env_down_reg_n_82\,
+      I2 => env_down_3(1),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(1),
+      O => \comp_burst.env_down_val[1]_i_1_n_0\
+    );
+\comp_burst.env_down_val[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_97\,
+      I1 => \comp_burst.mem_env_down_reg_n_81\,
+      I2 => env_down_2(2),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(2),
+      O => \comp_burst.env_down_val[2]_i_1_n_0\
+    );
+\comp_burst.env_down_val[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_96\,
+      I1 => \comp_burst.mem_env_down_reg_n_80\,
+      I2 => env_down_2(3),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(3),
+      O => \comp_burst.env_down_val[3]_i_1_n_0\
+    );
+\comp_burst.env_down_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_79\,
+      I1 => env_down_2(4),
+      I2 => \comp_burst.mem_env_down_reg_n_95\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(4),
+      O => \comp_burst.env_down_val[4]_i_1_n_0\
+    );
+\comp_burst.env_down_val[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_78\,
+      I1 => env_down_2(5),
+      I2 => \comp_burst.mem_env_down_reg_n_94\,
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(5),
+      O => \comp_burst.env_down_val[5]_i_1_n_0\
+    );
+\comp_burst.env_down_val[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFCCF0AA00CCF0AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_93\,
+      I1 => \comp_burst.mem_env_down_reg_n_77\,
+      I2 => env_down_2(6),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_3(6),
+      O => \comp_burst.env_down_val[6]_i_1_n_0\
+    );
+\comp_burst.env_down_val[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_92\,
+      I1 => \comp_burst.mem_env_down_reg_n_76\,
+      I2 => env_down_3(7),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(7),
+      O => \comp_burst.env_down_val[7]_i_1_n_0\
+    );
+\comp_burst.env_down_val[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_91\,
+      I1 => \comp_burst.mem_env_down_reg_n_75\,
+      I2 => env_down_3(8),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(8),
+      O => \comp_burst.env_down_val[8]_i_1_n_0\
+    );
+\comp_burst.env_down_val[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_down_reg_n_90\,
+      I1 => \comp_burst.mem_env_down_reg_n_74\,
+      I2 => env_down_3(9),
+      I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
+      I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
+      I5 => env_down_2(9),
+      O => \comp_burst.env_down_val[9]_i_1_n_0\
+    );
+\comp_burst.env_down_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[0]_i_1_n_0\,
+      Q => env_down_val(0),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[10]_i_1_n_0\,
+      Q => env_down_val(10),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[11]_i_1_n_0\,
+      Q => env_down_val(11),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[12]_i_1_n_0\,
+      Q => env_down_val(12),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[13]_i_1_n_0\,
+      Q => env_down_val(13),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[14]_i_1_n_0\,
+      Q => env_down_val(14),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[15]_i_1_n_0\,
+      Q => env_down_val(15),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[1]_i_1_n_0\,
+      Q => env_down_val(1),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[2]_i_1_n_0\,
+      Q => env_down_val(2),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[3]_i_1_n_0\,
+      Q => env_down_val(3),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[4]_i_1_n_0\,
+      Q => env_down_val(4),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[5]_i_1_n_0\,
+      Q => env_down_val(5),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[6]_i_1_n_0\,
+      Q => env_down_val(6),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[7]_i_1_n_0\,
+      Q => env_down_val(7),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[8]_i_1_n_0\,
+      Q => env_down_val(8),
+      R => '0'
+    );
+\comp_burst.env_down_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_down_val[9]_i_1_n_0\,
+      Q => env_down_val(9),
+      R => '0'
+    );
+\comp_burst.env_end_ind[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(0),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(0),
+      O => \comp_burst.env_end_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(10),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(10),
+      O => \comp_burst.env_end_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(1),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(1),
+      O => \comp_burst.env_end_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(2),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(2),
+      O => \comp_burst.env_end_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(3),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(3),
+      O => \comp_burst.env_end_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(4),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(4),
+      O => \comp_burst.env_end_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(5),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(5),
+      O => \comp_burst.env_end_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(6),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(6),
+      O => \comp_burst.env_end_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(7),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(7),
+      O => \comp_burst.env_end_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(8),
+      O => \comp_burst.env_end_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_end_ind[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFF2000"
+    )
+        port map (
+      I0 => env_down_ind(9),
+      I1 => scan_start,
+      I2 => run_env_end0,
+      I3 => run_env_end,
+      I4 => env_end_ind(9),
+      O => \comp_burst.env_end_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_end_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[0]_i_1_n_0\,
+      Q => env_end_ind(0),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[10]_i_1_n_0\,
+      Q => env_end_ind(10),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[1]_i_1_n_0\,
+      Q => env_end_ind(1),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[2]_i_1_n_0\,
+      Q => env_end_ind(2),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[3]_i_1_n_0\,
+      Q => env_end_ind(3),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[4]_i_1_n_0\,
+      Q => env_end_ind(4),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[5]_i_1_n_0\,
+      Q => env_end_ind(5),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[6]_i_1_n_0\,
+      Q => env_end_ind(6),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[7]_i_1_n_0\,
+      Q => env_end_ind(7),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[8]_i_1_n_0\,
+      Q => env_end_ind(8),
+      R => '0'
+    );
+\comp_burst.env_end_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_end_ind[9]_i_1_n_0\,
+      Q => env_end_ind(9),
       R => '0'
     );
 \comp_burst.env_in_reg[0]\: unisim.vcomponents.FDRE
@@ -7299,1019 +14857,1987 @@ begin
       Q => env_in(9),
       R => '0'
     );
-\comp_burst.env_up_diff_0[15]_i_10\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(8),
-      I1 => env_up_0(8),
-      O => \comp_burst.env_up_diff_0[15]_i_10_n_0\
+      I0 => env_start_ind(0),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(0),
+      O => \comp_burst.env_start_ind[0]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_11\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"E"
     )
         port map (
-      I0 => min_env(7),
-      I1 => env_up_0(7),
-      O => \comp_burst.env_up_diff_0[15]_i_11_n_0\
+      I0 => comp_env,
+      I1 => scan_start,
+      O => \comp_burst.env_start_ind[10]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_12\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[10]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(6),
-      I1 => env_up_0(6),
-      O => \comp_burst.env_up_diff_0[15]_i_12_n_0\
+      I0 => env_start_ind(10),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(10),
+      O => \comp_burst.env_start_ind[10]_i_2_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_13\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(5),
-      I1 => env_up_0(5),
-      O => \comp_burst.env_up_diff_0[15]_i_13_n_0\
+      I0 => env_start_ind(1),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(1),
+      O => \comp_burst.env_start_ind[1]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_14\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(4),
-      I1 => env_up_0(4),
-      O => \comp_burst.env_up_diff_0[15]_i_14_n_0\
+      I0 => env_start_ind(2),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(2),
+      O => \comp_burst.env_start_ind[2]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_15\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(3),
-      I1 => env_up_0(3),
-      O => \comp_burst.env_up_diff_0[15]_i_15_n_0\
+      I0 => env_start_ind(3),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(3),
+      O => \comp_burst.env_start_ind[3]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_16\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(2),
-      I1 => env_up_0(2),
-      O => \comp_burst.env_up_diff_0[15]_i_16_n_0\
+      I0 => env_start_ind(4),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(4),
+      O => \comp_burst.env_start_ind[4]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_17\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(1),
-      I1 => env_up_0(1),
-      O => \comp_burst.env_up_diff_0[15]_i_17_n_0\
+      I0 => env_start_ind(5),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(5),
+      O => \comp_burst.env_start_ind[5]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_18\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(0),
-      I1 => env_up_0(0),
-      O => \comp_burst.env_up_diff_0[15]_i_18_n_0\
+      I0 => env_start_ind(6),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(6),
+      O => \comp_burst.env_start_ind[6]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_3\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(15),
-      I1 => env_up_0(15),
-      O => \comp_burst.env_up_diff_0[15]_i_3_n_0\
+      I0 => env_start_ind(7),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(7),
+      O => \comp_burst.env_start_ind[7]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_4\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(14),
-      I1 => env_up_0(14),
-      O => \comp_burst.env_up_diff_0[15]_i_4_n_0\
+      I0 => env_start_ind(8),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(8),
+      O => \comp_burst.env_start_ind[8]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_5\: unisim.vcomponents.LUT2
+\comp_burst.env_start_ind[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9"
+      INIT => X"BAAA8AAA"
     )
         port map (
-      I0 => min_env(13),
-      I1 => env_up_0(13),
-      O => \comp_burst.env_up_diff_0[15]_i_5_n_0\
+      I0 => env_start_ind(9),
+      I1 => scan_start,
+      I2 => run_env_start0,
+      I3 => run_env_start,
+      I4 => env_up_ind(9),
+      O => \comp_burst.env_start_ind[9]_i_1_n_0\
     );
-\comp_burst.env_up_diff_0[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_0(12),
-      O => \comp_burst.env_up_diff_0[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_0(11),
-      O => \comp_burst.env_up_diff_0[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_0(10),
-      O => \comp_burst.env_up_diff_0[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_0[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_0(9),
-      O => \comp_burst.env_up_diff_0[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_0_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_007_out(15),
-      Q => env_up_bits(0),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[0]_i_1_n_0\,
+      Q => env_start_ind(0),
       R => '0'
     );
-\comp_burst.env_up_diff_0_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_0_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_007_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_0[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_0[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_0[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_0[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_0[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_0[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_0[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_0[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_0_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_0_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_0_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_0[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_0[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_0[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_0[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_0[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_0[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_0[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_0[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_1(8),
-      O => \comp_burst.env_up_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_1(7),
-      O => \comp_burst.env_up_diff_1[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_1(6),
-      O => \comp_burst.env_up_diff_1[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_1(5),
-      O => \comp_burst.env_up_diff_1[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_1(4),
-      O => \comp_burst.env_up_diff_1[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_1(3),
-      O => \comp_burst.env_up_diff_1[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_1(2),
-      O => \comp_burst.env_up_diff_1[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_1(1),
-      O => \comp_burst.env_up_diff_1[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_1(0),
-      O => \comp_burst.env_up_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_1(15),
-      O => \comp_burst.env_up_diff_1[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_1(14),
-      O => \comp_burst.env_up_diff_1[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_1(13),
-      O => \comp_burst.env_up_diff_1[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_1(12),
-      O => \comp_burst.env_up_diff_1[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_1(11),
-      O => \comp_burst.env_up_diff_1[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_1(10),
-      O => \comp_burst.env_up_diff_1[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_1[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_1(9),
-      O => \comp_burst.env_up_diff_1[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_1_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_106_out(15),
-      Q => env_up_bits(1),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[10]_i_2_n_0\,
+      Q => env_start_ind(10),
       R => '0'
     );
-\comp_burst.env_up_diff_1_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_1_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_106_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_1[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_1[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_1[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_1[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_1[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_1[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_1[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_1[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_1_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_1_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_1_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_1[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_1[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_1[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_1[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_1[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_1[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_1[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_1[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_2(8),
-      O => \comp_burst.env_up_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_2(7),
-      O => \comp_burst.env_up_diff_2[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_2(6),
-      O => \comp_burst.env_up_diff_2[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_2(5),
-      O => \comp_burst.env_up_diff_2[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_2(4),
-      O => \comp_burst.env_up_diff_2[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_2(3),
-      O => \comp_burst.env_up_diff_2[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_2(2),
-      O => \comp_burst.env_up_diff_2[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_2(1),
-      O => \comp_burst.env_up_diff_2[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_2(0),
-      O => \comp_burst.env_up_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_2(15),
-      O => \comp_burst.env_up_diff_2[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_2(14),
-      O => \comp_burst.env_up_diff_2[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_2(13),
-      O => \comp_burst.env_up_diff_2[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_2(12),
-      O => \comp_burst.env_up_diff_2[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_2(11),
-      O => \comp_burst.env_up_diff_2[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_2(10),
-      O => \comp_burst.env_up_diff_2[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_2[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_2(9),
-      O => \comp_burst.env_up_diff_2[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_2_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_205_out(15),
-      Q => env_up_bits(2),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[1]_i_1_n_0\,
+      Q => env_start_ind(1),
       R => '0'
     );
-\comp_burst.env_up_diff_2_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_2_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_205_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_2[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_2[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_2[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_2[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_2[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_2[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_2[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_2[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_2_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_2_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_2_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_2[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_2[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_2[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_2[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_2[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_2[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_2[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_2[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_10\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(8),
-      I1 => env_up_3(8),
-      O => \comp_burst.env_up_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_11\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(7),
-      I1 => env_up_3(7),
-      O => \comp_burst.env_up_diff_3[15]_i_11_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(6),
-      I1 => env_up_3(6),
-      O => \comp_burst.env_up_diff_3[15]_i_12_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_13\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(5),
-      I1 => env_up_3(5),
-      O => \comp_burst.env_up_diff_3[15]_i_13_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_14\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(4),
-      I1 => env_up_3(4),
-      O => \comp_burst.env_up_diff_3[15]_i_14_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_15\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(3),
-      I1 => env_up_3(3),
-      O => \comp_burst.env_up_diff_3[15]_i_15_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_16\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(2),
-      I1 => env_up_3(2),
-      O => \comp_burst.env_up_diff_3[15]_i_16_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_17\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(1),
-      I1 => env_up_3(1),
-      O => \comp_burst.env_up_diff_3[15]_i_17_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_18\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(0),
-      I1 => env_up_3(0),
-      O => \comp_burst.env_up_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(15),
-      I1 => env_up_3(15),
-      O => \comp_burst.env_up_diff_3[15]_i_3_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(14),
-      I1 => env_up_3(14),
-      O => \comp_burst.env_up_diff_3[15]_i_4_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(13),
-      I1 => env_up_3(13),
-      O => \comp_burst.env_up_diff_3[15]_i_5_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(12),
-      I1 => env_up_3(12),
-      O => \comp_burst.env_up_diff_3[15]_i_6_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(11),
-      I1 => env_up_3(11),
-      O => \comp_burst.env_up_diff_3[15]_i_7_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(10),
-      I1 => env_up_3(10),
-      O => \comp_burst.env_up_diff_3[15]_i_8_n_0\
-    );
-\comp_burst.env_up_diff_3[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => min_env(9),
-      I1 => env_up_3(9),
-      O => \comp_burst.env_up_diff_3[15]_i_9_n_0\
-    );
-\comp_burst.env_up_diff_3_reg[15]\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => env_up_diff_304_out(15),
-      Q => env_up_bits(3),
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[2]_i_1_n_0\,
+      Q => env_start_ind(2),
       R => '0'
     );
-\comp_burst.env_up_diff_3_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\,
-      CI_TOP => '0',
-      CO(7) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_CO_UNCONNECTED\(7),
-      CO(6) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.env_up_diff_3_reg[15]_i_1_n_7\,
-      DI(7) => '0',
-      DI(6 downto 0) => min_env(14 downto 8),
-      O(7) => env_up_diff_304_out(15),
-      O(6 downto 0) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_1_O_UNCONNECTED\(6 downto 0),
-      S(7) => \comp_burst.env_up_diff_3[15]_i_3_n_0\,
-      S(6) => \comp_burst.env_up_diff_3[15]_i_4_n_0\,
-      S(5) => \comp_burst.env_up_diff_3[15]_i_5_n_0\,
-      S(4) => \comp_burst.env_up_diff_3[15]_i_6_n_0\,
-      S(3) => \comp_burst.env_up_diff_3[15]_i_7_n_0\,
-      S(2) => \comp_burst.env_up_diff_3[15]_i_8_n_0\,
-      S(1) => \comp_burst.env_up_diff_3[15]_i_9_n_0\,
-      S(0) => \comp_burst.env_up_diff_3[15]_i_10_n_0\
-    );
-\comp_burst.env_up_diff_3_reg[15]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_0\,
-      CO(6) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_1\,
-      CO(5) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_2\,
-      CO(4) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_3\,
-      CO(3) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_4\,
-      CO(2) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_5\,
-      CO(1) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_6\,
-      CO(0) => \comp_burst.env_up_diff_3_reg[15]_i_2_n_7\,
-      DI(7 downto 0) => min_env(7 downto 0),
-      O(7 downto 0) => \NLW_comp_burst.env_up_diff_3_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_up_diff_3[15]_i_11_n_0\,
-      S(6) => \comp_burst.env_up_diff_3[15]_i_12_n_0\,
-      S(5) => \comp_burst.env_up_diff_3[15]_i_13_n_0\,
-      S(4) => \comp_burst.env_up_diff_3[15]_i_14_n_0\,
-      S(3) => \comp_burst.env_up_diff_3[15]_i_15_n_0\,
-      S(2) => \comp_burst.env_up_diff_3[15]_i_16_n_0\,
-      S(1) => \comp_burst.env_up_diff_3[15]_i_17_n_0\,
-      S(0) => \comp_burst.env_up_diff_3[15]_i_18_n_0\
-    );
-\comp_burst.env_up_done_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => env_up_bits(1),
-      I1 => env_up_bits(0),
-      I2 => env_up_bits(3),
-      I3 => env_up_bits(2),
-      O => \comp_burst.env_up_done_i_1_n_0\
-    );
-\comp_burst.env_up_done_reg\: unisim.vcomponents.FDRE
+\comp_burst.env_start_ind_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_done_i_1_n_0\,
-      Q => env_up_done,
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[3]_i_1_n_0\,
+      Q => env_start_ind(3),
+      R => '0'
     );
-\comp_burst.env_up_ptr[0]_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_start_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[4]_i_1_n_0\,
+      Q => env_start_ind(4),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[5]_i_1_n_0\,
+      Q => env_start_ind(5),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[6]_i_1_n_0\,
+      Q => env_start_ind(6),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[7]_i_1_n_0\,
+      Q => env_start_ind(7),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[8]_i_1_n_0\,
+      Q => env_start_ind(8),
+      R => '0'
+    );
+\comp_burst.env_start_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_start_ind[9]_i_1_n_0\,
+      Q => env_start_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => env_up_ptr(0),
-      O => \comp_burst.env_up_ptr[0]_i_1_n_0\
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      O => \p_0_in__1\(0)
+    );
+\comp_burst.env_up_adr[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(10),
+      I1 => \comp_burst.env_up_adr_reg__0\(8),
+      I2 => \comp_burst.env_up_adr_reg__0\(6),
+      I3 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I4 => \comp_burst.env_up_adr_reg__0\(7),
+      I5 => \comp_burst.env_up_adr_reg__0\(9),
+      O => \p_0_in__1\(10)
+    );
+\comp_burst.env_up_adr[10]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(5),
+      I1 => \comp_burst.env_up_adr_reg__0\(3),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg__0\(2),
+      I5 => \comp_burst.env_up_adr_reg__0\(4),
+      O => \comp_burst.env_up_adr[10]_i_2_n_0\
+    );
+\comp_burst.env_up_adr[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      O => \p_0_in__1\(1)
+    );
+\comp_burst.env_up_adr[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(2),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      O => \p_0_in__1\(2)
+    );
+\comp_burst.env_up_adr[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(3),
+      I1 => \comp_burst.env_up_adr_reg\(0),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg__0\(2),
+      O => \p_0_in__1\(3)
+    );
+\comp_burst.env_up_adr[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(4),
+      I1 => \comp_burst.env_up_adr_reg__0\(2),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg__0\(3),
+      O => \p_0_in__1\(4)
+    );
+\comp_burst.env_up_adr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(5),
+      I1 => \comp_burst.env_up_adr_reg__0\(3),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg__0\(2),
+      I5 => \comp_burst.env_up_adr_reg__0\(4),
+      O => \p_0_in__1\(5)
+    );
+\comp_burst.env_up_adr[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(6),
+      I1 => \comp_burst.env_up_adr_reg__0\(4),
+      I2 => \comp_burst.env_up_adr_reg__0\(2),
+      I3 => \comp_burst.env_up_adr[6]_i_2_n_0\,
+      I4 => \comp_burst.env_up_adr_reg__0\(3),
+      I5 => \comp_burst.env_up_adr_reg__0\(5),
+      O => \p_0_in__1\(6)
+    );
+\comp_burst.env_up_adr[6]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      O => \comp_burst.env_up_adr[6]_i_2_n_0\
+    );
+\comp_burst.env_up_adr[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(7),
+      I1 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I2 => \comp_burst.env_up_adr_reg__0\(6),
+      O => \p_0_in__1\(7)
+    );
+\comp_burst.env_up_adr[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(8),
+      I1 => \comp_burst.env_up_adr_reg__0\(6),
+      I2 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I3 => \comp_burst.env_up_adr_reg__0\(7),
+      O => \p_0_in__1\(8)
+    );
+\comp_burst.env_up_adr[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg__0\(9),
+      I1 => \comp_burst.env_up_adr_reg__0\(7),
+      I2 => \comp_burst.env_up_adr[10]_i_2_n_0\,
+      I3 => \comp_burst.env_up_adr_reg__0\(6),
+      I4 => \comp_burst.env_up_adr_reg__0\(8),
+      O => \p_0_in__1\(9)
+    );
+\comp_burst.env_up_adr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(0),
+      Q => \comp_burst.env_up_adr_reg\(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(10),
+      Q => \comp_burst.env_up_adr_reg__0\(10),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(1),
+      Q => \comp_burst.env_up_adr_reg\(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(2),
+      Q => \comp_burst.env_up_adr_reg__0\(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(3),
+      Q => \comp_burst.env_up_adr_reg__0\(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(4),
+      Q => \comp_burst.env_up_adr_reg__0\(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(5),
+      Q => \comp_burst.env_up_adr_reg__0\(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(6),
+      Q => \comp_burst.env_up_adr_reg__0\(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(7),
+      Q => \comp_burst.env_up_adr_reg__0\(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(8),
+      Q => \comp_burst.env_up_adr_reg__0\(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_adr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \p_0_in__1\(9),
+      Q => \comp_burst.env_up_adr_reg__0\(9),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg\(0),
+      Q => env_up_ind(0),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(10),
+      Q => env_up_ind(10),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg\(1),
+      Q => env_up_ind(1),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(2),
+      Q => env_up_ind(2),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(3),
+      Q => env_up_ind(3),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(4),
+      Q => env_up_ind(4),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(5),
+      Q => env_up_ind(5),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(6),
+      Q => env_up_ind(6),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(7),
+      Q => env_up_ind(7),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(8),
+      Q => env_up_ind(8),
+      R => '0'
+    );
+\comp_burst.env_up_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_adr_reg__0\(9),
+      Q => env_up_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(0),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(0),
+      O => \comp_burst.env_up_max_ind[0]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[10]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(10),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(10),
+      O => \comp_burst.env_up_max_ind[10]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(1),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(1),
+      O => \comp_burst.env_up_max_ind[1]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(2),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(2),
+      O => \comp_burst.env_up_max_ind[2]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(3),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(3),
+      O => \comp_burst.env_up_max_ind[3]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(4),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(4),
+      O => \comp_burst.env_up_max_ind[4]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(5),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(5),
+      O => \comp_burst.env_up_max_ind[5]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(6),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(6),
+      O => \comp_burst.env_up_max_ind[6]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(7),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(7),
+      O => \comp_burst.env_up_max_ind[7]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(8),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(8),
+      O => \comp_burst.env_up_max_ind[8]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FB08"
+    )
+        port map (
+      I0 => env_up_ind(9),
+      I1 => env_up_max_ind1,
+      I2 => scan_start,
+      I3 => env_up_max_ind(9),
+      O => \comp_burst.env_up_max_ind[9]_i_1_n_0\
+    );
+\comp_burst.env_up_max_ind_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[0]_i_1_n_0\,
+      Q => env_up_max_ind(0),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[10]_i_1_n_0\,
+      Q => env_up_max_ind(10),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[1]_i_1_n_0\,
+      Q => env_up_max_ind(1),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[2]_i_1_n_0\,
+      Q => env_up_max_ind(2),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[3]_i_1_n_0\,
+      Q => env_up_max_ind(3),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[4]_i_1_n_0\,
+      Q => env_up_max_ind(4),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[5]_i_1_n_0\,
+      Q => env_up_max_ind(5),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[6]_i_1_n_0\,
+      Q => env_up_max_ind(6),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[7]_i_1_n_0\,
+      Q => env_up_max_ind(7),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[8]_i_1_n_0\,
+      Q => env_up_max_ind(8),
+      R => '0'
+    );
+\comp_burst.env_up_max_ind_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_start_ind[10]_i_1_n_0\,
+      D => \comp_burst.env_up_max_ind[9]_i_1_n_0\,
+      Q => env_up_max_ind(9),
+      R => '0'
+    );
+\comp_burst.env_up_max_val[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(0),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(0),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[0]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(10),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(10),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[10]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(11),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(11),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[11]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[12]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(12),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(12),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[12]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[13]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(13),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(13),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[13]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(14),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(14),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[14]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(15),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(15),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[15]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(1),
+      I1 => env_up_max_val(1),
+      I2 => env_up_val(0),
+      I3 => env_up_max_val(0),
+      O => \comp_burst.env_up_max_val[15]_i_10_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(15),
+      I1 => env_up_val(15),
+      I2 => env_up_max_val(14),
+      I3 => env_up_val(14),
+      O => \comp_burst.env_up_max_val[15]_i_11_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(13),
+      I1 => env_up_val(13),
+      I2 => env_up_max_val(12),
+      I3 => env_up_val(12),
+      O => \comp_burst.env_up_max_val[15]_i_12_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(11),
+      I1 => env_up_val(11),
+      I2 => env_up_max_val(10),
+      I3 => env_up_val(10),
+      O => \comp_burst.env_up_max_val[15]_i_13_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(9),
+      I1 => env_up_val(9),
+      I2 => env_up_max_val(8),
+      I3 => env_up_val(8),
+      O => \comp_burst.env_up_max_val[15]_i_14_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(7),
+      I1 => env_up_val(7),
+      I2 => env_up_max_val(6),
+      I3 => env_up_val(6),
+      O => \comp_burst.env_up_max_val[15]_i_15_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(5),
+      I1 => env_up_val(5),
+      I2 => env_up_max_val(4),
+      I3 => env_up_val(4),
+      O => \comp_burst.env_up_max_val[15]_i_16_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(3),
+      I1 => env_up_val(3),
+      I2 => env_up_max_val(2),
+      I3 => env_up_val(2),
+      O => \comp_burst.env_up_max_val[15]_i_17_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_up_max_val(1),
+      I1 => env_up_val(1),
+      I2 => env_up_max_val(0),
+      I3 => env_up_val(0),
+      O => \comp_burst.env_up_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(15),
+      I1 => env_up_max_val(15),
+      I2 => env_up_val(14),
+      I3 => env_up_max_val(14),
+      O => \comp_burst.env_up_max_val[15]_i_3_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(13),
+      I1 => env_up_max_val(13),
+      I2 => env_up_val(12),
+      I3 => env_up_max_val(12),
+      O => \comp_burst.env_up_max_val[15]_i_4_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(11),
+      I1 => env_up_max_val(11),
+      I2 => env_up_val(10),
+      I3 => env_up_max_val(10),
+      O => \comp_burst.env_up_max_val[15]_i_5_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(9),
+      I1 => env_up_max_val(9),
+      I2 => env_up_val(8),
+      I3 => env_up_max_val(8),
+      O => \comp_burst.env_up_max_val[15]_i_6_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(7),
+      I1 => env_up_max_val(7),
+      I2 => env_up_val(6),
+      I3 => env_up_max_val(6),
+      O => \comp_burst.env_up_max_val[15]_i_7_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(5),
+      I1 => env_up_max_val(5),
+      I2 => env_up_val(4),
+      I3 => env_up_max_val(4),
+      O => \comp_burst.env_up_max_val[15]_i_8_n_0\
+    );
+\comp_burst.env_up_max_val[15]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(3),
+      I1 => env_up_max_val(3),
+      I2 => env_up_val(2),
+      I3 => env_up_max_val(2),
+      O => \comp_burst.env_up_max_val[15]_i_9_n_0\
+    );
+\comp_burst.env_up_max_val[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(1),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(1),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[1]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(2),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(2),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[2]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[3]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(3),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(3),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[3]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(4),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(4),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[4]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(5),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(5),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[5]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(6),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(6),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[6]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(7),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(7),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[7]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(8),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(8),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[8]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"BA8A8888"
+    )
+        port map (
+      I0 => env_up_max_val(9),
+      I1 => scan_start,
+      I2 => env_up_max_ind1,
+      I3 => env_up_val(9),
+      I4 => comp_env,
+      O => \comp_burst.env_up_max_val[9]_i_1_n_0\
+    );
+\comp_burst.env_up_max_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[0]_i_1_n_0\,
+      Q => env_up_max_val(0),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[10]_i_1_n_0\,
+      Q => env_up_max_val(10),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[11]_i_1_n_0\,
+      Q => env_up_max_val(11),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[12]_i_1_n_0\,
+      Q => env_up_max_val(12),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[13]_i_1_n_0\,
+      Q => env_up_max_val(13),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[14]_i_1_n_0\,
+      Q => env_up_max_val(14),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[15]_i_1_n_0\,
+      Q => env_up_max_val(15),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[15]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => env_up_max_ind1,
+      CO(6) => \comp_burst.env_up_max_val_reg[15]_i_2_n_1\,
+      CO(5) => \comp_burst.env_up_max_val_reg[15]_i_2_n_2\,
+      CO(4) => \comp_burst.env_up_max_val_reg[15]_i_2_n_3\,
+      CO(3) => \comp_burst.env_up_max_val_reg[15]_i_2_n_4\,
+      CO(2) => \comp_burst.env_up_max_val_reg[15]_i_2_n_5\,
+      CO(1) => \comp_burst.env_up_max_val_reg[15]_i_2_n_6\,
+      CO(0) => \comp_burst.env_up_max_val_reg[15]_i_2_n_7\,
+      DI(7) => \comp_burst.env_up_max_val[15]_i_3_n_0\,
+      DI(6) => \comp_burst.env_up_max_val[15]_i_4_n_0\,
+      DI(5) => \comp_burst.env_up_max_val[15]_i_5_n_0\,
+      DI(4) => \comp_burst.env_up_max_val[15]_i_6_n_0\,
+      DI(3) => \comp_burst.env_up_max_val[15]_i_7_n_0\,
+      DI(2) => \comp_burst.env_up_max_val[15]_i_8_n_0\,
+      DI(1) => \comp_burst.env_up_max_val[15]_i_9_n_0\,
+      DI(0) => \comp_burst.env_up_max_val[15]_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.env_up_max_val_reg[15]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.env_up_max_val[15]_i_11_n_0\,
+      S(6) => \comp_burst.env_up_max_val[15]_i_12_n_0\,
+      S(5) => \comp_burst.env_up_max_val[15]_i_13_n_0\,
+      S(4) => \comp_burst.env_up_max_val[15]_i_14_n_0\,
+      S(3) => \comp_burst.env_up_max_val[15]_i_15_n_0\,
+      S(2) => \comp_burst.env_up_max_val[15]_i_16_n_0\,
+      S(1) => \comp_burst.env_up_max_val[15]_i_17_n_0\,
+      S(0) => \comp_burst.env_up_max_val[15]_i_18_n_0\
+    );
+\comp_burst.env_up_max_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[1]_i_1_n_0\,
+      Q => env_up_max_val(1),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[2]_i_1_n_0\,
+      Q => env_up_max_val(2),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[3]_i_1_n_0\,
+      Q => env_up_max_val(3),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[4]_i_1_n_0\,
+      Q => env_up_max_val(4),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[5]_i_1_n_0\,
+      Q => env_up_max_val(5),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[6]_i_1_n_0\,
+      Q => env_up_max_val(6),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[7]_i_1_n_0\,
+      Q => env_up_max_val(7),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[8]_i_1_n_0\,
+      Q => env_up_max_val(8),
+      R => '0'
+    );
+\comp_burst.env_up_max_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_max_val[9]_i_1_n_0\,
+      Q => env_up_max_val(9),
+      R => '0'
     );
 \comp_burst.env_up_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => env_up_ptr(0),
-      I1 => env_up_ptr(1),
-      O => \comp_burst.env_up_ptr[1]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      O => \p_0_in__5\(1)
     );
 \comp_burst.env_up_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"78"
+      INIT => X"6A"
     )
         port map (
-      I0 => env_up_ptr(0),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(2),
-      O => \comp_burst.env_up_ptr[2]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(2),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      O => \p_0_in__5\(2)
     );
 \comp_burst.env_up_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7F80"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => env_up_ptr(2),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(0),
-      I3 => env_up_ptr(3),
-      O => \comp_burst.env_up_ptr[3]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(3),
+      I1 => \comp_burst.env_up_ptr_reg\(0),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(2),
+      O => \p_0_in__5\(3)
     );
 \comp_burst.env_up_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFF8000"
+      INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => env_up_ptr(3),
-      I1 => env_up_ptr(0),
-      I2 => env_up_ptr(1),
-      I3 => env_up_ptr(2),
-      I4 => env_up_ptr(4),
-      O => \comp_burst.env_up_ptr[4]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(4),
+      I1 => \comp_burst.env_up_ptr_reg\(2),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(0),
+      I4 => \comp_burst.env_up_ptr_reg\(3),
+      O => \p_0_in__5\(4)
     );
 \comp_burst.env_up_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF80000000"
+      INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => env_up_ptr(2),
-      I1 => env_up_ptr(1),
-      I2 => env_up_ptr(0),
-      I3 => env_up_ptr(3),
-      I4 => env_up_ptr(4),
-      I5 => env_up_ptr(5),
-      O => \comp_burst.env_up_ptr[5]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \p_0_in__5\(5)
     );
 \comp_burst.env_up_ptr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I1 => env_up_ptr(6),
-      O => \comp_burst.env_up_ptr[6]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(6),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      O => \p_0_in__5\(6)
     );
 \comp_burst.env_up_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D2"
+      INIT => X"6A"
     )
         port map (
-      I0 => env_up_ptr(6),
-      I1 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I2 => env_up_ptr(7),
-      O => \comp_burst.env_up_ptr[7]_i_1_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(7),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I2 => \comp_burst.env_up_ptr_reg\(6),
+      O => \p_0_in__5\(7)
     );
-\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT1
+\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"1"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => check_env_up,
-      O => \comp_burst.env_up_ptr[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr[8]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"DF20"
-    )
-        port map (
-      I0 => env_up_ptr(7),
-      I1 => \comp_burst.env_up_ptr[8]_i_3_n_0\,
-      I2 => env_up_ptr(6),
-      I3 => env_up_ptr(8),
-      O => \comp_burst.env_up_ptr[8]_i_2_n_0\
-    );
-\comp_burst.env_up_ptr[8]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
-    )
-        port map (
-      I0 => env_up_ptr(5),
-      I1 => env_up_ptr(2),
-      I2 => env_up_ptr(1),
-      I3 => env_up_ptr(0),
-      I4 => env_up_ptr(3),
-      I5 => env_up_ptr(4),
-      O => \comp_burst.env_up_ptr[8]_i_3_n_0\
+      I0 => \comp_burst.env_up_ptr_reg\(8),
+      I1 => \comp_burst.env_up_ptr_reg\(6),
+      I2 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I3 => \comp_burst.env_up_ptr_reg\(7),
+      O => \p_0_in__5\(8)
     );
 \comp_burst.env_up_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[0]_i_1_n_0\,
-      Q => env_up_ptr(0),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(0),
+      Q => \comp_burst.env_up_ptr_reg\(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[1]_i_1_n_0\,
-      Q => env_up_ptr(1),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(1),
+      Q => \comp_burst.env_up_ptr_reg\(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[2]_i_1_n_0\,
-      Q => env_up_ptr(2),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(2),
+      Q => \comp_burst.env_up_ptr_reg\(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[3]_i_1_n_0\,
-      Q => env_up_ptr(3),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(3),
+      Q => \comp_burst.env_up_ptr_reg\(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[4]_i_1_n_0\,
-      Q => env_up_ptr(4),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(4),
+      Q => \comp_burst.env_up_ptr_reg\(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[5]_i_1_n_0\,
-      Q => env_up_ptr(5),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(5),
+      Q => \comp_burst.env_up_ptr_reg\(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[6]_i_1_n_0\,
-      Q => env_up_ptr(6),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(6),
+      Q => \comp_burst.env_up_ptr_reg\(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[7]_i_1_n_0\,
-      Q => env_up_ptr(7),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(7),
+      Q => \comp_burst.env_up_ptr_reg\(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
 \comp_burst.env_up_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => '1',
-      D => \comp_burst.env_up_ptr[8]_i_2_n_0\,
-      Q => env_up_ptr(8),
-      R => \comp_burst.env_up_ptr[8]_i_1_n_0\
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(8),
+      Q => \comp_burst.env_up_ptr_reg\(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
     );
-\comp_burst.err_no_data_i_1\: unisim.vcomponents.LUT3
+\comp_burst.env_up_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \p_0_in__5\(0),
+      Q => env_up_ptr(0),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\,
+      Q => env_up_ptr(1),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\,
+      Q => env_up_ptr(2),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\,
+      Q => env_up_ptr(3),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\,
+      Q => env_up_ptr(4),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\,
+      Q => env_up_ptr(5),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\,
+      Q => env_up_ptr(6),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\,
+      Q => env_up_ptr(7),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
+      D => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\,
+      Q => env_up_ptr(8),
+      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"10"
+      INIT => X"1"
     )
         port map (
-      I0 => \^err_no_data\,
-      I1 => reset,
-      I2 => up_down_same,
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      O => \p_0_in__5\(0)
+    );
+\comp_burst.env_up_ptr_rep[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(0),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      O => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(2),
+      I1 => \comp_burst.env_up_ptr_reg\(1),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      O => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(3),
+      I1 => \comp_burst.env_up_ptr_reg\(0),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(2),
+      O => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6AAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(4),
+      I1 => \comp_burst.env_up_ptr_reg\(2),
+      I2 => \comp_burst.env_up_ptr_reg\(1),
+      I3 => \comp_burst.env_up_ptr_reg\(0),
+      I4 => \comp_burst.env_up_ptr_reg\(3),
+      O => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(6),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      O => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"6A"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(7),
+      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I2 => \comp_burst.env_up_ptr_reg\(6),
+      O => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => load_env,
+      O => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \comp_burst.env_up_adr_reg\(1),
+      I1 => \comp_burst.env_up_adr_reg\(0),
+      O => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"6AAA"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(8),
+      I1 => \comp_burst.env_up_ptr_reg\(6),
+      I2 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
+      I3 => \comp_burst.env_up_ptr_reg\(7),
+      O => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\
+    );
+\comp_burst.env_up_ptr_rep[8]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.env_up_ptr_reg\(5),
+      I1 => \comp_burst.env_up_ptr_reg\(3),
+      I2 => \comp_burst.env_up_ptr_reg\(0),
+      I3 => \comp_burst.env_up_ptr_reg\(1),
+      I4 => \comp_burst.env_up_ptr_reg\(2),
+      I5 => \comp_burst.env_up_ptr_reg\(4),
+      O => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\
+    );
+\comp_burst.env_up_val[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_99\,
+      I1 => \comp_burst.mem_env_up_reg_n_83\,
+      I2 => env_up_3(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(0),
+      O => \comp_burst.env_up_val[0]_i_1_n_0\
+    );
+\comp_burst.env_up_val[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_89\,
+      I1 => \comp_burst.mem_env_up_reg_n_73\,
+      I2 => env_up_3(10),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(10),
+      O => \comp_burst.env_up_val[10]_i_1_n_0\
+    );
+\comp_burst.env_up_val[11]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_72\,
+      I1 => env_up_2(11),
+      I2 => \comp_burst.mem_env_up_reg_n_88\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(11),
+      O => \comp_burst.env_up_val[11]_i_1_n_0\
+    );
+\comp_burst.env_up_val[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_87\,
+      I1 => \comp_burst.mem_env_up_reg_n_71\,
+      I2 => env_up_2(12),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(12),
+      O => \comp_burst.env_up_val[12]_i_1_n_0\
+    );
+\comp_burst.env_up_val[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_86\,
+      I1 => \comp_burst.mem_env_up_reg_n_70\,
+      I2 => env_up_2(13),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(13),
+      O => \comp_burst.env_up_val[13]_i_1_n_0\
+    );
+\comp_burst.env_up_val[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_69\,
+      I1 => env_up_2(14),
+      I2 => \comp_burst.mem_env_up_reg_n_85\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(14),
+      O => \comp_burst.env_up_val[14]_i_1_n_0\
+    );
+\comp_burst.env_up_val[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_68\,
+      I1 => env_up_2(15),
+      I2 => \comp_burst.mem_env_up_reg_n_84\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(15),
+      O => \comp_burst.env_up_val[15]_i_1_n_0\
+    );
+\comp_burst.env_up_val[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_98\,
+      I1 => \comp_burst.mem_env_up_reg_n_82\,
+      I2 => env_up_3(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(1),
+      O => \comp_burst.env_up_val[1]_i_1_n_0\
+    );
+\comp_burst.env_up_val[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_97\,
+      I1 => \comp_burst.mem_env_up_reg_n_81\,
+      I2 => env_up_3(2),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(2),
+      O => \comp_burst.env_up_val[2]_i_1_n_0\
+    );
+\comp_burst.env_up_val[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_80\,
+      I1 => env_up_2(3),
+      I2 => \comp_burst.mem_env_up_reg_n_96\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(3),
+      O => \comp_burst.env_up_val[3]_i_1_n_0\
+    );
+\comp_burst.env_up_val[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_95\,
+      I1 => \comp_burst.mem_env_up_reg_n_79\,
+      I2 => env_up_2(4),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(4),
+      O => \comp_burst.env_up_val[4]_i_1_n_0\
+    );
+\comp_burst.env_up_val[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFF0CCAA00F0CCAA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_94\,
+      I1 => \comp_burst.mem_env_up_reg_n_78\,
+      I2 => env_up_2(5),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => \comp_burst.env_up_adr_reg\(1),
+      I5 => env_up_3(5),
+      O => \comp_burst.env_up_val[5]_i_1_n_0\
+    );
+\comp_burst.env_up_val[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_77\,
+      I1 => env_up_2(6),
+      I2 => \comp_burst.mem_env_up_reg_n_93\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(6),
+      O => \comp_burst.env_up_val[6]_i_1_n_0\
+    );
+\comp_burst.env_up_val[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFAACCF000AACCF0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_76\,
+      I1 => env_up_2(7),
+      I2 => \comp_burst.mem_env_up_reg_n_92\,
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_3(7),
+      O => \comp_burst.env_up_val[7]_i_1_n_0\
+    );
+\comp_burst.env_up_val[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_91\,
+      I1 => \comp_burst.mem_env_up_reg_n_75\,
+      I2 => env_up_3(8),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(8),
+      O => \comp_burst.env_up_val[8]_i_1_n_0\
+    );
+\comp_burst.env_up_val[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0CCFFAAF0CC00AA"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_n_90\,
+      I1 => \comp_burst.mem_env_up_reg_n_74\,
+      I2 => env_up_3(9),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up_2(9),
+      O => \comp_burst.env_up_val[9]_i_1_n_0\
+    );
+\comp_burst.env_up_val_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[0]_i_1_n_0\,
+      Q => env_up_val(0),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[10]_i_1_n_0\,
+      Q => env_up_val(10),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[11]_i_1_n_0\,
+      Q => env_up_val(11),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[12]_i_1_n_0\,
+      Q => env_up_val(12),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[13]_i_1_n_0\,
+      Q => env_up_val(13),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[14]_i_1_n_0\,
+      Q => env_up_val(14),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[15]_i_1_n_0\,
+      Q => env_up_val(15),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[1]_i_1_n_0\,
+      Q => env_up_val(1),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[2]_i_1_n_0\,
+      Q => env_up_val(2),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[3]_i_1_n_0\,
+      Q => env_up_val(3),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[4]_i_1_n_0\,
+      Q => env_up_val(4),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[5]_i_1_n_0\,
+      Q => env_up_val(5),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[6]_i_1_n_0\,
+      Q => env_up_val(6),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[7]_i_1_n_0\,
+      Q => env_up_val(7),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[8]_i_1_n_0\,
+      Q => env_up_val(8),
+      R => '0'
+    );
+\comp_burst.env_up_val_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_val[9]_i_1_n_0\,
+      Q => env_up_val(9),
+      R => '0'
+    );
+\comp_burst.err_no_data_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"4440"
+    )
+        port map (
+      I0 => scan_start,
+      I1 => run_env5_out,
+      I2 => run_env_end,
+      I3 => run_env_start,
       O => \comp_burst.err_no_data_i_1_n_0\
     );
 \comp_burst.err_no_data_reg\: unisim.vcomponents.FDRE
@@ -8322,40 +16848,12 @@ begin
       Q => \^err_no_data\,
       R => '0'
     );
-\comp_burst.filling_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFE2"
-    )
-        port map (
-      I0 => \comp_burst.filling_i_2_n_0\,
-      I1 => wr_data,
-      I2 => filling,
-      I3 => burst,
-      O => \comp_burst.filling_i_1_n_0\
-    );
-\comp_burst.filling_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"4"
-    )
-        port map (
-      I0 => '1',
-      I1 => wr_data,
-      O => \comp_burst.filling_i_2_n_0\
-    );
-\comp_burst.filling_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_burst.filling_i_1_n_0\,
-      Q => filling,
-      R => '0'
-    );
 \comp_burst.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => burst,
       D => in_freq(0),
-      Q => freq(0),
+      Q => \^freq\(0),
       R => '0'
     );
 \comp_burst.freq_reg[10]\: unisim.vcomponents.FDRE
@@ -8363,7 +16861,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(10),
-      Q => freq(10),
+      Q => \^freq\(10),
       R => '0'
     );
 \comp_burst.freq_reg[11]\: unisim.vcomponents.FDRE
@@ -8371,7 +16869,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(11),
-      Q => freq(11),
+      Q => \^freq\(11),
       R => '0'
     );
 \comp_burst.freq_reg[12]\: unisim.vcomponents.FDRE
@@ -8379,7 +16877,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(12),
-      Q => freq(12),
+      Q => \^freq\(12),
       R => '0'
     );
 \comp_burst.freq_reg[13]\: unisim.vcomponents.FDRE
@@ -8387,7 +16885,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(13),
-      Q => freq(13),
+      Q => \^freq\(13),
       R => '0'
     );
 \comp_burst.freq_reg[14]\: unisim.vcomponents.FDRE
@@ -8395,7 +16893,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(14),
-      Q => freq(14),
+      Q => \^freq\(14),
       R => '0'
     );
 \comp_burst.freq_reg[15]\: unisim.vcomponents.FDRE
@@ -8403,7 +16901,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(15),
-      Q => freq(15),
+      Q => \^freq\(15),
       R => '0'
     );
 \comp_burst.freq_reg[16]\: unisim.vcomponents.FDRE
@@ -8411,7 +16909,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(16),
-      Q => freq(16),
+      Q => \^freq\(16),
       R => '0'
     );
 \comp_burst.freq_reg[17]\: unisim.vcomponents.FDRE
@@ -8419,7 +16917,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(17),
-      Q => freq(17),
+      Q => \^freq\(17),
       R => '0'
     );
 \comp_burst.freq_reg[18]\: unisim.vcomponents.FDRE
@@ -8427,7 +16925,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(18),
-      Q => freq(18),
+      Q => \^freq\(18),
       R => '0'
     );
 \comp_burst.freq_reg[19]\: unisim.vcomponents.FDRE
@@ -8435,7 +16933,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(19),
-      Q => freq(19),
+      Q => \^freq\(19),
       R => '0'
     );
 \comp_burst.freq_reg[1]\: unisim.vcomponents.FDRE
@@ -8443,7 +16941,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(1),
-      Q => freq(1),
+      Q => \^freq\(1),
       R => '0'
     );
 \comp_burst.freq_reg[2]\: unisim.vcomponents.FDRE
@@ -8451,7 +16949,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(2),
-      Q => freq(2),
+      Q => \^freq\(2),
       R => '0'
     );
 \comp_burst.freq_reg[3]\: unisim.vcomponents.FDRE
@@ -8459,7 +16957,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(3),
-      Q => freq(3),
+      Q => \^freq\(3),
       R => '0'
     );
 \comp_burst.freq_reg[4]\: unisim.vcomponents.FDRE
@@ -8467,7 +16965,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(4),
-      Q => freq(4),
+      Q => \^freq\(4),
       R => '0'
     );
 \comp_burst.freq_reg[5]\: unisim.vcomponents.FDRE
@@ -8475,7 +16973,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(5),
-      Q => freq(5),
+      Q => \^freq\(5),
       R => '0'
     );
 \comp_burst.freq_reg[6]\: unisim.vcomponents.FDRE
@@ -8483,7 +16981,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(6),
-      Q => freq(6),
+      Q => \^freq\(6),
       R => '0'
     );
 \comp_burst.freq_reg[7]\: unisim.vcomponents.FDRE
@@ -8491,7 +16989,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(7),
-      Q => freq(7),
+      Q => \^freq\(7),
       R => '0'
     );
 \comp_burst.freq_reg[8]\: unisim.vcomponents.FDRE
@@ -8499,7 +16997,7 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(8),
-      Q => freq(8),
+      Q => \^freq\(8),
       R => '0'
     );
 \comp_burst.freq_reg[9]\: unisim.vcomponents.FDRE
@@ -8507,7 +17005,523 @@ begin
       C => clk,
       CE => burst,
       D => in_freq(9),
-      Q => freq(9),
+      Q => \^freq\(9),
+      R => '0'
+    );
+\comp_burst.inc_env_sample_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => load_env_start,
+      Q => inc_env_sample,
+      R => '0'
+    );
+\comp_burst.load_env_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => run_env,
+      Q => load_env,
+      R => '0'
+    );
+\comp_burst.load_env_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => run_env_start,
+      Q => load_env_start,
+      R => '0'
+    );
+\comp_burst.max_env_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(0),
+      Q => \^max_env\(0),
+      R => '0'
+    );
+\comp_burst.max_env_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(10),
+      Q => \^max_env\(10),
+      R => '0'
+    );
+\comp_burst.max_env_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(11),
+      Q => \^max_env\(11),
+      R => '0'
+    );
+\comp_burst.max_env_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(12),
+      Q => \^max_env\(12),
+      R => '0'
+    );
+\comp_burst.max_env_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(13),
+      Q => \^max_env\(13),
+      R => '0'
+    );
+\comp_burst.max_env_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(14),
+      Q => \^max_env\(14),
+      R => '0'
+    );
+\comp_burst.max_env_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(15),
+      Q => \^max_env\(15),
+      R => '0'
+    );
+\comp_burst.max_env_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(1),
+      Q => \^max_env\(1),
+      R => '0'
+    );
+\comp_burst.max_env_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(2),
+      Q => \^max_env\(2),
+      R => '0'
+    );
+\comp_burst.max_env_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(3),
+      Q => \^max_env\(3),
+      R => '0'
+    );
+\comp_burst.max_env_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(4),
+      Q => \^max_env\(4),
+      R => '0'
+    );
+\comp_burst.max_env_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(5),
+      Q => \^max_env\(5),
+      R => '0'
+    );
+\comp_burst.max_env_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(6),
+      Q => \^max_env\(6),
+      R => '0'
+    );
+\comp_burst.max_env_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(7),
+      Q => \^max_env\(7),
+      R => '0'
+    );
+\comp_burst.max_env_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(8),
+      Q => \^max_env\(8),
+      R => '0'
+    );
+\comp_burst.max_env_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => env_up_max_val(9),
+      Q => \^max_env\(9),
+      R => '0'
+    );
+\comp_burst.max_pos[10]_i_3\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => env_start_ind(10),
+      O => \comp_burst.max_pos[10]_i_3_n_0\
+    );
+\comp_burst.max_pos[10]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(10),
+      I1 => env_start_ind(9),
+      O => \comp_burst.max_pos[10]_i_4_n_0\
+    );
+\comp_burst.max_pos[10]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(9),
+      I1 => env_start_ind(8),
+      O => \comp_burst.max_pos[10]_i_5_n_0\
+    );
+\comp_burst.max_pos[10]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_up_max_ind(10),
+      I1 => env_down_max_ind(10),
+      O => \comp_burst.max_pos[10]_i_6_n_0\
+    );
+\comp_burst.max_pos[10]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(9),
+      I1 => env_up_max_ind(9),
+      O => \comp_burst.max_pos[10]_i_7_n_0\
+    );
+\comp_burst.max_pos[10]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(8),
+      I1 => env_up_max_ind(8),
+      O => \comp_burst.max_pos[10]_i_8_n_0\
+    );
+\comp_burst.max_pos[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(1),
+      I1 => env_start_ind(0),
+      O => \comp_burst.max_pos[7]_i_10_n_0\
+    );
+\comp_burst.max_pos[7]_i_11\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(7),
+      I1 => env_up_max_ind(7),
+      O => \comp_burst.max_pos[7]_i_11_n_0\
+    );
+\comp_burst.max_pos[7]_i_12\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(6),
+      I1 => env_up_max_ind(6),
+      O => \comp_burst.max_pos[7]_i_12_n_0\
+    );
+\comp_burst.max_pos[7]_i_13\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(5),
+      I1 => env_up_max_ind(5),
+      O => \comp_burst.max_pos[7]_i_13_n_0\
+    );
+\comp_burst.max_pos[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(4),
+      I1 => env_up_max_ind(4),
+      O => \comp_burst.max_pos[7]_i_14_n_0\
+    );
+\comp_burst.max_pos[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(3),
+      I1 => env_up_max_ind(3),
+      O => \comp_burst.max_pos[7]_i_15_n_0\
+    );
+\comp_burst.max_pos[7]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(2),
+      I1 => env_up_max_ind(2),
+      O => \comp_burst.max_pos[7]_i_16_n_0\
+    );
+\comp_burst.max_pos[7]_i_17\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(1),
+      I1 => env_up_max_ind(1),
+      O => \comp_burst.max_pos[7]_i_17_n_0\
+    );
+\comp_burst.max_pos[7]_i_18\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_down_max_ind(0),
+      I1 => env_up_max_ind(0),
+      O => \comp_burst.max_pos[7]_i_18_n_0\
+    );
+\comp_burst.max_pos[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(8),
+      I1 => env_start_ind(7),
+      O => \comp_burst.max_pos[7]_i_3_n_0\
+    );
+\comp_burst.max_pos[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(7),
+      I1 => env_start_ind(6),
+      O => \comp_burst.max_pos[7]_i_4_n_0\
+    );
+\comp_burst.max_pos[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(6),
+      I1 => env_start_ind(5),
+      O => \comp_burst.max_pos[7]_i_5_n_0\
+    );
+\comp_burst.max_pos[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(5),
+      I1 => env_start_ind(4),
+      O => \comp_burst.max_pos[7]_i_6_n_0\
+    );
+\comp_burst.max_pos[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(4),
+      I1 => env_start_ind(3),
+      O => \comp_burst.max_pos[7]_i_7_n_0\
+    );
+\comp_burst.max_pos[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(3),
+      I1 => env_start_ind(2),
+      O => \comp_burst.max_pos[7]_i_8_n_0\
+    );
+\comp_burst.max_pos[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => \comp_burst.max_pos_reg2\(2),
+      I1 => env_start_ind(1),
+      O => \comp_burst.max_pos[7]_i_9_n_0\
+    );
+\comp_burst.max_pos_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(0),
+      Q => \^max_pos\(0),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(10),
+      Q => \^max_pos\(10),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[10]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.max_pos_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.max_pos_reg[10]_i_1_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.max_pos_reg[10]_i_1_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[10]_i_1_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1 downto 0) => \comp_burst.max_pos_reg2\(10 downto 9),
+      O(7 downto 3) => \NLW_comp_burst.max_pos_reg[10]_i_1_O_UNCONNECTED\(7 downto 3),
+      O(2 downto 0) => \comp_burst.max_pos_reg00_out\(10 downto 8),
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.max_pos[10]_i_3_n_0\,
+      S(1) => \comp_burst.max_pos[10]_i_4_n_0\,
+      S(0) => \comp_burst.max_pos[10]_i_5_n_0\
+    );
+\comp_burst.max_pos_reg[10]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.max_pos_reg[7]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.max_pos_reg[10]_i_2_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.max_pos_reg[10]_i_2_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[10]_i_2_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1 downto 0) => env_down_max_ind(9 downto 8),
+      O(7 downto 3) => \NLW_comp_burst.max_pos_reg[10]_i_2_O_UNCONNECTED\(7 downto 3),
+      O(2 downto 0) => \comp_burst.max_pos_reg2\(10 downto 8),
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.max_pos[10]_i_6_n_0\,
+      S(1) => \comp_burst.max_pos[10]_i_7_n_0\,
+      S(0) => \comp_burst.max_pos[10]_i_8_n_0\
+    );
+\comp_burst.max_pos_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(1),
+      Q => \^max_pos\(1),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(2),
+      Q => \^max_pos\(2),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(3),
+      Q => \^max_pos\(3),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(4),
+      Q => \^max_pos\(4),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(5),
+      Q => \^max_pos\(5),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(6),
+      Q => \^max_pos\(6),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(7),
+      Q => \^max_pos\(7),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.max_pos_reg[7]_i_1_n_0\,
+      CO(6) => \comp_burst.max_pos_reg[7]_i_1_n_1\,
+      CO(5) => \comp_burst.max_pos_reg[7]_i_1_n_2\,
+      CO(4) => \comp_burst.max_pos_reg[7]_i_1_n_3\,
+      CO(3) => \comp_burst.max_pos_reg[7]_i_1_n_4\,
+      CO(2) => \comp_burst.max_pos_reg[7]_i_1_n_5\,
+      CO(1) => \comp_burst.max_pos_reg[7]_i_1_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => \comp_burst.max_pos_reg2\(8 downto 1),
+      O(7 downto 0) => \comp_burst.max_pos_reg00_out\(7 downto 0),
+      S(7) => \comp_burst.max_pos[7]_i_3_n_0\,
+      S(6) => \comp_burst.max_pos[7]_i_4_n_0\,
+      S(5) => \comp_burst.max_pos[7]_i_5_n_0\,
+      S(4) => \comp_burst.max_pos[7]_i_6_n_0\,
+      S(3) => \comp_burst.max_pos[7]_i_7_n_0\,
+      S(2) => \comp_burst.max_pos[7]_i_8_n_0\,
+      S(1) => \comp_burst.max_pos[7]_i_9_n_0\,
+      S(0) => \comp_burst.max_pos[7]_i_10_n_0\
+    );
+\comp_burst.max_pos_reg[7]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.max_pos_reg[7]_i_2_n_0\,
+      CO(6) => \comp_burst.max_pos_reg[7]_i_2_n_1\,
+      CO(5) => \comp_burst.max_pos_reg[7]_i_2_n_2\,
+      CO(4) => \comp_burst.max_pos_reg[7]_i_2_n_3\,
+      CO(3) => \comp_burst.max_pos_reg[7]_i_2_n_4\,
+      CO(2) => \comp_burst.max_pos_reg[7]_i_2_n_5\,
+      CO(1) => \comp_burst.max_pos_reg[7]_i_2_n_6\,
+      CO(0) => \comp_burst.max_pos_reg[7]_i_2_n_7\,
+      DI(7 downto 0) => env_down_max_ind(7 downto 0),
+      O(7 downto 1) => \comp_burst.max_pos_reg2\(7 downto 1),
+      O(0) => \NLW_comp_burst.max_pos_reg[7]_i_2_O_UNCONNECTED\(0),
+      S(7) => \comp_burst.max_pos[7]_i_11_n_0\,
+      S(6) => \comp_burst.max_pos[7]_i_12_n_0\,
+      S(5) => \comp_burst.max_pos[7]_i_13_n_0\,
+      S(4) => \comp_burst.max_pos[7]_i_14_n_0\,
+      S(3) => \comp_burst.max_pos[7]_i_15_n_0\,
+      S(2) => \comp_burst.max_pos[7]_i_16_n_0\,
+      S(1) => \comp_burst.max_pos[7]_i_17_n_0\,
+      S(0) => \comp_burst.max_pos[7]_i_18_n_0\
+    );
+\comp_burst.max_pos_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(8),
+      Q => \^max_pos\(8),
+      R => '0'
+    );
+\comp_burst.max_pos_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.max_pos_reg00_out\(9),
+      Q => \^max_pos\(9),
       R => '0'
     );
 \comp_burst.mem_env_down_reg\: unisim.vcomponents.RAMB36E2
@@ -8543,7 +17557,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => env_down_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => \comp_burst.wr_ptr_reg\(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -8576,8 +17590,38 @@ begin
       DINBDIN(31 downto 0) => env_in(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 16) => env_down_1(15 downto 0),
-      DOUTADOUT(15 downto 0) => env_down_0(15 downto 0),
+      DOUTADOUT(31) => \comp_burst.mem_env_down_reg_n_68\,
+      DOUTADOUT(30) => \comp_burst.mem_env_down_reg_n_69\,
+      DOUTADOUT(29) => \comp_burst.mem_env_down_reg_n_70\,
+      DOUTADOUT(28) => \comp_burst.mem_env_down_reg_n_71\,
+      DOUTADOUT(27) => \comp_burst.mem_env_down_reg_n_72\,
+      DOUTADOUT(26) => \comp_burst.mem_env_down_reg_n_73\,
+      DOUTADOUT(25) => \comp_burst.mem_env_down_reg_n_74\,
+      DOUTADOUT(24) => \comp_burst.mem_env_down_reg_n_75\,
+      DOUTADOUT(23) => \comp_burst.mem_env_down_reg_n_76\,
+      DOUTADOUT(22) => \comp_burst.mem_env_down_reg_n_77\,
+      DOUTADOUT(21) => \comp_burst.mem_env_down_reg_n_78\,
+      DOUTADOUT(20) => \comp_burst.mem_env_down_reg_n_79\,
+      DOUTADOUT(19) => \comp_burst.mem_env_down_reg_n_80\,
+      DOUTADOUT(18) => \comp_burst.mem_env_down_reg_n_81\,
+      DOUTADOUT(17) => \comp_burst.mem_env_down_reg_n_82\,
+      DOUTADOUT(16) => \comp_burst.mem_env_down_reg_n_83\,
+      DOUTADOUT(15) => \comp_burst.mem_env_down_reg_n_84\,
+      DOUTADOUT(14) => \comp_burst.mem_env_down_reg_n_85\,
+      DOUTADOUT(13) => \comp_burst.mem_env_down_reg_n_86\,
+      DOUTADOUT(12) => \comp_burst.mem_env_down_reg_n_87\,
+      DOUTADOUT(11) => \comp_burst.mem_env_down_reg_n_88\,
+      DOUTADOUT(10) => \comp_burst.mem_env_down_reg_n_89\,
+      DOUTADOUT(9) => \comp_burst.mem_env_down_reg_n_90\,
+      DOUTADOUT(8) => \comp_burst.mem_env_down_reg_n_91\,
+      DOUTADOUT(7) => \comp_burst.mem_env_down_reg_n_92\,
+      DOUTADOUT(6) => \comp_burst.mem_env_down_reg_n_93\,
+      DOUTADOUT(5) => \comp_burst.mem_env_down_reg_n_94\,
+      DOUTADOUT(4) => \comp_burst.mem_env_down_reg_n_95\,
+      DOUTADOUT(3) => \comp_burst.mem_env_down_reg_n_96\,
+      DOUTADOUT(2) => \comp_burst.mem_env_down_reg_n_97\,
+      DOUTADOUT(1) => \comp_burst.mem_env_down_reg_n_98\,
+      DOUTADOUT(0) => \comp_burst.mem_env_down_reg_n_99\,
       DOUTBDOUT(31 downto 16) => env_down_3(15 downto 0),
       DOUTBDOUT(15 downto 0) => env_down_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_comp_burst.mem_env_down_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
@@ -8640,7 +17684,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => env_up_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => \comp_burst.wr_ptr_reg\(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -8673,8 +17717,38 @@ begin
       DINBDIN(31 downto 0) => env_in(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 16) => env_up_1(15 downto 0),
-      DOUTADOUT(15 downto 0) => env_up_0(15 downto 0),
+      DOUTADOUT(31) => \comp_burst.mem_env_up_reg_n_68\,
+      DOUTADOUT(30) => \comp_burst.mem_env_up_reg_n_69\,
+      DOUTADOUT(29) => \comp_burst.mem_env_up_reg_n_70\,
+      DOUTADOUT(28) => \comp_burst.mem_env_up_reg_n_71\,
+      DOUTADOUT(27) => \comp_burst.mem_env_up_reg_n_72\,
+      DOUTADOUT(26) => \comp_burst.mem_env_up_reg_n_73\,
+      DOUTADOUT(25) => \comp_burst.mem_env_up_reg_n_74\,
+      DOUTADOUT(24) => \comp_burst.mem_env_up_reg_n_75\,
+      DOUTADOUT(23) => \comp_burst.mem_env_up_reg_n_76\,
+      DOUTADOUT(22) => \comp_burst.mem_env_up_reg_n_77\,
+      DOUTADOUT(21) => \comp_burst.mem_env_up_reg_n_78\,
+      DOUTADOUT(20) => \comp_burst.mem_env_up_reg_n_79\,
+      DOUTADOUT(19) => \comp_burst.mem_env_up_reg_n_80\,
+      DOUTADOUT(18) => \comp_burst.mem_env_up_reg_n_81\,
+      DOUTADOUT(17) => \comp_burst.mem_env_up_reg_n_82\,
+      DOUTADOUT(16) => \comp_burst.mem_env_up_reg_n_83\,
+      DOUTADOUT(15) => \comp_burst.mem_env_up_reg_n_84\,
+      DOUTADOUT(14) => \comp_burst.mem_env_up_reg_n_85\,
+      DOUTADOUT(13) => \comp_burst.mem_env_up_reg_n_86\,
+      DOUTADOUT(12) => \comp_burst.mem_env_up_reg_n_87\,
+      DOUTADOUT(11) => \comp_burst.mem_env_up_reg_n_88\,
+      DOUTADOUT(10) => \comp_burst.mem_env_up_reg_n_89\,
+      DOUTADOUT(9) => \comp_burst.mem_env_up_reg_n_90\,
+      DOUTADOUT(8) => \comp_burst.mem_env_up_reg_n_91\,
+      DOUTADOUT(7) => \comp_burst.mem_env_up_reg_n_92\,
+      DOUTADOUT(6) => \comp_burst.mem_env_up_reg_n_93\,
+      DOUTADOUT(5) => \comp_burst.mem_env_up_reg_n_94\,
+      DOUTADOUT(4) => \comp_burst.mem_env_up_reg_n_95\,
+      DOUTADOUT(3) => \comp_burst.mem_env_up_reg_n_96\,
+      DOUTADOUT(2) => \comp_burst.mem_env_up_reg_n_97\,
+      DOUTADOUT(1) => \comp_burst.mem_env_up_reg_n_98\,
+      DOUTADOUT(0) => \comp_burst.mem_env_up_reg_n_99\,
       DOUTBDOUT(31 downto 16) => env_up_3(15 downto 0),
       DOUTBDOUT(15 downto 0) => env_up_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
@@ -8712,191 +17786,640 @@ begin
       Q => mem_wr,
       R => '0'
     );
-\comp_burst.run_env_down_i_1\: unisim.vcomponents.LUT6
+\comp_burst.run_env_end_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"EEEE2222EEEF2222"
+      INIT => X"2F20"
     )
         port map (
-      I0 => run_env_up,
-      I1 => filling,
-      I2 => up_down_same,
-      I3 => reset,
-      I4 => run_env_down,
-      I5 => env_down_done,
-      O => \comp_burst.run_env_down_i_1_n_0\
+      I0 => run_env_end,
+      I1 => run_env_end0,
+      I2 => comp_env,
+      I3 => run_env_end,
+      O => \comp_burst.run_env_end_i_1_n_0\
     );
-\comp_burst.run_env_down_reg\: unisim.vcomponents.FDRE
+\comp_burst.run_env_end_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(1),
+      I1 => env_down_val(1),
+      I2 => env_down_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_end_i_10_n_0\
+    );
+\comp_burst.run_env_end_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(15),
+      I1 => min_env(15),
+      I2 => env_down_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_end_i_11_n_0\
+    );
+\comp_burst.run_env_end_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(13),
+      I1 => min_env(13),
+      I2 => env_down_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_end_i_12_n_0\
+    );
+\comp_burst.run_env_end_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(11),
+      I1 => min_env(11),
+      I2 => env_down_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_end_i_13_n_0\
+    );
+\comp_burst.run_env_end_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(9),
+      I1 => min_env(9),
+      I2 => env_down_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_end_i_14_n_0\
+    );
+\comp_burst.run_env_end_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(7),
+      I1 => min_env(7),
+      I2 => env_down_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_end_i_15_n_0\
+    );
+\comp_burst.run_env_end_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(5),
+      I1 => min_env(5),
+      I2 => env_down_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_end_i_16_n_0\
+    );
+\comp_burst.run_env_end_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(3),
+      I1 => min_env(3),
+      I2 => env_down_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_end_i_17_n_0\
+    );
+\comp_burst.run_env_end_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => env_down_val(1),
+      I1 => min_env(1),
+      I2 => env_down_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_end_i_18_n_0\
+    );
+\comp_burst.run_env_end_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(15),
+      I1 => env_down_val(15),
+      I2 => env_down_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_end_i_3_n_0\
+    );
+\comp_burst.run_env_end_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(13),
+      I1 => env_down_val(13),
+      I2 => env_down_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_end_i_4_n_0\
+    );
+\comp_burst.run_env_end_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(11),
+      I1 => env_down_val(11),
+      I2 => env_down_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_end_i_5_n_0\
+    );
+\comp_burst.run_env_end_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(9),
+      I1 => env_down_val(9),
+      I2 => env_down_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_end_i_6_n_0\
+    );
+\comp_burst.run_env_end_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(7),
+      I1 => env_down_val(7),
+      I2 => env_down_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_end_i_7_n_0\
+    );
+\comp_burst.run_env_end_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(5),
+      I1 => env_down_val(5),
+      I2 => env_down_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_end_i_8_n_0\
+    );
+\comp_burst.run_env_end_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"44D4"
+    )
+        port map (
+      I0 => min_env(3),
+      I1 => env_down_val(3),
+      I2 => env_down_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_end_i_9_n_0\
+    );
+\comp_burst.run_env_end_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.run_env_down_i_1_n_0\,
-      Q => run_env_down,
-      R => '0'
+      D => \comp_burst.run_env_end_i_1_n_0\,
+      Q => run_env_end,
+      S => scan_start
     );
-\comp_burst.run_env_up_i_1\: unisim.vcomponents.LUT6
+\comp_burst.run_env_end_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => run_env_end0,
+      CO(6) => \comp_burst.run_env_end_reg_i_2_n_1\,
+      CO(5) => \comp_burst.run_env_end_reg_i_2_n_2\,
+      CO(4) => \comp_burst.run_env_end_reg_i_2_n_3\,
+      CO(3) => \comp_burst.run_env_end_reg_i_2_n_4\,
+      CO(2) => \comp_burst.run_env_end_reg_i_2_n_5\,
+      CO(1) => \comp_burst.run_env_end_reg_i_2_n_6\,
+      CO(0) => \comp_burst.run_env_end_reg_i_2_n_7\,
+      DI(7) => \comp_burst.run_env_end_i_3_n_0\,
+      DI(6) => \comp_burst.run_env_end_i_4_n_0\,
+      DI(5) => \comp_burst.run_env_end_i_5_n_0\,
+      DI(4) => \comp_burst.run_env_end_i_6_n_0\,
+      DI(3) => \comp_burst.run_env_end_i_7_n_0\,
+      DI(2) => \comp_burst.run_env_end_i_8_n_0\,
+      DI(1) => \comp_burst.run_env_end_i_9_n_0\,
+      DI(0) => \comp_burst.run_env_end_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.run_env_end_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.run_env_end_i_11_n_0\,
+      S(6) => \comp_burst.run_env_end_i_12_n_0\,
+      S(5) => \comp_burst.run_env_end_i_13_n_0\,
+      S(4) => \comp_burst.run_env_end_i_14_n_0\,
+      S(3) => \comp_burst.run_env_end_i_15_n_0\,
+      S(2) => \comp_burst.run_env_end_i_16_n_0\,
+      S(1) => \comp_burst.run_env_end_i_17_n_0\,
+      S(0) => \comp_burst.run_env_end_i_18_n_0\
+    );
+\comp_burst.run_env_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFFFFFFFE0002"
+      INIT => X"2"
     )
         port map (
-      I0 => run_env_up,
-      I1 => env_up_done,
-      I2 => up_down_same,
-      I3 => reset,
-      I4 => \comp_burst.run_env_up_i_2_n_0\,
-      I5 => filling,
-      O => \comp_burst.run_env_up_i_1_n_0\
+      I0 => run_env,
+      I1 => run_env5_out,
+      O => \comp_burst.run_env_i_1_n_0\
     );
-\comp_burst.run_env_up_i_2\: unisim.vcomponents.LUT2
+\comp_burst.run_env_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => '1',
-      I1 => \comp_burst.run_env_up_reg0\,
-      O => \comp_burst.run_env_up_i_2_n_0\
+      I0 => env_down_ind(5),
+      I1 => env_down_ind(7),
+      I2 => env_down_ind(6),
+      I3 => env_down_ind(10),
+      I4 => \comp_burst.run_env_i_3_n_0\,
+      I5 => \comp_burst.run_env_i_4_n_0\,
+      O => run_env5_out
     );
-\comp_burst.run_env_up_i_3\: unisim.vcomponents.LUT3
+\comp_burst.run_env_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FE"
+      INIT => X"FFEF"
     )
         port map (
-      I0 => reset,
-      I1 => up_down_same,
-      I2 => env_up_done,
-      O => \comp_burst.run_env_up_reg0\
+      I0 => env_down_ind(3),
+      I1 => env_down_ind(2),
+      I2 => run_env,
+      I3 => env_down_ind(9),
+      O => \comp_burst.run_env_i_3_n_0\
     );
-\comp_burst.run_env_up_reg\: unisim.vcomponents.FDRE
+\comp_burst.run_env_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFEF"
+    )
+        port map (
+      I0 => env_down_ind(8),
+      I1 => env_down_ind(4),
+      I2 => env_down_ind(1),
+      I3 => env_down_ind(0),
+      O => \comp_burst.run_env_i_4_n_0\
+    );
+\comp_burst.run_env_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.run_env_up_i_1_n_0\,
-      Q => run_env_up,
-      R => '0'
+      D => \comp_burst.run_env_i_1_n_0\,
+      Q => run_env,
+      S => scan_start
+    );
+\comp_burst.run_env_start_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2F20"
+    )
+        port map (
+      I0 => run_env_start,
+      I1 => run_env_start0,
+      I2 => comp_env,
+      I3 => run_env_start,
+      O => \comp_burst.run_env_start_i_1_n_0\
+    );
+\comp_burst.run_env_start_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(1),
+      I1 => min_env(1),
+      I2 => env_up_val(0),
+      I3 => min_env(0),
+      O => \comp_burst.run_env_start_i_10_n_0\
+    );
+\comp_burst.run_env_start_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(15),
+      I1 => env_up_val(15),
+      I2 => min_env(14),
+      I3 => env_up_val(14),
+      O => \comp_burst.run_env_start_i_11_n_0\
+    );
+\comp_burst.run_env_start_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(13),
+      I1 => env_up_val(13),
+      I2 => min_env(12),
+      I3 => env_up_val(12),
+      O => \comp_burst.run_env_start_i_12_n_0\
+    );
+\comp_burst.run_env_start_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(11),
+      I1 => env_up_val(11),
+      I2 => min_env(10),
+      I3 => env_up_val(10),
+      O => \comp_burst.run_env_start_i_13_n_0\
+    );
+\comp_burst.run_env_start_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(9),
+      I1 => env_up_val(9),
+      I2 => min_env(8),
+      I3 => env_up_val(8),
+      O => \comp_burst.run_env_start_i_14_n_0\
+    );
+\comp_burst.run_env_start_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(7),
+      I1 => env_up_val(7),
+      I2 => min_env(6),
+      I3 => env_up_val(6),
+      O => \comp_burst.run_env_start_i_15_n_0\
+    );
+\comp_burst.run_env_start_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(5),
+      I1 => env_up_val(5),
+      I2 => min_env(4),
+      I3 => env_up_val(4),
+      O => \comp_burst.run_env_start_i_16_n_0\
+    );
+\comp_burst.run_env_start_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(3),
+      I1 => env_up_val(3),
+      I2 => min_env(2),
+      I3 => env_up_val(2),
+      O => \comp_burst.run_env_start_i_17_n_0\
+    );
+\comp_burst.run_env_start_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => min_env(1),
+      I1 => env_up_val(1),
+      I2 => min_env(0),
+      I3 => env_up_val(0),
+      O => \comp_burst.run_env_start_i_18_n_0\
+    );
+\comp_burst.run_env_start_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(15),
+      I1 => min_env(15),
+      I2 => env_up_val(14),
+      I3 => min_env(14),
+      O => \comp_burst.run_env_start_i_3_n_0\
+    );
+\comp_burst.run_env_start_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(13),
+      I1 => min_env(13),
+      I2 => env_up_val(12),
+      I3 => min_env(12),
+      O => \comp_burst.run_env_start_i_4_n_0\
+    );
+\comp_burst.run_env_start_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(11),
+      I1 => min_env(11),
+      I2 => env_up_val(10),
+      I3 => min_env(10),
+      O => \comp_burst.run_env_start_i_5_n_0\
+    );
+\comp_burst.run_env_start_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(9),
+      I1 => min_env(9),
+      I2 => env_up_val(8),
+      I3 => min_env(8),
+      O => \comp_burst.run_env_start_i_6_n_0\
+    );
+\comp_burst.run_env_start_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(7),
+      I1 => min_env(7),
+      I2 => env_up_val(6),
+      I3 => min_env(6),
+      O => \comp_burst.run_env_start_i_7_n_0\
+    );
+\comp_burst.run_env_start_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(5),
+      I1 => min_env(5),
+      I2 => env_up_val(4),
+      I3 => min_env(4),
+      O => \comp_burst.run_env_start_i_8_n_0\
+    );
+\comp_burst.run_env_start_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(3),
+      I1 => min_env(3),
+      I2 => env_up_val(2),
+      I3 => min_env(2),
+      O => \comp_burst.run_env_start_i_9_n_0\
+    );
+\comp_burst.run_env_start_reg\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.run_env_start_i_1_n_0\,
+      Q => run_env_start,
+      S => scan_start
+    );
+\comp_burst.run_env_start_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => run_env_start0,
+      CO(6) => \comp_burst.run_env_start_reg_i_2_n_1\,
+      CO(5) => \comp_burst.run_env_start_reg_i_2_n_2\,
+      CO(4) => \comp_burst.run_env_start_reg_i_2_n_3\,
+      CO(3) => \comp_burst.run_env_start_reg_i_2_n_4\,
+      CO(2) => \comp_burst.run_env_start_reg_i_2_n_5\,
+      CO(1) => \comp_burst.run_env_start_reg_i_2_n_6\,
+      CO(0) => \comp_burst.run_env_start_reg_i_2_n_7\,
+      DI(7) => \comp_burst.run_env_start_i_3_n_0\,
+      DI(6) => \comp_burst.run_env_start_i_4_n_0\,
+      DI(5) => \comp_burst.run_env_start_i_5_n_0\,
+      DI(4) => \comp_burst.run_env_start_i_6_n_0\,
+      DI(3) => \comp_burst.run_env_start_i_7_n_0\,
+      DI(2) => \comp_burst.run_env_start_i_8_n_0\,
+      DI(1) => \comp_burst.run_env_start_i_9_n_0\,
+      DI(0) => \comp_burst.run_env_start_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.run_env_start_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.run_env_start_i_11_n_0\,
+      S(6) => \comp_burst.run_env_start_i_12_n_0\,
+      S(5) => \comp_burst.run_env_start_i_13_n_0\,
+      S(4) => \comp_burst.run_env_start_i_14_n_0\,
+      S(3) => \comp_burst.run_env_start_i_15_n_0\,
+      S(2) => \comp_burst.run_env_start_i_16_n_0\,
+      S(1) => \comp_burst.run_env_start_i_17_n_0\,
+      S(0) => \comp_burst.run_env_start_i_18_n_0\
     );
 \comp_burst.sample_counter_0[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"45"
+      INIT => X"08"
     )
         port map (
-      I0 => env_up_bits(0),
-      I1 => env_up_bits(1),
-      I2 => env_up_bits(2),
+      I0 => inc_env_sample,
+      I1 => run_env_start,
+      I2 => sample_counter_0(0),
       O => \comp_burst.sample_counter_0[0]_i_1_n_0\
     );
 \comp_burst.sample_counter_0[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F3FFAAAA0C00AAAA"
-    )
-        port map (
-      I0 => in_sample(8),
-      I1 => sample_counter_0(8),
-      I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I3 => sample_counter_0(9),
-      I4 => run_env_up,
-      I5 => sample_counter_0(10),
-      O => \comp_burst.sample_counter_0[10]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[10]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
-    )
-        port map (
-      I0 => sample_counter_0(7),
-      I1 => sample_counter_0(4),
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(2),
-      I4 => sample_counter_0(5),
-      I5 => sample_counter_0(6),
-      O => \comp_burst.sample_counter_0[10]_i_2_n_0\
-    );
-\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"3ACA"
-    )
-        port map (
-      I0 => in_sample(9),
-      I1 => \comp_burst.sample_counter_0[11]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(11),
-      O => \comp_burst.sample_counter_0[11]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[11]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0800"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
       I0 => sample_counter_0(10),
       I1 => sample_counter_0(9),
       I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
       I3 => sample_counter_0(8),
-      O => \comp_burst.sample_counter_0[11]_i_2_n_0\
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(8),
+      O => \comp_burst.sample_counter_0[10]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[12]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"FF7FFFFFFFFFFFFF"
     )
         port map (
-      I0 => in_sample(10),
-      I1 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(12),
-      O => \comp_burst.sample_counter_0[12]_i_1_n_0\
+      I0 => sample_counter_0(6),
+      I1 => sample_counter_0(4),
+      I2 => sample_counter_0(3),
+      I3 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I4 => sample_counter_0(5),
+      I5 => sample_counter_0(7),
+      O => \comp_burst.sample_counter_0[10]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[12]_i_2\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => sample_counter_0(11),
+      I1 => \comp_burst.sample_counter_0[11]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(9),
+      O => \comp_burst.sample_counter_0[11]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[11]_i_2\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"F7FFFFFF"
     )
         port map (
-      I0 => sample_counter_0(11),
-      I1 => sample_counter_0(8),
-      I2 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I3 => sample_counter_0(9),
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(7),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(8),
       I4 => sample_counter_0(10),
-      O => \comp_burst.sample_counter_0[12]_i_2_n_0\
+      O => \comp_burst.sample_counter_0[11]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"3ACA"
+      INIT => X"9FFF9000"
     )
         port map (
-      I0 => in_sample(11),
-      I1 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(13),
+      I0 => sample_counter_0(12),
+      I1 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(10),
+      O => \comp_burst.sample_counter_0[12]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => sample_counter_0(13),
+      I1 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I2 => sample_counter_0(12),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(11),
       O => \comp_burst.sample_counter_0[13]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[14]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[14]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FAAC0AA"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => in_sample(12),
-      I1 => sample_counter_0(13),
-      I2 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I3 => run_env_up,
-      I4 => sample_counter_0(14),
+      I0 => sample_counter_0(14),
+      I1 => sample_counter_0(12),
+      I2 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I3 => sample_counter_0(13),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(12),
       O => \comp_burst.sample_counter_0[14]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.sample_counter_0[14]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"E"
+      INIT => X"F7FFFFFFFFFFFFFF"
     )
         port map (
-      I0 => run_env_up,
-      I1 => burst,
+      I0 => sample_counter_0(10),
+      I1 => sample_counter_0(8),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(7),
+      I4 => sample_counter_0(9),
+      I5 => sample_counter_0(11),
+      O => \comp_burst.sample_counter_0[14]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"EA"
+    )
+        port map (
+      I0 => burst,
+      I1 => inc_env_sample,
+      I2 => run_env_start,
       O => \comp_burst.sample_counter_0[15]_i_1_n_0\
     );
 \comp_burst.sample_counter_0[15]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FFFAAAAC000AAAA"
+      INIT => X"6AAAFFFF6AAA0000"
     )
         port map (
-      I0 => in_sample(13),
-      I1 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I2 => sample_counter_0(13),
+      I0 => sample_counter_0(15),
+      I1 => sample_counter_0(13),
+      I2 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
       I3 => sample_counter_0(14),
-      I4 => run_env_up,
-      I5 => sample_counter_0(15),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(13),
       O => \comp_burst.sample_counter_0[15]_i_2_n_0\
     );
 \comp_burst.sample_counter_0[15]_i_3\: unisim.vcomponents.LUT6
@@ -8905,140 +18428,174 @@ begin
     )
         port map (
       I0 => sample_counter_0(12),
-      I1 => sample_counter_0(10),
+      I1 => sample_counter_0(11),
       I2 => sample_counter_0(9),
       I3 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
       I4 => sample_counter_0(8),
-      I5 => sample_counter_0(11),
+      I5 => sample_counter_0(10),
       O => \comp_burst.sample_counter_0[15]_i_3_n_0\
     );
-\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.sample_counter_0[15]_i_4\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"8"
     )
         port map (
-      I0 => env_up_bits(0),
-      I1 => env_up_bits(1),
+      I0 => run_env_start,
+      I1 => inc_env_sample,
+      O => \comp_burst.sample_counter_0[15]_i_4_n_0\
+    );
+\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0880"
+    )
+        port map (
+      I0 => inc_env_sample,
+      I1 => run_env_start,
+      I2 => sample_counter_0(0),
+      I3 => sample_counter_0(1),
       O => \comp_burst.sample_counter_0[1]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT3
+\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"74"
+      INIT => X"6AFFFFFF6A000000"
     )
         port map (
       I0 => sample_counter_0(2),
-      I1 => run_env_up,
-      I2 => in_sample(0),
+      I1 => sample_counter_0(0),
+      I2 => sample_counter_0(1),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(0),
       O => \comp_burst.sample_counter_0[2]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[3]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2EE2"
+      INIT => X"6AAAFFFF6AAA0000"
     )
         port map (
-      I0 => in_sample(1),
-      I1 => run_env_up,
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(2),
+      I0 => sample_counter_0(3),
+      I1 => sample_counter_0(1),
+      I2 => sample_counter_0(2),
+      I3 => sample_counter_0(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(1),
       O => \comp_burst.sample_counter_0[3]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[4]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3FAAC0AA"
-    )
-        port map (
-      I0 => in_sample(2),
-      I1 => sample_counter_0(3),
-      I2 => sample_counter_0(2),
-      I3 => run_env_up,
-      I4 => sample_counter_0(4),
-      O => \comp_burst.sample_counter_0[4]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"3FFFAAAAC000AAAA"
-    )
-        port map (
-      I0 => in_sample(3),
-      I1 => sample_counter_0(2),
-      I2 => sample_counter_0(3),
-      I3 => sample_counter_0(4),
-      I4 => run_env_up,
-      I5 => sample_counter_0(5),
-      O => \comp_burst.sample_counter_0[5]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"CA3A"
-    )
-        port map (
-      I0 => in_sample(4),
-      I1 => \comp_burst.sample_counter_0[6]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(6),
-      O => \comp_burst.sample_counter_0[6]_i_1_n_0\
-    );
-\comp_burst.sample_counter_0[6]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7FFF"
+      INIT => X"A6FFFFFFA6000000"
     )
         port map (
       I0 => sample_counter_0(4),
       I1 => sample_counter_0(3),
-      I2 => sample_counter_0(2),
-      I3 => sample_counter_0(5),
-      O => \comp_burst.sample_counter_0[6]_i_2_n_0\
+      I2 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(2),
+      O => \comp_burst.sample_counter_0[4]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[7]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3ACA"
+      INIT => X"AA6AFFFFAA6A0000"
     )
         port map (
-      I0 => in_sample(5),
-      I1 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(7),
-      O => \comp_burst.sample_counter_0[7]_i_1_n_0\
+      I0 => sample_counter_0(5),
+      I1 => sample_counter_0(4),
+      I2 => sample_counter_0(3),
+      I3 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(3),
+      O => \comp_burst.sample_counter_0[5]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[7]_i_2\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[5]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"80000000"
+      INIT => X"7F"
+    )
+        port map (
+      I0 => sample_counter_0(1),
+      I1 => sample_counter_0(2),
+      I2 => sample_counter_0(0),
+      O => \comp_burst.sample_counter_0[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
     )
         port map (
       I0 => sample_counter_0(6),
-      I1 => sample_counter_0(5),
-      I2 => sample_counter_0(2),
-      I3 => sample_counter_0(3),
-      I4 => sample_counter_0(4),
-      O => \comp_burst.sample_counter_0[7]_i_2_n_0\
+      I1 => \comp_burst.sample_counter_0[6]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(4),
+      O => \comp_burst.sample_counter_0[6]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_0[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CA3A"
+      INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => in_sample(6),
-      I1 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I2 => run_env_up,
-      I3 => sample_counter_0(8),
+      I0 => sample_counter_0(4),
+      I1 => sample_counter_0(3),
+      I2 => sample_counter_0(1),
+      I3 => sample_counter_0(2),
+      I4 => sample_counter_0(0),
+      I5 => sample_counter_0(5),
+      O => \comp_burst.sample_counter_0[6]_i_2_n_0\
+    );
+\comp_burst.sample_counter_0[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => sample_counter_0(7),
+      I1 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(5),
+      O => \comp_burst.sample_counter_0[7]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => sample_counter_0(8),
+      I1 => sample_counter_0(7),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(6),
       O => \comp_burst.sample_counter_0[8]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[9]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CFAA30AA"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => in_sample(7),
-      I1 => \comp_burst.sample_counter_0[10]_i_2_n_0\,
-      I2 => sample_counter_0(8),
-      I3 => run_env_up,
-      I4 => sample_counter_0(9),
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(8),
+      I2 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I3 => sample_counter_0(7),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(7),
       O => \comp_burst.sample_counter_0[9]_i_1_n_0\
+    );
+\comp_burst.sample_counter_0[9]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"DFFFFFFF"
+    )
+        port map (
+      I0 => sample_counter_0(5),
+      I1 => \comp_burst.sample_counter_0[5]_i_2_n_0\,
+      I2 => sample_counter_0(3),
+      I3 => sample_counter_0(4),
+      I4 => sample_counter_0(6),
+      O => \comp_burst.sample_counter_0[9]_i_2_n_0\
     );
 \comp_burst.sample_counter_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_up_done,
+      CE => \comp_burst.sample_counter_0[15]_i_1_n_0\,
       D => \comp_burst.sample_counter_0[0]_i_1_n_0\,
       Q => sample_counter_0(0),
       R => '0'
@@ -9094,7 +18651,7 @@ begin
 \comp_burst.sample_counter_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_up_done,
+      CE => \comp_burst.sample_counter_0[15]_i_1_n_0\,
       D => \comp_burst.sample_counter_0[1]_i_1_n_0\,
       Q => sample_counter_0(1),
       R => '0'
@@ -9163,430 +18720,2527 @@ begin
       Q => sample_counter_0(9),
       R => '0'
     );
-\comp_burst.up_down_same_i_1\: unisim.vcomponents.LUT3
+\comp_burst.sample_counter_1[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"7F40"
     )
         port map (
-      I0 => \comp_burst.up_down_same_i_2_n_0\,
-      I1 => \comp_burst.up_down_same_i_3_n_0\,
-      I2 => \comp_burst.up_down_same_i_4_n_0\,
-      O => \comp_burst.up_down_same_i_1_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => in_sample(14),
+      O => \p_0_in__2\(0)
     );
-\comp_burst.up_down_same_i_2\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"A6AAFFFFA6AA0000"
     )
         port map (
-      I0 => env_down_ptr(3),
-      I1 => env_up_ptr(3),
-      I2 => env_down_ptr(4),
-      I3 => env_up_ptr(4),
-      I4 => env_up_ptr(5),
-      I5 => env_down_ptr(5),
-      O => \comp_burst.up_down_same_i_2_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(10),
+      I1 => \comp_burst.sample_counter_1_reg\(9),
+      I2 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(8),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(24),
+      O => \p_0_in__2\(10)
     );
-\comp_burst.up_down_same_i_3\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"FF7FFFFFFFFFFFFF"
     )
         port map (
-      I0 => env_down_ptr(6),
-      I1 => env_up_ptr(6),
-      I2 => env_down_ptr(7),
-      I3 => env_up_ptr(7),
-      I4 => env_up_ptr(8),
-      I5 => env_down_ptr(8),
-      O => \comp_burst.up_down_same_i_3_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(6),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1_reg\(4),
+      I3 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(5),
+      I5 => \comp_burst.sample_counter_1_reg\(7),
+      O => \comp_burst.sample_counter_1[10]_i_2_n_0\
     );
-\comp_burst.up_down_same_i_4\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"9FFF9000"
     )
         port map (
-      I0 => env_down_ptr(0),
-      I1 => env_up_ptr(0),
-      I2 => env_down_ptr(1),
-      I3 => env_up_ptr(1),
-      I4 => env_up_ptr(2),
-      I5 => env_down_ptr(2),
-      O => \comp_burst.up_down_same_i_4_n_0\
+      I0 => \comp_burst.sample_counter_1_reg\(11),
+      I1 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(25),
+      O => \p_0_in__2\(11)
     );
-\comp_burst.up_down_same_reg\: unisim.vcomponents.FDRE
+\comp_burst.sample_counter_1[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(12),
+      I1 => \comp_burst.sample_counter_1_reg\(11),
+      I2 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(26),
+      O => \p_0_in__2\(12)
+    );
+\comp_burst.sample_counter_1[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AAAFFFF9AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(13),
+      I1 => \comp_burst.sample_counter_1[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(11),
+      I3 => \comp_burst.sample_counter_1_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(27),
+      O => \p_0_in__2\(13)
+    );
+\comp_burst.sample_counter_1[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(9),
+      I1 => \comp_burst.sample_counter_1_reg\(7),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(6),
+      I4 => \comp_burst.sample_counter_1_reg\(8),
+      I5 => \comp_burst.sample_counter_1_reg\(10),
+      O => \comp_burst.sample_counter_1[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[14]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(14),
+      I1 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(13),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(28),
+      O => \p_0_in__2\(14)
+    );
+\comp_burst.sample_counter_1[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"CAAA"
+    )
+        port map (
+      I0 => burst,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      O => \comp_burst.sample_counter_1[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_1[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(15),
+      I1 => \comp_burst.sample_counter_1_reg\(14),
+      I2 => \comp_burst.sample_counter_1_reg\(13),
+      I3 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(29),
+      O => \p_0_in__2\(15)
+    );
+\comp_burst.sample_counter_1[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0080000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(12),
+      I1 => \comp_burst.sample_counter_1_reg\(11),
+      I2 => \comp_burst.sample_counter_1_reg\(9),
+      I3 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(8),
+      I5 => \comp_burst.sample_counter_1_reg\(10),
+      O => \comp_burst.sample_counter_1[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_1[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(15),
+      O => \p_0_in__2\(1)
+    );
+\comp_burst.sample_counter_1[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(2),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => \comp_burst.sample_counter_1_reg\(0),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(16),
+      O => \p_0_in__2\(2)
+    );
+\comp_burst.sample_counter_1[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(3),
+      I1 => \comp_burst.sample_counter_1_reg\(2),
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(17),
+      O => \p_0_in__2\(3)
+    );
+\comp_burst.sample_counter_1[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(4),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(18),
+      O => \p_0_in__2\(4)
+    );
+\comp_burst.sample_counter_1[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(5),
+      I1 => \comp_burst.sample_counter_1_reg\(3),
+      I2 => \comp_burst.sample_counter_1_reg\(4),
+      I3 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(19),
+      O => \p_0_in__2\(5)
+    );
+\comp_burst.sample_counter_1[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(2),
+      I1 => \comp_burst.sample_counter_1_reg\(1),
+      I2 => \comp_burst.sample_counter_1_reg\(0),
+      O => \comp_burst.sample_counter_1[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(6),
+      I1 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(20),
+      O => \p_0_in__2\(6)
+    );
+\comp_burst.sample_counter_1[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(7),
+      I1 => \comp_burst.sample_counter_1_reg\(6),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(21),
+      O => \p_0_in__2\(7)
+    );
+\comp_burst.sample_counter_1[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(8),
+      I1 => \comp_burst.sample_counter_1_reg\(7),
+      I2 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(6),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(22),
+      O => \p_0_in__2\(8)
+    );
+\comp_burst.sample_counter_1[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(3),
+      I1 => \comp_burst.sample_counter_1_reg\(4),
+      I2 => \comp_burst.sample_counter_1_reg\(2),
+      I3 => \comp_burst.sample_counter_1_reg\(1),
+      I4 => \comp_burst.sample_counter_1_reg\(0),
+      I5 => \comp_burst.sample_counter_1_reg\(5),
+      O => \comp_burst.sample_counter_1[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_1[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(9),
+      I1 => \comp_burst.sample_counter_1_reg\(8),
+      I2 => \comp_burst.sample_counter_1[10]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(23),
+      O => \p_0_in__2\(9)
+    );
+\comp_burst.sample_counter_1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(0),
+      Q => \comp_burst.sample_counter_1_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(10),
+      Q => \comp_burst.sample_counter_1_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(11),
+      Q => \comp_burst.sample_counter_1_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(12),
+      Q => \comp_burst.sample_counter_1_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(13),
+      Q => \comp_burst.sample_counter_1_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(14),
+      Q => \comp_burst.sample_counter_1_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(15),
+      Q => \comp_burst.sample_counter_1_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(1),
+      Q => \comp_burst.sample_counter_1_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(2),
+      Q => \comp_burst.sample_counter_1_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(3),
+      Q => \comp_burst.sample_counter_1_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(4),
+      Q => \comp_burst.sample_counter_1_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(5),
+      Q => \comp_burst.sample_counter_1_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(6),
+      Q => \comp_burst.sample_counter_1_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(7),
+      Q => \comp_burst.sample_counter_1_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(8),
+      Q => \comp_burst.sample_counter_1_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_1_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_1[15]_i_1_n_0\,
+      D => \p_0_in__2\(9),
+      Q => \comp_burst.sample_counter_1_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_counter_2[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F40"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => in_sample(30),
+      O => \p_0_in__3\(0)
+    );
+\comp_burst.sample_counter_2[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(10),
+      I1 => \comp_burst.sample_counter_2[10]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(40),
+      O => \p_0_in__3\(10)
+    );
+\comp_burst.sample_counter_2[10]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"DFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(8),
+      I1 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2_reg\(6),
+      I4 => \comp_burst.sample_counter_2_reg\(9),
+      O => \comp_burst.sample_counter_2[10]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(11),
+      I1 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(41),
+      O => \p_0_in__3\(11)
+    );
+\comp_burst.sample_counter_2[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(12),
+      I1 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(11),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(42),
+      O => \p_0_in__3\(12)
+    );
+\comp_burst.sample_counter_2[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(13),
+      I1 => \comp_burst.sample_counter_2_reg\(11),
+      I2 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(43),
+      O => \p_0_in__3\(13)
+    );
+\comp_burst.sample_counter_2[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FF7FFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(9),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_2_reg\(8),
+      I5 => \comp_burst.sample_counter_2_reg\(10),
+      O => \comp_burst.sample_counter_2[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(14),
+      I1 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(44),
+      O => \p_0_in__3\(14)
+    );
+\comp_burst.sample_counter_2[15]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EA2A2A2A"
+    )
+        port map (
+      I0 => burst,
+      I1 => run_env_start,
+      I2 => inc_env_sample,
+      I3 => \comp_burst.sample_ov_0_reg_n_0\,
+      I4 => \comp_burst.sample_ov_1_reg_n_0\,
+      O => \comp_burst.sample_counter_2[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_2[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(15),
+      I1 => \comp_burst.sample_counter_2_reg\(14),
+      I2 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(45),
+      O => \p_0_in__3\(15)
+    );
+\comp_burst.sample_counter_2[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(13),
+      I1 => \comp_burst.sample_counter_2_reg\(11),
+      I2 => \comp_burst.sample_counter_2[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(12),
+      O => \comp_burst.sample_counter_2[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_2[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(31),
+      O => \p_0_in__3\(1)
+    );
+\comp_burst.sample_counter_2[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(2),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => \comp_burst.sample_counter_2_reg\(0),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(32),
+      O => \p_0_in__3\(2)
+    );
+\comp_burst.sample_counter_2[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(3),
+      I1 => \comp_burst.sample_counter_2_reg\(2),
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(0),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(33),
+      O => \p_0_in__3\(3)
+    );
+\comp_burst.sample_counter_2[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(4),
+      I1 => \comp_burst.sample_counter_2_reg\(3),
+      I2 => \comp_burst.sample_counter_2[5]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(34),
+      O => \p_0_in__3\(4)
+    );
+\comp_burst.sample_counter_2[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(5),
+      I1 => \comp_burst.sample_counter_2_reg\(3),
+      I2 => \comp_burst.sample_counter_2_reg\(4),
+      I3 => \comp_burst.sample_counter_2[5]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(35),
+      O => \p_0_in__3\(5)
+    );
+\comp_burst.sample_counter_2[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(2),
+      I1 => \comp_burst.sample_counter_2_reg\(1),
+      I2 => \comp_burst.sample_counter_2_reg\(0),
+      O => \comp_burst.sample_counter_2[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(6),
+      I1 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(36),
+      O => \p_0_in__3\(6)
+    );
+\comp_burst.sample_counter_2[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6FFFFFFA6000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(7),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(37),
+      O => \p_0_in__3\(7)
+    );
+\comp_burst.sample_counter_2[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA6AFFFFAA6A0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(8),
+      I1 => \comp_burst.sample_counter_2_reg\(6),
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(38),
+      O => \p_0_in__3\(8)
+    );
+\comp_burst.sample_counter_2[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(3),
+      I1 => \comp_burst.sample_counter_2_reg\(4),
+      I2 => \comp_burst.sample_counter_2_reg\(2),
+      I3 => \comp_burst.sample_counter_2_reg\(1),
+      I4 => \comp_burst.sample_counter_2_reg\(0),
+      I5 => \comp_burst.sample_counter_2_reg\(5),
+      O => \comp_burst.sample_counter_2[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(9),
+      I1 => \comp_burst.sample_counter_2[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(39),
+      O => \p_0_in__3\(9)
+    );
+\comp_burst.sample_counter_2[9]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F7FF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(6),
+      I1 => \comp_burst.sample_counter_2_reg\(7),
+      I2 => \comp_burst.sample_counter_2[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(8),
+      O => \comp_burst.sample_counter_2[9]_i_2_n_0\
+    );
+\comp_burst.sample_counter_2_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(0),
+      Q => \comp_burst.sample_counter_2_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(10),
+      Q => \comp_burst.sample_counter_2_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(11),
+      Q => \comp_burst.sample_counter_2_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(12),
+      Q => \comp_burst.sample_counter_2_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(13),
+      Q => \comp_burst.sample_counter_2_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(14),
+      Q => \comp_burst.sample_counter_2_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(15),
+      Q => \comp_burst.sample_counter_2_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(1),
+      Q => \comp_burst.sample_counter_2_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(2),
+      Q => \comp_burst.sample_counter_2_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(3),
+      Q => \comp_burst.sample_counter_2_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(4),
+      Q => \comp_burst.sample_counter_2_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(5),
+      Q => \comp_burst.sample_counter_2_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(6),
+      Q => \comp_burst.sample_counter_2_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(7),
+      Q => \comp_burst.sample_counter_2_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(8),
+      Q => \comp_burst.sample_counter_2_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_2_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      D => \p_0_in__3\(9),
+      Q => \comp_burst.sample_counter_2_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_counter_3[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"3AAA"
+    )
+        port map (
+      I0 => in_sample(46),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      O => \p_0_in__4\(0)
+    );
+\comp_burst.sample_counter_3[10]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3[10]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_3_reg\(10),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(56),
+      O => \p_0_in__4\(10)
+    );
+\comp_burst.sample_counter_3[10]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"F7FFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(8),
+      I1 => \comp_burst.sample_counter_3_reg\(6),
+      I2 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(7),
+      I4 => \comp_burst.sample_counter_3_reg\(9),
+      O => \comp_burst.sample_counter_3[10]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[11]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(11),
+      I1 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(57),
+      O => \p_0_in__4\(11)
+    );
+\comp_burst.sample_counter_3[12]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(12),
+      I1 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(11),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(58),
+      O => \p_0_in__4\(12)
+    );
+\comp_burst.sample_counter_3[13]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(13),
+      I1 => \comp_burst.sample_counter_3_reg\(11),
+      I2 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(12),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(59),
+      O => \p_0_in__4\(13)
+    );
+\comp_burst.sample_counter_3[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0080000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(10),
+      I1 => \comp_burst.sample_counter_3_reg\(9),
+      I2 => \comp_burst.sample_counter_3_reg\(7),
+      I3 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I4 => \comp_burst.sample_counter_3_reg\(6),
+      I5 => \comp_burst.sample_counter_3_reg\(8),
+      O => \comp_burst.sample_counter_3[13]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[14]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(14),
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(60),
+      O => \p_0_in__4\(14)
+    );
+\comp_burst.sample_counter_3[15]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"80FFFFFF80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => \comp_burst.sample_ov_2_reg_n_0\,
+      I3 => inc_env_sample,
+      I4 => run_env_start,
+      I5 => burst,
+      O => \comp_burst.sample_counter_3[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_3[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(15),
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(14),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(61),
+      O => \p_0_in__4\(15)
+    );
+\comp_burst.sample_counter_3[15]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(13),
+      I1 => \comp_burst.sample_counter_3_reg\(11),
+      I2 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(12),
+      O => \comp_burst.sample_counter_3[15]_i_3_n_0\
+    );
+\comp_burst.sample_counter_3[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"6FFF6000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(0),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(47),
+      O => \p_0_in__4\(1)
+    );
+\comp_burst.sample_counter_3[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AFFFFFF6A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(2),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(48),
+      O => \p_0_in__4\(2)
+    );
+\comp_burst.sample_counter_3[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6AAAFFFF6AAA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(3),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(2),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(49),
+      O => \p_0_in__4\(3)
+    );
+\comp_burst.sample_counter_3[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(4),
+      I1 => \comp_burst.sample_counter_3[4]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(50),
+      O => \p_0_in__4\(4)
+    );
+\comp_burst.sample_counter_3[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(2),
+      I1 => \comp_burst.sample_counter_3_reg\(0),
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => \comp_burst.sample_counter_3_reg\(3),
+      O => \comp_burst.sample_counter_3[4]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(5),
+      I1 => \comp_burst.sample_counter_3[5]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(51),
+      O => \p_0_in__4\(5)
+    );
+\comp_burst.sample_counter_3[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(3),
+      I1 => \comp_burst.sample_counter_3_reg\(1),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(2),
+      I4 => \comp_burst.sample_counter_3_reg\(4),
+      O => \comp_burst.sample_counter_3[5]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[6]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(6),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(52),
+      O => \p_0_in__4\(6)
+    );
+\comp_burst.sample_counter_3[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9AFFFFFF9A000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(7),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(6),
+      I3 => run_env_start,
+      I4 => inc_env_sample,
+      I5 => in_sample(53),
+      O => \p_0_in__4\(7)
+    );
+\comp_burst.sample_counter_3[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAFFFFA6AA0000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(8),
+      I1 => \comp_burst.sample_counter_3_reg\(6),
+      I2 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I3 => \comp_burst.sample_counter_3_reg\(7),
+      I4 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I5 => in_sample(54),
+      O => \p_0_in__4\(8)
+    );
+\comp_burst.sample_counter_3[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(4),
+      I1 => \comp_burst.sample_counter_3_reg\(2),
+      I2 => \comp_burst.sample_counter_3_reg\(0),
+      I3 => \comp_burst.sample_counter_3_reg\(1),
+      I4 => \comp_burst.sample_counter_3_reg\(3),
+      I5 => \comp_burst.sample_counter_3_reg\(5),
+      O => \comp_burst.sample_counter_3[8]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"9FFF9000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(9),
+      I1 => \comp_burst.sample_counter_3[9]_i_2_n_0\,
+      I2 => run_env_start,
+      I3 => inc_env_sample,
+      I4 => in_sample(55),
+      O => \p_0_in__4\(9)
+    );
+\comp_burst.sample_counter_3[9]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"DFFF"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_3_reg\(7),
+      I1 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(6),
+      I3 => \comp_burst.sample_counter_3_reg\(8),
+      O => \comp_burst.sample_counter_3[9]_i_2_n_0\
+    );
+\comp_burst.sample_counter_3_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(0),
+      Q => \comp_burst.sample_counter_3_reg\(0),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(10),
+      Q => \comp_burst.sample_counter_3_reg\(10),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(11),
+      Q => \comp_burst.sample_counter_3_reg\(11),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(12),
+      Q => \comp_burst.sample_counter_3_reg\(12),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(13),
+      Q => \comp_burst.sample_counter_3_reg\(13),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(14),
+      Q => \comp_burst.sample_counter_3_reg\(14),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(15),
+      Q => \comp_burst.sample_counter_3_reg\(15),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(1),
+      Q => \comp_burst.sample_counter_3_reg\(1),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(2),
+      Q => \comp_burst.sample_counter_3_reg\(2),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(3),
+      Q => \comp_burst.sample_counter_3_reg\(3),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(4),
+      Q => \comp_burst.sample_counter_3_reg\(4),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(5),
+      Q => \comp_burst.sample_counter_3_reg\(5),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(6),
+      Q => \comp_burst.sample_counter_3_reg\(6),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(7),
+      Q => \comp_burst.sample_counter_3_reg\(7),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(8),
+      Q => \comp_burst.sample_counter_3_reg\(8),
+      R => '0'
+    );
+\comp_burst.sample_counter_3_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.sample_counter_3[15]_i_1_n_0\,
+      D => \p_0_in__4\(9),
+      Q => \comp_burst.sample_counter_3_reg\(9),
+      R => '0'
+    );
+\comp_burst.sample_ov_0_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8FFF888880008888"
+    )
+        port map (
+      I0 => sample_counter_0(15),
+      I1 => \comp_burst.sample_ov_0_i_2_n_0\,
+      I2 => inc_env_sample,
+      I3 => run_env_start,
+      I4 => burst,
+      I5 => \comp_burst.sample_ov_0_reg_n_0\,
+      O => \comp_burst.sample_ov_0_i_1_n_0\
+    );
+\comp_burst.sample_ov_0_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => sample_counter_0(10),
+      I1 => sample_counter_0(11),
+      I2 => \comp_burst.sample_ov_0_i_3_n_0\,
+      I3 => sample_counter_0(14),
+      I4 => sample_counter_0(12),
+      I5 => sample_counter_0(13),
+      O => \comp_burst.sample_ov_0_i_2_n_0\
+    );
+\comp_burst.sample_ov_0_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_0_i_4_n_0\,
+      I1 => sample_counter_0(8),
+      I2 => sample_counter_0(7),
+      I3 => sample_counter_0(6),
+      I4 => \comp_burst.sample_ov_0_i_5_n_0\,
+      O => \comp_burst.sample_ov_0_i_3_n_0\
+    );
+\comp_burst.sample_ov_0_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => sample_counter_0(9),
+      I1 => sample_counter_0(10),
+      I2 => sample_counter_0(11),
+      O => \comp_burst.sample_ov_0_i_4_n_0\
+    );
+\comp_burst.sample_ov_0_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0800000000000000"
+    )
+        port map (
+      I0 => sample_counter_0(2),
+      I1 => sample_counter_0(1),
+      I2 => sample_counter_0(0),
+      I3 => sample_counter_0(3),
+      I4 => sample_counter_0(4),
+      I5 => sample_counter_0(5),
+      O => \comp_burst.sample_ov_0_i_5_n_0\
+    );
+\comp_burst.sample_ov_0_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.up_down_same_i_1_n_0\,
-      Q => up_down_same,
-      R => \comp_burst.env_down_done_i_1_n_0\
+      D => \comp_burst.sample_ov_0_i_1_n_0\,
+      Q => \comp_burst.sample_ov_0_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_ov_1_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFBBA088A088A088"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => burst,
+      I2 => \comp_burst.sample_ov_0_reg_n_0\,
+      I3 => \comp_burst.sample_counter_0[15]_i_4_n_0\,
+      I4 => \comp_burst.sample_counter_1_reg\(15),
+      I5 => \comp_burst.sample_ov_1_i_2_n_0\,
+      O => \comp_burst.sample_ov_1_i_1_n_0\
+    );
+\comp_burst.sample_ov_1_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(11),
+      I1 => \comp_burst.sample_counter_1_reg\(10),
+      I2 => \comp_burst.sample_ov_1_i_3_n_0\,
+      I3 => \comp_burst.sample_counter_1_reg\(13),
+      I4 => \comp_burst.sample_counter_1_reg\(12),
+      I5 => \comp_burst.sample_counter_1_reg\(14),
+      O => \comp_burst.sample_ov_1_i_2_n_0\
+    );
+\comp_burst.sample_ov_1_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_1_i_4_n_0\,
+      I1 => \comp_burst.sample_counter_1_reg\(8),
+      I2 => \comp_burst.sample_counter_1_reg\(6),
+      I3 => \comp_burst.sample_counter_1_reg\(7),
+      I4 => \comp_burst.sample_ov_1_i_5_n_0\,
+      O => \comp_burst.sample_ov_1_i_3_n_0\
+    );
+\comp_burst.sample_ov_1_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(10),
+      I1 => \comp_burst.sample_counter_1_reg\(9),
+      I2 => \comp_burst.sample_counter_1_reg\(11),
+      O => \comp_burst.sample_ov_1_i_4_n_0\
+    );
+\comp_burst.sample_ov_1_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => \comp_burst.sample_counter_1_reg\(2),
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(4),
+      I4 => \comp_burst.sample_counter_1_reg\(3),
+      I5 => \comp_burst.sample_counter_1_reg\(5),
+      O => \comp_burst.sample_ov_1_i_5_n_0\
+    );
+\comp_burst.sample_ov_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.sample_ov_1_i_1_n_0\,
+      Q => \comp_burst.sample_ov_1_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_ov_2_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B888"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_2_reg_n_0\,
+      I1 => \comp_burst.sample_counter_2[15]_i_1_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(15),
+      I3 => \comp_burst.sample_ov_2_i_2_n_0\,
+      O => \comp_burst.sample_ov_2_i_1_n_0\
+    );
+\comp_burst.sample_ov_2_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(11),
+      I1 => \comp_burst.sample_counter_2_reg\(10),
+      I2 => \comp_burst.sample_ov_2_i_3_n_0\,
+      I3 => \comp_burst.sample_counter_2_reg\(13),
+      I4 => \comp_burst.sample_counter_2_reg\(12),
+      I5 => \comp_burst.sample_counter_2_reg\(14),
+      O => \comp_burst.sample_ov_2_i_2_n_0\
+    );
+\comp_burst.sample_ov_2_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_2_i_4_n_0\,
+      I1 => \comp_burst.sample_counter_2_reg\(8),
+      I2 => \comp_burst.sample_counter_2_reg\(6),
+      I3 => \comp_burst.sample_counter_2_reg\(7),
+      I4 => \comp_burst.sample_ov_2_i_5_n_0\,
+      O => \comp_burst.sample_ov_2_i_3_n_0\
+    );
+\comp_burst.sample_ov_2_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8F"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(10),
+      I1 => \comp_burst.sample_counter_2_reg\(9),
+      I2 => \comp_burst.sample_counter_2_reg\(11),
+      O => \comp_burst.sample_ov_2_i_4_n_0\
+    );
+\comp_burst.sample_ov_2_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => \comp_burst.sample_counter_2_reg\(2),
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(4),
+      I4 => \comp_burst.sample_counter_2_reg\(3),
+      I5 => \comp_burst.sample_counter_2_reg\(5),
+      O => \comp_burst.sample_ov_2_i_5_n_0\
+    );
+\comp_burst.sample_ov_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.sample_ov_2_i_1_n_0\,
+      Q => \comp_burst.sample_ov_2_reg_n_0\,
+      R => '0'
+    );
+\comp_burst.sample_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(0),
+      Q => \^sample\(0),
+      R => '0'
+    );
+\comp_burst.sample_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(10),
+      Q => \^sample\(10),
+      R => '0'
+    );
+\comp_burst.sample_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(11),
+      Q => \^sample\(11),
+      R => '0'
+    );
+\comp_burst.sample_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(12),
+      Q => \^sample\(12),
+      R => '0'
+    );
+\comp_burst.sample_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(13),
+      Q => \^sample\(13),
+      R => '0'
+    );
+\comp_burst.sample_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(14),
+      Q => \^sample\(14),
+      R => '0'
+    );
+\comp_burst.sample_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(15),
+      Q => \^sample\(15),
+      R => '0'
+    );
+\comp_burst.sample_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(0),
+      Q => \^sample\(16),
+      R => '0'
+    );
+\comp_burst.sample_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(1),
+      Q => \^sample\(17),
+      R => '0'
+    );
+\comp_burst.sample_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(2),
+      Q => \^sample\(18),
+      R => '0'
+    );
+\comp_burst.sample_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(3),
+      Q => \^sample\(19),
+      R => '0'
+    );
+\comp_burst.sample_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(1),
+      Q => \^sample\(1),
+      R => '0'
+    );
+\comp_burst.sample_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(4),
+      Q => \^sample\(20),
+      R => '0'
+    );
+\comp_burst.sample_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(5),
+      Q => \^sample\(21),
+      R => '0'
+    );
+\comp_burst.sample_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(6),
+      Q => \^sample\(22),
+      R => '0'
+    );
+\comp_burst.sample_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(7),
+      Q => \^sample\(23),
+      R => '0'
+    );
+\comp_burst.sample_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(8),
+      Q => \^sample\(24),
+      R => '0'
+    );
+\comp_burst.sample_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(9),
+      Q => \^sample\(25),
+      R => '0'
+    );
+\comp_burst.sample_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(10),
+      Q => \^sample\(26),
+      R => '0'
+    );
+\comp_burst.sample_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(11),
+      Q => \^sample\(27),
+      R => '0'
+    );
+\comp_burst.sample_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(12),
+      Q => \^sample\(28),
+      R => '0'
+    );
+\comp_burst.sample_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(13),
+      Q => \^sample\(29),
+      R => '0'
+    );
+\comp_burst.sample_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(2),
+      Q => \^sample\(2),
+      R => '0'
+    );
+\comp_burst.sample_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(14),
+      Q => \^sample\(30),
+      R => '0'
+    );
+\comp_burst.sample_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_1_reg\(15),
+      Q => \^sample\(31),
+      R => '0'
+    );
+\comp_burst.sample_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(0),
+      Q => \^sample\(32),
+      R => '0'
+    );
+\comp_burst.sample_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(1),
+      Q => \^sample\(33),
+      R => '0'
+    );
+\comp_burst.sample_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(2),
+      Q => \^sample\(34),
+      R => '0'
+    );
+\comp_burst.sample_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(3),
+      Q => \^sample\(35),
+      R => '0'
+    );
+\comp_burst.sample_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(4),
+      Q => \^sample\(36),
+      R => '0'
+    );
+\comp_burst.sample_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(5),
+      Q => \^sample\(37),
+      R => '0'
+    );
+\comp_burst.sample_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(6),
+      Q => \^sample\(38),
+      R => '0'
+    );
+\comp_burst.sample_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(7),
+      Q => \^sample\(39),
+      R => '0'
+    );
+\comp_burst.sample_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(3),
+      Q => \^sample\(3),
+      R => '0'
+    );
+\comp_burst.sample_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(8),
+      Q => \^sample\(40),
+      R => '0'
+    );
+\comp_burst.sample_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(9),
+      Q => \^sample\(41),
+      R => '0'
+    );
+\comp_burst.sample_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(10),
+      Q => \^sample\(42),
+      R => '0'
+    );
+\comp_burst.sample_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(11),
+      Q => \^sample\(43),
+      R => '0'
+    );
+\comp_burst.sample_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(12),
+      Q => \^sample\(44),
+      R => '0'
+    );
+\comp_burst.sample_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(13),
+      Q => \^sample\(45),
+      R => '0'
+    );
+\comp_burst.sample_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(14),
+      Q => \^sample\(46),
+      R => '0'
+    );
+\comp_burst.sample_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_2_reg\(15),
+      Q => \^sample\(47),
+      R => '0'
+    );
+\comp_burst.sample_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(0),
+      Q => \^sample\(48),
+      R => '0'
+    );
+\comp_burst.sample_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(1),
+      Q => \^sample\(49),
+      R => '0'
+    );
+\comp_burst.sample_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(4),
+      Q => \^sample\(4),
+      R => '0'
+    );
+\comp_burst.sample_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(2),
+      Q => \^sample\(50),
+      R => '0'
+    );
+\comp_burst.sample_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(3),
+      Q => \^sample\(51),
+      R => '0'
+    );
+\comp_burst.sample_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(4),
+      Q => \^sample\(52),
+      R => '0'
+    );
+\comp_burst.sample_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(5),
+      Q => \^sample\(53),
+      R => '0'
+    );
+\comp_burst.sample_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(6),
+      Q => \^sample\(54),
+      R => '0'
+    );
+\comp_burst.sample_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(7),
+      Q => \^sample\(55),
+      R => '0'
+    );
+\comp_burst.sample_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(8),
+      Q => \^sample\(56),
+      R => '0'
+    );
+\comp_burst.sample_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(9),
+      Q => \^sample\(57),
+      R => '0'
+    );
+\comp_burst.sample_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(10),
+      Q => \^sample\(58),
+      R => '0'
+    );
+\comp_burst.sample_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(11),
+      Q => \^sample\(59),
+      R => '0'
+    );
+\comp_burst.sample_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(5),
+      Q => \^sample\(5),
+      R => '0'
+    );
+\comp_burst.sample_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(12),
+      Q => \^sample\(60),
+      R => '0'
+    );
+\comp_burst.sample_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(13),
+      Q => \^sample\(61),
+      R => '0'
+    );
+\comp_burst.sample_reg[62]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(14),
+      Q => \^sample\(62),
+      R => '0'
+    );
+\comp_burst.sample_reg[63]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.sample_counter_3_reg\(15),
+      Q => \^sample\(63),
+      R => '0'
+    );
+\comp_burst.sample_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(6),
+      Q => \^sample\(6),
+      R => '0'
+    );
+\comp_burst.sample_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(7),
+      Q => \^sample\(7),
+      R => '0'
+    );
+\comp_burst.sample_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(8),
+      Q => \^sample\(8),
+      R => '0'
+    );
+\comp_burst.sample_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => sample_counter_0(9),
+      Q => \^sample\(9),
+      R => '0'
+    );
+\comp_burst.scan_start_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000055555554"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => \comp_burst.curr_size[8]_i_3_n_0\,
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      I4 => \comp_burst.wr_ptr_reg\(1),
+      I5 => reset,
+      O => \comp_burst.scan_start_i_1_n_0\
+    );
+\comp_burst.scan_start_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.scan_start_i_1_n_0\,
+      Q => scan_start,
+      R => '0'
+    );
+\comp_burst.size[10]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(8),
+      I1 => env_start_ind(8),
+      O => \comp_burst.size[10]_i_2_n_0\
+    );
+\comp_burst.size[10]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(7),
+      I1 => env_start_ind(7),
+      O => \comp_burst.size[10]_i_3_n_0\
+    );
+\comp_burst.size[10]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"D22D"
+    )
+        port map (
+      I0 => env_end_ind(9),
+      I1 => env_start_ind(9),
+      I2 => env_start_ind(10),
+      I3 => env_end_ind(10),
+      O => \comp_burst.size[10]_i_4_n_0\
+    );
+\comp_burst.size[10]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(8),
+      I1 => env_end_ind(8),
+      I2 => env_start_ind(9),
+      I3 => env_end_ind(9),
+      O => \comp_burst.size[10]_i_5_n_0\
+    );
+\comp_burst.size[10]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(7),
+      I1 => env_end_ind(7),
+      I2 => env_start_ind(8),
+      I3 => env_end_ind(8),
+      O => \comp_burst.size[10]_i_6_n_0\
+    );
+\comp_burst.size[7]_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(4),
+      I1 => env_end_ind(4),
+      I2 => env_start_ind(5),
+      I3 => env_end_ind(5),
+      O => \comp_burst.size[7]_i_10_n_0\
+    );
+\comp_burst.size[7]_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(3),
+      I1 => env_end_ind(3),
+      I2 => env_start_ind(4),
+      I3 => env_end_ind(4),
+      O => \comp_burst.size[7]_i_11_n_0\
+    );
+\comp_burst.size[7]_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(2),
+      I1 => env_end_ind(2),
+      I2 => env_start_ind(3),
+      I3 => env_end_ind(3),
+      O => \comp_burst.size[7]_i_12_n_0\
+    );
+\comp_burst.size[7]_i_13\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"96"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      I1 => env_start_ind(2),
+      I2 => env_end_ind(2),
+      O => \comp_burst.size[7]_i_13_n_0\
+    );
+\comp_burst.size[7]_i_14\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      I1 => env_end_ind(1),
+      O => \comp_burst.size[7]_i_14_n_0\
+    );
+\comp_burst.size[7]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => env_end_ind(0),
+      I1 => env_start_ind(0),
+      O => \comp_burst.size[7]_i_15_n_0\
+    );
+\comp_burst.size[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(6),
+      I1 => env_start_ind(6),
+      O => \comp_burst.size[7]_i_2_n_0\
+    );
+\comp_burst.size[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(5),
+      I1 => env_start_ind(5),
+      O => \comp_burst.size[7]_i_3_n_0\
+    );
+\comp_burst.size[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(4),
+      I1 => env_start_ind(4),
+      O => \comp_burst.size[7]_i_4_n_0\
+    );
+\comp_burst.size[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(3),
+      I1 => env_start_ind(3),
+      O => \comp_burst.size[7]_i_5_n_0\
+    );
+\comp_burst.size[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => env_end_ind(2),
+      I1 => env_start_ind(2),
+      O => \comp_burst.size[7]_i_6_n_0\
+    );
+\comp_burst.size[7]_i_7\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => env_start_ind(1),
+      O => \comp_burst.size[7]_i_7_n_0\
+    );
+\comp_burst.size[7]_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(6),
+      I1 => env_end_ind(6),
+      I2 => env_start_ind(7),
+      I3 => env_end_ind(7),
+      O => \comp_burst.size[7]_i_8_n_0\
+    );
+\comp_burst.size[7]_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B44B"
+    )
+        port map (
+      I0 => env_start_ind(5),
+      I1 => env_end_ind(5),
+      I2 => env_start_ind(6),
+      I3 => env_end_ind(6),
+      O => \comp_burst.size[7]_i_9_n_0\
+    );
+\comp_burst.size_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_15\,
+      Q => \^size\(0),
+      R => '0'
+    );
+\comp_burst.size_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_13\,
+      Q => \^size\(10),
+      R => '0'
+    );
+\comp_burst.size_reg[10]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.size_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 2) => \NLW_comp_burst.size_reg[10]_i_1_CO_UNCONNECTED\(7 downto 2),
+      CO(1) => \comp_burst.size_reg[10]_i_1_n_6\,
+      CO(0) => \comp_burst.size_reg[10]_i_1_n_7\,
+      DI(7 downto 2) => B"000000",
+      DI(1) => \comp_burst.size[10]_i_2_n_0\,
+      DI(0) => \comp_burst.size[10]_i_3_n_0\,
+      O(7 downto 3) => \NLW_comp_burst.size_reg[10]_i_1_O_UNCONNECTED\(7 downto 3),
+      O(2) => \comp_burst.size_reg[10]_i_1_n_13\,
+      O(1) => \comp_burst.size_reg[10]_i_1_n_14\,
+      O(0) => \comp_burst.size_reg[10]_i_1_n_15\,
+      S(7 downto 3) => B"00000",
+      S(2) => \comp_burst.size[10]_i_4_n_0\,
+      S(1) => \comp_burst.size[10]_i_5_n_0\,
+      S(0) => \comp_burst.size[10]_i_6_n_0\
+    );
+\comp_burst.size_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_14\,
+      Q => \^size\(1),
+      R => '0'
+    );
+\comp_burst.size_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_13\,
+      Q => \^size\(2),
+      R => '0'
+    );
+\comp_burst.size_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_12\,
+      Q => \^size\(3),
+      R => '0'
+    );
+\comp_burst.size_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_11\,
+      Q => \^size\(4),
+      R => '0'
+    );
+\comp_burst.size_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_10\,
+      Q => \^size\(5),
+      R => '0'
+    );
+\comp_burst.size_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_9\,
+      Q => \^size\(6),
+      R => '0'
+    );
+\comp_burst.size_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[7]_i_1_n_8\,
+      Q => \^size\(7),
+      R => '0'
+    );
+\comp_burst.size_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.size_reg[7]_i_1_n_0\,
+      CO(6) => \comp_burst.size_reg[7]_i_1_n_1\,
+      CO(5) => \comp_burst.size_reg[7]_i_1_n_2\,
+      CO(4) => \comp_burst.size_reg[7]_i_1_n_3\,
+      CO(3) => \comp_burst.size_reg[7]_i_1_n_4\,
+      CO(2) => \comp_burst.size_reg[7]_i_1_n_5\,
+      CO(1) => \comp_burst.size_reg[7]_i_1_n_6\,
+      CO(0) => \comp_burst.size_reg[7]_i_1_n_7\,
+      DI(7) => \comp_burst.size[7]_i_2_n_0\,
+      DI(6) => \comp_burst.size[7]_i_3_n_0\,
+      DI(5) => \comp_burst.size[7]_i_4_n_0\,
+      DI(4) => \comp_burst.size[7]_i_5_n_0\,
+      DI(3) => \comp_burst.size[7]_i_6_n_0\,
+      DI(2) => \comp_burst.size[7]_i_7_n_0\,
+      DI(1) => env_start_ind(1),
+      DI(0) => env_end_ind(0),
+      O(7) => \comp_burst.size_reg[7]_i_1_n_8\,
+      O(6) => \comp_burst.size_reg[7]_i_1_n_9\,
+      O(5) => \comp_burst.size_reg[7]_i_1_n_10\,
+      O(4) => \comp_burst.size_reg[7]_i_1_n_11\,
+      O(3) => \comp_burst.size_reg[7]_i_1_n_12\,
+      O(2) => \comp_burst.size_reg[7]_i_1_n_13\,
+      O(1) => \comp_burst.size_reg[7]_i_1_n_14\,
+      O(0) => \comp_burst.size_reg[7]_i_1_n_15\,
+      S(7) => \comp_burst.size[7]_i_8_n_0\,
+      S(6) => \comp_burst.size[7]_i_9_n_0\,
+      S(5) => \comp_burst.size[7]_i_10_n_0\,
+      S(4) => \comp_burst.size[7]_i_11_n_0\,
+      S(3) => \comp_burst.size[7]_i_12_n_0\,
+      S(2) => \comp_burst.size[7]_i_13_n_0\,
+      S(1) => \comp_burst.size[7]_i_14_n_0\,
+      S(0) => \comp_burst.size[7]_i_15_n_0\
+    );
+\comp_burst.size_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_15\,
+      Q => \^size\(8),
+      R => '0'
+    );
+\comp_burst.size_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_burst.complete_reg_n_0\,
+      D => \comp_burst.size_reg[10]_i_1_n_14\,
+      Q => \^size\(9),
+      R => '0'
     );
 \comp_burst.wr_ptr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => wr_ptr(0),
-      O => \p_1_in__0\(0)
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      O => \p_0_in__0\(0)
     );
 \comp_burst.wr_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      O => \p_1_in__0\(1)
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      O => \p_0_in__0\(1)
     );
 \comp_burst.wr_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"78"
+      INIT => X"6A"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(2),
-      O => \p_1_in__0\(2)
+      I0 => \comp_burst.wr_ptr_reg\(2),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      O => \p_0_in__0\(2)
     );
 \comp_burst.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7F80"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => wr_ptr(2),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(3),
-      O => \p_1_in__0\(3)
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      O => \p_0_in__0\(3)
     );
 \comp_burst.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFF8000"
+      INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => wr_ptr(3),
-      I1 => wr_ptr(0),
-      I2 => wr_ptr(1),
-      I3 => wr_ptr(2),
-      I4 => wr_ptr(4),
-      O => \p_1_in__0\(4)
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(2),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(0),
+      I4 => \comp_burst.wr_ptr_reg\(3),
+      O => \p_0_in__0\(4)
     );
 \comp_burst.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFF80000000"
+      INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => wr_ptr(2),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(3),
-      I4 => wr_ptr(4),
-      I5 => wr_ptr(5),
-      O => \p_1_in__0\(5)
+      I0 => \comp_burst.wr_ptr_reg\(5),
+      I1 => \comp_burst.wr_ptr_reg\(3),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      I3 => \comp_burst.wr_ptr_reg\(1),
+      I4 => \comp_burst.wr_ptr_reg\(2),
+      I5 => \comp_burst.wr_ptr_reg\(4),
+      O => \p_0_in__0\(5)
     );
 \comp_burst.wr_ptr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
-      I0 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I1 => wr_ptr(6),
-      O => \p_1_in__0\(6)
+      I0 => \comp_burst.wr_ptr_reg\(6),
+      I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
+      O => \p_0_in__0\(6)
     );
 \comp_burst.wr_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D2"
+      INIT => X"6A"
     )
         port map (
-      I0 => wr_ptr(6),
+      I0 => \comp_burst.wr_ptr_reg\(7),
       I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(7),
-      O => \p_1_in__0\(7)
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      O => \p_0_in__0\(7)
     );
 \comp_burst.wr_ptr[8]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => wr_data,
-      O => \comp_burst.wr_ptr[8]_i_1_n_0\
+      I0 => mem_wr,
+      O => clear
     );
 \comp_burst.wr_ptr[8]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"DF20"
+      INIT => X"6AAA"
     )
         port map (
-      I0 => wr_ptr(7),
-      I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(6),
-      I3 => wr_ptr(8),
-      O => \p_1_in__0\(8)
+      I0 => \comp_burst.wr_ptr_reg\(8),
+      I1 => \comp_burst.wr_ptr_reg\(6),
+      I2 => \comp_burst.wr_ptr[8]_i_3_n_0\,
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      O => \p_0_in__0\(8)
     );
 \comp_burst.wr_ptr[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => wr_ptr(5),
-      I1 => wr_ptr(2),
-      I2 => wr_ptr(1),
-      I3 => wr_ptr(0),
-      I4 => wr_ptr(3),
-      I5 => wr_ptr(4),
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      I4 => \comp_burst.wr_ptr_reg\(4),
+      I5 => \comp_burst.wr_ptr_reg\(5),
       O => \comp_burst.wr_ptr[8]_i_3_n_0\
     );
 \comp_burst.wr_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(0),
-      Q => wr_ptr(0),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(0),
+      Q => \comp_burst.wr_ptr_reg\(0),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(1),
-      Q => wr_ptr(1),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(1),
+      Q => \comp_burst.wr_ptr_reg\(1),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(2),
-      Q => wr_ptr(2),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(2),
+      Q => \comp_burst.wr_ptr_reg\(2),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(3),
-      Q => wr_ptr(3),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(3),
+      Q => \comp_burst.wr_ptr_reg\(3),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(4),
-      Q => wr_ptr(4),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(4),
+      Q => \comp_burst.wr_ptr_reg\(4),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(5),
-      Q => wr_ptr(5),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(5),
+      Q => \comp_burst.wr_ptr_reg\(5),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(6),
-      Q => wr_ptr(6),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(6),
+      Q => \comp_burst.wr_ptr_reg\(6),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(7),
-      Q => wr_ptr(7),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
+      D => \p_0_in__0\(7),
+      Q => \comp_burst.wr_ptr_reg\(7),
+      R => clear
     );
 \comp_burst.wr_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(8),
-      Q => wr_ptr(8),
-      R => \comp_burst.wr_ptr[8]_i_1_n_0\
-    );
-i_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(8)
-    );
-i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(7)
-    );
-i_10: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(7)
-    );
-i_11: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(6)
-    );
-i_12: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(5)
-    );
-i_13: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(4)
-    );
-i_14: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(3)
-    );
-i_15: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(2)
-    );
-i_16: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(1)
-    );
-i_17: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(0)
-    );
-i_2: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(6)
-    );
-i_3: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(5)
-    );
-i_4: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(4)
-    );
-i_5: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(3)
-    );
-i_6: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(2)
-    );
-i_7: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(1)
-    );
-i_8: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_up_ptr(0)
-    );
-i_9: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => phase_down_ptr(8)
+      D => \p_0_in__0\(8),
+      Q => \comp_burst.wr_ptr_reg\(8),
+      R => clear
     );
 ila_i: component ps_comp_ana_0_1_ila_0
      port map (
       clk => clk,
       probe0(0) => burst,
       probe1(15 downto 0) => sample_counter_0(15 downto 0),
-      probe10(0) => run_env_up,
-      probe11(0) => run_env_down,
-      probe12(0) => check_env_up,
-      probe13(0) => check_env_down,
-      probe14(0) => env_up_done,
-      probe15(0) => env_down_done,
-      probe16(8 downto 0) => curr_size(8 downto 0),
-      probe17(0) => up_down_same,
-      probe18(8 downto 0) => env_up_ptr(8 downto 0),
-      probe19(8 downto 0) => env_down_ptr(8 downto 0),
-      probe2(19 downto 0) => freq(19 downto 0),
-      probe20(8 downto 0) => phase_up_ptr(8 downto 0),
-      probe21(8 downto 0) => phase_down_ptr(8 downto 0),
-      probe22(15 downto 0) => min_env(15 downto 0),
-      probe23(15 downto 0) => env_up_0(15 downto 0),
-      probe24(15 downto 0) => env_up_1(15 downto 0),
-      probe25(15 downto 0) => env_up_2(15 downto 0),
-      probe26(15 downto 0) => env_up_3(15 downto 0),
-      probe27(15 downto 0) => env_down_0(15 downto 0),
-      probe28(15 downto 0) => env_down_1(15 downto 0),
-      probe29(15 downto 0) => env_down_2(15 downto 0),
-      probe3(15 downto 0) => angle(15 downto 0),
-      probe30(15 downto 0) => env_down_3(15 downto 0),
-      probe31(3 downto 0) => env_up_bits(3 downto 0),
-      probe32(3 downto 0) => env_down_bits(3 downto 0),
-      probe33(0) => \^err_no_data\,
-      probe4(8 downto 0) => wr_ptr(8 downto 0),
-      probe5(15 downto 0) => in_env_0(15 downto 0),
-      probe6(15 downto 0) => in_env_1(15 downto 0),
-      probe7(15 downto 0) => in_env_2(15 downto 0),
-      probe8(15 downto 0) => in_env_3(15 downto 0),
-      probe9(0) => filling
+      probe10(10 downto 0) => env_up_max_ind(10 downto 0),
+      probe11(10 downto 0) => env_down_max_ind(10 downto 0),
+      probe12(15 downto 0) => env_up_max_val(15 downto 0),
+      probe13(15 downto 0) => env_down_max_val(15 downto 0),
+      probe14(8 downto 0) => curr_size(8 downto 0),
+      probe15(10 downto 0) => env_up_ind(10 downto 0),
+      probe16(15 downto 0) => env_up_val(15 downto 0),
+      probe17(10 downto 0) => env_down_ind(10 downto 0),
+      probe18(15 downto 0) => env_down_val(15 downto 0),
+      probe19(0) => \^err_no_data\,
+      probe2(0) => scan_start,
+      probe20(0) => \^done\,
+      probe21(63 downto 0) => \^sample\(63 downto 0),
+      probe22(19 downto 0) => \^freq\(19 downto 0),
+      probe23(15 downto 0) => \^angle\(15 downto 0),
+      probe24(10 downto 0) => \^size\(10 downto 0),
+      probe25(10 downto 0) => \^max_pos\(10 downto 0),
+      probe26(15 downto 0) => \^max_env\(15 downto 0),
+      probe3(0) => run_env,
+      probe4(0) => load_env,
+      probe5(0) => comp_env,
+      probe6(0) => run_env_start,
+      probe7(0) => run_env_end,
+      probe8(10 downto 0) => env_start_ind(10 downto 0),
+      probe9(10 downto 0) => env_end_ind(10 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -16438,8 +28092,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute MARK_DEBUG of run : signal is std.standard.true;
   signal sample : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of sample : signal is std.standard.true;
-  signal sample_0 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal sample_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal sample_0 : STD_LOGIC_VECTOR ( 61 downto 0 );
+  signal sample_1 : STD_LOGIC_VECTOR ( 61 downto 0 );
   signal sample_counter_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of sample_counter_0 : signal is std.standard.true;
   signal \sample_counter_0__0\ : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -16461,8 +28115,22 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute MARK_DEBUG of valid : signal is std.standard.true;
   signal wr_data : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute MARK_DEBUG of wr_data : signal is std.standard.true;
+  signal NLW_burst_i_0_done_UNCONNECTED : STD_LOGIC;
   signal NLW_burst_i_0_err_no_data_UNCONNECTED : STD_LOGIC;
+  signal NLW_burst_i_0_angle_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_burst_i_0_freq_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal NLW_burst_i_0_max_env_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_burst_i_0_max_pos_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal NLW_burst_i_0_sample_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_burst_i_0_size_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal NLW_burst_i_1_done_UNCONNECTED : STD_LOGIC;
   signal NLW_burst_i_1_err_no_data_UNCONNECTED : STD_LOGIC;
+  signal NLW_burst_i_1_angle_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_burst_i_1_freq_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal NLW_burst_i_1_max_env_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_burst_i_1_max_pos_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal NLW_burst_i_1_sample_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_burst_i_1_size_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \NLW_comp_ana.raw_sample_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_ana.sample_counter_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_ana.sample_counter_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
@@ -16646,9 +28314,12 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
 begin
 burst_i_0: entity work.\ps_comp_ana_0_1_comp_burst__xdcDup__1\
      port map (
+      angle(15 downto 0) => NLW_burst_i_0_angle_UNCONNECTED(15 downto 0),
       burst => burst(0),
       clk => clk,
+      done => NLW_burst_i_0_done_UNCONNECTED,
       err_no_data => NLW_burst_i_0_err_no_data_UNCONNECTED,
+      freq(19 downto 0) => NLW_burst_i_0_freq_UNCONNECTED(19 downto 0),
       in_angle(15) => \comp_ana.angle_0_reg_n_0_[15]\,
       in_angle(14) => \comp_ana.angle_0_reg_n_0_[14]\,
       in_angle(13) => \comp_ana.angle_0_reg_n_0_[13]\,
@@ -16674,17 +28345,23 @@ burst_i_0: entity work.\ps_comp_ana_0_1_comp_burst__xdcDup__1\
       in_phase_1(19 downto 0) => B"00000000000000000000",
       in_phase_2(19 downto 0) => B"00000000000000000000",
       in_phase_3(19 downto 0) => B"00000000000000000000",
-      in_sample(61 downto 14) => B"000000000000000000000000000000000000000000000000",
-      in_sample(13 downto 0) => sample_0(13 downto 0),
+      in_sample(61 downto 0) => sample_0(61 downto 0),
+      max_env(15 downto 0) => NLW_burst_i_0_max_env_UNCONNECTED(15 downto 0),
+      max_pos(10 downto 0) => NLW_burst_i_0_max_pos_UNCONNECTED(10 downto 0),
       min_env(15 downto 0) => min_env(15 downto 0),
       reset => reset,
+      sample(63 downto 0) => NLW_burst_i_0_sample_UNCONNECTED(63 downto 0),
+      size(10 downto 0) => NLW_burst_i_0_size_UNCONNECTED(10 downto 0),
       wr_data => wr_data(0)
     );
 burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
      port map (
+      angle(15 downto 0) => NLW_burst_i_1_angle_UNCONNECTED(15 downto 0),
       burst => burst(1),
       clk => clk,
+      done => NLW_burst_i_1_done_UNCONNECTED,
       err_no_data => NLW_burst_i_1_err_no_data_UNCONNECTED,
+      freq(19 downto 0) => NLW_burst_i_1_freq_UNCONNECTED(19 downto 0),
       in_angle(15) => \comp_ana.angle_1_reg_n_0_[15]\,
       in_angle(14) => \comp_ana.angle_1_reg_n_0_[14]\,
       in_angle(13) => \comp_ana.angle_1_reg_n_0_[13]\,
@@ -16710,10 +28387,13 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       in_phase_1(19 downto 0) => B"00000000000000000000",
       in_phase_2(19 downto 0) => B"00000000000000000000",
       in_phase_3(19 downto 0) => B"00000000000000000000",
-      in_sample(61 downto 14) => B"000000000000000000000000000000000000000000000000",
-      in_sample(13 downto 0) => sample_1(13 downto 0),
+      in_sample(61 downto 0) => sample_1(61 downto 0),
+      max_env(15 downto 0) => NLW_burst_i_1_max_env_UNCONNECTED(15 downto 0),
+      max_pos(10 downto 0) => NLW_burst_i_1_max_pos_UNCONNECTED(10 downto 0),
       min_env(15 downto 0) => min_env(15 downto 0),
       reset => reset,
+      sample(63 downto 0) => NLW_burst_i_1_sample_UNCONNECTED(63 downto 0),
+      size(10 downto 0) => NLW_burst_i_1_size_UNCONNECTED(10 downto 0),
       wr_data => wr_data(1)
     );
 \comp_ana.ana_in_data_reg[0]\: unisim.vcomponents.FDRE
@@ -23876,7 +35556,7 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => run,
       R => '0'
     );
-\comp_ana.sample_0[13]_i_1\: unisim.vcomponents.LUT3
+\comp_ana.sample_0[61]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"04"
     )
@@ -23926,12 +35606,140 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_0(13),
       R => '0'
     );
+\comp_ana.sample_0_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_0(14),
+      Q => sample_0(14),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_0(15),
+      Q => sample_0(15),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(0),
+      Q => sample_0(16),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(1),
+      Q => sample_0(17),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(2),
+      Q => sample_0(18),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(3),
+      Q => sample_0(19),
+      R => '0'
+    );
 \comp_ana.sample_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_0,
       D => sample_counter_0(1),
       Q => sample_0(1),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(4),
+      Q => sample_0(20),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(5),
+      Q => sample_0(21),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(6),
+      Q => sample_0(22),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(7),
+      Q => sample_0(23),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(8),
+      Q => sample_0(24),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(9),
+      Q => sample_0(25),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(10),
+      Q => sample_0(26),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(11),
+      Q => sample_0(27),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(12),
+      Q => sample_0(28),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(13),
+      Q => sample_0(29),
       R => '0'
     );
 \comp_ana.sample_0_reg[2]\: unisim.vcomponents.FDRE
@@ -23942,12 +35750,172 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_0(2),
       R => '0'
     );
+\comp_ana.sample_0_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(14),
+      Q => sample_0(30),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_1(15),
+      Q => sample_0(31),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(0),
+      Q => sample_0(32),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(1),
+      Q => sample_0(33),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(2),
+      Q => sample_0(34),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(3),
+      Q => sample_0(35),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(4),
+      Q => sample_0(36),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(5),
+      Q => sample_0(37),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(6),
+      Q => sample_0(38),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(7),
+      Q => sample_0(39),
+      R => '0'
+    );
 \comp_ana.sample_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_0,
       D => sample_counter_0(3),
       Q => sample_0(3),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(8),
+      Q => sample_0(40),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(9),
+      Q => sample_0(41),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(10),
+      Q => sample_0(42),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(11),
+      Q => sample_0(43),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(12),
+      Q => sample_0(44),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(13),
+      Q => sample_0(45),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(14),
+      Q => sample_0(46),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_2(15),
+      Q => sample_0(47),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(0),
+      Q => sample_0(48),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(1),
+      Q => sample_0(49),
       R => '0'
     );
 \comp_ana.sample_0_reg[4]\: unisim.vcomponents.FDRE
@@ -23958,12 +35926,108 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_0(4),
       R => '0'
     );
+\comp_ana.sample_0_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(2),
+      Q => sample_0(50),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(3),
+      Q => sample_0(51),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(4),
+      Q => sample_0(52),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(5),
+      Q => sample_0(53),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(6),
+      Q => sample_0(54),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(7),
+      Q => sample_0(55),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(8),
+      Q => sample_0(56),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(9),
+      Q => sample_0(57),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(10),
+      Q => sample_0(58),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(11),
+      Q => sample_0(59),
+      R => '0'
+    );
 \comp_ana.sample_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_0,
       D => sample_counter_0(5),
       Q => sample_0(5),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(12),
+      Q => sample_0(60),
+      R => '0'
+    );
+\comp_ana.sample_0_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_0,
+      D => sample_counter_3(13),
+      Q => sample_0(61),
       R => '0'
     );
 \comp_ana.sample_0_reg[6]\: unisim.vcomponents.FDRE
@@ -23998,7 +36062,7 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_0(9),
       R => '0'
     );
-\comp_ana.sample_1[13]_i_1\: unisim.vcomponents.LUT3
+\comp_ana.sample_1[61]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"40"
     )
@@ -24048,12 +36112,140 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_1(13),
       R => '0'
     );
+\comp_ana.sample_1_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_0(14),
+      Q => sample_1(14),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_0(15),
+      Q => sample_1(15),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(0),
+      Q => sample_1(16),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(1),
+      Q => sample_1(17),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(2),
+      Q => sample_1(18),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(3),
+      Q => sample_1(19),
+      R => '0'
+    );
 \comp_ana.sample_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_1,
       D => sample_counter_0(1),
       Q => sample_1(1),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(4),
+      Q => sample_1(20),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(5),
+      Q => sample_1(21),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(6),
+      Q => sample_1(22),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(7),
+      Q => sample_1(23),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(8),
+      Q => sample_1(24),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(9),
+      Q => sample_1(25),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(10),
+      Q => sample_1(26),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(11),
+      Q => sample_1(27),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(12),
+      Q => sample_1(28),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(13),
+      Q => sample_1(29),
       R => '0'
     );
 \comp_ana.sample_1_reg[2]\: unisim.vcomponents.FDRE
@@ -24064,12 +36256,172 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_1(2),
       R => '0'
     );
+\comp_ana.sample_1_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(14),
+      Q => sample_1(30),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_1(15),
+      Q => sample_1(31),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(0),
+      Q => sample_1(32),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(1),
+      Q => sample_1(33),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(2),
+      Q => sample_1(34),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(3),
+      Q => sample_1(35),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(4),
+      Q => sample_1(36),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(5),
+      Q => sample_1(37),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(6),
+      Q => sample_1(38),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(7),
+      Q => sample_1(39),
+      R => '0'
+    );
 \comp_ana.sample_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_1,
       D => sample_counter_0(3),
       Q => sample_1(3),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(8),
+      Q => sample_1(40),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(9),
+      Q => sample_1(41),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(10),
+      Q => sample_1(42),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(11),
+      Q => sample_1(43),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(12),
+      Q => sample_1(44),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(13),
+      Q => sample_1(45),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(14),
+      Q => sample_1(46),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_2(15),
+      Q => sample_1(47),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(0),
+      Q => sample_1(48),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(1),
+      Q => sample_1(49),
       R => '0'
     );
 \comp_ana.sample_1_reg[4]\: unisim.vcomponents.FDRE
@@ -24080,12 +36432,108 @@ burst_i_1: entity work.ps_comp_ana_0_1_comp_burst
       Q => sample_1(4),
       R => '0'
     );
+\comp_ana.sample_1_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(2),
+      Q => sample_1(50),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(3),
+      Q => sample_1(51),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(4),
+      Q => sample_1(52),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(5),
+      Q => sample_1(53),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(6),
+      Q => sample_1(54),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(7),
+      Q => sample_1(55),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(8),
+      Q => sample_1(56),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(9),
+      Q => sample_1(57),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(10),
+      Q => sample_1(58),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(11),
+      Q => sample_1(59),
+      R => '0'
+    );
 \comp_ana.sample_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => angle_1,
       D => sample_counter_0(5),
       Q => sample_1(5),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(12),
+      Q => sample_1(60),
+      R => '0'
+    );
+\comp_ana.sample_1_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => angle_1,
+      D => sample_counter_3(13),
+      Q => sample_1(61),
       R => '0'
     );
 \comp_ana.sample_1_reg[6]\: unisim.vcomponents.FDRE

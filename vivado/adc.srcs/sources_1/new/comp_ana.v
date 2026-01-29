@@ -123,7 +123,8 @@ module comp_ana(
     reg [1:0] burst;
     reg [1:0] wr_data;
     wire [1:0] err_no_data;
-    
+    wire [1:0] done;
+
     reg [61:0] sample_0;
     reg [19:0] freq_0;
     reg [15:0] angle_0;
@@ -137,6 +138,13 @@ module comp_ana(
     reg [19:0] phase_1_0;
     reg [19:0] phase_2_0;
     reg [19:0] phase_3_0;
+
+    wire [63:0] sample_out_0;
+    wire [19:0] freq_out_0;
+    wire [15:0] angle_out_0;
+    wire [10:0] size_out_0;
+    wire [10:0] max_pos_out_0;
+    wire [15:0] max_env_out_0;
     
     reg [61:0] sample_1;
     reg [19:0] freq_1;
@@ -151,6 +159,13 @@ module comp_ana(
     reg [19:0] phase_1_1;
     reg [19:0] phase_2_1;
     reg [19:0] phase_3_1;
+
+    wire [63:0] sample_out_1;
+    wire [19:0] freq_out_1;
+    wire [15:0] angle_out_1;
+    wire [10:0] size_out_1;
+    wire [10:0] max_pos_out_1;
+    wire [15:0] max_env_out_1;
 
 fifo_config fifo_config_i (
   .rst(reset),                   // input wire rst
@@ -242,7 +257,14 @@ comp_burst burst_i_0 (
   .in_phase_1(phase_1_0),
   .in_phase_2(phase_2_0),
   .in_phase_3(phase_3_0),
-  .err_no_data(err_no_data[0])
+  .err_no_data(err_no_data[0]),
+  .done(done[0]),
+  .sample(sample_out_0),
+  .freq(freq_out_0),
+  .angle(angle_out_0),
+  .size(size_out_0),
+  .max_pos(max_pos_out_0),
+  .max_env(max_env_out_0)
   );
 
 comp_burst burst_i_1 (
@@ -262,7 +284,14 @@ comp_burst burst_i_1 (
   .in_phase_1(phase_1_1),
   .in_phase_2(phase_2_1),
   .in_phase_3(phase_3_1),
-  .err_no_data(err_no_data[1])
+  .err_no_data(err_no_data[1]),
+  .done(done[1]),
+  .sample(sample_out_1),
+  .freq(freq_out_1),
+  .angle(angle_out_1),
+  .size(size_out_1),
+  .max_pos(max_pos_out_1),
+  .max_env(max_env_out_1)
   );
 
 	ila_1 ila_i (
