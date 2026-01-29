@@ -99,7 +99,18 @@ generate
     always @(posedge clk) 
 	begin
   	    p2 <= re2 + im2;
-		amp_1 <= lenv;
+	end
+
+    always @(posedge clk) 
+	begin
+        if (lenv[15])
+            amp_1 <= 16'h7FFF;
+        else
+            amp_1 <= lenv;
+	end
+
+    always @(posedge clk) 
+	begin
 		amp_2 <= amp_1;
 		amp_3 <= amp_2;
 		amp_4 <= amp_3;
@@ -113,7 +124,7 @@ generate
 	    begin
     	    valid <= 1;
     	    env <= amp_4;
-	       phase <= lphase[19:0];
+            phase <= lphase[19:0];
         end
         else
           delay <= delay + 1;

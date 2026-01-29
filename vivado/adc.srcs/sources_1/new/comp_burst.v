@@ -1,23 +1,82 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 13.01.2026 14:06:36
-// Design Name: 
-// Module Name: comp_env_phase
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
+// Module: comp_burst
+//
+// Description:
+// -----------
+// Burst analysis and compression stage operating on envelope and phase data
+// delivered in groups of four samples per cycle.
+//
+// The module buffers one complete burst in internal BRAM and performs two
+// concurrent scans over the envelope data:
+//
+//   1) Upward scan   : from burst start towards the end
+//   2) Downward scan : from burst end towards the start
+//
+// Both scans always run to the opposite end of the burst. During the scan the
+// following quantities are detected:
+//
+//   - First sample >= min_env   (burst start index)
+//   - Last  sample >= min_env   (burst end index)
+//   - Maximum envelope value and its position (both directions)
+//
+// From these, the module computes:
+//
+//   - Absolute sample number of the detected burst
+//   - Burst size (in samples)
+//   - Burst-relative position of the envelope maximum
+//   - Maximum envelope value
+//
+// Envelope and phase samples between the detected start and end are streamed
+// out in aligned groups of four samples for further processing or storage.
+//
+// Continuous or full-length bursts may be detected upstream and suppressed
+// from AXI transmission; this block still fully processes such bursts to
+// provide metadata.
+//
+//
+// Data format and assumptions:
+// -----------------------------
+// - Envelope samples are signed 16-bit values but assumed non-negative
+//   (bit[15] must remain zero; overflow is not expected).
+// - Phase samples are 20-bit signed values.
+// - Input samples always arrive in groups of four.
+// - Burst size is always a multiple of four samples.
+// - Internal memory stores data in "four-sample words".
+//
+// curr_size represents the number of four-sample words in the burst, not the
+// number of individual samples.
+//
+// Sample indexing:
+// ----------------
+// The input provides the absolute sample number of the first sample in the
+// burst. The module internally increments this value during scanning and
+// outputs the absolute sample number corresponding to the detected burst start.
+// Sample numbering is handled as a 64-bit integer using chained 16-bit counters.
+//
+//
+// Pipeline and control notes:
+// ---------------------------
+// - BRAM read and comparison introduce a fixed two-cycle latency.
+// - Scan termination compares against index value '2' to compensate for this
+//   pipeline delay.
+// - Both upward and downward scans must complete before 'done' is asserted.
+// - If no valid data above min_env is found, err_no_data is asserted.
+//
+//
+// Outputs:
+// --------
+// - done        : Asserted for one cycle when burst analysis is complete.
+// - err_no_data : Indicates no valid envelope above threshold was found.
+// - sample      : Absolute sample number of burst start.
+// - size        : Burst length in samples.
+// - max_pos     : Burst-relative position of envelope maximum.
+// - max_env     : Maximum envelope value.
+// - save        : Indicates valid output envelope/phase group (4 samples).
+//
+//------------------------------------------------------------------------------
+// Author:      Leif Ekblad
+//------------------------------------------------------------------------------
 
 module comp_burst(
     input wire clk,
@@ -26,8 +85,6 @@ module comp_burst(
 
 	input wire burst,
 	input wire [61:0] in_sample,
-	input wire [19:0] in_freq,
-	input wire [15:0] in_angle,
 
     input wire wr_data,    
     input wire [15:0] in_env_0, 
@@ -43,11 +100,20 @@ module comp_burst(
     output reg err_no_data,
 	output reg done,
 	output reg [63:0] sample,
-	output reg [19:0] freq,
-	output reg [15:0] angle,
 	output reg [10:0] size,
 	output reg [10:0] max_pos,
-	output reg [15:0] max_env
+	output reg [15:0] max_env,
+    
+    output reg save,
+    output reg [15:0] out_env_0,
+    output reg [15:0] out_env_1,
+    output reg [15:0] out_env_2,
+    output reg [15:0] out_env_3,
+
+    output reg [19:0] out_phase_0,
+    output reg [19:0] out_phase_1,
+    output reg [19:0] out_phase_2,
+    output reg [19:0] out_phase_3
 );
     
     reg [63:0] env_in;
@@ -57,8 +123,7 @@ module comp_burst(
 
     reg [63:0] mem_env_up [0:511];
     reg [63:0] mem_env_down [0:511];
-    reg [79:0] mem_phase_up [0:511];
-    reg [79:0] mem_phase_down [0:511];
+    reg [79:0] mem_phase [0:511];
     reg [8:0] wr_ptr;
 
     reg [8:0] env_up_ptr;
@@ -81,23 +146,13 @@ module comp_burst(
     wire [15:0] env_down_2 = env_down[47:32];
     wire [15:0] env_down_3 = env_down[63:48];
 
-    reg [8:0] phase_up_ptr;
-    reg [79:0] phase_up;
-    reg [10:0] phase_up_ind;
-    reg [15:0] phase_up_val;
-    wire [19:0] phase_up_0 = phase_up[19:0];
-    wire [19:0] phase_up_1 = phase_up[39:20];
-    wire [19:0] phase_up_2 = phase_up[59:40];
-    wire [19:0] phase_up_3 = phase_up[79:60];
-
-    reg [8:0] phase_down_ptr;
-    reg [79:0] phase_down;
-    reg [10:0] phase_down_ind;
-    reg [15:0] phase_down_val;
-    wire [19:0] phase_down_0 = phase_down[19:0];
-    wire [19:0] phase_down_1 = phase_down[39:20];
-    wire [19:0] phase_down_2 = phase_down[59:40];
-    wire [19:0] phase_down_3 = phase_down[79:60];
+    reg [79:0] phase_out;
+    reg [10:0] phase_ind;
+    reg [19:0] phase_val;
+    wire [19:0] phase_0 = phase_out[19:0];
+    wire [19:0] phase_1 = phase_out[39:20];
+    wire [19:0] phase_2 = phase_out[59:40];
+    wire [19:0] phase_3 = phase_out[79:60];
 
     reg [15:0] sample_counter_0;
     reg [15:0] sample_counter_1;
@@ -130,35 +185,45 @@ module comp_burst(
     reg [10:0] env_down_max_ind;
     reg [15:0] env_down_max_val;
 
+    reg run_write_back;
+    reg [15:0] wr_env;
+    reg [19:0] wr_phase;
+    reg [1:0] wr_pos;
+
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(burst),               // input wire [0:0]  probe3
-		.probe1(sample_counter_0),    // input wire [15:0]  probe3
-		.probe2(scan_start),          // input wire [0:0]  probe3
-		.probe3(run_env),             // input wire [0:0]  probe3
-		.probe4(load_env),            // input wire [0:0]  probe3
-		.probe5(comp_env),            // input wire [0:0]  probe3
-		.probe6(run_env_start),       // input wire [0:0]  probe3
-		.probe7(run_env_end),         // input wire [0:0]  probe3
-		.probe8(env_start_ind),       // input wire [10:0]  probe3
-		.probe9(env_end_ind),         // input wire [10:0]  probe3
-		.probe10(env_up_max_ind),     // input wire [10:0]  probe3
-		.probe11(env_down_max_ind),   // input wire [10:0]  probe3
-		.probe12(env_up_max_val),     // input wire [15:0]  probe3
-		.probe13(env_down_max_val),   // input wire [15:0]  probe3
-		.probe14(curr_size),          // input wire [8:0]  probe3
-		.probe15(env_up_ind),         // input wire [10:0]  probe3
-		.probe16(env_up_val),         // input wire [15:0]  probe3
-		.probe17(env_down_ind),       // input wire [10:0]  probe3
-		.probe18(env_down_val),       // input wire [15:0]  probe3
-		.probe19(err_no_data),        // input wire [0:0]  probe3
-		.probe20(done),               // input wire [0:0]  probe3
-		.probe21(sample),             // input wire [63:0]  probe3
-		.probe22(freq),               // input wire [19:0]  probe3
-		.probe23(angle),              // input wire [15:0]  probe3
-		.probe24(size),               // input wire [10:0]  probe3
-		.probe25(max_pos),            // input wire [10:0]  probe3
-		.probe26(max_env)             // input wire [15:0]  probe3
+		.probe1(scan_start),          // input wire [0:0]  probe3
+		.probe2(run_env),             // input wire [0:0]  probe3
+		.probe3(load_env),            // input wire [0:0]  probe3
+		.probe4(comp_env),            // input wire [0:0]  probe3
+		.probe5(run_env_start),       // input wire [0:0]  probe3
+		.probe6(run_env_end),         // input wire [0:0]  probe3
+		.probe7(env_start_ind),       // input wire [10:0]  probe3
+		.probe8(env_end_ind),         // input wire [10:0]  probe3
+		.probe9(env_up_max_ind),      // input wire [10:0]  probe3
+		.probe10(env_down_max_ind),   // input wire [10:0]  probe3
+		.probe11(env_up_max_val),     // input wire [15:0]  probe3
+		.probe12(env_down_max_val),   // input wire [15:0]  probe3
+		.probe13(curr_size),          // input wire [8:0]  probe3
+		.probe14(env_up_ind),         // input wire [10:0]  probe3
+		.probe15(env_up_val),         // input wire [15:0]  probe3
+		.probe16(env_down_ind),       // input wire [10:0]  probe3
+		.probe17(env_down_val),       // input wire [15:0]  probe3
+		.probe18(done),               // input wire [0:0]  probe3
+		.probe19(run_write_back),     // input wire [0:0]  probe3
+		.probe20(wr_pos),             // input wire [1:0]  probe3
+		.probe21(wr_env),             // input wire [15:0]  probe3
+		.probe22(wr_phase),           // input wire [19:0]  probe3
+		.probe23(save),               // input wire [0:0]  probe3
+		.probe24(out_env_0),          // input wire [15:0]  probe3
+		.probe25(out_env_1),          // input wire [15:0]  probe3
+		.probe26(out_env_2),          // input wire [15:0]  probe3
+		.probe27(out_env_3),          // input wire [15:0]  probe3
+		.probe28(out_phase_0),        // input wire [19:0]  probe3
+		.probe29(out_phase_1),        // input wire [19:0]  probe3
+		.probe30(out_phase_2),        // input wire [19:0]  probe3
+		.probe31(out_phase_3)         // input wire [19:0]  probe3
 	);
 
 generate
@@ -194,13 +259,7 @@ generate
     always @(posedge clk) 
     begin
         if (mem_wr)    
-            mem_phase_up[wr_ptr] <= phase_in;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (mem_wr)        
-            mem_phase_down[wr_ptr] <= phase_in;
+            mem_phase[wr_ptr] <= phase_in;
     end
     
     always @(posedge clk) 
@@ -215,12 +274,7 @@ generate
 
     always @(posedge clk) 
     begin
-        phase_up <= mem_phase_up[phase_up_ptr];
-    end
-
-    always @(posedge clk) 
-    begin
-        phase_down <= mem_phase_down[phase_down_ptr];
+        phase_out <= mem_phase[env_up_ptr];
     end
         
     always @(posedge clk) 
@@ -255,11 +309,7 @@ generate
     always @(posedge clk) 
     begin
         if (burst)
-        begin
-            freq <= in_freq;
-            angle <= in_angle;
             filling <= 1;
-        end
         else
         begin
             if (!wr_data)
@@ -432,6 +482,8 @@ generate
 			max_pos <= ((env_down_max_ind + env_up_max_ind) >> 1) - env_start_ind;
 			max_env <= env_up_max_val;
 		end
+        else
+            done <= 0;
 	end
 
     always @(posedge clk) 
@@ -468,7 +520,10 @@ generate
     always @(posedge clk) 
     begin
         if (scan_start)
+        begin
             run_env_start <= 1;
+            run_write_back <= 0;
+        end
         else
         begin
             if (comp_env)
@@ -483,13 +538,17 @@ generate
                 begin
                     if (env_up_val >= min_env)
                     begin
+                        run_write_back <= 1;
                         run_env_start <= 0;
                         env_start_ind <= env_up_ind;
                     end
                 end            
             end
             else
+            begin
                 env_up_max_val <= 0;
+                run_write_back <= 0;
+            end
         end
     end
 
@@ -550,6 +609,104 @@ generate
             end
             else
                 env_down_max_val <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        case (env_up_adr[1:0])
+            0: phase_val <= phase_0;
+            1: phase_val <= phase_1;
+            2: phase_val <= phase_2;
+            3: phase_val <= phase_3;
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        wr_env <= env_up_val;
+        wr_phase <= phase_val;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (run_write_back)
+        begin
+            wr_pos <= wr_pos + 1;
+            
+             case (wr_pos)
+                0 :
+                begin
+                    out_env_0 <= wr_env;
+                    out_phase_0 <= wr_phase;
+                    save <= 0;
+                end
+
+                1 :
+                begin
+                    out_env_1 <= wr_env;
+                    out_phase_1 <= wr_phase;
+                    save <= 0;
+                end
+
+                2 :
+                begin
+                    out_env_2 <= wr_env;
+                    out_phase_2 <= wr_phase;
+                    save <= 0;
+                end
+
+                3 :
+                begin
+                    out_env_3 <= wr_env;
+                    out_phase_3 <= wr_phase;
+                    save <= 1;
+                end
+            endcase
+        end
+        else
+        begin
+            if (reset)
+            begin
+                wr_pos <= 0;
+                save <= 0;
+            end
+            else
+            begin
+                case (wr_pos)
+                    0 : save <= 0;
+
+                    1 :
+                    begin
+                        wr_pos <= 0;
+                        save <= 1;
+                        out_env_1 <= 0;
+                        out_env_2 <= 0;
+                        out_env_3 <= 0;
+                        out_phase_1 <= 0;
+                        out_phase_2 <= 0;
+                        out_phase_3 <= 0;
+                    end
+                    
+                    2 :
+                    begin
+                        wr_pos <= 0;
+                        save <= 1;
+                        out_env_2 <= 0;
+                        out_env_3 <= 0;
+                        out_phase_2 <= 0;
+                        out_phase_3 <= 0;
+                    end
+                    
+                    3 :
+                    begin
+                        wr_pos <= 0;
+                        save <= 1;
+                        out_env_3 <= 0;
+                        out_phase_3 <= 0;
+                    end
+                endcase
+            end
         end
     end
     

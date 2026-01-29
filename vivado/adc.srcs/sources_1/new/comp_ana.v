@@ -124,48 +124,73 @@ module comp_ana(
     reg [1:0] wr_data;
     wire [1:0] err_no_data;
     wire [1:0] done;
+    wire [1:0] save;
 
-    reg [61:0] sample_0;
-    reg [19:0] freq_0;
-    reg [15:0] angle_0;
+    reg [19:0] freq_size_0;
+    reg [15:0] angle_size_0;
     
-    reg [15:0] env_0_0;
-    reg [15:0] env_1_0;
-    reg [15:0] env_2_0;
-    reg [15:0] env_3_0;
+    reg [15:0] env_0_size_0;
+    reg [15:0] env_1_size_0;
+    reg [15:0] env_2_size_0;
+    reg [15:0] env_3_size_0;
 
-    reg [19:0] phase_0_0;
-    reg [19:0] phase_1_0;
-    reg [19:0] phase_2_0;
-    reg [19:0] phase_3_0;
+    reg [19:0] phase_0_size_0;
+    reg [19:0] phase_1_size_0;
+    reg [19:0] phase_2_size_0;
+    reg [19:0] phase_3_size_0;
 
-    wire [63:0] sample_out_0;
-    wire [19:0] freq_out_0;
-    wire [15:0] angle_out_0;
-    wire [10:0] size_out_0;
-    wire [10:0] max_pos_out_0;
-    wire [15:0] max_env_out_0;
+    reg [61:0] sample_size_0;
+
+    reg [19:0] freq_phase_0;
+    reg [15:0] angle_phase_0;
+
+    wire [63:0] sample_phase_0;
+    wire [10:0] size_phase_0;
+    wire [10:0] max_pos_phase_0;
+    wire [15:0] max_env_phase_0;
+
+    wire [15:0] env_0_phase_0;
+    wire [15:0] env_1_phase_0;
+    wire [15:0] env_2_phase_0;
+    wire [15:0] env_3_phase_0;
+
+    wire [19:0] phase_0_phase_0;
+    wire [19:0] phase_1_phase_0;
+    wire [19:0] phase_2_phase_0;
+    wire [19:0] phase_3_phase_0;
     
-    reg [61:0] sample_1;
-    reg [19:0] freq_1;
-    reg [15:0] angle_1;
+    reg [19:0] freq_size_1;
+    reg [15:0] angle_size_1;
     
-    reg [15:0] env_0_1;
-    reg [15:0] env_1_1;
-    reg [15:0] env_2_1;
-    reg [15:0] env_3_1;
+    reg [15:0] env_0_size_1;
+    reg [15:0] env_1_size_1;
+    reg [15:0] env_2_size_1;
+    reg [15:0] env_3_size_1;
 
-    reg [19:0] phase_0_1;
-    reg [19:0] phase_1_1;
-    reg [19:0] phase_2_1;
-    reg [19:0] phase_3_1;
+    reg [19:0] phase_0_size_1;
+    reg [19:0] phase_1_size_1;
+    reg [19:0] phase_2_size_1;
+    reg [19:0] phase_3_size_1;
 
-    wire [63:0] sample_out_1;
-    wire [19:0] freq_out_1;
-    wire [15:0] angle_out_1;
-    wire [10:0] size_out_1;
-    wire [10:0] max_pos_out_1;
-    wire [15:0] max_env_out_1;
+    reg [61:0] sample_size_1;
+
+    reg [19:0] freq_phase_1;
+    reg [15:0] angle_phase_1;
+
+    wire [63:0] sample_phase_1;
+    wire [10:0] size_phase_1;
+    wire [10:0] max_pos_phase_1;
+    wire [15:0] max_env_phase_1;
+
+    wire [15:0] env_0_phase_1;
+    wire [15:0] env_1_phase_1;
+    wire [15:0] env_2_phase_1;
+    wire [15:0] env_3_phase_1;
+
+    wire [19:0] phase_0_phase_1;
+    wire [19:0] phase_1_phase_1;
+    wire [19:0] phase_2_phase_1;
+    wire [19:0] phase_3_phase_1;
 
 fifo_config fifo_config_i (
   .rst(reset),                   // input wire rst
@@ -245,26 +270,31 @@ comp_burst burst_i_0 (
   .reset(reset),
   .min_env(min_env),
   .burst(burst[0]),
-  .in_sample(sample_0),
-  .in_freq(freq_0),
-  .in_angle(angle_0),
+  .in_sample(sample_size_0),
   .wr_data(wr_data[0]),
-  .in_env_0(env_0_0),
-  .in_env_1(env_1_0),
-  .in_env_2(env_2_0),
-  .in_env_3(env_3_0),
-  .in_phase_0(phase_0_0),
-  .in_phase_1(phase_1_0),
-  .in_phase_2(phase_2_0),
-  .in_phase_3(phase_3_0),
+  .in_env_0(env_0_size_0),
+  .in_env_1(env_1_size_0),
+  .in_env_2(env_2_size_0),
+  .in_env_3(env_3_size_0),
+  .in_phase_0(phase_0_size_0),
+  .in_phase_1(phase_1_size_0),
+  .in_phase_2(phase_2_size_0),
+  .in_phase_3(phase_3_size_0),
   .err_no_data(err_no_data[0]),
   .done(done[0]),
-  .sample(sample_out_0),
-  .freq(freq_out_0),
-  .angle(angle_out_0),
-  .size(size_out_0),
-  .max_pos(max_pos_out_0),
-  .max_env(max_env_out_0)
+  .sample(sample_phase_0),
+  .size(size_phase_0),
+  .max_pos(max_pos_phase_0),
+  .max_env(max_env_phase_0),
+  .save(save[0]),
+  .out_env_0(env_0_phase_0),
+  .out_env_1(env_1_phase_0),
+  .out_env_2(env_2_phase_0),
+  .out_env_3(env_3_phase_0),
+  .out_phase_0(phase_0_phase_0),
+  .out_phase_1(phase_1_phase_0),
+  .out_phase_2(phase_2_phase_0),
+  .out_phase_3(phase_3_phase_0)
   );
 
 comp_burst burst_i_1 (
@@ -272,26 +302,31 @@ comp_burst burst_i_1 (
   .reset(reset),
   .min_env(min_env),
   .burst(burst[1]),
-  .in_sample(sample_1),
-  .in_freq(freq_1),
-  .in_angle(angle_1),
+  .in_sample(sample_size_1),
   .wr_data(wr_data[1]),
-  .in_env_0(env_0_1),
-  .in_env_1(env_1_1),
-  .in_env_2(env_2_1),
-  .in_env_3(env_3_1),
-  .in_phase_0(phase_0_1),
-  .in_phase_1(phase_1_1),
-  .in_phase_2(phase_2_1),
-  .in_phase_3(phase_3_1),
+  .in_env_0(env_0_size_1),
+  .in_env_1(env_1_size_1),
+  .in_env_2(env_2_size_1),
+  .in_env_3(env_3_size_1),
+  .in_phase_0(phase_0_size_1),
+  .in_phase_1(phase_1_size_1),
+  .in_phase_2(phase_2_size_1),
+  .in_phase_3(phase_3_size_1),
   .err_no_data(err_no_data[1]),
   .done(done[1]),
-  .sample(sample_out_1),
-  .freq(freq_out_1),
-  .angle(angle_out_1),
-  .size(size_out_1),
-  .max_pos(max_pos_out_1),
-  .max_env(max_env_out_1)
+  .sample(sample_phase_1),
+  .size(size_phase_1),
+  .max_pos(max_pos_phase_1),
+  .max_env(max_env_phase_1),
+  .save(save[1]),
+  .out_env_0(env_0_phase_1),
+  .out_env_1(env_1_phase_1),
+  .out_env_2(env_2_phase_1),
+  .out_env_3(env_3_phase_1),
+  .out_phase_0(phase_0_phase_1),
+  .out_phase_1(phase_1_phase_1),
+  .out_phase_2(phase_2_phase_1),
+  .out_phase_3(phase_3_phase_1)
   );
 
 	ila_1 ila_i (
@@ -528,17 +563,17 @@ generate
             case (curr_ana)
                 0 :
                 begin
-                    sample_0 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
-                    freq_0 <= ana_out_data[44:25];
-                    angle_0 <= ana_out_data[60:45];
+                    sample_size_0 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
+                    freq_size_0 <= ana_out_data[44:25];
+                    angle_size_0 <= ana_out_data[60:45];
                     burst[0] <= 1;
                 end
 
                 1 :
                 begin
-                    sample_1 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
-                    freq_1 <= ana_out_data[44:25];
-                    angle_1 <= ana_out_data[60:45];
+                    sample_size_1 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
+                    freq_size_1 <= ana_out_data[44:25];
+                    angle_size_1 <= ana_out_data[60:45];
                     burst[1] <= 1;
                 end
             endcase
@@ -556,27 +591,27 @@ generate
                     0 :
                     begin
                         wr_data[0] <= 1;
-                        env_0_0 <= env_0;
-                        env_1_0 <= env_1;
-                        env_2_0 <= env_2;
-                        env_3_0 <= env_3;
-                        phase_0_0 <= phase_0;
-                        phase_1_0 <= phase_1;
-                        phase_2_0 <= phase_2;
-                        phase_3_0 <= phase_3;                        
+                        env_0_size_0 <= env_0;
+                        env_1_size_0 <= env_1;
+                        env_2_size_0 <= env_2;
+                        env_3_size_0 <= env_3;
+                        phase_0_size_0 <= phase_0;
+                        phase_1_size_0 <= phase_1;
+                        phase_2_size_0 <= phase_2;
+                        phase_3_size_0 <= phase_3;                        
                     end
 
                     1 :
                     begin
                         wr_data[1] <= 1;
-                        env_0_1 <= env_0;
-                        env_1_1 <= env_1;
-                        env_2_1 <= env_2;
-                        env_3_1 <= env_3;
-                        phase_0_1 <= phase_0;
-                        phase_1_1 <= phase_1;
-                        phase_2_1 <= phase_2;
-                        phase_3_1 <= phase_3;                        
+                        env_0_size_1 <= env_0;
+                        env_1_size_1 <= env_1;
+                        env_2_size_1 <= env_2;
+                        env_3_size_1 <= env_3;
+                        phase_0_size_1 <= phase_0;
+                        phase_1_size_1 <= phase_1;
+                        phase_2_size_1 <= phase_2;
+                        phase_3_size_1 <= phase_3;                        
                     end
                 endcase
             end
@@ -595,6 +630,25 @@ generate
             end
         end
 	end
+
+    always @(posedge clk) 
+	begin
+        if (done[0])
+        begin
+            freq_phase_0 <= freq_size_0;
+            angle_phase_0 <= angle_size_0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+        if (done[1])
+        begin
+            freq_phase_1 <= freq_size_1;
+            angle_phase_1 <= angle_size_1;
+        end
+    end
+
 
   end
     

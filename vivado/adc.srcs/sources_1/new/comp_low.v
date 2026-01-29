@@ -511,7 +511,7 @@ generate
 
     always @(posedge clk) 
 	begin
-	    if (re_out_0[18])
+        if (re_out_0[18])
             re_0 <= re_out_0[38:19] + 1;
         else
             re_0 <= re_out_0[38:19];
@@ -564,10 +564,33 @@ generate
 	begin
 	    if (fir_re_active)
 	    begin
-	       re[15:0] <= re_0[15:0];
-	       re[31:16] <= re_1[15:0];
-	       re[47:32] <= re_2[15:0];
-	       re[63:48] <= re_3[15:0];
+            casex (re_0[19:15])
+                5'b00000 : re[15:0] <= re_0[15:0];
+                5'b11111 : re[15:0] <= re_0[15:0];
+                5'b0xxxx : re[15:0] <= 16'h7FFF;
+                5'b1xxxx : re[15:0] <= 16'h8001;
+            endcase
+
+            casex (re_1[19:15])
+                5'b00000 : re[31:16] <= re_1[15:0];
+                5'b11111 : re[31:16] <= re_1[15:0];
+                5'b0xxxx : re[31:16] <= 16'h7FFF;
+                5'b1xxxx : re[31:16] <= 16'h8001;
+            endcase
+
+            casex (re_2[19:15])
+                5'b00000 : re[47:32] <= re_2[15:0];
+                5'b11111 : re[47:32] <= re_2[15:0];
+                5'b0xxxx : re[47:32] <= 16'h7FFF;
+                5'b1xxxx : re[47:32] <= 16'h8001;
+            endcase
+
+            casex (re_3[19:15])
+                5'b00000 : re[63:48] <= re_3[15:0];
+                5'b11111 : re[63:48] <= re_3[15:0];
+                5'b0xxxx : re[63:48] <= 16'h7FFF;
+                5'b1xxxx : re[63:48] <= 16'h8001;
+            endcase
 	    end
     end
 
@@ -575,10 +598,33 @@ generate
 	begin
 	    if (fir_re_active)
 	    begin
-	       im[15:0] <= im_0[15:0];
-	       im[31:16] <= im_1[15:0];
-	       im[47:32] <= im_2[15:0];
-	       im[63:48] <= im_3[15:0];
+            casex (im_0[19:15])
+                5'b00000 : im[15:0] <= im_0[15:0];
+                5'b11111 : im[15:0] <= im_0[15:0];
+                5'b0xxxx : im[15:0] <= 16'h7FFF;
+                5'b1xxxx : im[15:0] <= 16'h8001;
+            endcase
+
+            casex (im_1[19:15])
+                5'b00000 : im[31:16] <= im_1[15:0];
+                5'b11111 : im[31:16] <= im_1[15:0];
+                5'b0xxxx : im[31:16] <= 16'h7FFF;
+                5'b1xxxx : im[31:16] <= 16'h8001;
+            endcase
+
+            casex (im_2[19:15])
+                5'b00000 : im[47:32] <= im_2[15:0];
+                5'b11111 : im[47:32] <= im_2[15:0];
+                5'b0xxxx : im[47:32] <= 16'h7FFF;
+                5'b1xxxx : im[47:32] <= 16'h8001;
+            endcase
+
+            casex (im_3[19:15])
+                5'b00000 : im[63:48] <= im_3[15:0];
+                5'b11111 : im[63:48] <= im_3[15:0];
+                5'b0xxxx : im[63:48] <= 16'h7FFF;
+                5'b1xxxx : im[63:48] <= 16'h8001;
+            endcase
 	    end
     end
 
