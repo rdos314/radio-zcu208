@@ -32,6 +32,8 @@ module morlet_to_phase_env(
     
   wire [31:0] re2;
   wire [31:0] im2;
+  reg [16:0] p2_low;
+  reg [15:0] p2_high;
   reg [31:0] p2;
   wire [47:0] atan2_in;
   wire [15:0] lenv;
@@ -40,7 +42,6 @@ module morlet_to_phase_env(
   reg [15:0] amp_1;
   reg [15:0] amp_2;
   reg [15:0] amp_3;
-  reg [15:0] amp_4;
   
   reg [4:0] delay;
   
@@ -98,8 +99,15 @@ generate
 
     always @(posedge clk) 
 	begin
-  	    p2 <= re2 + im2;
+        p2_low <= {1'b0, re2[15:0]} + {1'b0, im2[15:0]};
+        p2_high <= re2[31:16] + im2[31:16];
 	end
+
+    always @(posedge clk) 
+	begin
+        p2[15:0] <= p2_low;
+        p2[31:16] <= p2_high + p2_low[16];
+ 	end
 
     always @(posedge clk) 
 	begin
@@ -113,7 +121,6 @@ generate
 	begin
 		amp_2 <= amp_1;
 		amp_3 <= amp_2;
-		amp_4 <= amp_3;
 	end
 
     always @(posedge clk) 
@@ -123,7 +130,7 @@ generate
 	    if (delay == 27)
 	    begin
     	    valid <= 1;
-    	    env <= amp_4;
+    	    env <= amp_3;
             phase <= lphase[19:0];
         end
         else
@@ -134,7 +141,7 @@ generate
         if (delay)
 		begin
           valid <= 1;
-    	  env <= amp_4;
+    	  env <= amp_3;
 	      phase <= lphase[19:0];
           delay <= delay - 1;
 		end

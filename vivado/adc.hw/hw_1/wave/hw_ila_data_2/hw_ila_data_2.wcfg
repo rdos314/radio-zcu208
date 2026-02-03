@@ -9,44 +9,124 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="688"></ZoomStartTime>
-      <ZoomEndTime time="701"></ZoomEndTime>
-      <Cursor1Time time="611"></Cursor1Time>
+      <ZoomStartTime time="555"></ZoomStartTime>
+      <ZoomEndTime time="568"></ZoomEndTime>
+      <Cursor1Time time="535"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="213"></NameColumnWidth>
+      <NameColumnWidth column_width="205"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="14" />
    <wave_markers>
    </wave_markers>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/pos" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/pos[10:0]</obj_property>
-      <obj_property name="ObjectShortName">pos[10:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/complete_2" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/complete_2</obj_property>
+      <obj_property name="ObjectShortName">complete_2</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/env" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/env[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_active" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_active</obj_property>
+      <obj_property name="ObjectShortName">df_active</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/phase" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/phase[15:0]</obj_property>
-      <obj_property name="ObjectShortName">phase[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/active" type="logic">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/active</obj_property>
-      <obj_property name="ObjectShortName">active</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/down_pos" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/down_pos[10:0]</obj_property>
-      <obj_property name="ObjectShortName">down_pos[10:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p3_i/down_count" type="array">
-      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p3_i/down_count[0:0]</obj_property>
-      <obj_property name="ObjectShortName">down_count[0:0]</obj_property>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_count" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_count[3:0]</obj_property>
+      <obj_property name="ObjectShortName">df_count[3:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_diff" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_diff[19:0]</obj_property>
+      <obj_property name="ObjectShortName">df_diff[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_ind" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_ind[8:0]</obj_property>
+      <obj_property name="ObjectShortName">df_ind[8:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_low" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_low[19:0]</obj_property>
+      <obj_property name="ObjectShortName">df_low[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/df_start" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/df_start[8:0]</obj_property>
+      <obj_property name="ObjectShortName">df_start[8:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_active" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_active</obj_property>
+      <obj_property name="ObjectShortName">p2_active</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_max_pos" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_max_pos[10:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_max_pos[10:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_0" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_0[19:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_phase_diff_0[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_1" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_1[19:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_phase_diff_1[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_2" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_2[19:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_phase_diff_2[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_3" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_phase_diff_3[19:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_phase_diff_3[19:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="ps_i/comp_ana_high/inst/burst_i_0/p2_size" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/burst_i_0/p2_size[10:0]</obj_property>
+      <obj_property name="ObjectShortName">p2_size[10:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
 </wave_config>

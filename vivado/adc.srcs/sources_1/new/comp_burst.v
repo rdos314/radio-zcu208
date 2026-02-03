@@ -39,7 +39,7 @@
 // -----------------------------
 // - Envelope samples are signed 16-bit values but assumed non-negative
 //   (bit[15] must remain zero; overflow is not expected).
-// - Phase samples are 20-bit signed values.
+// - Phase samples are 16-bit signed values.
 // - Input samples always arrive in groups of four.
 // - Burst size is always a multiple of four samples.
 // - Internal memory stores data in "four-sample words".
@@ -135,6 +135,7 @@ module comp_burst(
     reg [79:0] phase_out;
     reg [10:0] phase_ind;
     reg [19:0] phase_val;
+	reg [21:0] pred_phase;
     wire [19:0] phase_0 = phase_out[19:0];
     wire [19:0] phase_1 = phase_out[39:20];
     wire [19:0] phase_2 = phase_out[59:40];
@@ -172,6 +173,13 @@ module comp_burst(
     reg [10:0] env_down_max_ind;
     reg [15:0] env_down_max_val;
 
+	reg df_active;
+	reg [8:0] df_start;
+	reg [8:0] df_ind;
+	reg [3:0] df_count;
+	reg [19:0] df_low;
+	reg [19:0] df_diff;
+
 	reg [63:0] p2_sample;
     reg [19:0] p2_freq;
     reg [15:0] p2_angle;
@@ -182,7 +190,8 @@ module comp_burst(
     reg p2_wr;
 
     reg [15:0] p2_env;
-    reg [19:0] p2_phase;
+    reg [15:0] p2_phase;
+	reg [19:0] p2_phase_diff;
 
     reg p2_done;
     wire p2_active;
@@ -192,10 +201,15 @@ module comp_burst(
     wire [15:0] p2_env_2;
     wire [15:0] p2_env_3;
 
-    wire [19:0] p2_phase_0;
-    wire [19:0] p2_phase_1;
-    wire [19:0] p2_phase_2;
-    wire [19:0] p2_phase_3;
+    wire [15:0] p2_phase_0;
+    wire [15:0] p2_phase_1;
+    wire [15:0] p2_phase_2;
+    wire [15:0] p2_phase_3;
+
+    wire [19:0] p2_phase_diff_0;
+    wire [19:0] p2_phase_diff_1;
+    wire [19:0] p2_phase_diff_2;
+    wire [19:0] p2_phase_diff_3;
 
     reg p3_load;
 	reg [63:0] p3_sample;
@@ -222,6 +236,7 @@ module comp_burst(
         .wr(p2_wr),
         .env(p2_env),
         .phase(p2_phase),
+		.phase_diff(p2_phase_diff),
         .size(p2_size),
         .read_back(p2_done),
         .active(p2_active),
@@ -232,7 +247,11 @@ module comp_burst(
         .phase_0(p2_phase_0),
         .phase_1(p2_phase_1),
         .phase_2(p2_phase_2),
-        .phase_3(p2_phase_3)
+        .phase_3(p2_phase_3),
+        .phase_diff_0(p2_phase_diff_0),
+        .phase_diff_1(p2_phase_diff_1),
+        .phase_diff_2(p2_phase_diff_2),
+        .phase_diff_3(p2_phase_diff_3)
 	);
 
 	comp_stat p3_i (
@@ -259,6 +278,24 @@ module comp_burst(
         .env_sum2(p3_env_sum2),
         .phase_sum(p3_phase_sum),
         .phase_sum2(p3_phase_sum2)
+	);
+
+	ila_0 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(df_active),           // input wire [0:0]  probe3
+		.probe1(df_start),            // input wire [8:0]  probe3
+		.probe2(df_ind),              // input wire [8:0]  probe3
+		.probe3(df_count),            // input wire [3:0]  probe3
+		.probe4(df_low),              // input wire [19:0]  probe3
+		.probe5(df_diff),             // input wire [19:0]  probe3
+		.probe6(complete_2),          // input wire [0:0]  probe3
+		.probe7(p2_active),           // input wire [0:0]  probe3
+		.probe8(p2_max_pos),          // input wire [10:0]  probe3
+		.probe9(p2_size),             // input wire [10:0]  probe3
+		.probe10(p2_phase_diff_0),    // input wire [19:0]  probe3
+		.probe11(p2_phase_diff_1),    // input wire [19:0]  probe3
+		.probe12(p2_phase_diff_2),    // input wire [19:0]  probe3
+		.probe13(p2_phase_diff_3)     // input wire [19:0]  probe3
 	);
 
 generate
@@ -642,8 +679,17 @@ generate
 
     always @(posedge clk) 
     begin
+		if (scan_start)
+			pred_phase <= {phase_val, 2'b00};
+		else
+			pred_phase <= pred_phase + {2'b00, in_freq};
+	end
+
+    always @(posedge clk) 
+    begin
         p2_env <= env_up_val;
         p2_phase <= phase_val;
+		p2_phase_diff <= phase_val - pred_phase[21:2];
     end
 
     always @(posedge clk) 
@@ -670,13 +716,62 @@ generate
 
     always @(posedge clk) 
     begin
+		if (complete_2)
+		begin
+			if (p2_max_pos[10:4])
+			begin
+				if (p2_size[10:2] - p2_max_pos[10:2] <= 4)
+					df_start <= p2_size[10:2] - 9;
+				else
+					df_start <= p2_max_pos[10:2] - 4;
+			end
+			else
+				df_start <= 0;
+		end
+	end
+
+    always @(posedge clk) 
+    begin
+        if (p2_active)
+		begin
+			if (df_active)
+			begin
+				if (df_count == 8)
+				begin
+					df_active <= 0;
+					df_diff <= p2_phase_diff_0 - df_low;
+				end
+				else
+					df_count <= df_count + 1;
+			end
+			else
+			begin
+				df_count <= 0;
+				
+				if (df_ind == df_start)
+				begin
+					df_active <= 1;
+					df_low <= p2_phase_diff_0;
+				end
+			end
+			df_ind <= df_ind + 1;
+		end
+		else
+		begin
+			df_ind <= 0;
+			df_active <= 0;
+		end
+	end
+
+    always @(posedge clk) 
+    begin
         if (p2_active)
         begin
             if (!p3_load)
             begin
                 p3_load <= 1;
                 p3_sample <= p2_sample;
-                p3_freq <= p2_freq;
+                p3_freq <= p2_freq - df_diff[19:3];
                 p3_angle <= p2_angle;
                 p3_size <= p2_size;
                 p3_max_pos <= p2_max_pos;

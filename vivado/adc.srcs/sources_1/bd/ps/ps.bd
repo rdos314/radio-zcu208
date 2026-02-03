@@ -4535,10 +4535,10 @@
           "usp_rf_data_converter_0/m3_axis_aclk",
           "deci_low/clk",
           "deci_high/clk",
-          "freq_low_46_0/fifo_clk",
-          "freq_high_189_0/fifo_clk",
           "comp_low/raw_fifo_clk",
-          "comp_high/raw_fifo_clk"
+          "comp_high/raw_fifo_clk",
+          "freq_high_189_0/fifo_clk",
+          "freq_low_46_0/fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
