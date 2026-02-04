@@ -1,82 +1,133 @@
 `timescale 1ns / 1ps
+
 //------------------------------------------------------------------------------
 // Module: comp_burst
 //
 // Description:
 // -----------
-// Burst analysis and compression stage operating on envelope and phase data
-// delivered in groups of four samples per cycle.
+// Burst analysis, alignment, and pre-conditioning stage operating on envelope
+// and phase data delivered in groups of four samples per cycle.
 //
-// The module buffers one complete burst in internal BRAM and performs two
-// concurrent scans over the envelope data:
+// The module buffers one complete burst in internal BRAM and performs a
+// two-pass analysis over the envelope data to detect the burst region and
+// characterize its peak. Phase data is processed in parallel and de-trended
+// using an initial frequency estimate, followed by a local frequency correction
+// derived from phase differences near the burst maximum.
 //
-//   1) Upward scan   : from burst start towards the end
-//   2) Downward scan : from burst end towards the start
+// The output of this block is a cleaned, stationary phase series and aligned
+// envelope data suitable for accurate mean and variance estimation in the
+// downstream statistics module.
 //
-// Both scans always run to the opposite end of the burst. During the scan the
-// following quantities are detected:
 //
-//   - First sample >= min_env   (burst start index)
-//   - Last  sample >= min_env   (burst end index)
-//   - Maximum envelope value and its position (both directions)
+// High-level operation:
+// ---------------------
+// 1) Burst buffering
+//    - Incoming envelope and phase samples are written to BRAM as groups of
+//      four samples ("four-sample words").
+//    - curr_size tracks the number of four-sample words in the burst.
 //
-// From these, the module computes:
+// 2) Envelope scanning (two concurrent passes)
+//    - Upward scan   : from burst start towards burst end
+//    - Downward scan : from burst end towards burst start
 //
-//   - Absolute sample number of the detected burst
-//   - Burst size (in samples)
-//   - Burst-relative position of the envelope maximum
-//   - Maximum envelope value
+//    During scanning the following are detected:
+//      - First envelope sample >= min_env   (burst start index)
+//      - Last  envelope sample >= min_env   (burst end index)
+//      - Maximum envelope value and its position (both scans)
 //
-// Envelope and phase samples between the detected start and end are streamed
-// out in aligned groups of four samples for further processing or storage.
+//    Both scans always run to the opposite end of the burst to avoid early
+//    termination artifacts.
 //
-// Continuous or full-length bursts may be detected upstream and suppressed
-// from AXI transmission; this block still fully processes such bursts to
-// provide metadata.
+// 3) Burst characterization
+//    From the scan results, the module computes:
+//      - Absolute sample number of the detected burst start
+//      - Burst size (in samples)
+//      - Burst-relative position of the envelope maximum
+//      - Maximum envelope value
+//
+// 4) Phase prediction and de-trending
+//    - Phase samples are de-trended using a predicted phase accumulator:
+//          pred_phase[n+1] = pred_phase[n] + in_freq
+//    - Phase difference is formed as:
+//          phase_diff = measured_phase - predicted_phase
+//
+//    This removes the bulk linear phase ramp associated with the initial
+//    frequency estimate.
+//
+// 5) Local frequency correction
+//    - A small window of phase difference samples is selected around the
+//      envelope maximum (highest SNR region).
+//    - The phase drift across 8 consecutive one_to_four output packets is
+//      measured:
+//          df_diff = phase_diff[start] - phase_diff[start + 8]
+//
+//    - The frequency is corrected using:
+//          freq_corrected = freq_initial - (df_diff / 8)
+//
+//    This removes residual frequency error so the phase difference series is
+//    approximately stationary (zero mean, bounded variance).
+//
+// 6) Data handoff
+//    - Corrected frequency, envelope data, phase data, and metadata are passed
+//      to the downstream statistics module (comp_stat).
 //
 //
 // Data format and assumptions:
 // -----------------------------
 // - Envelope samples are signed 16-bit values but assumed non-negative
 //   (bit[15] must remain zero; overflow is not expected).
-// - Phase samples are 16-bit signed values.
+// - Phase samples are signed 20-bit values.
 // - Input samples always arrive in groups of four.
 // - Burst size is always a multiple of four samples.
-// - Internal memory stores data in "four-sample words".
+// - Internal BRAM stores data in four-sample words.
 //
 // curr_size represents the number of four-sample words in the burst, not the
 // number of individual samples.
 //
+//
 // Sample indexing:
 // ----------------
-// The input provides the absolute sample number of the first sample in the
-// burst. The module internally increments this value during scanning and
-// outputs the absolute sample number corresponding to the detected burst start.
-// Sample numbering is handled as a 64-bit integer using chained 16-bit counters.
+// - The input provides the absolute sample number of the first sample in the
+//   burst.
+// - The module internally increments this value during scanning and outputs
+//   the absolute sample number corresponding to the detected burst start.
+// - Sample numbering is handled as a 64-bit integer using chained 16-bit
+//   counters.
 //
 //
-// Pipeline and control notes:
-// ---------------------------
+// Pipeline and timing notes:
+// --------------------------
 // - BRAM read and comparison introduce a fixed two-cycle latency.
 // - Scan termination compares against index value '2' to compensate for this
 //   pipeline delay.
-// - Both upward and downward scans must complete before 'done' is asserted.
-// - If no valid data above min_env is found, err_no_data is asserted.
+// - Envelope scanning, phase de-trending, and data streaming overlap in time.
+// - Frequency correction is computed once per burst and applied before
+//   statistics processing begins.
+// - The design is intended to meet high clock rates (≈500 MHz) without
+//   dividers or long combinational paths.
 //
 //
 // Outputs:
 // --------
-// - done        : Asserted for one cycle when burst analysis is complete.
-// - err_no_data : Indicates no valid envelope above threshold was found.
-// - sample      : Absolute sample number of burst start.
-// - size        : Burst length in samples.
-// - max_pos     : Burst-relative position of envelope maximum.
-// - max_env     : Maximum envelope value.
-// - save        : Indicates valid output envelope/phase group (4 samples).
+// - err_no_data : Asserted if no envelope sample exceeds min_env.
+// - Corrected envelope and phase data are streamed internally to downstream
+//   processing blocks.
+// - Burst metadata (sample index, size, max position, max envelope, corrected
+//   frequency) is forwarded alongside the data.
+//
+//
+// Numerical considerations:
+// -------------------------
+// - Phase variance is computed on de-trended, frequency-corrected phase data
+//   to avoid variance growth caused by residual linear phase ramps.
+// - Frequency correction is derived from high-SNR samples near the envelope
+//   maximum to minimize noise sensitivity.
+// - No catastrophic cancellation occurs in variance calculations when the
+//   downstream mean is near zero.
 //
 //------------------------------------------------------------------------------
 // Author:      Leif Ekblad
-//------------------------------------------------------------------------------
+//------------------------------
 
 module comp_burst(
     input wire clk,
@@ -174,6 +225,7 @@ module comp_burst(
     reg [15:0] env_down_max_val;
 
 	reg df_active;
+	reg df_done;
 	reg [8:0] df_start;
 	reg [8:0] df_ind;
 	reg [3:0] df_count;
@@ -211,7 +263,6 @@ module comp_burst(
     wire [19:0] p2_phase_diff_2;
     wire [19:0] p2_phase_diff_3;
 
-    reg p3_load;
 	reg [63:0] p3_sample;
     reg [19:0] p3_freq;
     reg [15:0] p3_angle;
@@ -280,6 +331,7 @@ module comp_burst(
         .phase_sum2(p3_phase_sum2)
 	);
 
+/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(df_active),           // input wire [0:0]  probe3
@@ -292,11 +344,14 @@ module comp_burst(
 		.probe7(p2_active),           // input wire [0:0]  probe3
 		.probe8(p2_max_pos),          // input wire [10:0]  probe3
 		.probe9(p2_size),             // input wire [10:0]  probe3
-		.probe10(p2_phase_diff_0),    // input wire [19:0]  probe3
-		.probe11(p2_phase_diff_1),    // input wire [19:0]  probe3
-		.probe12(p2_phase_diff_2),    // input wire [19:0]  probe3
-		.probe13(p2_phase_diff_3)     // input wire [19:0]  probe3
+		.probe10(p2_freq),            // input wire [19:0]  probe3
+		.probe11(p3_freq),            // input wire [19:0]  probe3
+		.probe12(p2_phase_diff_0),    // input wire [19:0]  probe3
+		.probe13(p2_phase_diff_1),    // input wire [19:0]  probe3
+		.probe14(p2_phase_diff_2),    // input wire [19:0]  probe3
+		.probe15(p2_phase_diff_3)     // input wire [19:0]  probe3
 	);
+*/
 
 generate
   begin : comp_burst
@@ -688,7 +743,7 @@ generate
     always @(posedge clk) 
     begin
         p2_env <= env_up_val;
-        p2_phase <= phase_val;
+        p2_phase <= phase_val[19:4];
 		p2_phase_diff <= phase_val - pred_phase[21:2];
     end
 
@@ -736,17 +791,22 @@ generate
 		begin
 			if (df_active)
 			begin
-				if (df_count == 8)
+				if (df_count == 7)
 				begin
 					df_active <= 0;
 					df_diff <= p2_phase_diff_0 - df_low;
+					df_done <= 1;
 				end
 				else
+				begin
 					df_count <= df_count + 1;
+					df_done <= 0;
+				end
 			end
 			else
 			begin
 				df_count <= 0;
+				df_done <= 0;
 				
 				if (df_ind == df_start)
 				begin
@@ -760,26 +820,22 @@ generate
 		begin
 			df_ind <= 0;
 			df_active <= 0;
+            df_count <= 0;
+			df_done <= 0;
 		end
 	end
 
     always @(posedge clk) 
     begin
-        if (p2_active)
-        begin
-            if (!p3_load)
-            begin
-                p3_load <= 1;
-                p3_sample <= p2_sample;
-                p3_freq <= p2_freq - df_diff[19:3];
-                p3_angle <= p2_angle;
-                p3_size <= p2_size;
-                p3_max_pos <= p2_max_pos;
-                p3_max_env <= p2_max_env;
-            end
+        if (df_done)
+		begin
+            p3_sample <= p2_sample;
+            p3_freq <= p2_freq + {df_diff[19], df_diff[19], df_diff[19], df_diff[19:3]};
+            p3_angle <= p2_angle;
+            p3_size <= p2_size;
+            p3_max_pos <= p2_max_pos;
+            p3_max_env <= p2_max_env;
         end
-        else
-            p3_load <= 0;
     end
     
   end

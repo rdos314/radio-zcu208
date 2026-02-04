@@ -168,7 +168,7 @@ module comp_stat(
 	reg [21:0] up_phase;
     
     reg start_down;
-    reg stop_down;
+    reg [1:0] stop_down;
 	reg [10:0] down_pos;
     reg [2:0] down_delay;
 	reg [21:0] down_phase;
@@ -185,7 +185,7 @@ module comp_stat(
 		.probe5(start_down),          // input wire [0:0]  probe3
 		.probe6(up_delay),            // input wire [2:0]  probe3
 		.probe7(up_pos),              // input wire [10:0]  probe3
-		.probe8(stop_down),           // input wire [0:0]  probe3
+		.probe8(stop_down),           // input wire [1:0]  probe3
 		.probe9(down_delay),          // input wire [2:0]  probe3
 		.probe10(down_pos),           // input wire [10:0]  probe3
 		.probe11(curr_env_1),         // input wire [15:0]  probe3
@@ -395,11 +395,13 @@ generate
     always @(posedge clk) 
     begin
         if (reset)
-            stop_down <= 0;
+            stop_down[0] <= 0;
         else
 		begin
             if (proc_up)
             begin
+				stop_down[0] <= 0;
+				
                 if (start_up | up_delay[0] | up_delay[1])
                     active <= 0;
                 else
@@ -409,6 +411,8 @@ generate
             begin
                 if (down_pos)
                 begin
+					stop_down[0] <= 0;
+					
                     if (start_down | down_delay[0] | down_delay[1])
                         active <= 0;
                     else
@@ -421,14 +425,21 @@ generate
 						if (start_down)
                             active <= 0;
                         
-						if (stop_down)
-                            stop_down <= 0;
+						if (stop_down[1])
+                            active <= 0;
                         else
-                            stop_down <= 1;
+                            stop_down[0] <= 1;
                     end
+					else
+						stop_down[0] <= 0;
                 end
 			end
 		end
+	end
+
+    always @(posedge clk) 
+    begin
+		stop_down[1] <= stop_down[0];
 	end
 
     always @(posedge clk) 
@@ -442,7 +453,7 @@ generate
 		end
 		else
 		begin
-			if (down_pos | stop_down)
+			if (down_pos | stop_down[0])
 			begin
 				if (start_down | down_delay[0] | down_delay[1])
 					env <= 0;
@@ -473,7 +484,7 @@ generate
 		end
 		else
 		begin
-			if (down_pos | stop_down)
+			if (down_pos | stop_down[0])
 			begin
 				if (start_down | down_delay[0])
 					pred_phase <= 0;
@@ -519,7 +530,7 @@ generate
 		end
 		else
 		begin
-			if (down_pos | stop_down)
+			if (down_pos | stop_down[0])
 			begin
 				if (start_down | down_delay[0] | down_delay[1])
 					phase <= 0;
