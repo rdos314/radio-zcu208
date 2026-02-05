@@ -32,26 +32,27 @@ module comp_ana(
 	input wire [19:0] fifo_freq,
 	input wire [15:0] fifo_angle,
 
-    input wire config_clk,
-    input wire config_wr,
-    input wire [7:0] config_adr,
-    input wire [31:0] config_data,
-
     input wire clk,
-    input wire reset
+    input wire reset,
+	
+	output reg stat_sel_0,
+
+	output reg stat_start,
+	output reg [61:0] stat_sample,
+    output reg [19:0] stat_freq,
+    output reg [15:0] stat_angle,
+
+	output reg stat_wr,    
+    output reg [15:0] stat_env_0, 
+    output reg [15:0] stat_env_1, 
+    output reg [15:0] stat_env_2,  
+    output reg [15:0] stat_env_3,  
+  
+    output reg [19:0] stat_phase_0,
+    output reg [19:0] stat_phase_1,
+    output reg [19:0] stat_phase_2,
+    output reg [19:0] stat_phase_3
 );
-
-    wire [39:0] config_data_adr_in;
-    assign config_data_adr_in[7:0] = config_adr;
-    assign config_data_adr_in[39:8] = config_data;
-
-    wire [39:0] config_data_adr_out;
-    wire [7:0] cfg_adr = config_data_adr_out[7:0];
-    wire [31:0] cfg_data = config_data_adr_out[39:8];
-    reg cfg_rd;
-    wire cfg_empty;
-    
-    reg [15:0] min_env;
 
     reg reset_int;
   
@@ -115,51 +116,6 @@ module comp_ana(
     wire [19:0] phase_1;
     wire [19:0] phase_2;
     wire [19:0] phase_3;
-    
-    reg [0:0] curr_ana;
-
-    reg [1:0] burst;
-    reg [1:0] wr_data;
-    wire [1:0] err_no_data;
-
-    reg [61:0] sample_0;
-    reg [19:0] freq_0;
-    reg [15:0] angle_0;
-    
-    reg [15:0] env_0_0;
-    reg [15:0] env_1_0;
-    reg [15:0] env_2_0;
-    reg [15:0] env_3_0;
-
-    reg [19:0] phase_0_0;
-    reg [19:0] phase_1_0;
-    reg [19:0] phase_2_0;
-    reg [19:0] phase_3_0;
-
-    reg [61:0] sample_1;
-    reg [19:0] freq_1;
-    reg [15:0] angle_1;
-    
-    reg [15:0] env_0_1;
-    reg [15:0] env_1_1;
-    reg [15:0] env_2_1;
-    reg [15:0] env_3_1;
-
-    reg [19:0] phase_0_1;
-    reg [19:0] phase_1_1;
-    reg [19:0] phase_2_1;
-    reg [19:0] phase_3_1;
-
-fifo_config fifo_config_i (
-  .rst(reset),                   // input wire rst
-  .wr_clk(config_clk),           // input wire wr_clk
-  .rd_clk(clk),                  // input wire rd_clk
-  .din(config_data_adr_in),      // input wire [39 : 0] din
-  .wr_en(config_wr),             // input wire wr_en
-  .rd_en(cfg_rd),                // input wire rd_en
-  .dout(config_data_adr_out),    // output wire [39 : 0] dout
-  .empty(cfg_empty)              // output wire empty
-);
 
 fifo_comp_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
@@ -223,46 +179,6 @@ morlet_to_phase_env phase_env_i_3 (
   .phase(phase_3)
   );
 
-comp_burst burst_i_0 (
-  .clk(clk),                          
-  .reset(reset),
-  .min_env(min_env),
-  .burst(burst[0]),
-  .in_sample(sample_0),
-  .in_freq(freq_0),
-  .in_angle(angle_0),
-  .wr_data(wr_data[0]),
-  .in_env_0(env_0_0),
-  .in_env_1(env_1_0),
-  .in_env_2(env_2_0),
-  .in_env_3(env_3_0),
-  .in_phase_0(phase_0_0),
-  .in_phase_1(phase_1_0),
-  .in_phase_2(phase_2_0),
-  .in_phase_3(phase_3_0),
-  .err_no_data(err_no_data[0])
-  );
-
-comp_burst burst_i_1 (
-  .clk(clk),                          
-  .reset(reset),
-  .min_env(min_env),
-  .burst(burst[1]),
-  .in_sample(sample_1),
-  .in_freq(freq_1),
-  .in_angle(angle_1),
-  .wr_data(wr_data[1]),
-  .in_env_0(env_0_1),
-  .in_env_1(env_1_1),
-  .in_env_2(env_2_1),
-  .in_env_3(env_3_1),
-  .in_phase_0(phase_0_1),
-  .in_phase_1(phase_1_1),
-  .in_phase_2(phase_2_1),
-  .in_phase_3(phase_3_1),
-  .err_no_data(err_no_data[1])
-  );
-
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(raw_rd),              // input wire [0:0]  probe3
@@ -283,20 +199,20 @@ comp_burst burst_i_1 (
 		.probe15(sample_counter_1),   // input wire [15:0]  probe3
 		.probe16(sample_counter_2),   // input wire [15:0]  probe3
 		.probe17(sample_counter_3),   // input wire [15:0]  probe3
-		.probe18(sample_ov_0),        // input wire [0:0]  probe3
-		.probe19(sample_ov_1),        // input wire [0:0]  probe3
-		.probe20(sample_ov_2),        // input wire [0:0]  probe3
-		.probe21(curr_ana),           // input wire [0:0]  probe3
-		.probe22(burst),              // input wire [1:0]  probe3
-		.probe23(wr_data),            // input wire [1:0]  probe3
-		.probe24(env_0),              // input wire [15:0]  probe3
-		.probe25(env_1),              // input wire [15:0]  probe3
-		.probe26(env_2),              // input wire [15:0]  probe3
-		.probe27(env_3),              // input wire [15:0]  probe3
-		.probe28(phase_0),            // input wire [19:0]  probe3
-		.probe29(phase_1),            // input wire [19:0]  probe3
-		.probe30(phase_2),            // input wire [19:0]  probe3
-		.probe31(phase_3)             // input wire [19:0]  probe3
+		.probe18(stat_sel),           // input wire [0:0]  probe3
+		.probe19(stat_start),         // input wire [0:0]  probe3
+		.probe20(stat_sample),        // input wire [61:0]  probe3
+		.probe21(stat_freq),          // input wire [19:0]  probe3
+		.probe22(stat_angle),         // input wire [15:0]  probe3
+		.probe23(stat_wr),            // input wire [0:0]  probe3
+		.probe24(stat_env_0),         // input wire [15:0]  probe3
+		.probe25(stat_env_1),         // input wire [15:0]  probe3
+		.probe26(stat_env_2),         // input wire [15:0]  probe3
+		.probe27(stat_env_3),         // input wire [15:0]  probe3
+		.probe28(stat_phase_0),       // input wire [19:0]  probe3
+		.probe29(stat_phase_1),       // input wire [19:0]  probe3
+		.probe30(stat_phase_2),       // input wire [19:0]  probe3
+		.probe31(stat_phase_3)        // input wire [19:0]  probe3
 	);
 
 generate
@@ -326,24 +242,6 @@ generate
        end
        else
             ana_wr <= 0;
-    end
-
-    always @(posedge clk) 
-	begin
-        if (cfg_empty)
-            cfg_rd <= 0;
-        else
-            cfg_rd <= 1;
-    end
-
-    always @(posedge clk) 
-	begin
-        if (cfg_rd)
-        begin
-            case (cfg_adr)
-                0 : min_env <= cfg_data[15:0];
-            endcase            
-        end
     end
 
     always @(posedge clk) 
@@ -486,79 +384,44 @@ generate
 	begin
         if (ana_trig & !ana_empty)
         begin
+			stat_sel_0 <= 1;
+
             ana_rd <= 1;
             run <= 1;
             size <= ana_out_data[24:16];
             count <= ana_out_data[24:16];
-            wr_data <= 0;
-
-            case (curr_ana)
-                0 :
-                begin
-                    sample_0 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
-                    freq_0 <= ana_out_data[44:25];
-                    angle_0 <= ana_out_data[60:45];
-                    burst[0] <= 1;
-                end
-
-                1 :
-                begin
-                    sample_1 <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
-                    freq_1 <= ana_out_data[44:25];
-                    angle_1 <= ana_out_data[60:45];
-                    burst[1] <= 1;
-                end
-            endcase
+            stat_wr <= 0;
+			stat_start <= 0;
+			
+            stat_sample <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
+            stat_freq <= ana_out_data[44:25];
+            stat_angle <= ana_out_data[60:45];
         end
         else
         begin
             ana_rd <= 0;
-            burst <= 0;
             
             if (count)
             begin
                 count <= count - 1;
+                stat_wr <= 1;
+				stat_start <= 0;
 
-                case (curr_ana)
-                    0 :
-                    begin
-                        wr_data[0] <= 1;
-                        env_0_0 <= env_0;
-                        env_1_0 <= env_1;
-                        env_2_0 <= env_2;
-                        env_3_0 <= env_3;
-                        phase_0_0 <= phase_0;
-                        phase_1_0 <= phase_1;
-                        phase_2_0 <= phase_2;
-                        phase_3_0 <= phase_3;                        
-                    end
+                stat_env_0 <= env_0;
+                stat_env_1 <= env_1;
+                stat_env_2 <= env_2;
+                stat_env_3 <= env_3;
 
-                    1 :
-                    begin
-                        wr_data[1] <= 1;
-                        env_0_1 <= env_0;
-                        env_1_1 <= env_1;
-                        env_2_1 <= env_2;
-                        env_3_1 <= env_3;
-                        phase_0_1 <= phase_0;
-                        phase_1_1 <= phase_1;
-                        phase_2_1 <= phase_2;
-                        phase_3_1 <= phase_3;                        
-                    end
-                endcase
+                stat_phase_0 <= phase_0;
+                stat_phase_1 <= phase_1;
+                stat_phase_2 <= phase_2;
+                stat_phase_3 <= phase_3;                        
             end
             else
             begin
-                if (run)
-                    curr_ana <= curr_ana + 1;
-                else
-                begin
-                    if (reset)
-                        curr_ana <= 0;
-                end
-                
+				stat_start <= stat_wr;
                 run <= 0;
-                wr_data <= 0;
+                stat_wr <= 0;
             end
         end
 	end

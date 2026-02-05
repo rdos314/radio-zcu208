@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Feb  4 01:07:44 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb  5 00:10:31 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -241,28 +241,28 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_adr"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_adr"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="config_adr"/>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="config_adr"/>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="config_adr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_data"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_data"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="config_data"/>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="config_data"/>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="config_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="config_high_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_high" PORT="config_wr"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_wr"/>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="config_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="config_low_wr" SIGIS="undef" SIGNAME="adc_control_0_config_low_wr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_wr"/>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="config_wr"/>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="config_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_doutb">
@@ -2910,26 +2910,6 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana1_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_adr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="config_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="config_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_high_wr"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" NAME="fifo_active" SIGIS="undef" SIGNAME="comp_high_active">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_high" PORT="active"/>
@@ -2980,6 +2960,76 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana1_reset"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_env_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_env_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_env_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_env_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_freq" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_phase_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_phase_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_phase_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_phase_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="61" NAME="stat_sample" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_sel_0" SIGIS="undef" SIGNAME="comp_ana_high_stat_sel_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_start" SIGIS="undef" SIGNAME="comp_ana_high_stat_start">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_wr" SIGIS="undef" SIGNAME="comp_ana_high_stat_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_wr"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -2993,26 +3043,6 @@
         <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_comp_ana0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana0_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_adr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="config_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="config_wr" SIGIS="undef" SIGNAME="adc_control_0_config_low_wr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="adc_control_0" PORT="config_low_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="fifo_active" SIGIS="undef" SIGNAME="comp_low_active">
@@ -3063,6 +3093,306 @@
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp_ana0_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana0_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_env_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_env_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_env_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="stat_env_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_env_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_freq" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_phase_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_phase_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_phase_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="stat_phase_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_phase_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="61" NAME="stat_sample" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_sel_0" SIGIS="undef" SIGNAME="comp_ana_low_stat_sel_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_start" SIGIS="undef" SIGNAME="comp_ana_low_stat_start">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_wr" SIGIS="undef" SIGNAME="comp_ana_low_stat_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_wr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comp_burst_high_0" HWVERSION="1.0" INSTANCE="comp_burst_high_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comp_burst" VLNV="xilinx.com:module_ref:comp_burst:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_comp_burst_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_stat_high_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="stat_high_0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_adr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="config_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="config_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_high_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_high_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="stat_high_0_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="rt_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp_ana1_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_enable" SIGIS="undef" SIGNAME="comp_ana_high_stat_sel_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_sel_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_env_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_env_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_env_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_env_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_env_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_freq" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_phase_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_phase_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_phase_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_phase_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_phase_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="61" NAME="rt_sample" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_start" SIGIS="undef" SIGNAME="comp_ana_high_stat_start">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_wr" SIGIS="undef" SIGNAME="comp_ana_high_stat_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_wr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comp_burst_low_0" HWVERSION="1.0" INSTANCE="comp_burst_low_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comp_burst" VLNV="xilinx.com:module_ref:comp_burst:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="ps_comp_burst_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_stat_low_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="stat_low_0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_adr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="config_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="config_wr" SIGIS="undef" SIGNAME="adc_control_0_config_low_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_low_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_low_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="stat_low_0_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_angle">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_angle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="rt_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mts_0" PORT="comp_ana0_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_enable" SIGIS="undef" SIGNAME="comp_ana_low_stat_sel_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_sel_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_env_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_env_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_env_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="rt_env_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_env_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_env_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_freq" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_freq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_freq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_0" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_phase_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_1" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_phase_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_2" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_phase_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="rt_phase_3" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_phase_3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_phase_3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="61" NAME="rt_sample" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_sample">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_sample"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_start" SIGIS="undef" SIGNAME="comp_ana_low_stat_start">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rt_wr" SIGIS="undef" SIGNAME="comp_ana_low_stat_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_wr"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4219,6 +4549,7 @@
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp_ana0_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana0_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_ana_low" PORT="clk"/>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp_ana0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp_ana0_reset">
@@ -4229,6 +4560,7 @@
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp_ana1_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana1_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_ana_high" PORT="clk"/>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp_ana1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp_ana1_reset">
@@ -4312,6 +4644,26 @@
         <PORT DIR="I" NAME="pl_sysref" SIGIS="undef" SIGNAME="pl_sysref_ds_buf_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="pl_sysref_ds_buf" PORT="IBUF_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_high_0_clk" SIGIS="clk" SIGNAME="mts_0_stat_high_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_high_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_high_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_low_0_clk" SIGIS="clk" SIGNAME="mts_0_stat_low_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_low_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_low_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="sys_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_ps8_0_99M_mb_reset">
@@ -9114,11 +9466,11 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
             <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
             <CONNECTION INSTANCE="deci_high" PORT="sim_clk"/>
-            <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
             <CONNECTION INSTANCE="ana_low" PORT="config_clk"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="config_clk"/>
+            <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="config_clk"/>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="config_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">

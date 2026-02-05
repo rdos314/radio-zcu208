@@ -72,7 +72,15 @@ module mts(
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP_ANA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	output wire comp_ana1_clk,
-    output reg  comp_ana1_reset
+    output reg  comp_ana1_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_LOW0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire stat_low_0_clk,
+    output reg  stat_low_0_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_HIGH0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire stat_high_0_clk,
+    output reg  stat_high_0_reset
  ); 
  
     reg adc_axi_start;
@@ -102,6 +110,7 @@ module mts(
     wire freq_locked;
     wire comp_locked;
     wire comp_ana_locked;
+    wire stat_0_locked;
 
 	(* ASYNC_REG="TRUE" *)  reg  sysref_r;
 	(* ASYNC_REG="TRUE" *)	reg [2:0] sysref_sync;
@@ -128,6 +137,11 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  comp_ana0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  comp_ana1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  comp_ana1_reset_2;
+
+	(* ASYNC_REG="TRUE" *)	reg  stat_low_0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_low_0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  stat_high_0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_high_0_reset_2;
 
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_adc_start_2;
@@ -178,6 +192,13 @@ module mts(
 		.clk_out1	(comp_ana0_clk),
 		.clk_out2	(comp_ana1_clk),
 		.locked		(comp_ana_locked)
+		);
+
+	clk_wiz_adc clk_wiz_stat_0 (
+		.clk_in1	(pl_clk_buf),
+		.clk_out1	(stat_low_0_clk),
+		.clk_out2	(stat_high_0_clk),
+		.locked		(stat_0_locked)
 		);
 
 
@@ -402,6 +423,20 @@ generate
 		comp_ana1_reset_1 <= deci_reset_async | (~comp_ana_locked);
 		comp_ana1_reset_2 <= comp_ana1_reset_1;
 		comp_ana1_reset <= comp_ana1_reset_2;
+	end
+
+	always @(posedge stat_low_0_clk) 
+	begin
+		stat_low_0_reset_1 <= deci_reset_async | (~stat_0_locked);
+		stat_low_0_reset_2 <= stat_low_0_reset_1;
+		stat_low_0_reset <= stat_low_0_reset_2;
+	end
+
+	always @(posedge stat_high_0_clk) 
+	begin
+		stat_high_0_reset_1 <= deci_reset_async | (~stat_0_locked);
+		stat_high_0_reset_2 <= stat_high_0_reset_1;
+		stat_high_0_reset <= stat_high_0_reset_2;
 	end
 
   end

@@ -130,28 +130,66 @@
 //------------------------------
 
 module comp_burst(
-    input wire clk,
-    input wire reset,
-    input wire [15:0] min_env,
+    input wire config_clk,
+    input wire config_wr,
+    input wire [7:0] config_adr,
+    input wire [31:0] config_data,
 
-	input wire burst,
-	input wire [61:0] in_sample,
-    input wire [19:0] in_freq,
-    input wire [15:0] in_angle,
+	input wire rt_clk,
+	input wire rt_enable,
 
-    input wire wr_data,    
-    input wire [15:0] in_env_0, 
-    input wire [15:0] in_env_1, 
-    input wire [15:0] in_env_2,  
-    input wire [15:0] in_env_3,  
+	input wire rt_start,
+	input wire [61:0] rt_sample,
+    input wire [19:0] rt_freq,
+    input wire [15:0] rt_angle,
+
+	input wire rt_wr,    
+    input wire [15:0] rt_env_0, 
+    input wire [15:0] rt_env_1, 
+    input wire [15:0] rt_env_2,  
+    input wire [15:0] rt_env_3,  
   
-    input wire [19:0] in_phase_0,
-    input wire [19:0] in_phase_1,
-    input wire [19:0] in_phase_2,
-    input wire [19:0] in_phase_3,
+    input wire [19:0] rt_phase_0,
+    input wire [19:0] rt_phase_1,
+    input wire [19:0] rt_phase_2,
+    input wire [19:0] rt_phase_3,
     
-    output reg err_no_data
+    input wire clk,
+    input wire reset
 );
+
+    wire [39:0] config_data_adr_in;
+    assign config_data_adr_in[7:0] = config_adr;
+    assign config_data_adr_in[39:8] = config_data;
+
+    wire [39:0] config_data_adr_out;
+    wire [7:0] cfg_adr = config_data_adr_out[7:0];
+    wire [31:0] cfg_data = config_data_adr_out[39:8];
+    reg cfg_rd;
+    wire cfg_empty;
+    
+    reg [15:0] min_env;
+
+    reg err_no_data;
+
+	reg rt_meta_wr;
+	reg [97:0] rt_meta_in;
+
+	reg rt_meta_rd;
+	wire rt_meta_empty;
+	wire [97:0] rt_meta_out;
+
+	reg rt_data_wr;
+	reg [143:0] rt_data_in;
+
+	reg rt_data_rd;
+	wire rt_data_empty;
+	wire [143:0] rt_data_out;
+
+	reg burst;
+	reg [61:0] in_sample;
+    reg [19:0] in_freq;
+    reg [15:0] in_angle;
     
     reg [63:0] env_in;
     reg [79:0] phase_in;
@@ -281,6 +319,39 @@ module comp_burst(
     wire [31:0] p3_phase_sum;
     wire [47:0] p3_phase_sum2;
 
+	fifo_config fifo_config_i (
+		.rst(reset),                   // input wire rst
+		.wr_clk(config_clk),           // input wire wr_clk
+		.rd_clk(clk),                  // input wire rd_clk
+		.din(config_data_adr_in),      // input wire [39 : 0] din
+		.wr_en(config_wr),             // input wire wr_en
+		.rd_en(cfg_rd),                // input wire rd_en
+		.dout(config_data_adr_out),    // output wire [39 : 0] dout
+		.empty(cfg_empty)              // output wire empty
+	);
+
+	fifo_stat_meta fifo_rt_meta_i (
+		.rst(reset),           // input wire rst
+		.wr_clk(rt_clk),       // input wire wr_clk
+		.rd_clk(clk),          // input wire rd_clk
+		.din(rt_meta_in),      // input wire [97 : 0] din
+		.wr_en(rt_meta_wr),    // input wire wr_en
+		.rd_en(rt_meta_rd),    // input wire rd_en
+		.dout(rt_meta_out),    // output wire [97 : 0] dout
+		.empty(rt_meta_empty)  // output wire empty
+	);
+
+	fifo_stat_data fifo_rt_data_i (
+		.rst(reset),       	     // input wire rst
+		.wr_clk(rt_clk),	     // input wire wr_clk
+		.rd_clk(clk),		     // input wire rd_clk
+		.din(rt_data_in),        // input wire [143 : 0] din
+		.wr_en(rt_data_wr),      // input wire wr_en
+		.rd_en(rt_data_rd),      // input wire rd_en
+		.dout(rt_data_out),      // output wire [143 : 0] dout
+		.empty(rt_data_empty)    // output wire empty
+	);
+
 	one_to_four p2_i (
 		.clk(clk),
         .reset(reset),
@@ -331,14 +402,13 @@ module comp_burst(
         .phase_sum2(p3_phase_sum2)
 	);
 
-/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(df_active),           // input wire [0:0]  probe3
-		.probe1(df_start),            // input wire [8:0]  probe3
-		.probe2(df_ind),              // input wire [8:0]  probe3
-		.probe3(df_count),            // input wire [3:0]  probe3
-		.probe4(df_low),              // input wire [19:0]  probe3
+		.probe0(burst),               // input wire [0:0]  probe3
+		.probe1(in_freq),             // input wire [19:0]  probe3
+		.probe2(in_angle),            // input wire [15:0]  probe3
+		.probe3(mem_wr),              // input wire [0:0]  probe3
+		.probe4(scan_start),          // input wire [0:0]  probe3
 		.probe5(df_diff),             // input wire [19:0]  probe3
 		.probe6(complete_2),          // input wire [0:0]  probe3
 		.probe7(p2_active),           // input wire [0:0]  probe3
@@ -351,25 +421,105 @@ module comp_burst(
 		.probe14(p2_phase_diff_2),    // input wire [19:0]  probe3
 		.probe15(p2_phase_diff_3)     // input wire [19:0]  probe3
 	);
-*/
 
 generate
   begin : comp_burst
 
     always @(posedge clk) 
-    begin
-        mem_wr <= wr_data;
-
-        env_in[15:0] <= in_env_0;
-        env_in[31:16] <= in_env_1;
-        env_in[47:32] <= in_env_2;
-        env_in[63:48] <= in_env_3;
-
-        phase_in[19:0] <= in_phase_0;
-        phase_in[39:20] <= in_phase_1;
-        phase_in[59:40] <= in_phase_2;
-        phase_in[79:60] <= in_phase_3;
+	begin
+        if (cfg_empty)
+           cfg_rd <= 0;
+        else
+            cfg_rd <= 1;
     end
+
+    always @(posedge clk) 
+	begin
+        if (cfg_rd)
+        begin
+            case (cfg_adr)
+                0 : min_env <= cfg_data[15:0];
+            endcase            
+        end
+    end
+
+    always @(posedge rt_clk) 
+    begin
+	   if (rt_wr & rt_enable)
+       begin
+            rt_data_in[15:0] <= rt_env_0;
+            rt_data_in[31:16] <= rt_env_1;
+            rt_data_in[47:32] <= rt_env_2;
+            rt_data_in[63:48] <= rt_env_3;
+
+            rt_data_in[83:64] <= rt_phase_0;
+            rt_data_in[103:84] <= rt_phase_0;
+            rt_data_in[123:104] <= rt_phase_0;
+            rt_data_in[143:124] <= rt_phase_0;
+			
+			rt_data_wr <= 1;
+       end
+       else
+			rt_data_wr <= 0;
+    end
+
+    always @(posedge rt_clk) 
+    begin
+	   if (rt_start & rt_enable)
+       begin
+            rt_meta_in[61:0] <= rt_sample;
+            rt_meta_in[81:62] <= rt_freq;
+            rt_meta_in[97:82] <= rt_angle;
+			
+			rt_meta_wr <= 1;
+       end
+       else
+			rt_meta_wr <= 0;
+    end
+
+    always @(posedge clk) 
+	begin
+		if (rt_meta_empty)
+		begin
+			rt_meta_rd <= 0;
+			burst <= 0;
+		end
+		else
+		begin
+			rt_meta_rd <= 1;
+            in_sample <= rt_meta_out[61:0];
+            in_freq <= rt_meta_out[81:62];
+            in_angle <= rt_meta_out[97:82];
+			burst <= 1;
+		end
+	end
+
+    always @(posedge clk) 
+    begin
+        if (burst)
+            filling <= 1;
+        else
+        begin
+            if (rt_data_empty)
+                filling <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+	begin
+		if (filling & !rt_data_empty)
+		begin
+            env_in <= rt_data_out[63:0];
+            phase_in <= rt_data_out[143:64];
+            rt_data_rd <= 1;
+			mem_wr <= 1;
+		end
+		else
+		begin
+			mem_wr <= 1;
+            rt_data_rd <= 0;
+        end
+	end
 
     always @(posedge clk) 
     begin
@@ -430,17 +580,6 @@ generate
             end
 
             wr_ptr <= 0;            
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (burst)
-            filling <= 1;
-        else
-        begin
-            if (!wr_data)
-                filling <= 0;
         end
     end
 

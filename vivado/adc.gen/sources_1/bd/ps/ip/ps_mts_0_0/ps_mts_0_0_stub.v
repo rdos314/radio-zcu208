@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Jan 15 19:04:29 2026
+// Date        : Wed Feb  4 22:56:19 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_stub.v
@@ -21,8 +21,9 @@ module ps_mts_0_0(pl_clk, pl_sysref, sys_reset, axi_clk,
   deci_clk, deci_resetn, user_sysref_adc, deci_adc_active, deci_sim_start, 
   deci_sim_active_low, deci_sim_active_high, ana0_clk, ana0_reset, ana1_clk, ana1_reset, 
   freq0_clk, freq0_reset, freq1_clk, freq1_reset, comp0_clk, comp0_reset, comp1_clk, comp1_reset, 
-  comp_ana0_clk, comp_ana0_reset, comp_ana1_clk, comp_ana1_reset)
-/* synthesis syn_black_box black_box_pad_pin="pl_sysref,sys_reset,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,ana0_reset,ana1_reset,freq0_reset,freq1_reset,comp0_reset,comp1_reset,comp_ana0_reset,comp_ana1_reset" */
+  comp_ana0_clk, comp_ana0_reset, comp_ana1_clk, comp_ana1_reset, stat_low_0_clk, 
+  stat_low_0_reset, stat_high_0_clk, stat_high_0_reset)
+/* synthesis syn_black_box black_box_pad_pin="pl_sysref,sys_reset,axi_reset_out,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,ana0_reset,ana1_reset,freq0_reset,freq1_reset,comp0_reset,comp1_reset,comp_ana0_reset,comp_ana1_reset,stat_low_0_reset,stat_high_0_reset" */
 /* synthesis syn_force_seq_prim="pl_clk" */
 /* synthesis syn_force_seq_prim="axi_clk" */
 /* synthesis syn_force_seq_prim="deci_clk" */
@@ -33,7 +34,9 @@ module ps_mts_0_0(pl_clk, pl_sysref, sys_reset, axi_clk,
 /* synthesis syn_force_seq_prim="comp0_clk" */
 /* synthesis syn_force_seq_prim="comp1_clk" */
 /* synthesis syn_force_seq_prim="comp_ana0_clk" */
-/* synthesis syn_force_seq_prim="comp_ana1_clk" */;
+/* synthesis syn_force_seq_prim="comp_ana1_clk" */
+/* synthesis syn_force_seq_prim="stat_low_0_clk" */
+/* synthesis syn_force_seq_prim="stat_high_0_clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *) input pl_clk /* synthesis syn_isclock = 1 */;
   input pl_sysref;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input sys_reset;
@@ -67,4 +70,8 @@ module ps_mts_0_0(pl_clk, pl_sysref, sys_reset, axi_clk,
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp_ana0_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp_ana0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output comp_ana0_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 comp_ana1_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp_ana1_clk, ASSOCIATED_RESET comp_ana1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp_ana1_clk, INSERT_VIP 0" *) output comp_ana1_clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comp_ana1_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comp_ana1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output comp_ana1_reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_low_0_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_low_0_clk, ASSOCIATED_RESET stat_low_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_stat_low_0_clk, INSERT_VIP 0" *) output stat_low_0_clk /* synthesis syn_isclock = 1 */;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_low_0_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_low_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output stat_low_0_reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_high_0_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_high_0_clk, ASSOCIATED_RESET stat_high_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_stat_high_0_clk, INSERT_VIP 0" *) output stat_high_0_clk /* synthesis syn_isclock = 1 */;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_high_0_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_high_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output stat_high_0_reset;
 endmodule
