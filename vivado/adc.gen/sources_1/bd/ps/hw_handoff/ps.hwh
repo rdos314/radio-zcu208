@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb  5 00:10:31 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb  5 22:02:09 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -2960,6 +2960,18 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana1_reset"/>
           </CONNECTIONS>
         </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_0_clk" SIGIS="clk" SIGNAME="comp_ana_high_stat_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="comp_ana_high_stat_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_high_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_1_clk" SIGIS="clk"/>
+        <PORT DIR="O" NAME="stat_1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
         <PORT DIR="O" LEFT="15" NAME="stat_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_angle">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_angle"/>
@@ -3095,6 +3107,18 @@
             <CONNECTION INSTANCE="mts_0" PORT="comp_ana0_reset"/>
           </CONNECTIONS>
         </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_0_clk" SIGIS="clk" SIGNAME="comp_ana_low_stat_0_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="stat_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="comp_ana_low_stat_0_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_burst_low_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_1_clk" SIGIS="clk"/>
+        <PORT DIR="O" NAME="stat_1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
         <PORT DIR="O" LEFT="15" NAME="stat_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_angle">
           <CONNECTIONS>
             <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_angle"/>
@@ -3175,9 +3199,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_stat_high_0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="comp_ana_high_stat_0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="stat_high_0_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_0_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
@@ -3200,9 +3224,9 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="config_high_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_high_0_reset">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="comp_ana_high_stat_0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="stat_high_0_reset"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="stat_0_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="rt_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_stat_angle">
@@ -3290,9 +3314,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="mts_0_stat_low_0_clk">
+        <PORT CLKFREQUENCY="500000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="comp_ana_low_stat_0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="stat_low_0_clk"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_0_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
@@ -3315,9 +3339,9 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="config_low_wr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_low_0_reset">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="comp_ana_low_stat_0_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mts_0" PORT="stat_low_0_reset"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="stat_0_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="rt_angle" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_stat_angle">
@@ -4548,8 +4572,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp_ana0_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana0_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="clk"/>
             <CONNECTION INSTANCE="comp_burst_low_0" PORT="rt_clk"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp_ana0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp_ana0_reset">
@@ -4559,8 +4583,8 @@
         </PORT>
         <PORT CLKFREQUENCY="500000000" DIR="O" NAME="comp_ana1_clk" SIGIS="clk" SIGNAME="mts_0_comp_ana1_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="clk"/>
             <CONNECTION INSTANCE="comp_burst_high_0" PORT="rt_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="comp_ana1_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_comp_ana1_reset">
@@ -4644,26 +4668,6 @@
         <PORT DIR="I" NAME="pl_sysref" SIGIS="undef" SIGNAME="pl_sysref_ds_buf_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="pl_sysref_ds_buf" PORT="IBUF_OUT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_high_0_clk" SIGIS="clk" SIGNAME="mts_0_stat_high_0_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_burst_high_0" PORT="clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="stat_high_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_high_0_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_burst_high_0" PORT="reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="500000000" DIR="O" NAME="stat_low_0_clk" SIGIS="clk" SIGNAME="mts_0_stat_low_0_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_burst_low_0" PORT="clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="stat_low_0_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mts_0_stat_low_0_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_burst_low_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="sys_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_ps8_0_99M_mb_reset">

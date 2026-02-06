@@ -67,6 +67,10 @@ module ps_comp_ana_0_1 (
   fifo_angle,
   clk,
   reset,
+  stat_0_clk,
+  stat_0_reset,
+  stat_1_clk,
+  stat_1_reset,
   stat_sel_0,
   stat_start,
   stat_sample,
@@ -103,6 +107,22 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_0_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_clk, ASSOCIATED_RESET stat_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_0_clk, INSERT_VIP 0" *)
+output wire stat_0_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_0_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire stat_0_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_1_clk CLK" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_clk, ASSOCIATED_RESET stat_1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_1_clk, INSERT_VIP 0" *)
+output wire stat_1_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_1_reset RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire stat_1_reset;
 output wire stat_sel_0;
 output wire stat_start;
 output wire [61 : 0] stat_sample;
@@ -130,6 +150,10 @@ output wire [19 : 0] stat_phase_3;
     .fifo_angle(fifo_angle),
     .clk(clk),
     .reset(reset),
+    .stat_0_clk(stat_0_clk),
+    .stat_0_reset(stat_0_reset),
+    .stat_1_clk(stat_1_clk),
+    .stat_1_reset(stat_1_reset),
     .stat_sel_0(stat_sel_0),
     .stat_start(stat_start),
     .stat_sample(stat_sample),

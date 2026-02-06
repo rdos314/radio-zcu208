@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Feb  4 22:56:21 2026
+-- Date        : Fri Feb  6 02:11:10 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.vhdl
@@ -8084,6 +8084,10 @@ entity ps_comp_ana_0_1_comp_ana is
     fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
+    stat_0_clk : out STD_LOGIC;
+    stat_0_reset : out STD_LOGIC;
+    stat_1_clk : out STD_LOGIC;
+    stat_1_reset : out STD_LOGIC;
     stat_sel_0 : out STD_LOGIC;
     stat_start : out STD_LOGIC;
     stat_sample : out STD_LOGIC_VECTOR ( 61 downto 0 );
@@ -8106,6 +8110,14 @@ entity ps_comp_ana_0_1_comp_ana is
 end ps_comp_ana_0_1_comp_ana;
 
 architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
+  component ps_comp_ana_0_1_clk_wiz_stat is
+  port (
+    clk_out1 : out STD_LOGIC;
+    clk_out2 : out STD_LOGIC;
+    locked : out STD_LOGIC;
+    clk_in1 : in STD_LOGIC
+  );
+  end component ps_comp_ana_0_1_clk_wiz_stat;
   component ps_comp_ana_0_1_fifo_comp_ana is
   port (
     rst : in STD_LOGIC;
@@ -8159,10 +8171,10 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
     probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe18 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 61 downto 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -8184,6 +8196,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal ana_trig : STD_LOGIC;
   attribute MARK_DEBUG of ana_trig : signal is std.standard.true;
   signal ana_wr : STD_LOGIC;
+  signal clk_buf : STD_LOGIC;
+  signal \comp_ana.ana_rd_reg0\ : STD_LOGIC;
   signal \comp_ana.ana_trig_i_1_n_0\ : STD_LOGIC;
   signal \comp_ana.ana_trig_i_2_n_0\ : STD_LOGIC;
   signal \comp_ana.ana_trig_i_3_n_0\ : STD_LOGIC;
@@ -8469,6 +8483,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal \comp_ana.sample_ov_2_i_3_n_0\ : STD_LOGIC;
   signal \comp_ana.sample_ov_2_i_4_n_0\ : STD_LOGIC;
   signal \comp_ana.sample_ov_2_reg_n_0\ : STD_LOGIC;
+  signal \comp_ana.stat_0_reset_1_i_1_n_0\ : STD_LOGIC;
   signal \comp_ana.stat_env_0[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_ana.stat_env_0[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_ana.stat_env_0[11]_i_1_n_0\ : STD_LOGIC;
@@ -8649,6 +8664,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal re_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal re_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal reset_int : STD_LOGIC;
   signal run : STD_LOGIC;
   attribute MARK_DEBUG of run : signal is std.standard.true;
   signal sample : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -8663,6 +8679,18 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute MARK_DEBUG of sample_counter_3 : signal is std.standard.true;
   signal size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of size : signal is std.standard.true;
+  signal stat_01_locked : STD_LOGIC;
+  signal \^stat_0_clk\ : STD_LOGIC;
+  signal stat_0_reset_1 : STD_LOGIC;
+  attribute async_reg : string;
+  attribute async_reg of stat_0_reset_1 : signal is "true";
+  signal stat_0_reset_2 : STD_LOGIC;
+  attribute async_reg of stat_0_reset_2 : signal is "true";
+  signal \^stat_1_clk\ : STD_LOGIC;
+  signal stat_1_reset_1 : STD_LOGIC;
+  attribute async_reg of stat_1_reset_1 : signal is "true";
+  signal stat_1_reset_2 : STD_LOGIC;
+  attribute async_reg of stat_1_reset_2 : signal is "true";
   signal \^stat_angle\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^stat_angle\ : signal is std.standard.true;
   signal \^stat_env_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -8687,7 +8715,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute MARK_DEBUG of \^stat_sample\ : signal is std.standard.true;
   signal stat_sel : STD_LOGIC;
   attribute MARK_DEBUG of stat_sel : signal is std.standard.true;
-  signal stat_sel_00 : STD_LOGIC;
   signal \^stat_start\ : STD_LOGIC;
   attribute MARK_DEBUG of stat_start : signal is std.standard.true;
   signal \^stat_wr\ : STD_LOGIC;
@@ -8850,6 +8877,15 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute mark_debug_string of \comp_ana.size_reg[7]\ : label is "yes";
   attribute KEEP of \comp_ana.size_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_ana.size_reg[8]\ : label is "yes";
+  attribute ASYNC_REG_boolean : boolean;
+  attribute ASYNC_REG_boolean of \comp_ana.stat_0_reset_1_reg\ : label is std.standard.true;
+  attribute KEEP of \comp_ana.stat_0_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \comp_ana.stat_0_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \comp_ana.stat_0_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \comp_ana.stat_1_reset_1_reg\ : label is std.standard.true;
+  attribute KEEP of \comp_ana.stat_1_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \comp_ana.stat_1_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \comp_ana.stat_1_reset_2_reg\ : label is "yes";
   attribute KEEP of \comp_ana.stat_angle_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_ana.stat_angle_reg[0]\ : label is "yes";
   attribute KEEP of \comp_ana.stat_angle_reg[10]\ : label is "yes";
@@ -9352,7 +9388,18 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute KEEP_HIERARCHY of phase_env_i_1 : label is "soft";
   attribute KEEP_HIERARCHY of phase_env_i_2 : label is "soft";
   attribute KEEP_HIERARCHY of phase_env_i_3 : label is "soft";
+  attribute BOX_TYPE : string;
+  attribute BOX_TYPE of stat_clk_i : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM : string;
+  attribute XILINX_LEGACY_PRIM of stat_clk_i : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP : string;
+  attribute XILINX_TRANSFORM_PINMAP of stat_clk_i : label is "VCC:CE";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of stat_0_clk : signal is "XIL_INTERFACENAME STAT_0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
+  attribute X_INTERFACE_PARAMETER of stat_1_clk : signal is "XIL_INTERFACENAME STAT_1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0";
 begin
+  stat_0_clk <= \^stat_0_clk\;
+  stat_1_clk <= \^stat_1_clk\;
   stat_angle(15 downto 0) <= \^stat_angle\(15 downto 0);
   stat_env_0(15 downto 0) <= \^stat_env_0\(15 downto 0);
   stat_env_1(15 downto 0) <= \^stat_env_1\(15 downto 0);
@@ -9370,6 +9417,13 @@ begin
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
+    );
+clk_wiz_stat_01: component ps_comp_ana_0_1_clk_wiz_stat
+     port map (
+      clk_in1 => clk_buf,
+      clk_out1 => \^stat_0_clk\,
+      clk_out2 => \^stat_1_clk\,
+      locked => stat_01_locked
     );
 \comp_ana.ana_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -9863,7 +9917,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => clk,
       CE => '1',
-      D => stat_sel_00,
+      D => \comp_ana.ana_rd_reg0\,
       Q => ana_rd,
       R => '0'
     );
@@ -14634,6 +14688,14 @@ GND: unisim.vcomponents.GND
       Q => re_3(9),
       R => '0'
     );
+\comp_ana.reset_int_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => reset,
+      Q => reset_int,
+      R => '0'
+    );
 \comp_ana.run_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FFFE0000"
@@ -14652,7 +14714,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \comp_ana.run_i_1_n_0\,
       Q => run,
-      S => stat_sel_00
+      S => \comp_ana.ana_rd_reg0\
     );
 \comp_ana.sample_counter_0[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -15732,7 +15794,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(16),
       Q => size(0),
       R => '0'
@@ -15740,7 +15802,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(17),
       Q => size(1),
       R => '0'
@@ -15748,7 +15810,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(18),
       Q => size(2),
       R => '0'
@@ -15756,7 +15818,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(19),
       Q => size(3),
       R => '0'
@@ -15764,7 +15826,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(20),
       Q => size(4),
       R => '0'
@@ -15772,7 +15834,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(21),
       Q => size(5),
       R => '0'
@@ -15780,7 +15842,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(22),
       Q => size(6),
       R => '0'
@@ -15788,7 +15850,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(23),
       Q => size(7),
       R => '0'
@@ -15796,15 +15858,72 @@ GND: unisim.vcomponents.GND
 \comp_ana.size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(24),
       Q => size(8),
+      R => '0'
+    );
+\comp_ana.stat_0_reset_1_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => reset_int,
+      I1 => stat_01_locked,
+      O => \comp_ana.stat_0_reset_1_i_1_n_0\
+    );
+\comp_ana.stat_0_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_0_clk\,
+      CE => '1',
+      D => \comp_ana.stat_0_reset_1_i_1_n_0\,
+      Q => stat_0_reset_1,
+      R => '0'
+    );
+\comp_ana.stat_0_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_0_clk\,
+      CE => '1',
+      D => stat_0_reset_1,
+      Q => stat_0_reset_2,
+      R => '0'
+    );
+\comp_ana.stat_0_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_0_clk\,
+      CE => '1',
+      D => stat_0_reset_2,
+      Q => stat_0_reset,
+      R => '0'
+    );
+\comp_ana.stat_1_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_1_clk\,
+      CE => '1',
+      D => \comp_ana.stat_0_reset_1_i_1_n_0\,
+      Q => stat_1_reset_1,
+      R => '0'
+    );
+\comp_ana.stat_1_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_1_clk\,
+      CE => '1',
+      D => stat_1_reset_1,
+      Q => stat_1_reset_2,
+      R => '0'
+    );
+\comp_ana.stat_1_reset_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => \^stat_1_clk\,
+      CE => '1',
+      D => stat_1_reset_2,
+      Q => stat_1_reset,
       R => '0'
     );
 \comp_ana.stat_angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(45),
       Q => \^stat_angle\(0),
       R => '0'
@@ -15812,7 +15931,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(55),
       Q => \^stat_angle\(10),
       R => '0'
@@ -15820,7 +15939,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(56),
       Q => \^stat_angle\(11),
       R => '0'
@@ -15828,7 +15947,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(57),
       Q => \^stat_angle\(12),
       R => '0'
@@ -15836,7 +15955,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(58),
       Q => \^stat_angle\(13),
       R => '0'
@@ -15844,7 +15963,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(59),
       Q => \^stat_angle\(14),
       R => '0'
@@ -15852,7 +15971,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(60),
       Q => \^stat_angle\(15),
       R => '0'
@@ -15860,7 +15979,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(46),
       Q => \^stat_angle\(1),
       R => '0'
@@ -15868,7 +15987,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(47),
       Q => \^stat_angle\(2),
       R => '0'
@@ -15876,7 +15995,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(48),
       Q => \^stat_angle\(3),
       R => '0'
@@ -15884,7 +16003,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(49),
       Q => \^stat_angle\(4),
       R => '0'
@@ -15892,7 +16011,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(50),
       Q => \^stat_angle\(5),
       R => '0'
@@ -15900,7 +16019,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(51),
       Q => \^stat_angle\(6),
       R => '0'
@@ -15908,7 +16027,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(52),
       Q => \^stat_angle\(7),
       R => '0'
@@ -15916,7 +16035,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(53),
       Q => \^stat_angle\(8),
       R => '0'
@@ -15924,7 +16043,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(54),
       Q => \^stat_angle\(9),
       R => '0'
@@ -17057,7 +17176,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(25),
       Q => \^stat_freq\(0),
       R => '0'
@@ -17065,7 +17184,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(35),
       Q => \^stat_freq\(10),
       R => '0'
@@ -17073,7 +17192,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(36),
       Q => \^stat_freq\(11),
       R => '0'
@@ -17081,7 +17200,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(37),
       Q => \^stat_freq\(12),
       R => '0'
@@ -17089,7 +17208,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(38),
       Q => \^stat_freq\(13),
       R => '0'
@@ -17097,7 +17216,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(39),
       Q => \^stat_freq\(14),
       R => '0'
@@ -17105,7 +17224,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(40),
       Q => \^stat_freq\(15),
       R => '0'
@@ -17113,7 +17232,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(41),
       Q => \^stat_freq\(16),
       R => '0'
@@ -17121,7 +17240,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(42),
       Q => \^stat_freq\(17),
       R => '0'
@@ -17129,7 +17248,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(43),
       Q => \^stat_freq\(18),
       R => '0'
@@ -17137,7 +17256,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(44),
       Q => \^stat_freq\(19),
       R => '0'
@@ -17145,7 +17264,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(26),
       Q => \^stat_freq\(1),
       R => '0'
@@ -17153,7 +17272,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(27),
       Q => \^stat_freq\(2),
       R => '0'
@@ -17161,7 +17280,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(28),
       Q => \^stat_freq\(3),
       R => '0'
@@ -17169,7 +17288,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(29),
       Q => \^stat_freq\(4),
       R => '0'
@@ -17177,7 +17296,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(30),
       Q => \^stat_freq\(5),
       R => '0'
@@ -17185,7 +17304,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(31),
       Q => \^stat_freq\(6),
       R => '0'
@@ -17193,7 +17312,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(32),
       Q => \^stat_freq\(7),
       R => '0'
@@ -17201,7 +17320,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(33),
       Q => \^stat_freq\(8),
       R => '0'
@@ -17209,7 +17328,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => ana_out_data(34),
       Q => \^stat_freq\(9),
       R => '0'
@@ -18657,7 +18776,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(0),
       Q => \^stat_sample\(0),
       R => '0'
@@ -18665,7 +18784,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(10),
       Q => \^stat_sample\(10),
       R => '0'
@@ -18673,7 +18792,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(11),
       Q => \^stat_sample\(11),
       R => '0'
@@ -18681,7 +18800,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(12),
       Q => \^stat_sample\(12),
       R => '0'
@@ -18689,7 +18808,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(13),
       Q => \^stat_sample\(13),
       R => '0'
@@ -18697,7 +18816,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(14),
       Q => \^stat_sample\(14),
       R => '0'
@@ -18705,7 +18824,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(15),
       Q => \^stat_sample\(15),
       R => '0'
@@ -18713,7 +18832,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(0),
       Q => \^stat_sample\(16),
       R => '0'
@@ -18721,7 +18840,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(1),
       Q => \^stat_sample\(17),
       R => '0'
@@ -18729,7 +18848,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(2),
       Q => \^stat_sample\(18),
       R => '0'
@@ -18737,7 +18856,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(3),
       Q => \^stat_sample\(19),
       R => '0'
@@ -18745,7 +18864,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(1),
       Q => \^stat_sample\(1),
       R => '0'
@@ -18753,7 +18872,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(4),
       Q => \^stat_sample\(20),
       R => '0'
@@ -18761,7 +18880,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(5),
       Q => \^stat_sample\(21),
       R => '0'
@@ -18769,7 +18888,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(6),
       Q => \^stat_sample\(22),
       R => '0'
@@ -18777,7 +18896,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(7),
       Q => \^stat_sample\(23),
       R => '0'
@@ -18785,7 +18904,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(8),
       Q => \^stat_sample\(24),
       R => '0'
@@ -18793,7 +18912,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(9),
       Q => \^stat_sample\(25),
       R => '0'
@@ -18801,7 +18920,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(10),
       Q => \^stat_sample\(26),
       R => '0'
@@ -18809,7 +18928,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(11),
       Q => \^stat_sample\(27),
       R => '0'
@@ -18817,7 +18936,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(12),
       Q => \^stat_sample\(28),
       R => '0'
@@ -18825,7 +18944,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(13),
       Q => \^stat_sample\(29),
       R => '0'
@@ -18833,7 +18952,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(2),
       Q => \^stat_sample\(2),
       R => '0'
@@ -18841,7 +18960,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(14),
       Q => \^stat_sample\(30),
       R => '0'
@@ -18849,7 +18968,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_1(15),
       Q => \^stat_sample\(31),
       R => '0'
@@ -18857,7 +18976,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(0),
       Q => \^stat_sample\(32),
       R => '0'
@@ -18865,7 +18984,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(1),
       Q => \^stat_sample\(33),
       R => '0'
@@ -18873,7 +18992,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(2),
       Q => \^stat_sample\(34),
       R => '0'
@@ -18881,7 +19000,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(3),
       Q => \^stat_sample\(35),
       R => '0'
@@ -18889,7 +19008,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(4),
       Q => \^stat_sample\(36),
       R => '0'
@@ -18897,7 +19016,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(5),
       Q => \^stat_sample\(37),
       R => '0'
@@ -18905,7 +19024,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(6),
       Q => \^stat_sample\(38),
       R => '0'
@@ -18913,7 +19032,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(7),
       Q => \^stat_sample\(39),
       R => '0'
@@ -18921,7 +19040,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(3),
       Q => \^stat_sample\(3),
       R => '0'
@@ -18929,7 +19048,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(8),
       Q => \^stat_sample\(40),
       R => '0'
@@ -18937,7 +19056,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(9),
       Q => \^stat_sample\(41),
       R => '0'
@@ -18945,7 +19064,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(10),
       Q => \^stat_sample\(42),
       R => '0'
@@ -18953,7 +19072,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(11),
       Q => \^stat_sample\(43),
       R => '0'
@@ -18961,7 +19080,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(12),
       Q => \^stat_sample\(44),
       R => '0'
@@ -18969,7 +19088,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(13),
       Q => \^stat_sample\(45),
       R => '0'
@@ -18977,7 +19096,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(14),
       Q => \^stat_sample\(46),
       R => '0'
@@ -18985,7 +19104,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_2(15),
       Q => \^stat_sample\(47),
       R => '0'
@@ -18993,7 +19112,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(0),
       Q => \^stat_sample\(48),
       R => '0'
@@ -19001,7 +19120,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(1),
       Q => \^stat_sample\(49),
       R => '0'
@@ -19009,7 +19128,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(4),
       Q => \^stat_sample\(4),
       R => '0'
@@ -19017,7 +19136,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(2),
       Q => \^stat_sample\(50),
       R => '0'
@@ -19025,7 +19144,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(3),
       Q => \^stat_sample\(51),
       R => '0'
@@ -19033,7 +19152,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(4),
       Q => \^stat_sample\(52),
       R => '0'
@@ -19041,7 +19160,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(5),
       Q => \^stat_sample\(53),
       R => '0'
@@ -19049,7 +19168,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(6),
       Q => \^stat_sample\(54),
       R => '0'
@@ -19057,7 +19176,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(7),
       Q => \^stat_sample\(55),
       R => '0'
@@ -19065,7 +19184,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(8),
       Q => \^stat_sample\(56),
       R => '0'
@@ -19073,7 +19192,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(9),
       Q => \^stat_sample\(57),
       R => '0'
@@ -19081,7 +19200,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(10),
       Q => \^stat_sample\(58),
       R => '0'
@@ -19089,7 +19208,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(11),
       Q => \^stat_sample\(59),
       R => '0'
@@ -19097,7 +19216,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(5),
       Q => \^stat_sample\(5),
       R => '0'
@@ -19105,7 +19224,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(12),
       Q => \^stat_sample\(60),
       R => '0'
@@ -19113,7 +19232,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_3(13),
       Q => \^stat_sample\(61),
       R => '0'
@@ -19121,7 +19240,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(6),
       Q => \^stat_sample\(6),
       R => '0'
@@ -19129,7 +19248,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(7),
       Q => \^stat_sample\(7),
       R => '0'
@@ -19137,7 +19256,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(8),
       Q => \^stat_sample\(8),
       R => '0'
@@ -19145,7 +19264,7 @@ GND: unisim.vcomponents.GND
 \comp_ana.stat_sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => stat_sel_00,
+      CE => \comp_ana.ana_rd_reg0\,
       D => sample_counter_0(9),
       Q => \^stat_sample\(9),
       R => '0'
@@ -19178,7 +19297,7 @@ GND: unisim.vcomponents.GND
         port map (
       I0 => ana_trig,
       I1 => ana_empty,
-      O => stat_sel_00
+      O => \comp_ana.ana_rd_reg0\
     );
 \comp_ana.stat_wr_i_2\: unisim.vcomponents.LUT4
     generic map(
@@ -19197,7 +19316,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \comp_ana.stat_wr_i_2_n_0\,
       Q => \^stat_wr\,
-      R => stat_sel_00
+      R => \comp_ana.ana_rd_reg0\
     );
 fifo_ana_i: component ps_comp_ana_0_1_fifo_comp_ana
      port map (
@@ -19381,10 +19500,9 @@ ila_i: component ps_comp_ana_0_1_ila_1
       probe18(0) => stat_sel,
       probe19(0) => \^stat_start\,
       probe2(4 downto 0) => raw_delay(4 downto 0),
-      probe20(0) => \^stat_sample\(0),
-      probe21(0) => \^stat_freq\(0),
-      probe22(1 downto 0) => \^stat_angle\(1 downto 0),
-      probe23(1) => '0',
+      probe20(61 downto 0) => \^stat_sample\(61 downto 0),
+      probe21(19 downto 0) => \^stat_freq\(19 downto 0),
+      probe22(15 downto 0) => \^stat_angle\(15 downto 0),
       probe23(0) => \^stat_wr\,
       probe24(15 downto 0) => \^stat_env_0\(15 downto 0),
       probe25(15 downto 0) => \^stat_env_1\(15 downto 0),
@@ -19454,6 +19572,16 @@ phase_env_i_3: entity work.ps_comp_ana_0_1_morlet_to_phase_env
       re(7 downto 0) => B"00000000",
       valid => valid(3)
     );
+stat_clk_i: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => clk,
+      O => clk_buf
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -19472,6 +19600,10 @@ entity ps_comp_ana_0_1 is
     fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
+    stat_0_clk : out STD_LOGIC;
+    stat_0_reset : out STD_LOGIC;
+    stat_1_clk : out STD_LOGIC;
+    stat_1_reset : out STD_LOGIC;
     stat_sel_0 : out STD_LOGIC;
     stat_start : out STD_LOGIC;
     stat_sample : out STD_LOGIC_VECTOR ( 61 downto 0 );
@@ -19514,6 +19646,18 @@ architecture STRUCTURE of ps_comp_ana_0_1 is
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
   attribute X_INTERFACE_MODE of reset : signal is "slave";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of stat_0_clk : signal is "xilinx.com:signal:clock:1.0 stat_0_clk CLK";
+  attribute X_INTERFACE_MODE of stat_0_clk : signal is "master";
+  attribute X_INTERFACE_PARAMETER of stat_0_clk : signal is "XIL_INTERFACENAME stat_0_clk, ASSOCIATED_RESET stat_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of stat_0_reset : signal is "xilinx.com:signal:reset:1.0 stat_0_reset RST";
+  attribute X_INTERFACE_MODE of stat_0_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of stat_0_reset : signal is "XIL_INTERFACENAME stat_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of stat_1_clk : signal is "xilinx.com:signal:clock:1.0 stat_1_clk CLK";
+  attribute X_INTERFACE_MODE of stat_1_clk : signal is "master";
+  attribute X_INTERFACE_PARAMETER of stat_1_clk : signal is "XIL_INTERFACENAME stat_1_clk, ASSOCIATED_RESET stat_1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_1_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of stat_1_reset : signal is "xilinx.com:signal:reset:1.0 stat_1_reset RST";
+  attribute X_INTERFACE_MODE of stat_1_reset : signal is "master";
+  attribute X_INTERFACE_PARAMETER of stat_1_reset : signal is "XIL_INTERFACENAME stat_1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
   stat_sel_0 <= \<const1>\;
 VCC: unisim.vcomponents.VCC
@@ -19533,6 +19677,10 @@ inst: entity work.ps_comp_ana_0_1_comp_ana
       fifo_sample(15 downto 0) => fifo_sample(15 downto 0),
       fifo_size(8 downto 0) => fifo_size(8 downto 0),
       reset => reset,
+      stat_0_clk => stat_0_clk,
+      stat_0_reset => stat_0_reset,
+      stat_1_clk => stat_1_clk,
+      stat_1_reset => stat_1_reset,
       stat_angle(15 downto 0) => stat_angle(15 downto 0),
       stat_env_0(15 downto 0) => stat_env_0(15 downto 0),
       stat_env_1(15 downto 0) => stat_env_1(15 downto 0),

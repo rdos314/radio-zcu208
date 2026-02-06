@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Thu Feb  5 00:11:19 2026
+-- Date        : Thu Feb  5 15:28:52 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_burst_1_0/ps_comp_burst_1_0_sim_netlist.vhdl
@@ -12483,6 +12483,7 @@ architecture STRUCTURE of ps_comp_burst_1_0_comp_burst is
   attribute KEEP of \comp_burst.p3_freq_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.p3_freq_reg[9]\ : label is "yes";
   attribute equivalent_register_removal : string;
+  attribute equivalent_register_removal of \comp_burst.rt_data_rd_reg\ : label is "no";
   attribute equivalent_register_removal of \comp_burst.rt_meta_rd_reg\ : label is "no";
   attribute KEEP of \comp_burst.scan_start_reg\ : label is "yes";
   attribute SOFT_HLUTNM of \comp_burst.wr_ptr[0]_i_1\ : label is "soft_lutpair26";
@@ -19636,7 +19637,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => '1',
+      D => env_in0,
       Q => mem_wr,
       R => '0'
     );
@@ -26468,7 +26469,7 @@ architecture STRUCTURE of ps_comp_burst_1_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_stat_low_0_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_0_stat_0_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of config_clk : signal is "xilinx.com:signal:clock:1.0 config_clk CLK";
   attribute X_INTERFACE_MODE of config_clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of config_clk : signal is "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";

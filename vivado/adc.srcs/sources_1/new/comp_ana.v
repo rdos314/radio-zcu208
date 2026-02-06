@@ -34,6 +34,14 @@ module comp_ana(
 
     input wire clk,
     input wire reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_0_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire stat_0_clk,
+    output reg  stat_0_reset,
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	output wire stat_1_clk,
+    output reg  stat_1_reset,
 	
 	output reg stat_sel_0,
 
@@ -54,6 +62,11 @@ module comp_ana(
     output reg [19:0] stat_phase_3
 );
 
+	(* ASYNC_REG="TRUE" *)	reg  stat_0_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_0_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  stat_1_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_1_reset_2;
+	
     reg reset_int;
   
     reg [127:0] raw_in_data;
@@ -116,6 +129,19 @@ module comp_ana(
     wire [19:0] phase_1;
     wire [19:0] phase_2;
     wire [19:0] phase_3;
+
+	BUFG stat_clk_i (
+		.I			(clk),
+		.O			(clk_buf));
+
+	clk_wiz_stat clk_wiz_stat_01 (
+		.clk_in1	(clk_buf),
+		.clk_out1	(stat_0_clk),
+		.clk_out2	(stat_1_clk),
+		.locked		(stat_01_locked)
+		);
+
+
 
 fifo_comp_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
@@ -217,6 +243,20 @@ morlet_to_phase_env phase_env_i_3 (
 
 generate
   begin : comp_ana
+
+	always @(posedge stat_0_clk) 
+	begin
+		stat_0_reset_1 <= reset_int | (~stat_01_locked);
+		stat_0_reset_2 <= stat_0_reset_1;
+		stat_0_reset <= stat_0_reset_2;
+	end
+
+	always @(posedge stat_1_clk) 
+	begin
+		stat_1_reset_1 <= reset_int | (~stat_01_locked);
+		stat_1_reset_2 <= stat_1_reset_1;
+		stat_1_reset <= stat_1_reset_2;
+	end
 
 	always @(posedge fifo_clk) 
     begin
@@ -379,13 +419,16 @@ generate
         else
             ana_trig <= 0;
     end
+
+    always @(posedge clk) 
+	begin
+		stat_sel_0 <= 1;
+	end
     
     always @(posedge clk) 
 	begin
         if (ana_trig & !ana_empty)
         begin
-			stat_sel_0 <= 1;
-
             ana_rd <= 1;
             run <= 1;
             size <= ana_out_data[24:16];

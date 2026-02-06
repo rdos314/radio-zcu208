@@ -74,8 +74,4 @@ create_clock -period 2 -name freq1_clk [get_ports freq1_clk]
 
 create_clock -period 8 -name pl_clk [get_ports pl_clk]
 
-create_clock -period 2 -name stat_high_0_clk [get_ports stat_high_0_clk]
-
-create_clock -period 2 -name stat_low_0_clk [get_ports stat_low_0_clk]
-
 

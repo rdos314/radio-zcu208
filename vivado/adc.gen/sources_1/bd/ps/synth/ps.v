@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Thu Feb  5 00:10:28 2026
+//Date        : Thu Feb  5 22:02:06 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -685,6 +685,8 @@ module ps
         .fifo_sample(comp_high_sample),
         .fifo_size(comp_high_size),
         .reset(mts_0_comp_ana1_reset),
+        .stat_0_clk(mts_0_stat_high_0_clk),
+        .stat_0_reset(mts_0_stat_high_0_reset),
         .stat_angle(comp_ana_high_stat_angle),
         .stat_env_0(comp_ana_high_stat_env_0),
         .stat_env_1(comp_ana_high_stat_env_1),
@@ -711,6 +713,8 @@ module ps
         .fifo_sample(comp_low_sample),
         .fifo_size(comp_low_size),
         .reset(mts_0_comp_ana0_reset),
+        .stat_0_clk(mts_0_stat_low_0_clk),
+        .stat_0_reset(mts_0_stat_low_0_reset),
         .stat_angle(comp_ana_low_stat_angle),
         .stat_env_0(comp_ana_low_stat_env_0),
         .stat_env_1(comp_ana_low_stat_env_1),
@@ -957,10 +961,6 @@ module ps
         .freq1_reset(mts_0_freq1_reset),
         .pl_clk(util_ds_buf_0_IBUF_OUT),
         .pl_sysref(util_ds_buf_0_IBUF_OUT1),
-        .stat_high_0_clk(mts_0_stat_high_0_clk),
-        .stat_high_0_reset(mts_0_stat_high_0_reset),
-        .stat_low_0_clk(mts_0_stat_low_0_clk),
-        .stat_low_0_reset(mts_0_stat_low_0_reset),
         .sys_reset(rst_ps8_0_99M_mb_reset),
         .user_sysref_adc(mts_0_user_sysref_adc));
   ps_util_ds_buf_0_0 pl_clk_util_ds_buf

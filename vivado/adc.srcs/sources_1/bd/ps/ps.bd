@@ -2111,58 +2111,6 @@
           "comp_ana1_reset": {
             "type": "rst",
             "direction": "O"
-          },
-          "stat_low_0_clk": {
-            "type": "clk",
-            "direction": "O",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "stat_low_0_reset",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "constant"
-              },
-              "FREQ_TOLERANCE_HZ": {
-                "value": "0",
-                "value_src": "constant"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "constant"
-              }
-            }
-          },
-          "stat_low_0_reset": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "stat_high_0_clk": {
-            "type": "clk",
-            "direction": "O",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "stat_high_0_reset",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "500000000",
-                "value_src": "constant"
-              },
-              "FREQ_TOLERANCE_HZ": {
-                "value": "0",
-                "value_src": "constant"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "constant"
-              }
-            }
-          },
-          "stat_high_0_reset": {
-            "type": "rst",
-            "direction": "O"
           }
         }
       },
@@ -3682,6 +3630,58 @@
             "type": "rst",
             "direction": "I"
           },
+          "stat_0_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "stat_0_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "stat_0_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "stat_1_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "stat_1_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "stat_1_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
           "stat_sel_0": {
             "direction": "O"
           },
@@ -3836,6 +3836,58 @@
           "reset": {
             "type": "rst",
             "direction": "I"
+          },
+          "stat_0_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "stat_0_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "stat_0_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "stat_1_clk": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "stat_1_reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "500000000",
+                "value_src": "constant"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "constant"
+              }
+            }
+          },
+          "stat_1_reset": {
+            "type": "rst",
+            "direction": "O"
           },
           "stat_sel_0": {
             "direction": "O"
@@ -4038,7 +4090,7 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_stat_high_0_clk",
+                "value": "ps_comp_ana_0_1_stat_0_clk",
                 "value_src": "default_prop"
               }
             }
@@ -4184,7 +4236,7 @@
                 "value_src": "const_prop"
               },
               "CLK_DOMAIN": {
-                "value": "ps_mts_0_0_stat_low_0_clk",
+                "value": "ps_comp_ana_0_0_stat_0_clk",
                 "value_src": "default_prop"
               }
             }
@@ -5086,8 +5138,8 @@
       "mts_0_comp_ana0_clk": {
         "ports": [
           "mts_0/comp_ana0_clk",
-          "comp_ana_low/clk",
-          "comp_burst_low_0/rt_clk"
+          "comp_burst_low_0/rt_clk",
+          "comp_ana_low/clk"
         ]
       },
       "mts_0_comp_ana0_reset": {
@@ -5099,8 +5151,8 @@
       "mts_0_comp_ana1_clk": {
         "ports": [
           "mts_0/comp_ana1_clk",
-          "comp_ana_high/clk",
-          "comp_burst_high_0/rt_clk"
+          "comp_burst_high_0/rt_clk",
+          "comp_ana_high/clk"
         ]
       },
       "mts_0_comp_ana1_reset": {
@@ -5183,25 +5235,25 @@
       },
       "mts_0_stat_high_0_clk": {
         "ports": [
-          "mts_0/stat_high_0_clk",
+          "comp_ana_high/stat_0_clk",
           "comp_burst_high_0/clk"
         ]
       },
       "mts_0_stat_high_0_reset": {
         "ports": [
-          "mts_0/stat_high_0_reset",
+          "comp_ana_high/stat_0_reset",
           "comp_burst_high_0/reset"
         ]
       },
       "mts_0_stat_low_0_clk": {
         "ports": [
-          "mts_0/stat_low_0_clk",
+          "comp_ana_low/stat_0_clk",
           "comp_burst_low_0/clk"
         ]
       },
       "mts_0_stat_low_0_reset": {
         "ports": [
-          "mts_0/stat_low_0_reset",
+          "comp_ana_low/stat_0_reset",
           "comp_burst_low_0/reset"
         ]
       },

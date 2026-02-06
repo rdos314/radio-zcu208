@@ -516,7 +516,7 @@ generate
 		end
 		else
 		begin
-			mem_wr <= 1;
+			mem_wr <= 0;
             rt_data_rd <= 0;
         end
 	end

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Feb  4 22:56:21 2026
+// Date        : Fri Feb  6 02:11:10 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_stub.v
@@ -17,12 +17,15 @@
 (* CHECK_LICENSE_TYPE = "ps_comp_ana_0_1,comp_ana,{}" *) (* CORE_GENERATION_INFO = "ps_comp_ana_0_1,comp_ana,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=comp_ana,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "comp_ana,Vivado 2025.1" *) 
 module ps_comp_ana_0_1(fifo_clk, fifo_active, fifo_re, fifo_im, 
-  fifo_burst, fifo_sample, fifo_size, fifo_freq, fifo_angle, clk, reset, stat_sel_0, stat_start, 
-  stat_sample, stat_freq, stat_angle, stat_wr, stat_env_0, stat_env_1, stat_env_2, stat_env_3, 
-  stat_phase_0, stat_phase_1, stat_phase_2, stat_phase_3)
-/* synthesis syn_black_box black_box_pad_pin="fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[15:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],reset,stat_sel_0,stat_start,stat_sample[61:0],stat_freq[19:0],stat_angle[15:0],stat_wr,stat_env_0[15:0],stat_env_1[15:0],stat_env_2[15:0],stat_env_3[15:0],stat_phase_0[19:0],stat_phase_1[19:0],stat_phase_2[19:0],stat_phase_3[19:0]" */
+  fifo_burst, fifo_sample, fifo_size, fifo_freq, fifo_angle, clk, reset, stat_0_clk, stat_0_reset, 
+  stat_1_clk, stat_1_reset, stat_sel_0, stat_start, stat_sample, stat_freq, stat_angle, stat_wr, 
+  stat_env_0, stat_env_1, stat_env_2, stat_env_3, stat_phase_0, stat_phase_1, stat_phase_2, 
+  stat_phase_3)
+/* synthesis syn_black_box black_box_pad_pin="fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[15:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],reset,stat_0_reset,stat_1_reset,stat_sel_0,stat_start,stat_sample[61:0],stat_freq[19:0],stat_angle[15:0],stat_wr,stat_env_0[15:0],stat_env_1[15:0],stat_env_2[15:0],stat_env_3[15:0],stat_phase_0[19:0],stat_phase_1[19:0],stat_phase_2[19:0],stat_phase_3[19:0]" */
 /* synthesis syn_force_seq_prim="fifo_clk" */
-/* synthesis syn_force_seq_prim="clk" */;
+/* synthesis syn_force_seq_prim="clk" */
+/* synthesis syn_force_seq_prim="stat_0_clk" */
+/* synthesis syn_force_seq_prim="stat_1_clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *) input fifo_clk /* synthesis syn_isclock = 1 */;
   input fifo_active;
   input [63:0]fifo_re;
@@ -34,6 +37,10 @@ module ps_comp_ana_0_1(fifo_clk, fifo_active, fifo_re, fifo_im,
   input [15:0]fifo_angle;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp_ana1_clk, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_0_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_clk, ASSOCIATED_RESET stat_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_0_clk, INSERT_VIP 0" *) output stat_0_clk /* synthesis syn_isclock = 1 */;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_0_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output stat_0_reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_1_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_clk, ASSOCIATED_RESET stat_1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_1_clk, INSERT_VIP 0" *) output stat_1_clk /* synthesis syn_isclock = 1 */;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_1_reset RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output stat_1_reset;
   output stat_sel_0;
   output stat_start;
   output [61:0]stat_sample;
