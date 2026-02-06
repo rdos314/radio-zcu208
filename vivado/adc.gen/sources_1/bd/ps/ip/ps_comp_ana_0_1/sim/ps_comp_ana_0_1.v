@@ -55,6 +55,10 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_comp_ana_0_1 (
+  config_clk,
+  config_wr,
+  config_adr,
+  config_data,
   fifo_clk,
   fifo_active,
   fifo_re,
@@ -65,27 +69,16 @@ module ps_comp_ana_0_1 (
   fifo_freq,
   fifo_angle,
   clk,
-  reset,
-  stat_0_clk,
-  stat_0_reset,
-  stat_1_clk,
-  stat_1_reset,
-  stat_sel_0,
-  stat_start,
-  stat_sample,
-  stat_freq,
-  stat_angle,
-  stat_wr,
-  stat_env_0,
-  stat_env_1,
-  stat_env_2,
-  stat_env_3,
-  stat_phase_0,
-  stat_phase_1,
-  stat_phase_2,
-  stat_phase_3
+  reset
 );
 
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire config_clk;
+input wire config_wr;
+input wire [7 : 0] config_adr;
+input wire [31 : 0] config_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0" *)
@@ -106,38 +99,12 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_0_clk CLK" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_clk, ASSOCIATED_RESET stat_0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_0_clk, INSERT_VIP 0" *)
-output wire stat_0_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_0_reset RST" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_0_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-output wire stat_0_reset;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 stat_1_clk CLK" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_clk, ASSOCIATED_RESET stat_1_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_comp_ana_0_1_stat_1_clk, INSERT_VIP 0" *)
-output wire stat_1_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 stat_1_reset RST" *)
-(* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME stat_1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-output wire stat_1_reset;
-output wire stat_sel_0;
-output wire stat_start;
-output wire [61 : 0] stat_sample;
-output wire [19 : 0] stat_freq;
-output wire [15 : 0] stat_angle;
-output wire stat_wr;
-output wire [15 : 0] stat_env_0;
-output wire [15 : 0] stat_env_1;
-output wire [15 : 0] stat_env_2;
-output wire [15 : 0] stat_env_3;
-output wire [19 : 0] stat_phase_0;
-output wire [19 : 0] stat_phase_1;
-output wire [19 : 0] stat_phase_2;
-output wire [19 : 0] stat_phase_3;
 
   comp_ana inst (
+    .config_clk(config_clk),
+    .config_wr(config_wr),
+    .config_adr(config_adr),
+    .config_data(config_data),
     .fifo_clk(fifo_clk),
     .fifo_active(fifo_active),
     .fifo_re(fifo_re),
@@ -148,24 +115,6 @@ output wire [19 : 0] stat_phase_3;
     .fifo_freq(fifo_freq),
     .fifo_angle(fifo_angle),
     .clk(clk),
-    .reset(reset),
-    .stat_0_clk(stat_0_clk),
-    .stat_0_reset(stat_0_reset),
-    .stat_1_clk(stat_1_clk),
-    .stat_1_reset(stat_1_reset),
-    .stat_sel_0(stat_sel_0),
-    .stat_start(stat_start),
-    .stat_sample(stat_sample),
-    .stat_freq(stat_freq),
-    .stat_angle(stat_angle),
-    .stat_wr(stat_wr),
-    .stat_env_0(stat_env_0),
-    .stat_env_1(stat_env_1),
-    .stat_env_2(stat_env_2),
-    .stat_env_3(stat_env_3),
-    .stat_phase_0(stat_phase_0),
-    .stat_phase_1(stat_phase_1),
-    .stat_phase_2(stat_phase_2),
-    .stat_phase_3(stat_phase_3)
+    .reset(reset)
   );
 endmodule

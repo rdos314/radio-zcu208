@@ -136,8 +136,6 @@ module comp_burst(
     input wire [31:0] config_data,
 
 	input wire rt_clk,
-	input wire rt_enable,
-
 	input wire rt_start,
 	input wire [61:0] rt_sample,
     input wire [19:0] rt_freq,
@@ -407,20 +405,26 @@ module comp_burst(
 		.probe0(burst),               // input wire [0:0]  probe3
 		.probe1(in_freq),             // input wire [19:0]  probe3
 		.probe2(in_angle),            // input wire [15:0]  probe3
-		.probe3(mem_wr),              // input wire [0:0]  probe3
-		.probe4(scan_start),          // input wire [0:0]  probe3
-		.probe5(df_diff),             // input wire [19:0]  probe3
-		.probe6(complete_2),          // input wire [0:0]  probe3
-		.probe7(p2_active),           // input wire [0:0]  probe3
-		.probe8(p2_max_pos),          // input wire [10:0]  probe3
-		.probe9(p2_size),             // input wire [10:0]  probe3
-		.probe10(p2_freq),            // input wire [19:0]  probe3
-		.probe11(p3_freq),            // input wire [19:0]  probe3
-		.probe12(p2_phase_diff_0),    // input wire [19:0]  probe3
-		.probe13(p2_phase_diff_1),    // input wire [19:0]  probe3
-		.probe14(p2_phase_diff_2),    // input wire [19:0]  probe3
-		.probe15(p2_phase_diff_3)     // input wire [19:0]  probe3
+		.probe3(filling),             // input wire [0:0]  probe3
+		.probe4(rt_data_empty),       // input wire [0:0]  probe3
+		.probe5(mem_wr),              // input wire [0:0]  probe3
+		.probe6(scan_start),          // input wire [0:0]  probe3
+		.probe7(wr_ptr),              // input wire [8:0]  probe3
+		.probe8(curr_size),           // input wire [8:0]  probe3
+		.probe9(run_env),             // input wire [0:0]  probe3
+		.probe10(env_in[15:0]),       // input wire [15:0]  probe3
+		.probe11(phase_in[19:0]),     // input wire [19:0]  probe3
+		.probe12(complete_1),         // input wire [0:0]  probe3
+		.probe13(complete_2),         // input wire [0:0]  probe3
+		.probe14(err_no_data),        // input wire [0:0]  probe3
+		.probe15(df_diff),            // input wire [19:0]  probe3
+		.probe16(p2_active),          // input wire [0:0]  probe3
+		.probe17(p2_max_pos),         // input wire [10:0]  probe3
+		.probe18(p2_size),            // input wire [10:0]  probe3
+		.probe19(p2_freq),            // input wire [19:0]  probe3
+		.probe20(p3_freq)             // input wire [19:0]  probe3
 	);
+
 
 generate
   begin : comp_burst
@@ -445,7 +449,7 @@ generate
 
     always @(posedge rt_clk) 
     begin
-	   if (rt_wr & rt_enable)
+	   if (rt_wr)
        begin
             rt_data_in[15:0] <= rt_env_0;
             rt_data_in[31:16] <= rt_env_1;
@@ -453,9 +457,9 @@ generate
             rt_data_in[63:48] <= rt_env_3;
 
             rt_data_in[83:64] <= rt_phase_0;
-            rt_data_in[103:84] <= rt_phase_0;
-            rt_data_in[123:104] <= rt_phase_0;
-            rt_data_in[143:124] <= rt_phase_0;
+            rt_data_in[103:84] <= rt_phase_1;
+            rt_data_in[123:104] <= rt_phase_2;
+            rt_data_in[143:124] <= rt_phase_3;
 			
 			rt_data_wr <= 1;
        end
@@ -465,7 +469,7 @@ generate
 
     always @(posedge rt_clk) 
     begin
-	   if (rt_start & rt_enable)
+	   if (rt_start)
        begin
             rt_meta_in[61:0] <= rt_sample;
             rt_meta_in[81:62] <= rt_freq;
