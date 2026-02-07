@@ -131,7 +131,6 @@ module comp_stat(
     output reg [15:0] phase,
     
     output reg done,
-    output reg [15:0] max_phase,
     output reg [31:0] env_sum,
     output reg [47:0] env_sum2,
     output reg [31:0] phase_sum,
@@ -176,28 +175,11 @@ module comp_stat(
 	reg [10:0] pos_1;
 
 	ila_2 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(size),                // input wire [10:0]  probe3
-		.probe1(max_pos),             // input wire [10:0]  probe3
-		.probe2(proc_up),             // input wire [0:0]  probe3
-		.probe3(start_up),            // input wire [0:0]  probe3
-		.probe4(up_count),            // input wire [10:0]  probe3
-		.probe5(start_down),          // input wire [0:0]  probe3
-		.probe6(up_delay),            // input wire [2:0]  probe3
-		.probe7(up_pos),              // input wire [10:0]  probe3
-		.probe8(stop_down),           // input wire [1:0]  probe3
-		.probe9(down_delay),          // input wire [2:0]  probe3
-		.probe10(down_pos),           // input wire [10:0]  probe3
-		.probe11(curr_env_1),         // input wire [15:0]  probe3
-		.probe12(curr_env_2),         // input wire [15:0]  probe3
-		.probe13(curr_phase),         // input wire [15:0]  probe3
-		.probe14(pred_phase),         // input wire [21:0]  probe3
-		.probe15(prev_phase),         // input wire [15:0]  probe3
-		.probe16(active),             // input wire [0:0]  probe3
-		.probe17(pos),                // input wire [10:0]  probe3
-		.probe18(env),                // input wire [15:0]  probe3
-		.probe19(phase),              // input wire [15:0]  probe3
-		.probe20(max_phase)           // input wire [15:0]  probe3
+		.clk(clk),                   // input wire clk
+		.probe0(active),             // input wire [0:0]  probe3
+		.probe1(pos),                // input wire [10:0]  probe3
+		.probe2(env),                // input wire [15:0]  probe3
+		.probe3(phase)               // input wire [15:0]  probe3
 	);
     
 generate
@@ -474,10 +456,7 @@ generate
 			else
 			begin
 				if (up_delay[1])
-                begin
 					pred_phase <= {curr_phase, 6'b00};
-                    max_phase <= curr_phase;
-                end
 				else
 					pred_phase <= pred_phase + {2'b00, freq};
 			end

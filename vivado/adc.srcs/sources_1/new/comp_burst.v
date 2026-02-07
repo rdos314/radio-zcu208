@@ -197,8 +197,37 @@ module comp_burst(
     (* ram_style = "block" *) reg [63:0] mem_env_up [0:511];
     (* ram_style = "block" *) reg [63:0] mem_env_down [0:511];
     (* ram_style = "block" *) reg [79:0] mem_phase [0:511];
-    reg [8:0] wr_ptr;
 
+    reg [8:0] wr_ptr;
+    
+    reg [16:0] env_sum_lsb_0;
+    reg [16:0] env_sum_lsb_1;
+    reg [16:0] env_sum_lsb_2;
+    reg [16:0] env_sum_lsb_3;
+    
+    reg [8:0] env_sum_msb_0;
+    reg [8:0] env_sum_msb_1;
+    reg [8:0] env_sum_msb_2;
+    reg [8:0] env_sum_msb_3;
+
+    reg [1:0] mean_stage;
+
+    reg [16:0] env_sum_lsb_01;
+    reg [16:0] env_sum_lsb_23;
+    reg [9:0] env_sum_msb_01;
+    reg [9:0] env_sum_msb_23;
+
+    reg [16:0] env_sum_lsb;
+    reg [9:0] env_sum_msb;
+    reg [23:0] env_sum;
+
+	reg div_start;
+	wire div_done;
+	wire [39:0] div_result;
+	wire [15:0] div_mean = div_result[31:16];
+	reg mean_done;
+	reg [15:0] mean;
+        
     reg [8:0] env_up_ptr;
     reg [63:0] env_up;
     reg [10:0] env_up_adr;
@@ -350,6 +379,16 @@ module comp_burst(
 		.empty(rt_data_empty)    // output wire empty
 	);
 
+	div_burst_mean div_mean_i (
+		.aclk(clk),                                      // input wire aclk
+		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
+		.s_axis_divisor_tdata(curr_size),                // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
+		.s_axis_dividend_tdata(env_sum),                 // input wire [23 : 0] s_axis_dividend_tdata
+		.m_axis_dout_tvalid(div_done),                   // output wire m_axis_dout_tvalid		
+		.m_axis_dout_tdata(div_result)                   // output wire [39 : 0] m_axis_dout_tdata
+	);
+
 	one_to_four p2_i (
 		.clk(clk),
         .reset(reset),
@@ -403,28 +442,31 @@ module comp_burst(
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(burst),               // input wire [0:0]  probe3
-		.probe1(in_freq),             // input wire [19:0]  probe3
-		.probe2(in_angle),            // input wire [15:0]  probe3
-		.probe3(filling),             // input wire [0:0]  probe3
-		.probe4(rt_data_empty),       // input wire [0:0]  probe3
-		.probe5(mem_wr),              // input wire [0:0]  probe3
-		.probe6(scan_start),          // input wire [0:0]  probe3
-		.probe7(wr_ptr),              // input wire [8:0]  probe3
-		.probe8(curr_size),           // input wire [8:0]  probe3
-		.probe9(run_env),             // input wire [0:0]  probe3
-		.probe10(env_in[15:0]),       // input wire [15:0]  probe3
-		.probe11(phase_in[19:0]),     // input wire [19:0]  probe3
-		.probe12(complete_1),         // input wire [0:0]  probe3
-		.probe13(complete_2),         // input wire [0:0]  probe3
-		.probe14(err_no_data),        // input wire [0:0]  probe3
-		.probe15(df_diff),            // input wire [19:0]  probe3
-		.probe16(p2_active),          // input wire [0:0]  probe3
-		.probe17(p2_max_pos),         // input wire [10:0]  probe3
-		.probe18(p2_size),            // input wire [10:0]  probe3
-		.probe19(p2_freq),            // input wire [19:0]  probe3
-		.probe20(p3_freq)             // input wire [19:0]  probe3
+		.probe1(filling),             // input wire [0:0]  probe3
+		.probe2(rt_data_empty),       // input wire [0:0]  probe3
+		.probe3(mem_wr),              // input wire [0:0]  probe3
+		.probe4(scan_start),          // input wire [0:0]  probe3
+		.probe5(wr_ptr),              // input wire [8:0]  probe3
+		.probe6(run_env),             // input wire [0:0]  probe3
+		.probe7(complete_1),          // input wire [0:0]  probe3
+		.probe8(complete_2),          // input wire [0:0]  probe3
+		.probe9(mean_stage),          // input wire [1:0]  probe3
+		.probe10(env_sum_lsb_0),      // input wire [16:0]  probe3
+		.probe11(env_sum_msb_0),      // input wire [8:0]  probe3
+		.probe12(env_sum_lsb_01),     // input wire [16:0]  probe3
+		.probe13(env_sum_lsb_23),     // input wire [16:0]  probe3
+		.probe14(env_sum_msb_01),     // input wire [9:0]  probe3
+		.probe15(env_sum_msb_23),     // input wire [9:0]  probe3
+		.probe16(env_sum_lsb),        // input wire [16:0]  probe3
+		.probe17(env_sum_msb),        // input wire [9:0]  probe3
+		.probe18(env_sum),            // input wire [23:0]  probe3
+		.probe19(div_start),          // input wire [0:0]  probe3
+		.probe20(div_done),           // input wire [0:0]  probe3
+		.probe21(div_result),         // input wire [39:0]  probe3
+		.probe22(div_mean),           // input wire [15:0]  probe3
+		.probe23(mean),               // input wire [15:0]  probe3
+		.probe24(mean_done)           // input wire [0:0]  probe3
 	);
-
 
 generate
   begin : comp_burst
@@ -542,6 +584,105 @@ generate
         if (mem_wr)    
             mem_phase[wr_ptr] <= phase_in;
     end
+
+    always @(posedge clk) 
+    begin
+        if (mem_wr)    
+        begin
+            env_sum_lsb_0 <= {1'b0, env_sum_lsb_0[15:0]} + {1'b0, env_in[15:0]};
+            env_sum_lsb_1 <= {1'b0, env_sum_lsb_1[15:0]} + {1'b0, env_in[31:16]};
+            env_sum_lsb_2 <= {1'b0, env_sum_lsb_2[15:0]} + {1'b0, env_in[47:32]};
+            env_sum_lsb_3 <= {1'b0, env_sum_lsb_3[15:0]} + {1'b0, env_in[63:48]};
+        end
+        else
+        begin
+            if (burst)
+            begin
+                env_sum_lsb_0 <= 0;
+                env_sum_lsb_1 <= 0;
+                env_sum_lsb_2 <= 0;
+                env_sum_lsb_3 <= 0;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (mem_wr)    
+        begin
+            env_sum_msb_0 <= env_sum_msb_0 + env_sum_lsb_0[16];
+            env_sum_msb_1 <= env_sum_msb_1 + env_sum_lsb_1[16];
+            env_sum_msb_2 <= env_sum_msb_2 + env_sum_lsb_2[16];
+            env_sum_msb_3 <= env_sum_msb_3 + env_sum_lsb_3[16];
+        end
+        else
+        begin
+            if (burst)
+            begin
+                env_sum_msb_0 <= 0;
+                env_sum_msb_1 <= 0;
+                env_sum_msb_2 <= 0;
+                env_sum_msb_3 <= 0;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (scan_start)    
+            mean_stage <= 3;
+        else
+        begin
+            if (reset)
+                mean_stage <= 0;
+            else
+            begin
+                if (mean_stage)
+                    mean_stage <= mean_stage - 1;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        case (mean_stage)
+            3 :
+            begin
+                env_sum_lsb_01 <= {1'b0, env_sum_lsb_0[15:0]} + {1'b0, env_sum_lsb_1[15:0]} + env_sum_lsb_0[16] + env_sum_lsb_1[16];
+                env_sum_lsb_23 <= {1'b0, env_sum_lsb_2[15:0]} + {1'b0, env_sum_lsb_3[15:0]} + env_sum_lsb_2[16] + env_sum_lsb_3[16];
+                env_sum_msb_01 <= {1'b0, env_sum_msb_0} + {1'b0, env_sum_msb_1};
+                env_sum_msb_23 <= {1'b0, env_sum_msb_2} + {1'b0, env_sum_msb_3};
+				div_start <= 0;
+            end
+
+            2 :
+            begin
+                env_sum_lsb <= {1'b0, env_sum_lsb_01[16:1]} + {1'b0, env_sum_lsb_23[16:1]} + {1'b0, env_sum_msb_01[0], 15'b000000000000000} +  + {1'b0, env_sum_msb_23[0], 15'b000000000000000};
+                env_sum_msb <= {1'b0, env_sum_msb_01[9:1]} + {1'b0, env_sum_msb_23[9:1]};
+				div_start <= 0;
+            end
+
+            1 :
+            begin
+                env_sum[14:0] <= env_sum_lsb[15:1];
+                env_sum[23:15] <= env_sum_msb[8:0] + env_sum_lsb[16];
+				div_start <= 1;
+            end
+			
+			0: div_start <= 0;
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+		if (div_done)
+		begin
+			mean_done <= 1;
+			mean <= div_mean;
+		end
+		else
+			mean_done <= 0;
+	end
     
     always @(posedge clk) 
     begin

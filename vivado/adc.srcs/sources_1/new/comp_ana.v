@@ -234,6 +234,7 @@ module comp_ana(
         .reset(stat_reset[0])
     );
 
+/*
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(raw_rd),              // input wire [0:0]  probe3
@@ -261,6 +262,7 @@ module comp_ana(
 		.probe22(phase_2),            // input wire [19:0]  probe3
 		.probe23(phase_3)             // input wire [19:0]  probe3
 	);
+*/
 
 generate
   begin : comp_ana
