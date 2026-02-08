@@ -49,8 +49,12 @@ set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [
 set_false_path -from [get_pins ps_i/comp_ana_low/inst/comp_ana.reset_int_reg/C] -to [get_pins ps_i/comp_ana_low/inst/comp_ana.stat_0_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/comp_ana_low/inst/comp_ana.reset_int_reg/C] -to [get_pins ps_i/comp_ana_low/inst/comp_ana.stat_1_reset_1_reg/D]
 
+set_false_path -from [get_pins ps_i/comp_ana_low/inst/comp_ana.stat_idle_sync_0_reg/C] -to [get_pins ps_i/comp_ana_low/inst/comp_ana.stat_0_idle_1_reg/D]
+
 set_false_path -from [get_pins ps_i/comp_ana_high/inst/comp_ana.reset_int_reg/C] -to [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_0_reset_1_reg/D]
 set_false_path -from [get_pins ps_i/comp_ana_high/inst/comp_ana.reset_int_reg/C] -to [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_1_reset_1_reg/D]
+
+set_false_path -from [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_idle_sync_0_reg/C] -to [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_0_idle_1_reg/D]
 
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_reset_1_reg/D]
 

@@ -153,7 +153,8 @@ module comp_burst(
     input wire [19:0] rt_phase_3,
     
     input wire clk,
-    input wire reset
+    input wire reset,
+    output reg idle
 );
 
     wire [39:0] config_data_adr_in;
@@ -192,6 +193,7 @@ module comp_burst(
     reg [63:0] env_in;
     reg [79:0] phase_in;
     reg mem_wr;
+	reg pend_start;
     reg scan_start;
 
     (* ram_style = "block" *) reg [63:0] mem_env_up [0:511];
@@ -268,7 +270,8 @@ module comp_burst(
     reg filling;
     reg complete_1;
     reg complete_2;
-    
+	reg complete_3;
+   
     reg run_env_start;
     reg run_env_end;
     reg run_env;
@@ -310,8 +313,9 @@ module comp_burst(
     reg [15:0] p2_phase;
 	reg [19:0] p2_phase_diff;
 
-    reg p2_done;
+    wire p2_idle;
     wire p2_active;
+    reg p2_done;
 
     wire [15:0] p2_env_0;
     wire [15:0] p2_env_1;
@@ -335,7 +339,9 @@ module comp_burst(
 	reg [10:0] p3_max_pos;
 	reg [15:0] p3_max_env;
 
+    wire p3_idle;
     wire p3_active;
+    
     wire [10:0] p3_pos;
     wire [15:0] p3_env;
     wire [15:0] p3_phase;
@@ -345,6 +351,16 @@ module comp_burst(
     wire [47:0] p3_env_sum2;
     wire [31:0] p3_phase_sum;
     wire [47:0] p3_phase_sum2;
+
+    reg [63:0] temp_sample;
+    reg [19:0] temp_freq;
+    reg [15:0] temp_angle;
+    reg [15:0] temp_size;
+	reg [15:0] temp_mean;
+	reg temp_active;
+    reg [10:0] temp_pos;
+    reg [15:0] temp_env;
+    reg [15:0] temp_phase;    
 
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
@@ -398,6 +414,8 @@ module comp_burst(
 		.phase_diff(p2_phase_diff),
         .size(p2_size),
         .read_back(p2_done),
+		.allowed(p3_idle),
+        .idle(p2_idle),
         .active(p2_active),
         .env_0(p2_env_0),
         .env_1(p2_env_1),
@@ -420,6 +438,7 @@ module comp_burst(
         .freq(p3_freq),
         .size(p3_size),
         .max_pos(p3_max_pos),
+        .est_mean(mean),
         .env_0(p2_env_0),
         .env_1(p2_env_1),
         .env_2(p2_env_2),
@@ -428,6 +447,7 @@ module comp_burst(
         .phase_1(p2_phase_1),
         .phase_2(p2_phase_2),
         .phase_3(p2_phase_3),
+        .idle(p3_idle),
         .active(p3_active),
         .pos(p3_pos),
         .env(p3_env),
@@ -445,29 +465,27 @@ module comp_burst(
 		.probe1(filling),             // input wire [0:0]  probe3
 		.probe2(rt_data_empty),       // input wire [0:0]  probe3
 		.probe3(mem_wr),              // input wire [0:0]  probe3
-		.probe4(scan_start),          // input wire [0:0]  probe3
-		.probe5(wr_ptr),              // input wire [8:0]  probe3
-		.probe6(run_env),             // input wire [0:0]  probe3
-		.probe7(complete_1),          // input wire [0:0]  probe3
-		.probe8(complete_2),          // input wire [0:0]  probe3
-		.probe9(mean_stage),          // input wire [1:0]  probe3
-		.probe10(env_sum_lsb_0),      // input wire [16:0]  probe3
-		.probe11(env_sum_msb_0),      // input wire [8:0]  probe3
-		.probe12(env_sum_lsb_01),     // input wire [16:0]  probe3
-		.probe13(env_sum_lsb_23),     // input wire [16:0]  probe3
-		.probe14(env_sum_msb_01),     // input wire [9:0]  probe3
-		.probe15(env_sum_msb_23),     // input wire [9:0]  probe3
-		.probe16(env_sum_lsb),        // input wire [16:0]  probe3
-		.probe17(env_sum_msb),        // input wire [9:0]  probe3
-		.probe18(env_sum),            // input wire [23:0]  probe3
-		.probe19(div_start),          // input wire [0:0]  probe3
-		.probe20(div_done),           // input wire [0:0]  probe3
-		.probe21(div_result),         // input wire [39:0]  probe3
-		.probe22(div_mean),           // input wire [15:0]  probe3
-		.probe23(mean),               // input wire [15:0]  probe3
-		.probe24(mean_done)           // input wire [0:0]  probe3
+		.probe4(pend_start),          // input wire [0:0]  probe3
+		.probe5(scan_start),          // input wire [0:0]  probe3
+		.probe6(wr_ptr),              // input wire [8:0]  probe3
+		.probe7(run_env),             // input wire [0:0]  probe3
+		.probe8(complete_1),          // input wire [0:0]  probe3
+		.probe9(complete_2),          // input wire [0:0]  probe3
+		.probe10(complete_3),         // input wire [0:0]  probe3
+		.probe11(mean_done),          // input wire [0:0]  probe3
+		.probe12(p2_idle),            // input wire [0:0]  probe3
+		.probe13(p3_idle),            // input wire [0:0]  probe3
+		.probe14(temp_sample),        // input wire [63:0]  probe3
+		.probe15(temp_freq),          // input wire [19:0]  probe3
+		.probe16(temp_angle),         // input wire [15:0]  probe3
+		.probe17(temp_size),          // input wire [10:0]  probe3
+		.probe18(temp_mean),          // input wire [15:0]  probe3
+		.probe19(temp_active),        // input wire [0:0]  probe3
+		.probe20(temp_pos),           // input wire [10:0]  probe3
+		.probe21(temp_env),           // input wire [15:0]  probe3
+		.probe22(temp_phase)          // input wire [15:0]  probe3
 	);
-
+	
 generate
   begin : comp_burst
 
@@ -525,7 +543,7 @@ generate
 
     always @(posedge clk) 
 	begin
-		if (rt_meta_empty)
+		if (rt_meta_empty | !p2_idle)
 		begin
 			rt_meta_rd <= 0;
 			burst <= 0;
@@ -565,6 +583,14 @@ generate
 			mem_wr <= 0;
             rt_data_rd <= 0;
         end
+	end
+
+    always @(posedge clk) 
+	begin
+        if (filling | !rt_data_empty | !rt_meta_empty)
+	        idle <= 0;
+	    else
+	        idle <= 1;
 	end
 
     always @(posedge clk) 
@@ -672,17 +698,6 @@ generate
 			0: div_start <= 0;
         endcase
     end
-
-    always @(posedge clk) 
-    begin
-		if (div_done)
-		begin
-			mean_done <= 1;
-			mean <= div_mean;
-		end
-		else
-			mean_done <= 0;
-	end
     
     always @(posedge clk) 
     begin
@@ -715,14 +730,14 @@ generate
             end
             else
             begin
-                if (wr_ptr)
-                begin
-                    curr_size <= wr_ptr;
+				if (wr_ptr)
+				begin
+					curr_size <= wr_ptr;
                     scan_start <= 1;
-                end
-                else
+				end
+				else
                     scan_start <= 0;
-            end
+			end
 
             wr_ptr <= 0;            
         end
@@ -1033,13 +1048,61 @@ generate
 
     always @(posedge clk) 
     begin
-        complete_2 <= complete_1;
-        p2_done <= complete_2;
+		if (reset)
+			pend_start <= 0;
+		else
+		begin
+			if (complete_1)
+				pend_start <= 1;
+			else
+			begin
+				if (complete_2)
+					pend_start <= 0;
+			end
+		end
+	end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+            mean_done <= 0;
+        else
+        begin
+    		if (div_done)
+	   	   begin
+		  	   mean_done <= 1;
+    		   mean <= div_mean;
+    	   end
+    	   else
+    	   begin
+    	       if (complete_2)
+    	           mean_done <= 0;
+    	   end
+		end
+	end
+
+    always @(posedge clk) 
+    begin
+		if (pend_start)
+		begin
+			if (mean_done)
+				complete_2 <= 1;
+			else
+				complete_2 <= 0;
+		end
+		else
+			complete_2 <= 0;
+	end
+			
+    always @(posedge clk) 
+    begin
+        complete_3 <= complete_2;
+        p2_done <= complete_3;
     end
 
     always @(posedge clk) 
     begin
-		if (complete_1)
+		if (complete_2)
 		begin
 			p2_sample[15:0] <= sample_counter_0;
 			p2_sample[31:16] <= sample_counter_1;
@@ -1055,7 +1118,7 @@ generate
 
     always @(posedge clk) 
     begin
-		if (complete_2)
+		if (complete_3)
 		begin
 			if (p2_max_pos[10:4])
 			begin
@@ -1120,6 +1183,19 @@ generate
             p3_max_pos <= p2_max_pos;
             p3_max_env <= p2_max_env;
         end
+    end
+
+    always @(posedge clk) 
+    begin
+		temp_sample <= p3_sample;
+		temp_freq <= p3_freq;
+		temp_angle <= p3_angle;
+		temp_size <= p3_size;
+		temp_mean <= mean;
+		temp_active <= p3_active;
+        temp_pos <= p3_pos;
+        temp_env <= p3_env;
+        temp_phase <= p3_phase;
     end
     
   end

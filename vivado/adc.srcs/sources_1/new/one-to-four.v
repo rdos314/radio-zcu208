@@ -87,8 +87,10 @@ module one_to_four(
     input wire [15:0] phase,
     input wire [19:0] phase_diff,
     input wire [10:0] size,
+    input wire allowed,
     input wire read_back,
-    
+
+    output reg idle,    
     output reg active,
     output reg [15:0] env_0,
     output reg [15:0] env_1,
@@ -114,6 +116,7 @@ module one_to_four(
     reg mem_wr;
     reg active_0;
     reg active_1;
+	reg req_read_back;
     reg read_back_i;
 
     reg [63:0] env_in_val;
@@ -191,9 +194,37 @@ generate
 
     always @(posedge clk) 
     begin
-        read_back_i <= read_back;
+		if (read_back)
+		begin
+			read_back_i <= 0;
+			req_read_back <= 1;
+		end
+		else
+		begin
+			if (req_read_back & allowed)
+			begin
+				read_back_i <= 1;
+				req_read_back <= 0;
+			end
+			else
+			begin	
+				read_back_i <= 0;
+				
+				if (reset)
+					req_read_back <= 0;
+			end
+		end
+	end
+
+    always @(posedge clk) 
+    begin
         active_1 <= active_0;
         active <= active_1;
+    end
+
+    always @(posedge clk) 
+    begin
+        idle <= !wr & !mem_wr & !read_back & !req_read_back & !read_back_i & !active_0 & !active_1 & !active;
     end
 
     always @(posedge clk) 

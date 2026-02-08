@@ -116,6 +116,7 @@ module comp_stat(
     input wire [19:0] freq,
     input wire [10:0] size,
     input wire [10:0] max_pos,
+    input wire [15:0] est_mean,
     input wire [15:0] env_0,
     input wire [15:0] env_1,
     input wire [15:0] env_2,
@@ -125,6 +126,7 @@ module comp_stat(
     input wire [15:0] phase_2,
     input wire [15:0] phase_3,
 
+    output reg idle,
     output reg active,
     output reg [10:0] pos,
     output reg [15:0] env,
@@ -174,6 +176,7 @@ module comp_stat(
 	
 	reg [10:0] pos_1;
 
+/*
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
@@ -181,6 +184,7 @@ module comp_stat(
 		.probe2(env),                // input wire [15:0]  probe3
 		.probe3(phase)               // input wire [15:0]  probe3
 	);
+*/
     
 generate
   begin : comp_stat
@@ -228,6 +232,11 @@ generate
             wr_ptr <= wr_ptr + 1;
         else
             wr_ptr <= 0;            
+    end
+        
+    always @(posedge clk) 
+    begin
+        idle <= !wr & !mem_wr & !filling & !proc_up & !active & !start_down & !down_delay[0] & (down_pos == 0); 
     end
 
     always @(posedge clk) 

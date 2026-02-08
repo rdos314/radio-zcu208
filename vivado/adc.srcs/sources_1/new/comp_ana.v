@@ -49,6 +49,11 @@ module comp_ana(
 	(* ASYNC_REG="TRUE" *)	reg  stat_0_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  stat_1_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  stat_1_reset_2;
+
+    wire stat_idle_in_0;
+    reg stat_idle_sync_0;
+	(* ASYNC_REG="TRUE" *)	reg  stat_0_idle_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_0_idle_2;
 	
     reg reset_int;
   
@@ -117,12 +122,21 @@ module comp_ana(
     reg [19:0] pend_freq;
     reg [15:0] pend_angle;
 
-	wire stat_clk [0:7];
-    wire stat_locked [0:3];
-    reg  stat_reset [0:7];
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_0, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	wire stat_clk_0;
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_1, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	wire stat_clk_1;
+
+    wire stat_locked_01;
+	
+	reg stat_reset_0;
+	reg stat_reset_1;
+
     reg [2:0] curr_stat;
 	reg [7:0] stat_start;
 	reg [7:0] stat_wr;    
+	reg [7:0] stat_idle;
 
 	reg [61:0] stat_sample [0:7];
     reg [19:0] stat_freq [0:7];
@@ -144,9 +158,9 @@ module comp_ana(
 
 	clk_wiz_stat clk_wiz_stat_01 (
 		.clk_in1	(clk_buf),
-		.clk_out1	(stat_clk[0]),
-		.clk_out2	(stat_clk[1]),
-		.locked		(stat_locked[0])
+		.clk_out1	(stat_clk_0),
+		.clk_out2	(stat_clk_1),
+		.locked		(stat_locked_01)
     );
 
     fifo_comp_ana fifo_ana_i (
@@ -230,39 +244,22 @@ module comp_ana(
         .rt_phase_1(stat_phase_1[0]),
         .rt_phase_2(stat_phase_2[0]),
         .rt_phase_3(stat_phase_3[0]),
-        .clk(stat_clk[0]),
-        .reset(stat_reset[0])
+        .clk(stat_clk_0),
+        .reset(stat_reset_0),
+        .idle(stat_idle_in_0)
     );
 
-/*
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(raw_rd),              // input wire [0:0]  probe3
-		.probe1(raw_empty),           // input wire [0:0]  probe3
-		.probe2(raw_delay),           // input wire [4:0]  probe3
-		.probe3(raw_sample),          // input wire [15:0]  probe3
-		.probe4(raw_run),             // input wire [0:0]  probe3
-		.probe5(ana_rd),              // input wire [0:0]  probe3
-		.probe6(ana_empty),           // input wire [0:0]  probe3
-		.probe7(curr_sample),         // input wire [15:0]  probe3
-		.probe8(ana_trig),            // input wire [0:0]  probe3
-		.probe9(run),                 // input wire [0:0]  probe3
-		.probe10(sample),             // input wire [15:0]  probe3
-		.probe11(size),               // input wire [8:0]  probe3
-		.probe12(count),              // input wire [8:0]  probe3
-		.probe13(valid),              // input wire [3:0]  probe3
-		.probe14(stat_start),         // input wire [7:0]  probe3
-		.probe15(stat_wr),            // input wire [7:0]  probe3
-		.probe16(env_0),              // input wire [15:0]  probe3
-		.probe17(env_1),              // input wire [15:0]  probe3
-		.probe18(env_2),              // input wire [15:0]  probe3
-		.probe19(env_3),              // input wire [15:0]  probe3
-		.probe20(phase_0),            // input wire [19:0]  probe3
-		.probe21(phase_1),            // input wire [19:0]  probe3
-		.probe22(phase_2),            // input wire [19:0]  probe3
-		.probe23(phase_3)             // input wire [19:0]  probe3
+		.probe0(ana_trig),            // input wire [0:0]  probe3
+		.probe1(run),                 // input wire [0:0]  probe3
+		.probe2(size),                // input wire [8:0]  probe3
+		.probe3(count),               // input wire [8:0]  probe3
+		.probe4(valid),               // input wire [3:0]  probe3
+		.probe5(stat_start),          // input wire [7:0]  probe3
+		.probe6(stat_wr),             // input wire [7:0]  probe3
+		.probe7(stat_idle)            // input wire [7:0]  probe3
 	);
-*/
 
 generate
   begin : comp_ana
@@ -274,18 +271,30 @@ generate
         local_config_data <= config_data;
     end
 
-	always @(posedge stat_clk[0]) 
+	always @(posedge stat_clk_0) 
 	begin
-		stat_0_reset_1 <= reset_int | (~stat_locked[0]);
+		stat_0_reset_1 <= reset_int | (~stat_locked_01);
 		stat_0_reset_2 <= stat_0_reset_1;
-		stat_reset[0] <= stat_0_reset_2;
+		stat_reset_0 <= stat_0_reset_2;
 	end
 
-	always @(posedge stat_clk[1]) 
+	always @(posedge stat_clk_1) 
 	begin
-		stat_1_reset_1 <= reset_int | (~stat_locked[0]);
+		stat_1_reset_1 <= reset_int | (~stat_locked_01);
 		stat_1_reset_2 <= stat_1_reset_1;
-		stat_reset[1] <= stat_1_reset_2;
+		stat_reset_1 <= stat_1_reset_2;
+	end
+
+	always @(posedge stat_clk_0) 
+	begin
+	    stat_idle_sync_0 <= stat_idle_in_0;
+	end
+	
+	always @(posedge clk) 
+	begin
+		stat_0_idle_1 <= stat_idle_sync_0;
+		stat_0_idle_2 <= stat_0_idle_1;
+		stat_idle[0] <= stat_0_idle_2 & !stat_wr[0] & !stat_start[0];
 	end
 
 	always @(posedge fifo_clk) 
