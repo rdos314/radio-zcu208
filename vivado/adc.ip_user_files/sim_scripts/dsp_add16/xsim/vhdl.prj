@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../adc.gen/sources_1/ip/dsp_add16/sim/dsp_add16.vhd" \
+
+# Do not sort compile order
+nosort

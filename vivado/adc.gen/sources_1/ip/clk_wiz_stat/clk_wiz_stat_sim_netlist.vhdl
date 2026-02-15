@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Feb 15 14:28:55 2026
+-- Date        : Sun Feb 15 20:18:11 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_stat/clk_wiz_stat_sim_netlist.vhdl
@@ -18,12 +18,12 @@ use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_stat_clk_wiz is
   port (
     clk_out1 : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
 end clk_wiz_stat_clk_wiz;
 
 architecture STRUCTURE of clk_wiz_stat_clk_wiz is
+  signal clk_in1_clk_wiz_stat : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CDDCDONE_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKFBIN_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKFBOUT_UNCONNECTED : STD_LOGIC;
@@ -31,6 +31,7 @@ architecture STRUCTURE of clk_wiz_stat_clk_wiz is
   signal NLW_mmcme4_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcme4_adv_inst_CLKOUT1_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
@@ -44,10 +45,25 @@ architecture STRUCTURE of clk_wiz_stat_clk_wiz is
   signal NLW_mmcme4_adv_inst_PSDONE_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_DO_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute BOX_TYPE : string;
+  attribute BOX_TYPE of clkin1_bufg : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM : string;
+  attribute XILINX_LEGACY_PRIM of clkin1_bufg : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP : string;
+  attribute XILINX_TRANSFORM_PINMAP of clkin1_bufg : label is "VCC:CE";
   attribute BOX_TYPE of mmcme4_adv_inst : label is "PRIMITIVE";
   attribute OPT_MODIFIED : string;
   attribute OPT_MODIFIED of mmcme4_adv_inst : label is "MLO";
 begin
+clkin1_bufg: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => clk_in1,
+      O => clk_in1_clk_wiz_stat
+    );
 mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
@@ -60,7 +76,7 @@ mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => "FALSE",
-      CLKOUT1_DIVIDE => 3,
+      CLKOUT1_DIVIDE => 1,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => "FALSE",
@@ -109,13 +125,13 @@ mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
       CLKFBOUT => NLW_mmcme4_adv_inst_CLKFBOUT_UNCONNECTED,
       CLKFBOUTB => NLW_mmcme4_adv_inst_CLKFBOUTB_UNCONNECTED,
       CLKFBSTOPPED => NLW_mmcme4_adv_inst_CLKFBSTOPPED_UNCONNECTED,
-      CLKIN1 => clk_in1,
+      CLKIN1 => clk_in1_clk_wiz_stat,
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcme4_adv_inst_CLKINSTOPPED_UNCONNECTED,
       CLKOUT0 => clk_out1,
       CLKOUT0B => NLW_mmcme4_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_out2,
+      CLKOUT1 => NLW_mmcme4_adv_inst_CLKOUT1_UNCONNECTED,
       CLKOUT1B => NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcme4_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -147,7 +163,6 @@ use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_stat is
   port (
     clk_out1 : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -159,7 +174,6 @@ begin
 inst: entity work.clk_wiz_stat_clk_wiz
      port map (
       clk_in1 => clk_in1,
-      clk_out1 => clk_out1,
-      clk_out2 => clk_out2
+      clk_out1 => clk_out1
     );
 end STRUCTURE;

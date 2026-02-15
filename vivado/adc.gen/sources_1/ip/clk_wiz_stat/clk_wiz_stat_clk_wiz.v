@@ -54,7 +54,6 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // clk_out1__400.00000______0.000______50.0_______90.074_____87.180
-// clk_out2__400.00000______0.000______50.0_______90.074_____87.180
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -68,14 +67,15 @@ module clk_wiz_stat_clk_wiz
  (// Clock in ports
   // Clock out ports
   output        clk_out1,
-  output        clk_out2,
   input         clk_in1
  );
   // Input buffering
   //------------------------------------
 wire clk_in1_clk_wiz_stat;
 wire clk_in2_clk_wiz_stat;
-  assign clk_in1_clk_wiz_stat = clk_in1;
+  BUFG clkin1_bufg
+   (.O (clk_in1_clk_wiz_stat),
+    .I (clk_in1));
 
 
 
@@ -102,6 +102,7 @@ wire clk_in2_clk_wiz_stat;
   wire        clkfbout_clk_wiz_stat;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
+   wire clkout1_unused;
    wire clkout1b_unused;
    wire clkout2_unused;
    wire clkout2b_unused;
@@ -133,10 +134,6 @@ wire clk_in2_clk_wiz_stat;
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (3),
-    .CLKOUT1_PHASE        (0.000),
-    .CLKOUT1_DUTY_CYCLE   (0.500),
-    .CLKOUT1_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.000))
   
      mmcme4_adv_inst
@@ -146,7 +143,7 @@ wire clk_in2_clk_wiz_stat;
     .CLKFBOUTB           (clkfboutb_unused),
     .CLKOUT0             (clk_out1_clk_wiz_stat),
     .CLKOUT0B            (clkout0b_unused),
-	.CLKOUT1             (clk_out2_clk_wiz_stat),
+    .CLKOUT1             (clkout1_unused),
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
@@ -197,8 +194,6 @@ wire clk_in2_clk_wiz_stat;
 
   assign clk_out1 = clk_out1_clk_wiz_stat;
 
-
-  assign clk_out2 = clk_out2_clk_wiz_stat;
 
 
 

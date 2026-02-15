@@ -22,18 +22,16 @@ create_generated_clock -name comp0_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_i/
 create_generated_clock -name comp1_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_i/inst/plle4_adv_inst/CLKOUT0B]
 create_generated_clock -name comp_ana0_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_ana_i/inst/plle4_adv_inst/CLKOUT0]
 create_generated_clock -name comp_ana1_clk [get_pins ps_i/mts_0/inst/clk_wiz_comp_ana_i/inst/plle4_adv_inst/CLKOUT0B]
-create_generated_clock -name stat_low0_clk [get_pins ps_i/comp_ana_low/inst/clk_wiz_stat_01/inst/mmcme4_adv_inst/CLKOUT0]
-create_generated_clock -name stat_low1_clk [get_pins ps_i/comp_ana_low/inst/clk_wiz_stat_01/inst/mmcme4_adv_inst/CLKOUT0B]
-create_generated_clock -name stat_high0_clk [get_pins ps_i/comp_ana_high/inst/clk_wiz_stat_01/inst/mmcme4_adv_inst/CLKOUT0]
-create_generated_clock -name stat_high1_clk [get_pins ps_i/comp_ana_high/inst/clk_wiz_stat_01/inst/mmcme4_adv_inst/CLKOUT0B]
+create_generated_clock -name stat_low0_clk [get_pins ps_i/comp_ana_low/inst/clk_wiz_stat_i/inst/mmcme4_adv_inst/CLKOUT0]
+create_generated_clock -name stat_high0_clk [get_pins ps_i/comp_ana_high/inst/clk_wiz_stat_i/inst/mmcme4_adv_inst/CLKOUT0]
 
 set_input_delay -clock [get_clocks pl_clk] -min -add_delay 7.931 [get_ports pl_sysref_p]
 set_input_delay -clock [get_clocks pl_clk] -max -add_delay 7.985 [get_ports pl_sysref_p]
 
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/pl_clk_util_ds_buf/U0/USE_IBUFDS.GEN_IBUFDS[0].IBUFDS_I/O]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/mts_0/inst/pl_clk_buf]
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/comp_ana_low/inst/clk_buf]
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/comp_ana_high/inst/clk_buf]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/comp_ana_low/inst/stat_clk_0_raw]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps_i/comp_ana_high/inst/stat_clk_0_raw]
 
 set_property CLOCK_REGION X4Y1 [get_cells ps_i/mts_0/inst/buf_deci_clk_i]
 set_property CLOCK_REGION X4Y2 [get_cells ps_i/mts_0/inst/buf_ana_clk_i]
@@ -41,8 +39,8 @@ set_property CLOCK_REGION X4Y4 [get_cells ps_i/mts_0/inst/buf_freq_clk_i]
 set_property CLOCK_REGION X4Y6 [get_cells ps_i/mts_0/inst/buf_comp_clk_i]
 set_property CLOCK_REGION X4Y0 [get_cells ps_i/mts_0/inst/buf_comp_ana_clk_i]
 
-set_property CLOCK_REGION X4Y0 [get_cells ps_i/comp_ana_low/inst/buf_stat_01_clk_i]
-set_property CLOCK_REGION X4Y0 [get_cells ps_i/comp_ana_high/inst/buf_stat_01_clk_i]
+set_property CLOCK_REGION X4Y0 [get_cells ps_i/comp_ana_low/inst/stat_clk_0_i]
+set_property CLOCK_REGION X4Y0 [get_cells ps_i/comp_ana_high/inst/stat_clk_0_i]
 
 set_false_path -from [get_ports pl_sysref_p] -to [get_pins ps_i/mts_0/inst/mts.sysref_r_reg/D]
  

@@ -155,27 +155,14 @@ module comp_ana(
     reg [19:0] stat_phase_2 [0:7];
     reg [19:0] stat_phase_3 [0:7];
 
-	BUFG stat_clk_i (
-		.I			(pl_clk),
-		.O			(clk_buf));
-
-	BUFG buf_stat_01_clk_i (
-		.I			(clk_buf),
-		.O			(stat_01_clk_buf));
-
-	clk_wiz_stat clk_wiz_stat_01 (
-		.clk_in1	(stat_01_clk_buf),
-		.clk_out1	(stat_clk_0_raw),
-		.clk_out2	(stat_clk_1_raw)
+	clk_wiz_stat clk_wiz_stat_i (
+		.clk_in1	(pl_clk),
+		.clk_out1	(stat_clk_0_raw)
     );
 
 	BUFG stat_clk_0_i (
 		.I			(stat_clk_0_raw),
 		.O			(stat_clk_0));
-
-	BUFG stat_clk_1_i (
-		.I			(stat_clk_1_raw),
-		.O			(stat_clk_1));
 
     fifo_comp_ana fifo_ana_i (
         .rst(reset_int),              // input wire rst

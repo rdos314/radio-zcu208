@@ -361,7 +361,17 @@ module comp_burst(
     reg [10:0] temp_pos;
     reg [15:0] temp_env;
     reg [15:0] temp_phase;    
-
+	
+	reg [15:0] env_diff;
+	reg [15:0] phase_diff;
+	wire stat_reset = 0;
+	wire [47:0] env_sum_p;
+	wire [47:0] env_sqr_p;
+    wire [47:0] env_sum2_p;
+	wire [47:0] phase_sum_p;
+	wire [47:0] phase_sqr_p;
+    wire [47:0] phase_sum2_p;
+	
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
 		.wr_clk(config_clk),           // input wire wr_clk
@@ -458,6 +468,49 @@ module comp_burst(
         .phase_sum(p3_phase_sum),
         .phase_sum2(p3_phase_sum2)
 	);
+	
+    dsp_add16 add_env_i (
+        .CLK(clk),           // input wire CLK
+        .SCLR(stat_reset),   // input wire SCLR
+        .A(env_diff),        // input wire [15 : 0] A
+        .P(env_sum_p)        // output wire [47 : 0] P
+    );
+
+    dsp_sqr16 sqr_env_i (
+        .CLK(clk),           // input wire CLK
+        .SCLR(stat_reset),   // input wire SCLR
+        .A(env_diff),        // input wire [15 : 0] A
+        .P(env_sqr_p)        // output wire [47 : 0] P
+    );
+
+    dsp_sqr18 sum2_env_i (
+        .CLK(clk),            // input wire CLK
+        .SCLR(stat_reset),   // input wire SCLR
+        .A(env_sum_p[17:0]),  // input wire [17 : 0] A
+        .P(env_sum2_p)        // output wire [35 : 0] P
+    );
+	
+    dsp_add16 add_phase_i (
+        .CLK(clk),           // input wire CLK
+        .SCLR(stat_reset),   // input wire SCLR
+        .A(phase_diff),      // input wire [15 : 0] A
+        .P(phase_sum_p)      // output wire [47 : 0] P
+    );
+	
+    dsp_sqr16 sqr_phase_i (
+        .CLK(clk),           // input wire CLK
+        .SCLR(stat_reset),   // input wire SCLR
+        .A(phase_diff),      // input wire [15 : 0] A
+        .P(phase_sqr_p)      // output wire [47 : 0] P
+    );
+
+    dsp_sqr18 sum2_phase_i (
+        .CLK(clk),             // input wire CLK
+        .SCLR(stat_reset),     // input wire SCLR
+        .A(phase_sum_p[17:0]), // input wire [17 : 0] A
+        .P(phase_sum2_p)       // output wire [35 : 0] P
+    );
+	
 
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
@@ -475,15 +528,14 @@ module comp_burst(
 		.probe11(mean_done),          // input wire [0:0]  probe3
 		.probe12(p2_idle),            // input wire [0:0]  probe3
 		.probe13(p3_idle),            // input wire [0:0]  probe3
-		.probe14(temp_sample),        // input wire [63:0]  probe3
-		.probe15(temp_freq),          // input wire [19:0]  probe3
-		.probe16(temp_angle),         // input wire [15:0]  probe3
-		.probe17(temp_size),          // input wire [10:0]  probe3
-		.probe18(temp_mean),          // input wire [15:0]  probe3
-		.probe19(temp_active),        // input wire [0:0]  probe3
-		.probe20(temp_pos),           // input wire [10:0]  probe3
-		.probe21(temp_env),           // input wire [15:0]  probe3
-		.probe22(temp_phase)          // input wire [15:0]  probe3
+		.probe14(env_diff),           // input wire [15:0]  probe3
+		.probe15(phase_diff),         // input wire [15:0]  probe3
+		.probe16(env_sum_p),          // input wire [47:0]  probe3
+		.probe17(env_sum2_p),         // input wire [47:0]  probe3
+		.probe18(env_sqr_p),          // input wire [47:0]  probe3
+		.probe19(phase_sum_p),        // input wire [47:0]  probe3
+		.probe20(phase_sum2_p),       // input wire [47:0]  probe3
+		.probe21(phase_sqr_p)         // input wire [47:0]  probe3
 	);
 	
 generate
@@ -1187,15 +1239,39 @@ generate
 
     always @(posedge clk) 
     begin
-		temp_sample <= p3_sample;
-		temp_freq <= p3_freq;
-		temp_angle <= p3_angle;
-		temp_size <= p3_size;
-		temp_mean <= mean;
 		temp_active <= p3_active;
-        temp_pos <= p3_pos;
-        temp_env <= p3_env;
-        temp_phase <= p3_phase;
+
+		if (p3_active)
+		begin
+			temp_sample <= p3_sample;
+			temp_freq <= p3_freq;
+			temp_angle <= p3_angle;
+			temp_size <= p3_size;
+			temp_mean <= mean;
+			temp_pos <= p3_pos;
+			temp_env <= p3_env;
+			temp_phase <= p3_phase;
+		end
+		else
+		begin
+			temp_pos <= 0;
+			temp_phase <= 0;
+			temp_env <= 0;
+		end		
+    end
+
+    always @(posedge clk) 
+    begin
+        if (p3_active)
+        begin
+            env_diff <= p3_env - mean;
+            phase_diff <= p3_phase;
+        end
+        else
+        begin
+            env_diff <= 0;
+            phase_diff <= 0;
+        end
     end
     
   end
