@@ -483,11 +483,24 @@ module comp_burst(
         .P(env_sqr_p)        // output wire [47 : 0] P
     );
 
-    dsp_sqr18 sum2_env_i (
-        .CLK(clk),            // input wire CLK
-        .SCLR(stat_reset),   // input wire SCLR
-        .A(env_sum_p[17:0]),  // input wire [17 : 0] A
-        .P(env_sum2_p)        // output wire [35 : 0] P
+    mul_stat24 sum2_env_i (
+        .CLK(clk),               // input wire CLK
+        .A(env_sum_p[23:0]),     // input wire [23 : 0] A
+        .B(env_sum_p[23:0]),     // input wire [23 : 0] B
+        .SCLR(stat_reset),       // input wire SCLR
+        .P(env_sum2_p)           // output wire [47 : 0] P
+    );
+
+    div_stat_48 div_env_i (
+        .aclk(clk),                                      // input wire aclk
+        .s_axis_divisor_tvalid(s_axis_divisor_tvalid),    // input wire s_axis_divisor_tvalid
+        .s_axis_divisor_tready(s_axis_divisor_tready),    // output wire s_axis_divisor_tready
+        .s_axis_divisor_tdata(s_axis_divisor_tdata),      // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_dividend_tvalid(s_axis_dividend_tvalid),  // input wire s_axis_dividend_tvalid
+        .s_axis_dividend_tready(s_axis_dividend_tready),  // output wire s_axis_dividend_tready
+        .s_axis_dividend_tdata(s_axis_dividend_tdata),    // input wire [47 : 0] s_axis_dividend_tdata
+        .m_axis_dout_tvalid(m_axis_dout_tvalid),          // output wire m_axis_dout_tvalid
+        .m_axis_dout_tdata(m_axis_dout_tdata)            // output wire [63 : 0] m_axis_dout_tdata
     );
 	
     dsp_add16 add_phase_i (
@@ -504,13 +517,25 @@ module comp_burst(
         .P(phase_sqr_p)      // output wire [47 : 0] P
     );
 
-    dsp_sqr18 sum2_phase_i (
-        .CLK(clk),             // input wire CLK
-        .SCLR(stat_reset),     // input wire SCLR
-        .A(phase_sum_p[17:0]), // input wire [17 : 0] A
-        .P(phase_sum2_p)       // output wire [35 : 0] P
+    mul_stat24 sum2_phase_i (
+        .CLK(clk),               // input wire CLK
+        .A(phase_sum_p[23:0]),   // input wire [23 : 0] A
+        .B(phase_sum_p[23:0]),   // input wire [23 : 0] B
+        .SCLR(stat_reset),       // input wire SCLR
+        .P(phase_sum2_p)         // output wire [47 : 0] P
     );
 	
+    div_stat_48 div_phase_i (
+        .aclk(clk),                                      // input wire aclk
+        .s_axis_divisor_tvalid(s_axis_divisor_tvalid),    // input wire s_axis_divisor_tvalid
+        .s_axis_divisor_tready(s_axis_divisor_tready),    // output wire s_axis_divisor_tready
+        .s_axis_divisor_tdata(s_axis_divisor_tdata),      // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_dividend_tvalid(s_axis_dividend_tvalid),  // input wire s_axis_dividend_tvalid
+        .s_axis_dividend_tready(s_axis_dividend_tready),  // output wire s_axis_dividend_tready
+        .s_axis_dividend_tdata(s_axis_dividend_tdata),    // input wire [47 : 0] s_axis_dividend_tdata
+        .m_axis_dout_tvalid(m_axis_dout_tvalid),          // output wire m_axis_dout_tvalid
+        .m_axis_dout_tdata(m_axis_dout_tdata)            // output wire [63 : 0] m_axis_dout_tdata
+    );
 
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
