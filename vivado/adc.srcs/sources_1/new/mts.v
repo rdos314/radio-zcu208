@@ -97,6 +97,12 @@ module mts(
 	reg sysref_active;
 
 	wire pl_clk_buf;
+	wire deci_clk_buf;
+	wire ana_clk_buf;
+	wire freq_clk_buf;
+	wire comp_clk_buf;
+	wire comp_ana_clk_buf;
+
 	wire rst_async = sys_reset | (~deci_locked);
     wire ana_locked;
     wire freq_locked;
@@ -147,35 +153,55 @@ module mts(
 	BUFG p_clk_i (
 		.I			(pl_clk),
 		.O			(pl_clk_buf));
+
+	BUFG buf_deci_clk_i (
+		.I			(pl_clk_buf),
+		.O			(deci_clk_buf));
     
 	clk_wiz_deci clk_wiz_deci_i (
-		.clk_in1	(pl_clk_buf),
+		.clk_in1	(deci_clk_buf),
 		.clk_out1	(deci_clk),
 		.locked		(deci_locked));
+
+	BUFG buf_ana_clk_i (
+		.I			(pl_clk_buf),
+		.O			(ana_clk_buf));
 		
 	clk_wiz_adc clk_wiz_ana_i (
-		.clk_in1	(pl_clk_buf),
+		.clk_in1	(ana_clk_buf),
 		.clk_out1	(ana0_clk),
 		.clk_out2	(ana1_clk),
 		.locked		(ana_locked)
 		);
 
+	BUFG buf_freq_clk_i (
+		.I			(pl_clk_buf),
+		.O			(freq_clk_buf));
+
 	clk_wiz_adc clk_wiz_freq_i (
-		.clk_in1	(pl_clk_buf),
+		.clk_in1	(freq_clk_buf),
 		.clk_out1	(freq0_clk),
 		.clk_out2	(freq1_clk),
 		.locked		(freq_locked)
 		);
+
+	BUFG buf_comp_clk_i (
+		.I			(pl_clk_buf),
+		.O			(comp_clk_buf));
 		
 	clk_wiz_adc clk_wiz_comp_i (
-		.clk_in1	(pl_clk_buf),
+		.clk_in1	(comp_clk_buf),
 		.clk_out1	(comp0_clk),
 		.clk_out2	(comp1_clk),
 		.locked		(comp_locked)
 		);
+
+	BUFG buf_comp_ana_clk_i (
+		.I			(pl_clk_buf),
+		.O			(comp_ana_clk_buf));
 		
 	clk_wiz_adc clk_wiz_comp_ana_i (
-		.clk_in1	(pl_clk_buf),
+		.clk_in1	(comp_ana_clk_buf),
 		.clk_out1	(comp_ana0_clk),
 		.clk_out2	(comp_ana1_clk),
 		.locked		(comp_ana_locked)

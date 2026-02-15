@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Dec 23 19:32:16 2025
+-- Date        : Fri Feb 13 16:39:41 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub c:/radio-zcu208/vivado/adc.gen/sources_1/ip/div_k/div_k_stub.vhdl
 -- Design      : div_k

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Thu Feb  5 19:09:32 2026
+// Date        : Sun Feb 15 14:28:55 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_stat/clk_wiz_stat_sim_netlist.v
@@ -17,309 +17,142 @@
 module clk_wiz_stat
    (clk_out1,
     clk_out2,
-    locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
-  output locked;
   input clk_in1;
 
   wire clk_in1;
   wire clk_out1;
   wire clk_out2;
-  wire locked;
 
   clk_wiz_stat_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
-        .clk_out2(clk_out2),
-        .locked(locked));
+        .clk_out2(clk_out2));
 endmodule
 
 module clk_wiz_stat_clk_wiz
    (clk_out1,
     clk_out2,
-    locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
-  output locked;
   input clk_in1;
 
   wire clk_in1;
   wire clk_out1;
-  wire clk_out1_clk_wiz_stat;
-  wire clk_out1_clk_wiz_stat_en_clk;
   wire clk_out2;
-  wire clk_out2_clk_wiz_stat;
-  wire clk_out2_clk_wiz_stat_en_clk;
-  wire clkfbout_clk_wiz_stat;
-  wire locked;
-  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg1;
-  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg2;
-  wire NLW_clkf_buf_O_UNCONNECTED;
-  wire NLW_plle4_adv_inst_CLKFBIN_UNCONNECTED;
-  wire NLW_plle4_adv_inst_CLKOUT1_UNCONNECTED;
-  wire NLW_plle4_adv_inst_CLKOUT1B_UNCONNECTED;
-  wire NLW_plle4_adv_inst_CLKOUTPHY_UNCONNECTED;
-  wire NLW_plle4_adv_inst_DRDY_UNCONNECTED;
-  wire [15:0]NLW_plle4_adv_inst_DO_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CDDCDONE_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKFBIN_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKFBOUT_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKFBOUTB_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKFBSTOPPED_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKINSTOPPED_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT0B_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT2_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT3_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_DRDY_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_LOCKED_UNCONNECTED;
+  wire NLW_mmcme4_adv_inst_PSDONE_UNCONNECTED;
+  wire [15:0]NLW_mmcme4_adv_inst_DO_UNCONNECTED;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* XILINX_LEGACY_PRIM = "BUFG" *) 
-  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
-  BUFGCE #(
-    .CE_TYPE("ASYNC"),
-    .SIM_DEVICE("ULTRASCALE_PLUS")) 
-    clkf_buf
-       (.CE(1'b1),
-        .I(clkfbout_clk_wiz_stat),
-        .O(NLW_clkf_buf_O_UNCONNECTED));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFGCE #(
-    .CE_TYPE("SYNC"),
-    .IS_CE_INVERTED(1'b0),
-    .IS_I_INVERTED(1'b0),
-    .SIM_DEVICE("ULTRASCALE"),
-    .STARTUP_SYNC("FALSE")) 
-    clkout1_buf
-       (.CE(seq_reg1[7]),
-        .I(clk_out1_clk_wiz_stat),
-        .O(clk_out1));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFGCE #(
-    .CE_TYPE("SYNC"),
-    .IS_CE_INVERTED(1'b0),
-    .IS_I_INVERTED(1'b0),
-    .SIM_DEVICE("ULTRASCALE"),
-    .STARTUP_SYNC("FALSE")) 
-    clkout1_buf_en
-       (.CE(1'b1),
-        .I(clk_out1_clk_wiz_stat),
-        .O(clk_out1_clk_wiz_stat_en_clk));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFGCE #(
-    .CE_TYPE("SYNC"),
-    .IS_CE_INVERTED(1'b0),
-    .IS_I_INVERTED(1'b0),
-    .SIM_DEVICE("ULTRASCALE"),
-    .STARTUP_SYNC("FALSE")) 
-    clkout2_buf
-       (.CE(seq_reg2[7]),
-        .I(clk_out2_clk_wiz_stat),
-        .O(clk_out2));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFGCE #(
-    .CE_TYPE("SYNC"),
-    .IS_CE_INVERTED(1'b0),
-    .IS_I_INVERTED(1'b0),
-    .SIM_DEVICE("ULTRASCALE"),
-    .STARTUP_SYNC("FALSE")) 
-    clkout2_buf_en
-       (.CE(1'b1),
-        .I(clk_out2_clk_wiz_stat),
-        .O(clk_out2_clk_wiz_stat_en_clk));
-  (* BOX_TYPE = "PRIMITIVE" *) 
   (* OPT_MODIFIED = "MLO" *) 
-  PLLE4_ADV #(
-    .CLKFBOUT_MULT(2),
+  MMCME4_ADV #(
+    .BANDWIDTH("OPTIMIZED"),
+    .CLKFBOUT_MULT_F(12.000000),
     .CLKFBOUT_PHASE(0.000000),
-    .CLKIN_PERIOD(2.000000),
-    .CLKOUT0_DIVIDE(2),
+    .CLKFBOUT_USE_FINE_PS("FALSE"),
+    .CLKIN1_PERIOD(10.000000),
+    .CLKIN2_PERIOD(0.000000),
+    .CLKOUT0_DIVIDE_F(3.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
-    .CLKOUT1_DIVIDE(1),
+    .CLKOUT0_USE_FINE_PS("FALSE"),
+    .CLKOUT1_DIVIDE(3),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
-    .CLKOUTPHY_MODE("VCO_2X"),
+    .CLKOUT1_USE_FINE_PS("FALSE"),
+    .CLKOUT2_DIVIDE(1),
+    .CLKOUT2_DUTY_CYCLE(0.500000),
+    .CLKOUT2_PHASE(0.000000),
+    .CLKOUT2_USE_FINE_PS("FALSE"),
+    .CLKOUT3_DIVIDE(1),
+    .CLKOUT3_DUTY_CYCLE(0.500000),
+    .CLKOUT3_PHASE(0.000000),
+    .CLKOUT3_USE_FINE_PS("FALSE"),
+    .CLKOUT4_CASCADE("FALSE"),
+    .CLKOUT4_DIVIDE(1),
+    .CLKOUT4_DUTY_CYCLE(0.500000),
+    .CLKOUT4_PHASE(0.000000),
+    .CLKOUT4_USE_FINE_PS("FALSE"),
+    .CLKOUT5_DIVIDE(1),
+    .CLKOUT5_DUTY_CYCLE(0.500000),
+    .CLKOUT5_PHASE(0.000000),
+    .CLKOUT5_USE_FINE_PS("FALSE"),
+    .CLKOUT6_DIVIDE(1),
+    .CLKOUT6_DUTY_CYCLE(0.500000),
+    .CLKOUT6_PHASE(0.000000),
+    .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("INTERNAL"),
     .DIVCLK_DIVIDE(1),
     .IS_CLKFBIN_INVERTED(1'b0),
-    .IS_CLKIN_INVERTED(1'b0),
+    .IS_CLKIN1_INVERTED(1'b0),
+    .IS_CLKIN2_INVERTED(1'b0),
+    .IS_CLKINSEL_INVERTED(1'b0),
+    .IS_PSEN_INVERTED(1'b0),
+    .IS_PSINCDEC_INVERTED(1'b0),
     .IS_PWRDWN_INVERTED(1'b0),
     .IS_RST_INVERTED(1'b0),
-    .REF_JITTER(0.010000),
+    .REF_JITTER1(0.010000),
+    .REF_JITTER2(0.010000),
+    .SS_EN("FALSE"),
+    .SS_MODE("CENTER_HIGH"),
+    .SS_MOD_PERIOD(10000),
     .STARTUP_WAIT("FALSE")) 
-    plle4_adv_inst
-       (.CLKFBIN(NLW_plle4_adv_inst_CLKFBIN_UNCONNECTED),
-        .CLKFBOUT(clkfbout_clk_wiz_stat),
-        .CLKIN(clk_in1),
-        .CLKOUT0(clk_out1_clk_wiz_stat),
-        .CLKOUT0B(clk_out2_clk_wiz_stat),
-        .CLKOUT1(NLW_plle4_adv_inst_CLKOUT1_UNCONNECTED),
-        .CLKOUT1B(NLW_plle4_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUTPHY(NLW_plle4_adv_inst_CLKOUTPHY_UNCONNECTED),
-        .CLKOUTPHYEN(1'b0),
+    mmcme4_adv_inst
+       (.CDDCDONE(NLW_mmcme4_adv_inst_CDDCDONE_UNCONNECTED),
+        .CDDCREQ(1'b0),
+        .CLKFBIN(NLW_mmcme4_adv_inst_CLKFBIN_UNCONNECTED),
+        .CLKFBOUT(NLW_mmcme4_adv_inst_CLKFBOUT_UNCONNECTED),
+        .CLKFBOUTB(NLW_mmcme4_adv_inst_CLKFBOUTB_UNCONNECTED),
+        .CLKFBSTOPPED(NLW_mmcme4_adv_inst_CLKFBSTOPPED_UNCONNECTED),
+        .CLKIN1(clk_in1),
+        .CLKIN2(1'b0),
+        .CLKINSEL(1'b1),
+        .CLKINSTOPPED(NLW_mmcme4_adv_inst_CLKINSTOPPED_UNCONNECTED),
+        .CLKOUT0(clk_out1),
+        .CLKOUT0B(NLW_mmcme4_adv_inst_CLKOUT0B_UNCONNECTED),
+        .CLKOUT1(clk_out2),
+        .CLKOUT1B(NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED),
+        .CLKOUT2(NLW_mmcme4_adv_inst_CLKOUT2_UNCONNECTED),
+        .CLKOUT2B(NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED),
+        .CLKOUT3(NLW_mmcme4_adv_inst_CLKOUT3_UNCONNECTED),
+        .CLKOUT3B(NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED),
+        .CLKOUT4(NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED),
+        .CLKOUT5(NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED),
+        .CLKOUT6(NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .DCLK(1'b0),
         .DEN(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .DO(NLW_plle4_adv_inst_DO_UNCONNECTED[15:0]),
-        .DRDY(NLW_plle4_adv_inst_DRDY_UNCONNECTED),
+        .DO(NLW_mmcme4_adv_inst_DO_UNCONNECTED[15:0]),
+        .DRDY(NLW_mmcme4_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
-        .LOCKED(locked),
+        .LOCKED(NLW_mmcme4_adv_inst_LOCKED_UNCONNECTED),
+        .PSCLK(1'b0),
+        .PSDONE(NLW_mmcme4_adv_inst_PSDONE_UNCONNECTED),
+        .PSEN(1'b0),
+        .PSINCDEC(1'b0),
         .PWRDWN(1'b0),
         .RST(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[0] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(locked),
-        .Q(seq_reg1[0]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[1] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[0]),
-        .Q(seq_reg1[1]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[2] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[1]),
-        .Q(seq_reg1[2]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[3] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[2]),
-        .Q(seq_reg1[3]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[4] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[3]),
-        .Q(seq_reg1[4]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[5] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[4]),
-        .Q(seq_reg1[5]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[6] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[5]),
-        .Q(seq_reg1[6]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg1_reg[7] 
-       (.C(clk_out1_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg1[6]),
-        .Q(seq_reg1[7]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[0] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(locked),
-        .Q(seq_reg2[0]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[1] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[0]),
-        .Q(seq_reg2[1]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[2] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[1]),
-        .Q(seq_reg2[2]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[3] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[2]),
-        .Q(seq_reg2[3]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[4] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[3]),
-        .Q(seq_reg2[4]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[5] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[4]),
-        .Q(seq_reg2[5]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[6] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[5]),
-        .Q(seq_reg2[6]),
-        .R(1'b0));
-  (* ASYNC_REG *) 
-  (* KEEP = "yes" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \seq_reg2_reg[7] 
-       (.C(clk_out2_clk_wiz_stat_en_clk),
-        .CE(1'b1),
-        .D(seq_reg2[6]),
-        .Q(seq_reg2[7]),
-        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

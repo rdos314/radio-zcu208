@@ -58,4 +58,6 @@ create_clock -period 10 -name config_clk [get_ports config_clk]
 
 create_clock -period 2 -name fifo_clk [get_ports fifo_clk]
 
+create_clock -period 10 -name pl_clk [get_ports pl_clk]
+
 

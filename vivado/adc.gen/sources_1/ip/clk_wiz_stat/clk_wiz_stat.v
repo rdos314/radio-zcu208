@@ -53,25 +53,23 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__500.00000______0.000______50.0_______72.701_____79.885
-// clk_out2__500.00000____180.000______50.0_______72.701_____79.885
+// clk_out1__400.00000______0.000______50.0_______90.074_____87.180
+// clk_out2__400.00000______0.000______50.0_______90.074_____87.180
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_____________500____________0.010
+// __primary_____________100____________0.010
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "clk_wiz_stat,clk_wiz_v6_0_16_0_0,{component_name=clk_wiz_stat,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=2,clkin1_period=2.000,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "clk_wiz_stat,clk_wiz_v6_0_16_0_0,{component_name=clk_wiz_stat,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_ONCHIP,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.000,clkin2_period=10.000,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module clk_wiz_stat 
  (
   // Clock out ports
   output        clk_out1,
   output        clk_out2,
-  // Status and control signals
-  output        locked,
  // Clock in ports
   input         clk_in1
  );
@@ -81,8 +79,6 @@ module clk_wiz_stat
   // Clock out ports  
   .clk_out1(clk_out1),
   .clk_out2(clk_out2),
-  // Status and control signals               
-  .locked(locked),
  // Clock in ports
   .clk_in1(clk_in1)
   );

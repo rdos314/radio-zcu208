@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Feb  8 00:50:39 2026
+-- Date        : Sun Feb 15 14:34:09 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.vhdl
@@ -504,10 +504,15 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_stat is
   signal \NLW_comp_stat.up_count_reg[10]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_stat.up_count_reg[10]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_stat.active_i_5\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[0]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[1]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \comp_stat.filling_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.active_i_2\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \comp_stat.active_i_5\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \comp_stat.down_delay[0]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[0]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[10]_i_3\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[1]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[7]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[9]_i_2\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \comp_stat.idle_i_3\ : label is "soft_lutpair24";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_stat.mem_env_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -547,45 +552,58 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_stat is
   attribute ram_offset of \comp_stat.mem_phase_reg\ : label is 0;
   attribute ram_slice_begin of \comp_stat.mem_phase_reg\ : label is 0;
   attribute ram_slice_end of \comp_stat.mem_phase_reg\ : label is 63;
-  attribute SOFT_HLUTNM of \comp_stat.phase[15]_i_5\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \comp_stat.phase[15]_i_5\ : label is "soft_lutpair16";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_stat.phase_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.phase_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[10]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[1]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[2]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[3]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[4]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[5]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[6]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[7]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[8]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[9]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[0]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[10]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[1]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[2]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[3]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[4]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[5]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[6]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[7]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[8]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[9]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \comp_stat.pred_phase[5]_i_3\ : label is "soft_lutpair20";
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[15]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[15]_i_5\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[21]_i_6\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[21]_i_7\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[5]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[5]_i_5\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[2]_i_3\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[3]_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[3]_i_3\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[4]_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_2\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_3\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_4\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_5\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \comp_stat.start_up_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_5\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[2]_i_3\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[3]_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[3]_i_3\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[4]_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[6]_i_3\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_2\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_3\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_4\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_5\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \comp_stat.start_down_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \comp_stat.start_up_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[0]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[8]_i_1\ : label is "soft_lutpair10";
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[10]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[7]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[0]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[1]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[5]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[1]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[2]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[3]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[4]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[0]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[1]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[5]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[7]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[9]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[1]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[2]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[3]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[4]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[7]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[8]_i_2\ : label is "soft_lutpair21";
 begin
   active <= \^active\;
 \comp_stat.active_i_1\: unisim.vcomponents.LUT6
@@ -1613,29 +1631,27 @@ begin
       I3 => \comp_stat.down_pos_reg\(6),
       O => \p_0_in__0\(6)
     );
-\comp_stat.down_pos[7]_i_1\: unisim.vcomponents.LUT5
+\comp_stat.down_pos[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F0EEF011"
+      INIT => X"B88B"
     )
         port map (
-      I0 => \comp_stat.down_pos_reg\(6),
-      I1 => \comp_stat.phase[15]_i_3_n_0\,
-      I2 => max_pos(7),
-      I3 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I4 => \comp_stat.down_pos_reg\(7),
+      I0 => max_pos(7),
+      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I2 => \comp_stat.down_pos_reg\(7),
+      I3 => \comp_stat.down_pos[9]_i_2_n_0\,
       O => \p_0_in__0\(7)
     );
-\comp_stat.down_pos[8]_i_1\: unisim.vcomponents.LUT6
+\comp_stat.down_pos[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F0FFF000F0EEF011"
+      INIT => X"B8B8B88B"
     )
         port map (
-      I0 => \comp_stat.down_pos_reg\(6),
-      I1 => \comp_stat.phase[15]_i_3_n_0\,
-      I2 => max_pos(8),
-      I3 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I4 => \comp_stat.down_pos_reg\(8),
-      I5 => \comp_stat.down_pos_reg\(7),
+      I0 => max_pos(8),
+      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I2 => \comp_stat.down_pos_reg\(8),
+      I3 => \comp_stat.down_pos[9]_i_2_n_0\,
+      I4 => \comp_stat.down_pos_reg\(7),
       O => \p_0_in__0\(8)
     );
 \comp_stat.down_pos[9]_i_1\: unisim.vcomponents.LUT6
@@ -7181,7 +7197,9 @@ architecture STRUCTURE of ps_comp_ana_0_1_one_to_four is
   signal \NLW_one_to_four.mem_phase_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_one_to_four.mem_phase_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \one_to_four.counter[10]_i_3\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \one_to_four.counter[10]_i_4\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \one_to_four.counter[6]_i_2\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \one_to_four.counter[6]_i_3\ : label is "soft_lutpair0";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \one_to_four.mem_env_reg\ : label is "p0_d64";
@@ -7235,18 +7253,22 @@ architecture STRUCTURE of ps_comp_ana_0_1_one_to_four is
   attribute ram_offset of \one_to_four.mem_phase_reg\ : label is 0;
   attribute ram_slice_begin of \one_to_four.mem_phase_reg\ : label is 0;
   attribute ram_slice_end of \one_to_four.mem_phase_reg\ : label is 63;
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[1]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[2]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[1]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[2]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[3]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[4]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[7]_i_1\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[8]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \one_to_four.wr_offset[0]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \one_to_four.wr_offset[1]_i_2\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[1]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[2]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_3\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \one_to_four.wr_offset[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \one_to_four.wr_offset[1]_i_2\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[2]_i_1\ : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of \one_to_four.wr_ptr[3]_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \one_to_four.wr_ptr[4]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[7]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[8]_i_3\ : label is "soft_lutpair6";
 begin
   active <= \^active\;
 \one_to_four.active_0_i_1\: unisim.vcomponents.LUT6
@@ -11693,7 +11715,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal \comp_burst.sample_counter_1[12]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_1[13]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_1[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.sample_counter_1[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.sample_counter_1[15]_i_4_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_1[4]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_1[5]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.sample_counter_1[8]_i_2_n_0\ : STD_LOGIC;
@@ -12039,40 +12061,52 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute KEEP of \comp_burst.complete_2_reg\ : label is "yes";
   attribute KEEP of \comp_burst.complete_3_reg\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.df_count[1]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \comp_burst.df_count[2]_i_3\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.df_count[1]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \comp_burst.df_count[2]_i_3\ : label is "soft_lutpair83";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[19]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[1]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[2]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[3]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[4]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_3\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_3\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[6]_i_2\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[7]_i_3\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[1]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[2]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[3]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[4]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[7]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[8]_i_2\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_2\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_3\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_2\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_3\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[6]_i_2\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[7]_i_3\ : label is "soft_lutpair49";
   attribute ADDER_THRESHOLD of \comp_burst.df_start_reg[8]_i_6\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.df_start_reg[8]_i_7\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[4]_i_2\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_2\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_3\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[8]_i_2\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_2\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[2]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[4]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[4]_i_2\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_2\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_3\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[7]_i_3\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[8]_i_2\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_2\ : label is "soft_lutpair40";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_down_max_val_reg[15]_i_2\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[0]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[1]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[6]_i_2\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[0]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[1]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[4]_i_2\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[6]_i_2\ : label is "soft_lutpair65";
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_end_ind_reg[10]_i_2\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_start_ind_reg[10]_i_2\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[15]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[16]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[17]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[18]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[15]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[16]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[17]_i_1\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[18]_i_1\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[20]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[21]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[22]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[23]_i_1\ : label is "soft_lutpair44";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[16]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[7]_i_1\ : label is 35;
@@ -12096,43 +12130,63 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_01_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_01_reg[9]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[0]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[1]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[2]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[3]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[0]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[1]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[2]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[3]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[0]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[1]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[2]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[3]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[5]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[6]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[7]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[8]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[0]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[1]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[2]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[3]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[5]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[6]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[7]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[8]_i_1\ : label is "soft_lutpair45";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_23_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_23_reg[9]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[0]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[1]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[3]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[0]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[1]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[2]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[3]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[0]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[1]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[2]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[3]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[5]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[6]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[7]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[8]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[0]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[1]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[2]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[3]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[5]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[6]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[7]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[8]_i_1\ : label is "soft_lutpair47";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_reg[8]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[0]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[6]_i_2\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[8]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[9]_i_1\ : label is "soft_lutpair43";
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_up_max_val_reg[15]_i_3\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[1]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[2]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[3]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[4]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[7]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[8]_i_3\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[1]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[2]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[3]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[4]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[7]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[8]_i_3\ : label is "soft_lutpair64";
   attribute KEEP of \comp_burst.filling_reg\ : label is "yes";
   attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_burst.filling_reg\ : label is "yes";
   attribute KEEP of \comp_burst.mean_done_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.mean_stage[0]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \comp_burst.mean_stage[1]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_burst.mean_stage[0]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \comp_burst.mean_stage[1]_i_1\ : label is "soft_lutpair87";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_down_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -12214,17 +12268,33 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute KEEP of \comp_burst.pend_start_reg\ : label is "yes";
   attribute equivalent_register_removal : string;
   attribute equivalent_register_removal of \comp_burst.rt_meta_rd_reg\ : label is "no";
+  attribute SOFT_HLUTNM of \comp_burst.run_env_end_i_1\ : label is "soft_lutpair71";
   attribute KEEP of \comp_burst.run_env_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[12]_i_2\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[1]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[4]_i_2\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[9]_i_2\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[1]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[4]_i_2\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[11]_i_2\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[4]_i_2\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[7]_i_2\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[8]_i_2\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \comp_burst.run_env_start_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_0[2]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_0[4]_i_2\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_0[6]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_0[9]_i_2\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[0]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[12]_i_2\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[1]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[2]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[4]_i_2\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_1[9]_i_2\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[0]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[1]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[2]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[4]_i_2\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[6]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_2[9]_i_2\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[0]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[10]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[11]_i_2\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[13]_i_2\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[1]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[4]_i_2\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[7]_i_2\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \comp_burst.sample_counter_3[8]_i_2\ : label is "soft_lutpair36";
   attribute KEEP of \comp_burst.scan_start_reg\ : label is "yes";
   attribute KEEP of \comp_burst.temp_active_reg\ : label is "yes";
   attribute KEEP of \comp_burst.temp_angle_reg[0]\ : label is "yes";
@@ -31506,29 +31576,27 @@ begin
       I2 => sample_counter_01,
       O => \comp_burst.sample_counter_0[0]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[10]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[8]\,
-      I3 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[10]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[8]\,
+      I1 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_0_reg_n_0_[10]\,
       O => \p_2_in__0\(10)
     );
-\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[9]\,
-      I3 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[10]\,
-      I5 => \comp_burst.sample_counter_0_reg_n_0_[11]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[9]\,
+      I1 => \comp_burst.sample_counter_0[12]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[10]\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_0_reg_n_0_[11]\,
       O => \p_2_in__0\(11)
     );
 \comp_burst.sample_counter_0[12]_i_1\: unisim.vcomponents.LUT6
@@ -31557,17 +31625,16 @@ begin
       I5 => \comp_burst.sample_counter_0_reg_n_0_[9]\,
       O => \comp_burst.sample_counter_0[12]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[11]\,
-      I3 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[12]\,
-      I5 => \comp_burst.sample_counter_0_reg_n_0_[13]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[11]\,
+      I1 => \comp_burst.sample_counter_0[14]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[12]\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_0_reg_n_0_[13]\,
       O => \p_2_in__0\(13)
     );
 \comp_burst.sample_counter_0[14]_i_1\: unisim.vcomponents.LUT6
@@ -31596,27 +31663,25 @@ begin
       I5 => \comp_burst.sample_counter_0_reg_n_0_[11]\,
       O => \comp_burst.sample_counter_0[14]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT3
+\comp_burst.sample_counter_0[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"F8"
+      INIT => X"E"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => burst,
+      I0 => sample_counter_01,
+      I1 => burst,
       O => \comp_burst.sample_counter_0[15]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[15]_i_2\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[15]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[13]\,
-      I3 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[14]\,
-      I5 => \comp_burst.sample_counter_0_reg_n_0_[15]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[13]\,
+      I1 => \comp_burst.sample_counter_0[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[14]\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_0_reg_n_0_[15]\,
       O => \p_2_in__0\(15)
     );
 \comp_burst.sample_counter_0[15]_i_3\: unisim.vcomponents.LUT5
@@ -31631,29 +31696,27 @@ begin
       I4 => \comp_burst.sample_counter_0_reg_n_0_[13]\,
       O => \comp_burst.sample_counter_0[15]_i_3_n_0\
     );
-\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"07888F00"
+      INIT => X"34C4"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => burst,
-      I3 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[0]\,
+      I0 => burst,
+      I1 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_0_reg_n_0_[0]\,
       O => \comp_burst.sample_counter_0[1]_i_1_n_0\
     );
-\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"70F8F8F8F8707070"
+      INIT => X"2EEEE222"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[0]\,
-      I3 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[0]\,
-      I5 => \comp_burst.sample_counter_0_reg_n_0_[2]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[0]\,
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
+      I3 => \comp_burst.sample_counter_0_reg_n_0_[0]\,
+      I4 => \comp_burst.sample_counter_0_reg_n_0_[2]\,
       O => \p_2_in__0\(2)
     );
 \comp_burst.sample_counter_0[3]_i_1\: unisim.vcomponents.LUT6
@@ -31691,29 +31754,27 @@ begin
       I1 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
       O => \comp_burst.sample_counter_0[4]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_0[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[3]\,
-      I3 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[5]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[3]\,
+      I1 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_0_reg_n_0_[5]\,
       O => \p_2_in__0\(5)
     );
-\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_0_reg_n_0_[5]\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[6]\,
-      I5 => \comp_burst.in_sample_reg_n_0_[4]\,
+      I0 => \comp_burst.sample_counter_0[7]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_0_reg_n_0_[5]\,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[6]\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.in_sample_reg_n_0_[4]\,
       O => \p_2_in__0\(6)
     );
 \comp_burst.sample_counter_0[7]_i_1\: unisim.vcomponents.LUT6
@@ -31741,17 +31802,16 @@ begin
       I4 => \comp_burst.sample_counter_0_reg_n_0_[1]\,
       O => \comp_burst.sample_counter_0[7]_i_2_n_0\
     );
-\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_0[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[6]\,
-      I3 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_0_reg_n_0_[7]\,
-      I5 => \comp_burst.sample_counter_0_reg_n_0_[8]\,
+      I0 => \comp_burst.in_sample_reg_n_0_[6]\,
+      I1 => \comp_burst.sample_counter_0[9]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_0_reg_n_0_[7]\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_0_reg_n_0_[8]\,
       O => \p_2_in__0\(8)
     );
 \comp_burst.sample_counter_0[9]_i_1\: unisim.vcomponents.LUT6
@@ -31905,40 +31965,37 @@ begin
       Q => \comp_burst.sample_counter_0_reg_n_0_[9]\,
       R => '0'
     );
-\comp_burst.sample_counter_1[0]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_1[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7F08"
+      INIT => X"74"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_1_reg\(0),
-      I3 => data(0),
+      I0 => \comp_burst.sample_counter_1_reg\(0),
+      I1 => sample_counter_01,
+      I2 => data(0),
       O => \p_0_in__9\(0)
     );
-\comp_burst.sample_counter_1[10]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_1[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(10),
-      I3 => \comp_burst.sample_counter_1[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(10),
+      I0 => data(10),
+      I1 => \comp_burst.sample_counter_1[12]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_1_reg\(10),
       O => \p_0_in__9\(10)
     );
-\comp_burst.sample_counter_1[11]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(11),
-      I3 => \comp_burst.sample_counter_1[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(10),
-      I5 => \comp_burst.sample_counter_1_reg\(11),
+      I0 => data(11),
+      I1 => \comp_burst.sample_counter_1[12]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(10),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_1_reg\(11),
       O => \p_0_in__9\(11)
     );
 \comp_burst.sample_counter_1[12]_i_1\: unisim.vcomponents.LUT6
@@ -31992,7 +32049,40 @@ begin
       I5 => \comp_burst.sample_counter_1_reg\(10),
       O => \comp_burst.sample_counter_1[13]_i_2_n_0\
     );
-\comp_burst.sample_counter_1[13]_i_3\: unisim.vcomponents.LUT2
+\comp_burst.sample_counter_1[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"CA3A"
+    )
+        port map (
+      I0 => data(14),
+      I1 => \comp_burst.sample_counter_1[15]_i_4_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_1_reg\(14),
+      O => \p_0_in__9\(14)
+    );
+\comp_burst.sample_counter_1[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => \comp_burst.sample_ov_0_reg_n_0\,
+      I1 => burst,
+      I2 => sample_counter_01,
+      O => \comp_burst.sample_counter_1[15]_i_1_n_0\
+    );
+\comp_burst.sample_counter_1[15]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"CFAA30AA"
+    )
+        port map (
+      I0 => data(15),
+      I1 => \comp_burst.sample_counter_1[15]_i_4_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(14),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_1_reg\(15),
+      O => \p_0_in__9\(15)
+    );
+\comp_burst.sample_counter_1[15]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
@@ -32001,43 +32091,7 @@ begin
       I1 => inc_env_sample,
       O => sample_counter_01
     );
-\comp_burst.sample_counter_1[14]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F87070F8"
-    )
-        port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(14),
-      I3 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(14),
-      O => \p_0_in__9\(14)
-    );
-\comp_burst.sample_counter_1[15]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F780"
-    )
-        port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_ov_0_reg_n_0\,
-      I3 => burst,
-      O => \comp_burst.sample_counter_1[15]_i_1_n_0\
-    );
-\comp_burst.sample_counter_1[15]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"F870F8F870F87070"
-    )
-        port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(15),
-      I3 => \comp_burst.sample_counter_1[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(14),
-      I5 => \comp_burst.sample_counter_1_reg\(15),
-      O => \p_0_in__9\(15)
-    );
-\comp_burst.sample_counter_1[15]_i_3\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_1[15]_i_4\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"F7FFFFFF"
     )
@@ -32047,31 +32101,29 @@ begin
       I2 => \comp_burst.sample_counter_1[12]_i_2_n_0\,
       I3 => \comp_burst.sample_counter_1_reg\(12),
       I4 => \comp_burst.sample_counter_1_reg\(13),
-      O => \comp_burst.sample_counter_1[15]_i_3_n_0\
+      O => \comp_burst.sample_counter_1[15]_i_4_n_0\
     );
-\comp_burst.sample_counter_1[1]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_1[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"70F8F870"
+      INIT => X"2EE2"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(1),
-      I3 => \comp_burst.sample_counter_1_reg\(1),
-      I4 => \comp_burst.sample_counter_1_reg\(0),
+      I0 => data(1),
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(0),
       O => \p_0_in__9\(1)
     );
-\comp_burst.sample_counter_1[2]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"70F8F8F8F8707070"
+      INIT => X"2EEEE222"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(2),
-      I3 => \comp_burst.sample_counter_1_reg\(1),
-      I4 => \comp_burst.sample_counter_1_reg\(0),
-      I5 => \comp_burst.sample_counter_1_reg\(2),
+      I0 => data(2),
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_1_reg\(1),
+      I3 => \comp_burst.sample_counter_1_reg\(0),
+      I4 => \comp_burst.sample_counter_1_reg\(2),
       O => \p_0_in__9\(2)
     );
 \comp_burst.sample_counter_1[3]_i_1\: unisim.vcomponents.LUT6
@@ -32109,16 +32161,15 @@ begin
       I1 => \comp_burst.sample_counter_1_reg\(1),
       O => \comp_burst.sample_counter_1[4]_i_2_n_0\
     );
-\comp_burst.sample_counter_1[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_1[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(5),
-      I3 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(5),
+      I0 => data(5),
+      I1 => \comp_burst.sample_counter_1[5]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_1_reg\(5),
       O => \p_0_in__9\(5)
     );
 \comp_burst.sample_counter_1[5]_i_2\: unisim.vcomponents.LUT5
@@ -32133,29 +32184,27 @@ begin
       I4 => \comp_burst.sample_counter_1_reg\(3),
       O => \comp_burst.sample_counter_1[5]_i_2_n_0\
     );
-\comp_burst.sample_counter_1[6]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_1[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(6),
-      I3 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(6),
+      I0 => data(6),
+      I1 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_1_reg\(6),
       O => \p_0_in__9\(6)
     );
-\comp_burst.sample_counter_1[7]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => data(7),
-      I3 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_1_reg\(6),
-      I5 => \comp_burst.sample_counter_1_reg\(7),
+      I0 => data(7),
+      I1 => \comp_burst.sample_counter_1[8]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_1_reg\(6),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_1_reg\(7),
       O => \p_0_in__9\(7)
     );
 \comp_burst.sample_counter_1[8]_i_1\: unisim.vcomponents.LUT6
@@ -32184,17 +32233,16 @@ begin
       I5 => \comp_burst.sample_counter_1_reg\(5),
       O => \comp_burst.sample_counter_1[8]_i_2_n_0\
     );
-\comp_burst.sample_counter_1[9]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_1[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_1[9]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_1_reg\(8),
-      I4 => \comp_burst.sample_counter_1_reg\(9),
-      I5 => data(9),
+      I0 => \comp_burst.sample_counter_1[9]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_1_reg\(8),
+      I2 => \comp_burst.sample_counter_1_reg\(9),
+      I3 => sample_counter_01,
+      I4 => data(9),
       O => \p_0_in__9\(9)
     );
 \comp_burst.sample_counter_1[9]_i_2\: unisim.vcomponents.LUT3
@@ -32335,40 +32383,37 @@ begin
       Q => \comp_burst.sample_counter_1_reg\(9),
       R => '0'
     );
-\comp_burst.sample_counter_2[0]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_2[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7F08"
+      INIT => X"74"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_2_reg\(0),
-      I3 => \comp_burst.in_sample_reg_n_0_[30]\,
+      I0 => \comp_burst.sample_counter_2_reg\(0),
+      I1 => sample_counter_01,
+      I2 => \comp_burst.in_sample_reg_n_0_[30]\,
       O => \p_0_in__10\(0)
     );
-\comp_burst.sample_counter_2[10]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_2[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[40]\,
-      I3 => \comp_burst.sample_counter_2[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(10),
+      I0 => \comp_burst.in_sample_reg_n_0_[40]\,
+      I1 => \comp_burst.sample_counter_2[12]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_2_reg\(10),
       O => \p_0_in__10\(10)
     );
-\comp_burst.sample_counter_2[11]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[41]\,
-      I3 => \comp_burst.sample_counter_2[12]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(10),
-      I5 => \comp_burst.sample_counter_2_reg\(11),
+      I0 => \comp_burst.in_sample_reg_n_0_[41]\,
+      I1 => \comp_burst.sample_counter_2[12]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(10),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_2_reg\(11),
       O => \p_0_in__10\(11)
     );
 \comp_burst.sample_counter_2[12]_i_1\: unisim.vcomponents.LUT6
@@ -32397,17 +32442,16 @@ begin
       I5 => \comp_burst.sample_counter_2_reg\(9),
       O => \comp_burst.sample_counter_2[12]_i_2_n_0\
     );
-\comp_burst.sample_counter_2[13]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[43]\,
-      I3 => \comp_burst.sample_counter_2[14]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(12),
-      I5 => \comp_burst.sample_counter_2_reg\(13),
+      I0 => \comp_burst.in_sample_reg_n_0_[43]\,
+      I1 => \comp_burst.sample_counter_2[14]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(12),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_2_reg\(13),
       O => \p_0_in__10\(13)
     );
 \comp_burst.sample_counter_2[14]_i_1\: unisim.vcomponents.LUT6
@@ -32436,29 +32480,27 @@ begin
       I5 => \comp_burst.sample_counter_2_reg\(11),
       O => \comp_burst.sample_counter_2[14]_i_2_n_0\
     );
-\comp_burst.sample_counter_2[15]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_2[15]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F7778000"
+      INIT => X"88F0"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_ov_1_reg_n_0\,
-      I3 => \comp_burst.sample_ov_0_reg_n_0\,
-      I4 => burst,
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => burst,
+      I3 => sample_counter_01,
       O => \comp_burst.sample_counter_2[15]_i_1_n_0\
     );
-\comp_burst.sample_counter_2[15]_i_2\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[15]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[45]\,
-      I3 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(14),
-      I5 => \comp_burst.sample_counter_2_reg\(15),
+      I0 => \comp_burst.in_sample_reg_n_0_[45]\,
+      I1 => \comp_burst.sample_counter_2[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(14),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_2_reg\(15),
       O => \p_0_in__10\(15)
     );
 \comp_burst.sample_counter_2[15]_i_3\: unisim.vcomponents.LUT5
@@ -32473,29 +32515,27 @@ begin
       I4 => \comp_burst.sample_counter_2_reg\(13),
       O => \comp_burst.sample_counter_2[15]_i_3_n_0\
     );
-\comp_burst.sample_counter_2[1]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_2[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"70F8F870"
+      INIT => X"2EE2"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[31]\,
-      I3 => \comp_burst.sample_counter_2_reg\(1),
-      I4 => \comp_burst.sample_counter_2_reg\(0),
+      I0 => \comp_burst.in_sample_reg_n_0_[31]\,
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(0),
       O => \p_0_in__10\(1)
     );
-\comp_burst.sample_counter_2[2]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"70F8F8F8F8707070"
+      INIT => X"2EEEE222"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[32]\,
-      I3 => \comp_burst.sample_counter_2_reg\(1),
-      I4 => \comp_burst.sample_counter_2_reg\(0),
-      I5 => \comp_burst.sample_counter_2_reg\(2),
+      I0 => \comp_burst.in_sample_reg_n_0_[32]\,
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_2_reg\(1),
+      I3 => \comp_burst.sample_counter_2_reg\(0),
+      I4 => \comp_burst.sample_counter_2_reg\(2),
       O => \p_0_in__10\(2)
     );
 \comp_burst.sample_counter_2[3]_i_1\: unisim.vcomponents.LUT6
@@ -32533,29 +32573,27 @@ begin
       I1 => \comp_burst.sample_counter_2_reg\(1),
       O => \comp_burst.sample_counter_2[4]_i_2_n_0\
     );
-\comp_burst.sample_counter_2[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_2[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[35]\,
-      I3 => \comp_burst.sample_counter_2[7]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(5),
+      I0 => \comp_burst.in_sample_reg_n_0_[35]\,
+      I1 => \comp_burst.sample_counter_2[7]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_2_reg\(5),
       O => \p_0_in__10\(5)
     );
-\comp_burst.sample_counter_2[6]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_2[7]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_2_reg\(5),
-      I4 => \comp_burst.sample_counter_2_reg\(6),
-      I5 => \comp_burst.in_sample_reg_n_0_[36]\,
+      I0 => \comp_burst.sample_counter_2[7]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_2_reg\(5),
+      I2 => \comp_burst.sample_counter_2_reg\(6),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.in_sample_reg_n_0_[36]\,
       O => \p_0_in__10\(6)
     );
 \comp_burst.sample_counter_2[7]_i_1\: unisim.vcomponents.LUT6
@@ -32583,17 +32621,16 @@ begin
       I4 => \comp_burst.sample_counter_2_reg\(1),
       O => \comp_burst.sample_counter_2[7]_i_2_n_0\
     );
-\comp_burst.sample_counter_2[8]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_2[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[38]\,
-      I3 => \comp_burst.sample_counter_2[9]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_2_reg\(7),
-      I5 => \comp_burst.sample_counter_2_reg\(8),
+      I0 => \comp_burst.in_sample_reg_n_0_[38]\,
+      I1 => \comp_burst.sample_counter_2[9]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_2_reg\(7),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_2_reg\(8),
       O => \p_0_in__10\(8)
     );
 \comp_burst.sample_counter_2[9]_i_1\: unisim.vcomponents.LUT6
@@ -32747,28 +32784,26 @@ begin
       Q => \comp_burst.sample_counter_2_reg\(9),
       R => '0'
     );
-\comp_burst.sample_counter_3[0]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.sample_counter_3[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7F08"
+      INIT => X"74"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_3_reg\(0),
-      I3 => \comp_burst.in_sample_reg_n_0_[46]\,
+      I0 => \comp_burst.sample_counter_3_reg\(0),
+      I1 => sample_counter_01,
+      I2 => \comp_burst.in_sample_reg_n_0_[46]\,
       O => \p_0_in__11\(0)
     );
-\comp_burst.sample_counter_3[10]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_3[11]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_3_reg\(9),
-      I4 => \comp_burst.sample_counter_3_reg\(10),
-      I5 => \comp_burst.in_sample_reg_n_0_[56]\,
+      I0 => \comp_burst.sample_counter_3[11]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_3_reg\(9),
+      I2 => \comp_burst.sample_counter_3_reg\(10),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.in_sample_reg_n_0_[56]\,
       O => \p_0_in__11\(10)
     );
 \comp_burst.sample_counter_3[11]_i_1\: unisim.vcomponents.LUT6
@@ -32796,17 +32831,16 @@ begin
       I4 => \comp_burst.sample_counter_3_reg\(8),
       O => \comp_burst.sample_counter_3[11]_i_2_n_0\
     );
-\comp_burst.sample_counter_3[12]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"70F8F8F8F8707070"
+      INIT => X"3FAAC0AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[58]\,
-      I3 => \comp_burst.sample_counter_3_reg\(11),
-      I4 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
-      I5 => \comp_burst.sample_counter_3_reg\(12),
+      I0 => \comp_burst.in_sample_reg_n_0_[58]\,
+      I1 => \comp_burst.sample_counter_3_reg\(11),
+      I2 => \comp_burst.sample_counter_3[13]_i_2_n_0\,
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_3_reg\(12),
       O => \p_0_in__11\(12)
     );
 \comp_burst.sample_counter_3[13]_i_1\: unisim.vcomponents.LUT6
@@ -32832,42 +32866,39 @@ begin
       I2 => \comp_burst.sample_counter_3[11]_i_2_n_0\,
       O => \comp_burst.sample_counter_3[13]_i_2_n_0\
     );
-\comp_burst.sample_counter_3[14]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_3[14]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[60]\,
-      I3 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_3_reg\(14),
+      I0 => \comp_burst.in_sample_reg_n_0_[60]\,
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_3_reg\(14),
       O => \p_0_in__11\(14)
     );
-\comp_burst.sample_counter_3[15]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F777777780000000"
+      INIT => X"8080FF00"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_ov_1_reg_n_0\,
-      I3 => \comp_burst.sample_ov_0_reg_n_0\,
-      I4 => \comp_burst.sample_ov_2_reg_n_0\,
-      I5 => burst,
+      I0 => \comp_burst.sample_ov_1_reg_n_0\,
+      I1 => \comp_burst.sample_ov_0_reg_n_0\,
+      I2 => \comp_burst.sample_ov_2_reg_n_0\,
+      I3 => burst,
+      I4 => sample_counter_01,
       O => \comp_burst.sample_counter_3[15]_i_1_n_0\
     );
-\comp_burst.sample_counter_3[15]_i_2\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[15]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[61]\,
-      I3 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
-      I4 => \comp_burst.sample_counter_3_reg\(14),
-      I5 => \comp_burst.sample_counter_3_reg\(15),
+      I0 => \comp_burst.in_sample_reg_n_0_[61]\,
+      I1 => \comp_burst.sample_counter_3[15]_i_3_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(14),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_3_reg\(15),
       O => \p_0_in__11\(15)
     );
 \comp_burst.sample_counter_3[15]_i_3\: unisim.vcomponents.LUT6
@@ -32883,29 +32914,27 @@ begin
       I5 => \comp_burst.sample_counter_3_reg\(13),
       O => \comp_burst.sample_counter_3[15]_i_3_n_0\
     );
-\comp_burst.sample_counter_3[1]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_3[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"70F8F870"
+      INIT => X"2EE2"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[47]\,
-      I3 => \comp_burst.sample_counter_3_reg\(1),
-      I4 => \comp_burst.sample_counter_3_reg\(0),
+      I0 => \comp_burst.in_sample_reg_n_0_[47]\,
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => \comp_burst.sample_counter_3_reg\(0),
       O => \p_0_in__11\(1)
     );
-\comp_burst.sample_counter_3[2]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"70F8F8F8F8707070"
+      INIT => X"2EEEE222"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[48]\,
-      I3 => \comp_burst.sample_counter_3_reg\(1),
-      I4 => \comp_burst.sample_counter_3_reg\(0),
-      I5 => \comp_burst.sample_counter_3_reg\(2),
+      I0 => \comp_burst.in_sample_reg_n_0_[48]\,
+      I1 => sample_counter_01,
+      I2 => \comp_burst.sample_counter_3_reg\(1),
+      I3 => \comp_burst.sample_counter_3_reg\(0),
+      I4 => \comp_burst.sample_counter_3_reg\(2),
       O => \p_0_in__11\(2)
     );
 \comp_burst.sample_counter_3[3]_i_1\: unisim.vcomponents.LUT6
@@ -32921,17 +32950,16 @@ begin
       I5 => \comp_burst.sample_counter_3_reg\(3),
       O => \p_0_in__11\(3)
     );
-\comp_burst.sample_counter_3[4]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_3[4]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_3_reg\(3),
-      I4 => \comp_burst.sample_counter_3_reg\(4),
-      I5 => \comp_burst.in_sample_reg_n_0_[50]\,
+      I0 => \comp_burst.sample_counter_3[4]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_3_reg\(3),
+      I2 => \comp_burst.sample_counter_3_reg\(4),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.in_sample_reg_n_0_[50]\,
       O => \p_0_in__11\(4)
     );
 \comp_burst.sample_counter_3[4]_i_2\: unisim.vcomponents.LUT3
@@ -32944,29 +32972,27 @@ begin
       I2 => \comp_burst.sample_counter_3_reg\(2),
       O => \comp_burst.sample_counter_3[4]_i_2_n_0\
     );
-\comp_burst.sample_counter_3[5]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_3[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[51]\,
-      I3 => \comp_burst.sample_counter_3[7]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_3_reg\(5),
+      I0 => \comp_burst.in_sample_reg_n_0_[51]\,
+      I1 => \comp_burst.sample_counter_3[7]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_3_reg\(5),
       O => \p_0_in__11\(5)
     );
-\comp_burst.sample_counter_3[6]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F870F8F870F87070"
+      INIT => X"CFAA30AA"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[52]\,
-      I3 => \comp_burst.sample_counter_3[7]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_3_reg\(5),
-      I5 => \comp_burst.sample_counter_3_reg\(6),
+      I0 => \comp_burst.in_sample_reg_n_0_[52]\,
+      I1 => \comp_burst.sample_counter_3[7]_i_2_n_0\,
+      I2 => \comp_burst.sample_counter_3_reg\(5),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.sample_counter_3_reg\(6),
       O => \p_0_in__11\(6)
     );
 \comp_burst.sample_counter_3[7]_i_1\: unisim.vcomponents.LUT6
@@ -32994,17 +33020,16 @@ begin
       I4 => \comp_burst.sample_counter_3_reg\(4),
       O => \comp_burst.sample_counter_3[7]_i_2_n_0\
     );
-\comp_burst.sample_counter_3[8]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_counter_3[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F7FF7F7780880800"
+      INIT => X"B4FFB400"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
-      I3 => \comp_burst.sample_counter_3_reg\(7),
-      I4 => \comp_burst.sample_counter_3_reg\(8),
-      I5 => \comp_burst.in_sample_reg_n_0_[54]\,
+      I0 => \comp_burst.sample_counter_3[8]_i_2_n_0\,
+      I1 => \comp_burst.sample_counter_3_reg\(7),
+      I2 => \comp_burst.sample_counter_3_reg\(8),
+      I3 => sample_counter_01,
+      I4 => \comp_burst.in_sample_reg_n_0_[54]\,
       O => \p_0_in__11\(8)
     );
 \comp_burst.sample_counter_3[8]_i_2\: unisim.vcomponents.LUT3
@@ -33017,16 +33042,15 @@ begin
       I2 => \comp_burst.sample_counter_3_reg\(6),
       O => \comp_burst.sample_counter_3[8]_i_2_n_0\
     );
-\comp_burst.sample_counter_3[9]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.sample_counter_3[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F87070F8"
+      INIT => X"CA3A"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.in_sample_reg_n_0_[55]\,
-      I3 => \comp_burst.sample_counter_3[11]_i_2_n_0\,
-      I4 => \comp_burst.sample_counter_3_reg\(9),
+      I0 => \comp_burst.in_sample_reg_n_0_[55]\,
+      I1 => \comp_burst.sample_counter_3[11]_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => \comp_burst.sample_counter_3_reg\(9),
       O => \p_0_in__11\(9)
     );
 \comp_burst.sample_counter_3_reg[0]\: unisim.vcomponents.FDRE
@@ -33157,17 +33181,16 @@ begin
       Q => \comp_burst.sample_counter_3_reg\(9),
       R => '0'
     );
-\comp_burst.sample_ov_0_i_1\: unisim.vcomponents.LUT6
+\comp_burst.sample_ov_0_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F777F0008000F000"
+      INIT => X"8F888088"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => inc_env_sample,
-      I2 => \comp_burst.sample_counter_0_reg_n_0_[15]\,
-      I3 => \comp_burst.sample_ov_0_i_2_n_0\,
-      I4 => burst,
-      I5 => \comp_burst.sample_ov_0_reg_n_0\,
+      I0 => \comp_burst.sample_counter_0_reg_n_0_[15]\,
+      I1 => \comp_burst.sample_ov_0_i_2_n_0\,
+      I2 => sample_counter_01,
+      I3 => burst,
+      I4 => \comp_burst.sample_ov_0_reg_n_0\,
       O => \comp_burst.sample_ov_0_i_1_n_0\
     );
 \comp_burst.sample_ov_0_i_2\: unisim.vcomponents.LUT6
@@ -35442,10 +35465,10 @@ architecture STRUCTURE of ps_comp_ana_0_1_morlet_to_phase_env is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair100";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -35454,8 +35477,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_morlet_to_phase_env is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair99";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -37508,10 +37531,10 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__1\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair91";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -37520,8 +37543,8 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair90";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -39641,10 +39664,10 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__2\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair94";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -39653,8 +39676,8 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__2\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair93";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -41829,10 +41852,10 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__3\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair97";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -41841,8 +41864,8 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__3\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair96";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -43758,6 +43781,7 @@ entity ps_comp_ana_0_1_comp_ana is
     fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    pl_clk : in STD_LOGIC;
     clk : in STD_LOGIC;
     reset : in STD_LOGIC
   );
@@ -43770,7 +43794,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   port (
     clk_out1 : out STD_LOGIC;
     clk_out2 : out STD_LOGIC;
-    locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   end component ps_comp_ana_0_1_clk_wiz_stat;
@@ -44170,7 +44193,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal \comp_ana.sample_ov_2_i_4_n_0\ : STD_LOGIC;
   signal \comp_ana.sample_ov_2_i_5_n_0\ : STD_LOGIC;
   signal \comp_ana.sample_ov_2_reg_n_0\ : STD_LOGIC;
-  signal \comp_ana.stat_0_reset_1_i_1_n_0\ : STD_LOGIC;
   signal \comp_ana.stat_angle_reg_n_0_[0][0]\ : STD_LOGIC;
   signal \comp_ana.stat_angle_reg_n_0_[0][10]\ : STD_LOGIC;
   signal \comp_ana.stat_angle_reg_n_0_[0][11]\ : STD_LOGIC;
@@ -44581,6 +44603,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal sample_ov_00 : STD_LOGIC;
   signal size : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute MARK_DEBUG of size : signal is std.standard.true;
+  signal stat_01_clk_buf : STD_LOGIC;
   signal stat_0_idle_1 : STD_LOGIC;
   attribute async_reg : string;
   attribute async_reg of stat_0_idle_1 : signal is "true";
@@ -44595,12 +44618,13 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal stat_1_reset_2 : STD_LOGIC;
   attribute async_reg of stat_1_reset_2 : signal is "true";
   signal stat_clk_0 : STD_LOGIC;
+  signal stat_clk_0_raw : STD_LOGIC;
   signal stat_clk_1 : STD_LOGIC;
+  signal stat_clk_1_raw : STD_LOGIC;
   signal stat_idle : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of stat_idle : signal is std.standard.true;
   signal stat_idle_in_0 : STD_LOGIC;
   signal stat_idle_sync_0 : STD_LOGIC;
-  signal stat_locked_01 : STD_LOGIC;
   signal stat_phase_3 : STD_LOGIC;
   signal stat_reset_0 : STD_LOGIC;
   signal stat_sample : STD_LOGIC;
@@ -44622,6 +44646,12 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   signal NLW_fifo_raw_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
+  attribute BOX_TYPE : string;
+  attribute BOX_TYPE of buf_stat_01_clk_i : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM : string;
+  attribute XILINX_LEGACY_PRIM of buf_stat_01_clk_i : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP : string;
+  attribute XILINX_TRANSFORM_PINMAP of buf_stat_01_clk_i : label is "VCC:CE";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of burst_0 : label is "soft";
   attribute KEEP : string;
@@ -44646,10 +44676,10 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute KEEP of \comp_ana.count_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_ana.count_reg[8]\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair102";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[7]_i_1\ : label is 35;
@@ -44729,13 +44759,26 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_1,ila,{}";
   attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
-  attribute BOX_TYPE : string;
+  attribute BOX_TYPE of stat_clk_0_i : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of stat_clk_0_i : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of stat_clk_0_i : label is "VCC:CE";
+  attribute BOX_TYPE of stat_clk_1_i : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of stat_clk_1_i : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of stat_clk_1_i : label is "VCC:CE";
   attribute BOX_TYPE of stat_clk_i : label is "PRIMITIVE";
-  attribute XILINX_LEGACY_PRIM : string;
   attribute XILINX_LEGACY_PRIM of stat_clk_i : label is "BUFG";
-  attribute XILINX_TRANSFORM_PINMAP : string;
   attribute XILINX_TRANSFORM_PINMAP of stat_clk_i : label is "VCC:CE";
 begin
+buf_stat_01_clk_i: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => clk_buf,
+      O => stat_01_clk_buf
+    );
 burst_0: entity work.ps_comp_ana_0_1_comp_burst
      port map (
       clk => stat_clk_0,
@@ -44993,10 +45036,9 @@ burst_0: entity work.ps_comp_ana_0_1_comp_burst
     );
 clk_wiz_stat_01: component ps_comp_ana_0_1_clk_wiz_stat
      port map (
-      clk_in1 => clk_buf,
-      clk_out1 => stat_clk_0,
-      clk_out2 => stat_clk_1,
-      locked => stat_locked_01
+      clk_in1 => stat_01_clk_buf,
+      clk_out1 => stat_clk_0_raw,
+      clk_out2 => stat_clk_1_raw
     );
 \comp_ana.ana_in_data_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -52492,20 +52534,11 @@ clk_wiz_stat_01: component ps_comp_ana_0_1_clk_wiz_stat
       Q => stat_0_idle_2,
       R => '0'
     );
-\comp_ana.stat_0_reset_1_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => reset_int,
-      I1 => stat_locked_01,
-      O => \comp_ana.stat_0_reset_1_i_1_n_0\
-    );
 \comp_ana.stat_0_reset_1_reg\: unisim.vcomponents.FDRE
      port map (
       C => stat_clk_0,
       CE => '1',
-      D => \comp_ana.stat_0_reset_1_i_1_n_0\,
+      D => reset_int,
       Q => stat_0_reset_1,
       R => '0'
     );
@@ -52521,7 +52554,7 @@ clk_wiz_stat_01: component ps_comp_ana_0_1_clk_wiz_stat
      port map (
       C => stat_clk_1,
       CE => '1',
-      D => \comp_ana.stat_0_reset_1_i_1_n_0\,
+      D => reset_int,
       Q => stat_1_reset_1,
       R => '0'
     );
@@ -55085,6 +55118,26 @@ phase_env_i_3: entity work.ps_comp_ana_0_1_morlet_to_phase_env
       s_axis_cartesian_tdata(31 downto 16) => im_3(15 downto 0),
       s_axis_cartesian_tdata(15 downto 0) => re_3(15 downto 0)
     );
+stat_clk_0_i: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => stat_clk_0_raw,
+      O => stat_clk_0
+    );
+stat_clk_1_i: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => stat_clk_1_raw,
+      O => stat_clk_1
+    );
 stat_clk_i: unisim.vcomponents.BUFGCE
     generic map(
       CE_TYPE => "ASYNC",
@@ -55092,7 +55145,7 @@ stat_clk_i: unisim.vcomponents.BUFGCE
     )
         port map (
       CE => '1',
-      I => clk,
+      I => pl_clk,
       O => clk_buf
     );
 end STRUCTURE;
@@ -55115,6 +55168,7 @@ entity ps_comp_ana_0_1 is
     fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    pl_clk : in STD_LOGIC;
     clk : in STD_LOGIC;
     reset : in STD_LOGIC
   );
@@ -55143,6 +55197,9 @@ architecture STRUCTURE of ps_comp_ana_0_1 is
   attribute X_INTERFACE_INFO of fifo_clk : signal is "xilinx.com:signal:clock:1.0 fifo_clk CLK";
   attribute X_INTERFACE_MODE of fifo_clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of fifo_clk : signal is "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp1_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of pl_clk : signal is "xilinx.com:signal:clock:1.0 pl_clk CLK";
+  attribute X_INTERFACE_MODE of pl_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of pl_clk : signal is "XIL_INTERFACENAME pl_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
   attribute X_INTERFACE_MODE of reset : signal is "slave";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -55163,6 +55220,7 @@ inst: entity work.ps_comp_ana_0_1_comp_ana
       fifo_re(63 downto 0) => fifo_re(63 downto 0),
       fifo_sample(15 downto 0) => fifo_sample(15 downto 0),
       fifo_size(8 downto 0) => fifo_size(8 downto 0),
+      pl_clk => pl_clk,
       reset => reset
     );
 end STRUCTURE;

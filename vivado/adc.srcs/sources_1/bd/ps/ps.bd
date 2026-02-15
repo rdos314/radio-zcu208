@@ -689,6 +689,12 @@
           "PSU__CRL_APB__PL0_REF_CTRL__SRCSEL": {
             "value": "IOPLL"
           },
+          "PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ": {
+            "value": "249.997498"
+          },
+          "PSU__CRL_APB__PL2_REF_CTRL__ACT_FREQMHZ": {
+            "value": "249.997498"
+          },
           "PSU__CRL_APB__QSPI_REF_CTRL__ACT_FREQMHZ": {
             "value": "124.998749"
           },
@@ -904,6 +910,12 @@
           },
           "PSU__FPGA_PL0_ENABLE": {
             "value": "1"
+          },
+          "PSU__FPGA_PL1_ENABLE": {
+            "value": "0"
+          },
+          "PSU__FPGA_PL2_ENABLE": {
+            "value": "0"
           },
           "PSU__GEM3_COHERENCY": {
             "value": "0"
@@ -3633,6 +3645,20 @@
             "left": "15",
             "right": "0"
           },
+          "pl_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "99999001",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value_src": "default_prop"
+              }
+            }
+          },
           "clk": {
             "type": "clk",
             "direction": "I",
@@ -3750,6 +3776,20 @@
             "direction": "I",
             "left": "15",
             "right": "0"
+          },
+          "pl_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "99999001",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value_src": "default_prop"
+              }
+            }
           },
           "clk": {
             "type": "clk",
@@ -3910,8 +3950,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_high/config_adr",
-          "comp_ana_low/config_adr"
+          "comp_ana_low/config_adr",
+          "comp_ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -3919,8 +3959,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_high/config_data",
-          "comp_ana_low/config_data"
+          "comp_ana_low/config_data",
+          "comp_ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -4749,8 +4789,10 @@
           "ana_low/config_clk",
           "ana_high/config_clk",
           "mts_0/axi_clk",
+          "comp_ana_low/config_clk",
+          "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_low/config_clk"
+          "comp_ana_high/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

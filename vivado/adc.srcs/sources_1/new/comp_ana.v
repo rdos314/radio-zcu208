@@ -37,6 +37,7 @@ module comp_ana(
 	input wire [19:0] fifo_freq,
 	input wire [15:0] fifo_angle,
 
+    input wire pl_clk,
     input wire clk,
     input wire reset
 );
@@ -121,14 +122,16 @@ module comp_ana(
 	reg [61:0] pend_sample;
     reg [19:0] pend_freq;
     reg [15:0] pend_angle;
+    
+    wire stat_01_clk_buf;
+    wire stat_clk_0_raw;
+    wire stat_clk_1_raw;
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_0, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_0, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	wire stat_clk_0;
 
-    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_1, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_1, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	wire stat_clk_1;
-
-    wire stat_locked_01;
 	
 	reg stat_reset_0;
 	reg stat_reset_1;
@@ -153,15 +156,26 @@ module comp_ana(
     reg [19:0] stat_phase_3 [0:7];
 
 	BUFG stat_clk_i (
-		.I			(clk),
+		.I			(pl_clk),
 		.O			(clk_buf));
 
+	BUFG buf_stat_01_clk_i (
+		.I			(clk_buf),
+		.O			(stat_01_clk_buf));
+
 	clk_wiz_stat clk_wiz_stat_01 (
-		.clk_in1	(clk_buf),
-		.clk_out1	(stat_clk_0),
-		.clk_out2	(stat_clk_1),
-		.locked		(stat_locked_01)
+		.clk_in1	(stat_01_clk_buf),
+		.clk_out1	(stat_clk_0_raw),
+		.clk_out2	(stat_clk_1_raw)
     );
+
+	BUFG stat_clk_0_i (
+		.I			(stat_clk_0_raw),
+		.O			(stat_clk_0));
+
+	BUFG stat_clk_1_i (
+		.I			(stat_clk_1_raw),
+		.O			(stat_clk_1));
 
     fifo_comp_ana fifo_ana_i (
         .rst(reset_int),              // input wire rst
@@ -273,14 +287,14 @@ generate
 
 	always @(posedge stat_clk_0) 
 	begin
-		stat_0_reset_1 <= reset_int | (~stat_locked_01);
+		stat_0_reset_1 <= reset_int;
 		stat_0_reset_2 <= stat_0_reset_1;
 		stat_reset_0 <= stat_0_reset_2;
 	end
 
 	always @(posedge stat_clk_1) 
 	begin
-		stat_1_reset_1 <= reset_int | (~stat_locked_01);
+		stat_1_reset_1 <= reset_int;
 		stat_1_reset_2 <= stat_1_reset_1;
 		stat_reset_1 <= stat_1_reset_2;
 	end

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sat Feb  7 18:54:28 2026
+//Date        : Sun Feb 15 14:33:12 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -656,6 +656,7 @@ module ps
         .fifo_re(comp_high_re),
         .fifo_sample(comp_high_sample),
         .fifo_size(comp_high_size),
+        .pl_clk(zynq_ultra_ps_e_0_pl_clk0),
         .reset(mts_0_comp_ana1_reset));
   ps_comp_ana_0_0 comp_ana_low
        (.clk(mts_0_comp_ana0_clk),
@@ -672,6 +673,7 @@ module ps
         .fifo_re(comp_low_re),
         .fifo_sample(comp_low_sample),
         .fifo_size(comp_low_size),
+        .pl_clk(zynq_ultra_ps_e_0_pl_clk0),
         .reset(mts_0_comp_ana0_reset));
   ps_comp_high_0_0 comp_high
        (.active(comp_high_active),

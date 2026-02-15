@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Feb  8 00:50:39 2026
+// Date        : Sun Feb 15 14:34:09 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.v
@@ -82,6 +82,7 @@ module ps_comp_ana_0_0
     fifo_size,
     fifo_freq,
     fifo_angle,
+    pl_clk,
     clk,
     reset);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input config_clk;
@@ -97,6 +98,7 @@ module ps_comp_ana_0_0
   input [8:0]fifo_size;
   input [19:0]fifo_freq;
   input [15:0]fifo_angle;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input pl_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp_ana0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
 
@@ -114,6 +116,7 @@ module ps_comp_ana_0_0
   wire [63:0]fifo_re;
   wire [15:0]fifo_sample;
   wire [8:0]fifo_size;
+  wire pl_clk;
   wire reset;
 
   ps_comp_ana_0_0_comp_ana inst
@@ -131,6 +134,7 @@ module ps_comp_ana_0_0
         .fifo_re(fifo_re),
         .fifo_sample(fifo_sample),
         .fifo_size(fifo_size),
+        .pl_clk(pl_clk),
         .reset(reset));
 endmodule
 
@@ -138,11 +142,9 @@ endmodule
 module ps_comp_ana_0_0_clk_wiz_stat
    (clk_out1,
     clk_out2,
-    locked,
     clk_in1);
-  (* syn_isclock = "1" *) output clk_out1;
-  (* syn_isclock = "1" *) output clk_out2;
-  output locked;
+  output clk_out1;
+  output clk_out2;
   input clk_in1;
 
 
@@ -163,6 +165,7 @@ module ps_comp_ana_0_0_comp_ana
     fifo_size,
     fifo_freq,
     fifo_angle,
+    pl_clk,
     clk,
     reset);
   input config_clk;
@@ -178,6 +181,7 @@ module ps_comp_ana_0_0_comp_ana
   input [8:0]fifo_size;
   input [19:0]fifo_freq;
   input [15:0]fifo_angle;
+  input pl_clk;
   input clk;
   input reset;
 
@@ -533,7 +537,6 @@ module ps_comp_ana_0_0_comp_ana
   wire \comp_ana.sample_ov_2_i_4_n_0 ;
   wire \comp_ana.sample_ov_2_i_5_n_0 ;
   wire \comp_ana.sample_ov_2_reg_n_0 ;
-  wire \comp_ana.stat_0_reset_1_i_1_n_0 ;
   wire \comp_ana.stat_angle_reg_n_0_[0][0] ;
   wire \comp_ana.stat_angle_reg_n_0_[0][10] ;
   wire \comp_ana.stat_angle_reg_n_0_[0][11] ;
@@ -928,6 +931,7 @@ module ps_comp_ana_0_0_comp_ana
   wire phase_env_i_3_n_7;
   wire phase_env_i_3_n_8;
   wire phase_env_i_3_n_9;
+  wire pl_clk;
   wire [4:0]raw_delay;
   wire [0:0]raw_delay0;
   wire raw_empty;
@@ -955,6 +959,7 @@ module ps_comp_ana_0_0_comp_ana
   wire sample_ov_0;
   wire sample_ov_00;
   (* MARK_DEBUG *) wire [8:0]size;
+  wire stat_01_clk_buf;
   (* async_reg = "true" *) wire stat_0_idle_1;
   (* async_reg = "true" *) wire stat_0_idle_2;
   (* async_reg = "true" *) wire stat_0_reset_1;
@@ -962,11 +967,12 @@ module ps_comp_ana_0_0_comp_ana
   (* async_reg = "true" *) wire stat_1_reset_1;
   (* async_reg = "true" *) wire stat_1_reset_2;
   wire stat_clk_0;
+  wire stat_clk_0_raw;
   wire stat_clk_1;
+  wire stat_clk_1_raw;
   (* MARK_DEBUG *) wire [7:0]stat_idle;
   wire stat_idle_in_0;
   wire stat_idle_sync_0;
-  wire stat_locked_01;
   wire stat_phase_3;
   wire stat_reset_0;
   wire stat_sample;
@@ -986,6 +992,16 @@ module ps_comp_ana_0_0_comp_ana
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
 
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_stat_01_clk_i
+       (.CE(1'b1),
+        .I(clk_buf),
+        .O(stat_01_clk_buf));
   (* KEEP_HIERARCHY = "soft" *) 
   ps_comp_ana_0_0_comp_burst burst_0
        (.clk(stat_clk_0),
@@ -1010,10 +1026,9 @@ module ps_comp_ana_0_0_comp_ana
         .rt_start(stat_start[0]),
         .rt_wr(stat_wr[0]));
   ps_comp_ana_0_0_clk_wiz_stat clk_wiz_stat_01
-       (.clk_in1(clk_buf),
-        .clk_out1(stat_clk_0),
-        .clk_out2(stat_clk_1),
-        .locked(stat_locked_01));
+       (.clk_in1(stat_01_clk_buf),
+        .clk_out1(stat_clk_0_raw),
+        .clk_out2(stat_clk_1_raw));
   FDRE \comp_ana.ana_in_data_reg[0] 
        (.C(fifo_clk),
         .CE(fifo_burst),
@@ -2893,20 +2908,20 @@ module ps_comp_ana_0_0_comp_ana
         .D(sample_counter_0[9]),
         .Q(pend_sample[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \comp_ana.raw_delay[0]_i_1 
        (.I0(raw_delay[0]),
         .O(raw_delay0));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_ana.raw_delay[1]_i_1 
        (.I0(raw_delay[0]),
         .I1(raw_delay[1]),
         .O(\comp_ana.raw_delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT3 #(
     .INIT(8'hE1)) 
     \comp_ana.raw_delay[2]_i_1 
@@ -2923,7 +2938,7 @@ module ps_comp_ana_0_0_comp_ana
         .I3(raw_delay[1]),
         .I4(raw_delay[2]),
         .O(\comp_ana.raw_delay[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT4 #(
     .INIT(16'hFE01)) 
     \comp_ana.raw_delay[3]_i_2 
@@ -6555,18 +6570,12 @@ module ps_comp_ana_0_0_comp_ana
         .D(stat_0_idle_1),
         .Q(stat_0_idle_2),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \comp_ana.stat_0_reset_1_i_1 
-       (.I0(reset_int),
-        .I1(stat_locked_01),
-        .O(\comp_ana.stat_0_reset_1_i_1_n_0 ));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDRE \comp_ana.stat_0_reset_1_reg 
        (.C(stat_clk_0),
         .CE(1'b1),
-        .D(\comp_ana.stat_0_reset_1_i_1_n_0 ),
+        .D(reset_int),
         .Q(stat_0_reset_1),
         .R(1'b0));
   (* ASYNC_REG *) 
@@ -6582,7 +6591,7 @@ module ps_comp_ana_0_0_comp_ana
   FDRE \comp_ana.stat_1_reset_1_reg 
        (.C(stat_clk_1),
         .CE(1'b1),
-        .D(\comp_ana.stat_0_reset_1_i_1_n_0 ),
+        .D(reset_int),
         .Q(stat_1_reset_1),
         .R(1'b0));
   (* ASYNC_REG *) 
@@ -8468,9 +8477,29 @@ module ps_comp_ana_0_0_comp_ana
   BUFGCE #(
     .CE_TYPE("ASYNC"),
     .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    stat_clk_0_i
+       (.CE(1'b1),
+        .I(stat_clk_0_raw),
+        .O(stat_clk_0));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    stat_clk_1_i
+       (.CE(1'b1),
+        .I(stat_clk_1_raw),
+        .O(stat_clk_1));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
     stat_clk_i
        (.CE(1'b1),
-        .I(clk),
+        .I(pl_clk),
         .O(clk_buf));
 endmodule
 
@@ -9916,7 +9945,7 @@ module ps_comp_ana_0_0_comp_burst
   wire \comp_burst.sample_counter_1[12]_i_2_n_0 ;
   wire \comp_burst.sample_counter_1[13]_i_2_n_0 ;
   wire \comp_burst.sample_counter_1[15]_i_1_n_0 ;
-  wire \comp_burst.sample_counter_1[15]_i_3_n_0 ;
+  wire \comp_burst.sample_counter_1[15]_i_4_n_0 ;
   wire \comp_burst.sample_counter_1[4]_i_2_n_0 ;
   wire \comp_burst.sample_counter_1[5]_i_2_n_0 ;
   wire \comp_burst.sample_counter_1[8]_i_2_n_0 ;
@@ -10422,7 +10451,7 @@ module ps_comp_ana_0_0_comp_burst
     \comp_burst.df_count[0]_i_1 
        (.I0(\comp_burst.df_count_reg [0]),
         .O(p_0_in__8[0]));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.df_count[1]_i_1 
@@ -10443,7 +10472,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.df_count_reg [1]),
         .I3(\comp_burst.df_count_reg [3]),
         .O(\comp_burst.df_count[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.df_count[2]_i_3 
@@ -10760,14 +10789,14 @@ module ps_comp_ana_0_0_comp_burst
     \comp_burst.df_ind[0]_i_1 
        (.I0(\comp_burst.df_ind_reg [0]),
         .O(p_0_in__7[0]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.df_ind[1]_i_1 
        (.I0(\comp_burst.df_ind_reg [0]),
         .I1(\comp_burst.df_ind_reg [1]),
         .O(p_0_in__7[1]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.df_ind[2]_i_1 
@@ -10775,7 +10804,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.df_ind_reg [0]),
         .I2(\comp_burst.df_ind_reg [2]),
         .O(p_0_in__7[2]));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.df_ind[3]_i_1 
@@ -10784,7 +10813,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.df_ind_reg [1]),
         .I3(\comp_burst.df_ind_reg [3]),
         .O(p_0_in__7[3]));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.df_ind[4]_i_1 
@@ -10810,6 +10839,7 @@ module ps_comp_ana_0_0_comp_burst
        (.I0(\comp_burst.df_ind[8]_i_3_n_0 ),
         .I1(\comp_burst.df_ind_reg [6]),
         .O(p_0_in__7[6]));
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.df_ind[7]_i_1 
@@ -10822,6 +10852,7 @@ module ps_comp_ana_0_0_comp_burst
     \comp_burst.df_ind[8]_i_1 
        (.I0(p2_active),
         .O(clear));
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.df_ind[8]_i_2 
@@ -11114,13 +11145,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(p2_size[6]),
         .I5(\comp_burst.df_start[4]_i_3_n_0 ),
         .O(\comp_burst.df_start[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \comp_burst.df_start[4]_i_2 
        (.I0(p2_max_pos[5]),
         .I1(p2_max_pos[4]),
         .O(\comp_burst.df_start[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
     .INIT(16'hAAA8)) 
     \comp_burst.df_start[4]_i_3 
@@ -11139,6 +11171,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(p2_size[7]),
         .I5(\comp_burst.df_start[5]_i_3_n_0 ),
         .O(\comp_burst.df_start[5]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \comp_burst.df_start[5]_i_2 
@@ -11146,7 +11179,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(p2_max_pos[4]),
         .I2(p2_max_pos[5]),
         .O(\comp_burst.df_start[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT5 #(
     .INIT(32'h00015555)) 
     \comp_burst.df_start[5]_i_3 
@@ -11166,7 +11199,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(p2_size[8]),
         .I5(\comp_burst.df_start[6]_i_3_n_0 ),
         .O(\comp_burst.df_start[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \comp_burst.df_start[6]_i_2 
@@ -11202,7 +11235,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(p2_size[9]),
         .I5(\comp_burst.df_start[7]_i_4_n_0 ),
         .O(\comp_burst.df_start[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT5 #(
     .INIT(32'h00000001)) 
     \comp_burst.df_start[7]_i_3 
@@ -11403,7 +11436,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(env_sum),
         .Q(div_start),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \comp_burst.env_down_adr[0]_i_1 
@@ -11429,13 +11462,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_down_adr_reg_n_0_[7] ),
         .I5(\comp_burst.env_down_adr_reg_n_0_[9] ),
         .O(\comp_burst.env_down_adr[10]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_burst.env_down_adr[1]_i_1 
        (.I0(\comp_burst.env_down_adr_reg_n_0_[0] ),
         .I1(\comp_burst.env_down_adr_reg_n_0_[1] ),
         .O(\comp_burst.env_down_adr[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT5 #(
     .INIT(32'hCCC3AAAA)) 
     \comp_burst.env_down_adr[2]_i_1 
@@ -11455,6 +11489,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_down_adr_reg_n_0_[3] ),
         .I5(load_env),
         .O(\comp_burst.env_down_adr[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT5 #(
     .INIT(32'hF00F9999)) 
     \comp_burst.env_down_adr[4]_i_1 
@@ -11464,7 +11499,7 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.env_down_adr_reg_n_0_[4] ),
         .I4(load_env),
         .O(\comp_burst.env_down_adr[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \comp_burst.env_down_adr[4]_i_2 
@@ -11492,7 +11527,7 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.env_down_adr[6]_i_3_n_0 ),
         .I4(load_env),
         .O(\comp_burst.env_down_adr[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT4 #(
     .INIT(16'hFE01)) 
     \comp_burst.env_down_adr[6]_i_2 
@@ -11501,7 +11536,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.curr_size_reg_n_0_[3] ),
         .I3(\comp_burst.curr_size_reg_n_0_[4] ),
         .O(\comp_burst.env_down_adr[6]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \comp_burst.env_down_adr[6]_i_3 
@@ -11530,6 +11565,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_down_adr[7]_i_3_n_0 ),
         .I5(\comp_burst.env_down_adr_reg_n_0_[4] ),
         .O(\comp_burst.env_down_adr[7]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \comp_burst.env_down_adr[7]_i_3 
@@ -11546,7 +11582,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_down_adr_reg_n_0_[8] ),
         .I5(load_env),
         .O(\comp_burst.env_down_adr[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \comp_burst.env_down_adr[8]_i_2 
@@ -11564,7 +11600,7 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.env_down_adr_reg_n_0_[9] ),
         .I4(load_env),
         .O(\comp_burst.env_down_adr[9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \comp_burst.env_down_adr[9]_i_2 
@@ -12125,7 +12161,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__6[8]),
         .Q(env_down_ptr[8]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h74)) 
     \comp_burst.env_down_ptr_rep[0]_i_1 
@@ -12133,7 +12169,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(load_env),
         .I2(\comp_burst.curr_size_reg_n_0_[0] ),
         .O(p_0_in__6[0]));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT4 #(
     .INIT(16'hD11D)) 
     \comp_burst.env_down_ptr_rep[1]_i_1 
@@ -12179,6 +12215,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.curr_size_reg_n_0_[3] ),
         .I5(\comp_burst.curr_size_reg_n_0_[4] ),
         .O(p_0_in__6[4]));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \comp_burst.env_down_ptr_rep[4]_i_2 
@@ -12213,7 +12250,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.curr_size_reg_n_0_[5] ),
         .I5(\comp_burst.curr_size_reg_n_0_[6] ),
         .O(p_0_in__6[6]));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \comp_burst.env_down_ptr_rep[6]_i_2 
@@ -13342,14 +13379,14 @@ module ps_comp_ana_0_0_comp_burst
         .D(env_up_ind[9]),
         .Q(\comp_burst.env_start_ind_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum[15]_i_1 
        (.I0(\comp_burst.env_sum_msb_reg_n_0_[0] ),
         .I1(env_sum_lsb[16]),
         .O(env_sum0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum[16]_i_1 
@@ -13357,7 +13394,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(env_sum_lsb[16]),
         .I2(\comp_burst.env_sum_msb_reg_n_0_[1] ),
         .O(env_sum0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum[17]_i_1 
@@ -13366,7 +13403,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_reg_n_0_[1] ),
         .I3(\comp_burst.env_sum_msb_reg_n_0_[2] ),
         .O(env_sum0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum[18]_i_1 
@@ -13386,12 +13423,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_sum_msb_reg_n_0_[3] ),
         .I5(\comp_burst.env_sum_msb_reg_n_0_[4] ),
         .O(env_sum0[4]));
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum[20]_i_1 
        (.I0(\comp_burst.env_sum[23]_i_2_n_0 ),
         .I1(\comp_burst.env_sum_msb_reg_n_0_[5] ),
         .O(env_sum0[5]));
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum[21]_i_1 
@@ -13399,6 +13438,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_reg_n_0_[5] ),
         .I2(\comp_burst.env_sum_msb_reg_n_0_[6] ),
         .O(env_sum0[6]));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum[22]_i_1 
@@ -13407,6 +13447,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_reg_n_0_[6] ),
         .I3(\comp_burst.env_sum_msb_reg_n_0_[7] ),
         .O(env_sum0[7]));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum[23]_i_1 
@@ -15433,14 +15474,14 @@ module ps_comp_ana_0_0_comp_burst
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_burst.env_sum_msb_0_reg [8]}),
         .O({\NLW_comp_burst.env_sum_msb_01_reg[9]_i_1_O_UNCONNECTED [7:2],env_sum_msb_010[9:8]}),
         .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_burst.env_sum_msb_01[9]_i_2_n_0 }));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum_msb_0[0]_i_1 
        (.I0(\comp_burst.env_sum_lsb_0_reg_n_0_[16] ),
         .I1(\comp_burst.env_sum_msb_0_reg [0]),
         .O(p_0_in__3[0]));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum_msb_0[1]_i_1 
@@ -15448,7 +15489,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_0_reg [0]),
         .I2(\comp_burst.env_sum_msb_0_reg [1]),
         .O(p_0_in__3[1]));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum_msb_0[2]_i_1 
@@ -15457,7 +15498,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_lsb_0_reg_n_0_[16] ),
         .I3(\comp_burst.env_sum_msb_0_reg [2]),
         .O(p_0_in__3[2]));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum_msb_0[3]_i_1 
@@ -15477,12 +15518,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_sum_msb_0_reg [2]),
         .I5(\comp_burst.env_sum_msb_0_reg [3]),
         .O(p_0_in__3[4]));
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_burst.env_sum_msb_0[5]_i_1 
        (.I0(\comp_burst.env_sum_msb_0[8]_i_2_n_0 ),
         .I1(\comp_burst.env_sum_msb_0_reg [5]),
         .O(p_0_in__3[5]));
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.env_sum_msb_0[6]_i_1 
@@ -15490,6 +15533,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_0[8]_i_2_n_0 ),
         .I2(\comp_burst.env_sum_msb_0_reg [6]),
         .O(p_0_in__3[6]));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.env_sum_msb_0[7]_i_1 
@@ -15498,6 +15542,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_0_reg [5]),
         .I3(\comp_burst.env_sum_msb_0_reg [7]),
         .O(p_0_in__3[7]));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT5 #(
     .INIT(32'hF7FF0800)) 
     \comp_burst.env_sum_msb_0[8]_i_1 
@@ -15571,14 +15616,14 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__3[8]),
         .Q(\comp_burst.env_sum_msb_0_reg [8]),
         .R(env_sum_lsb_0));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum_msb_1[0]_i_1 
        (.I0(p_0_in0_in),
         .I1(\comp_burst.env_sum_msb_1_reg [0]),
         .O(p_0_in__2[0]));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum_msb_1[1]_i_1 
@@ -15586,7 +15631,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_1_reg [0]),
         .I2(\comp_burst.env_sum_msb_1_reg [1]),
         .O(p_0_in__2[1]));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum_msb_1[2]_i_1 
@@ -15595,7 +15640,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(p_0_in0_in),
         .I3(\comp_burst.env_sum_msb_1_reg [2]),
         .O(p_0_in__2[2]));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum_msb_1[3]_i_1 
@@ -15615,12 +15660,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_sum_msb_1_reg [2]),
         .I5(\comp_burst.env_sum_msb_1_reg [3]),
         .O(p_0_in__2[4]));
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_burst.env_sum_msb_1[5]_i_1 
        (.I0(\comp_burst.env_sum_msb_1[8]_i_2_n_0 ),
         .I1(\comp_burst.env_sum_msb_1_reg [5]),
         .O(p_0_in__2[5]));
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.env_sum_msb_1[6]_i_1 
@@ -15628,6 +15675,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_1[8]_i_2_n_0 ),
         .I2(\comp_burst.env_sum_msb_1_reg [6]),
         .O(p_0_in__2[6]));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.env_sum_msb_1[7]_i_1 
@@ -15636,6 +15684,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_1_reg [5]),
         .I3(\comp_burst.env_sum_msb_1_reg [7]),
         .O(p_0_in__2[7]));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT5 #(
     .INIT(32'hF7FF0800)) 
     \comp_burst.env_sum_msb_1[8]_i_1 
@@ -15839,14 +15888,14 @@ module ps_comp_ana_0_0_comp_burst
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_burst.env_sum_msb_2_reg [8]}),
         .O({\NLW_comp_burst.env_sum_msb_23_reg[9]_i_1_O_UNCONNECTED [7:2],env_sum_msb_230[9:8]}),
         .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\comp_burst.env_sum_msb_23[9]_i_2_n_0 }));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum_msb_2[0]_i_1 
        (.I0(in),
         .I1(\comp_burst.env_sum_msb_2_reg [0]),
         .O(p_0_in__5[0]));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum_msb_2[1]_i_1 
@@ -15854,7 +15903,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_2_reg [0]),
         .I2(\comp_burst.env_sum_msb_2_reg [1]),
         .O(p_0_in__5[1]));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum_msb_2[2]_i_1 
@@ -15863,7 +15912,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(in),
         .I3(\comp_burst.env_sum_msb_2_reg [2]),
         .O(p_0_in__5[2]));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum_msb_2[3]_i_1 
@@ -15883,12 +15932,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_sum_msb_2_reg [2]),
         .I5(\comp_burst.env_sum_msb_2_reg [3]),
         .O(p_0_in__5[4]));
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_burst.env_sum_msb_2[5]_i_1 
        (.I0(\comp_burst.env_sum_msb_2[8]_i_2_n_0 ),
         .I1(\comp_burst.env_sum_msb_2_reg [5]),
         .O(p_0_in__5[5]));
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.env_sum_msb_2[6]_i_1 
@@ -15896,6 +15947,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_2[8]_i_2_n_0 ),
         .I2(\comp_burst.env_sum_msb_2_reg [6]),
         .O(p_0_in__5[6]));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.env_sum_msb_2[7]_i_1 
@@ -15904,6 +15956,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_2_reg [5]),
         .I3(\comp_burst.env_sum_msb_2_reg [7]),
         .O(p_0_in__5[7]));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT5 #(
     .INIT(32'hF7FF0800)) 
     \comp_burst.env_sum_msb_2[8]_i_1 
@@ -15977,14 +16030,14 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__5[8]),
         .Q(\comp_burst.env_sum_msb_2_reg [8]),
         .R(env_sum_lsb_0));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_sum_msb_3[0]_i_1 
        (.I0(\comp_burst.env_sum_lsb_3_reg_n_0_[16] ),
         .I1(\comp_burst.env_sum_msb_3_reg [0]),
         .O(p_0_in__4[0]));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_sum_msb_3[1]_i_1 
@@ -15992,7 +16045,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_3_reg [0]),
         .I2(\comp_burst.env_sum_msb_3_reg [1]),
         .O(p_0_in__4[1]));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_sum_msb_3[2]_i_1 
@@ -16001,7 +16054,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_lsb_3_reg_n_0_[16] ),
         .I3(\comp_burst.env_sum_msb_3_reg [2]),
         .O(p_0_in__4[2]));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_sum_msb_3[3]_i_1 
@@ -16021,12 +16074,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_sum_msb_3_reg [2]),
         .I5(\comp_burst.env_sum_msb_3_reg [3]),
         .O(p_0_in__4[4]));
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \comp_burst.env_sum_msb_3[5]_i_1 
        (.I0(\comp_burst.env_sum_msb_3[8]_i_2_n_0 ),
         .I1(\comp_burst.env_sum_msb_3_reg [5]),
         .O(p_0_in__4[5]));
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.env_sum_msb_3[6]_i_1 
@@ -16034,6 +16089,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_sum_msb_3[8]_i_2_n_0 ),
         .I2(\comp_burst.env_sum_msb_3_reg [6]),
         .O(p_0_in__4[6]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.env_sum_msb_3[7]_i_1 
@@ -16042,6 +16098,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_sum_msb_3_reg [5]),
         .I3(\comp_burst.env_sum_msb_3_reg [7]),
         .O(p_0_in__4[7]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT5 #(
     .INIT(32'hF7FF0800)) 
     \comp_burst.env_sum_msb_3[8]_i_1 
@@ -16329,6 +16386,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(env_sum_lsb[10]),
         .Q(\comp_burst.env_sum_reg_n_0_[9] ),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \comp_burst.env_up_adr[0]_i_1 
@@ -16354,14 +16412,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_up_adr_reg__0 [2]),
         .I5(\comp_burst.env_up_adr_reg__0 [3]),
         .O(\comp_burst.env_up_adr[10]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_up_adr[1]_i_1 
        (.I0(\comp_burst.env_up_adr_reg [0]),
         .I1(\comp_burst.env_up_adr_reg [1]),
         .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \comp_burst.env_up_adr[2]_i_1 
@@ -16369,7 +16427,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_up_adr_reg [1]),
         .I2(\comp_burst.env_up_adr_reg [0]),
         .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_up_adr[3]_i_1 
@@ -16378,7 +16436,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_up_adr_reg__0 [2]),
         .I3(\comp_burst.env_up_adr_reg__0 [3]),
         .O(p_0_in__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_up_adr[4]_i_1 
@@ -16408,6 +16466,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.env_up_adr_reg__0 [4]),
         .I5(\comp_burst.env_up_adr_reg__0 [5]),
         .O(p_0_in__0[6]));
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \comp_burst.env_up_adr[6]_i_2 
@@ -16421,6 +16480,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_up_adr_reg__0 [6]),
         .I2(\comp_burst.env_up_adr_reg__0 [7]),
         .O(p_0_in__0[7]));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_up_adr[8]_i_1 
@@ -16429,6 +16489,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_up_adr[10]_i_2_n_0 ),
         .I3(\comp_burst.env_up_adr_reg__0 [8]),
         .O(p_0_in__0[8]));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_up_adr[9]_i_1 
@@ -17000,14 +17061,14 @@ module ps_comp_ana_0_0_comp_burst
     \comp_burst.env_up_ptr_rep[0]_i_1 
        (.I0(\comp_burst.env_up_ptr_reg [0]),
         .O(p_0_in__1[0]));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_burst.env_up_ptr_rep[1]_i_1 
        (.I0(\comp_burst.env_up_ptr_reg [0]),
         .I1(\comp_burst.env_up_ptr_reg [1]),
         .O(p_0_in__1[1]));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \comp_burst.env_up_ptr_rep[2]_i_1 
@@ -17015,7 +17076,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.env_up_ptr_reg [0]),
         .I2(\comp_burst.env_up_ptr_reg [2]),
         .O(p_0_in__1[2]));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \comp_burst.env_up_ptr_rep[3]_i_1 
@@ -17024,7 +17085,7 @@ module ps_comp_ana_0_0_comp_burst
         .I2(\comp_burst.env_up_ptr_reg [1]),
         .I3(\comp_burst.env_up_ptr_reg [3]),
         .O(p_0_in__1[3]));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \comp_burst.env_up_ptr_rep[4]_i_1 
@@ -17050,7 +17111,7 @@ module ps_comp_ana_0_0_comp_burst
        (.I0(\comp_burst.env_up_ptr_rep[8]_i_4_n_0 ),
         .I1(\comp_burst.env_up_ptr_reg [6]),
         .O(p_0_in__1[6]));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \comp_burst.env_up_ptr_rep[7]_i_1 
@@ -17069,7 +17130,7 @@ module ps_comp_ana_0_0_comp_burst
        (.I0(\comp_burst.env_up_adr_reg [1]),
         .I1(\comp_burst.env_up_adr_reg [0]),
         .O(\comp_burst.env_up_ptr_rep[8]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \comp_burst.env_up_ptr_rep[8]_i_3 
@@ -18101,7 +18162,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(div_result[25]),
         .Q(\comp_burst.mean_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \comp_burst.mean_stage[0]_i_1 
@@ -18109,7 +18170,7 @@ module ps_comp_ana_0_0_comp_burst
         .I1(mean_stage[0]),
         .I2(reset),
         .O(\comp_burst.mean_stage[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \comp_burst.mean_stage[1]_i_1 
@@ -23754,6 +23815,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(rt_start),
         .Q(rt_meta_wr),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h4C)) 
     \comp_burst.run_env_end_i_1 
@@ -23806,6 +23868,7 @@ module ps_comp_ana_0_0_comp_burst
         .D(\comp_burst.run_env_i_1_n_0 ),
         .Q(run_env),
         .S(scan_start));
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h2A)) 
     \comp_burst.run_env_start_i_1 
@@ -23826,24 +23889,22 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.sample_counter_0_reg_n_0_[0] ),
         .I2(sample_counter_01),
         .O(\comp_burst.sample_counter_0[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_0[10]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[8] ),
-        .I3(\comp_burst.sample_counter_0[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[10] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[8] ),
+        .I1(\comp_burst.sample_counter_0[12]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_0_reg_n_0_[10] ),
         .O(p_2_in__0[10]));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_0[11]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[9] ),
-        .I3(\comp_burst.sample_counter_0[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[10] ),
-        .I5(\comp_burst.sample_counter_0_reg_n_0_[11] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[9] ),
+        .I1(\comp_burst.sample_counter_0[12]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[10] ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_0_reg_n_0_[11] ),
         .O(p_2_in__0[11]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -23865,15 +23926,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_0_reg_n_0_[7] ),
         .I5(\comp_burst.sample_counter_0_reg_n_0_[9] ),
         .O(\comp_burst.sample_counter_0[12]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_0[13]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[11] ),
-        .I3(\comp_burst.sample_counter_0[14]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[12] ),
-        .I5(\comp_burst.sample_counter_0_reg_n_0_[13] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[11] ),
+        .I1(\comp_burst.sample_counter_0[14]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[12] ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_0_reg_n_0_[13] ),
         .O(p_2_in__0[13]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -23895,22 +23955,20 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_0_reg_n_0_[9] ),
         .I5(\comp_burst.sample_counter_0_reg_n_0_[11] ),
         .O(\comp_burst.sample_counter_0[14]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hF8)) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \comp_burst.sample_counter_0[15]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(burst),
+       (.I0(sample_counter_01),
+        .I1(burst),
         .O(\comp_burst.sample_counter_0[15]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_0[15]_i_2 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[13] ),
-        .I3(\comp_burst.sample_counter_0[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[14] ),
-        .I5(\comp_burst.sample_counter_0_reg_n_0_[15] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[13] ),
+        .I1(\comp_burst.sample_counter_0[15]_i_3_n_0 ),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[14] ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_0_reg_n_0_[15] ),
         .O(p_2_in__0[15]));
   LUT5 #(
     .INIT(32'hF7FFFFFF)) 
@@ -23921,24 +23979,23 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_0_reg_n_0_[11] ),
         .I4(\comp_burst.sample_counter_0_reg_n_0_[13] ),
         .O(\comp_burst.sample_counter_0[15]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h07888F00)) 
+  LUT4 #(
+    .INIT(16'h34C4)) 
     \comp_burst.sample_counter_0[1]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(burst),
-        .I3(\comp_burst.sample_counter_0_reg_n_0_[1] ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[0] ),
+       (.I0(burst),
+        .I1(\comp_burst.sample_counter_0_reg_n_0_[1] ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_0_reg_n_0_[0] ),
         .O(\comp_burst.sample_counter_0[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h70F8F8F8F8707070)) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT5 #(
+    .INIT(32'h2EEEE222)) 
     \comp_burst.sample_counter_0[2]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[0] ),
-        .I3(\comp_burst.sample_counter_0_reg_n_0_[1] ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[0] ),
-        .I5(\comp_burst.sample_counter_0_reg_n_0_[2] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[0] ),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[1] ),
+        .I3(\comp_burst.sample_counter_0_reg_n_0_[0] ),
+        .I4(\comp_burst.sample_counter_0_reg_n_0_[2] ),
         .O(p_2_in__0[2]));
   LUT6 #(
     .INIT(64'h6AAAFFFF6AAA0000)) 
@@ -23960,30 +24017,30 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_0_reg_n_0_[4] ),
         .O(p_2_in__0[4]));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \comp_burst.sample_counter_0[4]_i_2 
        (.I0(\comp_burst.sample_counter_0_reg_n_0_[0] ),
         .I1(\comp_burst.sample_counter_0_reg_n_0_[1] ),
         .O(\comp_burst.sample_counter_0[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_0[5]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[3] ),
-        .I3(\comp_burst.sample_counter_0[7]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[5] ),
-        .O(p_2_in__0[5]));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
-    \comp_burst.sample_counter_0[6]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_0[7]_i_2_n_0 ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[3] ),
+        .I1(\comp_burst.sample_counter_0[7]_i_2_n_0 ),
+        .I2(sample_counter_01),
         .I3(\comp_burst.sample_counter_0_reg_n_0_[5] ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[6] ),
-        .I5(\comp_burst.in_sample_reg_n_0_[4] ),
+        .O(p_2_in__0[5]));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
+    \comp_burst.sample_counter_0[6]_i_1 
+       (.I0(\comp_burst.sample_counter_0[7]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_0_reg_n_0_[5] ),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[6] ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.in_sample_reg_n_0_[4] ),
         .O(p_2_in__0[6]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24004,15 +24061,14 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_0_reg_n_0_[0] ),
         .I4(\comp_burst.sample_counter_0_reg_n_0_[1] ),
         .O(\comp_burst.sample_counter_0[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_0[8]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[6] ),
-        .I3(\comp_burst.sample_counter_0[9]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_0_reg_n_0_[7] ),
-        .I5(\comp_burst.sample_counter_0_reg_n_0_[8] ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[6] ),
+        .I1(\comp_burst.sample_counter_0[9]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_0_reg_n_0_[7] ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_0_reg_n_0_[8] ),
         .O(p_2_in__0[8]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24024,6 +24080,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_0_reg_n_0_[9] ),
         .O(p_2_in__0[9]));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     \comp_burst.sample_counter_0[9]_i_2 
@@ -24127,32 +24184,30 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_2_in__0[9]),
         .Q(\comp_burst.sample_counter_0_reg_n_0_[9] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h7F08)) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  LUT3 #(
+    .INIT(8'h74)) 
     \comp_burst.sample_counter_1[0]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_1_reg [0]),
-        .I3(data[0]),
+       (.I0(\comp_burst.sample_counter_1_reg [0]),
+        .I1(sample_counter_01),
+        .I2(data[0]),
         .O(p_0_in__9[0]));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_1[10]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[10]),
-        .I3(\comp_burst.sample_counter_1[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [10]),
+       (.I0(data[10]),
+        .I1(\comp_burst.sample_counter_1[12]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_1_reg [10]),
         .O(p_0_in__9[10]));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_1[11]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[11]),
-        .I3(\comp_burst.sample_counter_1[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [10]),
-        .I5(\comp_burst.sample_counter_1_reg [11]),
+       (.I0(data[11]),
+        .I1(\comp_burst.sample_counter_1[12]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_1_reg [10]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_1_reg [11]),
         .O(p_0_in__9[11]));
   LUT6 #(
     .INIT(64'hFF3FAAAA00C0AAAA)) 
@@ -24164,7 +24219,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_1_reg [12]),
         .O(p_0_in__9[12]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT5 #(
     .INIT(32'hF7FFFFFF)) 
     \comp_burst.sample_counter_1[12]_i_2 
@@ -24194,67 +24249,63 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_1_reg [8]),
         .I5(\comp_burst.sample_counter_1_reg [10]),
         .O(\comp_burst.sample_counter_1[13]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hCA3A)) 
+    \comp_burst.sample_counter_1[14]_i_1 
+       (.I0(data[14]),
+        .I1(\comp_burst.sample_counter_1[15]_i_4_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_1_reg [14]),
+        .O(p_0_in__9[14]));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.sample_counter_1[15]_i_1 
+       (.I0(\comp_burst.sample_ov_0_reg_n_0 ),
+        .I1(burst),
+        .I2(sample_counter_01),
+        .O(\comp_burst.sample_counter_1[15]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
+    \comp_burst.sample_counter_1[15]_i_2 
+       (.I0(data[15]),
+        .I1(\comp_burst.sample_counter_1[15]_i_4_n_0 ),
+        .I2(\comp_burst.sample_counter_1_reg [14]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_1_reg [15]),
+        .O(p_0_in__9[15]));
   LUT2 #(
     .INIT(4'h8)) 
-    \comp_burst.sample_counter_1[13]_i_3 
+    \comp_burst.sample_counter_1[15]_i_3 
        (.I0(\comp_burst.run_env_start_reg_n_0 ),
         .I1(inc_env_sample),
         .O(sample_counter_01));
   LUT5 #(
-    .INIT(32'hF87070F8)) 
-    \comp_burst.sample_counter_1[14]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[14]),
-        .I3(\comp_burst.sample_counter_1[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [14]),
-        .O(p_0_in__9[14]));
-  LUT4 #(
-    .INIT(16'hF780)) 
-    \comp_burst.sample_counter_1[15]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_ov_0_reg_n_0 ),
-        .I3(burst),
-        .O(\comp_burst.sample_counter_1[15]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
-    \comp_burst.sample_counter_1[15]_i_2 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[15]),
-        .I3(\comp_burst.sample_counter_1[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [14]),
-        .I5(\comp_burst.sample_counter_1_reg [15]),
-        .O(p_0_in__9[15]));
-  LUT5 #(
     .INIT(32'hF7FFFFFF)) 
-    \comp_burst.sample_counter_1[15]_i_3 
+    \comp_burst.sample_counter_1[15]_i_4 
        (.I0(\comp_burst.sample_counter_1_reg [11]),
         .I1(\comp_burst.sample_counter_1_reg [10]),
         .I2(\comp_burst.sample_counter_1[12]_i_2_n_0 ),
         .I3(\comp_burst.sample_counter_1_reg [12]),
         .I4(\comp_burst.sample_counter_1_reg [13]),
-        .O(\comp_burst.sample_counter_1[15]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
-  LUT5 #(
-    .INIT(32'h70F8F870)) 
+        .O(\comp_burst.sample_counter_1[15]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  LUT4 #(
+    .INIT(16'h2EE2)) 
     \comp_burst.sample_counter_1[1]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[1]),
-        .I3(\comp_burst.sample_counter_1_reg [1]),
-        .I4(\comp_burst.sample_counter_1_reg [0]),
+       (.I0(data[1]),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_1_reg [1]),
+        .I3(\comp_burst.sample_counter_1_reg [0]),
         .O(p_0_in__9[1]));
-  LUT6 #(
-    .INIT(64'h70F8F8F8F8707070)) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT5 #(
+    .INIT(32'h2EEEE222)) 
     \comp_burst.sample_counter_1[2]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[2]),
-        .I3(\comp_burst.sample_counter_1_reg [1]),
-        .I4(\comp_burst.sample_counter_1_reg [0]),
-        .I5(\comp_burst.sample_counter_1_reg [2]),
+       (.I0(data[2]),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_1_reg [1]),
+        .I3(\comp_burst.sample_counter_1_reg [0]),
+        .I4(\comp_burst.sample_counter_1_reg [2]),
         .O(p_0_in__9[2]));
   LUT6 #(
     .INIT(64'h6AAAFFFF6AAA0000)) 
@@ -24276,21 +24327,20 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_1_reg [4]),
         .O(p_0_in__9[4]));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \comp_burst.sample_counter_1[4]_i_2 
        (.I0(\comp_burst.sample_counter_1_reg [0]),
         .I1(\comp_burst.sample_counter_1_reg [1]),
         .O(\comp_burst.sample_counter_1[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_1[5]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[5]),
-        .I3(\comp_burst.sample_counter_1[5]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [5]),
+       (.I0(data[5]),
+        .I1(\comp_burst.sample_counter_1[5]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_1_reg [5]),
         .O(p_0_in__9[5]));
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
@@ -24301,24 +24351,22 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_1_reg [2]),
         .I4(\comp_burst.sample_counter_1_reg [3]),
         .O(\comp_burst.sample_counter_1[5]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_1[6]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[6]),
-        .I3(\comp_burst.sample_counter_1[8]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [6]),
+       (.I0(data[6]),
+        .I1(\comp_burst.sample_counter_1[8]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_1_reg [6]),
         .O(p_0_in__9[6]));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_1[7]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(data[7]),
-        .I3(\comp_burst.sample_counter_1[8]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_1_reg [6]),
-        .I5(\comp_burst.sample_counter_1_reg [7]),
+       (.I0(data[7]),
+        .I1(\comp_burst.sample_counter_1[8]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_1_reg [6]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_1_reg [7]),
         .O(p_0_in__9[7]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24340,17 +24388,16 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_1_reg [4]),
         .I5(\comp_burst.sample_counter_1_reg [5]),
         .O(\comp_burst.sample_counter_1[8]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
     \comp_burst.sample_counter_1[9]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_1[9]_i_2_n_0 ),
-        .I3(\comp_burst.sample_counter_1_reg [8]),
-        .I4(\comp_burst.sample_counter_1_reg [9]),
-        .I5(data[9]),
+       (.I0(\comp_burst.sample_counter_1[9]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_1_reg [8]),
+        .I2(\comp_burst.sample_counter_1_reg [9]),
+        .I3(sample_counter_01),
+        .I4(data[9]),
         .O(p_0_in__9[9]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     \comp_burst.sample_counter_1[9]_i_2 
@@ -24454,32 +24501,30 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__9[9]),
         .Q(\comp_burst.sample_counter_1_reg [9]),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h7F08)) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  LUT3 #(
+    .INIT(8'h74)) 
     \comp_burst.sample_counter_2[0]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_2_reg [0]),
-        .I3(\comp_burst.in_sample_reg_n_0_[30] ),
+       (.I0(\comp_burst.sample_counter_2_reg [0]),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.in_sample_reg_n_0_[30] ),
         .O(p_0_in__10[0]));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_2[10]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[40] ),
-        .I3(\comp_burst.sample_counter_2[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [10]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[40] ),
+        .I1(\comp_burst.sample_counter_2[12]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_2_reg [10]),
         .O(p_0_in__10[10]));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_2[11]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[41] ),
-        .I3(\comp_burst.sample_counter_2[12]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [10]),
-        .I5(\comp_burst.sample_counter_2_reg [11]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[41] ),
+        .I1(\comp_burst.sample_counter_2[12]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_2_reg [10]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_2_reg [11]),
         .O(p_0_in__10[11]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24501,15 +24546,14 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_2_reg [7]),
         .I5(\comp_burst.sample_counter_2_reg [9]),
         .O(\comp_burst.sample_counter_2[12]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_2[13]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[43] ),
-        .I3(\comp_burst.sample_counter_2[14]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [12]),
-        .I5(\comp_burst.sample_counter_2_reg [13]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[43] ),
+        .I1(\comp_burst.sample_counter_2[14]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_2_reg [12]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_2_reg [13]),
         .O(p_0_in__10[13]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24531,24 +24575,22 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_2_reg [9]),
         .I5(\comp_burst.sample_counter_2_reg [11]),
         .O(\comp_burst.sample_counter_2[14]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF7778000)) 
+  LUT4 #(
+    .INIT(16'h88F0)) 
     \comp_burst.sample_counter_2[15]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_ov_1_reg_n_0 ),
-        .I3(\comp_burst.sample_ov_0_reg_n_0 ),
-        .I4(burst),
+       (.I0(\comp_burst.sample_ov_1_reg_n_0 ),
+        .I1(\comp_burst.sample_ov_0_reg_n_0 ),
+        .I2(burst),
+        .I3(sample_counter_01),
         .O(\comp_burst.sample_counter_2[15]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_2[15]_i_2 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[45] ),
-        .I3(\comp_burst.sample_counter_2[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [14]),
-        .I5(\comp_burst.sample_counter_2_reg [15]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[45] ),
+        .I1(\comp_burst.sample_counter_2[15]_i_3_n_0 ),
+        .I2(\comp_burst.sample_counter_2_reg [14]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_2_reg [15]),
         .O(p_0_in__10[15]));
   LUT5 #(
     .INIT(32'hF7FFFFFF)) 
@@ -24559,25 +24601,24 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_2_reg [11]),
         .I4(\comp_burst.sample_counter_2_reg [13]),
         .O(\comp_burst.sample_counter_2[15]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
-  LUT5 #(
-    .INIT(32'h70F8F870)) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  LUT4 #(
+    .INIT(16'h2EE2)) 
     \comp_burst.sample_counter_2[1]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[31] ),
-        .I3(\comp_burst.sample_counter_2_reg [1]),
-        .I4(\comp_burst.sample_counter_2_reg [0]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[31] ),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_2_reg [1]),
+        .I3(\comp_burst.sample_counter_2_reg [0]),
         .O(p_0_in__10[1]));
-  LUT6 #(
-    .INIT(64'h70F8F8F8F8707070)) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT5 #(
+    .INIT(32'h2EEEE222)) 
     \comp_burst.sample_counter_2[2]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[32] ),
-        .I3(\comp_burst.sample_counter_2_reg [1]),
-        .I4(\comp_burst.sample_counter_2_reg [0]),
-        .I5(\comp_burst.sample_counter_2_reg [2]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[32] ),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_2_reg [1]),
+        .I3(\comp_burst.sample_counter_2_reg [0]),
+        .I4(\comp_burst.sample_counter_2_reg [2]),
         .O(p_0_in__10[2]));
   LUT6 #(
     .INIT(64'h6AAAFFFF6AAA0000)) 
@@ -24599,31 +24640,30 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_2_reg [4]),
         .O(p_0_in__10[4]));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \comp_burst.sample_counter_2[4]_i_2 
        (.I0(\comp_burst.sample_counter_2_reg [0]),
         .I1(\comp_burst.sample_counter_2_reg [1]),
         .O(\comp_burst.sample_counter_2[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_2[5]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[35] ),
-        .I3(\comp_burst.sample_counter_2[7]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [5]),
-        .O(p_0_in__10[5]));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
-    \comp_burst.sample_counter_2[6]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_2[7]_i_2_n_0 ),
+       (.I0(\comp_burst.in_sample_reg_n_0_[35] ),
+        .I1(\comp_burst.sample_counter_2[7]_i_2_n_0 ),
+        .I2(sample_counter_01),
         .I3(\comp_burst.sample_counter_2_reg [5]),
-        .I4(\comp_burst.sample_counter_2_reg [6]),
-        .I5(\comp_burst.in_sample_reg_n_0_[36] ),
+        .O(p_0_in__10[5]));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
+    \comp_burst.sample_counter_2[6]_i_1 
+       (.I0(\comp_burst.sample_counter_2[7]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_2_reg [5]),
+        .I2(\comp_burst.sample_counter_2_reg [6]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.in_sample_reg_n_0_[36] ),
         .O(p_0_in__10[6]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24644,15 +24684,14 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_2_reg [0]),
         .I4(\comp_burst.sample_counter_2_reg [1]),
         .O(\comp_burst.sample_counter_2[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_2[8]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[38] ),
-        .I3(\comp_burst.sample_counter_2[9]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_2_reg [7]),
-        .I5(\comp_burst.sample_counter_2_reg [8]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[38] ),
+        .I1(\comp_burst.sample_counter_2[9]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_2_reg [7]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_2_reg [8]),
         .O(p_0_in__10[8]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24664,6 +24703,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_2_reg [9]),
         .O(p_0_in__10[9]));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     \comp_burst.sample_counter_2[9]_i_2 
@@ -24767,23 +24807,23 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__10[9]),
         .Q(\comp_burst.sample_counter_2_reg [9]),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h7F08)) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  LUT3 #(
+    .INIT(8'h74)) 
     \comp_burst.sample_counter_3[0]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_3_reg [0]),
-        .I3(\comp_burst.in_sample_reg_n_0_[46] ),
+       (.I0(\comp_burst.sample_counter_3_reg [0]),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.in_sample_reg_n_0_[46] ),
         .O(p_0_in__11[0]));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
     \comp_burst.sample_counter_3[10]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_3[11]_i_2_n_0 ),
-        .I3(\comp_burst.sample_counter_3_reg [9]),
-        .I4(\comp_burst.sample_counter_3_reg [10]),
-        .I5(\comp_burst.in_sample_reg_n_0_[56] ),
+       (.I0(\comp_burst.sample_counter_3[11]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_3_reg [9]),
+        .I2(\comp_burst.sample_counter_3_reg [10]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.in_sample_reg_n_0_[56] ),
         .O(p_0_in__11[10]));
   LUT6 #(
     .INIT(64'hFF3FAAAA00C0AAAA)) 
@@ -24795,7 +24835,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_3_reg [11]),
         .O(p_0_in__11[11]));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT5 #(
     .INIT(32'hF7FFFFFF)) 
     \comp_burst.sample_counter_3[11]_i_2 
@@ -24805,15 +24845,14 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_3_reg [6]),
         .I4(\comp_burst.sample_counter_3_reg [8]),
         .O(\comp_burst.sample_counter_3[11]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h70F8F8F8F8707070)) 
+  LUT5 #(
+    .INIT(32'h3FAAC0AA)) 
     \comp_burst.sample_counter_3[12]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[58] ),
-        .I3(\comp_burst.sample_counter_3_reg [11]),
-        .I4(\comp_burst.sample_counter_3[13]_i_2_n_0 ),
-        .I5(\comp_burst.sample_counter_3_reg [12]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[58] ),
+        .I1(\comp_burst.sample_counter_3_reg [11]),
+        .I2(\comp_burst.sample_counter_3[13]_i_2_n_0 ),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_3_reg [12]),
         .O(p_0_in__11[12]));
   LUT6 #(
     .INIT(64'h3FFFAAAAC000AAAA)) 
@@ -24825,6 +24864,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_3_reg [13]),
         .O(p_0_in__11[13]));
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \comp_burst.sample_counter_3[13]_i_2 
@@ -24832,34 +24872,31 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.sample_counter_3_reg [9]),
         .I2(\comp_burst.sample_counter_3[11]_i_2_n_0 ),
         .O(\comp_burst.sample_counter_3[13]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_3[14]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[60] ),
-        .I3(\comp_burst.sample_counter_3[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_3_reg [14]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[60] ),
+        .I1(\comp_burst.sample_counter_3[15]_i_3_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_3_reg [14]),
         .O(p_0_in__11[14]));
-  LUT6 #(
-    .INIT(64'hF777777780000000)) 
+  LUT5 #(
+    .INIT(32'h8080FF00)) 
     \comp_burst.sample_counter_3[15]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_ov_1_reg_n_0 ),
-        .I3(\comp_burst.sample_ov_0_reg_n_0 ),
-        .I4(\comp_burst.sample_ov_2_reg_n_0 ),
-        .I5(burst),
+       (.I0(\comp_burst.sample_ov_1_reg_n_0 ),
+        .I1(\comp_burst.sample_ov_0_reg_n_0 ),
+        .I2(\comp_burst.sample_ov_2_reg_n_0 ),
+        .I3(burst),
+        .I4(sample_counter_01),
         .O(\comp_burst.sample_counter_3[15]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_3[15]_i_2 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[61] ),
-        .I3(\comp_burst.sample_counter_3[15]_i_3_n_0 ),
-        .I4(\comp_burst.sample_counter_3_reg [14]),
-        .I5(\comp_burst.sample_counter_3_reg [15]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[61] ),
+        .I1(\comp_burst.sample_counter_3[15]_i_3_n_0 ),
+        .I2(\comp_burst.sample_counter_3_reg [14]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_3_reg [15]),
         .O(p_0_in__11[15]));
   LUT6 #(
     .INIT(64'hF7FFFFFFFFFFFFFF)) 
@@ -24871,24 +24908,23 @@ module ps_comp_ana_0_0_comp_burst
         .I4(\comp_burst.sample_counter_3_reg [10]),
         .I5(\comp_burst.sample_counter_3_reg [13]),
         .O(\comp_burst.sample_counter_3[15]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h70F8F870)) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  LUT4 #(
+    .INIT(16'h2EE2)) 
     \comp_burst.sample_counter_3[1]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[47] ),
-        .I3(\comp_burst.sample_counter_3_reg [1]),
-        .I4(\comp_burst.sample_counter_3_reg [0]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[47] ),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_3_reg [1]),
+        .I3(\comp_burst.sample_counter_3_reg [0]),
         .O(p_0_in__11[1]));
-  LUT6 #(
-    .INIT(64'h70F8F8F8F8707070)) 
+  LUT5 #(
+    .INIT(32'h2EEEE222)) 
     \comp_burst.sample_counter_3[2]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[48] ),
-        .I3(\comp_burst.sample_counter_3_reg [1]),
-        .I4(\comp_burst.sample_counter_3_reg [0]),
-        .I5(\comp_burst.sample_counter_3_reg [2]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[48] ),
+        .I1(sample_counter_01),
+        .I2(\comp_burst.sample_counter_3_reg [1]),
+        .I3(\comp_burst.sample_counter_3_reg [0]),
+        .I4(\comp_burst.sample_counter_3_reg [2]),
         .O(p_0_in__11[2]));
   LUT6 #(
     .INIT(64'h3FFFAAAAC000AAAA)) 
@@ -24900,17 +24936,16 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_3_reg [3]),
         .O(p_0_in__11[3]));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
     \comp_burst.sample_counter_3[4]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_3[4]_i_2_n_0 ),
-        .I3(\comp_burst.sample_counter_3_reg [3]),
-        .I4(\comp_burst.sample_counter_3_reg [4]),
-        .I5(\comp_burst.in_sample_reg_n_0_[50] ),
+       (.I0(\comp_burst.sample_counter_3[4]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_3_reg [3]),
+        .I2(\comp_burst.sample_counter_3_reg [4]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.in_sample_reg_n_0_[50] ),
         .O(p_0_in__11[4]));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \comp_burst.sample_counter_3[4]_i_2 
@@ -24918,24 +24953,22 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.sample_counter_3_reg [0]),
         .I2(\comp_burst.sample_counter_3_reg [2]),
         .O(\comp_burst.sample_counter_3[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_3[5]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[51] ),
-        .I3(\comp_burst.sample_counter_3[7]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_3_reg [5]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[51] ),
+        .I1(\comp_burst.sample_counter_3[7]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_3_reg [5]),
         .O(p_0_in__11[5]));
-  LUT6 #(
-    .INIT(64'hF870F8F870F87070)) 
+  LUT5 #(
+    .INIT(32'hCFAA30AA)) 
     \comp_burst.sample_counter_3[6]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[52] ),
-        .I3(\comp_burst.sample_counter_3[7]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_3_reg [5]),
-        .I5(\comp_burst.sample_counter_3_reg [6]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[52] ),
+        .I1(\comp_burst.sample_counter_3[7]_i_2_n_0 ),
+        .I2(\comp_burst.sample_counter_3_reg [5]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.sample_counter_3_reg [6]),
         .O(p_0_in__11[6]));
   LUT6 #(
     .INIT(64'hF3FFAAAA0C00AAAA)) 
@@ -24947,7 +24980,7 @@ module ps_comp_ana_0_0_comp_burst
         .I4(sample_counter_01),
         .I5(\comp_burst.sample_counter_3_reg [7]),
         .O(p_0_in__11[7]));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
     \comp_burst.sample_counter_3[7]_i_2 
@@ -24957,17 +24990,16 @@ module ps_comp_ana_0_0_comp_burst
         .I3(\comp_burst.sample_counter_3_reg [2]),
         .I4(\comp_burst.sample_counter_3_reg [4]),
         .O(\comp_burst.sample_counter_3[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF7FF7F7780880800)) 
+  LUT5 #(
+    .INIT(32'hB4FFB400)) 
     \comp_burst.sample_counter_3[8]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_3[8]_i_2_n_0 ),
-        .I3(\comp_burst.sample_counter_3_reg [7]),
-        .I4(\comp_burst.sample_counter_3_reg [8]),
-        .I5(\comp_burst.in_sample_reg_n_0_[54] ),
+       (.I0(\comp_burst.sample_counter_3[8]_i_2_n_0 ),
+        .I1(\comp_burst.sample_counter_3_reg [7]),
+        .I2(\comp_burst.sample_counter_3_reg [8]),
+        .I3(sample_counter_01),
+        .I4(\comp_burst.in_sample_reg_n_0_[54] ),
         .O(p_0_in__11[8]));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     \comp_burst.sample_counter_3[8]_i_2 
@@ -24975,14 +25007,13 @@ module ps_comp_ana_0_0_comp_burst
         .I1(\comp_burst.sample_counter_3[7]_i_2_n_0 ),
         .I2(\comp_burst.sample_counter_3_reg [6]),
         .O(\comp_burst.sample_counter_3[8]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hF87070F8)) 
+  LUT4 #(
+    .INIT(16'hCA3A)) 
     \comp_burst.sample_counter_3[9]_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.in_sample_reg_n_0_[55] ),
-        .I3(\comp_burst.sample_counter_3[11]_i_2_n_0 ),
-        .I4(\comp_burst.sample_counter_3_reg [9]),
+       (.I0(\comp_burst.in_sample_reg_n_0_[55] ),
+        .I1(\comp_burst.sample_counter_3[11]_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(\comp_burst.sample_counter_3_reg [9]),
         .O(p_0_in__11[9]));
   FDRE \comp_burst.sample_counter_3_reg[0] 
        (.C(clk),
@@ -25080,15 +25111,14 @@ module ps_comp_ana_0_0_comp_burst
         .D(p_0_in__11[9]),
         .Q(\comp_burst.sample_counter_3_reg [9]),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hF777F0008000F000)) 
+  LUT5 #(
+    .INIT(32'h8F888088)) 
     \comp_burst.sample_ov_0_i_1 
-       (.I0(\comp_burst.run_env_start_reg_n_0 ),
-        .I1(inc_env_sample),
-        .I2(\comp_burst.sample_counter_0_reg_n_0_[15] ),
-        .I3(\comp_burst.sample_ov_0_i_2_n_0 ),
-        .I4(burst),
-        .I5(\comp_burst.sample_ov_0_reg_n_0 ),
+       (.I0(\comp_burst.sample_counter_0_reg_n_0_[15] ),
+        .I1(\comp_burst.sample_ov_0_i_2_n_0 ),
+        .I2(sample_counter_01),
+        .I3(burst),
+        .I4(\comp_burst.sample_ov_0_reg_n_0 ),
         .O(\comp_burst.sample_ov_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -27298,6 +27328,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(\comp_stat.active_i_5_n_0 ),
         .I5(reset),
         .O(\comp_stat.active_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \comp_stat.active_i_2 
@@ -27324,7 +27355,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.down_delay_reg_n_0_[0] ),
         .I3(\comp_stat.start_down_reg_n_0 ),
         .O(\comp_stat.active_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'h01FF)) 
     \comp_stat.active_i_5 
@@ -27953,6 +27984,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(\comp_stat.curr_phase[9]_i_1_n_0 ),
         .Q(curr_phase[9]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT2 #(
     .INIT(4'hC)) 
     \comp_stat.down_delay[0]_i_1 
@@ -27971,7 +28003,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(\comp_stat.down_delay_reg_n_0_[0] ),
         .Q(p_0_in7_in),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT3 #(
     .INIT(8'h8B)) 
     \comp_stat.down_pos[0]_i_1 
@@ -27995,6 +28027,7 @@ module ps_comp_ana_0_0_comp_stat
         .I3(\comp_stat.down_pos_reg [9]),
         .I4(\comp_stat.down_pos[10]_i_3_n_0 ),
         .O(p_0_in__0[10]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \comp_stat.down_pos[10]_i_3 
@@ -28003,7 +28036,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.phase[15]_i_3_n_0 ),
         .I3(\comp_stat.down_pos_reg [6]),
         .O(\comp_stat.down_pos[10]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT4 #(
     .INIT(16'hB88B)) 
     \comp_stat.down_pos[1]_i_1 
@@ -28064,24 +28097,23 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.phase[15]_i_3_n_0 ),
         .I3(\comp_stat.down_pos_reg [6]),
         .O(p_0_in__0[6]));
-  LUT5 #(
-    .INIT(32'hF0EEF011)) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT4 #(
+    .INIT(16'hB88B)) 
     \comp_stat.down_pos[7]_i_1 
-       (.I0(\comp_stat.down_pos_reg [6]),
-        .I1(\comp_stat.phase[15]_i_3_n_0 ),
-        .I2(max_pos[7]),
-        .I3(\comp_stat.down_delay_reg_n_0_[0] ),
-        .I4(\comp_stat.down_pos_reg [7]),
+       (.I0(max_pos[7]),
+        .I1(\comp_stat.down_delay_reg_n_0_[0] ),
+        .I2(\comp_stat.down_pos_reg [7]),
+        .I3(\comp_stat.down_pos[9]_i_2_n_0 ),
         .O(p_0_in__0[7]));
-  LUT6 #(
-    .INIT(64'hF0FFF000F0EEF011)) 
+  LUT5 #(
+    .INIT(32'hB8B8B88B)) 
     \comp_stat.down_pos[8]_i_1 
-       (.I0(\comp_stat.down_pos_reg [6]),
-        .I1(\comp_stat.phase[15]_i_3_n_0 ),
-        .I2(max_pos[8]),
-        .I3(\comp_stat.down_delay_reg_n_0_[0] ),
-        .I4(\comp_stat.down_pos_reg [8]),
-        .I5(\comp_stat.down_pos_reg [7]),
+       (.I0(max_pos[8]),
+        .I1(\comp_stat.down_delay_reg_n_0_[0] ),
+        .I2(\comp_stat.down_pos_reg [8]),
+        .I3(\comp_stat.down_pos[9]_i_2_n_0 ),
+        .I4(\comp_stat.down_pos_reg [7]),
         .O(p_0_in__0[8]));
   LUT6 #(
     .INIT(64'hB8B8B8B8B8B8B88B)) 
@@ -28093,6 +28125,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(\comp_stat.down_pos_reg [7]),
         .I5(\comp_stat.down_pos_reg [8]),
         .O(p_0_in__0[9]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \comp_stat.down_pos[9]_i_2 
@@ -28652,7 +28685,6 @@ module ps_comp_ana_0_0_comp_stat
         .D(curr_env_2[9]),
         .Q(env[9]),
         .R(\comp_stat.env[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT2 #(
     .INIT(4'hC)) 
     \comp_stat.filling_i_1 
@@ -28684,6 +28716,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(\comp_stat.phase[15]_i_3_n_0 ),
         .I5(\comp_stat.down_pos_reg [6]),
         .O(\comp_stat.idle_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \comp_stat.idle_i_3 
@@ -28948,7 +28981,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.down_pos_reg [8]),
         .I3(\comp_stat.down_pos_reg [7]),
         .O(\comp_stat.phase[15]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'hAAA8)) 
     \comp_stat.phase[15]_i_5 
@@ -29525,6 +29558,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(phase0__0[9]),
         .Q(phase[9]),
         .R(\comp_stat.phase[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[0]_i_1 
@@ -29532,7 +29566,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [0]),
         .O(\comp_stat.pos_1[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[10]_i_1 
@@ -29540,7 +29574,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [10]),
         .O(\comp_stat.pos_1[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[1]_i_1 
@@ -29548,7 +29582,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [1]),
         .O(\comp_stat.pos_1[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[2]_i_1 
@@ -29556,7 +29590,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [2]),
         .O(\comp_stat.pos_1[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[3]_i_1 
@@ -29564,7 +29598,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [3]),
         .O(\comp_stat.pos_1[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[4]_i_1 
@@ -29572,7 +29606,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [4]),
         .O(\comp_stat.pos_1[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[5]_i_1 
@@ -29580,7 +29614,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [5]),
         .O(\comp_stat.pos_1[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[6]_i_1 
@@ -29588,7 +29622,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [6]),
         .O(\comp_stat.pos_1[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[7]_i_1 
@@ -29596,7 +29630,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [7]),
         .O(\comp_stat.pos_1[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[8]_i_1 
@@ -29604,7 +29638,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(proc_up),
         .I2(\comp_stat.down_pos_reg [8]),
         .O(\comp_stat.pos_1[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.pos_1[9]_i_1 
@@ -30240,6 +30274,7 @@ module ps_comp_ana_0_0_comp_stat
        (.I0(pred_phase[0]),
         .I1(freq[0]),
         .O(\comp_stat.pred_phase[5]_i_21_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \comp_stat.pred_phase[5]_i_3 
@@ -30686,6 +30721,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(curr_phase[9]),
         .Q(prev_phase[9]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
     .INIT(16'hFD30)) 
     \comp_stat.proc_up_i_1 
@@ -30721,6 +30757,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.up_count_reg [7]),
         .I2(\comp_stat.up_count_reg [6]),
         .O(\comp_stat.proc_up_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \comp_stat.proc_up_i_5 
@@ -30920,7 +30957,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.rd_ptr_reg_n_0_[1] ),
         .I2(\comp_stat.rd_ptr_reg_n_0_[0] ),
         .O(\comp_stat.rd_ptr_rep[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
     .INIT(16'h5401)) 
     \comp_stat.rd_ptr_rep[2]_i_3 
@@ -30939,7 +30976,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(proc_up),
         .I5(\comp_stat.rd_ptr_rep[3]_i_3_n_0 ),
         .O(\comp_stat.rd_ptr_rep[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT4 #(
     .INIT(16'h9555)) 
     \comp_stat.rd_ptr_rep[3]_i_2 
@@ -30948,7 +30985,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.rd_ptr_reg_n_0_[0] ),
         .I3(\comp_stat.rd_ptr_reg_n_0_[1] ),
         .O(\comp_stat.rd_ptr_rep[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT5 #(
     .INIT(32'h55540001)) 
     \comp_stat.rd_ptr_rep[3]_i_3 
@@ -30968,7 +31005,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(proc_up),
         .I5(\comp_stat.rd_ptr_rep[4]_i_3_n_0 ),
         .O(\comp_stat.rd_ptr_rep[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT5 #(
     .INIT(32'h95555555)) 
     \comp_stat.rd_ptr_rep[4]_i_2 
@@ -31034,6 +31071,7 @@ module ps_comp_ana_0_0_comp_stat
        (.I0(\comp_stat.rd_ptr_reg_n_0_[6] ),
         .I1(\comp_stat.rd_ptr_rep[8]_i_11_n_0 ),
         .O(\comp_stat.rd_ptr_rep[6]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT3 #(
     .INIT(8'h41)) 
     \comp_stat.rd_ptr_rep[6]_i_3 
@@ -31051,7 +31089,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(proc_up),
         .I5(\comp_stat.rd_ptr_rep[7]_i_3_n_0 ),
         .O(\comp_stat.rd_ptr_rep[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'h9A)) 
     \comp_stat.rd_ptr_rep[7]_i_2 
@@ -31059,7 +31097,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.rd_ptr_rep[8]_i_11_n_0 ),
         .I2(\comp_stat.rd_ptr_reg_n_0_[6] ),
         .O(\comp_stat.rd_ptr_rep[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT3 #(
     .INIT(8'hA9)) 
     \comp_stat.rd_ptr_rep[7]_i_3 
@@ -31117,7 +31155,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(\comp_stat.up_count_reg [7]),
         .I5(\comp_stat.rd_ptr_rep[8]_i_9_n_0 ),
         .O(\comp_stat.rd_ptr_rep[8]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \comp_stat.rd_ptr_rep[8]_i_4 
@@ -31125,7 +31163,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.rd_ptr_reg_n_0_[6] ),
         .I2(\comp_stat.rd_ptr_reg_n_0_[7] ),
         .O(\comp_stat.rd_ptr_rep[8]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT4 #(
     .INIT(16'hAA6A)) 
     \comp_stat.rd_ptr_rep[8]_i_5 
@@ -31171,6 +31209,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.up_count_reg [10]),
         .I2(\comp_stat.up_count_reg [8]),
         .O(\comp_stat.rd_ptr_rep[8]_i_9_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \comp_stat.start_down_i_1 
@@ -31183,7 +31222,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(\comp_stat.start_down_i_1_n_0 ),
         .Q(\comp_stat.start_down_reg_n_0 ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \comp_stat.start_up_i_1 
@@ -31219,6 +31258,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(stop_down[0]),
         .Q(stop_down[1]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'h8B)) 
     \comp_stat.up_count[0]_i_1 
@@ -31308,6 +31348,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(max_pos[10]),
         .I3(size[10]),
         .O(\comp_stat.up_count[10]_i_9_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT4 #(
     .INIT(16'hB88B)) 
     \comp_stat.up_count[1]_i_1 
@@ -31482,6 +31523,7 @@ module ps_comp_ana_0_0_comp_stat
        (.I0(size[0]),
         .I1(max_pos[0]),
         .O(\comp_stat.up_count[7]_i_9_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT5 #(
     .INIT(32'hB8BB8B88)) 
     \comp_stat.up_count[8]_i_1 
@@ -31613,7 +31655,7 @@ module ps_comp_ana_0_0_comp_stat
         .D(p_0_in4_in),
         .Q(\comp_stat.up_delay_reg_n_0_[2] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT3 #(
     .INIT(8'hA3)) 
     \comp_stat.up_pos[0]_i_1 
@@ -31646,7 +31688,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.up_pos[8]_i_2_n_0 ),
         .I3(\comp_stat.up_pos_reg [7]),
         .O(\comp_stat.up_pos[10]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'h8BB8)) 
     \comp_stat.up_pos[1]_i_1 
@@ -31682,7 +31724,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.up_pos_reg [4]),
         .I3(\comp_stat.up_pos[4]_i_2_n_0 ),
         .O(p_0_in__1[4]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT4 #(
     .INIT(16'h7FFF)) 
     \comp_stat.up_pos[4]_i_2 
@@ -31699,7 +31741,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.up_pos_reg [5]),
         .I3(\comp_stat.up_pos[5]_i_2_n_0 ),
         .O(p_0_in__1[5]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
     \comp_stat.up_pos[5]_i_2 
@@ -31717,6 +31759,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.up_pos[8]_i_2_n_0 ),
         .I3(\comp_stat.up_pos_reg [6]),
         .O(p_0_in__1[6]));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT5 #(
     .INIT(32'hB88BB8B8)) 
     \comp_stat.up_pos[7]_i_1 
@@ -31756,6 +31799,7 @@ module ps_comp_ana_0_0_comp_stat
         .I4(\comp_stat.up_pos[9]_i_2_n_0 ),
         .I5(\comp_stat.up_pos_reg [8]),
         .O(p_0_in__1[9]));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \comp_stat.up_pos[9]_i_2 
@@ -31833,14 +31877,14 @@ module ps_comp_ana_0_0_comp_stat
     \comp_stat.wr_ptr[0]_i_1 
        (.I0(\comp_stat.wr_ptr_reg [0]),
         .O(p_0_in__2[0]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \comp_stat.wr_ptr[1]_i_1 
        (.I0(\comp_stat.wr_ptr_reg [0]),
         .I1(\comp_stat.wr_ptr_reg [1]),
         .O(p_0_in__2[1]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \comp_stat.wr_ptr[2]_i_1 
@@ -31848,7 +31892,7 @@ module ps_comp_ana_0_0_comp_stat
         .I1(\comp_stat.wr_ptr_reg [0]),
         .I2(\comp_stat.wr_ptr_reg [1]),
         .O(p_0_in__2[2]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \comp_stat.wr_ptr[3]_i_1 
@@ -31857,7 +31901,7 @@ module ps_comp_ana_0_0_comp_stat
         .I2(\comp_stat.wr_ptr_reg [0]),
         .I3(\comp_stat.wr_ptr_reg [2]),
         .O(p_0_in__2[3]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
     \comp_stat.wr_ptr[4]_i_1 
@@ -31883,6 +31927,7 @@ module ps_comp_ana_0_0_comp_stat
        (.I0(\comp_stat.wr_ptr_reg [6]),
         .I1(\comp_stat.wr_ptr[8]_i_3_n_0 ),
         .O(p_0_in__2[6]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'hB4)) 
     \comp_stat.wr_ptr[7]_i_1 
@@ -31895,6 +31940,7 @@ module ps_comp_ana_0_0_comp_stat
     \comp_stat.wr_ptr[8]_i_1 
        (.I0(mem_wr),
         .O(clear));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT4 #(
     .INIT(16'h9AAA)) 
     \comp_stat.wr_ptr[8]_i_2 
@@ -32800,13 +32846,13 @@ module ps_comp_ana_0_0_morlet_to_phase_env
         .D(\morlet_to_phase_env.amp_2_reg_n_0_[9] ),
         .Q(\morlet_to_phase_env.amp_3_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \morlet_to_phase_env.delay[0]_i_1__2 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
         .O(\morlet_to_phase_env.delay[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \morlet_to_phase_env.delay[1]_i_1__2 
@@ -32814,7 +32860,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env
         .I1(raw_run),
         .I2(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \morlet_to_phase_env.delay[2]_i_1__2 
@@ -32823,7 +32869,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \morlet_to_phase_env.delay[3]_i_1__2 
@@ -33761,7 +33807,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env
         .I2(\morlet_to_phase_env.valid_i_3__2_n_0 ),
         .I3(raw_run),
         .O(\morlet_to_phase_env.valid_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \morlet_to_phase_env.valid_i_2__2 
@@ -33771,7 +33817,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .I4(\morlet_to_phase_env.delay_reg [2]),
         .O(\morlet_to_phase_env.valid_i_2__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT5 #(
     .INIT(32'h40000000)) 
     \morlet_to_phase_env.valid_i_3__2 
@@ -34243,13 +34289,13 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1
         .D(amp_2[9]),
         .Q(amp_3[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \morlet_to_phase_env.delay[0]_i_1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
         .O(\morlet_to_phase_env.delay[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \morlet_to_phase_env.delay[1]_i_1 
@@ -34257,7 +34303,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1
         .I1(raw_run),
         .I2(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \morlet_to_phase_env.delay[2]_i_1 
@@ -34266,7 +34312,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \morlet_to_phase_env.delay[3]_i_1 
@@ -35204,7 +35250,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1
         .I2(\morlet_to_phase_env.valid_i_3_n_0 ),
         .I3(raw_run),
         .O(\morlet_to_phase_env.valid_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \morlet_to_phase_env.valid_i_2 
@@ -35214,7 +35260,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .I4(\morlet_to_phase_env.delay_reg [2]),
         .O(\morlet_to_phase_env.valid_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT5 #(
     .INIT(32'h40000000)) 
     \morlet_to_phase_env.valid_i_3 
@@ -35808,13 +35854,13 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2
         .D(\morlet_to_phase_env.amp_2_reg_n_0_[9] ),
         .Q(\morlet_to_phase_env.amp_3_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \morlet_to_phase_env.delay[0]_i_1__0 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
         .O(\morlet_to_phase_env.delay[0]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \morlet_to_phase_env.delay[1]_i_1__0 
@@ -35822,7 +35868,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2
         .I1(raw_run),
         .I2(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \morlet_to_phase_env.delay[2]_i_1__0 
@@ -35831,7 +35877,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \morlet_to_phase_env.delay[3]_i_1__0 
@@ -36769,7 +36815,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2
         .I2(\morlet_to_phase_env.valid_i_3__0_n_0 ),
         .I3(raw_run),
         .O(\morlet_to_phase_env.valid_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \morlet_to_phase_env.valid_i_2__0 
@@ -36779,7 +36825,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .I4(\morlet_to_phase_env.delay_reg [2]),
         .O(\morlet_to_phase_env.valid_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT5 #(
     .INIT(32'h40000000)) 
     \morlet_to_phase_env.valid_i_3__0 
@@ -37373,13 +37419,13 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3
         .D(\morlet_to_phase_env.amp_2_reg_n_0_[9] ),
         .Q(\morlet_to_phase_env.amp_3_reg_n_0_[9] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \morlet_to_phase_env.delay[0]_i_1__1 
        (.I0(\morlet_to_phase_env.delay_reg [0]),
         .O(\morlet_to_phase_env.delay[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \morlet_to_phase_env.delay[1]_i_1__1 
@@ -37387,7 +37433,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3
         .I1(raw_run),
         .I2(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT4 #(
     .INIT(16'h78E1)) 
     \morlet_to_phase_env.delay[2]_i_1__1 
@@ -37396,7 +37442,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3
         .I2(\morlet_to_phase_env.delay_reg [2]),
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .O(\morlet_to_phase_env.delay[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT5 #(
     .INIT(32'h7F80FE01)) 
     \morlet_to_phase_env.delay[3]_i_1__1 
@@ -38334,7 +38380,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3
         .I2(\morlet_to_phase_env.valid_i_3__1_n_0 ),
         .I3(raw_run),
         .O(\morlet_to_phase_env.valid_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \morlet_to_phase_env.valid_i_2__1 
@@ -38344,7 +38390,7 @@ module ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3
         .I3(\morlet_to_phase_env.delay_reg [1]),
         .I4(\morlet_to_phase_env.delay_reg [2]),
         .O(\morlet_to_phase_env.valid_i_2__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT5 #(
     .INIT(32'h40000000)) 
     \morlet_to_phase_env.valid_i_3__1 
@@ -38689,6 +38735,7 @@ module ps_comp_ana_0_0_one_to_four
         .I4(sel0[10]),
         .I5(read_back_i),
         .O(\one_to_four.counter[10]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \one_to_four.counter[10]_i_3 
@@ -38774,6 +38821,7 @@ module ps_comp_ana_0_0_one_to_four
         .I4(read_back_i),
         .I5(size[6]),
         .O(\one_to_four.counter[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \one_to_four.counter[6]_i_2 
@@ -40567,14 +40615,14 @@ module ps_comp_ana_0_0_one_to_four
     \one_to_four.rd_ptr_rep[0]_i_1 
        (.I0(\one_to_four.rd_ptr_reg [0]),
         .O(p_0_in__0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \one_to_four.rd_ptr_rep[1]_i_1 
        (.I0(\one_to_four.rd_ptr_reg [0]),
         .I1(\one_to_four.rd_ptr_reg [1]),
         .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \one_to_four.rd_ptr_rep[2]_i_1 
@@ -40656,6 +40704,7 @@ module ps_comp_ana_0_0_one_to_four
         .D(read_back_i0),
         .Q(read_back_i),
         .R(read_back));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'hAAB0)) 
     \one_to_four.req_read_back_i_1 
@@ -40670,6 +40719,7 @@ module ps_comp_ana_0_0_one_to_four
        (.I0(1'b1),
         .I1(\one_to_four.req_read_back_i_3_n_0 ),
         .O(\one_to_four.req_read_back_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \one_to_four.req_read_back_i_3 
@@ -40683,7 +40733,7 @@ module ps_comp_ana_0_0_one_to_four
         .D(\one_to_four.req_read_back_i_1_n_0 ),
         .Q(req_read_back),
         .S(read_back));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \one_to_four.wr_offset[0]_i_1 
@@ -40696,7 +40746,7 @@ module ps_comp_ana_0_0_one_to_four
         .I1(read_back_i),
         .I2(wr),
         .O(\one_to_four.wr_offset[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \one_to_four.wr_offset[1]_i_2 
@@ -40720,14 +40770,14 @@ module ps_comp_ana_0_0_one_to_four
     \one_to_four.wr_ptr[0]_i_1 
        (.I0(\one_to_four.wr_ptr_reg [0]),
         .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \one_to_four.wr_ptr[1]_i_1 
        (.I0(\one_to_four.wr_ptr_reg [0]),
         .I1(\one_to_four.wr_ptr_reg [1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \one_to_four.wr_ptr[2]_i_1 
@@ -40770,6 +40820,7 @@ module ps_comp_ana_0_0_one_to_four
        (.I0(\one_to_four.wr_ptr[8]_i_4_n_0 ),
         .I1(\one_to_four.wr_ptr_reg [6]),
         .O(p_0_in[6]));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \one_to_four.wr_ptr[7]_i_1 
@@ -40789,6 +40840,7 @@ module ps_comp_ana_0_0_one_to_four
        (.I0(wr),
         .I1(mem_wr),
         .O(wr_ptr));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'hDF20)) 
     \one_to_four.wr_ptr[8]_i_3 

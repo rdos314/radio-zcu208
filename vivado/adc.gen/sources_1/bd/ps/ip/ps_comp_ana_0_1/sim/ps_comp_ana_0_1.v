@@ -68,6 +68,7 @@ module ps_comp_ana_0_1 (
   fifo_size,
   fifo_freq,
   fifo_angle,
+  pl_clk,
   clk,
   reset
 );
@@ -91,6 +92,10 @@ input wire [15 : 0] fifo_sample;
 input wire [8 : 0] fifo_size;
 input wire [19 : 0] fifo_freq;
 input wire [15 : 0] fifo_angle;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire pl_clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp_ana1_clk, INSERT_VIP 0" *)
@@ -114,6 +119,7 @@ input wire reset;
     .fifo_size(fifo_size),
     .fifo_freq(fifo_freq),
     .fifo_angle(fifo_angle),
+    .pl_clk(pl_clk),
     .clk(clk),
     .reset(reset)
   );
