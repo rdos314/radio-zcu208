@@ -364,13 +364,56 @@ module comp_burst(
 	
 	reg [15:0] env_diff;
 	reg [15:0] phase_diff;
-	wire stat_reset = 0;
+	reg stat_reset;
 	wire [47:0] env_sum_p;
 	wire [47:0] env_sqr_p;
     wire [47:0] env_sum2_p;
 	wire [47:0] phase_sum_p;
 	wire [47:0] phase_sqr_p;
     wire [47:0] phase_sum2_p;
+    
+    reg stat_active;
+    reg [2:0] load_stat_delay;
+    reg [23:0] stat_env_sum;
+    reg [47:0] stat_env_sqr;
+    reg [23:0] stat_phase_sum;
+    reg [47:0] stat_phase_sqr;
+    
+    reg [2:0] stat_sqr_delay;
+    reg stat_div_sum_start;
+    reg stat_div_sum_pend;
+    reg stat_div_sqr_start;
+    reg stat_div_sqr_pend;
+    wire stat_env_div_sum_done;
+    wire stat_env_div_sqr_done;
+    wire [39:0] stat_env_div_sum_data;
+    wire [15:0] stat_env_div_sum = stat_env_div_sum_data[31:16];
+    wire [63:0] stat_env_div_sqr_data;
+    wire [47:0] stat_env_div_sqr = stat_env_div_sqr_data[63:16];
+    wire stat_phase_div_sum_done;
+    wire stat_phase_div_sqr_done;
+    wire [39:0] stat_phase_div_sum_data;
+    wire [15:0] stat_phase_div_sum = stat_phase_div_sum_data[31:16];
+    wire [63:0] stat_phase_div_sqr_data;
+    wire [47:0] stat_phase_div_sqr = stat_phase_div_sqr_data[63:16];
+
+    reg [2:0] stat_nvar_delay;
+    reg [16:0] stat_env_nvar0;
+    reg [16:0] stat_env_nvar1;
+    reg [15:0] stat_env_nvar2;
+    reg [31:0] stat_env_nvar;
+    reg [16:0] stat_phase_nvar0;
+    reg [16:0] stat_phase_nvar1;
+    reg [15:0] stat_phase_nvar2;
+    reg [31:0] stat_phase_nvar;
+
+	reg [63:0] p4_sample;
+    reg [19:0] p4_freq;
+    reg [15:0] p4_angle;
+	reg [10:0] p4_size;
+	reg [15:0] p4_max_env;
+	reg [15:0] p4_env_mean;
+	reg [15:0] p4_phase_mean;
 	
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
@@ -485,22 +528,29 @@ module comp_burst(
 
     mul_stat24 sum2_env_i (
         .CLK(clk),               // input wire CLK
-        .A(env_sum_p[23:0]),     // input wire [23 : 0] A
-        .B(env_sum_p[23:0]),     // input wire [23 : 0] B
-        .SCLR(stat_reset),       // input wire SCLR
+        .A(stat_env_sum),        // input wire [23 : 0] A
+        .B(stat_env_sum),        // input wire [23 : 0] B
         .P(env_sum2_p)           // output wire [47 : 0] P
     );
 
-    div_stat_48 div_env_i (
-        .aclk(clk),                                      // input wire aclk
-        .s_axis_divisor_tvalid(s_axis_divisor_tvalid),    // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tready(s_axis_divisor_tready),    // output wire s_axis_divisor_tready
-        .s_axis_divisor_tdata(s_axis_divisor_tdata),      // input wire [15 : 0] s_axis_divisor_tdata
-        .s_axis_dividend_tvalid(s_axis_dividend_tvalid),  // input wire s_axis_dividend_tvalid
-        .s_axis_dividend_tready(s_axis_dividend_tready),  // output wire s_axis_dividend_tready
-        .s_axis_dividend_tdata(s_axis_dividend_tdata),    // input wire [47 : 0] s_axis_dividend_tdata
-        .m_axis_dout_tvalid(m_axis_dout_tvalid),          // output wire m_axis_dout_tvalid
-        .m_axis_dout_tdata(m_axis_dout_tdata)            // output wire [63 : 0] m_axis_dout_tdata
+	div_burst_mean div_env_sum_i (
+		.aclk(clk),                                      // input wire aclk
+		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
+		.s_axis_divisor_tdata(curr_size),                // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
+		.s_axis_dividend_tdata(stat_env_sum),            // input wire [23 : 0] s_axis_dividend_tdata
+		.m_axis_dout_tvalid(stat_env_div_sum_done),      // output wire m_axis_dout_tvalid		
+		.m_axis_dout_tdata(stat_env_div_sum_data)        // output wire [39 : 0] m_axis_dout_tdata
+	);
+
+    div_stat_48 div_env_sqr_i (
+        .aclk(clk),                                       // input wire aclk
+        .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
+        .s_axis_divisor_tdata(p4_size),                   // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
+        .s_axis_dividend_tdata(env_sum2_p),               // input wire [47 : 0] s_axis_dividend_tdata
+        .m_axis_dout_tvalid(stat_env_div_sqr_done),       // output wire m_axis_dout_tvalid
+        .m_axis_dout_tdata(stat_env_div_sqr_data)         // output wire [63 : 0] m_axis_dout_tdata
     );
 	
     dsp_add16 add_phase_i (
@@ -519,22 +569,29 @@ module comp_burst(
 
     mul_stat24 sum2_phase_i (
         .CLK(clk),               // input wire CLK
-        .A(phase_sum_p[23:0]),   // input wire [23 : 0] A
-        .B(phase_sum_p[23:0]),   // input wire [23 : 0] B
-        .SCLR(stat_reset),       // input wire SCLR
+        .A(stat_phase_sum),      // input wire [23 : 0] A
+        .B(stat_phase_sum),      // input wire [23 : 0] B
         .P(phase_sum2_p)         // output wire [47 : 0] P
     );
-	
+
+	div_burst_mean div_phase_sum_i (
+		.aclk(clk),                                      // input wire aclk
+		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
+		.s_axis_divisor_tdata(p4_size),                  // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
+		.s_axis_dividend_tdata(stat_phase_sum),          // input wire [23 : 0] s_axis_dividend_tdata
+		.m_axis_dout_tvalid(stat_phase_div_sum_done),    // output wire m_axis_dout_tvalid		
+		.m_axis_dout_tdata(stat_phase_div_sum_data)      // output wire [39 : 0] m_axis_dout_tdata
+	);
+
     div_stat_48 div_phase_i (
-        .aclk(clk),                                      // input wire aclk
-        .s_axis_divisor_tvalid(s_axis_divisor_tvalid),    // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tready(s_axis_divisor_tready),    // output wire s_axis_divisor_tready
-        .s_axis_divisor_tdata(s_axis_divisor_tdata),      // input wire [15 : 0] s_axis_divisor_tdata
-        .s_axis_dividend_tvalid(s_axis_dividend_tvalid),  // input wire s_axis_dividend_tvalid
-        .s_axis_dividend_tready(s_axis_dividend_tready),  // output wire s_axis_dividend_tready
-        .s_axis_dividend_tdata(s_axis_dividend_tdata),    // input wire [47 : 0] s_axis_dividend_tdata
-        .m_axis_dout_tvalid(m_axis_dout_tvalid),          // output wire m_axis_dout_tvalid
-        .m_axis_dout_tdata(m_axis_dout_tdata)            // output wire [63 : 0] m_axis_dout_tdata
+        .aclk(clk),                                       // input wire aclk
+        .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
+        .s_axis_divisor_tdata(p4_size),                   // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
+        .s_axis_dividend_tdata(phase_sum2_p),             // input wire [47 : 0] s_axis_dividend_tdata
+        .m_axis_dout_tvalid(stat_phase_div_sqr_done),     // output wire m_axis_dout_tvalid
+        .m_axis_dout_tdata(stat_phase_div_sqr_data)       // output wire [63 : 0] m_axis_dout_tdata
     );
 
 	ila_0 ila_i (
@@ -547,20 +604,22 @@ module comp_burst(
 		.probe5(scan_start),          // input wire [0:0]  probe3
 		.probe6(wr_ptr),              // input wire [8:0]  probe3
 		.probe7(run_env),             // input wire [0:0]  probe3
-		.probe8(complete_1),          // input wire [0:0]  probe3
-		.probe9(complete_2),          // input wire [0:0]  probe3
-		.probe10(complete_3),         // input wire [0:0]  probe3
-		.probe11(mean_done),          // input wire [0:0]  probe3
-		.probe12(p2_idle),            // input wire [0:0]  probe3
-		.probe13(p3_idle),            // input wire [0:0]  probe3
-		.probe14(env_diff),           // input wire [15:0]  probe3
-		.probe15(phase_diff),         // input wire [15:0]  probe3
-		.probe16(env_sum_p),          // input wire [47:0]  probe3
-		.probe17(env_sum2_p),         // input wire [47:0]  probe3
-		.probe18(env_sqr_p),          // input wire [47:0]  probe3
-		.probe19(phase_sum_p),        // input wire [47:0]  probe3
-		.probe20(phase_sum2_p),       // input wire [47:0]  probe3
-		.probe21(phase_sqr_p)         // input wire [47:0]  probe3
+		.probe8(p3_done),             // input wire [0:0]  probe3
+		.probe9(stat_active),         // input wire [0:0]  probe3
+		.probe10(env_diff),           // input wire [15:0]  probe3
+		.probe11(phase_diff),         // input wire [15:0]  probe3
+		.probe12(env_sum_p),          // input wire [47:0]  probe3
+		.probe13(env_sum2_p),         // input wire [47:0]  probe3
+		.probe14(env_sqr_p),          // input wire [47:0]  probe3
+		.probe15(phase_sum_p),        // input wire [47:0]  probe3
+		.probe16(phase_sum2_p),       // input wire [47:0]  probe3
+		.probe17(phase_sqr_p),        // input wire [47:0]  probe3
+		.probe18(stat_sqr_delay),     // input wire [2:0]  probe3
+		.probe19(load_stat_delay),    // input wire [2:0]  probe3
+		.probe20(stat_env_sum),       // input wire [23:0]  probe3
+		.probe21(stat_env_sqr),       // input wire [47:0]  probe3
+		.probe22(stat_phase_sum),     // input wire [23:0]  probe3
+		.probe23(stat_phase_sqr)     // input wire [47:0]  probe3
 	);
 	
 generate
@@ -1287,7 +1346,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (p3_active)
+        if (p3_active & stat_active)
         begin
             env_diff <= p3_env - mean;
             phase_diff <= p3_phase;
@@ -1298,6 +1357,158 @@ generate
             phase_diff <= 0;
         end
     end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+        begin
+            stat_active <= 0;
+            load_stat_delay <= 0;
+        end
+        else
+        begin
+            if (p3_done & stat_active)
+            begin
+                stat_active <= 0;
+                load_stat_delay <= 7;
+            end
+            else
+            begin
+                if (load_stat_delay)
+                    load_stat_delay <= load_stat_delay - 1;
+                    
+                if (p3_active)
+                    stat_active <= 1;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset | (load_stat_delay == 1))
+            stat_reset <= 1;
+        else
+            stat_reset <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (load_stat_delay == 1)
+        begin
+            p4_sample <= p3_sample;
+            p4_freq <= p3_freq;
+            p4_angle <= p3_angle;
+            p4_size <= p3_size;
+            p4_max_env <= p3_max_env;
+            
+            casex (env_sum_p[47:23])
+                25'b0000000000000000000000000: stat_env_sum <= env_sum_p[23:0];
+                25'b1111111111111111111111111: stat_env_sum <= env_sum_p[23:0];
+                25'b1xxxxxxxxxxxxxxxxxxxxxxxx: stat_env_sum <= 24'h80001;  
+                25'b0xxxxxxxxxxxxxxxxxxxxxxxx: stat_env_sum <= 24'h7FFFF;  
+            endcase
+
+            casex (phase_sum_p[47:23])
+                25'b0000000000000000000000000: stat_phase_sum <= phase_sum_p[23:0];
+                25'b1111111111111111111111111: stat_phase_sum <= phase_sum_p[23:0];
+                25'b1xxxxxxxxxxxxxxxxxxxxxxxx: stat_phase_sum <= 24'h80001;  
+                25'b0xxxxxxxxxxxxxxxxxxxxxxxx: stat_phase_sum <= 24'h7FFFF;  
+            endcase
+
+            stat_env_sqr <= env_sqr_p;
+            stat_phase_sqr <= phase_sqr_p;
+            stat_sqr_delay <= 7;
+        end
+        else
+        begin
+            if (reset)
+                stat_sqr_delay <= 0;
+            else
+            begin
+                if (stat_sqr_delay)
+                    stat_sqr_delay <= stat_sqr_delay - 1;
+            end
+        end
+    end
+
+
+    always @(posedge clk) 
+    begin
+        if (stat_sqr_delay == 7)
+        begin
+            stat_div_sum_start <= 1;
+            stat_div_sum_pend <= 1;
+        end
+        else
+        begin
+            stat_div_sum_start <= 0;            
+
+            if (reset)
+                stat_div_sum_pend <= 0;
+            else
+            begin
+                if (stat_div_sum_pend & stat_env_div_sum_done & stat_phase_div_sum_done)
+                begin
+                    p4_env_mean <= mean + stat_env_div_sum;
+                    p4_phase_mean <= stat_phase_div_sum;
+                    stat_div_sum_pend <= 0;
+                end
+            end
+        end            
+    end
+
+    always @(posedge clk) 
+    begin
+        if (stat_sqr_delay == 1)
+        begin
+            stat_div_sqr_start <= 1;
+            stat_div_sqr_pend <= 1;
+        end
+        else
+        begin
+            stat_div_sqr_start <= 0;            
+
+            if (reset)
+            begin
+                stat_div_sqr_pend <= 0;
+                stat_nvar_delay <= 0;
+            end
+            else
+            begin
+                if (stat_div_sqr_pend & stat_env_div_sqr_done & stat_phase_div_sqr_done)
+                begin
+                    stat_nvar_delay <= 4;
+                    stat_div_sqr_pend <= 0;
+                end
+                else
+                begin
+                    if (stat_nvar_delay)
+                        stat_nvar_delay <= stat_nvar_delay - 1;
+                end
+            end
+        end            
+    end
+
+    always @(posedge clk) 
+    begin
+        case (stat_nvar_delay)
+            4:  stat_env_nvar0 <= {1'b0, stat_env_sqr[15:0]} - {1'b0, stat_env_div_sqr[15:0]};
+            3:  stat_env_nvar1 <= {1'b0, stat_env_sqr[31:16]} - {1'b0, stat_env_div_sqr[31:16]}  - {16'h0000, stat_env_nvar0[16]};
+            2:  stat_env_nvar2 <= stat_env_sqr[47:32] - stat_env_div_sqr[47:32] - {15'h0000, stat_env_nvar1[16]};
+            1:  stat_env_nvar <= {stat_env_nvar2[15:0], stat_env_nvar1[15:0], stat_env_nvar0[15:0]};
+        endcase
+    end
+
+    always @(posedge clk) 
+    begin
+        case (stat_nvar_delay)
+            4:  stat_phase_nvar0 <= {1'b0, stat_phase_sqr[15:0]} - {1'b0, stat_phase_div_sqr[15:0]};
+            3:  stat_phase_nvar1 <= {1'b0, stat_phase_sqr[31:16]} - {1'b0, stat_phase_div_sqr[31:16]}  - {16'h0000, stat_phase_nvar0[16]};
+            2:  stat_phase_nvar2 <= stat_phase_sqr[47:32] - stat_phase_div_sqr[47:32] - {15'h0000, stat_phase_nvar1[16]};
+            1:  stat_phase_nvar <= {stat_phase_nvar2[15:0], stat_phase_nvar1[15:0], stat_phase_nvar0[15:0]};
+        endcase
+    end
+
     
   end
     

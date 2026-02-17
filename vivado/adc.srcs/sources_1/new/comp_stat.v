@@ -163,6 +163,8 @@ module comp_stat(
     reg proc_up;
     reg start_up;
     reg stop_up;
+	reg was_active;
+	reg pend_done;
 	reg [10:0] up_pos;
     reg [10:0] up_count;
     reg [2:0] up_delay;
@@ -176,7 +178,7 @@ module comp_stat(
 	
 	reg [10:0] pos_1;
 
-/*
+
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
@@ -184,7 +186,6 @@ module comp_stat(
 		.probe2(env),                // input wire [15:0]  probe3
 		.probe3(phase)               // input wire [15:0]  probe3
 	);
-*/
     
 generate
   begin : comp_stat
@@ -431,6 +432,48 @@ generate
     always @(posedge clk) 
     begin
 		stop_down[1] <= stop_down[0];
+	end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+		begin
+            was_active <= 0;
+			pend_done <= 0;
+		end
+        else
+		begin
+            if (proc_up)
+			begin
+				was_active <= 1;
+				pend_done <= 0;
+			end
+			else
+			begin
+				if (!start_down & !down_delay[0] & !down_delay[1])
+				begin
+					if (was_active)
+					begin
+						if (down_pos == 0)
+						begin
+							pend_done <= 1;
+							was_active <= 0;
+						end
+						else
+							pend_done <= 0;
+					end
+					else
+						pend_done <= 0;
+				end
+				else
+					pend_done <= 0;
+			end
+		end
+	end
+
+    always @(posedge clk) 
+    begin
+		done <= pend_done;
 	end
 
     always @(posedge clk) 
