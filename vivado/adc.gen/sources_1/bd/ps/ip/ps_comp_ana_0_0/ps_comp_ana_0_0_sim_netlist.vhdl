@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Feb 17 01:10:45 2026
+-- Date        : Wed Feb 18 18:14:27 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.vhdl
@@ -17,108 +17,61 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_comp_ana_0_0_one_to_four is
   port (
-    DOUTADOUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    DOUTBDOUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    \one_to_four.mem_phase_reg_0\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    \one_to_four.mem_phase_reg_1\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    D : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    p2_active : out STD_LOGIC;
-    E : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \comp_burst.df_start_reg[0]\ : out STD_LOGIC;
-    \comp_burst.df_start_reg[3]\ : out STD_LOGIC;
-    \comp_burst.df_start_reg[8]\ : out STD_LOGIC;
-    SR : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \comp_burst.df_active_reg\ : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \one_to_four.idle_reg_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \comp_burst.df_active_reg_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \one_to_four.mem_phase_diff_reg_0_0\ : out STD_LOGIC_VECTOR ( 16 downto 0 );
     clk : in STD_LOGIC;
-    p2_done : in STD_LOGIC;
     reset : in STD_LOGIC;
-    idle : in STD_LOGIC;
-    \one_to_four.mem_wr_reg_0\ : in STD_LOGIC;
-    \comp_burst.df_count_reg\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    df_active : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    \comp_burst.df_low_reg[19]\ : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    \one_to_four.counter_reg[10]_0\ : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    empty : in STD_LOGIC;
-    \comp_burst.df_diff_reg[19]\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    \one_to_four.env_in_val_reg[63]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    \one_to_four.phase_in_val_reg[63]_0\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    \one_to_four.phase_diff_in_val_reg[59]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 )
+    wr : in STD_LOGIC;
+    env : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_diff : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    size : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    allowed : in STD_LOGIC;
+    read_back : in STD_LOGIC;
+    idle : out STD_LOGIC;
+    active : out STD_LOGIC;
+    env_0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    env_3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_0 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_3 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    phase_diff_0 : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_diff_1 : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_diff_2 : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    phase_diff_3 : out STD_LOGIC_VECTOR ( 19 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_ana_0_0_one_to_four : entity is "one_to_four";
 end ps_comp_ana_0_0_one_to_four;
 
 architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
-  signal \^d\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \^active\ : STD_LOGIC;
   signal active_1 : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[15]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[19]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[19]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[19]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[19]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff[7]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[15]_i_1_n_7\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[19]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[19]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[19]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_1\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_2\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_4\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_5\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_6\ : STD_LOGIC;
-  signal \comp_burst.df_diff_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \^comp_burst.df_start_reg[0]\ : STD_LOGIC;
-  signal \^comp_burst.df_start_reg[3]\ : STD_LOGIC;
-  signal \^comp_burst.df_start_reg[8]\ : STD_LOGIC;
   signal env_in_val : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal \env_in_val__0\ : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal \env_in_val__0\ : STD_LOGIC_VECTOR ( 63 downto 15 );
   signal idle0 : STD_LOGIC;
   signal mem_wr : STD_LOGIC;
   signal \one_to_four.active_0_i_1_n_0\ : STD_LOGIC;
+  signal \one_to_four.active_0_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.active_0_reg_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[0]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[10]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[10]_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[10]_i_3_n_0\ : STD_LOGIC;
+  signal \one_to_four.counter[10]_i_4_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[1]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[2]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[3]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[4]_i_1_n_0\ : STD_LOGIC;
+  signal \one_to_four.counter[4]_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[5]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.counter[5]_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[6]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[6]_i_2_n_0\ : STD_LOGIC;
+  signal \one_to_four.counter[6]_i_3_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[7]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.counter[7]_i_2_n_0\ : STD_LOGIC;
-  signal \one_to_four.counter[7]_i_3_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[8]_i_1_n_0\ : STD_LOGIC;
+  signal \one_to_four.counter[8]_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.counter[9]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.idle_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.mem_phase_diff_reg_0_n_100\ : STD_LOGIC;
@@ -175,14 +128,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   signal \one_to_four.mem_phase_diff_reg_0_n_79\ : STD_LOGIC;
   signal \one_to_four.mem_wr_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.rd_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \one_to_four.rd_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
-  signal \one_to_four.rd_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.rd_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
   signal \one_to_four.req_read_back_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.req_read_back_i_2_n_0\ : STD_LOGIC;
@@ -191,13 +136,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   signal \one_to_four.wr_ptr[8]_i_1_n_0\ : STD_LOGIC;
   signal \one_to_four.wr_ptr[8]_i_4_n_0\ : STD_LOGIC;
   signal \one_to_four.wr_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \^p2_active\ : STD_LOGIC;
-  signal p2_idle : STD_LOGIC;
   signal p_0_in : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal p_1_in : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal phase_diff_in_val : STD_LOGIC_VECTOR ( 71 downto 0 );
-  signal \phase_diff_in_val__0\ : STD_LOGIC_VECTOR ( 60 downto 0 );
   signal phase_in_val : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal rd_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal read_back_i : STD_LOGIC;
@@ -206,9 +148,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   signal sel0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal wr_offset : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal wr_ptr : STD_LOGIC;
-  signal \NLW_comp_burst.df_diff_reg[19]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
-  signal \NLW_comp_burst.df_diff_reg[19]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_comp_burst.df_diff_reg[7]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \NLW_one_to_four.mem_env_reg_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_one_to_four.mem_env_reg_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_one_to_four.mem_env_reg_DBITERR_UNCONNECTED\ : STD_LOGIC;
@@ -256,16 +195,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   signal \NLW_one_to_four.mem_phase_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_one_to_four.mem_phase_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.df_count[2]_i_1\ : label is "soft_lutpair28";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[15]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[19]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[8]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \comp_burst.df_low[19]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \one_to_four.counter[6]_i_2\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \one_to_four.counter[7]_i_3\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \one_to_four.idle_i_2\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \one_to_four.counter[10]_i_3\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \one_to_four.counter[10]_i_4\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \one_to_four.counter[6]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \one_to_four.counter[6]_i_3\ : label is "soft_lutpair0";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \one_to_four.mem_env_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -277,7 +210,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   attribute RTL_RAM_BITS : integer;
   attribute RTL_RAM_BITS of \one_to_four.mem_env_reg\ : label is 32768;
   attribute RTL_RAM_NAME : string;
-  attribute RTL_RAM_NAME of \one_to_four.mem_env_reg\ : label is "comp_burst/p2_i/one_to_four.mem_env_reg";
+  attribute RTL_RAM_NAME of \one_to_four.mem_env_reg\ : label is "one_to_four/one_to_four.mem_env_reg";
   attribute RTL_RAM_STYLE : string;
   attribute RTL_RAM_STYLE of \one_to_four.mem_env_reg\ : label is "block";
   attribute RTL_RAM_TYPE : string;
@@ -297,7 +230,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   attribute METHODOLOGY_DRC_VIOS of \one_to_four.mem_phase_diff_reg_0\ : label is "";
   attribute RDADDR_COLLISION_HWCONFIG of \one_to_four.mem_phase_diff_reg_0\ : label is "DELAYED_WRITE";
   attribute RTL_RAM_BITS of \one_to_four.mem_phase_diff_reg_0\ : label is 40960;
-  attribute RTL_RAM_NAME of \one_to_four.mem_phase_diff_reg_0\ : label is "comp_burst/p2_i/one_to_four.mem_phase_diff_reg";
+  attribute RTL_RAM_NAME of \one_to_four.mem_phase_diff_reg_0\ : label is "one_to_four/one_to_four.mem_phase_diff_reg";
   attribute RTL_RAM_STYLE of \one_to_four.mem_phase_diff_reg_0\ : label is "block";
   attribute RTL_RAM_TYPE of \one_to_four.mem_phase_diff_reg_0\ : label is "RAM_SDP";
   attribute ram_addr_begin of \one_to_four.mem_phase_diff_reg_0\ : label is 0;
@@ -310,7 +243,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   attribute METHODOLOGY_DRC_VIOS of \one_to_four.mem_phase_reg\ : label is "";
   attribute RDADDR_COLLISION_HWCONFIG of \one_to_four.mem_phase_reg\ : label is "DELAYED_WRITE";
   attribute RTL_RAM_BITS of \one_to_four.mem_phase_reg\ : label is 32768;
-  attribute RTL_RAM_NAME of \one_to_four.mem_phase_reg\ : label is "comp_burst/p2_i/one_to_four.mem_phase_reg";
+  attribute RTL_RAM_NAME of \one_to_four.mem_phase_reg\ : label is "one_to_four/one_to_four.mem_phase_reg";
   attribute RTL_RAM_STYLE of \one_to_four.mem_phase_reg\ : label is "block";
   attribute RTL_RAM_TYPE of \one_to_four.mem_phase_reg\ : label is "RAM_SDP";
   attribute ram_addr_begin of \one_to_four.mem_phase_reg\ : label is 0;
@@ -318,382 +251,46 @@ architecture STRUCTURE of ps_comp_ana_0_0_one_to_four is
   attribute ram_offset of \one_to_four.mem_phase_reg\ : label is 0;
   attribute ram_slice_begin of \one_to_four.mem_phase_reg\ : label is 0;
   attribute ram_slice_end of \one_to_four.mem_phase_reg\ : label is 63;
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[1]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[3]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[4]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[6]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[7]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr[8]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[1]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[3]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[4]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[6]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[7]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[8]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_3\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \one_to_four.wr_offset[0]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \one_to_four.wr_offset[1]_i_2\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[1]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[2]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[3]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[4]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[7]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[8]_i_3\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[1]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[2]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[3]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[4]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[7]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \one_to_four.rd_ptr_rep[8]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \one_to_four.req_read_back_i_3\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \one_to_four.wr_offset[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \one_to_four.wr_offset[1]_i_2\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[2]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[3]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[4]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[7]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \one_to_four.wr_ptr[8]_i_3\ : label is "soft_lutpair6";
 begin
-  D(19 downto 0) <= \^d\(19 downto 0);
-  \comp_burst.df_start_reg[0]\ <= \^comp_burst.df_start_reg[0]\;
-  \comp_burst.df_start_reg[3]\ <= \^comp_burst.df_start_reg[3]\;
-  \comp_burst.df_start_reg[8]\ <= \^comp_burst.df_start_reg[8]\;
-  p2_active <= \^p2_active\;
-\comp_burst.burst_i_1\: unisim.vcomponents.LUT2
+  active <= \^active\;
+\one_to_four.active_0_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => p2_idle,
-      I1 => empty,
-      O => \one_to_four.idle_reg_0\(0)
-    );
-\comp_burst.df_count[2]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => df_active,
-      I1 => \^p2_active\,
-      O => \comp_burst.df_active_reg\(0)
-    );
-\comp_burst.df_diff[15]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(15),
-      I1 => \comp_burst.df_diff_reg[19]\(15),
-      O => \comp_burst.df_diff[15]_i_2_n_0\
-    );
-\comp_burst.df_diff[15]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(14),
-      I1 => \comp_burst.df_diff_reg[19]\(14),
-      O => \comp_burst.df_diff[15]_i_3_n_0\
-    );
-\comp_burst.df_diff[15]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(13),
-      I1 => \comp_burst.df_diff_reg[19]\(13),
-      O => \comp_burst.df_diff[15]_i_4_n_0\
-    );
-\comp_burst.df_diff[15]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(12),
-      I1 => \comp_burst.df_diff_reg[19]\(12),
-      O => \comp_burst.df_diff[15]_i_5_n_0\
-    );
-\comp_burst.df_diff[15]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(11),
-      I1 => \comp_burst.df_diff_reg[19]\(11),
-      O => \comp_burst.df_diff[15]_i_6_n_0\
-    );
-\comp_burst.df_diff[15]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(10),
-      I1 => \comp_burst.df_diff_reg[19]\(10),
-      O => \comp_burst.df_diff[15]_i_7_n_0\
-    );
-\comp_burst.df_diff[15]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(9),
-      I1 => \comp_burst.df_diff_reg[19]\(9),
-      O => \comp_burst.df_diff[15]_i_8_n_0\
-    );
-\comp_burst.df_diff[15]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(8),
-      I1 => \comp_burst.df_diff_reg[19]\(8),
-      O => \comp_burst.df_diff[15]_i_9_n_0\
-    );
-\comp_burst.df_diff[19]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"4000000000000000"
-    )
-        port map (
-      I0 => \comp_burst.df_count_reg\(3),
-      I1 => \comp_burst.df_count_reg\(2),
-      I2 => \comp_burst.df_count_reg\(1),
-      I3 => \comp_burst.df_count_reg\(0),
-      I4 => \^p2_active\,
-      I5 => df_active,
-      O => E(0)
-    );
-\comp_burst.df_diff[19]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(19),
-      I1 => \comp_burst.df_diff_reg[19]\(19),
-      O => \comp_burst.df_diff[19]_i_3_n_0\
-    );
-\comp_burst.df_diff[19]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(18),
-      I1 => \comp_burst.df_diff_reg[19]\(18),
-      O => \comp_burst.df_diff[19]_i_4_n_0\
-    );
-\comp_burst.df_diff[19]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(17),
-      I1 => \comp_burst.df_diff_reg[19]\(17),
-      O => \comp_burst.df_diff[19]_i_5_n_0\
-    );
-\comp_burst.df_diff[19]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(16),
-      I1 => \comp_burst.df_diff_reg[19]\(16),
-      O => \comp_burst.df_diff[19]_i_6_n_0\
-    );
-\comp_burst.df_diff[7]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(7),
-      I1 => \comp_burst.df_diff_reg[19]\(7),
-      O => \comp_burst.df_diff[7]_i_2_n_0\
-    );
-\comp_burst.df_diff[7]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(6),
-      I1 => \comp_burst.df_diff_reg[19]\(6),
-      O => \comp_burst.df_diff[7]_i_3_n_0\
-    );
-\comp_burst.df_diff[7]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(5),
-      I1 => \comp_burst.df_diff_reg[19]\(5),
-      O => \comp_burst.df_diff[7]_i_4_n_0\
-    );
-\comp_burst.df_diff[7]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(4),
-      I1 => \comp_burst.df_diff_reg[19]\(4),
-      O => \comp_burst.df_diff[7]_i_5_n_0\
-    );
-\comp_burst.df_diff[7]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(3),
-      I1 => \comp_burst.df_diff_reg[19]\(3),
-      O => \comp_burst.df_diff[7]_i_6_n_0\
-    );
-\comp_burst.df_diff[7]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(2),
-      I1 => \comp_burst.df_diff_reg[19]\(2),
-      O => \comp_burst.df_diff[7]_i_7_n_0\
-    );
-\comp_burst.df_diff[7]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(1),
-      I1 => \comp_burst.df_diff_reg[19]\(1),
-      O => \comp_burst.df_diff[7]_i_8_n_0\
-    );
-\comp_burst.df_diff[7]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \^d\(0),
-      I1 => \comp_burst.df_diff_reg[19]\(0),
-      O => \comp_burst.df_diff[7]_i_9_n_0\
-    );
-\comp_burst.df_diff_reg[15]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.df_diff_reg[7]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7) => \comp_burst.df_diff_reg[15]_i_1_n_0\,
-      CO(6) => \comp_burst.df_diff_reg[15]_i_1_n_1\,
-      CO(5) => \comp_burst.df_diff_reg[15]_i_1_n_2\,
-      CO(4) => \comp_burst.df_diff_reg[15]_i_1_n_3\,
-      CO(3) => \comp_burst.df_diff_reg[15]_i_1_n_4\,
-      CO(2) => \comp_burst.df_diff_reg[15]_i_1_n_5\,
-      CO(1) => \comp_burst.df_diff_reg[15]_i_1_n_6\,
-      CO(0) => \comp_burst.df_diff_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => \^d\(15 downto 8),
-      O(7 downto 0) => \one_to_four.mem_phase_diff_reg_0_0\(12 downto 5),
-      S(7) => \comp_burst.df_diff[15]_i_2_n_0\,
-      S(6) => \comp_burst.df_diff[15]_i_3_n_0\,
-      S(5) => \comp_burst.df_diff[15]_i_4_n_0\,
-      S(4) => \comp_burst.df_diff[15]_i_5_n_0\,
-      S(3) => \comp_burst.df_diff[15]_i_6_n_0\,
-      S(2) => \comp_burst.df_diff[15]_i_7_n_0\,
-      S(1) => \comp_burst.df_diff[15]_i_8_n_0\,
-      S(0) => \comp_burst.df_diff[15]_i_9_n_0\
-    );
-\comp_burst.df_diff_reg[19]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_burst.df_diff_reg[15]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 3) => \NLW_comp_burst.df_diff_reg[19]_i_2_CO_UNCONNECTED\(7 downto 3),
-      CO(2) => \comp_burst.df_diff_reg[19]_i_2_n_5\,
-      CO(1) => \comp_burst.df_diff_reg[19]_i_2_n_6\,
-      CO(0) => \comp_burst.df_diff_reg[19]_i_2_n_7\,
-      DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => \^d\(18 downto 16),
-      O(7 downto 4) => \NLW_comp_burst.df_diff_reg[19]_i_2_O_UNCONNECTED\(7 downto 4),
-      O(3 downto 0) => \one_to_four.mem_phase_diff_reg_0_0\(16 downto 13),
-      S(7 downto 4) => B"0000",
-      S(3) => \comp_burst.df_diff[19]_i_3_n_0\,
-      S(2) => \comp_burst.df_diff[19]_i_4_n_0\,
-      S(1) => \comp_burst.df_diff[19]_i_5_n_0\,
-      S(0) => \comp_burst.df_diff[19]_i_6_n_0\
-    );
-\comp_burst.df_diff_reg[7]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => \comp_burst.df_diff_reg[7]_i_1_n_0\,
-      CO(6) => \comp_burst.df_diff_reg[7]_i_1_n_1\,
-      CO(5) => \comp_burst.df_diff_reg[7]_i_1_n_2\,
-      CO(4) => \comp_burst.df_diff_reg[7]_i_1_n_3\,
-      CO(3) => \comp_burst.df_diff_reg[7]_i_1_n_4\,
-      CO(2) => \comp_burst.df_diff_reg[7]_i_1_n_5\,
-      CO(1) => \comp_burst.df_diff_reg[7]_i_1_n_6\,
-      CO(0) => \comp_burst.df_diff_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^d\(7 downto 0),
-      O(7 downto 3) => \one_to_four.mem_phase_diff_reg_0_0\(4 downto 0),
-      O(2 downto 0) => \NLW_comp_burst.df_diff_reg[7]_i_1_O_UNCONNECTED\(2 downto 0),
-      S(7) => \comp_burst.df_diff[7]_i_2_n_0\,
-      S(6) => \comp_burst.df_diff[7]_i_3_n_0\,
-      S(5) => \comp_burst.df_diff[7]_i_4_n_0\,
-      S(4) => \comp_burst.df_diff[7]_i_5_n_0\,
-      S(3) => \comp_burst.df_diff[7]_i_6_n_0\,
-      S(2) => \comp_burst.df_diff[7]_i_7_n_0\,
-      S(1) => \comp_burst.df_diff[7]_i_8_n_0\,
-      S(0) => \comp_burst.df_diff[7]_i_9_n_0\
-    );
-\comp_burst.df_ind[8]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \^p2_active\,
-      O => SR(0)
-    );
-\comp_burst.df_low[19]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00010000"
-    )
-        port map (
-      I0 => df_active,
-      I1 => \^comp_burst.df_start_reg[0]\,
-      I2 => \^comp_burst.df_start_reg[8]\,
-      I3 => \^comp_burst.df_start_reg[3]\,
-      I4 => \^p2_active\,
-      O => \comp_burst.df_active_reg_0\(0)
-    );
-\comp_burst.df_low[19]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6FF6FFFFFFFF6FF6"
-    )
-        port map (
-      I0 => Q(0),
-      I1 => \comp_burst.df_low_reg[19]\(0),
-      I2 => \comp_burst.df_low_reg[19]\(1),
-      I3 => Q(1),
-      I4 => \comp_burst.df_low_reg[19]\(2),
-      I5 => Q(2),
-      O => \^comp_burst.df_start_reg[0]\
-    );
-\comp_burst.df_low[19]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6FF6FFFFFFFF6FF6"
-    )
-        port map (
-      I0 => Q(8),
-      I1 => \comp_burst.df_low_reg[19]\(8),
-      I2 => \comp_burst.df_low_reg[19]\(7),
-      I3 => Q(7),
-      I4 => \comp_burst.df_low_reg[19]\(6),
-      I5 => Q(6),
-      O => \^comp_burst.df_start_reg[8]\
-    );
-\comp_burst.df_low[19]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6FF6FFFFFFFF6FF6"
-    )
-        port map (
-      I0 => Q(3),
-      I1 => \comp_burst.df_low_reg[19]\(3),
-      I2 => \comp_burst.df_low_reg[19]\(5),
-      I3 => Q(5),
-      I4 => \comp_burst.df_low_reg[19]\(4),
-      I5 => Q(4),
-      O => \^comp_burst.df_start_reg[3]\
-    );
-\one_to_four.active_0_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FAFAFACA"
+      INIT => X"00000000EEEEEE2E"
     )
         port map (
       I0 => read_back_i,
-      I1 => \one_to_four.counter[7]_i_2_n_0\,
-      I2 => \one_to_four.active_0_reg_n_0\,
-      I3 => sel0(1),
-      I4 => sel0(0),
+      I1 => \one_to_four.active_0_reg_n_0\,
+      I2 => \one_to_four.active_0_i_2_n_0\,
+      I3 => \one_to_four.counter[10]_i_4_n_0\,
+      I4 => \one_to_four.counter[6]_i_2_n_0\,
+      I5 => reset,
       O => \one_to_four.active_0_i_1_n_0\
+    );
+\one_to_four.active_0_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"10"
+    )
+        port map (
+      I0 => sel0(1),
+      I1 => sel0(0),
+      I2 => \one_to_four.active_0_reg_n_0\,
+      O => \one_to_four.active_0_i_2_n_0\
     );
 \one_to_four.active_0_reg\: unisim.vcomponents.FDRE
      port map (
@@ -701,7 +298,7 @@ begin
       CE => '1',
       D => \one_to_four.active_0_i_1_n_0\,
       Q => \one_to_four.active_0_reg_n_0\,
-      R => reset
+      R => '0'
     );
 \one_to_four.active_1_reg\: unisim.vcomponents.FDRE
      port map (
@@ -716,18 +313,19 @@ begin
       C => clk,
       CE => '1',
       D => active_1,
-      Q => \^p2_active\,
+      Q => \^active\,
       R => '0'
     );
-\one_to_four.counter[0]_i_1\: unisim.vcomponents.LUT4
+\one_to_four.counter[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B888"
+      INIT => X"AAAAFC00"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(0),
-      I1 => read_back_i,
-      I2 => sel0(0),
-      I3 => \one_to_four.counter[7]_i_2_n_0\,
+      I0 => size(0),
+      I1 => \one_to_four.counter[6]_i_2_n_0\,
+      I2 => \one_to_four.counter[10]_i_4_n_0\,
+      I3 => sel0(0),
+      I4 => read_back_i,
       O => \one_to_four.counter[0]_i_1_n_0\
     );
 \one_to_four.counter[10]_i_1\: unisim.vcomponents.LUT2
@@ -741,109 +339,126 @@ begin
     );
 \one_to_four.counter[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B8B8B8B8B8B8B888"
+      INIT => X"AAAAAAAAFFFC0000"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(10),
-      I1 => read_back_i,
-      I2 => sel0(10),
+      I0 => size(10),
+      I1 => \one_to_four.counter[10]_i_3_n_0\,
+      I2 => \one_to_four.counter[10]_i_4_n_0\,
       I3 => sel0(9),
-      I4 => sel0(8),
-      I5 => \one_to_four.counter[10]_i_3_n_0\,
+      I4 => sel0(10),
+      I5 => read_back_i,
       O => \one_to_four.counter[10]_i_2_n_0\
     );
-\one_to_four.counter[10]_i_3\: unisim.vcomponents.LUT6
+\one_to_four.counter[10]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"E"
     )
         port map (
       I0 => sel0(7),
-      I1 => sel0(5),
-      I2 => sel0(3),
-      I3 => sel0(2),
-      I4 => sel0(4),
-      I5 => sel0(6),
+      I1 => sel0(8),
       O => \one_to_four.counter[10]_i_3_n_0\
     );
-\one_to_four.counter[1]_i_1\: unisim.vcomponents.LUT4
+\one_to_four.counter[10]_i_4\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B888"
+      INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(1),
-      I1 => read_back_i,
-      I2 => sel0(1),
-      I3 => \one_to_four.counter[7]_i_2_n_0\,
-      O => \one_to_four.counter[1]_i_1_n_0\
-    );
-\one_to_four.counter[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"88B8"
-    )
-        port map (
-      I0 => \one_to_four.counter_reg[10]_0\(2),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
-      I3 => sel0(2),
-      O => \one_to_four.counter[2]_i_1_n_0\
-    );
-\one_to_four.counter[3]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"B88888B8"
-    )
-        port map (
-      I0 => \one_to_four.counter_reg[10]_0\(3),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
+      I0 => sel0(6),
+      I1 => sel0(5),
+      I2 => sel0(4),
       I3 => sel0(2),
       I4 => sel0(3),
+      O => \one_to_four.counter[10]_i_4_n_0\
+    );
+\one_to_four.counter[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAFC00"
+    )
+        port map (
+      I0 => size(1),
+      I1 => \one_to_four.counter[6]_i_2_n_0\,
+      I2 => \one_to_four.counter[10]_i_4_n_0\,
+      I3 => sel0(1),
+      I4 => read_back_i,
+      O => \one_to_four.counter[1]_i_1_n_0\
+    );
+\one_to_four.counter[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAA0000AAAAFFFC"
+    )
+        port map (
+      I0 => size(2),
+      I1 => sel0(4),
+      I2 => \one_to_four.counter[4]_i_2_n_0\,
+      I3 => sel0(3),
+      I4 => read_back_i,
+      I5 => sel0(2),
+      O => \one_to_four.counter[2]_i_1_n_0\
+    );
+\one_to_four.counter[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF999800009998"
+    )
+        port map (
+      I0 => sel0(2),
+      I1 => sel0(3),
+      I2 => sel0(4),
+      I3 => \one_to_four.counter[4]_i_2_n_0\,
+      I4 => read_back_i,
+      I5 => size(3),
       O => \one_to_four.counter[3]_i_1_n_0\
     );
 \one_to_four.counter[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B8B8B888888888B8"
+      INIT => X"FFFFE1E00000E1E0"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(4),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
-      I3 => sel0(3),
-      I4 => sel0(2),
-      I5 => sel0(4),
+      I0 => sel0(3),
+      I1 => sel0(2),
+      I2 => sel0(4),
+      I3 => \one_to_four.counter[4]_i_2_n_0\,
+      I4 => read_back_i,
+      I5 => size(4),
       O => \one_to_four.counter[4]_i_1_n_0\
     );
-\one_to_four.counter[5]_i_1\: unisim.vcomponents.LUT5
+\one_to_four.counter[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B88888B8"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(5),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
-      I3 => \one_to_four.counter[5]_i_2_n_0\,
-      I4 => sel0(5),
+      I0 => sel0(9),
+      I1 => sel0(10),
+      I2 => sel0(7),
+      I3 => sel0(8),
+      I4 => sel0(6),
+      I5 => sel0(5),
+      O => \one_to_four.counter[4]_i_2_n_0\
+    );
+\one_to_four.counter[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF999800009998"
+    )
+        port map (
+      I0 => \one_to_four.counter[6]_i_3_n_0\,
+      I1 => sel0(5),
+      I2 => sel0(6),
+      I3 => \one_to_four.counter[6]_i_2_n_0\,
+      I4 => read_back_i,
+      I5 => size(5),
       O => \one_to_four.counter[5]_i_1_n_0\
     );
-\one_to_four.counter[5]_i_2\: unisim.vcomponents.LUT3
+\one_to_four.counter[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FE"
+      INIT => X"FFFFFC020000FC02"
     )
         port map (
-      I0 => sel0(4),
-      I1 => sel0(2),
-      I2 => sel0(3),
-      O => \one_to_four.counter[5]_i_2_n_0\
-    );
-\one_to_four.counter[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"B88888B8"
-    )
-        port map (
-      I0 => \one_to_four.counter_reg[10]_0\(6),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
-      I3 => \one_to_four.counter[6]_i_2_n_0\,
-      I4 => sel0(6),
+      I0 => \one_to_four.counter[6]_i_2_n_0\,
+      I1 => \one_to_four.counter[6]_i_3_n_0\,
+      I2 => sel0(5),
+      I3 => sel0(6),
+      I4 => read_back_i,
+      I5 => size(6),
       O => \one_to_four.counter[6]_i_1_n_0\
     );
 \one_to_four.counter[6]_i_2\: unisim.vcomponents.LUT4
@@ -851,71 +466,68 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => sel0(5),
-      I1 => sel0(3),
-      I2 => sel0(2),
-      I3 => sel0(4),
+      I0 => sel0(8),
+      I1 => sel0(7),
+      I2 => sel0(10),
+      I3 => sel0(9),
       O => \one_to_four.counter[6]_i_2_n_0\
     );
-\one_to_four.counter[7]_i_1\: unisim.vcomponents.LUT5
+\one_to_four.counter[6]_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B88888B8"
+      INIT => X"FE"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(7),
-      I1 => read_back_i,
-      I2 => \one_to_four.counter[7]_i_2_n_0\,
-      I3 => \one_to_four.counter[7]_i_3_n_0\,
-      I4 => sel0(7),
-      O => \one_to_four.counter[7]_i_1_n_0\
+      I0 => sel0(3),
+      I1 => sel0(2),
+      I2 => sel0(4),
+      O => \one_to_four.counter[6]_i_3_n_0\
     );
-\one_to_four.counter[7]_i_2\: unisim.vcomponents.LUT4
+\one_to_four.counter[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"FFFFF00E0000F00E"
     )
         port map (
-      I0 => \one_to_four.counter[10]_i_3_n_0\,
+      I0 => \one_to_four.counter[8]_i_2_n_0\,
       I1 => sel0(8),
-      I2 => sel0(9),
-      I3 => sel0(10),
-      O => \one_to_four.counter[7]_i_2_n_0\
-    );
-\one_to_four.counter[7]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => sel0(6),
-      I1 => sel0(4),
-      I2 => sel0(2),
-      I3 => sel0(3),
-      I4 => sel0(5),
-      O => \one_to_four.counter[7]_i_3_n_0\
+      I2 => sel0(7),
+      I3 => \one_to_four.counter[10]_i_4_n_0\,
+      I4 => read_back_i,
+      I5 => size(7),
+      O => \one_to_four.counter[7]_i_1_n_0\
     );
 \one_to_four.counter[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBB88888888BBB8"
+      INIT => X"FFFFF0C20000F0C2"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(8),
-      I1 => read_back_i,
-      I2 => sel0(10),
-      I3 => sel0(9),
-      I4 => \one_to_four.counter[10]_i_3_n_0\,
-      I5 => sel0(8),
+      I0 => \one_to_four.counter[8]_i_2_n_0\,
+      I1 => sel0(7),
+      I2 => sel0(8),
+      I3 => \one_to_four.counter[10]_i_4_n_0\,
+      I4 => read_back_i,
+      I5 => size(8),
       O => \one_to_four.counter[8]_i_1_n_0\
+    );
+\one_to_four.counter[8]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => sel0(9),
+      I1 => sel0(10),
+      O => \one_to_four.counter[8]_i_2_n_0\
     );
 \one_to_four.counter[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBBBB88888888B8"
+      INIT => X"FFFFCCC20000CCC2"
     )
         port map (
-      I0 => \one_to_four.counter_reg[10]_0\(9),
-      I1 => read_back_i,
-      I2 => sel0(10),
-      I3 => sel0(8),
-      I4 => \one_to_four.counter[10]_i_3_n_0\,
-      I5 => sel0(9),
+      I0 => sel0(10),
+      I1 => sel0(9),
+      I2 => \one_to_four.counter[10]_i_4_n_0\,
+      I3 => \one_to_four.counter[10]_i_3_n_0\,
+      I4 => read_back_i,
+      I5 => size(9),
       O => \one_to_four.counter[9]_i_1_n_0\
     );
 \one_to_four.counter_reg[0]\: unisim.vcomponents.FDRE
@@ -1006,293 +618,17 @@ begin
       Q => sel0(9),
       R => '0'
     );
-\one_to_four.env_in_val[0]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(0)
-    );
-\one_to_four.env_in_val[10]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(10)
-    );
-\one_to_four.env_in_val[11]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(11)
-    );
-\one_to_four.env_in_val[12]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(12)
-    );
-\one_to_four.env_in_val[13]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(13)
-    );
-\one_to_four.env_in_val[14]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(14)
-    );
 \one_to_four.env_in_val[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00000100"
     )
         port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
+      I0 => wr_offset(0),
+      I1 => reset,
+      I2 => read_back_i,
+      I3 => wr,
+      I4 => wr_offset(1),
       O => \env_in_val__0\(15)
-    );
-\one_to_four.env_in_val[16]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(16)
-    );
-\one_to_four.env_in_val[17]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(17)
-    );
-\one_to_four.env_in_val[18]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(18)
-    );
-\one_to_four.env_in_val[19]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(19)
-    );
-\one_to_four.env_in_val[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(1)
-    );
-\one_to_four.env_in_val[20]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(20)
-    );
-\one_to_four.env_in_val[21]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(21)
-    );
-\one_to_four.env_in_val[22]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(22)
-    );
-\one_to_four.env_in_val[23]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(23)
-    );
-\one_to_four.env_in_val[24]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(24)
-    );
-\one_to_four.env_in_val[25]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(25)
-    );
-\one_to_four.env_in_val[26]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(26)
-    );
-\one_to_four.env_in_val[27]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(27)
-    );
-\one_to_four.env_in_val[28]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(28)
-    );
-\one_to_four.env_in_val[29]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(29)
-    );
-\one_to_four.env_in_val[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(2)
-    );
-\one_to_four.env_in_val[30]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(30)
     );
 \one_to_four.env_in_val[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1301,418 +637,22 @@ begin
         port map (
       I0 => reset,
       I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
+      I2 => wr,
       I3 => wr_offset(0),
       I4 => wr_offset(1),
       O => \env_in_val__0\(31)
     );
-\one_to_four.env_in_val[32]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(32)
-    );
-\one_to_four.env_in_val[33]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(33)
-    );
-\one_to_four.env_in_val[34]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(34)
-    );
-\one_to_four.env_in_val[35]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(35)
-    );
-\one_to_four.env_in_val[36]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(36)
-    );
-\one_to_four.env_in_val[37]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(37)
-    );
-\one_to_four.env_in_val[38]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(38)
-    );
-\one_to_four.env_in_val[39]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(39)
-    );
-\one_to_four.env_in_val[3]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(3)
-    );
-\one_to_four.env_in_val[40]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(40)
-    );
-\one_to_four.env_in_val[41]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(41)
-    );
-\one_to_four.env_in_val[42]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(42)
-    );
-\one_to_four.env_in_val[43]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(43)
-    );
-\one_to_four.env_in_val[44]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(44)
-    );
-\one_to_four.env_in_val[45]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(45)
-    );
-\one_to_four.env_in_val[46]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(46)
-    );
 \one_to_four.env_in_val[47]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00001000"
+      INIT => X"01000000"
     )
         port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
+      I0 => wr_offset(0),
+      I1 => reset,
+      I2 => read_back_i,
+      I3 => wr,
+      I4 => wr_offset(1),
       O => \env_in_val__0\(47)
-    );
-\one_to_four.env_in_val[48]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(48)
-    );
-\one_to_four.env_in_val[49]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(49)
-    );
-\one_to_four.env_in_val[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(4)
-    );
-\one_to_four.env_in_val[50]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(50)
-    );
-\one_to_four.env_in_val[51]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(51)
-    );
-\one_to_four.env_in_val[52]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(52)
-    );
-\one_to_four.env_in_val[53]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(53)
-    );
-\one_to_four.env_in_val[54]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(54)
-    );
-\one_to_four.env_in_val[55]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(55)
-    );
-\one_to_four.env_in_val[56]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(56)
-    );
-\one_to_four.env_in_val[57]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(57)
-    );
-\one_to_four.env_in_val[58]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(58)
-    );
-\one_to_four.env_in_val[59]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(59)
-    );
-\one_to_four.env_in_val[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(5)
-    );
-\one_to_four.env_in_val[60]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(60)
-    );
-\one_to_four.env_in_val[61]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(61)
-    );
-\one_to_four.env_in_val[62]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \env_in_val__0\(62)
     );
 \one_to_four.env_in_val[63]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1721,104 +661,56 @@ begin
         port map (
       I0 => reset,
       I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
+      I2 => wr,
       I3 => wr_offset(0),
       I4 => wr_offset(1),
       O => \env_in_val__0\(63)
     );
-\one_to_four.env_in_val[6]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(6)
-    );
-\one_to_four.env_in_val[7]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(7)
-    );
-\one_to_four.env_in_val[8]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(8)
-    );
-\one_to_four.env_in_val[9]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \env_in_val__0\(9)
-    );
 \one_to_four.env_in_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(0),
-      D => \one_to_four.env_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(15),
+      D => env(0),
       Q => env_in_val(0),
       R => '0'
     );
 \one_to_four.env_in_val_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(10),
-      D => \one_to_four.env_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(15),
+      D => env(10),
       Q => env_in_val(10),
       R => '0'
     );
 \one_to_four.env_in_val_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(11),
-      D => \one_to_four.env_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(15),
+      D => env(11),
       Q => env_in_val(11),
       R => '0'
     );
 \one_to_four.env_in_val_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(12),
-      D => \one_to_four.env_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(15),
+      D => env(12),
       Q => env_in_val(12),
       R => '0'
     );
 \one_to_four.env_in_val_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(13),
-      D => \one_to_four.env_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(15),
+      D => env(13),
       Q => env_in_val(13),
       R => '0'
     );
 \one_to_four.env_in_val_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(14),
-      D => \one_to_four.env_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(15),
+      D => env(14),
       Q => env_in_val(14),
       R => '0'
     );
@@ -1826,143 +718,143 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(15),
-      D => \one_to_four.env_in_val_reg[63]_0\(15),
+      D => env(15),
       Q => env_in_val(15),
       R => '0'
     );
 \one_to_four.env_in_val_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(16),
-      D => \one_to_four.env_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(31),
+      D => env(0),
       Q => env_in_val(16),
       R => '0'
     );
 \one_to_four.env_in_val_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(17),
-      D => \one_to_four.env_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(31),
+      D => env(1),
       Q => env_in_val(17),
       R => '0'
     );
 \one_to_four.env_in_val_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(18),
-      D => \one_to_four.env_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(31),
+      D => env(2),
       Q => env_in_val(18),
       R => '0'
     );
 \one_to_four.env_in_val_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(19),
-      D => \one_to_four.env_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(31),
+      D => env(3),
       Q => env_in_val(19),
       R => '0'
     );
 \one_to_four.env_in_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(1),
-      D => \one_to_four.env_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(15),
+      D => env(1),
       Q => env_in_val(1),
       R => '0'
     );
 \one_to_four.env_in_val_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(20),
-      D => \one_to_four.env_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(31),
+      D => env(4),
       Q => env_in_val(20),
       R => '0'
     );
 \one_to_four.env_in_val_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(21),
-      D => \one_to_four.env_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(31),
+      D => env(5),
       Q => env_in_val(21),
       R => '0'
     );
 \one_to_four.env_in_val_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(22),
-      D => \one_to_four.env_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(31),
+      D => env(6),
       Q => env_in_val(22),
       R => '0'
     );
 \one_to_four.env_in_val_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(23),
-      D => \one_to_four.env_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(31),
+      D => env(7),
       Q => env_in_val(23),
       R => '0'
     );
 \one_to_four.env_in_val_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(24),
-      D => \one_to_four.env_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(31),
+      D => env(8),
       Q => env_in_val(24),
       R => '0'
     );
 \one_to_four.env_in_val_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(25),
-      D => \one_to_four.env_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(31),
+      D => env(9),
       Q => env_in_val(25),
       R => '0'
     );
 \one_to_four.env_in_val_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(26),
-      D => \one_to_four.env_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(31),
+      D => env(10),
       Q => env_in_val(26),
       R => '0'
     );
 \one_to_four.env_in_val_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(27),
-      D => \one_to_four.env_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(31),
+      D => env(11),
       Q => env_in_val(27),
       R => '0'
     );
 \one_to_four.env_in_val_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(28),
-      D => \one_to_four.env_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(31),
+      D => env(12),
       Q => env_in_val(28),
       R => '0'
     );
 \one_to_four.env_in_val_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(29),
-      D => \one_to_four.env_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(31),
+      D => env(13),
       Q => env_in_val(29),
       R => '0'
     );
 \one_to_four.env_in_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(2),
-      D => \one_to_four.env_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(15),
+      D => env(2),
       Q => env_in_val(2),
       R => '0'
     );
 \one_to_four.env_in_val_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(30),
-      D => \one_to_four.env_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(31),
+      D => env(14),
       Q => env_in_val(30),
       R => '0'
     );
@@ -1970,135 +862,135 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(31),
-      D => \one_to_four.env_in_val_reg[63]_0\(15),
+      D => env(15),
       Q => env_in_val(31),
       R => '0'
     );
 \one_to_four.env_in_val_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(32),
-      D => \one_to_four.env_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(47),
+      D => env(0),
       Q => env_in_val(32),
       R => '0'
     );
 \one_to_four.env_in_val_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(33),
-      D => \one_to_four.env_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(47),
+      D => env(1),
       Q => env_in_val(33),
       R => '0'
     );
 \one_to_four.env_in_val_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(34),
-      D => \one_to_four.env_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(47),
+      D => env(2),
       Q => env_in_val(34),
       R => '0'
     );
 \one_to_four.env_in_val_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(35),
-      D => \one_to_four.env_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(47),
+      D => env(3),
       Q => env_in_val(35),
       R => '0'
     );
 \one_to_four.env_in_val_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(36),
-      D => \one_to_four.env_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(47),
+      D => env(4),
       Q => env_in_val(36),
       R => '0'
     );
 \one_to_four.env_in_val_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(37),
-      D => \one_to_four.env_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(47),
+      D => env(5),
       Q => env_in_val(37),
       R => '0'
     );
 \one_to_four.env_in_val_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(38),
-      D => \one_to_four.env_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(47),
+      D => env(6),
       Q => env_in_val(38),
       R => '0'
     );
 \one_to_four.env_in_val_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(39),
-      D => \one_to_four.env_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(47),
+      D => env(7),
       Q => env_in_val(39),
       R => '0'
     );
 \one_to_four.env_in_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(3),
-      D => \one_to_four.env_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(15),
+      D => env(3),
       Q => env_in_val(3),
       R => '0'
     );
 \one_to_four.env_in_val_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(40),
-      D => \one_to_four.env_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(47),
+      D => env(8),
       Q => env_in_val(40),
       R => '0'
     );
 \one_to_four.env_in_val_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(41),
-      D => \one_to_four.env_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(47),
+      D => env(9),
       Q => env_in_val(41),
       R => '0'
     );
 \one_to_four.env_in_val_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(42),
-      D => \one_to_four.env_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(47),
+      D => env(10),
       Q => env_in_val(42),
       R => '0'
     );
 \one_to_four.env_in_val_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(43),
-      D => \one_to_four.env_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(47),
+      D => env(11),
       Q => env_in_val(43),
       R => '0'
     );
 \one_to_four.env_in_val_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(44),
-      D => \one_to_four.env_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(47),
+      D => env(12),
       Q => env_in_val(44),
       R => '0'
     );
 \one_to_four.env_in_val_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(45),
-      D => \one_to_four.env_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(47),
+      D => env(13),
       Q => env_in_val(45),
       R => '0'
     );
 \one_to_four.env_in_val_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(46),
-      D => \one_to_four.env_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(47),
+      D => env(14),
       Q => env_in_val(46),
       R => '0'
     );
@@ -2106,143 +998,143 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(47),
-      D => \one_to_four.env_in_val_reg[63]_0\(15),
+      D => env(15),
       Q => env_in_val(47),
       R => '0'
     );
 \one_to_four.env_in_val_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(48),
-      D => \one_to_four.env_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(63),
+      D => env(0),
       Q => env_in_val(48),
       R => '0'
     );
 \one_to_four.env_in_val_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(49),
-      D => \one_to_four.env_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(63),
+      D => env(1),
       Q => env_in_val(49),
       R => '0'
     );
 \one_to_four.env_in_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(4),
-      D => \one_to_four.env_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(15),
+      D => env(4),
       Q => env_in_val(4),
       R => '0'
     );
 \one_to_four.env_in_val_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(50),
-      D => \one_to_four.env_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(63),
+      D => env(2),
       Q => env_in_val(50),
       R => '0'
     );
 \one_to_four.env_in_val_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(51),
-      D => \one_to_four.env_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(63),
+      D => env(3),
       Q => env_in_val(51),
       R => '0'
     );
 \one_to_four.env_in_val_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(52),
-      D => \one_to_four.env_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(63),
+      D => env(4),
       Q => env_in_val(52),
       R => '0'
     );
 \one_to_four.env_in_val_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(53),
-      D => \one_to_four.env_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(63),
+      D => env(5),
       Q => env_in_val(53),
       R => '0'
     );
 \one_to_four.env_in_val_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(54),
-      D => \one_to_four.env_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(63),
+      D => env(6),
       Q => env_in_val(54),
       R => '0'
     );
 \one_to_four.env_in_val_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(55),
-      D => \one_to_four.env_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(63),
+      D => env(7),
       Q => env_in_val(55),
       R => '0'
     );
 \one_to_four.env_in_val_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(56),
-      D => \one_to_four.env_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(63),
+      D => env(8),
       Q => env_in_val(56),
       R => '0'
     );
 \one_to_four.env_in_val_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(57),
-      D => \one_to_four.env_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(63),
+      D => env(9),
       Q => env_in_val(57),
       R => '0'
     );
 \one_to_four.env_in_val_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(58),
-      D => \one_to_four.env_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(63),
+      D => env(10),
       Q => env_in_val(58),
       R => '0'
     );
 \one_to_four.env_in_val_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(59),
-      D => \one_to_four.env_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(63),
+      D => env(11),
       Q => env_in_val(59),
       R => '0'
     );
 \one_to_four.env_in_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(5),
-      D => \one_to_four.env_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(15),
+      D => env(5),
       Q => env_in_val(5),
       R => '0'
     );
 \one_to_four.env_in_val_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(60),
-      D => \one_to_four.env_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(63),
+      D => env(12),
       Q => env_in_val(60),
       R => '0'
     );
 \one_to_four.env_in_val_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(61),
-      D => \one_to_four.env_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(63),
+      D => env(13),
       Q => env_in_val(61),
       R => '0'
     );
 \one_to_four.env_in_val_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(62),
-      D => \one_to_four.env_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(63),
+      D => env(14),
       Q => env_in_val(62),
       R => '0'
     );
@@ -2250,63 +1142,63 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(63),
-      D => \one_to_four.env_in_val_reg[63]_0\(15),
+      D => env(15),
       Q => env_in_val(63),
       R => '0'
     );
 \one_to_four.env_in_val_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(6),
-      D => \one_to_four.env_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(15),
+      D => env(6),
       Q => env_in_val(6),
       R => '0'
     );
 \one_to_four.env_in_val_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(7),
-      D => \one_to_four.env_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(15),
+      D => env(7),
       Q => env_in_val(7),
       R => '0'
     );
 \one_to_four.env_in_val_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(8),
-      D => \one_to_four.env_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(15),
+      D => env(8),
       Q => env_in_val(8),
       R => '0'
     );
 \one_to_four.env_in_val_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(9),
-      D => \one_to_four.env_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(15),
+      D => env(9),
       Q => env_in_val(9),
       R => '0'
     );
-\one_to_four.idle_i_1\: unisim.vcomponents.LUT5
+\one_to_four.idle_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"00000001"
+      INIT => X"10"
     )
         port map (
-      I0 => \one_to_four.mem_wr_reg_0\,
-      I1 => p2_done,
-      I2 => req_read_back,
-      I3 => mem_wr,
-      I4 => \one_to_four.idle_i_2_n_0\,
+      I0 => active_1,
+      I1 => \^active\,
+      I2 => \one_to_four.idle_i_2_n_0\,
       O => idle0
     );
-\one_to_four.idle_i_2\: unisim.vcomponents.LUT4
+\one_to_four.idle_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => \one_to_four.active_0_reg_n_0\,
-      I1 => read_back_i,
-      I2 => active_1,
-      I3 => \^p2_active\,
+      I0 => mem_wr,
+      I1 => \one_to_four.active_0_reg_n_0\,
+      I2 => read_back,
+      I3 => wr,
+      I4 => req_read_back,
+      I5 => read_back_i,
       O => \one_to_four.idle_i_2_n_0\
     );
 \one_to_four.idle_reg\: unisim.vcomponents.FDRE
@@ -2314,7 +1206,7 @@ begin
       C => clk,
       CE => '1',
       D => idle0,
-      Q => p2_idle,
+      Q => idle,
       R => '0'
     );
 \one_to_four.mem_env_reg\: unisim.vcomponents.RAMB36E2
@@ -2383,8 +1275,10 @@ begin
       DINBDIN(31 downto 0) => env_in_val(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 0) => DOUTADOUT(31 downto 0),
-      DOUTBDOUT(31 downto 0) => DOUTBDOUT(31 downto 0),
+      DOUTADOUT(31 downto 16) => env_1(15 downto 0),
+      DOUTADOUT(15 downto 0) => env_0(15 downto 0),
+      DOUTBDOUT(31 downto 16) => env_3(15 downto 0),
+      DOUTBDOUT(15 downto 0) => env_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_one_to_four.mem_env_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
       DOUTPBDOUTP(3 downto 0) => \NLW_one_to_four.mem_env_reg_DOUTPBDOUTP_UNCONNECTED\(3 downto 0),
       ECCPARITY(7 downto 0) => \NLW_one_to_four.mem_env_reg_ECCPARITY_UNCONNECTED\(7 downto 0),
@@ -2490,7 +1384,7 @@ begin
       DOUTADOUT(22) => \one_to_four.mem_phase_diff_reg_0_n_77\,
       DOUTADOUT(21) => \one_to_four.mem_phase_diff_reg_0_n_78\,
       DOUTADOUT(20) => \one_to_four.mem_phase_diff_reg_0_n_79\,
-      DOUTADOUT(19 downto 0) => \^d\(19 downto 0),
+      DOUTADOUT(19 downto 0) => phase_diff_0(19 downto 0),
       DOUTBDOUT(31) => \one_to_four.mem_phase_diff_reg_0_n_100\,
       DOUTBDOUT(30) => \one_to_four.mem_phase_diff_reg_0_n_101\,
       DOUTBDOUT(29) => \one_to_four.mem_phase_diff_reg_0_n_102\,
@@ -2622,8 +1516,10 @@ begin
       DINBDIN(31 downto 0) => phase_in_val(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31 downto 0) => \one_to_four.mem_phase_reg_0\(31 downto 0),
-      DOUTBDOUT(31 downto 0) => \one_to_four.mem_phase_reg_1\(31 downto 0),
+      DOUTADOUT(31 downto 16) => phase_1(15 downto 0),
+      DOUTADOUT(15 downto 0) => phase_0(15 downto 0),
+      DOUTBDOUT(31 downto 16) => phase_3(15 downto 0),
+      DOUTBDOUT(15 downto 0) => phase_2(15 downto 0),
       DOUTPADOUTP(3 downto 0) => \NLW_one_to_four.mem_phase_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
       DOUTPBDOUTP(3 downto 0) => \NLW_one_to_four.mem_phase_reg_DOUTPBDOUTP_UNCONNECTED\(3 downto 0),
       ECCPARITY(7 downto 0) => \NLW_one_to_four.mem_phase_reg_ECCPARITY_UNCONNECTED\(7 downto 0),
@@ -2656,11 +1552,11 @@ begin
       INIT => X"0000008E"
     )
         port map (
-      I0 => wr_offset(0),
-      I1 => wr_offset(1),
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => read_back_i,
-      I4 => reset,
+      I0 => wr_offset(1),
+      I1 => wr_offset(0),
+      I2 => wr,
+      I3 => reset,
+      I4 => read_back_i,
       O => \one_to_four.mem_wr_i_1_n_0\
     );
 \one_to_four.mem_wr_reg\: unisim.vcomponents.FDRE
@@ -2671,675 +1567,627 @@ begin
       Q => mem_wr,
       R => '0'
     );
-\one_to_four.phase_diff_in_val[19]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000100"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => wr_offset(1),
-      I3 => \one_to_four.mem_wr_reg_0\,
-      I4 => wr_offset(0),
-      O => \phase_diff_in_val__0\(0)
-    );
-\one_to_four.phase_diff_in_val[39]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \phase_diff_in_val__0\(20)
-    );
-\one_to_four.phase_diff_in_val[59]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00001000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(1),
-      I4 => wr_offset(0),
-      O => \phase_diff_in_val__0\(40)
-    );
-\one_to_four.phase_diff_in_val[71]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"10000000"
-    )
-        port map (
-      I0 => reset,
-      I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
-      I3 => wr_offset(0),
-      I4 => wr_offset(1),
-      O => \phase_diff_in_val__0\(60)
-    );
 \one_to_four.phase_diff_in_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(0),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(0),
       Q => phase_diff_in_val(0),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(10),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(10),
       Q => phase_diff_in_val(10),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(11),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(11),
       Q => phase_diff_in_val(11),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(12),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(12),
       Q => phase_diff_in_val(12),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(13),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(13),
       Q => phase_diff_in_val(13),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(14),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(14),
       Q => phase_diff_in_val(14),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(15),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(15),
       Q => phase_diff_in_val(15),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(16),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(16),
       Q => phase_diff_in_val(16),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(17),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(17),
       Q => phase_diff_in_val(17),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(18),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(18),
       Q => phase_diff_in_val(18),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(19),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(19),
       Q => phase_diff_in_val(19),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(1),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(1),
       Q => phase_diff_in_val(1),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(0),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(0),
       Q => phase_diff_in_val(20),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(1),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(1),
       Q => phase_diff_in_val(21),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(2),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(2),
       Q => phase_diff_in_val(22),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(3),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(3),
       Q => phase_diff_in_val(23),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(4),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(4),
       Q => phase_diff_in_val(24),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(5),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(5),
       Q => phase_diff_in_val(25),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(6),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(6),
       Q => phase_diff_in_val(26),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(7),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(7),
       Q => phase_diff_in_val(27),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(8),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(8),
       Q => phase_diff_in_val(28),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(9),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(9),
       Q => phase_diff_in_val(29),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(2),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(2),
       Q => phase_diff_in_val(2),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(10),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(10),
       Q => phase_diff_in_val(30),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(11),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(11),
       Q => phase_diff_in_val(31),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(12),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(12),
       Q => phase_diff_in_val(32),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(13),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(13),
       Q => phase_diff_in_val(33),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(14),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(14),
       Q => phase_diff_in_val(34),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(15),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(15),
       Q => phase_diff_in_val(35),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(16),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(16),
       Q => phase_diff_in_val(36),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(17),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(17),
       Q => phase_diff_in_val(37),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(18),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(18),
       Q => phase_diff_in_val(38),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(20),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(19),
+      CE => \env_in_val__0\(31),
+      D => phase_diff(19),
       Q => phase_diff_in_val(39),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(3),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(3),
       Q => phase_diff_in_val(3),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(0),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(0),
       Q => phase_diff_in_val(40),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(1),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(1),
       Q => phase_diff_in_val(41),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(2),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(2),
       Q => phase_diff_in_val(42),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(3),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(3),
       Q => phase_diff_in_val(43),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(4),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(4),
       Q => phase_diff_in_val(44),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(5),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(5),
       Q => phase_diff_in_val(45),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(6),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(6),
       Q => phase_diff_in_val(46),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(7),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(7),
       Q => phase_diff_in_val(47),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(8),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(8),
       Q => phase_diff_in_val(48),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(9),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(9),
       Q => phase_diff_in_val(49),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(4),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(4),
       Q => phase_diff_in_val(4),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(10),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(10),
       Q => phase_diff_in_val(50),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(11),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(11),
       Q => phase_diff_in_val(51),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(12),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(12),
       Q => phase_diff_in_val(52),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(13),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(13),
       Q => phase_diff_in_val(53),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(14),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(14),
       Q => phase_diff_in_val(54),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(15),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(15),
       Q => phase_diff_in_val(55),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(16),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(16),
       Q => phase_diff_in_val(56),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(17),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(17),
       Q => phase_diff_in_val(57),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(18),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(18),
       Q => phase_diff_in_val(58),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(40),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(19),
+      CE => \env_in_val__0\(47),
+      D => phase_diff(19),
       Q => phase_diff_in_val(59),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(5),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(5),
       Q => phase_diff_in_val(5),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(0),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(0),
       Q => phase_diff_in_val(60),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(1),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(1),
       Q => phase_diff_in_val(61),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(2),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(2),
       Q => phase_diff_in_val(62),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(3),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(3),
       Q => phase_diff_in_val(63),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(4),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(4),
       Q => phase_diff_in_val(64),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(5),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(5),
       Q => phase_diff_in_val(65),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(6),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(6),
       Q => phase_diff_in_val(66),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(7),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(7),
       Q => phase_diff_in_val(67),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(8),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(8),
       Q => phase_diff_in_val(68),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(9),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(9),
       Q => phase_diff_in_val(69),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(6),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(6),
       Q => phase_diff_in_val(6),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(10),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(10),
       Q => phase_diff_in_val(70),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(60),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(11),
+      CE => \env_in_val__0\(63),
+      D => phase_diff(11),
       Q => phase_diff_in_val(71),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(7),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(7),
       Q => phase_diff_in_val(7),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(8),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(8),
       Q => phase_diff_in_val(8),
       R => '0'
     );
 \one_to_four.phase_diff_in_val_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \phase_diff_in_val__0\(0),
-      D => \one_to_four.phase_diff_in_val_reg[59]_0\(9),
+      CE => \env_in_val__0\(15),
+      D => phase_diff(9),
       Q => phase_diff_in_val(9),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(0),
-      D => \one_to_four.phase_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(15),
+      D => phase(0),
       Q => phase_in_val(0),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(10),
-      D => \one_to_four.phase_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(15),
+      D => phase(10),
       Q => phase_in_val(10),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(11),
-      D => \one_to_four.phase_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(15),
+      D => phase(11),
       Q => phase_in_val(11),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(12),
-      D => \one_to_four.phase_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(15),
+      D => phase(12),
       Q => phase_in_val(12),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(13),
-      D => \one_to_four.phase_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(15),
+      D => phase(13),
       Q => phase_in_val(13),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(14),
-      D => \one_to_four.phase_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(15),
+      D => phase(14),
       Q => phase_in_val(14),
       R => '0'
     );
@@ -3347,143 +2195,143 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(15),
-      D => \one_to_four.phase_in_val_reg[63]_0\(15),
+      D => phase(15),
       Q => phase_in_val(15),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(16),
-      D => \one_to_four.phase_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(31),
+      D => phase(0),
       Q => phase_in_val(16),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(17),
-      D => \one_to_four.phase_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(31),
+      D => phase(1),
       Q => phase_in_val(17),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(18),
-      D => \one_to_four.phase_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(31),
+      D => phase(2),
       Q => phase_in_val(18),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(19),
-      D => \one_to_four.phase_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(31),
+      D => phase(3),
       Q => phase_in_val(19),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(1),
-      D => \one_to_four.phase_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(15),
+      D => phase(1),
       Q => phase_in_val(1),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(20),
-      D => \one_to_four.phase_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(31),
+      D => phase(4),
       Q => phase_in_val(20),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(21),
-      D => \one_to_four.phase_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(31),
+      D => phase(5),
       Q => phase_in_val(21),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(22),
-      D => \one_to_four.phase_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(31),
+      D => phase(6),
       Q => phase_in_val(22),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(23),
-      D => \one_to_four.phase_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(31),
+      D => phase(7),
       Q => phase_in_val(23),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(24),
-      D => \one_to_four.phase_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(31),
+      D => phase(8),
       Q => phase_in_val(24),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(25),
-      D => \one_to_four.phase_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(31),
+      D => phase(9),
       Q => phase_in_val(25),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(26),
-      D => \one_to_four.phase_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(31),
+      D => phase(10),
       Q => phase_in_val(26),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(27),
-      D => \one_to_four.phase_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(31),
+      D => phase(11),
       Q => phase_in_val(27),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(28),
-      D => \one_to_four.phase_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(31),
+      D => phase(12),
       Q => phase_in_val(28),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(29),
-      D => \one_to_four.phase_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(31),
+      D => phase(13),
       Q => phase_in_val(29),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(2),
-      D => \one_to_four.phase_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(15),
+      D => phase(2),
       Q => phase_in_val(2),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(30),
-      D => \one_to_four.phase_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(31),
+      D => phase(14),
       Q => phase_in_val(30),
       R => '0'
     );
@@ -3491,135 +2339,135 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(31),
-      D => \one_to_four.phase_in_val_reg[63]_0\(15),
+      D => phase(15),
       Q => phase_in_val(31),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(32),
-      D => \one_to_four.phase_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(47),
+      D => phase(0),
       Q => phase_in_val(32),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(33),
-      D => \one_to_four.phase_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(47),
+      D => phase(1),
       Q => phase_in_val(33),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(34),
-      D => \one_to_four.phase_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(47),
+      D => phase(2),
       Q => phase_in_val(34),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(35),
-      D => \one_to_four.phase_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(47),
+      D => phase(3),
       Q => phase_in_val(35),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(36),
-      D => \one_to_four.phase_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(47),
+      D => phase(4),
       Q => phase_in_val(36),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(37),
-      D => \one_to_four.phase_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(47),
+      D => phase(5),
       Q => phase_in_val(37),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(38),
-      D => \one_to_four.phase_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(47),
+      D => phase(6),
       Q => phase_in_val(38),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(39),
-      D => \one_to_four.phase_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(47),
+      D => phase(7),
       Q => phase_in_val(39),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(3),
-      D => \one_to_four.phase_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(15),
+      D => phase(3),
       Q => phase_in_val(3),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(40),
-      D => \one_to_four.phase_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(47),
+      D => phase(8),
       Q => phase_in_val(40),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(41),
-      D => \one_to_four.phase_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(47),
+      D => phase(9),
       Q => phase_in_val(41),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(42),
-      D => \one_to_four.phase_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(47),
+      D => phase(10),
       Q => phase_in_val(42),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(43),
-      D => \one_to_four.phase_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(47),
+      D => phase(11),
       Q => phase_in_val(43),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(44),
-      D => \one_to_four.phase_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(47),
+      D => phase(12),
       Q => phase_in_val(44),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(45),
-      D => \one_to_four.phase_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(47),
+      D => phase(13),
       Q => phase_in_val(45),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(46),
-      D => \one_to_four.phase_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(47),
+      D => phase(14),
       Q => phase_in_val(46),
       R => '0'
     );
@@ -3627,143 +2475,143 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(47),
-      D => \one_to_four.phase_in_val_reg[63]_0\(15),
+      D => phase(15),
       Q => phase_in_val(47),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(48),
-      D => \one_to_four.phase_in_val_reg[63]_0\(0),
+      CE => \env_in_val__0\(63),
+      D => phase(0),
       Q => phase_in_val(48),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(49),
-      D => \one_to_four.phase_in_val_reg[63]_0\(1),
+      CE => \env_in_val__0\(63),
+      D => phase(1),
       Q => phase_in_val(49),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(4),
-      D => \one_to_four.phase_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(15),
+      D => phase(4),
       Q => phase_in_val(4),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(50),
-      D => \one_to_four.phase_in_val_reg[63]_0\(2),
+      CE => \env_in_val__0\(63),
+      D => phase(2),
       Q => phase_in_val(50),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(51),
-      D => \one_to_four.phase_in_val_reg[63]_0\(3),
+      CE => \env_in_val__0\(63),
+      D => phase(3),
       Q => phase_in_val(51),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(52),
-      D => \one_to_four.phase_in_val_reg[63]_0\(4),
+      CE => \env_in_val__0\(63),
+      D => phase(4),
       Q => phase_in_val(52),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(53),
-      D => \one_to_four.phase_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(63),
+      D => phase(5),
       Q => phase_in_val(53),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(54),
-      D => \one_to_four.phase_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(63),
+      D => phase(6),
       Q => phase_in_val(54),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(55),
-      D => \one_to_four.phase_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(63),
+      D => phase(7),
       Q => phase_in_val(55),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(56),
-      D => \one_to_four.phase_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(63),
+      D => phase(8),
       Q => phase_in_val(56),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(57),
-      D => \one_to_four.phase_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(63),
+      D => phase(9),
       Q => phase_in_val(57),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(58),
-      D => \one_to_four.phase_in_val_reg[63]_0\(10),
+      CE => \env_in_val__0\(63),
+      D => phase(10),
       Q => phase_in_val(58),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(59),
-      D => \one_to_four.phase_in_val_reg[63]_0\(11),
+      CE => \env_in_val__0\(63),
+      D => phase(11),
       Q => phase_in_val(59),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(5),
-      D => \one_to_four.phase_in_val_reg[63]_0\(5),
+      CE => \env_in_val__0\(15),
+      D => phase(5),
       Q => phase_in_val(5),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(60),
-      D => \one_to_four.phase_in_val_reg[63]_0\(12),
+      CE => \env_in_val__0\(63),
+      D => phase(12),
       Q => phase_in_val(60),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(61),
-      D => \one_to_four.phase_in_val_reg[63]_0\(13),
+      CE => \env_in_val__0\(63),
+      D => phase(13),
       Q => phase_in_val(61),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(62),
-      D => \one_to_four.phase_in_val_reg[63]_0\(14),
+      CE => \env_in_val__0\(63),
+      D => phase(14),
       Q => phase_in_val(62),
       R => '0'
     );
@@ -3771,126 +2619,41 @@ begin
      port map (
       C => clk,
       CE => \env_in_val__0\(63),
-      D => \one_to_four.phase_in_val_reg[63]_0\(15),
+      D => phase(15),
       Q => phase_in_val(63),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(6),
-      D => \one_to_four.phase_in_val_reg[63]_0\(6),
+      CE => \env_in_val__0\(15),
+      D => phase(6),
       Q => phase_in_val(6),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(7),
-      D => \one_to_four.phase_in_val_reg[63]_0\(7),
+      CE => \env_in_val__0\(15),
+      D => phase(7),
       Q => phase_in_val(7),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(8),
-      D => \one_to_four.phase_in_val_reg[63]_0\(8),
+      CE => \env_in_val__0\(15),
+      D => phase(8),
       Q => phase_in_val(8),
       R => '0'
     );
 \one_to_four.phase_in_val_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \env_in_val__0\(9),
-      D => \one_to_four.phase_in_val_reg[63]_0\(9),
+      CE => \env_in_val__0\(15),
+      D => phase(9),
       Q => phase_in_val(9),
       R => '0'
-    );
-\one_to_four.rd_ptr[1]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(0),
-      I1 => \one_to_four.rd_ptr_reg\(1),
-      O => \p_0_in__0\(1)
-    );
-\one_to_four.rd_ptr[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"6A"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(2),
-      I1 => \one_to_four.rd_ptr_reg\(0),
-      I2 => \one_to_four.rd_ptr_reg\(1),
-      O => \p_0_in__0\(2)
-    );
-\one_to_four.rd_ptr[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"6AAA"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(3),
-      I1 => \one_to_four.rd_ptr_reg\(1),
-      I2 => \one_to_four.rd_ptr_reg\(0),
-      I3 => \one_to_four.rd_ptr_reg\(2),
-      O => \p_0_in__0\(3)
-    );
-\one_to_four.rd_ptr[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"6AAAAAAA"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(4),
-      I1 => \one_to_four.rd_ptr_reg\(2),
-      I2 => \one_to_four.rd_ptr_reg\(0),
-      I3 => \one_to_four.rd_ptr_reg\(1),
-      I4 => \one_to_four.rd_ptr_reg\(3),
-      O => \p_0_in__0\(4)
-    );
-\one_to_four.rd_ptr[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(5),
-      I1 => \one_to_four.rd_ptr_reg\(3),
-      I2 => \one_to_four.rd_ptr_reg\(1),
-      I3 => \one_to_four.rd_ptr_reg\(0),
-      I4 => \one_to_four.rd_ptr_reg\(2),
-      I5 => \one_to_four.rd_ptr_reg\(4),
-      O => \p_0_in__0\(5)
-    );
-\one_to_four.rd_ptr[6]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(6),
-      I1 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
-      O => \p_0_in__0\(6)
-    );
-\one_to_four.rd_ptr[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B4"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
-      I1 => \one_to_four.rd_ptr_reg\(6),
-      I2 => \one_to_four.rd_ptr_reg\(7),
-      O => \p_0_in__0\(7)
-    );
-\one_to_four.rd_ptr[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9AAA"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(8),
-      I1 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
-      I2 => \one_to_four.rd_ptr_reg\(6),
-      I3 => \one_to_four.rd_ptr_reg\(7),
-      O => \p_0_in__0\(8)
     );
 \one_to_four.rd_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -3976,7 +2739,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[1]_i_1_n_0\,
+      D => \p_0_in__0\(1),
       Q => rd_ptr(1),
       R => read_back_i
     );
@@ -3984,7 +2747,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[2]_i_1_n_0\,
+      D => \p_0_in__0\(2),
       Q => rd_ptr(2),
       R => read_back_i
     );
@@ -3992,7 +2755,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[3]_i_1_n_0\,
+      D => \p_0_in__0\(3),
       Q => rd_ptr(3),
       R => read_back_i
     );
@@ -4000,7 +2763,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[4]_i_1_n_0\,
+      D => \p_0_in__0\(4),
       Q => rd_ptr(4),
       R => read_back_i
     );
@@ -4008,7 +2771,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[5]_i_1_n_0\,
+      D => \p_0_in__0\(5),
       Q => rd_ptr(5),
       R => read_back_i
     );
@@ -4016,7 +2779,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[6]_i_1_n_0\,
+      D => \p_0_in__0\(6),
       Q => rd_ptr(6),
       R => read_back_i
     );
@@ -4024,7 +2787,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[7]_i_1_n_0\,
+      D => \p_0_in__0\(7),
       Q => rd_ptr(7),
       R => read_back_i
     );
@@ -4032,7 +2795,7 @@ begin
      port map (
       C => clk,
       CE => \one_to_four.active_0_reg_n_0\,
-      D => \one_to_four.rd_ptr_rep[8]_i_1_n_0\,
+      D => \p_0_in__0\(8),
       Q => rd_ptr(8),
       R => read_back_i
     );
@@ -4051,32 +2814,44 @@ begin
         port map (
       I0 => \one_to_four.rd_ptr_reg\(0),
       I1 => \one_to_four.rd_ptr_reg\(1),
-      O => \one_to_four.rd_ptr_rep[1]_i_1_n_0\
+      O => \p_0_in__0\(1)
     );
 \one_to_four.rd_ptr_rep[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"78"
+    )
+        port map (
+      I0 => \one_to_four.rd_ptr_reg\(1),
+      I1 => \one_to_four.rd_ptr_reg\(0),
+      I2 => \one_to_four.rd_ptr_reg\(2),
+      O => \p_0_in__0\(2)
+    );
+\one_to_four.rd_ptr_rep[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
     )
         port map (
       I0 => \one_to_four.rd_ptr_reg\(2),
       I1 => \one_to_four.rd_ptr_reg\(0),
       I2 => \one_to_four.rd_ptr_reg\(1),
-      O => \one_to_four.rd_ptr_rep[2]_i_1_n_0\
+      I3 => \one_to_four.rd_ptr_reg\(3),
+      O => \p_0_in__0\(3)
     );
-\one_to_four.rd_ptr_rep[3]_i_1\: unisim.vcomponents.LUT4
+\one_to_four.rd_ptr_rep[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6AAA"
+      INIT => X"7FFF8000"
     )
         port map (
       I0 => \one_to_four.rd_ptr_reg\(3),
       I1 => \one_to_four.rd_ptr_reg\(1),
       I2 => \one_to_four.rd_ptr_reg\(0),
       I3 => \one_to_four.rd_ptr_reg\(2),
-      O => \one_to_four.rd_ptr_rep[3]_i_1_n_0\
+      I4 => \one_to_four.rd_ptr_reg\(4),
+      O => \p_0_in__0\(4)
     );
-\one_to_four.rd_ptr_rep[4]_i_1\: unisim.vcomponents.LUT5
+\one_to_four.rd_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"7FFFFFFF80000000"
     )
         port map (
       I0 => \one_to_four.rd_ptr_reg\(4),
@@ -4084,50 +2859,38 @@ begin
       I2 => \one_to_four.rd_ptr_reg\(0),
       I3 => \one_to_four.rd_ptr_reg\(1),
       I4 => \one_to_four.rd_ptr_reg\(3),
-      O => \one_to_four.rd_ptr_rep[4]_i_1_n_0\
-    );
-\one_to_four.rd_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
-    )
-        port map (
-      I0 => \one_to_four.rd_ptr_reg\(5),
-      I1 => \one_to_four.rd_ptr_reg\(3),
-      I2 => \one_to_four.rd_ptr_reg\(1),
-      I3 => \one_to_four.rd_ptr_reg\(0),
-      I4 => \one_to_four.rd_ptr_reg\(2),
-      I5 => \one_to_four.rd_ptr_reg\(4),
-      O => \one_to_four.rd_ptr_rep[5]_i_1_n_0\
+      I5 => \one_to_four.rd_ptr_reg\(5),
+      O => \p_0_in__0\(5)
     );
 \one_to_four.rd_ptr_rep[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => \one_to_four.rd_ptr_reg\(6),
-      I1 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
-      O => \one_to_four.rd_ptr_rep[6]_i_1_n_0\
+      I0 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
+      I1 => \one_to_four.rd_ptr_reg\(6),
+      O => \p_0_in__0\(6)
     );
 \one_to_four.rd_ptr_rep[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B4"
+      INIT => X"D2"
     )
         port map (
-      I0 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
-      I1 => \one_to_four.rd_ptr_reg\(6),
+      I0 => \one_to_four.rd_ptr_reg\(6),
+      I1 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
       I2 => \one_to_four.rd_ptr_reg\(7),
-      O => \one_to_four.rd_ptr_rep[7]_i_1_n_0\
+      O => \p_0_in__0\(7)
     );
 \one_to_four.rd_ptr_rep[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"9AAA"
+      INIT => X"DF20"
     )
         port map (
-      I0 => \one_to_four.rd_ptr_reg\(8),
+      I0 => \one_to_four.rd_ptr_reg\(7),
       I1 => \one_to_four.rd_ptr_rep[8]_i_2_n_0\,
       I2 => \one_to_four.rd_ptr_reg\(6),
-      I3 => \one_to_four.rd_ptr_reg\(7),
-      O => \one_to_four.rd_ptr_rep[8]_i_1_n_0\
+      I3 => \one_to_four.rd_ptr_reg\(8),
+      O => \p_0_in__0\(8)
     );
 \one_to_four.rd_ptr_rep[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
@@ -4147,8 +2910,8 @@ begin
       INIT => X"8"
     )
         port map (
-      I0 => idle,
-      I1 => req_read_back,
+      I0 => req_read_back,
+      I1 => allowed,
       O => read_back_i0
     );
 \one_to_four.read_back_i_reg\: unisim.vcomponents.FDRE
@@ -4157,17 +2920,17 @@ begin
       CE => '1',
       D => read_back_i0,
       Q => read_back_i,
-      R => p2_done
+      R => read_back
     );
 \one_to_four.req_read_back_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"A8B8"
+      INIT => X"AAB0"
     )
         port map (
       I0 => \one_to_four.req_read_back_i_2_n_0\,
-      I1 => reset,
+      I1 => allowed,
       I2 => req_read_back,
-      I3 => idle,
+      I3 => reset,
       O => \one_to_four.req_read_back_i_1_n_0\
     );
 \one_to_four.req_read_back_i_2\: unisim.vcomponents.LUT2
@@ -4181,12 +2944,12 @@ begin
     );
 \one_to_four.req_read_back_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"EA"
+      INIT => X"F8"
     )
         port map (
-      I0 => reset,
+      I0 => allowed,
       I1 => req_read_back,
-      I2 => idle,
+      I2 => reset,
       O => \one_to_four.req_read_back_i_3_n_0\
     );
 \one_to_four.req_read_back_reg\: unisim.vcomponents.FDSE
@@ -4195,7 +2958,7 @@ begin
       CE => '1',
       D => \one_to_four.req_read_back_i_1_n_0\,
       Q => req_read_back,
-      S => p2_done
+      S => read_back
     );
 \one_to_four.wr_offset[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -4212,7 +2975,7 @@ begin
         port map (
       I0 => reset,
       I1 => read_back_i,
-      I2 => \one_to_four.mem_wr_reg_0\,
+      I2 => wr,
       O => \one_to_four.wr_offset[1]_i_1_n_0\
     );
 \one_to_four.wr_offset[1]_i_2\: unisim.vcomponents.LUT2
@@ -4220,8 +2983,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => wr_offset(1),
-      I1 => wr_offset(0),
+      I0 => wr_offset(0),
+      I1 => wr_offset(1),
       O => p_1_in(1)
     );
 \one_to_four.wr_offset_reg[0]\: unisim.vcomponents.FDRE
@@ -4259,28 +3022,40 @@ begin
     );
 \one_to_four.wr_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"78"
+    )
+        port map (
+      I0 => \one_to_four.wr_ptr_reg\(1),
+      I1 => \one_to_four.wr_ptr_reg\(0),
+      I2 => \one_to_four.wr_ptr_reg\(2),
+      O => p_0_in(2)
+    );
+\one_to_four.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
     )
         port map (
       I0 => \one_to_four.wr_ptr_reg\(2),
       I1 => \one_to_four.wr_ptr_reg\(0),
       I2 => \one_to_four.wr_ptr_reg\(1),
-      O => p_0_in(2)
+      I3 => \one_to_four.wr_ptr_reg\(3),
+      O => p_0_in(3)
     );
-\one_to_four.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
+\one_to_four.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6AAA"
+      INIT => X"7FFF8000"
     )
         port map (
       I0 => \one_to_four.wr_ptr_reg\(3),
       I1 => \one_to_four.wr_ptr_reg\(1),
       I2 => \one_to_four.wr_ptr_reg\(0),
       I3 => \one_to_four.wr_ptr_reg\(2),
-      O => p_0_in(3)
+      I4 => \one_to_four.wr_ptr_reg\(4),
+      O => p_0_in(4)
     );
-\one_to_four.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
+\one_to_four.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"7FFFFFFF80000000"
     )
         port map (
       I0 => \one_to_four.wr_ptr_reg\(4),
@@ -4288,19 +3063,7 @@ begin
       I2 => \one_to_four.wr_ptr_reg\(0),
       I3 => \one_to_four.wr_ptr_reg\(1),
       I4 => \one_to_four.wr_ptr_reg\(3),
-      O => p_0_in(4)
-    );
-\one_to_four.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
-    )
-        port map (
-      I0 => \one_to_four.wr_ptr_reg\(5),
-      I1 => \one_to_four.wr_ptr_reg\(3),
-      I2 => \one_to_four.wr_ptr_reg\(1),
-      I3 => \one_to_four.wr_ptr_reg\(0),
-      I4 => \one_to_four.wr_ptr_reg\(2),
-      I5 => \one_to_four.wr_ptr_reg\(4),
+      I5 => \one_to_four.wr_ptr_reg\(5),
       O => p_0_in(5)
     );
 \one_to_four.wr_ptr[6]_i_1\: unisim.vcomponents.LUT2
@@ -4308,17 +3071,17 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => \one_to_four.wr_ptr_reg\(6),
-      I1 => \one_to_four.wr_ptr[8]_i_4_n_0\,
+      I0 => \one_to_four.wr_ptr[8]_i_4_n_0\,
+      I1 => \one_to_four.wr_ptr_reg\(6),
       O => p_0_in(6)
     );
 \one_to_four.wr_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B4"
+      INIT => X"D2"
     )
         port map (
-      I0 => \one_to_four.wr_ptr[8]_i_4_n_0\,
-      I1 => \one_to_four.wr_ptr_reg\(6),
+      I0 => \one_to_four.wr_ptr_reg\(6),
+      I1 => \one_to_four.wr_ptr[8]_i_4_n_0\,
       I2 => \one_to_four.wr_ptr_reg\(7),
       O => p_0_in(7)
     );
@@ -4327,8 +3090,8 @@ begin
       INIT => X"E"
     )
         port map (
-      I0 => reset,
-      I1 => read_back_i,
+      I0 => read_back_i,
+      I1 => reset,
       O => \one_to_four.wr_ptr[8]_i_1_n_0\
     );
 \one_to_four.wr_ptr[8]_i_2\: unisim.vcomponents.LUT2
@@ -4336,19 +3099,19 @@ begin
       INIT => X"8"
     )
         port map (
-      I0 => mem_wr,
-      I1 => \one_to_four.mem_wr_reg_0\,
+      I0 => wr,
+      I1 => mem_wr,
       O => wr_ptr
     );
 \one_to_four.wr_ptr[8]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"9AAA"
+      INIT => X"DF20"
     )
         port map (
-      I0 => \one_to_four.wr_ptr_reg\(8),
+      I0 => \one_to_four.wr_ptr_reg\(7),
       I1 => \one_to_four.wr_ptr[8]_i_4_n_0\,
       I2 => \one_to_four.wr_ptr_reg\(6),
-      I3 => \one_to_four.wr_ptr_reg\(7),
+      I3 => \one_to_four.wr_ptr_reg\(8),
       O => p_0_in(8)
     );
 \one_to_four.wr_ptr[8]_i_4\: unisim.vcomponents.LUT6
@@ -4480,18 +3243,27 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe1 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_comp_ana_0_0_ila_2;
   signal \^active\ : STD_LOGIC;
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of active : signal is std.standard.true;
-  signal clear : STD_LOGIC;
   signal \comp_stat.active_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.active_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.active_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.active_i_5_n_0\ : STD_LOGIC;
+  signal \comp_stat.active_i_6_n_0\ : STD_LOGIC;
   signal \comp_stat.active_reg0\ : STD_LOGIC;
   signal \comp_stat.curr_env_1[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.curr_env_1[10]_i_1_n_0\ : STD_LOGIC;
@@ -4528,19 +3300,20 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.down_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.down_delay_reg_n_0_[0]\ : STD_LOGIC;
   signal \comp_stat.down_pos[10]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.down_pos[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.down_pos[6]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.down_pos[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.down_pos[9]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.down_pos_reg\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \comp_stat.env[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.env[15]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.env[15]_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.env[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.env[15]_i_5_n_0\ : STD_LOGIC;
   signal \comp_stat.filling_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.idle_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.idle_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.idle_i_4_n_0\ : STD_LOGIC;
   signal \comp_stat.pend_done_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.pend_done_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.phase[15]_i_10_n_0\ : STD_LOGIC;
   signal \comp_stat.phase[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.phase[15]_i_3_n_0\ : STD_LOGIC;
@@ -4622,7 +3395,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.pred_phase[21]_i_15_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase[21]_i_16_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase[21]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.pred_phase[21]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.pred_phase[21]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase[21]_i_5_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase[21]_i_6_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase[21]_i_7_n_0\ : STD_LOGIC;
@@ -4668,16 +3441,16 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.pred_phase_reg[15]_i_3_n_5\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[15]_i_3_n_6\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[15]_i_3_n_7\ : STD_LOGIC;
-  signal \comp_stat.pred_phase_reg[21]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_stat.pred_phase_reg[21]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_stat.pred_phase_reg[21]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_stat.pred_phase_reg[21]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_stat.pred_phase_reg[21]_i_2_n_7\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[21]_i_3_n_3\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[21]_i_3_n_4\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[21]_i_3_n_5\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[21]_i_3_n_6\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[21]_i_3_n_7\ : STD_LOGIC;
+  signal \comp_stat.pred_phase_reg[21]_i_4_n_3\ : STD_LOGIC;
+  signal \comp_stat.pred_phase_reg[21]_i_4_n_4\ : STD_LOGIC;
+  signal \comp_stat.pred_phase_reg[21]_i_4_n_5\ : STD_LOGIC;
+  signal \comp_stat.pred_phase_reg[21]_i_4_n_6\ : STD_LOGIC;
+  signal \comp_stat.pred_phase_reg[21]_i_4_n_7\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[7]_i_2_n_1\ : STD_LOGIC;
   signal \comp_stat.pred_phase_reg[7]_i_2_n_2\ : STD_LOGIC;
@@ -4702,50 +3475,62 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.proc_up_reg_n_0\ : STD_LOGIC;
   signal \comp_stat.rd_pos_1[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.rd_pos_1[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[0]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[1]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[2]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[3]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[4]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[5]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[6]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[7]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_reg_n_0_[8]\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[2]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[2]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[3]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[3]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[4]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[4]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[5]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[5]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[5]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[6]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[6]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[6]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[6]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[7]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[7]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_stat.rd_ptr_rep[8]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_pos_1[1]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_pos_1[1]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_pos_1[1]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_pos_1[1]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_pos_1[1]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[0]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[1]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[2]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[3]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_10_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_11_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_12_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_13_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_14_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr[8]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_1\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_10\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_11\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_12\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_13\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_14\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_15\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_2\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_3\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_4\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_5\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_6\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_7\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_8\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[7]_i_3_n_9\ : STD_LOGIC;
+  signal \comp_stat.rd_ptr_reg[8]_i_4_n_15\ : STD_LOGIC;
   signal \comp_stat.start_down_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.start_down_reg_n_0\ : STD_LOGIC;
   signal \comp_stat.start_up_i_1_n_0\ : STD_LOGIC;
@@ -4789,56 +3574,64 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.up_count_reg[7]_i_2_n_7\ : STD_LOGIC;
   signal \comp_stat.up_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.up_delay_reg_n_0_[0]\ : STD_LOGIC;
+  signal \comp_stat.up_delay_reg_n_0_[2]\ : STD_LOGIC;
   signal \comp_stat.up_pos[10]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.up_pos[10]_i_4_n_0\ : STD_LOGIC;
   signal \comp_stat.up_pos[4]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.up_pos[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.up_pos[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.up_pos[9]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.up_pos_reg\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \comp_stat.was_active_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.was_active_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.was_active_reg_n_0\ : STD_LOGIC;
+  signal \comp_stat.wr_ptr[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.wr_ptr[8]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.wr_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal curr_env_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of curr_env_1 : signal is std.standard.true;
   signal curr_env_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal curr_phase : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of curr_phase : signal is std.standard.true;
   signal data : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal down_pos : STD_LOGIC;
   signal \^env\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env\ : signal is std.standard.true;
   signal env_in : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of env_in : signal is std.standard.true;
   signal env_out : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal filling : STD_LOGIC;
   signal idle0 : STD_LOGIC;
   signal mem_wr : STD_LOGIC;
-  signal p_0_in : STD_LOGIC;
   signal p_0_in4_in : STD_LOGIC;
-  signal p_0_in7_in : STD_LOGIC;
+  signal p_0_in8_in : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \p_0_in__2\ : STD_LOGIC_VECTOR ( 10 downto 0 );
-  signal \p_0_in__3\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal pend_done : STD_LOGIC;
   signal \^phase\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^phase\ : signal is std.standard.true;
   signal phase_in : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of phase_in : signal is std.standard.true;
   signal phase_out : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal \^pos\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute MARK_DEBUG of \^pos\ : signal is std.standard.true;
   signal pos_1 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal pred_phase : STD_LOGIC_VECTOR ( 21 downto 0 );
   signal pred_phase0 : STD_LOGIC_VECTOR ( 21 downto 0 );
-  signal pred_phase01_in : STD_LOGIC_VECTOR ( 21 downto 0 );
+  signal pred_phase02_in : STD_LOGIC_VECTOR ( 21 downto 0 );
   signal prev_phase : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rd_pos : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal \rd_pos_1__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute MARK_DEBUG of rd_pos : signal is std.standard.true;
+  signal rd_pos_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute MARK_DEBUG of rd_pos_1 : signal is std.standard.true;
   signal rd_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of rd_ptr : signal is std.standard.true;
   signal start_up : STD_LOGIC;
   signal stop_down : STD_LOGIC_VECTOR ( 0 to 0 );
   signal up_count : STD_LOGIC;
   signal up_pos : STD_LOGIC;
   signal was_active : STD_LOGIC;
+  signal wr_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of wr_ptr : signal is std.standard.true;
   signal \NLW_comp_stat.mem_env_reg_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_stat.mem_env_reg_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_stat.mem_env_reg_DBITERR_UNCONNECTED\ : STD_LOGIC;
@@ -4872,26 +3665,120 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \NLW_comp_stat.mem_phase_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_stat.mem_phase_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal \NLW_comp_stat.phase_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
-  signal \NLW_comp_stat.pred_phase_reg[21]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
-  signal \NLW_comp_stat.pred_phase_reg[21]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal \NLW_comp_stat.pred_phase_reg[21]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal \NLW_comp_stat.pred_phase_reg[21]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
+  signal \NLW_comp_stat.pred_phase_reg[21]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
+  signal \NLW_comp_stat.pred_phase_reg[21]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
+  signal \NLW_comp_stat.rd_ptr_reg[8]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_comp_stat.rd_ptr_reg[8]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_comp_stat.up_count_reg[10]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_stat.up_count_reg[10]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_stat.active_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \comp_stat.active_i_3\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \comp_stat.active_i_4\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.active_i_4\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \comp_stat.active_i_5\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \comp_stat.active_i_6\ : label is "soft_lutpair14";
   attribute KEEP : string;
   attribute KEEP of \comp_stat.active_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.down_delay[0]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[0]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[10]_i_3\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[1]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[4]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[6]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[7]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \comp_stat.down_pos[9]_i_2\ : label is "soft_lutpair12";
+  attribute KEEP of \comp_stat.curr_env_1_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_env_1_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_stat.curr_phase_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[0]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[1]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[4]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.down_pos[9]_i_1\ : label is "soft_lutpair12";
+  attribute KEEP of \comp_stat.env_in_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_stat.env_in_reg[9]\ : label is "yes";
   attribute KEEP of \comp_stat.env_reg[0]\ : label is "yes";
   attribute KEEP of \comp_stat.env_reg[10]\ : label is "yes";
   attribute KEEP of \comp_stat.env_reg[11]\ : label is "yes";
@@ -4908,7 +3795,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute KEEP of \comp_stat.env_reg[7]\ : label is "yes";
   attribute KEEP of \comp_stat.env_reg[8]\ : label is "yes";
   attribute KEEP of \comp_stat.env_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.idle_i_2\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \comp_stat.idle_i_3\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \comp_stat.idle_i_4\ : label is "soft_lutpair24";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_stat.mem_env_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -4948,6 +3836,70 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute ram_offset of \comp_stat.mem_phase_reg\ : label is 0;
   attribute ram_slice_begin of \comp_stat.mem_phase_reg\ : label is 0;
   attribute ram_slice_end of \comp_stat.mem_phase_reg\ : label is 63;
+  attribute KEEP of \comp_stat.phase_in_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_stat.phase_in_reg[9]\ : label is "yes";
   attribute KEEP of \comp_stat.phase_reg[0]\ : label is "yes";
   attribute KEEP of \comp_stat.phase_reg[10]\ : label is "yes";
   attribute KEEP of \comp_stat.phase_reg[11]\ : label is "yes";
@@ -4967,17 +3919,17 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute ADDER_THRESHOLD of \comp_stat.phase_reg[7]_i_1\ : label is 35;
   attribute KEEP of \comp_stat.phase_reg[8]\ : label is "yes";
   attribute KEEP of \comp_stat.phase_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[0]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[10]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[1]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[2]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[3]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[4]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[5]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[6]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[0]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[10]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[1]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[2]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[3]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[4]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[5]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[6]_i_1\ : label is "soft_lutpair26";
   attribute SOFT_HLUTNM of \comp_stat.pos_1[7]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[8]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \comp_stat.pos_1[9]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[8]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \comp_stat.pos_1[9]_i_1\ : label is "soft_lutpair29";
   attribute KEEP of \comp_stat.pos_reg[0]\ : label is "yes";
   attribute KEEP of \comp_stat.pos_reg[10]\ : label is "yes";
   attribute KEEP of \comp_stat.pos_reg[1]\ : label is "yes";
@@ -4989,47 +3941,58 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute KEEP of \comp_stat.pos_reg[7]\ : label is "yes";
   attribute KEEP of \comp_stat.pos_reg[8]\ : label is "yes";
   attribute KEEP of \comp_stat.pos_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.pred_phase[21]_i_15\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \comp_stat.pred_phase[21]_i_16\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \comp_stat.pred_phase[21]_i_5\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \comp_stat.pred_phase[21]_i_6\ : label is "soft_lutpair14";
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[15]_i_3\ : label is 35;
-  attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[21]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[21]_i_3\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[21]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[7]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.pred_phase_reg[7]_i_3\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_4\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_5\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \comp_stat.rd_pos_1[0]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[0]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[2]_i_2\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[2]_i_3\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[3]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[4]_i_2\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[5]_i_2\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[5]_i_3\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[5]_i_4\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[6]_i_4\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_3\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_12\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \comp_stat.start_up_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \comp_stat.up_count[0]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \comp_stat.up_count[1]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \comp_stat.proc_up_i_5\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \comp_stat.rd_pos_1[1]_i_5\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_stat.rd_pos_1[1]_i_6\ : label is "soft_lutpair18";
+  attribute KEEP of \comp_stat.rd_pos_1_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_pos_1_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_pos_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_pos_reg[1]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr[8]_i_6\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \comp_stat.rd_ptr[8]_i_7\ : label is "soft_lutpair19";
+  attribute KEEP of \comp_stat.rd_ptr_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.rd_ptr_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_stat.rd_ptr_reg[7]_i_3\ : label is 35;
+  attribute KEEP of \comp_stat.rd_ptr_reg[8]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_stat.rd_ptr_reg[8]_i_4\ : label is 35;
+  attribute SOFT_HLUTNM of \comp_stat.start_up_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[0]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[10]_i_5\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[1]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[4]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[9]_i_1\ : label is "soft_lutpair10";
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[10]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[7]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[0]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[10]_i_3\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[1]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[5]_i_2\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[7]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[9]_i_2\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[1]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[2]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[3]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[4]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[7]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[8]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[0]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[6]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[7]_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[9]_i_2\ : label is "soft_lutpair15";
+  attribute KEEP of \comp_stat.wr_ptr_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_stat.wr_ptr_reg[8]\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_2,ila,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -5043,48 +4006,72 @@ begin
   pos(10 downto 0) <= \^pos\(10 downto 0);
 \comp_stat.active_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFDD5F0000DD55"
+      INIT => X"FFAEFF0CFFAEFFFF"
     )
         port map (
-      I0 => \comp_stat.active_i_2_n_0\,
-      I1 => \comp_stat.active_i_3_n_0\,
-      I2 => \comp_stat.active_i_4_n_0\,
-      I3 => \comp_stat.idle_i_4_n_0\,
+      I0 => \^active\,
+      I1 => \comp_stat.idle_i_2_n_0\,
+      I2 => \comp_stat.active_i_2_n_0\,
+      I3 => \comp_stat.active_i_3_n_0\,
       I4 => reset,
-      I5 => \^active\,
+      I5 => \comp_stat.active_i_4_n_0\,
       O => \comp_stat.active_reg0\
     );
 \comp_stat.active_i_2\: unisim.vcomponents.LUT4
     generic map(
+      INIT => X"FFEF"
+    )
+        port map (
+      I0 => \comp_stat.start_down_reg_n_0\,
+      I1 => \comp_stat.proc_up_reg_n_0\,
+      I2 => \^active\,
+      I3 => \comp_stat.stop_down_reg\,
+      O => \comp_stat.active_i_2_n_0\
+    );
+\comp_stat.active_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00000000FFFFFFEF"
+    )
+        port map (
+      I0 => \comp_stat.down_pos_reg\(7),
+      I1 => \comp_stat.down_pos_reg\(6),
+      I2 => \comp_stat.down_pos[8]_i_2_n_0\,
+      I3 => \comp_stat.active_i_5_n_0\,
+      I4 => \comp_stat.down_pos_reg\(10),
+      I5 => \comp_stat.active_i_6_n_0\,
+      O => \comp_stat.active_i_3_n_0\
+    );
+\comp_stat.active_i_4\: unisim.vcomponents.LUT4
+    generic map(
       INIT => X"FFFB"
     )
         port map (
-      I0 => p_0_in7_in,
+      I0 => p_0_in8_in,
       I1 => \comp_stat.proc_up_reg_n_0\,
       I2 => \comp_stat.up_delay_reg_n_0_[0]\,
       I3 => start_up,
-      O => \comp_stat.active_i_2_n_0\
-    );
-\comp_stat.active_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I1 => \comp_stat.start_down_reg_n_0\,
-      I2 => p_0_in4_in,
-      I3 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.active_i_3_n_0\
-    );
-\comp_stat.active_i_4\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => \comp_stat.stop_down_reg\,
-      I1 => \comp_stat.start_down_reg_n_0\,
-      I2 => \comp_stat.proc_up_reg_n_0\,
       O => \comp_stat.active_i_4_n_0\
+    );
+\comp_stat.active_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \comp_stat.down_pos_reg\(8),
+      I1 => \comp_stat.down_pos_reg\(9),
+      O => \comp_stat.active_i_5_n_0\
+    );
+\comp_stat.active_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => \comp_stat.start_down_reg_n_0\,
+      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I2 => p_0_in4_in,
+      I3 => reset,
+      I4 => \comp_stat.proc_up_reg_n_0\,
+      O => \comp_stat.active_i_6_n_0\
     );
 \comp_stat.active_reg\: unisim.vcomponents.FDRE
      port map (
@@ -5937,37 +4924,42 @@ begin
       I2 => \comp_stat.down_pos_reg\(0),
       O => \p_0_in__1\(0)
     );
-\comp_stat.down_pos[10]_i_1\: unisim.vcomponents.LUT3
+\comp_stat.down_pos[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0E"
+      INIT => X"00000000FFFFFEFF"
     )
         port map (
-      I0 => \comp_stat.idle_i_4_n_0\,
-      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.start_down_reg_n_0\,
+      I0 => \comp_stat.down_pos_reg\(10),
+      I1 => \comp_stat.down_pos_reg\(8),
+      I2 => \comp_stat.down_pos_reg\(9),
+      I3 => \comp_stat.down_pos[10]_i_3_n_0\,
+      I4 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I5 => \comp_stat.start_down_reg_n_0\,
       O => down_pos
     );
 \comp_stat.down_pos[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBBBBB88888888B"
+      INIT => X"B8B8B88BB8B8B8B8"
     )
         port map (
       I0 => max_pos(10),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.down_pos[10]_i_3_n_0\,
-      I3 => \comp_stat.down_pos_reg\(9),
-      I4 => \comp_stat.down_pos_reg\(8),
-      I5 => \comp_stat.down_pos_reg\(10),
+      I2 => \comp_stat.down_pos_reg\(10),
+      I3 => \comp_stat.down_pos_reg\(8),
+      I4 => \comp_stat.down_pos_reg\(9),
+      I5 => \comp_stat.down_pos[10]_i_3_n_0\,
       O => \p_0_in__1\(10)
     );
-\comp_stat.down_pos[10]_i_3\: unisim.vcomponents.LUT3
+\comp_stat.down_pos[10]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FE"
+      INIT => X"00000001"
     )
         port map (
-      I0 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I1 => \comp_stat.down_pos_reg\(6),
-      I2 => \comp_stat.down_pos_reg\(7),
+      I0 => \comp_stat.down_pos[6]_i_2_n_0\,
+      I1 => \comp_stat.down_pos_reg\(5),
+      I2 => \comp_stat.down_pos_reg\(4),
+      I3 => \comp_stat.down_pos_reg\(6),
+      I4 => \comp_stat.down_pos_reg\(7),
       O => \comp_stat.down_pos[10]_i_3_n_0\
     );
 \comp_stat.down_pos[1]_i_1\: unisim.vcomponents.LUT4
@@ -6014,7 +5006,7 @@ begin
       I0 => max_pos(4),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
       I2 => \comp_stat.down_pos_reg\(4),
-      I3 => \comp_stat.down_pos[5]_i_2_n_0\,
+      I3 => \comp_stat.down_pos[6]_i_2_n_0\,
       O => \p_0_in__1\(4)
     );
 \comp_stat.down_pos[5]_i_1\: unisim.vcomponents.LUT5
@@ -6025,11 +5017,24 @@ begin
       I0 => max_pos(5),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
       I2 => \comp_stat.down_pos_reg\(5),
-      I3 => \comp_stat.down_pos[5]_i_2_n_0\,
+      I3 => \comp_stat.down_pos[6]_i_2_n_0\,
       I4 => \comp_stat.down_pos_reg\(4),
       O => \p_0_in__1\(5)
     );
-\comp_stat.down_pos[5]_i_2\: unisim.vcomponents.LUT4
+\comp_stat.down_pos[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"B8B8B8B8B8B8B88B"
+    )
+        port map (
+      I0 => max_pos(6),
+      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I2 => \comp_stat.down_pos_reg\(6),
+      I3 => \comp_stat.down_pos[6]_i_2_n_0\,
+      I4 => \comp_stat.down_pos_reg\(5),
+      I5 => \comp_stat.down_pos_reg\(4),
+      O => \p_0_in__1\(6)
+    );
+\comp_stat.down_pos[6]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -6038,47 +5043,36 @@ begin
       I1 => \comp_stat.down_pos_reg\(2),
       I2 => \comp_stat.down_pos_reg\(1),
       I3 => \comp_stat.down_pos_reg\(0),
-      O => \comp_stat.down_pos[5]_i_2_n_0\
-    );
-\comp_stat.down_pos[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"B88B"
-    )
-        port map (
-      I0 => max_pos(6),
-      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I3 => \comp_stat.down_pos_reg\(6),
-      O => \p_0_in__1\(6)
+      O => \comp_stat.down_pos[6]_i_2_n_0\
     );
 \comp_stat.down_pos[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B8B8B88B"
+      INIT => X"B88BB8B8"
     )
         port map (
       I0 => max_pos(7),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
       I2 => \comp_stat.down_pos_reg\(7),
-      I3 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I4 => \comp_stat.down_pos_reg\(6),
+      I3 => \comp_stat.down_pos_reg\(6),
+      I4 => \comp_stat.down_pos[8]_i_2_n_0\,
       O => \p_0_in__1\(7)
     );
 \comp_stat.down_pos[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBBBBB88888888B"
+      INIT => X"B8B8B88BB8B8B8B8"
     )
         port map (
       I0 => max_pos(8),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I3 => \comp_stat.down_pos_reg\(6),
-      I4 => \comp_stat.down_pos_reg\(7),
-      I5 => \comp_stat.down_pos_reg\(8),
+      I2 => \comp_stat.down_pos_reg\(8),
+      I3 => \comp_stat.down_pos_reg\(7),
+      I4 => \comp_stat.down_pos_reg\(6),
+      I5 => \comp_stat.down_pos[8]_i_2_n_0\,
       O => \p_0_in__1\(8)
     );
 \comp_stat.down_pos[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"0000000000000001"
     )
         port map (
       I0 => \comp_stat.down_pos_reg\(4),
@@ -6089,27 +5083,17 @@ begin
       I5 => \comp_stat.down_pos_reg\(3),
       O => \comp_stat.down_pos[8]_i_2_n_0\
     );
-\comp_stat.down_pos[9]_i_1\: unisim.vcomponents.LUT6
+\comp_stat.down_pos[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B8B8B88BB8B8B8B8"
+      INIT => X"B88BB8B8"
     )
         port map (
       I0 => max_pos(9),
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
       I2 => \comp_stat.down_pos_reg\(9),
       I3 => \comp_stat.down_pos_reg\(8),
-      I4 => \comp_stat.down_pos_reg\(7),
-      I5 => \comp_stat.down_pos[9]_i_2_n_0\,
+      I4 => \comp_stat.down_pos[10]_i_3_n_0\,
       O => \p_0_in__1\(9)
-    );
-\comp_stat.down_pos[9]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \comp_stat.down_pos_reg\(6),
-      I1 => \comp_stat.down_pos[8]_i_2_n_0\,
-      O => \comp_stat.down_pos[9]_i_2_n_0\
     );
 \comp_stat.down_pos_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -6201,15 +5185,15 @@ begin
     );
 \comp_stat.env[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"EECCEECCEECCEACC"
+      INIT => X"FFFFFE00FF00FF00"
     )
         port map (
-      I0 => p_0_in7_in,
-      I1 => \comp_stat.env[15]_i_2_n_0\,
-      I2 => p_0_in,
-      I3 => \comp_stat.proc_up_reg_n_0\,
-      I4 => \comp_stat.up_delay_reg_n_0_[0]\,
-      I5 => start_up,
+      I0 => \comp_stat.up_delay_reg_n_0_[2]\,
+      I1 => \comp_stat.up_delay_reg_n_0_[0]\,
+      I2 => start_up,
+      I3 => \comp_stat.env[15]_i_2_n_0\,
+      I4 => p_0_in8_in,
+      I5 => \comp_stat.proc_up_reg_n_0\,
       O => \comp_stat.env[15]_i_1_n_0\
     );
 \comp_stat.env[15]_i_2\: unisim.vcomponents.LUT6
@@ -6218,11 +5202,11 @@ begin
     )
         port map (
       I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => \comp_stat.down_pos_reg\(7),
-      I2 => \comp_stat.down_pos_reg\(6),
-      I3 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I4 => \comp_stat.env[15]_i_3_n_0\,
-      I5 => \comp_stat.env[15]_i_4_n_0\,
+      I1 => \comp_stat.down_pos[6]_i_2_n_0\,
+      I2 => \comp_stat.env[15]_i_3_n_0\,
+      I3 => \comp_stat.env[15]_i_4_n_0\,
+      I4 => \comp_stat.env[15]_i_5_n_0\,
+      I5 => \comp_stat.pend_done_i_2_n_0\,
       O => \comp_stat.env[15]_i_2_n_0\
     );
 \comp_stat.env[15]_i_3\: unisim.vcomponents.LUT4
@@ -6236,15 +5220,23 @@ begin
       I3 => \comp_stat.down_pos_reg\(10),
       O => \comp_stat.env[15]_i_3_n_0\
     );
-\comp_stat.env[15]_i_4\: unisim.vcomponents.LUT3
+\comp_stat.env[15]_i_4\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FE"
+      INIT => X"E"
     )
         port map (
-      I0 => p_0_in4_in,
-      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.start_down_reg_n_0\,
+      I0 => \comp_stat.down_pos_reg\(5),
+      I1 => \comp_stat.down_pos_reg\(4),
       O => \comp_stat.env[15]_i_4_n_0\
+    );
+\comp_stat.env[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \comp_stat.down_pos_reg\(7),
+      I1 => \comp_stat.down_pos_reg\(6),
+      O => \comp_stat.env[15]_i_5_n_0\
     );
 \comp_stat.env_in_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -6905,46 +5897,46 @@ begin
     );
 \comp_stat.idle_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000004"
+      INIT => X"0000000000000020"
     )
         port map (
       I0 => \comp_stat.idle_i_2_n_0\,
       I1 => \comp_stat.idle_i_3_n_0\,
-      I2 => \^active\,
-      I3 => mem_wr,
-      I4 => wr,
-      I5 => \comp_stat.idle_i_4_n_0\,
+      I2 => \comp_stat.idle_i_4_n_0\,
+      I3 => \^active\,
+      I4 => mem_wr,
+      I5 => wr,
       O => idle0
     );
-\comp_stat.idle_i_2\: unisim.vcomponents.LUT2
+\comp_stat.idle_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000010"
+    )
+        port map (
+      I0 => \comp_stat.down_pos_reg\(8),
+      I1 => \comp_stat.down_pos_reg\(9),
+      I2 => \comp_stat.down_pos[8]_i_2_n_0\,
+      I3 => \comp_stat.down_pos_reg\(6),
+      I4 => \comp_stat.down_pos_reg\(7),
+      I5 => \comp_stat.down_pos_reg\(10),
+      O => \comp_stat.idle_i_2_n_0\
+    );
+\comp_stat.idle_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
     )
         port map (
       I0 => \comp_stat.start_down_reg_n_0\,
       I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      O => \comp_stat.idle_i_2_n_0\
+      O => \comp_stat.idle_i_3_n_0\
     );
-\comp_stat.idle_i_3\: unisim.vcomponents.LUT2
+\comp_stat.idle_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => filling,
       I1 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.idle_i_3_n_0\
-    );
-\comp_stat.idle_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => \comp_stat.down_pos_reg\(10),
-      I1 => \comp_stat.down_pos_reg\(8),
-      I2 => \comp_stat.down_pos_reg\(9),
-      I3 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I4 => \comp_stat.down_pos_reg\(6),
-      I5 => \comp_stat.down_pos_reg\(7),
       O => \comp_stat.idle_i_4_n_0\
     );
 \comp_stat.idle_reg\: unisim.vcomponents.FDRE
@@ -6988,7 +5980,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => rd_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => \comp_stat.wr_ptr_reg\(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -7083,7 +6075,7 @@ begin
         port map (
       ADDRARDADDR(14 downto 6) => rd_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => \comp_stat.wr_ptr_reg\(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -7153,18 +6145,27 @@ begin
       Q => mem_wr,
       R => '0'
     );
-\comp_stat.pend_done_i_1\: unisim.vcomponents.LUT6
+\comp_stat.pend_done_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000000000001000"
+      INIT => X"00000008"
+    )
+        port map (
+      I0 => was_active,
+      I1 => \comp_stat.was_active_reg_n_0\,
+      I2 => \comp_stat.pend_done_i_2_n_0\,
+      I3 => reset,
+      I4 => \comp_stat.proc_up_reg_n_0\,
+      O => \comp_stat.pend_done_i_1_n_0\
+    );
+\comp_stat.pend_done_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
     )
         port map (
       I0 => p_0_in4_in,
-      I1 => \comp_stat.idle_i_2_n_0\,
-      I2 => was_active,
-      I3 => \comp_stat.was_active_reg_n_0\,
-      I4 => reset,
-      I5 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.pend_done_i_1_n_0\
+      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I2 => \comp_stat.start_down_reg_n_0\,
+      O => \comp_stat.pend_done_i_2_n_0\
     );
 \comp_stat.pend_done_reg\: unisim.vcomponents.FDRE
      port map (
@@ -7176,14 +6177,14 @@ begin
     );
 \comp_stat.phase[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFEF0000"
+      INIT => X"AAAAA8AA"
     )
         port map (
-      I0 => start_up,
-      I1 => \comp_stat.up_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.proc_up_reg_n_0\,
-      I3 => p_0_in,
-      I4 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => start_up,
+      I2 => \comp_stat.up_delay_reg_n_0_[0]\,
+      I3 => \comp_stat.proc_up_reg_n_0\,
+      I4 => \comp_stat.up_delay_reg_n_0_[2]\,
       O => \comp_stat.phase[15]_i_1_n_0\
     );
 \comp_stat.phase[15]_i_10\: unisim.vcomponents.LUT2
@@ -8310,8 +7311,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(0),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(0),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(0),
       O => \comp_stat.pred_phase[0]_i_1_n_0\
     );
 \comp_stat.pred_phase[10]_i_1\: unisim.vcomponents.LUT6
@@ -8319,12 +7320,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.env[15]_i_2_n_0\,
-      I1 => pred_phase0(10),
-      I2 => pred_phase01_in(10),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => curr_phase(4),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
+      I1 => curr_phase(4),
+      I2 => pred_phase02_in(10),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => pred_phase0(10),
+      I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[10]_i_1_n_0\
     );
 \comp_stat.pred_phase[11]_i_1\: unisim.vcomponents.LUT6
@@ -8334,10 +7335,10 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(11),
-      I2 => pred_phase01_in(11),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(11),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => curr_phase(5),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[11]_i_1_n_0\
     );
 \comp_stat.pred_phase[12]_i_1\: unisim.vcomponents.LUT6
@@ -8345,12 +7346,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(6),
-      I2 => pred_phase01_in(12),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(12),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(12),
+      I2 => pred_phase02_in(12),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(6),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[12]_i_1_n_0\
     );
 \comp_stat.pred_phase[13]_i_1\: unisim.vcomponents.LUT6
@@ -8360,10 +7361,10 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(13),
-      I2 => pred_phase01_in(13),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(13),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => curr_phase(7),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[13]_i_1_n_0\
     );
 \comp_stat.pred_phase[14]_i_1\: unisim.vcomponents.LUT6
@@ -8371,10 +7372,10 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
       I1 => curr_phase(8),
-      I2 => pred_phase01_in(14),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(14),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => pred_phase0(14),
       I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[14]_i_1_n_0\
@@ -8384,10 +7385,10 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
       I1 => curr_phase(9),
-      I2 => pred_phase01_in(15),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(15),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => pred_phase0(15),
       I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[15]_i_1_n_0\
@@ -8541,12 +7542,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(10),
-      I2 => pred_phase01_in(16),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(16),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(16),
+      I2 => pred_phase02_in(16),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(10),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[16]_i_1_n_0\
     );
 \comp_stat.pred_phase[17]_i_1\: unisim.vcomponents.LUT6
@@ -8554,12 +7555,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.env[15]_i_2_n_0\,
-      I1 => pred_phase0(17),
-      I2 => pred_phase01_in(17),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => curr_phase(11),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
+      I1 => curr_phase(11),
+      I2 => pred_phase02_in(17),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => pred_phase0(17),
+      I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[17]_i_1_n_0\
     );
 \comp_stat.pred_phase[18]_i_1\: unisim.vcomponents.LUT6
@@ -8567,12 +7568,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.env[15]_i_2_n_0\,
-      I1 => pred_phase0(18),
-      I2 => pred_phase01_in(18),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => curr_phase(12),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
+      I1 => curr_phase(12),
+      I2 => pred_phase02_in(18),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => pred_phase0(18),
+      I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[18]_i_1_n_0\
     );
 \comp_stat.pred_phase[19]_i_1\: unisim.vcomponents.LUT6
@@ -8580,12 +7581,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(13),
-      I2 => pred_phase01_in(19),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(19),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(19),
+      I2 => pred_phase02_in(19),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(13),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[19]_i_1_n_0\
     );
 \comp_stat.pred_phase[1]_i_1\: unisim.vcomponents.LUT4
@@ -8595,8 +7596,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(1),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(1),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(1),
       O => \comp_stat.pred_phase[1]_i_1_n_0\
     );
 \comp_stat.pred_phase[20]_i_1\: unisim.vcomponents.LUT6
@@ -8604,12 +7605,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(14),
-      I2 => pred_phase01_in(20),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(20),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(20),
+      I2 => pred_phase02_in(20),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(14),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[20]_i_1_n_0\
     );
 \comp_stat.pred_phase[21]_i_1\: unisim.vcomponents.LUT6
@@ -8617,71 +7618,100 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.env[15]_i_2_n_0\,
-      I1 => pred_phase0(21),
-      I2 => pred_phase01_in(21),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => curr_phase(15),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
+      I1 => curr_phase(15),
+      I2 => pred_phase02_in(21),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => pred_phase0(21),
+      I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[21]_i_1_n_0\
     );
 \comp_stat.pred_phase[21]_i_10\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
       I0 => pred_phase(16),
       I1 => freq(16),
       O => \comp_stat.pred_phase[21]_i_10_n_0\
     );
-\comp_stat.pred_phase[21]_i_11\: unisim.vcomponents.LUT2
+\comp_stat.pred_phase[21]_i_11\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"6"
+      INIT => X"1"
     )
         port map (
-      I0 => pred_phase(19),
-      I1 => freq(19),
+      I0 => pred_phase(21),
       O => \comp_stat.pred_phase[21]_i_11_n_0\
     );
-\comp_stat.pred_phase[21]_i_12\: unisim.vcomponents.LUT2
+\comp_stat.pred_phase[21]_i_12\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"6"
+      INIT => X"1"
     )
         port map (
-      I0 => pred_phase(18),
-      I1 => freq(18),
+      I0 => pred_phase(20),
       O => \comp_stat.pred_phase[21]_i_12_n_0\
     );
 \comp_stat.pred_phase[21]_i_13\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"6"
+      INIT => X"9"
     )
         port map (
-      I0 => pred_phase(17),
-      I1 => freq(17),
+      I0 => pred_phase(19),
+      I1 => freq(19),
       O => \comp_stat.pred_phase[21]_i_13_n_0\
     );
 \comp_stat.pred_phase[21]_i_14\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"6"
+      INIT => X"9"
+    )
+        port map (
+      I0 => pred_phase(18),
+      I1 => freq(18),
+      O => \comp_stat.pred_phase[21]_i_14_n_0\
+    );
+\comp_stat.pred_phase[21]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => pred_phase(17),
+      I1 => freq(17),
+      O => \comp_stat.pred_phase[21]_i_15_n_0\
+    );
+\comp_stat.pred_phase[21]_i_16\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
     )
         port map (
       I0 => pred_phase(16),
       I1 => freq(16),
-      O => \comp_stat.pred_phase[21]_i_14_n_0\
+      O => \comp_stat.pred_phase[21]_i_16_n_0\
     );
-\comp_stat.pred_phase[21]_i_15\: unisim.vcomponents.LUT4
+\comp_stat.pred_phase[21]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"EFFF"
+      INIT => X"888888888888888A"
     )
         port map (
-      I0 => start_up,
-      I1 => \comp_stat.up_delay_reg_n_0_[0]\,
-      I2 => p_0_in7_in,
-      I3 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.pred_phase[21]_i_15_n_0\
+      I0 => \comp_stat.pred_phase[21]_i_5_n_0\,
+      I1 => \comp_stat.pred_phase[21]_i_6_n_0\,
+      I2 => \comp_stat.down_pos[6]_i_2_n_0\,
+      I3 => \comp_stat.env[15]_i_3_n_0\,
+      I4 => \comp_stat.env[15]_i_4_n_0\,
+      I5 => \comp_stat.env[15]_i_5_n_0\,
+      O => \comp_stat.pred_phase[21]_i_2_n_0\
     );
-\comp_stat.pred_phase[21]_i_16\: unisim.vcomponents.LUT4
+\comp_stat.pred_phase[21]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFF7"
+    )
+        port map (
+      I0 => p_0_in8_in,
+      I1 => \comp_stat.proc_up_reg_n_0\,
+      I2 => start_up,
+      I3 => \comp_stat.up_delay_reg_n_0_[0]\,
+      O => \comp_stat.pred_phase[21]_i_5_n_0\
+    );
+\comp_stat.pred_phase[21]_i_6\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFEF"
     )
@@ -8690,40 +7720,11 @@ begin
       I1 => \comp_stat.start_down_reg_n_0\,
       I2 => p_0_in4_in,
       I3 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.pred_phase[21]_i_16_n_0\
-    );
-\comp_stat.pred_phase[21]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"888888888888888A"
-    )
-        port map (
-      I0 => \comp_stat.pred_phase[21]_i_15_n_0\,
-      I1 => \comp_stat.pred_phase[21]_i_16_n_0\,
-      I2 => \comp_stat.down_pos_reg\(7),
-      I3 => \comp_stat.down_pos_reg\(6),
-      I4 => \comp_stat.down_pos[8]_i_2_n_0\,
-      I5 => \comp_stat.env[15]_i_3_n_0\,
-      O => \comp_stat.pred_phase[21]_i_4_n_0\
-    );
-\comp_stat.pred_phase[21]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => pred_phase(21),
-      O => \comp_stat.pred_phase[21]_i_5_n_0\
-    );
-\comp_stat.pred_phase[21]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => pred_phase(20),
       O => \comp_stat.pred_phase[21]_i_6_n_0\
     );
 \comp_stat.pred_phase[21]_i_7\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
       I0 => pred_phase(19),
@@ -8732,7 +7733,7 @@ begin
     );
 \comp_stat.pred_phase[21]_i_8\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
       I0 => pred_phase(18),
@@ -8741,7 +7742,7 @@ begin
     );
 \comp_stat.pred_phase[21]_i_9\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
       I0 => pred_phase(17),
@@ -8755,8 +7756,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(2),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(2),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(2),
       O => \comp_stat.pred_phase[2]_i_1_n_0\
     );
 \comp_stat.pred_phase[3]_i_1\: unisim.vcomponents.LUT4
@@ -8766,8 +7767,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(3),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(3),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(3),
       O => \comp_stat.pred_phase[3]_i_1_n_0\
     );
 \comp_stat.pred_phase[4]_i_1\: unisim.vcomponents.LUT4
@@ -8777,8 +7778,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(4),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(4),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(4),
       O => \comp_stat.pred_phase[4]_i_1_n_0\
     );
 \comp_stat.pred_phase[5]_i_1\: unisim.vcomponents.LUT4
@@ -8788,8 +7789,8 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(5),
-      I2 => \comp_stat.active_i_2_n_0\,
-      I3 => pred_phase01_in(5),
+      I2 => \comp_stat.active_i_4_n_0\,
+      I3 => pred_phase02_in(5),
       O => \comp_stat.pred_phase[5]_i_1_n_0\
     );
 \comp_stat.pred_phase[6]_i_1\: unisim.vcomponents.LUT6
@@ -8797,12 +7798,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(0),
-      I2 => pred_phase01_in(6),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(6),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(6),
+      I2 => pred_phase02_in(6),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(0),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[6]_i_1_n_0\
     );
 \comp_stat.pred_phase[7]_i_1\: unisim.vcomponents.LUT6
@@ -8810,10 +7811,10 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I0 => \comp_stat.pred_phase[21]_i_2_n_0\,
       I1 => curr_phase(1),
-      I2 => pred_phase01_in(7),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(7),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => pred_phase0(7),
       I5 => \comp_stat.env[15]_i_2_n_0\,
       O => \comp_stat.pred_phase[7]_i_1_n_0\
@@ -8969,10 +7970,10 @@ begin
         port map (
       I0 => \comp_stat.env[15]_i_2_n_0\,
       I1 => pred_phase0(8),
-      I2 => pred_phase01_in(8),
-      I3 => \comp_stat.active_i_2_n_0\,
+      I2 => pred_phase02_in(8),
+      I3 => \comp_stat.active_i_4_n_0\,
       I4 => curr_phase(2),
-      I5 => \comp_stat.pred_phase[21]_i_4_n_0\,
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[8]_i_1_n_0\
     );
 \comp_stat.pred_phase[9]_i_1\: unisim.vcomponents.LUT6
@@ -8980,12 +7981,12 @@ begin
       INIT => X"44F444F4FFFF44F4"
     )
         port map (
-      I0 => \comp_stat.pred_phase[21]_i_4_n_0\,
-      I1 => curr_phase(3),
-      I2 => pred_phase01_in(9),
-      I3 => \comp_stat.active_i_2_n_0\,
-      I4 => pred_phase0(9),
-      I5 => \comp_stat.env[15]_i_2_n_0\,
+      I0 => \comp_stat.env[15]_i_2_n_0\,
+      I1 => pred_phase0(9),
+      I2 => pred_phase02_in(9),
+      I3 => \comp_stat.active_i_4_n_0\,
+      I4 => curr_phase(3),
+      I5 => \comp_stat.pred_phase[21]_i_2_n_0\,
       O => \comp_stat.pred_phase[9]_i_1_n_0\
     );
 \comp_stat.pred_phase_reg[0]\: unisim.vcomponents.FDRE
@@ -9057,7 +8058,7 @@ begin
       CO(1) => \comp_stat.pred_phase_reg[15]_i_2_n_6\,
       CO(0) => \comp_stat.pred_phase_reg[15]_i_2_n_7\,
       DI(7 downto 0) => pred_phase(15 downto 8),
-      O(7 downto 0) => pred_phase01_in(15 downto 8),
+      O(7 downto 0) => pred_phase02_in(15 downto 8),
       S(7) => \comp_stat.pred_phase[15]_i_4_n_0\,
       S(6) => \comp_stat.pred_phase[15]_i_5_n_0\,
       S(5) => \comp_stat.pred_phase[15]_i_6_n_0\,
@@ -9146,28 +8147,6 @@ begin
       Q => pred_phase(21),
       R => '0'
     );
-\comp_stat.pred_phase_reg[21]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \comp_stat.pred_phase_reg[15]_i_3_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 5) => \NLW_comp_stat.pred_phase_reg[21]_i_2_CO_UNCONNECTED\(7 downto 5),
-      CO(4) => \comp_stat.pred_phase_reg[21]_i_2_n_3\,
-      CO(3) => \comp_stat.pred_phase_reg[21]_i_2_n_4\,
-      CO(2) => \comp_stat.pred_phase_reg[21]_i_2_n_5\,
-      CO(1) => \comp_stat.pred_phase_reg[21]_i_2_n_6\,
-      CO(0) => \comp_stat.pred_phase_reg[21]_i_2_n_7\,
-      DI(7 downto 5) => B"000",
-      DI(4 downto 0) => pred_phase(20 downto 16),
-      O(7 downto 6) => \NLW_comp_stat.pred_phase_reg[21]_i_2_O_UNCONNECTED\(7 downto 6),
-      O(5 downto 0) => pred_phase0(21 downto 16),
-      S(7 downto 6) => B"00",
-      S(5) => \comp_stat.pred_phase[21]_i_5_n_0\,
-      S(4) => \comp_stat.pred_phase[21]_i_6_n_0\,
-      S(3) => \comp_stat.pred_phase[21]_i_7_n_0\,
-      S(2) => \comp_stat.pred_phase[21]_i_8_n_0\,
-      S(1) => \comp_stat.pred_phase[21]_i_9_n_0\,
-      S(0) => \comp_stat.pred_phase[21]_i_10_n_0\
-    );
 \comp_stat.pred_phase_reg[21]_i_3\: unisim.vcomponents.CARRY8
      port map (
       CI => \comp_stat.pred_phase_reg[15]_i_2_n_0\,
@@ -9181,13 +8160,35 @@ begin
       DI(7 downto 4) => B"0000",
       DI(3 downto 0) => pred_phase(19 downto 16),
       O(7 downto 6) => \NLW_comp_stat.pred_phase_reg[21]_i_3_O_UNCONNECTED\(7 downto 6),
-      O(5 downto 0) => pred_phase01_in(21 downto 16),
+      O(5 downto 0) => pred_phase02_in(21 downto 16),
       S(7 downto 6) => B"00",
       S(5 downto 4) => pred_phase(21 downto 20),
-      S(3) => \comp_stat.pred_phase[21]_i_11_n_0\,
-      S(2) => \comp_stat.pred_phase[21]_i_12_n_0\,
-      S(1) => \comp_stat.pred_phase[21]_i_13_n_0\,
-      S(0) => \comp_stat.pred_phase[21]_i_14_n_0\
+      S(3) => \comp_stat.pred_phase[21]_i_7_n_0\,
+      S(2) => \comp_stat.pred_phase[21]_i_8_n_0\,
+      S(1) => \comp_stat.pred_phase[21]_i_9_n_0\,
+      S(0) => \comp_stat.pred_phase[21]_i_10_n_0\
+    );
+\comp_stat.pred_phase_reg[21]_i_4\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_stat.pred_phase_reg[15]_i_3_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 5) => \NLW_comp_stat.pred_phase_reg[21]_i_4_CO_UNCONNECTED\(7 downto 5),
+      CO(4) => \comp_stat.pred_phase_reg[21]_i_4_n_3\,
+      CO(3) => \comp_stat.pred_phase_reg[21]_i_4_n_4\,
+      CO(2) => \comp_stat.pred_phase_reg[21]_i_4_n_5\,
+      CO(1) => \comp_stat.pred_phase_reg[21]_i_4_n_6\,
+      CO(0) => \comp_stat.pred_phase_reg[21]_i_4_n_7\,
+      DI(7 downto 5) => B"000",
+      DI(4 downto 0) => pred_phase(20 downto 16),
+      O(7 downto 6) => \NLW_comp_stat.pred_phase_reg[21]_i_4_O_UNCONNECTED\(7 downto 6),
+      O(5 downto 0) => pred_phase0(21 downto 16),
+      S(7 downto 6) => B"00",
+      S(5) => \comp_stat.pred_phase[21]_i_11_n_0\,
+      S(4) => \comp_stat.pred_phase[21]_i_12_n_0\,
+      S(3) => \comp_stat.pred_phase[21]_i_13_n_0\,
+      S(2) => \comp_stat.pred_phase[21]_i_14_n_0\,
+      S(1) => \comp_stat.pred_phase[21]_i_15_n_0\,
+      S(0) => \comp_stat.pred_phase[21]_i_16_n_0\
     );
 \comp_stat.pred_phase_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -9250,7 +8251,7 @@ begin
       CO(1) => \comp_stat.pred_phase_reg[7]_i_2_n_6\,
       CO(0) => \comp_stat.pred_phase_reg[7]_i_2_n_7\,
       DI(7 downto 0) => pred_phase(7 downto 0),
-      O(7 downto 0) => pred_phase01_in(7 downto 0),
+      O(7 downto 0) => pred_phase02_in(7 downto 0),
       S(7) => \comp_stat.pred_phase[7]_i_4_n_0\,
       S(6) => \comp_stat.pred_phase[7]_i_5_n_0\,
       S(5) => \comp_stat.pred_phase[7]_i_6_n_0\,
@@ -9493,488 +8494,72 @@ begin
     );
 \comp_stat.rd_pos_1[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"8B"
+      INIT => X"3A"
     )
         port map (
       I0 => max_pos(0),
-      I1 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      I2 => \rd_pos_1__0\(0),
+      I1 => rd_pos_1(0),
+      I2 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
       O => \comp_stat.rd_pos_1[0]_i_1_n_0\
     );
 \comp_stat.rd_pos_1[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFC55CC55CC55C"
+      INIT => X"4444F444444444FF"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I1 => \comp_stat.idle_i_3_n_0\,
-      I2 => \rd_pos_1__0\(0),
-      I3 => \rd_pos_1__0\(1),
-      I4 => max_pos(1),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
+      I0 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      I1 => max_pos(1),
+      I2 => \comp_stat.rd_pos_1[1]_i_3_n_0\,
+      I3 => \comp_stat.proc_up_reg_n_0\,
+      I4 => filling,
+      I5 => \comp_stat.rd_pos_1[1]_i_4_n_0\,
       O => \comp_stat.rd_pos_1[1]_i_1_n_0\
     );
-\comp_stat.rd_pos_1_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_stat.rd_pos_1[0]_i_1_n_0\,
-      Q => \rd_pos_1__0\(0),
-      R => '0'
-    );
-\comp_stat.rd_pos_1_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_stat.rd_pos_1[1]_i_1_n_0\,
-      Q => \rd_pos_1__0\(1),
-      R => '0'
-    );
-\comp_stat.rd_pos_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \rd_pos_1__0\(0),
-      Q => rd_pos(0),
-      R => '0'
-    );
-\comp_stat.rd_pos_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \rd_pos_1__0\(1),
-      Q => rd_pos(1),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[0]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[1]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[2]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[3]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[4]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[5]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[5]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[6]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[7]_i_1_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[8]_i_2_n_0\,
-      Q => \comp_stat.rd_ptr_reg_n_0_[8]\,
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[0]_i_1_n_0\,
-      Q => rd_ptr(0),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[1]_i_1_n_0\,
-      Q => rd_ptr(1),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[2]_i_1_n_0\,
-      Q => rd_ptr(2),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[3]_i_1_n_0\,
-      Q => rd_ptr(3),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[4]_i_1_n_0\,
-      Q => rd_ptr(4),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[5]_i_1_n_0\,
-      Q => rd_ptr(5),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[6]_i_1_n_0\,
-      Q => rd_ptr(6),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[7]_i_1_n_0\,
-      Q => rd_ptr(7),
-      R => '0'
-    );
-\comp_stat.rd_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_stat.rd_ptr_rep[8]_i_1_n_0\,
-      D => \comp_stat.rd_ptr_rep[8]_i_2_n_0\,
-      Q => rd_ptr(8),
-      R => '0'
-    );
-\comp_stat.rd_ptr_rep[0]_i_1\: unisim.vcomponents.LUT3
+\comp_stat.rd_pos_1[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8B"
+      INIT => X"5555555555555551"
     )
         port map (
-      I0 => max_pos(2),
-      I1 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      O => \comp_stat.rd_ptr_rep[0]_i_1_n_0\
+      I0 => filling,
+      I1 => \comp_stat.rd_pos_1[1]_i_5_n_0\,
+      I2 => \comp_stat.up_count_reg\(7),
+      I3 => \comp_stat.up_count_reg\(6),
+      I4 => \comp_stat.rd_pos_1[1]_i_6_n_0\,
+      I5 => \comp_stat.up_count[6]_i_2_n_0\,
+      O => \comp_stat.rd_pos_1[1]_i_2_n_0\
     );
-\comp_stat.rd_ptr_rep[1]_i_1\: unisim.vcomponents.LUT6
+\comp_stat.rd_pos_1[1]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFC0D5D5D5D5FFC0"
+      INIT => X"FFFFFFFFFFFFFEFF"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I1 => max_pos(3),
-      I2 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      I3 => \comp_stat.idle_i_3_n_0\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      O => \comp_stat.rd_ptr_rep[1]_i_1_n_0\
+      I0 => \comp_stat.up_count_reg\(10),
+      I1 => \comp_stat.up_count_reg\(8),
+      I2 => \comp_stat.up_count_reg\(9),
+      I3 => \comp_stat.up_count[8]_i_2_n_0\,
+      I4 => \comp_stat.up_count_reg\(6),
+      I5 => \comp_stat.up_count_reg\(7),
+      O => \comp_stat.rd_pos_1[1]_i_3_n_0\
     );
-\comp_stat.rd_ptr_rep[2]_i_1\: unisim.vcomponents.LUT6
+\comp_stat.rd_pos_1[1]_i_4\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFF09FF09FF09"
+      INIT => X"6"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I1 => \comp_stat.rd_ptr_rep[2]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[2]_i_3_n_0\,
-      I4 => max_pos(4),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[2]_i_1_n_0\
+      I0 => rd_pos_1(1),
+      I1 => rd_pos_1(0),
+      O => \comp_stat.rd_pos_1[1]_i_4_n_0\
     );
-\comp_stat.rd_ptr_rep[2]_i_2\: unisim.vcomponents.LUT2
+\comp_stat.rd_pos_1[1]_i_5\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"7"
+      INIT => X"1"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      O => \comp_stat.rd_ptr_rep[2]_i_2_n_0\
+      I0 => \comp_stat.up_count_reg\(5),
+      I1 => \comp_stat.up_count_reg\(4),
+      O => \comp_stat.rd_pos_1[1]_i_5_n_0\
     );
-\comp_stat.rd_ptr_rep[2]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"11100001"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      O => \comp_stat.rd_ptr_rep[2]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF09FF09FF09"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      I1 => \comp_stat.rd_ptr_rep[3]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[3]_i_3_n_0\,
-      I4 => max_pos(5),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[3]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[3]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      O => \comp_stat.rd_ptr_rep[3]_i_2_n_0\
-    );
-\comp_stat.rd_ptr_rep[3]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"1111111000000001"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      O => \comp_stat.rd_ptr_rep[3]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[4]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF09FF09FF09"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      I1 => \comp_stat.rd_ptr_rep[4]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[4]_i_3_n_0\,
-      I4 => max_pos(6),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[4]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[4]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7FFF"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      O => \comp_stat.rd_ptr_rep[4]_i_2_n_0\
-    );
-\comp_stat.rd_ptr_rep[4]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AAAAAAA800000002"
-    )
-        port map (
-      I0 => \comp_stat.idle_i_3_n_0\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      O => \comp_stat.rd_ptr_rep[4]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF09FF09FF09"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[5]\,
-      I1 => \comp_stat.rd_ptr_rep[5]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[5]_i_3_n_0\,
-      I4 => max_pos(7),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[5]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[5]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7FFFFFFF"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      O => \comp_stat.rd_ptr_rep[5]_i_2_n_0\
-    );
-\comp_stat.rd_ptr_rep[5]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"1001"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_rep[5]_i_4_n_0\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[5]\,
-      O => \comp_stat.rd_ptr_rep[5]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[5]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      O => \comp_stat.rd_ptr_rep[5]_i_4_n_0\
-    );
-\comp_stat.rd_ptr_rep[6]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF06FF06FF06"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      I1 => \comp_stat.rd_ptr_rep[6]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_3_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[6]_i_4_n_0\,
-      I4 => max_pos(8),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[6]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[6]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8000000000000000"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[5]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      O => \comp_stat.rd_ptr_rep[6]_i_2_n_0\
-    );
-\comp_stat.rd_ptr_rep[6]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"DDDDDDDDDDDDDDDF"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_5_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[8]_i_11_n_0\,
-      I4 => \comp_stat.up_count[8]_i_2_n_0\,
-      I5 => \comp_stat.up_count_reg\(10),
-      O => \comp_stat.rd_ptr_rep[6]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[6]_i_4\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"1001"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_rep[8]_i_8_n_0\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      O => \comp_stat.rd_ptr_rep[6]_i_4_n_0\
-    );
-\comp_stat.rd_ptr_rep[6]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => \comp_stat.up_count_reg\(8),
-      I1 => \comp_stat.up_count_reg\(9),
-      O => \comp_stat.rd_ptr_rep[6]_i_5_n_0\
-    );
-\comp_stat.rd_ptr_rep[7]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFF60FF60FF60"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      I1 => \comp_stat.rd_ptr_rep[7]_i_2_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[8]_i_5_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[7]_i_3_n_0\,
-      I4 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      I5 => max_pos(9),
-      O => \comp_stat.rd_ptr_rep[7]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[7]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_rep[6]_i_2_n_0\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      O => \comp_stat.rd_ptr_rep[7]_i_2_n_0\
-    );
-\comp_stat.rd_ptr_rep[7]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"11100001"
-    )
-        port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      I3 => \comp_stat.rd_ptr_rep[8]_i_8_n_0\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      O => \comp_stat.rd_ptr_rep[7]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[8]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFF000000B"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[8]\,
-      I1 => \comp_stat.rd_ptr_rep[8]_i_3_n_0\,
-      I2 => \comp_stat.proc_up_reg_n_0\,
-      I3 => \rd_pos_1__0\(0),
-      I4 => \rd_pos_1__0\(1),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      O => \comp_stat.rd_ptr_rep[8]_i_1_n_0\
-    );
-\comp_stat.rd_ptr_rep[8]_i_10\: unisim.vcomponents.LUT4
+\comp_stat.rd_pos_1[1]_i_6\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFEF"
     )
@@ -9983,119 +8568,544 @@ begin
       I1 => \comp_stat.up_count_reg\(8),
       I2 => \comp_stat.proc_up_reg_n_0\,
       I3 => \comp_stat.up_count_reg\(10),
-      O => \comp_stat.rd_ptr_rep[8]_i_10_n_0\
+      O => \comp_stat.rd_pos_1[1]_i_6_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_11\: unisim.vcomponents.LUT2
+\comp_stat.rd_pos_1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_pos_1[0]_i_1_n_0\,
+      Q => rd_pos_1(0),
+      R => '0'
+    );
+\comp_stat.rd_pos_1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_pos_1[1]_i_1_n_0\,
+      Q => rd_pos_1(1),
+      R => '0'
+    );
+\comp_stat.rd_pos_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => rd_pos_1(0),
+      Q => rd_pos(0),
+      R => '0'
+    );
+\comp_stat.rd_pos_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => rd_pos_1(1),
+      Q => rd_pos(1),
+      R => '0'
+    );
+\comp_stat.rd_ptr[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"E"
+      INIT => X"F444F444FFFFF444"
     )
         port map (
-      I0 => \comp_stat.up_count_reg\(7),
-      I1 => \comp_stat.up_count_reg\(6),
-      O => \comp_stat.rd_ptr_rep[8]_i_11_n_0\
+      I0 => \comp_stat.rd_ptr[0]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_15\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(2),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[0]_i_1_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_12\: unisim.vcomponents.LUT2
+\comp_stat.rd_ptr[0]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B"
+      INIT => X"95"
     )
         port map (
-      I0 => filling,
-      I1 => \comp_stat.proc_up_reg_n_0\,
-      O => \comp_stat.rd_ptr_rep[8]_i_12_n_0\
+      I0 => rd_ptr(0),
+      I1 => rd_pos_1(0),
+      I2 => rd_pos_1(1),
+      O => \comp_stat.rd_ptr[0]_i_2_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_2\: unisim.vcomponents.LUT5
+\comp_stat.rd_ptr[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFF88F8"
+      INIT => X"F444F444FFFFF444"
     )
         port map (
-      I0 => max_pos(10),
-      I1 => \comp_stat.rd_ptr_rep[8]_i_4_n_0\,
-      I2 => \comp_stat.rd_ptr_rep[8]_i_5_n_0\,
-      I3 => \comp_stat.rd_ptr_rep[8]_i_6_n_0\,
-      I4 => \comp_stat.rd_ptr_rep[8]_i_7_n_0\,
-      O => \comp_stat.rd_ptr_rep[8]_i_2_n_0\
+      I0 => \comp_stat.rd_ptr[1]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_14\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(3),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[1]_i_1_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"01"
-    )
-        port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      I1 => \comp_stat.rd_ptr_rep[8]_i_8_n_0\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      O => \comp_stat.rd_ptr_rep[8]_i_3_n_0\
-    );
-\comp_stat.rd_ptr_rep[8]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AAAAAAAAAAAAAAAE"
-    )
-        port map (
-      I0 => filling,
-      I1 => \comp_stat.rd_ptr_rep[8]_i_9_n_0\,
-      I2 => \comp_stat.up_count_reg\(7),
-      I3 => \comp_stat.up_count_reg\(6),
-      I4 => \comp_stat.rd_ptr_rep[8]_i_10_n_0\,
-      I5 => \comp_stat.up_count[6]_i_2_n_0\,
-      O => \comp_stat.rd_ptr_rep[8]_i_4_n_0\
-    );
-\comp_stat.rd_ptr_rep[8]_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00000000FFFFFFFE"
-    )
-        port map (
-      I0 => \comp_stat.up_count_reg\(9),
-      I1 => \comp_stat.up_count_reg\(8),
-      I2 => \comp_stat.rd_ptr_rep[8]_i_11_n_0\,
-      I3 => \comp_stat.up_count[8]_i_2_n_0\,
-      I4 => \comp_stat.up_count_reg\(10),
-      I5 => \comp_stat.rd_ptr_rep[8]_i_12_n_0\,
-      O => \comp_stat.rd_ptr_rep[8]_i_5_n_0\
-    );
-\comp_stat.rd_ptr_rep[8]_i_6\: unisim.vcomponents.LUT4
+\comp_stat.rd_ptr[1]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9555"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[8]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      I2 => \comp_stat.rd_ptr_rep[6]_i_2_n_0\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      O => \comp_stat.rd_ptr_rep[8]_i_6_n_0\
+      I0 => rd_ptr(1),
+      I1 => rd_ptr(0),
+      I2 => rd_pos_1(1),
+      I3 => rd_pos_1(0),
+      O => \comp_stat.rd_ptr[1]_i_2_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_7\: unisim.vcomponents.LUT6
+\comp_stat.rd_ptr[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1111111000000001"
+      INIT => X"F444F444FFFFF444"
     )
         port map (
-      I0 => \comp_stat.proc_up_reg_n_0\,
-      I1 => filling,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[7]\,
-      I3 => \comp_stat.rd_ptr_rep[8]_i_8_n_0\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[6]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[8]\,
-      O => \comp_stat.rd_ptr_rep[8]_i_7_n_0\
+      I0 => \comp_stat.rd_ptr[2]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_13\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(4),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[2]_i_1_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_8\: unisim.vcomponents.LUT6
+\comp_stat.rd_ptr[2]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"95555555"
+    )
+        port map (
+      I0 => rd_ptr(2),
+      I1 => rd_ptr(1),
+      I2 => rd_pos_1(0),
+      I3 => rd_pos_1(1),
+      I4 => rd_ptr(0),
+      O => \comp_stat.rd_ptr[2]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F444F444FFFFF444"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[3]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_12\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(5),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[3]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[3]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9555555555555555"
+    )
+        port map (
+      I0 => rd_ptr(3),
+      I1 => rd_ptr(2),
+      I2 => rd_ptr(0),
+      I3 => rd_pos_1(1),
+      I4 => rd_pos_1(0),
+      I5 => rd_ptr(1),
+      O => \comp_stat.rd_ptr[3]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F444F444FFFFF444"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[4]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_11\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(6),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[4]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => rd_ptr(4),
+      I1 => \comp_stat.rd_ptr[8]_i_5_n_0\,
+      O => \comp_stat.rd_ptr[4]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F444F444FFFFF444"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[5]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_10\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(7),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[5]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[5]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"65"
+    )
+        port map (
+      I0 => rd_ptr(5),
+      I1 => \comp_stat.rd_ptr[8]_i_5_n_0\,
+      I2 => rd_ptr(4),
+      O => \comp_stat.rd_ptr[5]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F444F444FFFFF444"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[6]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_9\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(8),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[6]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[6]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"5595"
+    )
+        port map (
+      I0 => rd_ptr(6),
+      I1 => rd_ptr(5),
+      I2 => rd_ptr(4),
+      I3 => \comp_stat.rd_ptr[8]_i_5_n_0\,
+      O => \comp_stat.rd_ptr[6]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F444F444FFFFF444"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[7]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => \comp_stat.rd_ptr_reg[7]_i_3_n_8\,
+      I3 => \comp_stat.idle_i_4_n_0\,
+      I4 => max_pos(9),
+      I5 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      O => \comp_stat.rd_ptr[7]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_10\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[7]_i_14_n_0\,
+      I1 => rd_ptr(2),
+      O => \comp_stat.rd_ptr[7]_i_10_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_11\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"EEEE1111EEEE1110"
+    )
+        port map (
+      I0 => rd_pos_1(0),
+      I1 => rd_pos_1(1),
+      I2 => \comp_stat.rd_ptr[7]_i_13_n_0\,
+      I3 => rd_ptr(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(6),
+      O => \comp_stat.rd_ptr[7]_i_11_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_12\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"EE11EE11EE11EE10"
+    )
+        port map (
+      I0 => rd_pos_1(0),
+      I1 => rd_pos_1(1),
+      I2 => \comp_stat.rd_ptr[7]_i_13_n_0\,
+      I3 => rd_ptr(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(6),
+      O => \comp_stat.rd_ptr[7]_i_12_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_13\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => \comp_stat.rd_ptr_reg_n_0_[5]\,
-      I1 => \comp_stat.rd_ptr_reg_n_0_[3]\,
-      I2 => \comp_stat.rd_ptr_reg_n_0_[1]\,
-      I3 => \comp_stat.rd_ptr_reg_n_0_[0]\,
-      I4 => \comp_stat.rd_ptr_reg_n_0_[2]\,
-      I5 => \comp_stat.rd_ptr_reg_n_0_[4]\,
-      O => \comp_stat.rd_ptr_rep[8]_i_8_n_0\
+      I0 => rd_ptr(2),
+      I1 => rd_ptr(3),
+      I2 => rd_ptr(5),
+      I3 => rd_ptr(4),
+      I4 => rd_ptr(8),
+      I5 => rd_ptr(7),
+      O => \comp_stat.rd_ptr[7]_i_13_n_0\
     );
-\comp_stat.rd_ptr_rep[8]_i_9\: unisim.vcomponents.LUT2
+\comp_stat.rd_ptr[7]_i_14\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1"
+      INIT => X"1111111111111110"
     )
         port map (
-      I0 => \comp_stat.up_count_reg\(5),
-      I1 => \comp_stat.up_count_reg\(4),
-      O => \comp_stat.rd_ptr_rep[8]_i_9_n_0\
+      I0 => rd_pos_1(0),
+      I1 => rd_pos_1(1),
+      I2 => \comp_stat.rd_ptr[7]_i_13_n_0\,
+      I3 => rd_ptr(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(6),
+      O => \comp_stat.rd_ptr[7]_i_14_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"55559555"
+    )
+        port map (
+      I0 => rd_ptr(7),
+      I1 => rd_ptr(6),
+      I2 => rd_ptr(5),
+      I3 => rd_ptr(4),
+      I4 => \comp_stat.rd_ptr[8]_i_5_n_0\,
+      O => \comp_stat.rd_ptr[7]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"EEEEEEEEEEEEEEEF"
+    )
+        port map (
+      I0 => rd_pos_1(0),
+      I1 => rd_pos_1(1),
+      I2 => \comp_stat.rd_ptr[7]_i_13_n_0\,
+      I3 => rd_ptr(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(6),
+      O => \comp_stat.rd_ptr[7]_i_4_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(6),
+      I1 => rd_ptr(7),
+      O => \comp_stat.rd_ptr[7]_i_5_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(5),
+      I1 => rd_ptr(6),
+      O => \comp_stat.rd_ptr[7]_i_6_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(4),
+      I1 => rd_ptr(5),
+      O => \comp_stat.rd_ptr[7]_i_7_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(3),
+      I1 => rd_ptr(4),
+      O => \comp_stat.rd_ptr[7]_i_8_n_0\
+    );
+\comp_stat.rd_ptr[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(2),
+      I1 => rd_ptr(3),
+      O => \comp_stat.rd_ptr[7]_i_9_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF44F444F444F4"
+    )
+        port map (
+      I0 => \comp_stat.rd_ptr[8]_i_2_n_0\,
+      I1 => \comp_stat.rd_ptr[8]_i_3_n_0\,
+      I2 => max_pos(10),
+      I3 => \comp_stat.rd_pos_1[1]_i_2_n_0\,
+      I4 => \comp_stat.rd_ptr_reg[8]_i_4_n_15\,
+      I5 => \comp_stat.idle_i_4_n_0\,
+      O => \comp_stat.rd_ptr[8]_i_1_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"5555555595555555"
+    )
+        port map (
+      I0 => rd_ptr(8),
+      I1 => rd_ptr(7),
+      I2 => rd_ptr(6),
+      I3 => rd_ptr(5),
+      I4 => rd_ptr(4),
+      I5 => \comp_stat.rd_ptr[8]_i_5_n_0\,
+      O => \comp_stat.rd_ptr[8]_i_2_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFEF00000000"
+    )
+        port map (
+      I0 => \comp_stat.up_count_reg\(7),
+      I1 => \comp_stat.up_count_reg\(6),
+      I2 => \comp_stat.up_count[8]_i_2_n_0\,
+      I3 => \comp_stat.rd_ptr[8]_i_6_n_0\,
+      I4 => \comp_stat.up_count_reg\(10),
+      I5 => \comp_stat.rd_ptr[8]_i_7_n_0\,
+      O => \comp_stat.rd_ptr[8]_i_3_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => rd_ptr(2),
+      I1 => rd_ptr(0),
+      I2 => rd_pos_1(1),
+      I3 => rd_pos_1(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(3),
+      O => \comp_stat.rd_ptr[8]_i_5_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \comp_stat.up_count_reg\(8),
+      I1 => \comp_stat.up_count_reg\(9),
+      O => \comp_stat.rd_ptr[8]_i_6_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \comp_stat.proc_up_reg_n_0\,
+      I1 => filling,
+      O => \comp_stat.rd_ptr[8]_i_7_n_0\
+    );
+\comp_stat.rd_ptr[8]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => rd_ptr(7),
+      I1 => rd_ptr(8),
+      O => \comp_stat.rd_ptr[8]_i_8_n_0\
+    );
+\comp_stat.rd_ptr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[0]_i_1_n_0\,
+      Q => rd_ptr(0),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[1]_i_1_n_0\,
+      Q => rd_ptr(1),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[2]_i_1_n_0\,
+      Q => rd_ptr(2),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[3]_i_1_n_0\,
+      Q => rd_ptr(3),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[4]_i_1_n_0\,
+      Q => rd_ptr(4),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[5]_i_1_n_0\,
+      Q => rd_ptr(5),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[6]_i_1_n_0\,
+      Q => rd_ptr(6),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[7]_i_1_n_0\,
+      Q => rd_ptr(7),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[7]_i_3\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_stat.rd_ptr_reg[7]_i_3_n_0\,
+      CO(6) => \comp_stat.rd_ptr_reg[7]_i_3_n_1\,
+      CO(5) => \comp_stat.rd_ptr_reg[7]_i_3_n_2\,
+      CO(4) => \comp_stat.rd_ptr_reg[7]_i_3_n_3\,
+      CO(3) => \comp_stat.rd_ptr_reg[7]_i_3_n_4\,
+      CO(2) => \comp_stat.rd_ptr_reg[7]_i_3_n_5\,
+      CO(1) => \comp_stat.rd_ptr_reg[7]_i_3_n_6\,
+      CO(0) => \comp_stat.rd_ptr_reg[7]_i_3_n_7\,
+      DI(7 downto 3) => rd_ptr(6 downto 2),
+      DI(2) => \comp_stat.rd_ptr[7]_i_4_n_0\,
+      DI(1 downto 0) => rd_ptr(1 downto 0),
+      O(7) => \comp_stat.rd_ptr_reg[7]_i_3_n_8\,
+      O(6) => \comp_stat.rd_ptr_reg[7]_i_3_n_9\,
+      O(5) => \comp_stat.rd_ptr_reg[7]_i_3_n_10\,
+      O(4) => \comp_stat.rd_ptr_reg[7]_i_3_n_11\,
+      O(3) => \comp_stat.rd_ptr_reg[7]_i_3_n_12\,
+      O(2) => \comp_stat.rd_ptr_reg[7]_i_3_n_13\,
+      O(1) => \comp_stat.rd_ptr_reg[7]_i_3_n_14\,
+      O(0) => \comp_stat.rd_ptr_reg[7]_i_3_n_15\,
+      S(7) => \comp_stat.rd_ptr[7]_i_5_n_0\,
+      S(6) => \comp_stat.rd_ptr[7]_i_6_n_0\,
+      S(5) => \comp_stat.rd_ptr[7]_i_7_n_0\,
+      S(4) => \comp_stat.rd_ptr[7]_i_8_n_0\,
+      S(3) => \comp_stat.rd_ptr[7]_i_9_n_0\,
+      S(2) => \comp_stat.rd_ptr[7]_i_10_n_0\,
+      S(1) => \comp_stat.rd_ptr[7]_i_11_n_0\,
+      S(0) => \comp_stat.rd_ptr[7]_i_12_n_0\
+    );
+\comp_stat.rd_ptr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_stat.rd_ptr[8]_i_1_n_0\,
+      Q => rd_ptr(8),
+      R => '0'
+    );
+\comp_stat.rd_ptr_reg[8]_i_4\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_stat.rd_ptr_reg[7]_i_3_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 0) => \NLW_comp_stat.rd_ptr_reg[8]_i_4_CO_UNCONNECTED\(7 downto 0),
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 1) => \NLW_comp_stat.rd_ptr_reg[8]_i_4_O_UNCONNECTED\(7 downto 1),
+      O(0) => \comp_stat.rd_ptr_reg[8]_i_4_n_15\,
+      S(7 downto 1) => B"0000000",
+      S(0) => \comp_stat.rd_ptr[8]_i_8_n_0\
     );
 \comp_stat.start_down_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -10134,15 +9144,15 @@ begin
     );
 \comp_stat.stop_down[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000000000A2"
+      INIT => X"0000000000008808"
     )
         port map (
-      I0 => \^active\,
-      I1 => \comp_stat.stop_down_reg\,
-      I2 => stop_down(0),
-      I3 => \comp_stat.proc_up_reg_n_0\,
-      I4 => reset,
-      I5 => \comp_stat.idle_i_4_n_0\,
+      I0 => \comp_stat.idle_i_2_n_0\,
+      I1 => \^active\,
+      I2 => \comp_stat.stop_down_reg\,
+      I3 => stop_down(0),
+      I4 => \comp_stat.proc_up_reg_n_0\,
+      I5 => reset,
       O => \comp_stat.stop_down[0]_i_1_n_0\
     );
 \comp_stat.stop_down_reg[0]\: unisim.vcomponents.FDRE
@@ -10205,15 +9215,15 @@ begin
     );
 \comp_stat.up_count[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B8B8B8B8B8B88BB8"
+      INIT => X"B8B8B88BB8B8B8B8"
     )
         port map (
       I0 => data(10),
       I1 => filling,
       I2 => \comp_stat.up_count_reg\(10),
-      I3 => \comp_stat.up_count[10]_i_5_n_0\,
-      I4 => \comp_stat.up_count_reg\(8),
-      I5 => \comp_stat.up_count_reg\(9),
+      I3 => \comp_stat.up_count_reg\(8),
+      I4 => \comp_stat.up_count_reg\(9),
+      I5 => \comp_stat.up_count[10]_i_5_n_0\,
       O => \p_0_in__0\(10)
     );
 \comp_stat.up_count[10]_i_3\: unisim.vcomponents.LUT6
@@ -10234,9 +9244,9 @@ begin
       INIT => X"00000001"
     )
         port map (
-      I0 => \comp_stat.up_count_reg\(5),
-      I1 => \comp_stat.up_count_reg\(4),
-      I2 => \comp_stat.up_count[6]_i_2_n_0\,
+      I0 => \comp_stat.up_count[6]_i_2_n_0\,
+      I1 => \comp_stat.up_count_reg\(5),
+      I2 => \comp_stat.up_count_reg\(4),
       I3 => \comp_stat.up_count_reg\(6),
       I4 => \comp_stat.up_count_reg\(7),
       O => \comp_stat.up_count[10]_i_5_n_0\
@@ -10344,15 +9354,15 @@ begin
     );
 \comp_stat.up_count[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBBBBB88888888B"
+      INIT => X"B8B8B8B8B8B8B88B"
     )
         port map (
       I0 => data(6),
       I1 => filling,
-      I2 => \comp_stat.up_count[6]_i_2_n_0\,
-      I3 => \comp_stat.up_count_reg\(4),
+      I2 => \comp_stat.up_count_reg\(6),
+      I3 => \comp_stat.up_count[6]_i_2_n_0\,
       I4 => \comp_stat.up_count_reg\(5),
-      I5 => \comp_stat.up_count_reg\(6),
+      I5 => \comp_stat.up_count_reg\(4),
       O => \p_0_in__0\(6)
     );
 \comp_stat.up_count[6]_i_2\: unisim.vcomponents.LUT4
@@ -10368,14 +9378,14 @@ begin
     );
 \comp_stat.up_count[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B8B8B88B"
+      INIT => X"B88BB8B8"
     )
         port map (
       I0 => data(7),
       I1 => filling,
       I2 => \comp_stat.up_count_reg\(7),
-      I3 => \comp_stat.up_count[8]_i_2_n_0\,
-      I4 => \comp_stat.up_count_reg\(6),
+      I3 => \comp_stat.up_count_reg\(6),
+      I4 => \comp_stat.up_count[8]_i_2_n_0\,
       O => \p_0_in__0\(7)
     );
 \comp_stat.up_count[7]_i_10\: unisim.vcomponents.LUT4
@@ -10529,7 +9539,7 @@ begin
     );
 \comp_stat.up_count[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B8B8B8B8B8B8B88B"
+      INIT => X"B8B8B88BB8B8B8B8"
     )
         port map (
       I0 => data(8),
@@ -10542,15 +9552,15 @@ begin
     );
 \comp_stat.up_count[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => \comp_stat.up_count_reg\(0),
-      I1 => \comp_stat.up_count_reg\(1),
-      I2 => \comp_stat.up_count_reg\(2),
-      I3 => \comp_stat.up_count_reg\(3),
-      I4 => \comp_stat.up_count_reg\(4),
-      I5 => \comp_stat.up_count_reg\(5),
+      I0 => \comp_stat.up_count_reg\(4),
+      I1 => \comp_stat.up_count_reg\(5),
+      I2 => \comp_stat.up_count_reg\(0),
+      I3 => \comp_stat.up_count_reg\(1),
+      I4 => \comp_stat.up_count_reg\(2),
+      I5 => \comp_stat.up_count_reg\(3),
       O => \comp_stat.up_count[8]_i_2_n_0\
     );
 \comp_stat.up_count[9]_i_1\: unisim.vcomponents.LUT5
@@ -10722,15 +9732,15 @@ begin
       C => clk,
       CE => '1',
       D => \comp_stat.up_delay_reg_n_0_[0]\,
-      Q => p_0_in7_in,
+      Q => p_0_in8_in,
       R => '0'
     );
 \comp_stat.up_delay_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => p_0_in7_in,
-      Q => p_0_in,
+      D => p_0_in8_in,
+      Q => \comp_stat.up_delay_reg_n_0_[2]\,
       R => '0'
     );
 \comp_stat.up_pos[0]_i_1\: unisim.vcomponents.LUT3
@@ -10754,41 +9764,29 @@ begin
       I3 => start_up,
       O => up_pos
     );
-\comp_stat.up_pos[10]_i_2\: unisim.vcomponents.LUT6
+\comp_stat.up_pos[10]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B88BB8B8B8B8B8B8"
+      INIT => X"8BB8"
     )
         port map (
       I0 => max_pos(10),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
       I2 => \comp_stat.up_pos_reg\(10),
       I3 => \comp_stat.up_pos[10]_i_3_n_0\,
-      I4 => \comp_stat.up_pos_reg\(6),
-      I5 => \comp_stat.up_pos[10]_i_4_n_0\,
       O => \p_0_in__2\(10)
     );
-\comp_stat.up_pos[10]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => \comp_stat.up_pos_reg\(8),
-      I1 => \comp_stat.up_pos_reg\(9),
-      I2 => \comp_stat.up_pos_reg\(7),
-      O => \comp_stat.up_pos[10]_i_3_n_0\
-    );
-\comp_stat.up_pos[10]_i_4\: unisim.vcomponents.LUT6
+\comp_stat.up_pos[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"8000000000000000"
     )
         port map (
       I0 => \comp_stat.up_pos_reg\(5),
-      I1 => \comp_stat.up_pos_reg\(4),
-      I2 => \comp_stat.up_pos_reg\(2),
-      I3 => \comp_stat.up_pos_reg\(1),
-      I4 => \comp_stat.up_pos_reg\(0),
-      I5 => \comp_stat.up_pos_reg\(3),
-      O => \comp_stat.up_pos[10]_i_4_n_0\
+      I1 => \comp_stat.up_pos[7]_i_2_n_0\,
+      I2 => \comp_stat.up_pos_reg\(6),
+      I3 => \comp_stat.up_pos_reg\(7),
+      I4 => \comp_stat.up_pos_reg\(9),
+      I5 => \comp_stat.up_pos_reg\(8),
+      O => \comp_stat.up_pos[10]_i_3_n_0\
     );
 \comp_stat.up_pos[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -10833,8 +9831,8 @@ begin
         port map (
       I0 => max_pos(4),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.up_pos_reg\(4),
-      I3 => \comp_stat.up_pos[4]_i_2_n_0\,
+      I2 => \comp_stat.up_pos[4]_i_2_n_0\,
+      I3 => \comp_stat.up_pos_reg\(4),
       O => \p_0_in__2\(4)
     );
 \comp_stat.up_pos[4]_i_2\: unisim.vcomponents.LUT4
@@ -10850,61 +9848,62 @@ begin
     );
 \comp_stat.up_pos[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"B88B"
+      INIT => X"8BB8"
     )
         port map (
       I0 => max_pos(5),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.up_pos[5]_i_2_n_0\,
-      I3 => \comp_stat.up_pos_reg\(5),
+      I2 => \comp_stat.up_pos_reg\(5),
+      I3 => \comp_stat.up_pos[7]_i_2_n_0\,
       O => \p_0_in__2\(5)
     );
-\comp_stat.up_pos[5]_i_2\: unisim.vcomponents.LUT5
+\comp_stat.up_pos[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFFFFFF"
-    )
-        port map (
-      I0 => \comp_stat.up_pos_reg\(3),
-      I1 => \comp_stat.up_pos_reg\(0),
-      I2 => \comp_stat.up_pos_reg\(1),
-      I3 => \comp_stat.up_pos_reg\(2),
-      I4 => \comp_stat.up_pos_reg\(4),
-      O => \comp_stat.up_pos[5]_i_2_n_0\
-    );
-\comp_stat.up_pos[6]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"8BB8"
+      INIT => X"8BB8B8B8"
     )
         port map (
       I0 => max_pos(6),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
       I2 => \comp_stat.up_pos_reg\(6),
-      I3 => \comp_stat.up_pos[10]_i_4_n_0\,
+      I3 => \comp_stat.up_pos[7]_i_2_n_0\,
+      I4 => \comp_stat.up_pos_reg\(5),
       O => \p_0_in__2\(6)
     );
-\comp_stat.up_pos[7]_i_1\: unisim.vcomponents.LUT5
+\comp_stat.up_pos[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8BB8B8B8"
+      INIT => X"8BB8B8B8B8B8B8B8"
     )
         port map (
       I0 => max_pos(7),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
       I2 => \comp_stat.up_pos_reg\(7),
-      I3 => \comp_stat.up_pos[10]_i_4_n_0\,
-      I4 => \comp_stat.up_pos_reg\(6),
+      I3 => \comp_stat.up_pos_reg\(5),
+      I4 => \comp_stat.up_pos[7]_i_2_n_0\,
+      I5 => \comp_stat.up_pos_reg\(6),
       O => \p_0_in__2\(7)
     );
-\comp_stat.up_pos[8]_i_1\: unisim.vcomponents.LUT6
+\comp_stat.up_pos[7]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8BB8B8B8B8B8B8B8"
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \comp_stat.up_pos_reg\(4),
+      I1 => \comp_stat.up_pos_reg\(3),
+      I2 => \comp_stat.up_pos_reg\(0),
+      I3 => \comp_stat.up_pos_reg\(1),
+      I4 => \comp_stat.up_pos_reg\(2),
+      O => \comp_stat.up_pos[7]_i_2_n_0\
+    );
+\comp_stat.up_pos[8]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"8BB8B8B8"
     )
         port map (
       I0 => max_pos(8),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
       I2 => \comp_stat.up_pos_reg\(8),
       I3 => \comp_stat.up_pos_reg\(7),
-      I4 => \comp_stat.up_pos_reg\(6),
-      I5 => \comp_stat.up_pos[10]_i_4_n_0\,
+      I4 => \comp_stat.up_pos[9]_i_2_n_0\,
       O => \p_0_in__2\(8)
     );
 \comp_stat.up_pos[9]_i_1\: unisim.vcomponents.LUT6
@@ -10915,18 +9914,19 @@ begin
       I0 => max_pos(9),
       I1 => \comp_stat.up_delay_reg_n_0_[0]\,
       I2 => \comp_stat.up_pos_reg\(9),
-      I3 => \comp_stat.up_pos[9]_i_2_n_0\,
+      I3 => \comp_stat.up_pos_reg\(8),
       I4 => \comp_stat.up_pos_reg\(7),
-      I5 => \comp_stat.up_pos_reg\(8),
+      I5 => \comp_stat.up_pos[9]_i_2_n_0\,
       O => \p_0_in__2\(9)
     );
-\comp_stat.up_pos[9]_i_2\: unisim.vcomponents.LUT2
+\comp_stat.up_pos[9]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"8"
+      INIT => X"80"
     )
         port map (
       I0 => \comp_stat.up_pos_reg\(6),
-      I1 => \comp_stat.up_pos[10]_i_4_n_0\,
+      I1 => \comp_stat.up_pos[7]_i_2_n_0\,
+      I2 => \comp_stat.up_pos_reg\(5),
       O => \comp_stat.up_pos[9]_i_2_n_0\
     );
 \comp_stat.up_pos_reg[0]\: unisim.vcomponents.FDRE
@@ -11019,14 +10019,14 @@ begin
     );
 \comp_stat.was_active_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFEFF0000"
+      INIT => X"FFFFFFFFCCCCCCC4"
     )
         port map (
-      I0 => p_0_in4_in,
-      I1 => \comp_stat.down_delay_reg_n_0_[0]\,
-      I2 => \comp_stat.start_down_reg_n_0\,
-      I3 => was_active,
-      I4 => \comp_stat.was_active_reg_n_0\,
+      I0 => was_active,
+      I1 => \comp_stat.was_active_reg_n_0\,
+      I2 => p_0_in4_in,
+      I3 => \comp_stat.down_delay_reg_n_0_[0]\,
+      I4 => \comp_stat.start_down_reg_n_0\,
       I5 => \comp_stat.proc_up_reg_n_0\,
       O => \comp_stat.was_active_i_1_n_0\
     );
@@ -11069,82 +10069,82 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(0),
-      O => \p_0_in__3\(0)
+      I0 => wr_ptr(0),
+      O => \p_1_in__0\(0)
     );
 \comp_stat.wr_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(1),
-      I1 => \comp_stat.wr_ptr_reg\(0),
-      O => \p_0_in__3\(1)
+      I0 => wr_ptr(0),
+      I1 => wr_ptr(1),
+      O => \p_1_in__0\(1)
     );
 \comp_stat.wr_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"78"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(2),
-      I1 => \comp_stat.wr_ptr_reg\(1),
-      I2 => \comp_stat.wr_ptr_reg\(0),
-      O => \p_0_in__3\(2)
+      I0 => wr_ptr(0),
+      I1 => wr_ptr(1),
+      I2 => wr_ptr(2),
+      O => \p_1_in__0\(2)
     );
 \comp_stat.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6AAA"
+      INIT => X"7F80"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(3),
-      I1 => \comp_stat.wr_ptr_reg\(0),
-      I2 => \comp_stat.wr_ptr_reg\(1),
-      I3 => \comp_stat.wr_ptr_reg\(2),
-      O => \p_0_in__3\(3)
+      I0 => wr_ptr(1),
+      I1 => wr_ptr(0),
+      I2 => wr_ptr(2),
+      I3 => wr_ptr(3),
+      O => \p_1_in__0\(3)
     );
 \comp_stat.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"7FFF8000"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(4),
-      I1 => \comp_stat.wr_ptr_reg\(2),
-      I2 => \comp_stat.wr_ptr_reg\(1),
-      I3 => \comp_stat.wr_ptr_reg\(0),
-      I4 => \comp_stat.wr_ptr_reg\(3),
-      O => \p_0_in__3\(4)
+      I0 => wr_ptr(2),
+      I1 => wr_ptr(0),
+      I2 => wr_ptr(1),
+      I3 => wr_ptr(3),
+      I4 => wr_ptr(4),
+      O => \p_1_in__0\(4)
     );
 \comp_stat.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
+      INIT => X"7FFFFFFF80000000"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(5),
-      I1 => \comp_stat.wr_ptr_reg\(3),
-      I2 => \comp_stat.wr_ptr_reg\(0),
-      I3 => \comp_stat.wr_ptr_reg\(1),
-      I4 => \comp_stat.wr_ptr_reg\(2),
-      I5 => \comp_stat.wr_ptr_reg\(4),
-      O => \p_0_in__3\(5)
+      I0 => wr_ptr(3),
+      I1 => wr_ptr(1),
+      I2 => wr_ptr(0),
+      I3 => wr_ptr(2),
+      I4 => wr_ptr(4),
+      I5 => wr_ptr(5),
+      O => \p_1_in__0\(5)
     );
 \comp_stat.wr_ptr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
       I0 => \comp_stat.wr_ptr[8]_i_3_n_0\,
-      I1 => \comp_stat.wr_ptr_reg\(6),
-      O => \p_0_in__3\(6)
+      I1 => wr_ptr(6),
+      O => \p_1_in__0\(6)
     );
 \comp_stat.wr_ptr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"9A"
+      INIT => X"78"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(7),
-      I1 => \comp_stat.wr_ptr[8]_i_3_n_0\,
-      I2 => \comp_stat.wr_ptr_reg\(6),
-      O => \p_0_in__3\(7)
+      I0 => \comp_stat.wr_ptr[8]_i_3_n_0\,
+      I1 => wr_ptr(6),
+      I2 => wr_ptr(7),
+      O => \p_1_in__0\(7)
     );
 \comp_stat.wr_ptr[8]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -11152,111 +10152,119 @@ begin
     )
         port map (
       I0 => mem_wr,
-      O => clear
+      O => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr[8]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"A6AA"
+      INIT => X"7F80"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(8),
-      I1 => \comp_stat.wr_ptr_reg\(6),
-      I2 => \comp_stat.wr_ptr[8]_i_3_n_0\,
-      I3 => \comp_stat.wr_ptr_reg\(7),
-      O => \p_0_in__3\(8)
+      I0 => wr_ptr(6),
+      I1 => \comp_stat.wr_ptr[8]_i_3_n_0\,
+      I2 => wr_ptr(7),
+      I3 => wr_ptr(8),
+      O => \p_1_in__0\(8)
     );
 \comp_stat.wr_ptr[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => \comp_stat.wr_ptr_reg\(4),
-      I1 => \comp_stat.wr_ptr_reg\(2),
-      I2 => \comp_stat.wr_ptr_reg\(1),
-      I3 => \comp_stat.wr_ptr_reg\(0),
-      I4 => \comp_stat.wr_ptr_reg\(3),
-      I5 => \comp_stat.wr_ptr_reg\(5),
+      I0 => wr_ptr(5),
+      I1 => wr_ptr(3),
+      I2 => wr_ptr(1),
+      I3 => wr_ptr(0),
+      I4 => wr_ptr(2),
+      I5 => wr_ptr(4),
       O => \comp_stat.wr_ptr[8]_i_3_n_0\
     );
 \comp_stat.wr_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(0),
-      Q => \comp_stat.wr_ptr_reg\(0),
-      R => clear
+      D => \p_1_in__0\(0),
+      Q => wr_ptr(0),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(1),
-      Q => \comp_stat.wr_ptr_reg\(1),
-      R => clear
+      D => \p_1_in__0\(1),
+      Q => wr_ptr(1),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(2),
-      Q => \comp_stat.wr_ptr_reg\(2),
-      R => clear
+      D => \p_1_in__0\(2),
+      Q => wr_ptr(2),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(3),
-      Q => \comp_stat.wr_ptr_reg\(3),
-      R => clear
+      D => \p_1_in__0\(3),
+      Q => wr_ptr(3),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(4),
-      Q => \comp_stat.wr_ptr_reg\(4),
-      R => clear
+      D => \p_1_in__0\(4),
+      Q => wr_ptr(4),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(5),
-      Q => \comp_stat.wr_ptr_reg\(5),
-      R => clear
+      D => \p_1_in__0\(5),
+      Q => wr_ptr(5),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(6),
-      Q => \comp_stat.wr_ptr_reg\(6),
-      R => clear
+      D => \p_1_in__0\(6),
+      Q => wr_ptr(6),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(7),
-      Q => \comp_stat.wr_ptr_reg\(7),
-      R => clear
+      D => \p_1_in__0\(7),
+      Q => wr_ptr(7),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 \comp_stat.wr_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__3\(8),
-      Q => \comp_stat.wr_ptr_reg\(8),
-      R => clear
+      D => \p_1_in__0\(8),
+      Q => wr_ptr(8),
+      R => \comp_stat.wr_ptr[8]_i_1_n_0\
     );
 ila_i: component ps_comp_ana_0_0_ila_2
      port map (
       clk => clk,
       probe0(0) => \^active\,
-      probe1(10 downto 0) => \^pos\(10 downto 0),
-      probe2(15 downto 0) => \^env\(15 downto 0),
-      probe3(15 downto 0) => \^phase\(15 downto 0)
+      probe1(8 downto 0) => wr_ptr(8 downto 0),
+      probe10(15 downto 0) => \^env\(15 downto 0),
+      probe11(15 downto 0) => \^phase\(15 downto 0),
+      probe2(63 downto 0) => env_in(63 downto 0),
+      probe3(63 downto 0) => phase_in(63 downto 0),
+      probe4(8 downto 0) => rd_ptr(8 downto 0),
+      probe5(1 downto 0) => rd_pos_1(1 downto 0),
+      probe6(1 downto 0) => rd_pos(1 downto 0),
+      probe7(15 downto 0) => curr_env_1(15 downto 0),
+      probe8(15 downto 0) => curr_phase(15 downto 0),
+      probe9(10 downto 0) => \^pos\(10 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -11277,14 +10285,14 @@ entity ps_comp_ana_0_0_morlet_to_phase_env is
 end ps_comp_ana_0_0_morlet_to_phase_env;
 
 architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
-  component mult_16_16_HD4 is
+  component mult_16_16_HD82 is
   port (
     CLK : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 15 downto 0 );
     B : in STD_LOGIC_VECTOR ( 15 downto 0 );
     P : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component mult_16_16_HD4;
+  end component mult_16_16_HD82;
   component ps_comp_ana_0_0_mult_16_16 is
   port (
     CLK : in STD_LOGIC;
@@ -11293,7 +10301,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
     P : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component ps_comp_ana_0_0_mult_16_16;
-  component cordic_sqrt_16_HD5 is
+  component cordic_sqrt_16_HD83 is
   port (
     aclk : in STD_LOGIC;
     m_axis_dout_tvalid : out STD_LOGIC;
@@ -11301,8 +10309,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component cordic_sqrt_16_HD5;
-  component cordic_atan2_16_HD6 is
+  end component cordic_sqrt_16_HD83;
+  component cordic_atan2_16_HD84 is
   port (
     aclk : in STD_LOGIC;
     m_axis_dout_tvalid : out STD_LOGIC;
@@ -11310,7 +10318,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 );
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component cordic_atan2_16_HD6;
+  end component cordic_atan2_16_HD84;
   signal im2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^in0\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal lenv : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -11545,10 +10553,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair87";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -11557,8 +10565,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair86";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -13420,7 +12428,7 @@ begin
       Q => \^in0\(0),
       R => '0'
     );
-mult_im_i: component mult_16_16_HD4
+mult_im_i: component mult_16_16_HD82
      port map (
       A(15 downto 0) => s_axis_cartesian_tdata(31 downto 16),
       B(15 downto 0) => s_axis_cartesian_tdata(31 downto 16),
@@ -13434,7 +12442,7 @@ mult_re_i: component ps_comp_ana_0_0_mult_16_16
       CLK => clk,
       P(31 downto 0) => re2(31 downto 0)
     );
-sqrt_i: component cordic_sqrt_16_HD5
+sqrt_i: component cordic_sqrt_16_HD83
      port map (
       aclk => clk,
       m_axis_dout_tdata(15 downto 0) => lenv(15 downto 0),
@@ -13442,7 +12450,7 @@ sqrt_i: component cordic_sqrt_16_HD5
       s_axis_cartesian_tdata(31 downto 0) => p2(31 downto 0),
       s_axis_cartesian_tvalid => raw_run
     );
-tan2_i: component cordic_atan2_16_HD6
+tan2_i: component cordic_atan2_16_HD84
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 20) => NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED(23 downto 20),
@@ -13611,10 +12619,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair78";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -13623,8 +12631,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair77";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -15744,10 +14752,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair81";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -15756,8 +14764,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair80";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -17932,10 +16940,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair84";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -17944,8 +16952,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair83";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -19883,14 +18891,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component ps_comp_ana_0_0_dsp_add16;
-  component ps_comp_ana_0_0_dsp_add16_HD7 is
+  component ps_comp_ana_0_0_dsp_add16_HD85 is
   port (
     CLK : in STD_LOGIC;
     SCLR : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 15 downto 0 );
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component ps_comp_ana_0_0_dsp_add16_HD7;
+  end component ps_comp_ana_0_0_dsp_add16_HD85;
   component ps_comp_ana_0_0_div_stat_48 is
   port (
     aclk : in STD_LOGIC;
@@ -19915,7 +18923,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_comp_ana_0_0_div_burst_mean;
-  component ps_comp_ana_0_0_div_stat_48_HD8 is
+  component ps_comp_ana_0_0_div_stat_48_HD86 is
   port (
     aclk : in STD_LOGIC;
     m_axis_dout_tvalid : out STD_LOGIC;
@@ -19927,8 +18935,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component ps_comp_ana_0_0_div_stat_48_HD8;
-  component ps_comp_ana_0_0_div_burst_mean_HD9 is
+  end component ps_comp_ana_0_0_div_stat_48_HD86;
+  component ps_comp_ana_0_0_div_burst_mean_HD87 is
   port (
     aclk : in STD_LOGIC;
     m_axis_dout_tvalid : out STD_LOGIC;
@@ -19938,7 +18946,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component ps_comp_ana_0_0_div_burst_mean_HD9;
+  end component ps_comp_ana_0_0_div_burst_mean_HD87;
   component ps_comp_ana_0_0_fifo_config is
   port (
     rst : in STD_LOGIC;
@@ -19989,26 +18997,31 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     probe21 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 47 downto 0 )
+    probe22 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe26 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe27 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe28 : in STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component ps_comp_ana_0_0_ila_0;
   component ps_comp_ana_0_0_dsp_sqr16 is
@@ -20019,14 +19032,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component ps_comp_ana_0_0_dsp_sqr16;
-  component ps_comp_ana_0_0_dsp_sqr16_HD10 is
+  component ps_comp_ana_0_0_dsp_sqr16_HD88 is
   port (
     CLK : in STD_LOGIC;
     SCLR : in STD_LOGIC;
     A : in STD_LOGIC_VECTOR ( 15 downto 0 );
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component ps_comp_ana_0_0_dsp_sqr16_HD10;
+  end component ps_comp_ana_0_0_dsp_sqr16_HD88;
   component ps_comp_ana_0_0_mul_stat24 is
   port (
     CLK : in STD_LOGIC;
@@ -20036,7 +19049,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component ps_comp_ana_0_0_mul_stat24;
-  component ps_comp_ana_0_0_mul_stat24_HD11 is
+  component ps_comp_ana_0_0_mul_stat24_HD89 is
   port (
     CLK : in STD_LOGIC;
     SCLR : in STD_LOGIC;
@@ -20044,13 +19057,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
     B : in STD_LOGIC_VECTOR ( 23 downto 0 );
     P : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
-  end component ps_comp_ana_0_0_mul_stat24_HD11;
+  end component ps_comp_ana_0_0_mul_stat24_HD89;
   signal burst : STD_LOGIC;
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of burst : signal is std.standard.true;
   signal cfg_empty : STD_LOGIC;
   signal cfg_rd : STD_LOGIC;
   signal clear : STD_LOGIC;
+  signal \comp_burst.burst_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.cfg_rd_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.complete_1_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.complete_1_reg_n_0\ : STD_LOGIC;
@@ -20069,9 +19083,49 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.curr_size_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.df_active_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.df_active_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_count[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.df_count[2]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.df_count[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.df_count_reg\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \comp_burst.df_diff[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[15]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[19]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[19]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[19]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[19]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff[7]_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[19]_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[19]_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[19]_i_2_n_7\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_burst.df_diff_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \comp_burst.df_diff_reg_n_0_[10]\ : STD_LOGIC;
   signal \comp_burst.df_diff_reg_n_0_[11]\ : STD_LOGIC;
   signal \comp_burst.df_diff_reg_n_0_[12]\ : STD_LOGIC;
@@ -20090,6 +19144,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.df_diff_reg_n_0_[9]\ : STD_LOGIC;
   signal \comp_burst.df_ind[8]_i_3_n_0\ : STD_LOGIC;
   signal \comp_burst.df_ind_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \comp_burst.df_low[19]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_low[19]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_low[19]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.df_low[19]_i_4_n_0\ : STD_LOGIC;
   signal \comp_burst.df_low_reg_n_0_[0]\ : STD_LOGIC;
   signal \comp_burst.df_low_reg_n_0_[10]\ : STD_LOGIC;
   signal \comp_burst.df_low_reg_n_0_[11]\ : STD_LOGIC;
@@ -20240,7 +19298,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.env_down_adr[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_down_adr[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_down_adr[10]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_down_adr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_down_adr[1]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.env_down_adr[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_down_adr[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_down_adr[4]_i_1_n_0\ : STD_LOGIC;
@@ -20387,62 +19445,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.env_end_ind_reg_n_0_[7]\ : STD_LOGIC;
   signal \comp_burst.env_end_ind_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.env_end_ind_reg_n_0_[9]\ : STD_LOGIC;
-  signal \comp_burst.env_in[63]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[0]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[10]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[11]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[12]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[13]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[14]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[15]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[1]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[2]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[3]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[48]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[49]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[4]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[50]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[51]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[52]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[53]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[54]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[55]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[56]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[57]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[58]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[59]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[5]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[60]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[61]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[62]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[63]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[6]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[7]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[8]\ : STD_LOGIC;
-  signal \comp_burst.env_in_reg_n_0_[9]\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_10_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_11_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_12_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_13_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_14_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_15_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_16_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_17_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_18_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_7_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_8_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind[10]_i_9_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_burst.env_start_ind_reg[10]_i_2_n_7\ : STD_LOGIC;
   signal \comp_burst.env_start_ind_reg_n_0_[0]\ : STD_LOGIC;
   signal \comp_burst.env_start_ind_reg_n_0_[10]\ : STD_LOGIC;
   signal \comp_burst.env_start_ind_reg_n_0_[1]\ : STD_LOGIC;
@@ -20931,10 +19933,137 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.env_sum_reg_n_0_[7]\ : STD_LOGIC;
   signal \comp_burst.env_sum_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.env_sum_reg_n_0_[9]\ : STD_LOGIC;
+  signal \comp_burst.env_up[0]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[0]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[10]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[10]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[11]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[11]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[12]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[12]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[13]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[13]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[14]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[14]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[15]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[15]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[16]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[16]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[17]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[17]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[18]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[18]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[19]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[19]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[1]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[1]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[20]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[20]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[21]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[21]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[22]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[22]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[23]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[23]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[24]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[24]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[25]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[25]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[26]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[26]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[27]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[27]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[28]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[28]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[29]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[29]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[2]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[2]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[30]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[30]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[31]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[31]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[32]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[32]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[33]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[33]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[34]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[34]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[35]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[35]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[36]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[36]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[37]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[37]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[38]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[38]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[39]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[39]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[3]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[3]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[40]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[40]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[41]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[41]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[42]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[42]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[43]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[43]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[44]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[44]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[45]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[45]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[46]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[46]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[47]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[47]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[48]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[48]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[49]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[49]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[4]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[50]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[50]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[51]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[51]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[52]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[52]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[53]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[53]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[54]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[54]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[55]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[55]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[56]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[56]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[57]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[57]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[58]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[58]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[59]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[59]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[5]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[60]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[60]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[61]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[61]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[62]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[62]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[63]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[63]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[6]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[7]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[9]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up[9]_i_3_n_0\ : STD_LOGIC;
   signal \comp_burst.env_up_adr[10]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.env_up_adr[6]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_adr_reg\ : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal \comp_burst.env_up_adr_reg__0\ : STD_LOGIC_VECTOR ( 10 downto 2 );
+  signal \comp_burst.env_up_adr_reg\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \comp_burst.env_up_max_ind_reg_n_0_[0]\ : STD_LOGIC;
   signal \comp_burst.env_up_max_ind_reg_n_0_[10]\ : STD_LOGIC;
   signal \comp_burst.env_up_max_ind_reg_n_0_[1]\ : STD_LOGIC;
@@ -20987,18 +20116,18 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.env_up_max_val_reg_n_0_[7]\ : STD_LOGIC;
   signal \comp_burst.env_up_max_val_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.env_up_max_val_reg_n_0_[9]\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \comp_burst.env_up_ptr_rep[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[8]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[8]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_burst.env_up_ptr_rep[8]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_ptr[8]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.env_up_reg0\ : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal \comp_burst.env_up_val[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_up_val[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.env_up_val[11]_i_1_n_0\ : STD_LOGIC;
@@ -21072,38 +20201,598 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.mem_env_down_reg_n_97\ : STD_LOGIC;
   signal \comp_burst.mem_env_down_reg_n_98\ : STD_LOGIC;
   signal \comp_burst.mem_env_down_reg_n_99\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_68\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_69\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_70\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_71\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_72\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_73\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_74\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_75\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_76\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_77\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_78\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_79\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_80\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_81\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_82\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_83\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_84\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_85\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_86\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_87\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_88\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_89\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_90\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_91\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_92\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_93\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_94\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_95\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_96\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_97\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_98\ : STD_LOGIC;
-  signal \comp_burst.mem_env_up_reg_n_99\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_0_63_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_128_191_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_192_255_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_256_319_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_320_383_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_384_447_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_448_511_7_13_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_0_6_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_14_20_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_21_27_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_28_34_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_35_41_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_42_48_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_49_55_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_56_62_n_6\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_63_63_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_63_63_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_1\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_2\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_3\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_4\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_5\ : STD_LOGIC;
+  signal \comp_burst.mem_env_up_reg_64_127_7_13_n_6\ : STD_LOGIC;
   signal \comp_burst.mem_phase_reg_0_n_124\ : STD_LOGIC;
   signal \comp_burst.mem_phase_reg_0_n_125\ : STD_LOGIC;
   signal \comp_burst.mem_phase_reg_0_n_126\ : STD_LOGIC;
@@ -21283,8 +20972,30 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.p2_size_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \comp_burst.p2_size_reg[7]_i_1_n_8\ : STD_LOGIC;
   signal \comp_burst.p2_size_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_10_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_11_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_12_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_13_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_14_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_15_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_16_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_17_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_18_n_0\ : STD_LOGIC;
   signal \comp_burst.p2_wr_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.p2_wr_reg_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_4_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_5_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_6_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_7_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_8_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_i_9_n_0\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_1\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_2\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_3\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_4\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_5\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_6\ : STD_LOGIC;
+  signal \comp_burst.p2_wr_reg_i_2_n_7\ : STD_LOGIC;
   signal \comp_burst.p3_freq[15]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.p3_freq[15]_i_3_n_0\ : STD_LOGIC;
   signal \comp_burst.p3_freq[15]_i_4_n_0\ : STD_LOGIC;
@@ -21337,6 +21048,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.p4_size_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.p4_size_reg_n_0_[9]\ : STD_LOGIC;
   signal \comp_burst.pend_start_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.phase_in[79]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.phase_val[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.phase_val[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.phase_val[11]_i_1_n_0\ : STD_LOGIC;
@@ -21447,7 +21159,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.run_env_i_3_n_0\ : STD_LOGIC;
   signal \comp_burst.run_env_i_4_n_0\ : STD_LOGIC;
   signal \comp_burst.run_env_start_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.run_env_start_reg_n_0\ : STD_LOGIC;
   signal \comp_burst.stat_active_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.stat_div_sqr_start_reg_n_0\ : STD_LOGIC;
   signal \comp_burst.stat_div_sum_start_reg_n_0\ : STD_LOGIC;
@@ -21543,17 +21254,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.stat_sqr_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.stat_sqr_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.stat_sqr_delay[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.wr_ptr[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.wr_ptr[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.wr_ptr[8]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.wr_ptr[8]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_burst.wr_ptr_reg\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal comp_env : STD_LOGIC;
   signal complete_2 : STD_LOGIC;
   signal complete_3 : STD_LOGIC;
@@ -21578,6 +21282,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal env_down_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal env_down_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_end_ind : STD_LOGIC;
+  signal env_in : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of env_in : signal is std.standard.true;
   signal env_sqr_p : STD_LOGIC_VECTOR ( 47 downto 0 );
   attribute MARK_DEBUG of env_sqr_p : signal is std.standard.true;
   signal env_start_ind : STD_LOGIC;
@@ -21599,17 +21305,19 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal env_sum_msb_230 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal env_sum_p : STD_LOGIC_VECTOR ( 47 downto 0 );
   attribute MARK_DEBUG of env_sum_p : signal is std.standard.true;
-  signal env_up_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal env_up_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal env_up : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG of env_up : signal is std.standard.true;
   signal env_up_ind : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal env_up_max_ind : STD_LOGIC;
   signal env_up_max_val : STD_LOGIC;
   signal env_up_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of env_up_ptr : signal is std.standard.true;
   signal env_up_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal filling : STD_LOGIC;
   attribute MARK_DEBUG of filling : signal is std.standard.true;
   signal \in\ : STD_LOGIC;
   signal in_freq : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal load : STD_LOGIC;
   signal load_env : STD_LOGIC;
   signal load_stat_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of load_stat_delay : signal is std.standard.true;
@@ -21621,17 +21329,13 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal p2_active : STD_LOGIC;
   signal p2_done : STD_LOGIC;
   signal p2_env : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of p2_env : signal is std.standard.true;
   signal p2_env_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal p2_env_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal p2_env_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal p2_env_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal p2_freq : STD_LOGIC_VECTOR ( 19 downto 0 );
-  signal p2_i_n_150 : STD_LOGIC;
-  signal p2_i_n_151 : STD_LOGIC;
-  signal p2_i_n_152 : STD_LOGIC;
-  signal p2_i_n_154 : STD_LOGIC;
-  signal p2_i_n_155 : STD_LOGIC;
-  signal p2_i_n_156 : STD_LOGIC;
+  signal p2_idle : STD_LOGIC;
   signal p2_max_pos : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal p2_max_pos00_out : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal p2_max_pos2 : STD_LOGIC_VECTOR ( 10 downto 1 );
@@ -21644,6 +21348,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal p2_phase_diff01_out : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal p2_phase_diff_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal p2_size : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal p2_wr : STD_LOGIC;
+  attribute MARK_DEBUG of p2_wr : signal is std.standard.true;
   signal p3_active : STD_LOGIC;
   signal p3_done : STD_LOGIC;
   attribute MARK_DEBUG of p3_done : signal is std.standard.true;
@@ -21656,10 +21362,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal p3_size : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal p_0_in0 : STD_LOGIC;
   signal p_0_in0_in : STD_LOGIC;
-  signal p_0_in2_in : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal p_0_in3_in : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 10 downto 0 );
-  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \p_0_in__2\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal \p_0_in__3\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal \p_0_in__4\ : STD_LOGIC_VECTOR ( 8 downto 0 );
@@ -21696,9 +21400,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal rt_meta_wr : STD_LOGIC;
   signal run_env : STD_LOGIC;
   attribute MARK_DEBUG of run_env : signal is std.standard.true;
-  signal run_env10_out : STD_LOGIC;
+  signal run_env9_out : STD_LOGIC;
   signal run_env_end : STD_LOGIC;
   signal run_env_end0 : STD_LOGIC;
+  signal run_env_start : STD_LOGIC;
   signal run_env_start0 : STD_LOGIC;
   signal scan_start : STD_LOGIC;
   attribute MARK_DEBUG of scan_start : signal is std.standard.true;
@@ -21719,15 +21424,17 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal stat_reset : STD_LOGIC;
   signal stat_sqr_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of stat_sqr_delay : signal is std.standard.true;
-  signal wr_ptr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute MARK_DEBUG of wr_ptr : signal is std.standard.true;
+  signal wr_ptr_in : STD_LOGIC_VECTOR ( 8 downto 0 );
+  attribute MARK_DEBUG of wr_ptr_in : signal is std.standard.true;
+  signal \NLW_comp_burst.df_diff_reg[19]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.df_diff_reg[19]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_comp_burst.df_diff_reg[7]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \NLW_comp_burst.df_start_reg[8]_i_7_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_comp_burst.df_start_reg[8]_i_7_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_burst.env_diff_reg[15]_i_11_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_burst.env_diff_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_burst.env_down_max_val_reg[15]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.env_end_ind_reg[10]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.env_start_ind_reg[10]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.env_sum_lsb_01_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.env_sum_lsb_01_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_comp_burst.env_sum_lsb_01_reg[7]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -21768,22 +21475,86 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \NLW_comp_burst.mem_env_down_reg_DOUTPBDOUTP_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_comp_burst.mem_env_down_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.mem_env_down_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_comp_burst.mem_env_up_reg_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_comp_burst.mem_env_up_reg_DBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_comp_burst.mem_env_up_reg_SBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_comp_burst.mem_env_up_reg_CASDINA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDINB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDINPA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDINPB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDOUTA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDOUTB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDOUTPA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_CASDOUTPB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_DOUTPADOUTP_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_DOUTPBDOUTP_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_comp_burst.mem_env_up_reg_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_0_63_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_128_191_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_192_255_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_256_319_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_320_383_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_384_447_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_448_511_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_0_6_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_14_20_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_21_27_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_28_34_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_35_41_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_42_48_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_49_55_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_56_62_DOH_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_63_63_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_comp_burst.mem_env_up_reg_64_127_7_13_DOH_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_phase_reg_0_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_phase_reg_0_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_comp_burst.mem_phase_reg_0_DBITERR_UNCONNECTED\ : STD_LOGIC;
@@ -21819,6 +21590,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \NLW_comp_burst.p2_phase_diff_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_comp_burst.p2_size_reg[10]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_comp_burst.p2_size_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_burst.p2_wr_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_comp_burst.p3_freq_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal \NLW_comp_burst.p3_freq_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_comp_burst.pred_phase_reg[21]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
@@ -21845,6 +21617,9 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal NLW_fifo_rt_data_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_meta_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_meta_i_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 97 downto 0 );
+  signal NLW_p2_i_phase_diff_1_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal NLW_p2_i_phase_diff_2_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal NLW_p2_i_phase_diff_3_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal NLW_p3_i_env_sum_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_p3_i_env_sum2_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal NLW_p3_i_phase_sum_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -21864,23 +21639,24 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute KEEP : string;
   attribute KEEP of \comp_burst.burst_reg\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.df_count[1]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \comp_burst.df_count[2]_i_3\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[1]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[2]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[3]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[4]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[7]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \comp_burst.df_ind[8]_i_2\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[3]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_2\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_3\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_2\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[6]_i_3\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[7]_i_3\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[7]_i_4\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \comp_burst.df_start[8]_i_3\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \comp_burst.df_count[1]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \comp_burst.df_count[2]_i_3\ : label is "soft_lutpair73";
   attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[19]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_burst.df_diff_reg[7]_i_1\ : label is 35;
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[1]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[2]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[3]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[4]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[7]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_burst.df_ind[8]_i_2\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_2\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[4]_i_3\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_2\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[5]_i_3\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[6]_i_2\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \comp_burst.df_start[7]_i_3\ : label is "soft_lutpair33";
   attribute ADDER_THRESHOLD of \comp_burst.df_start_reg[8]_i_6\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.df_start_reg[8]_i_7\ : label is 35;
   attribute KEEP of \comp_burst.env_diff_reg[0]\ : label is "yes";
@@ -21903,38 +21679,166 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute ADDER_THRESHOLD of \comp_burst.env_diff_reg[7]_i_10\ : label is 35;
   attribute KEEP of \comp_burst.env_diff_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.env_diff_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[2]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[4]_i_2\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[5]_i_2\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_2\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_3\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_4\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[0]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[1]_i_2\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[2]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[4]_i_2\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[5]_i_2\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[6]_i_2\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_3\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_adr[9]_i_4\ : label is "soft_lutpair43";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_down_max_val_reg[15]_i_2\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[0]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[1]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[5]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[6]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[0]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[1]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[4]_i_2\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_2\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_3\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[6]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[8]_i_4\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[0]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[1]_i_1\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[5]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr[6]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[0]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[1]_i_1\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[4]_i_2\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_2\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[5]_i_3\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[6]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_burst.env_down_ptr_rep[8]_i_4\ : label is "soft_lutpair56";
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_end_ind_reg[10]_i_2\ : label is 11;
-  attribute COMPARATOR_THRESHOLD of \comp_burst.env_start_ind_reg[10]_i_2\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[15]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[16]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[17]_i_1\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[18]_i_1\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[20]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[21]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[22]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum[23]_i_1\ : label is "soft_lutpair47";
+  attribute KEEP of \comp_burst.env_in_reg[0]\ : label is "yes";
+  attribute mark_debug_string : string;
+  attribute mark_debug_string of \comp_burst.env_in_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[32]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[33]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[34]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[35]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[36]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[37]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[38]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[39]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[40]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[41]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[42]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[43]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[44]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[45]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[46]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[47]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[48]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[49]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[50]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[51]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[52]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[53]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[54]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[55]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[56]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[57]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[58]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[59]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[60]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[61]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[62]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[63]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_in_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.env_in_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[15]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[16]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[17]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[18]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[20]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[21]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[22]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum[23]_i_1\ : label is "soft_lutpair32";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[16]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_01_reg[7]_i_1\ : label is 35;
@@ -21958,73 +21862,131 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_lsb_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_01_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_01_reg[9]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[0]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[1]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[2]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[3]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[5]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[6]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[7]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[8]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[0]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[1]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[2]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[3]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[5]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[6]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[7]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[8]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[0]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[1]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[2]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[3]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[5]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[6]_i_1\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[7]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_0[8]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[0]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[1]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[2]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[3]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[5]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[6]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[7]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_1[8]_i_1\ : label is "soft_lutpair37";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_23_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_23_reg[9]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[0]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[1]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[2]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[3]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[5]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[6]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[7]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[8]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[0]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[1]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[2]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[3]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[5]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[6]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[7]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[8]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[0]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[1]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[2]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[3]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[5]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[6]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[7]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_2[8]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[0]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[1]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[2]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[3]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[5]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[6]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[7]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \comp_burst.env_sum_msb_3[8]_i_1\ : label is "soft_lutpair39";
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.env_sum_msb_reg[8]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[0]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[6]_i_2\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[8]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[9]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[1]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[2]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[3]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[4]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[6]_i_2\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[8]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_adr[9]_i_1\ : label is "soft_lutpair36";
   attribute COMPARATOR_THRESHOLD of \comp_burst.env_up_max_val_reg[15]_i_3\ : label is 11;
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[1]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[2]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[3]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[4]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[6]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[7]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[8]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[1]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[2]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[3]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[4]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[6]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[7]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr_rep[8]_i_3\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \comp_burst.env_up_ptr[4]_i_2\ : label is "soft_lutpair74";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_ptr_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[20]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[21]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[22]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[23]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[24]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[25]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[26]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[27]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[28]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[29]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[30]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[31]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[32]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[33]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[34]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[35]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[36]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[37]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[38]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[39]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[40]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[41]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[42]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[43]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[44]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[45]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[46]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[47]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[48]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[49]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[50]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[51]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[52]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[53]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[54]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[55]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[56]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[57]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[58]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[59]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[60]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[61]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[62]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[63]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.env_up_reg[9]\ : label is "yes";
   attribute KEEP of \comp_burst.filling_reg\ : label is "yes";
-  attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_burst.filling_reg\ : label is "yes";
   attribute KEEP of \comp_burst.load_stat_delay_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.load_stat_delay_reg[1]\ : label is "yes";
   attribute KEEP of \comp_burst.load_stat_delay_reg[2]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.mean_stage[0]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \comp_burst.mean_stage[1]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \comp_burst.mean_stage[0]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \comp_burst.mean_stage[1]_i_1\ : label is "soft_lutpair72";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_down_reg\ : label is "p0_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -22051,19 +22013,806 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute ram_slice_begin of \comp_burst.mem_env_down_reg\ : label is 0;
   attribute ram_slice_end : integer;
   attribute ram_slice_end of \comp_burst.mem_env_down_reg\ : label is 63;
-  attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_up_reg\ : label is "p0_d64";
-  attribute \MEM.PORTB.DATA_BIT_LAYOUT\ of \comp_burst.mem_env_up_reg\ : label is "p0_d64";
-  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg\ : label is "{SYNTH-6 {cell *THIS*}}";
-  attribute RDADDR_COLLISION_HWCONFIG of \comp_burst.mem_env_up_reg\ : label is "DELAYED_WRITE";
-  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg\ : label is 32768;
-  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg\ : label is "comp_burst/comp_burst.mem_env_up_reg";
-  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg\ : label is "block";
-  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg\ : label is "RAM_SDP";
-  attribute ram_addr_begin of \comp_burst.mem_env_up_reg\ : label is 0;
-  attribute ram_addr_end of \comp_burst.mem_env_up_reg\ : label is 511;
-  attribute ram_offset of \comp_burst.mem_env_up_reg\ : label is 0;
-  attribute ram_slice_begin of \comp_burst.mem_env_up_reg\ : label is 0;
-  attribute ram_slice_end of \comp_burst.mem_env_up_reg\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_0_63_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 0;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 63;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_0_63_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_128_191_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 128;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 191;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_128_191_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_192_255_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 192;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 255;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_192_255_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_256_319_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 256;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 319;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_256_319_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_320_383_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 320;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 383;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_320_383_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_384_447_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 384;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 447;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_384_447_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_448_511_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 448;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 511;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_448_511_7_13\ : label is 13;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 0;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_0_6\ : label is 6;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 14;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_14_20\ : label is 20;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 21;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_21_27\ : label is 27;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 28;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_28_34\ : label is 34;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 35;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_35_41\ : label is 41;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 42;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_42_48\ : label is 48;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 49;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_49_55\ : label is 55;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 56;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_56_62\ : label is 62;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is "comp_burst/comp_burst.mem_env_up_reg_64_127_63_63";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is "NONE";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 63;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_63_63\ : label is 63;
+  attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is "";
+  attribute RTL_RAM_BITS of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 32768;
+  attribute RTL_RAM_NAME of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is "comp_burst/comp_burst.mem_env_up_reg";
+  attribute RTL_RAM_STYLE of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is "block";
+  attribute RTL_RAM_TYPE of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is "RAM_SDP";
+  attribute ram_addr_begin of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 64;
+  attribute ram_addr_end of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 127;
+  attribute ram_offset of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 0;
+  attribute ram_slice_begin of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 7;
+  attribute ram_slice_end of \comp_burst.mem_env_up_reg_64_127_7_13\ : label is 13;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of \comp_burst.mem_phase_reg_0\ : label is "p8_d64";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ of \comp_burst.mem_phase_reg_0\ : label is "p8_d64";
   attribute METHODOLOGY_DRC_VIOS of \comp_burst.mem_phase_reg_0\ : label is "{SYNTH-6 {cell *THIS*}}";
@@ -22091,6 +22840,22 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute ram_slice_begin of \comp_burst.mem_phase_reg_1\ : label is 72;
   attribute ram_slice_end of \comp_burst.mem_phase_reg_1\ : label is 79;
   attribute KEEP of \comp_burst.mem_wr_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.p2_env_reg[9]\ : label is "yes";
   attribute ADDER_THRESHOLD of \comp_burst.p2_max_pos_reg[10]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p2_max_pos_reg[10]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p2_max_pos_reg[7]_i_1\ : label is 35;
@@ -22100,6 +22865,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute ADDER_THRESHOLD of \comp_burst.p2_phase_diff_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p2_size_reg[10]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p2_size_reg[7]_i_1\ : label is 35;
+  attribute KEEP of \comp_burst.p2_wr_reg\ : label is "yes";
+  attribute COMPARATOR_THRESHOLD of \comp_burst.p2_wr_reg_i_2\ : label is 11;
   attribute ADDER_THRESHOLD of \comp_burst.p3_freq_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p3_freq_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_burst.p3_freq_reg[7]_i_1\ : label is 35;
@@ -22122,9 +22889,9 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute KEEP of \comp_burst.phase_diff_reg[9]\ : label is "yes";
   attribute equivalent_register_removal : string;
   attribute equivalent_register_removal of \comp_burst.rt_meta_rd_reg\ : label is "no";
-  attribute SOFT_HLUTNM of \comp_burst.run_env_end_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \comp_burst.run_env_end_i_1\ : label is "soft_lutpair57";
   attribute KEEP of \comp_burst.run_env_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.run_env_start_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \comp_burst.run_env_start_i_1\ : label is "soft_lutpair57";
   attribute KEEP of \comp_burst.scan_start_reg\ : label is "yes";
   attribute KEEP of \comp_burst.stat_active_reg\ : label is "yes";
   attribute KEEP of \comp_burst.stat_env_sqr_reg[0]\ : label is "yes";
@@ -22418,15 +23185,23 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute KEEP of \comp_burst.stat_sqr_delay_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.stat_sqr_delay_reg[1]\ : label is "yes";
   attribute KEEP of \comp_burst.stat_sqr_delay_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[0]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[1]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[2]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[3]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[4]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[5]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[6]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[7]\ : label is "yes";
-  attribute KEEP of \comp_burst.wr_ptr_reg[8]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[0]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[1]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[2]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[3]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[4]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[7]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[8]_i_2\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \comp_burst.wr_ptr[8]_i_3\ : label is "soft_lutpair35";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_ptr_in_reg[8]\ : label is "yes";
   attribute CHECK_LICENSE_TYPE of div_env_sqr_i : label is "div_stat_48,div_gen_v5_1_24,{}";
   attribute downgradeipidentifiedwarnings of div_env_sqr_i : label is "yes";
   attribute x_core_info of div_env_sqr_i : label is "div_gen_v5_1_24,Vivado 2025.1";
@@ -22455,6 +23230,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
   attribute KEEP_HIERARCHY : string;
+  attribute KEEP_HIERARCHY of p2_i : label is "soft";
   attribute KEEP_HIERARCHY of p3_i : label is "soft";
   attribute CHECK_LICENSE_TYPE of sqr_env_i : label is "dsp_sqr16,dsp_macro_v1_0_8,{}";
   attribute downgradeipidentifiedwarnings of sqr_env_i : label is "yes";
@@ -22476,18 +23252,27 @@ add_env_i: component ps_comp_ana_0_0_dsp_add16
       P(47 downto 0) => env_sum_p(47 downto 0),
       SCLR => stat_reset
     );
-add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
+add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD85
      port map (
       A(15 downto 0) => phase_diff(15 downto 0),
       CLK => clk,
       P(47 downto 0) => phase_sum_p(47 downto 0),
       SCLR => stat_reset
     );
+\comp_burst.burst_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => p2_idle,
+      I1 => rt_meta_empty,
+      O => \comp_burst.burst_i_1_n_0\
+    );
 \comp_burst.burst_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => p2_i_n_155,
+      D => \comp_burst.burst_i_1_n_0\,
       Q => burst,
       R => '0'
     );
@@ -22520,11 +23305,11 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"00000000A8A8A8AA"
     )
         port map (
-      I0 => run_env10_out,
+      I0 => run_env9_out,
       I1 => env_down_ind(8),
       I2 => env_down_ind(5),
       I3 => run_env_end,
-      I4 => \comp_burst.run_env_start_reg_n_0\,
+      I4 => run_env_start,
       I5 => scan_start,
       O => \comp_burst.complete_1_i_1_n_0\
     );
@@ -22577,9 +23362,9 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
         port map (
       I0 => mem_wr,
       I1 => \comp_burst.curr_size[8]_i_3_n_0\,
-      I2 => wr_ptr(5),
-      I3 => wr_ptr(7),
-      I4 => wr_ptr(1),
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      I4 => \comp_burst.wr_ptr_reg\(1),
       O => \comp_burst.curr_size[8]_i_2_n_0\
     );
 \comp_burst.curr_size[8]_i_3\: unisim.vcomponents.LUT6
@@ -22587,19 +23372,19 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => wr_ptr(4),
-      I1 => wr_ptr(0),
-      I2 => wr_ptr(6),
-      I3 => wr_ptr(8),
-      I4 => wr_ptr(2),
-      I5 => wr_ptr(3),
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      I3 => \comp_burst.wr_ptr_reg\(8),
+      I4 => \comp_burst.wr_ptr_reg\(2),
+      I5 => \comp_burst.wr_ptr_reg\(3),
       O => \comp_burst.curr_size[8]_i_3_n_0\
     );
 \comp_burst.curr_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(0),
+      D => \comp_burst.wr_ptr_reg\(0),
       Q => \comp_burst.curr_size_reg_n_0_[0]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22607,7 +23392,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(1),
+      D => \comp_burst.wr_ptr_reg\(1),
       Q => \comp_burst.curr_size_reg_n_0_[1]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22615,7 +23400,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(2),
+      D => \comp_burst.wr_ptr_reg\(2),
       Q => \comp_burst.curr_size_reg_n_0_[2]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22623,7 +23408,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(3),
+      D => \comp_burst.wr_ptr_reg\(3),
       Q => \comp_burst.curr_size_reg_n_0_[3]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22631,7 +23416,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(4),
+      D => \comp_burst.wr_ptr_reg\(4),
       Q => \comp_burst.curr_size_reg_n_0_[4]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22639,7 +23424,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(5),
+      D => \comp_burst.wr_ptr_reg\(5),
       Q => \comp_burst.curr_size_reg_n_0_[5]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22647,7 +23432,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(6),
+      D => \comp_burst.wr_ptr_reg\(6),
       Q => \comp_burst.curr_size_reg_n_0_[6]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22655,7 +23440,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(7),
+      D => \comp_burst.wr_ptr_reg\(7),
       Q => \comp_burst.curr_size_reg_n_0_[7]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22663,7 +23448,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => \comp_burst.curr_size[8]_i_2_n_0\,
-      D => wr_ptr(8),
+      D => \comp_burst.wr_ptr_reg\(8),
       Q => \comp_burst.curr_size_reg_n_0_[8]\,
       R => \comp_burst.curr_size[8]_i_1_n_0\
     );
@@ -22686,9 +23471,9 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => df_active,
-      I1 => p2_i_n_150,
-      I2 => p2_i_n_152,
-      I3 => p2_i_n_151,
+      I1 => \comp_burst.df_low[19]_i_2_n_0\,
+      I2 => \comp_burst.df_low[19]_i_3_n_0\,
+      I3 => \comp_burst.df_low[19]_i_4_n_0\,
       O => \comp_burst.df_active_i_2_n_0\
     );
 \comp_burst.df_active_reg\: unisim.vcomponents.FDRE
@@ -22715,6 +23500,15 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I0 => \comp_burst.df_count_reg\(0),
       I1 => \comp_burst.df_count_reg\(1),
       O => \p_0_in__8\(1)
+    );
+\comp_burst.df_count[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => df_active,
+      I1 => p2_active,
+      O => \comp_burst.df_count[2]_i_1_n_0\
     );
 \comp_burst.df_count[2]_i_2\: unisim.vcomponents.LUT4
     generic map(
@@ -22754,7 +23548,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CE => \comp_burst.df_count[2]_i_2_n_0\,
       D => \p_0_in__8\(0),
       Q => \comp_burst.df_count_reg\(0),
-      R => p2_i_n_154
+      R => \comp_burst.df_count[2]_i_1_n_0\
     );
 \comp_burst.df_count_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -22762,7 +23556,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CE => \comp_burst.df_count[2]_i_2_n_0\,
       D => \p_0_in__8\(1),
       Q => \comp_burst.df_count_reg\(1),
-      R => p2_i_n_154
+      R => \comp_burst.df_count[2]_i_1_n_0\
     );
 \comp_burst.df_count_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -22770,7 +23564,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CE => \comp_burst.df_count[2]_i_2_n_0\,
       D => \p_0_in__8\(2),
       Q => \comp_burst.df_count_reg\(2),
-      R => p2_i_n_154
+      R => \comp_burst.df_count[2]_i_1_n_0\
     );
 \comp_burst.df_count_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -22778,7 +23572,200 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CE => '1',
       D => \comp_burst.df_count[3]_i_1_n_0\,
       Q => \comp_burst.df_count_reg\(3),
-      R => p2_i_n_154
+      R => \comp_burst.df_count[2]_i_1_n_0\
+    );
+\comp_burst.df_diff[15]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(15),
+      I1 => \comp_burst.df_low_reg_n_0_[15]\,
+      O => \comp_burst.df_diff[15]_i_2_n_0\
+    );
+\comp_burst.df_diff[15]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(14),
+      I1 => \comp_burst.df_low_reg_n_0_[14]\,
+      O => \comp_burst.df_diff[15]_i_3_n_0\
+    );
+\comp_burst.df_diff[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(13),
+      I1 => \comp_burst.df_low_reg_n_0_[13]\,
+      O => \comp_burst.df_diff[15]_i_4_n_0\
+    );
+\comp_burst.df_diff[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(12),
+      I1 => \comp_burst.df_low_reg_n_0_[12]\,
+      O => \comp_burst.df_diff[15]_i_5_n_0\
+    );
+\comp_burst.df_diff[15]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(11),
+      I1 => \comp_burst.df_low_reg_n_0_[11]\,
+      O => \comp_burst.df_diff[15]_i_6_n_0\
+    );
+\comp_burst.df_diff[15]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(10),
+      I1 => \comp_burst.df_low_reg_n_0_[10]\,
+      O => \comp_burst.df_diff[15]_i_7_n_0\
+    );
+\comp_burst.df_diff[15]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(9),
+      I1 => \comp_burst.df_low_reg_n_0_[9]\,
+      O => \comp_burst.df_diff[15]_i_8_n_0\
+    );
+\comp_burst.df_diff[15]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(8),
+      I1 => \comp_burst.df_low_reg_n_0_[8]\,
+      O => \comp_burst.df_diff[15]_i_9_n_0\
+    );
+\comp_burst.df_diff[19]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"4000000000000000"
+    )
+        port map (
+      I0 => \comp_burst.df_count_reg\(3),
+      I1 => \comp_burst.df_count_reg\(2),
+      I2 => \comp_burst.df_count_reg\(1),
+      I3 => \comp_burst.df_count_reg\(0),
+      I4 => p2_active,
+      I5 => df_active,
+      O => df_diff
+    );
+\comp_burst.df_diff[19]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(19),
+      I1 => \comp_burst.df_low_reg_n_0_[19]\,
+      O => \comp_burst.df_diff[19]_i_3_n_0\
+    );
+\comp_burst.df_diff[19]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(18),
+      I1 => \comp_burst.df_low_reg_n_0_[18]\,
+      O => \comp_burst.df_diff[19]_i_4_n_0\
+    );
+\comp_burst.df_diff[19]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(17),
+      I1 => \comp_burst.df_low_reg_n_0_[17]\,
+      O => \comp_burst.df_diff[19]_i_5_n_0\
+    );
+\comp_burst.df_diff[19]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(16),
+      I1 => \comp_burst.df_low_reg_n_0_[16]\,
+      O => \comp_burst.df_diff[19]_i_6_n_0\
+    );
+\comp_burst.df_diff[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(7),
+      I1 => \comp_burst.df_low_reg_n_0_[7]\,
+      O => \comp_burst.df_diff[7]_i_2_n_0\
+    );
+\comp_burst.df_diff[7]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(6),
+      I1 => \comp_burst.df_low_reg_n_0_[6]\,
+      O => \comp_burst.df_diff[7]_i_3_n_0\
+    );
+\comp_burst.df_diff[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(5),
+      I1 => \comp_burst.df_low_reg_n_0_[5]\,
+      O => \comp_burst.df_diff[7]_i_4_n_0\
+    );
+\comp_burst.df_diff[7]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(4),
+      I1 => \comp_burst.df_low_reg_n_0_[4]\,
+      O => \comp_burst.df_diff[7]_i_5_n_0\
+    );
+\comp_burst.df_diff[7]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(3),
+      I1 => \comp_burst.df_low_reg_n_0_[3]\,
+      O => \comp_burst.df_diff[7]_i_6_n_0\
+    );
+\comp_burst.df_diff[7]_i_7\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(2),
+      I1 => \comp_burst.df_low_reg_n_0_[2]\,
+      O => \comp_burst.df_diff[7]_i_7_n_0\
+    );
+\comp_burst.df_diff[7]_i_8\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(1),
+      I1 => \comp_burst.df_low_reg_n_0_[1]\,
+      O => \comp_burst.df_diff[7]_i_8_n_0\
+    );
+\comp_burst.df_diff[7]_i_9\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => p2_phase_diff_0(0),
+      I1 => \comp_burst.df_low_reg_n_0_[0]\,
+      O => \comp_burst.df_diff[7]_i_9_n_0\
     );
 \comp_burst.df_diff_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -22828,6 +23815,29 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => \comp_burst.df_diff_reg_n_0_[15]\,
       R => '0'
     );
+\comp_burst.df_diff_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.df_diff_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_burst.df_diff_reg[15]_i_1_n_0\,
+      CO(6) => \comp_burst.df_diff_reg[15]_i_1_n_1\,
+      CO(5) => \comp_burst.df_diff_reg[15]_i_1_n_2\,
+      CO(4) => \comp_burst.df_diff_reg[15]_i_1_n_3\,
+      CO(3) => \comp_burst.df_diff_reg[15]_i_1_n_4\,
+      CO(2) => \comp_burst.df_diff_reg[15]_i_1_n_5\,
+      CO(1) => \comp_burst.df_diff_reg[15]_i_1_n_6\,
+      CO(0) => \comp_burst.df_diff_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => p2_phase_diff_0(15 downto 8),
+      O(7 downto 0) => df_diff00_out(15 downto 8),
+      S(7) => \comp_burst.df_diff[15]_i_2_n_0\,
+      S(6) => \comp_burst.df_diff[15]_i_3_n_0\,
+      S(5) => \comp_burst.df_diff[15]_i_4_n_0\,
+      S(4) => \comp_burst.df_diff[15]_i_5_n_0\,
+      S(3) => \comp_burst.df_diff[15]_i_6_n_0\,
+      S(2) => \comp_burst.df_diff[15]_i_7_n_0\,
+      S(1) => \comp_burst.df_diff[15]_i_8_n_0\,
+      S(0) => \comp_burst.df_diff[15]_i_9_n_0\
+    );
 \comp_burst.df_diff_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -22859,6 +23869,24 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       D => df_diff00_out(19),
       Q => p_0_in0,
       R => '0'
+    );
+\comp_burst.df_diff_reg[19]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_burst.df_diff_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_comp_burst.df_diff_reg[19]_i_2_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \comp_burst.df_diff_reg[19]_i_2_n_5\,
+      CO(1) => \comp_burst.df_diff_reg[19]_i_2_n_6\,
+      CO(0) => \comp_burst.df_diff_reg[19]_i_2_n_7\,
+      DI(7 downto 3) => B"00000",
+      DI(2 downto 0) => p2_phase_diff_0(18 downto 16),
+      O(7 downto 4) => \NLW_comp_burst.df_diff_reg[19]_i_2_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => df_diff00_out(19 downto 16),
+      S(7 downto 4) => B"0000",
+      S(3) => \comp_burst.df_diff[19]_i_3_n_0\,
+      S(2) => \comp_burst.df_diff[19]_i_4_n_0\,
+      S(1) => \comp_burst.df_diff[19]_i_5_n_0\,
+      S(0) => \comp_burst.df_diff[19]_i_6_n_0\
     );
 \comp_burst.df_diff_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -22899,6 +23927,30 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       D => df_diff00_out(7),
       Q => \comp_burst.df_diff_reg_n_0_[7]\,
       R => '0'
+    );
+\comp_burst.df_diff_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => \comp_burst.df_diff_reg[7]_i_1_n_0\,
+      CO(6) => \comp_burst.df_diff_reg[7]_i_1_n_1\,
+      CO(5) => \comp_burst.df_diff_reg[7]_i_1_n_2\,
+      CO(4) => \comp_burst.df_diff_reg[7]_i_1_n_3\,
+      CO(3) => \comp_burst.df_diff_reg[7]_i_1_n_4\,
+      CO(2) => \comp_burst.df_diff_reg[7]_i_1_n_5\,
+      CO(1) => \comp_burst.df_diff_reg[7]_i_1_n_6\,
+      CO(0) => \comp_burst.df_diff_reg[7]_i_1_n_7\,
+      DI(7 downto 0) => p2_phase_diff_0(7 downto 0),
+      O(7 downto 3) => df_diff00_out(7 downto 3),
+      O(2 downto 0) => \NLW_comp_burst.df_diff_reg[7]_i_1_O_UNCONNECTED\(2 downto 0),
+      S(7) => \comp_burst.df_diff[7]_i_2_n_0\,
+      S(6) => \comp_burst.df_diff[7]_i_3_n_0\,
+      S(5) => \comp_burst.df_diff[7]_i_4_n_0\,
+      S(4) => \comp_burst.df_diff[7]_i_5_n_0\,
+      S(3) => \comp_burst.df_diff[7]_i_6_n_0\,
+      S(2) => \comp_burst.df_diff[7]_i_7_n_0\,
+      S(1) => \comp_burst.df_diff[7]_i_8_n_0\,
+      S(0) => \comp_burst.df_diff[7]_i_9_n_0\
     );
 \comp_burst.df_diff_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -23006,6 +24058,14 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I2 => \comp_burst.df_ind_reg\(7),
       O => \p_0_in__7\(7)
     );
+\comp_burst.df_ind[8]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => p2_active,
+      O => clear
+    );
 \comp_burst.df_ind[8]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9AAA"
@@ -23102,10 +24162,61 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => \comp_burst.df_ind_reg\(8),
       R => clear
     );
+\comp_burst.df_low[19]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00010000"
+    )
+        port map (
+      I0 => df_active,
+      I1 => \comp_burst.df_low[19]_i_2_n_0\,
+      I2 => \comp_burst.df_low[19]_i_3_n_0\,
+      I3 => \comp_burst.df_low[19]_i_4_n_0\,
+      I4 => p2_active,
+      O => \comp_burst.df_low[19]_i_1_n_0\
+    );
+\comp_burst.df_low[19]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6FF6FFFFFFFF6FF6"
+    )
+        port map (
+      I0 => \comp_burst.df_ind_reg\(2),
+      I1 => \comp_burst.df_start_reg_n_0_[2]\,
+      I2 => \comp_burst.df_ind_reg\(1),
+      I3 => \comp_burst.df_start_reg_n_0_[1]\,
+      I4 => \comp_burst.df_start_reg_n_0_[0]\,
+      I5 => \comp_burst.df_ind_reg\(0),
+      O => \comp_burst.df_low[19]_i_2_n_0\
+    );
+\comp_burst.df_low[19]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6FF6FFFFFFFF6FF6"
+    )
+        port map (
+      I0 => \comp_burst.df_start_reg_n_0_[8]\,
+      I1 => \comp_burst.df_ind_reg\(8),
+      I2 => \comp_burst.df_ind_reg\(7),
+      I3 => \comp_burst.df_start_reg_n_0_[7]\,
+      I4 => \comp_burst.df_ind_reg\(6),
+      I5 => \comp_burst.df_start_reg_n_0_[6]\,
+      O => \comp_burst.df_low[19]_i_3_n_0\
+    );
+\comp_burst.df_low[19]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"6FF6FFFFFFFF6FF6"
+    )
+        port map (
+      I0 => \comp_burst.df_start_reg_n_0_[3]\,
+      I1 => \comp_burst.df_ind_reg\(3),
+      I2 => \comp_burst.df_ind_reg\(4),
+      I3 => \comp_burst.df_start_reg_n_0_[4]\,
+      I4 => \comp_burst.df_ind_reg\(5),
+      I5 => \comp_burst.df_start_reg_n_0_[5]\,
+      O => \comp_burst.df_low[19]_i_4_n_0\
+    );
 \comp_burst.df_low_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(0),
       Q => \comp_burst.df_low_reg_n_0_[0]\,
       R => '0'
@@ -23113,7 +24224,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(10),
       Q => \comp_burst.df_low_reg_n_0_[10]\,
       R => '0'
@@ -23121,7 +24232,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(11),
       Q => \comp_burst.df_low_reg_n_0_[11]\,
       R => '0'
@@ -23129,7 +24240,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(12),
       Q => \comp_burst.df_low_reg_n_0_[12]\,
       R => '0'
@@ -23137,7 +24248,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(13),
       Q => \comp_burst.df_low_reg_n_0_[13]\,
       R => '0'
@@ -23145,7 +24256,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(14),
       Q => \comp_burst.df_low_reg_n_0_[14]\,
       R => '0'
@@ -23153,7 +24264,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(15),
       Q => \comp_burst.df_low_reg_n_0_[15]\,
       R => '0'
@@ -23161,7 +24272,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(16),
       Q => \comp_burst.df_low_reg_n_0_[16]\,
       R => '0'
@@ -23169,7 +24280,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(17),
       Q => \comp_burst.df_low_reg_n_0_[17]\,
       R => '0'
@@ -23177,7 +24288,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(18),
       Q => \comp_burst.df_low_reg_n_0_[18]\,
       R => '0'
@@ -23185,7 +24296,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(19),
       Q => \comp_burst.df_low_reg_n_0_[19]\,
       R => '0'
@@ -23193,7 +24304,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(1),
       Q => \comp_burst.df_low_reg_n_0_[1]\,
       R => '0'
@@ -23201,7 +24312,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(2),
       Q => \comp_burst.df_low_reg_n_0_[2]\,
       R => '0'
@@ -23209,7 +24320,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(3),
       Q => \comp_burst.df_low_reg_n_0_[3]\,
       R => '0'
@@ -23217,7 +24328,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(4),
       Q => \comp_burst.df_low_reg_n_0_[4]\,
       R => '0'
@@ -23225,7 +24336,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(5),
       Q => \comp_burst.df_low_reg_n_0_[5]\,
       R => '0'
@@ -23233,7 +24344,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(6),
       Q => \comp_burst.df_low_reg_n_0_[6]\,
       R => '0'
@@ -23241,7 +24352,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(7),
       Q => \comp_burst.df_low_reg_n_0_[7]\,
       R => '0'
@@ -23249,7 +24360,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(8),
       Q => \comp_burst.df_low_reg_n_0_[8]\,
       R => '0'
@@ -23257,86 +24368,95 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.df_low_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_156,
+      CE => \comp_burst.df_low[19]_i_1_n_0\,
       D => p2_phase_diff_0(9),
       Q => \comp_burst.df_low_reg_n_0_[9]\,
       R => '0'
     );
 \comp_burst.df_start[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"DDDD0DDD00000D00"
+      INIT => X"D000D0D0D0DDD0D0"
     )
         port map (
       I0 => \comp_burst.df_start[8]_i_2_n_0\,
       I1 => p2_max_pos(10),
-      I2 => p2_size(2),
-      I3 => \comp_burst.df_start[8]_i_4_n_0\,
-      I4 => \comp_burst.df_start[8]_i_5_n_0\,
-      I5 => p2_max_pos(2),
+      I2 => p2_max_pos(2),
+      I3 => \comp_burst.df_start[8]_i_3_n_0\,
+      I4 => \comp_burst.df_start[8]_i_4_n_0\,
+      I5 => p2_size(2),
       O => \comp_burst.df_start[0]_i_1_n_0\
     );
 \comp_burst.df_start[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FF9F0090"
+      INIT => X"BA8A8ABA"
     )
         port map (
-      I0 => p2_size(2),
-      I1 => p2_size(3),
+      I0 => p2_max_pos(3),
+      I1 => \comp_burst.df_start[8]_i_3_n_0\,
       I2 => \comp_burst.df_start[8]_i_4_n_0\,
-      I3 => \comp_burst.df_start[8]_i_5_n_0\,
-      I4 => p2_max_pos(3),
+      I3 => p2_size(2),
+      I4 => p2_size(3),
       O => \comp_burst.df_start[1]_i_1_n_0\
     );
 \comp_burst.df_start[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000E100FFFFE1FF"
+      INIT => X"7575754545454575"
     )
         port map (
-      I0 => p2_size(2),
-      I1 => p2_size(3),
-      I2 => p2_size(4),
-      I3 => \comp_burst.df_start[8]_i_4_n_0\,
-      I4 => \comp_burst.df_start[8]_i_5_n_0\,
-      I5 => p2_max_pos(4),
+      I0 => p2_max_pos(4),
+      I1 => \comp_burst.df_start[8]_i_3_n_0\,
+      I2 => \comp_burst.df_start[8]_i_4_n_0\,
+      I3 => p2_size(2),
+      I4 => p2_size(3),
+      I5 => p2_size(4),
       O => \comp_burst.df_start[2]_i_1_n_0\
     );
-\comp_burst.df_start[3]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.df_start[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FB0808FB"
+      INIT => X"9F99909990999F99"
     )
         port map (
-      I0 => \comp_burst.df_start[3]_i_2_n_0\,
-      I1 => \comp_burst.df_start[8]_i_4_n_0\,
-      I2 => \comp_burst.df_start[8]_i_5_n_0\,
-      I3 => p2_max_pos(5),
-      I4 => p2_max_pos(4),
+      I0 => p2_max_pos(5),
+      I1 => p2_max_pos(4),
+      I2 => \comp_burst.df_start[8]_i_3_n_0\,
+      I3 => \comp_burst.df_start[8]_i_4_n_0\,
+      I4 => p2_size(5),
+      I5 => \comp_burst.df_start[3]_i_2_n_0\,
       O => \comp_burst.df_start[3]_i_1_n_0\
     );
-\comp_burst.df_start[3]_i_2\: unisim.vcomponents.LUT4
+\comp_burst.df_start[3]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"5556"
+      INIT => X"01"
     )
         port map (
-      I0 => p2_size(5),
-      I1 => p2_size(2),
-      I2 => p2_size(3),
-      I3 => p2_size(4),
+      I0 => p2_size(4),
+      I1 => p2_size(3),
+      I2 => p2_size(2),
       O => \comp_burst.df_start[3]_i_2_n_0\
     );
 \comp_burst.df_start[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF9F00900090FF9F"
+      INIT => X"9F99909990999F99"
     )
         port map (
-      I0 => \comp_burst.df_start[4]_i_2_n_0\,
-      I1 => p2_size(6),
-      I2 => \comp_burst.df_start[8]_i_4_n_0\,
-      I3 => \comp_burst.df_start[8]_i_5_n_0\,
-      I4 => p2_max_pos(6),
+      I0 => p2_max_pos(6),
+      I1 => \comp_burst.df_start[4]_i_2_n_0\,
+      I2 => \comp_burst.df_start[8]_i_3_n_0\,
+      I3 => \comp_burst.df_start[8]_i_4_n_0\,
+      I4 => p2_size(6),
       I5 => \comp_burst.df_start[4]_i_3_n_0\,
       O => \comp_burst.df_start[4]_i_1_n_0\
     );
-\comp_burst.df_start[4]_i_2\: unisim.vcomponents.LUT4
+\comp_burst.df_start[4]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => p2_max_pos(5),
+      I1 => p2_max_pos(4),
+      O => \comp_burst.df_start[4]_i_2_n_0\
+    );
+\comp_burst.df_start[4]_i_3\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"AAA8"
     )
@@ -23345,43 +24465,22 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I1 => p2_size(2),
       I2 => p2_size(3),
       I3 => p2_size(4),
-      O => \comp_burst.df_start[4]_i_2_n_0\
-    );
-\comp_burst.df_start[4]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => p2_max_pos(5),
-      I1 => p2_max_pos(4),
       O => \comp_burst.df_start[4]_i_3_n_0\
     );
 \comp_burst.df_start[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF9F00900090FF9F"
+      INIT => X"90999F999F999099"
     )
         port map (
-      I0 => \comp_burst.df_start[5]_i_2_n_0\,
-      I1 => p2_size(7),
-      I2 => \comp_burst.df_start[8]_i_4_n_0\,
-      I3 => \comp_burst.df_start[8]_i_5_n_0\,
-      I4 => p2_max_pos(7),
+      I0 => p2_max_pos(7),
+      I1 => \comp_burst.df_start[5]_i_2_n_0\,
+      I2 => \comp_burst.df_start[8]_i_3_n_0\,
+      I3 => \comp_burst.df_start[8]_i_4_n_0\,
+      I4 => p2_size(7),
       I5 => \comp_burst.df_start[5]_i_3_n_0\,
       O => \comp_burst.df_start[5]_i_1_n_0\
     );
-\comp_burst.df_start[5]_i_2\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFEAAAA"
-    )
-        port map (
-      I0 => p2_size(6),
-      I1 => p2_size(4),
-      I2 => p2_size(3),
-      I3 => p2_size(2),
-      I4 => p2_size(5),
-      O => \comp_burst.df_start[5]_i_2_n_0\
-    );
-\comp_burst.df_start[5]_i_3\: unisim.vcomponents.LUT3
+\comp_burst.df_start[5]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
@@ -23389,35 +24488,34 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I0 => p2_max_pos(6),
       I1 => p2_max_pos(4),
       I2 => p2_max_pos(5),
+      O => \comp_burst.df_start[5]_i_2_n_0\
+    );
+\comp_burst.df_start[5]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00015555"
+    )
+        port map (
+      I0 => p2_size(6),
+      I1 => p2_size(4),
+      I2 => p2_size(3),
+      I3 => p2_size(2),
+      I4 => p2_size(5),
       O => \comp_burst.df_start[5]_i_3_n_0\
     );
 \comp_burst.df_start[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF6F00600060FF6F"
+      INIT => X"90999F999F999099"
     )
         port map (
-      I0 => p2_size(8),
+      I0 => p2_max_pos(8),
       I1 => \comp_burst.df_start[6]_i_2_n_0\,
-      I2 => \comp_burst.df_start[8]_i_4_n_0\,
-      I3 => \comp_burst.df_start[8]_i_5_n_0\,
-      I4 => p2_max_pos(8),
+      I2 => \comp_burst.df_start[8]_i_3_n_0\,
+      I3 => \comp_burst.df_start[8]_i_4_n_0\,
+      I4 => p2_size(8),
       I5 => \comp_burst.df_start[6]_i_3_n_0\,
       O => \comp_burst.df_start[6]_i_1_n_0\
     );
-\comp_burst.df_start[6]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000011111115"
-    )
-        port map (
-      I0 => p2_size(7),
-      I1 => p2_size(5),
-      I2 => p2_size(2),
-      I3 => p2_size(3),
-      I4 => p2_size(4),
-      I5 => p2_size(6),
-      O => \comp_burst.df_start[6]_i_2_n_0\
-    );
-\comp_burst.df_start[6]_i_3\: unisim.vcomponents.LUT4
+\comp_burst.df_start[6]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -23426,6 +24524,19 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I1 => p2_max_pos(5),
       I2 => p2_max_pos(4),
       I3 => p2_max_pos(6),
+      O => \comp_burst.df_start[6]_i_2_n_0\
+    );
+\comp_burst.df_start[6]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000005557"
+    )
+        port map (
+      I0 => p2_size(5),
+      I1 => p2_size(2),
+      I2 => p2_size(3),
+      I3 => p2_size(4),
+      I4 => p2_size(6),
+      I5 => p2_size(7),
       O => \comp_burst.df_start[6]_i_3_n_0\
     );
 \comp_burst.df_start[7]_i_1\: unisim.vcomponents.LUT3
@@ -23440,29 +24551,20 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.df_start[7]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FF6F00600060FF6F"
+      INIT => X"60666F666F666066"
     )
         port map (
-      I0 => p2_size(9),
+      I0 => p2_max_pos(9),
       I1 => \comp_burst.df_start[7]_i_3_n_0\,
-      I2 => \comp_burst.df_start[8]_i_4_n_0\,
-      I3 => \comp_burst.df_start[8]_i_5_n_0\,
-      I4 => p2_max_pos(9),
+      I2 => \comp_burst.df_start[8]_i_3_n_0\,
+      I3 => \comp_burst.df_start[8]_i_4_n_0\,
+      I4 => p2_size(9),
       I5 => \comp_burst.df_start[7]_i_4_n_0\,
       O => \comp_burst.df_start[7]_i_2_n_0\
     );
-\comp_burst.df_start[7]_i_3\: unisim.vcomponents.LUT2
+\comp_burst.df_start[7]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => \comp_burst.df_start[6]_i_2_n_0\,
-      I1 => p2_size(8),
-      O => \comp_burst.df_start[7]_i_3_n_0\
-    );
-\comp_burst.df_start[7]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"00000001"
     )
         port map (
       I0 => p2_max_pos(8),
@@ -23470,11 +24572,22 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I2 => p2_max_pos(4),
       I3 => p2_max_pos(5),
       I4 => p2_max_pos(7),
+      O => \comp_burst.df_start[7]_i_3_n_0\
+    );
+\comp_burst.df_start[7]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => p2_size(7),
+      I1 => p2_size(6),
+      I2 => \comp_burst.df_start[4]_i_3_n_0\,
+      I3 => p2_size(8),
       O => \comp_burst.df_start[7]_i_4_n_0\
     );
 \comp_burst.df_start[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"4444D044"
+      INIT => X"4D444044"
     )
         port map (
       I0 => \comp_burst.df_start[8]_i_2_n_0\,
@@ -23552,23 +24665,25 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"0000000000000001"
     )
         port map (
-      I0 => p2_max_pos(9),
-      I1 => p2_max_pos(7),
-      I2 => p2_max_pos(5),
-      I3 => p2_max_pos(4),
-      I4 => p2_max_pos(6),
-      I5 => p2_max_pos(8),
+      I0 => p2_max_pos(7),
+      I1 => p2_max_pos(5),
+      I2 => p2_max_pos(4),
+      I3 => p2_max_pos(6),
+      I4 => p2_max_pos(8),
+      I5 => p2_max_pos(9),
       O => \comp_burst.df_start[8]_i_2_n_0\
     );
-\comp_burst.df_start[8]_i_3\: unisim.vcomponents.LUT4
+\comp_burst.df_start[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AA9A"
+      INIT => X"FFFFFFFFFFFFFFE0"
     )
         port map (
-      I0 => p2_size(10),
-      I1 => p2_size(9),
-      I2 => \comp_burst.df_start[6]_i_2_n_0\,
-      I3 => p2_size(8),
+      I0 => df_start2(0),
+      I1 => df_start2(1),
+      I2 => df_start2(2),
+      I3 => df_start2(5),
+      I4 => df_start2(4),
+      I5 => df_start2(7),
       O => \comp_burst.df_start[8]_i_3_n_0\
     );
 \comp_burst.df_start[8]_i_4\: unisim.vcomponents.LUT4
@@ -23584,15 +24699,15 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.df_start[8]_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFE0"
+      INIT => X"AAAAAAAAAAAAAAA9"
     )
         port map (
-      I0 => df_start2(0),
-      I1 => df_start2(1),
-      I2 => df_start2(2),
-      I3 => df_start2(5),
-      I4 => df_start2(4),
-      I5 => df_start2(7),
+      I0 => p2_size(10),
+      I1 => p2_size(9),
+      I2 => p2_size(7),
+      I3 => p2_size(6),
+      I4 => \comp_burst.df_start[4]_i_3_n_0\,
+      I5 => p2_size(8),
       O => \comp_burst.df_start[8]_i_5_n_0\
     );
 \comp_burst.df_start[8]_i_8\: unisim.vcomponents.LUT2
@@ -24277,14 +25392,22 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I3 => \comp_burst.env_down_adr_reg_n_0_[8]\,
       O => \comp_burst.env_down_adr[10]_i_2_n_0\
     );
-\comp_burst.env_down_adr[1]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.env_down_adr[1]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => load_env,
+      O => load
+    );
+\comp_burst.env_down_adr[1]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
       I0 => \comp_burst.env_down_adr_reg_n_0_[0]\,
       I1 => \comp_burst.env_down_adr_reg_n_0_[1]\,
-      O => \comp_burst.env_down_adr[1]_i_1_n_0\
+      O => \comp_burst.env_down_adr[1]_i_2_n_0\
     );
 \comp_burst.env_down_adr[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -24469,7 +25592,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CE => '1',
       D => \comp_burst.env_down_adr[0]_i_1_n_0\,
       Q => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      S => load
     );
 \comp_burst.env_down_adr_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -24483,9 +25606,9 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_down_adr[1]_i_1_n_0\,
+      D => \comp_burst.env_down_adr[1]_i_2_n_0\,
       Q => \comp_burst.env_down_adr_reg_n_0_[1]\,
-      S => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      S => load
     );
 \comp_burst.env_down_adr_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -25547,54 +26670,54 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.env_down_val[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_99\,
-      I1 => \comp_burst.mem_env_down_reg_n_83\,
-      I2 => env_down_3(0),
+      I0 => \comp_burst.mem_env_down_reg_n_83\,
+      I1 => env_down_2(0),
+      I2 => \comp_burst.mem_env_down_reg_n_99\,
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(0),
+      I5 => env_down_3(0),
       O => \comp_burst.env_down_val[0]_i_1_n_0\
     );
 \comp_burst.env_down_val[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFAACCF000AACCF0"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_73\,
-      I1 => env_down_2(10),
-      I2 => \comp_burst.mem_env_down_reg_n_89\,
+      I0 => \comp_burst.mem_env_down_reg_n_89\,
+      I1 => \comp_burst.mem_env_down_reg_n_73\,
+      I2 => env_down_3(10),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_3(10),
+      I5 => env_down_2(10),
       O => \comp_burst.env_down_val[10]_i_1_n_0\
     );
 \comp_burst.env_down_val[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_88\,
       I1 => \comp_burst.mem_env_down_reg_n_72\,
-      I2 => env_down_3(11),
+      I2 => env_down_2(11),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(11),
+      I5 => env_down_3(11),
       O => \comp_burst.env_down_val[11]_i_1_n_0\
     );
 \comp_burst.env_down_val[12]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_87\,
-      I1 => \comp_burst.mem_env_down_reg_n_71\,
-      I2 => env_down_3(12),
+      I0 => \comp_burst.mem_env_down_reg_n_71\,
+      I1 => env_down_2(12),
+      I2 => \comp_burst.mem_env_down_reg_n_87\,
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(12),
+      I5 => env_down_3(12),
       O => \comp_burst.env_down_val[12]_i_1_n_0\
     );
 \comp_burst.env_down_val[13]_i_1\: unisim.vcomponents.LUT6
@@ -25612,12 +26735,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.env_down_val[14]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFAACCF000AACCF0"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_69\,
-      I1 => env_down_2(14),
-      I2 => \comp_burst.mem_env_down_reg_n_85\,
+      I0 => \comp_burst.mem_env_down_reg_n_85\,
+      I1 => \comp_burst.mem_env_down_reg_n_69\,
+      I2 => env_down_2(14),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
       I5 => env_down_3(14),
@@ -25625,67 +26748,67 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.env_down_val[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFCCF0AA00CCF0AA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_84\,
       I1 => \comp_burst.mem_env_down_reg_n_68\,
-      I2 => env_down_2(15),
+      I2 => env_down_3(15),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_3(15),
+      I5 => env_down_2(15),
       O => \comp_burst.env_down_val[15]_i_1_n_0\
     );
 \comp_burst.env_down_val[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_98\,
       I1 => \comp_burst.mem_env_down_reg_n_82\,
-      I2 => env_down_3(1),
+      I2 => env_down_2(1),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(1),
+      I5 => env_down_3(1),
       O => \comp_burst.env_down_val[1]_i_1_n_0\
     );
 \comp_burst.env_down_val[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFAACCF000AACCF0"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_81\,
-      I1 => env_down_2(2),
-      I2 => \comp_burst.mem_env_down_reg_n_97\,
+      I0 => \comp_burst.mem_env_down_reg_n_97\,
+      I1 => \comp_burst.mem_env_down_reg_n_81\,
+      I2 => env_down_3(2),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_3(2),
+      I5 => env_down_2(2),
       O => \comp_burst.env_down_val[2]_i_1_n_0\
     );
 \comp_burst.env_down_val[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_96\,
       I1 => \comp_burst.mem_env_down_reg_n_80\,
-      I2 => env_down_3(3),
+      I2 => env_down_2(3),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(3),
+      I5 => env_down_3(3),
       O => \comp_burst.env_down_val[3]_i_1_n_0\
     );
 \comp_burst.env_down_val[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_95\,
-      I1 => \comp_burst.mem_env_down_reg_n_79\,
-      I2 => env_down_3(4),
+      I0 => \comp_burst.mem_env_down_reg_n_79\,
+      I1 => env_down_2(4),
+      I2 => \comp_burst.mem_env_down_reg_n_95\,
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(4),
+      I5 => env_down_3(4),
       O => \comp_burst.env_down_val[4]_i_1_n_0\
     );
 \comp_burst.env_down_val[5]_i_1\: unisim.vcomponents.LUT6
@@ -25703,12 +26826,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.env_down_val[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFAACCF000AACCF0"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_77\,
-      I1 => env_down_2(6),
-      I2 => \comp_burst.mem_env_down_reg_n_93\,
+      I0 => \comp_burst.mem_env_down_reg_n_93\,
+      I1 => \comp_burst.mem_env_down_reg_n_77\,
+      I2 => env_down_2(6),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
       I5 => env_down_3(6),
@@ -25716,41 +26839,41 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.env_down_val[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFCCF0AA00CCF0AA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_92\,
       I1 => \comp_burst.mem_env_down_reg_n_76\,
-      I2 => env_down_2(7),
+      I2 => env_down_3(7),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_3(7),
+      I5 => env_down_2(7),
       O => \comp_burst.env_down_val[7]_i_1_n_0\
     );
 \comp_burst.env_down_val[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_down_reg_n_91\,
-      I1 => \comp_burst.mem_env_down_reg_n_75\,
-      I2 => env_down_3(8),
+      I0 => \comp_burst.mem_env_down_reg_n_75\,
+      I1 => env_down_2(8),
+      I2 => \comp_burst.mem_env_down_reg_n_91\,
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(8),
+      I5 => env_down_3(8),
       O => \comp_burst.env_down_val[8]_i_1_n_0\
     );
 \comp_burst.env_down_val[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0CCFFAAF0CC00AA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_env_down_reg_n_90\,
       I1 => \comp_burst.mem_env_down_reg_n_74\,
-      I2 => env_down_3(9),
+      I2 => env_down_2(9),
       I3 => \comp_burst.env_down_adr_reg_n_0_[1]\,
       I4 => \comp_burst.env_down_adr_reg_n_0_[0]\,
-      I5 => env_down_2(9),
+      I5 => env_down_3(9),
       O => \comp_burst.env_down_val[9]_i_1_n_0\
     );
 \comp_burst.env_down_val_reg[0]\: unisim.vcomponents.FDRE
@@ -26186,525 +27309,516 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => \comp_burst.env_end_ind_reg_n_0_[9]\,
       R => '0'
     );
-\comp_burst.env_in[63]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => filling,
-      I1 => rt_data_empty,
-      O => \comp_burst.env_in[63]_i_1_n_0\
-    );
 \comp_burst.env_in_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(0),
-      Q => \comp_burst.env_in_reg_n_0_[0]\,
+      Q => env_in(0),
       R => '0'
     );
 \comp_burst.env_in_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(10),
-      Q => \comp_burst.env_in_reg_n_0_[10]\,
+      Q => env_in(10),
       R => '0'
     );
 \comp_burst.env_in_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(11),
-      Q => \comp_burst.env_in_reg_n_0_[11]\,
+      Q => env_in(11),
       R => '0'
     );
 \comp_burst.env_in_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(12),
-      Q => \comp_burst.env_in_reg_n_0_[12]\,
+      Q => env_in(12),
       R => '0'
     );
 \comp_burst.env_in_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(13),
-      Q => \comp_burst.env_in_reg_n_0_[13]\,
+      Q => env_in(13),
       R => '0'
     );
 \comp_burst.env_in_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(14),
-      Q => \comp_burst.env_in_reg_n_0_[14]\,
+      Q => env_in(14),
       R => '0'
     );
 \comp_burst.env_in_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(15),
-      Q => \comp_burst.env_in_reg_n_0_[15]\,
+      Q => env_in(15),
       R => '0'
     );
 \comp_burst.env_in_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(16),
-      Q => p_0_in3_in(0),
+      Q => env_in(16),
       R => '0'
     );
 \comp_burst.env_in_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(17),
-      Q => p_0_in3_in(1),
+      Q => env_in(17),
       R => '0'
     );
 \comp_burst.env_in_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(18),
-      Q => p_0_in3_in(2),
+      Q => env_in(18),
       R => '0'
     );
 \comp_burst.env_in_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(19),
-      Q => p_0_in3_in(3),
+      Q => env_in(19),
       R => '0'
     );
 \comp_burst.env_in_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(1),
-      Q => \comp_burst.env_in_reg_n_0_[1]\,
+      Q => env_in(1),
       R => '0'
     );
 \comp_burst.env_in_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(20),
-      Q => p_0_in3_in(4),
+      Q => env_in(20),
       R => '0'
     );
 \comp_burst.env_in_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(21),
-      Q => p_0_in3_in(5),
+      Q => env_in(21),
       R => '0'
     );
 \comp_burst.env_in_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(22),
-      Q => p_0_in3_in(6),
+      Q => env_in(22),
       R => '0'
     );
 \comp_burst.env_in_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(23),
-      Q => p_0_in3_in(7),
+      Q => env_in(23),
       R => '0'
     );
 \comp_burst.env_in_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(24),
-      Q => p_0_in3_in(8),
+      Q => env_in(24),
       R => '0'
     );
 \comp_burst.env_in_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(25),
-      Q => p_0_in3_in(9),
+      Q => env_in(25),
       R => '0'
     );
 \comp_burst.env_in_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(26),
-      Q => p_0_in3_in(10),
+      Q => env_in(26),
       R => '0'
     );
 \comp_burst.env_in_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(27),
-      Q => p_0_in3_in(11),
+      Q => env_in(27),
       R => '0'
     );
 \comp_burst.env_in_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(28),
-      Q => p_0_in3_in(12),
+      Q => env_in(28),
       R => '0'
     );
 \comp_burst.env_in_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(29),
-      Q => p_0_in3_in(13),
+      Q => env_in(29),
       R => '0'
     );
 \comp_burst.env_in_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(2),
-      Q => \comp_burst.env_in_reg_n_0_[2]\,
+      Q => env_in(2),
       R => '0'
     );
 \comp_burst.env_in_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(30),
-      Q => p_0_in3_in(14),
+      Q => env_in(30),
       R => '0'
     );
 \comp_burst.env_in_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(31),
-      Q => p_0_in3_in(15),
+      Q => env_in(31),
       R => '0'
     );
 \comp_burst.env_in_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(32),
-      Q => p_0_in2_in(0),
+      Q => env_in(32),
       R => '0'
     );
 \comp_burst.env_in_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(33),
-      Q => p_0_in2_in(1),
+      Q => env_in(33),
       R => '0'
     );
 \comp_burst.env_in_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(34),
-      Q => p_0_in2_in(2),
+      Q => env_in(34),
       R => '0'
     );
 \comp_burst.env_in_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(35),
-      Q => p_0_in2_in(3),
+      Q => env_in(35),
       R => '0'
     );
 \comp_burst.env_in_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(36),
-      Q => p_0_in2_in(4),
+      Q => env_in(36),
       R => '0'
     );
 \comp_burst.env_in_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(37),
-      Q => p_0_in2_in(5),
+      Q => env_in(37),
       R => '0'
     );
 \comp_burst.env_in_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(38),
-      Q => p_0_in2_in(6),
+      Q => env_in(38),
       R => '0'
     );
 \comp_burst.env_in_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(39),
-      Q => p_0_in2_in(7),
+      Q => env_in(39),
       R => '0'
     );
 \comp_burst.env_in_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(3),
-      Q => \comp_burst.env_in_reg_n_0_[3]\,
+      Q => env_in(3),
       R => '0'
     );
 \comp_burst.env_in_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(40),
-      Q => p_0_in2_in(8),
+      Q => env_in(40),
       R => '0'
     );
 \comp_burst.env_in_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(41),
-      Q => p_0_in2_in(9),
+      Q => env_in(41),
       R => '0'
     );
 \comp_burst.env_in_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(42),
-      Q => p_0_in2_in(10),
+      Q => env_in(42),
       R => '0'
     );
 \comp_burst.env_in_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(43),
-      Q => p_0_in2_in(11),
+      Q => env_in(43),
       R => '0'
     );
 \comp_burst.env_in_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(44),
-      Q => p_0_in2_in(12),
+      Q => env_in(44),
       R => '0'
     );
 \comp_burst.env_in_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(45),
-      Q => p_0_in2_in(13),
+      Q => env_in(45),
       R => '0'
     );
 \comp_burst.env_in_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(46),
-      Q => p_0_in2_in(14),
+      Q => env_in(46),
       R => '0'
     );
 \comp_burst.env_in_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(47),
-      Q => p_0_in2_in(15),
+      Q => env_in(47),
       R => '0'
     );
 \comp_burst.env_in_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(48),
-      Q => \comp_burst.env_in_reg_n_0_[48]\,
+      Q => env_in(48),
       R => '0'
     );
 \comp_burst.env_in_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(49),
-      Q => \comp_burst.env_in_reg_n_0_[49]\,
+      Q => env_in(49),
       R => '0'
     );
 \comp_burst.env_in_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(4),
-      Q => \comp_burst.env_in_reg_n_0_[4]\,
+      Q => env_in(4),
       R => '0'
     );
 \comp_burst.env_in_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(50),
-      Q => \comp_burst.env_in_reg_n_0_[50]\,
+      Q => env_in(50),
       R => '0'
     );
 \comp_burst.env_in_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(51),
-      Q => \comp_burst.env_in_reg_n_0_[51]\,
+      Q => env_in(51),
       R => '0'
     );
 \comp_burst.env_in_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(52),
-      Q => \comp_burst.env_in_reg_n_0_[52]\,
+      Q => env_in(52),
       R => '0'
     );
 \comp_burst.env_in_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(53),
-      Q => \comp_burst.env_in_reg_n_0_[53]\,
+      Q => env_in(53),
       R => '0'
     );
 \comp_burst.env_in_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(54),
-      Q => \comp_burst.env_in_reg_n_0_[54]\,
+      Q => env_in(54),
       R => '0'
     );
 \comp_burst.env_in_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(55),
-      Q => \comp_burst.env_in_reg_n_0_[55]\,
+      Q => env_in(55),
       R => '0'
     );
 \comp_burst.env_in_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(56),
-      Q => \comp_burst.env_in_reg_n_0_[56]\,
+      Q => env_in(56),
       R => '0'
     );
 \comp_burst.env_in_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(57),
-      Q => \comp_burst.env_in_reg_n_0_[57]\,
+      Q => env_in(57),
       R => '0'
     );
 \comp_burst.env_in_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(58),
-      Q => \comp_burst.env_in_reg_n_0_[58]\,
+      Q => env_in(58),
       R => '0'
     );
 \comp_burst.env_in_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(59),
-      Q => \comp_burst.env_in_reg_n_0_[59]\,
+      Q => env_in(59),
       R => '0'
     );
 \comp_burst.env_in_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(5),
-      Q => \comp_burst.env_in_reg_n_0_[5]\,
+      Q => env_in(5),
       R => '0'
     );
 \comp_burst.env_in_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(60),
-      Q => \comp_burst.env_in_reg_n_0_[60]\,
+      Q => env_in(60),
       R => '0'
     );
 \comp_burst.env_in_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(61),
-      Q => \comp_burst.env_in_reg_n_0_[61]\,
+      Q => env_in(61),
       R => '0'
     );
 \comp_burst.env_in_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(62),
-      Q => \comp_burst.env_in_reg_n_0_[62]\,
+      Q => env_in(62),
       R => '0'
     );
 \comp_burst.env_in_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(63),
-      Q => \comp_burst.env_in_reg_n_0_[63]\,
+      Q => env_in(63),
       R => '0'
     );
 \comp_burst.env_in_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(6),
-      Q => \comp_burst.env_in_reg_n_0_[6]\,
+      Q => env_in(6),
       R => '0'
     );
 \comp_burst.env_in_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(7),
-      Q => \comp_burst.env_in_reg_n_0_[7]\,
+      Q => env_in(7),
       R => '0'
     );
 \comp_burst.env_in_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(8),
-      Q => \comp_burst.env_in_reg_n_0_[8]\,
+      Q => env_in(8),
       R => '0'
     );
 \comp_burst.env_in_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(9),
-      Q => \comp_burst.env_in_reg_n_0_[9]\,
+      Q => env_in(9),
       R => '0'
     );
 \comp_burst.env_start_ind[10]_i_1\: unisim.vcomponents.LUT4
@@ -26712,187 +27826,11 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"0080"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => run_env_start0,
+      I0 => run_env_start0,
+      I1 => run_env_start,
       I2 => comp_env,
       I3 => scan_start,
       O => env_start_ind
-    );
-\comp_burst.env_start_ind[10]_i_10\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(1),
-      I1 => \comp_burst.min_env_reg_n_0_[1]\,
-      I2 => env_up_val(0),
-      I3 => \comp_burst.min_env_reg_n_0_[0]\,
-      O => \comp_burst.env_start_ind[10]_i_10_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_11\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[15]\,
-      I1 => env_up_val(15),
-      I2 => \comp_burst.min_env_reg_n_0_[14]\,
-      I3 => env_up_val(14),
-      O => \comp_burst.env_start_ind[10]_i_11_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_12\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[13]\,
-      I1 => env_up_val(13),
-      I2 => \comp_burst.min_env_reg_n_0_[12]\,
-      I3 => env_up_val(12),
-      O => \comp_burst.env_start_ind[10]_i_12_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_13\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[11]\,
-      I1 => env_up_val(11),
-      I2 => \comp_burst.min_env_reg_n_0_[10]\,
-      I3 => env_up_val(10),
-      O => \comp_burst.env_start_ind[10]_i_13_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_14\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[9]\,
-      I1 => env_up_val(9),
-      I2 => \comp_burst.min_env_reg_n_0_[8]\,
-      I3 => env_up_val(8),
-      O => \comp_burst.env_start_ind[10]_i_14_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_15\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[7]\,
-      I1 => env_up_val(7),
-      I2 => \comp_burst.min_env_reg_n_0_[6]\,
-      I3 => env_up_val(6),
-      O => \comp_burst.env_start_ind[10]_i_15_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_16\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[5]\,
-      I1 => env_up_val(5),
-      I2 => \comp_burst.min_env_reg_n_0_[4]\,
-      I3 => env_up_val(4),
-      O => \comp_burst.env_start_ind[10]_i_16_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_17\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[3]\,
-      I1 => env_up_val(3),
-      I2 => \comp_burst.min_env_reg_n_0_[2]\,
-      I3 => env_up_val(2),
-      O => \comp_burst.env_start_ind[10]_i_17_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_18\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9009"
-    )
-        port map (
-      I0 => \comp_burst.min_env_reg_n_0_[1]\,
-      I1 => env_up_val(1),
-      I2 => \comp_burst.min_env_reg_n_0_[0]\,
-      I3 => env_up_val(0),
-      O => \comp_burst.env_start_ind[10]_i_18_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(15),
-      I1 => \comp_burst.min_env_reg_n_0_[15]\,
-      I2 => env_up_val(14),
-      I3 => \comp_burst.min_env_reg_n_0_[14]\,
-      O => \comp_burst.env_start_ind[10]_i_3_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_4\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(13),
-      I1 => \comp_burst.min_env_reg_n_0_[13]\,
-      I2 => env_up_val(12),
-      I3 => \comp_burst.min_env_reg_n_0_[12]\,
-      O => \comp_burst.env_start_ind[10]_i_4_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_5\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(11),
-      I1 => \comp_burst.min_env_reg_n_0_[11]\,
-      I2 => env_up_val(10),
-      I3 => \comp_burst.min_env_reg_n_0_[10]\,
-      O => \comp_burst.env_start_ind[10]_i_5_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_6\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(9),
-      I1 => \comp_burst.min_env_reg_n_0_[9]\,
-      I2 => env_up_val(8),
-      I3 => \comp_burst.min_env_reg_n_0_[8]\,
-      O => \comp_burst.env_start_ind[10]_i_6_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_7\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(7),
-      I1 => \comp_burst.min_env_reg_n_0_[7]\,
-      I2 => env_up_val(6),
-      I3 => \comp_burst.min_env_reg_n_0_[6]\,
-      O => \comp_burst.env_start_ind[10]_i_7_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_8\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(5),
-      I1 => \comp_burst.min_env_reg_n_0_[5]\,
-      I2 => env_up_val(4),
-      I3 => \comp_burst.min_env_reg_n_0_[4]\,
-      O => \comp_burst.env_start_ind[10]_i_8_n_0\
-    );
-\comp_burst.env_start_ind[10]_i_9\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"22B2"
-    )
-        port map (
-      I0 => env_up_val(3),
-      I1 => \comp_burst.min_env_reg_n_0_[3]\,
-      I2 => env_up_val(2),
-      I3 => \comp_burst.min_env_reg_n_0_[2]\,
-      O => \comp_burst.env_start_ind[10]_i_9_n_0\
     );
 \comp_burst.env_start_ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -26909,36 +27847,6 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       D => env_up_ind(10),
       Q => \comp_burst.env_start_ind_reg_n_0_[10]\,
       R => '0'
-    );
-\comp_burst.env_start_ind_reg[10]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => '1',
-      CI_TOP => '0',
-      CO(7) => run_env_start0,
-      CO(6) => \comp_burst.env_start_ind_reg[10]_i_2_n_1\,
-      CO(5) => \comp_burst.env_start_ind_reg[10]_i_2_n_2\,
-      CO(4) => \comp_burst.env_start_ind_reg[10]_i_2_n_3\,
-      CO(3) => \comp_burst.env_start_ind_reg[10]_i_2_n_4\,
-      CO(2) => \comp_burst.env_start_ind_reg[10]_i_2_n_5\,
-      CO(1) => \comp_burst.env_start_ind_reg[10]_i_2_n_6\,
-      CO(0) => \comp_burst.env_start_ind_reg[10]_i_2_n_7\,
-      DI(7) => \comp_burst.env_start_ind[10]_i_3_n_0\,
-      DI(6) => \comp_burst.env_start_ind[10]_i_4_n_0\,
-      DI(5) => \comp_burst.env_start_ind[10]_i_5_n_0\,
-      DI(4) => \comp_burst.env_start_ind[10]_i_6_n_0\,
-      DI(3) => \comp_burst.env_start_ind[10]_i_7_n_0\,
-      DI(2) => \comp_burst.env_start_ind[10]_i_8_n_0\,
-      DI(1) => \comp_burst.env_start_ind[10]_i_9_n_0\,
-      DI(0) => \comp_burst.env_start_ind[10]_i_10_n_0\,
-      O(7 downto 0) => \NLW_comp_burst.env_start_ind_reg[10]_i_2_O_UNCONNECTED\(7 downto 0),
-      S(7) => \comp_burst.env_start_ind[10]_i_11_n_0\,
-      S(6) => \comp_burst.env_start_ind[10]_i_12_n_0\,
-      S(5) => \comp_burst.env_start_ind[10]_i_13_n_0\,
-      S(4) => \comp_burst.env_start_ind[10]_i_14_n_0\,
-      S(3) => \comp_burst.env_start_ind[10]_i_15_n_0\,
-      S(2) => \comp_burst.env_start_ind[10]_i_16_n_0\,
-      S(1) => \comp_burst.env_start_ind[10]_i_17_n_0\,
-      S(0) => \comp_burst.env_start_ind[10]_i_18_n_0\
     );
 \comp_burst.env_start_ind_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -27828,7 +28736,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[15]\,
-      I1 => \comp_burst.env_in_reg_n_0_[15]\,
+      I1 => env_in(15),
       O => \comp_burst.env_sum_lsb_0[15]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_3\: unisim.vcomponents.LUT2
@@ -27837,7 +28745,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[14]\,
-      I1 => \comp_burst.env_in_reg_n_0_[14]\,
+      I1 => env_in(14),
       O => \comp_burst.env_sum_lsb_0[15]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_4\: unisim.vcomponents.LUT2
@@ -27846,7 +28754,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[13]\,
-      I1 => \comp_burst.env_in_reg_n_0_[13]\,
+      I1 => env_in(13),
       O => \comp_burst.env_sum_lsb_0[15]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_5\: unisim.vcomponents.LUT2
@@ -27855,7 +28763,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[12]\,
-      I1 => \comp_burst.env_in_reg_n_0_[12]\,
+      I1 => env_in(12),
       O => \comp_burst.env_sum_lsb_0[15]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_6\: unisim.vcomponents.LUT2
@@ -27864,7 +28772,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[11]\,
-      I1 => \comp_burst.env_in_reg_n_0_[11]\,
+      I1 => env_in(11),
       O => \comp_burst.env_sum_lsb_0[15]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_7\: unisim.vcomponents.LUT2
@@ -27873,7 +28781,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[10]\,
-      I1 => \comp_burst.env_in_reg_n_0_[10]\,
+      I1 => env_in(10),
       O => \comp_burst.env_sum_lsb_0[15]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_8\: unisim.vcomponents.LUT2
@@ -27882,7 +28790,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[9]\,
-      I1 => \comp_burst.env_in_reg_n_0_[9]\,
+      I1 => env_in(9),
       O => \comp_burst.env_sum_lsb_0[15]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_0[15]_i_9\: unisim.vcomponents.LUT2
@@ -27891,7 +28799,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[8]\,
-      I1 => \comp_burst.env_in_reg_n_0_[8]\,
+      I1 => env_in(8),
       O => \comp_burst.env_sum_lsb_0[15]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_2\: unisim.vcomponents.LUT2
@@ -27900,7 +28808,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[7]\,
-      I1 => \comp_burst.env_in_reg_n_0_[7]\,
+      I1 => env_in(7),
       O => \comp_burst.env_sum_lsb_0[7]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_3\: unisim.vcomponents.LUT2
@@ -27909,7 +28817,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[6]\,
-      I1 => \comp_burst.env_in_reg_n_0_[6]\,
+      I1 => env_in(6),
       O => \comp_burst.env_sum_lsb_0[7]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_4\: unisim.vcomponents.LUT2
@@ -27918,7 +28826,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[5]\,
-      I1 => \comp_burst.env_in_reg_n_0_[5]\,
+      I1 => env_in(5),
       O => \comp_burst.env_sum_lsb_0[7]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_5\: unisim.vcomponents.LUT2
@@ -27927,7 +28835,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[4]\,
-      I1 => \comp_burst.env_in_reg_n_0_[4]\,
+      I1 => env_in(4),
       O => \comp_burst.env_sum_lsb_0[7]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_6\: unisim.vcomponents.LUT2
@@ -27936,7 +28844,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[3]\,
-      I1 => \comp_burst.env_in_reg_n_0_[3]\,
+      I1 => env_in(3),
       O => \comp_burst.env_sum_lsb_0[7]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_7\: unisim.vcomponents.LUT2
@@ -27945,7 +28853,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[2]\,
-      I1 => \comp_burst.env_in_reg_n_0_[2]\,
+      I1 => env_in(2),
       O => \comp_burst.env_sum_lsb_0[7]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_8\: unisim.vcomponents.LUT2
@@ -27954,7 +28862,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[1]\,
-      I1 => \comp_burst.env_in_reg_n_0_[1]\,
+      I1 => env_in(1),
       O => \comp_burst.env_sum_lsb_0[7]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_0[7]_i_9\: unisim.vcomponents.LUT2
@@ -27963,7 +28871,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_0_reg_n_0_[0]\,
-      I1 => \comp_burst.env_in_reg_n_0_[0]\,
+      I1 => env_in(0),
       O => \comp_burst.env_sum_lsb_0[7]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_0_reg[0]\: unisim.vcomponents.FDRE
@@ -28178,7 +29086,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[15]\,
-      I1 => p_0_in3_in(15),
+      I1 => env_in(31),
       O => \comp_burst.env_sum_lsb_1[15]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_3\: unisim.vcomponents.LUT2
@@ -28187,7 +29095,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[14]\,
-      I1 => p_0_in3_in(14),
+      I1 => env_in(30),
       O => \comp_burst.env_sum_lsb_1[15]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_4\: unisim.vcomponents.LUT2
@@ -28196,7 +29104,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[13]\,
-      I1 => p_0_in3_in(13),
+      I1 => env_in(29),
       O => \comp_burst.env_sum_lsb_1[15]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_5\: unisim.vcomponents.LUT2
@@ -28205,7 +29113,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[12]\,
-      I1 => p_0_in3_in(12),
+      I1 => env_in(28),
       O => \comp_burst.env_sum_lsb_1[15]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_6\: unisim.vcomponents.LUT2
@@ -28214,7 +29122,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[11]\,
-      I1 => p_0_in3_in(11),
+      I1 => env_in(27),
       O => \comp_burst.env_sum_lsb_1[15]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_7\: unisim.vcomponents.LUT2
@@ -28223,7 +29131,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[10]\,
-      I1 => p_0_in3_in(10),
+      I1 => env_in(26),
       O => \comp_burst.env_sum_lsb_1[15]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_8\: unisim.vcomponents.LUT2
@@ -28232,7 +29140,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[9]\,
-      I1 => p_0_in3_in(9),
+      I1 => env_in(25),
       O => \comp_burst.env_sum_lsb_1[15]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_1[15]_i_9\: unisim.vcomponents.LUT2
@@ -28241,7 +29149,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[8]\,
-      I1 => p_0_in3_in(8),
+      I1 => env_in(24),
       O => \comp_burst.env_sum_lsb_1[15]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_2\: unisim.vcomponents.LUT2
@@ -28250,7 +29158,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[7]\,
-      I1 => p_0_in3_in(7),
+      I1 => env_in(23),
       O => \comp_burst.env_sum_lsb_1[7]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_3\: unisim.vcomponents.LUT2
@@ -28259,7 +29167,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[6]\,
-      I1 => p_0_in3_in(6),
+      I1 => env_in(22),
       O => \comp_burst.env_sum_lsb_1[7]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_4\: unisim.vcomponents.LUT2
@@ -28268,7 +29176,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[5]\,
-      I1 => p_0_in3_in(5),
+      I1 => env_in(21),
       O => \comp_burst.env_sum_lsb_1[7]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_5\: unisim.vcomponents.LUT2
@@ -28277,7 +29185,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[4]\,
-      I1 => p_0_in3_in(4),
+      I1 => env_in(20),
       O => \comp_burst.env_sum_lsb_1[7]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_6\: unisim.vcomponents.LUT2
@@ -28286,7 +29194,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[3]\,
-      I1 => p_0_in3_in(3),
+      I1 => env_in(19),
       O => \comp_burst.env_sum_lsb_1[7]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_7\: unisim.vcomponents.LUT2
@@ -28295,7 +29203,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[2]\,
-      I1 => p_0_in3_in(2),
+      I1 => env_in(18),
       O => \comp_burst.env_sum_lsb_1[7]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_8\: unisim.vcomponents.LUT2
@@ -28304,7 +29212,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[1]\,
-      I1 => p_0_in3_in(1),
+      I1 => env_in(17),
       O => \comp_burst.env_sum_lsb_1[7]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_1[7]_i_9\: unisim.vcomponents.LUT2
@@ -28313,7 +29221,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_1_reg_n_0_[0]\,
-      I1 => p_0_in3_in(0),
+      I1 => env_in(16),
       O => \comp_burst.env_sum_lsb_1[7]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_1_reg[0]\: unisim.vcomponents.FDRE
@@ -29072,7 +29980,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[15]\,
-      I1 => p_0_in2_in(15),
+      I1 => env_in(47),
       O => \comp_burst.env_sum_lsb_2[15]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_3\: unisim.vcomponents.LUT2
@@ -29081,7 +29989,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[14]\,
-      I1 => p_0_in2_in(14),
+      I1 => env_in(46),
       O => \comp_burst.env_sum_lsb_2[15]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_4\: unisim.vcomponents.LUT2
@@ -29090,7 +29998,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[13]\,
-      I1 => p_0_in2_in(13),
+      I1 => env_in(45),
       O => \comp_burst.env_sum_lsb_2[15]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_5\: unisim.vcomponents.LUT2
@@ -29099,7 +30007,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[12]\,
-      I1 => p_0_in2_in(12),
+      I1 => env_in(44),
       O => \comp_burst.env_sum_lsb_2[15]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_6\: unisim.vcomponents.LUT2
@@ -29108,7 +30016,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[11]\,
-      I1 => p_0_in2_in(11),
+      I1 => env_in(43),
       O => \comp_burst.env_sum_lsb_2[15]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_7\: unisim.vcomponents.LUT2
@@ -29117,7 +30025,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[10]\,
-      I1 => p_0_in2_in(10),
+      I1 => env_in(42),
       O => \comp_burst.env_sum_lsb_2[15]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_8\: unisim.vcomponents.LUT2
@@ -29126,7 +30034,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[9]\,
-      I1 => p_0_in2_in(9),
+      I1 => env_in(41),
       O => \comp_burst.env_sum_lsb_2[15]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_2[15]_i_9\: unisim.vcomponents.LUT2
@@ -29135,7 +30043,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[8]\,
-      I1 => p_0_in2_in(8),
+      I1 => env_in(40),
       O => \comp_burst.env_sum_lsb_2[15]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_2\: unisim.vcomponents.LUT2
@@ -29144,7 +30052,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[7]\,
-      I1 => p_0_in2_in(7),
+      I1 => env_in(39),
       O => \comp_burst.env_sum_lsb_2[7]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_3\: unisim.vcomponents.LUT2
@@ -29153,7 +30061,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[6]\,
-      I1 => p_0_in2_in(6),
+      I1 => env_in(38),
       O => \comp_burst.env_sum_lsb_2[7]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_4\: unisim.vcomponents.LUT2
@@ -29162,7 +30070,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[5]\,
-      I1 => p_0_in2_in(5),
+      I1 => env_in(37),
       O => \comp_burst.env_sum_lsb_2[7]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_5\: unisim.vcomponents.LUT2
@@ -29171,7 +30079,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[4]\,
-      I1 => p_0_in2_in(4),
+      I1 => env_in(36),
       O => \comp_burst.env_sum_lsb_2[7]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_6\: unisim.vcomponents.LUT2
@@ -29180,7 +30088,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[3]\,
-      I1 => p_0_in2_in(3),
+      I1 => env_in(35),
       O => \comp_burst.env_sum_lsb_2[7]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_7\: unisim.vcomponents.LUT2
@@ -29189,7 +30097,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[2]\,
-      I1 => p_0_in2_in(2),
+      I1 => env_in(34),
       O => \comp_burst.env_sum_lsb_2[7]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_8\: unisim.vcomponents.LUT2
@@ -29198,7 +30106,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[1]\,
-      I1 => p_0_in2_in(1),
+      I1 => env_in(33),
       O => \comp_burst.env_sum_lsb_2[7]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_2[7]_i_9\: unisim.vcomponents.LUT2
@@ -29207,7 +30115,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_2_reg_n_0_[0]\,
-      I1 => p_0_in2_in(0),
+      I1 => env_in(32),
       O => \comp_burst.env_sum_lsb_2[7]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_2_reg[0]\: unisim.vcomponents.FDRE
@@ -29422,7 +30330,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[15]\,
-      I1 => \comp_burst.env_in_reg_n_0_[63]\,
+      I1 => env_in(63),
       O => \comp_burst.env_sum_lsb_3[15]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_3\: unisim.vcomponents.LUT2
@@ -29431,7 +30339,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[14]\,
-      I1 => \comp_burst.env_in_reg_n_0_[62]\,
+      I1 => env_in(62),
       O => \comp_burst.env_sum_lsb_3[15]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_4\: unisim.vcomponents.LUT2
@@ -29440,7 +30348,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[13]\,
-      I1 => \comp_burst.env_in_reg_n_0_[61]\,
+      I1 => env_in(61),
       O => \comp_burst.env_sum_lsb_3[15]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_5\: unisim.vcomponents.LUT2
@@ -29449,7 +30357,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[12]\,
-      I1 => \comp_burst.env_in_reg_n_0_[60]\,
+      I1 => env_in(60),
       O => \comp_burst.env_sum_lsb_3[15]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_6\: unisim.vcomponents.LUT2
@@ -29458,7 +30366,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[11]\,
-      I1 => \comp_burst.env_in_reg_n_0_[59]\,
+      I1 => env_in(59),
       O => \comp_burst.env_sum_lsb_3[15]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_7\: unisim.vcomponents.LUT2
@@ -29467,7 +30375,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[10]\,
-      I1 => \comp_burst.env_in_reg_n_0_[58]\,
+      I1 => env_in(58),
       O => \comp_burst.env_sum_lsb_3[15]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_8\: unisim.vcomponents.LUT2
@@ -29476,7 +30384,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[9]\,
-      I1 => \comp_burst.env_in_reg_n_0_[57]\,
+      I1 => env_in(57),
       O => \comp_burst.env_sum_lsb_3[15]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_3[15]_i_9\: unisim.vcomponents.LUT2
@@ -29485,7 +30393,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[8]\,
-      I1 => \comp_burst.env_in_reg_n_0_[56]\,
+      I1 => env_in(56),
       O => \comp_burst.env_sum_lsb_3[15]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_3[16]_i_1\: unisim.vcomponents.LUT2
@@ -29503,7 +30411,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[7]\,
-      I1 => \comp_burst.env_in_reg_n_0_[55]\,
+      I1 => env_in(55),
       O => \comp_burst.env_sum_lsb_3[7]_i_2_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_3\: unisim.vcomponents.LUT2
@@ -29512,7 +30420,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[6]\,
-      I1 => \comp_burst.env_in_reg_n_0_[54]\,
+      I1 => env_in(54),
       O => \comp_burst.env_sum_lsb_3[7]_i_3_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_4\: unisim.vcomponents.LUT2
@@ -29521,7 +30429,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[5]\,
-      I1 => \comp_burst.env_in_reg_n_0_[53]\,
+      I1 => env_in(53),
       O => \comp_burst.env_sum_lsb_3[7]_i_4_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_5\: unisim.vcomponents.LUT2
@@ -29530,7 +30438,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[4]\,
-      I1 => \comp_burst.env_in_reg_n_0_[52]\,
+      I1 => env_in(52),
       O => \comp_burst.env_sum_lsb_3[7]_i_5_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_6\: unisim.vcomponents.LUT2
@@ -29539,7 +30447,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[3]\,
-      I1 => \comp_burst.env_in_reg_n_0_[51]\,
+      I1 => env_in(51),
       O => \comp_burst.env_sum_lsb_3[7]_i_6_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_7\: unisim.vcomponents.LUT2
@@ -29548,7 +30456,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[2]\,
-      I1 => \comp_burst.env_in_reg_n_0_[50]\,
+      I1 => env_in(50),
       O => \comp_burst.env_sum_lsb_3[7]_i_7_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_8\: unisim.vcomponents.LUT2
@@ -29557,7 +30465,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[1]\,
-      I1 => \comp_burst.env_in_reg_n_0_[49]\,
+      I1 => env_in(49),
       O => \comp_burst.env_sum_lsb_3[7]_i_8_n_0\
     );
 \comp_burst.env_sum_lsb_3[7]_i_9\: unisim.vcomponents.LUT2
@@ -29566,7 +30474,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_sum_lsb_3_reg_n_0_[0]\,
-      I1 => \comp_burst.env_in_reg_n_0_[48]\,
+      I1 => env_in(48),
       O => \comp_burst.env_sum_lsb_3[7]_i_9_n_0\
     );
 \comp_burst.env_sum_lsb_3_reg[0]\: unisim.vcomponents.FDRE
@@ -31475,38 +32383,1702 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => \comp_burst.env_sum_reg_n_0_[9]\,
       R => '0'
     );
+\comp_burst.env_up[0]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_0\,
+      O => \comp_burst.env_up[0]_i_2_n_0\
+    );
+\comp_burst.env_up[0]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_0\,
+      O => \comp_burst.env_up[0]_i_3_n_0\
+    );
+\comp_burst.env_up[10]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_3\,
+      O => \comp_burst.env_up[10]_i_2_n_0\
+    );
+\comp_burst.env_up[10]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_3\,
+      O => \comp_burst.env_up[10]_i_3_n_0\
+    );
+\comp_burst.env_up[11]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_4\,
+      O => \comp_burst.env_up[11]_i_2_n_0\
+    );
+\comp_burst.env_up[11]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_4\,
+      O => \comp_burst.env_up[11]_i_3_n_0\
+    );
+\comp_burst.env_up[12]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_5\,
+      O => \comp_burst.env_up[12]_i_2_n_0\
+    );
+\comp_burst.env_up[12]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_5\,
+      O => \comp_burst.env_up[12]_i_3_n_0\
+    );
+\comp_burst.env_up[13]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_6\,
+      O => \comp_burst.env_up[13]_i_2_n_0\
+    );
+\comp_burst.env_up[13]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_6\,
+      O => \comp_burst.env_up[13]_i_3_n_0\
+    );
+\comp_burst.env_up[14]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_0\,
+      O => \comp_burst.env_up[14]_i_2_n_0\
+    );
+\comp_burst.env_up[14]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_0\,
+      O => \comp_burst.env_up[14]_i_3_n_0\
+    );
+\comp_burst.env_up[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_1\,
+      O => \comp_burst.env_up[15]_i_2_n_0\
+    );
+\comp_burst.env_up[15]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_1\,
+      O => \comp_burst.env_up[15]_i_3_n_0\
+    );
+\comp_burst.env_up[16]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_2\,
+      O => \comp_burst.env_up[16]_i_2_n_0\
+    );
+\comp_burst.env_up[16]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_2\,
+      O => \comp_burst.env_up[16]_i_3_n_0\
+    );
+\comp_burst.env_up[17]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_3\,
+      O => \comp_burst.env_up[17]_i_2_n_0\
+    );
+\comp_burst.env_up[17]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_3\,
+      O => \comp_burst.env_up[17]_i_3_n_0\
+    );
+\comp_burst.env_up[18]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_4\,
+      O => \comp_burst.env_up[18]_i_2_n_0\
+    );
+\comp_burst.env_up[18]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_4\,
+      O => \comp_burst.env_up[18]_i_3_n_0\
+    );
+\comp_burst.env_up[19]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_5\,
+      O => \comp_burst.env_up[19]_i_2_n_0\
+    );
+\comp_burst.env_up[19]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_5\,
+      O => \comp_burst.env_up[19]_i_3_n_0\
+    );
+\comp_burst.env_up[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_1\,
+      O => \comp_burst.env_up[1]_i_2_n_0\
+    );
+\comp_burst.env_up[1]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_1\,
+      O => \comp_burst.env_up[1]_i_3_n_0\
+    );
+\comp_burst.env_up[20]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_14_20_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_14_20_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_14_20_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_14_20_n_6\,
+      O => \comp_burst.env_up[20]_i_2_n_0\
+    );
+\comp_burst.env_up[20]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_14_20_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_14_20_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_14_20_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_14_20_n_6\,
+      O => \comp_burst.env_up[20]_i_3_n_0\
+    );
+\comp_burst.env_up[21]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_0\,
+      O => \comp_burst.env_up[21]_i_2_n_0\
+    );
+\comp_burst.env_up[21]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_0\,
+      O => \comp_burst.env_up[21]_i_3_n_0\
+    );
+\comp_burst.env_up[22]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_1\,
+      O => \comp_burst.env_up[22]_i_2_n_0\
+    );
+\comp_burst.env_up[22]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_1\,
+      O => \comp_burst.env_up[22]_i_3_n_0\
+    );
+\comp_burst.env_up[23]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_2\,
+      O => \comp_burst.env_up[23]_i_2_n_0\
+    );
+\comp_burst.env_up[23]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_2\,
+      O => \comp_burst.env_up[23]_i_3_n_0\
+    );
+\comp_burst.env_up[24]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_3\,
+      O => \comp_burst.env_up[24]_i_2_n_0\
+    );
+\comp_burst.env_up[24]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_3\,
+      O => \comp_burst.env_up[24]_i_3_n_0\
+    );
+\comp_burst.env_up[25]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_4\,
+      O => \comp_burst.env_up[25]_i_2_n_0\
+    );
+\comp_burst.env_up[25]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_4\,
+      O => \comp_burst.env_up[25]_i_3_n_0\
+    );
+\comp_burst.env_up[26]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_5\,
+      O => \comp_burst.env_up[26]_i_2_n_0\
+    );
+\comp_burst.env_up[26]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_5\,
+      O => \comp_burst.env_up[26]_i_3_n_0\
+    );
+\comp_burst.env_up[27]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_21_27_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_21_27_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_21_27_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_21_27_n_6\,
+      O => \comp_burst.env_up[27]_i_2_n_0\
+    );
+\comp_burst.env_up[27]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_21_27_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_21_27_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_21_27_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_21_27_n_6\,
+      O => \comp_burst.env_up[27]_i_3_n_0\
+    );
+\comp_burst.env_up[28]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_0\,
+      O => \comp_burst.env_up[28]_i_2_n_0\
+    );
+\comp_burst.env_up[28]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_0\,
+      O => \comp_burst.env_up[28]_i_3_n_0\
+    );
+\comp_burst.env_up[29]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_1\,
+      O => \comp_burst.env_up[29]_i_2_n_0\
+    );
+\comp_burst.env_up[29]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_1\,
+      O => \comp_burst.env_up[29]_i_3_n_0\
+    );
+\comp_burst.env_up[2]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_2\,
+      O => \comp_burst.env_up[2]_i_2_n_0\
+    );
+\comp_burst.env_up[2]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_2\,
+      O => \comp_burst.env_up[2]_i_3_n_0\
+    );
+\comp_burst.env_up[30]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_2\,
+      O => \comp_burst.env_up[30]_i_2_n_0\
+    );
+\comp_burst.env_up[30]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_2\,
+      O => \comp_burst.env_up[30]_i_3_n_0\
+    );
+\comp_burst.env_up[31]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_3\,
+      O => \comp_burst.env_up[31]_i_2_n_0\
+    );
+\comp_burst.env_up[31]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_3\,
+      O => \comp_burst.env_up[31]_i_3_n_0\
+    );
+\comp_burst.env_up[32]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_4\,
+      O => \comp_burst.env_up[32]_i_2_n_0\
+    );
+\comp_burst.env_up[32]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_4\,
+      O => \comp_burst.env_up[32]_i_3_n_0\
+    );
+\comp_burst.env_up[33]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_5\,
+      O => \comp_burst.env_up[33]_i_2_n_0\
+    );
+\comp_burst.env_up[33]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_5\,
+      O => \comp_burst.env_up[33]_i_3_n_0\
+    );
+\comp_burst.env_up[34]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_28_34_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_28_34_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_28_34_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_28_34_n_6\,
+      O => \comp_burst.env_up[34]_i_2_n_0\
+    );
+\comp_burst.env_up[34]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_28_34_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_28_34_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_28_34_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_28_34_n_6\,
+      O => \comp_burst.env_up[34]_i_3_n_0\
+    );
+\comp_burst.env_up[35]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_0\,
+      O => \comp_burst.env_up[35]_i_2_n_0\
+    );
+\comp_burst.env_up[35]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_0\,
+      O => \comp_burst.env_up[35]_i_3_n_0\
+    );
+\comp_burst.env_up[36]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_1\,
+      O => \comp_burst.env_up[36]_i_2_n_0\
+    );
+\comp_burst.env_up[36]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_1\,
+      O => \comp_burst.env_up[36]_i_3_n_0\
+    );
+\comp_burst.env_up[37]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_2\,
+      O => \comp_burst.env_up[37]_i_2_n_0\
+    );
+\comp_burst.env_up[37]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_2\,
+      O => \comp_burst.env_up[37]_i_3_n_0\
+    );
+\comp_burst.env_up[38]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_3\,
+      O => \comp_burst.env_up[38]_i_2_n_0\
+    );
+\comp_burst.env_up[38]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_3\,
+      O => \comp_burst.env_up[38]_i_3_n_0\
+    );
+\comp_burst.env_up[39]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_4\,
+      O => \comp_burst.env_up[39]_i_2_n_0\
+    );
+\comp_burst.env_up[39]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_4\,
+      O => \comp_burst.env_up[39]_i_3_n_0\
+    );
+\comp_burst.env_up[3]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_3\,
+      O => \comp_burst.env_up[3]_i_2_n_0\
+    );
+\comp_burst.env_up[3]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_3\,
+      O => \comp_burst.env_up[3]_i_3_n_0\
+    );
+\comp_burst.env_up[40]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_5\,
+      O => \comp_burst.env_up[40]_i_2_n_0\
+    );
+\comp_burst.env_up[40]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_5\,
+      O => \comp_burst.env_up[40]_i_3_n_0\
+    );
+\comp_burst.env_up[41]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_35_41_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_35_41_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_35_41_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_35_41_n_6\,
+      O => \comp_burst.env_up[41]_i_2_n_0\
+    );
+\comp_burst.env_up[41]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_35_41_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_35_41_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_35_41_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_35_41_n_6\,
+      O => \comp_burst.env_up[41]_i_3_n_0\
+    );
+\comp_burst.env_up[42]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_0\,
+      O => \comp_burst.env_up[42]_i_2_n_0\
+    );
+\comp_burst.env_up[42]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_0\,
+      O => \comp_burst.env_up[42]_i_3_n_0\
+    );
+\comp_burst.env_up[43]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_1\,
+      O => \comp_burst.env_up[43]_i_2_n_0\
+    );
+\comp_burst.env_up[43]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_1\,
+      O => \comp_burst.env_up[43]_i_3_n_0\
+    );
+\comp_burst.env_up[44]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_2\,
+      O => \comp_burst.env_up[44]_i_2_n_0\
+    );
+\comp_burst.env_up[44]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_2\,
+      O => \comp_burst.env_up[44]_i_3_n_0\
+    );
+\comp_burst.env_up[45]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_3\,
+      O => \comp_burst.env_up[45]_i_2_n_0\
+    );
+\comp_burst.env_up[45]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_3\,
+      O => \comp_burst.env_up[45]_i_3_n_0\
+    );
+\comp_burst.env_up[46]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_4\,
+      O => \comp_burst.env_up[46]_i_2_n_0\
+    );
+\comp_burst.env_up[46]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_4\,
+      O => \comp_burst.env_up[46]_i_3_n_0\
+    );
+\comp_burst.env_up[47]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_5\,
+      O => \comp_burst.env_up[47]_i_2_n_0\
+    );
+\comp_burst.env_up[47]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_5\,
+      O => \comp_burst.env_up[47]_i_3_n_0\
+    );
+\comp_burst.env_up[48]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_42_48_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_42_48_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_42_48_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_42_48_n_6\,
+      O => \comp_burst.env_up[48]_i_2_n_0\
+    );
+\comp_burst.env_up[48]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_42_48_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_42_48_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_42_48_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_42_48_n_6\,
+      O => \comp_burst.env_up[48]_i_3_n_0\
+    );
+\comp_burst.env_up[49]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_0\,
+      O => \comp_burst.env_up[49]_i_2_n_0\
+    );
+\comp_burst.env_up[49]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_0\,
+      O => \comp_burst.env_up[49]_i_3_n_0\
+    );
+\comp_burst.env_up[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_4\,
+      O => \comp_burst.env_up[4]_i_2_n_0\
+    );
+\comp_burst.env_up[4]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_4\,
+      O => \comp_burst.env_up[4]_i_3_n_0\
+    );
+\comp_burst.env_up[50]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_1\,
+      O => \comp_burst.env_up[50]_i_2_n_0\
+    );
+\comp_burst.env_up[50]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_1\,
+      O => \comp_burst.env_up[50]_i_3_n_0\
+    );
+\comp_burst.env_up[51]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_2\,
+      O => \comp_burst.env_up[51]_i_2_n_0\
+    );
+\comp_burst.env_up[51]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_2\,
+      O => \comp_burst.env_up[51]_i_3_n_0\
+    );
+\comp_burst.env_up[52]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_3\,
+      O => \comp_burst.env_up[52]_i_2_n_0\
+    );
+\comp_burst.env_up[52]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_3\,
+      O => \comp_burst.env_up[52]_i_3_n_0\
+    );
+\comp_burst.env_up[53]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_4\,
+      O => \comp_burst.env_up[53]_i_2_n_0\
+    );
+\comp_burst.env_up[53]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_4\,
+      O => \comp_burst.env_up[53]_i_3_n_0\
+    );
+\comp_burst.env_up[54]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_5\,
+      O => \comp_burst.env_up[54]_i_2_n_0\
+    );
+\comp_burst.env_up[54]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_5\,
+      O => \comp_burst.env_up[54]_i_3_n_0\
+    );
+\comp_burst.env_up[55]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_49_55_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_49_55_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_49_55_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_49_55_n_6\,
+      O => \comp_burst.env_up[55]_i_2_n_0\
+    );
+\comp_burst.env_up[55]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_49_55_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_49_55_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_49_55_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_49_55_n_6\,
+      O => \comp_burst.env_up[55]_i_3_n_0\
+    );
+\comp_burst.env_up[56]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_0\,
+      O => \comp_burst.env_up[56]_i_2_n_0\
+    );
+\comp_burst.env_up[56]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_0\,
+      O => \comp_burst.env_up[56]_i_3_n_0\
+    );
+\comp_burst.env_up[57]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_1\,
+      O => \comp_burst.env_up[57]_i_2_n_0\
+    );
+\comp_burst.env_up[57]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_1\,
+      O => \comp_burst.env_up[57]_i_3_n_0\
+    );
+\comp_burst.env_up[58]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_2\,
+      O => \comp_burst.env_up[58]_i_2_n_0\
+    );
+\comp_burst.env_up[58]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_2\,
+      O => \comp_burst.env_up[58]_i_3_n_0\
+    );
+\comp_burst.env_up[59]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_3\,
+      O => \comp_burst.env_up[59]_i_2_n_0\
+    );
+\comp_burst.env_up[59]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_3\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_3\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_3\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_3\,
+      O => \comp_burst.env_up[59]_i_3_n_0\
+    );
+\comp_burst.env_up[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_5\,
+      O => \comp_burst.env_up[5]_i_2_n_0\
+    );
+\comp_burst.env_up[5]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_5\,
+      O => \comp_burst.env_up[5]_i_3_n_0\
+    );
+\comp_burst.env_up[60]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_4\,
+      O => \comp_burst.env_up[60]_i_2_n_0\
+    );
+\comp_burst.env_up[60]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_4\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_4\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_4\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_4\,
+      O => \comp_burst.env_up[60]_i_3_n_0\
+    );
+\comp_burst.env_up[61]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_5\,
+      O => \comp_burst.env_up[61]_i_2_n_0\
+    );
+\comp_burst.env_up[61]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_5\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_5\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_5\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_5\,
+      O => \comp_burst.env_up[61]_i_3_n_0\
+    );
+\comp_burst.env_up[62]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_56_62_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_56_62_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_56_62_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_56_62_n_6\,
+      O => \comp_burst.env_up[62]_i_2_n_0\
+    );
+\comp_burst.env_up[62]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_56_62_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_56_62_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_56_62_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_56_62_n_6\,
+      O => \comp_burst.env_up[62]_i_3_n_0\
+    );
+\comp_burst.env_up[63]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_63_63_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_63_63_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_63_63_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_63_63_n_0\,
+      O => \comp_burst.env_up[63]_i_2_n_0\
+    );
+\comp_burst.env_up[63]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_63_63_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_63_63_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_63_63_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_63_63_n_0\,
+      O => \comp_burst.env_up[63]_i_3_n_0\
+    );
+\comp_burst.env_up[6]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_0_6_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_0_6_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_0_6_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_0_6_n_6\,
+      O => \comp_burst.env_up[6]_i_2_n_0\
+    );
+\comp_burst.env_up[6]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_0_6_n_6\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_0_6_n_6\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_0_6_n_6\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_0_6_n_6\,
+      O => \comp_burst.env_up[6]_i_3_n_0\
+    );
+\comp_burst.env_up[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_0\,
+      O => \comp_burst.env_up[7]_i_2_n_0\
+    );
+\comp_burst.env_up[7]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_0\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_0\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_0\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_0\,
+      O => \comp_burst.env_up[7]_i_3_n_0\
+    );
+\comp_burst.env_up[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_1\,
+      O => \comp_burst.env_up[8]_i_2_n_0\
+    );
+\comp_burst.env_up[8]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_1\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_1\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_1\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_1\,
+      O => \comp_burst.env_up[8]_i_3_n_0\
+    );
+\comp_burst.env_up[9]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_192_255_7_13_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_128_191_7_13_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_64_127_7_13_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_0_63_7_13_n_2\,
+      O => \comp_burst.env_up[9]_i_2_n_0\
+    );
+\comp_burst.env_up[9]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => \comp_burst.mem_env_up_reg_448_511_7_13_n_2\,
+      I1 => \comp_burst.mem_env_up_reg_384_447_7_13_n_2\,
+      I2 => env_up_ptr(7),
+      I3 => \comp_burst.mem_env_up_reg_320_383_7_13_n_2\,
+      I4 => env_up_ptr(6),
+      I5 => \comp_burst.mem_env_up_reg_256_319_7_13_n_2\,
+      O => \comp_burst.env_up[9]_i_3_n_0\
+    );
 \comp_burst.env_up_adr[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \comp_burst.env_up_adr_reg\(0),
-      O => \p_0_in__0\(0)
+      O => \p_0_in__1\(0)
     );
 \comp_burst.env_up_adr[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"A6AAAAAAAAAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(10),
-      I1 => \comp_burst.env_up_adr_reg__0\(8),
+      I0 => \comp_burst.env_up_adr_reg\(10),
+      I1 => \comp_burst.env_up_adr_reg\(8),
       I2 => \comp_burst.env_up_adr[10]_i_2_n_0\,
-      I3 => \comp_burst.env_up_adr_reg__0\(6),
-      I4 => \comp_burst.env_up_adr_reg__0\(7),
-      I5 => \comp_burst.env_up_adr_reg__0\(9),
-      O => \p_0_in__0\(10)
+      I3 => \comp_burst.env_up_adr_reg\(6),
+      I4 => \comp_burst.env_up_adr_reg\(7),
+      I5 => \comp_burst.env_up_adr_reg\(9),
+      O => \p_0_in__1\(10)
     );
 \comp_burst.env_up_adr[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(4),
-      I1 => \comp_burst.env_up_adr_reg__0\(2),
+      I0 => \comp_burst.env_up_adr_reg\(4),
+      I1 => \comp_burst.env_up_adr_reg\(2),
       I2 => \comp_burst.env_up_adr_reg\(0),
       I3 => \comp_burst.env_up_adr_reg\(1),
-      I4 => \comp_burst.env_up_adr_reg__0\(3),
-      I5 => \comp_burst.env_up_adr_reg__0\(5),
+      I4 => \comp_burst.env_up_adr_reg\(3),
+      I5 => \comp_burst.env_up_adr_reg\(5),
       O => \comp_burst.env_up_adr[10]_i_2_n_0\
     );
 \comp_burst.env_up_adr[1]_i_1\: unisim.vcomponents.LUT2
@@ -31516,66 +34088,66 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
         port map (
       I0 => \comp_burst.env_up_adr_reg\(0),
       I1 => \comp_burst.env_up_adr_reg\(1),
-      O => \p_0_in__0\(1)
+      O => \p_0_in__1\(1)
     );
 \comp_burst.env_up_adr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"6A"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(2),
+      I0 => \comp_burst.env_up_adr_reg\(2),
       I1 => \comp_burst.env_up_adr_reg\(0),
       I2 => \comp_burst.env_up_adr_reg\(1),
-      O => \p_0_in__0\(2)
+      O => \p_0_in__1\(2)
     );
 \comp_burst.env_up_adr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"6AAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(3),
+      I0 => \comp_burst.env_up_adr_reg\(3),
       I1 => \comp_burst.env_up_adr_reg\(1),
       I2 => \comp_burst.env_up_adr_reg\(0),
-      I3 => \comp_burst.env_up_adr_reg__0\(2),
-      O => \p_0_in__0\(3)
+      I3 => \comp_burst.env_up_adr_reg\(2),
+      O => \p_0_in__1\(3)
     );
 \comp_burst.env_up_adr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(4),
-      I1 => \comp_burst.env_up_adr_reg__0\(2),
+      I0 => \comp_burst.env_up_adr_reg\(4),
+      I1 => \comp_burst.env_up_adr_reg\(2),
       I2 => \comp_burst.env_up_adr_reg\(0),
       I3 => \comp_burst.env_up_adr_reg\(1),
-      I4 => \comp_burst.env_up_adr_reg__0\(3),
-      O => \p_0_in__0\(4)
+      I4 => \comp_burst.env_up_adr_reg\(3),
+      O => \p_0_in__1\(4)
     );
 \comp_burst.env_up_adr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(5),
-      I1 => \comp_burst.env_up_adr_reg__0\(3),
+      I0 => \comp_burst.env_up_adr_reg\(5),
+      I1 => \comp_burst.env_up_adr_reg\(3),
       I2 => \comp_burst.env_up_adr_reg\(1),
       I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg__0\(2),
-      I5 => \comp_burst.env_up_adr_reg__0\(4),
-      O => \p_0_in__0\(5)
+      I4 => \comp_burst.env_up_adr_reg\(2),
+      I5 => \comp_burst.env_up_adr_reg\(4),
+      O => \p_0_in__1\(5)
     );
 \comp_burst.env_up_adr[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"AA6AAAAAAAAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(6),
-      I1 => \comp_burst.env_up_adr_reg__0\(4),
-      I2 => \comp_burst.env_up_adr_reg__0\(2),
+      I0 => \comp_burst.env_up_adr_reg\(6),
+      I1 => \comp_burst.env_up_adr_reg\(4),
+      I2 => \comp_burst.env_up_adr_reg\(2),
       I3 => \comp_burst.env_up_adr[6]_i_2_n_0\,
-      I4 => \comp_burst.env_up_adr_reg__0\(3),
-      I5 => \comp_burst.env_up_adr_reg__0\(5),
-      O => \p_0_in__0\(6)
+      I4 => \comp_burst.env_up_adr_reg\(3),
+      I5 => \comp_burst.env_up_adr_reg\(5),
+      O => \p_0_in__1\(6)
     );
 \comp_burst.env_up_adr[6]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -31592,120 +34164,120 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => \comp_burst.env_up_adr[10]_i_2_n_0\,
-      I1 => \comp_burst.env_up_adr_reg__0\(6),
-      I2 => \comp_burst.env_up_adr_reg__0\(7),
-      O => \p_0_in__0\(7)
+      I1 => \comp_burst.env_up_adr_reg\(6),
+      I2 => \comp_burst.env_up_adr_reg\(7),
+      O => \p_0_in__1\(7)
     );
 \comp_burst.env_up_adr[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9AAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(8),
+      I0 => \comp_burst.env_up_adr_reg\(8),
       I1 => \comp_burst.env_up_adr[10]_i_2_n_0\,
-      I2 => \comp_burst.env_up_adr_reg__0\(6),
-      I3 => \comp_burst.env_up_adr_reg__0\(7),
-      O => \p_0_in__0\(8)
+      I2 => \comp_burst.env_up_adr_reg\(6),
+      I3 => \comp_burst.env_up_adr_reg\(7),
+      O => \p_0_in__1\(8)
     );
 \comp_burst.env_up_adr[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"AA6AAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_adr_reg__0\(9),
-      I1 => \comp_burst.env_up_adr_reg__0\(7),
-      I2 => \comp_burst.env_up_adr_reg__0\(6),
+      I0 => \comp_burst.env_up_adr_reg\(9),
+      I1 => \comp_burst.env_up_adr_reg\(7),
+      I2 => \comp_burst.env_up_adr_reg\(6),
       I3 => \comp_burst.env_up_adr[10]_i_2_n_0\,
-      I4 => \comp_burst.env_up_adr_reg__0\(8),
-      O => \p_0_in__0\(9)
+      I4 => \comp_burst.env_up_adr_reg\(8),
+      O => \p_0_in__1\(9)
     );
 \comp_burst.env_up_adr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(0),
+      D => \p_0_in__1\(0),
       Q => \comp_burst.env_up_adr_reg\(0),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      R => load
     );
 \comp_burst.env_up_adr_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(10),
-      Q => \comp_burst.env_up_adr_reg__0\(10),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(10),
+      Q => \comp_burst.env_up_adr_reg\(10),
+      R => load
     );
 \comp_burst.env_up_adr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(1),
+      D => \p_0_in__1\(1),
       Q => \comp_burst.env_up_adr_reg\(1),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      R => load
     );
 \comp_burst.env_up_adr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(2),
-      Q => \comp_burst.env_up_adr_reg__0\(2),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(2),
+      Q => \comp_burst.env_up_adr_reg\(2),
+      R => load
     );
 \comp_burst.env_up_adr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(3),
-      Q => \comp_burst.env_up_adr_reg__0\(3),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(3),
+      Q => \comp_burst.env_up_adr_reg\(3),
+      R => load
     );
 \comp_burst.env_up_adr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(4),
-      Q => \comp_burst.env_up_adr_reg__0\(4),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(4),
+      Q => \comp_burst.env_up_adr_reg\(4),
+      R => load
     );
 \comp_burst.env_up_adr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(5),
-      Q => \comp_burst.env_up_adr_reg__0\(5),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(5),
+      Q => \comp_burst.env_up_adr_reg\(5),
+      R => load
     );
 \comp_burst.env_up_adr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(6),
-      Q => \comp_burst.env_up_adr_reg__0\(6),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(6),
+      Q => \comp_burst.env_up_adr_reg\(6),
+      R => load
     );
 \comp_burst.env_up_adr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(7),
-      Q => \comp_burst.env_up_adr_reg__0\(7),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(7),
+      Q => \comp_burst.env_up_adr_reg\(7),
+      R => load
     );
 \comp_burst.env_up_adr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(8),
-      Q => \comp_burst.env_up_adr_reg__0\(8),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(8),
+      Q => \comp_burst.env_up_adr_reg\(8),
+      R => load
     );
 \comp_burst.env_up_adr_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \p_0_in__0\(9),
-      Q => \comp_burst.env_up_adr_reg__0\(9),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      D => \p_0_in__1\(9),
+      Q => \comp_burst.env_up_adr_reg\(9),
+      R => load
     );
 \comp_burst.env_up_ind_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -31719,7 +34291,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(10),
+      D => \comp_burst.env_up_adr_reg\(10),
       Q => env_up_ind(10),
       R => '0'
     );
@@ -31735,7 +34307,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(2),
+      D => \comp_burst.env_up_adr_reg\(2),
       Q => env_up_ind(2),
       R => '0'
     );
@@ -31743,7 +34315,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(3),
+      D => \comp_burst.env_up_adr_reg\(3),
       Q => env_up_ind(3),
       R => '0'
     );
@@ -31751,7 +34323,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(4),
+      D => \comp_burst.env_up_adr_reg\(4),
       Q => env_up_ind(4),
       R => '0'
     );
@@ -31759,7 +34331,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(5),
+      D => \comp_burst.env_up_adr_reg\(5),
       Q => env_up_ind(5),
       R => '0'
     );
@@ -31767,7 +34339,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(6),
+      D => \comp_burst.env_up_adr_reg\(6),
       Q => env_up_ind(6),
       R => '0'
     );
@@ -31775,7 +34347,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(7),
+      D => \comp_burst.env_up_adr_reg\(7),
       Q => env_up_ind(7),
       R => '0'
     );
@@ -31783,7 +34355,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(8),
+      D => \comp_burst.env_up_adr_reg\(8),
       Q => env_up_ind(8),
       R => '0'
     );
@@ -31791,7 +34363,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_up_adr_reg__0\(9),
+      D => \comp_burst.env_up_adr_reg\(9),
       Q => env_up_ind(9),
       R => '0'
     );
@@ -32245,369 +34817,1176 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => \comp_burst.env_up_max_val_reg_n_0_[9]\,
       R => \comp_burst.env_up_max_val[15]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[1]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.env_up_ptr[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6"
+      INIT => X"9A"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(0),
-      I1 => \comp_burst.env_up_ptr_reg\(1),
-      O => \p_0_in__1\(1)
+      I0 => env_up_ptr(0),
+      I1 => \comp_burst.env_up_adr_reg\(0),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      O => \comp_burst.env_up_ptr[0]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[2]_i_1\: unisim.vcomponents.LUT3
+\comp_burst.env_up_ptr[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6A"
+      INIT => X"A6AA"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(2),
-      I1 => \comp_burst.env_up_ptr_reg\(0),
-      I2 => \comp_burst.env_up_ptr_reg\(1),
-      O => \p_0_in__1\(2)
+      I0 => env_up_ptr(1),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => env_up_ptr(0),
+      O => \comp_burst.env_up_ptr[1]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[3]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.env_up_ptr[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6AAA"
+      INIT => X"A6AAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(3),
-      I1 => \comp_burst.env_up_ptr_reg\(1),
-      I2 => \comp_burst.env_up_ptr_reg\(0),
-      I3 => \comp_burst.env_up_ptr_reg\(2),
-      O => \p_0_in__1\(3)
+      I0 => env_up_ptr(2),
+      I1 => env_up_ptr(0),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => env_up_ptr(1),
+      O => \comp_burst.env_up_ptr[2]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[4]_i_1\: unisim.vcomponents.LUT5
+\comp_burst.env_up_ptr[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"AA6AAAAAAAAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(4),
-      I1 => \comp_burst.env_up_ptr_reg\(2),
-      I2 => \comp_burst.env_up_ptr_reg\(0),
-      I3 => \comp_burst.env_up_ptr_reg\(1),
-      I4 => \comp_burst.env_up_ptr_reg\(3),
-      O => \p_0_in__1\(4)
+      I0 => env_up_ptr(3),
+      I1 => env_up_ptr(1),
+      I2 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(0),
+      I4 => env_up_ptr(0),
+      I5 => env_up_ptr(2),
+      O => \comp_burst.env_up_ptr[3]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[5]_i_1\: unisim.vcomponents.LUT6
+\comp_burst.env_up_ptr[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
+      INIT => X"AA6AAAAAAAAAAAAA"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(5),
-      I1 => \comp_burst.env_up_ptr_reg\(3),
-      I2 => \comp_burst.env_up_ptr_reg\(1),
-      I3 => \comp_burst.env_up_ptr_reg\(0),
-      I4 => \comp_burst.env_up_ptr_reg\(2),
-      I5 => \comp_burst.env_up_ptr_reg\(4),
-      O => \p_0_in__1\(5)
+      I0 => env_up_ptr(4),
+      I1 => env_up_ptr(2),
+      I2 => env_up_ptr(0),
+      I3 => \comp_burst.env_up_ptr[4]_i_2_n_0\,
+      I4 => env_up_ptr(1),
+      I5 => env_up_ptr(3),
+      O => \comp_burst.env_up_ptr[4]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[6]_i_1\: unisim.vcomponents.LUT2
+\comp_burst.env_up_ptr[4]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"B"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(6),
-      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      O => \p_0_in__1\(6)
+      I0 => \comp_burst.env_up_adr_reg\(0),
+      I1 => \comp_burst.env_up_adr_reg\(1),
+      O => \comp_burst.env_up_ptr[4]_i_2_n_0\
     );
-\comp_burst.env_up_ptr[7]_i_1\: unisim.vcomponents.LUT3
+\comp_burst.env_up_ptr[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B4"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      I1 => \comp_burst.env_up_ptr_reg\(6),
-      I2 => \comp_burst.env_up_ptr_reg\(7),
-      O => \p_0_in__1\(7)
+      I0 => \comp_burst.env_up_ptr[8]_i_2_n_0\,
+      I1 => env_up_ptr(4),
+      I2 => env_up_ptr(5),
+      O => \comp_burst.env_up_ptr[5]_i_1_n_0\
     );
-\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT4
+\comp_burst.env_up_ptr[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"9AAA"
     )
         port map (
-      I0 => \comp_burst.env_up_ptr_reg\(8),
-      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      I2 => \comp_burst.env_up_ptr_reg\(6),
-      I3 => \comp_burst.env_up_ptr_reg\(7),
-      O => \p_0_in__1\(8)
+      I0 => env_up_ptr(6),
+      I1 => \comp_burst.env_up_ptr[8]_i_2_n_0\,
+      I2 => env_up_ptr(4),
+      I3 => env_up_ptr(5),
+      O => \comp_burst.env_up_ptr[6]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AA6AAAAA"
+    )
+        port map (
+      I0 => env_up_ptr(7),
+      I1 => env_up_ptr(5),
+      I2 => env_up_ptr(4),
+      I3 => \comp_burst.env_up_ptr[8]_i_2_n_0\,
+      I4 => env_up_ptr(6),
+      O => \comp_burst.env_up_ptr[7]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A6AAAAAAAAAAAAAA"
+    )
+        port map (
+      I0 => env_up_ptr(8),
+      I1 => env_up_ptr(6),
+      I2 => \comp_burst.env_up_ptr[8]_i_2_n_0\,
+      I3 => env_up_ptr(4),
+      I4 => env_up_ptr(5),
+      I5 => env_up_ptr(7),
+      O => \comp_burst.env_up_ptr[8]_i_1_n_0\
+    );
+\comp_burst.env_up_ptr[8]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F7FFFFFFFFFFFFFF"
+    )
+        port map (
+      I0 => env_up_ptr(2),
+      I1 => env_up_ptr(0),
+      I2 => \comp_burst.env_up_adr_reg\(0),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => env_up_ptr(1),
+      I5 => env_up_ptr(3),
+      O => \comp_burst.env_up_ptr[8]_i_2_n_0\
     );
 \comp_burst.env_up_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(0),
-      Q => \comp_burst.env_up_ptr_reg\(0),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[0]_i_1_n_0\,
+      Q => env_up_ptr(0),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(1),
-      Q => \comp_burst.env_up_ptr_reg\(1),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[1]_i_1_n_0\,
+      Q => env_up_ptr(1),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(2),
-      Q => \comp_burst.env_up_ptr_reg\(2),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[2]_i_1_n_0\,
+      Q => env_up_ptr(2),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(3),
-      Q => \comp_burst.env_up_ptr_reg\(3),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[3]_i_1_n_0\,
+      Q => env_up_ptr(3),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(4),
-      Q => \comp_burst.env_up_ptr_reg\(4),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[4]_i_1_n_0\,
+      Q => env_up_ptr(4),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(5),
-      Q => \comp_burst.env_up_ptr_reg\(5),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[5]_i_1_n_0\,
+      Q => env_up_ptr(5),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(6),
-      Q => \comp_burst.env_up_ptr_reg\(6),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[6]_i_1_n_0\,
+      Q => env_up_ptr(6),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(7),
-      Q => \comp_burst.env_up_ptr_reg\(7),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      CE => '1',
+      D => \comp_burst.env_up_ptr[7]_i_1_n_0\,
+      Q => env_up_ptr(7),
+      R => load
     );
 \comp_burst.env_up_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(8),
-      Q => \comp_burst.env_up_ptr_reg\(8),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \p_0_in__1\(0),
-      Q => env_up_ptr(0),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\,
-      Q => env_up_ptr(1),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\,
-      Q => env_up_ptr(2),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\,
-      Q => env_up_ptr(3),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\,
-      Q => env_up_ptr(4),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\,
-      Q => env_up_ptr(5),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\,
-      Q => env_up_ptr(6),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\,
-      Q => env_up_ptr(7),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
-    );
-\comp_burst.env_up_ptr_reg_rep[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\,
-      D => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\,
+      CE => '1',
+      D => \comp_burst.env_up_ptr[8]_i_1_n_0\,
       Q => env_up_ptr(8),
-      R => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+      R => load
     );
-\comp_burst.env_up_ptr_rep[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(0),
-      O => \p_0_in__1\(0)
+\comp_burst.env_up_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(0),
+      Q => env_up(0),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[1]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(0),
-      I1 => \comp_burst.env_up_ptr_reg\(1),
-      O => \comp_burst.env_up_ptr_rep[1]_i_1_n_0\
+\comp_burst.env_up_reg[0]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[0]_i_2_n_0\,
+      I1 => \comp_burst.env_up[0]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(0),
+      S => env_up_ptr(8)
     );
-\comp_burst.env_up_ptr_rep[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"6A"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(2),
-      I1 => \comp_burst.env_up_ptr_reg\(0),
-      I2 => \comp_burst.env_up_ptr_reg\(1),
-      O => \comp_burst.env_up_ptr_rep[2]_i_1_n_0\
+\comp_burst.env_up_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(10),
+      Q => env_up(10),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"6AAA"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(3),
-      I1 => \comp_burst.env_up_ptr_reg\(1),
-      I2 => \comp_burst.env_up_ptr_reg\(0),
-      I3 => \comp_burst.env_up_ptr_reg\(2),
-      O => \comp_burst.env_up_ptr_rep[3]_i_1_n_0\
+\comp_burst.env_up_reg[10]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[10]_i_2_n_0\,
+      I1 => \comp_burst.env_up[10]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(10),
+      S => env_up_ptr(8)
     );
-\comp_burst.env_up_ptr_rep[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"6AAAAAAA"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(4),
-      I1 => \comp_burst.env_up_ptr_reg\(2),
-      I2 => \comp_burst.env_up_ptr_reg\(0),
-      I3 => \comp_burst.env_up_ptr_reg\(1),
-      I4 => \comp_burst.env_up_ptr_reg\(3),
-      O => \comp_burst.env_up_ptr_rep[4]_i_1_n_0\
+\comp_burst.env_up_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(11),
+      Q => env_up(11),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(5),
-      I1 => \comp_burst.env_up_ptr_reg\(3),
-      I2 => \comp_burst.env_up_ptr_reg\(1),
-      I3 => \comp_burst.env_up_ptr_reg\(0),
-      I4 => \comp_burst.env_up_ptr_reg\(2),
-      I5 => \comp_burst.env_up_ptr_reg\(4),
-      O => \comp_burst.env_up_ptr_rep[5]_i_1_n_0\
+\comp_burst.env_up_reg[11]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[11]_i_2_n_0\,
+      I1 => \comp_burst.env_up[11]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(11),
+      S => env_up_ptr(8)
     );
-\comp_burst.env_up_ptr_rep[6]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(6),
-      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      O => \comp_burst.env_up_ptr_rep[6]_i_1_n_0\
+\comp_burst.env_up_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(12),
+      Q => env_up(12),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B4"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      I1 => \comp_burst.env_up_ptr_reg\(6),
-      I2 => \comp_burst.env_up_ptr_reg\(7),
-      O => \comp_burst.env_up_ptr_rep[7]_i_1_n_0\
+\comp_burst.env_up_reg[12]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[12]_i_2_n_0\,
+      I1 => \comp_burst.env_up[12]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(12),
+      S => env_up_ptr(8)
     );
-\comp_burst.env_up_ptr_rep[8]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => load_env,
-      O => \comp_burst.env_up_ptr_rep[8]_i_1_n_0\
+\comp_burst.env_up_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(13),
+      Q => env_up(13),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[8]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => \comp_burst.env_up_adr_reg\(1),
-      I1 => \comp_burst.env_up_adr_reg\(0),
-      O => \comp_burst.env_up_ptr_rep[8]_i_2_n_0\
+\comp_burst.env_up_reg[13]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[13]_i_2_n_0\,
+      I1 => \comp_burst.env_up[13]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(13),
+      S => env_up_ptr(8)
     );
-\comp_burst.env_up_ptr_rep[8]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"9AAA"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(8),
-      I1 => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\,
-      I2 => \comp_burst.env_up_ptr_reg\(6),
-      I3 => \comp_burst.env_up_ptr_reg\(7),
-      O => \comp_burst.env_up_ptr_rep[8]_i_3_n_0\
+\comp_burst.env_up_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(14),
+      Q => env_up(14),
+      R => '0'
     );
-\comp_burst.env_up_ptr_rep[8]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
-    )
-        port map (
-      I0 => \comp_burst.env_up_ptr_reg\(4),
-      I1 => \comp_burst.env_up_ptr_reg\(2),
-      I2 => \comp_burst.env_up_ptr_reg\(0),
-      I3 => \comp_burst.env_up_ptr_reg\(1),
-      I4 => \comp_burst.env_up_ptr_reg\(3),
-      I5 => \comp_burst.env_up_ptr_reg\(5),
-      O => \comp_burst.env_up_ptr_rep[8]_i_4_n_0\
+\comp_burst.env_up_reg[14]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[14]_i_2_n_0\,
+      I1 => \comp_burst.env_up[14]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(14),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(15),
+      Q => env_up(15),
+      R => '0'
+    );
+\comp_burst.env_up_reg[15]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[15]_i_2_n_0\,
+      I1 => \comp_burst.env_up[15]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(15),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(16),
+      Q => env_up(16),
+      R => '0'
+    );
+\comp_burst.env_up_reg[16]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[16]_i_2_n_0\,
+      I1 => \comp_burst.env_up[16]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(16),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(17),
+      Q => env_up(17),
+      R => '0'
+    );
+\comp_burst.env_up_reg[17]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[17]_i_2_n_0\,
+      I1 => \comp_burst.env_up[17]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(17),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(18),
+      Q => env_up(18),
+      R => '0'
+    );
+\comp_burst.env_up_reg[18]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[18]_i_2_n_0\,
+      I1 => \comp_burst.env_up[18]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(18),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(19),
+      Q => env_up(19),
+      R => '0'
+    );
+\comp_burst.env_up_reg[19]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[19]_i_2_n_0\,
+      I1 => \comp_burst.env_up[19]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(19),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(1),
+      Q => env_up(1),
+      R => '0'
+    );
+\comp_burst.env_up_reg[1]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[1]_i_2_n_0\,
+      I1 => \comp_burst.env_up[1]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(1),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(20),
+      Q => env_up(20),
+      R => '0'
+    );
+\comp_burst.env_up_reg[20]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[20]_i_2_n_0\,
+      I1 => \comp_burst.env_up[20]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(20),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(21),
+      Q => env_up(21),
+      R => '0'
+    );
+\comp_burst.env_up_reg[21]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[21]_i_2_n_0\,
+      I1 => \comp_burst.env_up[21]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(21),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(22),
+      Q => env_up(22),
+      R => '0'
+    );
+\comp_burst.env_up_reg[22]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[22]_i_2_n_0\,
+      I1 => \comp_burst.env_up[22]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(22),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(23),
+      Q => env_up(23),
+      R => '0'
+    );
+\comp_burst.env_up_reg[23]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[23]_i_2_n_0\,
+      I1 => \comp_burst.env_up[23]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(23),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(24),
+      Q => env_up(24),
+      R => '0'
+    );
+\comp_burst.env_up_reg[24]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[24]_i_2_n_0\,
+      I1 => \comp_burst.env_up[24]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(24),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(25),
+      Q => env_up(25),
+      R => '0'
+    );
+\comp_burst.env_up_reg[25]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[25]_i_2_n_0\,
+      I1 => \comp_burst.env_up[25]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(25),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(26),
+      Q => env_up(26),
+      R => '0'
+    );
+\comp_burst.env_up_reg[26]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[26]_i_2_n_0\,
+      I1 => \comp_burst.env_up[26]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(26),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(27),
+      Q => env_up(27),
+      R => '0'
+    );
+\comp_burst.env_up_reg[27]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[27]_i_2_n_0\,
+      I1 => \comp_burst.env_up[27]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(27),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(28),
+      Q => env_up(28),
+      R => '0'
+    );
+\comp_burst.env_up_reg[28]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[28]_i_2_n_0\,
+      I1 => \comp_burst.env_up[28]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(28),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(29),
+      Q => env_up(29),
+      R => '0'
+    );
+\comp_burst.env_up_reg[29]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[29]_i_2_n_0\,
+      I1 => \comp_burst.env_up[29]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(29),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(2),
+      Q => env_up(2),
+      R => '0'
+    );
+\comp_burst.env_up_reg[2]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[2]_i_2_n_0\,
+      I1 => \comp_burst.env_up[2]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(2),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(30),
+      Q => env_up(30),
+      R => '0'
+    );
+\comp_burst.env_up_reg[30]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[30]_i_2_n_0\,
+      I1 => \comp_burst.env_up[30]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(30),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(31),
+      Q => env_up(31),
+      R => '0'
+    );
+\comp_burst.env_up_reg[31]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[31]_i_2_n_0\,
+      I1 => \comp_burst.env_up[31]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(31),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(32),
+      Q => env_up(32),
+      R => '0'
+    );
+\comp_burst.env_up_reg[32]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[32]_i_2_n_0\,
+      I1 => \comp_burst.env_up[32]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(32),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(33),
+      Q => env_up(33),
+      R => '0'
+    );
+\comp_burst.env_up_reg[33]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[33]_i_2_n_0\,
+      I1 => \comp_burst.env_up[33]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(33),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(34),
+      Q => env_up(34),
+      R => '0'
+    );
+\comp_burst.env_up_reg[34]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[34]_i_2_n_0\,
+      I1 => \comp_burst.env_up[34]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(34),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(35),
+      Q => env_up(35),
+      R => '0'
+    );
+\comp_burst.env_up_reg[35]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[35]_i_2_n_0\,
+      I1 => \comp_burst.env_up[35]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(35),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(36),
+      Q => env_up(36),
+      R => '0'
+    );
+\comp_burst.env_up_reg[36]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[36]_i_2_n_0\,
+      I1 => \comp_burst.env_up[36]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(36),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(37),
+      Q => env_up(37),
+      R => '0'
+    );
+\comp_burst.env_up_reg[37]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[37]_i_2_n_0\,
+      I1 => \comp_burst.env_up[37]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(37),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(38),
+      Q => env_up(38),
+      R => '0'
+    );
+\comp_burst.env_up_reg[38]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[38]_i_2_n_0\,
+      I1 => \comp_burst.env_up[38]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(38),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(39),
+      Q => env_up(39),
+      R => '0'
+    );
+\comp_burst.env_up_reg[39]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[39]_i_2_n_0\,
+      I1 => \comp_burst.env_up[39]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(39),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(3),
+      Q => env_up(3),
+      R => '0'
+    );
+\comp_burst.env_up_reg[3]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[3]_i_2_n_0\,
+      I1 => \comp_burst.env_up[3]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(3),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(40),
+      Q => env_up(40),
+      R => '0'
+    );
+\comp_burst.env_up_reg[40]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[40]_i_2_n_0\,
+      I1 => \comp_burst.env_up[40]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(40),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(41),
+      Q => env_up(41),
+      R => '0'
+    );
+\comp_burst.env_up_reg[41]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[41]_i_2_n_0\,
+      I1 => \comp_burst.env_up[41]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(41),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(42),
+      Q => env_up(42),
+      R => '0'
+    );
+\comp_burst.env_up_reg[42]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[42]_i_2_n_0\,
+      I1 => \comp_burst.env_up[42]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(42),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(43),
+      Q => env_up(43),
+      R => '0'
+    );
+\comp_burst.env_up_reg[43]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[43]_i_2_n_0\,
+      I1 => \comp_burst.env_up[43]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(43),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(44),
+      Q => env_up(44),
+      R => '0'
+    );
+\comp_burst.env_up_reg[44]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[44]_i_2_n_0\,
+      I1 => \comp_burst.env_up[44]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(44),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(45),
+      Q => env_up(45),
+      R => '0'
+    );
+\comp_burst.env_up_reg[45]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[45]_i_2_n_0\,
+      I1 => \comp_burst.env_up[45]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(45),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(46),
+      Q => env_up(46),
+      R => '0'
+    );
+\comp_burst.env_up_reg[46]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[46]_i_2_n_0\,
+      I1 => \comp_burst.env_up[46]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(46),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(47),
+      Q => env_up(47),
+      R => '0'
+    );
+\comp_burst.env_up_reg[47]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[47]_i_2_n_0\,
+      I1 => \comp_burst.env_up[47]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(47),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(48),
+      Q => env_up(48),
+      R => '0'
+    );
+\comp_burst.env_up_reg[48]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[48]_i_2_n_0\,
+      I1 => \comp_burst.env_up[48]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(48),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(49),
+      Q => env_up(49),
+      R => '0'
+    );
+\comp_burst.env_up_reg[49]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[49]_i_2_n_0\,
+      I1 => \comp_burst.env_up[49]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(49),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(4),
+      Q => env_up(4),
+      R => '0'
+    );
+\comp_burst.env_up_reg[4]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[4]_i_2_n_0\,
+      I1 => \comp_burst.env_up[4]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(4),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(50),
+      Q => env_up(50),
+      R => '0'
+    );
+\comp_burst.env_up_reg[50]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[50]_i_2_n_0\,
+      I1 => \comp_burst.env_up[50]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(50),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(51),
+      Q => env_up(51),
+      R => '0'
+    );
+\comp_burst.env_up_reg[51]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[51]_i_2_n_0\,
+      I1 => \comp_burst.env_up[51]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(51),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(52),
+      Q => env_up(52),
+      R => '0'
+    );
+\comp_burst.env_up_reg[52]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[52]_i_2_n_0\,
+      I1 => \comp_burst.env_up[52]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(52),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(53),
+      Q => env_up(53),
+      R => '0'
+    );
+\comp_burst.env_up_reg[53]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[53]_i_2_n_0\,
+      I1 => \comp_burst.env_up[53]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(53),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(54),
+      Q => env_up(54),
+      R => '0'
+    );
+\comp_burst.env_up_reg[54]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[54]_i_2_n_0\,
+      I1 => \comp_burst.env_up[54]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(54),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(55),
+      Q => env_up(55),
+      R => '0'
+    );
+\comp_burst.env_up_reg[55]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[55]_i_2_n_0\,
+      I1 => \comp_burst.env_up[55]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(55),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(56),
+      Q => env_up(56),
+      R => '0'
+    );
+\comp_burst.env_up_reg[56]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[56]_i_2_n_0\,
+      I1 => \comp_burst.env_up[56]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(56),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(57),
+      Q => env_up(57),
+      R => '0'
+    );
+\comp_burst.env_up_reg[57]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[57]_i_2_n_0\,
+      I1 => \comp_burst.env_up[57]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(57),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(58),
+      Q => env_up(58),
+      R => '0'
+    );
+\comp_burst.env_up_reg[58]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[58]_i_2_n_0\,
+      I1 => \comp_burst.env_up[58]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(58),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(59),
+      Q => env_up(59),
+      R => '0'
+    );
+\comp_burst.env_up_reg[59]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[59]_i_2_n_0\,
+      I1 => \comp_burst.env_up[59]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(59),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(5),
+      Q => env_up(5),
+      R => '0'
+    );
+\comp_burst.env_up_reg[5]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[5]_i_2_n_0\,
+      I1 => \comp_burst.env_up[5]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(5),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(60),
+      Q => env_up(60),
+      R => '0'
+    );
+\comp_burst.env_up_reg[60]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[60]_i_2_n_0\,
+      I1 => \comp_burst.env_up[60]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(60),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(61),
+      Q => env_up(61),
+      R => '0'
+    );
+\comp_burst.env_up_reg[61]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[61]_i_2_n_0\,
+      I1 => \comp_burst.env_up[61]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(61),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[62]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(62),
+      Q => env_up(62),
+      R => '0'
+    );
+\comp_burst.env_up_reg[62]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[62]_i_2_n_0\,
+      I1 => \comp_burst.env_up[62]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(62),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[63]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(63),
+      Q => env_up(63),
+      R => '0'
+    );
+\comp_burst.env_up_reg[63]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[63]_i_2_n_0\,
+      I1 => \comp_burst.env_up[63]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(63),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(6),
+      Q => env_up(6),
+      R => '0'
+    );
+\comp_burst.env_up_reg[6]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[6]_i_2_n_0\,
+      I1 => \comp_burst.env_up[6]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(6),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(7),
+      Q => env_up(7),
+      R => '0'
+    );
+\comp_burst.env_up_reg[7]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[7]_i_2_n_0\,
+      I1 => \comp_burst.env_up[7]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(7),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(8),
+      Q => env_up(8),
+      R => '0'
+    );
+\comp_burst.env_up_reg[8]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[8]_i_2_n_0\,
+      I1 => \comp_burst.env_up[8]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(8),
+      S => env_up_ptr(8)
+    );
+\comp_burst.env_up_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.env_up_reg0\(9),
+      Q => env_up(9),
+      R => '0'
+    );
+\comp_burst.env_up_reg[9]_i_1\: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \comp_burst.env_up[9]_i_2_n_0\,
+      I1 => \comp_burst.env_up[9]_i_3_n_0\,
+      O => \comp_burst.env_up_reg0\(9),
+      S => env_up_ptr(8)
     );
 \comp_burst.env_up_val[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_99\,
-      I1 => \comp_burst.mem_env_up_reg_n_83\,
-      I2 => env_up_2(0),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(0),
+      I0 => env_up(0),
+      I1 => env_up(16),
+      I2 => env_up(32),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(48),
       O => \comp_burst.env_up_val[0]_i_1_n_0\
     );
 \comp_burst.env_up_val[10]_i_1\: unisim.vcomponents.LUT6
@@ -32615,38 +35994,38 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_89\,
-      I1 => \comp_burst.mem_env_up_reg_n_73\,
-      I2 => env_up_3(10),
+      I0 => env_up(10),
+      I1 => env_up(26),
+      I2 => env_up(58),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(10),
+      I5 => env_up(42),
       O => \comp_burst.env_up_val[10]_i_1_n_0\
     );
 \comp_burst.env_up_val[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_88\,
-      I1 => \comp_burst.mem_env_up_reg_n_72\,
-      I2 => env_up_2(11),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(11),
+      I0 => env_up(11),
+      I1 => env_up(27),
+      I2 => env_up(43),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(59),
       O => \comp_burst.env_up_val[11]_i_1_n_0\
     );
 \comp_burst.env_up_val[12]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_87\,
-      I1 => \comp_burst.mem_env_up_reg_n_71\,
-      I2 => env_up_2(12),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(12),
+      I0 => env_up(12),
+      I1 => env_up(28),
+      I2 => env_up(60),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(44),
       O => \comp_burst.env_up_val[12]_i_1_n_0\
     );
 \comp_burst.env_up_val[13]_i_1\: unisim.vcomponents.LUT6
@@ -32654,12 +36033,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_70\,
-      I1 => env_up_2(13),
-      I2 => \comp_burst.mem_env_up_reg_n_86\,
+      I0 => env_up(29),
+      I1 => env_up(45),
+      I2 => env_up(13),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_3(13),
+      I5 => env_up(61),
       O => \comp_burst.env_up_val[13]_i_1_n_0\
     );
 \comp_burst.env_up_val[14]_i_1\: unisim.vcomponents.LUT6
@@ -32667,12 +36046,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_85\,
-      I1 => \comp_burst.mem_env_up_reg_n_69\,
-      I2 => env_up_3(14),
+      I0 => env_up(14),
+      I1 => env_up(30),
+      I2 => env_up(62),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(14),
+      I5 => env_up(46),
       O => \comp_burst.env_up_val[14]_i_1_n_0\
     );
 \comp_burst.env_up_val[15]_i_1\: unisim.vcomponents.LUT6
@@ -32680,25 +36059,25 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_84\,
-      I1 => \comp_burst.mem_env_up_reg_n_68\,
-      I2 => env_up_3(15),
+      I0 => env_up(15),
+      I1 => env_up(31),
+      I2 => env_up(63),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(15),
+      I5 => env_up(47),
       O => \comp_burst.env_up_val[15]_i_1_n_0\
     );
 \comp_burst.env_up_val[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_98\,
-      I1 => \comp_burst.mem_env_up_reg_n_82\,
-      I2 => env_up_2(1),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(1),
+      I0 => env_up(1),
+      I1 => env_up(17),
+      I2 => env_up(49),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(33),
       O => \comp_burst.env_up_val[1]_i_1_n_0\
     );
 \comp_burst.env_up_val[2]_i_1\: unisim.vcomponents.LUT6
@@ -32706,38 +36085,38 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_97\,
-      I1 => \comp_burst.mem_env_up_reg_n_81\,
-      I2 => env_up_3(2),
+      I0 => env_up(2),
+      I1 => env_up(18),
+      I2 => env_up(50),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(2),
+      I5 => env_up(34),
       O => \comp_burst.env_up_val[2]_i_1_n_0\
     );
 \comp_burst.env_up_val[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_96\,
-      I1 => \comp_burst.mem_env_up_reg_n_80\,
-      I2 => env_up_2(3),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(3),
+      I0 => env_up(3),
+      I1 => env_up(19),
+      I2 => env_up(35),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(51),
       O => \comp_burst.env_up_val[3]_i_1_n_0\
     );
 \comp_burst.env_up_val[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_95\,
-      I1 => \comp_burst.mem_env_up_reg_n_79\,
-      I2 => env_up_2(4),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(4),
+      I0 => env_up(4),
+      I1 => env_up(20),
+      I2 => env_up(52),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(36),
       O => \comp_burst.env_up_val[4]_i_1_n_0\
     );
 \comp_burst.env_up_val[5]_i_1\: unisim.vcomponents.LUT6
@@ -32745,12 +36124,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"FFAACCF000AACCF0"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_78\,
-      I1 => env_up_2(5),
-      I2 => \comp_burst.mem_env_up_reg_n_94\,
+      I0 => env_up(21),
+      I1 => env_up(37),
+      I2 => env_up(5),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_3(5),
+      I5 => env_up(53),
       O => \comp_burst.env_up_val[5]_i_1_n_0\
     );
 \comp_burst.env_up_val[6]_i_1\: unisim.vcomponents.LUT6
@@ -32758,12 +36137,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_93\,
-      I1 => \comp_burst.mem_env_up_reg_n_77\,
-      I2 => env_up_3(6),
+      I0 => env_up(6),
+      I1 => env_up(22),
+      I2 => env_up(54),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(6),
+      I5 => env_up(38),
       O => \comp_burst.env_up_val[6]_i_1_n_0\
     );
 \comp_burst.env_up_val[7]_i_1\: unisim.vcomponents.LUT6
@@ -32771,38 +36150,38 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_92\,
-      I1 => \comp_burst.mem_env_up_reg_n_76\,
-      I2 => env_up_3(7),
+      I0 => env_up(7),
+      I1 => env_up(23),
+      I2 => env_up(55),
       I3 => \comp_burst.env_up_adr_reg\(1),
       I4 => \comp_burst.env_up_adr_reg\(0),
-      I5 => env_up_2(7),
+      I5 => env_up(39),
       O => \comp_burst.env_up_val[7]_i_1_n_0\
     );
 \comp_burst.env_up_val[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_91\,
-      I1 => \comp_burst.mem_env_up_reg_n_75\,
-      I2 => env_up_2(8),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(8),
+      I0 => env_up(8),
+      I1 => env_up(24),
+      I2 => env_up(40),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(56),
       O => \comp_burst.env_up_val[8]_i_1_n_0\
     );
 \comp_burst.env_up_val[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
-      I0 => \comp_burst.mem_env_up_reg_n_90\,
-      I1 => \comp_burst.mem_env_up_reg_n_74\,
-      I2 => env_up_2(9),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => env_up_3(9),
+      I0 => env_up(9),
+      I1 => env_up(25),
+      I2 => env_up(57),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => env_up(41),
       O => \comp_burst.env_up_val[9]_i_1_n_0\
     );
 \comp_burst.env_up_val_reg[0]\: unisim.vcomponents.FDRE
@@ -32982,7 +36361,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(62),
       Q => in_freq(0),
       R => '0'
@@ -32990,7 +36369,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(72),
       Q => in_freq(10),
       R => '0'
@@ -32998,7 +36377,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(73),
       Q => in_freq(11),
       R => '0'
@@ -33006,7 +36385,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(74),
       Q => in_freq(12),
       R => '0'
@@ -33014,7 +36393,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(75),
       Q => in_freq(13),
       R => '0'
@@ -33022,7 +36401,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(76),
       Q => in_freq(14),
       R => '0'
@@ -33030,7 +36409,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(77),
       Q => in_freq(15),
       R => '0'
@@ -33038,7 +36417,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(78),
       Q => in_freq(16),
       R => '0'
@@ -33046,7 +36425,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(79),
       Q => in_freq(17),
       R => '0'
@@ -33054,7 +36433,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(80),
       Q => in_freq(18),
       R => '0'
@@ -33062,7 +36441,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(81),
       Q => in_freq(19),
       R => '0'
@@ -33070,7 +36449,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(63),
       Q => in_freq(1),
       R => '0'
@@ -33078,7 +36457,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(64),
       Q => in_freq(2),
       R => '0'
@@ -33086,7 +36465,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(65),
       Q => in_freq(3),
       R => '0'
@@ -33094,7 +36473,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(66),
       Q => in_freq(4),
       R => '0'
@@ -33102,7 +36481,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(67),
       Q => in_freq(5),
       R => '0'
@@ -33110,7 +36489,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(68),
       Q => in_freq(6),
       R => '0'
@@ -33118,7 +36497,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(69),
       Q => in_freq(7),
       R => '0'
@@ -33126,7 +36505,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(70),
       Q => in_freq(8),
       R => '0'
@@ -33134,7 +36513,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.in_freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p2_i_n_155,
+      CE => \comp_burst.burst_i_1_n_0\,
       D => rt_meta_out(71),
       Q => in_freq(9),
       R => '0'
@@ -33431,7 +36810,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
         port map (
       ADDRARDADDR(14 downto 6) => env_down_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => wr_ptr_in(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -33460,40 +36839,8 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       CLKARDCLK => clk,
       CLKBWRCLK => clk,
       DBITERR => \NLW_comp_burst.mem_env_down_reg_DBITERR_UNCONNECTED\,
-      DINADIN(31 downto 16) => p_0_in3_in(15 downto 0),
-      DINADIN(15) => \comp_burst.env_in_reg_n_0_[15]\,
-      DINADIN(14) => \comp_burst.env_in_reg_n_0_[14]\,
-      DINADIN(13) => \comp_burst.env_in_reg_n_0_[13]\,
-      DINADIN(12) => \comp_burst.env_in_reg_n_0_[12]\,
-      DINADIN(11) => \comp_burst.env_in_reg_n_0_[11]\,
-      DINADIN(10) => \comp_burst.env_in_reg_n_0_[10]\,
-      DINADIN(9) => \comp_burst.env_in_reg_n_0_[9]\,
-      DINADIN(8) => \comp_burst.env_in_reg_n_0_[8]\,
-      DINADIN(7) => \comp_burst.env_in_reg_n_0_[7]\,
-      DINADIN(6) => \comp_burst.env_in_reg_n_0_[6]\,
-      DINADIN(5) => \comp_burst.env_in_reg_n_0_[5]\,
-      DINADIN(4) => \comp_burst.env_in_reg_n_0_[4]\,
-      DINADIN(3) => \comp_burst.env_in_reg_n_0_[3]\,
-      DINADIN(2) => \comp_burst.env_in_reg_n_0_[2]\,
-      DINADIN(1) => \comp_burst.env_in_reg_n_0_[1]\,
-      DINADIN(0) => \comp_burst.env_in_reg_n_0_[0]\,
-      DINBDIN(31) => \comp_burst.env_in_reg_n_0_[63]\,
-      DINBDIN(30) => \comp_burst.env_in_reg_n_0_[62]\,
-      DINBDIN(29) => \comp_burst.env_in_reg_n_0_[61]\,
-      DINBDIN(28) => \comp_burst.env_in_reg_n_0_[60]\,
-      DINBDIN(27) => \comp_burst.env_in_reg_n_0_[59]\,
-      DINBDIN(26) => \comp_burst.env_in_reg_n_0_[58]\,
-      DINBDIN(25) => \comp_burst.env_in_reg_n_0_[57]\,
-      DINBDIN(24) => \comp_burst.env_in_reg_n_0_[56]\,
-      DINBDIN(23) => \comp_burst.env_in_reg_n_0_[55]\,
-      DINBDIN(22) => \comp_burst.env_in_reg_n_0_[54]\,
-      DINBDIN(21) => \comp_burst.env_in_reg_n_0_[53]\,
-      DINBDIN(20) => \comp_burst.env_in_reg_n_0_[52]\,
-      DINBDIN(19) => \comp_burst.env_in_reg_n_0_[51]\,
-      DINBDIN(18) => \comp_burst.env_in_reg_n_0_[50]\,
-      DINBDIN(17) => \comp_burst.env_in_reg_n_0_[49]\,
-      DINBDIN(16) => \comp_burst.env_in_reg_n_0_[48]\,
-      DINBDIN(15 downto 0) => p_0_in2_in(15 downto 0),
+      DINADIN(31 downto 0) => env_in(31 downto 0),
+      DINBDIN(31 downto 0) => env_in(63 downto 32),
       DINPADINP(3 downto 0) => B"1111",
       DINPBDINP(3 downto 0) => B"1111",
       DOUTADOUT(31) => \comp_burst.mem_env_down_reg_n_68\,
@@ -33557,164 +36904,3133 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       WEBWE(1) => mem_wr,
       WEBWE(0) => mem_wr
     );
-\comp_burst.mem_env_up_reg\: unisim.vcomponents.RAMB36E2
+\comp_burst.mem_env_up_reg_0_63_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_0_6_i_1\: unisim.vcomponents.LUT4
     generic map(
-      CASCADE_ORDER_A => "NONE",
-      CASCADE_ORDER_B => "NONE",
-      CLOCK_DOMAINS => "COMMON",
-      DOA_REG => 0,
-      DOB_REG => 0,
-      ENADDRENA => "FALSE",
-      ENADDRENB => "FALSE",
-      EN_ECC_PIPE => "FALSE",
-      EN_ECC_READ => "FALSE",
-      EN_ECC_WRITE => "FALSE",
-      INIT_A => X"000000000",
-      INIT_B => X"000000000",
-      INIT_FILE => "NONE",
-      RDADDRCHANGEA => "FALSE",
-      RDADDRCHANGEB => "FALSE",
-      READ_WIDTH_A => 72,
-      READ_WIDTH_B => 0,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
-      SIM_COLLISION_CHECK => "ALL",
-      SLEEP_ASYNC => "FALSE",
-      SRVAL_A => X"000000000",
-      SRVAL_B => X"000000000",
-      WRITE_MODE_A => "READ_FIRST",
-      WRITE_MODE_B => "READ_FIRST",
-      WRITE_WIDTH_A => 0,
-      WRITE_WIDTH_B => 72
+      INIT => X"0002"
     )
         port map (
-      ADDRARDADDR(14 downto 6) => env_up_ptr(8 downto 0),
-      ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
-      ADDRBWRADDR(5 downto 0) => B"111111",
-      ADDRENA => '1',
-      ADDRENB => '1',
-      CASDIMUXA => '0',
-      CASDIMUXB => '0',
-      CASDINA(31 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDINA_UNCONNECTED\(31 downto 0),
-      CASDINB(31 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDINB_UNCONNECTED\(31 downto 0),
-      CASDINPA(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDINPA_UNCONNECTED\(3 downto 0),
-      CASDINPB(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDINPB_UNCONNECTED\(3 downto 0),
-      CASDOMUXA => '0',
-      CASDOMUXB => '0',
-      CASDOMUXEN_A => '1',
-      CASDOMUXEN_B => '1',
-      CASDOUTA(31 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDOUTA_UNCONNECTED\(31 downto 0),
-      CASDOUTB(31 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDOUTB_UNCONNECTED\(31 downto 0),
-      CASDOUTPA(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDOUTPA_UNCONNECTED\(3 downto 0),
-      CASDOUTPB(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_CASDOUTPB_UNCONNECTED\(3 downto 0),
-      CASINDBITERR => '0',
-      CASINSBITERR => '0',
-      CASOREGIMUXA => '0',
-      CASOREGIMUXB => '0',
-      CASOREGIMUXEN_A => '1',
-      CASOREGIMUXEN_B => '1',
-      CASOUTDBITERR => \NLW_comp_burst.mem_env_up_reg_CASOUTDBITERR_UNCONNECTED\,
-      CASOUTSBITERR => \NLW_comp_burst.mem_env_up_reg_CASOUTSBITERR_UNCONNECTED\,
-      CLKARDCLK => clk,
-      CLKBWRCLK => clk,
-      DBITERR => \NLW_comp_burst.mem_env_up_reg_DBITERR_UNCONNECTED\,
-      DINADIN(31 downto 16) => p_0_in3_in(15 downto 0),
-      DINADIN(15) => \comp_burst.env_in_reg_n_0_[15]\,
-      DINADIN(14) => \comp_burst.env_in_reg_n_0_[14]\,
-      DINADIN(13) => \comp_burst.env_in_reg_n_0_[13]\,
-      DINADIN(12) => \comp_burst.env_in_reg_n_0_[12]\,
-      DINADIN(11) => \comp_burst.env_in_reg_n_0_[11]\,
-      DINADIN(10) => \comp_burst.env_in_reg_n_0_[10]\,
-      DINADIN(9) => \comp_burst.env_in_reg_n_0_[9]\,
-      DINADIN(8) => \comp_burst.env_in_reg_n_0_[8]\,
-      DINADIN(7) => \comp_burst.env_in_reg_n_0_[7]\,
-      DINADIN(6) => \comp_burst.env_in_reg_n_0_[6]\,
-      DINADIN(5) => \comp_burst.env_in_reg_n_0_[5]\,
-      DINADIN(4) => \comp_burst.env_in_reg_n_0_[4]\,
-      DINADIN(3) => \comp_burst.env_in_reg_n_0_[3]\,
-      DINADIN(2) => \comp_burst.env_in_reg_n_0_[2]\,
-      DINADIN(1) => \comp_burst.env_in_reg_n_0_[1]\,
-      DINADIN(0) => \comp_burst.env_in_reg_n_0_[0]\,
-      DINBDIN(31) => \comp_burst.env_in_reg_n_0_[63]\,
-      DINBDIN(30) => \comp_burst.env_in_reg_n_0_[62]\,
-      DINBDIN(29) => \comp_burst.env_in_reg_n_0_[61]\,
-      DINBDIN(28) => \comp_burst.env_in_reg_n_0_[60]\,
-      DINBDIN(27) => \comp_burst.env_in_reg_n_0_[59]\,
-      DINBDIN(26) => \comp_burst.env_in_reg_n_0_[58]\,
-      DINBDIN(25) => \comp_burst.env_in_reg_n_0_[57]\,
-      DINBDIN(24) => \comp_burst.env_in_reg_n_0_[56]\,
-      DINBDIN(23) => \comp_burst.env_in_reg_n_0_[55]\,
-      DINBDIN(22) => \comp_burst.env_in_reg_n_0_[54]\,
-      DINBDIN(21) => \comp_burst.env_in_reg_n_0_[53]\,
-      DINBDIN(20) => \comp_burst.env_in_reg_n_0_[52]\,
-      DINBDIN(19) => \comp_burst.env_in_reg_n_0_[51]\,
-      DINBDIN(18) => \comp_burst.env_in_reg_n_0_[50]\,
-      DINBDIN(17) => \comp_burst.env_in_reg_n_0_[49]\,
-      DINBDIN(16) => \comp_burst.env_in_reg_n_0_[48]\,
-      DINBDIN(15 downto 0) => p_0_in2_in(15 downto 0),
-      DINPADINP(3 downto 0) => B"1111",
-      DINPBDINP(3 downto 0) => B"1111",
-      DOUTADOUT(31) => \comp_burst.mem_env_up_reg_n_68\,
-      DOUTADOUT(30) => \comp_burst.mem_env_up_reg_n_69\,
-      DOUTADOUT(29) => \comp_burst.mem_env_up_reg_n_70\,
-      DOUTADOUT(28) => \comp_burst.mem_env_up_reg_n_71\,
-      DOUTADOUT(27) => \comp_burst.mem_env_up_reg_n_72\,
-      DOUTADOUT(26) => \comp_burst.mem_env_up_reg_n_73\,
-      DOUTADOUT(25) => \comp_burst.mem_env_up_reg_n_74\,
-      DOUTADOUT(24) => \comp_burst.mem_env_up_reg_n_75\,
-      DOUTADOUT(23) => \comp_burst.mem_env_up_reg_n_76\,
-      DOUTADOUT(22) => \comp_burst.mem_env_up_reg_n_77\,
-      DOUTADOUT(21) => \comp_burst.mem_env_up_reg_n_78\,
-      DOUTADOUT(20) => \comp_burst.mem_env_up_reg_n_79\,
-      DOUTADOUT(19) => \comp_burst.mem_env_up_reg_n_80\,
-      DOUTADOUT(18) => \comp_burst.mem_env_up_reg_n_81\,
-      DOUTADOUT(17) => \comp_burst.mem_env_up_reg_n_82\,
-      DOUTADOUT(16) => \comp_burst.mem_env_up_reg_n_83\,
-      DOUTADOUT(15) => \comp_burst.mem_env_up_reg_n_84\,
-      DOUTADOUT(14) => \comp_burst.mem_env_up_reg_n_85\,
-      DOUTADOUT(13) => \comp_burst.mem_env_up_reg_n_86\,
-      DOUTADOUT(12) => \comp_burst.mem_env_up_reg_n_87\,
-      DOUTADOUT(11) => \comp_burst.mem_env_up_reg_n_88\,
-      DOUTADOUT(10) => \comp_burst.mem_env_up_reg_n_89\,
-      DOUTADOUT(9) => \comp_burst.mem_env_up_reg_n_90\,
-      DOUTADOUT(8) => \comp_burst.mem_env_up_reg_n_91\,
-      DOUTADOUT(7) => \comp_burst.mem_env_up_reg_n_92\,
-      DOUTADOUT(6) => \comp_burst.mem_env_up_reg_n_93\,
-      DOUTADOUT(5) => \comp_burst.mem_env_up_reg_n_94\,
-      DOUTADOUT(4) => \comp_burst.mem_env_up_reg_n_95\,
-      DOUTADOUT(3) => \comp_burst.mem_env_up_reg_n_96\,
-      DOUTADOUT(2) => \comp_burst.mem_env_up_reg_n_97\,
-      DOUTADOUT(1) => \comp_burst.mem_env_up_reg_n_98\,
-      DOUTADOUT(0) => \comp_burst.mem_env_up_reg_n_99\,
-      DOUTBDOUT(31 downto 16) => env_up_3(15 downto 0),
-      DOUTBDOUT(15 downto 0) => env_up_2(15 downto 0),
-      DOUTPADOUTP(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_DOUTPADOUTP_UNCONNECTED\(3 downto 0),
-      DOUTPBDOUTP(3 downto 0) => \NLW_comp_burst.mem_env_up_reg_DOUTPBDOUTP_UNCONNECTED\(3 downto 0),
-      ECCPARITY(7 downto 0) => \NLW_comp_burst.mem_env_up_reg_ECCPARITY_UNCONNECTED\(7 downto 0),
-      ECCPIPECE => '1',
-      ENARDEN => '1',
-      ENBWREN => '1',
-      INJECTDBITERR => '0',
-      INJECTSBITERR => '0',
-      RDADDRECC(8 downto 0) => \NLW_comp_burst.mem_env_up_reg_RDADDRECC_UNCONNECTED\(8 downto 0),
-      REGCEAREGCE => '1',
-      REGCEB => '1',
-      RSTRAMARSTRAM => '0',
-      RSTRAMB => '0',
-      RSTREGARSTREG => '0',
-      RSTREGB => '0',
-      SBITERR => \NLW_comp_burst.mem_env_up_reg_SBITERR_UNCONNECTED\,
-      SLEEP => '0',
-      WEA(3 downto 0) => B"0000",
-      WEBWE(7) => mem_wr,
-      WEBWE(6) => mem_wr,
-      WEBWE(5) => mem_wr,
-      WEBWE(4) => mem_wr,
-      WEBWE(3) => mem_wr,
-      WEBWE(2) => mem_wr,
-      WEBWE(1) => mem_wr,
-      WEBWE(0) => mem_wr
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_0_63_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_0_63_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_0_63_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_0_63_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_0_63_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_0_63_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_0_63_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_0_63_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_0_63_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_0_63_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_0_63_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_0_63_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_0_63_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_128_191_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_128_191_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_128_191_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_128_191_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_128_191_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_128_191_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_128_191_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_128_191_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_128_191_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_128_191_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_128_191_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_128_191_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(7),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_128_191_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_192_255_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_192_255_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_192_255_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_192_255_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_192_255_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_192_255_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_192_255_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_192_255_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_192_255_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_192_255_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_192_255_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_192_255_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_192_255_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_256_319_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_256_319_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_256_319_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_256_319_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_256_319_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_256_319_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_256_319_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_256_319_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_256_319_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_256_319_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_256_319_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_256_319_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(6),
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(8),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_256_319_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_320_383_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_320_383_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_320_383_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_320_383_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_320_383_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_320_383_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_320_383_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_320_383_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_320_383_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_320_383_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_320_383_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_320_383_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(7),
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_320_383_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_384_447_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_384_447_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_384_447_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_384_447_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_384_447_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_384_447_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_384_447_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_384_447_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_384_447_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_384_447_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_384_447_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_384_447_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => mem_wr,
+      I1 => wr_ptr_in(6),
+      I2 => wr_ptr_in(7),
+      I3 => wr_ptr_in(8),
+      O => \comp_burst.mem_env_up_reg_384_447_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_448_511_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_448_511_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_448_511_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_448_511_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_448_511_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_448_511_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_448_511_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_448_511_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_448_511_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_448_511_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_448_511_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_448_511_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => wr_ptr_in(8),
+      I1 => mem_wr,
+      I2 => wr_ptr_in(6),
+      I3 => wr_ptr_in(7),
+      O => \comp_burst.mem_env_up_reg_448_511_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_0_6\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(0),
+      DIB => env_in(1),
+      DIC => env_in(2),
+      DID => env_in(3),
+      DIE => env_in(4),
+      DIF => env_in(5),
+      DIG => env_in(6),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_0_6_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_0_6_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_0_6_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_0_6_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_0_6_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_0_6_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_0_6_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_0_6_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_0_6_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_0_6_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_14_20\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(14),
+      DIB => env_in(15),
+      DIC => env_in(16),
+      DID => env_in(17),
+      DIE => env_in(18),
+      DIF => env_in(19),
+      DIG => env_in(20),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_14_20_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_14_20_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_14_20_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_14_20_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_14_20_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_14_20_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_14_20_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_14_20_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_14_20_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_14_20_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_21_27\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(21),
+      DIB => env_in(22),
+      DIC => env_in(23),
+      DID => env_in(24),
+      DIE => env_in(25),
+      DIF => env_in(26),
+      DIG => env_in(27),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_21_27_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_21_27_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_21_27_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_21_27_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_21_27_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_21_27_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_21_27_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_21_27_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_21_27_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_21_27_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_28_34\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(28),
+      DIB => env_in(29),
+      DIC => env_in(30),
+      DID => env_in(31),
+      DIE => env_in(32),
+      DIF => env_in(33),
+      DIG => env_in(34),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_28_34_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_28_34_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_28_34_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_28_34_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_28_34_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_28_34_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_28_34_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_28_34_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_28_34_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_28_34_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_35_41\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(35),
+      DIB => env_in(36),
+      DIC => env_in(37),
+      DID => env_in(38),
+      DIE => env_in(39),
+      DIF => env_in(40),
+      DIG => env_in(41),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_35_41_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_35_41_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_35_41_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_35_41_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_35_41_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_35_41_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_35_41_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_35_41_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_35_41_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_35_41_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_42_48\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(42),
+      DIB => env_in(43),
+      DIC => env_in(44),
+      DID => env_in(45),
+      DIE => env_in(46),
+      DIF => env_in(47),
+      DIG => env_in(48),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_42_48_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_42_48_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_42_48_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_42_48_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_42_48_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_42_48_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_42_48_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_42_48_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_42_48_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_42_48_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_49_55\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(49),
+      DIB => env_in(50),
+      DIC => env_in(51),
+      DID => env_in(52),
+      DIE => env_in(53),
+      DIF => env_in(54),
+      DIG => env_in(55),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_49_55_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_49_55_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_49_55_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_49_55_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_49_55_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_49_55_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_49_55_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_49_55_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_49_55_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_49_55_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_56_62\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(56),
+      DIB => env_in(57),
+      DIC => env_in(58),
+      DID => env_in(59),
+      DIE => env_in(60),
+      DIF => env_in(61),
+      DIG => env_in(62),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_56_62_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_56_62_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_56_62_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_56_62_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_56_62_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_56_62_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_56_62_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_56_62_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_56_62_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_56_62_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_63_63\: unisim.vcomponents.RAM64X1D
+     port map (
+      A0 => wr_ptr_in(0),
+      A1 => wr_ptr_in(1),
+      A2 => wr_ptr_in(2),
+      A3 => wr_ptr_in(3),
+      A4 => wr_ptr_in(4),
+      A5 => wr_ptr_in(5),
+      D => env_in(63),
+      DPO => \comp_burst.mem_env_up_reg_64_127_63_63_n_0\,
+      DPRA0 => env_up_ptr(0),
+      DPRA1 => env_up_ptr(1),
+      DPRA2 => env_up_ptr(2),
+      DPRA3 => env_up_ptr(3),
+      DPRA4 => env_up_ptr(4),
+      DPRA5 => env_up_ptr(5),
+      SPO => \NLW_comp_burst.mem_env_up_reg_64_127_63_63_SPO_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_63_63_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_63_63_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_7_13\: unisim.vcomponents.RAM64M8
+     port map (
+      ADDRA(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRB(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRC(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRD(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRE(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRF(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRG(5 downto 0) => env_up_ptr(5 downto 0),
+      ADDRH(5 downto 0) => wr_ptr_in(5 downto 0),
+      DIA => env_in(7),
+      DIB => env_in(8),
+      DIC => env_in(9),
+      DID => env_in(10),
+      DIE => env_in(11),
+      DIF => env_in(12),
+      DIG => env_in(13),
+      DIH => '0',
+      DOA => \comp_burst.mem_env_up_reg_64_127_7_13_n_0\,
+      DOB => \comp_burst.mem_env_up_reg_64_127_7_13_n_1\,
+      DOC => \comp_burst.mem_env_up_reg_64_127_7_13_n_2\,
+      DOD => \comp_burst.mem_env_up_reg_64_127_7_13_n_3\,
+      DOE => \comp_burst.mem_env_up_reg_64_127_7_13_n_4\,
+      DOF => \comp_burst.mem_env_up_reg_64_127_7_13_n_5\,
+      DOG => \comp_burst.mem_env_up_reg_64_127_7_13_n_6\,
+      DOH => \NLW_comp_burst.mem_env_up_reg_64_127_7_13_DOH_UNCONNECTED\,
+      WCLK => clk,
+      WE => \comp_burst.mem_env_up_reg_64_127_7_13_i_1_n_0\
+    );
+\comp_burst.mem_env_up_reg_64_127_7_13_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => wr_ptr_in(7),
+      I1 => wr_ptr_in(8),
+      I2 => wr_ptr_in(6),
+      I3 => mem_wr,
+      O => \comp_burst.mem_env_up_reg_64_127_7_13_i_1_n_0\
     );
 \comp_burst.mem_phase_reg_0\: unisim.vcomponents.RAMB36E2
     generic map(
@@ -33749,7 +40065,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
         port map (
       ADDRARDADDR(14 downto 6) => env_up_ptr(8 downto 0),
       ADDRARDADDR(5 downto 0) => B"111111",
-      ADDRBWRADDR(14 downto 6) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(14 downto 6) => wr_ptr_in(8 downto 0),
       ADDRBWRADDR(5 downto 0) => B"111111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -33881,7 +40197,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
         port map (
       ADDRARDADDR(13 downto 5) => env_up_ptr(8 downto 0),
       ADDRARDADDR(4 downto 0) => B"11111",
-      ADDRBWRADDR(13 downto 5) => wr_ptr(8 downto 0),
+      ADDRBWRADDR(13 downto 5) => wr_ptr_in(8 downto 0),
       ADDRBWRADDR(4 downto 0) => B"11111",
       ADDRENA => '1',
       ADDRENB => '1',
@@ -33934,7 +40250,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_in[63]_i_1_n_0\,
+      D => \comp_burst.phase_in[79]_i_1_n_0\,
       Q => mem_wr,
       R => '0'
     );
@@ -35623,22 +41939,228 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.p2_wr_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F080"
+      INIT => X"EA00"
     )
         port map (
-      I0 => \comp_burst.run_env_start_reg_n_0\,
-      I1 => run_env_start0,
-      I2 => comp_env,
-      I3 => \comp_burst.p2_wr_reg_n_0\,
+      I0 => p2_wr,
+      I1 => run_env_start,
+      I2 => run_env_start0,
+      I3 => comp_env,
       O => \comp_burst.p2_wr_i_1_n_0\
+    );
+\comp_burst.p2_wr_i_10\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(1),
+      I1 => \comp_burst.min_env_reg_n_0_[1]\,
+      I2 => env_up_val(0),
+      I3 => \comp_burst.min_env_reg_n_0_[0]\,
+      O => \comp_burst.p2_wr_i_10_n_0\
+    );
+\comp_burst.p2_wr_i_11\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[15]\,
+      I1 => env_up_val(15),
+      I2 => \comp_burst.min_env_reg_n_0_[14]\,
+      I3 => env_up_val(14),
+      O => \comp_burst.p2_wr_i_11_n_0\
+    );
+\comp_burst.p2_wr_i_12\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[13]\,
+      I1 => env_up_val(13),
+      I2 => \comp_burst.min_env_reg_n_0_[12]\,
+      I3 => env_up_val(12),
+      O => \comp_burst.p2_wr_i_12_n_0\
+    );
+\comp_burst.p2_wr_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[11]\,
+      I1 => env_up_val(11),
+      I2 => \comp_burst.min_env_reg_n_0_[10]\,
+      I3 => env_up_val(10),
+      O => \comp_burst.p2_wr_i_13_n_0\
+    );
+\comp_burst.p2_wr_i_14\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[9]\,
+      I1 => env_up_val(9),
+      I2 => \comp_burst.min_env_reg_n_0_[8]\,
+      I3 => env_up_val(8),
+      O => \comp_burst.p2_wr_i_14_n_0\
+    );
+\comp_burst.p2_wr_i_15\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[7]\,
+      I1 => env_up_val(7),
+      I2 => \comp_burst.min_env_reg_n_0_[6]\,
+      I3 => env_up_val(6),
+      O => \comp_burst.p2_wr_i_15_n_0\
+    );
+\comp_burst.p2_wr_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[5]\,
+      I1 => env_up_val(5),
+      I2 => \comp_burst.min_env_reg_n_0_[4]\,
+      I3 => env_up_val(4),
+      O => \comp_burst.p2_wr_i_16_n_0\
+    );
+\comp_burst.p2_wr_i_17\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[3]\,
+      I1 => env_up_val(3),
+      I2 => \comp_burst.min_env_reg_n_0_[2]\,
+      I3 => env_up_val(2),
+      O => \comp_burst.p2_wr_i_17_n_0\
+    );
+\comp_burst.p2_wr_i_18\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => \comp_burst.min_env_reg_n_0_[1]\,
+      I1 => env_up_val(1),
+      I2 => \comp_burst.min_env_reg_n_0_[0]\,
+      I3 => env_up_val(0),
+      O => \comp_burst.p2_wr_i_18_n_0\
+    );
+\comp_burst.p2_wr_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(15),
+      I1 => \comp_burst.min_env_reg_n_0_[15]\,
+      I2 => env_up_val(14),
+      I3 => \comp_burst.min_env_reg_n_0_[14]\,
+      O => \comp_burst.p2_wr_i_3_n_0\
+    );
+\comp_burst.p2_wr_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(13),
+      I1 => \comp_burst.min_env_reg_n_0_[13]\,
+      I2 => env_up_val(12),
+      I3 => \comp_burst.min_env_reg_n_0_[12]\,
+      O => \comp_burst.p2_wr_i_4_n_0\
+    );
+\comp_burst.p2_wr_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(11),
+      I1 => \comp_burst.min_env_reg_n_0_[11]\,
+      I2 => env_up_val(10),
+      I3 => \comp_burst.min_env_reg_n_0_[10]\,
+      O => \comp_burst.p2_wr_i_5_n_0\
+    );
+\comp_burst.p2_wr_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(9),
+      I1 => \comp_burst.min_env_reg_n_0_[9]\,
+      I2 => env_up_val(8),
+      I3 => \comp_burst.min_env_reg_n_0_[8]\,
+      O => \comp_burst.p2_wr_i_6_n_0\
+    );
+\comp_burst.p2_wr_i_7\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(7),
+      I1 => \comp_burst.min_env_reg_n_0_[7]\,
+      I2 => env_up_val(6),
+      I3 => \comp_burst.min_env_reg_n_0_[6]\,
+      O => \comp_burst.p2_wr_i_7_n_0\
+    );
+\comp_burst.p2_wr_i_8\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(5),
+      I1 => \comp_burst.min_env_reg_n_0_[5]\,
+      I2 => env_up_val(4),
+      I3 => \comp_burst.min_env_reg_n_0_[4]\,
+      O => \comp_burst.p2_wr_i_8_n_0\
+    );
+\comp_burst.p2_wr_i_9\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"22B2"
+    )
+        port map (
+      I0 => env_up_val(3),
+      I1 => \comp_burst.min_env_reg_n_0_[3]\,
+      I2 => env_up_val(2),
+      I3 => \comp_burst.min_env_reg_n_0_[2]\,
+      O => \comp_burst.p2_wr_i_9_n_0\
     );
 \comp_burst.p2_wr_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \comp_burst.p2_wr_i_1_n_0\,
-      Q => \comp_burst.p2_wr_reg_n_0\,
+      Q => p2_wr,
       R => scan_start
+    );
+\comp_burst.p2_wr_reg_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '1',
+      CI_TOP => '0',
+      CO(7) => run_env_start0,
+      CO(6) => \comp_burst.p2_wr_reg_i_2_n_1\,
+      CO(5) => \comp_burst.p2_wr_reg_i_2_n_2\,
+      CO(4) => \comp_burst.p2_wr_reg_i_2_n_3\,
+      CO(3) => \comp_burst.p2_wr_reg_i_2_n_4\,
+      CO(2) => \comp_burst.p2_wr_reg_i_2_n_5\,
+      CO(1) => \comp_burst.p2_wr_reg_i_2_n_6\,
+      CO(0) => \comp_burst.p2_wr_reg_i_2_n_7\,
+      DI(7) => \comp_burst.p2_wr_i_3_n_0\,
+      DI(6) => \comp_burst.p2_wr_i_4_n_0\,
+      DI(5) => \comp_burst.p2_wr_i_5_n_0\,
+      DI(4) => \comp_burst.p2_wr_i_6_n_0\,
+      DI(3) => \comp_burst.p2_wr_i_7_n_0\,
+      DI(2) => \comp_burst.p2_wr_i_8_n_0\,
+      DI(1) => \comp_burst.p2_wr_i_9_n_0\,
+      DI(0) => \comp_burst.p2_wr_i_10_n_0\,
+      O(7 downto 0) => \NLW_comp_burst.p2_wr_reg_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \comp_burst.p2_wr_i_11_n_0\,
+      S(6) => \comp_burst.p2_wr_i_12_n_0\,
+      S(5) => \comp_burst.p2_wr_i_13_n_0\,
+      S(4) => \comp_burst.p2_wr_i_14_n_0\,
+      S(3) => \comp_burst.p2_wr_i_15_n_0\,
+      S(2) => \comp_burst.p2_wr_i_16_n_0\,
+      S(1) => \comp_burst.p2_wr_i_17_n_0\,
+      S(0) => \comp_burst.p2_wr_i_18_n_0\
     );
 \comp_burst.p3_freq[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -36464,10 +42986,19 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       Q => phase_diff(9),
       R => \env_diff__0\(0)
     );
+\comp_burst.phase_in[79]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => filling,
+      I1 => rt_data_empty,
+      O => \comp_burst.phase_in[79]_i_1_n_0\
+    );
 \comp_burst.phase_in_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(64),
       Q => phase_in(0),
       R => '0'
@@ -36475,7 +43006,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(74),
       Q => phase_in(10),
       R => '0'
@@ -36483,7 +43014,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(75),
       Q => phase_in(11),
       R => '0'
@@ -36491,7 +43022,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(76),
       Q => phase_in(12),
       R => '0'
@@ -36499,7 +43030,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(77),
       Q => phase_in(13),
       R => '0'
@@ -36507,7 +43038,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(78),
       Q => phase_in(14),
       R => '0'
@@ -36515,7 +43046,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(79),
       Q => phase_in(15),
       R => '0'
@@ -36523,7 +43054,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(80),
       Q => phase_in(16),
       R => '0'
@@ -36531,7 +43062,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(81),
       Q => phase_in(17),
       R => '0'
@@ -36539,7 +43070,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(82),
       Q => phase_in(18),
       R => '0'
@@ -36547,7 +43078,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(83),
       Q => phase_in(19),
       R => '0'
@@ -36555,7 +43086,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(65),
       Q => phase_in(1),
       R => '0'
@@ -36563,7 +43094,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(84),
       Q => phase_in(20),
       R => '0'
@@ -36571,7 +43102,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(85),
       Q => phase_in(21),
       R => '0'
@@ -36579,7 +43110,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(86),
       Q => phase_in(22),
       R => '0'
@@ -36587,7 +43118,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(87),
       Q => phase_in(23),
       R => '0'
@@ -36595,7 +43126,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(88),
       Q => phase_in(24),
       R => '0'
@@ -36603,7 +43134,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(89),
       Q => phase_in(25),
       R => '0'
@@ -36611,7 +43142,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(90),
       Q => phase_in(26),
       R => '0'
@@ -36619,7 +43150,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(91),
       Q => phase_in(27),
       R => '0'
@@ -36627,7 +43158,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(92),
       Q => phase_in(28),
       R => '0'
@@ -36635,7 +43166,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(93),
       Q => phase_in(29),
       R => '0'
@@ -36643,7 +43174,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(66),
       Q => phase_in(2),
       R => '0'
@@ -36651,7 +43182,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(94),
       Q => phase_in(30),
       R => '0'
@@ -36659,7 +43190,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(95),
       Q => phase_in(31),
       R => '0'
@@ -36667,7 +43198,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(96),
       Q => phase_in(32),
       R => '0'
@@ -36675,7 +43206,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(97),
       Q => phase_in(33),
       R => '0'
@@ -36683,7 +43214,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(98),
       Q => phase_in(34),
       R => '0'
@@ -36691,7 +43222,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(99),
       Q => phase_in(35),
       R => '0'
@@ -36699,7 +43230,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(100),
       Q => phase_in(36),
       R => '0'
@@ -36707,7 +43238,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(101),
       Q => phase_in(37),
       R => '0'
@@ -36715,7 +43246,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(102),
       Q => phase_in(38),
       R => '0'
@@ -36723,7 +43254,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(103),
       Q => phase_in(39),
       R => '0'
@@ -36731,7 +43262,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(67),
       Q => phase_in(3),
       R => '0'
@@ -36739,7 +43270,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(104),
       Q => phase_in(40),
       R => '0'
@@ -36747,7 +43278,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(105),
       Q => phase_in(41),
       R => '0'
@@ -36755,7 +43286,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(106),
       Q => phase_in(42),
       R => '0'
@@ -36763,7 +43294,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(107),
       Q => phase_in(43),
       R => '0'
@@ -36771,7 +43302,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(108),
       Q => phase_in(44),
       R => '0'
@@ -36779,7 +43310,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(109),
       Q => phase_in(45),
       R => '0'
@@ -36787,7 +43318,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(110),
       Q => phase_in(46),
       R => '0'
@@ -36795,7 +43326,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(111),
       Q => phase_in(47),
       R => '0'
@@ -36803,7 +43334,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(112),
       Q => phase_in(48),
       R => '0'
@@ -36811,7 +43342,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(113),
       Q => phase_in(49),
       R => '0'
@@ -36819,7 +43350,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(68),
       Q => phase_in(4),
       R => '0'
@@ -36827,7 +43358,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(114),
       Q => phase_in(50),
       R => '0'
@@ -36835,7 +43366,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(115),
       Q => phase_in(51),
       R => '0'
@@ -36843,7 +43374,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(116),
       Q => phase_in(52),
       R => '0'
@@ -36851,7 +43382,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(117),
       Q => phase_in(53),
       R => '0'
@@ -36859,7 +43390,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(118),
       Q => phase_in(54),
       R => '0'
@@ -36867,7 +43398,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(119),
       Q => phase_in(55),
       R => '0'
@@ -36875,7 +43406,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(120),
       Q => phase_in(56),
       R => '0'
@@ -36883,7 +43414,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(121),
       Q => phase_in(57),
       R => '0'
@@ -36891,7 +43422,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(122),
       Q => phase_in(58),
       R => '0'
@@ -36899,7 +43430,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(123),
       Q => phase_in(59),
       R => '0'
@@ -36907,7 +43438,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(69),
       Q => phase_in(5),
       R => '0'
@@ -36915,7 +43446,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(124),
       Q => phase_in(60),
       R => '0'
@@ -36923,7 +43454,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(125),
       Q => phase_in(61),
       R => '0'
@@ -36931,7 +43462,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(126),
       Q => phase_in(62),
       R => '0'
@@ -36939,7 +43470,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(127),
       Q => phase_in(63),
       R => '0'
@@ -36947,7 +43478,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(128),
       Q => phase_in(64),
       R => '0'
@@ -36955,7 +43486,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(129),
       Q => phase_in(65),
       R => '0'
@@ -36963,7 +43494,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(130),
       Q => phase_in(66),
       R => '0'
@@ -36971,7 +43502,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(131),
       Q => phase_in(67),
       R => '0'
@@ -36979,7 +43510,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[68]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(132),
       Q => phase_in(68),
       R => '0'
@@ -36987,7 +43518,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[69]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(133),
       Q => phase_in(69),
       R => '0'
@@ -36995,7 +43526,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(70),
       Q => phase_in(6),
       R => '0'
@@ -37003,7 +43534,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[70]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(134),
       Q => phase_in(70),
       R => '0'
@@ -37011,7 +43542,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[71]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(135),
       Q => phase_in(71),
       R => '0'
@@ -37019,7 +43550,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[72]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(136),
       Q => phase_in(72),
       R => '0'
@@ -37027,7 +43558,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[73]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(137),
       Q => phase_in(73),
       R => '0'
@@ -37035,7 +43566,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[74]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(138),
       Q => phase_in(74),
       R => '0'
@@ -37043,7 +43574,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[75]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(139),
       Q => phase_in(75),
       R => '0'
@@ -37051,7 +43582,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[76]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(140),
       Q => phase_in(76),
       R => '0'
@@ -37059,7 +43590,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[77]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(141),
       Q => phase_in(77),
       R => '0'
@@ -37067,7 +43598,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[78]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(142),
       Q => phase_in(78),
       R => '0'
@@ -37075,7 +43606,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[79]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(143),
       Q => phase_in(79),
       R => '0'
@@ -37083,7 +43614,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(71),
       Q => phase_in(7),
       R => '0'
@@ -37091,7 +43622,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(72),
       Q => phase_in(8),
       R => '0'
@@ -37099,21 +43630,21 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
 \comp_burst.phase_in_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.env_in[63]_i_1_n_0\,
+      CE => \comp_burst.phase_in[79]_i_1_n_0\,
       D => rt_data_out(73),
       Q => phase_in(9),
       R => '0'
     );
 \comp_burst.phase_val[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_99\,
       I1 => \comp_burst.mem_phase_reg_0_n_79\,
       I2 => phase_2(0),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(0),
       O => \comp_burst.phase_val[0]_i_1_n_0\
     );
@@ -37132,28 +43663,28 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.phase_val[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_88\,
       I1 => \comp_burst.mem_phase_reg_0_n_68\,
       I2 => phase_2(11),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(11),
       O => \comp_burst.phase_val[11]_i_1_n_0\
     );
 \comp_burst.phase_val[12]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_87\,
       I1 => \comp_burst.mem_phase_reg_0_n_131\,
-      I2 => phase_2(12),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => phase_3(12),
+      I2 => phase_3(12),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => phase_2(12),
       O => \comp_burst.phase_val[12]_i_1_n_0\
     );
 \comp_burst.phase_val[13]_i_1\: unisim.vcomponents.LUT6
@@ -37197,28 +43728,28 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.phase_val[16]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_83\,
       I1 => \comp_burst.mem_phase_reg_0_n_127\,
       I2 => phase_2(16),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(16),
       O => \comp_burst.phase_val[16]_i_1_n_0\
     );
 \comp_burst.phase_val[17]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_82\,
       I1 => \comp_burst.mem_phase_reg_0_n_126\,
-      I2 => phase_2(17),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => phase_3(17),
+      I2 => phase_3(17),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => phase_2(17),
       O => \comp_burst.phase_val[17]_i_1_n_0\
     );
 \comp_burst.phase_val[18]_i_1\: unisim.vcomponents.LUT6
@@ -37236,28 +43767,28 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.phase_val[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_80\,
       I1 => \comp_burst.mem_phase_reg_0_n_124\,
       I2 => phase_2(19),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(19),
       O => \comp_burst.phase_val[19]_i_1_n_0\
     );
 \comp_burst.phase_val[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_98\,
       I1 => \comp_burst.mem_phase_reg_0_n_78\,
-      I2 => phase_2(1),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => phase_3(1),
+      I2 => phase_3(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => phase_2(1),
       O => \comp_burst.phase_val[1]_i_1_n_0\
     );
 \comp_burst.phase_val[2]_i_1\: unisim.vcomponents.LUT6
@@ -37275,28 +43806,28 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.phase_val[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_96\,
       I1 => \comp_burst.mem_phase_reg_0_n_76\,
       I2 => phase_2(3),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(3),
       O => \comp_burst.phase_val[3]_i_1_n_0\
     );
 \comp_burst.phase_val[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_95\,
       I1 => \comp_burst.mem_phase_reg_0_n_75\,
-      I2 => phase_2(4),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => phase_3(4),
+      I2 => phase_3(4),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => phase_2(4),
       O => \comp_burst.phase_val[4]_i_1_n_0\
     );
 \comp_burst.phase_val[5]_i_1\: unisim.vcomponents.LUT6
@@ -37340,28 +43871,28 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.phase_val[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"FFCCF0AA00CCF0AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_91\,
       I1 => \comp_burst.mem_phase_reg_0_n_71\,
       I2 => phase_2(8),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
       I5 => phase_3(8),
       O => \comp_burst.phase_val[8]_i_1_n_0\
     );
 \comp_burst.phase_val[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF0CCAA00F0CCAA"
+      INIT => X"F0CCFFAAF0CC00AA"
     )
         port map (
       I0 => \comp_burst.mem_phase_reg_0_n_90\,
       I1 => \comp_burst.mem_phase_reg_0_n_70\,
-      I2 => phase_2(9),
-      I3 => \comp_burst.env_up_adr_reg\(0),
-      I4 => \comp_burst.env_up_adr_reg\(1),
-      I5 => phase_3(9),
+      I2 => phase_3(9),
+      I3 => \comp_burst.env_up_adr_reg\(1),
+      I4 => \comp_burst.env_up_adr_reg\(0),
+      I5 => phase_2(9),
       O => \comp_burst.phase_val[9]_i_1_n_0\
     );
 \comp_burst.phase_val_reg[0]\: unisim.vcomponents.FDRE
@@ -39378,7 +45909,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.env_in[63]_i_1_n_0\,
+      D => \comp_burst.phase_in[79]_i_1_n_0\,
       Q => rt_data_rd,
       R => '0'
     );
@@ -40178,7 +46709,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
      port map (
       C => clk,
       CE => '1',
-      D => p2_i_n_155,
+      D => \comp_burst.burst_i_1_n_0\,
       Q => rt_meta_rd,
       R => '0'
     );
@@ -40214,7 +46745,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     )
         port map (
       I0 => run_env,
-      I1 => run_env10_out,
+      I1 => run_env9_out,
       O => \comp_burst.run_env_i_1_n_0\
     );
 \comp_burst.run_env_i_2\: unisim.vcomponents.LUT6
@@ -40228,7 +46759,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       I3 => env_down_ind(9),
       I4 => \comp_burst.run_env_i_3_n_0\,
       I5 => \comp_burst.run_env_i_4_n_0\,
-      O => run_env10_out
+      O => run_env9_out
     );
 \comp_burst.run_env_i_3\: unisim.vcomponents.LUT4
     generic map(
@@ -40262,12 +46793,12 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
     );
 \comp_burst.run_env_start_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"70"
+      INIT => X"2A"
     )
         port map (
-      I0 => comp_env,
+      I0 => run_env_start,
       I1 => run_env_start0,
-      I2 => \comp_burst.run_env_start_reg_n_0\,
+      I2 => comp_env,
       O => \comp_burst.run_env_start_i_1_n_0\
     );
 \comp_burst.run_env_start_reg\: unisim.vcomponents.FDSE
@@ -40275,7 +46806,7 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       C => clk,
       CE => '1',
       D => \comp_burst.run_env_start_i_1_n_0\,
-      Q => \comp_burst.run_env_start_reg_n_0\,
+      Q => run_env_start,
       S => scan_start
     );
 \comp_burst.scan_start_reg\: unisim.vcomponents.FDRE
@@ -42741,62 +49272,62 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"1"
     )
         port map (
-      I0 => wr_ptr(0),
-      O => \comp_burst.wr_ptr[0]_i_1_n_0\
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      O => \p_0_in__0\(0)
     );
 \comp_burst.wr_ptr[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => wr_ptr(0),
-      I1 => wr_ptr(1),
-      O => \comp_burst.wr_ptr[1]_i_1_n_0\
+      I0 => \comp_burst.wr_ptr_reg\(0),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      O => \p_0_in__0\(1)
     );
 \comp_burst.wr_ptr[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"6A"
     )
         port map (
-      I0 => wr_ptr(2),
-      I1 => wr_ptr(0),
-      I2 => wr_ptr(1),
-      O => \comp_burst.wr_ptr[2]_i_1_n_0\
+      I0 => \comp_burst.wr_ptr_reg\(2),
+      I1 => \comp_burst.wr_ptr_reg\(0),
+      I2 => \comp_burst.wr_ptr_reg\(1),
+      O => \p_0_in__0\(2)
     );
 \comp_burst.wr_ptr[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"6AAA"
     )
         port map (
-      I0 => wr_ptr(3),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(2),
-      O => \comp_burst.wr_ptr[3]_i_1_n_0\
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      O => \p_0_in__0\(3)
     );
 \comp_burst.wr_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"6AAAAAAA"
     )
         port map (
-      I0 => wr_ptr(4),
-      I1 => wr_ptr(2),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(1),
-      I4 => wr_ptr(3),
-      O => \comp_burst.wr_ptr[4]_i_1_n_0\
+      I0 => \comp_burst.wr_ptr_reg\(4),
+      I1 => \comp_burst.wr_ptr_reg\(2),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      I3 => \comp_burst.wr_ptr_reg\(1),
+      I4 => \comp_burst.wr_ptr_reg\(3),
+      O => \p_0_in__0\(4)
     );
 \comp_burst.wr_ptr[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => wr_ptr(5),
-      I1 => wr_ptr(4),
-      I2 => wr_ptr(2),
-      I3 => wr_ptr(0),
-      I4 => wr_ptr(1),
-      I5 => wr_ptr(3),
+      I0 => \comp_burst.wr_ptr_reg\(5),
+      I1 => \comp_burst.wr_ptr_reg\(4),
+      I2 => \comp_burst.wr_ptr_reg\(2),
+      I3 => \comp_burst.wr_ptr_reg\(0),
+      I4 => \comp_burst.wr_ptr_reg\(1),
+      I5 => \comp_burst.wr_ptr_reg\(3),
       O => \comp_burst.wr_ptr[5]_i_1_n_0\
     );
 \comp_burst.wr_ptr[6]_i_1\: unisim.vcomponents.LUT3
@@ -42804,21 +49335,21 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"9A"
     )
         port map (
-      I0 => wr_ptr(6),
+      I0 => \comp_burst.wr_ptr_reg\(6),
       I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(5),
-      O => \comp_burst.wr_ptr[6]_i_1_n_0\
+      I2 => \comp_burst.wr_ptr_reg\(5),
+      O => \p_0_in__0\(6)
     );
 \comp_burst.wr_ptr[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"DF20"
     )
         port map (
-      I0 => wr_ptr(5),
+      I0 => \comp_burst.wr_ptr_reg\(5),
       I1 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I2 => wr_ptr(6),
-      I3 => wr_ptr(7),
-      O => \comp_burst.wr_ptr[7]_i_1_n_0\
+      I2 => \comp_burst.wr_ptr_reg\(6),
+      I3 => \comp_burst.wr_ptr_reg\(7),
+      O => \p_0_in__0\(7)
     );
 \comp_burst.wr_ptr[8]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -42833,63 +49364,135 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       INIT => X"A6AAAAAA"
     )
         port map (
-      I0 => wr_ptr(8),
-      I1 => wr_ptr(5),
+      I0 => \comp_burst.wr_ptr_reg\(8),
+      I1 => \comp_burst.wr_ptr_reg\(5),
       I2 => \comp_burst.wr_ptr[8]_i_3_n_0\,
-      I3 => wr_ptr(6),
-      I4 => wr_ptr(7),
-      O => \comp_burst.wr_ptr[8]_i_2_n_0\
+      I3 => \comp_burst.wr_ptr_reg\(6),
+      I4 => \comp_burst.wr_ptr_reg\(7),
+      O => \p_0_in__0\(8)
     );
 \comp_burst.wr_ptr[8]_i_3\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"7FFFFFFF"
     )
         port map (
-      I0 => wr_ptr(3),
-      I1 => wr_ptr(1),
-      I2 => wr_ptr(0),
-      I3 => wr_ptr(2),
-      I4 => wr_ptr(4),
+      I0 => \comp_burst.wr_ptr_reg\(3),
+      I1 => \comp_burst.wr_ptr_reg\(1),
+      I2 => \comp_burst.wr_ptr_reg\(0),
+      I3 => \comp_burst.wr_ptr_reg\(2),
+      I4 => \comp_burst.wr_ptr_reg\(4),
       O => \comp_burst.wr_ptr[8]_i_3_n_0\
+    );
+\comp_burst.wr_ptr_in_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(0),
+      Q => wr_ptr_in(0),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(1),
+      Q => wr_ptr_in(1),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(2),
+      Q => wr_ptr_in(2),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(3),
+      Q => wr_ptr_in(3),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(4),
+      Q => wr_ptr_in(4),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(5),
+      Q => wr_ptr_in(5),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(6),
+      Q => wr_ptr_in(6),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(7),
+      Q => wr_ptr_in(7),
+      R => '0'
+    );
+\comp_burst.wr_ptr_in_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_burst.wr_ptr_reg\(8),
+      Q => wr_ptr_in(8),
+      R => '0'
     );
 \comp_burst.wr_ptr_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[0]_i_1_n_0\,
-      Q => wr_ptr(0),
+      D => \p_0_in__0\(0),
+      Q => \comp_burst.wr_ptr_reg\(0),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[1]_i_1_n_0\,
-      Q => wr_ptr(1),
+      D => \p_0_in__0\(1),
+      Q => \comp_burst.wr_ptr_reg\(1),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[2]_i_1_n_0\,
-      Q => wr_ptr(2),
+      D => \p_0_in__0\(2),
+      Q => \comp_burst.wr_ptr_reg\(2),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[3]_i_1_n_0\,
-      Q => wr_ptr(3),
+      D => \p_0_in__0\(3),
+      Q => \comp_burst.wr_ptr_reg\(3),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[4]_i_1_n_0\,
-      Q => wr_ptr(4),
+      D => \p_0_in__0\(4),
+      Q => \comp_burst.wr_ptr_reg\(4),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[5]\: unisim.vcomponents.FDRE
@@ -42897,31 +49500,31 @@ add_phase_i: component ps_comp_ana_0_0_dsp_add16_HD7
       C => clk,
       CE => '1',
       D => \comp_burst.wr_ptr[5]_i_1_n_0\,
-      Q => wr_ptr(5),
+      Q => \comp_burst.wr_ptr_reg\(5),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[6]_i_1_n_0\,
-      Q => wr_ptr(6),
+      D => \p_0_in__0\(6),
+      Q => \comp_burst.wr_ptr_reg\(6),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[7]_i_1_n_0\,
-      Q => wr_ptr(7),
+      D => \p_0_in__0\(7),
+      Q => \comp_burst.wr_ptr_reg\(7),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 \comp_burst.wr_ptr_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.wr_ptr[8]_i_2_n_0\,
-      Q => wr_ptr(8),
+      D => \p_0_in__0\(8),
+      Q => \comp_burst.wr_ptr_reg\(8),
       R => \comp_burst.wr_ptr[8]_i_1_n_0\
     );
 div_env_sqr_i: component ps_comp_ana_0_0_div_stat_48
@@ -43010,7 +49613,7 @@ div_mean_i: component ps_comp_ana_0_0_div_burst_mean
       s_axis_divisor_tdata(0) => \comp_burst.curr_size_reg_n_0_[0]\,
       s_axis_divisor_tvalid => div_start
     );
-div_phase_i: component ps_comp_ana_0_0_div_stat_48_HD8
+div_phase_i: component ps_comp_ana_0_0_div_stat_48_HD86
      port map (
       aclk => clk,
       m_axis_dout_tdata(63 downto 0) => NLW_div_phase_i_m_axis_dout_tdata_UNCONNECTED(63 downto 0),
@@ -43033,7 +49636,7 @@ div_phase_i: component ps_comp_ana_0_0_div_stat_48_HD8
       s_axis_divisor_tready => NLW_div_phase_i_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => \comp_burst.stat_div_sqr_start_reg_n_0\
     );
-div_phase_sum_i: component ps_comp_ana_0_0_div_burst_mean_HD9
+div_phase_sum_i: component ps_comp_ana_0_0_div_burst_mean_HD87
      port map (
       aclk => clk,
       m_axis_dout_tdata(39 downto 0) => NLW_div_phase_sum_i_m_axis_dout_tdata_UNCONNECTED(39 downto 0),
@@ -43103,92 +49706,59 @@ ila_i: component ps_comp_ana_0_0_ila_0
       clk => clk,
       probe0(0) => burst,
       probe1(0) => filling,
-      probe10(15 downto 0) => env_diff(15 downto 0),
-      probe11(15 downto 0) => phase_diff(15 downto 0),
-      probe12(47 downto 0) => env_sum_p(47 downto 0),
-      probe13(47 downto 0) => env_sum2_p(47 downto 0),
-      probe14(47 downto 0) => env_sqr_p(47 downto 0),
-      probe15(47 downto 0) => phase_sum_p(47 downto 0),
-      probe16(47 downto 0) => phase_sum2_p(47 downto 0),
-      probe17(47 downto 0) => phase_sqr_p(47 downto 0),
-      probe18(2 downto 0) => stat_sqr_delay(2 downto 0),
-      probe19(2 downto 0) => load_stat_delay(2 downto 0),
+      probe10(0) => run_env,
+      probe11(0) => p2_wr,
+      probe12(15 downto 0) => p2_env(15 downto 0),
+      probe13(0) => p3_done,
+      probe14(0) => stat_active,
+      probe15(15 downto 0) => env_diff(15 downto 0),
+      probe16(15 downto 0) => phase_diff(15 downto 0),
+      probe17(47 downto 0) => env_sum_p(47 downto 0),
+      probe18(47 downto 0) => env_sum2_p(47 downto 0),
+      probe19(47 downto 0) => env_sqr_p(47 downto 0),
       probe2(0) => rt_data_empty,
-      probe20(23 downto 0) => stat_env_sum(23 downto 0),
-      probe21(47 downto 0) => stat_env_sqr(47 downto 0),
-      probe22(23 downto 0) => stat_phase_sum(23 downto 0),
-      probe23(47 downto 0) => stat_phase_sqr(47 downto 0),
+      probe20(47 downto 0) => phase_sum_p(47 downto 0),
+      probe21(47 downto 0) => phase_sum2_p(47 downto 0),
+      probe22(47 downto 0) => phase_sqr_p(47 downto 0),
+      probe23(2 downto 0) => stat_sqr_delay(2 downto 0),
+      probe24(2 downto 0) => load_stat_delay(2 downto 0),
+      probe25(23 downto 0) => stat_env_sum(23 downto 0),
+      probe26(47 downto 0) => stat_env_sqr(47 downto 0),
+      probe27(23 downto 0) => stat_phase_sum(23 downto 0),
+      probe28(47 downto 0) => stat_phase_sqr(47 downto 0),
       probe3(0) => mem_wr,
-      probe4(0) => pend_start,
-      probe5(0) => scan_start,
-      probe6(8 downto 0) => wr_ptr(8 downto 0),
-      probe7(0) => run_env,
-      probe8(0) => p3_done,
-      probe9(0) => stat_active
+      probe4(8 downto 0) => wr_ptr_in(8 downto 0),
+      probe5(63 downto 0) => env_in(63 downto 0),
+      probe6(8 downto 0) => env_up_ptr(8 downto 0),
+      probe7(63 downto 0) => env_up(63 downto 0),
+      probe8(0) => pend_start,
+      probe9(0) => scan_start
     );
 p2_i: entity work.ps_comp_ana_0_0_one_to_four
      port map (
-      D(19 downto 0) => p2_phase_diff_0(19 downto 0),
-      DOUTADOUT(31 downto 16) => p2_env_1(15 downto 0),
-      DOUTADOUT(15 downto 0) => p2_env_0(15 downto 0),
-      DOUTBDOUT(31 downto 16) => p2_env_3(15 downto 0),
-      DOUTBDOUT(15 downto 0) => p2_env_2(15 downto 0),
-      E(0) => df_diff,
-      Q(8) => \comp_burst.df_start_reg_n_0_[8]\,
-      Q(7) => \comp_burst.df_start_reg_n_0_[7]\,
-      Q(6) => \comp_burst.df_start_reg_n_0_[6]\,
-      Q(5) => \comp_burst.df_start_reg_n_0_[5]\,
-      Q(4) => \comp_burst.df_start_reg_n_0_[4]\,
-      Q(3) => \comp_burst.df_start_reg_n_0_[3]\,
-      Q(2) => \comp_burst.df_start_reg_n_0_[2]\,
-      Q(1) => \comp_burst.df_start_reg_n_0_[1]\,
-      Q(0) => \comp_burst.df_start_reg_n_0_[0]\,
-      SR(0) => clear,
+      active => p2_active,
+      allowed => p3_idle,
       clk => clk,
-      \comp_burst.df_active_reg\(0) => p2_i_n_154,
-      \comp_burst.df_active_reg_0\(0) => p2_i_n_156,
-      \comp_burst.df_count_reg\(3 downto 0) => \comp_burst.df_count_reg\(3 downto 0),
-      \comp_burst.df_diff_reg[19]\(19) => \comp_burst.df_low_reg_n_0_[19]\,
-      \comp_burst.df_diff_reg[19]\(18) => \comp_burst.df_low_reg_n_0_[18]\,
-      \comp_burst.df_diff_reg[19]\(17) => \comp_burst.df_low_reg_n_0_[17]\,
-      \comp_burst.df_diff_reg[19]\(16) => \comp_burst.df_low_reg_n_0_[16]\,
-      \comp_burst.df_diff_reg[19]\(15) => \comp_burst.df_low_reg_n_0_[15]\,
-      \comp_burst.df_diff_reg[19]\(14) => \comp_burst.df_low_reg_n_0_[14]\,
-      \comp_burst.df_diff_reg[19]\(13) => \comp_burst.df_low_reg_n_0_[13]\,
-      \comp_burst.df_diff_reg[19]\(12) => \comp_burst.df_low_reg_n_0_[12]\,
-      \comp_burst.df_diff_reg[19]\(11) => \comp_burst.df_low_reg_n_0_[11]\,
-      \comp_burst.df_diff_reg[19]\(10) => \comp_burst.df_low_reg_n_0_[10]\,
-      \comp_burst.df_diff_reg[19]\(9) => \comp_burst.df_low_reg_n_0_[9]\,
-      \comp_burst.df_diff_reg[19]\(8) => \comp_burst.df_low_reg_n_0_[8]\,
-      \comp_burst.df_diff_reg[19]\(7) => \comp_burst.df_low_reg_n_0_[7]\,
-      \comp_burst.df_diff_reg[19]\(6) => \comp_burst.df_low_reg_n_0_[6]\,
-      \comp_burst.df_diff_reg[19]\(5) => \comp_burst.df_low_reg_n_0_[5]\,
-      \comp_burst.df_diff_reg[19]\(4) => \comp_burst.df_low_reg_n_0_[4]\,
-      \comp_burst.df_diff_reg[19]\(3) => \comp_burst.df_low_reg_n_0_[3]\,
-      \comp_burst.df_diff_reg[19]\(2) => \comp_burst.df_low_reg_n_0_[2]\,
-      \comp_burst.df_diff_reg[19]\(1) => \comp_burst.df_low_reg_n_0_[1]\,
-      \comp_burst.df_diff_reg[19]\(0) => \comp_burst.df_low_reg_n_0_[0]\,
-      \comp_burst.df_low_reg[19]\(8 downto 0) => \comp_burst.df_ind_reg\(8 downto 0),
-      \comp_burst.df_start_reg[0]\ => p2_i_n_150,
-      \comp_burst.df_start_reg[3]\ => p2_i_n_151,
-      \comp_burst.df_start_reg[8]\ => p2_i_n_152,
-      df_active => df_active,
-      empty => rt_meta_empty,
-      idle => p3_idle,
-      \one_to_four.counter_reg[10]_0\(10 downto 0) => p2_size(10 downto 0),
-      \one_to_four.env_in_val_reg[63]_0\(15 downto 0) => p2_env(15 downto 0),
-      \one_to_four.idle_reg_0\(0) => p2_i_n_155,
-      \one_to_four.mem_phase_diff_reg_0_0\(16 downto 0) => df_diff00_out(19 downto 3),
-      \one_to_four.mem_phase_reg_0\(31 downto 16) => p2_phase_1(15 downto 0),
-      \one_to_four.mem_phase_reg_0\(15 downto 0) => p2_phase_0(15 downto 0),
-      \one_to_four.mem_phase_reg_1\(31 downto 16) => p2_phase_3(15 downto 0),
-      \one_to_four.mem_phase_reg_1\(15 downto 0) => p2_phase_2(15 downto 0),
-      \one_to_four.mem_wr_reg_0\ => \comp_burst.p2_wr_reg_n_0\,
-      \one_to_four.phase_diff_in_val_reg[59]_0\(19 downto 0) => p2_phase_diff(19 downto 0),
-      \one_to_four.phase_in_val_reg[63]_0\(15 downto 0) => p2_phase(15 downto 0),
-      p2_active => p2_active,
-      p2_done => p2_done,
-      reset => reset
+      env(15 downto 0) => p2_env(15 downto 0),
+      env_0(15 downto 0) => p2_env_0(15 downto 0),
+      env_1(15 downto 0) => p2_env_1(15 downto 0),
+      env_2(15 downto 0) => p2_env_2(15 downto 0),
+      env_3(15 downto 0) => p2_env_3(15 downto 0),
+      idle => p2_idle,
+      phase(15 downto 0) => p2_phase(15 downto 0),
+      phase_0(15 downto 0) => p2_phase_0(15 downto 0),
+      phase_1(15 downto 0) => p2_phase_1(15 downto 0),
+      phase_2(15 downto 0) => p2_phase_2(15 downto 0),
+      phase_3(15 downto 0) => p2_phase_3(15 downto 0),
+      phase_diff(19 downto 0) => p2_phase_diff(19 downto 0),
+      phase_diff_0(19 downto 0) => p2_phase_diff_0(19 downto 0),
+      phase_diff_1(19 downto 0) => NLW_p2_i_phase_diff_1_UNCONNECTED(19 downto 0),
+      phase_diff_2(19 downto 0) => NLW_p2_i_phase_diff_2_UNCONNECTED(19 downto 0),
+      phase_diff_3(19 downto 0) => NLW_p2_i_phase_diff_3_UNCONNECTED(19 downto 0),
+      read_back => p2_done,
+      reset => reset,
+      size(10 downto 0) => p2_size(10 downto 0),
+      wr => p2_wr
     );
 p3_i: entity work.ps_comp_ana_0_0_comp_stat
      port map (
@@ -43225,7 +49795,7 @@ sqr_env_i: component ps_comp_ana_0_0_dsp_sqr16
       P(47 downto 0) => env_sqr_p(47 downto 0),
       SCLR => stat_reset
     );
-sqr_phase_i: component ps_comp_ana_0_0_dsp_sqr16_HD10
+sqr_phase_i: component ps_comp_ana_0_0_dsp_sqr16_HD88
      port map (
       A(15 downto 0) => phase_diff(15 downto 0),
       CLK => clk,
@@ -43240,7 +49810,7 @@ sum2_env_i: component ps_comp_ana_0_0_mul_stat24
       P(47 downto 0) => env_sum2_p(47 downto 0),
       SCLR => NLW_sum2_env_i_SCLR_UNCONNECTED
     );
-sum2_phase_i: component ps_comp_ana_0_0_mul_stat24_HD11
+sum2_phase_i: component ps_comp_ana_0_0_mul_stat24_HD89
      port map (
       A(23 downto 0) => stat_phase_sum(23 downto 0),
       B(23 downto 0) => stat_phase_sum(23 downto 0),
@@ -44152,10 +50722,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_ana is
   attribute KEEP of \comp_ana.count_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_ana.count_reg[8]\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair89";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[7]_i_1\ : label is 35;

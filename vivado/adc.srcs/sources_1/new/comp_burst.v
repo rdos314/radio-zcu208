@@ -192,6 +192,7 @@ module comp_burst(
     
     reg [63:0] env_in;
     reg [79:0] phase_in;
+    reg [8:0] wr_ptr_in;
     reg mem_wr;
 	reg pend_start;
     reg scan_start;
@@ -600,26 +601,31 @@ module comp_burst(
 		.probe1(filling),             // input wire [0:0]  probe3
 		.probe2(rt_data_empty),       // input wire [0:0]  probe3
 		.probe3(mem_wr),              // input wire [0:0]  probe3
-		.probe4(pend_start),          // input wire [0:0]  probe3
-		.probe5(scan_start),          // input wire [0:0]  probe3
-		.probe6(wr_ptr),              // input wire [8:0]  probe3
-		.probe7(run_env),             // input wire [0:0]  probe3
-		.probe8(p3_done),             // input wire [0:0]  probe3
-		.probe9(stat_active),         // input wire [0:0]  probe3
-		.probe10(env_diff),           // input wire [15:0]  probe3
-		.probe11(phase_diff),         // input wire [15:0]  probe3
-		.probe12(env_sum_p),          // input wire [47:0]  probe3
-		.probe13(env_sum2_p),         // input wire [47:0]  probe3
-		.probe14(env_sqr_p),          // input wire [47:0]  probe3
-		.probe15(phase_sum_p),        // input wire [47:0]  probe3
-		.probe16(phase_sum2_p),       // input wire [47:0]  probe3
-		.probe17(phase_sqr_p),        // input wire [47:0]  probe3
-		.probe18(stat_sqr_delay),     // input wire [2:0]  probe3
-		.probe19(load_stat_delay),    // input wire [2:0]  probe3
-		.probe20(stat_env_sum),       // input wire [23:0]  probe3
-		.probe21(stat_env_sqr),       // input wire [47:0]  probe3
-		.probe22(stat_phase_sum),     // input wire [23:0]  probe3
-		.probe23(stat_phase_sqr)     // input wire [47:0]  probe3
+		.probe4(wr_ptr_in),           // input wire [8:0]  probe3
+		.probe5(env_in),              // input wire [63:0]  probe3
+		.probe6(env_up_ptr),          // input wire [8:0]  probe3
+		.probe7(env_up),              // input wire [63:0]  probe3
+		.probe8(pend_start),          // input wire [0:0]  probe3
+		.probe9(scan_start),          // input wire [0:0]  probe3
+		.probe10(run_env),             // input wire [0:0]  probe3
+		.probe11(p2_wr),               // input wire [0:0]  probe3
+		.probe12(p2_env),              // input wire [15:0]  probe3
+		.probe13(p3_done),             // input wire [0:0]  probe3
+		.probe14(stat_active),         // input wire [0:0]  probe3
+		.probe15(env_diff),           // input wire [15:0]  probe3
+		.probe16(phase_diff),         // input wire [15:0]  probe3
+		.probe17(env_sum_p),          // input wire [47:0]  probe3
+		.probe18(env_sum2_p),         // input wire [47:0]  probe3
+		.probe19(env_sqr_p),          // input wire [47:0]  probe3
+		.probe20(phase_sum_p),        // input wire [47:0]  probe3
+		.probe21(phase_sum2_p),       // input wire [47:0]  probe3
+		.probe22(phase_sqr_p),        // input wire [47:0]  probe3
+		.probe23(stat_sqr_delay),     // input wire [2:0]  probe3
+		.probe24(load_stat_delay),    // input wire [2:0]  probe3
+		.probe25(stat_env_sum),       // input wire [23:0]  probe3
+		.probe26(stat_env_sqr),       // input wire [47:0]  probe3
+		.probe27(stat_phase_sum),     // input wire [23:0]  probe3
+		.probe28(stat_phase_sqr)     // input wire [47:0]  probe3
 	);
 	
 generate
@@ -732,19 +738,19 @@ generate
     always @(posedge clk) 
     begin
         if (mem_wr)
-            mem_env_up[wr_ptr] <= env_in;
+            mem_env_up[wr_ptr_in] <= env_in;
     end
     
     always @(posedge clk) 
     begin
         if (mem_wr)
-            mem_env_down[wr_ptr] <= env_in;
+            mem_env_down[wr_ptr_in] <= env_in;
     end
 
     always @(posedge clk) 
     begin
         if (mem_wr)    
-            mem_phase[wr_ptr] <= phase_in;
+            mem_phase[wr_ptr_in] <= phase_in;
     end
 
     always @(posedge clk) 
@@ -877,6 +883,11 @@ generate
 
             wr_ptr <= 0;            
         end
+    end
+
+    always @(posedge clk) 
+    begin
+        wr_ptr_in <= wr_ptr;
     end
 
     always @(posedge clk) 

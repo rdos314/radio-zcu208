@@ -182,11 +182,19 @@ module comp_stat(
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
-		.probe1(pos),                // input wire [10:0]  probe3
-		.probe2(env),                // input wire [15:0]  probe3
-		.probe3(phase)               // input wire [15:0]  probe3
+		.probe1(wr_ptr),             // input wire [8:0]  probe3
+		.probe2(env_in),             // input wire [63:0]  probe3
+		.probe3(phase_in),           // input wire [63:0]  probe3
+		.probe4(rd_ptr),             // input wire [8:0]  probe3
+		.probe5(rd_pos_1),           // input wire [1:0]  probe3
+		.probe6(rd_pos),             // input wire [1:0]  probe3
+		.probe7(curr_env_1),         // input wire [15:0]  probe3
+		.probe8(curr_phase),         // input wire [15:0]  probe3
+		.probe9(pos),                // input wire [10:0]  probe3
+		.probe10(env),               // input wire [15:0]  probe3
+		.probe11(phase)              // input wire [15:0]  probe3
 	);
-    
+
 generate
   begin : comp_stat
 
