@@ -341,13 +341,13 @@ module comp_burst(
 	reg [15:0] p3_max_env;
 
     wire p3_idle;
-    wire p3_active;
-    
+    wire p3_wr;
+    wire p3_done;
+        
     wire [10:0] p3_pos;
     wire [15:0] p3_env;
     wire [15:0] p3_phase;
     
-    wire p3_done;
     wire [31:0] p3_env_sum;
     wire [47:0] p3_env_sum2;
     wire [31:0] p3_phase_sum;
@@ -415,7 +415,26 @@ module comp_burst(
 	reg [15:0] p4_max_env;
 	reg [15:0] p4_env_mean;
 	reg [15:0] p4_phase_mean;
-	
+
+    wire p4_allowed;
+    wire p4_idle;
+    wire p4_active;
+    
+    reg p4_run;
+    reg p4_wr;
+    reg [10:0] p4_pos;
+    reg [15:0] p4_env;
+    reg [15:0] p4_phase;
+    
+    wire [15:0] p4_env_0;
+    wire [15:0] p4_env_1;
+    wire [15:0] p4_env_2;
+    wire [15:0] p4_env_3;
+    wire [15:0] p4_phase_0;
+    wire [15:0] p4_phase_1;
+    wire [15:0] p4_phase_2;
+    wire [15:0] p4_phase_3;
+    
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
 		.wr_clk(config_clk),           // input wire wr_clk
@@ -502,7 +521,7 @@ module comp_burst(
         .phase_2(p2_phase_2),
         .phase_3(p2_phase_3),
         .idle(p3_idle),
-        .active(p3_active),
+        .active(p3_wr),
         .pos(p3_pos),
         .env(p3_env),
         .phase(p3_phase),
@@ -511,6 +530,27 @@ module comp_burst(
         .env_sum2(p3_env_sum2),
         .phase_sum(p3_phase_sum),
         .phase_sum2(p3_phase_sum2)
+	);
+
+	pos_to_four p4_i (
+		.clk(clk),
+        .reset(reset),
+        .run(p4_run),
+        .wr(p4_wr),
+        .pos(p4_pos),
+        .env(p4_env),
+        .phase(p4_phase),
+        .allowed(p4_allowed),
+        .idle(p4_idle),
+        .active(p4_active),
+        .env_0(p4_env_0),
+        .env_1(p4_env_1),
+        .env_2(p4_env_2),
+        .env_3(p4_env_3),
+        .phase_0(p4_phase_0),
+        .phase_1(p4_phase_1),
+        .phase_2(p4_phase_2),
+        .phase_3(p4_phase_3)
 	);
 	
     dsp_add16 add_env_i (
@@ -534,10 +574,10 @@ module comp_burst(
         .P(env_sum2_p)           // output wire [47 : 0] P
     );
 
-	div_burst_mean div_env_sum_i (
+	div_stat_24 div_env_sum_i (
 		.aclk(clk),                                      // input wire aclk
 		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata(curr_size),                // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_divisor_tdata({5'b00000, p4_size}),      // input wire [15 : 0] s_axis_divisor_tdata
 		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
 		.s_axis_dividend_tdata(stat_env_sum),            // input wire [23 : 0] s_axis_dividend_tdata
 		.m_axis_dout_tvalid(stat_env_div_sum_done),      // output wire m_axis_dout_tvalid		
@@ -547,7 +587,7 @@ module comp_burst(
     div_stat_48 div_env_sqr_i (
         .aclk(clk),                                       // input wire aclk
         .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tdata(p4_size),                   // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_divisor_tdata({5'b00000, p4_size}),       // input wire [15 : 0] s_axis_divisor_tdata
         .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
         .s_axis_dividend_tdata(env_sum2_p),               // input wire [47 : 0] s_axis_dividend_tdata
         .m_axis_dout_tvalid(stat_env_div_sqr_done),       // output wire m_axis_dout_tvalid
@@ -575,10 +615,10 @@ module comp_burst(
         .P(phase_sum2_p)         // output wire [47 : 0] P
     );
 
-	div_burst_mean div_phase_sum_i (
+	div_stat_24 div_phase_sum_i (
 		.aclk(clk),                                      // input wire aclk
 		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata(p4_size),                  // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_divisor_tdata({5'b00000, p4_size}),      // input wire [15 : 0] s_axis_divisor_tdata
 		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
 		.s_axis_dividend_tdata(stat_phase_sum),          // input wire [23 : 0] s_axis_dividend_tdata
 		.m_axis_dout_tvalid(stat_phase_div_sum_done),    // output wire m_axis_dout_tvalid		
@@ -588,7 +628,7 @@ module comp_burst(
     div_stat_48 div_phase_i (
         .aclk(clk),                                       // input wire aclk
         .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tdata(p4_size),                   // input wire [15 : 0] s_axis_divisor_tdata
+        .s_axis_divisor_tdata({5'b00000, p4_size}),       // input wire [15 : 0] s_axis_divisor_tdata
         .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
         .s_axis_dividend_tdata(phase_sum2_p),             // input wire [47 : 0] s_axis_dividend_tdata
         .m_axis_dout_tvalid(stat_phase_div_sqr_done),     // output wire m_axis_dout_tvalid
@@ -597,37 +637,39 @@ module comp_burst(
 
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(burst),               // input wire [0:0]  probe3
-		.probe1(filling),             // input wire [0:0]  probe3
-		.probe2(rt_data_empty),       // input wire [0:0]  probe3
-		.probe3(mem_wr),              // input wire [0:0]  probe3
-		.probe4(wr_ptr_in),           // input wire [8:0]  probe3
-		.probe5(env_in),              // input wire [63:0]  probe3
-		.probe6(env_up_ptr),          // input wire [8:0]  probe3
-		.probe7(env_up),              // input wire [63:0]  probe3
-		.probe8(pend_start),          // input wire [0:0]  probe3
-		.probe9(scan_start),          // input wire [0:0]  probe3
-		.probe10(run_env),             // input wire [0:0]  probe3
-		.probe11(p2_wr),               // input wire [0:0]  probe3
-		.probe12(p2_env),              // input wire [15:0]  probe3
-		.probe13(p3_done),             // input wire [0:0]  probe3
-		.probe14(stat_active),         // input wire [0:0]  probe3
-		.probe15(env_diff),           // input wire [15:0]  probe3
-		.probe16(phase_diff),         // input wire [15:0]  probe3
-		.probe17(env_sum_p),          // input wire [47:0]  probe3
-		.probe18(env_sum2_p),         // input wire [47:0]  probe3
-		.probe19(env_sqr_p),          // input wire [47:0]  probe3
-		.probe20(phase_sum_p),        // input wire [47:0]  probe3
+		.probe0(scan_start),          // input wire [0:0]  probe3
+		.probe1(run_env),             // input wire [0:0]  probe3
+		.probe2(p2_idle),             // input wire [0:0]  probe3
+		.probe3(p2_active),           // input wire [0:0]  probe3
+		.probe4(p3_idle),             // input wire [0:0]  probe3
+		.probe5(p3_active),           // input wire [0:0]  probe3
+		.probe6(p3_done),             // input wire [0:0]  probe3
+		.probe7(stat_active),         // input wire [0:0]  probe3
+		.probe8(stat_reset),          // input wire [0:0]  probe3
+		.probe9(p4_sample),           // input wire [63:0]  probe3
+		.probe10(p4_freq),             // input wire [19:0]  probe3
+		.probe11(p4_angle),           // input wire [15:0]  probe3
+		.probe12(p4_size),            // input wire [10:0]  probe3
+		.probe13(p4_max_env),         // input wire [15:0]  probe3
+		.probe14(stat_env_sum),       // input wire [23:0]  probe3
+		.probe15(stat_phase_sum),     // input wire [23:0]  probe3
+		.probe16(stat_env_sqr),       // input wire [47:0]  probe3
+		.probe17(stat_phase_sqr),     // input wire [47:0]  probe3
+		.probe18(stat_sqr_delay),     // input wire [2:0]  probe3
+		.probe19(load_stat_delay),    // input wire [2:0]  probe3
+		.probe20(env_sum2_p),         // input wire [47:0]  probe3
 		.probe21(phase_sum2_p),       // input wire [47:0]  probe3
-		.probe22(phase_sqr_p),        // input wire [47:0]  probe3
-		.probe23(stat_sqr_delay),     // input wire [2:0]  probe3
-		.probe24(load_stat_delay),    // input wire [2:0]  probe3
-		.probe25(stat_env_sum),       // input wire [23:0]  probe3
-		.probe26(stat_env_sqr),       // input wire [47:0]  probe3
-		.probe27(stat_phase_sum),     // input wire [23:0]  probe3
-		.probe28(stat_phase_sqr)     // input wire [47:0]  probe3
+		.probe22(stat_env_div_sum_done),     // input wire [0:0]  probe3
+		.probe23(stat_env_div_sum),   // input wire [15:0]  probe3
+		.probe24(stat_phase_div_sum_done),   // input wire [0:0]  probe3
+		.probe25(stat_phase_div_sum), // input wire [15:0]  probe3
+		.probe26(stat_div_sqr_start),     // input wire [0:0]  probe3
+		.probe27(stat_env_div_sqr_done),     // input wire [0:0]  probe3
+		.probe28(stat_env_div_sqr_data),   // input wire [63:0]  probe3
+		.probe29(stat_phase_div_sqr_done),   // input wire [0:0]  probe3
+		.probe30(stat_phase_div_sqr_data)  // input wire [63:0]  probe3
 	);
-	
+
 generate
   begin : comp_burst
 
@@ -1318,6 +1360,25 @@ generate
 			df_done <= 0;
 		end
 	end
+
+    always @(posedge clk) 
+    begin
+        if (reset | p3_done)
+            p4_run <= 0;
+        else
+        begin
+            if (p3_wr)
+                p4_run <= 1;
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        p4_wr <= p3_wr;
+        p4_pos <= p3_pos;
+        p4_env <= p3_env;
+        p4_phase <= p3_phase;
+    end
 
     always @(posedge clk) 
     begin

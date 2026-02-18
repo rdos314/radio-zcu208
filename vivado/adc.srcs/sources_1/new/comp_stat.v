@@ -178,7 +178,7 @@ module comp_stat(
 	
 	reg [10:0] pos_1;
 
-
+/*
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
@@ -194,6 +194,7 @@ module comp_stat(
 		.probe10(env),               // input wire [15:0]  probe3
 		.probe11(phase)              // input wire [15:0]  probe3
 	);
+*/
 
 generate
   begin : comp_stat

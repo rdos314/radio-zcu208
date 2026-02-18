@@ -149,7 +149,7 @@ BEGIN
       C_HAS_ACLKEN => 0,
       C_LATENCY => 34,
       ALGORITHM_TYPE => 3,
-      DIVISOR_WIDTH => 16,
+      DIVISOR_WIDTH => 12,
       DIVIDEND_WIDTH => 48,
       SIGNED_B => 1,
       DIVCLK_SEL => 1,
