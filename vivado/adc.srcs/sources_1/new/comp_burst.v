@@ -202,35 +202,7 @@ module comp_burst(
     (* ram_style = "block" *) reg [79:0] mem_phase [0:511];
 
     reg [8:0] wr_ptr;
-    
-    reg [16:0] env_sum_lsb_0;
-    reg [16:0] env_sum_lsb_1;
-    reg [16:0] env_sum_lsb_2;
-    reg [16:0] env_sum_lsb_3;
-    
-    reg [8:0] env_sum_msb_0;
-    reg [8:0] env_sum_msb_1;
-    reg [8:0] env_sum_msb_2;
-    reg [8:0] env_sum_msb_3;
-
-    reg [1:0] mean_stage;
-
-    reg [16:0] env_sum_lsb_01;
-    reg [16:0] env_sum_lsb_23;
-    reg [9:0] env_sum_msb_01;
-    reg [9:0] env_sum_msb_23;
-
-    reg [16:0] env_sum_lsb;
-    reg [9:0] env_sum_msb;
-    reg [23:0] env_sum;
-
-	reg div_start;
-	wire div_done;
-	wire [39:0] div_result;
-	wire [15:0] div_mean = div_result[31:16];
-	reg mean_done;
-	reg [15:0] mean;
-        
+            
     reg [8:0] env_up_ptr;
     reg [63:0] env_up;
     reg [10:0] env_up_adr;
@@ -311,8 +283,7 @@ module comp_burst(
     reg p2_wr;
 
     reg [15:0] p2_env;
-    reg [15:0] p2_phase;
-	reg [19:0] p2_phase_diff;
+    reg [19:0] p2_phase;
 
     wire p2_idle;
     wire p2_active;
@@ -323,22 +294,18 @@ module comp_burst(
     wire [15:0] p2_env_2;
     wire [15:0] p2_env_3;
 
-    wire [15:0] p2_phase_0;
-    wire [15:0] p2_phase_1;
-    wire [15:0] p2_phase_2;
-    wire [15:0] p2_phase_3;
-
-    wire [19:0] p2_phase_diff_0;
-    wire [19:0] p2_phase_diff_1;
-    wire [19:0] p2_phase_diff_2;
-    wire [19:0] p2_phase_diff_3;
+    wire [19:0] p2_phase_0;
+    wire [19:0] p2_phase_1;
+    wire [19:0] p2_phase_2;
+    wire [19:0] p2_phase_3;
 
 	reg [63:0] p3_sample;
-    reg [19:0] p3_freq;
+    wire [19:0] p3_freq;
     reg [15:0] p3_angle;
 	reg [10:0] p3_size;
 	reg [10:0] p3_max_pos;
 	reg [15:0] p3_max_env;
+	wire [15:0] p3_env_mean;
 
     wire p3_idle;
     wire p3_wr;
@@ -347,67 +314,7 @@ module comp_burst(
     wire [10:0] p3_pos;
     wire [15:0] p3_env;
     wire [15:0] p3_phase;
-    
-    wire [31:0] p3_env_sum;
-    wire [47:0] p3_env_sum2;
-    wire [31:0] p3_phase_sum;
-    wire [47:0] p3_phase_sum2;
-
-    reg [63:0] temp_sample;
-    reg [19:0] temp_freq;
-    reg [15:0] temp_angle;
-    reg [15:0] temp_size;
-	reg [15:0] temp_mean;
-	reg temp_active;
-    reg [10:0] temp_pos;
-    reg [15:0] temp_env;
-    reg [15:0] temp_phase;    
 	
-	reg [15:0] env_diff;
-	reg [15:0] phase_diff;
-	reg stat_reset;
-	wire [47:0] env_sum_p;
-	wire [47:0] env_sqr_p;
-    wire [47:0] env_sum2_p;
-	wire [47:0] phase_sum_p;
-	wire [47:0] phase_sqr_p;
-    wire [47:0] phase_sum2_p;
-    
-    reg stat_active;
-    reg [2:0] load_stat_delay;
-    reg [23:0] stat_env_sum;
-    reg [47:0] stat_env_sqr;
-    reg [23:0] stat_phase_sum;
-    reg [47:0] stat_phase_sqr;
-    
-    reg [2:0] stat_sqr_delay;
-    reg stat_div_sum_start;
-    reg stat_div_sum_pend;
-    reg stat_div_sqr_start;
-    reg stat_div_sqr_pend;
-    wire stat_env_div_sum_done;
-    wire stat_env_div_sqr_done;
-    wire [39:0] stat_env_div_sum_data;
-    wire [15:0] stat_env_div_sum = stat_env_div_sum_data[31:16];
-    wire [63:0] stat_env_div_sqr_data;
-    wire [47:0] stat_env_div_sqr = stat_env_div_sqr_data[63:16];
-    wire stat_phase_div_sum_done;
-    wire stat_phase_div_sqr_done;
-    wire [39:0] stat_phase_div_sum_data;
-    wire [15:0] stat_phase_div_sum = stat_phase_div_sum_data[31:16];
-    wire [63:0] stat_phase_div_sqr_data;
-    wire [47:0] stat_phase_div_sqr = stat_phase_div_sqr_data[63:16];
-
-    reg [2:0] stat_nvar_delay;
-    reg [16:0] stat_env_nvar0;
-    reg [16:0] stat_env_nvar1;
-    reg [15:0] stat_env_nvar2;
-    reg [31:0] stat_env_nvar;
-    reg [16:0] stat_phase_nvar0;
-    reg [16:0] stat_phase_nvar1;
-    reg [15:0] stat_phase_nvar2;
-    reg [31:0] stat_phase_nvar;
-
 	reg [63:0] p4_sample;
     reg [19:0] p4_freq;
     reg [15:0] p4_angle;
@@ -468,23 +375,12 @@ module comp_burst(
 		.empty(rt_data_empty)    // output wire empty
 	);
 
-	div_burst_mean div_mean_i (
-		.aclk(clk),                                      // input wire aclk
-		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata(curr_size),                // input wire [15 : 0] s_axis_divisor_tdata
-		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
-		.s_axis_dividend_tdata(env_sum),                 // input wire [23 : 0] s_axis_dividend_tdata
-		.m_axis_dout_tvalid(div_done),                   // output wire m_axis_dout_tvalid		
-		.m_axis_dout_tdata(div_result)                   // output wire [39 : 0] m_axis_dout_tdata
-	);
-
 	one_to_four p2_i (
 		.clk(clk),
         .reset(reset),
         .wr(p2_wr),
         .env(p2_env),
         .phase(p2_phase),
-		.phase_diff(p2_phase_diff),
         .size(p2_size),
         .read_back(p2_done),
 		.allowed(p3_idle),
@@ -497,21 +393,16 @@ module comp_burst(
         .phase_0(p2_phase_0),
         .phase_1(p2_phase_1),
         .phase_2(p2_phase_2),
-        .phase_3(p2_phase_3),
-        .phase_diff_0(p2_phase_diff_0),
-        .phase_diff_1(p2_phase_diff_1),
-        .phase_diff_2(p2_phase_diff_2),
-        .phase_diff_3(p2_phase_diff_3)
+        .phase_3(p2_phase_3)
 	);
 
 	comp_stat p3_i (
 		.clk(clk),
         .reset(reset),
         .wr(p2_active),
-        .freq(p3_freq),
-        .size(p3_size),
-        .max_pos(p3_max_pos),
-        .est_mean(mean),
+        .freq(p2_freq),
+        .size(p2_size),
+        .max_pos(p2_max_pos),
         .env_0(p2_env_0),
         .env_1(p2_env_1),
         .env_2(p2_env_2),
@@ -520,16 +411,15 @@ module comp_burst(
         .phase_1(p2_phase_1),
         .phase_2(p2_phase_2),
         .phase_3(p2_phase_3),
+        .allowed(1'b1),
         .idle(p3_idle),
         .active(p3_wr),
         .pos(p3_pos),
         .env(p3_env),
         .phase(p3_phase),
         .done(p3_done),
-        .env_sum(p3_env_sum),
-        .env_sum2(p3_env_sum2),
-        .phase_sum(p3_phase_sum),
-        .phase_sum2(p3_phase_sum2)
+        .adj_freq(p3_freq),
+        .env_mean(p3_env_mean)
 	);
 
 	pos_to_four p4_i (
@@ -552,88 +442,6 @@ module comp_burst(
         .phase_2(p4_phase_2),
         .phase_3(p4_phase_3)
 	);
-	
-    dsp_add16 add_env_i (
-        .CLK(clk),           // input wire CLK
-        .SCLR(stat_reset),   // input wire SCLR
-        .A(env_diff),        // input wire [15 : 0] A
-        .P(env_sum_p)        // output wire [47 : 0] P
-    );
-
-    dsp_sqr16 sqr_env_i (
-        .CLK(clk),           // input wire CLK
-        .SCLR(stat_reset),   // input wire SCLR
-        .A(env_diff),        // input wire [15 : 0] A
-        .P(env_sqr_p)        // output wire [47 : 0] P
-    );
-
-    mul_stat24 sum2_env_i (
-        .CLK(clk),               // input wire CLK
-        .A(stat_env_sum),        // input wire [23 : 0] A
-        .B(stat_env_sum),        // input wire [23 : 0] B
-        .P(env_sum2_p)           // output wire [47 : 0] P
-    );
-
-	div_stat_24 div_env_sum_i (
-		.aclk(clk),                                      // input wire aclk
-		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata({5'b00000, p4_size}),      // input wire [15 : 0] s_axis_divisor_tdata
-		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
-		.s_axis_dividend_tdata(stat_env_sum),            // input wire [23 : 0] s_axis_dividend_tdata
-		.m_axis_dout_tvalid(stat_env_div_sum_done),      // output wire m_axis_dout_tvalid		
-		.m_axis_dout_tdata(stat_env_div_sum_data)        // output wire [39 : 0] m_axis_dout_tdata
-	);
-
-    div_stat_48 div_env_sqr_i (
-        .aclk(clk),                                       // input wire aclk
-        .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tdata({5'b00000, p4_size}),       // input wire [15 : 0] s_axis_divisor_tdata
-        .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
-        .s_axis_dividend_tdata(env_sum2_p),               // input wire [47 : 0] s_axis_dividend_tdata
-        .m_axis_dout_tvalid(stat_env_div_sqr_done),       // output wire m_axis_dout_tvalid
-        .m_axis_dout_tdata(stat_env_div_sqr_data)         // output wire [63 : 0] m_axis_dout_tdata
-    );
-	
-    dsp_add16 add_phase_i (
-        .CLK(clk),           // input wire CLK
-        .SCLR(stat_reset),   // input wire SCLR
-        .A(phase_diff),      // input wire [15 : 0] A
-        .P(phase_sum_p)      // output wire [47 : 0] P
-    );
-	
-    dsp_sqr16 sqr_phase_i (
-        .CLK(clk),           // input wire CLK
-        .SCLR(stat_reset),   // input wire SCLR
-        .A(phase_diff),      // input wire [15 : 0] A
-        .P(phase_sqr_p)      // output wire [47 : 0] P
-    );
-
-    mul_stat24 sum2_phase_i (
-        .CLK(clk),               // input wire CLK
-        .A(stat_phase_sum),      // input wire [23 : 0] A
-        .B(stat_phase_sum),      // input wire [23 : 0] B
-        .P(phase_sum2_p)         // output wire [47 : 0] P
-    );
-
-	div_stat_24 div_phase_sum_i (
-		.aclk(clk),                                      // input wire aclk
-		.s_axis_divisor_tvalid(stat_div_sum_start),      // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata({5'b00000, p4_size}),      // input wire [15 : 0] s_axis_divisor_tdata
-		.s_axis_dividend_tvalid(stat_div_sum_start),     // input wire s_axis_dividend_tvalid
-		.s_axis_dividend_tdata(stat_phase_sum),          // input wire [23 : 0] s_axis_dividend_tdata
-		.m_axis_dout_tvalid(stat_phase_div_sum_done),    // output wire m_axis_dout_tvalid		
-		.m_axis_dout_tdata(stat_phase_div_sum_data)      // output wire [39 : 0] m_axis_dout_tdata
-	);
-
-    div_stat_48 div_phase_i (
-        .aclk(clk),                                       // input wire aclk
-        .s_axis_divisor_tvalid(stat_div_sqr_start),       // input wire s_axis_divisor_tvalid
-        .s_axis_divisor_tdata({5'b00000, p4_size}),       // input wire [15 : 0] s_axis_divisor_tdata
-        .s_axis_dividend_tvalid(stat_div_sqr_start),      // input wire s_axis_dividend_tvalid
-        .s_axis_dividend_tdata(phase_sum2_p),             // input wire [47 : 0] s_axis_dividend_tdata
-        .m_axis_dout_tvalid(stat_phase_div_sqr_done),     // output wire m_axis_dout_tvalid
-        .m_axis_dout_tdata(stat_phase_div_sqr_data)       // output wire [63 : 0] m_axis_dout_tdata
-    );
 
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
@@ -644,30 +452,11 @@ module comp_burst(
 		.probe4(p3_idle),             // input wire [0:0]  probe3
 		.probe5(p3_active),           // input wire [0:0]  probe3
 		.probe6(p3_done),             // input wire [0:0]  probe3
-		.probe7(stat_active),         // input wire [0:0]  probe3
-		.probe8(stat_reset),          // input wire [0:0]  probe3
-		.probe9(p4_sample),           // input wire [63:0]  probe3
-		.probe10(p4_freq),             // input wire [19:0]  probe3
-		.probe11(p4_angle),           // input wire [15:0]  probe3
-		.probe12(p4_size),            // input wire [10:0]  probe3
-		.probe13(p4_max_env),         // input wire [15:0]  probe3
-		.probe14(stat_env_sum),       // input wire [23:0]  probe3
-		.probe15(stat_phase_sum),     // input wire [23:0]  probe3
-		.probe16(stat_env_sqr),       // input wire [47:0]  probe3
-		.probe17(stat_phase_sqr),     // input wire [47:0]  probe3
-		.probe18(stat_sqr_delay),     // input wire [2:0]  probe3
-		.probe19(load_stat_delay),    // input wire [2:0]  probe3
-		.probe20(env_sum2_p),         // input wire [47:0]  probe3
-		.probe21(phase_sum2_p),       // input wire [47:0]  probe3
-		.probe22(stat_env_div_sum_done),     // input wire [0:0]  probe3
-		.probe23(stat_env_div_sum),   // input wire [15:0]  probe3
-		.probe24(stat_phase_div_sum_done),   // input wire [0:0]  probe3
-		.probe25(stat_phase_div_sum), // input wire [15:0]  probe3
-		.probe26(stat_div_sqr_start),     // input wire [0:0]  probe3
-		.probe27(stat_env_div_sqr_done),     // input wire [0:0]  probe3
-		.probe28(stat_env_div_sqr_data),   // input wire [63:0]  probe3
-		.probe29(stat_phase_div_sqr_done),   // input wire [0:0]  probe3
-		.probe30(stat_phase_div_sqr_data)  // input wire [63:0]  probe3
+		.probe7(p4_sample),           // input wire [63:0]  probe3
+		.probe8(p4_freq),            // input wire [19:0]  probe3
+		.probe9(p4_angle),           // input wire [15:0]  probe3
+		.probe10(p4_size),            // input wire [10:0]  probe3
+		.probe11(p4_max_env)          // input wire [15:0]  probe3
 	);
 
 generate
@@ -793,94 +582,6 @@ generate
     begin
         if (mem_wr)    
             mem_phase[wr_ptr_in] <= phase_in;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (mem_wr)    
-        begin
-            env_sum_lsb_0 <= {1'b0, env_sum_lsb_0[15:0]} + {1'b0, env_in[15:0]};
-            env_sum_lsb_1 <= {1'b0, env_sum_lsb_1[15:0]} + {1'b0, env_in[31:16]};
-            env_sum_lsb_2 <= {1'b0, env_sum_lsb_2[15:0]} + {1'b0, env_in[47:32]};
-            env_sum_lsb_3 <= {1'b0, env_sum_lsb_3[15:0]} + {1'b0, env_in[63:48]};
-        end
-        else
-        begin
-            if (burst)
-            begin
-                env_sum_lsb_0 <= 0;
-                env_sum_lsb_1 <= 0;
-                env_sum_lsb_2 <= 0;
-                env_sum_lsb_3 <= 0;
-            end
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (mem_wr)    
-        begin
-            env_sum_msb_0 <= env_sum_msb_0 + env_sum_lsb_0[16];
-            env_sum_msb_1 <= env_sum_msb_1 + env_sum_lsb_1[16];
-            env_sum_msb_2 <= env_sum_msb_2 + env_sum_lsb_2[16];
-            env_sum_msb_3 <= env_sum_msb_3 + env_sum_lsb_3[16];
-        end
-        else
-        begin
-            if (burst)
-            begin
-                env_sum_msb_0 <= 0;
-                env_sum_msb_1 <= 0;
-                env_sum_msb_2 <= 0;
-                env_sum_msb_3 <= 0;
-            end
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (scan_start)    
-            mean_stage <= 3;
-        else
-        begin
-            if (reset)
-                mean_stage <= 0;
-            else
-            begin
-                if (mean_stage)
-                    mean_stage <= mean_stage - 1;
-            end
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        case (mean_stage)
-            3 :
-            begin
-                env_sum_lsb_01 <= {1'b0, env_sum_lsb_0[15:0]} + {1'b0, env_sum_lsb_1[15:0]} + env_sum_lsb_0[16] + env_sum_lsb_1[16];
-                env_sum_lsb_23 <= {1'b0, env_sum_lsb_2[15:0]} + {1'b0, env_sum_lsb_3[15:0]} + env_sum_lsb_2[16] + env_sum_lsb_3[16];
-                env_sum_msb_01 <= {1'b0, env_sum_msb_0} + {1'b0, env_sum_msb_1};
-                env_sum_msb_23 <= {1'b0, env_sum_msb_2} + {1'b0, env_sum_msb_3};
-				div_start <= 0;
-            end
-
-            2 :
-            begin
-                env_sum_lsb <= {1'b0, env_sum_lsb_01[16:1]} + {1'b0, env_sum_lsb_23[16:1]} + {1'b0, env_sum_msb_01[0], 15'b000000000000000} +  + {1'b0, env_sum_msb_23[0], 15'b000000000000000};
-                env_sum_msb <= {1'b0, env_sum_msb_01[9:1]} + {1'b0, env_sum_msb_23[9:1]};
-				div_start <= 0;
-            end
-
-            1 :
-            begin
-                env_sum[14:0] <= env_sum_lsb[15:1];
-                env_sum[23:15] <= env_sum_msb[8:0] + env_sum_lsb[16];
-				div_start <= 1;
-            end
-			
-			0: div_start <= 0;
-        endcase
     end
     
     always @(posedge clk) 
@@ -1222,69 +923,13 @@ generate
 
     always @(posedge clk) 
     begin
-		if (scan_start)
-			pred_phase <= {phase_val, 2'b00};
-		else
-			pred_phase <= pred_phase + {2'b00, in_freq};
-	end
-
-    always @(posedge clk) 
-    begin
         p2_env <= env_up_val;
-        p2_phase <= phase_val[19:4];
-		p2_phase_diff <= phase_val - pred_phase[21:2];
+        p2_phase <= phase_val;
     end
-
-    always @(posedge clk) 
-    begin
-		if (reset)
-			pend_start <= 0;
-		else
-		begin
-			if (complete_1)
-				pend_start <= 1;
-			else
-			begin
-				if (complete_2)
-					pend_start <= 0;
-			end
-		end
-	end
-
-    always @(posedge clk) 
-    begin
-        if (reset)
-            mean_done <= 0;
-        else
-        begin
-    		if (div_done)
-	   	   begin
-		  	   mean_done <= 1;
-    		   mean <= div_mean;
-    	   end
-    	   else
-    	   begin
-    	       if (complete_2)
-    	           mean_done <= 0;
-    	   end
-		end
-	end
-
-    always @(posedge clk) 
-    begin
-		if (pend_start)
-		begin
-			if (mean_done)
-				complete_2 <= 1;
-			else
-				complete_2 <= 0;
-		end
-		else
-			complete_2 <= 0;
-	end
 			
     always @(posedge clk) 
     begin
+        complete_2 <= complete_1;
         complete_3 <= complete_2;
         p2_done <= complete_3;
     end
@@ -1302,62 +947,6 @@ generate
 			p2_size <= env_end_ind - env_start_ind + 1;
 			p2_max_pos <= ((env_down_max_ind + env_up_max_ind) >> 1) - env_start_ind;
 			p2_max_env <= env_up_max_val;
-		end
-	end
-
-    always @(posedge clk) 
-    begin
-		if (complete_3)
-		begin
-			if (p2_max_pos[10:4])
-			begin
-				if (p2_size[10:2] - p2_max_pos[10:2] <= 4)
-					df_start <= p2_size[10:2] - 9;
-				else
-					df_start <= p2_max_pos[10:2] - 4;
-			end
-			else
-				df_start <= 0;
-		end
-	end
-
-    always @(posedge clk) 
-    begin
-        if (p2_active)
-		begin
-			if (df_active)
-			begin
-				if (df_count == 7)
-				begin
-					df_active <= 0;
-					df_diff <= p2_phase_diff_0 - df_low;
-					df_done <= 1;
-				end
-				else
-				begin
-					df_count <= df_count + 1;
-					df_done <= 0;
-				end
-			end
-			else
-			begin
-				df_count <= 0;
-				df_done <= 0;
-				
-				if (df_ind == df_start)
-				begin
-					df_active <= 1;
-					df_low <= p2_phase_diff_0;
-				end
-			end
-			df_ind <= df_ind + 1;
-		end
-		else
-		begin
-			df_ind <= 0;
-			df_active <= 0;
-            df_count <= 0;
-			df_done <= 0;
 		end
 	end
 
@@ -1382,10 +971,9 @@ generate
 
     always @(posedge clk) 
     begin
-        if (df_done)
+        if (p2_done)
 		begin
             p3_sample <= p2_sample;
-            p3_freq <= p2_freq + {df_diff[19], df_diff[19], df_diff[19], df_diff[19:3]};
             p3_angle <= p2_angle;
             p3_size <= p2_size;
             p3_max_pos <= p2_max_pos;
@@ -1395,190 +983,14 @@ generate
 
     always @(posedge clk) 
     begin
-		temp_active <= p3_active;
-
-		if (p3_active)
-		begin
-			temp_sample <= p3_sample;
-			temp_freq <= p3_freq;
-			temp_angle <= p3_angle;
-			temp_size <= p3_size;
-			temp_mean <= mean;
-			temp_pos <= p3_pos;
-			temp_env <= p3_env;
-			temp_phase <= p3_phase;
-		end
-		else
-		begin
-			temp_pos <= 0;
-			temp_phase <= 0;
-			temp_env <= 0;
-		end		
-    end
-
-    always @(posedge clk) 
-    begin
-        if (p3_active & stat_active)
-        begin
-            env_diff <= p3_env - mean;
-            phase_diff <= p3_phase;
-        end
-        else
-        begin
-            env_diff <= 0;
-            phase_diff <= 0;
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (reset)
-        begin
-            stat_active <= 0;
-            load_stat_delay <= 0;
-        end
-        else
-        begin
-            if (p3_done & stat_active)
-            begin
-                stat_active <= 0;
-                load_stat_delay <= 7;
-            end
-            else
-            begin
-                if (load_stat_delay)
-                    load_stat_delay <= load_stat_delay - 1;
-                    
-                if (p3_active)
-                    stat_active <= 1;
-            end
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (reset | (load_stat_delay == 1))
-            stat_reset <= 1;
-        else
-            stat_reset <= 0;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (load_stat_delay == 1)
+        if (p3_active)
         begin
             p4_sample <= p3_sample;
             p4_freq <= p3_freq;
             p4_angle <= p3_angle;
             p4_size <= p3_size;
             p4_max_env <= p3_max_env;
-            
-            casex (env_sum_p[47:23])
-                25'b0000000000000000000000000: stat_env_sum <= env_sum_p[23:0];
-                25'b1111111111111111111111111: stat_env_sum <= env_sum_p[23:0];
-                25'b1xxxxxxxxxxxxxxxxxxxxxxxx: stat_env_sum <= 24'h80001;  
-                25'b0xxxxxxxxxxxxxxxxxxxxxxxx: stat_env_sum <= 24'h7FFFF;  
-            endcase
-
-            casex (phase_sum_p[47:23])
-                25'b0000000000000000000000000: stat_phase_sum <= phase_sum_p[23:0];
-                25'b1111111111111111111111111: stat_phase_sum <= phase_sum_p[23:0];
-                25'b1xxxxxxxxxxxxxxxxxxxxxxxx: stat_phase_sum <= 24'h80001;  
-                25'b0xxxxxxxxxxxxxxxxxxxxxxxx: stat_phase_sum <= 24'h7FFFF;  
-            endcase
-
-            stat_env_sqr <= env_sqr_p;
-            stat_phase_sqr <= phase_sqr_p;
-            stat_sqr_delay <= 7;
         end
-        else
-        begin
-            if (reset)
-                stat_sqr_delay <= 0;
-            else
-            begin
-                if (stat_sqr_delay)
-                    stat_sqr_delay <= stat_sqr_delay - 1;
-            end
-        end
-    end
-
-
-    always @(posedge clk) 
-    begin
-        if (stat_sqr_delay == 7)
-        begin
-            stat_div_sum_start <= 1;
-            stat_div_sum_pend <= 1;
-        end
-        else
-        begin
-            stat_div_sum_start <= 0;            
-
-            if (reset)
-                stat_div_sum_pend <= 0;
-            else
-            begin
-                if (stat_div_sum_pend & stat_env_div_sum_done & stat_phase_div_sum_done)
-                begin
-                    p4_env_mean <= mean + stat_env_div_sum;
-                    p4_phase_mean <= stat_phase_div_sum;
-                    stat_div_sum_pend <= 0;
-                end
-            end
-        end            
-    end
-
-    always @(posedge clk) 
-    begin
-        if (stat_sqr_delay == 1)
-        begin
-            stat_div_sqr_start <= 1;
-            stat_div_sqr_pend <= 1;
-        end
-        else
-        begin
-            stat_div_sqr_start <= 0;            
-
-            if (reset)
-            begin
-                stat_div_sqr_pend <= 0;
-                stat_nvar_delay <= 0;
-            end
-            else
-            begin
-                if (stat_div_sqr_pend & stat_env_div_sqr_done & stat_phase_div_sqr_done)
-                begin
-                    stat_nvar_delay <= 4;
-                    stat_div_sqr_pend <= 0;
-                end
-                else
-                begin
-                    if (stat_nvar_delay)
-                        stat_nvar_delay <= stat_nvar_delay - 1;
-                end
-            end
-        end            
-    end
-
-    always @(posedge clk) 
-    begin
-        case (stat_nvar_delay)
-            4:  stat_env_nvar0 <= {1'b0, stat_env_sqr[15:0]} - {1'b0, stat_env_div_sqr[15:0]};
-            3:  stat_env_nvar1 <= {1'b0, stat_env_sqr[31:16]} - {1'b0, stat_env_div_sqr[31:16]}  - {16'h0000, stat_env_nvar0[16]};
-            2:  stat_env_nvar2 <= stat_env_sqr[47:32] - stat_env_div_sqr[47:32] - {15'h0000, stat_env_nvar1[16]};
-            1:  stat_env_nvar <= {stat_env_nvar2[15:0], stat_env_nvar1[15:0], stat_env_nvar0[15:0]};
-        endcase
-    end
-
-    always @(posedge clk) 
-    begin
-        case (stat_nvar_delay)
-            4:  stat_phase_nvar0 <= {1'b0, stat_phase_sqr[15:0]} - {1'b0, stat_phase_div_sqr[15:0]};
-            3:  stat_phase_nvar1 <= {1'b0, stat_phase_sqr[31:16]} - {1'b0, stat_phase_div_sqr[31:16]}  - {16'h0000, stat_phase_nvar0[16]};
-            2:  stat_phase_nvar2 <= stat_phase_sqr[47:32] - stat_phase_div_sqr[47:32] - {15'h0000, stat_phase_nvar1[16]};
-            1:  stat_phase_nvar <= {stat_phase_nvar2[15:0], stat_phase_nvar1[15:0], stat_phase_nvar0[15:0]};
-        endcase
     end
 
     

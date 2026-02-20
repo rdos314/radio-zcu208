@@ -116,15 +116,16 @@ module comp_stat(
     input wire [19:0] freq,
     input wire [10:0] size,
     input wire [10:0] max_pos,
-    input wire [15:0] est_mean,
     input wire [15:0] env_0,
     input wire [15:0] env_1,
     input wire [15:0] env_2,
     input wire [15:0] env_3,
-    input wire [15:0] phase_0,
-    input wire [15:0] phase_1,
-    input wire [15:0] phase_2,
-    input wire [15:0] phase_3,
+    input wire [19:0] phase_0,
+    input wire [19:0] phase_1,
+    input wire [19:0] phase_2,
+    input wire [19:0] phase_3,
+
+    input wire allowed,
 
     output reg idle,
     output reg active,
@@ -133,32 +134,33 @@ module comp_stat(
     output reg [15:0] phase,
     
     output reg done,
-    output reg [31:0] env_sum,
-    output reg [47:0] env_sum2,
-    output reg [31:0] phase_sum,
-    output reg [47:0] phase_sum2
+    output reg [19:0] adj_freq,
+    output reg [15:0] env_mean
 );
     
     (* ram_style = "block" *) reg [63:0] mem_env [0:511];
-    (* ram_style = "block" *) reg [63:0] mem_phase [0:511];
+    (* ram_style = "block" *) reg [79:0] mem_phase [0:511];
     reg mem_wr;
     reg [8:0] wr_ptr;
     reg [63:0] env_in;
-    reg [63:0] phase_in;
+    reg [79:0] phase_in;
     
     reg [8:0] rd_ptr;
     reg [1:0] rd_pos_1;
     reg [1:0] rd_pos;
     reg [63:0] env_out;
-    reg [63:0] phase_out;
+    reg [79:0] phase_out;
 
     reg [15:0] curr_env_1;
     reg [15:0] curr_env_2;
-    reg [15:0] curr_phase;
-	reg [15:0] prev_phase;
+    reg [19:0] curr_phase;
+	reg [19:0] prev_phase;
 	reg [21:0] pred_phase;
 
     reg filling;
+    
+    reg [10:0] local_size;
+    reg [10:0] local_max_pos;
     
     reg proc_up;
     reg start_up;
@@ -177,24 +179,113 @@ module comp_stat(
 	reg [21:0] down_phase;
 	
 	reg [10:0] pos_1;
+    
+    reg [10:0] remain_size;
+    reg [19:0] base_phase;
+    reg [19:0] phase_mean;
 
-/*
+    reg [15:0] calc_env_0;
+    reg [15:0] calc_env_1;
+    reg [15:0] calc_env_2;
+    reg [15:0] calc_env_3;
+    
+    reg [19:0] calc_phase_0;
+    reg [19:0] calc_phase_1;
+    reg [19:0] calc_phase_2;
+    reg [19:0] calc_phase_3;
+
+    reg [3:0] use_bits;
+    reg [16:0] calc_env_01;
+    reg [16:0] calc_env_23;
+    reg [20:0] calc_phase_01;
+    reg [20:0] calc_phase_23;
+
+    reg [17:0] calc_env_all;
+    reg [21:0] calc_phase_all;
+    
+    reg [26:0] env_sum;
+    reg [31:0] phase_sum;
+    
+    reg [17:0] env_lsb;
+    reg env_sign;
+    reg env_carry;
+
+    reg [21:0] phase_lsb;
+    reg phase_sign;
+    reg phase_carry;    
+    
+    reg [1:0] delay_div;
+    reg div_start;
+
+    wire env_div_done;
+    wire [31:0] env_div_data;
+    
+    wire phase_div_done;
+    wire [31:0] phase_div_data;
+
+    reg env_mean_ok;
+    reg phase_mean_ok;
+
+	div_stat_32 div_env_mean_i (
+		.aclk(clk),                                      // input wire aclk
+		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
+		.s_axis_divisor_tdata({5'b00000, local_size}),   // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
+		.s_axis_dividend_tdata({5'b00000, env_sum}),     // input wire [31 : 0] s_axis_dividend_tdata
+		.m_axis_dout_tvalid(env_div_done),               // output wire m_axis_dout_tvalid		
+		.m_axis_dout_tdata(env_div_data)                 // output wire [31 : 0] m_axis_dout_tdata
+	);
+
+	div_stat_32 div_phase_mean_i (
+		.aclk(clk),                                      // input wire aclk
+		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
+		.s_axis_divisor_tdata({5'b00000, local_size}),   // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
+		.s_axis_dividend_tdata(phase_sum),               // input wire [31 : 0] s_axis_dividend_tdata
+		.m_axis_dout_tvalid(phase_div_done),             // output wire m_axis_dout_tvalid		
+		.m_axis_dout_tdata(phase_div_data)               // output wire [31 : 0] m_axis_dout_tdata
+	);
+
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
-		.probe1(wr_ptr),             // input wire [8:0]  probe3
-		.probe2(env_in),             // input wire [63:0]  probe3
-		.probe3(phase_in),           // input wire [63:0]  probe3
-		.probe4(rd_ptr),             // input wire [8:0]  probe3
-		.probe5(rd_pos_1),           // input wire [1:0]  probe3
-		.probe6(rd_pos),             // input wire [1:0]  probe3
-		.probe7(curr_env_1),         // input wire [15:0]  probe3
-		.probe8(curr_phase),         // input wire [15:0]  probe3
-		.probe9(pos),                // input wire [10:0]  probe3
-		.probe10(env),               // input wire [15:0]  probe3
-		.probe11(phase)              // input wire [15:0]  probe3
+		.probe1(wr),                 // input wire [0:0]  probe3
+		.probe2(mem_wr),             // input wire [0:0]  probe3
+		.probe3(remain_size),        // input wire [10:0]  probe3
+		.probe4(calc_env_0),         // input wire [15:0]  probe3
+		.probe5(calc_env_1),         // input wire [15:0]  probe3
+		.probe6(calc_env_2),         // input wire [15:0]  probe3
+		.probe7(calc_env_3),         // input wire [15:0]  probe3
+		.probe8(calc_phase_0),       // input wire [19:0]  probe3
+		.probe9(calc_phase_1),       // input wire [19:0]  probe3
+		.probe10(calc_phase_2),      // input wire [19:0]  probe3
+		.probe11(calc_phase_3),      // input wire [19:0]  probe3
+		.probe12(use_bits),          // input wire [3:0]  probe3
+		.probe13(calc_env_01),       // input wire [16:0]  probe3
+		.probe14(calc_env_23),       // input wire [16:0]  probe3
+		.probe15(calc_phase_01),     // input wire [20:0]  probe3
+		.probe16(calc_phase_23),     // input wire [20:0]  probe3
+		.probe17(calc_env_all),      // input wire [17:0]  probe3
+		.probe18(calc_phase_all),    // input wire [21:0]  probe3
+		.probe19(env_sum),           // input wire [26:0]  probe3
+		.probe20(phase_sum),         // input wire [31:0]  probe3
+		.probe21(env_lsb),           // input wire [17:0]  probe3
+		.probe22(env_sign),          // input wire [0:0]  probe3
+		.probe23(env_carry),         // input wire [0:0]  probe3
+		.probe24(phase_lsb),         // input wire [21:0]  probe3
+		.probe25(phase_sign),        // input wire [0:0]  probe3
+		.probe26(phase_carry),       // input wire [0:0]  probe3
+		.probe27(delay_div),         // input wire [1:0]  probe3
+		.probe28(div_start),         // input wire [0:0]  probe3
+		.probe29(env_div_done),      // input wire [0:0]  probe3
+		.probe30(phase_div_done),    // input wire [0:0]  probe3
+		.probe31(env_mean),          // input wire [15:0]  probe3
+		.probe32(phase_mean),        // input wire [19:0]  probe3
+		.probe33(adj_freq),          // input wire [19:0]  probe3
+		.probe34(env_mean_ok),       // input wire [0:0]  probe3
+		.probe35(phase_mean_ok),     // input wire [0:0]  probe3
+		.probe36(size)               // input wire [10:0]  probe3
 	);
-*/
 
 generate
   begin : comp_stat
@@ -208,16 +299,226 @@ generate
         env_in[47:32] <= env_2;
         env_in[63:48] <= env_3;
 
-        phase_in[15:0] <= phase_0;
-        phase_in[31:16] <= phase_1;
-        phase_in[47:32] <= phase_2;
-        phase_in[63:48] <= phase_3;
+        phase_in[19:0] <= phase_0;
+        phase_in[39:20] <= phase_1;
+        phase_in[59:40] <= phase_2;
+        phase_in[79:60] <= phase_3;
     end
 
     always @(posedge clk) 
     begin
         if (mem_wr)
             mem_env[wr_ptr] <= env_in;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (wr)
+        begin
+            local_size <= size;
+            local_max_pos <= max_pos;
+            
+            if (mem_wr)
+            begin
+                if (remain_size[10:2])
+                    remain_size[10:2] <= remain_size[10:2] - 1;
+                else
+                    remain_size <= 0;
+            end
+            else
+                remain_size <= size - 4;
+        end
+        else
+            remain_size <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (remain_size[10:2] == 0)
+        begin
+            case (remain_size[1:0])
+                0 : use_bits <= 4'b0000;
+                1 : use_bits <= 4'b0001;
+                2 : use_bits <= 4'b0011;
+                3 : use_bits <= 4'b0111;
+            endcase
+        end
+        else
+            use_bits <= 4'b1111;
+    end
+
+    always @(posedge clk) 
+    begin
+        calc_env_0 <= env_0;
+        calc_env_1 <= env_1;
+        calc_env_2 <= env_2;
+        calc_env_3 <= env_3;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (!mem_wr & wr)
+            calc_phase_0 <= 0;
+        else
+            calc_phase_0 <= phase_0 - {2'b00, freq[19:2]} - base_phase;
+            
+        calc_phase_1 <= phase_1 - {2'b00, freq[19:2]} - phase_0;
+        calc_phase_2 <= phase_2 - {2'b00, freq[19:2]} - phase_1;
+        calc_phase_3 <= phase_3 - {2'b00, freq[19:2]} - phase_2;
+        base_phase <= phase_3;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (mem_wr)
+        begin
+            case (use_bits[1:0])
+                2'b00:    calc_env_01 <= 0;
+                2'b01:    calc_env_01 <= {calc_env_0[15], calc_env_0};
+                default : calc_env_01 <= {calc_env_0[15], calc_env_0} + {calc_env_1[15], calc_env_1};
+            endcase
+
+            case (use_bits[3:2])
+                2'b00:    calc_env_23 <= 0;
+                2'b01:    calc_env_23 <= {calc_env_2[15], calc_env_2};
+                default:  calc_env_23 <= {calc_env_2[15], calc_env_2} + {calc_env_3[15], calc_env_3};
+            endcase
+        end
+        else
+        begin
+            calc_env_01 <= 0;
+            calc_env_23 <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (mem_wr)
+        begin
+            case (use_bits[1:0])
+                2'b00:    calc_phase_01 <= 0;
+                2'b01:    calc_phase_01 <= {calc_phase_0[19], calc_phase_0};
+                default:  calc_phase_01 <= {calc_phase_0[19], calc_phase_0} + {calc_phase_1[19], calc_phase_1};
+            endcase
+
+            case (use_bits[3:2])
+                2'b00:    calc_phase_23 <= 0;
+                2'b01:    calc_phase_23 <= {calc_phase_2[19], calc_phase_2};
+                default:  calc_phase_23 <= {calc_phase_2[19], calc_phase_2} + {calc_phase_3[19], calc_phase_3};
+            endcase
+        end
+        else
+        begin
+            calc_phase_01 <= 0;
+            calc_phase_23 <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        calc_env_all <= {calc_env_01[16], calc_env_01} + {calc_env_23[16], calc_env_23}; 
+        calc_phase_all <= {calc_phase_01[20], calc_phase_01} + {calc_phase_23[20], calc_phase_23}; 
+    end
+
+    always @(posedge clk) 
+    begin
+        if (!mem_wr & wr)
+        begin
+            env_sign <= 0;
+            env_carry <= 0;
+            env_sum[17:0] <= 0;
+            
+            phase_sign <= 0;
+            phase_carry <= 0;
+            phase_sum[21:0] <= 0;
+        end
+        else
+        begin
+            env_sign <= calc_env_all[17];
+            {env_carry, env_sum[17:0]} <= env_sum[17:0] + calc_env_all;
+
+            phase_sign <= calc_phase_all[21];
+            {phase_carry, phase_sum[21:0]} <= phase_sum[21:0] + calc_phase_all;
+        end
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (!mem_wr & wr)
+            env_sum[26:18] <= 0;
+        else
+        begin
+            case ({env_sign, env_carry})
+                2'b01 : env_sum[26:18] <= env_sum[26:18] + 1;
+                2'b10 : env_sum[26:18] <= env_sum[26:18] - 1;
+            endcase
+        end
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (!mem_wr & wr)
+            phase_sum[31:22] <= 0;
+        else
+        begin
+            case ({phase_sign, phase_carry})
+                2'b01 : phase_sum[31:22] <= phase_sum[31:22] + 1;
+                2'b10 : phase_sum[31:22] <= phase_sum[31:22] - 1;
+            endcase
+        end
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (mem_wr & !wr)
+            delay_div <= 3;
+        else
+        begin
+            if (reset)
+                delay_div <= 0;
+            else
+            begin
+                if (delay_div)
+                    delay_div <= delay_div - 1;
+            end
+        end
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (delay_div == 1)
+            div_start <= 1;
+        else
+            div_start <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (env_div_done)
+        begin
+            env_mean <= env_div_data[15:0];
+            env_mean_ok <= 1;
+        end
+        else
+        begin
+            if (mem_wr | reset | proc_up)
+                env_mean_ok <= 0;
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (phase_div_done)
+        begin
+            phase_mean <= phase_div_data[19:0];
+            adj_freq <= {freq[19:2], 2'b00} + {phase_div_data[19], phase_div_data[19], phase_div_data[19:2]};
+            phase_mean_ok <= 1;
+        end
+        else
+        begin
+            if (mem_wr | reset | proc_up)
+                phase_mean_ok <= 0;
+        end
     end
 
     always @(posedge clk) 
@@ -253,9 +554,9 @@ generate
     begin
         if (filling)
         begin
-            rd_ptr <= max_pos[10:2];
-            rd_pos_1 <= max_pos[1:0];
-			up_count <= size - max_pos + 2;
+            rd_ptr <= local_max_pos[10:2];
+            rd_pos_1 <= local_max_pos[1:0];
+			up_count <= local_size - local_max_pos + 2;
 			start_down <= 0;
         end
         else
@@ -265,8 +566,8 @@ generate
 				if (up_count == 0)
 				begin
 					start_down <= 1;
-					rd_ptr <= max_pos[10:2];
-					rd_pos_1 <= max_pos[1:0];
+					rd_ptr <= local_max_pos[10:2];
+					rd_pos_1 <= local_max_pos[1:0];
 				end
 				else
 				begin
@@ -304,7 +605,7 @@ generate
 				if (up_delay[0])
 				begin
 					up_delay[0] <= 0;
-					up_pos <= max_pos;
+					up_pos <= local_max_pos;
 				end
 				else
 				begin
@@ -337,7 +638,7 @@ generate
 				if (down_delay[0])
 				begin
 					down_delay[0] <= 0;
-					down_pos <= max_pos;
+					down_pos <= local_max_pos;
 				end
 				else
 				begin
@@ -365,25 +666,25 @@ generate
             0 :
             begin
                 curr_env_1 <= env_out[15:0];
-                curr_phase <= phase_out[15:0];
+                curr_phase <= phase_out[19:0];
             end
             
             1 :
             begin
                 curr_env_1 <= env_out[31:16];
-                curr_phase <= phase_out[31:16];
+                curr_phase <= phase_out[39:20];
             end
             
             2 :
             begin
                 curr_env_1 <= env_out[47:32];
-                curr_phase <= phase_out[47:32];
+                curr_phase <= phase_out[59:40];
             end
             
             3 :
             begin
                 curr_env_1 <= env_out[63:48];
-                curr_phase <= phase_out[63:48];
+                curr_phase <= phase_out[79:60];
             end
         endcase
     end
@@ -517,9 +818,9 @@ generate
 			else
 			begin
 				if (up_delay[1])
-					pred_phase <= {curr_phase, 6'b00};
+					pred_phase <= {curr_phase, 2'b00};
 				else
-					pred_phase <= pred_phase + {2'b00, freq};
+					pred_phase <= pred_phase + {2'b00, adj_freq};
 			end
 		end
 		else
@@ -531,13 +832,13 @@ generate
 				else
 				begin
 					if (down_delay[1])
-						pred_phase <= {curr_phase, 6'b00};
+						pred_phase <= {curr_phase, 2'b00};
 					else
-						pred_phase <= pred_phase - {2'b00, freq};
+						pred_phase <= pred_phase - {2'b00, adj_freq};
 				end
 			end
 			else
-				pred_phase <= pred_phase - {2'b00, freq};
+				pred_phase <= pred_phase - {2'b00, adj_freq};
 		end
 	end
 
@@ -597,7 +898,7 @@ generate
                 filling <= 1;
             else
             begin
-                if (filling)
+                if (filling & allowed & env_mean_ok & phase_mean_ok)
                 begin
                     filling <= 0;
                     proc_up <= 1;
@@ -621,7 +922,6 @@ generate
             end
         end
     end
-
 
   end
     

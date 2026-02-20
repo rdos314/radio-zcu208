@@ -84,8 +84,7 @@ module one_to_four(
     
     input wire wr,
     input wire [15:0] env,
-    input wire [15:0] phase,
-    input wire [19:0] phase_diff,
+    input wire [19:0] phase,
     input wire [10:0] size,
     input wire allowed,
     input wire read_back,
@@ -96,19 +95,14 @@ module one_to_four(
     output reg [15:0] env_1,
     output reg [15:0] env_2,
     output reg [15:0] env_3,
-    output reg [15:0] phase_0,
-    output reg [15:0] phase_1,
-    output reg [15:0] phase_2,
-    output reg [15:0] phase_3,
-    output reg [19:0] phase_diff_0,
-    output reg [19:0] phase_diff_1,
-    output reg [19:0] phase_diff_2,
-    output reg [19:0] phase_diff_3
+    output reg [19:0] phase_0,
+    output reg [19:0] phase_1,
+    output reg [19:0] phase_2,
+    output reg [19:0] phase_3
 );
     
     (* ram_style = "block" *) reg [63:0] mem_env [0:511];
-    (* ram_style = "block" *) reg [63:0] mem_phase [0:511];
-    (* ram_style = "block" *) reg [79:0] mem_phase_diff [0:511];
+    (* ram_style = "block" *) reg [79:0] mem_phase [0:511];
     reg [8:0] wr_ptr;
     reg [1:0] wr_offset;
     reg [8:0] rd_ptr;
@@ -120,12 +114,10 @@ module one_to_four(
     reg read_back_i;
 
     reg [63:0] env_in_val;
-    reg [63:0] phase_in_val;
-    reg [79:0] phase_diff_in_val;
+    reg [79:0] phase_in_val;
 
     reg [63:0] env_out_val;
-    reg [63:0] phase_out_val;
-    reg [79:0] phase_diff_out_val;
+    reg [79:0] phase_out_val;
 
 /*
 	ila_0 ila_i (
@@ -173,23 +165,12 @@ generate
 
     always @(posedge clk) 
     begin
-        if (mem_wr)
-            mem_phase_diff[wr_ptr] <= phase_diff_in_val;
-    end
-
-    always @(posedge clk) 
-    begin
         env_out_val <= mem_env[rd_ptr];
     end
 
     always @(posedge clk) 
     begin
         phase_out_val <= mem_phase[rd_ptr];
-    end
-
-    always @(posedge clk) 
-    begin
-        phase_diff_out_val <= mem_phase_diff[rd_ptr];
     end
 
     always @(posedge clk) 
@@ -248,32 +229,28 @@ generate
                     0: 
                     begin
                         env_in_val[15:0] <= env;
-                        phase_in_val[15:0] <= phase;
-                        phase_diff_in_val[19:0] <= phase_diff;
+                        phase_in_val[19:0] <= phase;
                         mem_wr <= 0;
                     end
 
                     1: 
                     begin
                         env_in_val[31:16] <= env;
-                        phase_in_val[31:16] <= phase;
-                        phase_diff_in_val[39:20] <= phase_diff;
+                        phase_in_val[39:20] <= phase;
                         mem_wr <= 0;
                     end
 
                     2: 
                     begin
                         env_in_val[47:32] <= env;
-                        phase_in_val[47:32] <= phase;
-                        phase_diff_in_val[59:40] <= phase_diff;
+                        phase_in_val[59:40] <= phase;
                         mem_wr <= 0;
                     end
 
                     3: 
                     begin
                         env_in_val[63:48] <= env;
-                        phase_in_val[63:48] <= phase;
-                        phase_diff_in_val[79:60] <= phase_diff;
+                        phase_in_val[79:60] <= phase;
                         mem_wr <= 1;                        
                     end
                 endcase
@@ -346,18 +323,10 @@ generate
 
     always @(posedge clk) 
     begin
-        phase_0 <= phase_out_val[15:0];
-        phase_1 <= phase_out_val[31:16];
-        phase_2 <= phase_out_val[47:32];
-        phase_3 <= phase_out_val[63:48];
-    end
-
-    always @(posedge clk) 
-    begin
-        phase_diff_0 <= phase_diff_out_val[19:0];
-        phase_diff_1 <= phase_diff_out_val[39:20];
-        phase_diff_2 <= phase_diff_out_val[59:40];
-        phase_diff_3 <= phase_diff_out_val[79:60];
+        phase_0 <= phase_out_val[19:0];
+        phase_1 <= phase_out_val[39:20];
+        phase_2 <= phase_out_val[59:40];
+        phase_3 <= phase_out_val[79:60];
     end
                     
   end
