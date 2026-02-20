@@ -1,0 +1,1 @@
+vopt -l elaborate.log +acc=npr -suppress 10016  -L xil_defaultlib -L xilinx_vip -L xpm -L xbip_dsp48_wrapper_v3_0_7 -L xbip_utils_v3_0_14 -L xbip_pipe_v3_0_10 -L dsp_macro_v1_0_8 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.dsp_sqr18 xil_defaultlib.glbl -o dsp_sqr18_opt

@@ -306,6 +306,9 @@ module comp_burst(
 	reg [10:0] p3_max_pos;
 	reg [15:0] p3_max_env;
 	wire [15:0] p3_env_mean;
+    wire [31:0] p3_phase_sum;
+    wire [47:0] p3_env_sum2;
+    wire [47:0] p3_phase_sum2;
 
     wire p3_idle;
     wire p3_wr;
@@ -419,7 +422,10 @@ module comp_burst(
         .phase(p3_phase),
         .done(p3_done),
         .adj_freq(p3_freq),
-        .env_mean(p3_env_mean)
+        .env_mean(p3_env_mean),
+        .phase_sum(p3_phase_sum),
+        .env_sum2(p3_env_sum2),
+        .phase_sum2(p3_phase_sum2)
 	);
 
 	pos_to_four p4_i (

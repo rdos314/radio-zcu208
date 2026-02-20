@@ -57,33 +57,34 @@ module pos_to_four(
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(wr),                  // input wire [0:0]  probe3
-		.probe1(env),                 // input wire [15:0]  probe3
-		.probe2(phase),               // input wire [15:0]  probe3
-		.probe3(mem_wr),              // input wire [0:0]  probe3
-		.probe4(wr_ptr),              // input wire [8:0]  probe3
-		.probe5(rd_ptr),              // input wire [8:0]  probe3
-		.probe6(run),                 // input wire [0:0]  probe3
-		.probe7(was_run),             // input wire [0:0]  probe3
-		.probe8(prev_ptr),            // input wire [10:0]  probe3
-		.probe9(curr_pos),            // input wire [10:0]  probe3
-		.probe10(curr_env),           // input wire [15:0]  probe3
-		.probe11(curr_phase),         // input wire [15:0]  probe3
-		.probe12(env_curr_val),       // input wire [63:0]  probe3
-		.probe13(env_max_val),        // input wire [63:0]  probe3
-		.probe14(env_in_val),         // input wire [63:0]  probe3
-		.probe15(req_read),           // input wire [0:0]  probe3
-		.probe16(allowed),            // input wire [0:0]  probe3
-		.probe17(active_0),           // input wire [0:0]  probe3
-		.probe18(active),             // input wire [0:0]  probe3
-		.probe19(counter),            // input wire [8:0]  probe3
-		.probe20(env_0),              // input wire [15:0]  probe3
-		.probe21(env_1),              // input wire [15:0]  probe3
-		.probe22(env_2),              // input wire [15:0]  probe3
-		.probe23(env_3),              // input wire [15:0]  probe3
-		.probe24(phase_0),            // input wire [15:0]  probe3
-		.probe25(phase_1),            // input wire [15:0]  probe3
-		.probe26(phase_2),            // input wire [15:0]  probe3
-		.probe27(phase_3)             // input wire [15:0]  probe3
+		.probe1(pos),                 // input wire [10:0]  probe3
+		.probe2(env),                 // input wire [15:0]  probe3
+		.probe3(phase),               // input wire [15:0]  probe3
+		.probe4(mem_wr),              // input wire [0:0]  probe3
+		.probe5(wr_ptr),              // input wire [8:0]  probe3
+		.probe6(rd_ptr),              // input wire [8:0]  probe3
+		.probe7(run),                 // input wire [0:0]  probe3
+		.probe8(was_run),             // input wire [0:0]  probe3
+		.probe9(prev_ptr),            // input wire [10:0]  probe3
+		.probe10(curr_pos),            // input wire [10:0]  probe3
+		.probe11(curr_env),           // input wire [15:0]  probe3
+		.probe12(curr_phase),         // input wire [15:0]  probe3
+		.probe13(env_curr_val),       // input wire [63:0]  probe3
+		.probe14(env_max_val),        // input wire [63:0]  probe3
+		.probe15(env_in_val),         // input wire [63:0]  probe3
+		.probe16(req_read),           // input wire [0:0]  probe3
+		.probe17(allowed),            // input wire [0:0]  probe3
+		.probe18(active_0),           // input wire [0:0]  probe3
+		.probe19(active),             // input wire [0:0]  probe3
+		.probe20(counter),            // input wire [8:0]  probe3
+		.probe21(env_0),              // input wire [15:0]  probe3
+		.probe22(env_1),              // input wire [15:0]  probe3
+		.probe23(env_2),              // input wire [15:0]  probe3
+		.probe24(env_3),              // input wire [15:0]  probe3
+		.probe25(phase_0),            // input wire [15:0]  probe3
+		.probe26(phase_1),            // input wire [15:0]  probe3
+		.probe27(phase_2),            // input wire [15:0]  probe3
+		.probe28(phase_3)             // input wire [15:0]  probe3
 	);
     
 generate
