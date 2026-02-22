@@ -201,7 +201,6 @@ module comp_stat(
 	reg [19:0] prev_phase;
 	reg [21:0] pred_phase;
 
-    reg [17:0] phase_mean;
     reg [17:0] curr_phase_diff_1;
     reg [17:0] curr_phase_diff_2;
     reg [17:0] curr_phase_diff;
@@ -215,7 +214,7 @@ module comp_stat(
     reg start_up;
     reg stop_up;
 	reg was_active;
-reg [4:0] pend_done;
+	reg [4:0] pend_done;
 	reg [10:0] up_pos;
     reg [10:0] up_count;
     reg [2:0] up_delay;
@@ -252,7 +251,7 @@ reg [4:0] pend_done;
     reg [21:0] calc_phase_all;
     
     reg [26:0] local_env_sum;
-    reg [31:0] local_phase_sum;
+    reg [29:0] local_phase_sum;
     
     reg [17:0] env_lsb;
     reg env_sign;
@@ -270,6 +269,8 @@ reg [4:0] pend_done;
     
     wire phase_div_done;
     wire [31:0] phase_div_data;
+
+    reg [17:0] phase_mean;
 
     reg env_mean_ok;
     reg phase_mean_ok;
@@ -300,7 +301,7 @@ reg [4:0] pend_done;
 		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
 		.s_axis_divisor_tdata({5'b00000, local_size}),   // input wire [15 : 0] s_axis_divisor_tdata
 		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
-		.s_axis_dividend_tdata(local_phase_sum),         // input wire [31 : 0] s_axis_dividend_tdata
+		.s_axis_dividend_tdata({local_phase_sum, 2'b00}),// input wire [31 : 0] s_axis_dividend_tdata
 		.m_axis_dout_tvalid(phase_div_done),             // output wire m_axis_dout_tvalid		
 		.m_axis_dout_tdata(phase_div_data)               // output wire [31 : 0] m_axis_dout_tdata
 	);
@@ -324,22 +325,21 @@ reg [4:0] pend_done;
 		.probe0(active),             // input wire [0:0]  probe3
 		.probe1(wr),                 // input wire [0:0]  probe3
 		.probe2(mem_wr),             // input wire [0:0]  probe3
-		.probe3(remain_size),        // input wire [10:0]  probe3
-		.probe4(start_up),           // input wire [0:0]  probe3
-		.probe5(start_down),         // input wire [0:0]  probe3
-		.probe6(stop_down),          // input wire [1:0]  probe3
-		.probe7(proc_up),            // input wire [0:0]  probe3
-		.probe8(up_delay),           // input wire [2:0]  probe3
-		.probe9(down_delay),         // input wire [2:0]  probe3
-		.probe10(down_pos),          // input wire [10:0]  probe3
-		.probe11(env),               // input wire [15:0]  probe3
-		.probe12(env_mean),          // input wire [15:0]  probe3
-		.probe13(phase_mean),        // input wire [17:0]  probe3
-		.probe14(adj_freq),          // input wire [19:0]  probe3
-		.probe15(use_sqr),           // input wire [0:0]  probe3
-		.probe16(env_diff),          // input wire [15:0]  probe3
-		.probe17(phase_diff),        // input wire [17:0]  probe3
-		.probe18(pend_done)          // input wire [4:0]  probe3
+		.probe3(down_pos),           // input wire [10:0]  probe3
+		.probe4(env),                // input wire [15:0]  probe3
+		.probe5(local_size),         // input wire [10:0]  probe3
+		.probe6(local_env_sum),      // input wire [26:0]  probe3
+		.probe7(env_mean_ok),        // input wire [0:0]  probe3
+		.probe8(env_div_data),       // input wire [31:0]  probe3
+		.probe9(local_phase_sum),    // input wire [29:0]  probe3
+		.probe10(phase_mean_ok),     // input wire [0:0]  probe3
+		.probe11(phase_div_data),    // input wire [31:0]  probe3
+		.probe12(phase_mean),        // input wire [17:0]  probe3
+		.probe13(env_diff),          // input wire [15:0]  probe3
+		.probe14(phase_diff),        // input wire [17:0]  probe3
+		.probe15(phase_sum),         // input wire [31:0]  probe3
+		.probe16(env_sum2),          // input wire [47:0]  probe3
+		.probe17(phase_sum2)         // input wire [47:0]  probe3
 	);
 
 generate
@@ -560,12 +560,12 @@ generate
     always @(posedge clk) 
     begin
         if (!mem_wr & wr)
-            local_phase_sum[31:22] <= 0;
+            local_phase_sum[29:22] <= 0;
         else
         begin
             case ({phase_sign, phase_carry})
-                2'b01 : local_phase_sum[31:22] <= local_phase_sum[31:22] + 1;
-                2'b10 : local_phase_sum[31:22] <= local_phase_sum[31:22] - 1;
+                2'b01 : local_phase_sum[29:22] <= local_phase_sum[29:22] + 1;
+                2'b10 : local_phase_sum[29:22] <= local_phase_sum[29:22] - 1;
             endcase
         end
     end
@@ -612,9 +612,9 @@ generate
     begin
         if (phase_div_done)
         begin
-            phase_mean <= phase_div_data[19:2];
-            adj_freq <= {freq[19:2], 2'b00} - {phase_div_data[19], phase_div_data[19], phase_div_data[19:2]};
+            phase_mean <= phase_div_data[21:4];
             phase_mean_ok <= 1;
+            adj_freq <= {freq[19:2], 2'b00} + phase_div_data[19:0];
         end
         else
         begin
@@ -1016,24 +1016,24 @@ generate
         begin
             recalc_phase_sign <= 0;
             recalc_phase_carry <= 0;
-            recalc_phase_sum[19:0] <= 0;
+            recalc_phase_sum[17:0] <= 0;
         end
         else
         begin
-            recalc_phase_sign <= phase_diff[19];
-            {recalc_phase_carry, recalc_phase_sum[19:0]} <= recalc_phase_sum[19:0] + phase_diff;
+            recalc_phase_sign <= phase_diff[17];
+            {recalc_phase_carry, recalc_phase_sum[17:0]} <= recalc_phase_sum[17:0] + phase_diff;
         end
     end
     
     always @(posedge clk) 
     begin
         if (div_start)
-            recalc_phase_sum[31:20] <= 0;
+            recalc_phase_sum[31:18] <= 0;
         else
         begin
             case ({recalc_phase_sign, recalc_phase_carry})
-                2'b01 : recalc_phase_sum[31:20] <= recalc_phase_sum[31:20] + 1;
-                2'b10 : recalc_phase_sum[31:20] <= recalc_phase_sum[31:20] - 1;
+                2'b01 : recalc_phase_sum[31:18] <= recalc_phase_sum[31:18] + 1;
+                2'b10 : recalc_phase_sum[31:18] <= recalc_phase_sum[31:18] - 1;
             endcase
         end
     end
