@@ -4,147 +4,172 @@
 // -----------------------------------------------------------------------------
 // Description:
 // -----------
-// Burst statistics processor operating on envelope and phase data.
-// The module buffers incoming samples, replays them in a defined order around
-// a detected maximum, and computes statistical measures including mean and
-// variance-related sums.
+// High-speed burst statistics processor for envelope, phase, and frequency.
 //
-// The design is optimized for very high clock frequencies by:
-// - Splitting wide additions into multi-cycle LSB/MSB stages
-// - Avoiding long carry chains
-// - Using DSP blocks for accumulation of squared values
+// The module ingests complex signal data (envelope + phase), stores it in BRAM,
+// aligns processing around the detected maximum envelope position, and computes
+// statistical measures including:
+//
+//   - Mean envelope
+//   - Mean phase (used for frequency correction)
+//   - Sum of squared envelope deviations
+//   - Sum of squared phase deviations
+//   - Sum of squared frequency deviations
+//
+// The design is optimized for very high clock frequencies (e.g. 500 MHz) using
+// multi-cycle arithmetic and DSP-based accumulation.
 //
 // -----------------------------------------------------------------------------
 // Data Rate and Scaling:
 // ----------------------
-// - Input data arrives as 4 samples per clock cycle.
-// - Effective sample rate: 4 × clk (e.g. 2 GHz at 500 MHz clock).
-// - Frequency (`freq`) is defined per clock cycle (500 MHz domain).
+// - Input rate: 4 samples per clock cycle
+// - Effective sample rate: 4 × clk (e.g. 2 GHz at 500 MHz)
 //
-// Phase scaling:
-// - Internal phase accumulation operates at sample rate resolution.
-// - Therefore:
-//     freq_step = freq / 4
-//     → implemented as: {2'b00, freq[19:2]}
+// Frequency scaling:
+// - `freq` is defined at 500 MHz
+// - Per-sample phase increment:
+//       freq_step = freq / 4
+//       → implemented as {2'b00, freq[19:2]}
 //
-// - Phase accumulator uses extended precision:
-//     pred_phase is 22 bits (20-bit phase << 2)
-//
-// This avoids fractional arithmetic while maintaining phase continuity.
+// - Internal phase uses extended precision (22 bits) to avoid fractional math.
 //
 // -----------------------------------------------------------------------------
 // Processing Flow:
 // ----------------
 //
 // 1. Fill Phase:
-//    - Incoming samples are written into BRAM (4 samples per word).
-//    - Phase is converted from absolute to relative form using frequency
-//      compensation and previous phase tracking.
+//    - Samples are written to BRAM (4 samples/word).
+//    - Phase is converted from absolute to differential form using:
+//          - frequency compensation
+//          - previous phase tracking
 //
 // 2. Mean Calculation:
 //    - Envelope and phase sums are accumulated during fill.
-//    - A hardware divider computes:
-//          mean = sum / N
-//    - Phase mean is also used to refine frequency:
+//    - Means are computed via hardware division:
+//          env_mean   = sum(env) / N
+//          phase_mean = sum(phase) / N
+//
+//    - Frequency is refined using:
 //          adj_freq = freq + phase_mean
 //
-// 3. Replay Phase:
-//    - Data is read out starting at `max_pos`:
-//        a) Upward scan (max → end)
-//        b) Downward scan (max → start)
-//    - One sample is output per cycle.
+// 3. Replay Phase (Aligned Processing):
+//    - Data is replayed centered around `max_pos`:
+//        a) Forward scan (max → end)
+//        b) Backward scan (max → start)
 //
-// 4. Phase Reconstruction:
+//    - One sample is processed per clock.
+//
+// 4. Phase Prediction and Compensation:
 //    - A predicted phase is generated using `adj_freq`.
-//    - Output phase is:
+//    - Phase error:
 //          phase_diff = measured_phase - predicted_phase
 //
-// 5. Variance Accumulation:
+//    - Frequency increment per sample:
+//          incr = phase[n] - phase[n-1]
+//
+//    - Frequency deviation:
+//          freq_diff = incr - adj_freq
+//
+// 5. Variance Accumulation (DSP-based):
 //    - Envelope:
 //          env_diff = env - env_mean
-//    - Phase:
-//          phase_diff = phase (already zero-mean after correction)
+//          env_sum2 += env_diff^2
 //
-//    - DSP blocks compute:
-//          sum(env_diff^2)
-//          sum(phase_diff^2)
+//    - Phase:
+//          phase_diff (already zero-mean)
+//          phase_sum2 += phase_diff^2
+//
+//    - Frequency:
+//          freq_diff
+//          freq_sum2 += freq_diff^2
 //
 // -----------------------------------------------------------------------------
 // High-Speed Accumulation Technique:
 // ----------------------------------
 //
-// To meet timing at high frequency, wide accumulators are split:
+// Wide accumulators are split into LSB and MSB stages to avoid long carry chains:
 //
-//   Lower bits (LSB):
-//     - Perform standard addition
-//     - Capture carry-out
+//   LSB stage:
+//     - Performs standard addition
+//     - Produces carry-out
 //
-//   Upper bits (MSB):
-//     - Updated in a separate stage using:
-//           sign of operand
-//           carry from LSB addition
+//   MSB stage (next cycle):
+//     - Uses:
+//         operand sign
+//         LSB carry
 //
 //     - Correction rules:
-//           sign=0, carry=1 → MSB += 1
-//           sign=1, carry=0 → MSB -= 1
-//           otherwise       → no change
+//         sign=0 & carry=1 → MSB += 1
+//         sign=1 & carry=0 → MSB -= 1
+//         otherwise        → no change
 //
-// This avoids long carry propagation chains while preserving exact arithmetic,
-// given that intermediate values are width-bounded and do not overflow.
+// This preserves exact arithmetic without full-width carry propagation.
 //
 // -----------------------------------------------------------------------------
 // DSP Utilization:
 // ----------------
-// - DSP blocks are configured as:
-//       P <= P + A * A
+// DSP blocks operate in accumulation mode:
 //
-// - Used for:
-//       env_sum2   (sum of squared envelope differences)
-//       phase_sum2 (sum of squared phase differences)
+//     P <= P + A * A
 //
-// - This minimizes logic usage and ensures high-throughput accumulation.
+// Used for:
+//     - env_sum2   : envelope variance
+//     - phase_sum2 : phase variance
+//     - freq_sum2  : frequency variance
 //
 // -----------------------------------------------------------------------------
 // Outputs:
 // --------
-// - active        : Output sample valid
-// - pos           : Sample index
-// - env           : Envelope sample
-// - phase         : Phase difference (relative, zero-mean)
+// Streaming outputs:
+//   active        : output sample valid
+//   pos           : sample index (relative to burst)
+//   env           : envelope sample
+//   phase         : phase error (zero-mean)
 //
-// - env_mean      : Mean envelope
-// - phase_mean    : Mean phase (used internally for frequency correction)
-// - adj_freq      : Frequency corrected using phase mean
+// Statistical outputs (valid at `done`):
+//   env_mean      : mean envelope
+//   adj_freq      : frequency corrected using phase mean
+//   env_sum2      : sum of squared envelope deviations
+//   phase_sum2    : sum of squared phase deviations
+//   freq_sum2     : sum of squared frequency deviations
 //
-// - phase_sum     : Recomputed phase sum (post mean alignment)
-// - env_sum2      : Sum of squared envelope differences
-// - phase_sum2    : Sum of squared phase differences
-//
-// - done          : Processing complete (after both scans)
+// Control:
+//   idle          : module ready for new burst
+//   done          : statistics valid
 //
 // -----------------------------------------------------------------------------
 // Design Notes and Assumptions:
 // -----------------------------
-// - Input samples are bounded such that intermediate sums do not overflow.
-// - Accumulator widening (16→17→18 bits, etc.) guarantees correctness prior
-//   to final accumulation.
-// - Multi-cycle accumulation relies on strict pipeline alignment between:
-//       operand sign
-//       LSB carry
-//       MSB correction stage
+// - Input samples are bounded → no overflow in intermediate stages
+// - Accumulators are widened per stage (16→17→18 bits, etc.)
+// - Multi-cycle arithmetic requires strict pipeline alignment of:
+//       sign, carry, and MSB correction
 //
-// - Phase is internally processed at 20-bit precision and truncated to 16 bits
-//   for output/storage.
+// - Phase is processed at 20-bit precision internally,
+//   truncated to 16 bits for output.
 //
-// - Division latency is hidden between fill and replay phases.
+// - Divider latency is hidden between fill and replay phases.
+//
+// -----------------------------------------------------------------------------
+// System-Level Role:
+// ------------------
+// This module enables real-time signal characterization:
+//
+//   - Pulse analysis      → envelope + phase variance
+//   - FM detection        → frequency variance (freq_sum2)
+//   - Signal classification:
+//         pulse vs FM vs CW
+//
+// It supports adaptive data reduction by allowing higher layers to decide
+// whether to forward raw samples or only statistical summaries.
 //
 // -----------------------------------------------------------------------------
 // Status:
 // -------
 // - Fully pipelined high-speed architecture
-// - Mean and variance computation implemented
-// - Frequency self-correction via phase mean included
-// - Suitable for high-throughput FPGA DSP pipelines (e.g. Ultrascale+)
+// - Mean and variance computation complete
+// - Frequency self-correction implemented
+// - Suitable for UltraScale+ class FPGA designs
 // -----------------------------------------------------------------------------
 module comp_stat(
     input wire clk,
@@ -174,9 +199,9 @@ module comp_stat(
     output reg done,
     output reg [19:0] adj_freq,
     output reg [15:0] env_mean,
-    output reg [31:0] phase_sum,
     output reg [47:0] env_sum2,
-    output reg [47:0] phase_sum2
+    output reg [47:0] phase_sum2,
+	output reg [47:0] freq_sum2
 );
     
     (* ram_style = "block" *) reg [63:0] mem_env [0:511];
@@ -199,6 +224,7 @@ module comp_stat(
     reg [15:0] curr_env_2;
     reg [19:0] curr_phase;
 	reg [19:0] prev_phase;
+	reg [19:0] comp_phase;
 	reg [21:0] pred_phase;
 
     reg [17:0] curr_phase_diff_1;
@@ -278,13 +304,12 @@ module comp_stat(
     reg use_sqr;
     reg [15:0] env_diff;
     reg [17:0] phase_diff;
+	reg [19:0] incr;
+	reg [19:0] freq_diff;
     
     wire [47:0] env_sum_p;
     wire [47:0] phase_sum_p;
-
-    reg recalc_phase_sign;
-    reg recalc_phase_carry;
-    reg [31:0] recalc_phase_sum;
+    wire [47:0] freq_sum_p;
 
 	div_stat_32 div_env_mean_i (
 		.aclk(clk),                                      // input wire aclk
@@ -319,29 +344,42 @@ module comp_stat(
         .A(phase_diff),        // input wire [17 : 0] A
         .P(phase_sum_p)        // output wire [47 : 0] P
     );
+	
+    dsp_sqr18 sqr_incr_i (
+        .CLK(clk),             // input wire CLK
+        .SCLR(div_start),      // input wire SCLR
+        .A(freq_diff),         // input wire [19 : 0] A
+        .P(freq_sum_p)         // output wire [47 : 0] P
+    );
 
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
-		.probe1(wr),                 // input wire [0:0]  probe3
-		.probe2(mem_wr),             // input wire [0:0]  probe3
-		.probe3(down_pos),           // input wire [10:0]  probe3
-		.probe4(env),                // input wire [15:0]  probe3
-		.probe5(local_size),         // input wire [10:0]  probe3
-		.probe6(local_env_sum),      // input wire [26:0]  probe3
-		.probe7(env_mean_ok),        // input wire [0:0]  probe3
-		.probe8(env_div_data),       // input wire [31:0]  probe3
-		.probe9(local_phase_sum),    // input wire [29:0]  probe3
-		.probe10(phase_mean_ok),     // input wire [0:0]  probe3
-		.probe11(phase_div_data),    // input wire [31:0]  probe3
-		.probe12(phase_mean),        // input wire [17:0]  probe3
-		.probe13(env_diff),          // input wire [15:0]  probe3
-		.probe14(phase_diff),        // input wire [17:0]  probe3
-		.probe15(phase_sum),         // input wire [31:0]  probe3
-		.probe16(env_sum2),          // input wire [47:0]  probe3
-		.probe17(phase_sum2)         // input wire [47:0]  probe3
+		.probe1(proc_up),            // input wire [0:0]  probe3
+		.probe2(start_up),           // input wire [0:0]  probe3
+		.probe3(up_delay),           // input wire [2:0]  probe3
+		.probe4(down_pos),           // input wire [10:0]  probe3
+		.probe5(start_down),         // input wire [0:0]  probe3
+		.probe6(stop_down),          // input wire [1:0]  probe3
+		.probe7(down_delay),         // input wire [2:0]  probe3
+		.probe8(wr),                 // input wire [0:0]  probe3
+		.probe9(mem_wr),             // input wire [0:0]  probe3
+		.probe10(local_size),        // input wire [10:0]  probe3
+		.probe11(local_env_sum),     // input wire [26:0]  probe3
+		.probe12(local_phase_sum),   // input wire [29:0]  probe3
+		.probe13(phase_mean),        // input wire [17:0]  probe3
+		.probe14(env_diff),          // input wire [15:0]  probe3
+		.probe15(phase_diff),        // input wire [17:0]  probe3
+		.probe16(prev_phase),        // input wire [19:0]  probe3
+		.probe17(curr_phase),        // input wire [19:0]  probe3
+		.probe18(comp_phase),        // input wire [19:0]  probe3
+		.probe19(incr),              // input wire [19:0]  probe3
+		.probe20(freq_diff),         // input wire [19:0]  probe3
+		.probe21(env_sum2),          // input wire [47:0]  probe3
+		.probe22(phase_sum2),        // input wire [47:0]  probe3
+		.probe23(freq_sum2)          // input wire [47:0]  probe3
 	);
-
+	
 generate
   begin : comp_stat
 
@@ -814,9 +852,11 @@ generate
 			if (start_up | up_delay[0])
 			begin
 				pred_phase <= 0;
+				comp_phase <= 0;
                 active <= 0;
 				env <= 0;
 				phase <= 0;
+				incr <= 0;
 				use_sqr <= 0;
 			end
 			else
@@ -824,17 +864,21 @@ generate
 				if (up_delay[1])
 				begin
 					pred_phase <= {curr_phase, 2'b00};
+					comp_phase <= curr_phase - {2'b00, adj_freq[19:2]};  
 					active <= 0;
 					env <= 0;
 					phase <= 0;
+					incr <= 0;
 					use_sqr <= 0;
 				end
 				else
 				begin
 					pred_phase <= pred_phase + {2'b00, adj_freq};
+					comp_phase <= prev_phase;
 					active <= 1;
 					env <= curr_env_2;
 					phase <= prev_phase[19:4] - pred_phase[21:6];
+					incr <= prev_phase - comp_phase;
 					
 					if (up_delay[2])
 						use_sqr <= 0;
@@ -850,17 +894,21 @@ generate
                 if (down_delay[1])
 				begin
 					pred_phase <= {curr_phase, 2'b00};
+					comp_phase <= curr_phase + {2'b00, adj_freq[19:2]};  
                     active <= 0;
 					env <= 0;
 					phase <= 0;
+					incr <= 0;  
 					use_sqr <= 0;
 				end
                 else
 				begin
 					pred_phase <= pred_phase - {2'b00, adj_freq};
+					comp_phase <= prev_phase;
                     active <= 1;
 					env <= curr_env_2;
 					phase <= prev_phase[19:4] - pred_phase[21:6];
+					incr <= comp_phase - prev_phase;
 					use_sqr <= 1;
 				end
             end
@@ -869,9 +917,11 @@ generate
 				if (start_down | stop_down[1])
 				begin
 					pred_phase <= 0;
+					comp_phase <= 0;
                     active <= 0;
 					env <= 0;
 					phase <= 0;
+					incr <= 0;
 					use_sqr <= 0;
 				end
 				else
@@ -879,16 +929,20 @@ generate
 					if (active)
 					begin
 						pred_phase <= pred_phase - {2'b00, adj_freq};
+						comp_phase <= prev_phase;
 						env <= curr_env_2;
 						use_sqr <= 1;
 						phase <= prev_phase[19:4] - pred_phase[21:6];
+						incr <= comp_phase - prev_phase;
 					end
 					else
 					begin
 						pred_phase <= 0;
+						comp_phase <= 0;
 						env <= 0;
 						use_sqr <= 0;
 						phase <= 0;
+						incr <= 0;
 					end
 				end
 			end
@@ -1002,39 +1056,13 @@ generate
 		begin
             env_diff <= env - env_mean;
             phase_diff <= curr_phase_diff - phase_mean;
+			freq_diff <= incr - {2'b00, adj_freq[19:2]};
         end
         else
         begin
             env_diff <= 0;
             phase_diff <= 0;
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (div_start)
-        begin
-            recalc_phase_sign <= 0;
-            recalc_phase_carry <= 0;
-            recalc_phase_sum[17:0] <= 0;
-        end
-        else
-        begin
-            recalc_phase_sign <= phase_diff[17];
-            {recalc_phase_carry, recalc_phase_sum[17:0]} <= recalc_phase_sum[17:0] + phase_diff;
-        end
-    end
-    
-    always @(posedge clk) 
-    begin
-        if (div_start)
-            recalc_phase_sum[31:18] <= 0;
-        else
-        begin
-            case ({recalc_phase_sign, recalc_phase_carry})
-                2'b01 : recalc_phase_sum[31:18] <= recalc_phase_sum[31:18] + 1;
-                2'b10 : recalc_phase_sum[31:18] <= recalc_phase_sum[31:18] - 1;
-            endcase
+			freq_diff <= 0;
         end
     end
 
@@ -1048,9 +1076,9 @@ generate
     begin
         if (pend_done[4])
         begin
-            phase_sum <= recalc_phase_sum;
             env_sum2 <= env_sum_p;
             phase_sum2 <= phase_sum_p;
+			freq_sum2 <= freq_sum_p;
         end
 	end
 

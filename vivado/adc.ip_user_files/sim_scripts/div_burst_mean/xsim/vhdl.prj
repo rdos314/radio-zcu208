@@ -1,5 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../../adc.gen/sources_1/ip/div_burst_mean/sim/div_burst_mean.vhd" \
-
-# Do not sort compile order
-nosort
