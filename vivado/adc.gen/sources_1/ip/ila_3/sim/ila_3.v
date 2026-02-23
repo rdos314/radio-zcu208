@@ -88,7 +88,7 @@ input [0 : 0] probe8;
 input [0 : 0] probe9;
 input [0 : 0] probe10;
 input [0 : 0] probe11;
-input [8 : 0] probe12;
+input [10 : 0] probe12;
 input [15 : 0] probe13;
 input [15 : 0] probe14;
 input [15 : 0] probe15;

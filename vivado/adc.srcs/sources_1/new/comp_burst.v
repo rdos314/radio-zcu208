@@ -326,7 +326,7 @@ module comp_burst(
 	reg [15:0] p4_env_mean;
 	reg [15:0] p4_phase_mean;
 
-    wire p4_allowed;
+    wire p4_allowed = 1;
     wire p4_idle;
     wire p4_active;
     
@@ -414,7 +414,7 @@ module comp_burst(
         .phase_1(p2_phase_1),
         .phase_2(p2_phase_2),
         .phase_3(p2_phase_3),
-        .allowed(1'b1),
+        .allowed(p4_idle),
         .idle(p3_idle),
         .active(p3_wr),
         .pos(p3_pos),
@@ -436,7 +436,9 @@ module comp_burst(
         .pos(p4_pos),
         .env(p4_env),
         .phase(p4_phase),
+        .size(p4_size),
         .allowed(p4_allowed),
+        .read_back(p3_done),
         .idle(p4_idle),
         .active(p4_active),
         .env_0(p4_env_0),

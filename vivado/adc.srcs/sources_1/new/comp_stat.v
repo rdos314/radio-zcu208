@@ -352,6 +352,7 @@ module comp_stat(
         .P(freq_sum_p)         // output wire [47 : 0] P
     );
 
+/*
 	ila_2 ila_i (
 		.clk(clk),                   // input wire clk
 		.probe0(active),             // input wire [0:0]  probe3
@@ -379,6 +380,7 @@ module comp_stat(
 		.probe22(phase_sum2),        // input wire [47:0]  probe3
 		.probe23(freq_sum2)          // input wire [47:0]  probe3
 	);
+*/
 	
 generate
   begin : comp_stat
