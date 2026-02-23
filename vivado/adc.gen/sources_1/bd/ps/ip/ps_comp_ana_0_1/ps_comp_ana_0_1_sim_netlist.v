@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Feb 22 23:30:48 2026
+// Date        : Mon Feb 23 01:15:33 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.v
@@ -20887,7 +20887,7 @@ module ps_comp_ana_0_1_comp_burst
   (* KEEP_HIERARCHY = "soft" *) 
   ps_comp_ana_0_1_pos_to_four p4_i
        (.active(NLW_p4_i_active_UNCONNECTED),
-        .allowed(1'b0),
+        .allowed(1'b1),
         .clk(clk),
         .env(p4_env),
         .env_0(NLW_p4_i_env_0_UNCONNECTED[15:0]),
