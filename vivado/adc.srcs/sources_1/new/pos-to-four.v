@@ -115,7 +115,6 @@ module pos_to_four(
     input wire clk,
     input wire reset,
 
-	input wire run,
     input wire wr,
     input wire [10:0] pos,
     input wire [15:0] env,
@@ -125,6 +124,7 @@ module pos_to_four(
     input wire read_back,
 
     output reg idle,    
+    output reg done,
     output reg active,
     output reg [15:0] env_0,
     output reg [15:0] env_1,
@@ -157,6 +157,7 @@ module pos_to_four(
 	reg req_read_back;
     reg read_back_i;
 	reg [10:0] counter;
+	reg filling;
 	
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
@@ -243,6 +244,17 @@ generate
 		end
 		else
 			mem_wr <= 0;
+	end
+
+    always @(posedge clk) 
+    begin
+		if (wr)
+			filling <= 1;
+		else
+		begin
+			if (reset | read_back)
+				filling <= 0;
+		end
 	end
 
     always @(posedge clk) 
@@ -349,9 +361,26 @@ generate
     always @(posedge clk) 
     begin
         active_1 <= active_0;
-        active <= active_1;
+		
+		if (active_1)
+		begin
+			if (counter)
+				active <= 1;
+			else
+				active <= 0;
+		end
+		else
+			active <= 0;
     end
-
+    
+    always @(posedge clk) 
+    begin
+        if (active & !active_1)
+            done <= 1;
+        else
+            done <= 0;
+    end
+    
     always @(posedge clk) 
     begin
 		if (read_back)
@@ -378,7 +407,7 @@ generate
 
     always @(posedge clk) 
     begin
-        idle <= !wr & (mem_wr == 0) & !read_back & !req_read_back & !read_back_i & !active_0 & !active_1 & !active;
+        idle <= !wr & !filling & !read_back & !req_read_back & !read_back_i & !active_0 & !active_1 & !active;
     end
 
     always @(posedge clk) 
@@ -414,7 +443,7 @@ generate
     always @(posedge clk) 
     begin
         if (read_back_i)
-            counter <= size;
+            counter <= size + 4;
         else
         begin
             if (active_0)

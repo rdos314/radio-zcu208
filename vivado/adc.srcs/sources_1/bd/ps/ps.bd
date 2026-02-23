@@ -4682,9 +4682,9 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "adc_control_0/resetn",
           "deci_low/sim_resetn",
-          "deci_high/sim_resetn"
+          "deci_high/sim_resetn",
+          "adc_control_0/resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -4783,12 +4783,12 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "adc_control_0/clk",
           "deci_low/sim_clk",
           "deci_high/sim_clk",
           "ana_low/config_clk",
           "ana_high/config_clk",
           "mts_0/axi_clk",
+          "adc_control_0/clk",
           "comp_ana_high/config_clk",
           "comp_ana_high/pl_clk",
           "comp_ana_low/config_clk",

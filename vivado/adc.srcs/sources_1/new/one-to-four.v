@@ -90,6 +90,7 @@ module one_to_four(
     input wire read_back,
 
     output reg idle,    
+    output reg done,
     output reg active,
     output reg [15:0] env_0,
     output reg [15:0] env_1,
@@ -201,6 +202,14 @@ generate
     begin
         active_1 <= active_0;
         active <= active_1;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (active & !active_1)
+            done <= 1;
+        else
+            done <= 0;
     end
 
     always @(posedge clk) 
