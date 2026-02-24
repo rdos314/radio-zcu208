@@ -235,6 +235,7 @@ module comp_stat(
     
     reg [10:0] local_size;
     reg [10:0] local_max_pos;
+    reg [10:0] local_size_m1;
     
     reg proc_up;
     reg start_up;
@@ -324,7 +325,7 @@ module comp_stat(
 	div_stat_32 div_phase_mean_i (
 		.aclk(clk),                                      // input wire aclk
 		.s_axis_divisor_tvalid(div_start),               // input wire s_axis_divisor_tvalid
-		.s_axis_divisor_tdata({5'b00000, local_size}),   // input wire [15 : 0] s_axis_divisor_tdata
+		.s_axis_divisor_tdata({5'b00000, local_size_m1}), // input wire [15 : 0] s_axis_divisor_tdata
 		.s_axis_dividend_tvalid(div_start),              // input wire s_axis_dividend_tvalid
 		.s_axis_dividend_tdata({local_phase_sum, 2'b00}),// input wire [31 : 0] s_axis_dividend_tdata
 		.m_axis_dout_tvalid(phase_div_done),             // output wire m_axis_dout_tvalid		
@@ -444,6 +445,7 @@ generate
         if (wr)
         begin
             local_size <= size;
+            local_size_m1 <= size - 1;
             local_max_pos <= max_pos;
             
             if (mem_wr)

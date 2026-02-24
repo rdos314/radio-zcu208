@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Feb 23 23:38:04 2026
+-- Date        : Tue Feb 24 16:41:07 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.vhdl
@@ -14924,6 +14924,17 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.local_phase_sum_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \comp_stat.local_phase_sum_reg[7]_i_1_n_8\ : STD_LOGIC;
   signal \comp_stat.local_phase_sum_reg[7]_i_1_n_9\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[6]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_stat.local_size_m1[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.pend_done_reg[3]_srl4_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.pend_done_reg[3]_srl4_n_0\ : STD_LOGIC;
   signal \comp_stat.pend_done_reg[4]__0_n_0\ : STD_LOGIC;
@@ -15387,6 +15398,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.remain_size[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[10]_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[10]_i_4_n_0\ : STD_LOGIC;
+  signal \comp_stat.remain_size[10]_i_5_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[4]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[5]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[5]_i_3_n_0\ : STD_LOGIC;
@@ -15394,8 +15406,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \comp_stat.remain_size[6]_i_3_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size[7]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_stat.remain_size[9]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_stat.remain_size[9]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_stat.remain_size[8]_i_2_n_0\ : STD_LOGIC;
   signal \comp_stat.remain_size_reg_n_0_[0]\ : STD_LOGIC;
   signal \comp_stat.remain_size_reg_n_0_[10]\ : STD_LOGIC;
   signal \comp_stat.remain_size_reg_n_0_[1]\ : STD_LOGIC;
@@ -15517,6 +15528,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   signal \local_phase_sum__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal local_size : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute MARK_DEBUG of local_size : signal is std.standard.true;
+  signal local_size_m1 : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal local_size_m10 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal mem_wr : STD_LOGIC;
   attribute MARK_DEBUG of mem_wr : signal is std.standard.true;
   signal p_0_in1_in : STD_LOGIC;
@@ -15691,21 +15704,21 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute ADDER_THRESHOLD of \comp_stat.adj_freq_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.adj_freq_reg[7]_i_1\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_stat.calc_env_01[15]_i_1\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \comp_stat.calc_env_01[16]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_stat.calc_env_01[15]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_stat.calc_env_01[16]_i_1\ : label is "soft_lutpair55";
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_01_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_01_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_01_reg[7]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.calc_env_23[15]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \comp_stat.calc_env_23[16]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_stat.calc_env_23[15]_i_1\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_stat.calc_env_23[16]_i_1\ : label is "soft_lutpair54";
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_23_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_23_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_23_reg[7]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_all_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_all_reg[17]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_env_all_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.calc_phase_01[19]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \comp_stat.calc_phase_01[20]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_stat.calc_phase_01[19]_i_1\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \comp_stat.calc_phase_01[20]_i_1\ : label is "soft_lutpair53";
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_01_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_01_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_01_reg[7]_i_2\ : label is 35;
@@ -15715,8 +15728,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_1_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_1_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_1_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.calc_phase_23[19]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \comp_stat.calc_phase_23[20]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_stat.calc_phase_23[19]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \comp_stat.calc_phase_23[20]_i_1\ : label is "soft_lutpair52";
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_23_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_23_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.calc_phase_23_reg[7]_i_2\ : label is 35;
@@ -15813,8 +15826,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute KEEP of \comp_stat.curr_phase_reg[7]\ : label is "yes";
   attribute KEEP of \comp_stat.curr_phase_reg[8]\ : label is "yes";
   attribute KEEP of \comp_stat.curr_phase_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.delay_div[0]_i_1\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \comp_stat.delay_div[1]_i_2\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \comp_stat.delay_div[0]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_stat.delay_div[1]_i_2\ : label is "soft_lutpair61";
   attribute mark_debug_string : string;
   attribute mark_debug_string of \comp_stat.down_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_stat.down_delay_reg[1]\ : label is "yes";
@@ -16162,6 +16175,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute ADDER_THRESHOLD of \comp_stat.local_phase_sum_reg[7]_i_1\ : label is 35;
   attribute mark_debug_string of \comp_stat.local_phase_sum_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_stat.local_phase_sum_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[1]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[2]_i_1\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[3]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[4]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[6]_i_2\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[7]_i_1\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[8]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[9]_i_1\ : label is "soft_lutpair47";
   attribute KEEP of \comp_stat.local_size_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_stat.local_size_reg[0]\ : label is "yes";
   attribute KEEP of \comp_stat.local_size_reg[10]\ : label is "yes";
@@ -16451,29 +16472,29 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_stat is
   attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[7]_i_3\ : label is "soft_lutpair42";
   attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_6\ : label is "soft_lutpair42";
   attribute SOFT_HLUTNM of \comp_stat.rd_ptr_rep[8]_i_9\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \comp_stat.remain_size[4]_i_2\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \comp_stat.remain_size[5]_i_3\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \comp_stat.remain_size[6]_i_2\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_stat.remain_size[4]_i_2\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_stat.remain_size[5]_i_3\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \comp_stat.remain_size[6]_i_2\ : label is "soft_lutpair48";
   attribute SOFT_HLUTNM of \comp_stat.remain_size[6]_i_3\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \comp_stat.remain_size[7]_i_2\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \comp_stat.remain_size[7]_i_2\ : label is "soft_lutpair48";
   attribute SOFT_HLUTNM of \comp_stat.remain_size[7]_i_3\ : label is "soft_lutpair49";
   attribute KEEP of \comp_stat.start_down_reg\ : label is "yes";
   attribute KEEP of \comp_stat.start_up_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.up_count[0]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \comp_stat.up_count[1]_i_1\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[0]_i_1\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \comp_stat.up_count[1]_i_1\ : label is "soft_lutpair56";
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[10]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_stat.up_count_reg[7]_i_2\ : label is 35;
   attribute mark_debug_string of \comp_stat.up_delay_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_stat.up_delay_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_stat.up_delay_reg[2]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \comp_stat.up_pos[5]_i_2\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \comp_stat.use_bits[0]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \comp_stat.use_bits[2]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[0]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[1]_i_1\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[2]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[3]_i_1\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[4]_i_2\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_stat.up_pos[5]_i_2\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \comp_stat.use_bits[0]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_stat.use_bits[2]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[0]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[1]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[2]_i_1\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \comp_stat.wr_ptr[3]_i_1\ : label is "soft_lutpair58";
   attribute SOFT_HLUTNM of \comp_stat.wr_ptr[4]_i_1\ : label is "soft_lutpair46";
   attribute SOFT_HLUTNM of \comp_stat.wr_ptr[7]_i_1\ : label is "soft_lutpair45";
   attribute SOFT_HLUTNM of \comp_stat.wr_ptr[8]_i_1\ : label is "soft_lutpair45";
@@ -30723,6 +30744,226 @@ begin
       Q => local_phase_sum(9),
       R => \comp_stat.phase_diff_in[17]_i_1_n_0\
     );
+\comp_stat.local_size_m1[0]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => size(0),
+      O => local_size_m10(0)
+    );
+\comp_stat.local_size_m1[10]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFE00000001"
+    )
+        port map (
+      I0 => \comp_stat.remain_size[8]_i_2_n_0\,
+      I1 => size(8),
+      I2 => size(1),
+      I3 => size(0),
+      I4 => size(9),
+      I5 => size(10),
+      O => \comp_stat.local_size_m1[10]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"9"
+    )
+        port map (
+      I0 => size(0),
+      I1 => size(1),
+      O => \comp_stat.local_size_m1[1]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"E1"
+    )
+        port map (
+      I0 => size(1),
+      I1 => size(0),
+      I2 => size(2),
+      O => \comp_stat.local_size_m1[2]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE01"
+    )
+        port map (
+      I0 => size(2),
+      I1 => size(0),
+      I2 => size(1),
+      I3 => size(3),
+      O => \comp_stat.local_size_m1[3]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFE0001"
+    )
+        port map (
+      I0 => size(2),
+      I1 => size(3),
+      I2 => size(0),
+      I3 => size(1),
+      I4 => size(4),
+      O => \comp_stat.local_size_m1[4]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFE00000001"
+    )
+        port map (
+      I0 => size(3),
+      I1 => size(2),
+      I2 => size(4),
+      I3 => size(0),
+      I4 => size(1),
+      I5 => size(5),
+      O => \comp_stat.local_size_m1[5]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFE00000001"
+    )
+        port map (
+      I0 => size(4),
+      I1 => size(2),
+      I2 => size(3),
+      I3 => size(5),
+      I4 => \comp_stat.local_size_m1[6]_i_2_n_0\,
+      I5 => size(6),
+      O => \comp_stat.local_size_m1[6]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[6]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => size(0),
+      I1 => size(1),
+      O => \comp_stat.local_size_m1[6]_i_2_n_0\
+    );
+\comp_stat.local_size_m1[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE01"
+    )
+        port map (
+      I0 => size(0),
+      I1 => size(1),
+      I2 => \comp_stat.remain_size[7]_i_3_n_0\,
+      I3 => size(7),
+      O => \comp_stat.local_size_m1[7]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE01"
+    )
+        port map (
+      I0 => size(0),
+      I1 => size(1),
+      I2 => \comp_stat.remain_size[8]_i_2_n_0\,
+      I3 => size(8),
+      O => \comp_stat.local_size_m1[8]_i_1_n_0\
+    );
+\comp_stat.local_size_m1[9]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFE0001"
+    )
+        port map (
+      I0 => size(0),
+      I1 => size(1),
+      I2 => \comp_stat.remain_size[8]_i_2_n_0\,
+      I3 => size(8),
+      I4 => size(9),
+      O => \comp_stat.local_size_m1[9]_i_1_n_0\
+    );
+\comp_stat.local_size_m1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => local_size_m10(0),
+      Q => local_size_m1(0),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[10]_i_1_n_0\,
+      Q => local_size_m1(10),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[1]_i_1_n_0\,
+      Q => local_size_m1(1),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[2]_i_1_n_0\,
+      Q => local_size_m1(2),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[3]_i_1_n_0\,
+      Q => local_size_m1(3),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[4]_i_1_n_0\,
+      Q => local_size_m1(4),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[5]_i_1_n_0\,
+      Q => local_size_m1(5),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[6]_i_1_n_0\,
+      Q => local_size_m1(6),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[7]_i_1_n_0\,
+      Q => local_size_m1(7),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[8]_i_1_n_0\,
+      Q => local_size_m1(8),
+      R => '0'
+    );
+\comp_stat.local_size_m1_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => wr,
+      D => \comp_stat.local_size_m1[9]_i_1_n_0\,
+      Q => local_size_m1(9),
+      R => '0'
+    );
 \comp_stat.local_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -37625,15 +37866,15 @@ begin
     );
 \comp_stat.remain_size[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FE01FFFFFE010000"
+      INIT => X"9F9F9F909090909F"
     )
         port map (
-      I0 => \comp_stat.remain_size_reg_n_0_[8]\,
-      I1 => \comp_stat.remain_size[10]_i_3_n_0\,
-      I2 => \comp_stat.remain_size_reg_n_0_[9]\,
-      I3 => \comp_stat.remain_size_reg_n_0_[10]\,
-      I4 => mem_wr,
-      I5 => \comp_stat.remain_size[10]_i_4_n_0\,
+      I0 => \comp_stat.remain_size[10]_i_4_n_0\,
+      I1 => \comp_stat.remain_size_reg_n_0_[10]\,
+      I2 => mem_wr,
+      I3 => size(9),
+      I4 => \comp_stat.remain_size[10]_i_5_n_0\,
+      I5 => size(10),
       O => \p_2_in__0\(10)
     );
 \comp_stat.remain_size[10]_i_3\: unisim.vcomponents.LUT6
@@ -37649,16 +37890,24 @@ begin
       I5 => \comp_stat.remain_size_reg_n_0_[7]\,
       O => \comp_stat.remain_size[10]_i_3_n_0\
     );
-\comp_stat.remain_size[10]_i_4\: unisim.vcomponents.LUT4
+\comp_stat.remain_size[10]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FE01"
+      INIT => X"FE"
     )
         port map (
-      I0 => \comp_stat.remain_size[9]_i_3_n_0\,
-      I1 => size(8),
-      I2 => size(9),
-      I3 => size(10),
+      I0 => \comp_stat.remain_size_reg_n_0_[8]\,
+      I1 => \comp_stat.remain_size[10]_i_3_n_0\,
+      I2 => \comp_stat.remain_size_reg_n_0_[9]\,
       O => \comp_stat.remain_size[10]_i_4_n_0\
+    );
+\comp_stat.remain_size[10]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \comp_stat.remain_size[8]_i_2_n_0\,
+      I1 => size(8),
+      O => \comp_stat.remain_size[10]_i_5_n_0\
     );
 \comp_stat.remain_size[1]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -37822,33 +38071,11 @@ begin
       I0 => \comp_stat.remain_size[10]_i_3_n_0\,
       I1 => \comp_stat.remain_size_reg_n_0_[8]\,
       I2 => mem_wr,
-      I3 => \comp_stat.remain_size[9]_i_3_n_0\,
+      I3 => \comp_stat.remain_size[8]_i_2_n_0\,
       I4 => size(8),
       O => \p_2_in__0\(8)
     );
-\comp_stat.remain_size[9]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9F9F9F909090909F"
-    )
-        port map (
-      I0 => \comp_stat.remain_size[9]_i_2_n_0\,
-      I1 => \comp_stat.remain_size_reg_n_0_[9]\,
-      I2 => mem_wr,
-      I3 => size(8),
-      I4 => \comp_stat.remain_size[9]_i_3_n_0\,
-      I5 => size(9),
-      O => \p_2_in__0\(9)
-    );
-\comp_stat.remain_size[9]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => \comp_stat.remain_size[10]_i_3_n_0\,
-      I1 => \comp_stat.remain_size_reg_n_0_[8]\,
-      O => \comp_stat.remain_size[9]_i_2_n_0\
-    );
-\comp_stat.remain_size[9]_i_3\: unisim.vcomponents.LUT6
+\comp_stat.remain_size[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
@@ -37859,7 +38086,20 @@ begin
       I3 => size(3),
       I4 => size(5),
       I5 => size(7),
-      O => \comp_stat.remain_size[9]_i_3_n_0\
+      O => \comp_stat.remain_size[8]_i_2_n_0\
+    );
+\comp_stat.remain_size[9]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"E1FFE100E100E1FF"
+    )
+        port map (
+      I0 => \comp_stat.remain_size_reg_n_0_[8]\,
+      I1 => \comp_stat.remain_size[10]_i_3_n_0\,
+      I2 => \comp_stat.remain_size_reg_n_0_[9]\,
+      I3 => mem_wr,
+      I4 => \comp_stat.remain_size[10]_i_5_n_0\,
+      I5 => size(9),
+      O => \p_2_in__0\(9)
     );
 \comp_stat.remain_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -39228,7 +39468,7 @@ div_phase_mean_i: component ps_comp_ana_0_0_div_stat_32_HD7
       s_axis_dividend_tready => NLW_div_phase_mean_i_s_axis_dividend_tready_UNCONNECTED,
       s_axis_dividend_tvalid => div_start,
       s_axis_divisor_tdata(15 downto 11) => B"00000",
-      s_axis_divisor_tdata(10 downto 0) => local_size(10 downto 0),
+      s_axis_divisor_tdata(10 downto 0) => local_size_m1(10 downto 0),
       s_axis_divisor_tready => NLW_div_phase_mean_i_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => div_start
     );
@@ -39568,10 +39808,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__2\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair97";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -39580,8 +39820,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__2\ : label is "soft_lutpair96";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -41634,10 +41874,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair88";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -41646,8 +41886,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3\ : label is "soft_lutpair87";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -43767,10 +44007,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__0\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair91";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -43779,8 +44019,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__0\ : label is "soft_lutpair90";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -45955,10 +46195,10 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[0]_i_1__1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair94";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -45967,8 +46207,8 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_3__1\ : label is "soft_lutpair93";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -47939,7 +48179,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   signal data_2_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal data_3_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal data_in : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal done0 : STD_LOGIC;
   signal \^env_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^env_0\ : signal is std.standard.true;
   signal \^env_1\ : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -47952,6 +48191,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   signal idle0 : STD_LOGIC;
   signal mem_wr : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of mem_wr : signal is std.standard.true;
+  signal \p_0_in__0\ : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \^phase_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of \^phase_0\ : signal is std.standard.true;
@@ -47964,6 +48204,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   signal \pos_to_four.active_0_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.active_0_i_2_n_0\ : STD_LOGIC;
   signal \pos_to_four.active_0_i_3_n_0\ : STD_LOGIC;
+  signal \pos_to_four.active_reg0\ : STD_LOGIC;
   signal \pos_to_four.counter[10]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.counter[10]_i_2_n_0\ : STD_LOGIC;
   signal \pos_to_four.counter[10]_i_4_n_0\ : STD_LOGIC;
@@ -47978,9 +48219,59 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   signal \pos_to_four.counter[9]_i_2_n_0\ : STD_LOGIC;
   signal \pos_to_four.counter[9]_i_3_n_0\ : STD_LOGIC;
   signal \pos_to_four.counter[9]_i_4_n_0\ : STD_LOGIC;
+  signal \pos_to_four.done_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.done_i_2_n_0\ : STD_LOGIC;
+  signal \pos_to_four.done_i_3_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[14]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.env_0[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_0[9]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[14]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.env_1[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[15]_i_2_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_1[9]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[14]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.env_2[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[15]_i_2_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.env_2[9]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.env_3[15]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.filling_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.filling_i_2_n_0\ : STD_LOGIC;
@@ -47991,6 +48282,54 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   signal \pos_to_four.mem_wr[2]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.mem_wr[3]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.mem_wr[3]_i_2_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[14]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_0[9]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[14]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_1[9]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[0]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[10]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[11]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[12]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[13]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[14]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[15]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[1]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[2]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[3]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[4]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[5]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[6]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[7]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[8]_i_1_n_0\ : STD_LOGIC;
+  signal \pos_to_four.phase_2[9]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.rd_ptr[0]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.rd_ptr[1]_i_1_n_0\ : STD_LOGIC;
   signal \pos_to_four.rd_ptr[2]_i_1_n_0\ : STD_LOGIC;
@@ -48062,8 +48401,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.active_1_reg\ : label is "yes";
   attribute KEEP of \pos_to_four.active_reg\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \pos_to_four.counter[5]_i_2\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \pos_to_four.counter[7]_i_2\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \pos_to_four.counter[5]_i_2\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \pos_to_four.counter[7]_i_2\ : label is "soft_lutpair64";
   attribute KEEP of \pos_to_four.counter_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
   attribute mark_debug_string of \pos_to_four.counter_reg[0]\ : label is "yes";
@@ -48087,6 +48426,11 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute mark_debug_string of \pos_to_four.counter_reg[8]\ : label is "yes";
   attribute KEEP of \pos_to_four.counter_reg[9]\ : label is "yes";
   attribute mark_debug_string of \pos_to_four.counter_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.env_0[0]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \pos_to_four.env_0[15]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \pos_to_four.env_0[5]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \pos_to_four.env_0[6]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \pos_to_four.env_0[7]_i_1\ : label is "soft_lutpair80";
   attribute KEEP of \pos_to_four.env_0_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_0_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_0_reg[11]\ : label is "yes";
@@ -48103,6 +48447,11 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.env_0_reg[7]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_0_reg[8]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_0_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.env_1[0]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \pos_to_four.env_1[15]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \pos_to_four.env_1[5]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \pos_to_four.env_1[6]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \pos_to_four.env_1[7]_i_1\ : label is "soft_lutpair82";
   attribute KEEP of \pos_to_four.env_1_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_1_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_1_reg[11]\ : label is "yes";
@@ -48119,6 +48468,11 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.env_1_reg[7]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_1_reg[8]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_1_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.env_2[0]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \pos_to_four.env_2[15]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \pos_to_four.env_2[5]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \pos_to_four.env_2[6]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \pos_to_four.env_2[7]_i_1\ : label is "soft_lutpair81";
   attribute KEEP of \pos_to_four.env_2_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_2_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.env_2_reg[11]\ : label is "yes";
@@ -48220,6 +48574,15 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.mem_wr_reg[1]\ : label is "yes";
   attribute KEEP of \pos_to_four.mem_wr_reg[2]\ : label is "yes";
   attribute KEEP of \pos_to_four.mem_wr_reg[3]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[0]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[13]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[14]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[15]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[1]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[2]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[5]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[8]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_0[9]_i_1\ : label is "soft_lutpair71";
   attribute KEEP of \pos_to_four.phase_0_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_0_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_0_reg[11]\ : label is "yes";
@@ -48236,6 +48599,15 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.phase_0_reg[7]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_0_reg[8]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_0_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[0]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[13]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[14]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[15]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[1]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[2]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[5]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[8]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_1[9]_i_1\ : label is "soft_lutpair73";
   attribute KEEP of \pos_to_four.phase_1_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_1_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_1_reg[11]\ : label is "yes";
@@ -48252,6 +48624,15 @@ architecture STRUCTURE of ps_comp_ana_0_0_pos_to_four is
   attribute KEEP of \pos_to_four.phase_1_reg[7]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_1_reg[8]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_1_reg[9]\ : label is "yes";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[0]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[13]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[14]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[15]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[1]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[2]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[5]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[8]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \pos_to_four.phase_2[9]_i_1\ : label is "soft_lutpair72";
   attribute KEEP of \pos_to_four.phase_2_reg[0]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_2_reg[10]\ : label is "yes";
   attribute KEEP of \pos_to_four.phase_2_reg[11]\ : label is "yes";
@@ -48401,13 +48782,29 @@ ila_i: component ps_comp_ana_0_0_ila_3
       Q => active_1,
       R => '0'
     );
+\pos_to_four.active_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => active_1,
+      O => \p_0_in__0\
+    );
+\pos_to_four.active_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.active_reg0\
+    );
 \pos_to_four.active_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => active_1,
+      D => \pos_to_four.active_reg0\,
       Q => \^active\,
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.counter[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -48421,7 +48818,7 @@ ila_i: component ps_comp_ana_0_0_ila_3
     );
 \pos_to_four.counter[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0200"
+      INIT => X"0100"
     )
         port map (
       I0 => \pos_to_four.counter[10]_i_4_n_0\,
@@ -48441,7 +48838,7 @@ ila_i: component ps_comp_ana_0_0_ila_3
     );
 \pos_to_four.counter[10]_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000002"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
       I0 => \pos_to_four.counter[10]_i_7_n_0\,
@@ -48454,14 +48851,14 @@ ila_i: component ps_comp_ana_0_0_ila_3
     );
 \pos_to_four.counter[10]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"AAAAAAA6"
+      INIT => X"AAA9AAAA"
     )
         port map (
       I0 => counter(10),
-      I1 => \pos_to_four.counter[9]_i_3_n_0\,
+      I1 => counter(9),
       I2 => counter(7),
       I3 => counter(8),
-      I4 => counter(9),
+      I4 => \pos_to_four.counter[9]_i_3_n_0\,
       O => \pos_to_four.counter[10]_i_5_n_0\
     );
 \pos_to_four.counter[10]_i_6\: unisim.vcomponents.LUT6
@@ -48479,12 +48876,12 @@ ila_i: component ps_comp_ana_0_0_ila_3
     );
 \pos_to_four.counter[10]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"01"
+      INIT => X"FE"
     )
         port map (
-      I0 => counter(7),
-      I1 => counter(8),
-      I2 => counter(9),
+      I0 => counter(9),
+      I1 => counter(7),
+      I2 => counter(8),
       O => \pos_to_four.counter[10]_i_7_n_0\
     );
 \pos_to_four.counter[1]_i_1\: unisim.vcomponents.LUT3
@@ -48515,8 +48912,8 @@ ila_i: component ps_comp_ana_0_0_ila_3
       I0 => size(2),
       I1 => size(3),
       I2 => read_back_i,
-      I3 => counter(2),
-      I4 => counter(3),
+      I3 => counter(3),
+      I4 => counter(2),
       O => \p_1_in__0\(3)
     );
 \pos_to_four.counter[4]_i_1\: unisim.vcomponents.LUT6
@@ -49035,444 +49432,896 @@ ila_i: component ps_comp_ana_0_0_ila_3
     );
 \pos_to_four.done_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \^active\,
+      I0 => \pos_to_four.done_i_2_n_0\,
       I1 => active_1,
-      O => done0
+      O => \pos_to_four.done_i_1_n_0\
+    );
+\pos_to_four.done_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000010"
+    )
+        port map (
+      I0 => \pos_to_four.done_i_3_n_0\,
+      I1 => counter(9),
+      I2 => \pos_to_four.counter[9]_i_4_n_0\,
+      I3 => counter(2),
+      I4 => counter(1),
+      I5 => counter(0),
+      O => \pos_to_four.done_i_2_n_0\
+    );
+\pos_to_four.done_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => counter(4),
+      I1 => counter(5),
+      I2 => counter(3),
+      I3 => counter(10),
+      I4 => counter(6),
+      O => \pos_to_four.done_i_3_n_0\
     );
 \pos_to_four.done_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => done0,
+      D => \pos_to_four.done_i_1_n_0\,
       Q => done,
       R => '0'
     );
-\pos_to_four.env_0[15]_i_1\: unisim.vcomponents.LUT4
+\pos_to_four.env_0[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0004"
+      INIT => X"2"
     )
         port map (
-      I0 => counter(2),
-      I1 => \pos_to_four.counter[10]_i_4_n_0\,
-      I2 => counter(1),
-      I3 => counter(0),
+      I0 => data_0_out(0),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[0]_i_1_n_0\
+    );
+\pos_to_four.env_0[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(10),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[10]_i_1_n_0\
+    );
+\pos_to_four.env_0[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(11),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[11]_i_1_n_0\
+    );
+\pos_to_four.env_0[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(12),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[12]_i_1_n_0\
+    );
+\pos_to_four.env_0[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(13),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[13]_i_1_n_0\
+    );
+\pos_to_four.env_0[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(14),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[14]_i_1_n_0\
+    );
+\pos_to_four.env_0[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(15),
+      I1 => \pos_to_four.done_i_2_n_0\,
       O => \pos_to_four.env_0[15]_i_1_n_0\
+    );
+\pos_to_four.env_0[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(1),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[1]_i_1_n_0\
+    );
+\pos_to_four.env_0[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(2),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[2]_i_1_n_0\
+    );
+\pos_to_four.env_0[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(3),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[3]_i_1_n_0\
+    );
+\pos_to_four.env_0[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(4),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[4]_i_1_n_0\
+    );
+\pos_to_four.env_0[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(5),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[5]_i_1_n_0\
+    );
+\pos_to_four.env_0[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(6),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[6]_i_1_n_0\
+    );
+\pos_to_four.env_0[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(7),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[7]_i_1_n_0\
+    );
+\pos_to_four.env_0[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(8),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[8]_i_1_n_0\
+    );
+\pos_to_four.env_0[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(9),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.env_0[9]_i_1_n_0\
     );
 \pos_to_four.env_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(0),
+      D => \pos_to_four.env_0[0]_i_1_n_0\,
       Q => \^env_0\(0),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(10),
+      D => \pos_to_four.env_0[10]_i_1_n_0\,
       Q => \^env_0\(10),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(11),
+      D => \pos_to_four.env_0[11]_i_1_n_0\,
       Q => \^env_0\(11),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(12),
+      D => \pos_to_four.env_0[12]_i_1_n_0\,
       Q => \^env_0\(12),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(13),
+      D => \pos_to_four.env_0[13]_i_1_n_0\,
       Q => \^env_0\(13),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(14),
+      D => \pos_to_four.env_0[14]_i_1_n_0\,
       Q => \^env_0\(14),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(15),
+      D => \pos_to_four.env_0[15]_i_1_n_0\,
       Q => \^env_0\(15),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(1),
+      D => \pos_to_four.env_0[1]_i_1_n_0\,
       Q => \^env_0\(1),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(2),
+      D => \pos_to_four.env_0[2]_i_1_n_0\,
       Q => \^env_0\(2),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(3),
+      D => \pos_to_four.env_0[3]_i_1_n_0\,
       Q => \^env_0\(3),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(4),
+      D => \pos_to_four.env_0[4]_i_1_n_0\,
       Q => \^env_0\(4),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(5),
+      D => \pos_to_four.env_0[5]_i_1_n_0\,
       Q => \^env_0\(5),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(6),
+      D => \pos_to_four.env_0[6]_i_1_n_0\,
       Q => \^env_0\(6),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(7),
+      D => \pos_to_four.env_0[7]_i_1_n_0\,
       Q => \^env_0\(7),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(8),
+      D => \pos_to_four.env_0[8]_i_1_n_0\,
       Q => \^env_0\(8),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(9),
+      D => \pos_to_four.env_0[9]_i_1_n_0\,
       Q => \^env_0\(9),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
-\pos_to_four.env_1[15]_i_1\: unisim.vcomponents.LUT3
+\pos_to_four.env_1[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"04"
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(0),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[0]_i_1_n_0\
+    );
+\pos_to_four.env_1[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(10),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[10]_i_1_n_0\
+    );
+\pos_to_four.env_1[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(11),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[11]_i_1_n_0\
+    );
+\pos_to_four.env_1[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(12),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[12]_i_1_n_0\
+    );
+\pos_to_four.env_1[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(13),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[13]_i_1_n_0\
+    );
+\pos_to_four.env_1[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(14),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[14]_i_1_n_0\
+    );
+\pos_to_four.env_1[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(15),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[15]_i_1_n_0\
+    );
+\pos_to_four.env_1[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
     )
         port map (
       I0 => counter(1),
-      I1 => \pos_to_four.counter[10]_i_4_n_0\,
-      I2 => counter(2),
-      O => \pos_to_four.env_1[15]_i_1_n_0\
+      I1 => counter(8),
+      I2 => counter(7),
+      I3 => counter(9),
+      I4 => \pos_to_four.done_i_3_n_0\,
+      I5 => counter(2),
+      O => \pos_to_four.env_1[15]_i_2_n_0\
+    );
+\pos_to_four.env_1[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(1),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[1]_i_1_n_0\
+    );
+\pos_to_four.env_1[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(2),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[2]_i_1_n_0\
+    );
+\pos_to_four.env_1[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(3),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[3]_i_1_n_0\
+    );
+\pos_to_four.env_1[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(4),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[4]_i_1_n_0\
+    );
+\pos_to_four.env_1[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(5),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[5]_i_1_n_0\
+    );
+\pos_to_four.env_1[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(6),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[6]_i_1_n_0\
+    );
+\pos_to_four.env_1[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(7),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[7]_i_1_n_0\
+    );
+\pos_to_four.env_1[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(8),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[8]_i_1_n_0\
+    );
+\pos_to_four.env_1[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(9),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.env_1[9]_i_1_n_0\
     );
 \pos_to_four.env_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(0),
+      D => \pos_to_four.env_1[0]_i_1_n_0\,
       Q => \^env_1\(0),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(10),
+      D => \pos_to_four.env_1[10]_i_1_n_0\,
       Q => \^env_1\(10),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(11),
+      D => \pos_to_four.env_1[11]_i_1_n_0\,
       Q => \^env_1\(11),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(12),
+      D => \pos_to_four.env_1[12]_i_1_n_0\,
       Q => \^env_1\(12),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(13),
+      D => \pos_to_four.env_1[13]_i_1_n_0\,
       Q => \^env_1\(13),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(14),
+      D => \pos_to_four.env_1[14]_i_1_n_0\,
       Q => \^env_1\(14),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(15),
+      D => \pos_to_four.env_1[15]_i_1_n_0\,
       Q => \^env_1\(15),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(1),
+      D => \pos_to_four.env_1[1]_i_1_n_0\,
       Q => \^env_1\(1),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(2),
+      D => \pos_to_four.env_1[2]_i_1_n_0\,
       Q => \^env_1\(2),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(3),
+      D => \pos_to_four.env_1[3]_i_1_n_0\,
       Q => \^env_1\(3),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(4),
+      D => \pos_to_four.env_1[4]_i_1_n_0\,
       Q => \^env_1\(4),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(5),
+      D => \pos_to_four.env_1[5]_i_1_n_0\,
       Q => \^env_1\(5),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(6),
+      D => \pos_to_four.env_1[6]_i_1_n_0\,
       Q => \^env_1\(6),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(7),
+      D => \pos_to_four.env_1[7]_i_1_n_0\,
       Q => \^env_1\(7),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(8),
+      D => \pos_to_four.env_1[8]_i_1_n_0\,
       Q => \^env_1\(8),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(9),
+      D => \pos_to_four.env_1[9]_i_1_n_0\,
       Q => \^env_1\(9),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
-\pos_to_four.env_2[15]_i_1\: unisim.vcomponents.LUT4
+\pos_to_four.env_2[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0070"
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(0),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[0]_i_1_n_0\
+    );
+\pos_to_four.env_2[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(10),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[10]_i_1_n_0\
+    );
+\pos_to_four.env_2[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(11),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[11]_i_1_n_0\
+    );
+\pos_to_four.env_2[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(12),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[12]_i_1_n_0\
+    );
+\pos_to_four.env_2[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(13),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[13]_i_1_n_0\
+    );
+\pos_to_four.env_2[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(14),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[14]_i_1_n_0\
+    );
+\pos_to_four.env_2[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(15),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[15]_i_1_n_0\
+    );
+\pos_to_four.env_2[15]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000070"
     )
         port map (
       I0 => counter(0),
       I1 => counter(1),
-      I2 => \pos_to_four.counter[10]_i_4_n_0\,
-      I3 => counter(2),
-      O => \pos_to_four.env_2[15]_i_1_n_0\
+      I2 => \pos_to_four.counter[9]_i_4_n_0\,
+      I3 => counter(9),
+      I4 => \pos_to_four.done_i_3_n_0\,
+      I5 => counter(2),
+      O => \pos_to_four.env_2[15]_i_2_n_0\
+    );
+\pos_to_four.env_2[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(1),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[1]_i_1_n_0\
+    );
+\pos_to_four.env_2[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(2),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[2]_i_1_n_0\
+    );
+\pos_to_four.env_2[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(3),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[3]_i_1_n_0\
+    );
+\pos_to_four.env_2[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(4),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[4]_i_1_n_0\
+    );
+\pos_to_four.env_2[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(5),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[5]_i_1_n_0\
+    );
+\pos_to_four.env_2[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(6),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[6]_i_1_n_0\
+    );
+\pos_to_four.env_2[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(7),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[7]_i_1_n_0\
+    );
+\pos_to_four.env_2[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(8),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[8]_i_1_n_0\
+    );
+\pos_to_four.env_2[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(9),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.env_2[9]_i_1_n_0\
     );
 \pos_to_four.env_2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(0),
+      D => \pos_to_four.env_2[0]_i_1_n_0\,
       Q => \^env_2\(0),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(10),
+      D => \pos_to_four.env_2[10]_i_1_n_0\,
       Q => \^env_2\(10),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(11),
+      D => \pos_to_four.env_2[11]_i_1_n_0\,
       Q => \^env_2\(11),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(12),
+      D => \pos_to_four.env_2[12]_i_1_n_0\,
       Q => \^env_2\(12),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(13),
+      D => \pos_to_four.env_2[13]_i_1_n_0\,
       Q => \^env_2\(13),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(14),
+      D => \pos_to_four.env_2[14]_i_1_n_0\,
       Q => \^env_2\(14),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(15),
+      D => \pos_to_four.env_2[15]_i_1_n_0\,
       Q => \^env_2\(15),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(1),
+      D => \pos_to_four.env_2[1]_i_1_n_0\,
       Q => \^env_2\(1),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(2),
+      D => \pos_to_four.env_2[2]_i_1_n_0\,
       Q => \^env_2\(2),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(3),
+      D => \pos_to_four.env_2[3]_i_1_n_0\,
       Q => \^env_2\(3),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(4),
+      D => \pos_to_four.env_2[4]_i_1_n_0\,
       Q => \^env_2\(4),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(5),
+      D => \pos_to_four.env_2[5]_i_1_n_0\,
       Q => \^env_2\(5),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(6),
+      D => \pos_to_four.env_2[6]_i_1_n_0\,
       Q => \^env_2\(6),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(7),
+      D => \pos_to_four.env_2[7]_i_1_n_0\,
       Q => \^env_2\(7),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(8),
+      D => \pos_to_four.env_2[8]_i_1_n_0\,
       Q => \^env_2\(8),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.env_2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(9),
+      D => \pos_to_four.env_2[9]_i_1_n_0\,
       Q => \^env_2\(9),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
-\pos_to_four.env_3[15]_i_1\: unisim.vcomponents.LUT2
+\pos_to_four.env_3[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"57"
     )
         port map (
-      I0 => \pos_to_four.counter[10]_i_4_n_0\,
-      I1 => counter(2),
+      I0 => active_1,
+      I1 => \pos_to_four.counter[10]_i_4_n_0\,
+      I2 => counter(2),
       O => \pos_to_four.env_3[15]_i_1_n_0\
     );
 \pos_to_four.env_3_reg[0]\: unisim.vcomponents.FDRE
@@ -49646,9 +50495,9 @@ ila_i: component ps_comp_ana_0_0_ila_3
       INIT => X"00000001"
     )
         port map (
-      I0 => active_1,
+      I0 => req_read_back,
       I1 => filling,
-      I2 => req_read_back,
+      I2 => read_back,
       I3 => \^active\,
       I4 => \pos_to_four.idle_i_2_n_0\,
       O => idle0
@@ -49661,7 +50510,7 @@ ila_i: component ps_comp_ana_0_0_ila_3
       I0 => read_back_i,
       I1 => active_0,
       I2 => wr,
-      I3 => read_back,
+      I3 => active_1,
       O => \pos_to_four.idle_i_2_n_0\
     );
 \pos_to_four.idle_reg\: unisim.vcomponents.FDRE
@@ -50056,389 +50905,821 @@ ila_i: component ps_comp_ana_0_0_ila_3
       Q => mem_wr(3),
       R => \pos_to_four.mem_wr[3]_i_1_n_0\
     );
+\pos_to_four.phase_0[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(16),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[0]_i_1_n_0\
+    );
+\pos_to_four.phase_0[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(26),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[10]_i_1_n_0\
+    );
+\pos_to_four.phase_0[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(27),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[11]_i_1_n_0\
+    );
+\pos_to_four.phase_0[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(28),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[12]_i_1_n_0\
+    );
+\pos_to_four.phase_0[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(29),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[13]_i_1_n_0\
+    );
+\pos_to_four.phase_0[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(30),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[14]_i_1_n_0\
+    );
+\pos_to_four.phase_0[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(31),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[15]_i_1_n_0\
+    );
+\pos_to_four.phase_0[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(17),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[1]_i_1_n_0\
+    );
+\pos_to_four.phase_0[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(18),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[2]_i_1_n_0\
+    );
+\pos_to_four.phase_0[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(19),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[3]_i_1_n_0\
+    );
+\pos_to_four.phase_0[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(20),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[4]_i_1_n_0\
+    );
+\pos_to_four.phase_0[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(21),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[5]_i_1_n_0\
+    );
+\pos_to_four.phase_0[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(22),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[6]_i_1_n_0\
+    );
+\pos_to_four.phase_0[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(23),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[7]_i_1_n_0\
+    );
+\pos_to_four.phase_0[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(24),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[8]_i_1_n_0\
+    );
+\pos_to_four.phase_0[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_0_out(25),
+      I1 => \pos_to_four.done_i_2_n_0\,
+      O => \pos_to_four.phase_0[9]_i_1_n_0\
+    );
 \pos_to_four.phase_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(16),
+      D => \pos_to_four.phase_0[0]_i_1_n_0\,
       Q => \^phase_0\(0),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(26),
+      D => \pos_to_four.phase_0[10]_i_1_n_0\,
       Q => \^phase_0\(10),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(27),
+      D => \pos_to_four.phase_0[11]_i_1_n_0\,
       Q => \^phase_0\(11),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(28),
+      D => \pos_to_four.phase_0[12]_i_1_n_0\,
       Q => \^phase_0\(12),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(29),
+      D => \pos_to_four.phase_0[13]_i_1_n_0\,
       Q => \^phase_0\(13),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(30),
+      D => \pos_to_four.phase_0[14]_i_1_n_0\,
       Q => \^phase_0\(14),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(31),
+      D => \pos_to_four.phase_0[15]_i_1_n_0\,
       Q => \^phase_0\(15),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(17),
+      D => \pos_to_four.phase_0[1]_i_1_n_0\,
       Q => \^phase_0\(1),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(18),
+      D => \pos_to_four.phase_0[2]_i_1_n_0\,
       Q => \^phase_0\(2),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(19),
+      D => \pos_to_four.phase_0[3]_i_1_n_0\,
       Q => \^phase_0\(3),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(20),
+      D => \pos_to_four.phase_0[4]_i_1_n_0\,
       Q => \^phase_0\(4),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(21),
+      D => \pos_to_four.phase_0[5]_i_1_n_0\,
       Q => \^phase_0\(5),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(22),
+      D => \pos_to_four.phase_0[6]_i_1_n_0\,
       Q => \^phase_0\(6),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(23),
+      D => \pos_to_four.phase_0[7]_i_1_n_0\,
       Q => \^phase_0\(7),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(24),
+      D => \pos_to_four.phase_0[8]_i_1_n_0\,
       Q => \^phase_0\(8),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_0_out(25),
+      D => \pos_to_four.phase_0[9]_i_1_n_0\,
       Q => \^phase_0\(9),
-      R => \pos_to_four.env_0[15]_i_1_n_0\
+      R => \p_0_in__0\
+    );
+\pos_to_four.phase_1[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(16),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[0]_i_1_n_0\
+    );
+\pos_to_four.phase_1[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(26),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[10]_i_1_n_0\
+    );
+\pos_to_four.phase_1[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(27),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[11]_i_1_n_0\
+    );
+\pos_to_four.phase_1[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(28),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[12]_i_1_n_0\
+    );
+\pos_to_four.phase_1[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(29),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[13]_i_1_n_0\
+    );
+\pos_to_four.phase_1[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(30),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[14]_i_1_n_0\
+    );
+\pos_to_four.phase_1[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(31),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[15]_i_1_n_0\
+    );
+\pos_to_four.phase_1[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(17),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[1]_i_1_n_0\
+    );
+\pos_to_four.phase_1[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(18),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[2]_i_1_n_0\
+    );
+\pos_to_four.phase_1[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(19),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[3]_i_1_n_0\
+    );
+\pos_to_four.phase_1[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(20),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[4]_i_1_n_0\
+    );
+\pos_to_four.phase_1[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(21),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[5]_i_1_n_0\
+    );
+\pos_to_four.phase_1[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(22),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[6]_i_1_n_0\
+    );
+\pos_to_four.phase_1[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(23),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[7]_i_1_n_0\
+    );
+\pos_to_four.phase_1[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(24),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[8]_i_1_n_0\
+    );
+\pos_to_four.phase_1[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_1_out(25),
+      I1 => \pos_to_four.env_1[15]_i_2_n_0\,
+      O => \pos_to_four.phase_1[9]_i_1_n_0\
     );
 \pos_to_four.phase_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(16),
+      D => \pos_to_four.phase_1[0]_i_1_n_0\,
       Q => \^phase_1\(0),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(26),
+      D => \pos_to_four.phase_1[10]_i_1_n_0\,
       Q => \^phase_1\(10),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(27),
+      D => \pos_to_four.phase_1[11]_i_1_n_0\,
       Q => \^phase_1\(11),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(28),
+      D => \pos_to_four.phase_1[12]_i_1_n_0\,
       Q => \^phase_1\(12),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(29),
+      D => \pos_to_four.phase_1[13]_i_1_n_0\,
       Q => \^phase_1\(13),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(30),
+      D => \pos_to_four.phase_1[14]_i_1_n_0\,
       Q => \^phase_1\(14),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(31),
+      D => \pos_to_four.phase_1[15]_i_1_n_0\,
       Q => \^phase_1\(15),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(17),
+      D => \pos_to_four.phase_1[1]_i_1_n_0\,
       Q => \^phase_1\(1),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(18),
+      D => \pos_to_four.phase_1[2]_i_1_n_0\,
       Q => \^phase_1\(2),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(19),
+      D => \pos_to_four.phase_1[3]_i_1_n_0\,
       Q => \^phase_1\(3),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(20),
+      D => \pos_to_four.phase_1[4]_i_1_n_0\,
       Q => \^phase_1\(4),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(21),
+      D => \pos_to_four.phase_1[5]_i_1_n_0\,
       Q => \^phase_1\(5),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(22),
+      D => \pos_to_four.phase_1[6]_i_1_n_0\,
       Q => \^phase_1\(6),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(23),
+      D => \pos_to_four.phase_1[7]_i_1_n_0\,
       Q => \^phase_1\(7),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(24),
+      D => \pos_to_four.phase_1[8]_i_1_n_0\,
       Q => \^phase_1\(8),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_1_out(25),
+      D => \pos_to_four.phase_1[9]_i_1_n_0\,
       Q => \^phase_1\(9),
-      R => \pos_to_four.env_1[15]_i_1_n_0\
+      R => \p_0_in__0\
+    );
+\pos_to_four.phase_2[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(16),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[0]_i_1_n_0\
+    );
+\pos_to_four.phase_2[10]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(26),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[10]_i_1_n_0\
+    );
+\pos_to_four.phase_2[11]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(27),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[11]_i_1_n_0\
+    );
+\pos_to_four.phase_2[12]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(28),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[12]_i_1_n_0\
+    );
+\pos_to_four.phase_2[13]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(29),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[13]_i_1_n_0\
+    );
+\pos_to_four.phase_2[14]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(30),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[14]_i_1_n_0\
+    );
+\pos_to_four.phase_2[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(31),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[15]_i_1_n_0\
+    );
+\pos_to_four.phase_2[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(17),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[1]_i_1_n_0\
+    );
+\pos_to_four.phase_2[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(18),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[2]_i_1_n_0\
+    );
+\pos_to_four.phase_2[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(19),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[3]_i_1_n_0\
+    );
+\pos_to_four.phase_2[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(20),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[4]_i_1_n_0\
+    );
+\pos_to_four.phase_2[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(21),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[5]_i_1_n_0\
+    );
+\pos_to_four.phase_2[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(22),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[6]_i_1_n_0\
+    );
+\pos_to_four.phase_2[7]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(23),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[7]_i_1_n_0\
+    );
+\pos_to_four.phase_2[8]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(24),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[8]_i_1_n_0\
+    );
+\pos_to_four.phase_2[9]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => data_2_out(25),
+      I1 => \pos_to_four.env_2[15]_i_2_n_0\,
+      O => \pos_to_four.phase_2[9]_i_1_n_0\
     );
 \pos_to_four.phase_2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(16),
+      D => \pos_to_four.phase_2[0]_i_1_n_0\,
       Q => \^phase_2\(0),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(26),
+      D => \pos_to_four.phase_2[10]_i_1_n_0\,
       Q => \^phase_2\(10),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(27),
+      D => \pos_to_four.phase_2[11]_i_1_n_0\,
       Q => \^phase_2\(11),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(28),
+      D => \pos_to_four.phase_2[12]_i_1_n_0\,
       Q => \^phase_2\(12),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(29),
+      D => \pos_to_four.phase_2[13]_i_1_n_0\,
       Q => \^phase_2\(13),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(30),
+      D => \pos_to_four.phase_2[14]_i_1_n_0\,
       Q => \^phase_2\(14),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(31),
+      D => \pos_to_four.phase_2[15]_i_1_n_0\,
       Q => \^phase_2\(15),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(17),
+      D => \pos_to_four.phase_2[1]_i_1_n_0\,
       Q => \^phase_2\(1),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(18),
+      D => \pos_to_four.phase_2[2]_i_1_n_0\,
       Q => \^phase_2\(2),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(19),
+      D => \pos_to_four.phase_2[3]_i_1_n_0\,
       Q => \^phase_2\(3),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(20),
+      D => \pos_to_four.phase_2[4]_i_1_n_0\,
       Q => \^phase_2\(4),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(21),
+      D => \pos_to_four.phase_2[5]_i_1_n_0\,
       Q => \^phase_2\(5),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(22),
+      D => \pos_to_four.phase_2[6]_i_1_n_0\,
       Q => \^phase_2\(6),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(23),
+      D => \pos_to_four.phase_2[7]_i_1_n_0\,
       Q => \^phase_2\(7),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(24),
+      D => \pos_to_four.phase_2[8]_i_1_n_0\,
       Q => \^phase_2\(8),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => data_2_out(25),
+      D => \pos_to_four.phase_2[9]_i_1_n_0\,
       Q => \^phase_2\(9),
-      R => \pos_to_four.env_2[15]_i_1_n_0\
+      R => \p_0_in__0\
     );
 \pos_to_four.phase_3_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -51129,8 +52410,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal NLW_p4_i_phase_2_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_p4_i_phase_3_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair86";
   attribute KEEP : string;
   attribute KEEP of \comp_burst.idle_reg\ : label is "yes";
   attribute KEEP of \comp_burst.p5_angle_reg[0]\ : label is "yes";
@@ -63753,10 +65034,10 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_ana is
   attribute KEEP of \comp_ana.count_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_ana.count_reg[8]\ : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair99";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[7]_i_1\ : label is 35;

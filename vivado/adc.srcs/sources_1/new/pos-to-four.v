@@ -266,96 +266,116 @@ generate
 
     always @(posedge clk) 
     begin
-		if (counter[10:2])
-		begin
-			env_0 <= data_0_out[15:0];
-			env_1 <= data_1_out[15:0];
-			env_2 <= data_2_out[15:0];
-			env_3 <= data_3_out[15:0];
-		end
-		else
-		begin
-			case (counter[1:0])
-				0: 
-				begin
-					env_0 <= 0;
-					env_1 <= 0;
-					env_2 <= 0;
-					env_3 <= 0;
-				end
+        if (active_1)
+        begin
+            if (counter[10:2])
+            begin
+                env_0 <= data_0_out[15:0];
+                env_1 <= data_1_out[15:0];
+                env_2 <= data_2_out[15:0];
+                env_3 <= data_3_out[15:0];
+            end
+            else
+            begin
+                case (counter[1:0])
+                    0: 
+                    begin
+                        env_0 <= 0;
+                        env_1 <= 0;
+                        env_2 <= 0;
+                        env_3 <= 0;
+                    end
 				
-				1:
-				begin
-					env_0 <= data_0_out[15:0];
-					env_1 <= 0;
-					env_2 <= 0;
-					env_3 <= 0;
-				end
+                    1:
+                    begin
+                        env_0 <= data_0_out[15:0];
+                        env_1 <= 0;
+                        env_2 <= 0;
+                        env_3 <= 0;
+                    end
 				
-				2:
-				begin
-					env_0 <= data_0_out[15:0];
-					env_1 <= data_1_out[15:0];
-					env_2 <= 0;
-					env_3 <= 0;
-				end
+                    2:
+                    begin
+                        env_0 <= data_0_out[15:0];
+                        env_1 <= data_1_out[15:0];
+                        env_2 <= 0;
+                        env_3 <= 0;
+                    end
 				
-				3:
-				begin
-					env_0 <= data_0_out[15:0];
-					env_1 <= data_1_out[15:0];
-					env_2 <= data_2_out[15:0];
-					env_3 <= 0;
-				end
-			endcase
-		end
+                    3:
+                    begin
+                        env_0 <= data_0_out[15:0];
+                        env_1 <= data_1_out[15:0];
+                        env_2 <= data_2_out[15:0];
+                        env_3 <= 0;
+                    end
+                endcase
+            end
+        end
+        else
+        begin
+            env_0 <= 0;
+            env_1 <= 0;
+            env_2 <= 0;
+            env_3 <= 0;
+        end
 	end
 
     always @(posedge clk) 
     begin
-		if (counter[10:2])
-		begin
-			phase_0 <= data_0_out[31:16];
-			phase_1 <= data_1_out[31:16];
-			phase_2 <= data_2_out[31:16];
-			phase_3 <= data_3_out[31:16];
-		end
-		else
-		begin
-			case (counter[1:0])
-				0: 
-				begin
-					phase_0 <= 0;
-					phase_1 <= 0;
-					phase_2 <= 0;
-					phase_3 <= 0;
-				end
+        if (active_1)
+        begin
+            if (counter[10:2])
+            begin
+                phase_0 <= data_0_out[31:16];
+                phase_1 <= data_1_out[31:16];
+                phase_2 <= data_2_out[31:16];
+                phase_3 <= data_3_out[31:16];
+            end
+            else
+            begin
+                case (counter[1:0])
+                    0: 
+                    begin
+                        phase_0 <= 0;
+                        phase_1 <= 0;
+                        phase_2 <= 0;
+                        phase_3 <= 0;
+                    end
 		
-				1: 
-				begin
-					phase_0 <= data_0_out[31:16];
-					phase_1 <= 0;
-					phase_2 <= 0;
-					phase_3 <= 0;
-				end
+                    1: 
+                    begin
+                        phase_0 <= data_0_out[31:16];
+                        phase_1 <= 0;
+                        phase_2 <= 0;
+                        phase_3 <= 0;
+                    end
 				
-				2: 
-				begin
-					phase_0 <= data_0_out[31:16];
-					phase_1 <= data_1_out[31:16];
-					phase_2 <= 0;
-					phase_3 <= 0;
-				end
+                    2: 
+                    begin
+                        phase_0 <= data_0_out[31:16];
+                        phase_1 <= data_1_out[31:16];
+                        phase_2 <= 0;
+                        phase_3 <= 0;
+                    end
 				
-				3: 
-				begin
-					phase_0 <= data_0_out[31:16];
-					phase_1 <= data_1_out[31:16];
-					phase_2 <= data_2_out[31:16];
-					phase_3 <= 0;
-				end
-			endcase
-		end
+                    3: 
+                    begin
+                        phase_0 <= data_0_out[31:16];
+                        phase_1 <= data_1_out[31:16];
+                        phase_2 <= data_2_out[31:16];
+                        phase_3 <= 0;
+                    end
+                endcase
+            end
+        end
+        else
+        begin
+            phase_0 <= 0;
+            phase_1 <= 0;
+            phase_2 <= 0;
+            phase_3 <= 0;
+        end
 	end
 
     always @(posedge clk) 
@@ -365,20 +385,21 @@ generate
 		if (active_1)
 		begin
 			if (counter)
+            begin
 				active <= 1;
+                done <= 0;
+            end
 			else
+            begin
 				active <= 0;
+                done <= 1;
+            end
 		end
 		else
+        begin
 			active <= 0;
-    end
-    
-    always @(posedge clk) 
-    begin
-        if (active & !active_1)
-            done <= 1;
-        else
             done <= 0;
+        end
     end
     
     always @(posedge clk) 
