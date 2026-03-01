@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Feb 24 16:40:03 2026
+//Date        : Sun Mar  1 00:56:11 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,16 +10,33 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=23,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=26,numReposBlks=26,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=5,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
     adc1_clk_clk_p,
+    ddr4_sdram_c0_act_n,
+    ddr4_sdram_c0_adr,
+    ddr4_sdram_c0_ba,
+    ddr4_sdram_c0_bg,
+    ddr4_sdram_c0_ck_c,
+    ddr4_sdram_c0_ck_t,
+    ddr4_sdram_c0_cke,
+    ddr4_sdram_c0_cs_n,
+    ddr4_sdram_c0_dm_n,
+    ddr4_sdram_c0_dq,
+    ddr4_sdram_c0_dqs_c,
+    ddr4_sdram_c0_dqs_t,
+    ddr4_sdram_c0_odt,
+    ddr4_sdram_c0_reset_n,
+    default_sysclk_c0_300mhz_clk_n,
+    default_sysclk_c0_300mhz_clk_p,
     led_8bits_tri_o,
     pl_clk_n,
     pl_clk_p,
     pl_sysref_n,
     pl_sysref_p,
+    reset,
     sysref_in_diff_n,
     sysref_in_diff_p,
     vin0_01_v_n,
@@ -37,11 +54,28 @@ module ps
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO_0 TRI_O" *) (* X_INTERFACE_MODE = "Master" *) output [1:0]GPIO_0_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc1_clk, CAN_DEBUG false, FREQ_HZ 500000000.0" *) input adc1_clk_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_P" *) input adc1_clk_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 ACT_N" *) (* X_INTERFACE_MODE = "Master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ddr4_sdram_c0, AXI_ARBITRATION_SCHEME RD_PRI_REG, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 18, CAS_WRITE_LATENCY 14, CS_ENABLED true, CUSTOM_PARTS no_file_loaded, DATA_MASK_ENABLED DM_NO_DBI, DATA_WIDTH 32, MEMORY_PART MT40A1G8WE-075E, MEMORY_TYPE Components, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 750" *) output ddr4_sdram_c0_act_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 ADR" *) output [16:0]ddr4_sdram_c0_adr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 BA" *) output [1:0]ddr4_sdram_c0_ba;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 BG" *) output [1:0]ddr4_sdram_c0_bg;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 CK_C" *) output ddr4_sdram_c0_ck_c;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 CK_T" *) output ddr4_sdram_c0_ck_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 CKE" *) output ddr4_sdram_c0_cke;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 CS_N" *) output [1:0]ddr4_sdram_c0_cs_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 DM_N" *) inout [3:0]ddr4_sdram_c0_dm_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 DQ" *) inout [31:0]ddr4_sdram_c0_dq;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 DQS_C" *) inout [3:0]ddr4_sdram_c0_dqs_c;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 DQS_T" *) inout [3:0]ddr4_sdram_c0_dqs_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 ODT" *) output ddr4_sdram_c0_odt;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 RESET_N" *) output ddr4_sdram_c0_reset_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 default_sysclk_c0_300mhz CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME default_sysclk_c0_300mhz, CAN_DEBUG false, FREQ_HZ 300000000" *) input default_sysclk_c0_300mhz_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 default_sysclk_c0_300mhz CLK_P" *) input default_sysclk_c0_300mhz_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 led_8bits TRI_O" *) (* X_INTERFACE_MODE = "Master" *) output [7:0]led_8bits_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_CLK_N, CLK_DOMAIN ps_pl_clk_n, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_CLK_P, CLK_DOMAIN ps_pl_clk_p, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_SYSREF_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_SYSREF_N, CLK_DOMAIN ps_pl_sysref_n, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_sysref_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PL_SYSREF_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PL_SYSREF_P, CLK_DOMAIN ps_pl_sysref_p, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input pl_sysref_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:display_usp_rf_data_converter:diff_pins:1.0 sysref_in diff_n" *) (* X_INTERFACE_MODE = "Slave" *) input sysref_in_diff_n;
   (* X_INTERFACE_INFO = "xilinx.com:display_usp_rf_data_converter:diff_pins:1.0 sysref_in diff_p" *) input sysref_in_diff_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin0_01 V_N" *) (* X_INTERFACE_MODE = "Slave" *) input vin0_01_v_n;
@@ -215,6 +249,21 @@ module ps
   wire [63:0]comp_low_re;
   wire [15:0]comp_low_sample;
   wire [8:0]comp_low_size;
+  wire ddr4_0_c0_ddr4_ui_clk;
+  wire ddr4_sdram_c0_act_n;
+  wire [16:0]ddr4_sdram_c0_adr;
+  wire [1:0]ddr4_sdram_c0_ba;
+  wire [1:0]ddr4_sdram_c0_bg;
+  wire [0:0]\^ddr4_sdram_c0_ck_c ;
+  wire [0:0]\^ddr4_sdram_c0_ck_t ;
+  wire [0:0]\^ddr4_sdram_c0_cke ;
+  wire [1:0]ddr4_sdram_c0_cs_n;
+  wire [3:0]ddr4_sdram_c0_dm_n;
+  wire [31:0]ddr4_sdram_c0_dq;
+  wire [3:0]ddr4_sdram_c0_dqs_c;
+  wire [3:0]ddr4_sdram_c0_dqs_t;
+  wire [0:0]\^ddr4_sdram_c0_odt ;
+  wire ddr4_sdram_c0_reset_n;
   wire [31:0]deci_high_freq_E;
   wire [31:0]deci_high_freq_N;
   wire [31:0]deci_high_freq_W;
@@ -232,6 +281,8 @@ module ps
   wire [127:0]deci_low_raw_W;
   wire deci_low_raw_wr;
   wire deci_low_sim_active;
+  wire default_sysclk_c0_300mhz_clk_n;
+  wire default_sysclk_c0_300mhz_clk_p;
   wire freq_high_189_0_ana_wr;
   wire [15:0]freq_high_189_0_env_E;
   wire [15:0]freq_high_189_0_env_N;
@@ -279,9 +330,44 @@ module ps
   wire pl_clk_p;
   wire pl_sysref_n;
   wire pl_sysref_p;
+  wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire r5_timer_interrupt;
+  wire reset;
   wire rst_ps8_0_99M_mb_reset;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
+  wire [31:0]smartconnect_0_M00_AXI_ARADDR;
+  wire [1:0]smartconnect_0_M00_AXI_ARBURST;
+  wire [3:0]smartconnect_0_M00_AXI_ARCACHE;
+  wire [7:0]smartconnect_0_M00_AXI_ARLEN;
+  wire [0:0]smartconnect_0_M00_AXI_ARLOCK;
+  wire [2:0]smartconnect_0_M00_AXI_ARPROT;
+  wire [3:0]smartconnect_0_M00_AXI_ARQOS;
+  wire smartconnect_0_M00_AXI_ARREADY;
+  wire [2:0]smartconnect_0_M00_AXI_ARSIZE;
+  wire smartconnect_0_M00_AXI_ARVALID;
+  wire [31:0]smartconnect_0_M00_AXI_AWADDR;
+  wire [1:0]smartconnect_0_M00_AXI_AWBURST;
+  wire [3:0]smartconnect_0_M00_AXI_AWCACHE;
+  wire [7:0]smartconnect_0_M00_AXI_AWLEN;
+  wire [0:0]smartconnect_0_M00_AXI_AWLOCK;
+  wire [2:0]smartconnect_0_M00_AXI_AWPROT;
+  wire [3:0]smartconnect_0_M00_AXI_AWQOS;
+  wire smartconnect_0_M00_AXI_AWREADY;
+  wire [2:0]smartconnect_0_M00_AXI_AWSIZE;
+  wire smartconnect_0_M00_AXI_AWVALID;
+  wire smartconnect_0_M00_AXI_BREADY;
+  wire [1:0]smartconnect_0_M00_AXI_BRESP;
+  wire smartconnect_0_M00_AXI_BVALID;
+  wire [255:0]smartconnect_0_M00_AXI_RDATA;
+  wire smartconnect_0_M00_AXI_RLAST;
+  wire smartconnect_0_M00_AXI_RREADY;
+  wire [1:0]smartconnect_0_M00_AXI_RRESP;
+  wire smartconnect_0_M00_AXI_RVALID;
+  wire [255:0]smartconnect_0_M00_AXI_WDATA;
+  wire smartconnect_0_M00_AXI_WLAST;
+  wire smartconnect_0_M00_AXI_WREADY;
+  wire [31:0]smartconnect_0_M00_AXI_WSTRB;
+  wire smartconnect_0_M00_AXI_WVALID;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
   wire [127:0]usp_rf_data_converter_0_m00_axis_tdata;
@@ -310,6 +396,45 @@ module ps
   wire vin2_23_v_p;
   wire vin3_01_v_n;
   wire vin3_01_v_p;
+  wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARADDR;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARBURST;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARCACHE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARID;
+  wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLEN;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLOCK;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARPROT;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARQOS;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARREADY;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARSIZE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARUSER;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARVALID;
+  wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWADDR;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWBURST;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWCACHE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWID;
+  wire [7:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLEN;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLOCK;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWPROT;
+  wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWQOS;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWREADY;
+  wire [2:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWSIZE;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWUSER;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWVALID;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BID;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BREADY;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BRESP;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BVALID;
+  wire [127:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RDATA;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RID;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RLAST;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RREADY;
+  wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RRESP;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RVALID;
+  wire [127:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WDATA;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WLAST;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WREADY;
+  wire [15:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WSTRB;
+  wire zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WVALID;
   wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR;
   wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST;
   wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE;
@@ -352,6 +477,10 @@ module ps
   wire zynq_ultra_ps_e_0_pl_clk0;
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
+  assign ddr4_sdram_c0_ck_c = \^ddr4_sdram_c0_ck_c [0];
+  assign ddr4_sdram_c0_ck_t = \^ddr4_sdram_c0_ck_t [0];
+  assign ddr4_sdram_c0_cke = \^ddr4_sdram_c0_cke [0];
+  assign ddr4_sdram_c0_odt = \^ddr4_sdram_c0_odt [0];
   ps_adc_control_0_0 adc_control_0
        (.adc_active(adc_control_0_adc_active),
         .adc_start(adc_control_0_adc_start),
@@ -725,6 +854,61 @@ module ps
         .reset(mts_0_comp0_reset),
         .sample(comp_low_sample),
         .size(comp_low_size));
+  ps_ddr4_0_0 ddr4_0
+       (.c0_ddr4_act_n(ddr4_sdram_c0_act_n),
+        .c0_ddr4_adr(ddr4_sdram_c0_adr),
+        .c0_ddr4_aresetn(proc_sys_reset_0_peripheral_aresetn),
+        .c0_ddr4_ba(ddr4_sdram_c0_ba),
+        .c0_ddr4_bg(ddr4_sdram_c0_bg),
+        .c0_ddr4_ck_c(\^ddr4_sdram_c0_ck_c ),
+        .c0_ddr4_ck_t(\^ddr4_sdram_c0_ck_t ),
+        .c0_ddr4_cke(\^ddr4_sdram_c0_cke ),
+        .c0_ddr4_cs_n(ddr4_sdram_c0_cs_n),
+        .c0_ddr4_dm_dbi_n(ddr4_sdram_c0_dm_n),
+        .c0_ddr4_dq(ddr4_sdram_c0_dq),
+        .c0_ddr4_dqs_c(ddr4_sdram_c0_dqs_c),
+        .c0_ddr4_dqs_t(ddr4_sdram_c0_dqs_t),
+        .c0_ddr4_odt(\^ddr4_sdram_c0_odt ),
+        .c0_ddr4_reset_n(ddr4_sdram_c0_reset_n),
+        .c0_ddr4_s_axi_araddr(smartconnect_0_M00_AXI_ARADDR),
+        .c0_ddr4_s_axi_arburst(smartconnect_0_M00_AXI_ARBURST),
+        .c0_ddr4_s_axi_arcache(smartconnect_0_M00_AXI_ARCACHE),
+        .c0_ddr4_s_axi_arid(1'b0),
+        .c0_ddr4_s_axi_arlen(smartconnect_0_M00_AXI_ARLEN),
+        .c0_ddr4_s_axi_arlock(smartconnect_0_M00_AXI_ARLOCK),
+        .c0_ddr4_s_axi_arprot(smartconnect_0_M00_AXI_ARPROT),
+        .c0_ddr4_s_axi_arqos(smartconnect_0_M00_AXI_ARQOS),
+        .c0_ddr4_s_axi_arready(smartconnect_0_M00_AXI_ARREADY),
+        .c0_ddr4_s_axi_arsize(smartconnect_0_M00_AXI_ARSIZE),
+        .c0_ddr4_s_axi_arvalid(smartconnect_0_M00_AXI_ARVALID),
+        .c0_ddr4_s_axi_awaddr(smartconnect_0_M00_AXI_AWADDR),
+        .c0_ddr4_s_axi_awburst(smartconnect_0_M00_AXI_AWBURST),
+        .c0_ddr4_s_axi_awcache(smartconnect_0_M00_AXI_AWCACHE),
+        .c0_ddr4_s_axi_awid(1'b0),
+        .c0_ddr4_s_axi_awlen(smartconnect_0_M00_AXI_AWLEN),
+        .c0_ddr4_s_axi_awlock(smartconnect_0_M00_AXI_AWLOCK),
+        .c0_ddr4_s_axi_awprot(smartconnect_0_M00_AXI_AWPROT),
+        .c0_ddr4_s_axi_awqos(smartconnect_0_M00_AXI_AWQOS),
+        .c0_ddr4_s_axi_awready(smartconnect_0_M00_AXI_AWREADY),
+        .c0_ddr4_s_axi_awsize(smartconnect_0_M00_AXI_AWSIZE),
+        .c0_ddr4_s_axi_awvalid(smartconnect_0_M00_AXI_AWVALID),
+        .c0_ddr4_s_axi_bready(smartconnect_0_M00_AXI_BREADY),
+        .c0_ddr4_s_axi_bresp(smartconnect_0_M00_AXI_BRESP),
+        .c0_ddr4_s_axi_bvalid(smartconnect_0_M00_AXI_BVALID),
+        .c0_ddr4_s_axi_rdata(smartconnect_0_M00_AXI_RDATA),
+        .c0_ddr4_s_axi_rlast(smartconnect_0_M00_AXI_RLAST),
+        .c0_ddr4_s_axi_rready(smartconnect_0_M00_AXI_RREADY),
+        .c0_ddr4_s_axi_rresp(smartconnect_0_M00_AXI_RRESP),
+        .c0_ddr4_s_axi_rvalid(smartconnect_0_M00_AXI_RVALID),
+        .c0_ddr4_s_axi_wdata(smartconnect_0_M00_AXI_WDATA),
+        .c0_ddr4_s_axi_wlast(smartconnect_0_M00_AXI_WLAST),
+        .c0_ddr4_s_axi_wready(smartconnect_0_M00_AXI_WREADY),
+        .c0_ddr4_s_axi_wstrb(smartconnect_0_M00_AXI_WSTRB),
+        .c0_ddr4_s_axi_wvalid(smartconnect_0_M00_AXI_WVALID),
+        .c0_ddr4_ui_clk(ddr4_0_c0_ddr4_ui_clk),
+        .c0_sys_clk_n(default_sysclk_c0_300mhz_clk_n),
+        .c0_sys_clk_p(default_sysclk_c0_300mhz_clk_p),
+        .sys_rst(reset));
   ps_deci_high_0_0 deci_high
        (.adc_active(mts_0_deci_adc_active),
         .clk(mts_0_deci_clk),
@@ -873,6 +1057,13 @@ module ps
        (.IBUF_DS_N(pl_sysref_n),
         .IBUF_DS_P(pl_sysref_p),
         .IBUF_OUT(util_ds_buf_0_IBUF_OUT1));
+  ps_proc_sys_reset_0_0 proc_sys_reset_0
+       (.aux_reset_in(1'b1),
+        .dcm_locked(1'b1),
+        .ext_reset_in(reset),
+        .mb_debug_sys_rst(1'b0),
+        .peripheral_aresetn(proc_sys_reset_0_peripheral_aresetn),
+        .slowest_sync_clk(ddr4_0_c0_ddr4_ui_clk));
   ps_axi_timer_0_0 r5_timer
        (.capturetrig0(1'b0),
         .capturetrig1(1'b0),
@@ -905,6 +1096,113 @@ module ps
         .mb_reset(rst_ps8_0_99M_mb_reset),
         .peripheral_aresetn(rst_ps8_0_99M_peripheral_aresetn),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
+  ps_smartconnect_0_0 smartconnect_0
+       (.M00_AXI_araddr(smartconnect_0_M00_AXI_ARADDR),
+        .M00_AXI_arburst(smartconnect_0_M00_AXI_ARBURST),
+        .M00_AXI_arcache(smartconnect_0_M00_AXI_ARCACHE),
+        .M00_AXI_arlen(smartconnect_0_M00_AXI_ARLEN),
+        .M00_AXI_arlock(smartconnect_0_M00_AXI_ARLOCK),
+        .M00_AXI_arprot(smartconnect_0_M00_AXI_ARPROT),
+        .M00_AXI_arqos(smartconnect_0_M00_AXI_ARQOS),
+        .M00_AXI_arready(smartconnect_0_M00_AXI_ARREADY),
+        .M00_AXI_arsize(smartconnect_0_M00_AXI_ARSIZE),
+        .M00_AXI_arvalid(smartconnect_0_M00_AXI_ARVALID),
+        .M00_AXI_awaddr(smartconnect_0_M00_AXI_AWADDR),
+        .M00_AXI_awburst(smartconnect_0_M00_AXI_AWBURST),
+        .M00_AXI_awcache(smartconnect_0_M00_AXI_AWCACHE),
+        .M00_AXI_awlen(smartconnect_0_M00_AXI_AWLEN),
+        .M00_AXI_awlock(smartconnect_0_M00_AXI_AWLOCK),
+        .M00_AXI_awprot(smartconnect_0_M00_AXI_AWPROT),
+        .M00_AXI_awqos(smartconnect_0_M00_AXI_AWQOS),
+        .M00_AXI_awready(smartconnect_0_M00_AXI_AWREADY),
+        .M00_AXI_awsize(smartconnect_0_M00_AXI_AWSIZE),
+        .M00_AXI_awvalid(smartconnect_0_M00_AXI_AWVALID),
+        .M00_AXI_bready(smartconnect_0_M00_AXI_BREADY),
+        .M00_AXI_bresp(smartconnect_0_M00_AXI_BRESP),
+        .M00_AXI_bvalid(smartconnect_0_M00_AXI_BVALID),
+        .M00_AXI_rdata(smartconnect_0_M00_AXI_RDATA),
+        .M00_AXI_rlast(smartconnect_0_M00_AXI_RLAST),
+        .M00_AXI_rready(smartconnect_0_M00_AXI_RREADY),
+        .M00_AXI_rresp(smartconnect_0_M00_AXI_RRESP),
+        .M00_AXI_rvalid(smartconnect_0_M00_AXI_RVALID),
+        .M00_AXI_wdata(smartconnect_0_M00_AXI_WDATA),
+        .M00_AXI_wlast(smartconnect_0_M00_AXI_WLAST),
+        .M00_AXI_wready(smartconnect_0_M00_AXI_WREADY),
+        .M00_AXI_wstrb(smartconnect_0_M00_AXI_WSTRB),
+        .M00_AXI_wvalid(smartconnect_0_M00_AXI_WVALID),
+        .S00_AXI_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARADDR),
+        .S00_AXI_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARBURST),
+        .S00_AXI_arcache(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARCACHE),
+        .S00_AXI_arid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARID),
+        .S00_AXI_arlen(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLEN),
+        .S00_AXI_arlock(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLOCK),
+        .S00_AXI_arprot(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARPROT),
+        .S00_AXI_arqos(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARQOS),
+        .S00_AXI_arready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARREADY),
+        .S00_AXI_arsize(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARSIZE),
+        .S00_AXI_aruser(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARUSER),
+        .S00_AXI_arvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARVALID),
+        .S00_AXI_awaddr(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWADDR),
+        .S00_AXI_awburst(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWBURST),
+        .S00_AXI_awcache(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWCACHE),
+        .S00_AXI_awid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWID),
+        .S00_AXI_awlen(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLEN),
+        .S00_AXI_awlock(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLOCK),
+        .S00_AXI_awprot(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWPROT),
+        .S00_AXI_awqos(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWQOS),
+        .S00_AXI_awready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWREADY),
+        .S00_AXI_awsize(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWSIZE),
+        .S00_AXI_awuser(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWUSER),
+        .S00_AXI_awvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWVALID),
+        .S00_AXI_bid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BID),
+        .S00_AXI_bready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BREADY),
+        .S00_AXI_bresp(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BRESP),
+        .S00_AXI_bvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BVALID),
+        .S00_AXI_rdata(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RDATA),
+        .S00_AXI_rid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RID),
+        .S00_AXI_rlast(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RLAST),
+        .S00_AXI_rready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RREADY),
+        .S00_AXI_rresp(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RRESP),
+        .S00_AXI_rvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RVALID),
+        .S00_AXI_wdata(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WDATA),
+        .S00_AXI_wlast(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WLAST),
+        .S00_AXI_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WREADY),
+        .S00_AXI_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WSTRB),
+        .S00_AXI_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WVALID),
+        .S01_AXI_araddr(1'b0),
+        .S01_AXI_arburst({1'b0,1'b1}),
+        .S01_AXI_arcache({1'b0,1'b0,1'b1,1'b1}),
+        .S01_AXI_arid(1'b0),
+        .S01_AXI_arlen(1'b0),
+        .S01_AXI_arlock(1'b0),
+        .S01_AXI_arprot({1'b0,1'b0,1'b0}),
+        .S01_AXI_arqos({1'b0,1'b0,1'b0,1'b0}),
+        .S01_AXI_arregion({1'b0,1'b0,1'b0,1'b0}),
+        .S01_AXI_arsize({1'b0,1'b1,1'b0}),
+        .S01_AXI_aruser(1'b0),
+        .S01_AXI_arvalid(1'b0),
+        .S01_AXI_awaddr(1'b0),
+        .S01_AXI_awburst({1'b0,1'b1}),
+        .S01_AXI_awcache({1'b0,1'b0,1'b1,1'b1}),
+        .S01_AXI_awid(1'b0),
+        .S01_AXI_awlen(1'b0),
+        .S01_AXI_awlock(1'b0),
+        .S01_AXI_awprot({1'b0,1'b0,1'b0}),
+        .S01_AXI_awqos({1'b0,1'b0,1'b0,1'b0}),
+        .S01_AXI_awregion({1'b0,1'b0,1'b0,1'b0}),
+        .S01_AXI_awsize({1'b0,1'b1,1'b0}),
+        .S01_AXI_awuser(1'b0),
+        .S01_AXI_awvalid(1'b0),
+        .S01_AXI_bready(1'b0),
+        .S01_AXI_rready(1'b0),
+        .S01_AXI_wdata(1'b0),
+        .S01_AXI_wid(1'b0),
+        .S01_AXI_wlast(1'b0),
+        .S01_AXI_wstrb(1'b1),
+        .S01_AXI_wuser(1'b0),
+        .S01_AXI_wvalid(1'b0),
+        .aclk(ddr4_0_c0_ddr4_ui_clk),
+        .aresetn(proc_sys_reset_0_peripheral_aresetn));
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
        (.adc1_clk_n(adc1_clk_clk_n),
         .adc1_clk_p(adc1_clk_clk_p),
@@ -969,7 +1267,46 @@ module ps
         .vin3_01_n(vin3_01_v_n),
         .vin3_01_p(vin3_01_v_p));
   ps_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
-       (.maxigp2_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR),
+       (.maxigp0_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARADDR),
+        .maxigp0_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARBURST),
+        .maxigp0_arcache(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARCACHE),
+        .maxigp0_arid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARID),
+        .maxigp0_arlen(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLEN),
+        .maxigp0_arlock(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARLOCK),
+        .maxigp0_arprot(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARPROT),
+        .maxigp0_arqos(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARQOS),
+        .maxigp0_arready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARREADY),
+        .maxigp0_arsize(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARSIZE),
+        .maxigp0_aruser(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARUSER),
+        .maxigp0_arvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARVALID),
+        .maxigp0_awaddr(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWADDR),
+        .maxigp0_awburst(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWBURST),
+        .maxigp0_awcache(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWCACHE),
+        .maxigp0_awid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWID),
+        .maxigp0_awlen(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLEN),
+        .maxigp0_awlock(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWLOCK),
+        .maxigp0_awprot(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWPROT),
+        .maxigp0_awqos(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWQOS),
+        .maxigp0_awready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWREADY),
+        .maxigp0_awsize(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWSIZE),
+        .maxigp0_awuser(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWUSER),
+        .maxigp0_awvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_AWVALID),
+        .maxigp0_bid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BID),
+        .maxigp0_bready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BREADY),
+        .maxigp0_bresp(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BRESP),
+        .maxigp0_bvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_BVALID),
+        .maxigp0_rdata(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RDATA),
+        .maxigp0_rid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RID),
+        .maxigp0_rlast(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RLAST),
+        .maxigp0_rready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RREADY),
+        .maxigp0_rresp(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RRESP),
+        .maxigp0_rvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_RVALID),
+        .maxigp0_wdata(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WDATA),
+        .maxigp0_wlast(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WLAST),
+        .maxigp0_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WREADY),
+        .maxigp0_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WSTRB),
+        .maxigp0_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_WVALID),
+        .maxigp2_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR),
         .maxigp2_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST),
         .maxigp2_arcache(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE),
         .maxigp2_arid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARID),
@@ -1008,6 +1345,7 @@ module ps
         .maxigp2_wready(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WREADY),
         .maxigp2_wstrb(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WSTRB),
         .maxigp2_wvalid(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_WVALID),
+        .maxihpm0_fpd_aclk(ddr4_0_c0_ddr4_ui_clk),
         .maxihpm0_lpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
         .pl_ps_irq0(r5_timer_interrupt),

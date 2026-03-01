@@ -58,6 +58,46 @@
 `timescale 1ns/1ps
 
 module ps_zynq_ultra_ps_e_0_0 (
+maxihpm0_fpd_aclk, 
+maxigp0_awid, 
+maxigp0_awaddr, 
+maxigp0_awlen, 
+maxigp0_awsize, 
+maxigp0_awburst, 
+maxigp0_awlock, 
+maxigp0_awcache, 
+maxigp0_awprot, 
+maxigp0_awvalid, 
+maxigp0_awuser, 
+maxigp0_awready, 
+maxigp0_wdata, 
+maxigp0_wstrb, 
+maxigp0_wlast, 
+maxigp0_wvalid, 
+maxigp0_wready, 
+maxigp0_bid, 
+maxigp0_bresp, 
+maxigp0_bvalid, 
+maxigp0_bready, 
+maxigp0_arid, 
+maxigp0_araddr, 
+maxigp0_arlen, 
+maxigp0_arsize, 
+maxigp0_arburst, 
+maxigp0_arlock, 
+maxigp0_arcache, 
+maxigp0_arprot, 
+maxigp0_arvalid, 
+maxigp0_aruser, 
+maxigp0_arready, 
+maxigp0_rid, 
+maxigp0_rdata, 
+maxigp0_rresp, 
+maxigp0_rlast, 
+maxigp0_rvalid, 
+maxigp0_rready, 
+maxigp0_awqos, 
+maxigp0_arqos, 
 maxihpm0_lpd_aclk, 
 maxigp2_awid, 
 maxigp2_awaddr, 
@@ -102,6 +142,46 @@ pl_ps_irq0,
 pl_resetn0, 
 pl_clk0 
 );
+input maxihpm0_fpd_aclk;
+output [15 : 0] maxigp0_awid;
+output [39 : 0] maxigp0_awaddr;
+output [7 : 0] maxigp0_awlen;
+output [2 : 0] maxigp0_awsize;
+output [1 : 0] maxigp0_awburst;
+output maxigp0_awlock;
+output [3 : 0] maxigp0_awcache;
+output [2 : 0] maxigp0_awprot;
+output maxigp0_awvalid;
+output [15 : 0] maxigp0_awuser;
+input maxigp0_awready;
+output [127 : 0] maxigp0_wdata;
+output [15 : 0] maxigp0_wstrb;
+output maxigp0_wlast;
+output maxigp0_wvalid;
+input maxigp0_wready;
+input [15 : 0] maxigp0_bid;
+input [1 : 0] maxigp0_bresp;
+input maxigp0_bvalid;
+output maxigp0_bready;
+output [15 : 0] maxigp0_arid;
+output [39 : 0] maxigp0_araddr;
+output [7 : 0] maxigp0_arlen;
+output [2 : 0] maxigp0_arsize;
+output [1 : 0] maxigp0_arburst;
+output maxigp0_arlock;
+output [3 : 0] maxigp0_arcache;
+output [2 : 0] maxigp0_arprot;
+output maxigp0_arvalid;
+output [15 : 0] maxigp0_aruser;
+input maxigp0_arready;
+input [15 : 0] maxigp0_rid;
+input [127 : 0] maxigp0_rdata;
+input [1 : 0] maxigp0_rresp;
+input maxigp0_rlast;
+input maxigp0_rvalid;
+output maxigp0_rready;
+output [3 : 0] maxigp0_awqos;
+output [3 : 0] maxigp0_arqos;
 input maxihpm0_lpd_aclk;
 output [15 : 0] maxigp2_awid;
 output [39 : 0] maxigp2_awaddr;
@@ -183,7 +263,7 @@ assign pl_clk0 = pl_clk_t[0] ;
 
 
   zynq_ultra_ps_e_vip_v1_0_21 #(
-    .C_USE_M_AXI_GP0(0),
+    .C_USE_M_AXI_GP0(1),
     .C_USE_M_AXI_GP1(0),
     .C_USE_M_AXI_GP2(1),
     .C_USE_S_AXI_GP0(0),
@@ -210,46 +290,46 @@ assign pl_clk0 = pl_clk_t[0] ;
     .C_FCLK_CLK2_FREQ(249.997498),
     .C_FCLK_CLK3_FREQ(100)
   ) inst (
-    .MAXIGP0ARVALID(),
-    .MAXIGP0AWVALID(),
-    .MAXIGP0BREADY(),
-    .MAXIGP0RREADY(),
-    .MAXIGP0WLAST(),
-    .MAXIGP0WVALID(),
-    .MAXIGP0ARID(),
-    .MAXIGP0ARUSER(),
-    .MAXIGP0AWID(),
-    .MAXIGP0ARBURST(),
-    .MAXIGP0ARLOCK(),
-    .MAXIGP0ARSIZE(),
-    .MAXIGP0AWBURST(),
-    .MAXIGP0AWLOCK(),
-    .MAXIGP0AWSIZE(),
-    .MAXIGP0ARPROT(),
-    .MAXIGP0AWPROT(),
-    .MAXIGP0ARADDR(),
-    .MAXIGP0AWADDR(),
-    .MAXIGP0WDATA(),
-    .MAXIGP0AWUSER(),
-    .MAXIGP0ARCACHE(),
-    .MAXIGP0ARLEN(),
-    .MAXIGP0ARQOS(),
-    .MAXIGP0AWCACHE(),
-    .MAXIGP0AWLEN(),
-    .MAXIGP0AWQOS(),
-    .MAXIGP0WSTRB(),
-    .MAXIGP0ACLK(),
-    .MAXIGP0ARREADY(1'B0),
-    .MAXIGP0AWREADY(1'B0),
-    .MAXIGP0BVALID(1'B0),
-    .MAXIGP0RLAST(1'B0),
-    .MAXIGP0RVALID(1'B0),
-    .MAXIGP0WREADY(1'B0),
-    .MAXIGP0BID(12'B0),
-    .MAXIGP0RID(12'B0),
-    .MAXIGP0BRESP(2'B0),
-    .MAXIGP0RRESP(2'B0),
-    .MAXIGP0RDATA(32'B0),
+    .MAXIGP0ARVALID(maxigp0_arvalid),
+    .MAXIGP0AWVALID(maxigp0_awvalid),
+    .MAXIGP0BREADY(maxigp0_bready),
+    .MAXIGP0RREADY(maxigp0_rready),
+    .MAXIGP0WLAST(maxigp0_wlast),
+    .MAXIGP0WVALID(maxigp0_wvalid),
+    .MAXIGP0ARID(maxigp0_arid),
+    .MAXIGP0ARUSER(maxigp0_aruser),
+    .MAXIGP0AWID(maxigp0_awid),
+    .MAXIGP0ARBURST(maxigp0_arburst),
+    .MAXIGP0ARLOCK(maxigp0_arlock),
+    .MAXIGP0ARSIZE(maxigp0_arsize),
+    .MAXIGP0AWBURST(maxigp0_awburst),
+    .MAXIGP0AWLOCK(maxigp0_awlock),
+    .MAXIGP0AWSIZE(maxigp0_awsize),
+    .MAXIGP0ARPROT(maxigp0_arprot),
+    .MAXIGP0AWPROT(maxigp0_awprot),
+    .MAXIGP0ARADDR(maxigp0_araddr),
+    .MAXIGP0AWADDR(maxigp0_awaddr),
+    .MAXIGP0WDATA(maxigp0_wdata),
+    .MAXIGP0AWUSER(maxigp0_awuser),
+    .MAXIGP0ARCACHE(maxigp0_arcache),
+    .MAXIGP0ARLEN(maxigp0_arlen),
+    .MAXIGP0ARQOS(maxigp0_arqos),
+    .MAXIGP0AWCACHE(maxigp0_awcache),
+    .MAXIGP0AWLEN(maxigp0_awlen),
+    .MAXIGP0AWQOS(maxigp0_awqos),
+    .MAXIGP0WSTRB(maxigp0_wstrb),
+    .MAXIGP0ACLK(maxihpm0_fpd_aclk),
+    .MAXIGP0ARREADY(maxigp0_arready),
+    .MAXIGP0AWREADY(maxigp0_awready),
+    .MAXIGP0BVALID(maxigp0_bvalid),
+    .MAXIGP0RLAST(maxigp0_rlast),
+    .MAXIGP0RVALID(maxigp0_rvalid),
+    .MAXIGP0WREADY(maxigp0_wready),
+    .MAXIGP0BID(maxigp0_bid),
+    .MAXIGP0RID(maxigp0_rid),
+    .MAXIGP0BRESP(maxigp0_bresp),
+    .MAXIGP0RRESP(maxigp0_rresp),
+    .MAXIGP0RDATA(maxigp0_rdata),
     .MAXIGP1ARVALID(),
     .MAXIGP1AWVALID(),
     .MAXIGP1BREADY(),

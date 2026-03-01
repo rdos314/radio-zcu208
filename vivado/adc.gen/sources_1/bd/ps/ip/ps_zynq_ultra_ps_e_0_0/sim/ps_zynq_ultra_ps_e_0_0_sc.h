@@ -76,6 +76,8 @@ public:
 
   // module socket-to-socket AXI TLM interfaces
 
+  xtlm::xtlm_aximm_initiator_socket* M_AXI_HPM0_FPD_rd_socket;
+  xtlm::xtlm_aximm_initiator_socket* M_AXI_HPM0_FPD_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* M_AXI_HPM0_LPD_rd_socket;
   xtlm::xtlm_aximm_initiator_socket* M_AXI_HPM0_LPD_wr_socket;
 
