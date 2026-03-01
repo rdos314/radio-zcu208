@@ -2096,6 +2096,38 @@
    clocks = <&zynqmp_clk 71>;
    #clock-cells = <0>;
   };
+  axi_bram_ctrl_0: axi_bram_ctrl_0@82000000 {
+   xlnx,protocol = "AXI4";
+   xlnx,edk-special = "BRAM_CTRL";
+   compatible = "xlnx,axi-bram-ctrl-4.1" , "xlnx,axi-bram-ctrl";
+   xlnx,ecc-onoff-reset-value = <0>;
+   xlnx,ecc-type = <0>;
+   xlnx,rd-cmd-optimization = <0>;
+   xlnx,memory-depth = <2048>;
+   xlnx,use-ecc = <0>;
+   xlnx,fault-inject = <0>;
+   xlnx,ip-name = "axi_bram_ctrl";
+   reg = <0x0 0x82000000 0x0 0x2000>;
+   xlnx,bmg-instance = "EXTERNAL";
+   clocks = <&zynqmp_clk 71>;
+   xlnx,s-axi-ctrl-addr-width = <32>;
+   xlnx,read-latency = <1>;
+   xlnx,id-width = <0>;
+   xlnx,s-axi-supports-narrow-burst = <0>;
+   xlnx,supports-narrow-burst = <0>;
+   xlnx,single-port-bram = <1>;
+   xlnx,ecc = <0>;
+   xlnx,edk-iptype = "PERIPHERAL";
+   status = "okay";
+   clock-names = "s_axi_aclk";
+   xlnx,data-width = <32>;
+   xlnx,bram-addr-width = <11>;
+   xlnx,bram-inst-mode = "EXTERNAL";
+   xlnx,s-axi-ctrl-data-width = <32>;
+   xlnx,mem-depth = <2048>;
+   xlnx,s-axi-id-width = <1>;
+   xlnx,name = "axi_bram_ctrl_0";
+  };
   clk104_mux: gpio@80020000 {
    xlnx,gpio-board-interface = "Custom";
    compatible = "xlnx,axi-gpio-2.0" , "xlnx,xps-gpio-1.00.a";
@@ -2206,7 +2238,7 @@
    xlnx,dac-coarse-mixer-freq02 = <0>;
    xlnx,dac0-sampling-rate = <0x61a800>;
    xlnx,adc0-fs-max = <5>;
-   xlnx,adc2-refclk-freq = <5000>;
+   xlnx,adc2-refclk-freq = <4000>;
    xlnx,dac-coarse-mixer-freq03 = <0>;
    xlnx,dac2-outclk-freq = <50>;
    xlnx,adc30-dig-port = <1>;
@@ -2218,11 +2250,11 @@
    xlnx,adc2-fabric-freq = <500>;
    xlnx,dac-coarse-mixer-freq12 = <0>;
    xlnx,dac-coarse-mixer-freq13 = <0>;
-   xlnx,adc-data-width00 = <10>;
-   xlnx,adc-data-width01 = <10>;
+   xlnx,adc-data-width00 = <8>;
+   xlnx,adc-data-width01 = <8>;
    xlnx,adc2-enable = <1>;
-   xlnx,adc-data-width02 = <10>;
-   xlnx,adc-data-width03 = <10>;
+   xlnx,adc-data-width02 = <8>;
+   xlnx,adc-data-width03 = <8>;
    xlnx,adc0-obs-fabric-freq = <0>;
    xlnx,dac-coarse-mixer-freq20 = <0>;
    xlnx,dac-coarse-mixer-freq21 = <0>;
@@ -2235,9 +2267,9 @@
    xlnx,dac-coarse-mixer-freq23 = <0>;
    xlnx,dac3-link-coupling = <0>;
    xlnx,dac2-band = <0>;
-   xlnx,adc-data-width10 = <10>;
+   xlnx,adc-data-width10 = <8>;
    xlnx,adc1-multi-tile-sync;
-   xlnx,adc-data-width11 = <10>;
+   xlnx,adc-data-width11 = <8>;
    clock-names = "m0_axis_aclk" , "m1_axis_aclk" , "m2_axis_aclk" , "m3_axis_aclk" , "s_axi_aclk";
    xlnx,adc3-refclk-div = <1>;
    xlnx,adc-data-width12 = <9>;
@@ -2246,7 +2278,7 @@
    xlnx,madc-decimation-mode00 = <0>;
    xlnx,madc-decimation-mode01 = <0>;
    xlnx,dac-coarse-mixer-freq30 = <0>;
-   xlnx,adc1-sampling-rate = <5>;
+   xlnx,adc1-sampling-rate = <4>;
    xlnx,madc-decimation-mode02 = <0>;
    xlnx,dac-coarse-mixer-freq31 = <0>;
    xlnx,madc-fabric-freq = <0>;
@@ -2257,17 +2289,17 @@
    xlnx,dac-coarse-mixer-freq33 = <0>;
    xlnx,adc-obs-data-width00 = <8>;
    xlnx,adc-obs-data-width01 = <8>;
-   xlnx,adc-data-width20 = <10>;
+   xlnx,adc-data-width20 = <8>;
    xlnx,adc-obs-data-width02 = <8>;
-   xlnx,adc-data-width21 = <10>;
+   xlnx,adc-data-width21 = <8>;
    xlnx,mdac-nco-phase00 = <0>;
    xlnx,adc-obs-data-width03 = <8>;
-   xlnx,adc1-refclk-freq = <5000>;
-   xlnx,adc-data-width22 = <10>;
+   xlnx,adc1-refclk-freq = <4000>;
+   xlnx,adc-data-width22 = <8>;
    xlnx,production-simulation = <0>;
    xlnx,mdac-nco-phase01 = <0>;
    xlnx,dac1-outdiv = <1>;
-   xlnx,adc-data-width23 = <10>;
+   xlnx,adc-data-width23 = <8>;
    xlnx,mdac-nco-phase02 = <0>;
    xlnx,adc2-fbdiv = <24>;
    xlnx,mdac-nco-phase03 = <0>;
@@ -2284,11 +2316,11 @@
    xlnx,disable-bg-cal-en = <1>;
    xlnx,adc-obs-data-width11 = <8>;
    xlnx,adc-coarse-mixer-freq00 = <3>;
-   xlnx,adc-data-width30 = <10>;
+   xlnx,adc-data-width30 = <8>;
    xlnx,adc-obs-data-width12 = <8>;
    xlnx,adc1-fabric-freq = <500>;
    xlnx,adc-coarse-mixer-freq01 = <3>;
-   xlnx,adc-data-width31 = <10>;
+   xlnx,adc-data-width31 = <8>;
    xlnx,adc-obs-data-width13 = <8>;
    xlnx,adc-coarse-mixer-freq02 = <3>;
    xlnx,adc-data-width32 = <9>;
@@ -2344,7 +2376,7 @@
    xlnx,adc-nco-freq03 = <0>;
    xlnx,adc-calopt-mode10 = <1>;
    xlnx,adc-coarse-mixer-freq13 = <0>;
-   param-list = [ 00 00 00 00 00 00 04 80 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 00 00 00 00 00 88 b3 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 00 00 00 00 00 88 b3 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 00 00 00 00 00 88 b3 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 00 00 00 00 00 88 b3 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00];
+   param-list = [ 00 00 00 00 00 00 04 80 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 99 99 99 99 19 40 00 00 00 00 00 00 b9 40 00 00 00 00 00 00 00 00 0a 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 24 40 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 10 40 00 00 00 00 00 40 af 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 10 40 00 00 00 00 00 40 af 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 10 40 00 00 00 00 00 40 af 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 10 40 00 00 00 00 00 40 af 40 00 00 00 00 00 40 7f 40 18 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 14 40 02 00 00 00 01 00 00 00 02 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00];
    xlnx,mdac-coarse-mixer-freq00 = <0>;
    xlnx,dac-nyquist11 = <0>;
    xlnx,dac-nco-phase10 = <0>;
@@ -2420,7 +2452,7 @@
    xlnx,dac-nco-phase22 = <0>;
    xlnx,dac-mode23 = <0>;
    xlnx,dac-mixer-mode12 = <2>;
-   xlnx,adc0-refclk-freq = <5000>;
+   xlnx,adc0-refclk-freq = <4000>;
    xlnx,adc-calopt-mode23 = <1>;
    xlnx,dac-nco-phase23 = <0>;
    xlnx,dac-mixer-mode13 = <2>;
@@ -2494,7 +2526,7 @@
    xlnx,dac-mixer-type02 = <3>;
    xlnx,dac-data-type32 = <0>;
    xlnx,adc-nco-freq30 = <0>;
-   xlnx,adc2-sampling-rate = <5>;
+   xlnx,adc2-sampling-rate = <4>;
    xlnx,mdac-interpolation-mode00 = <0>;
    xlnx,madc-dither02;
    xlnx,madc-data-type01 = <0>;
@@ -2507,7 +2539,7 @@
    xlnx,madc-data-type02 = <0>;
    xlnx,dac-tdd-rts33 = <0>;
    xlnx,adc-nco-freq32 = <0>;
-   xlnx,adc3-outclk-freq = <0x2540dd8>;
+   xlnx,adc3-outclk-freq = <0x1dcd650>;
    xlnx,mdac-interpolation-mode02 = <0>;
    xlnx,madc-sampling-rate = <2>;
    xlnx,madc-mixer-type00 = <3>;
@@ -2609,7 +2641,7 @@
    xlnx,adc3-slices = <2>;
    xlnx,adc-data-type23 = <0>;
    xlnx,dac3-clock-source-mx = <7>;
-   xlnx,adc2-outclk-freq = <0x2540dd8>;
+   xlnx,adc2-outclk-freq = <0x1dcd650>;
    xlnx,adc3-fs-max = <5>;
    xlnx,dac1-enable = <0>;
    xlnx,adc-nco-phase30 = <0>;
@@ -2646,7 +2678,7 @@
    compatible = "xlnx,usp-rf-data-converter-2.6";
    xlnx,dac-interpolation-mode13 = <0>;
    xlnx,dac2-clock-dist = <0>;
-   xlnx,adc3-sampling-rate = <5>;
+   xlnx,adc3-sampling-rate = <4>;
    xlnx,adc-decimation-mode10 = <1>;
    xlnx,adc-decimation-mode11 = <1>;
    xlnx,madc-outclk-freq = <0xee6b28>;
@@ -2667,7 +2699,7 @@
    xlnx,adc-decimation-mode23 = <1>;
    xlnx,dac-interpolation-mode30 = <0>;
    xlnx,dac-interpolation-mode31 = <0>;
-   xlnx,adc1-outclk-freq = <0x2540dd8>;
+   xlnx,adc1-outclk-freq = <0x1dcd650>;
    xlnx,adc1-clock-dist = <1>;
    xlnx,dac-interpolation-mode32 = <0>;
    xlnx,adc2-decimation = <1>;
@@ -2738,7 +2770,7 @@
    xlnx,madc-data-width00 = <8>;
    xlnx,madc-data-width01 = <8>;
    xlnx,sysref-source = <1>;
-   xlnx,adc0-outclk-freq = <0x2540dd8>;
+   xlnx,adc0-outclk-freq = <0x1dcd650>;
    xlnx,madc-data-width02 = <8>;
    xlnx,madc-data-width03 = <8>;
    xlnx,dac-vop-mode = <1>;
@@ -2886,7 +2918,7 @@
    xlnx,adc33-dig-port = <0>;
    xlnx,adc-dither22;
    xlnx,adc-tdd-rts12 = <0>;
-   xlnx,adc3-refclk-freq = <5000>;
+   xlnx,adc3-refclk-freq = <4000>;
    xlnx,adc-dither23;
    xlnx,dac2-link-coupling = <0>;
    xlnx,adc-tdd-rts13 = <0>;
@@ -2909,7 +2941,7 @@
    xlnx,dac0-clock-source-mx = <4>;
    xlnx,component-name = "ps_usp_rf_data_converter_0_0";
    xlnx,adc-tdd-rts20 = <0>;
-   xlnx,adc0-sampling-rate = <5>;
+   xlnx,adc0-sampling-rate = <4>;
    xlnx,adc-dither31;
    dac@0 {
     xlnx,fabric-freq = "0.0";
@@ -3209,14 +3241,14 @@
    };
    adc@0 {
     xlnx,fabric-freq = "500.000";
-    xlnx,refclk-freq = "5000.000";
+    xlnx,refclk-freq = "4000.000";
     xlnx,slices = <0x2>;
     xlnx,refclk-div = <0x1>;
     xlnx,outdiv = <0x1>;
     xlnx,fbdiv = <0x18>;
     xlnx,enable = <0x1>;
     xlnx,fs-max = "5.000";
-    xlnx,sampling-rate = <0x5>;
+    xlnx,sampling-rate = <0x4>;
     xlnx,pll-enable = <0x0>;
     xlnx,band = <0x0>;
     adc0ap@0 {
@@ -3238,7 +3270,7 @@
     adc0dp@0 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3246,7 +3278,7 @@
     adc0dp@1 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3254,7 +3286,7 @@
     adc0dp@2 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3262,7 +3294,7 @@
     adc0dp@3 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3270,14 +3302,14 @@
    };
    adc@1 {
     xlnx,fabric-freq = "500.000";
-    xlnx,refclk-freq = "5000.000";
+    xlnx,refclk-freq = "4000.000";
     xlnx,slices = <0x2>;
     xlnx,refclk-div = <0x1>;
     xlnx,outdiv = <0x1>;
     xlnx,fbdiv = <0x18>;
     xlnx,enable = <0x1>;
     xlnx,fs-max = "5.000";
-    xlnx,sampling-rate = <0x5>;
+    xlnx,sampling-rate = <0x4>;
     xlnx,pll-enable = <0x0>;
     xlnx,band = <0x0>;
     adc1ap@0 {
@@ -3299,7 +3331,7 @@
     adc1dp@0 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3307,7 +3339,7 @@
     adc1dp@1 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3331,14 +3363,14 @@
    };
    adc@2 {
     xlnx,fabric-freq = "500.000";
-    xlnx,refclk-freq = "5000.000";
+    xlnx,refclk-freq = "4000.000";
     xlnx,slices = <0x2>;
     xlnx,refclk-div = <0x1>;
     xlnx,outdiv = <0x1>;
     xlnx,fbdiv = <0x18>;
     xlnx,enable = <0x1>;
     xlnx,fs-max = "5.000";
-    xlnx,sampling-rate = <0x5>;
+    xlnx,sampling-rate = <0x4>;
     xlnx,pll-enable = <0x0>;
     xlnx,band = <0x0>;
     adc2ap@0 {
@@ -3360,7 +3392,7 @@
     adc2dp@0 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3368,7 +3400,7 @@
     adc2dp@1 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3376,7 +3408,7 @@
     adc2dp@2 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3384,7 +3416,7 @@
     adc2dp@3 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3392,14 +3424,14 @@
    };
    adc@3 {
     xlnx,fabric-freq = "500.000";
-    xlnx,refclk-freq = "5000.000";
+    xlnx,refclk-freq = "4000.000";
     xlnx,slices = <0x2>;
     xlnx,refclk-div = <0x1>;
     xlnx,outdiv = <0x1>;
     xlnx,fbdiv = <0x18>;
     xlnx,enable = <0x1>;
     xlnx,fs-max = "5.000";
-    xlnx,sampling-rate = <0x5>;
+    xlnx,sampling-rate = <0x4>;
     xlnx,pll-enable = <0x0>;
     xlnx,band = <0x0>;
     adc3ap@0 {
@@ -3421,7 +3453,7 @@
     adc3dp@0 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -3429,7 +3461,7 @@
     adc3dp@1 {
      xlnx,nco-freq = "0.0";
      xlnx,decimation-mode = <0x1>;
-     xlnx,data-width = <0xa>;
+     xlnx,data-width = <0x8>;
      xlnx,mixer-type = <0x1>;
      xlnx,fifo-enable = <0x0>;
      xlnx,data-type = <0x0>;
@@ -5061,6 +5093,20 @@
  slrcount = <1>;
  family = "ZynqMP";
  speed_grade = "2";
+ axi_bram_ctrl_0_memory: memory@82000000 {
+  compatible = "xlnx,axi-bram-ctrl-4.1";
+  xlnx,ip-name = "axi_bram_ctrl";
+  device_type = "memory";
+  memory_type = "memory";
+  reg = <0x0 0x82000000 0x0 0x2000>;
+ };
+ ddr4_0_memory: memory@400000000 {
+  compatible = "xlnx,ddr4-2.2";
+  xlnx,ip-name = "ddr4";
+  device_type = "memory";
+  memory_type = "memory";
+  reg = <0x00000004 0x00000000 0x0 0x0>;
+ };
  psu_ocm_ram_0_memory: memory@FFFC0000 {
   compatible = "xlnx,psu-ocm-ram-0-1.0" , "mmio-sram";
   xlnx,ip-name = "psu_ocm_ram_0";
@@ -5116,6 +5162,9 @@
          <0x0 0x0 &pinctrl0 0x0 0x0 0x0 0x0>,
          <0x0 0xffa50800 &ams_ps 0x0 0xffa50800 0x0 0x400>,
          <0x0 0xffa50c00 &ams_pl 0x0 0xffa50c00 0x0 0x400>,
+         <0x0 0x82000000 &axi_bram_ctrl_0_memory 0x0 0x82000000 0x0 0x2000>,
+         <0x0 0x82000000 &axi_bram_ctrl_0 0x0 0x82000000 0x0 0x2000>,
+         <0x00000004 0x00000000 &ddr4_0_memory 0x00000004 0x00000000 0x0 0x0>,
          <0x0 0xFFFC0000 &psu_ocm_ram_0_memory 0x0 0xFFFC0000 0x0 0x40000>,
          <0x0 0xff300000 &ipi0 0x0 0xff300000 0x0 0x10000>,
          <0x0 0x0 &psu_ddr_0_memory 0x0 0x0 0x0 0x7FF00000>,
@@ -5227,6 +5276,8 @@
   address-map = <0xf0000000 &amba 0xf0000000 0x10000000>,
          <0xf9000000 &amba_rpu 0xf9000000 0x3000>,
          <0x0 &zynqmp_reset 0x0 0x0>,
+         <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>,
+         <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>,
          <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>,
          <0xff310000 &ipi1 0xff310000 0x10000>,
          <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>,
@@ -5336,6 +5387,8 @@
   address-map = <0xf0000000 &amba 0xf0000000 0x10000000>,
          <0xf9000000 &amba_rpu 0xf9000000 0x3000>,
          <0x0 &zynqmp_reset 0x0 0x0>,
+         <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>,
+         <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>,
          <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>,
          <0xff320000 &ipi2 0xff320000 0x10000>,
          <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>,
@@ -5443,6 +5496,8 @@
   compatible = "cpus,cluster";
   address-map = <0xf0000000 &amba 0xf0000000 0x10000000>,
          <0x0 &zynqmp_reset 0x0 0x0>,
+         <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>,
+         <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>,
          <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>,
          <0xff330000 &ipi3 0xff330000 0x1000>,
          <0xff331000 &ipi4 0xff331000 0x1000>,

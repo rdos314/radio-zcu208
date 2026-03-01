@@ -11,6 +11,20 @@
 	slrcount = <1>;
 	family = "ZynqMP";
 	speed_grade = "2";
+	axi_bram_ctrl_0_memory: memory@82000000 {
+		compatible = "xlnx,axi-bram-ctrl-4.1";
+		xlnx,ip-name = "axi_bram_ctrl";
+		device_type = "memory";
+		memory_type = "memory";
+		reg = <0x0 0x82000000 0x0 0x2000>;
+	};
+	ddr4_0_memory: memory@400000000 {
+		compatible = "xlnx,ddr4-2.2";
+		xlnx,ip-name = "ddr4";
+		device_type = "memory";
+		memory_type = "memory";
+		reg = <0x00000004 0x00000000 0x0 0x0>;
+	};
 	psu_ocm_ram_0_memory: memory@FFFC0000 {
 		compatible = "xlnx,psu-ocm-ram-0-1.0" , "mmio-sram";
 		xlnx,ip-name = "psu_ocm_ram_0";
@@ -66,6 +80,9 @@
 			      <0x0 0x0 &pinctrl0 0x0 0x0 0x0 0x0>, 
 			      <0x0 0xffa50800 &ams_ps 0x0 0xffa50800 0x0 0x400>, 
 			      <0x0 0xffa50c00 &ams_pl 0x0 0xffa50c00 0x0 0x400>, 
+			      <0x0 0x82000000 &axi_bram_ctrl_0_memory 0x0 0x82000000 0x0 0x2000>, 
+			      <0x0 0x82000000 &axi_bram_ctrl_0 0x0 0x82000000 0x0 0x2000>, 
+			      <0x00000004 0x00000000 &ddr4_0_memory 0x00000004 0x00000000 0x0 0x0>, 
 			      <0x0 0xFFFC0000 &psu_ocm_ram_0_memory 0x0 0xFFFC0000 0x0 0x40000>, 
 			      <0x0 0xff300000 &ipi0 0x0 0xff300000 0x0 0x10000>, 
 			      <0x0 0x0 &psu_ddr_0_memory 0x0 0x0 0x0 0x7FF00000>, 
@@ -177,6 +194,8 @@
 		address-map = <0xf0000000 &amba 0xf0000000 0x10000000>, 
 			      <0xf9000000 &amba_rpu 0xf9000000 0x3000>, 
 			      <0x0 &zynqmp_reset 0x0 0x0>, 
+			      <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>, 
+			      <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>, 
 			      <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>, 
 			      <0xff310000 &ipi1 0xff310000 0x10000>, 
 			      <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>, 
@@ -286,6 +305,8 @@
 		address-map = <0xf0000000 &amba 0xf0000000 0x10000000>, 
 			      <0xf9000000 &amba_rpu 0xf9000000 0x3000>, 
 			      <0x0 &zynqmp_reset 0x0 0x0>, 
+			      <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>, 
+			      <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>, 
 			      <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>, 
 			      <0xff320000 &ipi2 0xff320000 0x10000>, 
 			      <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>, 
@@ -393,6 +414,8 @@
 		compatible = "cpus,cluster";
 		address-map = <0xf0000000 &amba 0xf0000000 0x10000000>, 
 			      <0x0 &zynqmp_reset 0x0 0x0>, 
+			      <0x82000000 &axi_bram_ctrl_0_memory 0x82000000 0x2000>, 
+			      <0x82000000 &axi_bram_ctrl_0 0x82000000 0x2000>, 
 			      <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>, 
 			      <0xff330000 &ipi3 0xff330000 0x1000>, 
 			      <0xff331000 &ipi4 0xff331000 0x1000>, 
