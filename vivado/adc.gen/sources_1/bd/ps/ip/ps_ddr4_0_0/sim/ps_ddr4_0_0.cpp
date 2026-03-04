@@ -129,7 +129,7 @@ void ps_ddr4_0_0::before_end_of_elaboration()
     C0_DDR4_S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
-    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
+    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -277,7 +277,7 @@ void ps_ddr4_0_0::before_end_of_elaboration()
     C0_DDR4_S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
-    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
+    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -425,7 +425,7 @@ void ps_ddr4_0_0::before_end_of_elaboration()
     C0_DDR4_S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
-    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
+    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -562,7 +562,7 @@ ps_ddr4_0_0::ps_ddr4_0_0(const sc_core::sc_module_name& nm) : ps_ddr4_0_0_sc(nm)
     C0_DDR4_S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
-    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
+    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -711,7 +711,7 @@ ps_ddr4_0_0::ps_ddr4_0_0(const sc_core::sc_module_name& nm) : ps_ddr4_0_0_sc(nm)
     C0_DDR4_S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
-    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
+    C0_DDR4_S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     C0_DDR4_S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
