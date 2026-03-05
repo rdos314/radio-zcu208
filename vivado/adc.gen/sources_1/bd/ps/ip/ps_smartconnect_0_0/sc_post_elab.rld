@@ -18,6 +18,7 @@
 /config/S00_Entry/PROTOCOL/value=AXI4;annotatable=1
 /config/S00_Entry/ADDR_WIDTH/value=40;annotatable=1
 /timing/S01_Entry/MMU_REGSLICE/value=1;range=0,1;strength=0
+/functional/S01_Entry/SUPPORTS_DECERR/value=1;range=0,1;strength=0
 /functional/S01_Entry/SUPPORTS_WRAP/value=1;range=0,1;strength=0
 /timing/S01_Entry/TR_REGSLICE/value=1;range=0,1;strength=0
 /timing/S01_Buffer/AW_SLR_PIPE/value=0;range=0..8;strength=0
@@ -30,7 +31,7 @@
 /config/S01_Entry/DATA_WIDTH/value=256;annotatable=1
 /config/S01_Entry/ID_WIDTH/value=0;annotatable=1
 /config/S01_Entry/PROTOCOL/value=AXI4;annotatable=1
-/config/S01_Entry/ADDR_WIDTH/value=40;annotatable=1
+/config/S01_Entry/ADDR_WIDTH/value=32;annotatable=1
 /timing/M00_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M00_Buffer/AW_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M00_Buffer/B_SLR_PIPE/value=0;range=0..8;strength=0

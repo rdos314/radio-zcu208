@@ -244,11 +244,11 @@
         "parameters": {
           "AXI_ARBITRATION_SCHEME": {
             "value": "RD_PRI_REG",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "BURST_LENGTH": {
             "value": "8",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "CAN_DEBUG": {
             "value": "false",
@@ -256,15 +256,15 @@
           },
           "CAS_LATENCY": {
             "value": "18",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "CAS_WRITE_LATENCY": {
             "value": "14",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "CS_ENABLED": {
             "value": "true",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "CUSTOM_PARTS": {
             "value": "no_file_loaded",
@@ -272,11 +272,11 @@
           },
           "DATA_MASK_ENABLED": {
             "value": "DM_NO_DBI",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "DATA_WIDTH": {
             "value": "32",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "MEMORY_PART": {
             "value": "MT40A1G8WE-075E",
@@ -284,19 +284,19 @@
           },
           "MEMORY_TYPE": {
             "value": "Components",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "MEM_ADDR_MAP": {
             "value": "ROW_COLUMN_BANK",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "SLOT": {
             "value": "Single",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           },
           "TIMEPERIOD_PS": {
             "value": "750",
-            "value_src": "default_prop"
+            "value_src": "user_prop"
           }
         },
         "port_maps": {
@@ -4204,7 +4204,7 @@
                 "value_src": "constant"
               },
               "ADDR_WIDTH": {
-                "value": "40",
+                "value": "32",
                 "value_src": "constant"
               },
               "AWUSER_WIDTH": {
@@ -4295,8 +4295,8 @@
             "address_space_ref": "M_AXI",
             "base_address": {
               "minimum": "0x00000000",
-              "maximum": "0x00FFFFFFFFFF",
-              "width": "40"
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
             },
             "bd_attributes": {
               "TYPE": {
@@ -4308,7 +4308,7 @@
               "AWADDR": {
                 "physical_name": "M_AXI_AWADDR",
                 "direction": "O",
-                "left": "39",
+                "left": "31",
                 "right": "0"
               },
               "AWLEN": {
@@ -4451,7 +4451,7 @@
         "addressing": {
           "address_spaces": {
             "M_AXI": {
-              "range": "1T",
+              "range": "4G",
               "width": "256"
             }
           }
@@ -5544,6 +5544,21 @@
                 "address_block": "/usp_rf_data_converter_0/s_axi/Reg",
                 "offset": "0x0080040000",
                 "range": "256K"
+              }
+            }
+          }
+        }
+      },
+      "/axi_int_0": {
+        "address_spaces": {
+          "M_AXI": {
+            "segments": {
+              "SEG_ddr4_0_C0_DDR4_ADDRESS_BLOCK": {
+                "address_block": "/ddr4_0/C0_DDR4_MEMORY_MAP/C0_DDR4_ADDRESS_BLOCK",
+                "offset": "0x00000000",
+                "range": "4G",
+                "offset_base_param": "C0_DDR4_MEMORY_MAP_BASEADDR",
+                "offset_high_param": "C0_DDR4_MEMORY_MAP_HIGHADDR"
               }
             }
           }

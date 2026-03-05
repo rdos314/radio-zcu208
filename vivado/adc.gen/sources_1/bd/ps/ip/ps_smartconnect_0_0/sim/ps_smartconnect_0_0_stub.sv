@@ -107,7 +107,7 @@ module ps_smartconnect_0_0 (
   output bit_as_bool S00_AXI_rlast,
   output bit_as_bool S00_AXI_rvalid,
   input bit_as_bool S00_AXI_rready,
-  input bit [39 : 0] S01_AXI_awaddr,
+  input bit [31 : 0] S01_AXI_awaddr,
   input bit [7 : 0] S01_AXI_awlen,
   input bit [2 : 0] S01_AXI_awsize,
   input bit [1 : 0] S01_AXI_awburst,
@@ -210,7 +210,7 @@ module ps_smartconnect_0_0 (aclk,aresetn,S00_AXI_awid,S00_AXI_awaddr,S00_AXI_awl
   output wire S00_AXI_rlast;
   output wire S00_AXI_rvalid;
   input bit S00_AXI_rready;
-  input bit [39 : 0] S01_AXI_awaddr;
+  input bit [31 : 0] S01_AXI_awaddr;
   input bit [7 : 0] S01_AXI_awlen;
   input bit [2 : 0] S01_AXI_awsize;
   input bit [1 : 0] S01_AXI_awburst;

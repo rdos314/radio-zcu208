@@ -74,7 +74,7 @@ input clk;
 
 
 input [0 : 0] probe0;
-input [39 : 0] probe1;
+input [30 : 0] probe1;
 input [7 : 0] probe2;
 input [0 : 0] probe3;
 input [0 : 0] probe4;
@@ -85,10 +85,10 @@ input [0 : 0] probe8;
 input [0 : 0] probe9;
 input [1 : 0] probe10;
 input [0 : 0] probe11;
-input [0 : 0] probe12;
+input [7 : 0] probe12;
 input [0 : 0] probe13;
-input [26 : 0] probe14;
-input [39 : 0] probe15;
+input [0 : 0] probe14;
+input [26 : 0] probe15;
 input [7 : 0] probe16;
 input [7 : 0] probe17;
 

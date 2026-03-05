@@ -667,7 +667,7 @@
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
-						"AWADDR": { "actual": "s_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWID": { "actual": "s_axi_awid[1:0]"},
 						"AWLEN": { "actual": "s_axi_awlen[7:0]"},
@@ -695,7 +695,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "m_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "m_axi_awaddr[31:0]"},
 						"AWCACHE": { "actual": "m_axi_awcache[3:0]"},
 						"AWID": { "actual": "m_axi_awid[1:0]"},
 						"AWLEN": { "actual": "m_axi_awlen[7:0]"},
@@ -723,7 +723,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "m_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "m_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "m_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "m_axi_awcache[3:0]"},
 						"AWLEN": { "actual": "m_axi_awlen[7:0]"},
@@ -751,7 +751,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "s_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "s_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWLEN": { "actual": "s_axi_awlen[7:0]"},
@@ -776,7 +776,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "m_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "m_axi_awaddr[31:0]"},
 						"AWCACHE": { "actual": "m_axi_awcache[3:0]"},
 						"AWID": { "actual": "m_axi_awid[1:0]"},
 						"AWLEN": { "actual": "m_axi_awlen[7:0]"},
@@ -804,7 +804,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "s_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "s_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWID": { "actual": "s_axi_awid[1:0]"},
@@ -834,7 +834,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "m_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "m_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "m_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "m_axi_awcache[3:0]"},
 						"AWID": { "actual": "m_axi_awid[1:0]"},
@@ -864,7 +864,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "s_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "s_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWLEN": { "actual": "s_axi_awlen[7:0]"},
@@ -892,7 +892,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"AWADDR": { "actual": "s_axi_awaddr[39:0]"},
+						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
 						"AWBURST": { "actual": "s_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWLEN": { "actual": "s_axi_awlen[7:0]"},

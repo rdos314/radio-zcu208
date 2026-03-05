@@ -28,7 +28,7 @@ module axi_int(
     input wire clk,
     input wire resetn,
     input wire up,
-    output reg [39:0] M_AXI_AWADDR,
+    output reg [31:0] M_AXI_AWADDR,
     output reg [7:0] M_AXI_AWLEN,
     output wire [2:0] M_AXI_AWSIZE,
     output wire [1:0] M_AXI_AWPROT,
@@ -50,11 +50,25 @@ module axi_int(
     assign M_AXI_AWBURST = 2'b01;
     assign M_AXI_WSTRB = 32'hFFFFFFFF;
 
+    wire start;
+    wire next;
+    wire last;
+    wire done;
+    wire [255:0] data;
+
+    assign start = M_AXI_AWREADY & M_AXI_AWVALID;
+    assign next = M_AXI_WREADY & M_AXI_WVALID;
+    assign last = M_AXI_WREADY & M_AXI_WLAST;
+    assign done = M_AXI_BREADY & M_AXI_BVALID;
+
+    assign data[39:0] = config_data_adr_out;
+    assign data[255:40] = 0;
+
     reg reset;
     reg busy;
+    reg [7:0] req_timeout;
     reg req;
     reg [26:0] adr;
-    reg [255:0] data;
     reg [7:0] size;
     reg [7:0] counter;
 
@@ -72,7 +86,7 @@ fifo_config fifo_config_i (
   .rd_clk(clk),                  // input wire rd_clk
   .din(config_data_adr_in),      // input wire [39 : 0] din
   .wr_en(config_wr),             // input wire wr_en
-  .rd_en(cfg_rd),                // input wire rd_en
+  .rd_en(next),                  // input wire rd_en
   .dout(config_data_adr_out),    // output wire [39 : 0] dout
   .empty(cfg_empty)              // output wire empty
 );
@@ -80,7 +94,7 @@ fifo_config fifo_config_i (
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(up),                  // input wire [0:0]  probe3
-		.probe1(M_AXI_AWADDR),        // input wire [39:0]  probe3
+		.probe1(M_AXI_AWADDR),        // input wire [31:0]  probe3
 		.probe2(M_AXI_AWLEN),         // input wire [7:0]  probe3
 		.probe3(M_AXI_AWVALID),       // input wire [0:0]  probe3
 		.probe4(M_AXI_AWREADY),       // input wire [0:0]  probe3
@@ -91,10 +105,10 @@ fifo_config fifo_config_i (
 		.probe9(M_AXI_BVALID),        // input wire [0:0]  probe3
 		.probe10(M_AXI_BRESP),        // input wire [1:0]  probe3
 		.probe11(M_AXI_BREADY),       // input wire [0:0]  probe3
-		.probe12(req),                // input wire [0:0]  probe3
-		.probe13(busy),               // input wire [0:0]  probe3
-		.probe14(adr),                // input wire [26:0]  probe3
-		.probe15(data[39:0]),         // input wire [39:0]  probe3
+		.probe12(req_timeout),        // input wire [7:0]  probe3
+		.probe13(req),                // input wire [0:0]  probe3
+		.probe14(busy),               // input wire [0:0]  probe3
+		.probe15(adr),                // input wire [26:0]  probe3
 		.probe16(size),               // input wire [7:0]  probe3
 		.probe17(counter)             // input wire [7:0]  probe3
 );
@@ -109,69 +123,53 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset)
+        if (reset | cfg_empty)
+        begin
             req <= 0;
+            req_timeout <= 50;
+        end
         else
         begin
-            if (cfg_empty)
-                req <= 0;
+            if (req_timeout)
+                req_timeout <= req_timeout - 1;
             else
-            begin
-                data[39:0] <= config_data_adr_out;
-                data[255:40] <= 0;
                 req <= 1;
-            end
         end            
     end
 
     always @(posedge clk) 
     begin
         if (cfg_empty)
-            size <= 0;
-        else
             size <= 1;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (M_AXI_WVALID & M_AXI_WREADY)
-            cfg_rd <= 1;
         else
-            cfg_rd <= 0;
+        begin
+            if (start)
+                size <= size + 1;
+        end
     end
 
     always @(posedge clk) 
     begin
-        if (reset)
+        if (reset | start)
             M_AXI_AWVALID <= 0;
         else
         begin
-            if (M_AXI_AWVALID & M_AXI_AWREADY)
-                M_AXI_AWVALID <= 0;
-            else
-			begin
-                if (req & !busy)
-				begin
-                    M_AXI_AWVALID <= 1;
-                    M_AXI_AWADDR <= {8'h04, adr, 5'b00000};
-                    M_AXI_AWLEN <= size - 1;
-				end
-			end
+            if (req & !busy)
+            begin
+                M_AXI_AWVALID <= 1;
+                M_AXI_AWADDR <= {adr, 5'b00000};
+                M_AXI_AWLEN <= size - 1;
+            end
         end
     end
 
     always @(posedge clk) 
     begin
-        if (reset)
+        if (reset | done)
             busy <= 0;
         else
-        begin
-            if (M_AXI_AWVALID & M_AXI_AWREADY)
+            if (start)
                 busy <= 1;
-            else
-                if (M_AXI_BVALID & M_AXI_BREADY)
-                    busy <= 0;
-        end
     end
 
     always @(posedge clk) 
@@ -185,7 +183,7 @@ generate
         begin
             if (counter)
             begin
-                if (M_AXI_WREADY & M_AXI_WVALID)
+                if (next)
                 begin
                     M_AXI_WDATA <= data;
                     counter <= counter - 1;
@@ -194,23 +192,32 @@ generate
             end
             else
             begin
-				if (M_AXI_AWVALID & M_AXI_AWREADY)
-                    counter <= size;
+				if (req & !busy)
+					counter <= size;
             end
         end
     end
 
     always @(posedge clk) 
     begin
-        M_AXI_WVALID <= busy && (counter != 0);
+        if (reset | last)
+            M_AXI_WVALID <= 0;
+        else
+            if (start)
+                M_AXI_WVALID <= 1;
     end
 
     always @(posedge clk) 
     begin
-        if (counter == 1)
-            M_AXI_WLAST <= 1;
-        else
+        if (reset | last)
             M_AXI_WLAST <= 0;
+        else
+        begin
+            if (counter == 1)
+                M_AXI_WLAST <= 1;
+            else
+                M_AXI_WLAST <= 0;
+        end
     end
 
     always @(posedge clk) 

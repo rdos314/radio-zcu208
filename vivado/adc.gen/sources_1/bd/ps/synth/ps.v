@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Mar  3 23:19:07 2026
+//Date        : Wed Mar  4 22:03:33 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -134,7 +134,7 @@ module ps
   wire [31:0]axi_bram_ctrl_0_bram_wrdata_a;
   wire [31:0]axi_bram_douta;
   wire [31:0]axi_bram_doutb;
-  wire [39:0]axi_int_0_M_AXI_AWADDR;
+  wire [31:0]axi_int_0_M_AXI_AWADDR;
   wire [1:0]axi_int_0_M_AXI_AWBURST;
   wire [7:0]axi_int_0_M_AXI_AWLEN;
   wire [1:0]axi_int_0_M_AXI_AWPROT;

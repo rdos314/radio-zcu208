@@ -41,6 +41,27 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
+				"/axi_int_0/M_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"AWADDR": { "actual": "M_AXI_AWADDR[31:0]"},
+						"AWBURST": { "actual": "M_AXI_AWBURST[1:0]"},
+						"AWLEN": { "actual": "M_AXI_AWLEN[7:0]"},
+						"AWPROT": { "actual": "M_AXI_AWPROT[1:0]"},
+						"AWREADY": { "actual": "M_AXI_AWREADY"},
+						"AWSIZE": { "actual": "M_AXI_AWSIZE[2:0]"},
+						"AWVALID": { "actual": "M_AXI_AWVALID"},
+						"BREADY": { "actual": "M_AXI_BREADY"},
+						"BRESP": { "actual": "M_AXI_BRESP[1:0]"},
+						"BVALID": { "actual": "M_AXI_BVALID"},
+						"WDATA": { "actual": "M_AXI_WDATA[255:0]"},
+						"WLAST": { "actual": "M_AXI_WLAST"},
+						"WREADY": { "actual": "M_AXI_WREADY"},
+						"WSTRB": { "actual": "M_AXI_WSTRB[31:0]"},
+						"WVALID": { "actual": "M_AXI_WVALID"}
+					}
+				},
 				"/axi_smc/M00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
@@ -427,6 +448,30 @@
 						"WREADY": { "actual": "S00_AXI_wready"},
 						"WSTRB": { "actual": "S00_AXI_wstrb[15:0]"},
 						"WVALID": { "actual": "S00_AXI_wvalid"}
+					}
+				},
+				"/smartconnect_0/S01_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"AWADDR": { "actual": "S01_AXI_awaddr[31:0]"},
+						"AWBURST": { "actual": "S01_AXI_awburst[1:0]"},
+						"AWCACHE": { "actual": "S01_AXI_awcache[3:0]"},
+						"AWLEN": { "actual": "S01_AXI_awlen[7:0]"},
+						"AWLOCK": { "actual": "S01_AXI_awlock[0:0]"},
+						"AWPROT": { "actual": "S01_AXI_awprot[2:0]"},
+						"AWQOS": { "actual": "S01_AXI_awqos[3:0]"},
+						"AWREADY": { "actual": "S01_AXI_awready"},
+						"AWSIZE": { "actual": "S01_AXI_awsize[2:0]"},
+						"AWVALID": { "actual": "S01_AXI_awvalid"},
+						"BREADY": { "actual": "S01_AXI_bready"},
+						"BRESP": { "actual": "S01_AXI_bresp[1:0]"},
+						"BVALID": { "actual": "S01_AXI_bvalid"},
+						"WDATA": { "actual": "S01_AXI_wdata[255:0]"},
+						"WLAST": { "actual": "S01_AXI_wlast"},
+						"WREADY": { "actual": "S01_AXI_wready"},
+						"WSTRB": { "actual": "S01_AXI_wstrb[31:0]"},
+						"WVALID": { "actual": "S01_AXI_wvalid"}
 					}
 				},
 				"/usp_rf_data_converter_0/s_axi": {

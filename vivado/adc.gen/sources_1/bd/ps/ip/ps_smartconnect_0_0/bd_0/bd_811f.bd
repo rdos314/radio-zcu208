@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x34F9AB9BBD2CD378",
+      "boundary_crc": "0xC794A952104ED48C",
       "design_src": "SBD",
       "device": "xczu48dr-fsvg1517-2-e",
       "name": "bd_811f",
@@ -207,7 +207,7 @@
         "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
         "parameters": {
           "ADDR_WIDTH": {
-            "value": "40",
+            "value": "32",
             "value_src": "const_prop"
           },
           "ARUSER_WIDTH": {
@@ -332,8 +332,8 @@
         "address_space_ref": "S01_AXI",
         "base_address": {
           "minimum": "0x00000000",
-          "maximum": "0x00FFFFFFFFFF",
-          "width": "40"
+          "maximum": "0xFFFFFFFF",
+          "width": "32"
         },
         "bd_attributes": {
           "TYPE": {
@@ -732,7 +732,7 @@
                 "value": "1"
               },
               "M00_S01_CONNECTIVITY": {
-                "value": "0"
+                "value": "1"
               },
               "M_PIPELINES": {
                 "value": "1"
@@ -810,7 +810,7 @@
                 "value": "1"
               },
               "M01_S00_CONNECTIVITY": {
-                "value": "0"
+                "value": "1"
               },
               "M_PIPELINES": {
                 "value": "1"
@@ -880,7 +880,7 @@
                 "value": "1"
               },
               "M00_S01_CONNECTIVITY": {
-                "value": "0"
+                "value": "1"
               },
               "M_PIPELINES": {
                 "value": "1"
@@ -958,7 +958,7 @@
                 "value": "1"
               },
               "M00_S01_CONNECTIVITY": {
-                "value": "0"
+                "value": "1"
               },
               "M_PIPELINES": {
                 "value": "1"
@@ -1036,7 +1036,7 @@
                 "value": "1"
               },
               "M01_S00_CONNECTIVITY": {
-                "value": "0"
+                "value": "1"
               },
               "M_PIPELINES": {
                 "value": "1"
@@ -2774,7 +2774,7 @@
             "has_run_ip_tcl": "true",
             "parameters": {
               "ADDR_WIDTH": {
-                "value": "40"
+                "value": "32"
               },
               "ID_WIDTH": {
                 "value": "0"
@@ -2795,7 +2795,7 @@
                 "value": "2"
               },
               "NUM_SEG": {
-                "value": "0"
+                "value": "1"
               },
               "NUM_WRITE_OUTSTANDING": {
                 "value": "2"
@@ -2805,6 +2805,27 @@
               },
               "READ_WRITE_MODE": {
                 "value": "WRITE_ONLY"
+              },
+              "SEG000_BASE_ADDR": {
+                "value": "0x0000000000000000"
+              },
+              "SEG000_SECURE_READ": {
+                "value": "0"
+              },
+              "SEG000_SECURE_WRITE": {
+                "value": "0"
+              },
+              "SEG000_SEP_ROUTE": {
+                "value": "0b0000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "SEG000_SIZE": {
+                "value": "32"
+              },
+              "SEG000_SUPPORTS_READ": {
+                "value": "1"
+              },
+              "SEG000_SUPPORTS_WRITE": {
+                "value": "1"
               },
               "SUPPORTS_NARROW": {
                 "value": "1"
@@ -2865,7 +2886,7 @@
             "has_run_ip_tcl": "true",
             "parameters": {
               "ADDR_WIDTH": {
-                "value": "40"
+                "value": "32"
               },
               "IS_CASCADED": {
                 "value": "0"
@@ -2889,7 +2910,7 @@
                 "value": "WRITE_ONLY"
               },
               "SEP_ROUTE_WIDTH": {
-                "value": "0"
+                "value": "1"
               },
               "SUPPORTS_READ_DEADLOCK": {
                 "value": "0"
@@ -2941,7 +2962,7 @@
             "has_run_ip_tcl": "true",
             "parameters": {
               "ADDR_WIDTH": {
-                "value": "40"
+                "value": "32"
               },
               "HAS_BURST": {
                 "value": "1"
@@ -2983,7 +3004,7 @@
                 "value": "1"
               },
               "NUM_SEG": {
-                "value": "0"
+                "value": "1"
               },
               "NUM_WRITE_OUTSTANDING": {
                 "value": "2"
@@ -2996,6 +3017,15 @@
               },
               "READ_WRITE_MODE": {
                 "value": "WRITE_ONLY"
+              },
+              "SEP000_PROTOCOL": {
+                "value": "AXI4"
+              },
+              "SEP000_RDATA_WIDTH": {
+                "value": "256"
+              },
+              "SEP000_WDATA_WIDTH": {
+                "value": "256"
               },
               "SPLIT_WRAP_NARROW": {
                 "value": "0"
@@ -3096,7 +3126,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "AXI_ADDR_WIDTH": {
-            "value": "40"
+            "value": "32"
           },
           "AXI_ID_WIDTH": {
             "value": "2"
@@ -5453,8 +5483,8 @@
             "width": "40"
           },
           "S01_AXI": {
-            "range": "1T",
-            "width": "40"
+            "range": "4G",
+            "width": "32"
           }
         },
         "memory_maps": {
