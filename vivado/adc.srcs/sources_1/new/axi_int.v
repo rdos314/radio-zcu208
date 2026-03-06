@@ -55,7 +55,7 @@ module axi_int(
     wire last;
     wire done;
     wire [255:0] data;
-
+    
     assign start = M_AXI_AWREADY & M_AXI_AWVALID;
     assign next = M_AXI_WREADY & M_AXI_WVALID;
     assign last = M_AXI_WREADY & M_AXI_WLAST;
@@ -175,32 +175,44 @@ generate
     always @(posedge clk) 
     begin
         if (reset)
-        begin
             counter <= 0;
-            adr <= 0;
-        end
         else
         begin
-            if (counter)
-            begin
-                if (next)
-                begin
-                    M_AXI_WDATA <= data;
-                    counter <= counter - 1;
-                    adr <= adr + 1;
-                end
-            end
-            else
-            begin
-				if (req & !busy)
-					counter <= size;
+			if (done)
+				counter <= 0;
+			else
+			begin
+				if (counter)
+				begin
+					if (start | next)
+					begin
+						M_AXI_WDATA <= data;
+						counter <= counter - 1;
+					end
+				end
+				else
+				begin
+					if (req & !busy)
+						counter <= size;
+				end
             end
         end
     end
 
     always @(posedge clk) 
     begin
-        if (reset | last)
+        if (reset)
+            adr <= 0;
+        else
+        begin
+			if (next)
+				adr <= adr + 1;
+		end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset | last | done)
             M_AXI_WVALID <= 0;
         else
             if (start)
@@ -209,20 +221,26 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset | last)
+        if (reset | last | done)
             M_AXI_WLAST <= 0;
         else
         begin
-            if (counter == 1)
-                M_AXI_WLAST <= 1;
-            else
-                M_AXI_WLAST <= 0;
+            if (next | start)
+            begin
+                if (counter == 1)
+                    M_AXI_WLAST <= 1;
+                else
+                    M_AXI_WLAST <= 0;
+            end
         end
     end
 
     always @(posedge clk) 
     begin
-        M_AXI_BREADY <= M_AXI_BVALID;
+        if (done | reset)
+            M_AXI_BREADY <= 0;
+        else
+            M_AXI_BREADY <= M_AXI_BVALID;
     end
     
   end

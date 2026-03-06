@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Wed Mar  4 22:04:29 2026
+// Date        : Fri Mar  6 06:34:13 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.v
@@ -213,10 +213,10 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire M_AXI_BVALID;
   (* MARK_DEBUG *) wire [255:0]M_AXI_WDATA;
   (* MARK_DEBUG *) wire M_AXI_WLAST;
+  wire M_AXI_WLAST__0;
   (* MARK_DEBUG *) wire M_AXI_WREADY;
   (* MARK_DEBUG *) wire M_AXI_WVALID;
   (* MARK_DEBUG *) wire [26:0]adr;
-  wire [26:0]adr__0;
   wire \axi_int.M_AXI_AWADDR[10]_i_1_n_0 ;
   wire \axi_int.M_AXI_AWADDR[11]_i_1_n_0 ;
   wire \axi_int.M_AXI_AWADDR[12]_i_1_n_0 ;
@@ -251,79 +251,93 @@ module ps_axi_int_0_0_axi_int
   wire \axi_int.M_AXI_AWLEN[2]_i_1_n_0 ;
   wire \axi_int.M_AXI_AWLEN[3]_i_1_n_0 ;
   wire \axi_int.M_AXI_AWLEN[4]_i_1_n_0 ;
-  wire \axi_int.M_AXI_AWLEN[4]_i_2_n_0 ;
   wire \axi_int.M_AXI_AWLEN[5]_i_1_n_0 ;
   wire \axi_int.M_AXI_AWLEN[6]_i_1_n_0 ;
+  wire \axi_int.M_AXI_AWLEN[6]_i_2_n_0 ;
   wire \axi_int.M_AXI_AWLEN[7]_i_1_n_0 ;
-  wire \axi_int.M_AXI_AWLEN[7]_i_3_n_0 ;
+  wire \axi_int.M_AXI_AWLEN[7]_i_2_n_0 ;
   wire \axi_int.M_AXI_AWVALID_i_1_n_0 ;
   wire \axi_int.M_AXI_AWVALID_reg0 ;
-  wire \axi_int.M_AXI_WDATA[255]_i_1_n_0 ;
   wire \axi_int.M_AXI_WDATA[39]_i_1_n_0 ;
-  wire \axi_int.M_AXI_WLAST_i_1_n_0 ;
+  wire \axi_int.M_AXI_WLAST_i_2_n_0 ;
+  wire \axi_int.M_AXI_WLAST_i_4_n_0 ;
   wire \axi_int.M_AXI_WVALID_i_1_n_0 ;
-  wire \axi_int.adr[26]_i_1_n_0 ;
-  wire \axi_int.adr[7]_i_2_n_0 ;
-  wire \axi_int.adr_reg[15]_i_1_n_0 ;
-  wire \axi_int.adr_reg[15]_i_1_n_1 ;
-  wire \axi_int.adr_reg[15]_i_1_n_2 ;
-  wire \axi_int.adr_reg[15]_i_1_n_3 ;
-  wire \axi_int.adr_reg[15]_i_1_n_4 ;
-  wire \axi_int.adr_reg[15]_i_1_n_5 ;
-  wire \axi_int.adr_reg[15]_i_1_n_6 ;
-  wire \axi_int.adr_reg[15]_i_1_n_7 ;
-  wire \axi_int.adr_reg[23]_i_1_n_0 ;
-  wire \axi_int.adr_reg[23]_i_1_n_1 ;
-  wire \axi_int.adr_reg[23]_i_1_n_2 ;
-  wire \axi_int.adr_reg[23]_i_1_n_3 ;
-  wire \axi_int.adr_reg[23]_i_1_n_4 ;
-  wire \axi_int.adr_reg[23]_i_1_n_5 ;
-  wire \axi_int.adr_reg[23]_i_1_n_6 ;
-  wire \axi_int.adr_reg[23]_i_1_n_7 ;
-  wire \axi_int.adr_reg[26]_i_2_n_6 ;
-  wire \axi_int.adr_reg[26]_i_2_n_7 ;
-  wire \axi_int.adr_reg[7]_i_1_n_0 ;
-  wire \axi_int.adr_reg[7]_i_1_n_1 ;
-  wire \axi_int.adr_reg[7]_i_1_n_2 ;
-  wire \axi_int.adr_reg[7]_i_1_n_3 ;
-  wire \axi_int.adr_reg[7]_i_1_n_4 ;
-  wire \axi_int.adr_reg[7]_i_1_n_5 ;
-  wire \axi_int.adr_reg[7]_i_1_n_6 ;
-  wire \axi_int.adr_reg[7]_i_1_n_7 ;
+  wire \axi_int.M_AXI_WVALID_reg0 ;
+  wire \axi_int.adr[0]_i_1_n_0 ;
+  wire \axi_int.adr_reg[16]_i_1_n_0 ;
+  wire \axi_int.adr_reg[16]_i_1_n_1 ;
+  wire \axi_int.adr_reg[16]_i_1_n_10 ;
+  wire \axi_int.adr_reg[16]_i_1_n_11 ;
+  wire \axi_int.adr_reg[16]_i_1_n_12 ;
+  wire \axi_int.adr_reg[16]_i_1_n_13 ;
+  wire \axi_int.adr_reg[16]_i_1_n_14 ;
+  wire \axi_int.adr_reg[16]_i_1_n_15 ;
+  wire \axi_int.adr_reg[16]_i_1_n_2 ;
+  wire \axi_int.adr_reg[16]_i_1_n_3 ;
+  wire \axi_int.adr_reg[16]_i_1_n_4 ;
+  wire \axi_int.adr_reg[16]_i_1_n_5 ;
+  wire \axi_int.adr_reg[16]_i_1_n_6 ;
+  wire \axi_int.adr_reg[16]_i_1_n_7 ;
+  wire \axi_int.adr_reg[16]_i_1_n_8 ;
+  wire \axi_int.adr_reg[16]_i_1_n_9 ;
+  wire \axi_int.adr_reg[24]_i_1_n_0 ;
+  wire \axi_int.adr_reg[24]_i_1_n_1 ;
+  wire \axi_int.adr_reg[24]_i_1_n_10 ;
+  wire \axi_int.adr_reg[24]_i_1_n_11 ;
+  wire \axi_int.adr_reg[24]_i_1_n_12 ;
+  wire \axi_int.adr_reg[24]_i_1_n_13 ;
+  wire \axi_int.adr_reg[24]_i_1_n_14 ;
+  wire \axi_int.adr_reg[24]_i_1_n_15 ;
+  wire \axi_int.adr_reg[24]_i_1_n_2 ;
+  wire \axi_int.adr_reg[24]_i_1_n_3 ;
+  wire \axi_int.adr_reg[24]_i_1_n_4 ;
+  wire \axi_int.adr_reg[24]_i_1_n_5 ;
+  wire \axi_int.adr_reg[24]_i_1_n_6 ;
+  wire \axi_int.adr_reg[24]_i_1_n_7 ;
+  wire \axi_int.adr_reg[24]_i_1_n_8 ;
+  wire \axi_int.adr_reg[24]_i_1_n_9 ;
+  wire \axi_int.adr_reg[26]_i_1_n_14 ;
+  wire \axi_int.adr_reg[26]_i_1_n_15 ;
+  wire \axi_int.adr_reg[26]_i_1_n_7 ;
+  wire \axi_int.adr_reg[8]_i_1_n_0 ;
+  wire \axi_int.adr_reg[8]_i_1_n_1 ;
+  wire \axi_int.adr_reg[8]_i_1_n_10 ;
+  wire \axi_int.adr_reg[8]_i_1_n_11 ;
+  wire \axi_int.adr_reg[8]_i_1_n_12 ;
+  wire \axi_int.adr_reg[8]_i_1_n_13 ;
+  wire \axi_int.adr_reg[8]_i_1_n_14 ;
+  wire \axi_int.adr_reg[8]_i_1_n_15 ;
+  wire \axi_int.adr_reg[8]_i_1_n_2 ;
+  wire \axi_int.adr_reg[8]_i_1_n_3 ;
+  wire \axi_int.adr_reg[8]_i_1_n_4 ;
+  wire \axi_int.adr_reg[8]_i_1_n_5 ;
+  wire \axi_int.adr_reg[8]_i_1_n_6 ;
+  wire \axi_int.adr_reg[8]_i_1_n_7 ;
+  wire \axi_int.adr_reg[8]_i_1_n_8 ;
+  wire \axi_int.adr_reg[8]_i_1_n_9 ;
   wire \axi_int.busy_i_1_n_0 ;
-  wire \axi_int.counter[0]_i_1_n_0 ;
-  wire \axi_int.counter[1]_i_1_n_0 ;
-  wire \axi_int.counter[2]_i_1_n_0 ;
-  wire \axi_int.counter[3]_i_1_n_0 ;
+  wire \axi_int.busy_reg0 ;
+  wire \axi_int.counter[2]_i_2_n_0 ;
   wire \axi_int.counter[3]_i_2_n_0 ;
-  wire \axi_int.counter[4]_i_1_n_0 ;
-  wire \axi_int.counter[4]_i_2_n_0 ;
-  wire \axi_int.counter[5]_i_1_n_0 ;
-  wire \axi_int.counter[5]_i_2_n_0 ;
-  wire \axi_int.counter[6]_i_1_n_0 ;
   wire \axi_int.counter[6]_i_2_n_0 ;
-  wire \axi_int.counter[7]_i_1_n_0 ;
+  wire \axi_int.counter[6]_i_3_n_0 ;
+  wire \axi_int.counter[6]_i_4_n_0 ;
   wire \axi_int.counter[7]_i_2_n_0 ;
   wire \axi_int.counter[7]_i_3_n_0 ;
   wire \axi_int.counter[7]_i_4_n_0 ;
   wire \axi_int.req_i_1_n_0 ;
+  wire \axi_int.req_i_2_n_0 ;
   wire \axi_int.req_reg0 ;
-  wire \axi_int.req_timeout[1]_i_1_n_0 ;
-  wire \axi_int.req_timeout[2]_i_1_n_0 ;
-  wire \axi_int.req_timeout[3]_i_1_n_0 ;
-  wire \axi_int.req_timeout[4]_i_1_n_0 ;
-  wire \axi_int.req_timeout[5]_i_1_n_0 ;
-  wire \axi_int.req_timeout[6]_i_1_n_0 ;
   wire \axi_int.req_timeout[7]_i_2_n_0 ;
-  wire \axi_int.req_timeout[7]_i_3_n_0 ;
   wire \axi_int.req_timeout[7]_i_4_n_0 ;
-  wire [0:0]\axi_int.req_timeout_reg0 ;
+  wire [7:0]\axi_int.req_timeout_reg0 ;
   wire \axi_int.size[1]_i_1_n_0 ;
   wire \axi_int.size[2]_i_1_n_0 ;
   wire \axi_int.size[3]_i_1_n_0 ;
   wire \axi_int.size[4]_i_1_n_0 ;
   wire \axi_int.size[5]_i_1_n_0 ;
   wire \axi_int.size[6]_i_1_n_0 ;
+  wire \axi_int.size[6]_i_2_n_0 ;
   wire \axi_int.size[7]_i_2_n_0 ;
   wire \axi_int.size[7]_i_3_n_0 ;
   (* MARK_DEBUG *) wire busy;
@@ -335,9 +349,10 @@ module ps_axi_int_0_0_axi_int
   wire [39:0]config_data_adr_out;
   wire config_wr;
   (* MARK_DEBUG *) wire [7:0]counter;
+  wire counter1;
   wire next;
   wire p_0_in__0;
-  wire [39:0]p_1_in__0;
+  wire [7:0]p_1_in__0;
   (* MARK_DEBUG *) wire req;
   (* MARK_DEBUG *) wire [7:0]req_timeout;
   wire reset;
@@ -345,8 +360,8 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire [7:0]size;
   wire start;
   (* MARK_DEBUG *) wire up;
-  wire [7:2]\NLW_axi_int.adr_reg[26]_i_2_CO_UNCONNECTED ;
-  wire [7:3]\NLW_axi_int.adr_reg[26]_i_2_O_UNCONNECTED ;
+  wire [7:1]\NLW_axi_int.adr_reg[26]_i_1_CO_UNCONNECTED ;
+  wire [7:2]\NLW_axi_int.adr_reg[26]_i_1_O_UNCONNECTED ;
   wire NLW_fifo_config_i_full_UNCONNECTED;
   wire NLW_fifo_config_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_config_i_wr_rst_busy_UNCONNECTED;
@@ -393,264 +408,264 @@ module ps_axi_int_0_0_axi_int
   GND GND
        (.G(\<const0> ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[10]_i_1 
        (.I0(M_AXI_AWADDR[10]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[5]),
         .O(\axi_int.M_AXI_AWADDR[10]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[11]_i_1 
        (.I0(M_AXI_AWADDR[11]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[6]),
         .O(\axi_int.M_AXI_AWADDR[11]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[12]_i_1 
        (.I0(M_AXI_AWADDR[12]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[7]),
         .O(\axi_int.M_AXI_AWADDR[12]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[13]_i_1 
        (.I0(M_AXI_AWADDR[13]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[8]),
         .O(\axi_int.M_AXI_AWADDR[13]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[14]_i_1 
        (.I0(M_AXI_AWADDR[14]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[9]),
         .O(\axi_int.M_AXI_AWADDR[14]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[15]_i_1 
        (.I0(M_AXI_AWADDR[15]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[10]),
         .O(\axi_int.M_AXI_AWADDR[15]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[16]_i_1 
        (.I0(M_AXI_AWADDR[16]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[11]),
         .O(\axi_int.M_AXI_AWADDR[16]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[17]_i_1 
        (.I0(M_AXI_AWADDR[17]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[12]),
         .O(\axi_int.M_AXI_AWADDR[17]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[18]_i_1 
        (.I0(M_AXI_AWADDR[18]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[13]),
         .O(\axi_int.M_AXI_AWADDR[18]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[19]_i_1 
        (.I0(M_AXI_AWADDR[19]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[14]),
         .O(\axi_int.M_AXI_AWADDR[19]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[20]_i_1 
        (.I0(M_AXI_AWADDR[20]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[15]),
         .O(\axi_int.M_AXI_AWADDR[20]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[21]_i_1 
        (.I0(M_AXI_AWADDR[21]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[16]),
         .O(\axi_int.M_AXI_AWADDR[21]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[22]_i_1 
        (.I0(M_AXI_AWADDR[22]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[17]),
         .O(\axi_int.M_AXI_AWADDR[22]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[23]_i_1 
        (.I0(M_AXI_AWADDR[23]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[18]),
         .O(\axi_int.M_AXI_AWADDR[23]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[24]_i_1 
        (.I0(M_AXI_AWADDR[24]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[19]),
         .O(\axi_int.M_AXI_AWADDR[24]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[25]_i_1 
        (.I0(M_AXI_AWADDR[25]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[20]),
         .O(\axi_int.M_AXI_AWADDR[25]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[26]_i_1 
        (.I0(M_AXI_AWADDR[26]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[21]),
         .O(\axi_int.M_AXI_AWADDR[26]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[27]_i_1 
        (.I0(M_AXI_AWADDR[27]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[22]),
         .O(\axi_int.M_AXI_AWADDR[27]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[28]_i_1 
        (.I0(M_AXI_AWADDR[28]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[23]),
         .O(\axi_int.M_AXI_AWADDR[28]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[29]_i_1 
        (.I0(M_AXI_AWADDR[29]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[24]),
         .O(\axi_int.M_AXI_AWADDR[29]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[30]_i_1 
        (.I0(M_AXI_AWADDR[30]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[25]),
         .O(\axi_int.M_AXI_AWADDR[30]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFFF444)) 
+    .INIT(32'hEAFFEAEA)) 
     \axi_int.M_AXI_AWADDR[31]_i_1 
-       (.I0(busy),
-        .I1(req),
-        .I2(M_AXI_AWREADY),
-        .I3(M_AXI_AWVALID),
-        .I4(reset),
+       (.I0(reset),
+        .I1(M_AXI_AWREADY),
+        .I2(M_AXI_AWVALID),
+        .I3(busy),
+        .I4(req),
         .O(\axi_int.M_AXI_AWADDR[31]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[31]_i_2 
        (.I0(M_AXI_AWADDR[31]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[26]),
         .O(\axi_int.M_AXI_AWADDR[31]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'h00000222)) 
+    .INIT(32'h00020202)) 
     \axi_int.M_AXI_AWADDR[4]_i_1 
        (.I0(req),
         .I1(busy),
-        .I2(M_AXI_AWREADY),
-        .I3(M_AXI_AWVALID),
-        .I4(reset),
+        .I2(reset),
+        .I3(M_AXI_AWREADY),
+        .I4(M_AXI_AWVALID),
         .O(\axi_int.M_AXI_AWADDR[4]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[5]_i_1 
        (.I0(M_AXI_AWADDR[5]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[0]),
         .O(\axi_int.M_AXI_AWADDR[5]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[6]_i_1 
        (.I0(M_AXI_AWADDR[6]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[1]),
         .O(\axi_int.M_AXI_AWADDR[6]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[7]_i_1 
        (.I0(M_AXI_AWADDR[7]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[2]),
         .O(\axi_int.M_AXI_AWADDR[7]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[8]_i_1 
        (.I0(M_AXI_AWADDR[8]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[3]),
         .O(\axi_int.M_AXI_AWADDR[8]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hABBBA888)) 
+    .INIT(32'hAABFAA80)) 
     \axi_int.M_AXI_AWADDR[9]_i_1 
        (.I0(M_AXI_AWADDR[9]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(adr[4]),
         .O(\axi_int.M_AXI_AWADDR[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -910,106 +925,106 @@ module ps_axi_int_0_0_axi_int
         .Q(M_AXI_AWADDR[9]),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'hA888ABBB)) 
+    .INIT(32'hAA80AABF)) 
     \axi_int.M_AXI_AWLEN[0]_i_1 
        (.I0(M_AXI_AWLEN[0]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
+        .I2(M_AXI_AWREADY),
+        .I3(reset),
         .I4(size[0]),
         .O(\axi_int.M_AXI_AWLEN[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hABBBA888A888ABBB)) 
+    .INIT(64'hFFFFF99900000999)) 
     \axi_int.M_AXI_AWLEN[1]_i_1 
-       (.I0(M_AXI_AWLEN[1]),
-        .I1(reset),
+       (.I0(size[0]),
+        .I1(size[1]),
         .I2(M_AXI_AWVALID),
         .I3(M_AXI_AWREADY),
-        .I4(size[1]),
-        .I5(size[0]),
+        .I4(reset),
+        .I5(M_AXI_AWLEN[1]),
         .O(\axi_int.M_AXI_AWLEN[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hBBB8888B)) 
+    .INIT(32'hFFA900A9)) 
     \axi_int.M_AXI_AWLEN[2]_i_1 
-       (.I0(M_AXI_AWLEN[2]),
-        .I1(\axi_int.M_AXI_AWVALID_reg0 ),
-        .I2(size[1]),
-        .I3(size[0]),
-        .I4(size[2]),
-        .O(\axi_int.M_AXI_AWLEN[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hBBBBBBB88888888B)) 
-    \axi_int.M_AXI_AWLEN[3]_i_1 
-       (.I0(M_AXI_AWLEN[3]),
-        .I1(\axi_int.M_AXI_AWVALID_reg0 ),
-        .I2(size[2]),
-        .I3(size[0]),
-        .I4(size[1]),
-        .I5(size[3]),
-        .O(\axi_int.M_AXI_AWLEN[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hABBBA888A888ABBB)) 
-    \axi_int.M_AXI_AWLEN[4]_i_1 
-       (.I0(M_AXI_AWLEN[4]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
-        .I4(\axi_int.M_AXI_AWLEN[4]_i_2_n_0 ),
-        .I5(size[4]),
-        .O(\axi_int.M_AXI_AWLEN[4]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_int.M_AXI_AWLEN[4]_i_2 
        (.I0(size[2]),
-        .I1(size[0]),
-        .I2(size[1]),
-        .I3(size[3]),
-        .O(\axi_int.M_AXI_AWLEN[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hABBBA888A888ABBB)) 
-    \axi_int.M_AXI_AWLEN[5]_i_1 
-       (.I0(M_AXI_AWLEN[5]),
-        .I1(reset),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
-        .I4(\axi_int.M_AXI_AWLEN[7]_i_3_n_0 ),
-        .I5(size[5]),
-        .O(\axi_int.M_AXI_AWLEN[5]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBB8888B)) 
-    \axi_int.M_AXI_AWLEN[6]_i_1 
-       (.I0(M_AXI_AWLEN[6]),
-        .I1(\axi_int.M_AXI_AWVALID_reg0 ),
-        .I2(size[5]),
-        .I3(\axi_int.M_AXI_AWLEN[7]_i_3_n_0 ),
-        .I4(size[6]),
-        .O(\axi_int.M_AXI_AWLEN[6]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hBBBBBBB88888888B)) 
-    \axi_int.M_AXI_AWLEN[7]_i_1 
-       (.I0(M_AXI_AWLEN[7]),
-        .I1(\axi_int.M_AXI_AWVALID_reg0 ),
-        .I2(\axi_int.M_AXI_AWLEN[7]_i_3_n_0 ),
-        .I3(size[5]),
-        .I4(size[6]),
-        .I5(size[7]),
-        .O(\axi_int.M_AXI_AWLEN[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hEA)) 
-    \axi_int.M_AXI_AWLEN[7]_i_2 
-       (.I0(reset),
-        .I1(M_AXI_AWVALID),
-        .I2(M_AXI_AWREADY),
-        .O(\axi_int.M_AXI_AWVALID_reg0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \axi_int.M_AXI_AWLEN[7]_i_3 
-       (.I0(size[3]),
         .I1(size[1]),
         .I2(size[0]),
+        .I3(\axi_int.M_AXI_AWVALID_reg0 ),
+        .I4(M_AXI_AWLEN[2]),
+        .O(\axi_int.M_AXI_AWLEN[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFAAA90000AAA9)) 
+    \axi_int.M_AXI_AWLEN[3]_i_1 
+       (.I0(size[3]),
+        .I1(size[0]),
+        .I2(size[1]),
         .I3(size[2]),
-        .I4(size[4]),
-        .O(\axi_int.M_AXI_AWLEN[7]_i_3_n_0 ));
+        .I4(\axi_int.M_AXI_AWVALID_reg0 ),
+        .I5(M_AXI_AWLEN[3]),
+        .O(\axi_int.M_AXI_AWLEN[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFF99900000999)) 
+    \axi_int.M_AXI_AWLEN[4]_i_1 
+       (.I0(size[4]),
+        .I1(\axi_int.M_AXI_AWLEN[6]_i_2_n_0 ),
+        .I2(M_AXI_AWVALID),
+        .I3(M_AXI_AWREADY),
+        .I4(reset),
+        .I5(M_AXI_AWLEN[4]),
+        .O(\axi_int.M_AXI_AWLEN[4]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFA900A9)) 
+    \axi_int.M_AXI_AWLEN[5]_i_1 
+       (.I0(size[5]),
+        .I1(\axi_int.M_AXI_AWLEN[6]_i_2_n_0 ),
+        .I2(size[4]),
+        .I3(\axi_int.M_AXI_AWVALID_reg0 ),
+        .I4(M_AXI_AWLEN[5]),
+        .O(\axi_int.M_AXI_AWLEN[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFAAA90000AAA9)) 
+    \axi_int.M_AXI_AWLEN[6]_i_1 
+       (.I0(size[6]),
+        .I1(size[4]),
+        .I2(\axi_int.M_AXI_AWLEN[6]_i_2_n_0 ),
+        .I3(size[5]),
+        .I4(\axi_int.M_AXI_AWVALID_reg0 ),
+        .I5(M_AXI_AWLEN[6]),
+        .O(\axi_int.M_AXI_AWLEN[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \axi_int.M_AXI_AWLEN[6]_i_2 
+       (.I0(size[2]),
+        .I1(size[1]),
+        .I2(size[0]),
+        .I3(size[3]),
+        .O(\axi_int.M_AXI_AWLEN[6]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFA900A9)) 
+    \axi_int.M_AXI_AWLEN[7]_i_1 
+       (.I0(size[7]),
+        .I1(size[6]),
+        .I2(\axi_int.M_AXI_AWLEN[7]_i_2_n_0 ),
+        .I3(\axi_int.M_AXI_AWVALID_reg0 ),
+        .I4(M_AXI_AWLEN[7]),
+        .O(\axi_int.M_AXI_AWLEN[7]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_int.M_AXI_AWLEN[7]_i_2 
+       (.I0(size[4]),
+        .I1(size[2]),
+        .I2(size[1]),
+        .I3(size[0]),
+        .I4(size[3]),
+        .I5(size[5]),
+        .O(\axi_int.M_AXI_AWLEN[7]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hF8)) 
+    \axi_int.M_AXI_AWLEN[7]_i_3 
+       (.I0(M_AXI_AWVALID),
+        .I1(M_AXI_AWREADY),
+        .I2(reset),
+        .O(\axi_int.M_AXI_AWVALID_reg0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_AWLEN_reg[0] 
@@ -1075,14 +1090,14 @@ module ps_axi_int_0_0_axi_int
         .Q(M_AXI_AWLEN[7]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000000AEAEAE)) 
+    .INIT(64'h000000AE00AE00AE)) 
     \axi_int.M_AXI_AWVALID_i_1 
        (.I0(M_AXI_AWVALID),
         .I1(req),
         .I2(busy),
-        .I3(M_AXI_AWREADY),
-        .I4(M_AXI_AWVALID),
-        .I5(reset),
+        .I3(reset),
+        .I4(M_AXI_AWREADY),
+        .I5(M_AXI_AWVALID),
         .O(\axi_int.M_AXI_AWVALID_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1092,2465 +1107,1872 @@ module ps_axi_int_0_0_axi_int
         .D(\axi_int.M_AXI_AWVALID_i_1_n_0 ),
         .Q(M_AXI_AWVALID),
         .R(1'b0));
+  LUT3 #(
+    .INIT(8'hF8)) 
+    \axi_int.M_AXI_BREADY_i_1 
+       (.I0(M_AXI_BVALID),
+        .I1(M_AXI_BREADY),
+        .I2(reset),
+        .O(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.M_AXI_BREADY_reg 
        (.C(clk),
         .CE(1'b1),
         .D(M_AXI_BVALID),
         .Q(M_AXI_BREADY),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[0]_i_1 
-       (.I0(M_AXI_WDATA[0]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[0]),
-        .O(p_1_in__0[0]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[10]_i_1 
-       (.I0(M_AXI_WDATA[10]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[10]),
-        .O(p_1_in__0[10]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[11]_i_1 
-       (.I0(M_AXI_WDATA[11]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[11]),
-        .O(p_1_in__0[11]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[12]_i_1 
-       (.I0(M_AXI_WDATA[12]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[12]),
-        .O(p_1_in__0[12]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[13]_i_1 
-       (.I0(M_AXI_WDATA[13]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[13]),
-        .O(p_1_in__0[13]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[14]_i_1 
-       (.I0(M_AXI_WDATA[14]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[14]),
-        .O(p_1_in__0[14]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[15]_i_1 
-       (.I0(M_AXI_WDATA[15]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[15]),
-        .O(p_1_in__0[15]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[16]_i_1 
-       (.I0(M_AXI_WDATA[16]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[16]),
-        .O(p_1_in__0[16]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[17]_i_1 
-       (.I0(M_AXI_WDATA[17]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[17]),
-        .O(p_1_in__0[17]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[18]_i_1 
-       (.I0(M_AXI_WDATA[18]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[18]),
-        .O(p_1_in__0[18]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[19]_i_1 
-       (.I0(M_AXI_WDATA[19]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[19]),
-        .O(p_1_in__0[19]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[1]_i_1 
-       (.I0(M_AXI_WDATA[1]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[1]),
-        .O(p_1_in__0[1]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[20]_i_1 
-       (.I0(M_AXI_WDATA[20]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[20]),
-        .O(p_1_in__0[20]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[21]_i_1 
-       (.I0(M_AXI_WDATA[21]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[21]),
-        .O(p_1_in__0[21]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[22]_i_1 
-       (.I0(M_AXI_WDATA[22]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[22]),
-        .O(p_1_in__0[22]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[23]_i_1 
-       (.I0(M_AXI_WDATA[23]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[23]),
-        .O(p_1_in__0[23]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[24]_i_1 
-       (.I0(M_AXI_WDATA[24]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[24]),
-        .O(p_1_in__0[24]));
+        .R(\axi_int.busy_reg0 ));
   LUT6 #(
-    .INIT(64'h00FE000000000000)) 
-    \axi_int.M_AXI_WDATA[255]_i_1 
-       (.I0(counter[0]),
-        .I1(\axi_int.counter[7]_i_2_n_0 ),
-        .I2(counter[7]),
-        .I3(reset),
-        .I4(M_AXI_WREADY),
-        .I5(M_AXI_WVALID),
-        .O(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[25]_i_1 
-       (.I0(M_AXI_WDATA[25]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[25]),
-        .O(p_1_in__0[25]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[26]_i_1 
-       (.I0(M_AXI_WDATA[26]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[26]),
-        .O(p_1_in__0[26]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[27]_i_1 
-       (.I0(M_AXI_WDATA[27]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[27]),
-        .O(p_1_in__0[27]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[28]_i_1 
-       (.I0(M_AXI_WDATA[28]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[28]),
-        .O(p_1_in__0[28]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[29]_i_1 
-       (.I0(M_AXI_WDATA[29]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[29]),
-        .O(p_1_in__0[29]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[2]_i_1 
-       (.I0(M_AXI_WDATA[2]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[2]),
-        .O(p_1_in__0[2]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[30]_i_1 
-       (.I0(M_AXI_WDATA[30]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[30]),
-        .O(p_1_in__0[30]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[31]_i_1 
-       (.I0(M_AXI_WDATA[31]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[31]),
-        .O(p_1_in__0[31]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[32]_i_1 
-       (.I0(M_AXI_WDATA[32]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[32]),
-        .O(p_1_in__0[32]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[33]_i_1 
-       (.I0(M_AXI_WDATA[33]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[33]),
-        .O(p_1_in__0[33]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[34]_i_1 
-       (.I0(M_AXI_WDATA[34]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[34]),
-        .O(p_1_in__0[34]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[35]_i_1 
-       (.I0(M_AXI_WDATA[35]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[35]),
-        .O(p_1_in__0[35]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[36]_i_1 
-       (.I0(M_AXI_WDATA[36]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[36]),
-        .O(p_1_in__0[36]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[37]_i_1 
-       (.I0(M_AXI_WDATA[37]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[37]),
-        .O(p_1_in__0[37]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[38]_i_1 
-       (.I0(M_AXI_WDATA[38]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[38]),
-        .O(p_1_in__0[38]));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+    .INIT(64'h5540404000000000)) 
     \axi_int.M_AXI_WDATA[39]_i_1 
-       (.I0(counter[0]),
-        .I1(\axi_int.counter[7]_i_2_n_0 ),
-        .I2(counter[7]),
-        .I3(reset),
+       (.I0(\axi_int.busy_reg0 ),
+        .I1(M_AXI_WVALID),
+        .I2(M_AXI_WREADY),
+        .I3(M_AXI_AWVALID),
+        .I4(M_AXI_AWREADY),
+        .I5(\axi_int.counter[6]_i_3_n_0 ),
         .O(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[39]_i_2 
-       (.I0(M_AXI_WDATA[39]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[39]),
-        .O(p_1_in__0[39]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[3]_i_1 
-       (.I0(M_AXI_WDATA[3]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[3]),
-        .O(p_1_in__0[3]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[4]_i_1 
-       (.I0(M_AXI_WDATA[4]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[4]),
-        .O(p_1_in__0[4]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[5]_i_1 
-       (.I0(M_AXI_WDATA[5]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[5]),
-        .O(p_1_in__0[5]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[6]_i_1 
-       (.I0(M_AXI_WDATA[6]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[6]),
-        .O(p_1_in__0[6]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[7]_i_1 
-       (.I0(M_AXI_WDATA[7]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[7]),
-        .O(p_1_in__0[7]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[8]_i_1 
-       (.I0(M_AXI_WDATA[8]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[8]),
-        .O(p_1_in__0[8]));
-  LUT5 #(
-    .INIT(32'hAAEAAA2A)) 
-    \axi_int.M_AXI_WDATA[9]_i_1 
-       (.I0(M_AXI_WDATA[9]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(reset),
-        .I4(config_data_adr_out[9]),
-        .O(p_1_in__0[9]));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[0] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[0]),
+        .D(config_data_adr_out[0]),
         .Q(M_AXI_WDATA[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[100] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[100]),
         .Q(M_AXI_WDATA[100]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[101] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[101]),
         .Q(M_AXI_WDATA[101]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[102] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[102]),
         .Q(M_AXI_WDATA[102]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[103] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[103]),
         .Q(M_AXI_WDATA[103]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[104] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[104]),
         .Q(M_AXI_WDATA[104]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[105] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[105]),
         .Q(M_AXI_WDATA[105]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[106] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[106]),
         .Q(M_AXI_WDATA[106]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[107] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[107]),
         .Q(M_AXI_WDATA[107]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[108] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[108]),
         .Q(M_AXI_WDATA[108]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[109] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[109]),
         .Q(M_AXI_WDATA[109]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[10] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[10]),
+        .D(config_data_adr_out[10]),
         .Q(M_AXI_WDATA[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[110] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[110]),
         .Q(M_AXI_WDATA[110]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[111] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[111]),
         .Q(M_AXI_WDATA[111]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[112] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[112]),
         .Q(M_AXI_WDATA[112]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[113] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[113]),
         .Q(M_AXI_WDATA[113]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[114] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[114]),
         .Q(M_AXI_WDATA[114]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[115] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[115]),
         .Q(M_AXI_WDATA[115]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[116] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[116]),
         .Q(M_AXI_WDATA[116]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[117] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[117]),
         .Q(M_AXI_WDATA[117]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[118] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[118]),
         .Q(M_AXI_WDATA[118]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[119] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[119]),
         .Q(M_AXI_WDATA[119]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[11] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[11]),
+        .D(config_data_adr_out[11]),
         .Q(M_AXI_WDATA[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[120] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[120]),
         .Q(M_AXI_WDATA[120]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[121] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[121]),
         .Q(M_AXI_WDATA[121]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[122] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[122]),
         .Q(M_AXI_WDATA[122]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[123] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[123]),
         .Q(M_AXI_WDATA[123]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[124] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[124]),
         .Q(M_AXI_WDATA[124]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[125] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[125]),
         .Q(M_AXI_WDATA[125]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[126] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[126]),
         .Q(M_AXI_WDATA[126]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[127] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[127]),
         .Q(M_AXI_WDATA[127]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[128] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[128]),
         .Q(M_AXI_WDATA[128]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[129] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[129]),
         .Q(M_AXI_WDATA[129]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[12] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[12]),
+        .D(config_data_adr_out[12]),
         .Q(M_AXI_WDATA[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[130] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[130]),
         .Q(M_AXI_WDATA[130]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[131] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[131]),
         .Q(M_AXI_WDATA[131]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[132] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[132]),
         .Q(M_AXI_WDATA[132]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[133] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[133]),
         .Q(M_AXI_WDATA[133]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[134] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[134]),
         .Q(M_AXI_WDATA[134]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[135] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[135]),
         .Q(M_AXI_WDATA[135]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[136] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[136]),
         .Q(M_AXI_WDATA[136]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[137] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[137]),
         .Q(M_AXI_WDATA[137]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[138] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[138]),
         .Q(M_AXI_WDATA[138]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[139] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[139]),
         .Q(M_AXI_WDATA[139]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[13] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[13]),
+        .D(config_data_adr_out[13]),
         .Q(M_AXI_WDATA[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[140] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[140]),
         .Q(M_AXI_WDATA[140]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[141] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[141]),
         .Q(M_AXI_WDATA[141]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[142] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[142]),
         .Q(M_AXI_WDATA[142]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[143] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[143]),
         .Q(M_AXI_WDATA[143]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[144] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[144]),
         .Q(M_AXI_WDATA[144]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[145] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[145]),
         .Q(M_AXI_WDATA[145]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[146] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[146]),
         .Q(M_AXI_WDATA[146]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[147] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[147]),
         .Q(M_AXI_WDATA[147]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[148] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[148]),
         .Q(M_AXI_WDATA[148]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[149] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[149]),
         .Q(M_AXI_WDATA[149]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[14] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[14]),
+        .D(config_data_adr_out[14]),
         .Q(M_AXI_WDATA[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[150] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[150]),
         .Q(M_AXI_WDATA[150]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[151] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[151]),
         .Q(M_AXI_WDATA[151]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[152] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[152]),
         .Q(M_AXI_WDATA[152]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[153] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[153]),
         .Q(M_AXI_WDATA[153]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[154] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[154]),
         .Q(M_AXI_WDATA[154]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[155] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[155]),
         .Q(M_AXI_WDATA[155]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[156] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[156]),
         .Q(M_AXI_WDATA[156]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[157] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[157]),
         .Q(M_AXI_WDATA[157]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[158] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[158]),
         .Q(M_AXI_WDATA[158]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[159] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[159]),
         .Q(M_AXI_WDATA[159]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[15] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[15]),
+        .D(config_data_adr_out[15]),
         .Q(M_AXI_WDATA[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[160] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[160]),
         .Q(M_AXI_WDATA[160]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[161] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[161]),
         .Q(M_AXI_WDATA[161]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[162] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[162]),
         .Q(M_AXI_WDATA[162]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[163] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[163]),
         .Q(M_AXI_WDATA[163]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[164] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[164]),
         .Q(M_AXI_WDATA[164]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[165] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[165]),
         .Q(M_AXI_WDATA[165]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[166] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[166]),
         .Q(M_AXI_WDATA[166]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[167] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[167]),
         .Q(M_AXI_WDATA[167]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[168] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[168]),
         .Q(M_AXI_WDATA[168]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[169] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[169]),
         .Q(M_AXI_WDATA[169]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[16] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[16]),
+        .D(config_data_adr_out[16]),
         .Q(M_AXI_WDATA[16]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[170] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[170]),
         .Q(M_AXI_WDATA[170]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[171] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[171]),
         .Q(M_AXI_WDATA[171]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[172] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[172]),
         .Q(M_AXI_WDATA[172]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[173] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[173]),
         .Q(M_AXI_WDATA[173]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[174] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[174]),
         .Q(M_AXI_WDATA[174]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[175] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[175]),
         .Q(M_AXI_WDATA[175]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[176] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[176]),
         .Q(M_AXI_WDATA[176]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[177] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[177]),
         .Q(M_AXI_WDATA[177]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[178] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[178]),
         .Q(M_AXI_WDATA[178]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[179] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[179]),
         .Q(M_AXI_WDATA[179]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[17] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[17]),
+        .D(config_data_adr_out[17]),
         .Q(M_AXI_WDATA[17]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[180] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[180]),
         .Q(M_AXI_WDATA[180]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[181] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[181]),
         .Q(M_AXI_WDATA[181]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[182] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[182]),
         .Q(M_AXI_WDATA[182]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[183] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[183]),
         .Q(M_AXI_WDATA[183]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[184] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[184]),
         .Q(M_AXI_WDATA[184]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[185] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[185]),
         .Q(M_AXI_WDATA[185]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[186] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[186]),
         .Q(M_AXI_WDATA[186]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[187] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[187]),
         .Q(M_AXI_WDATA[187]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[188] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[188]),
         .Q(M_AXI_WDATA[188]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[189] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[189]),
         .Q(M_AXI_WDATA[189]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[18] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[18]),
+        .D(config_data_adr_out[18]),
         .Q(M_AXI_WDATA[18]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[190] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[190]),
         .Q(M_AXI_WDATA[190]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[191] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[191]),
         .Q(M_AXI_WDATA[191]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[192] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[192]),
         .Q(M_AXI_WDATA[192]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[193] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[193]),
         .Q(M_AXI_WDATA[193]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[194] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[194]),
         .Q(M_AXI_WDATA[194]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[195] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[195]),
         .Q(M_AXI_WDATA[195]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[196] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[196]),
         .Q(M_AXI_WDATA[196]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[197] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[197]),
         .Q(M_AXI_WDATA[197]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[198] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[198]),
         .Q(M_AXI_WDATA[198]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[199] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[199]),
         .Q(M_AXI_WDATA[199]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[19] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[19]),
+        .D(config_data_adr_out[19]),
         .Q(M_AXI_WDATA[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[1] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[1]),
+        .D(config_data_adr_out[1]),
         .Q(M_AXI_WDATA[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[200] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[200]),
         .Q(M_AXI_WDATA[200]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[201] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[201]),
         .Q(M_AXI_WDATA[201]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[202] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[202]),
         .Q(M_AXI_WDATA[202]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[203] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[203]),
         .Q(M_AXI_WDATA[203]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[204] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[204]),
         .Q(M_AXI_WDATA[204]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[205] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[205]),
         .Q(M_AXI_WDATA[205]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[206] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[206]),
         .Q(M_AXI_WDATA[206]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[207] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[207]),
         .Q(M_AXI_WDATA[207]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[208] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[208]),
         .Q(M_AXI_WDATA[208]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[209] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[209]),
         .Q(M_AXI_WDATA[209]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[20] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[20]),
+        .D(config_data_adr_out[20]),
         .Q(M_AXI_WDATA[20]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[210] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[210]),
         .Q(M_AXI_WDATA[210]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[211] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[211]),
         .Q(M_AXI_WDATA[211]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[212] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[212]),
         .Q(M_AXI_WDATA[212]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[213] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[213]),
         .Q(M_AXI_WDATA[213]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[214] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[214]),
         .Q(M_AXI_WDATA[214]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[215] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[215]),
         .Q(M_AXI_WDATA[215]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[216] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[216]),
         .Q(M_AXI_WDATA[216]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[217] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[217]),
         .Q(M_AXI_WDATA[217]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[218] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[218]),
         .Q(M_AXI_WDATA[218]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[219] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[219]),
         .Q(M_AXI_WDATA[219]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[21] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[21]),
+        .D(config_data_adr_out[21]),
         .Q(M_AXI_WDATA[21]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[220] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[220]),
         .Q(M_AXI_WDATA[220]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[221] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[221]),
         .Q(M_AXI_WDATA[221]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[222] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[222]),
         .Q(M_AXI_WDATA[222]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[223] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[223]),
         .Q(M_AXI_WDATA[223]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[224] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[224]),
         .Q(M_AXI_WDATA[224]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[225] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[225]),
         .Q(M_AXI_WDATA[225]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[226] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[226]),
         .Q(M_AXI_WDATA[226]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[227] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[227]),
         .Q(M_AXI_WDATA[227]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[228] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[228]),
         .Q(M_AXI_WDATA[228]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[229] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[229]),
         .Q(M_AXI_WDATA[229]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[22] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[22]),
+        .D(config_data_adr_out[22]),
         .Q(M_AXI_WDATA[22]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[230] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[230]),
         .Q(M_AXI_WDATA[230]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[231] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[231]),
         .Q(M_AXI_WDATA[231]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[232] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[232]),
         .Q(M_AXI_WDATA[232]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[233] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[233]),
         .Q(M_AXI_WDATA[233]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[234] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[234]),
         .Q(M_AXI_WDATA[234]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[235] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[235]),
         .Q(M_AXI_WDATA[235]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[236] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[236]),
         .Q(M_AXI_WDATA[236]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[237] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[237]),
         .Q(M_AXI_WDATA[237]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[238] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[238]),
         .Q(M_AXI_WDATA[238]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[239] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[239]),
         .Q(M_AXI_WDATA[239]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[23] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[23]),
+        .D(config_data_adr_out[23]),
         .Q(M_AXI_WDATA[23]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[240] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[240]),
         .Q(M_AXI_WDATA[240]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[241] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[241]),
         .Q(M_AXI_WDATA[241]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[242] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[242]),
         .Q(M_AXI_WDATA[242]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[243] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[243]),
         .Q(M_AXI_WDATA[243]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[244] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[244]),
         .Q(M_AXI_WDATA[244]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[245] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[245]),
         .Q(M_AXI_WDATA[245]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[246] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[246]),
         .Q(M_AXI_WDATA[246]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[247] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[247]),
         .Q(M_AXI_WDATA[247]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[248] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[248]),
         .Q(M_AXI_WDATA[248]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[249] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[249]),
         .Q(M_AXI_WDATA[249]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[24] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[24]),
+        .D(config_data_adr_out[24]),
         .Q(M_AXI_WDATA[24]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[250] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[250]),
         .Q(M_AXI_WDATA[250]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[251] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[251]),
         .Q(M_AXI_WDATA[251]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[252] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[252]),
         .Q(M_AXI_WDATA[252]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[253] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[253]),
         .Q(M_AXI_WDATA[253]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[254] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[254]),
         .Q(M_AXI_WDATA[254]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[255] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[255]),
         .Q(M_AXI_WDATA[255]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[25] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[25]),
+        .D(config_data_adr_out[25]),
         .Q(M_AXI_WDATA[25]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[26] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[26]),
+        .D(config_data_adr_out[26]),
         .Q(M_AXI_WDATA[26]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[27] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[27]),
+        .D(config_data_adr_out[27]),
         .Q(M_AXI_WDATA[27]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[28] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[28]),
+        .D(config_data_adr_out[28]),
         .Q(M_AXI_WDATA[28]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[29] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[29]),
+        .D(config_data_adr_out[29]),
         .Q(M_AXI_WDATA[29]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[2] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[2]),
+        .D(config_data_adr_out[2]),
         .Q(M_AXI_WDATA[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[30] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[30]),
+        .D(config_data_adr_out[30]),
         .Q(M_AXI_WDATA[30]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[31] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[31]),
+        .D(config_data_adr_out[31]),
         .Q(M_AXI_WDATA[31]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[32] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[32]),
+        .D(config_data_adr_out[32]),
         .Q(M_AXI_WDATA[32]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[33] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[33]),
+        .D(config_data_adr_out[33]),
         .Q(M_AXI_WDATA[33]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[34] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[34]),
+        .D(config_data_adr_out[34]),
         .Q(M_AXI_WDATA[34]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[35] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[35]),
+        .D(config_data_adr_out[35]),
         .Q(M_AXI_WDATA[35]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[36] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[36]),
+        .D(config_data_adr_out[36]),
         .Q(M_AXI_WDATA[36]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[37] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[37]),
+        .D(config_data_adr_out[37]),
         .Q(M_AXI_WDATA[37]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[38] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[38]),
+        .D(config_data_adr_out[38]),
         .Q(M_AXI_WDATA[38]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[39] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[39]),
+        .D(config_data_adr_out[39]),
         .Q(M_AXI_WDATA[39]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[3] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[3]),
+        .D(config_data_adr_out[3]),
         .Q(M_AXI_WDATA[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[40] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[40]),
         .Q(M_AXI_WDATA[40]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[41] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[41]),
         .Q(M_AXI_WDATA[41]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[42] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[42]),
         .Q(M_AXI_WDATA[42]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[43] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[43]),
         .Q(M_AXI_WDATA[43]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[44] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[44]),
         .Q(M_AXI_WDATA[44]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[45] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[45]),
         .Q(M_AXI_WDATA[45]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[46] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[46]),
         .Q(M_AXI_WDATA[46]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[47] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[47]),
         .Q(M_AXI_WDATA[47]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[48] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[48]),
         .Q(M_AXI_WDATA[48]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[49] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[49]),
         .Q(M_AXI_WDATA[49]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[4] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[4]),
+        .D(config_data_adr_out[4]),
         .Q(M_AXI_WDATA[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[50] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[50]),
         .Q(M_AXI_WDATA[50]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[51] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[51]),
         .Q(M_AXI_WDATA[51]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[52] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[52]),
         .Q(M_AXI_WDATA[52]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[53] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[53]),
         .Q(M_AXI_WDATA[53]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[54] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[54]),
         .Q(M_AXI_WDATA[54]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[55] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[55]),
         .Q(M_AXI_WDATA[55]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[56] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[56]),
         .Q(M_AXI_WDATA[56]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[57] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[57]),
         .Q(M_AXI_WDATA[57]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[58] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[58]),
         .Q(M_AXI_WDATA[58]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[59] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[59]),
         .Q(M_AXI_WDATA[59]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[5] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[5]),
+        .D(config_data_adr_out[5]),
         .Q(M_AXI_WDATA[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[60] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[60]),
         .Q(M_AXI_WDATA[60]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[61] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[61]),
         .Q(M_AXI_WDATA[61]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[62] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[62]),
         .Q(M_AXI_WDATA[62]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[63] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[63]),
         .Q(M_AXI_WDATA[63]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[64] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[64]),
         .Q(M_AXI_WDATA[64]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[65] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[65]),
         .Q(M_AXI_WDATA[65]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[66] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[66]),
         .Q(M_AXI_WDATA[66]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[67] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[67]),
         .Q(M_AXI_WDATA[67]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[68] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[68]),
         .Q(M_AXI_WDATA[68]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[69] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[69]),
         .Q(M_AXI_WDATA[69]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[6] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[6]),
+        .D(config_data_adr_out[6]),
         .Q(M_AXI_WDATA[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[70] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[70]),
         .Q(M_AXI_WDATA[70]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[71] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[71]),
         .Q(M_AXI_WDATA[71]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[72] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[72]),
         .Q(M_AXI_WDATA[72]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[73] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[73]),
         .Q(M_AXI_WDATA[73]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[74] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[74]),
         .Q(M_AXI_WDATA[74]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[75] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[75]),
         .Q(M_AXI_WDATA[75]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[76] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[76]),
         .Q(M_AXI_WDATA[76]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[77] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[77]),
         .Q(M_AXI_WDATA[77]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[78] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[78]),
         .Q(M_AXI_WDATA[78]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[79] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[79]),
         .Q(M_AXI_WDATA[79]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[7] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[7]),
+        .D(config_data_adr_out[7]),
         .Q(M_AXI_WDATA[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[80] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[80]),
         .Q(M_AXI_WDATA[80]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[81] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[81]),
         .Q(M_AXI_WDATA[81]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[82] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[82]),
         .Q(M_AXI_WDATA[82]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[83] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[83]),
         .Q(M_AXI_WDATA[83]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[84] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[84]),
         .Q(M_AXI_WDATA[84]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[85] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[85]),
         .Q(M_AXI_WDATA[85]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[86] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[86]),
         .Q(M_AXI_WDATA[86]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[87] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[87]),
         .Q(M_AXI_WDATA[87]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[88] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[88]),
         .Q(M_AXI_WDATA[88]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[89] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[89]),
         .Q(M_AXI_WDATA[89]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[8] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[8]),
+        .D(config_data_adr_out[8]),
         .Q(M_AXI_WDATA[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[90] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[90]),
         .Q(M_AXI_WDATA[90]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[91] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[91]),
         .Q(M_AXI_WDATA[91]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[92] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[92]),
         .Q(M_AXI_WDATA[92]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[93] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[93]),
         .Q(M_AXI_WDATA[93]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[94] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[94]),
         .Q(M_AXI_WDATA[94]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[95] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[95]),
         .Q(M_AXI_WDATA[95]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[96] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[96]),
         .Q(M_AXI_WDATA[96]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[97] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[97]),
         .Q(M_AXI_WDATA[97]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[98] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[98]),
         .Q(M_AXI_WDATA[98]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[99] 
        (.C(clk),
-        .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
+        .CE(1'b1),
         .D(M_AXI_WDATA[99]),
         .Q(M_AXI_WDATA[99]),
-        .R(\axi_int.M_AXI_WDATA[255]_i_1_n_0 ));
+        .R(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WDATA_reg[9] 
        (.C(clk),
         .CE(\axi_int.M_AXI_WDATA[39]_i_1_n_0 ),
-        .D(p_1_in__0[9]),
+        .D(config_data_adr_out[9]),
         .Q(M_AXI_WDATA[9]),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'h0000001000100010)) 
+  LUT5 #(
+    .INIT(32'hFFF8F8F8)) 
     \axi_int.M_AXI_WLAST_i_1 
-       (.I0(\axi_int.counter[7]_i_2_n_0 ),
-        .I1(counter[7]),
+       (.I0(M_AXI_WREADY),
+        .I1(M_AXI_WLAST),
+        .I2(reset),
+        .I3(M_AXI_BREADY),
+        .I4(M_AXI_BVALID),
+        .O(\axi_int.M_AXI_WVALID_reg0 ));
+  LUT6 #(
+    .INIT(64'hAABFBFBFAA808080)) 
+    \axi_int.M_AXI_WLAST_i_2 
+       (.I0(M_AXI_WLAST__0),
+        .I1(M_AXI_WVALID),
+        .I2(M_AXI_WREADY),
+        .I3(M_AXI_AWVALID),
+        .I4(M_AXI_AWREADY),
+        .I5(M_AXI_WLAST),
+        .O(\axi_int.M_AXI_WLAST_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000010)) 
+    \axi_int.M_AXI_WLAST_i_3 
+       (.I0(counter[2]),
+        .I1(counter[3]),
         .I2(counter[0]),
-        .I3(reset),
-        .I4(M_AXI_WLAST),
-        .I5(M_AXI_WREADY),
-        .O(\axi_int.M_AXI_WLAST_i_1_n_0 ));
+        .I3(counter[1]),
+        .I4(\axi_int.M_AXI_WLAST_i_4_n_0 ),
+        .O(M_AXI_WLAST__0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \axi_int.M_AXI_WLAST_i_4 
+       (.I0(counter[6]),
+        .I1(counter[4]),
+        .I2(counter[5]),
+        .I3(counter[7]),
+        .O(\axi_int.M_AXI_WLAST_i_4_n_0 ));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_int.M_AXI_WLAST_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.M_AXI_WLAST_i_1_n_0 ),
+        .D(\axi_int.M_AXI_WLAST_i_2_n_0 ),
         .Q(M_AXI_WLAST),
-        .R(1'b0));
-  LUT6 #(
-    .INIT(64'h000000EA00EA00EA)) 
+        .R(\axi_int.M_AXI_WVALID_reg0 ));
+  LUT3 #(
+    .INIT(8'hF8)) 
     \axi_int.M_AXI_WVALID_i_1 
-       (.I0(M_AXI_WVALID),
-        .I1(M_AXI_AWVALID),
-        .I2(M_AXI_AWREADY),
-        .I3(reset),
-        .I4(M_AXI_WLAST),
-        .I5(M_AXI_WREADY),
+       (.I0(M_AXI_AWVALID),
+        .I1(M_AXI_AWREADY),
+        .I2(M_AXI_WVALID),
         .O(\axi_int.M_AXI_WVALID_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -3559,278 +2981,266 @@ module ps_axi_int_0_0_axi_int
         .CE(1'b1),
         .D(\axi_int.M_AXI_WVALID_i_1_n_0 ),
         .Q(M_AXI_WVALID),
-        .R(1'b0));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \axi_int.adr[26]_i_1 
-       (.I0(counter[7]),
-        .I1(\axi_int.counter[7]_i_2_n_0 ),
-        .I2(counter[0]),
-        .O(\axi_int.adr[26]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h6A)) 
-    \axi_int.adr[7]_i_2 
+        .R(\axi_int.M_AXI_WVALID_reg0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_int.adr[0]_i_1 
        (.I0(adr[0]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .O(\axi_int.adr[7]_i_2_n_0 ));
+        .O(\axi_int.adr[0]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[0] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[0]),
+        .CE(next),
+        .D(\axi_int.adr[0]_i_1_n_0 ),
         .Q(adr[0]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[10] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[10]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_14 ),
         .Q(adr[10]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[11] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[11]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_13 ),
         .Q(adr[11]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[12] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[12]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_12 ),
         .Q(adr[12]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[13] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[13]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_11 ),
         .Q(adr[13]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[14] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[14]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_10 ),
         .Q(adr[14]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[15] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[15]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_9 ),
         .Q(adr[15]),
         .R(reset));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_int.adr_reg[15]_i_1 
-       (.CI(\axi_int.adr_reg[7]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\axi_int.adr_reg[15]_i_1_n_0 ,\axi_int.adr_reg[15]_i_1_n_1 ,\axi_int.adr_reg[15]_i_1_n_2 ,\axi_int.adr_reg[15]_i_1_n_3 ,\axi_int.adr_reg[15]_i_1_n_4 ,\axi_int.adr_reg[15]_i_1_n_5 ,\axi_int.adr_reg[15]_i_1_n_6 ,\axi_int.adr_reg[15]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(adr__0[15:8]),
-        .S(adr[15:8]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[16] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[16]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_8 ),
         .Q(adr[16]),
         .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_int.adr_reg[16]_i_1 
+       (.CI(\axi_int.adr_reg[8]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_int.adr_reg[16]_i_1_n_0 ,\axi_int.adr_reg[16]_i_1_n_1 ,\axi_int.adr_reg[16]_i_1_n_2 ,\axi_int.adr_reg[16]_i_1_n_3 ,\axi_int.adr_reg[16]_i_1_n_4 ,\axi_int.adr_reg[16]_i_1_n_5 ,\axi_int.adr_reg[16]_i_1_n_6 ,\axi_int.adr_reg[16]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\axi_int.adr_reg[16]_i_1_n_8 ,\axi_int.adr_reg[16]_i_1_n_9 ,\axi_int.adr_reg[16]_i_1_n_10 ,\axi_int.adr_reg[16]_i_1_n_11 ,\axi_int.adr_reg[16]_i_1_n_12 ,\axi_int.adr_reg[16]_i_1_n_13 ,\axi_int.adr_reg[16]_i_1_n_14 ,\axi_int.adr_reg[16]_i_1_n_15 }),
+        .S(adr[16:9]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[17] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[17]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_15 ),
         .Q(adr[17]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[18] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[18]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_14 ),
         .Q(adr[18]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[19] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[19]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_13 ),
         .Q(adr[19]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[1] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[1]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_15 ),
         .Q(adr[1]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[20] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[20]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_12 ),
         .Q(adr[20]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[21] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[21]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_11 ),
         .Q(adr[21]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[22] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[22]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_10 ),
         .Q(adr[22]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[23] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[23]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_9 ),
         .Q(adr[23]),
         .R(reset));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_int.adr_reg[23]_i_1 
-       (.CI(\axi_int.adr_reg[15]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\axi_int.adr_reg[23]_i_1_n_0 ,\axi_int.adr_reg[23]_i_1_n_1 ,\axi_int.adr_reg[23]_i_1_n_2 ,\axi_int.adr_reg[23]_i_1_n_3 ,\axi_int.adr_reg[23]_i_1_n_4 ,\axi_int.adr_reg[23]_i_1_n_5 ,\axi_int.adr_reg[23]_i_1_n_6 ,\axi_int.adr_reg[23]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(adr__0[23:16]),
-        .S(adr[23:16]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[24] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[24]),
+        .CE(next),
+        .D(\axi_int.adr_reg[24]_i_1_n_8 ),
         .Q(adr[24]),
         .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_int.adr_reg[24]_i_1 
+       (.CI(\axi_int.adr_reg[16]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_int.adr_reg[24]_i_1_n_0 ,\axi_int.adr_reg[24]_i_1_n_1 ,\axi_int.adr_reg[24]_i_1_n_2 ,\axi_int.adr_reg[24]_i_1_n_3 ,\axi_int.adr_reg[24]_i_1_n_4 ,\axi_int.adr_reg[24]_i_1_n_5 ,\axi_int.adr_reg[24]_i_1_n_6 ,\axi_int.adr_reg[24]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\axi_int.adr_reg[24]_i_1_n_8 ,\axi_int.adr_reg[24]_i_1_n_9 ,\axi_int.adr_reg[24]_i_1_n_10 ,\axi_int.adr_reg[24]_i_1_n_11 ,\axi_int.adr_reg[24]_i_1_n_12 ,\axi_int.adr_reg[24]_i_1_n_13 ,\axi_int.adr_reg[24]_i_1_n_14 ,\axi_int.adr_reg[24]_i_1_n_15 }),
+        .S(adr[24:17]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[25] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[25]),
+        .CE(next),
+        .D(\axi_int.adr_reg[26]_i_1_n_15 ),
         .Q(adr[25]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[26] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[26]),
+        .CE(next),
+        .D(\axi_int.adr_reg[26]_i_1_n_14 ),
         .Q(adr[26]),
         .R(reset));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_int.adr_reg[26]_i_2 
-       (.CI(\axi_int.adr_reg[23]_i_1_n_0 ),
+  CARRY8 \axi_int.adr_reg[26]_i_1 
+       (.CI(\axi_int.adr_reg[24]_i_1_n_0 ),
         .CI_TOP(1'b0),
-        .CO({\NLW_axi_int.adr_reg[26]_i_2_CO_UNCONNECTED [7:2],\axi_int.adr_reg[26]_i_2_n_6 ,\axi_int.adr_reg[26]_i_2_n_7 }),
+        .CO({\NLW_axi_int.adr_reg[26]_i_1_CO_UNCONNECTED [7:1],\axi_int.adr_reg[26]_i_1_n_7 }),
         .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_axi_int.adr_reg[26]_i_2_O_UNCONNECTED [7:3],adr__0[26:24]}),
-        .S({1'b0,1'b0,1'b0,1'b0,1'b0,adr[26:24]}));
+        .O({\NLW_axi_int.adr_reg[26]_i_1_O_UNCONNECTED [7:2],\axi_int.adr_reg[26]_i_1_n_14 ,\axi_int.adr_reg[26]_i_1_n_15 }),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,adr[26:25]}));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[2] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[2]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_14 ),
         .Q(adr[2]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[3] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[3]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_13 ),
         .Q(adr[3]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[4] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[4]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_12 ),
         .Q(adr[4]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[5] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[5]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_11 ),
         .Q(adr[5]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[6] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[6]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_10 ),
         .Q(adr[6]),
         .R(reset));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[7] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[7]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_9 ),
         .Q(adr[7]),
         .R(reset));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_int.adr_reg[7]_i_1 
-       (.CI(1'b0),
-        .CI_TOP(1'b0),
-        .CO({\axi_int.adr_reg[7]_i_1_n_0 ,\axi_int.adr_reg[7]_i_1_n_1 ,\axi_int.adr_reg[7]_i_1_n_2 ,\axi_int.adr_reg[7]_i_1_n_3 ,\axi_int.adr_reg[7]_i_1_n_4 ,\axi_int.adr_reg[7]_i_1_n_5 ,\axi_int.adr_reg[7]_i_1_n_6 ,\axi_int.adr_reg[7]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,adr[0]}),
-        .O(adr__0[7:0]),
-        .S({adr[7:1],\axi_int.adr[7]_i_2_n_0 }));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[8] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[8]),
+        .CE(next),
+        .D(\axi_int.adr_reg[8]_i_1_n_8 ),
         .Q(adr[8]),
         .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_int.adr_reg[8]_i_1 
+       (.CI(adr[0]),
+        .CI_TOP(1'b0),
+        .CO({\axi_int.adr_reg[8]_i_1_n_0 ,\axi_int.adr_reg[8]_i_1_n_1 ,\axi_int.adr_reg[8]_i_1_n_2 ,\axi_int.adr_reg[8]_i_1_n_3 ,\axi_int.adr_reg[8]_i_1_n_4 ,\axi_int.adr_reg[8]_i_1_n_5 ,\axi_int.adr_reg[8]_i_1_n_6 ,\axi_int.adr_reg[8]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\axi_int.adr_reg[8]_i_1_n_8 ,\axi_int.adr_reg[8]_i_1_n_9 ,\axi_int.adr_reg[8]_i_1_n_10 ,\axi_int.adr_reg[8]_i_1_n_11 ,\axi_int.adr_reg[8]_i_1_n_12 ,\axi_int.adr_reg[8]_i_1_n_13 ,\axi_int.adr_reg[8]_i_1_n_14 ,\axi_int.adr_reg[8]_i_1_n_15 }),
+        .S(adr[8:1]));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.adr_reg[9] 
        (.C(clk),
-        .CE(\axi_int.adr[26]_i_1_n_0 ),
-        .D(adr__0[9]),
+        .CE(next),
+        .D(\axi_int.adr_reg[16]_i_1_n_15 ),
         .Q(adr[9]),
         .R(reset));
-  LUT6 #(
-    .INIT(64'h0000544454445444)) 
+  LUT3 #(
+    .INIT(8'hF8)) 
     \axi_int.busy_i_1 
-       (.I0(reset),
-        .I1(busy),
-        .I2(M_AXI_AWVALID),
-        .I3(M_AXI_AWREADY),
-        .I4(M_AXI_BVALID),
-        .I5(M_AXI_BREADY),
+       (.I0(M_AXI_AWVALID),
+        .I1(M_AXI_AWREADY),
+        .I2(busy),
         .O(\axi_int.busy_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -3839,209 +3249,227 @@ module ps_axi_int_0_0_axi_int
         .CE(1'b1),
         .D(\axi_int.busy_i_1_n_0 ),
         .Q(busy),
-        .R(1'b0));
+        .R(\axi_int.busy_reg0 ));
   LUT6 #(
-    .INIT(64'hFFFF6A006A006A00)) 
+    .INIT(64'h00FFFD20FF00FD20)) 
     \axi_int.counter[0]_i_1 
-       (.I0(counter[0]),
-        .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[0]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[0]_i_1_n_0 ));
+       (.I0(req),
+        .I1(busy),
+        .I2(size[0]),
+        .I3(counter[0]),
+        .I4(\axi_int.counter[6]_i_3_n_0 ),
+        .I5(counter1),
+        .O(p_1_in__0[0]));
   LUT6 #(
-    .INIT(64'h9999999900F00000)) 
+    .INIT(64'hAFFF5C0CA3F35000)) 
     \axi_int.counter[1]_i_1 
-       (.I0(\axi_int.counter[7]_i_3_n_0 ),
-        .I1(counter[1]),
-        .I2(size[1]),
-        .I3(busy),
-        .I4(req),
-        .I5(\axi_int.adr[26]_i_1_n_0 ),
-        .O(\axi_int.counter[1]_i_1_n_0 ));
+       (.I0(counter[0]),
+        .I1(\axi_int.counter[7]_i_2_n_0 ),
+        .I2(\axi_int.counter[6]_i_3_n_0 ),
+        .I3(counter1),
+        .I4(counter[1]),
+        .I5(size[1]),
+        .O(p_1_in__0[1]));
   LUT6 #(
-    .INIT(64'hFFFFE100E100E100)) 
+    .INIT(64'hAFFF5C0CA3F35000)) 
     \axi_int.counter[2]_i_1 
-       (.I0(counter[1]),
-        .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[2]),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[2]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFE100E100E100)) 
-    \axi_int.counter[3]_i_1 
-       (.I0(\axi_int.counter[3]_i_2_n_0 ),
-        .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[3]),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[3]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[3]_i_1_n_0 ));
+       (.I0(\axi_int.counter[2]_i_2_n_0 ),
+        .I1(\axi_int.counter[7]_i_2_n_0 ),
+        .I2(\axi_int.counter[6]_i_3_n_0 ),
+        .I3(counter1),
+        .I4(counter[2]),
+        .I5(size[2]),
+        .O(p_1_in__0[2]));
   LUT2 #(
     .INIT(4'hE)) 
-    \axi_int.counter[3]_i_2 
+    \axi_int.counter[2]_i_2 
        (.I0(counter[1]),
-        .I1(counter[2]),
-        .O(\axi_int.counter[3]_i_2_n_0 ));
+        .I1(counter[0]),
+        .O(\axi_int.counter[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFE100E100E100)) 
-    \axi_int.counter[4]_i_1 
-       (.I0(\axi_int.counter[4]_i_2_n_0 ),
-        .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[4]),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[4]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[4]_i_1_n_0 ));
+    .INIT(64'hAFFF5C0CA3F35000)) 
+    \axi_int.counter[3]_i_1 
+       (.I0(\axi_int.counter[3]_i_2_n_0 ),
+        .I1(\axi_int.counter[7]_i_2_n_0 ),
+        .I2(\axi_int.counter[6]_i_3_n_0 ),
+        .I3(counter1),
+        .I4(counter[3]),
+        .I5(size[3]),
+        .O(p_1_in__0[3]));
   LUT3 #(
     .INIT(8'hFE)) 
-    \axi_int.counter[4]_i_2 
-       (.I0(counter[2]),
-        .I1(counter[1]),
-        .I2(counter[3]),
-        .O(\axi_int.counter[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFE100E100E100)) 
-    \axi_int.counter[5]_i_1 
-       (.I0(\axi_int.counter[5]_i_2_n_0 ),
-        .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[5]),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[5]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[5]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_int.counter[5]_i_2 
-       (.I0(counter[3]),
+    \axi_int.counter[3]_i_2 
+       (.I0(counter[0]),
         .I1(counter[1]),
         .I2(counter[2]),
-        .I3(counter[4]),
-        .O(\axi_int.counter[5]_i_2_n_0 ));
+        .O(\axi_int.counter[3]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFE100E100E100)) 
+    .INIT(64'hFF00FD2000FFFD20)) 
+    \axi_int.counter[4]_i_1 
+       (.I0(req),
+        .I1(busy),
+        .I2(size[4]),
+        .I3(counter[4]),
+        .I4(\axi_int.counter[6]_i_3_n_0 ),
+        .I5(\axi_int.counter[6]_i_4_n_0 ),
+        .O(p_1_in__0[4]));
+  LUT6 #(
+    .INIT(64'hFFAF0C5CF3A30050)) 
+    \axi_int.counter[5]_i_1 
+       (.I0(counter[4]),
+        .I1(\axi_int.counter[7]_i_2_n_0 ),
+        .I2(\axi_int.counter[6]_i_3_n_0 ),
+        .I3(\axi_int.counter[6]_i_4_n_0 ),
+        .I4(counter[5]),
+        .I5(size[5]),
+        .O(p_1_in__0[5]));
+  LUT6 #(
+    .INIT(64'hFFAF0C5CF3A30050)) 
     \axi_int.counter[6]_i_1 
        (.I0(\axi_int.counter[6]_i_2_n_0 ),
-        .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[6]),
-        .I3(\axi_int.adr[26]_i_1_n_0 ),
-        .I4(size[6]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[6]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
+        .I1(\axi_int.counter[7]_i_2_n_0 ),
+        .I2(\axi_int.counter[6]_i_3_n_0 ),
+        .I3(\axi_int.counter[6]_i_4_n_0 ),
+        .I4(counter[6]),
+        .I5(size[6]),
+        .O(p_1_in__0[6]));
+  LUT2 #(
+    .INIT(4'hE)) 
     \axi_int.counter[6]_i_2 
        (.I0(counter[4]),
-        .I1(counter[2]),
-        .I2(counter[1]),
-        .I3(counter[3]),
-        .I4(counter[5]),
+        .I1(counter[5]),
         .O(\axi_int.counter[6]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \axi_int.counter[6]_i_3 
+       (.I0(counter[7]),
+        .I1(counter[5]),
+        .I2(counter[4]),
+        .I3(counter[6]),
+        .I4(\axi_int.counter[7]_i_3_n_0 ),
+        .O(\axi_int.counter[6]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFE1E0E1E0E1E0)) 
+    .INIT(64'hFFFEFFFEFFFEFFFF)) 
+    \axi_int.counter[6]_i_4 
+       (.I0(counter[3]),
+        .I1(counter[0]),
+        .I2(counter[1]),
+        .I3(counter[2]),
+        .I4(start),
+        .I5(next),
+        .O(\axi_int.counter[6]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFCFF0202FCFF0000)) 
     \axi_int.counter[7]_i_1 
        (.I0(\axi_int.counter[7]_i_2_n_0 ),
         .I1(\axi_int.counter[7]_i_3_n_0 ),
-        .I2(counter[7]),
-        .I3(counter[0]),
-        .I4(size[7]),
-        .I5(\axi_int.counter[7]_i_4_n_0 ),
-        .O(\axi_int.counter[7]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+        .I2(\axi_int.counter[7]_i_4_n_0 ),
+        .I3(counter1),
+        .I4(counter[7]),
+        .I5(size[7]),
+        .O(p_1_in__0[7]));
+  LUT2 #(
+    .INIT(4'h2)) 
     \axi_int.counter[7]_i_2 
-       (.I0(counter[5]),
-        .I1(counter[3]),
-        .I2(counter[1]),
-        .I3(counter[2]),
-        .I4(counter[4]),
-        .I5(counter[6]),
+       (.I0(req),
+        .I1(busy),
         .O(\axi_int.counter[7]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hF7)) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
     \axi_int.counter[7]_i_3 
+       (.I0(counter[2]),
+        .I1(counter[1]),
+        .I2(counter[0]),
+        .I3(counter[3]),
+        .O(\axi_int.counter[7]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \axi_int.counter[7]_i_4 
+       (.I0(counter[5]),
+        .I1(counter[4]),
+        .I2(counter[6]),
+        .O(\axi_int.counter[7]_i_4_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \axi_int.counter[7]_i_5 
        (.I0(M_AXI_WVALID),
         .I1(M_AXI_WREADY),
-        .I2(counter[0]),
-        .O(\axi_int.counter[7]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000004)) 
-    \axi_int.counter[7]_i_4 
-       (.I0(busy),
-        .I1(req),
-        .I2(counter[0]),
-        .I3(\axi_int.counter[7]_i_2_n_0 ),
-        .I4(counter[7]),
-        .O(\axi_int.counter[7]_i_4_n_0 ));
+        .I2(M_AXI_AWVALID),
+        .I3(M_AXI_AWREADY),
+        .O(counter1));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[0] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[0]_i_1_n_0 ),
+        .D(p_1_in__0[0]),
         .Q(counter[0]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[1] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[1]_i_1_n_0 ),
+        .D(p_1_in__0[1]),
         .Q(counter[1]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[2] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[2]_i_1_n_0 ),
+        .D(p_1_in__0[2]),
         .Q(counter[2]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[3] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[3]_i_1_n_0 ),
+        .D(p_1_in__0[3]),
         .Q(counter[3]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[4]_i_1_n_0 ),
+        .D(p_1_in__0[4]),
         .Q(counter[4]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[5]_i_1_n_0 ),
+        .D(p_1_in__0[5]),
         .Q(counter[5]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[6] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[6]_i_1_n_0 ),
+        .D(p_1_in__0[6]),
         .Q(counter[6]),
-        .R(reset));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[7] 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_int.counter[7]_i_1_n_0 ),
+        .D(p_1_in__0[7]),
         .Q(counter[7]),
-        .R(reset));
-  LUT6 #(
-    .INIT(64'h000000000000AAAB)) 
+        .R(\axi_int.busy_reg0 ));
+  LUT5 #(
+    .INIT(32'h000000AE)) 
     \axi_int.req_i_1 
        (.I0(req),
-        .I1(req_timeout[6]),
+        .I1(\axi_int.req_i_2_n_0 ),
         .I2(\axi_int.req_timeout[7]_i_4_n_0 ),
-        .I3(req_timeout[7]),
-        .I4(reset),
-        .I5(cfg_empty),
+        .I3(reset),
+        .I4(cfg_empty),
         .O(\axi_int.req_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \axi_int.req_i_2 
+       (.I0(req_timeout[5]),
+        .I1(req_timeout[4]),
+        .I2(req_timeout[7]),
+        .I3(req_timeout[6]),
+        .O(\axi_int.req_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.req_reg 
        (.C(clk),
@@ -4053,89 +3481,93 @@ module ps_axi_int_0_0_axi_int
     .INIT(2'h1)) 
     \axi_int.req_timeout[0]_i_1 
        (.I0(req_timeout[0]),
-        .O(\axi_int.req_timeout_reg0 ));
+        .O(\axi_int.req_timeout_reg0 [0]));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_int.req_timeout[1]_i_1 
-       (.I0(req_timeout[0]),
-        .I1(req_timeout[1]),
-        .O(\axi_int.req_timeout[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hE1)) 
-    \axi_int.req_timeout[2]_i_1 
        (.I0(req_timeout[1]),
         .I1(req_timeout[0]),
-        .I2(req_timeout[2]),
-        .O(\axi_int.req_timeout[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hFE01)) 
-    \axi_int.req_timeout[3]_i_1 
+        .O(\axi_int.req_timeout_reg0 [1]));
+  LUT3 #(
+    .INIT(8'hA9)) 
+    \axi_int.req_timeout[2]_i_1 
        (.I0(req_timeout[2]),
         .I1(req_timeout[0]),
         .I2(req_timeout[1]),
-        .I3(req_timeout[3]),
-        .O(\axi_int.req_timeout[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFE0001)) 
-    \axi_int.req_timeout[4]_i_1 
+        .O(\axi_int.req_timeout_reg0 [2]));
+  LUT4 #(
+    .INIT(16'hAAA9)) 
+    \axi_int.req_timeout[3]_i_1 
        (.I0(req_timeout[3]),
         .I1(req_timeout[1]),
         .I2(req_timeout[0]),
         .I3(req_timeout[2]),
-        .I4(req_timeout[4]),
-        .O(\axi_int.req_timeout[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFE00000001)) 
-    \axi_int.req_timeout[5]_i_1 
+        .O(\axi_int.req_timeout_reg0 [3]));
+  LUT5 #(
+    .INIT(32'hAAAAAAA9)) 
+    \axi_int.req_timeout[4]_i_1 
        (.I0(req_timeout[4]),
         .I1(req_timeout[2]),
         .I2(req_timeout[0]),
         .I3(req_timeout[1]),
         .I4(req_timeout[3]),
-        .I5(req_timeout[5]),
-        .O(\axi_int.req_timeout[5]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
+        .O(\axi_int.req_timeout_reg0 [4]));
+  LUT6 #(
+    .INIT(64'hAAAAAAAAAAAAAAA9)) 
+    \axi_int.req_timeout[5]_i_1 
+       (.I0(req_timeout[5]),
+        .I1(req_timeout[3]),
+        .I2(req_timeout[1]),
+        .I3(req_timeout[0]),
+        .I4(req_timeout[2]),
+        .I5(req_timeout[4]),
+        .O(\axi_int.req_timeout_reg0 [5]));
+  LUT4 #(
+    .INIT(16'hAAA9)) 
     \axi_int.req_timeout[6]_i_1 
-       (.I0(\axi_int.req_timeout[7]_i_4_n_0 ),
-        .I1(req_timeout[6]),
-        .O(\axi_int.req_timeout[6]_i_1_n_0 ));
+       (.I0(req_timeout[6]),
+        .I1(req_timeout[4]),
+        .I2(\axi_int.req_timeout[7]_i_4_n_0 ),
+        .I3(req_timeout[5]),
+        .O(\axi_int.req_timeout_reg0 [6]));
   LUT2 #(
     .INIT(4'hE)) 
     \axi_int.req_timeout[7]_i_1 
        (.I0(cfg_empty),
         .I1(reset),
         .O(\axi_int.req_reg0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
     \axi_int.req_timeout[7]_i_2 
-       (.I0(req_timeout[7]),
-        .I1(\axi_int.req_timeout[7]_i_4_n_0 ),
-        .I2(req_timeout[6]),
+       (.I0(req_timeout[6]),
+        .I1(req_timeout[7]),
+        .I2(req_timeout[4]),
+        .I3(\axi_int.req_timeout[7]_i_4_n_0 ),
+        .I4(req_timeout[5]),
         .O(\axi_int.req_timeout[7]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hE1)) 
+  LUT5 #(
+    .INIT(32'hFFFE0001)) 
     \axi_int.req_timeout[7]_i_3 
        (.I0(req_timeout[6]),
-        .I1(\axi_int.req_timeout[7]_i_4_n_0 ),
-        .I2(req_timeout[7]),
-        .O(\axi_int.req_timeout[7]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+        .I1(req_timeout[4]),
+        .I2(\axi_int.req_timeout[7]_i_4_n_0 ),
+        .I3(req_timeout[5]),
+        .I4(req_timeout[7]),
+        .O(\axi_int.req_timeout_reg0 [7]));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
     \axi_int.req_timeout[7]_i_4 
-       (.I0(req_timeout[4]),
-        .I1(req_timeout[2]),
-        .I2(req_timeout[0]),
-        .I3(req_timeout[1]),
-        .I4(req_timeout[3]),
-        .I5(req_timeout[5]),
+       (.I0(req_timeout[2]),
+        .I1(req_timeout[0]),
+        .I2(req_timeout[1]),
+        .I3(req_timeout[3]),
         .O(\axi_int.req_timeout[7]_i_4_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \axi_int.req_timeout_reg[0] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout_reg0 ),
+        .D(\axi_int.req_timeout_reg0 [0]),
         .Q(req_timeout[0]),
         .R(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4143,7 +3575,7 @@ module ps_axi_int_0_0_axi_int
   FDSE \axi_int.req_timeout_reg[1] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[1]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [1]),
         .Q(req_timeout[1]),
         .S(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4151,7 +3583,7 @@ module ps_axi_int_0_0_axi_int
   FDRE \axi_int.req_timeout_reg[2] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[2]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [2]),
         .Q(req_timeout[2]),
         .R(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4159,7 +3591,7 @@ module ps_axi_int_0_0_axi_int
   FDRE \axi_int.req_timeout_reg[3] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[3]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [3]),
         .Q(req_timeout[3]),
         .R(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4167,7 +3599,7 @@ module ps_axi_int_0_0_axi_int
   FDSE \axi_int.req_timeout_reg[4] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[4]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [4]),
         .Q(req_timeout[4]),
         .S(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4175,7 +3607,7 @@ module ps_axi_int_0_0_axi_int
   FDSE \axi_int.req_timeout_reg[5] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[5]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [5]),
         .Q(req_timeout[5]),
         .S(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4183,7 +3615,7 @@ module ps_axi_int_0_0_axi_int
   FDRE \axi_int.req_timeout_reg[6] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[6]_i_1_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [6]),
         .Q(req_timeout[6]),
         .R(\axi_int.req_reg0 ));
   (* KEEP = "yes" *) 
@@ -4191,7 +3623,7 @@ module ps_axi_int_0_0_axi_int
   FDRE \axi_int.req_timeout_reg[7] 
        (.C(clk),
         .CE(\axi_int.req_timeout[7]_i_2_n_0 ),
-        .D(\axi_int.req_timeout[7]_i_3_n_0 ),
+        .D(\axi_int.req_timeout_reg0 [7]),
         .Q(req_timeout[7]),
         .R(\axi_int.req_reg0 ));
   LUT1 #(
@@ -4219,67 +3651,75 @@ module ps_axi_int_0_0_axi_int
   LUT3 #(
     .INIT(8'h78)) 
     \axi_int.size[2]_i_1 
-       (.I0(size[1]),
-        .I1(size[0]),
+       (.I0(size[0]),
+        .I1(size[1]),
         .I2(size[2]),
         .O(\axi_int.size[2]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h7F80)) 
     \axi_int.size[3]_i_1 
        (.I0(size[2]),
-        .I1(size[0]),
-        .I2(size[1]),
+        .I1(size[1]),
+        .I2(size[0]),
         .I3(size[3]),
         .O(\axi_int.size[3]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \axi_int.size[4]_i_1 
        (.I0(size[3]),
-        .I1(size[1]),
-        .I2(size[0]),
+        .I1(size[0]),
+        .I2(size[1]),
         .I3(size[2]),
         .I4(size[4]),
         .O(\axi_int.size[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \axi_int.size[5]_i_1 
-       (.I0(size[4]),
-        .I1(size[2]),
+       (.I0(size[2]),
+        .I1(size[1]),
         .I2(size[0]),
-        .I3(size[1]),
-        .I4(size[3]),
+        .I3(size[3]),
+        .I4(size[4]),
         .I5(size[5]),
         .O(\axi_int.size[5]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h7F80)) 
+  LUT6 #(
+    .INIT(64'hF7FFFFFF08000000)) 
     \axi_int.size[6]_i_1 
-       (.I0(\axi_int.size[7]_i_3_n_0 ),
-        .I1(size[4]),
-        .I2(size[5]),
-        .I3(size[6]),
+       (.I0(size[4]),
+        .I1(size[3]),
+        .I2(\axi_int.size[6]_i_2_n_0 ),
+        .I3(size[2]),
+        .I4(size[5]),
+        .I5(size[6]),
         .O(\axi_int.size[6]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \axi_int.size[6]_i_2 
+       (.I0(size[1]),
+        .I1(size[0]),
+        .O(\axi_int.size[6]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
     \axi_int.size[7]_i_1 
-       (.I0(M_AXI_AWVALID),
-        .I1(M_AXI_AWREADY),
+       (.I0(M_AXI_AWREADY),
+        .I1(M_AXI_AWVALID),
         .O(start));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
+  LUT3 #(
+    .INIT(8'hD2)) 
     \axi_int.size[7]_i_2 
-       (.I0(\axi_int.size[7]_i_3_n_0 ),
-        .I1(size[6]),
-        .I2(size[5]),
-        .I3(size[4]),
-        .I4(size[7]),
+       (.I0(size[6]),
+        .I1(\axi_int.size[7]_i_3_n_0 ),
+        .I2(size[7]),
         .O(\axi_int.size[7]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h8000)) 
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
     \axi_int.size[7]_i_3 
-       (.I0(size[2]),
-        .I1(size[0]),
+       (.I0(size[5]),
+        .I1(size[2]),
         .I2(size[1]),
-        .I3(size[3]),
+        .I3(size[0]),
+        .I4(size[3]),
+        .I5(size[4]),
         .O(\axi_int.size[7]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -4363,8 +3803,8 @@ module ps_axi_int_0_0_axi_int
   LUT2 #(
     .INIT(4'h8)) 
     fifo_config_i_i_1
-       (.I0(M_AXI_WVALID),
-        .I1(M_AXI_WREADY),
+       (.I0(M_AXI_WREADY),
+        .I1(M_AXI_WVALID),
         .O(next));
   (* CHECK_LICENSE_TYPE = "ila_6,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
@@ -4372,7 +3812,7 @@ module ps_axi_int_0_0_axi_int
   ps_axi_int_0_0_ila_6 ila_i
        (.clk(clk),
         .probe0(up),
-        .probe1(M_AXI_AWADDR[30:0]),
+        .probe1(M_AXI_AWADDR),
         .probe10(M_AXI_BRESP),
         .probe11(M_AXI_BREADY),
         .probe12(req_timeout),
@@ -4446,7 +3886,7 @@ module ps_axi_int_0_0_ila_6
     probe17);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
-  input [30:0]probe1;
+  input [31:0]probe1;
   input [7:0]probe2;
   input [0:0]probe3;
   input [0:0]probe4;
