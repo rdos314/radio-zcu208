@@ -56,10 +56,6 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_axi_int_0_0 (
-  config_clk,
-  config_wr,
-  config_adr,
-  config_data,
   clk,
   resetn,
   up,
@@ -80,16 +76,9 @@ module ps_axi_int_0_0 (
   M_AXI_BREADY
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 config_clk CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME config_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
-input wire config_clk;
-input wire config_wr;
-input wire [7 : 0] config_adr;
-input wire [31 : 0] config_data;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -131,10 +120,6 @@ input wire [1 : 0] M_AXI_BRESP;
 output wire M_AXI_BREADY;
 
   axi_int inst (
-    .config_clk(config_clk),
-    .config_wr(config_wr),
-    .config_adr(config_adr),
-    .config_data(config_data),
     .clk(clk),
     .resetn(resetn),
     .up(up),

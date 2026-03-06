@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Mar  1 01:06:26 2026
+// Date        : Fri Mar  6 22:14:15 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_1/ps_ana_0_1_stub.v
@@ -18,8 +18,8 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "ana,Vivado 2025.1" *) 
 module ps_ana_0_1(fifo_clk, ana_wr, env_N, env_E, env_W, phase_N, 
   phase_E, phase_W, err_NE, err_EW, err_WN, config_clk, config_wr, config_adr, config_data, clk, reset, 
-  comp_wr, sample, size, freq, angle, sample_N, sample_E, sample_W)
-/* synthesis syn_black_box black_box_pad_pin="ana_wr,env_N[15:0],env_E[15:0],env_W[15:0],phase_N[19:0],phase_E[19:0],phase_W[19:0],err_NE[11:0],err_EW[11:0],err_WN[11:0],config_clk,config_wr,config_adr[7:0],config_data[31:0],reset,comp_wr,sample[15:0],size[8:0],freq[19:0],angle[15:0],sample_N[5:0],sample_E[5:0],sample_W[5:0]" */
+  comp_wr, sample, size, freq, angle, doa_error, sample_N, sample_E, sample_W)
+/* synthesis syn_black_box black_box_pad_pin="ana_wr,env_N[15:0],env_E[15:0],env_W[15:0],phase_N[19:0],phase_E[19:0],phase_W[19:0],err_NE[11:0],err_EW[11:0],err_WN[11:0],config_clk,config_wr,config_adr[7:0],config_data[31:0],reset,comp_wr,sample[15:0],size[8:0],freq[19:0],angle[15:0],doa_error[9:0],sample_N[5:0],sample_E[5:0],sample_W[5:0]" */
 /* synthesis syn_force_seq_prim="fifo_clk" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_freq0_clk, INSERT_VIP 0" *) input fifo_clk /* synthesis syn_isclock = 1 */;
@@ -44,6 +44,7 @@ module ps_ana_0_1(fifo_clk, ana_wr, env_N, env_E, env_W, phase_N,
   output [8:0]size;
   output [19:0]freq;
   output [15:0]angle;
+  output [9:0]doa_error;
   output [5:0]sample_N;
   output [5:0]sample_E;
   output [5:0]sample_W;

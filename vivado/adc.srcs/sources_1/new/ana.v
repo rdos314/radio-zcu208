@@ -46,6 +46,7 @@ module ana(
     output reg [8:0] size,
     output reg [19:0] freq,
     output reg [15:0] angle,
+    output reg [9:0] doa_error,
     output reg [5:0] sample_N,
     output reg [5:0] sample_E,
     output reg [5:0] sample_W    
@@ -82,10 +83,14 @@ module ana(
   reg curr_doa;
   reg [1:0] burst;
   wire [1:0] save;
+
+  wire [1:0] save_pair_error;
+  wire [1:0] save_phase_error;
   
   reg [15:0] sample_0;
   reg [8:0] size_0;
   reg [19:0] freq_0;
+  reg [9:0] doa_error_0;
   reg [19:0] phase_NE_0;
   reg [19:0] phase_EW_0;
   reg [19:0] phase_WN_0;
@@ -94,6 +99,7 @@ module ana(
   wire [8:0] save_size_0;
   wire [19:0] save_freq_0;
   wire [15:0] save_angle_0;
+  wire [9:0] save_doa_error_0;
  
   wire [5:0] save_sample_N_0;
   wire [5:0] save_sample_E_0;
@@ -102,6 +108,7 @@ module ana(
   reg [15:0] sample_1;
   reg [8:0] size_1;
   reg [19:0] freq_1;
+  reg [9:0] doa_error_1;
   reg [19:0] phase_NE_1;
   reg [19:0] phase_EW_1;
   reg [19:0] phase_WN_1;
@@ -110,6 +117,7 @@ module ana(
   wire [8:0] save_size_1;
   wire [19:0] save_freq_1;
   wire [15:0] save_angle_1;
+  wire [9:0] save_doa_error_1;
  
   wire [5:0] save_sample_N_1;
   wire [5:0] save_sample_E_1;
@@ -168,10 +176,13 @@ doa_calc doa_calc_0 (
     .phase_EW_in(phase_EW_0),
     .phase_WN_in(phase_WN_0),
     .done(save[0]),
+    .pair_error(save_pair_error[0]),
+    .phase_error(save_phase_error[0]),
     .sample(save_sample_0),
     .size(save_size_0),
     .freq(save_freq_0),
     .angle(save_angle_0),
+    .doa_error(save_doa_error_0),
     .sample_N(save_sample_N_0),
     .sample_E(save_sample_E_0),
     .sample_W(save_sample_W_0)    
@@ -191,14 +202,18 @@ doa_calc doa_calc_1 (
     .phase_EW_in(phase_EW_1),
     .phase_WN_in(phase_WN_1),
     .done(save[1]),
+    .pair_error(save_pair_error[1]),
+    .phase_error(save_phase_error[1]),
     .sample(save_sample_1),
     .size(save_size_1),
     .freq(save_freq_1),
     .angle(save_angle_1),
+    .doa_error(save_doa_error_1),
     .sample_N(save_sample_N_1),
     .sample_E(save_sample_E_1),
     .sample_W(save_sample_W_1)    
 );
+
 
 /*
 	ila_6 ila_i (
@@ -336,6 +351,7 @@ generate
                     size <= save_size_0;
                     freq <= save_freq_0;
                     angle <= save_angle_0;
+                    doa_error <= save_doa_error_0;
                     sample_N <= save_sample_N_0;
                     sample_E <= save_sample_E_0;
                     sample_W <= save_sample_W_0;
@@ -348,6 +364,7 @@ generate
                     size <= save_size_1;
                     freq <= save_freq_1;
                     angle <= save_angle_1;
+                    doa_error <= save_doa_error_1;
                     sample_N <= save_sample_N_1;
                     sample_E <= save_sample_E_1;
                     sample_W <= save_sample_W_1;

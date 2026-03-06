@@ -20,11 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module axi_int(
-    input wire config_clk,
-    input wire config_wr,
-    input wire [7:0] config_adr,
-    input wire [31:0] config_data,
-
     input wire clk,
     input wire resetn,
     input wire up,
@@ -61,8 +56,7 @@ module axi_int(
     assign last = M_AXI_WREADY & M_AXI_WLAST;
     assign done = M_AXI_BREADY & M_AXI_BVALID;
 
-    assign data[39:0] = config_data_adr_out;
-    assign data[255:40] = 0;
+    assign data[255:0] = 0;
 
     reg reset;
     reg busy;
@@ -72,25 +66,7 @@ module axi_int(
     reg [7:0] size;
     reg [7:0] counter;
 
-    wire [39:0] config_data_adr_in;
-    assign config_data_adr_in[7:0] = config_adr;
-    assign config_data_adr_in[39:8] = config_data;
-
-    wire [39:0] config_data_adr_out;
-    reg cfg_rd;
-    wire cfg_empty;
-
-fifo_config fifo_config_i (
-  .rst(reset),                   // input wire rst
-  .wr_clk(config_clk),           // input wire wr_clk
-  .rd_clk(clk),                  // input wire rd_clk
-  .din(config_data_adr_in),      // input wire [39 : 0] din
-  .wr_en(config_wr),             // input wire wr_en
-  .rd_en(next),                  // input wire rd_en
-  .dout(config_data_adr_out),    // output wire [39 : 0] dout
-  .empty(cfg_empty)              // output wire empty
-);
-
+/*
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(up),                  // input wire [0:0]  probe3
@@ -112,6 +88,7 @@ fifo_config fifo_config_i (
 		.probe16(size),               // input wire [7:0]  probe3
 		.probe17(counter)             // input wire [7:0]  probe3
 );
+*/
     
 generate
   begin : axi_int
@@ -121,31 +98,11 @@ generate
         reset <= !resetn;
     end
 
-    always @(posedge clk) 
-    begin
-        if (reset | cfg_empty)
-        begin
-            req <= 0;
-            req_timeout <= 50;
-        end
-        else
-        begin
-            if (req_timeout)
-                req_timeout <= req_timeout - 1;
-            else
-                req <= 1;
-        end            
-    end
 
     always @(posedge clk) 
     begin
-        if (cfg_empty)
-            size <= 1;
-        else
-        begin
-            if (start)
-                size <= size + 1;
-        end
+        size <= 0;
+        req <= 0;
     end
 
     always @(posedge clk) 

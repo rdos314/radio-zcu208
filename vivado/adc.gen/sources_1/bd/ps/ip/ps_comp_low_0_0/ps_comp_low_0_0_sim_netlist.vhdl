@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Mar  1 01:10:28 2026
+-- Date        : Fri Mar  6 22:11:41 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -104177,6 +104177,7 @@ entity ps_comp_low_0_0_comp_low is
     ana_fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     ana_fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ana_fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    ana_fifo_doa_error : in STD_LOGIC_VECTOR ( 9 downto 0 );
     ana_fifo_sample_N : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_E : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_W : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -104194,7 +104195,8 @@ entity ps_comp_low_0_0_comp_low is
     sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_comp_low_0_0_comp_low : entity is "comp_low";
@@ -104206,10 +104208,10 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
     rst : in STD_LOGIC;
     wr_clk : in STD_LOGIC;
     rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 78 downto 0 );
+    din : in STD_LOGIC_VECTOR ( 88 downto 0 );
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 78 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 88 downto 0 );
     full : out STD_LOGIC;
     empty : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
@@ -104301,8 +104303,8 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal W6 : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal W7 : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal ana_empty : STD_LOGIC;
-  signal ana_in_data : STD_LOGIC_VECTOR ( 78 downto 0 );
-  signal ana_out_data : STD_LOGIC_VECTOR ( 78 downto 0 );
+  signal ana_in_data : STD_LOGIC_VECTOR ( 88 downto 0 );
+  signal ana_out_data : STD_LOGIC_VECTOR ( 88 downto 0 );
   signal ana_trig : STD_LOGIC;
   signal ana_wr : STD_LOGIC;
   signal \^burst\ : STD_LOGIC;
@@ -113810,7 +113812,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(0),
+      D => ana_fifo_doa_error(0),
       Q => ana_in_data(61),
       R => '0'
     );
@@ -113818,7 +113820,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(1),
+      D => ana_fifo_doa_error(1),
       Q => ana_in_data(62),
       R => '0'
     );
@@ -113826,7 +113828,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(2),
+      D => ana_fifo_doa_error(2),
       Q => ana_in_data(63),
       R => '0'
     );
@@ -113834,7 +113836,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(3),
+      D => ana_fifo_doa_error(3),
       Q => ana_in_data(64),
       R => '0'
     );
@@ -113842,7 +113844,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(4),
+      D => ana_fifo_doa_error(4),
       Q => ana_in_data(65),
       R => '0'
     );
@@ -113850,7 +113852,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_N(5),
+      D => ana_fifo_doa_error(5),
       Q => ana_in_data(66),
       R => '0'
     );
@@ -113858,7 +113860,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(0),
+      D => ana_fifo_doa_error(6),
       Q => ana_in_data(67),
       R => '0'
     );
@@ -113866,7 +113868,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(1),
+      D => ana_fifo_doa_error(7),
       Q => ana_in_data(68),
       R => '0'
     );
@@ -113874,7 +113876,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(2),
+      D => ana_fifo_doa_error(8),
       Q => ana_in_data(69),
       R => '0'
     );
@@ -113890,7 +113892,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(3),
+      D => ana_fifo_doa_error(9),
       Q => ana_in_data(70),
       R => '0'
     );
@@ -113898,7 +113900,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(4),
+      D => ana_fifo_sample_N(0),
       Q => ana_in_data(71),
       R => '0'
     );
@@ -113906,7 +113908,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_E(5),
+      D => ana_fifo_sample_N(1),
       Q => ana_in_data(72),
       R => '0'
     );
@@ -113914,7 +113916,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(0),
+      D => ana_fifo_sample_N(2),
       Q => ana_in_data(73),
       R => '0'
     );
@@ -113922,7 +113924,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(1),
+      D => ana_fifo_sample_N(3),
       Q => ana_in_data(74),
       R => '0'
     );
@@ -113930,7 +113932,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(2),
+      D => ana_fifo_sample_N(4),
       Q => ana_in_data(75),
       R => '0'
     );
@@ -113938,7 +113940,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(3),
+      D => ana_fifo_sample_N(5),
       Q => ana_in_data(76),
       R => '0'
     );
@@ -113946,7 +113948,7 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(4),
+      D => ana_fifo_sample_E(0),
       Q => ana_in_data(77),
       R => '0'
     );
@@ -113954,8 +113956,16 @@ begin
      port map (
       C => ana_fifo_clk,
       CE => ana_fifo_wr,
-      D => ana_fifo_sample_W(5),
+      D => ana_fifo_sample_E(1),
       Q => ana_in_data(78),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[79]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_E(2),
+      Q => ana_in_data(79),
       R => '0'
     );
 \comp_low.ana_in_data_reg[7]\: unisim.vcomponents.FDRE
@@ -113964,6 +113974,78 @@ begin
       CE => ana_fifo_wr,
       D => ana_fifo_sample(7),
       Q => ana_in_data(7),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[80]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_E(3),
+      Q => ana_in_data(80),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[81]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_E(4),
+      Q => ana_in_data(81),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[82]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_E(5),
+      Q => ana_in_data(82),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[83]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(0),
+      Q => ana_in_data(83),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[84]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(1),
+      Q => ana_in_data(84),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[85]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(2),
+      Q => ana_in_data(85),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[86]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(3),
+      Q => ana_in_data(86),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[87]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(4),
+      Q => ana_in_data(87),
+      R => '0'
+    );
+\comp_low.ana_in_data_reg[88]\: unisim.vcomponents.FDRE
+     port map (
+      C => ana_fifo_clk,
+      CE => ana_fifo_wr,
+      D => ana_fifo_sample_W(5),
+      Q => ana_in_data(88),
       R => '0'
     );
 \comp_low.ana_in_data_reg[8]\: unisim.vcomponents.FDRE
@@ -116098,6 +116180,86 @@ begin
       CE => '1',
       D => \comp_low.deci_run_i_1_n_0\,
       Q => \comp_low.deci_run_reg_n_0\,
+      R => '0'
+    );
+\comp_low.doa_error_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(61),
+      Q => doa_error(0),
+      R => '0'
+    );
+\comp_low.doa_error_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(62),
+      Q => doa_error(1),
+      R => '0'
+    );
+\comp_low.doa_error_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(63),
+      Q => doa_error(2),
+      R => '0'
+    );
+\comp_low.doa_error_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(64),
+      Q => doa_error(3),
+      R => '0'
+    );
+\comp_low.doa_error_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(65),
+      Q => doa_error(4),
+      R => '0'
+    );
+\comp_low.doa_error_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(66),
+      Q => doa_error(5),
+      R => '0'
+    );
+\comp_low.doa_error_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(67),
+      Q => doa_error(6),
+      R => '0'
+    );
+\comp_low.doa_error_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(68),
+      Q => doa_error(7),
+      R => '0'
+    );
+\comp_low.doa_error_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(69),
+      Q => doa_error(8),
+      R => '0'
+    );
+\comp_low.doa_error_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \comp_low.burst_i_1_n_0\,
+      D => ana_out_data(70),
+      Q => doa_error(9),
       R => '0'
     );
 \comp_low.fir_run_reg\: unisim.vcomponents.FDRE
@@ -127222,7 +127384,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => sample_E(0),
       R => reset_int
     );
@@ -127230,7 +127392,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep_n_0\,
       R => reset_int
     );
@@ -127238,7 +127400,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__0_n_0\,
       R => reset_int
     );
@@ -127246,7 +127408,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__1_n_0\,
       R => reset_int
     );
@@ -127254,7 +127416,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__2_n_0\,
       R => reset_int
     );
@@ -127262,7 +127424,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__3_n_0\,
       R => reset_int
     );
@@ -127270,7 +127432,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__4_n_0\,
       R => reset_int
     );
@@ -127278,7 +127440,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(67),
+      D => ana_out_data(77),
       Q => \comp_low.sample_E_reg[0]_rep__5_n_0\,
       R => reset_int
     );
@@ -127286,7 +127448,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => sample_E(1),
       R => reset_int
     );
@@ -127294,7 +127456,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep_n_0\,
       R => reset_int
     );
@@ -127302,7 +127464,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__0_n_0\,
       R => reset_int
     );
@@ -127310,7 +127472,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__1_n_0\,
       R => reset_int
     );
@@ -127318,7 +127480,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__2_n_0\,
       R => reset_int
     );
@@ -127326,7 +127488,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__3_n_0\,
       R => reset_int
     );
@@ -127334,7 +127496,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__4_n_0\,
       R => reset_int
     );
@@ -127342,7 +127504,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(68),
+      D => ana_out_data(78),
       Q => \comp_low.sample_E_reg[1]_rep__5_n_0\,
       R => reset_int
     );
@@ -127350,7 +127512,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(69),
+      D => ana_out_data(79),
       Q => sample_E(2),
       R => reset_int
     );
@@ -127358,7 +127520,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(69),
+      D => ana_out_data(79),
       Q => \comp_low.sample_E_reg[2]_rep_n_0\,
       R => reset_int
     );
@@ -127366,7 +127528,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(69),
+      D => ana_out_data(79),
       Q => \comp_low.sample_E_reg[2]_rep__0_n_0\,
       R => reset_int
     );
@@ -127374,7 +127536,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(69),
+      D => ana_out_data(79),
       Q => \comp_low.sample_E_reg[2]_rep__1_n_0\,
       R => reset_int
     );
@@ -127382,7 +127544,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(70),
+      D => ana_out_data(80),
       Q => sample_E(3),
       R => reset_int
     );
@@ -127390,7 +127552,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(70),
+      D => ana_out_data(80),
       Q => \comp_low.sample_E_reg[3]_rep_n_0\,
       R => reset_int
     );
@@ -127398,7 +127560,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(70),
+      D => ana_out_data(80),
       Q => \comp_low.sample_E_reg[3]_rep__0_n_0\,
       R => reset_int
     );
@@ -127406,7 +127568,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(70),
+      D => ana_out_data(80),
       Q => \comp_low.sample_E_reg[3]_rep__1_n_0\,
       R => reset_int
     );
@@ -127414,7 +127576,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(71),
+      D => ana_out_data(81),
       Q => sample_E(4),
       R => reset_int
     );
@@ -127422,7 +127584,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(71),
+      D => ana_out_data(81),
       Q => \comp_low.sample_E_reg[4]_rep_n_0\,
       R => reset_int
     );
@@ -127430,7 +127592,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(72),
+      D => ana_out_data(82),
       Q => sample_E(5),
       R => reset_int
     );
@@ -127438,7 +127600,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => sample_N(0),
       R => reset_int
     );
@@ -127446,7 +127608,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep_n_0\,
       R => reset_int
     );
@@ -127454,7 +127616,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__0_n_0\,
       R => reset_int
     );
@@ -127462,7 +127624,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__1_n_0\,
       R => reset_int
     );
@@ -127470,7 +127632,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__2_n_0\,
       R => reset_int
     );
@@ -127478,7 +127640,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__3_n_0\,
       R => reset_int
     );
@@ -127486,7 +127648,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__4_n_0\,
       R => reset_int
     );
@@ -127494,7 +127656,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(61),
+      D => ana_out_data(71),
       Q => \comp_low.sample_N_reg[0]_rep__5_n_0\,
       R => reset_int
     );
@@ -127502,7 +127664,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => sample_N(1),
       R => reset_int
     );
@@ -127510,7 +127672,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep_n_0\,
       R => reset_int
     );
@@ -127518,7 +127680,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__0_n_0\,
       R => reset_int
     );
@@ -127526,7 +127688,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__1_n_0\,
       R => reset_int
     );
@@ -127534,7 +127696,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__2_n_0\,
       R => reset_int
     );
@@ -127542,7 +127704,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__3_n_0\,
       R => reset_int
     );
@@ -127550,7 +127712,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__4_n_0\,
       R => reset_int
     );
@@ -127558,7 +127720,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(62),
+      D => ana_out_data(72),
       Q => \comp_low.sample_N_reg[1]_rep__5_n_0\,
       R => reset_int
     );
@@ -127566,7 +127728,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(63),
+      D => ana_out_data(73),
       Q => sample_N(2),
       R => reset_int
     );
@@ -127574,7 +127736,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(63),
+      D => ana_out_data(73),
       Q => \comp_low.sample_N_reg[2]_rep_n_0\,
       R => reset_int
     );
@@ -127582,7 +127744,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(63),
+      D => ana_out_data(73),
       Q => \comp_low.sample_N_reg[2]_rep__0_n_0\,
       R => reset_int
     );
@@ -127590,7 +127752,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(63),
+      D => ana_out_data(73),
       Q => \comp_low.sample_N_reg[2]_rep__1_n_0\,
       R => reset_int
     );
@@ -127598,7 +127760,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(64),
+      D => ana_out_data(74),
       Q => sample_N(3),
       R => reset_int
     );
@@ -127606,7 +127768,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(64),
+      D => ana_out_data(74),
       Q => \comp_low.sample_N_reg[3]_rep_n_0\,
       R => reset_int
     );
@@ -127614,7 +127776,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(64),
+      D => ana_out_data(74),
       Q => \comp_low.sample_N_reg[3]_rep__0_n_0\,
       R => reset_int
     );
@@ -127622,7 +127784,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(64),
+      D => ana_out_data(74),
       Q => \comp_low.sample_N_reg[3]_rep__1_n_0\,
       R => reset_int
     );
@@ -127630,7 +127792,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(65),
+      D => ana_out_data(75),
       Q => sample_N(4),
       R => reset_int
     );
@@ -127638,7 +127800,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(65),
+      D => ana_out_data(75),
       Q => \comp_low.sample_N_reg[4]_rep_n_0\,
       R => reset_int
     );
@@ -127646,7 +127808,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(66),
+      D => ana_out_data(76),
       Q => sample_N(5),
       R => reset_int
     );
@@ -127654,7 +127816,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => sample_W(0),
       R => reset_int
     );
@@ -127662,7 +127824,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep_n_0\,
       R => reset_int
     );
@@ -127670,7 +127832,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__0_n_0\,
       R => reset_int
     );
@@ -127678,7 +127840,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__1_n_0\,
       R => reset_int
     );
@@ -127686,7 +127848,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__2_n_0\,
       R => reset_int
     );
@@ -127694,7 +127856,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__3_n_0\,
       R => reset_int
     );
@@ -127702,7 +127864,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__4_n_0\,
       R => reset_int
     );
@@ -127710,7 +127872,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(73),
+      D => ana_out_data(83),
       Q => \comp_low.sample_W_reg[0]_rep__5_n_0\,
       R => reset_int
     );
@@ -127718,7 +127880,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => sample_W(1),
       R => reset_int
     );
@@ -127726,7 +127888,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep_n_0\,
       R => reset_int
     );
@@ -127734,7 +127896,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__0_n_0\,
       R => reset_int
     );
@@ -127742,7 +127904,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__1_n_0\,
       R => reset_int
     );
@@ -127750,7 +127912,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__2_n_0\,
       R => reset_int
     );
@@ -127758,7 +127920,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__3_n_0\,
       R => reset_int
     );
@@ -127766,7 +127928,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__4_n_0\,
       R => reset_int
     );
@@ -127774,7 +127936,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(74),
+      D => ana_out_data(84),
       Q => \comp_low.sample_W_reg[1]_rep__5_n_0\,
       R => reset_int
     );
@@ -127782,7 +127944,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(75),
+      D => ana_out_data(85),
       Q => sample_W(2),
       R => reset_int
     );
@@ -127790,7 +127952,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(75),
+      D => ana_out_data(85),
       Q => \comp_low.sample_W_reg[2]_rep_n_0\,
       R => reset_int
     );
@@ -127798,7 +127960,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(75),
+      D => ana_out_data(85),
       Q => \comp_low.sample_W_reg[2]_rep__0_n_0\,
       R => reset_int
     );
@@ -127806,7 +127968,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(75),
+      D => ana_out_data(85),
       Q => \comp_low.sample_W_reg[2]_rep__1_n_0\,
       R => reset_int
     );
@@ -127814,7 +127976,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(76),
+      D => ana_out_data(86),
       Q => sample_W(3),
       R => reset_int
     );
@@ -127822,7 +127984,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(76),
+      D => ana_out_data(86),
       Q => \comp_low.sample_W_reg[3]_rep_n_0\,
       R => reset_int
     );
@@ -127830,7 +127992,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(76),
+      D => ana_out_data(86),
       Q => \comp_low.sample_W_reg[3]_rep__0_n_0\,
       R => reset_int
     );
@@ -127838,7 +128000,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(76),
+      D => ana_out_data(86),
       Q => \comp_low.sample_W_reg[3]_rep__1_n_0\,
       R => reset_int
     );
@@ -127846,7 +128008,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(77),
+      D => ana_out_data(87),
       Q => sample_W(4),
       R => reset_int
     );
@@ -127854,7 +128016,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(77),
+      D => ana_out_data(87),
       Q => \comp_low.sample_W_reg[4]_rep_n_0\,
       R => reset_int
     );
@@ -127862,7 +128024,7 @@ begin
      port map (
       C => clk,
       CE => ana_trig,
-      D => ana_out_data(78),
+      D => ana_out_data(88),
       Q => sample_W(5),
       R => reset_int
     );
@@ -128201,8 +128363,8 @@ begin
     );
 fifo_ana_i: component ps_comp_low_0_0_fifo_ana
      port map (
-      din(78 downto 0) => ana_in_data(78 downto 0),
-      dout(78 downto 0) => ana_out_data(78 downto 0),
+      din(88 downto 0) => ana_in_data(88 downto 0),
+      dout(88 downto 0) => ana_out_data(88 downto 0),
       empty => ana_empty,
       full => NLW_fifo_ana_i_full_UNCONNECTED,
       rd_clk => clk,
@@ -128431,6 +128593,7 @@ entity ps_comp_low_0_0 is
     ana_fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     ana_fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ana_fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    ana_fifo_doa_error : in STD_LOGIC_VECTOR ( 9 downto 0 );
     ana_fifo_sample_N : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_E : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_W : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -128448,7 +128611,8 @@ entity ps_comp_low_0_0 is
     sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_comp_low_0_0 : entity is true;
@@ -128484,6 +128648,7 @@ inst: entity work.ps_comp_low_0_0_comp_low
       active => active,
       ana_fifo_angle(15 downto 0) => ana_fifo_angle(15 downto 0),
       ana_fifo_clk => ana_fifo_clk,
+      ana_fifo_doa_error(9 downto 0) => ana_fifo_doa_error(9 downto 0),
       ana_fifo_freq(19 downto 0) => ana_fifo_freq(19 downto 0),
       ana_fifo_sample(15 downto 0) => ana_fifo_sample(15 downto 0),
       ana_fifo_sample_E(5 downto 0) => ana_fifo_sample_E(5 downto 0),
@@ -128494,6 +128659,7 @@ inst: entity work.ps_comp_low_0_0_comp_low
       angle(15 downto 0) => angle(15 downto 0),
       burst => burst,
       clk => clk,
+      doa_error(9 downto 0) => doa_error(9 downto 0),
       freq(19 downto 0) => freq(19 downto 0),
       im(63 downto 0) => im(63 downto 0),
       raw_fifo_E(127 downto 0) => raw_fifo_E(127 downto 0),

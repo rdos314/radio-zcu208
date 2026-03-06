@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Fri Mar  6 06:33:16 2026
+//Date        : Fri Mar  6 22:13:04 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -113,6 +113,7 @@ module ps
   wire [3:0]adc_control_0_wr_en;
   wire [15:0]ana_high_angle;
   wire ana_high_comp_wr;
+  wire [9:0]ana_high_doa_error;
   wire [19:0]ana_high_freq;
   wire [15:0]ana_high_sample;
   wire [5:0]ana_high_sample_E;
@@ -121,6 +122,7 @@ module ps
   wire [8:0]ana_high_size;
   wire [15:0]ana_low_angle;
   wire ana_low_comp_wr;
+  wire [9:0]ana_low_doa_error;
   wire [19:0]ana_low_freq;
   wire [15:0]ana_low_sample;
   wire [5:0]ana_low_sample_E;
@@ -251,6 +253,7 @@ module ps
   wire comp_high_active;
   wire [15:0]comp_high_angle;
   wire comp_high_burst;
+  wire [9:0]comp_high_doa_error;
   wire [19:0]comp_high_freq;
   wire [63:0]comp_high_im;
   wire [63:0]comp_high_re;
@@ -259,6 +262,7 @@ module ps
   wire comp_low_active;
   wire [15:0]comp_low_angle;
   wire comp_low_burst;
+  wire [9:0]comp_low_doa_error;
   wire [19:0]comp_low_freq;
   wire [63:0]comp_low_im;
   wire [63:0]comp_low_re;
@@ -528,6 +532,7 @@ module ps
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
         .config_wr(adc_control_0_config_high_wr),
+        .doa_error(ana_high_doa_error),
         .env_E(freq_high_189_0_env_E),
         .env_N(freq_high_189_0_env_N),
         .env_W(freq_high_189_0_env_W),
@@ -554,6 +559,7 @@ module ps
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
         .config_wr(adc_control_0_config_low_wr),
+        .doa_error(ana_low_doa_error),
         .env_E(freq_low_46_0_env_E),
         .env_N(freq_low_46_0_env_N),
         .env_W(freq_low_46_0_env_W),
@@ -641,10 +647,6 @@ module ps
         .M_AXI_WSTRB(axi_int_0_M_AXI_WSTRB),
         .M_AXI_WVALID(axi_int_0_M_AXI_WVALID),
         .clk(ddr4_0_c0_ddr4_ui_clk),
-        .config_adr(adc_control_0_config_adr),
-        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
-        .config_data(adc_control_0_config_data),
-        .config_wr(adc_control_0_config_low_wr),
         .resetn(proc_sys_reset_0_peripheral_aresetn),
         .up(ddr4_0_c0_init_calib_complete));
   ps_axi_smc_0 axi_smc
@@ -819,6 +821,7 @@ module ps
         .fifo_angle(comp_high_angle),
         .fifo_burst(comp_high_burst),
         .fifo_clk(mts_0_comp1_clk),
+        .fifo_doa_error(comp_high_doa_error),
         .fifo_freq(comp_high_freq),
         .fifo_im(comp_high_im),
         .fifo_re(comp_high_re),
@@ -836,6 +839,7 @@ module ps
         .fifo_angle(comp_low_angle),
         .fifo_burst(comp_low_burst),
         .fifo_clk(mts_0_comp0_clk),
+        .fifo_doa_error(comp_low_doa_error),
         .fifo_freq(comp_low_freq),
         .fifo_im(comp_low_im),
         .fifo_re(comp_low_re),
@@ -847,6 +851,7 @@ module ps
        (.active(comp_high_active),
         .ana_fifo_angle(ana_high_angle),
         .ana_fifo_clk(mts_0_ana1_clk),
+        .ana_fifo_doa_error(ana_high_doa_error),
         .ana_fifo_freq(ana_high_freq),
         .ana_fifo_sample(ana_high_sample),
         .ana_fifo_sample_E(ana_high_sample_E),
@@ -857,6 +862,7 @@ module ps
         .angle(comp_high_angle),
         .burst(comp_high_burst),
         .clk(mts_0_comp1_clk),
+        .doa_error(comp_high_doa_error),
         .freq(comp_high_freq),
         .im(comp_high_im),
         .raw_fifo_E(deci_high_raw_E),
@@ -872,6 +878,7 @@ module ps
        (.active(comp_low_active),
         .ana_fifo_angle(ana_low_angle),
         .ana_fifo_clk(mts_0_ana0_clk),
+        .ana_fifo_doa_error(ana_low_doa_error),
         .ana_fifo_freq(ana_low_freq),
         .ana_fifo_sample(ana_low_sample),
         .ana_fifo_sample_E(ana_low_sample_E),
@@ -882,6 +889,7 @@ module ps
         .angle(comp_low_angle),
         .burst(comp_low_burst),
         .clk(mts_0_comp0_clk),
+        .doa_error(comp_low_doa_error),
         .freq(comp_low_freq),
         .im(comp_low_im),
         .raw_fifo_E(deci_low_raw_E),

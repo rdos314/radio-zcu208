@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Mar  1 01:06:23 2026
+// Date        : Fri Mar  6 22:11:37 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_stub.v
@@ -17,10 +17,10 @@
 (* CHECK_LICENSE_TYPE = "ps_comp_high_0_0,comp_high,{}" *) (* CORE_GENERATION_INFO = "ps_comp_high_0_0,comp_high,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=comp_high,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "comp_high,Vivado 2025.1" *) 
 module ps_comp_high_0_0(ana_fifo_clk, ana_fifo_wr, ana_fifo_sample, 
-  ana_fifo_size, ana_fifo_freq, ana_fifo_angle, ana_fifo_sample_N, ana_fifo_sample_E, 
-  ana_fifo_sample_W, raw_fifo_clk, raw_fifo_wr, raw_fifo_N, raw_fifo_E, raw_fifo_W, clk, reset, 
-  active, re, im, burst, sample, size, freq, angle)
-/* synthesis syn_black_box black_box_pad_pin="ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],reset,active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0]" */
+  ana_fifo_size, ana_fifo_freq, ana_fifo_angle, ana_fifo_doa_error, ana_fifo_sample_N, 
+  ana_fifo_sample_E, ana_fifo_sample_W, raw_fifo_clk, raw_fifo_wr, raw_fifo_N, raw_fifo_E, 
+  raw_fifo_W, clk, reset, active, re, im, burst, sample, size, freq, angle, doa_error)
+/* synthesis syn_black_box black_box_pad_pin="ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_doa_error[9:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],reset,active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0],doa_error[9:0]" */
 /* synthesis syn_force_seq_prim="ana_fifo_clk" */
 /* synthesis syn_force_seq_prim="raw_fifo_clk" */
 /* synthesis syn_force_seq_prim="clk" */;
@@ -30,6 +30,7 @@ module ps_comp_high_0_0(ana_fifo_clk, ana_fifo_wr, ana_fifo_sample,
   input [8:0]ana_fifo_size;
   input [19:0]ana_fifo_freq;
   input [15:0]ana_fifo_angle;
+  input [9:0]ana_fifo_doa_error;
   input [5:0]ana_fifo_sample_N;
   input [5:0]ana_fifo_sample_E;
   input [5:0]ana_fifo_sample_W;
@@ -48,4 +49,5 @@ module ps_comp_high_0_0(ana_fifo_clk, ana_fifo_wr, ana_fifo_sample,
   output [8:0]size;
   output [19:0]freq;
   output [15:0]angle;
+  output [9:0]doa_error;
 endmodule

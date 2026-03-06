@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Mar  1 01:06:23 2026
+// Date        : Fri Mar  6 22:11:37 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_high_0_0/ps_comp_high_0_0_sim_netlist.v
@@ -23,6 +23,7 @@ module ps_comp_high_0_0
     ana_fifo_size,
     ana_fifo_freq,
     ana_fifo_angle,
+    ana_fifo_doa_error,
     ana_fifo_sample_N,
     ana_fifo_sample_E,
     ana_fifo_sample_W,
@@ -40,13 +41,15 @@ module ps_comp_high_0_0
     sample,
     size,
     freq,
-    angle);
+    angle,
+    doa_error);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ana_fifo_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ana_fifo_clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_ana1_clk, INSERT_VIP 0" *) input ana_fifo_clk;
   input ana_fifo_wr;
   input [15:0]ana_fifo_sample;
   input [8:0]ana_fifo_size;
   input [19:0]ana_fifo_freq;
   input [15:0]ana_fifo_angle;
+  input [9:0]ana_fifo_doa_error;
   input [5:0]ana_fifo_sample_N;
   input [5:0]ana_fifo_sample_E;
   input [5:0]ana_fifo_sample_W;
@@ -65,10 +68,12 @@ module ps_comp_high_0_0
   output [8:0]size;
   output [19:0]freq;
   output [15:0]angle;
+  output [9:0]doa_error;
 
   wire active;
   wire [15:0]ana_fifo_angle;
   wire ana_fifo_clk;
+  wire [9:0]ana_fifo_doa_error;
   wire [19:0]ana_fifo_freq;
   wire [15:0]ana_fifo_sample;
   wire [5:0]ana_fifo_sample_E;
@@ -79,6 +84,7 @@ module ps_comp_high_0_0
   wire [15:0]angle;
   wire burst;
   wire clk;
+  wire [9:0]doa_error;
   wire [19:0]freq;
   wire [63:0]im;
   wire [127:0]raw_fifo_E;
@@ -95,6 +101,7 @@ module ps_comp_high_0_0
        (.active(active),
         .ana_fifo_angle(ana_fifo_angle),
         .ana_fifo_clk(ana_fifo_clk),
+        .ana_fifo_doa_error(ana_fifo_doa_error),
         .ana_fifo_freq(ana_fifo_freq),
         .ana_fifo_sample(ana_fifo_sample),
         .ana_fifo_sample_E(ana_fifo_sample_E),
@@ -105,6 +112,7 @@ module ps_comp_high_0_0
         .angle(angle),
         .burst(burst),
         .clk(clk),
+        .doa_error(doa_error),
         .freq(freq),
         .im(im),
         .raw_fifo_E(raw_fifo_E),
@@ -126,6 +134,7 @@ module ps_comp_high_0_0_comp_high
     ana_fifo_size,
     ana_fifo_freq,
     ana_fifo_angle,
+    ana_fifo_doa_error,
     ana_fifo_sample_N,
     ana_fifo_sample_E,
     ana_fifo_sample_W,
@@ -143,13 +152,15 @@ module ps_comp_high_0_0_comp_high
     sample,
     size,
     freq,
-    angle);
+    angle,
+    doa_error);
   input ana_fifo_clk;
   input ana_fifo_wr;
   input [15:0]ana_fifo_sample;
   input [8:0]ana_fifo_size;
   input [19:0]ana_fifo_freq;
   input [15:0]ana_fifo_angle;
+  input [9:0]ana_fifo_doa_error;
   input [5:0]ana_fifo_sample_N;
   input [5:0]ana_fifo_sample_E;
   input [5:0]ana_fifo_sample_W;
@@ -168,6 +179,7 @@ module ps_comp_high_0_0_comp_high
   output [8:0]size;
   output [19:0]freq;
   output [15:0]angle;
+  output [9:0]doa_error;
 
   wire [17:0]C00;
   wire [17:0]C1;
@@ -212,6 +224,7 @@ module ps_comp_high_0_0_comp_high
   wire ana_empty;
   wire [15:0]ana_fifo_angle;
   wire ana_fifo_clk;
+  wire [9:0]ana_fifo_doa_error;
   wire [19:0]ana_fifo_freq;
   wire [15:0]ana_fifo_sample;
   wire [5:0]ana_fifo_sample_E;
@@ -219,8 +232,8 @@ module ps_comp_high_0_0_comp_high
   wire [5:0]ana_fifo_sample_W;
   wire [8:0]ana_fifo_size;
   wire ana_fifo_wr;
-  wire [78:0]ana_in_data;
-  wire [76:0]ana_out_data;
+  wire [88:0]ana_in_data;
+  wire [86:0]ana_out_data;
   wire ana_trig;
   wire ana_wr;
   wire [15:0]angle;
@@ -1152,6 +1165,7 @@ module ps_comp_high_0_0_comp_high
   wire deci_active;
   wire [191:0]deci_in;
   wire [152:16]deci_out;
+  wire [9:0]doa_error;
   wire [63:0]fir_in;
   wire fir_re_active;
   wire fir_run;
@@ -1235,7 +1249,7 @@ module ps_comp_high_0_0_comp_high
   wire NLW_fifo_ana_i_full_UNCONNECTED;
   wire NLW_fifo_ana_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_ana_i_wr_rst_busy_UNCONNECTED;
-  wire [78:65]NLW_fifo_ana_i_dout_UNCONNECTED;
+  wire [88:75]NLW_fifo_ana_i_dout_UNCONNECTED;
   wire NLW_fifo_raw_i_full_UNCONNECTED;
   wire NLW_fifo_raw_i_rd_rst_busy_UNCONNECTED;
   wire NLW_fifo_raw_i_wr_rst_busy_UNCONNECTED;
@@ -7166,55 +7180,55 @@ module ps_comp_high_0_0_comp_high
   FDRE \comp_high.ana_in_data_reg[61] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[0]),
+        .D(ana_fifo_doa_error[0]),
         .Q(ana_in_data[61]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[62] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[1]),
+        .D(ana_fifo_doa_error[1]),
         .Q(ana_in_data[62]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[63] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[2]),
+        .D(ana_fifo_doa_error[2]),
         .Q(ana_in_data[63]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[64] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[3]),
+        .D(ana_fifo_doa_error[3]),
         .Q(ana_in_data[64]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[65] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[4]),
+        .D(ana_fifo_doa_error[4]),
         .Q(ana_in_data[65]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[66] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_N[5]),
+        .D(ana_fifo_doa_error[5]),
         .Q(ana_in_data[66]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[67] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[0]),
+        .D(ana_fifo_doa_error[6]),
         .Q(ana_in_data[67]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[68] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[1]),
+        .D(ana_fifo_doa_error[7]),
         .Q(ana_in_data[68]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[69] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[2]),
+        .D(ana_fifo_doa_error[8]),
         .Q(ana_in_data[69]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[6] 
@@ -7226,62 +7240,122 @@ module ps_comp_high_0_0_comp_high
   FDRE \comp_high.ana_in_data_reg[70] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[3]),
+        .D(ana_fifo_doa_error[9]),
         .Q(ana_in_data[70]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[71] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[4]),
+        .D(ana_fifo_sample_N[0]),
         .Q(ana_in_data[71]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[72] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_E[5]),
+        .D(ana_fifo_sample_N[1]),
         .Q(ana_in_data[72]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[73] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[0]),
+        .D(ana_fifo_sample_N[2]),
         .Q(ana_in_data[73]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[74] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[1]),
+        .D(ana_fifo_sample_N[3]),
         .Q(ana_in_data[74]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[75] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[2]),
+        .D(ana_fifo_sample_N[4]),
         .Q(ana_in_data[75]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[76] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[3]),
+        .D(ana_fifo_sample_N[5]),
         .Q(ana_in_data[76]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[77] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[4]),
+        .D(ana_fifo_sample_E[0]),
         .Q(ana_in_data[77]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[78] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
-        .D(ana_fifo_sample_W[5]),
+        .D(ana_fifo_sample_E[1]),
         .Q(ana_in_data[78]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[79] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_E[2]),
+        .Q(ana_in_data[79]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[7] 
        (.C(ana_fifo_clk),
         .CE(ana_fifo_wr),
         .D(ana_fifo_sample[7]),
         .Q(ana_in_data[7]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[80] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_E[3]),
+        .Q(ana_in_data[80]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[81] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_E[4]),
+        .Q(ana_in_data[81]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[82] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_E[5]),
+        .Q(ana_in_data[82]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[83] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[0]),
+        .Q(ana_in_data[83]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[84] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[1]),
+        .Q(ana_in_data[84]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[85] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[2]),
+        .Q(ana_in_data[85]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[86] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[3]),
+        .Q(ana_in_data[86]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[87] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[4]),
+        .Q(ana_in_data[87]),
+        .R(1'b0));
+  FDRE \comp_high.ana_in_data_reg[88] 
+       (.C(ana_fifo_clk),
+        .CE(ana_fifo_wr),
+        .D(ana_fifo_sample_W[5]),
+        .Q(ana_in_data[88]),
         .R(1'b0));
   FDRE \comp_high.ana_in_data_reg[8] 
        (.C(ana_fifo_clk),
@@ -8834,6 +8908,66 @@ module ps_comp_high_0_0_comp_high
         .CE(1'b1),
         .D(\comp_high.deci_run_i_1_n_0 ),
         .Q(\comp_high.deci_run_reg_n_0 ),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[0] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[61]),
+        .Q(doa_error[0]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[1] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[62]),
+        .Q(doa_error[1]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[2] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[63]),
+        .Q(doa_error[2]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[3] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[64]),
+        .Q(doa_error[3]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[4] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[65]),
+        .Q(doa_error[4]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[5] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[66]),
+        .Q(doa_error[5]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[6] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[67]),
+        .Q(doa_error[6]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[7] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[68]),
+        .Q(doa_error[7]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[8] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[69]),
+        .Q(doa_error[8]),
+        .R(1'b0));
+  FDRE \comp_high.doa_error_reg[9] 
+       (.C(clk),
+        .CE(\comp_high.burst_i_1_n_0 ),
+        .D(ana_out_data[70]),
+        .Q(doa_error[9]),
         .R(1'b0));
   FDRE \comp_high.fir_run_reg 
        (.C(clk),
@@ -17092,162 +17226,162 @@ module ps_comp_high_0_0_comp_high
   FDRE \comp_high.sample_E_reg[0] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[67]),
+        .D(ana_out_data[77]),
         .Q(sample_E[0]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_E_reg[0]" *) 
   FDRE \comp_high.sample_E_reg[0]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[67]),
+        .D(ana_out_data[77]),
         .Q(\comp_high.sample_E_reg[0]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_E_reg[0]" *) 
   FDRE \comp_high.sample_E_reg[0]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[67]),
+        .D(ana_out_data[77]),
         .Q(\comp_high.sample_E_reg[0]_rep__0_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_E_reg[1]" *) 
   FDRE \comp_high.sample_E_reg[1] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[68]),
+        .D(ana_out_data[78]),
         .Q(sample_E[1]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_E_reg[1]" *) 
   FDRE \comp_high.sample_E_reg[1]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[68]),
+        .D(ana_out_data[78]),
         .Q(\comp_high.sample_E_reg[1]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_E_reg[1]" *) 
   FDRE \comp_high.sample_E_reg[1]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[68]),
+        .D(ana_out_data[78]),
         .Q(\comp_high.sample_E_reg[1]_rep__0_n_0 ),
         .R(reset_int));
   FDRE \comp_high.sample_E_reg[2] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[69]),
+        .D(ana_out_data[79]),
         .Q(sample_E[2]),
         .R(reset_int));
   FDRE \comp_high.sample_E_reg[3] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[70]),
+        .D(ana_out_data[80]),
         .Q(sample_E[3]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[0]" *) 
   FDRE \comp_high.sample_N_reg[0] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[61]),
+        .D(ana_out_data[71]),
         .Q(sample_N[0]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[0]" *) 
   FDRE \comp_high.sample_N_reg[0]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[61]),
+        .D(ana_out_data[71]),
         .Q(\comp_high.sample_N_reg[0]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[0]" *) 
   FDRE \comp_high.sample_N_reg[0]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[61]),
+        .D(ana_out_data[71]),
         .Q(\comp_high.sample_N_reg[0]_rep__0_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[1]" *) 
   FDRE \comp_high.sample_N_reg[1] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[62]),
+        .D(ana_out_data[72]),
         .Q(sample_N[1]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[1]" *) 
   FDRE \comp_high.sample_N_reg[1]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[62]),
+        .D(ana_out_data[72]),
         .Q(\comp_high.sample_N_reg[1]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_N_reg[1]" *) 
   FDRE \comp_high.sample_N_reg[1]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[62]),
+        .D(ana_out_data[72]),
         .Q(\comp_high.sample_N_reg[1]_rep__0_n_0 ),
         .R(reset_int));
   FDRE \comp_high.sample_N_reg[2] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[63]),
+        .D(ana_out_data[73]),
         .Q(sample_N[2]),
         .R(reset_int));
   FDRE \comp_high.sample_N_reg[3] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[64]),
+        .D(ana_out_data[74]),
         .Q(sample_N[3]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[0]" *) 
   FDRE \comp_high.sample_W_reg[0] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[73]),
+        .D(ana_out_data[83]),
         .Q(sample_W[0]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[0]" *) 
   FDRE \comp_high.sample_W_reg[0]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[73]),
+        .D(ana_out_data[83]),
         .Q(\comp_high.sample_W_reg[0]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[0]" *) 
   FDRE \comp_high.sample_W_reg[0]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[73]),
+        .D(ana_out_data[83]),
         .Q(\comp_high.sample_W_reg[0]_rep__0_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[1]" *) 
   FDRE \comp_high.sample_W_reg[1] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[74]),
+        .D(ana_out_data[84]),
         .Q(sample_W[1]),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[1]" *) 
   FDRE \comp_high.sample_W_reg[1]_rep 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[74]),
+        .D(ana_out_data[84]),
         .Q(\comp_high.sample_W_reg[1]_rep_n_0 ),
         .R(reset_int));
   (* ORIG_CELL_NAME = "comp_high.sample_W_reg[1]" *) 
   FDRE \comp_high.sample_W_reg[1]_rep__0 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[74]),
+        .D(ana_out_data[84]),
         .Q(\comp_high.sample_W_reg[1]_rep__0_n_0 ),
         .R(reset_int));
   FDRE \comp_high.sample_W_reg[2] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[75]),
+        .D(ana_out_data[85]),
         .Q(sample_W[2]),
         .R(reset_int));
   FDRE \comp_high.sample_W_reg[3] 
        (.C(clk),
         .CE(ana_trig),
-        .D(ana_out_data[76]),
+        .D(ana_out_data[86]),
         .Q(sample_W[3]),
         .R(reset_int));
   FDRE \comp_high.sample_reg[0] 
@@ -17489,7 +17623,7 @@ module ps_comp_high_0_0_comp_high
   (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
   ps_comp_high_0_0_fifo_ana fifo_ana_i
        (.din(ana_in_data),
-        .dout({NLW_fifo_ana_i_dout_UNCONNECTED[78:77],ana_out_data}),
+        .dout({NLW_fifo_ana_i_dout_UNCONNECTED[88:87],ana_out_data}),
         .empty(ana_empty),
         .full(NLW_fifo_ana_i_full_UNCONNECTED),
         .rd_clk(clk),
@@ -39429,10 +39563,10 @@ module ps_comp_high_0_0_fifo_ana
   (* syn_isclock = "1" *) input wr_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
   (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [78:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [88:0]din;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [78:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [88:0]dout;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
   output wr_rst_busy;

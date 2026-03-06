@@ -49,6 +49,7 @@
         "fifo_size": [ { "direction": "in", "size_left": "8", "size_right": "0" } ],
         "fifo_freq": [ { "direction": "in", "size_left": "19", "size_right": "0" } ],
         "fifo_angle": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "fifo_doa_error": [ { "direction": "in", "size_left": "9", "size_right": "0" } ],
         "pl_clk": [ { "direction": "in" } ],
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ]

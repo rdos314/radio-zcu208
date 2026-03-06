@@ -58,6 +58,7 @@
         "size": [ { "direction": "out", "size_left": "8", "size_right": "0" } ],
         "freq": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
         "angle": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
+        "doa_error": [ { "direction": "out", "size_left": "9", "size_right": "0" } ],
         "sample_N": [ { "direction": "out", "size_left": "5", "size_right": "0" } ],
         "sample_E": [ { "direction": "out", "size_left": "5", "size_right": "0" } ],
         "sample_W": [ { "direction": "out", "size_left": "5", "size_right": "0" } ]

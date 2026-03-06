@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Mar  1 01:06:24 2026
+-- Date        : Fri Mar  6 22:14:15 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.vhdl
@@ -19257,8 +19257,8 @@ entity ps_ana_0_0_doa_angle is
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O372 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O373 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O374 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O375 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_EW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_WN_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -27919,7 +27919,7 @@ diff_angle0_carry: unisim.vcomponents.CARRY8
       CO(0) => \doa_calc.delay_E_reg[15]_i_1__0_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O372(15 downto 8),
+      O(7 downto 0) => O374(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2__0_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3__0_n_0\,
       S(5) => \doa_calc.delay_E[15]_i_4__0_n_0\,
@@ -27942,7 +27942,7 @@ diff_angle0_carry: unisim.vcomponents.CARRY8
       CO(1) => \doa_calc.delay_E_reg[7]_i_1__0_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1__0_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O372(7 downto 0),
+      O(7 downto 0) => O374(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2__0_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3__0_n_0\,
       S(5) => \doa_calc.delay_E[7]_i_4__0_n_0\,
@@ -28301,7 +28301,7 @@ diff_angle0_carry: unisim.vcomponents.CARRY8
       CO(0) => \doa_calc.delay_W_reg[15]_i_1__0_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O373(15 downto 8),
+      O(7 downto 0) => O375(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2__0_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3__0_n_0\,
       S(5) => \doa_calc.delay_W[15]_i_4__0_n_0\,
@@ -28324,7 +28324,7 @@ diff_angle0_carry: unisim.vcomponents.CARRY8
       CO(1) => \doa_calc.delay_W_reg[7]_i_1__0_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1__0_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O373(7 downto 0),
+      O(7 downto 0) => O375(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2__0_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3__0_n_0\,
       S(5) => \doa_calc.delay_W[7]_i_4__0_n_0\,
@@ -29120,8 +29120,8 @@ entity \ps_ana_0_0_doa_angle__xdcDup__1\ is
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O266 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    O267 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O268 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    O269 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_EW_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
     \doa_angle.phase_WN_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -37782,7 +37782,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O266(15 downto 8),
+      O(7 downto 0) => O268(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[15]_i_4_n_0\,
@@ -37805,7 +37805,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O266(7 downto 0),
+      O(7 downto 0) => O268(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_E[7]_i_4_n_0\,
@@ -38164,7 +38164,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
-      O(7 downto 0) => O267(15 downto 8),
+      O(7 downto 0) => O269(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[15]_i_4_n_0\,
@@ -38187,7 +38187,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
-      O(7 downto 0) => O267(7 downto 0),
+      O(7 downto 0) => O269(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_W[7]_i_4_n_0\,
@@ -62363,7 +62363,6 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ps_ana_0_0_doa_calc is
   port (
     \doa_calc.sample_dist_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    B : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.max_antenna_err_reg[0]_0\ : out STD_LOGIC;
     \doa_calc.max_antenna_err_reg[1]_0\ : out STD_LOGIC;
     \doa_calc.max_antenna_err_reg[2]_0\ : out STD_LOGIC;
@@ -62382,6 +62381,7 @@ entity ps_ana_0_0_doa_calc is
     \doa_calc.size_reg[8]_0\ : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_calc.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    \doa_calc.doa_error_reg[9]_0\ : out STD_LOGIC_VECTOR ( 9 downto 0 );
     dout : in STD_LOGIC_VECTOR ( 23 downto 0 );
     clk : in STD_LOGIC;
     \doa_pair.shadow_diff_reg[19]_i_7__3\ : in STD_LOGIC;
@@ -62413,10 +62413,12 @@ entity ps_ana_0_0_doa_calc is
     size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : in STD_LOGIC_VECTOR ( 9 downto 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \doa_calc.freq_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     A : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_EW_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_WN_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_NE_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -62468,7 +62470,6 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
     P : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component ps_ana_0_0_mult_20x20;
-  signal \^b\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal angle_EW : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_NE : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_WN : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -62500,18 +62501,7 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
   signal doa_WN_i_n_53 : STD_LOGIC;
   signal doa_angle_i_n_48 : STD_LOGIC;
   signal doa_angle_i_n_50 : STD_LOGIC;
-  signal \doa_calc.antenna_pm[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.counter[5]_i_2__0_n_0\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[0]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[1]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[2]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[3]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[4]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[5]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[6]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[7]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[8]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[9]\ : STD_LOGIC;
   signal \^doa_calc.done_reg_0\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \doa_calc.err_diff[9]_i_10__0_n_0\ : STD_LOGIC;
   signal \doa_calc.err_diff[9]_i_11__0_n_0\ : STD_LOGIC;
@@ -62635,6 +62625,7 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
   signal sample_pair : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal sample_val : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal save_angle_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal save_doa_error_1 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal save_freq_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal save_sample_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal save_sample_E_1 : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -62676,6 +62667,7 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
   attribute SOFT_HLUTNM of \ana.angle[12]_i_1\ : label is "soft_lutpair444";
   attribute SOFT_HLUTNM of \ana.angle[13]_i_1\ : label is "soft_lutpair445";
   attribute SOFT_HLUTNM of \ana.angle[14]_i_1\ : label is "soft_lutpair445";
+  attribute SOFT_HLUTNM of \ana.angle[15]_i_1\ : label is "soft_lutpair446";
   attribute SOFT_HLUTNM of \ana.angle[1]_i_1\ : label is "soft_lutpair439";
   attribute SOFT_HLUTNM of \ana.angle[2]_i_1\ : label is "soft_lutpair439";
   attribute SOFT_HLUTNM of \ana.angle[3]_i_1\ : label is "soft_lutpair440";
@@ -62685,6 +62677,15 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
   attribute SOFT_HLUTNM of \ana.angle[7]_i_1\ : label is "soft_lutpair442";
   attribute SOFT_HLUTNM of \ana.angle[8]_i_1\ : label is "soft_lutpair442";
   attribute SOFT_HLUTNM of \ana.angle[9]_i_1\ : label is "soft_lutpair443";
+  attribute SOFT_HLUTNM of \ana.doa_error[0]_i_1\ : label is "soft_lutpair446";
+  attribute SOFT_HLUTNM of \ana.doa_error[1]_i_1\ : label is "soft_lutpair447";
+  attribute SOFT_HLUTNM of \ana.doa_error[2]_i_1\ : label is "soft_lutpair447";
+  attribute SOFT_HLUTNM of \ana.doa_error[3]_i_1\ : label is "soft_lutpair448";
+  attribute SOFT_HLUTNM of \ana.doa_error[4]_i_1\ : label is "soft_lutpair448";
+  attribute SOFT_HLUTNM of \ana.doa_error[5]_i_1\ : label is "soft_lutpair449";
+  attribute SOFT_HLUTNM of \ana.doa_error[6]_i_1\ : label is "soft_lutpair449";
+  attribute SOFT_HLUTNM of \ana.doa_error[7]_i_1\ : label is "soft_lutpair450";
+  attribute SOFT_HLUTNM of \ana.doa_error[8]_i_1\ : label is "soft_lutpair450";
   attribute SOFT_HLUTNM of \ana.freq[0]_i_1\ : label is "soft_lutpair428";
   attribute SOFT_HLUTNM of \ana.freq[10]_i_1\ : label is "soft_lutpair433";
   attribute SOFT_HLUTNM of \ana.freq[11]_i_1\ : label is "soft_lutpair434";
@@ -62806,7 +62807,6 @@ architecture STRUCTURE of ps_ana_0_0_doa_calc is
   attribute downgradeipidentifiedwarnings of mul_pm_i : label is "yes";
   attribute x_core_info of mul_pm_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
 begin
-  B(19 downto 0) <= \^b\(19 downto 0);
   \doa_calc.done_reg_0\(0) <= \^doa_calc.done_reg_0\(0);
   \doa_calc.max_antenna_err_reg[0]_0\ <= \^doa_calc.max_antenna_err_reg[0]_0\;
   \doa_calc.max_antenna_err_reg[1]_0\ <= \^doa_calc.max_antenna_err_reg[1]_0\;
@@ -62978,6 +62978,106 @@ begin
       I1 => angle(9),
       I2 => \^doa_calc.done_reg_0\(0),
       O => \doa_calc.angle_reg[15]_0\(9)
+    );
+\ana.doa_error[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(0),
+      I1 => doa_error(0),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(0)
+    );
+\ana.doa_error[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(1),
+      I1 => doa_error(1),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(1)
+    );
+\ana.doa_error[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(2),
+      I1 => doa_error(2),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(2)
+    );
+\ana.doa_error[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(3),
+      I1 => doa_error(3),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(3)
+    );
+\ana.doa_error[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(4),
+      I1 => doa_error(4),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(4)
+    );
+\ana.doa_error[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(5),
+      I1 => doa_error(5),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(5)
+    );
+\ana.doa_error[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(6),
+      I1 => doa_error(6),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(6)
+    );
+\ana.doa_error[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(7),
+      I1 => doa_error(7),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(7)
+    );
+\ana.doa_error[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(8),
+      I1 => doa_error(8),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(8)
+    );
+\ana.doa_error[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => save_doa_error_1(9),
+      I1 => doa_error(9),
+      I2 => \^doa_calc.done_reg_0\(0),
+      O => \doa_calc.doa_error_reg[9]_0\(9)
     );
 \ana.freq[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -63746,8 +63846,8 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
      port map (
       D(0) => doa_WN_i_n_51,
       E(0) => sign,
-      O372(15 downto 0) => delay_E01_out(15 downto 0),
-      O373(15 downto 0) => delay_W00_out(15 downto 0),
+      O374(15 downto 0) => delay_E01_out(15 downto 0),
+      O375(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
       Q(15 downto 0) => delay_NE(15 downto 0),
       clk => clk,
@@ -64045,179 +64145,6 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       CE => err_sqrt_start,
       D => angle_doa(9),
       Q => angle_val(9),
-      R => '0'
-    );
-\doa_calc.antenna_pm[0]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000001000000"
-    )
-        port map (
-      I0 => \doa_calc.sample_dist_reg[19]_1\,
-      I1 => dout(1),
-      I2 => dout(2),
-      I3 => dout(0),
-      I4 => dout(3),
-      I5 => empty,
-      O => \doa_calc.antenna_pm[0]_i_1_n_0\
-    );
-\doa_calc.antenna_pm_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(4),
-      Q => \^b\(0),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(14),
-      Q => \^b\(10),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(15),
-      Q => \^b\(11),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(16),
-      Q => \^b\(12),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(17),
-      Q => \^b\(13),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(18),
-      Q => \^b\(14),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(19),
-      Q => \^b\(15),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(20),
-      Q => \^b\(16),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(21),
-      Q => \^b\(17),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(22),
-      Q => \^b\(18),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(23),
-      Q => \^b\(19),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(5),
-      Q => \^b\(1),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(6),
-      Q => \^b\(2),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(7),
-      Q => \^b\(3),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(8),
-      Q => \^b\(4),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(9),
-      Q => \^b\(5),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(10),
-      Q => \^b\(6),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(11),
-      Q => \^b\(7),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(12),
-      Q => \^b\(8),
-      R => '0'
-    );
-\doa_calc.antenna_pm_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
-      D => dout(13),
-      Q => \^b\(9),
       R => '0'
     );
 \doa_calc.counter[1]_i_1__0\: unisim.vcomponents.LUT2
@@ -65157,7 +65084,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(18),
-      Q => \doa_calc.doa_error_reg_n_0_[0]\,
+      Q => save_doa_error_1(0),
       R => '0'
     );
 \doa_calc.doa_error_reg[1]\: unisim.vcomponents.FDRE
@@ -65165,7 +65092,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(19),
-      Q => \doa_calc.doa_error_reg_n_0_[1]\,
+      Q => save_doa_error_1(1),
       R => '0'
     );
 \doa_calc.doa_error_reg[2]\: unisim.vcomponents.FDRE
@@ -65173,7 +65100,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(20),
-      Q => \doa_calc.doa_error_reg_n_0_[2]\,
+      Q => save_doa_error_1(2),
       R => '0'
     );
 \doa_calc.doa_error_reg[3]\: unisim.vcomponents.FDRE
@@ -65181,7 +65108,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(21),
-      Q => \doa_calc.doa_error_reg_n_0_[3]\,
+      Q => save_doa_error_1(3),
       R => '0'
     );
 \doa_calc.doa_error_reg[4]\: unisim.vcomponents.FDRE
@@ -65189,7 +65116,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(22),
-      Q => \doa_calc.doa_error_reg_n_0_[4]\,
+      Q => save_doa_error_1(4),
       R => '0'
     );
 \doa_calc.doa_error_reg[5]\: unisim.vcomponents.FDRE
@@ -65197,7 +65124,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(23),
-      Q => \doa_calc.doa_error_reg_n_0_[5]\,
+      Q => save_doa_error_1(5),
       R => '0'
     );
 \doa_calc.doa_error_reg[6]\: unisim.vcomponents.FDRE
@@ -65205,7 +65132,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(24),
-      Q => \doa_calc.doa_error_reg_n_0_[6]\,
+      Q => save_doa_error_1(6),
       R => '0'
     );
 \doa_calc.doa_error_reg[7]\: unisim.vcomponents.FDRE
@@ -65213,7 +65140,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(25),
-      Q => \doa_calc.doa_error_reg_n_0_[7]\,
+      Q => save_doa_error_1(7),
       R => '0'
     );
 \doa_calc.doa_error_reg[8]\: unisim.vcomponents.FDRE
@@ -65221,7 +65148,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(26),
-      Q => \doa_calc.doa_error_reg_n_0_[8]\,
+      Q => save_doa_error_1(8),
       R => '0'
     );
 \doa_calc.doa_error_reg[9]\: unisim.vcomponents.FDRE
@@ -65229,7 +65156,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       C => clk,
       CE => p_2_in(4),
       D => err_pm(27),
-      Q => \doa_calc.doa_error_reg_n_0_[9]\,
+      Q => save_doa_error_1(9),
       R => '0'
     );
 \doa_calc.done_reg\: unisim.vcomponents.FDRE
@@ -65253,7 +65180,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[2]\,
+      I0 => save_doa_error_1(2),
       I1 => \^doa_calc.max_antenna_err_reg[2]_0\,
       O => \doa_calc.err_diff[9]_i_10__0_n_0\
     );
@@ -65262,7 +65189,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[1]\,
+      I0 => save_doa_error_1(1),
       I1 => \^doa_calc.max_antenna_err_reg[1]_0\,
       O => \doa_calc.err_diff[9]_i_11__0_n_0\
     );
@@ -65271,7 +65198,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[0]\,
+      I0 => save_doa_error_1(0),
       I1 => \^doa_calc.max_antenna_err_reg[0]_0\,
       O => \doa_calc.err_diff[9]_i_12__0_n_0\
     );
@@ -65280,7 +65207,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[9]\,
+      I0 => save_doa_error_1(9),
       I1 => \^doa_calc.max_antenna_err_reg[9]_0\,
       O => \doa_calc.err_diff[9]_i_3__0_n_0\
     );
@@ -65289,7 +65216,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[8]\,
+      I0 => save_doa_error_1(8),
       I1 => \^doa_calc.max_antenna_err_reg[8]_0\,
       O => \doa_calc.err_diff[9]_i_4__0_n_0\
     );
@@ -65298,7 +65225,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[7]\,
+      I0 => save_doa_error_1(7),
       I1 => \^doa_calc.max_antenna_err_reg[7]_0\,
       O => \doa_calc.err_diff[9]_i_5__0_n_0\
     );
@@ -65307,7 +65234,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[6]\,
+      I0 => save_doa_error_1(6),
       I1 => \^doa_calc.max_antenna_err_reg[6]_0\,
       O => \doa_calc.err_diff[9]_i_6__0_n_0\
     );
@@ -65316,7 +65243,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[5]\,
+      I0 => save_doa_error_1(5),
       I1 => \^doa_calc.max_antenna_err_reg[5]_0\,
       O => \doa_calc.err_diff[9]_i_7__0_n_0\
     );
@@ -65325,7 +65252,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[4]\,
+      I0 => save_doa_error_1(4),
       I1 => \^doa_calc.max_antenna_err_reg[4]_0\,
       O => \doa_calc.err_diff[9]_i_8__0_n_0\
     );
@@ -65334,7 +65261,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[3]\,
+      I0 => save_doa_error_1(3),
       I1 => \^doa_calc.max_antenna_err_reg[3]_0\,
       O => \doa_calc.err_diff[9]_i_9__0_n_0\
     );
@@ -65353,7 +65280,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       CO(7 downto 1) => \NLW_doa_calc.err_diff_reg[9]_i_1__0_CO_UNCONNECTED\(7 downto 1),
       CO(0) => \doa_calc.err_diff_reg[9]_i_1__0_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => \doa_calc.doa_error_reg_n_0_[8]\,
+      DI(0) => save_doa_error_1(8),
       O(7 downto 2) => \NLW_doa_calc.err_diff_reg[9]_i_1__0_O_UNCONNECTED\(7 downto 2),
       O(1) => err_diff0(9),
       O(0) => \NLW_doa_calc.err_diff_reg[9]_i_1__0_O_UNCONNECTED\(0),
@@ -65373,14 +65300,7 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       CO(2) => \doa_calc.err_diff_reg[9]_i_2__0_n_5\,
       CO(1) => \doa_calc.err_diff_reg[9]_i_2__0_n_6\,
       CO(0) => \doa_calc.err_diff_reg[9]_i_2__0_n_7\,
-      DI(7) => \doa_calc.doa_error_reg_n_0_[7]\,
-      DI(6) => \doa_calc.doa_error_reg_n_0_[6]\,
-      DI(5) => \doa_calc.doa_error_reg_n_0_[5]\,
-      DI(4) => \doa_calc.doa_error_reg_n_0_[4]\,
-      DI(3) => \doa_calc.doa_error_reg_n_0_[3]\,
-      DI(2) => \doa_calc.doa_error_reg_n_0_[2]\,
-      DI(1) => \doa_calc.doa_error_reg_n_0_[1]\,
-      DI(0) => \doa_calc.doa_error_reg_n_0_[0]\,
+      DI(7 downto 0) => save_doa_error_1(7 downto 0),
       O(7 downto 0) => \NLW_doa_calc.err_diff_reg[9]_i_2__0_O_UNCONNECTED\(7 downto 0),
       S(7) => \doa_calc.err_diff[9]_i_5__0_n_0\,
       S(6) => \doa_calc.err_diff[9]_i_6__0_n_0\,
@@ -69202,7 +69122,7 @@ mul_delay_freq_i: component ps_ana_0_0_mult_20x20
 mul_pm_i: component ps_ana_0_0_mult_20x20
      port map (
       A(19 downto 0) => err_sqrt_data(19 downto 0),
-      B(19 downto 0) => \^b\(19 downto 0),
+      B(19 downto 0) => B(19 downto 0),
       CLK => clk,
       P(39 downto 28) => NLW_mul_pm_i_P_UNCONNECTED(39 downto 28),
       P(27 downto 18) => err_pm(27 downto 18),
@@ -69246,7 +69166,9 @@ entity \ps_ana_0_0_doa_calc__xdcDup__1\ is
     \doa_calc.shadow_limit_reg[18]_0\ : out STD_LOGIC;
     s_axis_dividend_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     A : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    B : out STD_LOGIC_VECTOR ( 19 downto 0 );
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 );
     \bbstub_dout[5]\ : out STD_LOGIC;
     S : out STD_LOGIC_VECTOR ( 0 to 0 );
     \doa_calc.shadow_limit_reg[19]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -69276,7 +69198,6 @@ entity \ps_ana_0_0_doa_calc__xdcDup__1\ is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \doa_calc.freq_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     mul_delay_NE_i_0 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    B : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_EW_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_WN_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_calc.phase_NE_div_reg[19]_0\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -69326,6 +69247,7 @@ architecture STRUCTURE of \ps_ana_0_0_doa_calc__xdcDup__1\ is
   );
   end component ps_ana_0_0_mult_20x20;
   signal \^a\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \^b\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal angle_EW : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_NE : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal angle_WN : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -69358,18 +69280,9 @@ architecture STRUCTURE of \ps_ana_0_0_doa_calc__xdcDup__1\ is
   signal doa_WN_i_n_54 : STD_LOGIC;
   signal doa_angle_i_n_48 : STD_LOGIC;
   signal doa_angle_i_n_50 : STD_LOGIC;
+  signal \doa_calc.antenna_pm[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_calc.counter[4]_i_2_n_0\ : STD_LOGIC;
   signal \doa_calc.counter[5]_i_1_n_0\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[0]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[1]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[2]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[3]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[4]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[5]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[6]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[7]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[8]\ : STD_LOGIC;
-  signal \doa_calc.doa_error_reg_n_0_[9]\ : STD_LOGIC;
   signal \doa_calc.err_diff[9]_i_10_n_0\ : STD_LOGIC;
   signal \doa_calc.err_diff[9]_i_11_n_0\ : STD_LOGIC;
   signal \doa_calc.err_diff[9]_i_12_n_0\ : STD_LOGIC;
@@ -69459,6 +69372,7 @@ architecture STRUCTURE of \ps_ana_0_0_doa_calc__xdcDup__1\ is
   signal \^doa_calc.shadow_limit_reg[8]_0\ : STD_LOGIC;
   signal \^doa_calc.shadow_limit_reg[9]_0\ : STD_LOGIC;
   signal \doa_calc.shadow_limit_reg_n_0_[19]\ : STD_LOGIC;
+  signal \^doa_error\ : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal done_EW : STD_LOGIC;
   signal done_NE : STD_LOGIC;
   signal done_WN : STD_LOGIC;
@@ -69591,6 +69505,7 @@ architecture STRUCTURE of \ps_ana_0_0_doa_calc__xdcDup__1\ is
   attribute x_core_info of mul_pm_i : label is "mult_gen_v12_0_23,Vivado 2025.1";
 begin
   A(19 downto 0) <= \^a\(19 downto 0);
+  B(19 downto 0) <= \^b\(19 downto 0);
   \bbstub_dout[5]\ <= \^bbstub_dout[5]\;
   \doa_calc.shadow_limit_reg[0]_0\ <= \^doa_calc.shadow_limit_reg[0]_0\;
   \doa_calc.shadow_limit_reg[10]_0\ <= \^doa_calc.shadow_limit_reg[10]_0\;
@@ -69611,6 +69526,7 @@ begin
   \doa_calc.shadow_limit_reg[7]_0\ <= \^doa_calc.shadow_limit_reg[7]_0\;
   \doa_calc.shadow_limit_reg[8]_0\ <= \^doa_calc.shadow_limit_reg[8]_0\;
   \doa_calc.shadow_limit_reg[9]_0\ <= \^doa_calc.shadow_limit_reg[9]_0\;
+  doa_error(9 downto 0) <= \^doa_error\(9 downto 0);
   s_axis_dividend_tdata(31 downto 0) <= \^s_axis_dividend_tdata\(31 downto 0);
 \ana.comp_wr_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -69761,8 +69677,8 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
      port map (
       D(0) => doa_WN_i_n_52,
       E(0) => sign,
-      O266(15 downto 0) => delay_E01_out(15 downto 0),
-      O267(15 downto 0) => delay_W00_out(15 downto 0),
+      O268(15 downto 0) => delay_E01_out(15 downto 0),
+      O269(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
       Q(15 downto 0) => delay_NE(15 downto 0),
       clk => clk,
@@ -70060,6 +69976,179 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       CE => err_sqrt_start,
       D => angle_doa(9),
       Q => angle_val(9),
+      R => '0'
+    );
+\doa_calc.antenna_pm[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000001000000"
+    )
+        port map (
+      I0 => \^bbstub_dout[5]\,
+      I1 => dout(1),
+      I2 => dout(2),
+      I3 => dout(0),
+      I4 => dout(3),
+      I5 => empty,
+      O => \doa_calc.antenna_pm[0]_i_1_n_0\
+    );
+\doa_calc.antenna_pm_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(8),
+      Q => \^b\(0),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(18),
+      Q => \^b\(10),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(19),
+      Q => \^b\(11),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(20),
+      Q => \^b\(12),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(21),
+      Q => \^b\(13),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(22),
+      Q => \^b\(14),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(23),
+      Q => \^b\(15),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(24),
+      Q => \^b\(16),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(25),
+      Q => \^b\(17),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(26),
+      Q => \^b\(18),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(27),
+      Q => \^b\(19),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(9),
+      Q => \^b\(1),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(10),
+      Q => \^b\(2),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(11),
+      Q => \^b\(3),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(12),
+      Q => \^b\(4),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(13),
+      Q => \^b\(5),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(14),
+      Q => \^b\(6),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(15),
+      Q => \^b\(7),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(16),
+      Q => \^b\(8),
+      R => '0'
+    );
+\doa_calc.antenna_pm_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \doa_calc.antenna_pm[0]_i_1_n_0\,
+      D => dout(17),
+      Q => \^b\(9),
       R => '0'
     );
 \doa_calc.counter[1]_i_1\: unisim.vcomponents.LUT2
@@ -71009,7 +71098,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(18),
-      Q => \doa_calc.doa_error_reg_n_0_[0]\,
+      Q => \^doa_error\(0),
       R => '0'
     );
 \doa_calc.doa_error_reg[1]\: unisim.vcomponents.FDRE
@@ -71017,7 +71106,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(19),
-      Q => \doa_calc.doa_error_reg_n_0_[1]\,
+      Q => \^doa_error\(1),
       R => '0'
     );
 \doa_calc.doa_error_reg[2]\: unisim.vcomponents.FDRE
@@ -71025,7 +71114,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(20),
-      Q => \doa_calc.doa_error_reg_n_0_[2]\,
+      Q => \^doa_error\(2),
       R => '0'
     );
 \doa_calc.doa_error_reg[3]\: unisim.vcomponents.FDRE
@@ -71033,7 +71122,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(21),
-      Q => \doa_calc.doa_error_reg_n_0_[3]\,
+      Q => \^doa_error\(3),
       R => '0'
     );
 \doa_calc.doa_error_reg[4]\: unisim.vcomponents.FDRE
@@ -71041,7 +71130,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(22),
-      Q => \doa_calc.doa_error_reg_n_0_[4]\,
+      Q => \^doa_error\(4),
       R => '0'
     );
 \doa_calc.doa_error_reg[5]\: unisim.vcomponents.FDRE
@@ -71049,7 +71138,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(23),
-      Q => \doa_calc.doa_error_reg_n_0_[5]\,
+      Q => \^doa_error\(5),
       R => '0'
     );
 \doa_calc.doa_error_reg[6]\: unisim.vcomponents.FDRE
@@ -71057,7 +71146,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(24),
-      Q => \doa_calc.doa_error_reg_n_0_[6]\,
+      Q => \^doa_error\(6),
       R => '0'
     );
 \doa_calc.doa_error_reg[7]\: unisim.vcomponents.FDRE
@@ -71065,7 +71154,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(25),
-      Q => \doa_calc.doa_error_reg_n_0_[7]\,
+      Q => \^doa_error\(7),
       R => '0'
     );
 \doa_calc.doa_error_reg[8]\: unisim.vcomponents.FDRE
@@ -71073,7 +71162,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(26),
-      Q => \doa_calc.doa_error_reg_n_0_[8]\,
+      Q => \^doa_error\(8),
       R => '0'
     );
 \doa_calc.doa_error_reg[9]\: unisim.vcomponents.FDRE
@@ -71081,7 +71170,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       C => clk,
       CE => p_2_in(4),
       D => err_pm(27),
-      Q => \doa_calc.doa_error_reg_n_0_[9]\,
+      Q => \^doa_error\(9),
       R => '0'
     );
 \doa_calc.done_reg\: unisim.vcomponents.FDRE
@@ -71105,7 +71194,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[2]\,
+      I0 => \^doa_error\(2),
       I1 => \doa_calc.err_diff_reg[9]_i_2_2\,
       O => \doa_calc.err_diff[9]_i_10_n_0\
     );
@@ -71114,7 +71203,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[1]\,
+      I0 => \^doa_error\(1),
       I1 => \doa_calc.err_diff_reg[9]_i_2_1\,
       O => \doa_calc.err_diff[9]_i_11_n_0\
     );
@@ -71123,7 +71212,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[0]\,
+      I0 => \^doa_error\(0),
       I1 => \doa_calc.err_diff_reg[9]_i_2_0\,
       O => \doa_calc.err_diff[9]_i_12_n_0\
     );
@@ -71132,7 +71221,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[9]\,
+      I0 => \^doa_error\(9),
       I1 => \doa_calc.err_diff_reg[9]_1\,
       O => \doa_calc.err_diff[9]_i_3_n_0\
     );
@@ -71141,7 +71230,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[8]\,
+      I0 => \^doa_error\(8),
       I1 => \doa_calc.err_diff_reg[9]_0\,
       O => \doa_calc.err_diff[9]_i_4_n_0\
     );
@@ -71150,7 +71239,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[7]\,
+      I0 => \^doa_error\(7),
       I1 => \doa_calc.err_diff_reg[9]_i_2_7\,
       O => \doa_calc.err_diff[9]_i_5_n_0\
     );
@@ -71159,7 +71248,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[6]\,
+      I0 => \^doa_error\(6),
       I1 => \doa_calc.err_diff_reg[9]_i_2_6\,
       O => \doa_calc.err_diff[9]_i_6_n_0\
     );
@@ -71168,7 +71257,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[5]\,
+      I0 => \^doa_error\(5),
       I1 => \doa_calc.err_diff_reg[9]_i_2_5\,
       O => \doa_calc.err_diff[9]_i_7_n_0\
     );
@@ -71177,7 +71266,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[4]\,
+      I0 => \^doa_error\(4),
       I1 => \doa_calc.err_diff_reg[9]_i_2_4\,
       O => \doa_calc.err_diff[9]_i_8_n_0\
     );
@@ -71186,7 +71275,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       INIT => X"9"
     )
         port map (
-      I0 => \doa_calc.doa_error_reg_n_0_[3]\,
+      I0 => \^doa_error\(3),
       I1 => \doa_calc.err_diff_reg[9]_i_2_3\,
       O => \doa_calc.err_diff[9]_i_9_n_0\
     );
@@ -71205,7 +71294,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       CO(7 downto 1) => \NLW_doa_calc.err_diff_reg[9]_i_1_CO_UNCONNECTED\(7 downto 1),
       CO(0) => \doa_calc.err_diff_reg[9]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
-      DI(0) => \doa_calc.doa_error_reg_n_0_[8]\,
+      DI(0) => \^doa_error\(8),
       O(7 downto 2) => \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\(7 downto 2),
       O(1) => err_diff0(9),
       O(0) => \NLW_doa_calc.err_diff_reg[9]_i_1_O_UNCONNECTED\(0),
@@ -71225,14 +71314,7 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       CO(2) => \doa_calc.err_diff_reg[9]_i_2_n_5\,
       CO(1) => \doa_calc.err_diff_reg[9]_i_2_n_6\,
       CO(0) => \doa_calc.err_diff_reg[9]_i_2_n_7\,
-      DI(7) => \doa_calc.doa_error_reg_n_0_[7]\,
-      DI(6) => \doa_calc.doa_error_reg_n_0_[6]\,
-      DI(5) => \doa_calc.doa_error_reg_n_0_[5]\,
-      DI(4) => \doa_calc.doa_error_reg_n_0_[4]\,
-      DI(3) => \doa_calc.doa_error_reg_n_0_[3]\,
-      DI(2) => \doa_calc.doa_error_reg_n_0_[2]\,
-      DI(1) => \doa_calc.doa_error_reg_n_0_[1]\,
-      DI(0) => \doa_calc.doa_error_reg_n_0_[0]\,
+      DI(7 downto 0) => \^doa_error\(7 downto 0),
       O(7 downto 0) => \NLW_doa_calc.err_diff_reg[9]_i_2_O_UNCONNECTED\(7 downto 0),
       S(7) => \doa_calc.err_diff[9]_i_5_n_0\,
       S(6) => \doa_calc.err_diff[9]_i_6_n_0\,
@@ -75414,7 +75496,7 @@ mul_delay_freq_i: component ps_ana_0_0_mult_20x20
 mul_pm_i: component ps_ana_0_0_mult_20x20
      port map (
       A(19 downto 0) => err_sqrt_data(19 downto 0),
-      B(19 downto 0) => B(19 downto 0),
+      B(19 downto 0) => \^b\(19 downto 0),
       CLK => clk,
       P(39 downto 28) => NLW_mul_pm_i_P_UNCONNECTED(39 downto 28),
       P(27 downto 18) => err_pm(27 downto 18),
@@ -75459,6 +75541,7 @@ entity ps_ana_0_0_ana is
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 );
     sample_N : out STD_LOGIC_VECTOR ( 5 downto 0 );
     sample_E : out STD_LOGIC_VECTOR ( 5 downto 0 );
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
@@ -75576,6 +75659,10 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal doa_calc_0_n_0 : STD_LOGIC;
   signal doa_calc_0_n_1 : STD_LOGIC;
   signal doa_calc_0_n_10 : STD_LOGIC;
+  signal doa_calc_0_n_102 : STD_LOGIC;
+  signal doa_calc_0_n_103 : STD_LOGIC;
+  signal doa_calc_0_n_104 : STD_LOGIC;
+  signal doa_calc_0_n_105 : STD_LOGIC;
   signal doa_calc_0_n_11 : STD_LOGIC;
   signal doa_calc_0_n_12 : STD_LOGIC;
   signal doa_calc_0_n_13 : STD_LOGIC;
@@ -75615,8 +75702,24 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal doa_calc_0_n_73 : STD_LOGIC;
   signal doa_calc_0_n_74 : STD_LOGIC;
   signal doa_calc_0_n_75 : STD_LOGIC;
+  signal doa_calc_0_n_76 : STD_LOGIC;
+  signal doa_calc_0_n_77 : STD_LOGIC;
+  signal doa_calc_0_n_78 : STD_LOGIC;
+  signal doa_calc_0_n_79 : STD_LOGIC;
   signal doa_calc_0_n_8 : STD_LOGIC;
+  signal doa_calc_0_n_80 : STD_LOGIC;
+  signal doa_calc_0_n_81 : STD_LOGIC;
+  signal doa_calc_0_n_82 : STD_LOGIC;
+  signal doa_calc_0_n_83 : STD_LOGIC;
+  signal doa_calc_0_n_84 : STD_LOGIC;
+  signal doa_calc_0_n_85 : STD_LOGIC;
+  signal doa_calc_0_n_86 : STD_LOGIC;
+  signal doa_calc_0_n_87 : STD_LOGIC;
+  signal doa_calc_0_n_88 : STD_LOGIC;
+  signal doa_calc_0_n_89 : STD_LOGIC;
   signal doa_calc_0_n_9 : STD_LOGIC;
+  signal doa_calc_0_n_90 : STD_LOGIC;
+  signal doa_calc_0_n_91 : STD_LOGIC;
   signal doa_calc_1_n_0 : STD_LOGIC;
   signal doa_calc_1_n_1 : STD_LOGIC;
   signal doa_calc_1_n_10 : STD_LOGIC;
@@ -75642,16 +75745,6 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal doa_calc_1_n_118 : STD_LOGIC;
   signal doa_calc_1_n_119 : STD_LOGIC;
   signal doa_calc_1_n_12 : STD_LOGIC;
-  signal doa_calc_1_n_120 : STD_LOGIC;
-  signal doa_calc_1_n_121 : STD_LOGIC;
-  signal doa_calc_1_n_122 : STD_LOGIC;
-  signal doa_calc_1_n_123 : STD_LOGIC;
-  signal doa_calc_1_n_124 : STD_LOGIC;
-  signal doa_calc_1_n_125 : STD_LOGIC;
-  signal doa_calc_1_n_126 : STD_LOGIC;
-  signal doa_calc_1_n_127 : STD_LOGIC;
-  signal doa_calc_1_n_128 : STD_LOGIC;
-  signal doa_calc_1_n_129 : STD_LOGIC;
   signal doa_calc_1_n_13 : STD_LOGIC;
   signal doa_calc_1_n_14 : STD_LOGIC;
   signal doa_calc_1_n_15 : STD_LOGIC;
@@ -75677,7 +75770,6 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal doa_calc_1_n_33 : STD_LOGIC;
   signal doa_calc_1_n_34 : STD_LOGIC;
   signal doa_calc_1_n_35 : STD_LOGIC;
-  signal doa_calc_1_n_36 : STD_LOGIC;
   signal doa_calc_1_n_37 : STD_LOGIC;
   signal doa_calc_1_n_38 : STD_LOGIC;
   signal doa_calc_1_n_39 : STD_LOGIC;
@@ -75699,6 +75791,7 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal doa_calc_1_n_53 : STD_LOGIC;
   signal doa_calc_1_n_54 : STD_LOGIC;
   signal doa_calc_1_n_55 : STD_LOGIC;
+  signal doa_calc_1_n_56 : STD_LOGIC;
   signal doa_calc_1_n_57 : STD_LOGIC;
   signal doa_calc_1_n_58 : STD_LOGIC;
   signal doa_calc_1_n_59 : STD_LOGIC;
@@ -75756,6 +75849,7 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal sample_1 : STD_LOGIC;
   signal save : STD_LOGIC_VECTOR ( 1 to 1 );
   signal save_angle_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal save_doa_error_0 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal save_freq_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal save_sample_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal save_sample_E_0 : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -75777,10 +75871,10 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal NLW_fifo_doa_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \ana.ana_delay[1]_i_1\ : label is "soft_lutpair447";
-  attribute SOFT_HLUTNM of \ana.ana_delay[2]_i_1\ : label is "soft_lutpair447";
-  attribute SOFT_HLUTNM of \ana.ana_delay[3]_i_1\ : label is "soft_lutpair446";
-  attribute SOFT_HLUTNM of \ana.ana_delay[4]_i_2\ : label is "soft_lutpair446";
+  attribute SOFT_HLUTNM of \ana.ana_delay[1]_i_1\ : label is "soft_lutpair452";
+  attribute SOFT_HLUTNM of \ana.ana_delay[2]_i_1\ : label is "soft_lutpair452";
+  attribute SOFT_HLUTNM of \ana.ana_delay[3]_i_1\ : label is "soft_lutpair451";
+  attribute SOFT_HLUTNM of \ana.ana_delay[4]_i_2\ : label is "soft_lutpair451";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_config_i : label is "fifo_config,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -78246,128 +78340,128 @@ begin
 \ana.angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_129,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_109,
       Q => angle(0),
       R => '0'
     );
 \ana.angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_119,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_99,
       Q => angle(10),
       R => '0'
     );
 \ana.angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_118,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_98,
       Q => angle(11),
       R => '0'
     );
 \ana.angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_117,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_97,
       Q => angle(12),
       R => '0'
     );
 \ana.angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_116,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_96,
       Q => angle(13),
       R => '0'
     );
 \ana.angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_115,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_95,
       Q => angle(14),
       R => '0'
     );
 \ana.angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_114,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_94,
       Q => angle(15),
       R => '0'
     );
 \ana.angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_128,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_108,
       Q => angle(1),
       R => '0'
     );
 \ana.angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_127,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_107,
       Q => angle(2),
       R => '0'
     );
 \ana.angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_126,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_106,
       Q => angle(3),
       R => '0'
     );
 \ana.angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_125,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_105,
       Q => angle(4),
       R => '0'
     );
 \ana.angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_124,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_104,
       Q => angle(5),
       R => '0'
     );
 \ana.angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_123,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_103,
       Q => angle(6),
       R => '0'
     );
 \ana.angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_122,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_102,
       Q => angle(7),
       R => '0'
     );
 \ana.angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_121,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_101,
       Q => angle(8),
       R => '0'
     );
 \ana.angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_120,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_100,
       Q => angle(9),
       R => '0'
     );
@@ -78407,7 +78501,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => doa_calc_0_n_71,
+      D => doa_calc_0_n_91,
       Q => comp_wr,
       R => '0'
     );
@@ -78417,6 +78511,86 @@ begin
       CE => '1',
       D => det_sig_i_n_107,
       Q => \ana.curr_doa_reg_n_0\,
+      R => '0'
+    );
+\ana.doa_error_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_119,
+      Q => doa_error(0),
+      R => '0'
+    );
+\ana.doa_error_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_118,
+      Q => doa_error(1),
+      R => '0'
+    );
+\ana.doa_error_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_117,
+      Q => doa_error(2),
+      R => '0'
+    );
+\ana.doa_error_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_116,
+      Q => doa_error(3),
+      R => '0'
+    );
+\ana.doa_error_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_115,
+      Q => doa_error(4),
+      R => '0'
+    );
+\ana.doa_error_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_114,
+      Q => doa_error(5),
+      R => '0'
+    );
+\ana.doa_error_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_113,
+      Q => doa_error(6),
+      R => '0'
+    );
+\ana.doa_error_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_112,
+      Q => doa_error(7),
+      R => '0'
+    );
+\ana.doa_error_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_111,
+      Q => doa_error(8),
+      R => '0'
+    );
+\ana.doa_error_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_110,
+      Q => doa_error(9),
       R => '0'
     );
 \ana.freq_0_reg[0]\: unisim.vcomponents.FDRE
@@ -78742,160 +78916,160 @@ begin
 \ana.freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_113,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_93,
       Q => freq(0),
       R => '0'
     );
 \ana.freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_103,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_83,
       Q => freq(10),
       R => '0'
     );
 \ana.freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_102,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_82,
       Q => freq(11),
       R => '0'
     );
 \ana.freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_101,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_81,
       Q => freq(12),
       R => '0'
     );
 \ana.freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_100,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_80,
       Q => freq(13),
       R => '0'
     );
 \ana.freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_99,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_79,
       Q => freq(14),
       R => '0'
     );
 \ana.freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_98,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_78,
       Q => freq(15),
       R => '0'
     );
 \ana.freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_97,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_77,
       Q => freq(16),
       R => '0'
     );
 \ana.freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_96,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_76,
       Q => freq(17),
       R => '0'
     );
 \ana.freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_95,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_75,
       Q => freq(18),
       R => '0'
     );
 \ana.freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_94,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_74,
       Q => freq(19),
       R => '0'
     );
 \ana.freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_112,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_92,
       Q => freq(1),
       R => '0'
     );
 \ana.freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_111,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_91,
       Q => freq(2),
       R => '0'
     );
 \ana.freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_110,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_90,
       Q => freq(3),
       R => '0'
     );
 \ana.freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_109,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_89,
       Q => freq(4),
       R => '0'
     );
 \ana.freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_108,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_88,
       Q => freq(5),
       R => '0'
     );
 \ana.freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_107,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_87,
       Q => freq(6),
       R => '0'
     );
 \ana.freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_106,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_86,
       Q => freq(7),
       R => '0'
     );
 \ana.freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_105,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_85,
       Q => freq(8),
       R => '0'
     );
 \ana.freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_104,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_84,
       Q => freq(9),
       R => '0'
     );
@@ -80118,272 +80292,272 @@ begin
 \ana.sample_E_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_62,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_42,
       Q => sample_E(0),
       R => '0'
     );
 \ana.sample_E_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_61,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_41,
       Q => sample_E(1),
       R => '0'
     );
 \ana.sample_E_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_60,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_40,
       Q => sample_E(2),
       R => '0'
     );
 \ana.sample_E_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_59,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_39,
       Q => sample_E(3),
       R => '0'
     );
 \ana.sample_E_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_58,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_38,
       Q => sample_E(4),
       R => '0'
     );
 \ana.sample_E_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_57,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_37,
       Q => sample_E(5),
       R => '0'
     );
 \ana.sample_N_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_55,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_35,
       Q => sample_N(0),
       R => '0'
     );
 \ana.sample_N_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_54,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_34,
       Q => sample_N(1),
       R => '0'
     );
 \ana.sample_N_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_53,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_33,
       Q => sample_N(2),
       R => '0'
     );
 \ana.sample_N_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_52,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_32,
       Q => sample_N(3),
       R => '0'
     );
 \ana.sample_N_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_51,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_31,
       Q => sample_N(4),
       R => '0'
     );
 \ana.sample_N_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_50,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_30,
       Q => sample_N(5),
       R => '0'
     );
 \ana.sample_W_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_68,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_48,
       Q => sample_W(0),
       R => '0'
     );
 \ana.sample_W_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_67,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_47,
       Q => sample_W(1),
       R => '0'
     );
 \ana.sample_W_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_66,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_46,
       Q => sample_W(2),
       R => '0'
     );
 \ana.sample_W_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_65,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_45,
       Q => sample_W(3),
       R => '0'
     );
 \ana.sample_W_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_64,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_44,
       Q => sample_W(4),
       R => '0'
     );
 \ana.sample_W_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_63,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_43,
       Q => sample_W(5),
       R => '0'
     );
 \ana.sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_84,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_64,
       Q => sample(0),
       R => '0'
     );
 \ana.sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_74,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_54,
       Q => sample(10),
       R => '0'
     );
 \ana.sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_73,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_53,
       Q => sample(11),
       R => '0'
     );
 \ana.sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_72,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_52,
       Q => sample(12),
       R => '0'
     );
 \ana.sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_71,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_51,
       Q => sample(13),
       R => '0'
     );
 \ana.sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_70,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_50,
       Q => sample(14),
       R => '0'
     );
 \ana.sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_69,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_49,
       Q => sample(15),
       R => '0'
     );
 \ana.sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_83,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_63,
       Q => sample(1),
       R => '0'
     );
 \ana.sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_82,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_62,
       Q => sample(2),
       R => '0'
     );
 \ana.sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_81,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_61,
       Q => sample(3),
       R => '0'
     );
 \ana.sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_80,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_60,
       Q => sample(4),
       R => '0'
     );
 \ana.sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_79,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_59,
       Q => sample(5),
       R => '0'
     );
 \ana.sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_78,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_58,
       Q => sample(6),
       R => '0'
     );
 \ana.sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_77,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_57,
       Q => sample(7),
       R => '0'
     );
 \ana.sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_76,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_56,
       Q => sample(8),
       R => '0'
     );
 \ana.sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_75,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_55,
       Q => sample(9),
       R => '0'
     );
@@ -80534,72 +80708,72 @@ begin
 \ana.size_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_93,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_73,
       Q => size(0),
       R => '0'
     );
 \ana.size_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_92,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_72,
       Q => size(1),
       R => '0'
     );
 \ana.size_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_91,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_71,
       Q => size(2),
       R => '0'
     );
 \ana.size_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_90,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_70,
       Q => size(3),
       R => '0'
     );
 \ana.size_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_89,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_69,
       Q => size(4),
       R => '0'
     );
 \ana.size_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_88,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_68,
       Q => size(5),
       R => '0'
     );
 \ana.size_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_87,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_67,
       Q => size(6),
       R => '0'
     );
 \ana.size_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_86,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_66,
       Q => size(7),
       R => '0'
     );
 \ana.size_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => doa_calc_0_n_71,
-      D => doa_calc_1_n_85,
+      CE => doa_calc_0_n_91,
+      D => doa_calc_1_n_65,
       Q => size(8),
       R => '0'
     );
@@ -80645,43 +80819,43 @@ doa_calc_0: entity work.\ps_ana_0_0_doa_calc__xdcDup__1\
       A(2) => doa_calc_0_n_68,
       A(1) => doa_calc_0_n_69,
       A(0) => doa_calc_0_n_70,
-      B(19) => doa_calc_1_n_20,
-      B(18) => doa_calc_1_n_21,
-      B(17) => doa_calc_1_n_22,
-      B(16) => doa_calc_1_n_23,
-      B(15) => doa_calc_1_n_24,
-      B(14) => doa_calc_1_n_25,
-      B(13) => doa_calc_1_n_26,
-      B(12) => doa_calc_1_n_27,
-      B(11) => doa_calc_1_n_28,
-      B(10) => doa_calc_1_n_29,
-      B(9) => doa_calc_1_n_30,
-      B(8) => doa_calc_1_n_31,
-      B(7) => doa_calc_1_n_32,
-      B(6) => doa_calc_1_n_33,
-      B(5) => doa_calc_1_n_34,
-      B(4) => doa_calc_1_n_35,
-      B(3) => doa_calc_1_n_36,
-      B(2) => doa_calc_1_n_37,
-      B(1) => doa_calc_1_n_38,
-      B(0) => doa_calc_1_n_39,
-      E(0) => doa_calc_0_n_71,
+      B(19) => doa_calc_0_n_71,
+      B(18) => doa_calc_0_n_72,
+      B(17) => doa_calc_0_n_73,
+      B(16) => doa_calc_0_n_74,
+      B(15) => doa_calc_0_n_75,
+      B(14) => doa_calc_0_n_76,
+      B(13) => doa_calc_0_n_77,
+      B(12) => doa_calc_0_n_78,
+      B(11) => doa_calc_0_n_79,
+      B(10) => doa_calc_0_n_80,
+      B(9) => doa_calc_0_n_81,
+      B(8) => doa_calc_0_n_82,
+      B(7) => doa_calc_0_n_83,
+      B(6) => doa_calc_0_n_84,
+      B(5) => doa_calc_0_n_85,
+      B(4) => doa_calc_0_n_86,
+      B(3) => doa_calc_0_n_87,
+      B(2) => doa_calc_0_n_88,
+      B(1) => doa_calc_0_n_89,
+      B(0) => doa_calc_0_n_90,
+      E(0) => doa_calc_0_n_91,
       Q(0) => burst(0),
-      S(0) => doa_calc_0_n_73,
+      S(0) => doa_calc_0_n_103,
       \ana.sample_W_reg[0]\(0) => save(1),
       angle(15 downto 0) => save_angle_0(15 downto 0),
-      \bbstub_dout[5]\ => doa_calc_0_n_72,
+      \bbstub_dout[5]\ => doa_calc_0_n_102,
       clk => clk,
-      \doa_calc.err_diff_reg[9]_0\ => doa_calc_1_n_48,
-      \doa_calc.err_diff_reg[9]_1\ => doa_calc_1_n_49,
-      \doa_calc.err_diff_reg[9]_i_2_0\ => doa_calc_1_n_40,
-      \doa_calc.err_diff_reg[9]_i_2_1\ => doa_calc_1_n_41,
-      \doa_calc.err_diff_reg[9]_i_2_2\ => doa_calc_1_n_42,
-      \doa_calc.err_diff_reg[9]_i_2_3\ => doa_calc_1_n_43,
-      \doa_calc.err_diff_reg[9]_i_2_4\ => doa_calc_1_n_44,
-      \doa_calc.err_diff_reg[9]_i_2_5\ => doa_calc_1_n_45,
-      \doa_calc.err_diff_reg[9]_i_2_6\ => doa_calc_1_n_46,
-      \doa_calc.err_diff_reg[9]_i_2_7\ => doa_calc_1_n_47,
+      \doa_calc.err_diff_reg[9]_0\ => doa_calc_1_n_28,
+      \doa_calc.err_diff_reg[9]_1\ => doa_calc_1_n_29,
+      \doa_calc.err_diff_reg[9]_i_2_0\ => doa_calc_1_n_20,
+      \doa_calc.err_diff_reg[9]_i_2_1\ => doa_calc_1_n_21,
+      \doa_calc.err_diff_reg[9]_i_2_2\ => doa_calc_1_n_22,
+      \doa_calc.err_diff_reg[9]_i_2_3\ => doa_calc_1_n_23,
+      \doa_calc.err_diff_reg[9]_i_2_4\ => doa_calc_1_n_24,
+      \doa_calc.err_diff_reg[9]_i_2_5\ => doa_calc_1_n_25,
+      \doa_calc.err_diff_reg[9]_i_2_6\ => doa_calc_1_n_26,
+      \doa_calc.err_diff_reg[9]_i_2_7\ => doa_calc_1_n_27,
       \doa_calc.freq_div_reg[19]_0\(19 downto 0) => freq_0(19 downto 0),
       \doa_calc.phase_EW_div_reg[19]_0\(19 downto 0) => phase_EW_0(19 downto 0),
       \doa_calc.phase_NE_div_reg[19]_0\(19 downto 0) => phase_NE_0(19 downto 0),
@@ -80731,8 +80905,8 @@ doa_calc_0: entity work.\ps_ana_0_0_doa_calc__xdcDup__1\
       \doa_calc.shadow_limit_reg[16]_0\ => doa_calc_0_n_16,
       \doa_calc.shadow_limit_reg[17]_0\ => doa_calc_0_n_17,
       \doa_calc.shadow_limit_reg[18]_0\ => doa_calc_0_n_18,
-      \doa_calc.shadow_limit_reg[19]_0\(0) => doa_calc_0_n_74,
-      \doa_calc.shadow_limit_reg[19]_1\(0) => doa_calc_0_n_75,
+      \doa_calc.shadow_limit_reg[19]_0\(0) => doa_calc_0_n_104,
+      \doa_calc.shadow_limit_reg[19]_1\(0) => doa_calc_0_n_105,
       \doa_calc.shadow_limit_reg[1]_0\ => doa_calc_0_n_1,
       \doa_calc.shadow_limit_reg[2]_0\ => doa_calc_0_n_2,
       \doa_calc.shadow_limit_reg[3]_0\ => doa_calc_0_n_3,
@@ -80743,6 +80917,7 @@ doa_calc_0: entity work.\ps_ana_0_0_doa_calc__xdcDup__1\
       \doa_calc.shadow_limit_reg[8]_0\ => doa_calc_0_n_8,
       \doa_calc.shadow_limit_reg[9]_0\ => doa_calc_0_n_9,
       \doa_calc.size_div_reg[8]_0\(8 downto 0) => size_0(8 downto 0),
+      doa_error(9 downto 0) => save_doa_error_0(9 downto 0),
       dout(39 downto 0) => config_data_adr_out(39 downto 0),
       empty => cfg_empty,
       freq(19 downto 0) => save_freq_0(19 downto 0),
@@ -80796,99 +80971,109 @@ doa_calc_1: entity work.ps_ana_0_0_doa_calc
       A(2) => doa_calc_0_n_68,
       A(1) => doa_calc_0_n_69,
       A(0) => doa_calc_0_n_70,
-      B(19) => doa_calc_1_n_20,
-      B(18) => doa_calc_1_n_21,
-      B(17) => doa_calc_1_n_22,
-      B(16) => doa_calc_1_n_23,
-      B(15) => doa_calc_1_n_24,
-      B(14) => doa_calc_1_n_25,
-      B(13) => doa_calc_1_n_26,
-      B(12) => doa_calc_1_n_27,
-      B(11) => doa_calc_1_n_28,
-      B(10) => doa_calc_1_n_29,
-      B(9) => doa_calc_1_n_30,
-      B(8) => doa_calc_1_n_31,
-      B(7) => doa_calc_1_n_32,
-      B(6) => doa_calc_1_n_33,
-      B(5) => doa_calc_1_n_34,
-      B(4) => doa_calc_1_n_35,
-      B(3) => doa_calc_1_n_36,
-      B(2) => doa_calc_1_n_37,
-      B(1) => doa_calc_1_n_38,
-      B(0) => doa_calc_1_n_39,
-      D(5) => doa_calc_1_n_50,
-      D(4) => doa_calc_1_n_51,
-      D(3) => doa_calc_1_n_52,
-      D(2) => doa_calc_1_n_53,
-      D(1) => doa_calc_1_n_54,
-      D(0) => doa_calc_1_n_55,
+      B(19) => doa_calc_0_n_71,
+      B(18) => doa_calc_0_n_72,
+      B(17) => doa_calc_0_n_73,
+      B(16) => doa_calc_0_n_74,
+      B(15) => doa_calc_0_n_75,
+      B(14) => doa_calc_0_n_76,
+      B(13) => doa_calc_0_n_77,
+      B(12) => doa_calc_0_n_78,
+      B(11) => doa_calc_0_n_79,
+      B(10) => doa_calc_0_n_80,
+      B(9) => doa_calc_0_n_81,
+      B(8) => doa_calc_0_n_82,
+      B(7) => doa_calc_0_n_83,
+      B(6) => doa_calc_0_n_84,
+      B(5) => doa_calc_0_n_85,
+      B(4) => doa_calc_0_n_86,
+      B(3) => doa_calc_0_n_87,
+      B(2) => doa_calc_0_n_88,
+      B(1) => doa_calc_0_n_89,
+      B(0) => doa_calc_0_n_90,
+      D(5) => doa_calc_1_n_30,
+      D(4) => doa_calc_1_n_31,
+      D(3) => doa_calc_1_n_32,
+      D(2) => doa_calc_1_n_33,
+      D(1) => doa_calc_1_n_34,
+      D(0) => doa_calc_1_n_35,
       Q(0) => burst(1),
-      S(0) => doa_calc_0_n_73,
+      S(0) => doa_calc_0_n_103,
       angle(15 downto 0) => save_angle_0(15 downto 0),
       clk => clk,
-      \doa_calc.angle_reg[15]_0\(15) => doa_calc_1_n_114,
-      \doa_calc.angle_reg[15]_0\(14) => doa_calc_1_n_115,
-      \doa_calc.angle_reg[15]_0\(13) => doa_calc_1_n_116,
-      \doa_calc.angle_reg[15]_0\(12) => doa_calc_1_n_117,
-      \doa_calc.angle_reg[15]_0\(11) => doa_calc_1_n_118,
-      \doa_calc.angle_reg[15]_0\(10) => doa_calc_1_n_119,
-      \doa_calc.angle_reg[15]_0\(9) => doa_calc_1_n_120,
-      \doa_calc.angle_reg[15]_0\(8) => doa_calc_1_n_121,
-      \doa_calc.angle_reg[15]_0\(7) => doa_calc_1_n_122,
-      \doa_calc.angle_reg[15]_0\(6) => doa_calc_1_n_123,
-      \doa_calc.angle_reg[15]_0\(5) => doa_calc_1_n_124,
-      \doa_calc.angle_reg[15]_0\(4) => doa_calc_1_n_125,
-      \doa_calc.angle_reg[15]_0\(3) => doa_calc_1_n_126,
-      \doa_calc.angle_reg[15]_0\(2) => doa_calc_1_n_127,
-      \doa_calc.angle_reg[15]_0\(1) => doa_calc_1_n_128,
-      \doa_calc.angle_reg[15]_0\(0) => doa_calc_1_n_129,
+      \doa_calc.angle_reg[15]_0\(15) => doa_calc_1_n_94,
+      \doa_calc.angle_reg[15]_0\(14) => doa_calc_1_n_95,
+      \doa_calc.angle_reg[15]_0\(13) => doa_calc_1_n_96,
+      \doa_calc.angle_reg[15]_0\(12) => doa_calc_1_n_97,
+      \doa_calc.angle_reg[15]_0\(11) => doa_calc_1_n_98,
+      \doa_calc.angle_reg[15]_0\(10) => doa_calc_1_n_99,
+      \doa_calc.angle_reg[15]_0\(9) => doa_calc_1_n_100,
+      \doa_calc.angle_reg[15]_0\(8) => doa_calc_1_n_101,
+      \doa_calc.angle_reg[15]_0\(7) => doa_calc_1_n_102,
+      \doa_calc.angle_reg[15]_0\(6) => doa_calc_1_n_103,
+      \doa_calc.angle_reg[15]_0\(5) => doa_calc_1_n_104,
+      \doa_calc.angle_reg[15]_0\(4) => doa_calc_1_n_105,
+      \doa_calc.angle_reg[15]_0\(3) => doa_calc_1_n_106,
+      \doa_calc.angle_reg[15]_0\(2) => doa_calc_1_n_107,
+      \doa_calc.angle_reg[15]_0\(1) => doa_calc_1_n_108,
+      \doa_calc.angle_reg[15]_0\(0) => doa_calc_1_n_109,
+      \doa_calc.doa_error_reg[9]_0\(9) => doa_calc_1_n_110,
+      \doa_calc.doa_error_reg[9]_0\(8) => doa_calc_1_n_111,
+      \doa_calc.doa_error_reg[9]_0\(7) => doa_calc_1_n_112,
+      \doa_calc.doa_error_reg[9]_0\(6) => doa_calc_1_n_113,
+      \doa_calc.doa_error_reg[9]_0\(5) => doa_calc_1_n_114,
+      \doa_calc.doa_error_reg[9]_0\(4) => doa_calc_1_n_115,
+      \doa_calc.doa_error_reg[9]_0\(3) => doa_calc_1_n_116,
+      \doa_calc.doa_error_reg[9]_0\(2) => doa_calc_1_n_117,
+      \doa_calc.doa_error_reg[9]_0\(1) => doa_calc_1_n_118,
+      \doa_calc.doa_error_reg[9]_0\(0) => doa_calc_1_n_119,
       \doa_calc.done_reg_0\(0) => save(1),
       \doa_calc.freq_div_reg[19]_0\(19 downto 0) => freq_1(19 downto 0),
-      \doa_calc.freq_reg[19]_0\(19) => doa_calc_1_n_94,
-      \doa_calc.freq_reg[19]_0\(18) => doa_calc_1_n_95,
-      \doa_calc.freq_reg[19]_0\(17) => doa_calc_1_n_96,
-      \doa_calc.freq_reg[19]_0\(16) => doa_calc_1_n_97,
-      \doa_calc.freq_reg[19]_0\(15) => doa_calc_1_n_98,
-      \doa_calc.freq_reg[19]_0\(14) => doa_calc_1_n_99,
-      \doa_calc.freq_reg[19]_0\(13) => doa_calc_1_n_100,
-      \doa_calc.freq_reg[19]_0\(12) => doa_calc_1_n_101,
-      \doa_calc.freq_reg[19]_0\(11) => doa_calc_1_n_102,
-      \doa_calc.freq_reg[19]_0\(10) => doa_calc_1_n_103,
-      \doa_calc.freq_reg[19]_0\(9) => doa_calc_1_n_104,
-      \doa_calc.freq_reg[19]_0\(8) => doa_calc_1_n_105,
-      \doa_calc.freq_reg[19]_0\(7) => doa_calc_1_n_106,
-      \doa_calc.freq_reg[19]_0\(6) => doa_calc_1_n_107,
-      \doa_calc.freq_reg[19]_0\(5) => doa_calc_1_n_108,
-      \doa_calc.freq_reg[19]_0\(4) => doa_calc_1_n_109,
-      \doa_calc.freq_reg[19]_0\(3) => doa_calc_1_n_110,
-      \doa_calc.freq_reg[19]_0\(2) => doa_calc_1_n_111,
-      \doa_calc.freq_reg[19]_0\(1) => doa_calc_1_n_112,
-      \doa_calc.freq_reg[19]_0\(0) => doa_calc_1_n_113,
-      \doa_calc.max_antenna_err_reg[0]_0\ => doa_calc_1_n_40,
-      \doa_calc.max_antenna_err_reg[1]_0\ => doa_calc_1_n_41,
-      \doa_calc.max_antenna_err_reg[2]_0\ => doa_calc_1_n_42,
-      \doa_calc.max_antenna_err_reg[3]_0\ => doa_calc_1_n_43,
-      \doa_calc.max_antenna_err_reg[4]_0\ => doa_calc_1_n_44,
-      \doa_calc.max_antenna_err_reg[5]_0\ => doa_calc_1_n_45,
-      \doa_calc.max_antenna_err_reg[6]_0\ => doa_calc_1_n_46,
-      \doa_calc.max_antenna_err_reg[7]_0\ => doa_calc_1_n_47,
-      \doa_calc.max_antenna_err_reg[8]_0\ => doa_calc_1_n_48,
-      \doa_calc.max_antenna_err_reg[9]_0\ => doa_calc_1_n_49,
+      \doa_calc.freq_reg[19]_0\(19) => doa_calc_1_n_74,
+      \doa_calc.freq_reg[19]_0\(18) => doa_calc_1_n_75,
+      \doa_calc.freq_reg[19]_0\(17) => doa_calc_1_n_76,
+      \doa_calc.freq_reg[19]_0\(16) => doa_calc_1_n_77,
+      \doa_calc.freq_reg[19]_0\(15) => doa_calc_1_n_78,
+      \doa_calc.freq_reg[19]_0\(14) => doa_calc_1_n_79,
+      \doa_calc.freq_reg[19]_0\(13) => doa_calc_1_n_80,
+      \doa_calc.freq_reg[19]_0\(12) => doa_calc_1_n_81,
+      \doa_calc.freq_reg[19]_0\(11) => doa_calc_1_n_82,
+      \doa_calc.freq_reg[19]_0\(10) => doa_calc_1_n_83,
+      \doa_calc.freq_reg[19]_0\(9) => doa_calc_1_n_84,
+      \doa_calc.freq_reg[19]_0\(8) => doa_calc_1_n_85,
+      \doa_calc.freq_reg[19]_0\(7) => doa_calc_1_n_86,
+      \doa_calc.freq_reg[19]_0\(6) => doa_calc_1_n_87,
+      \doa_calc.freq_reg[19]_0\(5) => doa_calc_1_n_88,
+      \doa_calc.freq_reg[19]_0\(4) => doa_calc_1_n_89,
+      \doa_calc.freq_reg[19]_0\(3) => doa_calc_1_n_90,
+      \doa_calc.freq_reg[19]_0\(2) => doa_calc_1_n_91,
+      \doa_calc.freq_reg[19]_0\(1) => doa_calc_1_n_92,
+      \doa_calc.freq_reg[19]_0\(0) => doa_calc_1_n_93,
+      \doa_calc.max_antenna_err_reg[0]_0\ => doa_calc_1_n_20,
+      \doa_calc.max_antenna_err_reg[1]_0\ => doa_calc_1_n_21,
+      \doa_calc.max_antenna_err_reg[2]_0\ => doa_calc_1_n_22,
+      \doa_calc.max_antenna_err_reg[3]_0\ => doa_calc_1_n_23,
+      \doa_calc.max_antenna_err_reg[4]_0\ => doa_calc_1_n_24,
+      \doa_calc.max_antenna_err_reg[5]_0\ => doa_calc_1_n_25,
+      \doa_calc.max_antenna_err_reg[6]_0\ => doa_calc_1_n_26,
+      \doa_calc.max_antenna_err_reg[7]_0\ => doa_calc_1_n_27,
+      \doa_calc.max_antenna_err_reg[8]_0\ => doa_calc_1_n_28,
+      \doa_calc.max_antenna_err_reg[9]_0\ => doa_calc_1_n_29,
       \doa_calc.phase_EW_div_reg[19]_0\(19 downto 0) => phase_EW_1(19 downto 0),
       \doa_calc.phase_NE_div_reg[19]_0\(19 downto 0) => phase_NE_1(19 downto 0),
       \doa_calc.phase_WN_div_reg[19]_0\(19 downto 0) => phase_WN_1(19 downto 0),
-      \doa_calc.sample_E_reg[5]_0\(5) => doa_calc_1_n_57,
-      \doa_calc.sample_E_reg[5]_0\(4) => doa_calc_1_n_58,
-      \doa_calc.sample_E_reg[5]_0\(3) => doa_calc_1_n_59,
-      \doa_calc.sample_E_reg[5]_0\(2) => doa_calc_1_n_60,
-      \doa_calc.sample_E_reg[5]_0\(1) => doa_calc_1_n_61,
-      \doa_calc.sample_E_reg[5]_0\(0) => doa_calc_1_n_62,
-      \doa_calc.sample_W_reg[5]_0\(5) => doa_calc_1_n_63,
-      \doa_calc.sample_W_reg[5]_0\(4) => doa_calc_1_n_64,
-      \doa_calc.sample_W_reg[5]_0\(3) => doa_calc_1_n_65,
-      \doa_calc.sample_W_reg[5]_0\(2) => doa_calc_1_n_66,
-      \doa_calc.sample_W_reg[5]_0\(1) => doa_calc_1_n_67,
-      \doa_calc.sample_W_reg[5]_0\(0) => doa_calc_1_n_68,
+      \doa_calc.sample_E_reg[5]_0\(5) => doa_calc_1_n_37,
+      \doa_calc.sample_E_reg[5]_0\(4) => doa_calc_1_n_38,
+      \doa_calc.sample_E_reg[5]_0\(3) => doa_calc_1_n_39,
+      \doa_calc.sample_E_reg[5]_0\(2) => doa_calc_1_n_40,
+      \doa_calc.sample_E_reg[5]_0\(1) => doa_calc_1_n_41,
+      \doa_calc.sample_E_reg[5]_0\(0) => doa_calc_1_n_42,
+      \doa_calc.sample_W_reg[5]_0\(5) => doa_calc_1_n_43,
+      \doa_calc.sample_W_reg[5]_0\(4) => doa_calc_1_n_44,
+      \doa_calc.sample_W_reg[5]_0\(3) => doa_calc_1_n_45,
+      \doa_calc.sample_W_reg[5]_0\(2) => doa_calc_1_n_46,
+      \doa_calc.sample_W_reg[5]_0\(1) => doa_calc_1_n_47,
+      \doa_calc.sample_W_reg[5]_0\(0) => doa_calc_1_n_48,
       \doa_calc.sample_dist_reg[19]_0\(19) => doa_calc_1_n_0,
       \doa_calc.sample_dist_reg[19]_0\(18) => doa_calc_1_n_1,
       \doa_calc.sample_dist_reg[19]_0\(17) => doa_calc_1_n_2,
@@ -80909,7 +81094,7 @@ doa_calc_1: entity work.ps_ana_0_0_doa_calc
       \doa_calc.sample_dist_reg[19]_0\(2) => doa_calc_1_n_17,
       \doa_calc.sample_dist_reg[19]_0\(1) => doa_calc_1_n_18,
       \doa_calc.sample_dist_reg[19]_0\(0) => doa_calc_1_n_19,
-      \doa_calc.sample_dist_reg[19]_1\ => doa_calc_0_n_72,
+      \doa_calc.sample_dist_reg[19]_1\ => doa_calc_0_n_102,
       \doa_calc.sample_div_reg[15]_0\(15) => \ana.sample_1_reg_n_0_[15]\,
       \doa_calc.sample_div_reg[15]_0\(14) => \ana.sample_1_reg_n_0_[14]\,
       \doa_calc.sample_div_reg[15]_0\(13) => \ana.sample_1_reg_n_0_[13]\,
@@ -80926,37 +81111,38 @@ doa_calc_1: entity work.ps_ana_0_0_doa_calc
       \doa_calc.sample_div_reg[15]_0\(2) => \ana.sample_1_reg_n_0_[2]\,
       \doa_calc.sample_div_reg[15]_0\(1) => \ana.sample_1_reg_n_0_[1]\,
       \doa_calc.sample_div_reg[15]_0\(0) => \ana.sample_1_reg_n_0_[0]\,
-      \doa_calc.sample_reg[15]_0\(15) => doa_calc_1_n_69,
-      \doa_calc.sample_reg[15]_0\(14) => doa_calc_1_n_70,
-      \doa_calc.sample_reg[15]_0\(13) => doa_calc_1_n_71,
-      \doa_calc.sample_reg[15]_0\(12) => doa_calc_1_n_72,
-      \doa_calc.sample_reg[15]_0\(11) => doa_calc_1_n_73,
-      \doa_calc.sample_reg[15]_0\(10) => doa_calc_1_n_74,
-      \doa_calc.sample_reg[15]_0\(9) => doa_calc_1_n_75,
-      \doa_calc.sample_reg[15]_0\(8) => doa_calc_1_n_76,
-      \doa_calc.sample_reg[15]_0\(7) => doa_calc_1_n_77,
-      \doa_calc.sample_reg[15]_0\(6) => doa_calc_1_n_78,
-      \doa_calc.sample_reg[15]_0\(5) => doa_calc_1_n_79,
-      \doa_calc.sample_reg[15]_0\(4) => doa_calc_1_n_80,
-      \doa_calc.sample_reg[15]_0\(3) => doa_calc_1_n_81,
-      \doa_calc.sample_reg[15]_0\(2) => doa_calc_1_n_82,
-      \doa_calc.sample_reg[15]_0\(1) => doa_calc_1_n_83,
-      \doa_calc.sample_reg[15]_0\(0) => doa_calc_1_n_84,
+      \doa_calc.sample_reg[15]_0\(15) => doa_calc_1_n_49,
+      \doa_calc.sample_reg[15]_0\(14) => doa_calc_1_n_50,
+      \doa_calc.sample_reg[15]_0\(13) => doa_calc_1_n_51,
+      \doa_calc.sample_reg[15]_0\(12) => doa_calc_1_n_52,
+      \doa_calc.sample_reg[15]_0\(11) => doa_calc_1_n_53,
+      \doa_calc.sample_reg[15]_0\(10) => doa_calc_1_n_54,
+      \doa_calc.sample_reg[15]_0\(9) => doa_calc_1_n_55,
+      \doa_calc.sample_reg[15]_0\(8) => doa_calc_1_n_56,
+      \doa_calc.sample_reg[15]_0\(7) => doa_calc_1_n_57,
+      \doa_calc.sample_reg[15]_0\(6) => doa_calc_1_n_58,
+      \doa_calc.sample_reg[15]_0\(5) => doa_calc_1_n_59,
+      \doa_calc.sample_reg[15]_0\(4) => doa_calc_1_n_60,
+      \doa_calc.sample_reg[15]_0\(3) => doa_calc_1_n_61,
+      \doa_calc.sample_reg[15]_0\(2) => doa_calc_1_n_62,
+      \doa_calc.sample_reg[15]_0\(1) => doa_calc_1_n_63,
+      \doa_calc.sample_reg[15]_0\(0) => doa_calc_1_n_64,
       \doa_calc.size_div_reg[8]_0\(8 downto 0) => size_1(8 downto 0),
-      \doa_calc.size_reg[8]_0\(8) => doa_calc_1_n_85,
-      \doa_calc.size_reg[8]_0\(7) => doa_calc_1_n_86,
-      \doa_calc.size_reg[8]_0\(6) => doa_calc_1_n_87,
-      \doa_calc.size_reg[8]_0\(5) => doa_calc_1_n_88,
-      \doa_calc.size_reg[8]_0\(4) => doa_calc_1_n_89,
-      \doa_calc.size_reg[8]_0\(3) => doa_calc_1_n_90,
-      \doa_calc.size_reg[8]_0\(2) => doa_calc_1_n_91,
-      \doa_calc.size_reg[8]_0\(1) => doa_calc_1_n_92,
-      \doa_calc.size_reg[8]_0\(0) => doa_calc_1_n_93,
+      \doa_calc.size_reg[8]_0\(8) => doa_calc_1_n_65,
+      \doa_calc.size_reg[8]_0\(7) => doa_calc_1_n_66,
+      \doa_calc.size_reg[8]_0\(6) => doa_calc_1_n_67,
+      \doa_calc.size_reg[8]_0\(5) => doa_calc_1_n_68,
+      \doa_calc.size_reg[8]_0\(4) => doa_calc_1_n_69,
+      \doa_calc.size_reg[8]_0\(3) => doa_calc_1_n_70,
+      \doa_calc.size_reg[8]_0\(2) => doa_calc_1_n_71,
+      \doa_calc.size_reg[8]_0\(1) => doa_calc_1_n_72,
+      \doa_calc.size_reg[8]_0\(0) => doa_calc_1_n_73,
+      doa_error(9 downto 0) => save_doa_error_0(9 downto 0),
       \doa_pair.shadow_diff_reg[19]\ => doa_calc_0_n_16,
       \doa_pair.shadow_diff_reg[19]_0\ => doa_calc_0_n_17,
       \doa_pair.shadow_diff_reg[19]_1\ => doa_calc_0_n_18,
-      \doa_pair.shadow_diff_reg[19]_2\(0) => doa_calc_0_n_74,
-      \doa_pair.shadow_diff_reg[19]_3\(0) => doa_calc_0_n_75,
+      \doa_pair.shadow_diff_reg[19]_2\(0) => doa_calc_0_n_104,
+      \doa_pair.shadow_diff_reg[19]_3\(0) => doa_calc_0_n_105,
       \doa_pair.shadow_diff_reg[19]_i_2__3\ => doa_calc_0_n_8,
       \doa_pair.shadow_diff_reg[19]_i_2__3_0\ => doa_calc_0_n_9,
       \doa_pair.shadow_diff_reg[19]_i_2__3_1\ => doa_calc_0_n_10,
@@ -81043,6 +81229,7 @@ entity ps_ana_0_0 is
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
     angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 );
     sample_N : out STD_LOGIC_VECTOR ( 5 downto 0 );
     sample_E : out STD_LOGIC_VECTOR ( 5 downto 0 );
     sample_W : out STD_LOGIC_VECTOR ( 5 downto 0 )
@@ -81086,6 +81273,7 @@ inst: entity work.ps_ana_0_0_ana
       config_clk => config_clk,
       config_data(31 downto 0) => config_data(31 downto 0),
       config_wr => config_wr,
+      doa_error(9 downto 0) => doa_error(9 downto 0),
       env_E(15 downto 0) => env_E(15 downto 0),
       env_N(15 downto 0) => env_N(15 downto 0),
       env_W(15 downto 0) => env_W(15 downto 0),

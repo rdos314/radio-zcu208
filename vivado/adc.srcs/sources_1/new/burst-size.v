@@ -233,6 +233,7 @@ module burst_size(
     reg [10:0] env_down_max_ind;
     reg [15:0] env_down_max_val;
 
+/*
 	ila_5 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(scan_start),          // input wire [0:0]  probe3
@@ -248,6 +249,7 @@ module burst_size(
 		.probe10(env),                // input wire [15:0]  probe3
 		.probe11(phase)               // input wire [19:0]  probe3
 	);
+*/
 
 generate
   begin : burst_size

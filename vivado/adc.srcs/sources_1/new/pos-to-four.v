@@ -158,7 +158,8 @@ module pos_to_four(
     reg read_back_i;
 	reg [10:0] counter;
 	reg filling;
-	
+
+/*	
 	ila_3 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(wr),                  // input wire [0:0]  probe3
@@ -183,6 +184,7 @@ module pos_to_four(
 		.probe19(phase_2),            // input wire [15:0]  probe3
 		.probe20(phase_3)             // input wire [15:0]  probe3
 	);
+*/
     
 generate
   begin : pos_to_four

@@ -27,6 +27,7 @@ module comp_low(
 	input wire [8:0] ana_fifo_size,
 	input wire [19:0] ana_fifo_freq,
 	input wire [15:0] ana_fifo_angle,
+	input wire [9:0] ana_fifo_doa_error,
 	input wire [5:0] ana_fifo_sample_N,
 	input wire [5:0] ana_fifo_sample_E,
 	input wire [5:0] ana_fifo_sample_W,
@@ -48,7 +49,8 @@ module comp_low(
 	output reg [15:0] sample,
 	output reg [8:0] size,
 	output reg [19:0] freq,
-	output reg [15:0] angle
+	output reg [15:0] angle,
+	output reg [9:0] doa_error
 );
 
   reg reset_int;
@@ -68,10 +70,10 @@ module comp_low(
 
   reg [9:0] raw_delay;
     
-  reg [78:0] ana_in_data;
+  reg [88:0] ana_in_data;
   reg ana_wr;
   
-  wire [78:0] ana_out_data;
+  wire [88:0] ana_out_data;
   wire ana_empty;
   wire [15:0] curr_sample = ana_out_data[15:0];
   reg ana_trig;
@@ -169,10 +171,10 @@ fifo_ana fifo_ana_i (
   .rst(reset),                  // input wire rst
   .wr_clk(ana_fifo_clk),        // input wire wr_clk
   .rd_clk(clk),                 // input wire rd_clk
-  .din(ana_in_data),            // input wire [78 : 0] din
+  .din(ana_in_data),            // input wire [88 : 0] din
   .wr_en(ana_wr),               // input wire wr_en
   .rd_en(burst),                // input wire rd_en
-  .dout(ana_out_data),          // output wire [78 : 0] dout
+  .dout(ana_out_data),          // output wire [88 : 0] dout
   .empty(ana_empty)             // output wire empty
 );
 
@@ -317,9 +319,10 @@ generate
             ana_in_data[24:16] <= ana_fifo_size;
             ana_in_data[44:25] <= ana_fifo_freq;
             ana_in_data[60:45] <= ana_fifo_angle;
-            ana_in_data[66:61] <= ana_fifo_sample_N;
-            ana_in_data[72:67] <= ana_fifo_sample_E;
-            ana_in_data[78:73] <= ana_fifo_sample_W;
+            ana_in_data[70:61] <= ana_fifo_doa_error;
+            ana_in_data[76:71] <= ana_fifo_sample_N;
+            ana_in_data[82:77] <= ana_fifo_sample_E;
+            ana_in_data[88:83] <= ana_fifo_sample_W;
             ana_wr <= 1;
        end
        else
@@ -418,9 +421,10 @@ generate
                 size <= ana_out_data[24:16];
                 freq <= ana_out_data[44:25];
                 angle <= ana_out_data[60:45];
-                sample_N <= ana_out_data[66:61];
-                sample_E <= ana_out_data[72:67];
-                sample_W <= ana_out_data[78:73];
+                doa_error <= ana_out_data[70:61];
+                sample_N <= ana_out_data[76:71];
+                sample_E <= ana_out_data[82:77];
+                sample_W <= ana_out_data[88:83];
             end
             else
                 burst <= 0;

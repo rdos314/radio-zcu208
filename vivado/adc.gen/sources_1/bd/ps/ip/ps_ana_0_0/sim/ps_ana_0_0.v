@@ -77,6 +77,7 @@ module ps_ana_0_0 (
   size,
   freq,
   angle,
+  doa_error,
   sample_N,
   sample_E,
   sample_W
@@ -116,6 +117,7 @@ output wire [15 : 0] sample;
 output wire [8 : 0] size;
 output wire [19 : 0] freq;
 output wire [15 : 0] angle;
+output wire [9 : 0] doa_error;
 output wire [5 : 0] sample_N;
 output wire [5 : 0] sample_E;
 output wire [5 : 0] sample_W;
@@ -143,6 +145,7 @@ output wire [5 : 0] sample_W;
     .size(size),
     .freq(freq),
     .angle(angle),
+    .doa_error(doa_error),
     .sample_N(sample_N),
     .sample_E(sample_E),
     .sample_W(sample_W)

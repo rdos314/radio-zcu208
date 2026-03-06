@@ -205,6 +205,7 @@ module comp_burst(
 	input wire [61:0] rt_sample,
     input wire [19:0] rt_freq,
     input wire [15:0] rt_angle,
+    input wire [9:0] rt_doa_error,
 
 	input wire rt_wr,    
     input wire [15:0] rt_env_0, 
@@ -237,11 +238,11 @@ module comp_burst(
     wire err_no_data;
 
 	reg rt_meta_wr;
-	reg [97:0] rt_meta_in;
+	reg [107:0] rt_meta_in;
 
 	reg rt_meta_rd;
 	wire rt_meta_empty;
-	wire [97:0] rt_meta_out;
+	wire [107:0] rt_meta_out;
 
 	reg rt_data_wr;
 	reg [143:0] rt_data_in;
@@ -256,6 +257,7 @@ module comp_burst(
 	reg [61:0] in_sample;
     reg [19:0] in_freq;
     reg [15:0] in_angle;
+    reg [9:0] in_doa_error;
     
     reg [15:0] env_0;
     reg [15:0] env_1;
@@ -272,6 +274,7 @@ module comp_burst(
 
     reg [19:0] p1_freq;
     reg [15:0] p1_angle;
+    reg [9:0] p1_doa_error;
 	wire [63:0] p1_sample;
 	wire [10:0] p1_size;
 	wire [10:0] p1_max_pos;
@@ -286,7 +289,8 @@ module comp_burst(
 
     reg [63:0] p2_sample;
     reg [19:0] p2_freq;
-    reg [15:0] p2_angle;
+    reg [15:0] p2_angle;    
+    reg [9:0] p2_doa_error;
 	reg [10:0] p2_size;
 	reg [10:0] p2_max_pos;
 	reg [15:0] p2_max_env;
@@ -308,6 +312,7 @@ module comp_burst(
 	reg [63:0] p3_sample;
     wire [19:0] p3_freq;
     reg [15:0] p3_angle;
+    reg [9:0] p3_doa_error;
 	reg [10:0] p3_size;
 	reg [10:0] p3_max_pos;
 	reg [15:0] p3_max_env;
@@ -323,16 +328,6 @@ module comp_burst(
 
     wire p4_idle;
     wire p4_done;
-	
-	reg [63:0] p4_sample;
-    reg [19:0] p4_freq;
-    reg [15:0] p4_angle;
-	reg [10:0] p4_size;
-	reg [15:0] p4_max_env;
-	reg [15:0] p4_env_mean;
-    reg [47:0] p4_env_sum2;
-    reg [47:0] p4_phase_sum2;
-    reg [47:0] p4_freq_sum2;
     
     wire p4_wr;
     wire [15:0] p4_env_0;
@@ -344,17 +339,9 @@ module comp_burst(
     wire [15:0] p4_phase_2;
     wire [15:0] p4_phase_3;
 
-    wire p5_idle = 1;
-
-    reg [63:0] p5_sample;
-    reg [19:0] p5_freq;
-    reg [15:0] p5_angle;
-	reg [10:0] p5_size;
-	reg [15:0] p5_max_env;
-	reg [15:0] p5_env_mean;
-    reg [47:0] p5_env_sum2;
-    reg [47:0] p5_phase_sum2;
-    reg [47:0] p5_freq_sum2;
+    wire p5_idle;
+    wire p5_wr;
+    wire [255:0] p5_data;
     
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
@@ -371,10 +358,10 @@ module comp_burst(
 		.rst(reset),           // input wire rst
 		.wr_clk(rt_clk),       // input wire wr_clk
 		.rd_clk(clk),          // input wire rd_clk
-		.din(rt_meta_in),      // input wire [97 : 0] din
+		.din(rt_meta_in),      // input wire [107 : 0] din
 		.wr_en(rt_meta_wr),    // input wire wr_en
 		.rd_en(rt_meta_rd),    // input wire rd_en
-		.dout(rt_meta_out),    // output wire [97 : 0] dout
+		.dout(rt_meta_out),    // output wire [107 : 0] dout
 		.empty(rt_meta_empty)  // output wire empty
 	);
 
@@ -489,6 +476,35 @@ module comp_burst(
         .phase_3(p4_phase_3)
 	);
 
+	comp_axi p5_i (
+		.clk(clk),
+        .reset(reset),
+        .wr(p4_wr),
+        .sample(p3_sample),
+        .freq(p3_freq),
+        .angle(p3_angle),
+        .doa_error(p3_doa_error),
+        .size(p3_size),
+        .max_env(p3_max_env),
+        .max_pos(p3_max_pos),
+        .env_mean(p3_env_mean),
+        .env_sum2(p3_env_sum2),
+        .phase_sum2(p3_phase_sum2),
+        .freq_sum2(p3_freq_sum2),
+        .header_ok(p3_done),
+        .env_0(p4_env_0),
+        .env_1(p4_env_1),
+        .env_2(p4_env_2),
+        .env_3(p4_env_3),
+        .phase_0(p4_phase_0),
+        .phase_1(p4_phase_1),
+        .phase_2(p4_phase_2),
+        .phase_3(p4_phase_3),
+        .idle(p5_idle),
+        .active(p5_wr),
+        .data(p5_data)
+	);
+
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(idle),                // input wire [0:0]  probe3
@@ -503,15 +519,16 @@ module comp_burst(
 		.probe9(p4_idle),             // input wire [0:0]  probe3
 		.probe10(p4_wr),              // input wire [0:0]  probe3
 		.probe11(p4_done),            // input wire [0:0]  probe3
-		.probe12(p5_sample),          // input wire [63:0]  probe3
-		.probe13(p5_freq),            // input wire [19:0]  probe3
-		.probe14(p5_angle),           // input wire [15:0]  probe3
-		.probe15(p5_size),            // input wire [10:0]  probe3
-		.probe16(p5_max_env),         // input wire [15:0]  probe3
-		.probe17(p5_env_mean),        // input wire [15:0]  probe3
-		.probe18(p5_env_sum2),        // input wire [47:0]  probe3
-		.probe19(p5_phase_sum2),      // input wire [47:0]  probe3
-		.probe20(p5_freq_sum2)        // input wire [47:0]  probe3
+		.probe12(p3_sample),          // input wire [63:0]  probe3
+		.probe13(p3_freq),            // input wire [19:0]  probe3
+		.probe14(p3_angle),           // input wire [15:0]  probe3
+		.probe15(p3_doa_error),       // input wire [9:0]  probe3
+		.probe16(p3_size),            // input wire [10:0]  probe3
+		.probe17(p3_max_env),         // input wire [15:0]  probe3
+		.probe18(p3_env_mean),        // input wire [15:0]  probe3
+		.probe19(p3_env_sum2),        // input wire [47:0]  probe3
+		.probe20(p3_phase_sum2),      // input wire [47:0]  probe3
+		.probe21(p3_freq_sum2)        // input wire [47:0]  probe3
 	);
 
 generate
@@ -562,6 +579,7 @@ generate
             rt_meta_in[61:0] <= rt_sample;
             rt_meta_in[81:62] <= rt_freq;
             rt_meta_in[97:82] <= rt_angle;
+            rt_meta_in[107:98] <= rt_doa_error;
 			
 			rt_meta_wr <= 1;
        end
@@ -582,6 +600,7 @@ generate
             in_sample <= rt_meta_out[61:0];
             in_freq <= rt_meta_out[81:62];
             in_angle <= rt_meta_out[97:82];
+            in_doa_error <= rt_meta_out[107:98];
 			burst <= 1;
 		end
 	end
@@ -597,6 +616,7 @@ generate
                 filling <= 0;
                 p1_freq <= in_freq;
                 p1_angle <= in_angle;
+                p1_doa_error <= in_doa_error;
             end
         end
     end
@@ -640,6 +660,7 @@ generate
             p2_sample <= p1_sample;
             p2_freq <= p1_freq;
             p2_angle <= p1_angle;
+            p2_doa_error <= p1_doa_error;
             p2_size <= p1_size;
             p2_max_pos <= p1_max_pos;
             p2_max_env <= p1_max_env;
@@ -652,44 +673,13 @@ generate
 		begin
             p3_sample <= p2_sample;
             p3_angle <= p2_angle;
+            p3_doa_error <= p2_doa_error;
             p3_size <= p2_size;
             p3_max_pos <= p2_max_pos;
             p3_max_env <= p2_max_env;
         end
     end
-    
-    always @(posedge clk) 
-    begin
-        if (p3_done)
-		begin
-            p4_sample <= p3_sample;
-            p4_freq <= p3_freq;
-            p4_angle <= p3_angle;
-            p4_size <= p3_size;
-            p4_max_env <= p3_max_env;
-            p4_env_mean <= p3_env_mean;
-            p4_env_sum2 <= p3_env_sum2;
-            p4_phase_sum2 <= p3_phase_sum2;
-            p4_freq_sum2 <= p3_freq_sum2;
-        end
-    end
-    
-    always @(posedge clk) 
-    begin
-        if (p4_done)
-		begin
-            p5_sample <= p4_sample;
-            p5_freq <= p4_freq;
-            p5_angle <= p4_angle;
-            p5_size <= p4_size;
-            p5_max_env <= p4_max_env;
-            p5_env_mean <= p4_env_mean;
-            p5_env_sum2 <= p4_env_sum2;
-            p5_phase_sum2 <= p4_phase_sum2;
-            p5_freq_sum2 <= p4_freq_sum2;
-        end
-    end
-    
+        
   end
     
 endgenerate

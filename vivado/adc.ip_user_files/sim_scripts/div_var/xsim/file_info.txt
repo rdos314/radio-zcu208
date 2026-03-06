@@ -1,0 +1,2 @@
+div_var.vhd,vhdl,xil_defaultlib,../../../../adc.gen/sources_1/ip/div_var/sim/div_var.vhd,incdir="../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

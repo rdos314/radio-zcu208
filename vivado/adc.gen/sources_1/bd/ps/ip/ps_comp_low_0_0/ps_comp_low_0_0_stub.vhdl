@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sun Mar  1 01:10:28 2026
+-- Date        : Fri Mar  6 22:11:40 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_stub.vhdl
@@ -21,6 +21,7 @@ entity ps_comp_low_0_0 is
     ana_fifo_size : in STD_LOGIC_VECTOR ( 8 downto 0 );
     ana_fifo_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ana_fifo_angle : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    ana_fifo_doa_error : in STD_LOGIC_VECTOR ( 9 downto 0 );
     ana_fifo_sample_N : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_E : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ana_fifo_sample_W : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -38,7 +39,8 @@ entity ps_comp_low_0_0 is
     sample : out STD_LOGIC_VECTOR ( 15 downto 0 );
     size : out STD_LOGIC_VECTOR ( 8 downto 0 );
     freq : out STD_LOGIC_VECTOR ( 19 downto 0 );
-    angle : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    angle : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    doa_error : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
@@ -55,7 +57,7 @@ architecture stub of ps_comp_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "ana_fifo_clk,ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_clk,raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],clk,reset,active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0]";
+  attribute black_box_pad_pin of stub : architecture is "ana_fifo_clk,ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_doa_error[9:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_clk,raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],clk,reset,active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0],doa_error[9:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of ana_fifo_clk : signal is "xilinx.com:signal:clock:1.0 ana_fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

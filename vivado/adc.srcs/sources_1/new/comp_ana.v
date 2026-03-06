@@ -36,6 +36,7 @@ module comp_ana(
 	input wire [8:0] fifo_size,
 	input wire [19:0] fifo_freq,
 	input wire [15:0] fifo_angle,
+	input wire [9:0] fifo_doa_error,
 
     input wire pl_clk,
     input wire clk,
@@ -93,10 +94,10 @@ module comp_ana(
     reg [15:0] im_2;
     reg [15:0] im_3;
 
-    reg [60:0] ana_in_data;
+    reg [70:0] ana_in_data;
     reg ana_wr;
   
-    wire [60:0] ana_out_data;
+    wire [70:0] ana_out_data;
     reg ana_rd;
     wire ana_empty;
     reg ana_trig;
@@ -122,6 +123,7 @@ module comp_ana(
 	reg [61:0] pend_sample;
     reg [19:0] pend_freq;
     reg [15:0] pend_angle;
+    reg [9:0] pend_doa_error;
     
     wire stat_01_clk_buf;
     wire stat_clk_0_raw;
@@ -144,6 +146,7 @@ module comp_ana(
 	reg [61:0] stat_sample [0:7];
     reg [19:0] stat_freq [0:7];
     reg [15:0] stat_angle [0:7];
+    reg [9:0] stat_doa_error [0:7];
 
     reg [15:0] stat_env_0 [0:7]; 
     reg [15:0] stat_env_1 [0:7];
@@ -168,10 +171,10 @@ module comp_ana(
         .rst(reset_int),              // input wire rst
         .wr_clk(fifo_clk),            // input wire wr_clk
         .rd_clk(clk),                 // input wire rd_clk
-        .din(ana_in_data),            // input wire [60 : 0] din
+        .din(ana_in_data),            // input wire [70 : 0] din
         .wr_en(ana_wr),               // input wire wr_en
         .rd_en(ana_rd),               // input wire rd_en
-        .dout(ana_out_data),          // output wire [60 : 0] dout
+        .dout(ana_out_data),          // output wire [70 : 0] dout
         .empty(ana_empty)             // output wire empty
     );
 
@@ -236,6 +239,7 @@ module comp_ana(
         .rt_sample(stat_sample[0]),
         .rt_freq(stat_freq[0]),
         .rt_angle(stat_angle[0]),
+        .rt_doa_error(stat_doa_error[0]),
         .rt_wr(stat_wr[0]),    
         .rt_env_0(stat_env_0[0]), 
         .rt_env_1(stat_env_1[0]), 
@@ -250,6 +254,7 @@ module comp_ana(
         .idle(stat_idle_in_0)
     );
 
+/*
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(ana_trig),            // input wire [0:0]  probe3
@@ -261,6 +266,7 @@ module comp_ana(
 		.probe6(stat_wr),             // input wire [7:0]  probe3
 		.probe7(stat_idle)            // input wire [7:0]  probe3
 	);
+*/
 
 generate
   begin : comp_ana
@@ -318,6 +324,7 @@ generate
             ana_in_data[24:16] <= fifo_size;
             ana_in_data[44:25] <= fifo_freq;
             ana_in_data[60:45] <= fifo_angle;
+            ana_in_data[70:61] <= fifo_doa_error;
             ana_wr <= 1;
        end
        else
@@ -477,6 +484,7 @@ generate
             stat_sample[curr_stat] <= pend_sample;
             stat_freq[curr_stat] <= pend_freq;
             stat_angle[curr_stat] <= pend_angle;
+            stat_doa_error[curr_stat] <= pend_doa_error;
             stat_start[curr_stat] <= 1;
         end
         else
@@ -496,6 +504,7 @@ generate
             pend_sample <= {sample_counter_3, sample_counter_2, sample_counter_1, sample_counter_0};
             pend_freq <= ana_out_data[44:25];
             pend_angle <= ana_out_data[60:45];
+            pend_doa_error <= ana_out_data[70:61];
         end
         else
         begin

@@ -61,6 +61,7 @@ module ps_comp_high_0_0 (
   ana_fifo_size,
   ana_fifo_freq,
   ana_fifo_angle,
+  ana_fifo_doa_error,
   ana_fifo_sample_N,
   ana_fifo_sample_E,
   ana_fifo_sample_W,
@@ -78,7 +79,8 @@ module ps_comp_high_0_0 (
   sample,
   size,
   freq,
-  angle
+  angle,
+  doa_error
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ana_fifo_clk CLK" *)
@@ -90,6 +92,7 @@ input wire [15 : 0] ana_fifo_sample;
 input wire [8 : 0] ana_fifo_size;
 input wire [19 : 0] ana_fifo_freq;
 input wire [15 : 0] ana_fifo_angle;
+input wire [9 : 0] ana_fifo_doa_error;
 input wire [5 : 0] ana_fifo_sample_N;
 input wire [5 : 0] ana_fifo_sample_E;
 input wire [5 : 0] ana_fifo_sample_W;
@@ -117,6 +120,7 @@ output wire [15 : 0] sample;
 output wire [8 : 0] size;
 output wire [19 : 0] freq;
 output wire [15 : 0] angle;
+output wire [9 : 0] doa_error;
 
   comp_high inst (
     .ana_fifo_clk(ana_fifo_clk),
@@ -125,6 +129,7 @@ output wire [15 : 0] angle;
     .ana_fifo_size(ana_fifo_size),
     .ana_fifo_freq(ana_fifo_freq),
     .ana_fifo_angle(ana_fifo_angle),
+    .ana_fifo_doa_error(ana_fifo_doa_error),
     .ana_fifo_sample_N(ana_fifo_sample_N),
     .ana_fifo_sample_E(ana_fifo_sample_E),
     .ana_fifo_sample_W(ana_fifo_sample_W),
@@ -142,6 +147,7 @@ output wire [15 : 0] angle;
     .sample(sample),
     .size(size),
     .freq(freq),
-    .angle(angle)
+    .angle(angle),
+    .doa_error(doa_error)
   );
 endmodule
