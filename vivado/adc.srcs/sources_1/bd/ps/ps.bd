@@ -4637,33 +4637,33 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr",
           "ana_low/config_adr",
-          "ana_high/config_adr"
+          "ana_high/config_adr",
+          "comp_ana_low/config_adr",
+          "comp_ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "comp_ana_low/config_data",
-          "comp_ana_high/config_data",
           "ana_low/config_data",
-          "ana_high/config_data"
+          "ana_high/config_data",
+          "comp_ana_low/config_data",
+          "comp_ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
         "ports": [
           "adc_control_0/config_high_wr",
-          "comp_ana_high/config_wr",
-          "ana_high/config_wr"
+          "ana_high/config_wr",
+          "comp_ana_high/config_wr"
         ]
       },
       "adc_control_0_config_low_wr": {
         "ports": [
           "adc_control_0/config_low_wr",
-          "comp_ana_low/config_wr",
-          "ana_low/config_wr"
+          "ana_low/config_wr",
+          "comp_ana_low/config_wr"
         ]
       },
       "adc_control_0_data_out": {
@@ -5530,12 +5530,12 @@
           "deci_high/sim_clk",
           "mts_0/axi_clk",
           "adc_control_0/clk",
+          "ana_low/config_clk",
+          "ana_high/config_clk",
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk",
-          "ana_low/config_clk",
-          "ana_high/config_clk"
+          "comp_ana_high/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

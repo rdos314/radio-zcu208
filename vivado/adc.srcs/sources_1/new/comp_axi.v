@@ -48,8 +48,8 @@ module comp_axi(
     wire [7:0] flags = 8'b10000000;
 
     wire [37:0] freq_p;
+    wire [37:0] freq_std_p;
     reg [1:0] freq_delay;
-    reg freq_ok;
 
     reg div_start;
     reg [15:0] sizem1;
@@ -77,15 +77,26 @@ module comp_axi(
     reg [15:0] env_std;
     reg phase_std_ok;
     reg [15:0] phase_std;
+    reg raw_freq_std_ok;
     reg freq_std_ok;
+    reg [19:0] raw_freq_std;
     reg [15:0] freq_std;
 
-    reg data_ok;
+	reg filling;
+	reg read_back;
+	reg std_done;
+	reg std_ok;
 
     mul_freq mul_freq_i (
         .CLK(clk),     // input wire CLK
         .A(freq),      // input wire [19 : 0] A
         .P(freq_p)     // output wire [37 : 0] P
+    );
+
+    mul_freq mul_freq_std_i (
+        .CLK(clk),          // input wire CLK
+        .A(raw_freq_std),   // input wire [19 : 0] A
+        .P(freq_std_p)      // output wire [37 : 0] P
     );
 
     div_var div_var_env (
@@ -121,7 +132,7 @@ module comp_axi(
     sqrt_std env_std_i (
         .aclk(clk),                                        // input wire aclk
         .s_axis_cartesian_tvalid(div_env_done),            // input wire s_axis_cartesian_tvalid
-        .s_axis_cartesian_tdata(div_env_data[31:0]),       // input wire [31 : 0] s_axis_cartesian_tdata
+        .s_axis_cartesian_tdata(div_env_data[39:0]),       // input wire [39 : 0] s_axis_cartesian_tdata
         .m_axis_dout_tvalid(env_std_done),                 // output wire m_axis_dout_tvalid
         .m_axis_dout_tdata(env_std_data)                   // output wire [23 : 0] m_axis_dout_tdata
     );
@@ -129,7 +140,7 @@ module comp_axi(
     sqrt_std phase_std_i (
         .aclk(clk),                                        // input wire aclk
         .s_axis_cartesian_tvalid(div_phase_done),          // input wire s_axis_cartesian_tvalid
-        .s_axis_cartesian_tdata(div_phase_data[31:0]),     // input wire [31 : 0] s_axis_cartesian_tdata
+        .s_axis_cartesian_tdata(div_phase_data[39:0]),     // input wire [39 : 0] s_axis_cartesian_tdata
         .m_axis_dout_tvalid(phase_std_done),               // output wire m_axis_dout_tvalid
         .m_axis_dout_tdata(phase_std_data)                 // output wire [23 : 0] m_axis_dout_tdata
     );
@@ -137,7 +148,7 @@ module comp_axi(
     sqrt_std freq_std_i (
         .aclk(clk),                                        // input wire aclk
         .s_axis_cartesian_tvalid(div_freq_done),           // input wire s_axis_cartesian_tvalid
-        .s_axis_cartesian_tdata(div_freq_data[31:0]),      // input wire [31 : 0] s_axis_cartesian_tdata
+        .s_axis_cartesian_tdata(div_freq_data[39:0]),      // input wire [39 : 0] s_axis_cartesian_tdata
         .m_axis_dout_tvalid(freq_std_done),                // output wire m_axis_dout_tvalid
         .m_axis_dout_tdata(freq_std_data)                  // output wire [23 : 0] m_axis_dout_tdata
     );
@@ -155,10 +166,15 @@ module comp_axi(
 		.probe8(env_std_done),        // input wire [0:0]  probe3
 		.probe9(phase_std_done),      // input wire [0:0]  probe3
 		.probe10(freq_std_done),      // input wire [0:0]  probe3
-		.probe11(env_std),            // input wire [15:0]  probe3
-		.probe12(phase_std),          // input wire [15:0]  probe3
-		.probe13(freq_std),           // input wire [15:0]  probe3
-		.probe14(data_ok)             // input wire [0:0]  probe3
+		.probe11(calc_freq),          // input wire [31:0]  probe3
+		.probe12(env_std),            // input wire [15:0]  probe3
+		.probe13(phase_std),          // input wire [15:0]  probe3
+		.probe14(freq_std),           // input wire [15:0]  probe3
+		.probe15(std_done),           // input wire [0:0]  probe3
+		.probe16(std_ok),             // input wire [0:0]  probe3
+		.probe17(filling),            // input wire [0:0]  probe3
+		.probe18(active),             // input wire [0:0]  probe3
+		.probe19(read_back)           // input wire [0:0]  probe3
 );
 	
 generate
@@ -166,7 +182,18 @@ generate
 
     always @(posedge clk) 
     begin
-		idle <= 1;
+		idle <= !filling & !read_back & !active;
+	end
+
+    always @(posedge clk) 
+    begin
+		if (wr)
+			filling <= 1;
+		else
+		begin
+			if (reset | read_back)
+				filling <= 0;
+		end
 	end
 
     always @(posedge clk) 
@@ -254,33 +281,6 @@ generate
                div_start <= 0;
        end       
     end
-
-    always @(posedge clk) 
-    begin
-        if (reset)
-            freq_delay <= 0;
-        else
-        begin
-            if (header_ok)
-                freq_delay <= 3;
-            else
-            begin
-                if (freq_delay)
-                    freq_delay <= freq_delay - 1;
-            end
-        end
-    end              
-    
-    always @(posedge clk) 
-    begin
-        if (freq_delay == 1)
-        begin
-            freq_ok <= 1;
-            calc_freq <= {13'h0, freq_p[37:19]};
-        end
-        else
-            freq_ok <= 0;
-    end
     
     always @(posedge clk) 
     begin
@@ -298,6 +298,12 @@ generate
     
     always @(posedge clk) 
     begin
+        if (env_std_ok)
+            calc_freq <= {13'h0, freq_p[37:19]};
+    end
+    
+    always @(posedge clk) 
+    begin
         if (header_ok)
             phase_std_ok <= 0;
         else
@@ -305,7 +311,10 @@ generate
             if (phase_std_done)
             begin
                 phase_std_ok <= 1;
-                phase_std <= phase_std_data[15:0];
+                if (phase_std_data[1])
+                    phase_std <= phase_std_data[17:2] + 1;
+                else
+                    phase_std <= phase_std_data[17:2];
             end
         end
     end
@@ -313,15 +322,42 @@ generate
     always @(posedge clk) 
     begin
         if (header_ok)
-            freq_std_ok <= 0;
+            raw_freq_std_ok <= 0;
         else
         begin
             if (freq_std_done)
             begin
-                freq_std_ok <= 1;
-                freq_std <= freq_std_data[15:0];
+                raw_freq_std_ok <= 1;
+                raw_freq_std <= freq_std_data[19:0];
             end
         end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+            freq_delay <= 0;
+        else
+        begin
+            if (raw_freq_std_ok)
+                freq_delay <= 3;
+            else
+            begin
+                if (freq_delay)
+                    freq_delay <= freq_delay - 1;
+            end
+        end
+    end              
+    
+    always @(posedge clk) 
+    begin
+        if (freq_delay == 1)
+        begin
+            std_done <= 1;
+            freq_std <= freq_std_p[34:19];
+        end
+        else
+            std_done <= 0;
     end
 
     always @(posedge clk) 
@@ -342,26 +378,27 @@ generate
 
     always @(posedge clk) 
     begin
-        if (freq_ok)
-            header[159:128] <= calc_freq;
+        if (reset | header_ok | active)
+            std_ok <= 0;
+        else
+        begin
+            if (std_done)
+            begin
+                header[159:128] <= calc_freq;
+                header[223:208] <= env_std;
+                header[239:224] <= phase_std;
+                header[255:240] <= freq_std;
+                std_ok <= 1;
+            end
+        end
     end
     
     always @(posedge clk) 
     begin
-        if (env_std_ok)
-            header[223:208] <= env_std;
-    end
-    
-    always @(posedge clk) 
-    begin
-        if (phase_std_ok)
-            header[239:224] <= phase_std;
-    end
-
-    always @(posedge clk) 
-    begin
-        if (freq_std_ok)
-            header[255:240] <= freq_std;
+        if (std_ok & !wr)
+            read_back <= 1;
+        else
+            read_back <= 0;
     end
 
     always @(posedge clk) 
@@ -369,17 +406,9 @@ generate
         data_out <= mem_data[rd_ptr];
     end
 
-    always @(posedge clk) 
-    begin
-        if (env_std_ok & phase_std_ok & freq_std_ok)
-            data_ok <= 1;
-        else
-            data_ok <= 0;
-    end
-
     always @(posedge clk)
     begin
-        if (data_ok)
+        if (read_back)
         begin
             active <= 1;
             rd_ptr <= 1;

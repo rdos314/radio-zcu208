@@ -55,7 +55,7 @@ COMPONENT sqrt_std
   PORT (
     aclk : IN STD_LOGIC;
     s_axis_cartesian_tvalid : IN STD_LOGIC;
-    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0) 
   );
