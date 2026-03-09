@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Sat Mar  7 14:38:12 2026
+-- Date        : Sun Mar  8 23:21:49 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.vhdl
@@ -14017,7 +14017,7 @@ entity ps_comp_ana_0_0_comp_axi is
     env_sum2 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     phase_sum2 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     freq_sum2 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    header_ok : in STD_LOGIC;
+    stat_ok : in STD_LOGIC;
     env_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     env_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     env_2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -14093,17 +14093,18 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
     probe6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe18 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component ps_comp_ana_0_0_ila_1;
   component ps_comp_ana_0_0_mul_freq is
@@ -14125,104 +14126,88 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute MARK_DEBUG of active : signal is std.standard.true;
   signal calc_freq : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute MARK_DEBUG of calc_freq : signal is std.standard.true;
+  signal \calc_freq__0\ : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \comp_axi.active_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[10]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[11]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[13]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[14]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std[9]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.env_std_ok_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.calc_freq[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[19]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[19]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[19]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_axi.calc_freq_reg[7]_i_1_n_7\ : STD_LOGIC;
   signal \comp_axi.filling_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.filling_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.filling_reg0\ : STD_LOGIC;
   signal \comp_axi.freq_delay[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.freq_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.freq_delay[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.idle_reg0\ : STD_LOGIC;
   signal \comp_axi.index_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[10]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[11]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[12]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[13]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[14]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[15]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[15]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[1]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[2]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[4]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[7]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[7]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[8]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std[9]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_1\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_2\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_3\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_4\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_5\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_6\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[15]_i_3_n_7\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_1\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_2\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_3\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_4\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_5\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_6\ : STD_LOGIC;
-  signal \comp_axi.phase_std_reg[7]_i_2_n_7\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_ok_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[0]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[10]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[11]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[12]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[13]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[14]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[15]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[16]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[17]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[18]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[19]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[1]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[2]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[3]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[4]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[5]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[6]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[7]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[8]\ : STD_LOGIC;
-  signal \comp_axi.raw_freq_std_reg_n_0_[9]\ : STD_LOGIC;
+  signal \comp_axi.phase_std[7]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_1\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_2\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_3\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_4\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_5\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_6\ : STD_LOGIC;
+  signal \comp_axi.phase_std_reg[7]_i_1_n_7\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[16]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[17]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[18]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[19]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[19]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.raw_freq_std[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[0]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[0]_i_3_n_0\ : STD_LOGIC;
+  signal \comp_axi.rd_blocks[0]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[2]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.rd_blocks[2]_i_3_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[3]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[3]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.rd_blocks[4]_i_3_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[5]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[5]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[6]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[6]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[7]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[7]_i_3_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[7]_i_4_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[7]_i_5_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[7]_i_6_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_blocks[7]_i_7_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[2]_i_1_n_0\ : STD_LOGIC;
@@ -14264,6 +14249,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   signal \comp_axi.sizem1_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_axi.sizem1_reg_n_0_[9]\ : STD_LOGIC;
   signal \comp_axi.sizem2[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.sizem2[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.sizem2[15]_i_3_n_0\ : STD_LOGIC;
   signal \comp_axi.sizem2[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.sizem2[3]_i_1_n_0\ : STD_LOGIC;
@@ -14282,8 +14268,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   signal \comp_axi.wr_blocks[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.wr_blocks[5]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.wr_blocks[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.wr_blocks[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.wr_blocks[7]_i_2_n_0\ : STD_LOGIC;
-  signal \comp_axi.wr_blocks[7]_i_3_n_0\ : STD_LOGIC;
   signal \comp_axi.wr_ptr[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.wr_ptr[7]_i_3_n_0\ : STD_LOGIC;
   signal div_env_data : STD_LOGIC_VECTOR ( 39 downto 0 );
@@ -14293,39 +14279,43 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   signal div_phase_data : STD_LOGIC_VECTOR ( 39 downto 0 );
   signal div_phase_done : STD_LOGIC;
   signal div_start : STD_LOGIC;
+  attribute MARK_DEBUG of div_start : signal is std.standard.true;
   signal env_std : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of env_std : signal is std.standard.true;
+  signal env_std_data : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_std_done : STD_LOGIC;
-  attribute MARK_DEBUG of env_std_done : signal is std.standard.true;
-  signal env_std_i_n_10 : STD_LOGIC;
-  signal env_std_i_n_11 : STD_LOGIC;
-  signal env_std_i_n_12 : STD_LOGIC;
-  signal env_std_i_n_13 : STD_LOGIC;
-  signal env_std_i_n_14 : STD_LOGIC;
-  signal env_std_i_n_15 : STD_LOGIC;
-  signal env_std_i_n_16 : STD_LOGIC;
-  signal env_std_i_n_17 : STD_LOGIC;
-  signal env_std_i_n_18 : STD_LOGIC;
-  signal env_std_i_n_19 : STD_LOGIC;
-  signal env_std_i_n_20 : STD_LOGIC;
-  signal env_std_i_n_21 : STD_LOGIC;
-  signal env_std_i_n_22 : STD_LOGIC;
-  signal env_std_i_n_23 : STD_LOGIC;
-  signal env_std_i_n_24 : STD_LOGIC;
-  signal env_std_i_n_9 : STD_LOGIC;
-  signal env_std_ok : STD_LOGIC;
   signal filling : STD_LOGIC;
   attribute MARK_DEBUG of filling : signal is std.standard.true;
-  signal freq_delay : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal freq_p : STD_LOGIC_VECTOR ( 37 downto 19 );
+  signal freq_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute MARK_DEBUG of freq_delay : signal is std.standard.true;
+  signal freq_p : STD_LOGIC_VECTOR ( 37 downto 0 );
   signal freq_std : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of freq_std : signal is std.standard.true;
   signal \freq_std__0\ : STD_LOGIC;
-  signal freq_std_data : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal freq_std_done : STD_LOGIC;
-  attribute MARK_DEBUG of freq_std_done : signal is std.standard.true;
+  signal freq_std_i_n_10 : STD_LOGIC;
+  signal freq_std_i_n_11 : STD_LOGIC;
+  signal freq_std_i_n_12 : STD_LOGIC;
+  signal freq_std_i_n_13 : STD_LOGIC;
+  signal freq_std_i_n_14 : STD_LOGIC;
+  signal freq_std_i_n_15 : STD_LOGIC;
+  signal freq_std_i_n_16 : STD_LOGIC;
+  signal freq_std_i_n_17 : STD_LOGIC;
+  signal freq_std_i_n_18 : STD_LOGIC;
+  signal freq_std_i_n_19 : STD_LOGIC;
+  signal freq_std_i_n_20 : STD_LOGIC;
+  signal freq_std_i_n_21 : STD_LOGIC;
+  signal freq_std_i_n_22 : STD_LOGIC;
+  signal freq_std_i_n_23 : STD_LOGIC;
+  signal freq_std_i_n_24 : STD_LOGIC;
+  signal freq_std_i_n_5 : STD_LOGIC;
+  signal freq_std_i_n_6 : STD_LOGIC;
+  signal freq_std_i_n_7 : STD_LOGIC;
+  signal freq_std_i_n_8 : STD_LOGIC;
+  signal freq_std_i_n_9 : STD_LOGIC;
   signal freq_std_p : STD_LOGIC_VECTOR ( 34 downto 19 );
-  signal idle0 : STD_LOGIC;
+  signal \^idle\ : STD_LOGIC;
+  attribute MARK_DEBUG of idle : signal is std.standard.true;
   signal index : STD_LOGIC;
   attribute MARK_DEBUG of index : signal is std.standard.true;
   signal index1 : STD_LOGIC;
@@ -14337,16 +14327,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   signal \phase_std__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal phase_std_data : STD_LOGIC_VECTOR ( 17 downto 1 );
   signal phase_std_done : STD_LOGIC;
-  attribute MARK_DEBUG of phase_std_done : signal is std.standard.true;
-  signal raw_freq_std : STD_LOGIC;
-  signal raw_freq_std_ok : STD_LOGIC;
+  signal raw_freq_std : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of raw_freq_std : signal is std.standard.true;
   signal rd_blocks : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of rd_blocks : signal is std.standard.true;
   signal rd_ptr : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of rd_ptr : signal is std.standard.true;
   signal read_back : STD_LOGIC;
   attribute MARK_DEBUG of read_back : signal is std.standard.true;
-  signal sizem1 : STD_LOGIC;
   signal sizem10 : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal sizem2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal sizem20 : STD_LOGIC_VECTOR ( 12 downto 1 );
@@ -14358,7 +14346,9 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute MARK_DEBUG of wr_blocks : signal is std.standard.true;
   signal wr_ptr : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of wr_ptr : signal is std.standard.true;
-  signal \NLW_comp_axi.phase_std_reg[15]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
+  signal \NLW_comp_axi.calc_freq_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_comp_axi.calc_freq_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal \NLW_comp_axi.phase_std_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal NLW_div_var_env_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_div_var_env_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_div_var_env_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 40 );
@@ -14370,7 +14360,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   signal NLW_div_var_phase_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 40 );
   signal NLW_env_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 16 );
   signal NLW_freq_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
-  signal NLW_mul_freq_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal NLW_mul_freq_std_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 37 downto 0 );
   signal NLW_phase_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 0 );
   attribute KEEP : string;
@@ -14390,12 +14379,17 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.calc_freq_reg[14]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[15]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[15]\ : label is "yes";
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \comp_axi.calc_freq_reg[15]_i_1\ : label is 35;
   attribute KEEP of \comp_axi.calc_freq_reg[16]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[16]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[17]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[17]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[18]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_axi.calc_freq_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.calc_freq_reg[19]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_axi.calc_freq_reg[19]_i_1\ : label is 35;
   attribute KEEP of \comp_axi.calc_freq_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[1]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[2]\ : label is "yes";
@@ -14410,10 +14404,12 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.calc_freq_reg[6]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[7]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[7]\ : label is "yes";
+  attribute ADDER_THRESHOLD of \comp_axi.calc_freq_reg[7]_i_1\ : label is 35;
   attribute KEEP of \comp_axi.calc_freq_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[8]\ : label is "yes";
   attribute KEEP of \comp_axi.calc_freq_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.calc_freq_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_axi.div_start_reg\ : label is "yes";
   attribute KEEP of \comp_axi.env_std_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.env_std_reg[0]\ : label is "yes";
   attribute KEEP of \comp_axi.env_std_reg[10]\ : label is "yes";
@@ -14448,9 +14444,9 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.env_std_reg[9]\ : label is "yes";
   attribute KEEP of \comp_axi.filling_reg\ : label is "yes";
   attribute mark_debug_string of \comp_axi.filling_reg\ : label is "yes";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_axi.freq_delay[0]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \comp_axi.freq_delay[1]_i_1\ : label is "soft_lutpair96";
+  attribute KEEP of \comp_axi.freq_delay_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_axi.freq_delay_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_axi.freq_delay_reg[2]\ : label is "yes";
   attribute KEEP of \comp_axi.freq_std_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.freq_std_reg[0]\ : label is "yes";
   attribute KEEP of \comp_axi.freq_std_reg[10]\ : label is "yes";
@@ -14483,6 +14479,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.freq_std_reg[8]\ : label is "yes";
   attribute KEEP of \comp_axi.freq_std_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.freq_std_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_axi.idle_reg\ : label is "yes";
   attribute KEEP of \comp_axi.index_reg\ : label is "yes";
   attribute KEEP of \comp_axi.mem_wr_reg\ : label is "yes";
   attribute KEEP of \comp_axi.phase_std_reg[0]\ : label is "yes";
@@ -14499,8 +14496,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.phase_std_reg[14]\ : label is "yes";
   attribute KEEP of \comp_axi.phase_std_reg[15]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.phase_std_reg[15]\ : label is "yes";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \comp_axi.phase_std_reg[15]_i_3\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_axi.phase_std_reg[15]_i_1\ : label is 35;
   attribute KEEP of \comp_axi.phase_std_reg[1]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.phase_std_reg[1]\ : label is "yes";
   attribute KEEP of \comp_axi.phase_std_reg[2]\ : label is "yes";
@@ -14515,11 +14511,51 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute mark_debug_string of \comp_axi.phase_std_reg[6]\ : label is "yes";
   attribute KEEP of \comp_axi.phase_std_reg[7]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.phase_std_reg[7]\ : label is "yes";
-  attribute ADDER_THRESHOLD of \comp_axi.phase_std_reg[7]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \comp_axi.phase_std_reg[7]_i_1\ : label is 35;
   attribute KEEP of \comp_axi.phase_std_reg[8]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.phase_std_reg[8]\ : label is "yes";
   attribute KEEP of \comp_axi.phase_std_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_axi.phase_std_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[16]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[17]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[18]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[19]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_axi.raw_freq_std_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_axi.raw_freq_std_reg[9]\ : label is "yes";
   attribute KEEP of \comp_axi.rd_blocks_reg[0]\ : label is "yes";
   attribute KEEP of \comp_axi.rd_blocks_reg[1]\ : label is "yes";
   attribute KEEP of \comp_axi.rd_blocks_reg[2]\ : label is "yes";
@@ -14537,7 +14573,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute KEEP of \comp_axi.rd_ptr_reg[6]\ : label is "yes";
   attribute KEEP of \comp_axi.rd_ptr_reg[7]\ : label is "yes";
   attribute KEEP of \comp_axi.read_back_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_axi.sizem1[1]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \comp_axi.sizem1[1]_i_1\ : label is "soft_lutpair96";
   attribute SOFT_HLUTNM of \comp_axi.sizem1[2]_i_1\ : label is "soft_lutpair95";
   attribute SOFT_HLUTNM of \comp_axi.sizem1[3]_i_1\ : label is "soft_lutpair91";
   attribute SOFT_HLUTNM of \comp_axi.sizem1[4]_i_1\ : label is "soft_lutpair91";
@@ -14547,7 +14584,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute SOFT_HLUTNM of \comp_axi.sizem1[9]_i_1\ : label is "soft_lutpair90";
   attribute SOFT_HLUTNM of \comp_axi.sizem2[10]_i_1\ : label is "soft_lutpair89";
   attribute SOFT_HLUTNM of \comp_axi.sizem2[15]_i_2\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \comp_axi.sizem2[2]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \comp_axi.sizem2[2]_i_1\ : label is "soft_lutpair96";
   attribute SOFT_HLUTNM of \comp_axi.sizem2[3]_i_1\ : label is "soft_lutpair95";
   attribute SOFT_HLUTNM of \comp_axi.sizem2[4]_i_1\ : label is "soft_lutpair92";
   attribute SOFT_HLUTNM of \comp_axi.sizem2[5]_i_1\ : label is "soft_lutpair92";
@@ -14555,7 +14592,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute SOFT_HLUTNM of \comp_axi.sizem2[9]_i_1\ : label is "soft_lutpair93";
   attribute KEEP of \comp_axi.std_done_reg\ : label is "yes";
   attribute KEEP of \comp_axi.std_ok_reg\ : label is "yes";
-  attribute mark_debug_string of \comp_axi.std_ok_reg\ : label is "yes";
   attribute KEEP of \comp_axi.wr_blocks_reg[0]\ : label is "yes";
   attribute KEEP of \comp_axi.wr_blocks_reg[1]\ : label is "yes";
   attribute KEEP of \comp_axi.wr_blocks_reg[2]\ : label is "yes";
@@ -14612,13 +14648,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_axi is
   attribute x_core_info of phase_std_i : label is "cordic_v6_0_24,Vivado 2025.1";
 begin
   active <= \^active\;
+  idle <= \^idle\;
 \comp_axi.active_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"08"
     )
         port map (
-      I0 => \comp_axi.rd_blocks[0]_i_3_n_0\,
-      I1 => \^active\,
+      I0 => \^active\,
+      I1 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I2 => reset,
       O => \comp_axi.active_i_1_n_0\
     );
@@ -14630,155 +14667,220 @@ begin
       Q => \^active\,
       S => read_back
     );
+\comp_axi.calc_freq[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => freq_p(19),
+      I1 => freq_p(18),
+      O => \comp_axi.calc_freq[7]_i_2_n_0\
+    );
 \comp_axi.calc_freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(19),
+      CE => env_std_done,
+      D => \calc_freq__0\(0),
       Q => calc_freq(0),
       R => '0'
     );
 \comp_axi.calc_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(29),
+      CE => env_std_done,
+      D => \calc_freq__0\(10),
       Q => calc_freq(10),
       R => '0'
     );
 \comp_axi.calc_freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(30),
+      CE => env_std_done,
+      D => \calc_freq__0\(11),
       Q => calc_freq(11),
       R => '0'
     );
 \comp_axi.calc_freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(31),
+      CE => env_std_done,
+      D => \calc_freq__0\(12),
       Q => calc_freq(12),
       R => '0'
     );
 \comp_axi.calc_freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(32),
+      CE => env_std_done,
+      D => \calc_freq__0\(13),
       Q => calc_freq(13),
       R => '0'
     );
 \comp_axi.calc_freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(33),
+      CE => env_std_done,
+      D => \calc_freq__0\(14),
       Q => calc_freq(14),
       R => '0'
     );
 \comp_axi.calc_freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(34),
+      CE => env_std_done,
+      D => \calc_freq__0\(15),
       Q => calc_freq(15),
       R => '0'
+    );
+\comp_axi.calc_freq_reg[15]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_axi.calc_freq_reg[7]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7) => \comp_axi.calc_freq_reg[15]_i_1_n_0\,
+      CO(6) => \comp_axi.calc_freq_reg[15]_i_1_n_1\,
+      CO(5) => \comp_axi.calc_freq_reg[15]_i_1_n_2\,
+      CO(4) => \comp_axi.calc_freq_reg[15]_i_1_n_3\,
+      CO(3) => \comp_axi.calc_freq_reg[15]_i_1_n_4\,
+      CO(2) => \comp_axi.calc_freq_reg[15]_i_1_n_5\,
+      CO(1) => \comp_axi.calc_freq_reg[15]_i_1_n_6\,
+      CO(0) => \comp_axi.calc_freq_reg[15]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 0) => \calc_freq__0\(15 downto 8),
+      S(7 downto 0) => freq_p(34 downto 27)
     );
 \comp_axi.calc_freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(35),
+      CE => env_std_done,
+      D => \calc_freq__0\(16),
       Q => calc_freq(16),
       R => '0'
     );
 \comp_axi.calc_freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(36),
+      CE => env_std_done,
+      D => \calc_freq__0\(17),
       Q => calc_freq(17),
       R => '0'
     );
 \comp_axi.calc_freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(37),
+      CE => env_std_done,
+      D => \calc_freq__0\(18),
       Q => calc_freq(18),
       R => '0'
+    );
+\comp_axi.calc_freq_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => env_std_done,
+      D => \calc_freq__0\(19),
+      Q => calc_freq(19),
+      R => '0'
+    );
+\comp_axi.calc_freq_reg[19]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \comp_axi.calc_freq_reg[15]_i_1_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_comp_axi.calc_freq_reg[19]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \comp_axi.calc_freq_reg[19]_i_1_n_5\,
+      CO(1) => \comp_axi.calc_freq_reg[19]_i_1_n_6\,
+      CO(0) => \comp_axi.calc_freq_reg[19]_i_1_n_7\,
+      DI(7 downto 0) => B"00000000",
+      O(7 downto 4) => \NLW_comp_axi.calc_freq_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
+      O(3 downto 0) => \calc_freq__0\(19 downto 16),
+      S(7 downto 3) => B"00000",
+      S(2 downto 0) => freq_p(37 downto 35)
     );
 \comp_axi.calc_freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(20),
+      CE => env_std_done,
+      D => \calc_freq__0\(1),
       Q => calc_freq(1),
       R => '0'
     );
 \comp_axi.calc_freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(21),
+      CE => env_std_done,
+      D => \calc_freq__0\(2),
       Q => calc_freq(2),
       R => '0'
     );
 \comp_axi.calc_freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(22),
+      CE => env_std_done,
+      D => \calc_freq__0\(3),
       Q => calc_freq(3),
       R => '0'
     );
 \comp_axi.calc_freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(23),
+      CE => env_std_done,
+      D => \calc_freq__0\(4),
       Q => calc_freq(4),
       R => '0'
     );
 \comp_axi.calc_freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(24),
+      CE => env_std_done,
+      D => \calc_freq__0\(5),
       Q => calc_freq(5),
       R => '0'
     );
 \comp_axi.calc_freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(25),
+      CE => env_std_done,
+      D => \calc_freq__0\(6),
       Q => calc_freq(6),
       R => '0'
     );
 \comp_axi.calc_freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(26),
+      CE => env_std_done,
+      D => \calc_freq__0\(7),
       Q => calc_freq(7),
       R => '0'
+    );
+\comp_axi.calc_freq_reg[7]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \comp_axi.calc_freq_reg[7]_i_1_n_0\,
+      CO(6) => \comp_axi.calc_freq_reg[7]_i_1_n_1\,
+      CO(5) => \comp_axi.calc_freq_reg[7]_i_1_n_2\,
+      CO(4) => \comp_axi.calc_freq_reg[7]_i_1_n_3\,
+      CO(3) => \comp_axi.calc_freq_reg[7]_i_1_n_4\,
+      CO(2) => \comp_axi.calc_freq_reg[7]_i_1_n_5\,
+      CO(1) => \comp_axi.calc_freq_reg[7]_i_1_n_6\,
+      CO(0) => \comp_axi.calc_freq_reg[7]_i_1_n_7\,
+      DI(7 downto 1) => B"0000000",
+      DI(0) => freq_p(19),
+      O(7 downto 0) => \calc_freq__0\(7 downto 0),
+      S(7 downto 1) => freq_p(26 downto 20),
+      S(0) => \comp_axi.calc_freq[7]_i_2_n_0\
     );
 \comp_axi.calc_freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(27),
+      CE => env_std_done,
+      D => \calc_freq__0\(8),
       Q => calc_freq(8),
       R => '0'
     );
 \comp_axi.calc_freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => env_std_ok,
-      D => freq_p(28),
+      CE => env_std_done,
+      D => \calc_freq__0\(9),
       Q => calc_freq(9),
       R => '0'
     );
@@ -14786,334 +14888,167 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => header_ok,
+      D => stat_ok,
       Q => div_start,
       R => reset
-    );
-\comp_axi.env_std[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(0),
-      I1 => header_ok,
-      I2 => env_std_i_n_24,
-      O => \comp_axi.env_std[0]_i_1_n_0\
-    );
-\comp_axi.env_std[10]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(10),
-      I1 => header_ok,
-      I2 => env_std_i_n_14,
-      O => \comp_axi.env_std[10]_i_1_n_0\
-    );
-\comp_axi.env_std[11]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(11),
-      I1 => header_ok,
-      I2 => env_std_i_n_13,
-      O => \comp_axi.env_std[11]_i_1_n_0\
-    );
-\comp_axi.env_std[12]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(12),
-      I1 => header_ok,
-      I2 => env_std_i_n_12,
-      O => \comp_axi.env_std[12]_i_1_n_0\
-    );
-\comp_axi.env_std[13]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(13),
-      I1 => header_ok,
-      I2 => env_std_i_n_11,
-      O => \comp_axi.env_std[13]_i_1_n_0\
-    );
-\comp_axi.env_std[14]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(14),
-      I1 => header_ok,
-      I2 => env_std_i_n_10,
-      O => \comp_axi.env_std[14]_i_1_n_0\
-    );
-\comp_axi.env_std[15]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => header_ok,
-      I1 => env_std_done,
-      O => \comp_axi.env_std[15]_i_1_n_0\
-    );
-\comp_axi.env_std[15]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(15),
-      I1 => header_ok,
-      I2 => env_std_i_n_9,
-      O => \comp_axi.env_std[15]_i_2_n_0\
-    );
-\comp_axi.env_std[1]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(1),
-      I1 => header_ok,
-      I2 => env_std_i_n_23,
-      O => \comp_axi.env_std[1]_i_1_n_0\
-    );
-\comp_axi.env_std[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(2),
-      I1 => header_ok,
-      I2 => env_std_i_n_22,
-      O => \comp_axi.env_std[2]_i_1_n_0\
-    );
-\comp_axi.env_std[3]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(3),
-      I1 => header_ok,
-      I2 => env_std_i_n_21,
-      O => \comp_axi.env_std[3]_i_1_n_0\
-    );
-\comp_axi.env_std[4]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(4),
-      I1 => header_ok,
-      I2 => env_std_i_n_20,
-      O => \comp_axi.env_std[4]_i_1_n_0\
-    );
-\comp_axi.env_std[5]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(5),
-      I1 => header_ok,
-      I2 => env_std_i_n_19,
-      O => \comp_axi.env_std[5]_i_1_n_0\
-    );
-\comp_axi.env_std[6]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(6),
-      I1 => header_ok,
-      I2 => env_std_i_n_18,
-      O => \comp_axi.env_std[6]_i_1_n_0\
-    );
-\comp_axi.env_std[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(7),
-      I1 => header_ok,
-      I2 => env_std_i_n_17,
-      O => \comp_axi.env_std[7]_i_1_n_0\
-    );
-\comp_axi.env_std[8]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(8),
-      I1 => header_ok,
-      I2 => env_std_i_n_16,
-      O => \comp_axi.env_std[8]_i_1_n_0\
-    );
-\comp_axi.env_std[9]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => env_std(9),
-      I1 => header_ok,
-      I2 => env_std_i_n_15,
-      O => \comp_axi.env_std[9]_i_1_n_0\
-    );
-\comp_axi.env_std_ok_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => env_std_done,
-      I1 => env_std_ok,
-      O => \comp_axi.env_std_ok_i_1_n_0\
-    );
-\comp_axi.env_std_ok_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_axi.env_std_ok_i_1_n_0\,
-      Q => env_std_ok,
-      R => header_ok
     );
 \comp_axi.env_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[0]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(0),
       Q => env_std(0),
       R => '0'
     );
 \comp_axi.env_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[10]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(10),
       Q => env_std(10),
       R => '0'
     );
 \comp_axi.env_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[11]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(11),
       Q => env_std(11),
       R => '0'
     );
 \comp_axi.env_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[12]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(12),
       Q => env_std(12),
       R => '0'
     );
 \comp_axi.env_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[13]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(13),
       Q => env_std(13),
       R => '0'
     );
 \comp_axi.env_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[14]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(14),
       Q => env_std(14),
       R => '0'
     );
 \comp_axi.env_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[15]_i_2_n_0\,
+      CE => env_std_done,
+      D => env_std_data(15),
       Q => env_std(15),
       R => '0'
     );
 \comp_axi.env_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[1]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(1),
       Q => env_std(1),
       R => '0'
     );
 \comp_axi.env_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[2]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(2),
       Q => env_std(2),
       R => '0'
     );
 \comp_axi.env_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[3]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(3),
       Q => env_std(3),
       R => '0'
     );
 \comp_axi.env_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[4]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(4),
       Q => env_std(4),
       R => '0'
     );
 \comp_axi.env_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[5]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(5),
       Q => env_std(5),
       R => '0'
     );
 \comp_axi.env_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[6]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(6),
       Q => env_std(6),
       R => '0'
     );
 \comp_axi.env_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[7]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(7),
       Q => env_std(7),
       R => '0'
     );
 \comp_axi.env_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[8]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(8),
       Q => env_std(8),
       R => '0'
     );
 \comp_axi.env_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.env_std[15]_i_1_n_0\,
-      D => \comp_axi.env_std[9]_i_1_n_0\,
+      CE => env_std_done,
+      D => env_std_data(9),
       Q => env_std(9),
       R => '0'
     );
-\comp_axi.filling_i_1\: unisim.vcomponents.LUT4
+\comp_axi.filling_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FF10"
+      INIT => X"FFFFFE02"
     )
         port map (
-      I0 => read_back,
-      I1 => reset,
-      I2 => filling,
-      I3 => wr,
+      I0 => filling,
+      I1 => read_back,
+      I2 => reset,
+      I3 => \comp_axi.filling_i_2_n_0\,
+      I4 => wr,
       O => \comp_axi.filling_i_1_n_0\
+    );
+\comp_axi.filling_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => '1',
+      I1 => \comp_axi.filling_reg0\,
+      O => \comp_axi.filling_i_2_n_0\
+    );
+\comp_axi.filling_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => reset,
+      I1 => read_back,
+      O => \comp_axi.filling_reg0\
     );
 \comp_axi.filling_reg\: unisim.vcomponents.FDRE
      port map (
@@ -15123,25 +15058,44 @@ begin
       Q => filling,
       R => '0'
     );
-\comp_axi.freq_delay[0]_i_1\: unisim.vcomponents.LUT3
+\comp_axi.freq_delay[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F2"
+      INIT => X"0000000000000054"
     )
         port map (
-      I0 => freq_delay(1),
-      I1 => freq_delay(0),
-      I2 => raw_freq_std_ok,
+      I0 => freq_delay(0),
+      I1 => freq_delay(1),
+      I2 => freq_delay(2),
+      I3 => freq_std_done,
+      I4 => reset,
+      I5 => stat_ok,
       O => \comp_axi.freq_delay[0]_i_1_n_0\
     );
-\comp_axi.freq_delay[1]_i_1\: unisim.vcomponents.LUT3
+\comp_axi.freq_delay[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F8"
+      INIT => X"0101000000000100"
+    )
+        port map (
+      I0 => stat_ok,
+      I1 => reset,
+      I2 => freq_std_done,
+      I3 => freq_delay(2),
+      I4 => freq_delay(1),
+      I5 => freq_delay(0),
+      O => \comp_axi.freq_delay[1]_i_1_n_0\
+    );
+\comp_axi.freq_delay[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"000000FF000000E0"
     )
         port map (
       I0 => freq_delay(1),
       I1 => freq_delay(0),
-      I2 => raw_freq_std_ok,
-      O => \comp_axi.freq_delay[1]_i_1_n_0\
+      I2 => freq_delay(2),
+      I3 => reset,
+      I4 => stat_ok,
+      I5 => freq_std_done,
+      O => \comp_axi.freq_delay[2]_i_1_n_0\
     );
 \comp_axi.freq_delay_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -15149,7 +15103,7 @@ begin
       CE => '1',
       D => \comp_axi.freq_delay[0]_i_1_n_0\,
       Q => freq_delay(0),
-      R => reset
+      R => '0'
     );
 \comp_axi.freq_delay_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -15157,15 +15111,24 @@ begin
       CE => '1',
       D => \comp_axi.freq_delay[1]_i_1_n_0\,
       Q => freq_delay(1),
-      R => reset
+      R => '0'
     );
-\comp_axi.freq_std[15]_i_1\: unisim.vcomponents.LUT2
+\comp_axi.freq_delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \comp_axi.freq_delay[2]_i_1_n_0\,
+      Q => freq_delay(2),
+      R => '0'
+    );
+\comp_axi.freq_std[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"02"
     )
         port map (
       I0 => freq_delay(0),
-      I1 => freq_delay(1),
+      I1 => freq_delay(2),
+      I2 => freq_delay(1),
       O => \freq_std__0\
     );
 \comp_axi.freq_std_reg[0]\: unisim.vcomponents.FDRE
@@ -15301,17 +15264,17 @@ begin
       INIT => X"01"
     )
         port map (
-      I0 => read_back,
-      I1 => \^active\,
+      I0 => \^active\,
+      I1 => read_back,
       I2 => filling,
-      O => idle0
+      O => \comp_axi.idle_reg0\
     );
 \comp_axi.idle_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => idle0,
-      Q => idle,
+      D => \comp_axi.idle_reg0\,
+      Q => \^idle\,
       R => '0'
     );
 \comp_axi.index_i_1\: unisim.vcomponents.LUT4
@@ -15321,7 +15284,7 @@ begin
         port map (
       I0 => index,
       I1 => wr,
-      I2 => header_ok,
+      I2 => stat_ok,
       I3 => reset,
       O => \comp_axi.index_i_1_n_0\
     );
@@ -15333,6 +15296,15 @@ begin
       Q => index,
       R => '0'
     );
+\comp_axi.mem_wr_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => reset,
+      I1 => stat_ok,
+      O => index1
+    );
 \comp_axi.mem_wr_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -15341,252 +15313,83 @@ begin
       Q => mem_wr,
       R => index1
     );
-\comp_axi.phase_std[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(0),
-      I1 => header_ok,
-      I2 => \phase_std__0\(0),
-      O => \comp_axi.phase_std[0]_i_1_n_0\
-    );
-\comp_axi.phase_std[10]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(10),
-      I1 => header_ok,
-      I2 => \phase_std__0\(10),
-      O => \comp_axi.phase_std[10]_i_1_n_0\
-    );
-\comp_axi.phase_std[11]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(11),
-      I1 => header_ok,
-      I2 => \phase_std__0\(11),
-      O => \comp_axi.phase_std[11]_i_1_n_0\
-    );
-\comp_axi.phase_std[12]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(12),
-      I1 => header_ok,
-      I2 => \phase_std__0\(12),
-      O => \comp_axi.phase_std[12]_i_1_n_0\
-    );
-\comp_axi.phase_std[13]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(13),
-      I1 => header_ok,
-      I2 => \phase_std__0\(13),
-      O => \comp_axi.phase_std[13]_i_1_n_0\
-    );
-\comp_axi.phase_std[14]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(14),
-      I1 => header_ok,
-      I2 => \phase_std__0\(14),
-      O => \comp_axi.phase_std[14]_i_1_n_0\
-    );
-\comp_axi.phase_std[15]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => header_ok,
-      I1 => phase_std_done,
-      O => \comp_axi.phase_std[15]_i_1_n_0\
-    );
-\comp_axi.phase_std[15]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(15),
-      I1 => header_ok,
-      I2 => \phase_std__0\(15),
-      O => \comp_axi.phase_std[15]_i_2_n_0\
-    );
-\comp_axi.phase_std[1]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(1),
-      I1 => header_ok,
-      I2 => \phase_std__0\(1),
-      O => \comp_axi.phase_std[1]_i_1_n_0\
-    );
-\comp_axi.phase_std[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(2),
-      I1 => header_ok,
-      I2 => \phase_std__0\(2),
-      O => \comp_axi.phase_std[2]_i_1_n_0\
-    );
-\comp_axi.phase_std[3]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(3),
-      I1 => header_ok,
-      I2 => \phase_std__0\(3),
-      O => \comp_axi.phase_std[3]_i_1_n_0\
-    );
-\comp_axi.phase_std[4]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(4),
-      I1 => header_ok,
-      I2 => \phase_std__0\(4),
-      O => \comp_axi.phase_std[4]_i_1_n_0\
-    );
-\comp_axi.phase_std[5]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(5),
-      I1 => header_ok,
-      I2 => \phase_std__0\(5),
-      O => \comp_axi.phase_std[5]_i_1_n_0\
-    );
-\comp_axi.phase_std[6]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(6),
-      I1 => header_ok,
-      I2 => \phase_std__0\(6),
-      O => \comp_axi.phase_std[6]_i_1_n_0\
-    );
-\comp_axi.phase_std[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(7),
-      I1 => header_ok,
-      I2 => \phase_std__0\(7),
-      O => \comp_axi.phase_std[7]_i_1_n_0\
-    );
-\comp_axi.phase_std[7]_i_3\: unisim.vcomponents.LUT2
+\comp_axi.phase_std[7]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
       I0 => phase_std_data(2),
       I1 => phase_std_data(1),
-      O => \comp_axi.phase_std[7]_i_3_n_0\
-    );
-\comp_axi.phase_std[8]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(8),
-      I1 => header_ok,
-      I2 => \phase_std__0\(8),
-      O => \comp_axi.phase_std[8]_i_1_n_0\
-    );
-\comp_axi.phase_std[9]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => phase_std(9),
-      I1 => header_ok,
-      I2 => \phase_std__0\(9),
-      O => \comp_axi.phase_std[9]_i_1_n_0\
+      O => \comp_axi.phase_std[7]_i_2_n_0\
     );
 \comp_axi.phase_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[0]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(0),
       Q => phase_std(0),
       R => '0'
     );
 \comp_axi.phase_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[10]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(10),
       Q => phase_std(10),
       R => '0'
     );
 \comp_axi.phase_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[11]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(11),
       Q => phase_std(11),
       R => '0'
     );
 \comp_axi.phase_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[12]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(12),
       Q => phase_std(12),
       R => '0'
     );
 \comp_axi.phase_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[13]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(13),
       Q => phase_std(13),
       R => '0'
     );
 \comp_axi.phase_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[14]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(14),
       Q => phase_std(14),
       R => '0'
     );
 \comp_axi.phase_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[15]_i_2_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(15),
       Q => phase_std(15),
       R => '0'
     );
-\comp_axi.phase_std_reg[15]_i_3\: unisim.vcomponents.CARRY8
+\comp_axi.phase_std_reg[15]_i_1\: unisim.vcomponents.CARRY8
      port map (
-      CI => \comp_axi.phase_std_reg[7]_i_2_n_0\,
+      CI => \comp_axi.phase_std_reg[7]_i_1_n_0\,
       CI_TOP => '0',
-      CO(7) => \NLW_comp_axi.phase_std_reg[15]_i_3_CO_UNCONNECTED\(7),
-      CO(6) => \comp_axi.phase_std_reg[15]_i_3_n_1\,
-      CO(5) => \comp_axi.phase_std_reg[15]_i_3_n_2\,
-      CO(4) => \comp_axi.phase_std_reg[15]_i_3_n_3\,
-      CO(3) => \comp_axi.phase_std_reg[15]_i_3_n_4\,
-      CO(2) => \comp_axi.phase_std_reg[15]_i_3_n_5\,
-      CO(1) => \comp_axi.phase_std_reg[15]_i_3_n_6\,
-      CO(0) => \comp_axi.phase_std_reg[15]_i_3_n_7\,
+      CO(7) => \NLW_comp_axi.phase_std_reg[15]_i_1_CO_UNCONNECTED\(7),
+      CO(6) => \comp_axi.phase_std_reg[15]_i_1_n_1\,
+      CO(5) => \comp_axi.phase_std_reg[15]_i_1_n_2\,
+      CO(4) => \comp_axi.phase_std_reg[15]_i_1_n_3\,
+      CO(3) => \comp_axi.phase_std_reg[15]_i_1_n_4\,
+      CO(2) => \comp_axi.phase_std_reg[15]_i_1_n_5\,
+      CO(1) => \comp_axi.phase_std_reg[15]_i_1_n_6\,
+      CO(0) => \comp_axi.phase_std_reg[15]_i_1_n_7\,
       DI(7 downto 0) => B"00000000",
       O(7 downto 0) => \phase_std__0\(15 downto 8),
       S(7 downto 0) => phase_std_data(17 downto 10)
@@ -15594,526 +15397,668 @@ begin
 \comp_axi.phase_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[1]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(1),
       Q => phase_std(1),
       R => '0'
     );
 \comp_axi.phase_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[2]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(2),
       Q => phase_std(2),
       R => '0'
     );
 \comp_axi.phase_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[3]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(3),
       Q => phase_std(3),
       R => '0'
     );
 \comp_axi.phase_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[4]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(4),
       Q => phase_std(4),
       R => '0'
     );
 \comp_axi.phase_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[5]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(5),
       Q => phase_std(5),
       R => '0'
     );
 \comp_axi.phase_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[6]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(6),
       Q => phase_std(6),
       R => '0'
     );
 \comp_axi.phase_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[7]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(7),
       Q => phase_std(7),
       R => '0'
     );
-\comp_axi.phase_std_reg[7]_i_2\: unisim.vcomponents.CARRY8
+\comp_axi.phase_std_reg[7]_i_1\: unisim.vcomponents.CARRY8
      port map (
       CI => '0',
       CI_TOP => '0',
-      CO(7) => \comp_axi.phase_std_reg[7]_i_2_n_0\,
-      CO(6) => \comp_axi.phase_std_reg[7]_i_2_n_1\,
-      CO(5) => \comp_axi.phase_std_reg[7]_i_2_n_2\,
-      CO(4) => \comp_axi.phase_std_reg[7]_i_2_n_3\,
-      CO(3) => \comp_axi.phase_std_reg[7]_i_2_n_4\,
-      CO(2) => \comp_axi.phase_std_reg[7]_i_2_n_5\,
-      CO(1) => \comp_axi.phase_std_reg[7]_i_2_n_6\,
-      CO(0) => \comp_axi.phase_std_reg[7]_i_2_n_7\,
+      CO(7) => \comp_axi.phase_std_reg[7]_i_1_n_0\,
+      CO(6) => \comp_axi.phase_std_reg[7]_i_1_n_1\,
+      CO(5) => \comp_axi.phase_std_reg[7]_i_1_n_2\,
+      CO(4) => \comp_axi.phase_std_reg[7]_i_1_n_3\,
+      CO(3) => \comp_axi.phase_std_reg[7]_i_1_n_4\,
+      CO(2) => \comp_axi.phase_std_reg[7]_i_1_n_5\,
+      CO(1) => \comp_axi.phase_std_reg[7]_i_1_n_6\,
+      CO(0) => \comp_axi.phase_std_reg[7]_i_1_n_7\,
       DI(7 downto 1) => B"0000000",
       DI(0) => phase_std_data(2),
       O(7 downto 0) => \phase_std__0\(7 downto 0),
       S(7 downto 1) => phase_std_data(9 downto 3),
-      S(0) => \comp_axi.phase_std[7]_i_3_n_0\
+      S(0) => \comp_axi.phase_std[7]_i_2_n_0\
     );
 \comp_axi.phase_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[8]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(8),
       Q => phase_std(8),
       R => '0'
     );
 \comp_axi.phase_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_axi.phase_std[15]_i_1_n_0\,
-      D => \comp_axi.phase_std[9]_i_1_n_0\,
+      CE => phase_std_done,
+      D => \phase_std__0\(9),
       Q => phase_std(9),
       R => '0'
     );
-\comp_axi.raw_freq_std[19]_i_1\: unisim.vcomponents.LUT2
+\comp_axi.raw_freq_std[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"ABA8"
     )
         port map (
-      I0 => freq_std_done,
-      I1 => header_ok,
-      O => raw_freq_std
+      I0 => raw_freq_std(0),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_24,
+      O => \comp_axi.raw_freq_std[0]_i_1_n_0\
     );
-\comp_axi.raw_freq_std_ok_i_1\: unisim.vcomponents.LUT2
+\comp_axi.raw_freq_std[10]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"E"
+      INIT => X"ABA8"
     )
         port map (
-      I0 => freq_std_done,
-      I1 => raw_freq_std_ok,
-      O => \comp_axi.raw_freq_std_ok_i_1_n_0\
+      I0 => raw_freq_std(10),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_14,
+      O => \comp_axi.raw_freq_std[10]_i_1_n_0\
     );
-\comp_axi.raw_freq_std_ok_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \comp_axi.raw_freq_std_ok_i_1_n_0\,
-      Q => raw_freq_std_ok,
-      R => header_ok
+\comp_axi.raw_freq_std[11]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(11),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_13,
+      O => \comp_axi.raw_freq_std[11]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[12]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(12),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_12,
+      O => \comp_axi.raw_freq_std[12]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[13]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(13),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_11,
+      O => \comp_axi.raw_freq_std[13]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[14]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(14),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_10,
+      O => \comp_axi.raw_freq_std[14]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[15]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(15),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_9,
+      O => \comp_axi.raw_freq_std[15]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[16]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(16),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_8,
+      O => \comp_axi.raw_freq_std[16]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[17]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(17),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_7,
+      O => \comp_axi.raw_freq_std[17]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[18]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(18),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_6,
+      O => \comp_axi.raw_freq_std[18]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[19]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => stat_ok,
+      I1 => reset,
+      I2 => freq_std_done,
+      O => \comp_axi.raw_freq_std[19]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[19]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(19),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_5,
+      O => \comp_axi.raw_freq_std[19]_i_2_n_0\
+    );
+\comp_axi.raw_freq_std[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(1),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_23,
+      O => \comp_axi.raw_freq_std[1]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(2),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_22,
+      O => \comp_axi.raw_freq_std[2]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(3),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_21,
+      O => \comp_axi.raw_freq_std[3]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(4),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_20,
+      O => \comp_axi.raw_freq_std[4]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(5),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_19,
+      O => \comp_axi.raw_freq_std[5]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(6),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_18,
+      O => \comp_axi.raw_freq_std[6]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(7),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_17,
+      O => \comp_axi.raw_freq_std[7]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(8),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_16,
+      O => \comp_axi.raw_freq_std[8]_i_1_n_0\
+    );
+\comp_axi.raw_freq_std[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"ABA8"
+    )
+        port map (
+      I0 => raw_freq_std(9),
+      I1 => reset,
+      I2 => stat_ok,
+      I3 => freq_std_i_n_15,
+      O => \comp_axi.raw_freq_std[9]_i_1_n_0\
     );
 \comp_axi.raw_freq_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(0),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[0]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[0]_i_1_n_0\,
+      Q => raw_freq_std(0),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(10),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[10]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[10]_i_1_n_0\,
+      Q => raw_freq_std(10),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(11),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[11]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[11]_i_1_n_0\,
+      Q => raw_freq_std(11),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(12),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[12]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[12]_i_1_n_0\,
+      Q => raw_freq_std(12),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(13),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[13]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[13]_i_1_n_0\,
+      Q => raw_freq_std(13),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(14),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[14]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[14]_i_1_n_0\,
+      Q => raw_freq_std(14),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(15),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[15]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[15]_i_1_n_0\,
+      Q => raw_freq_std(15),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(16),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[16]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[16]_i_1_n_0\,
+      Q => raw_freq_std(16),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(17),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[17]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[17]_i_1_n_0\,
+      Q => raw_freq_std(17),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(18),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[18]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[18]_i_1_n_0\,
+      Q => raw_freq_std(18),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(19),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[19]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[19]_i_2_n_0\,
+      Q => raw_freq_std(19),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(1),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[1]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[1]_i_1_n_0\,
+      Q => raw_freq_std(1),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(2),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[2]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[2]_i_1_n_0\,
+      Q => raw_freq_std(2),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(3),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[3]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[3]_i_1_n_0\,
+      Q => raw_freq_std(3),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(4),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[4]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[4]_i_1_n_0\,
+      Q => raw_freq_std(4),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(5),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[5]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[5]_i_1_n_0\,
+      Q => raw_freq_std(5),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(6),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[6]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[6]_i_1_n_0\,
+      Q => raw_freq_std(6),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(7),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[7]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[7]_i_1_n_0\,
+      Q => raw_freq_std(7),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(8),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[8]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[8]_i_1_n_0\,
+      Q => raw_freq_std(8),
       R => '0'
     );
 \comp_axi.raw_freq_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => raw_freq_std,
-      D => freq_std_data(9),
-      Q => \comp_axi.raw_freq_std_reg_n_0_[9]\,
+      CE => \comp_axi.raw_freq_std[19]_i_1_n_0\,
+      D => \comp_axi.raw_freq_std[9]_i_1_n_0\,
+      Q => raw_freq_std(9),
       R => '0'
     );
 \comp_axi.rd_blocks[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0F00FB8F0F000B8"
+      INIT => X"FFFFCC2C0000CC2C"
     )
         port map (
-      I0 => wr_blocks(0),
-      I1 => header_ok,
-      I2 => rd_blocks(0),
-      I3 => \^active\,
-      I4 => \comp_axi.filling_reg0\,
-      I5 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I0 => \comp_axi.rd_blocks[0]_i_2_n_0\,
+      I1 => rd_blocks(0),
+      I2 => \^active\,
+      I3 => reset,
+      I4 => read_back,
+      I5 => wr_blocks(0),
       O => \comp_axi.rd_blocks[0]_i_1_n_0\
     );
-\comp_axi.rd_blocks[0]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => read_back,
-      I1 => reset,
-      O => \comp_axi.filling_reg0\
-    );
-\comp_axi.rd_blocks[0]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_6_n_0\,
-      I1 => rd_blocks(2),
-      I2 => rd_blocks(6),
-      I3 => rd_blocks(5),
-      O => \comp_axi.rd_blocks[0]_i_3_n_0\
-    );
-\comp_axi.rd_blocks[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FF88F888F8FFF888"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I1 => wr_blocks(1),
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(1),
-      I4 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I5 => rd_blocks(0),
-      O => \comp_axi.rd_blocks[1]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[2]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FF88F8FFF888F888"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I1 => wr_blocks(2),
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(2),
-      I4 => \comp_axi.rd_blocks[2]_i_2_n_0\,
-      I5 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      O => \comp_axi.rd_blocks[2]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[2]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => rd_blocks(0),
-      I1 => rd_blocks(1),
-      O => \comp_axi.rd_blocks[2]_i_2_n_0\
-    );
-\comp_axi.rd_blocks[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FF88F888F8FFF888"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I1 => wr_blocks(3),
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(3),
-      I4 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I5 => \comp_axi.rd_blocks[3]_i_2_n_0\,
-      O => \comp_axi.rd_blocks[3]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[3]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => rd_blocks(1),
-      I1 => rd_blocks(0),
-      I2 => rd_blocks(2),
-      O => \comp_axi.rd_blocks[3]_i_2_n_0\
-    );
-\comp_axi.rd_blocks[4]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFF822F822F822"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I1 => \comp_axi.rd_blocks[4]_i_2_n_0\,
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(4),
-      I4 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I5 => wr_blocks(4),
-      O => \comp_axi.rd_blocks[4]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[4]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => rd_blocks(2),
-      I1 => rd_blocks(0),
-      I2 => rd_blocks(1),
-      I3 => rd_blocks(3),
-      O => \comp_axi.rd_blocks[4]_i_2_n_0\
-    );
-\comp_axi.rd_blocks[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFF822F822F822"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I1 => \comp_axi.rd_blocks[5]_i_2_n_0\,
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(5),
-      I4 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I5 => wr_blocks(5),
-      O => \comp_axi.rd_blocks[5]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[5]_i_2\: unisim.vcomponents.LUT5
+\comp_axi.rd_blocks[0]_i_2\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FFFFFFFE"
     )
         port map (
       I0 => rd_blocks(3),
-      I1 => rd_blocks(1),
-      I2 => rd_blocks(0),
+      I1 => rd_blocks(4),
+      I2 => rd_blocks(1),
       I3 => rd_blocks(2),
-      I4 => rd_blocks(4),
-      O => \comp_axi.rd_blocks[5]_i_2_n_0\
+      I4 => \comp_axi.rd_blocks[4]_i_2_n_0\,
+      O => \comp_axi.rd_blocks[0]_i_2_n_0\
     );
-\comp_axi.rd_blocks[6]_i_1\: unisim.vcomponents.LUT6
+\comp_axi.rd_blocks[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF822F822F822"
+      INIT => X"FFFF999800009998"
     )
         port map (
-      I0 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I1 => \comp_axi.rd_blocks[6]_i_2_n_0\,
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(6),
-      I4 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I5 => wr_blocks(6),
-      O => \comp_axi.rd_blocks[6]_i_1_n_0\
+      I0 => \comp_axi.rd_blocks[2]_i_2_n_0\,
+      I1 => rd_blocks(1),
+      I2 => rd_blocks(2),
+      I3 => \comp_axi.rd_blocks[2]_i_3_n_0\,
+      I4 => read_back,
+      I5 => wr_blocks(1),
+      O => \comp_axi.rd_blocks[1]_i_1_n_0\
     );
-\comp_axi.rd_blocks[6]_i_2\: unisim.vcomponents.LUT6
+\comp_axi.rd_blocks[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"FFFFC9C80000C9C8"
     )
         port map (
-      I0 => rd_blocks(4),
+      I0 => \comp_axi.rd_blocks[2]_i_2_n_0\,
       I1 => rd_blocks(2),
-      I2 => rd_blocks(0),
-      I3 => rd_blocks(1),
-      I4 => rd_blocks(3),
-      I5 => rd_blocks(5),
-      O => \comp_axi.rd_blocks[6]_i_2_n_0\
+      I2 => rd_blocks(1),
+      I3 => \comp_axi.rd_blocks[2]_i_3_n_0\,
+      I4 => read_back,
+      I5 => wr_blocks(2),
+      O => \comp_axi.rd_blocks[2]_i_1_n_0\
     );
-\comp_axi.rd_blocks[7]_i_1\: unisim.vcomponents.LUT6
+\comp_axi.rd_blocks[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFFFF822F822F822"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I1 => \comp_axi.rd_blocks[7]_i_3_n_0\,
-      I2 => \comp_axi.rd_blocks[7]_i_4_n_0\,
-      I3 => rd_blocks(7),
-      I4 => \comp_axi.rd_blocks[7]_i_5_n_0\,
-      I5 => wr_blocks(7),
-      O => \comp_axi.rd_blocks[7]_i_1_n_0\
-    );
-\comp_axi.rd_blocks[7]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00000000FFFE0000"
-    )
-        port map (
-      I0 => \comp_axi.rd_blocks[7]_i_6_n_0\,
-      I1 => rd_blocks(2),
-      I2 => rd_blocks(6),
-      I3 => rd_blocks(5),
-      I4 => \^active\,
-      I5 => \comp_axi.filling_reg0\,
-      O => \comp_axi.rd_blocks[7]_i_2_n_0\
-    );
-\comp_axi.rd_blocks[7]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => rd_blocks(5),
-      I1 => \comp_axi.rd_blocks[4]_i_2_n_0\,
-      I2 => rd_blocks(4),
-      I3 => rd_blocks(6),
-      O => \comp_axi.rd_blocks[7]_i_3_n_0\
-    );
-\comp_axi.rd_blocks[7]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AAABAAABAAAAFFFF"
-    )
-        port map (
-      I0 => \comp_axi.filling_reg0\,
-      I1 => \comp_axi.rd_blocks[7]_i_6_n_0\,
-      I2 => \comp_axi.rd_blocks[7]_i_7_n_0\,
-      I3 => rd_blocks(0),
-      I4 => header_ok,
-      I5 => \^active\,
-      O => \comp_axi.rd_blocks[7]_i_4_n_0\
-    );
-\comp_axi.rd_blocks[7]_i_5\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0100"
+      INIT => X"FD"
     )
         port map (
       I0 => \^active\,
-      I1 => read_back,
-      I2 => reset,
-      I3 => header_ok,
-      O => \comp_axi.rd_blocks[7]_i_5_n_0\
+      I1 => reset,
+      I2 => rd_blocks(0),
+      O => \comp_axi.rd_blocks[2]_i_2_n_0\
     );
-\comp_axi.rd_blocks[7]_i_6\: unisim.vcomponents.LUT4
+\comp_axi.rd_blocks[2]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFE"
+      INIT => X"FFFFFFFE"
     )
         port map (
       I0 => rd_blocks(4),
-      I1 => rd_blocks(1),
-      I2 => rd_blocks(7),
-      I3 => rd_blocks(3),
-      O => \comp_axi.rd_blocks[7]_i_6_n_0\
+      I1 => rd_blocks(3),
+      I2 => rd_blocks(5),
+      I3 => rd_blocks(6),
+      I4 => rd_blocks(7),
+      O => \comp_axi.rd_blocks[2]_i_3_n_0\
     );
-\comp_axi.rd_blocks[7]_i_7\: unisim.vcomponents.LUT3
+\comp_axi.rd_blocks[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFF00E0000F00E"
+    )
+        port map (
+      I0 => \comp_axi.rd_blocks[4]_i_2_n_0\,
+      I1 => rd_blocks(4),
+      I2 => rd_blocks(3),
+      I3 => \comp_axi.rd_blocks[3]_i_2_n_0\,
+      I4 => read_back,
+      I5 => wr_blocks(3),
+      O => \comp_axi.rd_blocks[3]_i_1_n_0\
+    );
+\comp_axi.rd_blocks[3]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFEF"
+    )
+        port map (
+      I0 => rd_blocks(0),
+      I1 => reset,
+      I2 => \^active\,
+      I3 => rd_blocks(2),
+      I4 => rd_blocks(1),
+      O => \comp_axi.rd_blocks[3]_i_2_n_0\
+    );
+\comp_axi.rd_blocks[4]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"F0F0F0F0FF222222"
+    )
+        port map (
+      I0 => \comp_axi.rd_blocks[4]_i_2_n_0\,
+      I1 => \comp_axi.rd_blocks[7]_i_2_n_0\,
+      I2 => wr_blocks(4),
+      I3 => \comp_axi.rd_blocks[4]_i_3_n_0\,
+      I4 => rd_blocks(4),
+      I5 => read_back,
+      O => \comp_axi.rd_blocks[4]_i_1_n_0\
+    );
+\comp_axi.rd_blocks[4]_i_2\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"FE"
     )
         port map (
-      I0 => rd_blocks(5),
+      I0 => rd_blocks(7),
       I1 => rd_blocks(6),
-      I2 => rd_blocks(2),
-      O => \comp_axi.rd_blocks[7]_i_7_n_0\
+      I2 => rd_blocks(5),
+      O => \comp_axi.rd_blocks[4]_i_2_n_0\
+    );
+\comp_axi.rd_blocks[4]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFEF"
+    )
+        port map (
+      I0 => rd_blocks(1),
+      I1 => rd_blocks(2),
+      I2 => \^active\,
+      I3 => reset,
+      I4 => rd_blocks(0),
+      I5 => rd_blocks(3),
+      O => \comp_axi.rd_blocks[4]_i_3_n_0\
+    );
+\comp_axi.rd_blocks[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFF00E0000F00E"
+    )
+        port map (
+      I0 => rd_blocks(6),
+      I1 => rd_blocks(7),
+      I2 => rd_blocks(5),
+      I3 => \comp_axi.rd_blocks[7]_i_2_n_0\,
+      I4 => read_back,
+      I5 => wr_blocks(5),
+      O => \comp_axi.rd_blocks[5]_i_1_n_0\
+    );
+\comp_axi.rd_blocks[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFCCC20000CCC2"
+    )
+        port map (
+      I0 => rd_blocks(7),
+      I1 => rd_blocks(6),
+      I2 => \comp_axi.rd_blocks[7]_i_2_n_0\,
+      I3 => rd_blocks(5),
+      I4 => read_back,
+      I5 => wr_blocks(6),
+      O => \comp_axi.rd_blocks[6]_i_1_n_0\
+    );
+\comp_axi.rd_blocks[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAAAAAFFFC0000"
+    )
+        port map (
+      I0 => wr_blocks(7),
+      I1 => rd_blocks(5),
+      I2 => \comp_axi.rd_blocks[7]_i_2_n_0\,
+      I3 => rd_blocks(6),
+      I4 => rd_blocks(7),
+      I5 => read_back,
+      O => \comp_axi.rd_blocks[7]_i_1_n_0\
+    );
+\comp_axi.rd_blocks[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => rd_blocks(0),
+      I1 => \comp_axi.rd_ptr[3]_i_2_n_0\,
+      I2 => rd_blocks(3),
+      I3 => rd_blocks(4),
+      I4 => rd_blocks(1),
+      I5 => rd_blocks(2),
+      O => \comp_axi.rd_blocks[7]_i_2_n_0\
     );
 \comp_axi.rd_blocks_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -16185,7 +16130,7 @@ begin
     )
         port map (
       I0 => rd_ptr(0),
-      I1 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I1 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I2 => \^active\,
       I3 => reset,
       O => \comp_axi.rd_ptr[0]_i_1_n_0\
@@ -16197,7 +16142,7 @@ begin
         port map (
       I0 => reset,
       I1 => \^active\,
-      I2 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I2 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I3 => rd_ptr(1),
       I4 => rd_ptr(0),
       O => \comp_axi.rd_ptr[1]_i_1_n_0\
@@ -16209,43 +16154,43 @@ begin
         port map (
       I0 => reset,
       I1 => \^active\,
-      I2 => \comp_axi.rd_blocks[0]_i_3_n_0\,
-      I3 => rd_ptr(0),
-      I4 => rd_ptr(1),
+      I2 => \comp_axi.rd_blocks[0]_i_2_n_0\,
+      I3 => rd_ptr(1),
+      I4 => rd_ptr(0),
       I5 => rd_ptr(2),
       O => \comp_axi.rd_ptr[2]_i_1_n_0\
     );
-\comp_axi.rd_ptr[3]_i_1\: unisim.vcomponents.LUT5
+\comp_axi.rd_ptr[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BB40FB00"
+      INIT => X"AEEEEEEE40000000"
+    )
+        port map (
+      I0 => \comp_axi.rd_ptr[3]_i_2_n_0\,
+      I1 => \comp_axi.rd_blocks[0]_i_2_n_0\,
+      I2 => rd_ptr(2),
+      I3 => rd_ptr(0),
+      I4 => rd_ptr(1),
+      I5 => rd_ptr(3),
+      O => \comp_axi.rd_ptr[3]_i_1_n_0\
+    );
+\comp_axi.rd_ptr[3]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
     )
         port map (
       I0 => reset,
       I1 => \^active\,
-      I2 => \comp_axi.rd_blocks[0]_i_3_n_0\,
-      I3 => rd_ptr(3),
-      I4 => \comp_axi.rd_ptr[3]_i_2_n_0\,
-      O => \comp_axi.rd_ptr[3]_i_1_n_0\
-    );
-\comp_axi.rd_ptr[3]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"80"
-    )
-        port map (
-      I0 => rd_ptr(2),
-      I1 => rd_ptr(0),
-      I2 => rd_ptr(1),
       O => \comp_axi.rd_ptr[3]_i_2_n_0\
     );
 \comp_axi.rd_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FDDD0200"
+      INIT => X"FBBB0400"
     )
         port map (
-      I0 => \^active\,
-      I1 => reset,
+      I0 => reset,
+      I1 => \^active\,
       I2 => \comp_axi.rd_ptr[4]_i_2_n_0\,
-      I3 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I3 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I4 => rd_ptr(4),
       O => \comp_axi.rd_ptr[4]_i_1_n_0\
     );
@@ -16254,34 +16199,34 @@ begin
       INIT => X"7FFF"
     )
         port map (
-      I0 => rd_ptr(3),
-      I1 => rd_ptr(1),
-      I2 => rd_ptr(0),
-      I3 => rd_ptr(2),
+      I0 => rd_ptr(2),
+      I1 => rd_ptr(0),
+      I2 => rd_ptr(1),
+      I3 => rd_ptr(3),
       O => \comp_axi.rd_ptr[4]_i_2_n_0\
     );
 \comp_axi.rd_ptr[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"DFDD2000"
+      INIT => X"FDDD0200"
     )
         port map (
       I0 => \^active\,
       I1 => reset,
       I2 => \comp_axi.rd_ptr[5]_i_2_n_0\,
-      I3 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I3 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I4 => rd_ptr(5),
       O => \comp_axi.rd_ptr[5]_i_1_n_0\
     );
 \comp_axi.rd_ptr[5]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"80000000"
+      INIT => X"7FFFFFFF"
     )
         port map (
-      I0 => rd_ptr(4),
-      I1 => rd_ptr(2),
+      I0 => rd_ptr(3),
+      I1 => rd_ptr(1),
       I2 => rd_ptr(0),
-      I3 => rd_ptr(1),
-      I4 => rd_ptr(3),
+      I3 => rd_ptr(2),
+      I4 => rd_ptr(4),
       O => \comp_axi.rd_ptr[5]_i_2_n_0\
     );
 \comp_axi.rd_ptr[6]_i_1\: unisim.vcomponents.LUT5
@@ -16292,7 +16237,7 @@ begin
       I0 => \comp_axi.rd_ptr[7]_i_2_n_0\,
       I1 => reset,
       I2 => \^active\,
-      I3 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I3 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I4 => rd_ptr(6),
       O => \comp_axi.rd_ptr[6]_i_1_n_0\
     );
@@ -16303,7 +16248,7 @@ begin
         port map (
       I0 => rd_ptr(6),
       I1 => rd_ptr(7),
-      I2 => \comp_axi.rd_blocks[0]_i_3_n_0\,
+      I2 => \comp_axi.rd_blocks[0]_i_2_n_0\,
       I3 => \comp_axi.rd_ptr[7]_i_2_n_0\,
       I4 => \^active\,
       I5 => reset,
@@ -16314,12 +16259,12 @@ begin
       INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => rd_ptr(5),
-      I1 => rd_ptr(3),
-      I2 => rd_ptr(1),
-      I3 => rd_ptr(0),
-      I4 => rd_ptr(2),
-      I5 => rd_ptr(4),
+      I0 => rd_ptr(4),
+      I1 => rd_ptr(2),
+      I2 => rd_ptr(0),
+      I3 => rd_ptr(1),
+      I4 => rd_ptr(3),
+      I5 => rd_ptr(5),
       O => \comp_axi.rd_ptr[7]_i_2_n_0\
     );
 \comp_axi.rd_ptr_reg[0]\: unisim.vcomponents.FDSE
@@ -16386,13 +16331,15 @@ begin
       Q => rd_ptr(7),
       R => read_back
     );
-\comp_axi.read_back_i_1\: unisim.vcomponents.LUT2
+\comp_axi.read_back_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"0004"
     )
         port map (
-      I0 => std_ok,
-      I1 => wr,
+      I0 => mem_wr,
+      I1 => std_ok,
+      I2 => wr,
+      I3 => index,
       O => \comp_axi.read_back_reg0\
     );
 \comp_axi.read_back_reg\: unisim.vcomponents.FDRE
@@ -16550,7 +16497,7 @@ begin
 \comp_axi.sizem1_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(0),
       Q => \comp_axi.sizem1_reg_n_0_[0]\,
       R => '0'
@@ -16558,7 +16505,7 @@ begin
 \comp_axi.sizem1_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[10]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[10]\,
       R => '0'
@@ -16566,7 +16513,7 @@ begin
 \comp_axi.sizem1_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(12),
       Q => \comp_axi.sizem1_reg_n_0_[11]\,
       R => '0'
@@ -16574,7 +16521,7 @@ begin
 \comp_axi.sizem1_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(12),
       Q => \comp_axi.sizem1_reg_n_0_[12]\,
       R => '0'
@@ -16582,7 +16529,7 @@ begin
 \comp_axi.sizem1_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(12),
       Q => \comp_axi.sizem1_reg_n_0_[13]\,
       R => '0'
@@ -16590,7 +16537,7 @@ begin
 \comp_axi.sizem1_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(12),
       Q => \comp_axi.sizem1_reg_n_0_[14]\,
       R => '0'
@@ -16598,7 +16545,7 @@ begin
 \comp_axi.sizem1_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem10(12),
       Q => \comp_axi.sizem1_reg_n_0_[15]\,
       R => '0'
@@ -16606,7 +16553,7 @@ begin
 \comp_axi.sizem1_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[1]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[1]\,
       R => '0'
@@ -16614,7 +16561,7 @@ begin
 \comp_axi.sizem1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[2]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[2]\,
       R => '0'
@@ -16622,7 +16569,7 @@ begin
 \comp_axi.sizem1_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[3]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[3]\,
       R => '0'
@@ -16630,7 +16577,7 @@ begin
 \comp_axi.sizem1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[4]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[4]\,
       R => '0'
@@ -16638,7 +16585,7 @@ begin
 \comp_axi.sizem1_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[5]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[5]\,
       R => '0'
@@ -16646,7 +16593,7 @@ begin
 \comp_axi.sizem1_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[6]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[6]\,
       R => '0'
@@ -16654,7 +16601,7 @@ begin
 \comp_axi.sizem1_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[7]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[7]\,
       R => '0'
@@ -16662,7 +16609,7 @@ begin
 \comp_axi.sizem1_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[8]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[8]\,
       R => '0'
@@ -16670,7 +16617,7 @@ begin
 \comp_axi.sizem1_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem1[9]_i_1_n_0\,
       Q => \comp_axi.sizem1_reg_n_0_[9]\,
       R => '0'
@@ -16692,9 +16639,9 @@ begin
       INIT => X"2"
     )
         port map (
-      I0 => header_ok,
+      I0 => stat_ok,
       I1 => reset,
-      O => sizem1
+      O => \comp_axi.sizem2[15]_i_1_n_0\
     );
 \comp_axi.sizem2[15]_i_2\: unisim.vcomponents.LUT5
     generic map(
@@ -16817,7 +16764,7 @@ begin
 \comp_axi.sizem2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => size(0),
       Q => sizem2(0),
       R => '0'
@@ -16825,7 +16772,7 @@ begin
 \comp_axi.sizem2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[10]_i_1_n_0\,
       Q => sizem2(10),
       R => '0'
@@ -16833,7 +16780,7 @@ begin
 \comp_axi.sizem2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(12),
       Q => sizem2(11),
       R => '0'
@@ -16841,7 +16788,7 @@ begin
 \comp_axi.sizem2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(12),
       Q => sizem2(12),
       R => '0'
@@ -16849,7 +16796,7 @@ begin
 \comp_axi.sizem2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(12),
       Q => sizem2(13),
       R => '0'
@@ -16857,7 +16804,7 @@ begin
 \comp_axi.sizem2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(12),
       Q => sizem2(14),
       R => '0'
@@ -16865,7 +16812,7 @@ begin
 \comp_axi.sizem2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(12),
       Q => sizem2(15),
       R => '0'
@@ -16873,7 +16820,7 @@ begin
 \comp_axi.sizem2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => sizem20(1),
       Q => sizem2(1),
       R => '0'
@@ -16881,7 +16828,7 @@ begin
 \comp_axi.sizem2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[2]_i_1_n_0\,
       Q => sizem2(2),
       R => '0'
@@ -16889,7 +16836,7 @@ begin
 \comp_axi.sizem2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[3]_i_1_n_0\,
       Q => sizem2(3),
       R => '0'
@@ -16897,7 +16844,7 @@ begin
 \comp_axi.sizem2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[4]_i_1_n_0\,
       Q => sizem2(4),
       R => '0'
@@ -16905,7 +16852,7 @@ begin
 \comp_axi.sizem2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[5]_i_1_n_0\,
       Q => sizem2(5),
       R => '0'
@@ -16913,7 +16860,7 @@ begin
 \comp_axi.sizem2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[6]_i_1_n_0\,
       Q => sizem2(6),
       R => '0'
@@ -16921,7 +16868,7 @@ begin
 \comp_axi.sizem2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[7]_i_1_n_0\,
       Q => sizem2(7),
       R => '0'
@@ -16929,7 +16876,7 @@ begin
 \comp_axi.sizem2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[8]_i_1_n_0\,
       Q => sizem2(8),
       R => '0'
@@ -16937,7 +16884,7 @@ begin
 \comp_axi.sizem2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => sizem1,
+      CE => \comp_axi.sizem2[15]_i_1_n_0\,
       D => \comp_axi.sizem2[9]_i_1_n_0\,
       Q => sizem2(9),
       R => '0'
@@ -16959,16 +16906,15 @@ begin
       Q => std_done,
       R => '0'
     );
-\comp_axi.std_ok_i_1\: unisim.vcomponents.LUT5
+\comp_axi.std_ok_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"00000054"
+      INIT => X"0004"
     )
         port map (
       I0 => \^active\,
       I1 => std_done,
-      I2 => std_ok,
-      I3 => header_ok,
-      I4 => reset,
+      I2 => stat_ok,
+      I3 => reset,
       O => \comp_axi.std_ok_i_1_n_0\
     );
 \comp_axi.std_ok_reg\: unisim.vcomponents.FDRE
@@ -17026,11 +16972,11 @@ begin
       INIT => X"7FFFFFFF80000000"
     )
         port map (
-      I0 => wr_blocks(1),
-      I1 => wr_blocks(0),
-      I2 => index,
-      I3 => wr_blocks(2),
-      I4 => wr_blocks(3),
+      I0 => wr_blocks(3),
+      I1 => wr_blocks(1),
+      I2 => wr_blocks(0),
+      I3 => index,
+      I4 => wr_blocks(2),
       I5 => wr_blocks(4),
       O => \comp_axi.wr_blocks[4]_i_1_n_0\
     );
@@ -17039,7 +16985,7 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => \comp_axi.wr_blocks[7]_i_3_n_0\,
+      I0 => \comp_axi.wr_blocks[7]_i_2_n_0\,
       I1 => wr_blocks(5),
       O => \comp_axi.wr_blocks[5]_i_1_n_0\
     );
@@ -17049,42 +16995,33 @@ begin
     )
         port map (
       I0 => wr_blocks(5),
-      I1 => \comp_axi.wr_blocks[7]_i_3_n_0\,
+      I1 => \comp_axi.wr_blocks[7]_i_2_n_0\,
       I2 => wr_blocks(6),
       O => \comp_axi.wr_blocks[6]_i_1_n_0\
     );
-\comp_axi.wr_blocks[7]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => reset,
-      I1 => header_ok,
-      O => index1
-    );
-\comp_axi.wr_blocks[7]_i_2\: unisim.vcomponents.LUT4
+\comp_axi.wr_blocks[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"DF20"
     )
         port map (
       I0 => wr_blocks(6),
-      I1 => \comp_axi.wr_blocks[7]_i_3_n_0\,
+      I1 => \comp_axi.wr_blocks[7]_i_2_n_0\,
       I2 => wr_blocks(5),
       I3 => wr_blocks(7),
-      O => \comp_axi.wr_blocks[7]_i_2_n_0\
+      O => \comp_axi.wr_blocks[7]_i_1_n_0\
     );
-\comp_axi.wr_blocks[7]_i_3\: unisim.vcomponents.LUT6
+\comp_axi.wr_blocks[7]_i_2\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => wr_blocks(4),
+      I0 => wr_blocks(3),
       I1 => wr_blocks(1),
       I2 => wr_blocks(0),
       I3 => index,
       I4 => wr_blocks(2),
-      I5 => wr_blocks(3),
-      O => \comp_axi.wr_blocks[7]_i_3_n_0\
+      I5 => wr_blocks(4),
+      O => \comp_axi.wr_blocks[7]_i_2_n_0\
     );
 \comp_axi.wr_blocks_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -17146,7 +17083,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \comp_axi.wr_blocks[7]_i_2_n_0\,
+      D => \comp_axi.wr_blocks[7]_i_1_n_0\,
       Q => wr_blocks(7),
       R => index1
     );
@@ -17227,7 +17164,7 @@ begin
       INIT => X"0E"
     )
         port map (
-      I0 => header_ok,
+      I0 => stat_ok,
       I1 => reset,
       I2 => mem_wr,
       O => \comp_axi.wr_ptr[7]_i_1_n_0\
@@ -17377,22 +17314,7 @@ env_std_i: component ps_comp_ana_0_0_sqrt_std
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 16) => NLW_env_std_i_m_axis_dout_tdata_UNCONNECTED(23 downto 16),
-      m_axis_dout_tdata(15) => env_std_i_n_9,
-      m_axis_dout_tdata(14) => env_std_i_n_10,
-      m_axis_dout_tdata(13) => env_std_i_n_11,
-      m_axis_dout_tdata(12) => env_std_i_n_12,
-      m_axis_dout_tdata(11) => env_std_i_n_13,
-      m_axis_dout_tdata(10) => env_std_i_n_14,
-      m_axis_dout_tdata(9) => env_std_i_n_15,
-      m_axis_dout_tdata(8) => env_std_i_n_16,
-      m_axis_dout_tdata(7) => env_std_i_n_17,
-      m_axis_dout_tdata(6) => env_std_i_n_18,
-      m_axis_dout_tdata(5) => env_std_i_n_19,
-      m_axis_dout_tdata(4) => env_std_i_n_20,
-      m_axis_dout_tdata(3) => env_std_i_n_21,
-      m_axis_dout_tdata(2) => env_std_i_n_22,
-      m_axis_dout_tdata(1) => env_std_i_n_23,
-      m_axis_dout_tdata(0) => env_std_i_n_24,
+      m_axis_dout_tdata(15 downto 0) => env_std_data(15 downto 0),
       m_axis_dout_tvalid => env_std_done,
       s_axis_cartesian_tdata(39 downto 0) => div_env_data(39 downto 0),
       s_axis_cartesian_tvalid => div_env_done
@@ -17401,7 +17323,26 @@ freq_std_i: component ps_comp_ana_0_0_sqrt_std_HD8
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 20) => NLW_freq_std_i_m_axis_dout_tdata_UNCONNECTED(23 downto 20),
-      m_axis_dout_tdata(19 downto 0) => freq_std_data(19 downto 0),
+      m_axis_dout_tdata(19) => freq_std_i_n_5,
+      m_axis_dout_tdata(18) => freq_std_i_n_6,
+      m_axis_dout_tdata(17) => freq_std_i_n_7,
+      m_axis_dout_tdata(16) => freq_std_i_n_8,
+      m_axis_dout_tdata(15) => freq_std_i_n_9,
+      m_axis_dout_tdata(14) => freq_std_i_n_10,
+      m_axis_dout_tdata(13) => freq_std_i_n_11,
+      m_axis_dout_tdata(12) => freq_std_i_n_12,
+      m_axis_dout_tdata(11) => freq_std_i_n_13,
+      m_axis_dout_tdata(10) => freq_std_i_n_14,
+      m_axis_dout_tdata(9) => freq_std_i_n_15,
+      m_axis_dout_tdata(8) => freq_std_i_n_16,
+      m_axis_dout_tdata(7) => freq_std_i_n_17,
+      m_axis_dout_tdata(6) => freq_std_i_n_18,
+      m_axis_dout_tdata(5) => freq_std_i_n_19,
+      m_axis_dout_tdata(4) => freq_std_i_n_20,
+      m_axis_dout_tdata(3) => freq_std_i_n_21,
+      m_axis_dout_tdata(2) => freq_std_i_n_22,
+      m_axis_dout_tdata(1) => freq_std_i_n_23,
+      m_axis_dout_tdata(0) => freq_std_i_n_24,
       m_axis_dout_tvalid => freq_std_done,
       s_axis_cartesian_tdata(39 downto 0) => div_freq_data(39 downto 0),
       s_axis_cartesian_tvalid => div_freq_done
@@ -17437,14 +17378,6 @@ i_11: unisim.vcomponents.LUT1
         port map (
       I0 => '0',
       O => calc_freq(20)
-    );
-i_12: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => calc_freq(19)
     );
 i_2: unisim.vcomponents.LUT1
     generic map(
@@ -17515,54 +17448,35 @@ ila_i: component ps_comp_ana_0_0_ila_1
       clk => clk,
       probe0(0) => wr,
       probe1(0) => mem_wr,
-      probe10(0) => freq_std_done,
+      probe10(0) => \^idle\,
       probe11(31 downto 0) => calc_freq(31 downto 0),
       probe12(15 downto 0) => env_std(15 downto 0),
       probe13(15 downto 0) => phase_std(15 downto 0),
-      probe14(15 downto 0) => freq_std(15 downto 0),
-      probe15(0) => std_done,
-      probe16(0) => std_ok,
-      probe17(0) => filling,
-      probe18(0) => \^active\,
-      probe19(0) => read_back,
+      probe14(19 downto 0) => raw_freq_std(19 downto 0),
+      probe15(15 downto 0) => freq_std(15 downto 0),
+      probe16(0) => std_done,
+      probe17(0) => std_ok,
+      probe18(0) => filling,
+      probe19(0) => \^active\,
       probe2(7 downto 0) => wr_ptr(7 downto 0),
+      probe20(0) => read_back,
       probe3(0) => index,
       probe4(7 downto 0) => wr_blocks(7 downto 0),
       probe5(7 downto 0) => rd_ptr(7 downto 0),
       probe6(7 downto 0) => rd_blocks(7 downto 0),
-      probe7(0) => header_ok,
-      probe8(0) => env_std_done,
-      probe9(0) => phase_std_done
+      probe7(0) => stat_ok,
+      probe8(0) => div_start,
+      probe9(2 downto 0) => freq_delay(2 downto 0)
     );
 mul_freq_i: component ps_comp_ana_0_0_mul_freq
      port map (
       A(19 downto 0) => freq(19 downto 0),
       CLK => clk,
-      P(37 downto 19) => freq_p(37 downto 19),
-      P(18 downto 0) => NLW_mul_freq_i_P_UNCONNECTED(18 downto 0)
+      P(37 downto 0) => freq_p(37 downto 0)
     );
 mul_freq_std_i: component ps_comp_ana_0_0_mul_freq_HD9
      port map (
-      A(19) => \comp_axi.raw_freq_std_reg_n_0_[19]\,
-      A(18) => \comp_axi.raw_freq_std_reg_n_0_[18]\,
-      A(17) => \comp_axi.raw_freq_std_reg_n_0_[17]\,
-      A(16) => \comp_axi.raw_freq_std_reg_n_0_[16]\,
-      A(15) => \comp_axi.raw_freq_std_reg_n_0_[15]\,
-      A(14) => \comp_axi.raw_freq_std_reg_n_0_[14]\,
-      A(13) => \comp_axi.raw_freq_std_reg_n_0_[13]\,
-      A(12) => \comp_axi.raw_freq_std_reg_n_0_[12]\,
-      A(11) => \comp_axi.raw_freq_std_reg_n_0_[11]\,
-      A(10) => \comp_axi.raw_freq_std_reg_n_0_[10]\,
-      A(9) => \comp_axi.raw_freq_std_reg_n_0_[9]\,
-      A(8) => \comp_axi.raw_freq_std_reg_n_0_[8]\,
-      A(7) => \comp_axi.raw_freq_std_reg_n_0_[7]\,
-      A(6) => \comp_axi.raw_freq_std_reg_n_0_[6]\,
-      A(5) => \comp_axi.raw_freq_std_reg_n_0_[5]\,
-      A(4) => \comp_axi.raw_freq_std_reg_n_0_[4]\,
-      A(3) => \comp_axi.raw_freq_std_reg_n_0_[3]\,
-      A(2) => \comp_axi.raw_freq_std_reg_n_0_[2]\,
-      A(1) => \comp_axi.raw_freq_std_reg_n_0_[1]\,
-      A(0) => \comp_axi.raw_freq_std_reg_n_0_[0]\,
+      A(19 downto 0) => raw_freq_std(19 downto 0),
       CLK => clk,
       P(37 downto 35) => NLW_mul_freq_std_i_P_UNCONNECTED(37 downto 35),
       P(34 downto 19) => freq_std_p(34 downto 19),
@@ -40978,9 +40892,9 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair105";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -40989,7 +40903,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_morlet_to_phase_env is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair106";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -43052,9 +42966,9 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair98";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -43063,7 +42977,7 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair99";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -45209,9 +45123,9 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair100";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -45220,7 +45134,7 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__2\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair101";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -47550,11 +47464,11 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.raw_sample[15]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \comp_ana.sample_ov_0_i_3\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \comp_ana.raw_sample[15]_i_1\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \comp_ana.sample_ov_0_i_3\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair103";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -47563,7 +47477,7 @@ architecture STRUCTURE of \ps_comp_ana_0_0_morlet_to_phase_env__xdcDup__3\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair104";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -49901,8 +49815,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal NLW_p5_i_active_UNCONNECTED : STD_LOGIC;
   signal NLW_p5_i_data_UNCONNECTED : STD_LOGIC_VECTOR ( 255 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair97";
   attribute KEEP : string;
   attribute KEEP of \comp_burst.idle_reg\ : label is "yes";
   attribute KEEP of \comp_burst.p3_angle_reg[0]\ : label is "yes";
@@ -57108,7 +57022,6 @@ p5_i: entity work.ps_comp_ana_0_0_comp_axi
       env_sum2(47 downto 0) => p3_env_sum2(47 downto 0),
       freq(19 downto 0) => p3_freq(19 downto 0),
       freq_sum2(47 downto 0) => p3_freq_sum2(47 downto 0),
-      header_ok => p3_done,
       idle => p5_idle,
       max_env(15 downto 0) => B"0000000000000000",
       max_pos(10 downto 0) => B"00000000000",
@@ -57120,6 +57033,7 @@ p5_i: entity work.ps_comp_ana_0_0_comp_axi
       reset => reset,
       sample(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
       size(10 downto 0) => p3_size(10 downto 0),
+      stat_ok => p3_done,
       wr => p4_wr
     );
 end STRUCTURE;
@@ -57949,14 +57863,14 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_ana is
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of burst_0 : label is "soft";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.count[1]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \comp_ana.count[4]_i_2\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \comp_ana.count[5]_i_2\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \comp_ana.count[8]_i_3\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \comp_ana.count[1]_i_1\ : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of \comp_ana.count[4]_i_2\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \comp_ana.count[5]_i_2\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \comp_ana.count[8]_i_3\ : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair109";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[7]_i_1\ : label is 35;

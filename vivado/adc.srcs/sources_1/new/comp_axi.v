@@ -16,7 +16,7 @@ module comp_axi(
     input wire [47:0] env_sum2,
     input wire [47:0] phase_sum2,
     input wire [47:0] freq_sum2,
-    input wire header_ok,
+    input wire stat_ok,
 
     input wire [15:0] env_0,
     input wire [15:0] env_1,
@@ -49,7 +49,7 @@ module comp_axi(
 
     wire [37:0] freq_p;
     wire [37:0] freq_std_p;
-    reg [1:0] freq_delay;
+    reg [2:0] freq_delay;
 
     reg div_start;
     reg [15:0] sizem1;
@@ -73,12 +73,8 @@ module comp_axi(
 
     reg [31:0] calc_freq;
     
-    reg env_std_ok;
     reg [15:0] env_std;
-    reg phase_std_ok;
     reg [15:0] phase_std;
-    reg raw_freq_std_ok;
-    reg freq_std_ok;
     reg [19:0] raw_freq_std;
     reg [15:0] freq_std;
 
@@ -162,21 +158,22 @@ module comp_axi(
 		.probe4(wr_blocks),           // input wire [7:0]  probe3
 		.probe5(rd_ptr),              // input wire [7:0]  probe3
 		.probe6(rd_blocks),           // input wire [7:0]  probe3
-		.probe7(header_ok),      	  // input wire [0:0]  probe3
-		.probe8(env_std_done),        // input wire [0:0]  probe3
-		.probe9(phase_std_done),      // input wire [0:0]  probe3
-		.probe10(freq_std_done),      // input wire [0:0]  probe3
+		.probe7(stat_ok),         	  // input wire [0:0]  probe3
+		.probe8(div_start),           // input wire [0:0]  probe3
+		.probe9(freq_delay),          // input wire [2:0]  probe3
+		.probe10(idle),               // input wire [0:0]  probe3
 		.probe11(calc_freq),          // input wire [31:0]  probe3
 		.probe12(env_std),            // input wire [15:0]  probe3
 		.probe13(phase_std),          // input wire [15:0]  probe3
-		.probe14(freq_std),           // input wire [15:0]  probe3
-		.probe15(std_done),           // input wire [0:0]  probe3
-		.probe16(std_ok),             // input wire [0:0]  probe3
-		.probe17(filling),            // input wire [0:0]  probe3
-		.probe18(active),             // input wire [0:0]  probe3
-		.probe19(read_back)           // input wire [0:0]  probe3
+		.probe14(raw_freq_std),       // input wire [19:0]  probe3
+		.probe15(freq_std),           // input wire [15:0]  probe3
+		.probe16(std_done),           // input wire [0:0]  probe3
+		.probe17(std_ok),             // input wire [0:0]  probe3
+		.probe18(filling),            // input wire [0:0]  probe3
+		.probe19(active),             // input wire [0:0]  probe3
+		.probe20(read_back)           // input wire [0:0]  probe3
 );
-	
+    	
 generate
   begin : comp_axi
 
@@ -198,7 +195,18 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset | header_ok)
+        if (mem_wr)
+            mem_data[wr_ptr] <= data_in;
+    end
+
+    always @(posedge clk) 
+    begin
+        data_out <= mem_data[rd_ptr];
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset | stat_ok)
         begin
             index <= 0;
             wr_blocks <= 0;
@@ -256,12 +264,9 @@ generate
     always @(posedge clk) 
     begin
         if (mem_wr)
-        begin
-            mem_data[wr_ptr] <= data_in;
             wr_ptr <= wr_ptr + 1;
-        end
         else
-            if (reset | header_ok)
+            if (reset | stat_ok)
                 wr_ptr <= 0;
     end
 
@@ -271,7 +276,7 @@ generate
             div_start <= 0;
         else
         begin
-            if (header_ok)
+            if (stat_ok)
             begin
                 sizem1 <= size - 1;
                 sizem2 <= size - 2;
@@ -284,70 +289,43 @@ generate
     
     always @(posedge clk) 
     begin
-        if (header_ok)
-            env_std_ok <= 0;
-        else
+        if (env_std_done)
         begin
-            if (env_std_done)
-            begin
-                env_std_ok <= 1;
-                env_std <= env_std_data[15:0];
-            end
+            env_std <= env_std_data[15:0];
+            if (freq_p[18])
+                calc_freq <= {13'h0, freq_p[37:19] + 1};
+            else
+                calc_freq <= {13'h0, freq_p[37:19]};
         end
     end
     
     always @(posedge clk) 
     begin
-        if (env_std_ok)
-            calc_freq <= {13'h0, freq_p[37:19]};
-    end
-    
-    always @(posedge clk) 
-    begin
-        if (header_ok)
-            phase_std_ok <= 0;
-        else
+        if (phase_std_done)
         begin
-            if (phase_std_done)
-            begin
-                phase_std_ok <= 1;
-                if (phase_std_data[1])
-                    phase_std <= phase_std_data[17:2] + 1;
-                else
-                    phase_std <= phase_std_data[17:2];
-            end
+            if (phase_std_data[1])
+                phase_std <= phase_std_data[17:2] + 1;
+            else
+                phase_std <= phase_std_data[17:2];
         end
     end
     
     always @(posedge clk) 
     begin
-        if (header_ok)
-            raw_freq_std_ok <= 0;
+        if (reset | stat_ok)
+            freq_delay <= 0;
         else
         begin
             if (freq_std_done)
             begin
-                raw_freq_std_ok <= 1;
                 raw_freq_std <= freq_std_data[19:0];
+                freq_delay <= 4;
             end
-        end
-    end
-
-    always @(posedge clk) 
-    begin
-        if (reset)
-            freq_delay <= 0;
-        else
-        begin
-            if (raw_freq_std_ok)
-                freq_delay <= 3;
             else
-            begin
                 if (freq_delay)
                     freq_delay <= freq_delay - 1;
-            end
         end
-    end              
+    end
     
     always @(posedge clk) 
     begin
@@ -362,10 +340,9 @@ generate
 
     always @(posedge clk) 
     begin
-        if (header_ok)
+        if (stat_ok)
         begin
             header[63:0] <= sample;
-            header[71:64] <= wr_blocks;
             header[79:72] <= flags;
             header[95:80] <= {5'b00000, size};
             header[111:96] <= angle;
@@ -378,7 +355,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset | header_ok | active)
+        if (reset | stat_ok | active)
             std_ok <= 0;
         else
         begin
@@ -390,20 +367,20 @@ generate
                 header[255:240] <= freq_std;
                 std_ok <= 1;
             end
+			else
+				std_ok <= 0;
         end
     end
     
     always @(posedge clk) 
     begin
-        if (std_ok & !wr)
+        if (std_ok & !wr & !mem_wr & !index)
+        begin
+            header[71:64] <= wr_blocks;
             read_back <= 1;
+        end
         else
             read_back <= 0;
-    end
-
-    always @(posedge clk) 
-    begin
-        data_out <= mem_data[rd_ptr];
     end
 
     always @(posedge clk)
@@ -413,6 +390,7 @@ generate
             active <= 1;
             rd_ptr <= 1;
             data <= header;
+            rd_blocks <= wr_blocks;
         end
         else 
         begin
@@ -443,11 +421,6 @@ generate
                             rd_ptr <= rd_ptr + 1;
                         end
                     endcase
-                end
-                else
-                begin
-                    if (header_ok)
-                        rd_blocks <= wr_blocks;
                 end
             end
         end

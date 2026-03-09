@@ -237,63 +237,15 @@ fir_comp_low_im fir_im_i (
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
 
-/*
-	ila_0 ila_i (
+	ila_2 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(ana_trig),            // input wire [0:0]  probe3
 		.probe1(sample_N),            // input wire [5:0]  probe3
 		.probe2(sample_E),            // input wire [5:0]  probe3
 		.probe3(sample_W),            // input wire [5:0]  probe3
-		.probe4(raw_N0),              // input wire [15:0]  probe3
-		.probe5(raw_N1),              // input wire [15:0]  probe3
-		.probe6(raw_N2),              // input wire [15:0]  probe3
-		.probe7(raw_N3),              // input wire [15:0]  probe3
-		.probe8(raw_N4),              // input wire [15:0]  probe3
-		.probe9(raw_N5),              // input wire [15:0]  probe3
-		.probe10(raw_N6),             // input wire [15:0]  probe3
-		.probe11(raw_N7),             // input wire [15:0]  probe3
-		.probe12(raw_E0),              // input wire [15:0]  probe3
-		.probe13(raw_E1),              // input wire [15:0]  probe3
-		.probe14(raw_E2),              // input wire [15:0]  probe3
-		.probe15(raw_E3),              // input wire [15:0]  probe3
-		.probe16(raw_E4),              // input wire [15:0]  probe3
-		.probe17(raw_E5),              // input wire [15:0]  probe3
-		.probe18(raw_E6),              // input wire [15:0]  probe3
-		.probe19(raw_E7),              // input wire [15:0]  probe3
-		.probe20(raw_W0),              // input wire [15:0]  probe3
-		.probe21(raw_W1),              // input wire [15:0]  probe3
-		.probe22(raw_W2),              // input wire [15:0]  probe3
-		.probe23(raw_W3),              // input wire [15:0]  probe3
-		.probe24(raw_W4),              // input wire [15:0]  probe3
-		.probe25(raw_W5),              // input wire [15:0]  probe3
-		.probe26(raw_W6),              // input wire [15:0]  probe3
-		.probe27(raw_W7),              // input wire [15:0]  probe3
-		.probe28(data_N0),             // input wire [15:0]  probe3
-		.probe29(data_N1),             // input wire [15:0]  probe3
-		.probe30(data_N2),             // input wire [15:0]  probe3
-		.probe31(data_N3),             // input wire [15:0]  probe3
-		.probe32(data_N4),             // input wire [15:0]  probe3
-		.probe33(data_N5),             // input wire [15:0]  probe3
-		.probe34(data_N6),             // input wire [15:0]  probe3
-		.probe35(data_N7),             // input wire [15:0]  probe3
-		.probe36(data_E0),             // input wire [15:0]  probe3
-		.probe37(data_E1),             // input wire [15:0]  probe3
-		.probe38(data_E2),             // input wire [15:0]  probe3
-		.probe39(data_E3),             // input wire [15:0]  probe3
-		.probe40(data_E4),             // input wire [15:0]  probe3
-		.probe41(data_E5),             // input wire [15:0]  probe3
-		.probe42(data_E6),             // input wire [15:0]  probe3
-		.probe43(data_E7),             // input wire [15:0]  probe3
-		.probe44(data_W0),             // input wire [15:0]  probe3
-		.probe45(data_W1),             // input wire [15:0]  probe3
-		.probe46(data_W2),             // input wire [15:0]  probe3
-		.probe47(data_W3),             // input wire [15:0]  probe3
-		.probe48(data_W4),             // input wire [15:0]  probe3
-		.probe49(data_W5),             // input wire [15:0]  probe3
-		.probe50(data_W6),             // input wire [15:0]  probe3
-		.probe51(data_W7)              // input wire [15:0]  probe3
+		.probe4(doa_error)            // input wire [9:0]  probe3
 	);
-*/
+
 
 generate
   begin : comp_low

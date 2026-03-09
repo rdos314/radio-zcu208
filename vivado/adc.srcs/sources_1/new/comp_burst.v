@@ -491,7 +491,7 @@ module comp_burst(
         .env_sum2(p3_env_sum2),
         .phase_sum2(p3_phase_sum2),
         .freq_sum2(p3_freq_sum2),
-        .header_ok(p3_done),
+        .stat_ok(p3_done),
         .env_0(p4_env_0),
         .env_1(p4_env_1),
         .env_2(p4_env_2),
