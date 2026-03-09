@@ -355,7 +355,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset | stat_ok | active)
+        if (reset | read_back)
             std_ok <= 0;
         else
         begin
@@ -367,8 +367,6 @@ generate
                 header[255:240] <= freq_std;
                 std_ok <= 1;
             end
-			else
-				std_ok <= 0;
         end
     end
     
