@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Mon Mar  9 22:13:26 2026
+// Date        : Tue Mar 10 00:08:34 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.v
@@ -25345,13 +25345,14 @@ module ps_comp_ana_0_1_comp_axi
         .D(\comp_axi.rd_ptr[7]_i_1_n_0 ),
         .Q(rd_ptr[7]),
         .R(read_back));
-  LUT4 #(
-    .INIT(16'h0004)) 
+  LUT5 #(
+    .INIT(32'h00000002)) 
     \comp_axi.read_back_i_1 
-       (.I0(index),
-        .I1(std_ok),
-        .I2(mem_wr),
-        .I3(wr),
+       (.I0(std_ok),
+        .I1(index),
+        .I2(wr),
+        .I3(read_back),
+        .I4(mem_wr),
         .O(\comp_axi.read_back_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_axi.read_back_reg 
@@ -26585,6 +26586,22 @@ module ps_comp_ana_0_1_comp_burst
   wire \comp_burst.hdr_doa_error[7]_i_1_n_0 ;
   wire \comp_burst.hdr_doa_error[8]_i_1_n_0 ;
   wire \comp_burst.hdr_doa_error[9]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[0]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[10]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[11]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[12]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[13]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[14]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[15]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[1]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[2]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[3]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[4]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[5]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[6]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[7]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[8]_i_1_n_0 ;
+  wire \comp_burst.hdr_env_mean[9]_i_1_n_0 ;
   wire \comp_burst.hdr_env_std[0]_i_1_n_0 ;
   wire \comp_burst.hdr_env_std[10]_i_1_n_0 ;
   wire \comp_burst.hdr_env_std[11]_i_1_n_0 ;
@@ -26789,7 +26806,7 @@ module ps_comp_ana_0_1_comp_burst
   (* MARK_DEBUG *) wire [15:0]hdr_angle;
   (* MARK_DEBUG *) wire [7:0]hdr_blocks;
   (* MARK_DEBUG *) wire [15:0]hdr_doa_error;
-  (* MARK_DEBUG *) wire hdr_env_min;
+  (* MARK_DEBUG *) wire [15:0]hdr_env_mean;
   (* MARK_DEBUG *) wire [15:0]hdr_env_std;
   (* MARK_DEBUG *) wire [7:0]hdr_flags;
   (* MARK_DEBUG *) wire [31:0]hdr_freq;
@@ -28358,116 +28375,116 @@ module ps_comp_ana_0_1_comp_burst
         .Q(data_env_5[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[0]_i_1 
        (.I0(data_env_6[0]),
-        .I1(p5_data[79]),
-        .I2(p5_data[192]),
+        .I1(p5_data[192]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[0]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[10]_i_1 
        (.I0(data_env_6[10]),
-        .I1(p5_data[79]),
-        .I2(p5_data[202]),
+        .I1(p5_data[202]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[10]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[11]_i_1 
        (.I0(data_env_6[11]),
-        .I1(p5_data[79]),
-        .I2(p5_data[203]),
+        .I1(p5_data[203]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[11]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[12]_i_1 
        (.I0(data_env_6[12]),
-        .I1(p5_data[79]),
-        .I2(p5_data[204]),
+        .I1(p5_data[204]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[12]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[13]_i_1 
        (.I0(data_env_6[13]),
-        .I1(p5_data[79]),
-        .I2(p5_data[205]),
+        .I1(p5_data[205]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[13]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[14]_i_1 
        (.I0(data_env_6[14]),
-        .I1(p5_data[79]),
-        .I2(p5_data[206]),
+        .I1(p5_data[206]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[14]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[15]_i_1 
        (.I0(data_env_6[15]),
-        .I1(p5_data[79]),
-        .I2(p5_data[207]),
+        .I1(p5_data[207]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[15]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[1]_i_1 
        (.I0(data_env_6[1]),
-        .I1(p5_data[79]),
-        .I2(p5_data[193]),
+        .I1(p5_data[193]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[1]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[2]_i_1 
        (.I0(data_env_6[2]),
-        .I1(p5_data[79]),
-        .I2(p5_data[194]),
+        .I1(p5_data[194]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[2]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[3]_i_1 
        (.I0(data_env_6[3]),
-        .I1(p5_data[79]),
-        .I2(p5_data[195]),
+        .I1(p5_data[195]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[3]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[4]_i_1 
        (.I0(data_env_6[4]),
-        .I1(p5_data[79]),
-        .I2(p5_data[196]),
+        .I1(p5_data[196]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[4]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[5]_i_1 
        (.I0(data_env_6[5]),
-        .I1(p5_data[79]),
-        .I2(p5_data[197]),
+        .I1(p5_data[197]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[5]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[6]_i_1 
        (.I0(data_env_6[6]),
-        .I1(p5_data[79]),
-        .I2(p5_data[198]),
+        .I1(p5_data[198]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[6]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[7]_i_1 
        (.I0(data_env_6[7]),
-        .I1(p5_data[79]),
-        .I2(p5_data[199]),
+        .I1(p5_data[199]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[7]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[8]_i_1 
        (.I0(data_env_6[8]),
-        .I1(p5_data[79]),
-        .I2(p5_data[200]),
+        .I1(p5_data[200]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[8]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hAC)) 
     \comp_burst.data_env_6[9]_i_1 
        (.I0(data_env_6[9]),
-        .I1(p5_data[79]),
-        .I2(p5_data[201]),
+        .I1(p5_data[201]),
+        .I2(p5_data[79]),
         .O(\comp_burst.data_env_6[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -31761,6 +31778,246 @@ module ps_comp_ana_0_1_comp_burst
         .CE(p5_wr),
         .D(\comp_burst.hdr_doa_error[9]_i_1_n_0 ),
         .Q(hdr_doa_error[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[0]_i_1 
+       (.I0(p5_data[192]),
+        .I1(hdr_env_mean[0]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[10]_i_1 
+       (.I0(p5_data[202]),
+        .I1(hdr_env_mean[10]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[11]_i_1 
+       (.I0(p5_data[203]),
+        .I1(hdr_env_mean[11]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[12]_i_1 
+       (.I0(p5_data[204]),
+        .I1(hdr_env_mean[12]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[13]_i_1 
+       (.I0(p5_data[205]),
+        .I1(hdr_env_mean[13]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[14]_i_1 
+       (.I0(p5_data[206]),
+        .I1(hdr_env_mean[14]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[15]_i_1 
+       (.I0(p5_data[207]),
+        .I1(hdr_env_mean[15]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[1]_i_1 
+       (.I0(p5_data[193]),
+        .I1(hdr_env_mean[1]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[2]_i_1 
+       (.I0(p5_data[194]),
+        .I1(hdr_env_mean[2]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[3]_i_1 
+       (.I0(p5_data[195]),
+        .I1(hdr_env_mean[3]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[4]_i_1 
+       (.I0(p5_data[196]),
+        .I1(hdr_env_mean[4]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[5]_i_1 
+       (.I0(p5_data[197]),
+        .I1(hdr_env_mean[5]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[6]_i_1 
+       (.I0(p5_data[198]),
+        .I1(hdr_env_mean[6]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[7]_i_1 
+       (.I0(p5_data[199]),
+        .I1(hdr_env_mean[7]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[8]_i_1 
+       (.I0(p5_data[200]),
+        .I1(hdr_env_mean[8]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \comp_burst.hdr_env_mean[9]_i_1 
+       (.I0(p5_data[201]),
+        .I1(hdr_env_mean[9]),
+        .I2(p5_data[79]),
+        .O(\comp_burst.hdr_env_mean[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[0] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[0]_i_1_n_0 ),
+        .Q(hdr_env_mean[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[10] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[10]_i_1_n_0 ),
+        .Q(hdr_env_mean[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[11] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[11]_i_1_n_0 ),
+        .Q(hdr_env_mean[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[12] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[12]_i_1_n_0 ),
+        .Q(hdr_env_mean[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[13] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[13]_i_1_n_0 ),
+        .Q(hdr_env_mean[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[14] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[14]_i_1_n_0 ),
+        .Q(hdr_env_mean[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[15] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[15]_i_1_n_0 ),
+        .Q(hdr_env_mean[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[1] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[1]_i_1_n_0 ),
+        .Q(hdr_env_mean[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[2] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[2]_i_1_n_0 ),
+        .Q(hdr_env_mean[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[3] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[3]_i_1_n_0 ),
+        .Q(hdr_env_mean[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[4] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[4]_i_1_n_0 ),
+        .Q(hdr_env_mean[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[5] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[5]_i_1_n_0 ),
+        .Q(hdr_env_mean[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[6] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[6]_i_1_n_0 ),
+        .Q(hdr_env_mean[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[7] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[7]_i_1_n_0 ),
+        .Q(hdr_env_mean[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[8] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[8]_i_1_n_0 ),
+        .Q(hdr_env_mean[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_burst.hdr_env_mean_reg[9] 
+       (.C(clk),
+        .CE(p5_wr),
+        .D(\comp_burst.hdr_env_mean[9]_i_1_n_0 ),
+        .Q(hdr_env_mean[9]),
         .R(1'b0));
   LUT3 #(
     .INIT(8'hAC)) 
@@ -39515,11 +39772,6 @@ module ps_comp_ana_0_1_comp_burst
         .wr_clk(rt_clk),
         .wr_en(rt_meta_wr),
         .wr_rst_busy(NLW_fifo_rt_meta_i_wr_rst_busy_UNCONNECTED));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_0
-       (.I0(1'b0),
-        .O(hdr_env_min));
   (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
@@ -39541,7 +39793,7 @@ module ps_comp_ana_0_1_comp_burst
         .probe20(hdr_doa_error),
         .probe21(hdr_max_env),
         .probe22(hdr_max_pos),
-        .probe23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,hdr_env_min}),
+        .probe23(hdr_env_mean),
         .probe24(hdr_env_std),
         .probe25(hdr_phase_std),
         .probe26(hdr_freq_std),

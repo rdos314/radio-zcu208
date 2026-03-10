@@ -9,12 +9,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,194"></ZoomStartTime>
-      <ZoomEndTime time="1,263"></ZoomEndTime>
-      <Cursor1Time time="1,235"></Cursor1Time>
+      <ZoomStartTime time="1,170"></ZoomStartTime>
+      <ZoomEndTime time="1,239"></ZoomEndTime>
+      <Cursor1Time time="1,210"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="129"></NameColumnWidth>
+      <NameColumnWidth column_width="125"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="21" />

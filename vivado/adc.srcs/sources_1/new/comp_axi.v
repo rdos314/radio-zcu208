@@ -372,7 +372,7 @@ generate
     
     always @(posedge clk) 
     begin
-        if (std_ok & !wr & !mem_wr & !index)
+        if (std_ok & !read_back & !wr & !mem_wr & !index)
         begin
             header[71:64] <= wr_blocks;
             read_back <= 1;

@@ -562,7 +562,7 @@ module comp_burst(
 		.probe20(hdr_doa_error),      // input wire [15:0]  probe3
 		.probe21(hdr_max_env),        // input wire [15:0]  probe3
 		.probe22(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe23(hdr_env_min),        // input wire [15:0]  probe3
+		.probe23(hdr_env_mean),       // input wire [15:0]  probe3
 		.probe24(hdr_env_std),        // input wire [15:0]  probe3
 		.probe25(hdr_phase_std),      // input wire [15:0]  probe3
 		.probe26(hdr_freq_std),       // input wire [15:0]  probe3

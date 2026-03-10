@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Mon Mar  9 22:13:26 2026
+-- Date        : Tue Mar 10 00:08:34 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.vhdl
@@ -29650,15 +29650,16 @@ begin
       Q => rd_ptr(7),
       R => read_back
     );
-\comp_axi.read_back_i_1\: unisim.vcomponents.LUT4
+\comp_axi.read_back_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0004"
+      INIT => X"00000002"
     )
         port map (
-      I0 => index,
-      I1 => std_ok,
-      I2 => mem_wr,
-      I3 => wr,
+      I0 => std_ok,
+      I1 => index,
+      I2 => wr,
+      I3 => read_back,
+      I4 => mem_wr,
       O => \comp_axi.read_back_reg0\
     );
 \comp_axi.read_back_reg\: unisim.vcomponents.FDRE
@@ -65853,6 +65854,22 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.hdr_doa_error[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_doa_error[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_doa_error[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_env_mean[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_env_std[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_env_std[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_env_std[11]_i_1_n_0\ : STD_LOGIC;
@@ -66073,8 +66090,8 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute MARK_DEBUG of hdr_blocks : signal is std.standard.true;
   signal hdr_doa_error : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of hdr_doa_error : signal is std.standard.true;
-  signal hdr_env_min : STD_LOGIC;
-  attribute MARK_DEBUG of hdr_env_min : signal is std.standard.true;
+  signal hdr_env_mean : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute MARK_DEBUG of hdr_env_mean : signal is std.standard.true;
   signal hdr_env_std : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of hdr_env_std : signal is std.standard.true;
   signal hdr_flags : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -66794,6 +66811,38 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   attribute mark_debug_string of \comp_burst.hdr_doa_error_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.hdr_doa_error_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.hdr_doa_error_reg[9]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[10]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[11]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[12]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[13]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[14]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[15]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[3]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[4]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[5]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[6]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[7]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[8]\ : label is "yes";
+  attribute KEEP of \comp_burst.hdr_env_mean_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \comp_burst.hdr_env_mean_reg[9]\ : label is "yes";
   attribute KEEP of \comp_burst.hdr_env_std_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.hdr_env_std_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.hdr_env_std_reg[10]\ : label is "yes";
@@ -68963,162 +69012,162 @@ begin
     );
 \comp_burst.data_env_6[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(0),
-      I1 => p5_data(79),
-      I2 => p5_data(192),
+      I1 => p5_data(192),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[0]_i_1_n_0\
     );
 \comp_burst.data_env_6[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(10),
-      I1 => p5_data(79),
-      I2 => p5_data(202),
+      I1 => p5_data(202),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[10]_i_1_n_0\
     );
 \comp_burst.data_env_6[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(11),
-      I1 => p5_data(79),
-      I2 => p5_data(203),
+      I1 => p5_data(203),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[11]_i_1_n_0\
     );
 \comp_burst.data_env_6[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(12),
-      I1 => p5_data(79),
-      I2 => p5_data(204),
+      I1 => p5_data(204),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[12]_i_1_n_0\
     );
 \comp_burst.data_env_6[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(13),
-      I1 => p5_data(79),
-      I2 => p5_data(205),
+      I1 => p5_data(205),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[13]_i_1_n_0\
     );
 \comp_burst.data_env_6[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(14),
-      I1 => p5_data(79),
-      I2 => p5_data(206),
+      I1 => p5_data(206),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[14]_i_1_n_0\
     );
 \comp_burst.data_env_6[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(15),
-      I1 => p5_data(79),
-      I2 => p5_data(207),
+      I1 => p5_data(207),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[15]_i_1_n_0\
     );
 \comp_burst.data_env_6[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(1),
-      I1 => p5_data(79),
-      I2 => p5_data(193),
+      I1 => p5_data(193),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[1]_i_1_n_0\
     );
 \comp_burst.data_env_6[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(2),
-      I1 => p5_data(79),
-      I2 => p5_data(194),
+      I1 => p5_data(194),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[2]_i_1_n_0\
     );
 \comp_burst.data_env_6[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(3),
-      I1 => p5_data(79),
-      I2 => p5_data(195),
+      I1 => p5_data(195),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[3]_i_1_n_0\
     );
 \comp_burst.data_env_6[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(4),
-      I1 => p5_data(79),
-      I2 => p5_data(196),
+      I1 => p5_data(196),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[4]_i_1_n_0\
     );
 \comp_burst.data_env_6[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(5),
-      I1 => p5_data(79),
-      I2 => p5_data(197),
+      I1 => p5_data(197),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[5]_i_1_n_0\
     );
 \comp_burst.data_env_6[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(6),
-      I1 => p5_data(79),
-      I2 => p5_data(198),
+      I1 => p5_data(198),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[6]_i_1_n_0\
     );
 \comp_burst.data_env_6[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(7),
-      I1 => p5_data(79),
-      I2 => p5_data(199),
+      I1 => p5_data(199),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[7]_i_1_n_0\
     );
 \comp_burst.data_env_6[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(8),
-      I1 => p5_data(79),
-      I2 => p5_data(200),
+      I1 => p5_data(200),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[8]_i_1_n_0\
     );
 \comp_burst.data_env_6[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8"
+      INIT => X"AC"
     )
         port map (
       I0 => data_env_6(9),
-      I1 => p5_data(79),
-      I2 => p5_data(201),
+      I1 => p5_data(201),
+      I2 => p5_data(79),
       O => \comp_burst.data_env_6[9]_i_1_n_0\
     );
 \comp_burst.data_env_6_reg[0]\: unisim.vcomponents.FDRE
@@ -73099,6 +73148,294 @@ begin
       CE => p5_wr,
       D => \comp_burst.hdr_doa_error[9]_i_1_n_0\,
       Q => hdr_doa_error(9),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(192),
+      I1 => hdr_env_mean(0),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[0]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[10]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(202),
+      I1 => hdr_env_mean(10),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[10]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[11]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(203),
+      I1 => hdr_env_mean(11),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[11]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[12]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(204),
+      I1 => hdr_env_mean(12),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[12]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[13]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(205),
+      I1 => hdr_env_mean(13),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[13]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[14]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(206),
+      I1 => hdr_env_mean(14),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[14]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[15]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(207),
+      I1 => hdr_env_mean(15),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[15]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(193),
+      I1 => hdr_env_mean(1),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[1]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(194),
+      I1 => hdr_env_mean(2),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[2]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(195),
+      I1 => hdr_env_mean(3),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[3]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[4]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(196),
+      I1 => hdr_env_mean(4),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[4]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(197),
+      I1 => hdr_env_mean(5),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[5]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[6]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(198),
+      I1 => hdr_env_mean(6),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[6]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(199),
+      I1 => hdr_env_mean(7),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[7]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[8]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(200),
+      I1 => hdr_env_mean(8),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[8]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean[9]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"AC"
+    )
+        port map (
+      I0 => p5_data(201),
+      I1 => hdr_env_mean(9),
+      I2 => p5_data(79),
+      O => \comp_burst.hdr_env_mean[9]_i_1_n_0\
+    );
+\comp_burst.hdr_env_mean_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[0]_i_1_n_0\,
+      Q => hdr_env_mean(0),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[10]_i_1_n_0\,
+      Q => hdr_env_mean(10),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[11]_i_1_n_0\,
+      Q => hdr_env_mean(11),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[12]_i_1_n_0\,
+      Q => hdr_env_mean(12),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[13]_i_1_n_0\,
+      Q => hdr_env_mean(13),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[14]_i_1_n_0\,
+      Q => hdr_env_mean(14),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[15]_i_1_n_0\,
+      Q => hdr_env_mean(15),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[1]_i_1_n_0\,
+      Q => hdr_env_mean(1),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[2]_i_1_n_0\,
+      Q => hdr_env_mean(2),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[3]_i_1_n_0\,
+      Q => hdr_env_mean(3),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[4]_i_1_n_0\,
+      Q => hdr_env_mean(4),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[5]_i_1_n_0\,
+      Q => hdr_env_mean(5),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[6]_i_1_n_0\,
+      Q => hdr_env_mean(6),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[7]_i_1_n_0\,
+      Q => hdr_env_mean(7),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[8]_i_1_n_0\,
+      Q => hdr_env_mean(8),
+      R => '0'
+    );
+\comp_burst.hdr_env_mean_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => p5_wr,
+      D => \comp_burst.hdr_env_mean[9]_i_1_n_0\,
+      Q => hdr_env_mean(9),
       R => '0'
     );
 \comp_burst.hdr_env_std[0]_i_1\: unisim.vcomponents.LUT3
@@ -83023,14 +83360,6 @@ fifo_rt_meta_i: component ps_comp_ana_0_0_fifo_stat_meta
       wr_en => rt_meta_wr,
       wr_rst_busy => NLW_fifo_rt_meta_i_wr_rst_busy_UNCONNECTED
     );
-i_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => hdr_env_min
-    );
 ila_i: component ps_comp_ana_0_0_ila_0
      port map (
       clk => clk,
@@ -83050,8 +83379,7 @@ ila_i: component ps_comp_ana_0_0_ila_0
       probe20(15 downto 0) => hdr_doa_error(15 downto 0),
       probe21(15 downto 0) => hdr_max_env(15 downto 0),
       probe22(15 downto 0) => hdr_max_pos(15 downto 0),
-      probe23(15 downto 1) => B"000000000000000",
-      probe23(0) => hdr_env_min,
+      probe23(15 downto 0) => hdr_env_mean(15 downto 0),
       probe24(15 downto 0) => hdr_env_std(15 downto 0),
       probe25(15 downto 0) => hdr_phase_std(15 downto 0),
       probe26(15 downto 0) => hdr_freq_std(15 downto 0),
