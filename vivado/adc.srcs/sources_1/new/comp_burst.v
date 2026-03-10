@@ -201,6 +201,7 @@ module comp_burst(
     input wire [31:0] config_data,
 
 	input wire rt_clk,
+	input wire rt_reset,
 	input wire rt_start,
 	input wire [61:0] rt_sample,
     input wire [19:0] rt_freq,
@@ -217,6 +218,13 @@ module comp_burst(
     input wire [19:0] rt_phase_1,
     input wire [19:0] rt_phase_2,
     input wire [19:0] rt_phase_3,
+
+    output reg pend,
+    output reg avail,
+    output wire [19:0] sample,
+    input wire get,
+    output reg wr,
+    output reg [255:0] data,
     
     input wire clk,
     input wire reset,
@@ -343,6 +351,13 @@ module comp_burst(
     wire p5_wr;
     wire [255:0] p5_data;
 
+    wire sample_empty;
+    wire sample_full;
+    wire data_empty;
+    wire [255:0] fifo_data;
+    reg [2:0] data_delay;
+    reg [7:0] blocks;
+
 	reg [63:0] hdr_sample;
 	reg [7:0] hdr_blocks;
 	reg [7:0] hdr_flags;
@@ -407,6 +422,28 @@ module comp_burst(
 		.dout(rt_data_out),      // output wire [143 : 0] dout
 		.empty(rt_data_empty)    // output wire empty
 	);
+
+    fifo_burst_sample fifo_sample_i (
+        .clk(rt_clk),                 // input wire clk
+        .srst(rt_reset),               // input wire rst
+        .din(rt_sample[19:0]),        // input wire [19 : 0] din
+        .wr_en(rt_start),             // input wire wr_en
+        .rd_en(get),                  // input wire rd_en
+        .dout(sample),                // output wire [19 : 0] dout
+        .full(sample_full),           // output wire full
+        .empty(sample_empty)          // output wire empty
+    );
+
+    fifo_burst_data fifo_data_i (
+        .rst(reset),                  // input wire rst
+        .wr_clk(clk),                 // input wire wr_clk
+        .rd_clk(rt_clk),              // input wire rd_clk
+        .din(p5_data),                // input wire [255 : 0] din
+        .wr_en(p5_wr),                // input wire wr_en
+        .rd_en(wr),                   // input wire rd_en
+        .dout(fifo_data),             // output wire [255 : 0] dout
+        .empty(data_empty)            // output wire empty
+    );
 
 	burst_size p1_i (
 		.clk(clk),
@@ -552,36 +589,48 @@ module comp_burst(
 		.probe10(p4_wr),              // input wire [0:0]  probe3
 		.probe11(p4_done),            // input wire [0:0]  probe3
 		.probe12(p5_idle),            // input wire [0:0]  probe3
-		.probe13(p5_wr),              // input wire [0:0]  probe3
-		.probe14(hdr_sample),         // input wire [63:0]  probe3
-		.probe15(hdr_blocks),         // input wire [7:0]  probe3
-		.probe16(hdr_flags),          // input wire [7:0]  probe3
-		.probe17(hdr_size),           // input wire [15:0]  probe3
-		.probe18(hdr_freq),           // input wire [31:0]  probe3
-		.probe19(hdr_angle),          // input wire [15:0]  probe3
-		.probe20(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe21(hdr_max_env),        // input wire [15:0]  probe3
-		.probe22(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe23(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe24(hdr_env_std),        // input wire [15:0]  probe3
-		.probe25(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe26(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe27(data_env_0),         // input wire [15:0]  probe3
-		.probe28(data_env_1),         // input wire [15:0]  probe3
-		.probe29(data_env_2),         // input wire [15:0]  probe3
-		.probe30(data_env_3),         // input wire [15:0]  probe3
-		.probe31(data_env_4),         // input wire [15:0]  probe3
-		.probe32(data_env_5),         // input wire [15:0]  probe3
-		.probe33(data_env_6),         // input wire [15:0]  probe3
-		.probe34(data_env_7),         // input wire [15:0]  probe3
-		.probe35(data_phase_0),       // input wire [15:0]  probe3
-		.probe36(data_phase_1),       // input wire [15:0]  probe3
-		.probe37(data_phase_2),       // input wire [15:0]  probe3
-		.probe38(data_phase_3),       // input wire [15:0]  probe3
-		.probe39(data_phase_4),       // input wire [15:0]  probe3
-		.probe40(data_phase_5),       // input wire [15:0]  probe3
-		.probe41(data_phase_6),       // input wire [15:0]  probe3
-		.probe42(data_phase_7)        // input wire [15:0]  probe3
+		.probe13(p5_wr)               // input wire [0:0]  probe3
+	);
+
+	ila_7 ila_rt (
+		.clk(rt_clk),                 // input wire clk
+		.probe0(sample_empty),        // input wire [0:0]  probe3
+		.probe1(data_empty),          // input wire [0:0]  probe3
+		.probe2(data_delay),          // input wire [2:0]  probe3
+		.probe3(pend),                // input wire [0:0]  probe3
+		.probe4(avail),               // input wire [0:0]  probe3
+		.probe5(sample),              // input wire [19:0]  probe3
+		.probe6(get),                 // input wire [0:0]  probe3
+		.probe7(wr),                  // input wire [0:0]  probe3
+		.probe8(hdr_sample),          // input wire [63:0]  probe3
+		.probe9(hdr_blocks),          // input wire [7:0]  probe3
+		.probe10(hdr_flags),          // input wire [7:0]  probe3
+		.probe11(hdr_size),           // input wire [15:0]  probe3
+		.probe12(hdr_freq),           // input wire [31:0]  probe3
+		.probe13(hdr_angle),          // input wire [15:0]  probe3
+		.probe14(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe15(hdr_max_env),        // input wire [15:0]  probe3
+		.probe16(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe17(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe18(hdr_env_std),        // input wire [15:0]  probe3
+		.probe19(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe20(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe21(data_env_0),         // input wire [15:0]  probe3
+		.probe22(data_env_1),         // input wire [15:0]  probe3
+		.probe23(data_env_2),         // input wire [15:0]  probe3
+		.probe24(data_env_3),         // input wire [15:0]  probe3
+		.probe25(data_env_4),         // input wire [15:0]  probe3
+		.probe26(data_env_5),         // input wire [15:0]  probe3
+		.probe27(data_env_6),         // input wire [15:0]  probe3
+		.probe28(data_env_7),         // input wire [15:0]  probe3
+		.probe29(data_phase_0),       // input wire [15:0]  probe3
+		.probe30(data_phase_1),       // input wire [15:0]  probe3
+		.probe31(data_phase_2),       // input wire [15:0]  probe3
+		.probe32(data_phase_3),       // input wire [15:0]  probe3
+		.probe33(data_phase_4),       // input wire [15:0]  probe3
+		.probe34(data_phase_5),       // input wire [15:0]  probe3
+		.probe35(data_phase_6),       // input wire [15:0]  probe3
+		.probe36(data_phase_7)        // input wire [15:0]  probe3
 	);
 
 generate
@@ -733,44 +782,101 @@ generate
         end
     end
 
-    always @(posedge clk) 
+    always @(posedge rt_clk) 
     begin
-        if (p5_wr)
+        if (data_empty)
+            data_delay <= 0;
+        else
+        begin
+            if (data_delay)
+                data_delay <= data_delay - 1;
+            else
+                if (!avail & !get & !wr)
+                    data_delay <= 7;
+        end
+    end
+            
+    always @(posedge rt_clk) 
+    begin
+        if (data_empty | get)
+            avail <= 0;
+        else
+            if (data_delay == 1)
+                avail <= 1;
+    end
+
+    always @(posedge rt_clk) 
+    begin
+        pend <= !sample_empty;
+    end
+        
+    always @(posedge rt_clk) 
+    begin
+        if (data_empty)
+            wr <= 0;
+        else
+        begin
+            if (get)
+            begin
+                data <= fifo_data;
+                wr <= 1;
+                blocks <= fifo_data[71:64];
+            end
+            else
+            begin
+                if (wr)
+                begin
+                    if (blocks)
+                    begin
+                        data <= fifo_data;
+                        wr <= 1;
+                        blocks <= blocks - 1;
+                    end
+                    else
+                        wr <= 0;
+                end
+            end
+        end
+    end
+
+    always @(posedge rt_clk) 
+    begin
+        if (wr)
 		begin
-			if (p5_data[79])
+			if (data[79])
 			begin
-				hdr_sample <= p5_data[63:0];
-				hdr_blocks <= p5_data[71:64];
-				hdr_flags <= p5_data[79:72];
-				hdr_size <= p5_data[95:80];
-				hdr_angle <= p5_data[111:96];
-				hdr_doa_error <= p5_data[127:112];
-				hdr_freq <= p5_data[159:128];
-				hdr_max_env <= p5_data[175:160];
-				hdr_max_pos <= p5_data[191:176];
-				hdr_env_mean <= p5_data[207:192];
-				hdr_env_std <= p5_data[223:208];
-				hdr_phase_std <= p5_data[239:224];
-				hdr_freq_std <= p5_data[255:240];
+				hdr_sample <= data[63:0];
+				hdr_blocks <= data[71:64];
+				hdr_flags <= data[79:72];
+				hdr_size <= data[95:80];
+				hdr_angle <= data[111:96];
+				hdr_doa_error <= data[127:112];
+				hdr_freq <= data[159:128];
+				hdr_max_env <= data[175:160];
+				hdr_max_pos <= data[191:176];
+				hdr_env_mean <= data[207:192];
+				hdr_env_std <= data[223:208];
+				hdr_phase_std <= data[239:224];
+				hdr_freq_std <= data[255:240];
 			end
 			else
 			begin
-				data_env_0 <= p5_data[15:0];
-				data_phase_0 <= p5_data[31:16];
-				data_env_1 <= p5_data[47:32];
-				data_phase_1 <= p5_data[63:48];
-				data_env_2 <= p5_data[79:64];
-				data_phase_2 <= p5_data[95:80];
-				data_env_3 <= p5_data[111:96];
-				data_phase_3 <= p5_data[127:112];
-				data_env_4 <= p5_data[143:128];
-				data_phase_4 <= p5_data[159:144];
-				data_env_5 <= p5_data[175:160];
-				data_phase_5 <= p5_data[191:176];
-				data_env_6 <= p5_data[207:192];
-				data_phase_6 <= p5_data[223:208];
-				data_env_7 <= p5_data[239:224];
-				data_phase_7 <= p5_data[255:240];
+				data_env_0 <= data[15:0];
+				data_phase_0 <= data[31:16];
+				data_env_1 <= data[47:32];
+				data_phase_1 <= data[63:48];
+				data_env_2 <= data[79:64];
+				data_phase_2 <= data[95:80];
+				data_env_3 <= data[111:96];
+				data_phase_3 <= data[127:112];
+				data_env_4 <= data[143:128];
+				data_phase_4 <= data[159:144];
+				data_env_5 <= data[175:160];
+				data_phase_5 <= data[191:176];
+				data_env_6 <= data[207:192];
+				data_phase_6 <= data[223:208];
+				data_env_7 <= data[239:224];
+				data_phase_7 <= data[255:240];
 			end
 		end
 	end

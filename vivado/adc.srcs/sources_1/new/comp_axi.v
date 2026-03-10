@@ -1,5 +1,127 @@
 `timescale 1ns / 1ps
 
+//------------------------------------------------------------------------------
+// Module: comp_axi
+//
+// Description:
+// -----------
+// Burst compression and packet formatting stage. The module buffers burst
+// samples in internal BRAM, computes statistical properties of the burst,
+// constructs a packet header, and outputs the complete burst as a sequence
+// of 256-bit words.
+//
+// The module operates in three phases:
+//
+//   1) Burst capture
+//      Incoming envelope and phase samples are packed and written to BRAM.
+//      Two cycles of input samples are packed into one 256-bit word.
+//
+//   2) Statistics computation
+//      After the burst ends (stat_ok asserted), variance and standard
+//      deviation are computed for envelope, phase, and frequency using
+//      divider and square-root IP cores.
+//
+//   3) Packet transmission
+//      When statistics are ready, a header is completed and transmitted
+//      followed by the stored BRAM blocks.
+//
+// The output packet therefore has the structure:
+//
+//      +-----------+
+//      | Header    | 256 bits
+//      +-----------+
+//      | Burst 0   |
+//      | Burst 1   |
+//      | ...       |
+//      | Burst N   |
+//      +-----------+
+//
+// The header contains burst metadata and computed statistics.
+//
+// Operation summary:
+//
+//      wr samples
+//           |
+//           v
+//      BRAM burst buffer
+//           |
+//           v
+//      stat_ok (burst end)
+//           |
+//           v
+//      variance + sqrt
+//           |
+//           v
+//      header finalize
+//           |
+//           v
+//      burst readout
+//
+// Output Control:
+//
+//   idle
+//       Asserted when the module is not capturing a burst and not transmitting
+//       data.
+//
+//   active
+//       Asserted while the module outputs the packet header and burst data.
+//
+// Memory Organization:
+//
+//   Internal BRAM stores 256-bit words containing packed samples:
+//
+//       { env3, phase3,
+//         env2, phase2,
+//         env1, phase1,
+//         env0, phase0 }
+//
+//   Two input cycles are combined into one BRAM word.
+//
+// Header Format (256 bits):
+//
+//      [ 63:  0]  sample identifier / timestamp
+//      [ 71: 64]  number of burst blocks
+//      [ 79: 72]  flags
+//      [ 95: 80]  burst size (samples)
+//      [111: 96]  direction angle
+//      [127:112]  direction error (promille)
+//      [159:128]  mean frequency
+//      [175:160]  maximum envelope
+//      [191:176]  position of maximum envelope
+//      [207:192]  envelope mean
+//      [223:208]  envelope standard deviation
+//      [239:224]  phase standard deviation
+//      [255:240]  frequency standard deviation
+//
+// Statistics:
+//
+//   Variance is computed using:
+//
+//        env_var   = env_sum2   / (N-1)
+//        phase_var = phase_sum2 / (N-2)
+//        freq_var  = freq_sum2  / (N-2)
+//
+//   Standard deviation is obtained using sqrt().
+//
+// Frequency mean and standard deviation are scaled using multipliers.
+//
+// Timing:
+//
+//   Statistics computation runs in parallel with BRAM buffering and does not
+//   stall burst capture. Transmission begins only when:
+//
+//       - statistics are complete
+//       - BRAM write pipeline is empty
+//
+// Notes:
+//
+//   • BRAM depth: 256 x 256 bits
+//   • Maximum burst size determined by BRAM capacity
+//   • Divider and sqrt blocks are Vivado IP cores
+//   • Designed for high clock rates (e.g., 500 MHz on Zynq UltraScale+)
+//
+//------------------------------------------------------------------------------
+
 module comp_axi(
     input wire clk,
     input wire reset,
@@ -398,27 +520,17 @@ generate
             begin
                 if (active)
                 begin
-                    case (rd_blocks)
-                        0: 
-                        begin
-                            active <= 0;
-                            rd_ptr <= 0;
-                        end
-                        
-                        1:
-                        begin
-                            active <= 0;
-                            rd_ptr <= 0;
-                            rd_blocks <= 0;
-                        end
-                        
-                        default:
-                        begin
-                            data <= data_out;
-                            rd_blocks <= rd_blocks - 1;
-                            rd_ptr <= rd_ptr + 1;
-                        end
-                    endcase
+                    if (rd_blocks)
+                    begin
+                        data <= data_out;
+                        rd_blocks <= rd_blocks - 1;
+                        rd_ptr <= rd_ptr + 1;
+                    end
+                    else
+                    begin
+                        active <= 0;
+                        rd_ptr <= 0;
+                    end
                 end
             end
         end

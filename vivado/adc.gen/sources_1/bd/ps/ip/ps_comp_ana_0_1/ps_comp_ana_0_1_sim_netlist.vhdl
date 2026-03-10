@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue Mar 10 00:08:34 2026
+-- Date        : Tue Mar 10 20:51:05 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.vhdl
@@ -17579,54 +17579,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   signal \comp_axi.freq_delay[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.freq_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.header[159]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[208]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[209]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[210]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[211]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[212]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[213]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[214]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[215]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[216]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[217]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[218]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[219]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[220]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[221]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[222]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[223]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[224]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[225]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[226]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[227]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[228]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[229]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[230]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[231]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[232]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[233]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[234]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[235]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[236]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[237]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[238]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[239]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[240]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[241]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[242]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[243]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[244]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[245]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[246]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[247]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[248]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[249]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[250]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[251]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[252]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[253]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[254]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.header[255]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.idle_reg0\ : STD_LOGIC;
   signal \comp_axi.index_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.phase_std[7]_i_2_n_0\ : STD_LOGIC;
@@ -17668,6 +17620,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   signal \comp_axi.raw_freq_std[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_axi.rd_blocks[1]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_axi.rd_blocks[1]_i_3_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[2]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_blocks[2]_i_3_n_0\ : STD_LOGIC;
@@ -17684,7 +17638,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   signal \comp_axi.rd_ptr[1]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[3]_i_1_n_0\ : STD_LOGIC;
-  signal \comp_axi.rd_ptr[3]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[4]_i_1_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[4]_i_2_n_0\ : STD_LOGIC;
   signal \comp_axi.rd_ptr[5]_i_1_n_0\ : STD_LOGIC;
@@ -17770,33 +17723,15 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   attribute MARK_DEBUG of filling : signal is std.standard.true;
   signal freq_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of freq_delay : signal is std.standard.true;
-  signal freq_p : STD_LOGIC_VECTOR ( 37 downto 0 );
+  signal freq_p : STD_LOGIC_VECTOR ( 37 downto 18 );
   signal freq_std : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of freq_std : signal is std.standard.true;
   signal \freq_std__0\ : STD_LOGIC;
+  signal freq_std_data : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal freq_std_done : STD_LOGIC;
-  signal freq_std_i_n_10 : STD_LOGIC;
-  signal freq_std_i_n_11 : STD_LOGIC;
-  signal freq_std_i_n_12 : STD_LOGIC;
-  signal freq_std_i_n_13 : STD_LOGIC;
-  signal freq_std_i_n_14 : STD_LOGIC;
-  signal freq_std_i_n_15 : STD_LOGIC;
-  signal freq_std_i_n_16 : STD_LOGIC;
-  signal freq_std_i_n_17 : STD_LOGIC;
-  signal freq_std_i_n_18 : STD_LOGIC;
-  signal freq_std_i_n_19 : STD_LOGIC;
-  signal freq_std_i_n_20 : STD_LOGIC;
-  signal freq_std_i_n_21 : STD_LOGIC;
-  signal freq_std_i_n_22 : STD_LOGIC;
-  signal freq_std_i_n_23 : STD_LOGIC;
-  signal freq_std_i_n_24 : STD_LOGIC;
-  signal freq_std_i_n_5 : STD_LOGIC;
-  signal freq_std_i_n_6 : STD_LOGIC;
-  signal freq_std_i_n_7 : STD_LOGIC;
-  signal freq_std_i_n_8 : STD_LOGIC;
-  signal freq_std_i_n_9 : STD_LOGIC;
   signal freq_std_p : STD_LOGIC_VECTOR ( 34 downto 19 );
   signal header : STD_LOGIC_VECTOR ( 255 downto 0 );
+  signal header3_out : STD_LOGIC_VECTOR ( 255 downto 128 );
   signal \^idle\ : STD_LOGIC;
   attribute MARK_DEBUG of idle : signal is std.standard.true;
   signal index : STD_LOGIC;
@@ -17804,7 +17739,6 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   signal index1 : STD_LOGIC;
   signal mem_wr : STD_LOGIC;
   attribute MARK_DEBUG of mem_wr : signal is std.standard.true;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal phase_std : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of phase_std : signal is std.standard.true;
   signal \phase_std__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -17902,6 +17836,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_axi is
   signal NLW_div_var_phase_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 40 );
   signal NLW_env_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 16 );
   signal NLW_freq_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
+  signal NLW_mul_freq_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal NLW_mul_freq_std_i_P_UNCONNECTED : STD_LOGIC_VECTOR ( 37 downto 0 );
   signal NLW_phase_std_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 0 );
   attribute KEEP : string;
@@ -20222,16 +20157,17 @@ begin
       I2 => data_out(255),
       O => \comp_axi.data[255]_i_2_n_0\
     );
-\comp_axi.data[255]_i_3\: unisim.vcomponents.LUT5
+\comp_axi.data[255]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => rd_blocks(3),
-      I1 => rd_blocks(4),
-      I2 => rd_blocks(1),
-      I3 => rd_blocks(2),
-      I4 => \comp_axi.rd_blocks[4]_i_2_n_0\,
+      I0 => rd_blocks(0),
+      I1 => rd_blocks(1),
+      I2 => rd_blocks(4),
+      I3 => rd_blocks(3),
+      I4 => rd_blocks(2),
+      I5 => \comp_axi.rd_blocks[4]_i_2_n_0\,
       O => \comp_axi.data[255]_i_3_n_0\
     );
 \comp_axi.data[25]_i_1\: unisim.vcomponents.LUT3
@@ -25543,7 +25479,7 @@ begin
       I0 => calc_freq(0),
       I1 => std_done,
       I2 => header(128),
-      O => \p_1_in__0\(0)
+      O => header3_out(128)
     );
 \comp_axi.header[129]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25553,7 +25489,7 @@ begin
       I0 => calc_freq(1),
       I1 => std_done,
       I2 => header(129),
-      O => \p_1_in__0\(1)
+      O => header3_out(129)
     );
 \comp_axi.header[130]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25563,7 +25499,7 @@ begin
       I0 => calc_freq(2),
       I1 => std_done,
       I2 => header(130),
-      O => \p_1_in__0\(2)
+      O => header3_out(130)
     );
 \comp_axi.header[131]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25573,7 +25509,7 @@ begin
       I0 => calc_freq(3),
       I1 => std_done,
       I2 => header(131),
-      O => \p_1_in__0\(3)
+      O => header3_out(131)
     );
 \comp_axi.header[132]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25583,7 +25519,7 @@ begin
       I0 => calc_freq(4),
       I1 => std_done,
       I2 => header(132),
-      O => \p_1_in__0\(4)
+      O => header3_out(132)
     );
 \comp_axi.header[133]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25593,7 +25529,7 @@ begin
       I0 => calc_freq(5),
       I1 => std_done,
       I2 => header(133),
-      O => \p_1_in__0\(5)
+      O => header3_out(133)
     );
 \comp_axi.header[134]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25603,7 +25539,7 @@ begin
       I0 => calc_freq(6),
       I1 => std_done,
       I2 => header(134),
-      O => \p_1_in__0\(6)
+      O => header3_out(134)
     );
 \comp_axi.header[135]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25613,7 +25549,7 @@ begin
       I0 => calc_freq(7),
       I1 => std_done,
       I2 => header(135),
-      O => \p_1_in__0\(7)
+      O => header3_out(135)
     );
 \comp_axi.header[136]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25623,7 +25559,7 @@ begin
       I0 => calc_freq(8),
       I1 => std_done,
       I2 => header(136),
-      O => \p_1_in__0\(8)
+      O => header3_out(136)
     );
 \comp_axi.header[137]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25633,7 +25569,7 @@ begin
       I0 => calc_freq(9),
       I1 => std_done,
       I2 => header(137),
-      O => \p_1_in__0\(9)
+      O => header3_out(137)
     );
 \comp_axi.header[138]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25643,7 +25579,7 @@ begin
       I0 => calc_freq(10),
       I1 => std_done,
       I2 => header(138),
-      O => \p_1_in__0\(10)
+      O => header3_out(138)
     );
 \comp_axi.header[139]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25653,7 +25589,7 @@ begin
       I0 => calc_freq(11),
       I1 => std_done,
       I2 => header(139),
-      O => \p_1_in__0\(11)
+      O => header3_out(139)
     );
 \comp_axi.header[140]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25663,7 +25599,7 @@ begin
       I0 => calc_freq(12),
       I1 => std_done,
       I2 => header(140),
-      O => \p_1_in__0\(12)
+      O => header3_out(140)
     );
 \comp_axi.header[141]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25673,7 +25609,7 @@ begin
       I0 => calc_freq(13),
       I1 => std_done,
       I2 => header(141),
-      O => \p_1_in__0\(13)
+      O => header3_out(141)
     );
 \comp_axi.header[142]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25683,7 +25619,7 @@ begin
       I0 => calc_freq(14),
       I1 => std_done,
       I2 => header(142),
-      O => \p_1_in__0\(14)
+      O => header3_out(142)
     );
 \comp_axi.header[143]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25693,7 +25629,7 @@ begin
       I0 => calc_freq(15),
       I1 => std_done,
       I2 => header(143),
-      O => \p_1_in__0\(15)
+      O => header3_out(143)
     );
 \comp_axi.header[144]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25703,7 +25639,7 @@ begin
       I0 => calc_freq(16),
       I1 => std_done,
       I2 => header(144),
-      O => \p_1_in__0\(16)
+      O => header3_out(144)
     );
 \comp_axi.header[145]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25713,7 +25649,7 @@ begin
       I0 => calc_freq(17),
       I1 => std_done,
       I2 => header(145),
-      O => \p_1_in__0\(17)
+      O => header3_out(145)
     );
 \comp_axi.header[146]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25723,7 +25659,7 @@ begin
       I0 => calc_freq(18),
       I1 => std_done,
       I2 => header(146),
-      O => \p_1_in__0\(18)
+      O => header3_out(146)
     );
 \comp_axi.header[147]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25733,7 +25669,7 @@ begin
       I0 => calc_freq(19),
       I1 => std_done,
       I2 => header(147),
-      O => \p_1_in__0\(19)
+      O => header3_out(147)
     );
 \comp_axi.header[148]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25743,7 +25679,7 @@ begin
       I0 => calc_freq(20),
       I1 => std_done,
       I2 => header(148),
-      O => \p_1_in__0\(20)
+      O => header3_out(148)
     );
 \comp_axi.header[149]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25753,7 +25689,7 @@ begin
       I0 => calc_freq(21),
       I1 => std_done,
       I2 => header(149),
-      O => \p_1_in__0\(21)
+      O => header3_out(149)
     );
 \comp_axi.header[150]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25763,7 +25699,7 @@ begin
       I0 => calc_freq(22),
       I1 => std_done,
       I2 => header(150),
-      O => \p_1_in__0\(22)
+      O => header3_out(150)
     );
 \comp_axi.header[151]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25773,7 +25709,7 @@ begin
       I0 => calc_freq(23),
       I1 => std_done,
       I2 => header(151),
-      O => \p_1_in__0\(23)
+      O => header3_out(151)
     );
 \comp_axi.header[152]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25783,7 +25719,7 @@ begin
       I0 => calc_freq(24),
       I1 => std_done,
       I2 => header(152),
-      O => \p_1_in__0\(24)
+      O => header3_out(152)
     );
 \comp_axi.header[153]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25793,7 +25729,7 @@ begin
       I0 => calc_freq(25),
       I1 => std_done,
       I2 => header(153),
-      O => \p_1_in__0\(25)
+      O => header3_out(153)
     );
 \comp_axi.header[154]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25803,7 +25739,7 @@ begin
       I0 => calc_freq(26),
       I1 => std_done,
       I2 => header(154),
-      O => \p_1_in__0\(26)
+      O => header3_out(154)
     );
 \comp_axi.header[155]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25813,7 +25749,7 @@ begin
       I0 => calc_freq(27),
       I1 => std_done,
       I2 => header(155),
-      O => \p_1_in__0\(27)
+      O => header3_out(155)
     );
 \comp_axi.header[156]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25823,7 +25759,7 @@ begin
       I0 => calc_freq(28),
       I1 => std_done,
       I2 => header(156),
-      O => \p_1_in__0\(28)
+      O => header3_out(156)
     );
 \comp_axi.header[157]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25833,7 +25769,7 @@ begin
       I0 => calc_freq(29),
       I1 => std_done,
       I2 => header(157),
-      O => \p_1_in__0\(29)
+      O => header3_out(157)
     );
 \comp_axi.header[158]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25843,7 +25779,7 @@ begin
       I0 => calc_freq(30),
       I1 => std_done,
       I2 => header(158),
-      O => \p_1_in__0\(30)
+      O => header3_out(158)
     );
 \comp_axi.header[159]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -25862,7 +25798,7 @@ begin
       I0 => calc_freq(31),
       I1 => std_done,
       I2 => header(159),
-      O => \p_1_in__0\(31)
+      O => header3_out(159)
     );
 \comp_axi.header[208]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25872,7 +25808,7 @@ begin
       I0 => env_std(0),
       I1 => std_done,
       I2 => header(208),
-      O => \comp_axi.header[208]_i_1_n_0\
+      O => header3_out(208)
     );
 \comp_axi.header[209]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25882,7 +25818,7 @@ begin
       I0 => env_std(1),
       I1 => std_done,
       I2 => header(209),
-      O => \comp_axi.header[209]_i_1_n_0\
+      O => header3_out(209)
     );
 \comp_axi.header[210]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25892,7 +25828,7 @@ begin
       I0 => env_std(2),
       I1 => std_done,
       I2 => header(210),
-      O => \comp_axi.header[210]_i_1_n_0\
+      O => header3_out(210)
     );
 \comp_axi.header[211]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25902,7 +25838,7 @@ begin
       I0 => env_std(3),
       I1 => std_done,
       I2 => header(211),
-      O => \comp_axi.header[211]_i_1_n_0\
+      O => header3_out(211)
     );
 \comp_axi.header[212]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25912,7 +25848,7 @@ begin
       I0 => env_std(4),
       I1 => std_done,
       I2 => header(212),
-      O => \comp_axi.header[212]_i_1_n_0\
+      O => header3_out(212)
     );
 \comp_axi.header[213]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25922,7 +25858,7 @@ begin
       I0 => env_std(5),
       I1 => std_done,
       I2 => header(213),
-      O => \comp_axi.header[213]_i_1_n_0\
+      O => header3_out(213)
     );
 \comp_axi.header[214]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25932,7 +25868,7 @@ begin
       I0 => env_std(6),
       I1 => std_done,
       I2 => header(214),
-      O => \comp_axi.header[214]_i_1_n_0\
+      O => header3_out(214)
     );
 \comp_axi.header[215]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25942,7 +25878,7 @@ begin
       I0 => env_std(7),
       I1 => std_done,
       I2 => header(215),
-      O => \comp_axi.header[215]_i_1_n_0\
+      O => header3_out(215)
     );
 \comp_axi.header[216]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25952,7 +25888,7 @@ begin
       I0 => env_std(8),
       I1 => std_done,
       I2 => header(216),
-      O => \comp_axi.header[216]_i_1_n_0\
+      O => header3_out(216)
     );
 \comp_axi.header[217]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25962,7 +25898,7 @@ begin
       I0 => env_std(9),
       I1 => std_done,
       I2 => header(217),
-      O => \comp_axi.header[217]_i_1_n_0\
+      O => header3_out(217)
     );
 \comp_axi.header[218]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25972,7 +25908,7 @@ begin
       I0 => env_std(10),
       I1 => std_done,
       I2 => header(218),
-      O => \comp_axi.header[218]_i_1_n_0\
+      O => header3_out(218)
     );
 \comp_axi.header[219]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25982,7 +25918,7 @@ begin
       I0 => env_std(11),
       I1 => std_done,
       I2 => header(219),
-      O => \comp_axi.header[219]_i_1_n_0\
+      O => header3_out(219)
     );
 \comp_axi.header[220]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -25992,7 +25928,7 @@ begin
       I0 => env_std(12),
       I1 => std_done,
       I2 => header(220),
-      O => \comp_axi.header[220]_i_1_n_0\
+      O => header3_out(220)
     );
 \comp_axi.header[221]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26002,7 +25938,7 @@ begin
       I0 => env_std(13),
       I1 => std_done,
       I2 => header(221),
-      O => \comp_axi.header[221]_i_1_n_0\
+      O => header3_out(221)
     );
 \comp_axi.header[222]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26012,7 +25948,7 @@ begin
       I0 => env_std(14),
       I1 => std_done,
       I2 => header(222),
-      O => \comp_axi.header[222]_i_1_n_0\
+      O => header3_out(222)
     );
 \comp_axi.header[223]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26022,7 +25958,7 @@ begin
       I0 => env_std(15),
       I1 => std_done,
       I2 => header(223),
-      O => \comp_axi.header[223]_i_1_n_0\
+      O => header3_out(223)
     );
 \comp_axi.header[224]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26032,7 +25968,7 @@ begin
       I0 => phase_std(0),
       I1 => std_done,
       I2 => header(224),
-      O => \comp_axi.header[224]_i_1_n_0\
+      O => header3_out(224)
     );
 \comp_axi.header[225]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26042,7 +25978,7 @@ begin
       I0 => phase_std(1),
       I1 => std_done,
       I2 => header(225),
-      O => \comp_axi.header[225]_i_1_n_0\
+      O => header3_out(225)
     );
 \comp_axi.header[226]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26052,7 +25988,7 @@ begin
       I0 => phase_std(2),
       I1 => std_done,
       I2 => header(226),
-      O => \comp_axi.header[226]_i_1_n_0\
+      O => header3_out(226)
     );
 \comp_axi.header[227]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26062,7 +25998,7 @@ begin
       I0 => phase_std(3),
       I1 => std_done,
       I2 => header(227),
-      O => \comp_axi.header[227]_i_1_n_0\
+      O => header3_out(227)
     );
 \comp_axi.header[228]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26072,7 +26008,7 @@ begin
       I0 => phase_std(4),
       I1 => std_done,
       I2 => header(228),
-      O => \comp_axi.header[228]_i_1_n_0\
+      O => header3_out(228)
     );
 \comp_axi.header[229]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26082,7 +26018,7 @@ begin
       I0 => phase_std(5),
       I1 => std_done,
       I2 => header(229),
-      O => \comp_axi.header[229]_i_1_n_0\
+      O => header3_out(229)
     );
 \comp_axi.header[230]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26092,7 +26028,7 @@ begin
       I0 => phase_std(6),
       I1 => std_done,
       I2 => header(230),
-      O => \comp_axi.header[230]_i_1_n_0\
+      O => header3_out(230)
     );
 \comp_axi.header[231]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26102,7 +26038,7 @@ begin
       I0 => phase_std(7),
       I1 => std_done,
       I2 => header(231),
-      O => \comp_axi.header[231]_i_1_n_0\
+      O => header3_out(231)
     );
 \comp_axi.header[232]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26112,7 +26048,7 @@ begin
       I0 => phase_std(8),
       I1 => std_done,
       I2 => header(232),
-      O => \comp_axi.header[232]_i_1_n_0\
+      O => header3_out(232)
     );
 \comp_axi.header[233]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26122,7 +26058,7 @@ begin
       I0 => phase_std(9),
       I1 => std_done,
       I2 => header(233),
-      O => \comp_axi.header[233]_i_1_n_0\
+      O => header3_out(233)
     );
 \comp_axi.header[234]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26132,7 +26068,7 @@ begin
       I0 => phase_std(10),
       I1 => std_done,
       I2 => header(234),
-      O => \comp_axi.header[234]_i_1_n_0\
+      O => header3_out(234)
     );
 \comp_axi.header[235]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26142,7 +26078,7 @@ begin
       I0 => phase_std(11),
       I1 => std_done,
       I2 => header(235),
-      O => \comp_axi.header[235]_i_1_n_0\
+      O => header3_out(235)
     );
 \comp_axi.header[236]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26152,7 +26088,7 @@ begin
       I0 => phase_std(12),
       I1 => std_done,
       I2 => header(236),
-      O => \comp_axi.header[236]_i_1_n_0\
+      O => header3_out(236)
     );
 \comp_axi.header[237]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26162,7 +26098,7 @@ begin
       I0 => phase_std(13),
       I1 => std_done,
       I2 => header(237),
-      O => \comp_axi.header[237]_i_1_n_0\
+      O => header3_out(237)
     );
 \comp_axi.header[238]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26172,7 +26108,7 @@ begin
       I0 => phase_std(14),
       I1 => std_done,
       I2 => header(238),
-      O => \comp_axi.header[238]_i_1_n_0\
+      O => header3_out(238)
     );
 \comp_axi.header[239]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26182,7 +26118,7 @@ begin
       I0 => phase_std(15),
       I1 => std_done,
       I2 => header(239),
-      O => \comp_axi.header[239]_i_1_n_0\
+      O => header3_out(239)
     );
 \comp_axi.header[240]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26192,7 +26128,7 @@ begin
       I0 => freq_std(0),
       I1 => std_done,
       I2 => header(240),
-      O => \comp_axi.header[240]_i_1_n_0\
+      O => header3_out(240)
     );
 \comp_axi.header[241]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26202,7 +26138,7 @@ begin
       I0 => freq_std(1),
       I1 => std_done,
       I2 => header(241),
-      O => \comp_axi.header[241]_i_1_n_0\
+      O => header3_out(241)
     );
 \comp_axi.header[242]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26212,7 +26148,7 @@ begin
       I0 => freq_std(2),
       I1 => std_done,
       I2 => header(242),
-      O => \comp_axi.header[242]_i_1_n_0\
+      O => header3_out(242)
     );
 \comp_axi.header[243]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26222,7 +26158,7 @@ begin
       I0 => freq_std(3),
       I1 => std_done,
       I2 => header(243),
-      O => \comp_axi.header[243]_i_1_n_0\
+      O => header3_out(243)
     );
 \comp_axi.header[244]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26232,7 +26168,7 @@ begin
       I0 => freq_std(4),
       I1 => std_done,
       I2 => header(244),
-      O => \comp_axi.header[244]_i_1_n_0\
+      O => header3_out(244)
     );
 \comp_axi.header[245]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26242,7 +26178,7 @@ begin
       I0 => freq_std(5),
       I1 => std_done,
       I2 => header(245),
-      O => \comp_axi.header[245]_i_1_n_0\
+      O => header3_out(245)
     );
 \comp_axi.header[246]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26252,7 +26188,7 @@ begin
       I0 => freq_std(6),
       I1 => std_done,
       I2 => header(246),
-      O => \comp_axi.header[246]_i_1_n_0\
+      O => header3_out(246)
     );
 \comp_axi.header[247]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26262,7 +26198,7 @@ begin
       I0 => freq_std(7),
       I1 => std_done,
       I2 => header(247),
-      O => \comp_axi.header[247]_i_1_n_0\
+      O => header3_out(247)
     );
 \comp_axi.header[248]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26272,7 +26208,7 @@ begin
       I0 => freq_std(8),
       I1 => std_done,
       I2 => header(248),
-      O => \comp_axi.header[248]_i_1_n_0\
+      O => header3_out(248)
     );
 \comp_axi.header[249]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26282,7 +26218,7 @@ begin
       I0 => freq_std(9),
       I1 => std_done,
       I2 => header(249),
-      O => \comp_axi.header[249]_i_1_n_0\
+      O => header3_out(249)
     );
 \comp_axi.header[250]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26292,7 +26228,7 @@ begin
       I0 => freq_std(10),
       I1 => std_done,
       I2 => header(250),
-      O => \comp_axi.header[250]_i_1_n_0\
+      O => header3_out(250)
     );
 \comp_axi.header[251]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26302,7 +26238,7 @@ begin
       I0 => freq_std(11),
       I1 => std_done,
       I2 => header(251),
-      O => \comp_axi.header[251]_i_1_n_0\
+      O => header3_out(251)
     );
 \comp_axi.header[252]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26312,7 +26248,7 @@ begin
       I0 => freq_std(12),
       I1 => std_done,
       I2 => header(252),
-      O => \comp_axi.header[252]_i_1_n_0\
+      O => header3_out(252)
     );
 \comp_axi.header[253]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26322,7 +26258,7 @@ begin
       I0 => freq_std(13),
       I1 => std_done,
       I2 => header(253),
-      O => \comp_axi.header[253]_i_1_n_0\
+      O => header3_out(253)
     );
 \comp_axi.header[254]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26332,7 +26268,7 @@ begin
       I0 => freq_std(14),
       I1 => std_done,
       I2 => header(254),
-      O => \comp_axi.header[254]_i_1_n_0\
+      O => header3_out(254)
     );
 \comp_axi.header[255]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -26342,7 +26278,7 @@ begin
       I0 => freq_std(15),
       I1 => std_done,
       I2 => header(255),
-      O => \comp_axi.header[255]_i_1_n_0\
+      O => header3_out(255)
     );
 \comp_axi.header_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -26548,7 +26484,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(0),
+      D => header3_out(128),
       Q => header(128),
       R => '0'
     );
@@ -26556,7 +26492,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(1),
+      D => header3_out(129),
       Q => header(129),
       R => '0'
     );
@@ -26572,7 +26508,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(2),
+      D => header3_out(130),
       Q => header(130),
       R => '0'
     );
@@ -26580,7 +26516,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(3),
+      D => header3_out(131),
       Q => header(131),
       R => '0'
     );
@@ -26588,7 +26524,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(4),
+      D => header3_out(132),
       Q => header(132),
       R => '0'
     );
@@ -26596,7 +26532,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(5),
+      D => header3_out(133),
       Q => header(133),
       R => '0'
     );
@@ -26604,7 +26540,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(6),
+      D => header3_out(134),
       Q => header(134),
       R => '0'
     );
@@ -26612,7 +26548,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(7),
+      D => header3_out(135),
       Q => header(135),
       R => '0'
     );
@@ -26620,7 +26556,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(8),
+      D => header3_out(136),
       Q => header(136),
       R => '0'
     );
@@ -26628,7 +26564,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(9),
+      D => header3_out(137),
       Q => header(137),
       R => '0'
     );
@@ -26636,7 +26572,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(10),
+      D => header3_out(138),
       Q => header(138),
       R => '0'
     );
@@ -26644,7 +26580,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(11),
+      D => header3_out(139),
       Q => header(139),
       R => '0'
     );
@@ -26660,7 +26596,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(12),
+      D => header3_out(140),
       Q => header(140),
       R => '0'
     );
@@ -26668,7 +26604,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(13),
+      D => header3_out(141),
       Q => header(141),
       R => '0'
     );
@@ -26676,7 +26612,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(14),
+      D => header3_out(142),
       Q => header(142),
       R => '0'
     );
@@ -26684,7 +26620,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(15),
+      D => header3_out(143),
       Q => header(143),
       R => '0'
     );
@@ -26692,7 +26628,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(16),
+      D => header3_out(144),
       Q => header(144),
       R => '0'
     );
@@ -26700,7 +26636,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(17),
+      D => header3_out(145),
       Q => header(145),
       R => '0'
     );
@@ -26708,7 +26644,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(18),
+      D => header3_out(146),
       Q => header(146),
       R => '0'
     );
@@ -26716,7 +26652,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(19),
+      D => header3_out(147),
       Q => header(147),
       R => '0'
     );
@@ -26724,7 +26660,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(20),
+      D => header3_out(148),
       Q => header(148),
       R => '0'
     );
@@ -26732,7 +26668,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(21),
+      D => header3_out(149),
       Q => header(149),
       R => '0'
     );
@@ -26748,7 +26684,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(22),
+      D => header3_out(150),
       Q => header(150),
       R => '0'
     );
@@ -26756,7 +26692,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(23),
+      D => header3_out(151),
       Q => header(151),
       R => '0'
     );
@@ -26764,7 +26700,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(24),
+      D => header3_out(152),
       Q => header(152),
       R => '0'
     );
@@ -26772,7 +26708,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(25),
+      D => header3_out(153),
       Q => header(153),
       R => '0'
     );
@@ -26780,7 +26716,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(26),
+      D => header3_out(154),
       Q => header(154),
       R => '0'
     );
@@ -26788,7 +26724,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(27),
+      D => header3_out(155),
       Q => header(155),
       R => '0'
     );
@@ -26796,7 +26732,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(28),
+      D => header3_out(156),
       Q => header(156),
       R => '0'
     );
@@ -26804,7 +26740,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(29),
+      D => header3_out(157),
       Q => header(157),
       R => '0'
     );
@@ -26812,7 +26748,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(30),
+      D => header3_out(158),
       Q => header(158),
       R => '0'
     );
@@ -26820,7 +26756,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \p_1_in__0\(31),
+      D => header3_out(159),
       Q => header(159),
       R => '0'
     );
@@ -27220,7 +27156,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[208]_i_1_n_0\,
+      D => header3_out(208),
       Q => header(208),
       R => '0'
     );
@@ -27228,7 +27164,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[209]_i_1_n_0\,
+      D => header3_out(209),
       Q => header(209),
       R => '0'
     );
@@ -27244,7 +27180,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[210]_i_1_n_0\,
+      D => header3_out(210),
       Q => header(210),
       R => '0'
     );
@@ -27252,7 +27188,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[211]_i_1_n_0\,
+      D => header3_out(211),
       Q => header(211),
       R => '0'
     );
@@ -27260,7 +27196,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[212]_i_1_n_0\,
+      D => header3_out(212),
       Q => header(212),
       R => '0'
     );
@@ -27268,7 +27204,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[213]_i_1_n_0\,
+      D => header3_out(213),
       Q => header(213),
       R => '0'
     );
@@ -27276,7 +27212,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[214]_i_1_n_0\,
+      D => header3_out(214),
       Q => header(214),
       R => '0'
     );
@@ -27284,7 +27220,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[215]_i_1_n_0\,
+      D => header3_out(215),
       Q => header(215),
       R => '0'
     );
@@ -27292,7 +27228,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[216]_i_1_n_0\,
+      D => header3_out(216),
       Q => header(216),
       R => '0'
     );
@@ -27300,7 +27236,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[217]_i_1_n_0\,
+      D => header3_out(217),
       Q => header(217),
       R => '0'
     );
@@ -27308,7 +27244,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[218]_i_1_n_0\,
+      D => header3_out(218),
       Q => header(218),
       R => '0'
     );
@@ -27316,7 +27252,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[219]_i_1_n_0\,
+      D => header3_out(219),
       Q => header(219),
       R => '0'
     );
@@ -27332,7 +27268,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[220]_i_1_n_0\,
+      D => header3_out(220),
       Q => header(220),
       R => '0'
     );
@@ -27340,7 +27276,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[221]_i_1_n_0\,
+      D => header3_out(221),
       Q => header(221),
       R => '0'
     );
@@ -27348,7 +27284,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[222]_i_1_n_0\,
+      D => header3_out(222),
       Q => header(222),
       R => '0'
     );
@@ -27356,7 +27292,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[223]_i_1_n_0\,
+      D => header3_out(223),
       Q => header(223),
       R => '0'
     );
@@ -27364,7 +27300,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[224]_i_1_n_0\,
+      D => header3_out(224),
       Q => header(224),
       R => '0'
     );
@@ -27372,7 +27308,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[225]_i_1_n_0\,
+      D => header3_out(225),
       Q => header(225),
       R => '0'
     );
@@ -27380,7 +27316,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[226]_i_1_n_0\,
+      D => header3_out(226),
       Q => header(226),
       R => '0'
     );
@@ -27388,7 +27324,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[227]_i_1_n_0\,
+      D => header3_out(227),
       Q => header(227),
       R => '0'
     );
@@ -27396,7 +27332,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[228]_i_1_n_0\,
+      D => header3_out(228),
       Q => header(228),
       R => '0'
     );
@@ -27404,7 +27340,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[229]_i_1_n_0\,
+      D => header3_out(229),
       Q => header(229),
       R => '0'
     );
@@ -27420,7 +27356,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[230]_i_1_n_0\,
+      D => header3_out(230),
       Q => header(230),
       R => '0'
     );
@@ -27428,7 +27364,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[231]_i_1_n_0\,
+      D => header3_out(231),
       Q => header(231),
       R => '0'
     );
@@ -27436,7 +27372,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[232]_i_1_n_0\,
+      D => header3_out(232),
       Q => header(232),
       R => '0'
     );
@@ -27444,7 +27380,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[233]_i_1_n_0\,
+      D => header3_out(233),
       Q => header(233),
       R => '0'
     );
@@ -27452,7 +27388,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[234]_i_1_n_0\,
+      D => header3_out(234),
       Q => header(234),
       R => '0'
     );
@@ -27460,7 +27396,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[235]_i_1_n_0\,
+      D => header3_out(235),
       Q => header(235),
       R => '0'
     );
@@ -27468,7 +27404,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[236]_i_1_n_0\,
+      D => header3_out(236),
       Q => header(236),
       R => '0'
     );
@@ -27476,7 +27412,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[237]_i_1_n_0\,
+      D => header3_out(237),
       Q => header(237),
       R => '0'
     );
@@ -27484,7 +27420,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[238]_i_1_n_0\,
+      D => header3_out(238),
       Q => header(238),
       R => '0'
     );
@@ -27492,7 +27428,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[239]_i_1_n_0\,
+      D => header3_out(239),
       Q => header(239),
       R => '0'
     );
@@ -27508,7 +27444,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[240]_i_1_n_0\,
+      D => header3_out(240),
       Q => header(240),
       R => '0'
     );
@@ -27516,7 +27452,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[241]_i_1_n_0\,
+      D => header3_out(241),
       Q => header(241),
       R => '0'
     );
@@ -27524,7 +27460,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[242]_i_1_n_0\,
+      D => header3_out(242),
       Q => header(242),
       R => '0'
     );
@@ -27532,7 +27468,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[243]_i_1_n_0\,
+      D => header3_out(243),
       Q => header(243),
       R => '0'
     );
@@ -27540,7 +27476,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[244]_i_1_n_0\,
+      D => header3_out(244),
       Q => header(244),
       R => '0'
     );
@@ -27548,7 +27484,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[245]_i_1_n_0\,
+      D => header3_out(245),
       Q => header(245),
       R => '0'
     );
@@ -27556,7 +27492,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[246]_i_1_n_0\,
+      D => header3_out(246),
       Q => header(246),
       R => '0'
     );
@@ -27564,7 +27500,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[247]_i_1_n_0\,
+      D => header3_out(247),
       Q => header(247),
       R => '0'
     );
@@ -27572,7 +27508,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[248]_i_1_n_0\,
+      D => header3_out(248),
       Q => header(248),
       R => '0'
     );
@@ -27580,7 +27516,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[249]_i_1_n_0\,
+      D => header3_out(249),
       Q => header(249),
       R => '0'
     );
@@ -27596,7 +27532,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[250]_i_1_n_0\,
+      D => header3_out(250),
       Q => header(250),
       R => '0'
     );
@@ -27604,7 +27540,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[251]_i_1_n_0\,
+      D => header3_out(251),
       Q => header(251),
       R => '0'
     );
@@ -27612,7 +27548,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[252]_i_1_n_0\,
+      D => header3_out(252),
       Q => header(252),
       R => '0'
     );
@@ -27620,7 +27556,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[253]_i_1_n_0\,
+      D => header3_out(253),
       Q => header(253),
       R => '0'
     );
@@ -27628,7 +27564,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[254]_i_1_n_0\,
+      D => header3_out(254),
       Q => header(254),
       R => '0'
     );
@@ -27636,7 +27572,7 @@ begin
      port map (
       C => clk,
       CE => \comp_axi.header[159]_i_1_n_0\,
-      D => \comp_axi.header[255]_i_1_n_0\,
+      D => header3_out(255),
       Q => header(255),
       R => '0'
     );
@@ -28823,7 +28759,7 @@ begin
       I0 => raw_freq_std(0),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_24,
+      I3 => freq_std_data(0),
       O => \comp_axi.raw_freq_std[0]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[10]_i_1\: unisim.vcomponents.LUT4
@@ -28834,7 +28770,7 @@ begin
       I0 => raw_freq_std(10),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_14,
+      I3 => freq_std_data(10),
       O => \comp_axi.raw_freq_std[10]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[11]_i_1\: unisim.vcomponents.LUT4
@@ -28845,7 +28781,7 @@ begin
       I0 => raw_freq_std(11),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_13,
+      I3 => freq_std_data(11),
       O => \comp_axi.raw_freq_std[11]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[12]_i_1\: unisim.vcomponents.LUT4
@@ -28856,7 +28792,7 @@ begin
       I0 => raw_freq_std(12),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_12,
+      I3 => freq_std_data(12),
       O => \comp_axi.raw_freq_std[12]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[13]_i_1\: unisim.vcomponents.LUT4
@@ -28867,7 +28803,7 @@ begin
       I0 => raw_freq_std(13),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_11,
+      I3 => freq_std_data(13),
       O => \comp_axi.raw_freq_std[13]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[14]_i_1\: unisim.vcomponents.LUT4
@@ -28878,7 +28814,7 @@ begin
       I0 => raw_freq_std(14),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_10,
+      I3 => freq_std_data(14),
       O => \comp_axi.raw_freq_std[14]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[15]_i_1\: unisim.vcomponents.LUT4
@@ -28889,7 +28825,7 @@ begin
       I0 => raw_freq_std(15),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_9,
+      I3 => freq_std_data(15),
       O => \comp_axi.raw_freq_std[15]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[16]_i_1\: unisim.vcomponents.LUT4
@@ -28900,7 +28836,7 @@ begin
       I0 => raw_freq_std(16),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_8,
+      I3 => freq_std_data(16),
       O => \comp_axi.raw_freq_std[16]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[17]_i_1\: unisim.vcomponents.LUT4
@@ -28911,7 +28847,7 @@ begin
       I0 => raw_freq_std(17),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_7,
+      I3 => freq_std_data(17),
       O => \comp_axi.raw_freq_std[17]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[18]_i_1\: unisim.vcomponents.LUT4
@@ -28922,7 +28858,7 @@ begin
       I0 => raw_freq_std(18),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_6,
+      I3 => freq_std_data(18),
       O => \comp_axi.raw_freq_std[18]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[19]_i_1\: unisim.vcomponents.LUT3
@@ -28943,7 +28879,7 @@ begin
       I0 => raw_freq_std(19),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_5,
+      I3 => freq_std_data(19),
       O => \comp_axi.raw_freq_std[19]_i_2_n_0\
     );
 \comp_axi.raw_freq_std[1]_i_1\: unisim.vcomponents.LUT4
@@ -28954,7 +28890,7 @@ begin
       I0 => raw_freq_std(1),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_23,
+      I3 => freq_std_data(1),
       O => \comp_axi.raw_freq_std[1]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[2]_i_1\: unisim.vcomponents.LUT4
@@ -28965,7 +28901,7 @@ begin
       I0 => raw_freq_std(2),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_22,
+      I3 => freq_std_data(2),
       O => \comp_axi.raw_freq_std[2]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[3]_i_1\: unisim.vcomponents.LUT4
@@ -28976,7 +28912,7 @@ begin
       I0 => raw_freq_std(3),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_21,
+      I3 => freq_std_data(3),
       O => \comp_axi.raw_freq_std[3]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[4]_i_1\: unisim.vcomponents.LUT4
@@ -28987,7 +28923,7 @@ begin
       I0 => raw_freq_std(4),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_20,
+      I3 => freq_std_data(4),
       O => \comp_axi.raw_freq_std[4]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[5]_i_1\: unisim.vcomponents.LUT4
@@ -28998,7 +28934,7 @@ begin
       I0 => raw_freq_std(5),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_19,
+      I3 => freq_std_data(5),
       O => \comp_axi.raw_freq_std[5]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[6]_i_1\: unisim.vcomponents.LUT4
@@ -29009,7 +28945,7 @@ begin
       I0 => raw_freq_std(6),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_18,
+      I3 => freq_std_data(6),
       O => \comp_axi.raw_freq_std[6]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[7]_i_1\: unisim.vcomponents.LUT4
@@ -29020,7 +28956,7 @@ begin
       I0 => raw_freq_std(7),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_17,
+      I3 => freq_std_data(7),
       O => \comp_axi.raw_freq_std[7]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[8]_i_1\: unisim.vcomponents.LUT4
@@ -29031,7 +28967,7 @@ begin
       I0 => raw_freq_std(8),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_16,
+      I3 => freq_std_data(8),
       O => \comp_axi.raw_freq_std[8]_i_1_n_0\
     );
 \comp_axi.raw_freq_std[9]_i_1\: unisim.vcomponents.LUT4
@@ -29042,7 +28978,7 @@ begin
       I0 => raw_freq_std(9),
       I1 => reset,
       I2 => stat_ok,
-      I3 => freq_std_i_n_15,
+      I3 => freq_std_data(9),
       O => \comp_axi.raw_freq_std[9]_i_1_n_0\
     );
 \comp_axi.raw_freq_std_reg[0]\: unisim.vcomponents.FDRE
@@ -29207,63 +29143,83 @@ begin
     );
 \comp_axi.rd_blocks[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFCC2C0000CC2C"
+      INIT => X"FFFF999800009998"
     )
         port map (
-      I0 => \comp_axi.data[255]_i_3_n_0\,
+      I0 => \comp_axi.rd_blocks[1]_i_2_n_0\,
       I1 => rd_blocks(0),
-      I2 => \^active\,
-      I3 => reset,
+      I2 => rd_blocks(1),
+      I3 => \comp_axi.rd_blocks[1]_i_3_n_0\,
       I4 => read_back,
       I5 => wr_blocks(0),
       O => \comp_axi.rd_blocks[0]_i_1_n_0\
     );
 \comp_axi.rd_blocks[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFF999800009998"
+      INIT => X"FFFFC9C80000C9C8"
     )
         port map (
-      I0 => \comp_axi.rd_blocks[2]_i_2_n_0\,
+      I0 => \comp_axi.rd_blocks[1]_i_2_n_0\,
       I1 => rd_blocks(1),
-      I2 => rd_blocks(2),
-      I3 => \comp_axi.rd_blocks[2]_i_3_n_0\,
+      I2 => rd_blocks(0),
+      I3 => \comp_axi.rd_blocks[1]_i_3_n_0\,
       I4 => read_back,
       I5 => wr_blocks(1),
       O => \comp_axi.rd_blocks[1]_i_1_n_0\
     );
+\comp_axi.rd_blocks[1]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => reset,
+      I1 => \^active\,
+      O => \comp_axi.rd_blocks[1]_i_2_n_0\
+    );
+\comp_axi.rd_blocks[1]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => rd_blocks(2),
+      I1 => rd_blocks(3),
+      I2 => rd_blocks(4),
+      I3 => rd_blocks(5),
+      I4 => rd_blocks(6),
+      I5 => rd_blocks(7),
+      O => \comp_axi.rd_blocks[1]_i_3_n_0\
+    );
 \comp_axi.rd_blocks[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFC9C80000C9C8"
+      INIT => X"FFFF999800009998"
     )
         port map (
       I0 => \comp_axi.rd_blocks[2]_i_2_n_0\,
       I1 => rd_blocks(2),
-      I2 => rd_blocks(1),
+      I2 => \comp_axi.rd_blocks[4]_i_2_n_0\,
       I3 => \comp_axi.rd_blocks[2]_i_3_n_0\,
       I4 => read_back,
       I5 => wr_blocks(2),
       O => \comp_axi.rd_blocks[2]_i_1_n_0\
     );
-\comp_axi.rd_blocks[2]_i_2\: unisim.vcomponents.LUT3
+\comp_axi.rd_blocks[2]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FD"
+      INIT => X"FFFD"
     )
         port map (
       I0 => \^active\,
       I1 => reset,
-      I2 => rd_blocks(0),
+      I2 => rd_blocks(1),
+      I3 => rd_blocks(0),
       O => \comp_axi.rd_blocks[2]_i_2_n_0\
     );
-\comp_axi.rd_blocks[2]_i_3\: unisim.vcomponents.LUT5
+\comp_axi.rd_blocks[2]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"E"
     )
         port map (
-      I0 => rd_blocks(4),
-      I1 => rd_blocks(3),
-      I2 => rd_blocks(5),
-      I3 => rd_blocks(6),
-      I4 => rd_blocks(7),
+      I0 => rd_blocks(3),
+      I1 => rd_blocks(4),
       O => \comp_axi.rd_blocks[2]_i_3_n_0\
     );
 \comp_axi.rd_blocks[3]_i_1\: unisim.vcomponents.LUT6
@@ -29281,27 +29237,27 @@ begin
     );
 \comp_axi.rd_blocks[3]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFEF"
+      INIT => X"FFFFFEFF"
     )
         port map (
       I0 => rd_blocks(0),
-      I1 => reset,
-      I2 => \^active\,
-      I3 => rd_blocks(2),
-      I4 => rd_blocks(1),
+      I1 => rd_blocks(1),
+      I2 => reset,
+      I3 => \^active\,
+      I4 => rd_blocks(2),
       O => \comp_axi.rd_blocks[3]_i_2_n_0\
     );
 \comp_axi.rd_blocks[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"F0F0F0F0FF222222"
+      INIT => X"FFFFF2220000F222"
     )
         port map (
       I0 => \comp_axi.rd_blocks[4]_i_2_n_0\,
       I1 => \comp_axi.rd_blocks[7]_i_2_n_0\,
-      I2 => wr_blocks(4),
+      I2 => rd_blocks(4),
       I3 => \comp_axi.rd_blocks[4]_i_3_n_0\,
-      I4 => rd_blocks(4),
-      I5 => read_back,
+      I4 => read_back,
+      I5 => wr_blocks(4),
       O => \comp_axi.rd_blocks[4]_i_1_n_0\
     );
 \comp_axi.rd_blocks[4]_i_2\: unisim.vcomponents.LUT3
@@ -29316,13 +29272,13 @@ begin
     );
 \comp_axi.rd_blocks[4]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFEF"
+      INIT => X"FFFFFFFFFFFFFFFB"
     )
         port map (
-      I0 => rd_blocks(1),
-      I1 => rd_blocks(2),
-      I2 => \^active\,
-      I3 => reset,
+      I0 => rd_blocks(2),
+      I1 => \^active\,
+      I2 => reset,
+      I3 => rd_blocks(1),
       I4 => rd_blocks(0),
       I5 => rd_blocks(3),
       O => \comp_axi.rd_blocks[4]_i_3_n_0\
@@ -29371,11 +29327,11 @@ begin
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => rd_blocks(0),
-      I1 => \comp_axi.rd_ptr[3]_i_2_n_0\,
-      I2 => rd_blocks(3),
+      I0 => \comp_axi.rd_blocks[1]_i_2_n_0\,
+      I1 => rd_blocks(0),
+      I2 => rd_blocks(1),
       I3 => rd_blocks(4),
-      I4 => rd_blocks(1),
+      I4 => rd_blocks(3),
       I5 => rd_blocks(2),
       O => \comp_axi.rd_blocks[7]_i_2_n_0\
     );
@@ -29484,7 +29440,7 @@ begin
       INIT => X"AEEEEEEE40000000"
     )
         port map (
-      I0 => \comp_axi.rd_ptr[3]_i_2_n_0\,
+      I0 => \comp_axi.rd_blocks[1]_i_2_n_0\,
       I1 => \comp_axi.data[255]_i_3_n_0\,
       I2 => rd_ptr(2),
       I3 => rd_ptr(0),
@@ -29492,24 +29448,15 @@ begin
       I5 => rd_ptr(3),
       O => \comp_axi.rd_ptr[3]_i_1_n_0\
     );
-\comp_axi.rd_ptr[3]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => reset,
-      I1 => \^active\,
-      O => \comp_axi.rd_ptr[3]_i_2_n_0\
-    );
 \comp_axi.rd_ptr[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FBBB0400"
+      INIT => X"FBBB0040"
     )
         port map (
       I0 => reset,
       I1 => \^active\,
-      I2 => \comp_axi.rd_ptr[4]_i_2_n_0\,
-      I3 => \comp_axi.data[255]_i_3_n_0\,
+      I2 => \comp_axi.data[255]_i_3_n_0\,
+      I3 => \comp_axi.rd_ptr[4]_i_2_n_0\,
       I4 => rd_ptr(4),
       O => \comp_axi.rd_ptr[4]_i_1_n_0\
     );
@@ -29526,11 +29473,11 @@ begin
     );
 \comp_axi.rd_ptr[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FDDD0200"
+      INIT => X"FBBB0400"
     )
         port map (
-      I0 => \^active\,
-      I1 => reset,
+      I0 => reset,
+      I1 => \^active\,
       I2 => \comp_axi.rd_ptr[5]_i_2_n_0\,
       I3 => \comp_axi.data[255]_i_3_n_0\,
       I4 => rd_ptr(5),
@@ -30259,8 +30206,8 @@ begin
       INIT => X"78"
     )
         port map (
-      I0 => wr_blocks(0),
-      I1 => index,
+      I0 => index,
+      I1 => wr_blocks(0),
       I2 => wr_blocks(1),
       O => \comp_axi.wr_blocks[1]_i_1_n_0\
     );
@@ -30270,8 +30217,8 @@ begin
     )
         port map (
       I0 => wr_blocks(1),
-      I1 => index,
-      I2 => wr_blocks(0),
+      I1 => wr_blocks(0),
+      I2 => index,
       I3 => wr_blocks(2),
       O => \comp_axi.wr_blocks[2]_i_1_n_0\
     );
@@ -30281,8 +30228,8 @@ begin
     )
         port map (
       I0 => wr_blocks(2),
-      I1 => wr_blocks(0),
-      I2 => index,
+      I1 => index,
+      I2 => wr_blocks(0),
       I3 => wr_blocks(1),
       I4 => wr_blocks(3),
       O => \comp_axi.wr_blocks[3]_i_1_n_0\
@@ -30294,8 +30241,8 @@ begin
         port map (
       I0 => wr_blocks(3),
       I1 => wr_blocks(1),
-      I2 => index,
-      I3 => wr_blocks(0),
+      I2 => wr_blocks(0),
+      I3 => index,
       I4 => wr_blocks(2),
       I5 => wr_blocks(4),
       O => \comp_axi.wr_blocks[4]_i_1_n_0\
@@ -30337,8 +30284,8 @@ begin
         port map (
       I0 => wr_blocks(3),
       I1 => wr_blocks(1),
-      I2 => index,
-      I3 => wr_blocks(0),
+      I2 => wr_blocks(0),
+      I3 => index,
       I4 => wr_blocks(2),
       I5 => wr_blocks(4),
       O => \comp_axi.wr_blocks[7]_i_2_n_0\
@@ -30643,26 +30590,7 @@ freq_std_i: component ps_comp_ana_0_1_sqrt_std_HD8
      port map (
       aclk => clk,
       m_axis_dout_tdata(23 downto 20) => NLW_freq_std_i_m_axis_dout_tdata_UNCONNECTED(23 downto 20),
-      m_axis_dout_tdata(19) => freq_std_i_n_5,
-      m_axis_dout_tdata(18) => freq_std_i_n_6,
-      m_axis_dout_tdata(17) => freq_std_i_n_7,
-      m_axis_dout_tdata(16) => freq_std_i_n_8,
-      m_axis_dout_tdata(15) => freq_std_i_n_9,
-      m_axis_dout_tdata(14) => freq_std_i_n_10,
-      m_axis_dout_tdata(13) => freq_std_i_n_11,
-      m_axis_dout_tdata(12) => freq_std_i_n_12,
-      m_axis_dout_tdata(11) => freq_std_i_n_13,
-      m_axis_dout_tdata(10) => freq_std_i_n_14,
-      m_axis_dout_tdata(9) => freq_std_i_n_15,
-      m_axis_dout_tdata(8) => freq_std_i_n_16,
-      m_axis_dout_tdata(7) => freq_std_i_n_17,
-      m_axis_dout_tdata(6) => freq_std_i_n_18,
-      m_axis_dout_tdata(5) => freq_std_i_n_19,
-      m_axis_dout_tdata(4) => freq_std_i_n_20,
-      m_axis_dout_tdata(3) => freq_std_i_n_21,
-      m_axis_dout_tdata(2) => freq_std_i_n_22,
-      m_axis_dout_tdata(1) => freq_std_i_n_23,
-      m_axis_dout_tdata(0) => freq_std_i_n_24,
+      m_axis_dout_tdata(19 downto 0) => freq_std_data(19 downto 0),
       m_axis_dout_tvalid => freq_std_done,
       s_axis_cartesian_tdata(39 downto 0) => div_freq_data(39 downto 0),
       s_axis_cartesian_tvalid => div_freq_done
@@ -30792,7 +30720,8 @@ mul_freq_i: component ps_comp_ana_0_1_mul_freq
      port map (
       A(19 downto 0) => freq(19 downto 0),
       CLK => clk,
-      P(37 downto 0) => freq_p(37 downto 0)
+      P(37 downto 18) => freq_p(37 downto 18),
+      P(17 downto 0) => NLW_mul_freq_i_P_UNCONNECTED(17 downto 0)
     );
 mul_freq_std_i: component ps_comp_ana_0_1_mul_freq_HD9
      port map (
@@ -32931,8 +32860,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_stat is
   attribute srl_name of \comp_stat.curr_phase_diff_2_reg[8]_srl2\ : label is "inst/burst_0/p3_i/\comp_stat.curr_phase_diff_2_reg[8]_srl2 ";
   attribute srl_bus_name of \comp_stat.curr_phase_diff_2_reg[9]_srl2\ : label is "inst/burst_0/p3_i/\comp_stat.curr_phase_diff_2_reg ";
   attribute srl_name of \comp_stat.curr_phase_diff_2_reg[9]_srl2\ : label is "inst/burst_0/p3_i/\comp_stat.curr_phase_diff_2_reg[9]_srl2 ";
-  attribute SOFT_HLUTNM of \comp_stat.delay_div[0]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \comp_stat.delay_div[1]_i_2\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \comp_stat.delay_div[0]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \comp_stat.delay_div[1]_i_2\ : label is "soft_lutpair83";
   attribute SOFT_HLUTNM of \comp_stat.down_delay[0]_i_1\ : label is "soft_lutpair67";
   attribute SOFT_HLUTNM of \comp_stat.down_pos[0]_i_1\ : label is "soft_lutpair71";
   attribute SOFT_HLUTNM of \comp_stat.down_pos[1]_i_1\ : label is "soft_lutpair71";
@@ -32963,8 +32892,8 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_stat is
   attribute ADDER_THRESHOLD of \comp_stat.local_phase_sum_reg[29]_i_2\ : label is 35;
   attribute METHODOLOGY_DRC_VIOS of \comp_stat.local_phase_sum_reg[29]_i_2\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute ADDER_THRESHOLD of \comp_stat.local_phase_sum_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[1]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[2]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[1]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \comp_stat.local_size_m1[2]_i_1\ : label is "soft_lutpair82";
   attribute SOFT_HLUTNM of \comp_stat.local_size_m1[3]_i_1\ : label is "soft_lutpair51";
   attribute SOFT_HLUTNM of \comp_stat.local_size_m1[4]_i_1\ : label is "soft_lutpair51";
   attribute SOFT_HLUTNM of \comp_stat.local_size_m1[6]_i_1\ : label is "soft_lutpair74";
@@ -56772,9 +56701,9 @@ architecture STRUCTURE of ps_comp_ana_0_1_morlet_to_phase_env is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair134";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair133";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__2\ : label is "soft_lutpair135";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__2\ : label is "soft_lutpair134";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__2\ : label is "soft_lutpair134";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -56783,7 +56712,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_morlet_to_phase_env is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair134";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__2\ : label is "soft_lutpair135";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -58846,9 +58775,9 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__1\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1\ : label is "soft_lutpair127";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -58857,7 +58786,7 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2\ : label is "soft_lutpair128";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -61003,9 +60932,9 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__2\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__0\ : label is "soft_lutpair130";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__0\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__0\ : label is "soft_lutpair129";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -61014,7 +60943,7 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__2\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair129";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__0\ : label is "soft_lutpair130";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -63344,11 +63273,11 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__3\ is
   signal NLW_tan2_i_m_axis_dout_tvalid_UNCONNECTED : STD_LOGIC;
   signal NLW_tan2_i_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 20 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.raw_sample[15]_i_1\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \comp_ana.sample_ov_0_i_3\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair132";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair131";
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \comp_ana.raw_sample[15]_i_1\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \comp_ana.sample_ov_0_i_3\ : label is "soft_lutpair131";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[1]_i_1__1\ : label is "soft_lutpair133";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[2]_i_1__1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.delay[3]_i_1__1\ : label is "soft_lutpair132";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_high_reg[7]_i_1\ : label is 35;
@@ -63357,7 +63286,7 @@ architecture STRUCTURE of \ps_comp_ana_0_1_morlet_to_phase_env__xdcDup__3\ is
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_low_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[23]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \morlet_to_phase_env.p2_reg[31]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair132";
+  attribute SOFT_HLUTNM of \morlet_to_phase_env.valid_i_2__1\ : label is "soft_lutpair133";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of mult_im_i : label is "mult_16_16,mult_gen_v12_0_23,{}";
   attribute downgradeipidentifiedwarnings : string;
@@ -65435,6 +65364,7 @@ entity ps_comp_ana_0_1_comp_burst is
     config_adr : in STD_LOGIC_VECTOR ( 7 downto 0 );
     config_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     rt_clk : in STD_LOGIC;
+    rt_reset : in STD_LOGIC;
     rt_start : in STD_LOGIC;
     rt_sample : in STD_LOGIC_VECTOR ( 61 downto 0 );
     rt_freq : in STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -65449,6 +65379,12 @@ entity ps_comp_ana_0_1_comp_burst is
     rt_phase_1 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     rt_phase_2 : in STD_LOGIC_VECTOR ( 19 downto 0 );
     rt_phase_3 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    pend : out STD_LOGIC;
+    avail : out STD_LOGIC;
+    sample : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    get : in STD_LOGIC;
+    wr : out STD_LOGIC;
+    data : out STD_LOGIC_VECTOR ( 255 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
     idle : out STD_LOGIC
@@ -65475,6 +65411,19 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
     rd_rst_busy : out STD_LOGIC
   );
   end component ps_comp_ana_0_1_fifo_config;
+  component ps_comp_ana_0_1_fifo_burst_data is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 255 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 255 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC
+  );
+  end component ps_comp_ana_0_1_fifo_burst_data;
   component ps_comp_ana_0_1_fifo_stat_data is
   port (
     rst : in STD_LOGIC;
@@ -65505,6 +65454,20 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
     rd_rst_busy : out STD_LOGIC
   );
   end component ps_comp_ana_0_1_fifo_stat_meta;
+  component ps_comp_ana_0_1_fifo_burst_sample is
+  port (
+    clk : in STD_LOGIC;
+    srst : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component ps_comp_ana_0_1_fifo_burst_sample;
   component ps_comp_ana_0_1_ila_0 is
   port (
     clk : in STD_LOGIC;
@@ -65521,12 +65484,31 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component ps_comp_ana_0_1_ila_0;
+  component ps_comp_ana_0_1_ila_7 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe20 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe21 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -65544,18 +65526,23 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
     probe33 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe34 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe35 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe36 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe39 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe40 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe41 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe42 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe36 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component ps_comp_ana_0_1_ila_0;
+  end component ps_comp_ana_0_1_ila_7;
+  signal \^avail\ : STD_LOGIC;
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of avail : signal is std.standard.true;
   signal cfg_empty : STD_LOGIC;
   signal cfg_rd : STD_LOGIC;
+  signal \comp_burst.avail_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.blocks[4]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.blocks[5]_i_2_n_0\ : STD_LOGIC;
+  signal \comp_burst.blocks_reg\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \comp_burst.cfg_rd_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.data[255]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.data_delay[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.data_delay[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.data_delay[2]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.data_env_0[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.data_env_0[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.data_env_0[11]_i_1_n_0\ : STD_LOGIC;
@@ -65812,6 +65799,262 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal \comp_burst.data_phase_7[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.data_phase_7[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.data_phase_7[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[0]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[100]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[101]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[102]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[103]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[104]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[105]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[106]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[107]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[108]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[109]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[10]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[110]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[111]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[112]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[113]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[114]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[115]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[116]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[117]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[118]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[119]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[11]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[120]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[121]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[122]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[123]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[124]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[125]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[126]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[127]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[128]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[129]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[12]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[130]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[131]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[132]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[133]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[134]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[135]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[136]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[137]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[138]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[139]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[13]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[140]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[141]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[142]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[143]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[144]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[145]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[146]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[147]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[148]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[149]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[14]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[150]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[151]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[152]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[153]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[154]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[155]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[156]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[157]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[158]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[159]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[15]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[160]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[161]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[162]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[163]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[164]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[165]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[166]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[167]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[168]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[169]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[16]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[170]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[171]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[172]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[173]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[174]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[175]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[176]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[177]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[178]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[179]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[17]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[180]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[181]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[182]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[183]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[184]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[185]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[186]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[187]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[188]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[189]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[18]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[190]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[191]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[192]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[193]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[194]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[195]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[196]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[197]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[198]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[199]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[19]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[1]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[200]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[201]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[202]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[203]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[204]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[205]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[206]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[207]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[208]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[209]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[20]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[210]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[211]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[212]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[213]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[214]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[215]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[216]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[217]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[218]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[219]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[21]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[220]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[221]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[222]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[223]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[224]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[225]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[226]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[227]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[228]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[229]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[22]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[230]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[231]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[232]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[233]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[234]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[235]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[236]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[237]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[238]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[239]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[23]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[240]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[241]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[242]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[243]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[244]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[245]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[246]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[247]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[248]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[249]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[24]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[250]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[251]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[252]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[253]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[254]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[255]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[25]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[26]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[27]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[28]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[29]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[2]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[30]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[31]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[32]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[33]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[34]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[35]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[36]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[37]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[38]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[39]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[3]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[40]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[41]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[42]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[43]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[44]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[45]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[46]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[47]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[48]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[49]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[4]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[50]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[51]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[52]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[53]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[54]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[55]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[56]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[57]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[58]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[59]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[5]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[60]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[61]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[62]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[63]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[64]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[65]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[66]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[67]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[68]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[69]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[6]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[70]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[71]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[72]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[73]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[74]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[75]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[76]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[77]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[78]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[79]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[7]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[80]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[81]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[82]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[83]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[84]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[85]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[86]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[87]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[88]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[89]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[8]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[90]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[91]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[92]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[93]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[94]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[95]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[96]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[97]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[98]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[99]\ : STD_LOGIC;
+  signal \comp_burst.data_reg_n_0_[9]\ : STD_LOGIC;
   signal \comp_burst.filling_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.filling_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_angle[0]_i_1_n_0\ : STD_LOGIC;
@@ -66007,7 +66250,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal \comp_burst.hdr_size[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_size[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.idle_i_1_n_0\ : STD_LOGIC;
-  signal \comp_burst.in_sample[61]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.in_angle[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.min_env[15]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.min_env[15]_i_2_n_0\ : STD_LOGIC;
   signal \comp_burst.min_env_reg_n_0_[0]\ : STD_LOGIC;
@@ -66044,10 +66287,16 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal \comp_burst.p1_freq_reg_n_0_[7]\ : STD_LOGIC;
   signal \comp_burst.p1_freq_reg_n_0_[8]\ : STD_LOGIC;
   signal \comp_burst.p1_freq_reg_n_0_[9]\ : STD_LOGIC;
+  signal \comp_burst.pend_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.rt_data_rd_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.wr_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.wr_i_2_n_0\ : STD_LOGIC;
   signal config_data_adr_out : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal data_delay : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute MARK_DEBUG of data_delay : signal is std.standard.true;
+  signal data_empty : STD_LOGIC;
+  attribute MARK_DEBUG of data_empty : signal is std.standard.true;
   signal data_env_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of data_env_0 : signal is std.standard.true;
   signal data_env_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of data_env_1 : signal is std.standard.true;
@@ -66083,6 +66332,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal env_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal env_3 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal fifo_data : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal filling : STD_LOGIC;
   signal hdr_angle : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of hdr_angle : signal is std.standard.true;
@@ -66189,7 +66439,10 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute MARK_DEBUG of p5_idle : signal is std.standard.true;
   signal p5_wr : STD_LOGIC;
   attribute MARK_DEBUG of p5_wr : signal is std.standard.true;
-  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal p_0_in1_in : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \^pend\ : STD_LOGIC;
+  attribute MARK_DEBUG of pend : signal is std.standard.true;
   signal phase_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_2 : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -66204,20 +66457,38 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   signal rt_meta_out : STD_LOGIC_VECTOR ( 107 downto 0 );
   signal rt_meta_rd : STD_LOGIC;
   signal rt_meta_wr : STD_LOGIC;
+  signal \^sample\ : STD_LOGIC_VECTOR ( 19 downto 0 );
+  attribute MARK_DEBUG of \^sample\ : signal is std.standard.true;
+  signal sample_empty : STD_LOGIC;
+  attribute MARK_DEBUG of sample_empty : signal is std.standard.true;
+  signal \^wr\ : STD_LOGIC;
+  attribute MARK_DEBUG of wr : signal is std.standard.true;
   signal NLW_fifo_config_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_config_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_config_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_config_i_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 24 );
+  signal NLW_fifo_data_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_data_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_data_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_data_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_meta_i_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_meta_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_rt_meta_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_sample_i_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_sample_i_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_sample_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_p1_i_no_data_UNCONNECTED : STD_LOGIC;
   attribute KEEP : string;
-  attribute KEEP of \comp_burst.data_env_0_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.avail_reg\ : label is "yes";
   attribute mark_debug_string : string;
+  attribute mark_debug_string of \comp_burst.avail_reg\ : label is "yes";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \comp_burst.blocks[4]_i_2\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \comp_burst.blocks[5]_i_2\ : label is "soft_lutpair125";
+  attribute KEEP of \comp_burst.data_delay_reg[0]\ : label is "yes";
+  attribute KEEP of \comp_burst.data_delay_reg[1]\ : label is "yes";
+  attribute KEEP of \comp_burst.data_delay_reg[2]\ : label is "yes";
+  attribute KEEP of \comp_burst.data_env_0_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.data_env_0_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.data_env_0_reg[10]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.data_env_0_reg[10]\ : label is "yes";
@@ -66729,8 +67000,7 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute mark_debug_string of \comp_burst.data_phase_7_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.data_phase_7_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.data_phase_7_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \comp_burst.filling_i_1\ : label is "soft_lutpair126";
   attribute KEEP of \comp_burst.hdr_angle_reg[0]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.hdr_angle_reg[0]\ : label is "yes";
   attribute KEEP of \comp_burst.hdr_angle_reg[10]\ : label is "yes";
@@ -67243,30 +67513,244 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_burst is
   attribute mark_debug_string of \comp_burst.hdr_size_reg[8]\ : label is "yes";
   attribute KEEP of \comp_burst.hdr_size_reg[9]\ : label is "yes";
   attribute mark_debug_string of \comp_burst.hdr_size_reg[9]\ : label is "yes";
-  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \comp_burst.idle_i_1\ : label is "soft_lutpair126";
   attribute KEEP of \comp_burst.idle_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.pend_reg\ : label is "yes";
+  attribute KEEP of \comp_burst.wr_reg\ : label is "yes";
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fifo_config_i : label is "fifo_config,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of fifo_config_i : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of fifo_config_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of fifo_data_i : label is "fifo_burst_data,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings of fifo_data_i : label is "yes";
+  attribute x_core_info of fifo_data_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_rt_data_i : label is "fifo_stat_data,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_rt_data_i : label is "yes";
   attribute x_core_info of fifo_rt_data_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of fifo_rt_meta_i : label is "fifo_stat_meta,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_rt_meta_i : label is "yes";
   attribute x_core_info of fifo_rt_meta_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of fifo_sample_i : label is "fifo_burst_sample,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings of fifo_sample_i : label is "yes";
+  attribute x_core_info of fifo_sample_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_0,ila,{}";
   attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_rt : label is "ila_7,ila,{}";
+  attribute downgradeipidentifiedwarnings of ila_rt : label is "yes";
+  attribute x_core_info of ila_rt : label is "ila,Vivado 2025.1";
   attribute KEEP_HIERARCHY of p1_i : label is "soft";
   attribute KEEP_HIERARCHY of p2_i : label is "soft";
   attribute KEEP_HIERARCHY of p3_i : label is "soft";
   attribute KEEP_HIERARCHY of p4_i : label is "soft";
   attribute KEEP_HIERARCHY of p5_i : label is "soft";
 begin
+  avail <= \^avail\;
   idle <= \^idle\;
+  pend <= \^pend\;
+  sample(19 downto 0) <= \^sample\(19 downto 0);
+  wr <= \^wr\;
+\comp_burst.avail_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"1010101110101010"
+    )
+        port map (
+      I0 => get,
+      I1 => data_empty,
+      I2 => \^avail\,
+      I3 => data_delay(1),
+      I4 => data_delay(2),
+      I5 => data_delay(0),
+      O => \comp_burst.avail_i_1_n_0\
+    );
+\comp_burst.avail_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.avail_i_1_n_0\,
+      Q => \^avail\,
+      R => '0'
+    );
+\comp_burst.blocks[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"8B"
+    )
+        port map (
+      I0 => fifo_data(64),
+      I1 => get,
+      I2 => \comp_burst.blocks_reg\(0),
+      O => \p_0_in__0\(0)
+    );
+\comp_burst.blocks[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F909"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(1),
+      I1 => \comp_burst.blocks_reg\(0),
+      I2 => get,
+      I3 => fifo_data(65),
+      O => \p_0_in__0\(1)
+    );
+\comp_burst.blocks[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFA900A9"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(2),
+      I1 => \comp_burst.blocks_reg\(0),
+      I2 => \comp_burst.blocks_reg\(1),
+      I3 => get,
+      I4 => fifo_data(66),
+      O => \p_0_in__0\(2)
+    );
+\comp_burst.blocks[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFAAA90000AAA9"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(3),
+      I1 => \comp_burst.blocks_reg\(1),
+      I2 => \comp_burst.blocks_reg\(0),
+      I3 => \comp_burst.blocks_reg\(2),
+      I4 => get,
+      I5 => fifo_data(67),
+      O => \p_0_in__0\(3)
+    );
+\comp_burst.blocks[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F909"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(4),
+      I1 => \comp_burst.blocks[4]_i_2_n_0\,
+      I2 => get,
+      I3 => fifo_data(68),
+      O => \p_0_in__0\(4)
+    );
+\comp_burst.blocks[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(2),
+      I1 => \comp_burst.blocks_reg\(0),
+      I2 => \comp_burst.blocks_reg\(1),
+      I3 => \comp_burst.blocks_reg\(3),
+      O => \comp_burst.blocks[4]_i_2_n_0\
+    );
+\comp_burst.blocks[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F909"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(5),
+      I1 => \comp_burst.blocks[5]_i_2_n_0\,
+      I2 => get,
+      I3 => fifo_data(69),
+      O => \p_0_in__0\(5)
+    );
+\comp_burst.blocks[5]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(3),
+      I1 => \comp_burst.blocks_reg\(1),
+      I2 => \comp_burst.blocks_reg\(0),
+      I3 => \comp_burst.blocks_reg\(2),
+      I4 => \comp_burst.blocks_reg\(4),
+      O => \comp_burst.blocks[5]_i_2_n_0\
+    );
+\comp_burst.blocks[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F909"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(6),
+      I1 => \comp_burst.wr_i_2_n_0\,
+      I2 => get,
+      I3 => fifo_data(70),
+      O => \p_0_in__0\(6)
+    );
+\comp_burst.blocks[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFA900A9"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(7),
+      I1 => \comp_burst.wr_i_2_n_0\,
+      I2 => \comp_burst.blocks_reg\(6),
+      I3 => get,
+      I4 => fifo_data(71),
+      O => \p_0_in__0\(7)
+    );
+\comp_burst.blocks_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(0),
+      Q => \comp_burst.blocks_reg\(0),
+      R => '0'
+    );
+\comp_burst.blocks_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(1),
+      Q => \comp_burst.blocks_reg\(1),
+      R => '0'
+    );
+\comp_burst.blocks_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(2),
+      Q => \comp_burst.blocks_reg\(2),
+      R => '0'
+    );
+\comp_burst.blocks_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(3),
+      Q => \comp_burst.blocks_reg\(3),
+      R => '0'
+    );
+\comp_burst.blocks_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(4),
+      Q => \comp_burst.blocks_reg\(4),
+      R => '0'
+    );
+\comp_burst.blocks_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(5),
+      Q => \comp_burst.blocks_reg\(5),
+      R => '0'
+    );
+\comp_burst.blocks_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(6),
+      Q => \comp_burst.blocks_reg\(6),
+      R => '0'
+    );
+\comp_burst.blocks_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => \p_0_in__0\(7),
+      Q => \comp_burst.blocks_reg\(7),
+      R => '0'
+    );
 \comp_burst.cfg_rd_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
@@ -67283,14 +67767,90 @@ begin
       Q => cfg_rd,
       R => '0'
     );
+\comp_burst.data[255]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00000000FFFEAAAA"
+    )
+        port map (
+      I0 => get,
+      I1 => \comp_burst.blocks_reg\(6),
+      I2 => \comp_burst.wr_i_2_n_0\,
+      I3 => \comp_burst.blocks_reg\(7),
+      I4 => \^wr\,
+      I5 => data_empty,
+      O => \comp_burst.data[255]_i_1_n_0\
+    );
+\comp_burst.data_delay[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00EE00EE00EE00EF"
+    )
+        port map (
+      I0 => data_delay(1),
+      I1 => data_delay(2),
+      I2 => \^avail\,
+      I3 => data_delay(0),
+      I4 => \^wr\,
+      I5 => get,
+      O => \comp_burst.data_delay[0]_i_1_n_0\
+    );
+\comp_burst.data_delay[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AA44AA44AA44AA45"
+    )
+        port map (
+      I0 => data_delay(1),
+      I1 => data_delay(2),
+      I2 => \^avail\,
+      I3 => data_delay(0),
+      I4 => \^wr\,
+      I5 => get,
+      O => \comp_burst.data_delay[1]_i_1_n_0\
+    );
+\comp_burst.data_delay[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"CC88CC88CC88CC89"
+    )
+        port map (
+      I0 => data_delay(1),
+      I1 => data_delay(2),
+      I2 => \^avail\,
+      I3 => data_delay(0),
+      I4 => \^wr\,
+      I5 => get,
+      O => \comp_burst.data_delay[2]_i_1_n_0\
+    );
+\comp_burst.data_delay_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.data_delay[0]_i_1_n_0\,
+      Q => data_delay(0),
+      R => data_empty
+    );
+\comp_burst.data_delay_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.data_delay[1]_i_1_n_0\,
+      Q => data_delay(1),
+      R => data_empty
+    );
+\comp_burst.data_delay_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.data_delay[2]_i_1_n_0\,
+      Q => data_delay(2),
+      R => data_empty
+    );
 \comp_burst.data_env_0[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
       I0 => data_env_0(0),
-      I1 => p5_data(79),
-      I2 => p5_data(0),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[0]\,
       O => \comp_burst.data_env_0[0]_i_1_n_0\
     );
 \comp_burst.data_env_0[10]_i_1\: unisim.vcomponents.LUT3
@@ -67299,8 +67859,8 @@ begin
     )
         port map (
       I0 => data_env_0(10),
-      I1 => p5_data(79),
-      I2 => p5_data(10),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[10]\,
       O => \comp_burst.data_env_0[10]_i_1_n_0\
     );
 \comp_burst.data_env_0[11]_i_1\: unisim.vcomponents.LUT3
@@ -67309,8 +67869,8 @@ begin
     )
         port map (
       I0 => data_env_0(11),
-      I1 => p5_data(79),
-      I2 => p5_data(11),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[11]\,
       O => \comp_burst.data_env_0[11]_i_1_n_0\
     );
 \comp_burst.data_env_0[12]_i_1\: unisim.vcomponents.LUT3
@@ -67319,8 +67879,8 @@ begin
     )
         port map (
       I0 => data_env_0(12),
-      I1 => p5_data(79),
-      I2 => p5_data(12),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[12]\,
       O => \comp_burst.data_env_0[12]_i_1_n_0\
     );
 \comp_burst.data_env_0[13]_i_1\: unisim.vcomponents.LUT3
@@ -67329,8 +67889,8 @@ begin
     )
         port map (
       I0 => data_env_0(13),
-      I1 => p5_data(79),
-      I2 => p5_data(13),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[13]\,
       O => \comp_burst.data_env_0[13]_i_1_n_0\
     );
 \comp_burst.data_env_0[14]_i_1\: unisim.vcomponents.LUT3
@@ -67339,8 +67899,8 @@ begin
     )
         port map (
       I0 => data_env_0(14),
-      I1 => p5_data(79),
-      I2 => p5_data(14),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[14]\,
       O => \comp_burst.data_env_0[14]_i_1_n_0\
     );
 \comp_burst.data_env_0[15]_i_1\: unisim.vcomponents.LUT3
@@ -67349,8 +67909,8 @@ begin
     )
         port map (
       I0 => data_env_0(15),
-      I1 => p5_data(79),
-      I2 => p5_data(15),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[15]\,
       O => \comp_burst.data_env_0[15]_i_1_n_0\
     );
 \comp_burst.data_env_0[1]_i_1\: unisim.vcomponents.LUT3
@@ -67359,8 +67919,8 @@ begin
     )
         port map (
       I0 => data_env_0(1),
-      I1 => p5_data(79),
-      I2 => p5_data(1),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[1]\,
       O => \comp_burst.data_env_0[1]_i_1_n_0\
     );
 \comp_burst.data_env_0[2]_i_1\: unisim.vcomponents.LUT3
@@ -67369,8 +67929,8 @@ begin
     )
         port map (
       I0 => data_env_0(2),
-      I1 => p5_data(79),
-      I2 => p5_data(2),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[2]\,
       O => \comp_burst.data_env_0[2]_i_1_n_0\
     );
 \comp_burst.data_env_0[3]_i_1\: unisim.vcomponents.LUT3
@@ -67379,8 +67939,8 @@ begin
     )
         port map (
       I0 => data_env_0(3),
-      I1 => p5_data(79),
-      I2 => p5_data(3),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[3]\,
       O => \comp_burst.data_env_0[3]_i_1_n_0\
     );
 \comp_burst.data_env_0[4]_i_1\: unisim.vcomponents.LUT3
@@ -67389,8 +67949,8 @@ begin
     )
         port map (
       I0 => data_env_0(4),
-      I1 => p5_data(79),
-      I2 => p5_data(4),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[4]\,
       O => \comp_burst.data_env_0[4]_i_1_n_0\
     );
 \comp_burst.data_env_0[5]_i_1\: unisim.vcomponents.LUT3
@@ -67399,8 +67959,8 @@ begin
     )
         port map (
       I0 => data_env_0(5),
-      I1 => p5_data(79),
-      I2 => p5_data(5),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[5]\,
       O => \comp_burst.data_env_0[5]_i_1_n_0\
     );
 \comp_burst.data_env_0[6]_i_1\: unisim.vcomponents.LUT3
@@ -67409,8 +67969,8 @@ begin
     )
         port map (
       I0 => data_env_0(6),
-      I1 => p5_data(79),
-      I2 => p5_data(6),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[6]\,
       O => \comp_burst.data_env_0[6]_i_1_n_0\
     );
 \comp_burst.data_env_0[7]_i_1\: unisim.vcomponents.LUT3
@@ -67419,8 +67979,8 @@ begin
     )
         port map (
       I0 => data_env_0(7),
-      I1 => p5_data(79),
-      I2 => p5_data(7),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[7]\,
       O => \comp_burst.data_env_0[7]_i_1_n_0\
     );
 \comp_burst.data_env_0[8]_i_1\: unisim.vcomponents.LUT3
@@ -67429,8 +67989,8 @@ begin
     )
         port map (
       I0 => data_env_0(8),
-      I1 => p5_data(79),
-      I2 => p5_data(8),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[8]\,
       O => \comp_burst.data_env_0[8]_i_1_n_0\
     );
 \comp_burst.data_env_0[9]_i_1\: unisim.vcomponents.LUT3
@@ -67439,134 +67999,134 @@ begin
     )
         port map (
       I0 => data_env_0(9),
-      I1 => p5_data(79),
-      I2 => p5_data(9),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[9]\,
       O => \comp_burst.data_env_0[9]_i_1_n_0\
     );
 \comp_burst.data_env_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[0]_i_1_n_0\,
       Q => data_env_0(0),
       R => '0'
     );
 \comp_burst.data_env_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[10]_i_1_n_0\,
       Q => data_env_0(10),
       R => '0'
     );
 \comp_burst.data_env_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[11]_i_1_n_0\,
       Q => data_env_0(11),
       R => '0'
     );
 \comp_burst.data_env_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[12]_i_1_n_0\,
       Q => data_env_0(12),
       R => '0'
     );
 \comp_burst.data_env_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[13]_i_1_n_0\,
       Q => data_env_0(13),
       R => '0'
     );
 \comp_burst.data_env_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[14]_i_1_n_0\,
       Q => data_env_0(14),
       R => '0'
     );
 \comp_burst.data_env_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[15]_i_1_n_0\,
       Q => data_env_0(15),
       R => '0'
     );
 \comp_burst.data_env_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[1]_i_1_n_0\,
       Q => data_env_0(1),
       R => '0'
     );
 \comp_burst.data_env_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[2]_i_1_n_0\,
       Q => data_env_0(2),
       R => '0'
     );
 \comp_burst.data_env_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[3]_i_1_n_0\,
       Q => data_env_0(3),
       R => '0'
     );
 \comp_burst.data_env_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[4]_i_1_n_0\,
       Q => data_env_0(4),
       R => '0'
     );
 \comp_burst.data_env_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[5]_i_1_n_0\,
       Q => data_env_0(5),
       R => '0'
     );
 \comp_burst.data_env_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[6]_i_1_n_0\,
       Q => data_env_0(6),
       R => '0'
     );
 \comp_burst.data_env_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[7]_i_1_n_0\,
       Q => data_env_0(7),
       R => '0'
     );
 \comp_burst.data_env_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[8]_i_1_n_0\,
       Q => data_env_0(8),
       R => '0'
     );
 \comp_burst.data_env_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_0[9]_i_1_n_0\,
       Q => data_env_0(9),
       R => '0'
@@ -67577,8 +68137,8 @@ begin
     )
         port map (
       I0 => data_env_1(0),
-      I1 => p5_data(79),
-      I2 => p5_data(32),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[32]\,
       O => \comp_burst.data_env_1[0]_i_1_n_0\
     );
 \comp_burst.data_env_1[10]_i_1\: unisim.vcomponents.LUT3
@@ -67587,8 +68147,8 @@ begin
     )
         port map (
       I0 => data_env_1(10),
-      I1 => p5_data(79),
-      I2 => p5_data(42),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[42]\,
       O => \comp_burst.data_env_1[10]_i_1_n_0\
     );
 \comp_burst.data_env_1[11]_i_1\: unisim.vcomponents.LUT3
@@ -67597,8 +68157,8 @@ begin
     )
         port map (
       I0 => data_env_1(11),
-      I1 => p5_data(79),
-      I2 => p5_data(43),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[43]\,
       O => \comp_burst.data_env_1[11]_i_1_n_0\
     );
 \comp_burst.data_env_1[12]_i_1\: unisim.vcomponents.LUT3
@@ -67607,8 +68167,8 @@ begin
     )
         port map (
       I0 => data_env_1(12),
-      I1 => p5_data(79),
-      I2 => p5_data(44),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[44]\,
       O => \comp_burst.data_env_1[12]_i_1_n_0\
     );
 \comp_burst.data_env_1[13]_i_1\: unisim.vcomponents.LUT3
@@ -67617,8 +68177,8 @@ begin
     )
         port map (
       I0 => data_env_1(13),
-      I1 => p5_data(79),
-      I2 => p5_data(45),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[45]\,
       O => \comp_burst.data_env_1[13]_i_1_n_0\
     );
 \comp_burst.data_env_1[14]_i_1\: unisim.vcomponents.LUT3
@@ -67627,8 +68187,8 @@ begin
     )
         port map (
       I0 => data_env_1(14),
-      I1 => p5_data(79),
-      I2 => p5_data(46),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[46]\,
       O => \comp_burst.data_env_1[14]_i_1_n_0\
     );
 \comp_burst.data_env_1[15]_i_1\: unisim.vcomponents.LUT3
@@ -67637,8 +68197,8 @@ begin
     )
         port map (
       I0 => data_env_1(15),
-      I1 => p5_data(79),
-      I2 => p5_data(47),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[47]\,
       O => \comp_burst.data_env_1[15]_i_1_n_0\
     );
 \comp_burst.data_env_1[1]_i_1\: unisim.vcomponents.LUT3
@@ -67647,8 +68207,8 @@ begin
     )
         port map (
       I0 => data_env_1(1),
-      I1 => p5_data(79),
-      I2 => p5_data(33),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[33]\,
       O => \comp_burst.data_env_1[1]_i_1_n_0\
     );
 \comp_burst.data_env_1[2]_i_1\: unisim.vcomponents.LUT3
@@ -67657,8 +68217,8 @@ begin
     )
         port map (
       I0 => data_env_1(2),
-      I1 => p5_data(79),
-      I2 => p5_data(34),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[34]\,
       O => \comp_burst.data_env_1[2]_i_1_n_0\
     );
 \comp_burst.data_env_1[3]_i_1\: unisim.vcomponents.LUT3
@@ -67667,8 +68227,8 @@ begin
     )
         port map (
       I0 => data_env_1(3),
-      I1 => p5_data(79),
-      I2 => p5_data(35),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[35]\,
       O => \comp_burst.data_env_1[3]_i_1_n_0\
     );
 \comp_burst.data_env_1[4]_i_1\: unisim.vcomponents.LUT3
@@ -67677,8 +68237,8 @@ begin
     )
         port map (
       I0 => data_env_1(4),
-      I1 => p5_data(79),
-      I2 => p5_data(36),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[36]\,
       O => \comp_burst.data_env_1[4]_i_1_n_0\
     );
 \comp_burst.data_env_1[5]_i_1\: unisim.vcomponents.LUT3
@@ -67687,8 +68247,8 @@ begin
     )
         port map (
       I0 => data_env_1(5),
-      I1 => p5_data(79),
-      I2 => p5_data(37),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[37]\,
       O => \comp_burst.data_env_1[5]_i_1_n_0\
     );
 \comp_burst.data_env_1[6]_i_1\: unisim.vcomponents.LUT3
@@ -67697,8 +68257,8 @@ begin
     )
         port map (
       I0 => data_env_1(6),
-      I1 => p5_data(79),
-      I2 => p5_data(38),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[38]\,
       O => \comp_burst.data_env_1[6]_i_1_n_0\
     );
 \comp_burst.data_env_1[7]_i_1\: unisim.vcomponents.LUT3
@@ -67707,8 +68267,8 @@ begin
     )
         port map (
       I0 => data_env_1(7),
-      I1 => p5_data(79),
-      I2 => p5_data(39),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[39]\,
       O => \comp_burst.data_env_1[7]_i_1_n_0\
     );
 \comp_burst.data_env_1[8]_i_1\: unisim.vcomponents.LUT3
@@ -67717,8 +68277,8 @@ begin
     )
         port map (
       I0 => data_env_1(8),
-      I1 => p5_data(79),
-      I2 => p5_data(40),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[40]\,
       O => \comp_burst.data_env_1[8]_i_1_n_0\
     );
 \comp_burst.data_env_1[9]_i_1\: unisim.vcomponents.LUT3
@@ -67727,134 +68287,134 @@ begin
     )
         port map (
       I0 => data_env_1(9),
-      I1 => p5_data(79),
-      I2 => p5_data(41),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[41]\,
       O => \comp_burst.data_env_1[9]_i_1_n_0\
     );
 \comp_burst.data_env_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[0]_i_1_n_0\,
       Q => data_env_1(0),
       R => '0'
     );
 \comp_burst.data_env_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[10]_i_1_n_0\,
       Q => data_env_1(10),
       R => '0'
     );
 \comp_burst.data_env_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[11]_i_1_n_0\,
       Q => data_env_1(11),
       R => '0'
     );
 \comp_burst.data_env_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[12]_i_1_n_0\,
       Q => data_env_1(12),
       R => '0'
     );
 \comp_burst.data_env_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[13]_i_1_n_0\,
       Q => data_env_1(13),
       R => '0'
     );
 \comp_burst.data_env_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[14]_i_1_n_0\,
       Q => data_env_1(14),
       R => '0'
     );
 \comp_burst.data_env_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[15]_i_1_n_0\,
       Q => data_env_1(15),
       R => '0'
     );
 \comp_burst.data_env_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[1]_i_1_n_0\,
       Q => data_env_1(1),
       R => '0'
     );
 \comp_burst.data_env_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[2]_i_1_n_0\,
       Q => data_env_1(2),
       R => '0'
     );
 \comp_burst.data_env_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[3]_i_1_n_0\,
       Q => data_env_1(3),
       R => '0'
     );
 \comp_burst.data_env_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[4]_i_1_n_0\,
       Q => data_env_1(4),
       R => '0'
     );
 \comp_burst.data_env_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[5]_i_1_n_0\,
       Q => data_env_1(5),
       R => '0'
     );
 \comp_burst.data_env_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[6]_i_1_n_0\,
       Q => data_env_1(6),
       R => '0'
     );
 \comp_burst.data_env_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[7]_i_1_n_0\,
       Q => data_env_1(7),
       R => '0'
     );
 \comp_burst.data_env_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[8]_i_1_n_0\,
       Q => data_env_1(8),
       R => '0'
     );
 \comp_burst.data_env_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_1[9]_i_1_n_0\,
       Q => data_env_1(9),
       R => '0'
@@ -67865,8 +68425,8 @@ begin
     )
         port map (
       I0 => data_env_2(0),
-      I1 => p5_data(79),
-      I2 => p5_data(64),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[64]\,
       O => \comp_burst.data_env_2[0]_i_1_n_0\
     );
 \comp_burst.data_env_2[10]_i_1\: unisim.vcomponents.LUT3
@@ -67875,8 +68435,8 @@ begin
     )
         port map (
       I0 => data_env_2(10),
-      I1 => p5_data(79),
-      I2 => p5_data(74),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[74]\,
       O => \comp_burst.data_env_2[10]_i_1_n_0\
     );
 \comp_burst.data_env_2[11]_i_1\: unisim.vcomponents.LUT3
@@ -67885,8 +68445,8 @@ begin
     )
         port map (
       I0 => data_env_2(11),
-      I1 => p5_data(79),
-      I2 => p5_data(75),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[75]\,
       O => \comp_burst.data_env_2[11]_i_1_n_0\
     );
 \comp_burst.data_env_2[12]_i_1\: unisim.vcomponents.LUT3
@@ -67895,8 +68455,8 @@ begin
     )
         port map (
       I0 => data_env_2(12),
-      I1 => p5_data(79),
-      I2 => p5_data(76),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[76]\,
       O => \comp_burst.data_env_2[12]_i_1_n_0\
     );
 \comp_burst.data_env_2[13]_i_1\: unisim.vcomponents.LUT3
@@ -67905,8 +68465,8 @@ begin
     )
         port map (
       I0 => data_env_2(13),
-      I1 => p5_data(79),
-      I2 => p5_data(77),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[77]\,
       O => \comp_burst.data_env_2[13]_i_1_n_0\
     );
 \comp_burst.data_env_2[14]_i_1\: unisim.vcomponents.LUT3
@@ -67915,8 +68475,8 @@ begin
     )
         port map (
       I0 => data_env_2(14),
-      I1 => p5_data(79),
-      I2 => p5_data(78),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[78]\,
       O => \comp_burst.data_env_2[14]_i_1_n_0\
     );
 \comp_burst.data_env_2[15]_i_1\: unisim.vcomponents.LUT2
@@ -67925,7 +68485,7 @@ begin
     )
         port map (
       I0 => data_env_2(15),
-      I1 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_2[15]_i_1_n_0\
     );
 \comp_burst.data_env_2[1]_i_1\: unisim.vcomponents.LUT3
@@ -67934,8 +68494,8 @@ begin
     )
         port map (
       I0 => data_env_2(1),
-      I1 => p5_data(79),
-      I2 => p5_data(65),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[65]\,
       O => \comp_burst.data_env_2[1]_i_1_n_0\
     );
 \comp_burst.data_env_2[2]_i_1\: unisim.vcomponents.LUT3
@@ -67944,8 +68504,8 @@ begin
     )
         port map (
       I0 => data_env_2(2),
-      I1 => p5_data(79),
-      I2 => p5_data(66),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[66]\,
       O => \comp_burst.data_env_2[2]_i_1_n_0\
     );
 \comp_burst.data_env_2[3]_i_1\: unisim.vcomponents.LUT3
@@ -67954,8 +68514,8 @@ begin
     )
         port map (
       I0 => data_env_2(3),
-      I1 => p5_data(79),
-      I2 => p5_data(67),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[67]\,
       O => \comp_burst.data_env_2[3]_i_1_n_0\
     );
 \comp_burst.data_env_2[4]_i_1\: unisim.vcomponents.LUT3
@@ -67964,8 +68524,8 @@ begin
     )
         port map (
       I0 => data_env_2(4),
-      I1 => p5_data(79),
-      I2 => p5_data(68),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[68]\,
       O => \comp_burst.data_env_2[4]_i_1_n_0\
     );
 \comp_burst.data_env_2[5]_i_1\: unisim.vcomponents.LUT3
@@ -67974,8 +68534,8 @@ begin
     )
         port map (
       I0 => data_env_2(5),
-      I1 => p5_data(79),
-      I2 => p5_data(69),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[69]\,
       O => \comp_burst.data_env_2[5]_i_1_n_0\
     );
 \comp_burst.data_env_2[6]_i_1\: unisim.vcomponents.LUT3
@@ -67984,8 +68544,8 @@ begin
     )
         port map (
       I0 => data_env_2(6),
-      I1 => p5_data(79),
-      I2 => p5_data(70),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[70]\,
       O => \comp_burst.data_env_2[6]_i_1_n_0\
     );
 \comp_burst.data_env_2[7]_i_1\: unisim.vcomponents.LUT3
@@ -67994,8 +68554,8 @@ begin
     )
         port map (
       I0 => data_env_2(7),
-      I1 => p5_data(79),
-      I2 => p5_data(71),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[71]\,
       O => \comp_burst.data_env_2[7]_i_1_n_0\
     );
 \comp_burst.data_env_2[8]_i_1\: unisim.vcomponents.LUT3
@@ -68004,8 +68564,8 @@ begin
     )
         port map (
       I0 => data_env_2(8),
-      I1 => p5_data(79),
-      I2 => p5_data(72),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[72]\,
       O => \comp_burst.data_env_2[8]_i_1_n_0\
     );
 \comp_burst.data_env_2[9]_i_1\: unisim.vcomponents.LUT3
@@ -68014,134 +68574,134 @@ begin
     )
         port map (
       I0 => data_env_2(9),
-      I1 => p5_data(79),
-      I2 => p5_data(73),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[73]\,
       O => \comp_burst.data_env_2[9]_i_1_n_0\
     );
 \comp_burst.data_env_2_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[0]_i_1_n_0\,
       Q => data_env_2(0),
       R => '0'
     );
 \comp_burst.data_env_2_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[10]_i_1_n_0\,
       Q => data_env_2(10),
       R => '0'
     );
 \comp_burst.data_env_2_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[11]_i_1_n_0\,
       Q => data_env_2(11),
       R => '0'
     );
 \comp_burst.data_env_2_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[12]_i_1_n_0\,
       Q => data_env_2(12),
       R => '0'
     );
 \comp_burst.data_env_2_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[13]_i_1_n_0\,
       Q => data_env_2(13),
       R => '0'
     );
 \comp_burst.data_env_2_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[14]_i_1_n_0\,
       Q => data_env_2(14),
       R => '0'
     );
 \comp_burst.data_env_2_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[15]_i_1_n_0\,
       Q => data_env_2(15),
       R => '0'
     );
 \comp_burst.data_env_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[1]_i_1_n_0\,
       Q => data_env_2(1),
       R => '0'
     );
 \comp_burst.data_env_2_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[2]_i_1_n_0\,
       Q => data_env_2(2),
       R => '0'
     );
 \comp_burst.data_env_2_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[3]_i_1_n_0\,
       Q => data_env_2(3),
       R => '0'
     );
 \comp_burst.data_env_2_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[4]_i_1_n_0\,
       Q => data_env_2(4),
       R => '0'
     );
 \comp_burst.data_env_2_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[5]_i_1_n_0\,
       Q => data_env_2(5),
       R => '0'
     );
 \comp_burst.data_env_2_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[6]_i_1_n_0\,
       Q => data_env_2(6),
       R => '0'
     );
 \comp_burst.data_env_2_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[7]_i_1_n_0\,
       Q => data_env_2(7),
       R => '0'
     );
 \comp_burst.data_env_2_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[8]_i_1_n_0\,
       Q => data_env_2(8),
       R => '0'
     );
 \comp_burst.data_env_2_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_2[9]_i_1_n_0\,
       Q => data_env_2(9),
       R => '0'
@@ -68152,8 +68712,8 @@ begin
     )
         port map (
       I0 => data_env_3(0),
-      I1 => p5_data(96),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[96]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[0]_i_1_n_0\
     );
 \comp_burst.data_env_3[10]_i_1\: unisim.vcomponents.LUT3
@@ -68162,8 +68722,8 @@ begin
     )
         port map (
       I0 => data_env_3(10),
-      I1 => p5_data(106),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[106]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[10]_i_1_n_0\
     );
 \comp_burst.data_env_3[11]_i_1\: unisim.vcomponents.LUT3
@@ -68172,8 +68732,8 @@ begin
     )
         port map (
       I0 => data_env_3(11),
-      I1 => p5_data(107),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[107]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[11]_i_1_n_0\
     );
 \comp_burst.data_env_3[12]_i_1\: unisim.vcomponents.LUT3
@@ -68182,8 +68742,8 @@ begin
     )
         port map (
       I0 => data_env_3(12),
-      I1 => p5_data(108),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[108]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[12]_i_1_n_0\
     );
 \comp_burst.data_env_3[13]_i_1\: unisim.vcomponents.LUT3
@@ -68192,8 +68752,8 @@ begin
     )
         port map (
       I0 => data_env_3(13),
-      I1 => p5_data(109),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[109]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[13]_i_1_n_0\
     );
 \comp_burst.data_env_3[14]_i_1\: unisim.vcomponents.LUT3
@@ -68202,8 +68762,8 @@ begin
     )
         port map (
       I0 => data_env_3(14),
-      I1 => p5_data(110),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[110]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[14]_i_1_n_0\
     );
 \comp_burst.data_env_3[15]_i_1\: unisim.vcomponents.LUT3
@@ -68212,8 +68772,8 @@ begin
     )
         port map (
       I0 => data_env_3(15),
-      I1 => p5_data(111),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[111]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[15]_i_1_n_0\
     );
 \comp_burst.data_env_3[1]_i_1\: unisim.vcomponents.LUT3
@@ -68222,8 +68782,8 @@ begin
     )
         port map (
       I0 => data_env_3(1),
-      I1 => p5_data(97),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[97]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[1]_i_1_n_0\
     );
 \comp_burst.data_env_3[2]_i_1\: unisim.vcomponents.LUT3
@@ -68232,8 +68792,8 @@ begin
     )
         port map (
       I0 => data_env_3(2),
-      I1 => p5_data(98),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[98]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[2]_i_1_n_0\
     );
 \comp_burst.data_env_3[3]_i_1\: unisim.vcomponents.LUT3
@@ -68242,8 +68802,8 @@ begin
     )
         port map (
       I0 => data_env_3(3),
-      I1 => p5_data(99),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[99]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[3]_i_1_n_0\
     );
 \comp_burst.data_env_3[4]_i_1\: unisim.vcomponents.LUT3
@@ -68252,8 +68812,8 @@ begin
     )
         port map (
       I0 => data_env_3(4),
-      I1 => p5_data(100),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[100]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[4]_i_1_n_0\
     );
 \comp_burst.data_env_3[5]_i_1\: unisim.vcomponents.LUT3
@@ -68262,8 +68822,8 @@ begin
     )
         port map (
       I0 => data_env_3(5),
-      I1 => p5_data(101),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[101]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[5]_i_1_n_0\
     );
 \comp_burst.data_env_3[6]_i_1\: unisim.vcomponents.LUT3
@@ -68272,8 +68832,8 @@ begin
     )
         port map (
       I0 => data_env_3(6),
-      I1 => p5_data(102),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[102]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[6]_i_1_n_0\
     );
 \comp_burst.data_env_3[7]_i_1\: unisim.vcomponents.LUT3
@@ -68282,8 +68842,8 @@ begin
     )
         port map (
       I0 => data_env_3(7),
-      I1 => p5_data(103),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[103]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[7]_i_1_n_0\
     );
 \comp_burst.data_env_3[8]_i_1\: unisim.vcomponents.LUT3
@@ -68292,8 +68852,8 @@ begin
     )
         port map (
       I0 => data_env_3(8),
-      I1 => p5_data(104),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[104]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[8]_i_1_n_0\
     );
 \comp_burst.data_env_3[9]_i_1\: unisim.vcomponents.LUT3
@@ -68302,134 +68862,134 @@ begin
     )
         port map (
       I0 => data_env_3(9),
-      I1 => p5_data(105),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[105]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_3[9]_i_1_n_0\
     );
 \comp_burst.data_env_3_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[0]_i_1_n_0\,
       Q => data_env_3(0),
       R => '0'
     );
 \comp_burst.data_env_3_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[10]_i_1_n_0\,
       Q => data_env_3(10),
       R => '0'
     );
 \comp_burst.data_env_3_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[11]_i_1_n_0\,
       Q => data_env_3(11),
       R => '0'
     );
 \comp_burst.data_env_3_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[12]_i_1_n_0\,
       Q => data_env_3(12),
       R => '0'
     );
 \comp_burst.data_env_3_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[13]_i_1_n_0\,
       Q => data_env_3(13),
       R => '0'
     );
 \comp_burst.data_env_3_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[14]_i_1_n_0\,
       Q => data_env_3(14),
       R => '0'
     );
 \comp_burst.data_env_3_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[15]_i_1_n_0\,
       Q => data_env_3(15),
       R => '0'
     );
 \comp_burst.data_env_3_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[1]_i_1_n_0\,
       Q => data_env_3(1),
       R => '0'
     );
 \comp_burst.data_env_3_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[2]_i_1_n_0\,
       Q => data_env_3(2),
       R => '0'
     );
 \comp_burst.data_env_3_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[3]_i_1_n_0\,
       Q => data_env_3(3),
       R => '0'
     );
 \comp_burst.data_env_3_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[4]_i_1_n_0\,
       Q => data_env_3(4),
       R => '0'
     );
 \comp_burst.data_env_3_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[5]_i_1_n_0\,
       Q => data_env_3(5),
       R => '0'
     );
 \comp_burst.data_env_3_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[6]_i_1_n_0\,
       Q => data_env_3(6),
       R => '0'
     );
 \comp_burst.data_env_3_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[7]_i_1_n_0\,
       Q => data_env_3(7),
       R => '0'
     );
 \comp_burst.data_env_3_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[8]_i_1_n_0\,
       Q => data_env_3(8),
       R => '0'
     );
 \comp_burst.data_env_3_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_3[9]_i_1_n_0\,
       Q => data_env_3(9),
       R => '0'
@@ -68440,8 +69000,8 @@ begin
     )
         port map (
       I0 => data_env_4(0),
-      I1 => p5_data(79),
-      I2 => p5_data(128),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[128]\,
       O => \comp_burst.data_env_4[0]_i_1_n_0\
     );
 \comp_burst.data_env_4[10]_i_1\: unisim.vcomponents.LUT3
@@ -68450,8 +69010,8 @@ begin
     )
         port map (
       I0 => data_env_4(10),
-      I1 => p5_data(79),
-      I2 => p5_data(138),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[138]\,
       O => \comp_burst.data_env_4[10]_i_1_n_0\
     );
 \comp_burst.data_env_4[11]_i_1\: unisim.vcomponents.LUT3
@@ -68460,8 +69020,8 @@ begin
     )
         port map (
       I0 => data_env_4(11),
-      I1 => p5_data(79),
-      I2 => p5_data(139),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[139]\,
       O => \comp_burst.data_env_4[11]_i_1_n_0\
     );
 \comp_burst.data_env_4[12]_i_1\: unisim.vcomponents.LUT3
@@ -68470,8 +69030,8 @@ begin
     )
         port map (
       I0 => data_env_4(12),
-      I1 => p5_data(79),
-      I2 => p5_data(140),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[140]\,
       O => \comp_burst.data_env_4[12]_i_1_n_0\
     );
 \comp_burst.data_env_4[13]_i_1\: unisim.vcomponents.LUT3
@@ -68480,8 +69040,8 @@ begin
     )
         port map (
       I0 => data_env_4(13),
-      I1 => p5_data(79),
-      I2 => p5_data(141),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[141]\,
       O => \comp_burst.data_env_4[13]_i_1_n_0\
     );
 \comp_burst.data_env_4[14]_i_1\: unisim.vcomponents.LUT3
@@ -68490,8 +69050,8 @@ begin
     )
         port map (
       I0 => data_env_4(14),
-      I1 => p5_data(79),
-      I2 => p5_data(142),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[142]\,
       O => \comp_burst.data_env_4[14]_i_1_n_0\
     );
 \comp_burst.data_env_4[15]_i_1\: unisim.vcomponents.LUT3
@@ -68500,8 +69060,8 @@ begin
     )
         port map (
       I0 => data_env_4(15),
-      I1 => p5_data(79),
-      I2 => p5_data(143),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[143]\,
       O => \comp_burst.data_env_4[15]_i_1_n_0\
     );
 \comp_burst.data_env_4[1]_i_1\: unisim.vcomponents.LUT3
@@ -68510,8 +69070,8 @@ begin
     )
         port map (
       I0 => data_env_4(1),
-      I1 => p5_data(79),
-      I2 => p5_data(129),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[129]\,
       O => \comp_burst.data_env_4[1]_i_1_n_0\
     );
 \comp_burst.data_env_4[2]_i_1\: unisim.vcomponents.LUT3
@@ -68520,8 +69080,8 @@ begin
     )
         port map (
       I0 => data_env_4(2),
-      I1 => p5_data(79),
-      I2 => p5_data(130),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[130]\,
       O => \comp_burst.data_env_4[2]_i_1_n_0\
     );
 \comp_burst.data_env_4[3]_i_1\: unisim.vcomponents.LUT3
@@ -68530,8 +69090,8 @@ begin
     )
         port map (
       I0 => data_env_4(3),
-      I1 => p5_data(79),
-      I2 => p5_data(131),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[131]\,
       O => \comp_burst.data_env_4[3]_i_1_n_0\
     );
 \comp_burst.data_env_4[4]_i_1\: unisim.vcomponents.LUT3
@@ -68540,8 +69100,8 @@ begin
     )
         port map (
       I0 => data_env_4(4),
-      I1 => p5_data(79),
-      I2 => p5_data(132),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[132]\,
       O => \comp_burst.data_env_4[4]_i_1_n_0\
     );
 \comp_burst.data_env_4[5]_i_1\: unisim.vcomponents.LUT3
@@ -68550,8 +69110,8 @@ begin
     )
         port map (
       I0 => data_env_4(5),
-      I1 => p5_data(79),
-      I2 => p5_data(133),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[133]\,
       O => \comp_burst.data_env_4[5]_i_1_n_0\
     );
 \comp_burst.data_env_4[6]_i_1\: unisim.vcomponents.LUT3
@@ -68560,8 +69120,8 @@ begin
     )
         port map (
       I0 => data_env_4(6),
-      I1 => p5_data(79),
-      I2 => p5_data(134),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[134]\,
       O => \comp_burst.data_env_4[6]_i_1_n_0\
     );
 \comp_burst.data_env_4[7]_i_1\: unisim.vcomponents.LUT3
@@ -68570,8 +69130,8 @@ begin
     )
         port map (
       I0 => data_env_4(7),
-      I1 => p5_data(79),
-      I2 => p5_data(135),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[135]\,
       O => \comp_burst.data_env_4[7]_i_1_n_0\
     );
 \comp_burst.data_env_4[8]_i_1\: unisim.vcomponents.LUT3
@@ -68580,8 +69140,8 @@ begin
     )
         port map (
       I0 => data_env_4(8),
-      I1 => p5_data(79),
-      I2 => p5_data(136),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[136]\,
       O => \comp_burst.data_env_4[8]_i_1_n_0\
     );
 \comp_burst.data_env_4[9]_i_1\: unisim.vcomponents.LUT3
@@ -68590,134 +69150,134 @@ begin
     )
         port map (
       I0 => data_env_4(9),
-      I1 => p5_data(79),
-      I2 => p5_data(137),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[137]\,
       O => \comp_burst.data_env_4[9]_i_1_n_0\
     );
 \comp_burst.data_env_4_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[0]_i_1_n_0\,
       Q => data_env_4(0),
       R => '0'
     );
 \comp_burst.data_env_4_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[10]_i_1_n_0\,
       Q => data_env_4(10),
       R => '0'
     );
 \comp_burst.data_env_4_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[11]_i_1_n_0\,
       Q => data_env_4(11),
       R => '0'
     );
 \comp_burst.data_env_4_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[12]_i_1_n_0\,
       Q => data_env_4(12),
       R => '0'
     );
 \comp_burst.data_env_4_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[13]_i_1_n_0\,
       Q => data_env_4(13),
       R => '0'
     );
 \comp_burst.data_env_4_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[14]_i_1_n_0\,
       Q => data_env_4(14),
       R => '0'
     );
 \comp_burst.data_env_4_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[15]_i_1_n_0\,
       Q => data_env_4(15),
       R => '0'
     );
 \comp_burst.data_env_4_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[1]_i_1_n_0\,
       Q => data_env_4(1),
       R => '0'
     );
 \comp_burst.data_env_4_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[2]_i_1_n_0\,
       Q => data_env_4(2),
       R => '0'
     );
 \comp_burst.data_env_4_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[3]_i_1_n_0\,
       Q => data_env_4(3),
       R => '0'
     );
 \comp_burst.data_env_4_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[4]_i_1_n_0\,
       Q => data_env_4(4),
       R => '0'
     );
 \comp_burst.data_env_4_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[5]_i_1_n_0\,
       Q => data_env_4(5),
       R => '0'
     );
 \comp_burst.data_env_4_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[6]_i_1_n_0\,
       Q => data_env_4(6),
       R => '0'
     );
 \comp_burst.data_env_4_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[7]_i_1_n_0\,
       Q => data_env_4(7),
       R => '0'
     );
 \comp_burst.data_env_4_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[8]_i_1_n_0\,
       Q => data_env_4(8),
       R => '0'
     );
 \comp_burst.data_env_4_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_4[9]_i_1_n_0\,
       Q => data_env_4(9),
       R => '0'
@@ -68728,8 +69288,8 @@ begin
     )
         port map (
       I0 => data_env_5(0),
-      I1 => p5_data(160),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[160]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[0]_i_1_n_0\
     );
 \comp_burst.data_env_5[10]_i_1\: unisim.vcomponents.LUT3
@@ -68738,8 +69298,8 @@ begin
     )
         port map (
       I0 => data_env_5(10),
-      I1 => p5_data(170),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[170]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[10]_i_1_n_0\
     );
 \comp_burst.data_env_5[11]_i_1\: unisim.vcomponents.LUT3
@@ -68748,8 +69308,8 @@ begin
     )
         port map (
       I0 => data_env_5(11),
-      I1 => p5_data(171),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[171]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[11]_i_1_n_0\
     );
 \comp_burst.data_env_5[12]_i_1\: unisim.vcomponents.LUT3
@@ -68758,8 +69318,8 @@ begin
     )
         port map (
       I0 => data_env_5(12),
-      I1 => p5_data(172),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[172]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[12]_i_1_n_0\
     );
 \comp_burst.data_env_5[13]_i_1\: unisim.vcomponents.LUT3
@@ -68768,8 +69328,8 @@ begin
     )
         port map (
       I0 => data_env_5(13),
-      I1 => p5_data(173),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[173]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[13]_i_1_n_0\
     );
 \comp_burst.data_env_5[14]_i_1\: unisim.vcomponents.LUT3
@@ -68778,8 +69338,8 @@ begin
     )
         port map (
       I0 => data_env_5(14),
-      I1 => p5_data(174),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[174]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[14]_i_1_n_0\
     );
 \comp_burst.data_env_5[15]_i_1\: unisim.vcomponents.LUT3
@@ -68788,8 +69348,8 @@ begin
     )
         port map (
       I0 => data_env_5(15),
-      I1 => p5_data(175),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[175]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[15]_i_1_n_0\
     );
 \comp_burst.data_env_5[1]_i_1\: unisim.vcomponents.LUT3
@@ -68798,8 +69358,8 @@ begin
     )
         port map (
       I0 => data_env_5(1),
-      I1 => p5_data(161),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[161]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[1]_i_1_n_0\
     );
 \comp_burst.data_env_5[2]_i_1\: unisim.vcomponents.LUT3
@@ -68808,8 +69368,8 @@ begin
     )
         port map (
       I0 => data_env_5(2),
-      I1 => p5_data(162),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[162]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[2]_i_1_n_0\
     );
 \comp_burst.data_env_5[3]_i_1\: unisim.vcomponents.LUT3
@@ -68818,8 +69378,8 @@ begin
     )
         port map (
       I0 => data_env_5(3),
-      I1 => p5_data(163),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[163]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[3]_i_1_n_0\
     );
 \comp_burst.data_env_5[4]_i_1\: unisim.vcomponents.LUT3
@@ -68828,8 +69388,8 @@ begin
     )
         port map (
       I0 => data_env_5(4),
-      I1 => p5_data(164),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[164]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[4]_i_1_n_0\
     );
 \comp_burst.data_env_5[5]_i_1\: unisim.vcomponents.LUT3
@@ -68838,8 +69398,8 @@ begin
     )
         port map (
       I0 => data_env_5(5),
-      I1 => p5_data(165),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[165]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[5]_i_1_n_0\
     );
 \comp_burst.data_env_5[6]_i_1\: unisim.vcomponents.LUT3
@@ -68848,8 +69408,8 @@ begin
     )
         port map (
       I0 => data_env_5(6),
-      I1 => p5_data(166),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[166]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[6]_i_1_n_0\
     );
 \comp_burst.data_env_5[7]_i_1\: unisim.vcomponents.LUT3
@@ -68858,8 +69418,8 @@ begin
     )
         port map (
       I0 => data_env_5(7),
-      I1 => p5_data(167),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[167]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[7]_i_1_n_0\
     );
 \comp_burst.data_env_5[8]_i_1\: unisim.vcomponents.LUT3
@@ -68868,8 +69428,8 @@ begin
     )
         port map (
       I0 => data_env_5(8),
-      I1 => p5_data(168),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[168]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[8]_i_1_n_0\
     );
 \comp_burst.data_env_5[9]_i_1\: unisim.vcomponents.LUT3
@@ -68878,134 +69438,134 @@ begin
     )
         port map (
       I0 => data_env_5(9),
-      I1 => p5_data(169),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[169]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_5[9]_i_1_n_0\
     );
 \comp_burst.data_env_5_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[0]_i_1_n_0\,
       Q => data_env_5(0),
       R => '0'
     );
 \comp_burst.data_env_5_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[10]_i_1_n_0\,
       Q => data_env_5(10),
       R => '0'
     );
 \comp_burst.data_env_5_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[11]_i_1_n_0\,
       Q => data_env_5(11),
       R => '0'
     );
 \comp_burst.data_env_5_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[12]_i_1_n_0\,
       Q => data_env_5(12),
       R => '0'
     );
 \comp_burst.data_env_5_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[13]_i_1_n_0\,
       Q => data_env_5(13),
       R => '0'
     );
 \comp_burst.data_env_5_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[14]_i_1_n_0\,
       Q => data_env_5(14),
       R => '0'
     );
 \comp_burst.data_env_5_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[15]_i_1_n_0\,
       Q => data_env_5(15),
       R => '0'
     );
 \comp_burst.data_env_5_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[1]_i_1_n_0\,
       Q => data_env_5(1),
       R => '0'
     );
 \comp_burst.data_env_5_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[2]_i_1_n_0\,
       Q => data_env_5(2),
       R => '0'
     );
 \comp_burst.data_env_5_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[3]_i_1_n_0\,
       Q => data_env_5(3),
       R => '0'
     );
 \comp_burst.data_env_5_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[4]_i_1_n_0\,
       Q => data_env_5(4),
       R => '0'
     );
 \comp_burst.data_env_5_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[5]_i_1_n_0\,
       Q => data_env_5(5),
       R => '0'
     );
 \comp_burst.data_env_5_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[6]_i_1_n_0\,
       Q => data_env_5(6),
       R => '0'
     );
 \comp_burst.data_env_5_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[7]_i_1_n_0\,
       Q => data_env_5(7),
       R => '0'
     );
 \comp_burst.data_env_5_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[8]_i_1_n_0\,
       Q => data_env_5(8),
       R => '0'
     );
 \comp_burst.data_env_5_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_5[9]_i_1_n_0\,
       Q => data_env_5(9),
       R => '0'
@@ -69016,8 +69576,8 @@ begin
     )
         port map (
       I0 => data_env_6(0),
-      I1 => p5_data(192),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[192]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[0]_i_1_n_0\
     );
 \comp_burst.data_env_6[10]_i_1\: unisim.vcomponents.LUT3
@@ -69026,8 +69586,8 @@ begin
     )
         port map (
       I0 => data_env_6(10),
-      I1 => p5_data(202),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[202]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[10]_i_1_n_0\
     );
 \comp_burst.data_env_6[11]_i_1\: unisim.vcomponents.LUT3
@@ -69036,8 +69596,8 @@ begin
     )
         port map (
       I0 => data_env_6(11),
-      I1 => p5_data(203),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[203]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[11]_i_1_n_0\
     );
 \comp_burst.data_env_6[12]_i_1\: unisim.vcomponents.LUT3
@@ -69046,8 +69606,8 @@ begin
     )
         port map (
       I0 => data_env_6(12),
-      I1 => p5_data(204),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[204]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[12]_i_1_n_0\
     );
 \comp_burst.data_env_6[13]_i_1\: unisim.vcomponents.LUT3
@@ -69056,8 +69616,8 @@ begin
     )
         port map (
       I0 => data_env_6(13),
-      I1 => p5_data(205),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[205]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[13]_i_1_n_0\
     );
 \comp_burst.data_env_6[14]_i_1\: unisim.vcomponents.LUT3
@@ -69066,8 +69626,8 @@ begin
     )
         port map (
       I0 => data_env_6(14),
-      I1 => p5_data(206),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[206]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[14]_i_1_n_0\
     );
 \comp_burst.data_env_6[15]_i_1\: unisim.vcomponents.LUT3
@@ -69076,8 +69636,8 @@ begin
     )
         port map (
       I0 => data_env_6(15),
-      I1 => p5_data(207),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[207]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[15]_i_1_n_0\
     );
 \comp_burst.data_env_6[1]_i_1\: unisim.vcomponents.LUT3
@@ -69086,8 +69646,8 @@ begin
     )
         port map (
       I0 => data_env_6(1),
-      I1 => p5_data(193),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[193]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[1]_i_1_n_0\
     );
 \comp_burst.data_env_6[2]_i_1\: unisim.vcomponents.LUT3
@@ -69096,8 +69656,8 @@ begin
     )
         port map (
       I0 => data_env_6(2),
-      I1 => p5_data(194),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[194]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[2]_i_1_n_0\
     );
 \comp_burst.data_env_6[3]_i_1\: unisim.vcomponents.LUT3
@@ -69106,8 +69666,8 @@ begin
     )
         port map (
       I0 => data_env_6(3),
-      I1 => p5_data(195),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[195]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[3]_i_1_n_0\
     );
 \comp_burst.data_env_6[4]_i_1\: unisim.vcomponents.LUT3
@@ -69116,8 +69676,8 @@ begin
     )
         port map (
       I0 => data_env_6(4),
-      I1 => p5_data(196),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[196]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[4]_i_1_n_0\
     );
 \comp_burst.data_env_6[5]_i_1\: unisim.vcomponents.LUT3
@@ -69126,8 +69686,8 @@ begin
     )
         port map (
       I0 => data_env_6(5),
-      I1 => p5_data(197),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[197]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[5]_i_1_n_0\
     );
 \comp_burst.data_env_6[6]_i_1\: unisim.vcomponents.LUT3
@@ -69136,8 +69696,8 @@ begin
     )
         port map (
       I0 => data_env_6(6),
-      I1 => p5_data(198),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[198]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[6]_i_1_n_0\
     );
 \comp_burst.data_env_6[7]_i_1\: unisim.vcomponents.LUT3
@@ -69146,8 +69706,8 @@ begin
     )
         port map (
       I0 => data_env_6(7),
-      I1 => p5_data(199),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[199]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[7]_i_1_n_0\
     );
 \comp_burst.data_env_6[8]_i_1\: unisim.vcomponents.LUT3
@@ -69156,8 +69716,8 @@ begin
     )
         port map (
       I0 => data_env_6(8),
-      I1 => p5_data(200),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[200]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[8]_i_1_n_0\
     );
 \comp_burst.data_env_6[9]_i_1\: unisim.vcomponents.LUT3
@@ -69166,134 +69726,134 @@ begin
     )
         port map (
       I0 => data_env_6(9),
-      I1 => p5_data(201),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[201]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_6[9]_i_1_n_0\
     );
 \comp_burst.data_env_6_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[0]_i_1_n_0\,
       Q => data_env_6(0),
       R => '0'
     );
 \comp_burst.data_env_6_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[10]_i_1_n_0\,
       Q => data_env_6(10),
       R => '0'
     );
 \comp_burst.data_env_6_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[11]_i_1_n_0\,
       Q => data_env_6(11),
       R => '0'
     );
 \comp_burst.data_env_6_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[12]_i_1_n_0\,
       Q => data_env_6(12),
       R => '0'
     );
 \comp_burst.data_env_6_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[13]_i_1_n_0\,
       Q => data_env_6(13),
       R => '0'
     );
 \comp_burst.data_env_6_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[14]_i_1_n_0\,
       Q => data_env_6(14),
       R => '0'
     );
 \comp_burst.data_env_6_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[15]_i_1_n_0\,
       Q => data_env_6(15),
       R => '0'
     );
 \comp_burst.data_env_6_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[1]_i_1_n_0\,
       Q => data_env_6(1),
       R => '0'
     );
 \comp_burst.data_env_6_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[2]_i_1_n_0\,
       Q => data_env_6(2),
       R => '0'
     );
 \comp_burst.data_env_6_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[3]_i_1_n_0\,
       Q => data_env_6(3),
       R => '0'
     );
 \comp_burst.data_env_6_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[4]_i_1_n_0\,
       Q => data_env_6(4),
       R => '0'
     );
 \comp_burst.data_env_6_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[5]_i_1_n_0\,
       Q => data_env_6(5),
       R => '0'
     );
 \comp_burst.data_env_6_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[6]_i_1_n_0\,
       Q => data_env_6(6),
       R => '0'
     );
 \comp_burst.data_env_6_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[7]_i_1_n_0\,
       Q => data_env_6(7),
       R => '0'
     );
 \comp_burst.data_env_6_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[8]_i_1_n_0\,
       Q => data_env_6(8),
       R => '0'
     );
 \comp_burst.data_env_6_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_6[9]_i_1_n_0\,
       Q => data_env_6(9),
       R => '0'
@@ -69304,8 +69864,8 @@ begin
     )
         port map (
       I0 => data_env_7(0),
-      I1 => p5_data(224),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[224]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[0]_i_1_n_0\
     );
 \comp_burst.data_env_7[10]_i_1\: unisim.vcomponents.LUT3
@@ -69314,8 +69874,8 @@ begin
     )
         port map (
       I0 => data_env_7(10),
-      I1 => p5_data(234),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[234]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[10]_i_1_n_0\
     );
 \comp_burst.data_env_7[11]_i_1\: unisim.vcomponents.LUT3
@@ -69324,8 +69884,8 @@ begin
     )
         port map (
       I0 => data_env_7(11),
-      I1 => p5_data(235),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[235]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[11]_i_1_n_0\
     );
 \comp_burst.data_env_7[12]_i_1\: unisim.vcomponents.LUT3
@@ -69334,8 +69894,8 @@ begin
     )
         port map (
       I0 => data_env_7(12),
-      I1 => p5_data(236),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[236]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[12]_i_1_n_0\
     );
 \comp_burst.data_env_7[13]_i_1\: unisim.vcomponents.LUT3
@@ -69344,8 +69904,8 @@ begin
     )
         port map (
       I0 => data_env_7(13),
-      I1 => p5_data(237),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[237]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[13]_i_1_n_0\
     );
 \comp_burst.data_env_7[14]_i_1\: unisim.vcomponents.LUT3
@@ -69354,8 +69914,8 @@ begin
     )
         port map (
       I0 => data_env_7(14),
-      I1 => p5_data(238),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[238]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[14]_i_1_n_0\
     );
 \comp_burst.data_env_7[15]_i_1\: unisim.vcomponents.LUT3
@@ -69364,8 +69924,8 @@ begin
     )
         port map (
       I0 => data_env_7(15),
-      I1 => p5_data(239),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[239]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[15]_i_1_n_0\
     );
 \comp_burst.data_env_7[1]_i_1\: unisim.vcomponents.LUT3
@@ -69374,8 +69934,8 @@ begin
     )
         port map (
       I0 => data_env_7(1),
-      I1 => p5_data(225),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[225]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[1]_i_1_n_0\
     );
 \comp_burst.data_env_7[2]_i_1\: unisim.vcomponents.LUT3
@@ -69384,8 +69944,8 @@ begin
     )
         port map (
       I0 => data_env_7(2),
-      I1 => p5_data(226),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[226]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[2]_i_1_n_0\
     );
 \comp_burst.data_env_7[3]_i_1\: unisim.vcomponents.LUT3
@@ -69394,8 +69954,8 @@ begin
     )
         port map (
       I0 => data_env_7(3),
-      I1 => p5_data(227),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[227]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[3]_i_1_n_0\
     );
 \comp_burst.data_env_7[4]_i_1\: unisim.vcomponents.LUT3
@@ -69404,8 +69964,8 @@ begin
     )
         port map (
       I0 => data_env_7(4),
-      I1 => p5_data(228),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[228]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[4]_i_1_n_0\
     );
 \comp_burst.data_env_7[5]_i_1\: unisim.vcomponents.LUT3
@@ -69414,8 +69974,8 @@ begin
     )
         port map (
       I0 => data_env_7(5),
-      I1 => p5_data(229),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[229]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[5]_i_1_n_0\
     );
 \comp_burst.data_env_7[6]_i_1\: unisim.vcomponents.LUT3
@@ -69424,8 +69984,8 @@ begin
     )
         port map (
       I0 => data_env_7(6),
-      I1 => p5_data(230),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[230]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[6]_i_1_n_0\
     );
 \comp_burst.data_env_7[7]_i_1\: unisim.vcomponents.LUT3
@@ -69434,8 +69994,8 @@ begin
     )
         port map (
       I0 => data_env_7(7),
-      I1 => p5_data(231),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[231]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[7]_i_1_n_0\
     );
 \comp_burst.data_env_7[8]_i_1\: unisim.vcomponents.LUT3
@@ -69444,8 +70004,8 @@ begin
     )
         port map (
       I0 => data_env_7(8),
-      I1 => p5_data(232),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[232]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[8]_i_1_n_0\
     );
 \comp_burst.data_env_7[9]_i_1\: unisim.vcomponents.LUT3
@@ -69454,134 +70014,134 @@ begin
     )
         port map (
       I0 => data_env_7(9),
-      I1 => p5_data(233),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[233]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_env_7[9]_i_1_n_0\
     );
 \comp_burst.data_env_7_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[0]_i_1_n_0\,
       Q => data_env_7(0),
       R => '0'
     );
 \comp_burst.data_env_7_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[10]_i_1_n_0\,
       Q => data_env_7(10),
       R => '0'
     );
 \comp_burst.data_env_7_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[11]_i_1_n_0\,
       Q => data_env_7(11),
       R => '0'
     );
 \comp_burst.data_env_7_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[12]_i_1_n_0\,
       Q => data_env_7(12),
       R => '0'
     );
 \comp_burst.data_env_7_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[13]_i_1_n_0\,
       Q => data_env_7(13),
       R => '0'
     );
 \comp_burst.data_env_7_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[14]_i_1_n_0\,
       Q => data_env_7(14),
       R => '0'
     );
 \comp_burst.data_env_7_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[15]_i_1_n_0\,
       Q => data_env_7(15),
       R => '0'
     );
 \comp_burst.data_env_7_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[1]_i_1_n_0\,
       Q => data_env_7(1),
       R => '0'
     );
 \comp_burst.data_env_7_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[2]_i_1_n_0\,
       Q => data_env_7(2),
       R => '0'
     );
 \comp_burst.data_env_7_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[3]_i_1_n_0\,
       Q => data_env_7(3),
       R => '0'
     );
 \comp_burst.data_env_7_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[4]_i_1_n_0\,
       Q => data_env_7(4),
       R => '0'
     );
 \comp_burst.data_env_7_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[5]_i_1_n_0\,
       Q => data_env_7(5),
       R => '0'
     );
 \comp_burst.data_env_7_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[6]_i_1_n_0\,
       Q => data_env_7(6),
       R => '0'
     );
 \comp_burst.data_env_7_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[7]_i_1_n_0\,
       Q => data_env_7(7),
       R => '0'
     );
 \comp_burst.data_env_7_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[8]_i_1_n_0\,
       Q => data_env_7(8),
       R => '0'
     );
 \comp_burst.data_env_7_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_env_7[9]_i_1_n_0\,
       Q => data_env_7(9),
       R => '0'
@@ -69592,8 +70152,8 @@ begin
     )
         port map (
       I0 => data_phase_0(0),
-      I1 => p5_data(79),
-      I2 => p5_data(16),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[16]\,
       O => \comp_burst.data_phase_0[0]_i_1_n_0\
     );
 \comp_burst.data_phase_0[10]_i_1\: unisim.vcomponents.LUT3
@@ -69602,8 +70162,8 @@ begin
     )
         port map (
       I0 => data_phase_0(10),
-      I1 => p5_data(79),
-      I2 => p5_data(26),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[26]\,
       O => \comp_burst.data_phase_0[10]_i_1_n_0\
     );
 \comp_burst.data_phase_0[11]_i_1\: unisim.vcomponents.LUT3
@@ -69612,8 +70172,8 @@ begin
     )
         port map (
       I0 => data_phase_0(11),
-      I1 => p5_data(79),
-      I2 => p5_data(27),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[27]\,
       O => \comp_burst.data_phase_0[11]_i_1_n_0\
     );
 \comp_burst.data_phase_0[12]_i_1\: unisim.vcomponents.LUT3
@@ -69622,8 +70182,8 @@ begin
     )
         port map (
       I0 => data_phase_0(12),
-      I1 => p5_data(79),
-      I2 => p5_data(28),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[28]\,
       O => \comp_burst.data_phase_0[12]_i_1_n_0\
     );
 \comp_burst.data_phase_0[13]_i_1\: unisim.vcomponents.LUT3
@@ -69632,8 +70192,8 @@ begin
     )
         port map (
       I0 => data_phase_0(13),
-      I1 => p5_data(79),
-      I2 => p5_data(29),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[29]\,
       O => \comp_burst.data_phase_0[13]_i_1_n_0\
     );
 \comp_burst.data_phase_0[14]_i_1\: unisim.vcomponents.LUT3
@@ -69642,8 +70202,8 @@ begin
     )
         port map (
       I0 => data_phase_0(14),
-      I1 => p5_data(79),
-      I2 => p5_data(30),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[30]\,
       O => \comp_burst.data_phase_0[14]_i_1_n_0\
     );
 \comp_burst.data_phase_0[15]_i_1\: unisim.vcomponents.LUT3
@@ -69652,8 +70212,8 @@ begin
     )
         port map (
       I0 => data_phase_0(15),
-      I1 => p5_data(79),
-      I2 => p5_data(31),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[31]\,
       O => \comp_burst.data_phase_0[15]_i_1_n_0\
     );
 \comp_burst.data_phase_0[1]_i_1\: unisim.vcomponents.LUT3
@@ -69662,8 +70222,8 @@ begin
     )
         port map (
       I0 => data_phase_0(1),
-      I1 => p5_data(79),
-      I2 => p5_data(17),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[17]\,
       O => \comp_burst.data_phase_0[1]_i_1_n_0\
     );
 \comp_burst.data_phase_0[2]_i_1\: unisim.vcomponents.LUT3
@@ -69672,8 +70232,8 @@ begin
     )
         port map (
       I0 => data_phase_0(2),
-      I1 => p5_data(79),
-      I2 => p5_data(18),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[18]\,
       O => \comp_burst.data_phase_0[2]_i_1_n_0\
     );
 \comp_burst.data_phase_0[3]_i_1\: unisim.vcomponents.LUT3
@@ -69682,8 +70242,8 @@ begin
     )
         port map (
       I0 => data_phase_0(3),
-      I1 => p5_data(79),
-      I2 => p5_data(19),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[19]\,
       O => \comp_burst.data_phase_0[3]_i_1_n_0\
     );
 \comp_burst.data_phase_0[4]_i_1\: unisim.vcomponents.LUT3
@@ -69692,8 +70252,8 @@ begin
     )
         port map (
       I0 => data_phase_0(4),
-      I1 => p5_data(79),
-      I2 => p5_data(20),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[20]\,
       O => \comp_burst.data_phase_0[4]_i_1_n_0\
     );
 \comp_burst.data_phase_0[5]_i_1\: unisim.vcomponents.LUT3
@@ -69702,8 +70262,8 @@ begin
     )
         port map (
       I0 => data_phase_0(5),
-      I1 => p5_data(79),
-      I2 => p5_data(21),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[21]\,
       O => \comp_burst.data_phase_0[5]_i_1_n_0\
     );
 \comp_burst.data_phase_0[6]_i_1\: unisim.vcomponents.LUT3
@@ -69712,8 +70272,8 @@ begin
     )
         port map (
       I0 => data_phase_0(6),
-      I1 => p5_data(79),
-      I2 => p5_data(22),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[22]\,
       O => \comp_burst.data_phase_0[6]_i_1_n_0\
     );
 \comp_burst.data_phase_0[7]_i_1\: unisim.vcomponents.LUT3
@@ -69722,8 +70282,8 @@ begin
     )
         port map (
       I0 => data_phase_0(7),
-      I1 => p5_data(79),
-      I2 => p5_data(23),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[23]\,
       O => \comp_burst.data_phase_0[7]_i_1_n_0\
     );
 \comp_burst.data_phase_0[8]_i_1\: unisim.vcomponents.LUT3
@@ -69732,8 +70292,8 @@ begin
     )
         port map (
       I0 => data_phase_0(8),
-      I1 => p5_data(79),
-      I2 => p5_data(24),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[24]\,
       O => \comp_burst.data_phase_0[8]_i_1_n_0\
     );
 \comp_burst.data_phase_0[9]_i_1\: unisim.vcomponents.LUT3
@@ -69742,134 +70302,134 @@ begin
     )
         port map (
       I0 => data_phase_0(9),
-      I1 => p5_data(79),
-      I2 => p5_data(25),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[25]\,
       O => \comp_burst.data_phase_0[9]_i_1_n_0\
     );
 \comp_burst.data_phase_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[0]_i_1_n_0\,
       Q => data_phase_0(0),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[10]_i_1_n_0\,
       Q => data_phase_0(10),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[11]_i_1_n_0\,
       Q => data_phase_0(11),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[12]_i_1_n_0\,
       Q => data_phase_0(12),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[13]_i_1_n_0\,
       Q => data_phase_0(13),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[14]_i_1_n_0\,
       Q => data_phase_0(14),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[15]_i_1_n_0\,
       Q => data_phase_0(15),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[1]_i_1_n_0\,
       Q => data_phase_0(1),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[2]_i_1_n_0\,
       Q => data_phase_0(2),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[3]_i_1_n_0\,
       Q => data_phase_0(3),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[4]_i_1_n_0\,
       Q => data_phase_0(4),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[5]_i_1_n_0\,
       Q => data_phase_0(5),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[6]_i_1_n_0\,
       Q => data_phase_0(6),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[7]_i_1_n_0\,
       Q => data_phase_0(7),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[8]_i_1_n_0\,
       Q => data_phase_0(8),
       R => '0'
     );
 \comp_burst.data_phase_0_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_0[9]_i_1_n_0\,
       Q => data_phase_0(9),
       R => '0'
@@ -69880,8 +70440,8 @@ begin
     )
         port map (
       I0 => data_phase_1(0),
-      I1 => p5_data(79),
-      I2 => p5_data(48),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[48]\,
       O => \comp_burst.data_phase_1[0]_i_1_n_0\
     );
 \comp_burst.data_phase_1[10]_i_1\: unisim.vcomponents.LUT3
@@ -69890,8 +70450,8 @@ begin
     )
         port map (
       I0 => data_phase_1(10),
-      I1 => p5_data(79),
-      I2 => p5_data(58),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[58]\,
       O => \comp_burst.data_phase_1[10]_i_1_n_0\
     );
 \comp_burst.data_phase_1[11]_i_1\: unisim.vcomponents.LUT3
@@ -69900,8 +70460,8 @@ begin
     )
         port map (
       I0 => data_phase_1(11),
-      I1 => p5_data(79),
-      I2 => p5_data(59),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[59]\,
       O => \comp_burst.data_phase_1[11]_i_1_n_0\
     );
 \comp_burst.data_phase_1[12]_i_1\: unisim.vcomponents.LUT3
@@ -69910,8 +70470,8 @@ begin
     )
         port map (
       I0 => data_phase_1(12),
-      I1 => p5_data(79),
-      I2 => p5_data(60),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[60]\,
       O => \comp_burst.data_phase_1[12]_i_1_n_0\
     );
 \comp_burst.data_phase_1[13]_i_1\: unisim.vcomponents.LUT3
@@ -69920,8 +70480,8 @@ begin
     )
         port map (
       I0 => data_phase_1(13),
-      I1 => p5_data(79),
-      I2 => p5_data(61),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[61]\,
       O => \comp_burst.data_phase_1[13]_i_1_n_0\
     );
 \comp_burst.data_phase_1[14]_i_1\: unisim.vcomponents.LUT3
@@ -69930,8 +70490,8 @@ begin
     )
         port map (
       I0 => data_phase_1(14),
-      I1 => p5_data(79),
-      I2 => p5_data(62),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[62]\,
       O => \comp_burst.data_phase_1[14]_i_1_n_0\
     );
 \comp_burst.data_phase_1[15]_i_1\: unisim.vcomponents.LUT3
@@ -69940,8 +70500,8 @@ begin
     )
         port map (
       I0 => data_phase_1(15),
-      I1 => p5_data(79),
-      I2 => p5_data(63),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[63]\,
       O => \comp_burst.data_phase_1[15]_i_1_n_0\
     );
 \comp_burst.data_phase_1[1]_i_1\: unisim.vcomponents.LUT3
@@ -69950,8 +70510,8 @@ begin
     )
         port map (
       I0 => data_phase_1(1),
-      I1 => p5_data(79),
-      I2 => p5_data(49),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[49]\,
       O => \comp_burst.data_phase_1[1]_i_1_n_0\
     );
 \comp_burst.data_phase_1[2]_i_1\: unisim.vcomponents.LUT3
@@ -69960,8 +70520,8 @@ begin
     )
         port map (
       I0 => data_phase_1(2),
-      I1 => p5_data(79),
-      I2 => p5_data(50),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[50]\,
       O => \comp_burst.data_phase_1[2]_i_1_n_0\
     );
 \comp_burst.data_phase_1[3]_i_1\: unisim.vcomponents.LUT3
@@ -69970,8 +70530,8 @@ begin
     )
         port map (
       I0 => data_phase_1(3),
-      I1 => p5_data(79),
-      I2 => p5_data(51),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[51]\,
       O => \comp_burst.data_phase_1[3]_i_1_n_0\
     );
 \comp_burst.data_phase_1[4]_i_1\: unisim.vcomponents.LUT3
@@ -69980,8 +70540,8 @@ begin
     )
         port map (
       I0 => data_phase_1(4),
-      I1 => p5_data(79),
-      I2 => p5_data(52),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[52]\,
       O => \comp_burst.data_phase_1[4]_i_1_n_0\
     );
 \comp_burst.data_phase_1[5]_i_1\: unisim.vcomponents.LUT3
@@ -69990,8 +70550,8 @@ begin
     )
         port map (
       I0 => data_phase_1(5),
-      I1 => p5_data(79),
-      I2 => p5_data(53),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[53]\,
       O => \comp_burst.data_phase_1[5]_i_1_n_0\
     );
 \comp_burst.data_phase_1[6]_i_1\: unisim.vcomponents.LUT3
@@ -70000,8 +70560,8 @@ begin
     )
         port map (
       I0 => data_phase_1(6),
-      I1 => p5_data(79),
-      I2 => p5_data(54),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[54]\,
       O => \comp_burst.data_phase_1[6]_i_1_n_0\
     );
 \comp_burst.data_phase_1[7]_i_1\: unisim.vcomponents.LUT3
@@ -70010,8 +70570,8 @@ begin
     )
         port map (
       I0 => data_phase_1(7),
-      I1 => p5_data(79),
-      I2 => p5_data(55),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[55]\,
       O => \comp_burst.data_phase_1[7]_i_1_n_0\
     );
 \comp_burst.data_phase_1[8]_i_1\: unisim.vcomponents.LUT3
@@ -70020,8 +70580,8 @@ begin
     )
         port map (
       I0 => data_phase_1(8),
-      I1 => p5_data(79),
-      I2 => p5_data(56),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[56]\,
       O => \comp_burst.data_phase_1[8]_i_1_n_0\
     );
 \comp_burst.data_phase_1[9]_i_1\: unisim.vcomponents.LUT3
@@ -70030,134 +70590,134 @@ begin
     )
         port map (
       I0 => data_phase_1(9),
-      I1 => p5_data(79),
-      I2 => p5_data(57),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[57]\,
       O => \comp_burst.data_phase_1[9]_i_1_n_0\
     );
 \comp_burst.data_phase_1_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[0]_i_1_n_0\,
       Q => data_phase_1(0),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[10]_i_1_n_0\,
       Q => data_phase_1(10),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[11]_i_1_n_0\,
       Q => data_phase_1(11),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[12]_i_1_n_0\,
       Q => data_phase_1(12),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[13]_i_1_n_0\,
       Q => data_phase_1(13),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[14]_i_1_n_0\,
       Q => data_phase_1(14),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[15]_i_1_n_0\,
       Q => data_phase_1(15),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[1]_i_1_n_0\,
       Q => data_phase_1(1),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[2]_i_1_n_0\,
       Q => data_phase_1(2),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[3]_i_1_n_0\,
       Q => data_phase_1(3),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[4]_i_1_n_0\,
       Q => data_phase_1(4),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[5]_i_1_n_0\,
       Q => data_phase_1(5),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[6]_i_1_n_0\,
       Q => data_phase_1(6),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[7]_i_1_n_0\,
       Q => data_phase_1(7),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[8]_i_1_n_0\,
       Q => data_phase_1(8),
       R => '0'
     );
 \comp_burst.data_phase_1_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_1[9]_i_1_n_0\,
       Q => data_phase_1(9),
       R => '0'
@@ -70168,8 +70728,8 @@ begin
     )
         port map (
       I0 => data_phase_2(0),
-      I1 => p5_data(80),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[80]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[0]_i_1_n_0\
     );
 \comp_burst.data_phase_2[10]_i_1\: unisim.vcomponents.LUT3
@@ -70178,8 +70738,8 @@ begin
     )
         port map (
       I0 => data_phase_2(10),
-      I1 => p5_data(90),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[90]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[10]_i_1_n_0\
     );
 \comp_burst.data_phase_2[11]_i_1\: unisim.vcomponents.LUT3
@@ -70188,8 +70748,8 @@ begin
     )
         port map (
       I0 => data_phase_2(11),
-      I1 => p5_data(91),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[91]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[11]_i_1_n_0\
     );
 \comp_burst.data_phase_2[12]_i_1\: unisim.vcomponents.LUT3
@@ -70198,8 +70758,8 @@ begin
     )
         port map (
       I0 => data_phase_2(12),
-      I1 => p5_data(92),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[92]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[12]_i_1_n_0\
     );
 \comp_burst.data_phase_2[13]_i_1\: unisim.vcomponents.LUT3
@@ -70208,8 +70768,8 @@ begin
     )
         port map (
       I0 => data_phase_2(13),
-      I1 => p5_data(93),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[93]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[13]_i_1_n_0\
     );
 \comp_burst.data_phase_2[14]_i_1\: unisim.vcomponents.LUT3
@@ -70218,8 +70778,8 @@ begin
     )
         port map (
       I0 => data_phase_2(14),
-      I1 => p5_data(94),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[94]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[14]_i_1_n_0\
     );
 \comp_burst.data_phase_2[15]_i_1\: unisim.vcomponents.LUT3
@@ -70228,8 +70788,8 @@ begin
     )
         port map (
       I0 => data_phase_2(15),
-      I1 => p5_data(95),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[95]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[15]_i_1_n_0\
     );
 \comp_burst.data_phase_2[1]_i_1\: unisim.vcomponents.LUT3
@@ -70238,8 +70798,8 @@ begin
     )
         port map (
       I0 => data_phase_2(1),
-      I1 => p5_data(81),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[81]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[1]_i_1_n_0\
     );
 \comp_burst.data_phase_2[2]_i_1\: unisim.vcomponents.LUT3
@@ -70248,8 +70808,8 @@ begin
     )
         port map (
       I0 => data_phase_2(2),
-      I1 => p5_data(82),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[82]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[2]_i_1_n_0\
     );
 \comp_burst.data_phase_2[3]_i_1\: unisim.vcomponents.LUT3
@@ -70258,8 +70818,8 @@ begin
     )
         port map (
       I0 => data_phase_2(3),
-      I1 => p5_data(83),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[83]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[3]_i_1_n_0\
     );
 \comp_burst.data_phase_2[4]_i_1\: unisim.vcomponents.LUT3
@@ -70268,8 +70828,8 @@ begin
     )
         port map (
       I0 => data_phase_2(4),
-      I1 => p5_data(84),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[84]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[4]_i_1_n_0\
     );
 \comp_burst.data_phase_2[5]_i_1\: unisim.vcomponents.LUT3
@@ -70278,8 +70838,8 @@ begin
     )
         port map (
       I0 => data_phase_2(5),
-      I1 => p5_data(85),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[85]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[5]_i_1_n_0\
     );
 \comp_burst.data_phase_2[6]_i_1\: unisim.vcomponents.LUT3
@@ -70288,8 +70848,8 @@ begin
     )
         port map (
       I0 => data_phase_2(6),
-      I1 => p5_data(86),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[86]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[6]_i_1_n_0\
     );
 \comp_burst.data_phase_2[7]_i_1\: unisim.vcomponents.LUT3
@@ -70298,8 +70858,8 @@ begin
     )
         port map (
       I0 => data_phase_2(7),
-      I1 => p5_data(87),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[87]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[7]_i_1_n_0\
     );
 \comp_burst.data_phase_2[8]_i_1\: unisim.vcomponents.LUT3
@@ -70308,8 +70868,8 @@ begin
     )
         port map (
       I0 => data_phase_2(8),
-      I1 => p5_data(88),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[88]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[8]_i_1_n_0\
     );
 \comp_burst.data_phase_2[9]_i_1\: unisim.vcomponents.LUT3
@@ -70318,134 +70878,134 @@ begin
     )
         port map (
       I0 => data_phase_2(9),
-      I1 => p5_data(89),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[89]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_2[9]_i_1_n_0\
     );
 \comp_burst.data_phase_2_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[0]_i_1_n_0\,
       Q => data_phase_2(0),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[10]_i_1_n_0\,
       Q => data_phase_2(10),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[11]_i_1_n_0\,
       Q => data_phase_2(11),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[12]_i_1_n_0\,
       Q => data_phase_2(12),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[13]_i_1_n_0\,
       Q => data_phase_2(13),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[14]_i_1_n_0\,
       Q => data_phase_2(14),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[15]_i_1_n_0\,
       Q => data_phase_2(15),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[1]_i_1_n_0\,
       Q => data_phase_2(1),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[2]_i_1_n_0\,
       Q => data_phase_2(2),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[3]_i_1_n_0\,
       Q => data_phase_2(3),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[4]_i_1_n_0\,
       Q => data_phase_2(4),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[5]_i_1_n_0\,
       Q => data_phase_2(5),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[6]_i_1_n_0\,
       Q => data_phase_2(6),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[7]_i_1_n_0\,
       Q => data_phase_2(7),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[8]_i_1_n_0\,
       Q => data_phase_2(8),
       R => '0'
     );
 \comp_burst.data_phase_2_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_2[9]_i_1_n_0\,
       Q => data_phase_2(9),
       R => '0'
@@ -70456,8 +71016,8 @@ begin
     )
         port map (
       I0 => data_phase_3(0),
-      I1 => p5_data(112),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[112]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[0]_i_1_n_0\
     );
 \comp_burst.data_phase_3[10]_i_1\: unisim.vcomponents.LUT3
@@ -70466,8 +71026,8 @@ begin
     )
         port map (
       I0 => data_phase_3(10),
-      I1 => p5_data(122),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[122]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[10]_i_1_n_0\
     );
 \comp_burst.data_phase_3[11]_i_1\: unisim.vcomponents.LUT3
@@ -70476,8 +71036,8 @@ begin
     )
         port map (
       I0 => data_phase_3(11),
-      I1 => p5_data(123),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[123]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[11]_i_1_n_0\
     );
 \comp_burst.data_phase_3[12]_i_1\: unisim.vcomponents.LUT3
@@ -70486,8 +71046,8 @@ begin
     )
         port map (
       I0 => data_phase_3(12),
-      I1 => p5_data(124),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[124]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[12]_i_1_n_0\
     );
 \comp_burst.data_phase_3[13]_i_1\: unisim.vcomponents.LUT3
@@ -70496,8 +71056,8 @@ begin
     )
         port map (
       I0 => data_phase_3(13),
-      I1 => p5_data(125),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[125]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[13]_i_1_n_0\
     );
 \comp_burst.data_phase_3[14]_i_1\: unisim.vcomponents.LUT3
@@ -70506,8 +71066,8 @@ begin
     )
         port map (
       I0 => data_phase_3(14),
-      I1 => p5_data(126),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[126]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[14]_i_1_n_0\
     );
 \comp_burst.data_phase_3[15]_i_1\: unisim.vcomponents.LUT3
@@ -70516,8 +71076,8 @@ begin
     )
         port map (
       I0 => data_phase_3(15),
-      I1 => p5_data(127),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[127]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[15]_i_1_n_0\
     );
 \comp_burst.data_phase_3[1]_i_1\: unisim.vcomponents.LUT3
@@ -70526,8 +71086,8 @@ begin
     )
         port map (
       I0 => data_phase_3(1),
-      I1 => p5_data(113),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[113]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[1]_i_1_n_0\
     );
 \comp_burst.data_phase_3[2]_i_1\: unisim.vcomponents.LUT3
@@ -70536,8 +71096,8 @@ begin
     )
         port map (
       I0 => data_phase_3(2),
-      I1 => p5_data(114),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[114]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[2]_i_1_n_0\
     );
 \comp_burst.data_phase_3[3]_i_1\: unisim.vcomponents.LUT3
@@ -70546,8 +71106,8 @@ begin
     )
         port map (
       I0 => data_phase_3(3),
-      I1 => p5_data(115),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[115]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[3]_i_1_n_0\
     );
 \comp_burst.data_phase_3[4]_i_1\: unisim.vcomponents.LUT3
@@ -70556,8 +71116,8 @@ begin
     )
         port map (
       I0 => data_phase_3(4),
-      I1 => p5_data(116),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[116]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[4]_i_1_n_0\
     );
 \comp_burst.data_phase_3[5]_i_1\: unisim.vcomponents.LUT3
@@ -70566,8 +71126,8 @@ begin
     )
         port map (
       I0 => data_phase_3(5),
-      I1 => p5_data(117),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[117]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[5]_i_1_n_0\
     );
 \comp_burst.data_phase_3[6]_i_1\: unisim.vcomponents.LUT3
@@ -70576,8 +71136,8 @@ begin
     )
         port map (
       I0 => data_phase_3(6),
-      I1 => p5_data(118),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[118]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[6]_i_1_n_0\
     );
 \comp_burst.data_phase_3[7]_i_1\: unisim.vcomponents.LUT3
@@ -70586,8 +71146,8 @@ begin
     )
         port map (
       I0 => data_phase_3(7),
-      I1 => p5_data(119),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[119]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[7]_i_1_n_0\
     );
 \comp_burst.data_phase_3[8]_i_1\: unisim.vcomponents.LUT3
@@ -70596,8 +71156,8 @@ begin
     )
         port map (
       I0 => data_phase_3(8),
-      I1 => p5_data(120),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[120]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[8]_i_1_n_0\
     );
 \comp_burst.data_phase_3[9]_i_1\: unisim.vcomponents.LUT3
@@ -70606,134 +71166,134 @@ begin
     )
         port map (
       I0 => data_phase_3(9),
-      I1 => p5_data(121),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[121]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_3[9]_i_1_n_0\
     );
 \comp_burst.data_phase_3_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[0]_i_1_n_0\,
       Q => data_phase_3(0),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[10]_i_1_n_0\,
       Q => data_phase_3(10),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[11]_i_1_n_0\,
       Q => data_phase_3(11),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[12]_i_1_n_0\,
       Q => data_phase_3(12),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[13]_i_1_n_0\,
       Q => data_phase_3(13),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[14]_i_1_n_0\,
       Q => data_phase_3(14),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[15]_i_1_n_0\,
       Q => data_phase_3(15),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[1]_i_1_n_0\,
       Q => data_phase_3(1),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[2]_i_1_n_0\,
       Q => data_phase_3(2),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[3]_i_1_n_0\,
       Q => data_phase_3(3),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[4]_i_1_n_0\,
       Q => data_phase_3(4),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[5]_i_1_n_0\,
       Q => data_phase_3(5),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[6]_i_1_n_0\,
       Q => data_phase_3(6),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[7]_i_1_n_0\,
       Q => data_phase_3(7),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[8]_i_1_n_0\,
       Q => data_phase_3(8),
       R => '0'
     );
 \comp_burst.data_phase_3_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_3[9]_i_1_n_0\,
       Q => data_phase_3(9),
       R => '0'
@@ -70744,8 +71304,8 @@ begin
     )
         port map (
       I0 => data_phase_4(0),
-      I1 => p5_data(79),
-      I2 => p5_data(144),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[144]\,
       O => \comp_burst.data_phase_4[0]_i_1_n_0\
     );
 \comp_burst.data_phase_4[10]_i_1\: unisim.vcomponents.LUT3
@@ -70754,8 +71314,8 @@ begin
     )
         port map (
       I0 => data_phase_4(10),
-      I1 => p5_data(79),
-      I2 => p5_data(154),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[154]\,
       O => \comp_burst.data_phase_4[10]_i_1_n_0\
     );
 \comp_burst.data_phase_4[11]_i_1\: unisim.vcomponents.LUT3
@@ -70764,8 +71324,8 @@ begin
     )
         port map (
       I0 => data_phase_4(11),
-      I1 => p5_data(79),
-      I2 => p5_data(155),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[155]\,
       O => \comp_burst.data_phase_4[11]_i_1_n_0\
     );
 \comp_burst.data_phase_4[12]_i_1\: unisim.vcomponents.LUT3
@@ -70774,8 +71334,8 @@ begin
     )
         port map (
       I0 => data_phase_4(12),
-      I1 => p5_data(79),
-      I2 => p5_data(156),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[156]\,
       O => \comp_burst.data_phase_4[12]_i_1_n_0\
     );
 \comp_burst.data_phase_4[13]_i_1\: unisim.vcomponents.LUT3
@@ -70784,8 +71344,8 @@ begin
     )
         port map (
       I0 => data_phase_4(13),
-      I1 => p5_data(79),
-      I2 => p5_data(157),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[157]\,
       O => \comp_burst.data_phase_4[13]_i_1_n_0\
     );
 \comp_burst.data_phase_4[14]_i_1\: unisim.vcomponents.LUT3
@@ -70794,8 +71354,8 @@ begin
     )
         port map (
       I0 => data_phase_4(14),
-      I1 => p5_data(79),
-      I2 => p5_data(158),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[158]\,
       O => \comp_burst.data_phase_4[14]_i_1_n_0\
     );
 \comp_burst.data_phase_4[15]_i_1\: unisim.vcomponents.LUT3
@@ -70804,8 +71364,8 @@ begin
     )
         port map (
       I0 => data_phase_4(15),
-      I1 => p5_data(79),
-      I2 => p5_data(159),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[159]\,
       O => \comp_burst.data_phase_4[15]_i_1_n_0\
     );
 \comp_burst.data_phase_4[1]_i_1\: unisim.vcomponents.LUT3
@@ -70814,8 +71374,8 @@ begin
     )
         port map (
       I0 => data_phase_4(1),
-      I1 => p5_data(79),
-      I2 => p5_data(145),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[145]\,
       O => \comp_burst.data_phase_4[1]_i_1_n_0\
     );
 \comp_burst.data_phase_4[2]_i_1\: unisim.vcomponents.LUT3
@@ -70824,8 +71384,8 @@ begin
     )
         port map (
       I0 => data_phase_4(2),
-      I1 => p5_data(79),
-      I2 => p5_data(146),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[146]\,
       O => \comp_burst.data_phase_4[2]_i_1_n_0\
     );
 \comp_burst.data_phase_4[3]_i_1\: unisim.vcomponents.LUT3
@@ -70834,8 +71394,8 @@ begin
     )
         port map (
       I0 => data_phase_4(3),
-      I1 => p5_data(79),
-      I2 => p5_data(147),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[147]\,
       O => \comp_burst.data_phase_4[3]_i_1_n_0\
     );
 \comp_burst.data_phase_4[4]_i_1\: unisim.vcomponents.LUT3
@@ -70844,8 +71404,8 @@ begin
     )
         port map (
       I0 => data_phase_4(4),
-      I1 => p5_data(79),
-      I2 => p5_data(148),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[148]\,
       O => \comp_burst.data_phase_4[4]_i_1_n_0\
     );
 \comp_burst.data_phase_4[5]_i_1\: unisim.vcomponents.LUT3
@@ -70854,8 +71414,8 @@ begin
     )
         port map (
       I0 => data_phase_4(5),
-      I1 => p5_data(79),
-      I2 => p5_data(149),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[149]\,
       O => \comp_burst.data_phase_4[5]_i_1_n_0\
     );
 \comp_burst.data_phase_4[6]_i_1\: unisim.vcomponents.LUT3
@@ -70864,8 +71424,8 @@ begin
     )
         port map (
       I0 => data_phase_4(6),
-      I1 => p5_data(79),
-      I2 => p5_data(150),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[150]\,
       O => \comp_burst.data_phase_4[6]_i_1_n_0\
     );
 \comp_burst.data_phase_4[7]_i_1\: unisim.vcomponents.LUT3
@@ -70874,8 +71434,8 @@ begin
     )
         port map (
       I0 => data_phase_4(7),
-      I1 => p5_data(79),
-      I2 => p5_data(151),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[151]\,
       O => \comp_burst.data_phase_4[7]_i_1_n_0\
     );
 \comp_burst.data_phase_4[8]_i_1\: unisim.vcomponents.LUT3
@@ -70884,8 +71444,8 @@ begin
     )
         port map (
       I0 => data_phase_4(8),
-      I1 => p5_data(79),
-      I2 => p5_data(152),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[152]\,
       O => \comp_burst.data_phase_4[8]_i_1_n_0\
     );
 \comp_burst.data_phase_4[9]_i_1\: unisim.vcomponents.LUT3
@@ -70894,134 +71454,134 @@ begin
     )
         port map (
       I0 => data_phase_4(9),
-      I1 => p5_data(79),
-      I2 => p5_data(153),
+      I1 => \comp_burst.data_reg_n_0_[79]\,
+      I2 => \comp_burst.data_reg_n_0_[153]\,
       O => \comp_burst.data_phase_4[9]_i_1_n_0\
     );
 \comp_burst.data_phase_4_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[0]_i_1_n_0\,
       Q => data_phase_4(0),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[10]_i_1_n_0\,
       Q => data_phase_4(10),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[11]_i_1_n_0\,
       Q => data_phase_4(11),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[12]_i_1_n_0\,
       Q => data_phase_4(12),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[13]_i_1_n_0\,
       Q => data_phase_4(13),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[14]_i_1_n_0\,
       Q => data_phase_4(14),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[15]_i_1_n_0\,
       Q => data_phase_4(15),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[1]_i_1_n_0\,
       Q => data_phase_4(1),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[2]_i_1_n_0\,
       Q => data_phase_4(2),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[3]_i_1_n_0\,
       Q => data_phase_4(3),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[4]_i_1_n_0\,
       Q => data_phase_4(4),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[5]_i_1_n_0\,
       Q => data_phase_4(5),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[6]_i_1_n_0\,
       Q => data_phase_4(6),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[7]_i_1_n_0\,
       Q => data_phase_4(7),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[8]_i_1_n_0\,
       Q => data_phase_4(8),
       R => '0'
     );
 \comp_burst.data_phase_4_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_4[9]_i_1_n_0\,
       Q => data_phase_4(9),
       R => '0'
@@ -71032,8 +71592,8 @@ begin
     )
         port map (
       I0 => data_phase_5(0),
-      I1 => p5_data(176),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[176]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[0]_i_1_n_0\
     );
 \comp_burst.data_phase_5[10]_i_1\: unisim.vcomponents.LUT3
@@ -71042,8 +71602,8 @@ begin
     )
         port map (
       I0 => data_phase_5(10),
-      I1 => p5_data(186),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[186]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[10]_i_1_n_0\
     );
 \comp_burst.data_phase_5[11]_i_1\: unisim.vcomponents.LUT3
@@ -71052,8 +71612,8 @@ begin
     )
         port map (
       I0 => data_phase_5(11),
-      I1 => p5_data(187),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[187]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[11]_i_1_n_0\
     );
 \comp_burst.data_phase_5[12]_i_1\: unisim.vcomponents.LUT3
@@ -71062,8 +71622,8 @@ begin
     )
         port map (
       I0 => data_phase_5(12),
-      I1 => p5_data(188),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[188]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[12]_i_1_n_0\
     );
 \comp_burst.data_phase_5[13]_i_1\: unisim.vcomponents.LUT3
@@ -71072,8 +71632,8 @@ begin
     )
         port map (
       I0 => data_phase_5(13),
-      I1 => p5_data(189),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[189]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[13]_i_1_n_0\
     );
 \comp_burst.data_phase_5[14]_i_1\: unisim.vcomponents.LUT3
@@ -71082,8 +71642,8 @@ begin
     )
         port map (
       I0 => data_phase_5(14),
-      I1 => p5_data(190),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[190]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[14]_i_1_n_0\
     );
 \comp_burst.data_phase_5[15]_i_1\: unisim.vcomponents.LUT3
@@ -71092,8 +71652,8 @@ begin
     )
         port map (
       I0 => data_phase_5(15),
-      I1 => p5_data(191),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[191]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[15]_i_1_n_0\
     );
 \comp_burst.data_phase_5[1]_i_1\: unisim.vcomponents.LUT3
@@ -71102,8 +71662,8 @@ begin
     )
         port map (
       I0 => data_phase_5(1),
-      I1 => p5_data(177),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[177]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[1]_i_1_n_0\
     );
 \comp_burst.data_phase_5[2]_i_1\: unisim.vcomponents.LUT3
@@ -71112,8 +71672,8 @@ begin
     )
         port map (
       I0 => data_phase_5(2),
-      I1 => p5_data(178),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[178]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[2]_i_1_n_0\
     );
 \comp_burst.data_phase_5[3]_i_1\: unisim.vcomponents.LUT3
@@ -71122,8 +71682,8 @@ begin
     )
         port map (
       I0 => data_phase_5(3),
-      I1 => p5_data(179),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[179]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[3]_i_1_n_0\
     );
 \comp_burst.data_phase_5[4]_i_1\: unisim.vcomponents.LUT3
@@ -71132,8 +71692,8 @@ begin
     )
         port map (
       I0 => data_phase_5(4),
-      I1 => p5_data(180),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[180]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[4]_i_1_n_0\
     );
 \comp_burst.data_phase_5[5]_i_1\: unisim.vcomponents.LUT3
@@ -71142,8 +71702,8 @@ begin
     )
         port map (
       I0 => data_phase_5(5),
-      I1 => p5_data(181),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[181]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[5]_i_1_n_0\
     );
 \comp_burst.data_phase_5[6]_i_1\: unisim.vcomponents.LUT3
@@ -71152,8 +71712,8 @@ begin
     )
         port map (
       I0 => data_phase_5(6),
-      I1 => p5_data(182),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[182]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[6]_i_1_n_0\
     );
 \comp_burst.data_phase_5[7]_i_1\: unisim.vcomponents.LUT3
@@ -71162,8 +71722,8 @@ begin
     )
         port map (
       I0 => data_phase_5(7),
-      I1 => p5_data(183),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[183]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[7]_i_1_n_0\
     );
 \comp_burst.data_phase_5[8]_i_1\: unisim.vcomponents.LUT3
@@ -71172,8 +71732,8 @@ begin
     )
         port map (
       I0 => data_phase_5(8),
-      I1 => p5_data(184),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[184]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[8]_i_1_n_0\
     );
 \comp_burst.data_phase_5[9]_i_1\: unisim.vcomponents.LUT3
@@ -71182,134 +71742,134 @@ begin
     )
         port map (
       I0 => data_phase_5(9),
-      I1 => p5_data(185),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[185]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_5[9]_i_1_n_0\
     );
 \comp_burst.data_phase_5_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[0]_i_1_n_0\,
       Q => data_phase_5(0),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[10]_i_1_n_0\,
       Q => data_phase_5(10),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[11]_i_1_n_0\,
       Q => data_phase_5(11),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[12]_i_1_n_0\,
       Q => data_phase_5(12),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[13]_i_1_n_0\,
       Q => data_phase_5(13),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[14]_i_1_n_0\,
       Q => data_phase_5(14),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[15]_i_1_n_0\,
       Q => data_phase_5(15),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[1]_i_1_n_0\,
       Q => data_phase_5(1),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[2]_i_1_n_0\,
       Q => data_phase_5(2),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[3]_i_1_n_0\,
       Q => data_phase_5(3),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[4]_i_1_n_0\,
       Q => data_phase_5(4),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[5]_i_1_n_0\,
       Q => data_phase_5(5),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[6]_i_1_n_0\,
       Q => data_phase_5(6),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[7]_i_1_n_0\,
       Q => data_phase_5(7),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[8]_i_1_n_0\,
       Q => data_phase_5(8),
       R => '0'
     );
 \comp_burst.data_phase_5_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_5[9]_i_1_n_0\,
       Q => data_phase_5(9),
       R => '0'
@@ -71320,8 +71880,8 @@ begin
     )
         port map (
       I0 => data_phase_6(0),
-      I1 => p5_data(208),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[208]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[0]_i_1_n_0\
     );
 \comp_burst.data_phase_6[10]_i_1\: unisim.vcomponents.LUT3
@@ -71330,8 +71890,8 @@ begin
     )
         port map (
       I0 => data_phase_6(10),
-      I1 => p5_data(218),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[218]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[10]_i_1_n_0\
     );
 \comp_burst.data_phase_6[11]_i_1\: unisim.vcomponents.LUT3
@@ -71340,8 +71900,8 @@ begin
     )
         port map (
       I0 => data_phase_6(11),
-      I1 => p5_data(219),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[219]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[11]_i_1_n_0\
     );
 \comp_burst.data_phase_6[12]_i_1\: unisim.vcomponents.LUT3
@@ -71350,8 +71910,8 @@ begin
     )
         port map (
       I0 => data_phase_6(12),
-      I1 => p5_data(220),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[220]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[12]_i_1_n_0\
     );
 \comp_burst.data_phase_6[13]_i_1\: unisim.vcomponents.LUT3
@@ -71360,8 +71920,8 @@ begin
     )
         port map (
       I0 => data_phase_6(13),
-      I1 => p5_data(221),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[221]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[13]_i_1_n_0\
     );
 \comp_burst.data_phase_6[14]_i_1\: unisim.vcomponents.LUT3
@@ -71370,8 +71930,8 @@ begin
     )
         port map (
       I0 => data_phase_6(14),
-      I1 => p5_data(222),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[222]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[14]_i_1_n_0\
     );
 \comp_burst.data_phase_6[15]_i_1\: unisim.vcomponents.LUT3
@@ -71380,8 +71940,8 @@ begin
     )
         port map (
       I0 => data_phase_6(15),
-      I1 => p5_data(223),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[223]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[15]_i_1_n_0\
     );
 \comp_burst.data_phase_6[1]_i_1\: unisim.vcomponents.LUT3
@@ -71390,8 +71950,8 @@ begin
     )
         port map (
       I0 => data_phase_6(1),
-      I1 => p5_data(209),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[209]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[1]_i_1_n_0\
     );
 \comp_burst.data_phase_6[2]_i_1\: unisim.vcomponents.LUT3
@@ -71400,8 +71960,8 @@ begin
     )
         port map (
       I0 => data_phase_6(2),
-      I1 => p5_data(210),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[210]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[2]_i_1_n_0\
     );
 \comp_burst.data_phase_6[3]_i_1\: unisim.vcomponents.LUT3
@@ -71410,8 +71970,8 @@ begin
     )
         port map (
       I0 => data_phase_6(3),
-      I1 => p5_data(211),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[211]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[3]_i_1_n_0\
     );
 \comp_burst.data_phase_6[4]_i_1\: unisim.vcomponents.LUT3
@@ -71420,8 +71980,8 @@ begin
     )
         port map (
       I0 => data_phase_6(4),
-      I1 => p5_data(212),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[212]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[4]_i_1_n_0\
     );
 \comp_burst.data_phase_6[5]_i_1\: unisim.vcomponents.LUT3
@@ -71430,8 +71990,8 @@ begin
     )
         port map (
       I0 => data_phase_6(5),
-      I1 => p5_data(213),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[213]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[5]_i_1_n_0\
     );
 \comp_burst.data_phase_6[6]_i_1\: unisim.vcomponents.LUT3
@@ -71440,8 +72000,8 @@ begin
     )
         port map (
       I0 => data_phase_6(6),
-      I1 => p5_data(214),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[214]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[6]_i_1_n_0\
     );
 \comp_burst.data_phase_6[7]_i_1\: unisim.vcomponents.LUT3
@@ -71450,8 +72010,8 @@ begin
     )
         port map (
       I0 => data_phase_6(7),
-      I1 => p5_data(215),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[215]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[7]_i_1_n_0\
     );
 \comp_burst.data_phase_6[8]_i_1\: unisim.vcomponents.LUT3
@@ -71460,8 +72020,8 @@ begin
     )
         port map (
       I0 => data_phase_6(8),
-      I1 => p5_data(216),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[216]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[8]_i_1_n_0\
     );
 \comp_burst.data_phase_6[9]_i_1\: unisim.vcomponents.LUT3
@@ -71470,134 +72030,134 @@ begin
     )
         port map (
       I0 => data_phase_6(9),
-      I1 => p5_data(217),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[217]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_6[9]_i_1_n_0\
     );
 \comp_burst.data_phase_6_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[0]_i_1_n_0\,
       Q => data_phase_6(0),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[10]_i_1_n_0\,
       Q => data_phase_6(10),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[11]_i_1_n_0\,
       Q => data_phase_6(11),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[12]_i_1_n_0\,
       Q => data_phase_6(12),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[13]_i_1_n_0\,
       Q => data_phase_6(13),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[14]_i_1_n_0\,
       Q => data_phase_6(14),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[15]_i_1_n_0\,
       Q => data_phase_6(15),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[1]_i_1_n_0\,
       Q => data_phase_6(1),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[2]_i_1_n_0\,
       Q => data_phase_6(2),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[3]_i_1_n_0\,
       Q => data_phase_6(3),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[4]_i_1_n_0\,
       Q => data_phase_6(4),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[5]_i_1_n_0\,
       Q => data_phase_6(5),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[6]_i_1_n_0\,
       Q => data_phase_6(6),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[7]_i_1_n_0\,
       Q => data_phase_6(7),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[8]_i_1_n_0\,
       Q => data_phase_6(8),
       R => '0'
     );
 \comp_burst.data_phase_6_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_6[9]_i_1_n_0\,
       Q => data_phase_6(9),
       R => '0'
@@ -71608,8 +72168,8 @@ begin
     )
         port map (
       I0 => data_phase_7(0),
-      I1 => p5_data(240),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[240]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[0]_i_1_n_0\
     );
 \comp_burst.data_phase_7[10]_i_1\: unisim.vcomponents.LUT3
@@ -71618,8 +72178,8 @@ begin
     )
         port map (
       I0 => data_phase_7(10),
-      I1 => p5_data(250),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[250]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[10]_i_1_n_0\
     );
 \comp_burst.data_phase_7[11]_i_1\: unisim.vcomponents.LUT3
@@ -71628,8 +72188,8 @@ begin
     )
         port map (
       I0 => data_phase_7(11),
-      I1 => p5_data(251),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[251]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[11]_i_1_n_0\
     );
 \comp_burst.data_phase_7[12]_i_1\: unisim.vcomponents.LUT3
@@ -71638,8 +72198,8 @@ begin
     )
         port map (
       I0 => data_phase_7(12),
-      I1 => p5_data(252),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[252]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[12]_i_1_n_0\
     );
 \comp_burst.data_phase_7[13]_i_1\: unisim.vcomponents.LUT3
@@ -71648,8 +72208,8 @@ begin
     )
         port map (
       I0 => data_phase_7(13),
-      I1 => p5_data(253),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[253]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[13]_i_1_n_0\
     );
 \comp_burst.data_phase_7[14]_i_1\: unisim.vcomponents.LUT3
@@ -71658,8 +72218,8 @@ begin
     )
         port map (
       I0 => data_phase_7(14),
-      I1 => p5_data(254),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[254]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[14]_i_1_n_0\
     );
 \comp_burst.data_phase_7[15]_i_1\: unisim.vcomponents.LUT3
@@ -71668,8 +72228,8 @@ begin
     )
         port map (
       I0 => data_phase_7(15),
-      I1 => p5_data(255),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[255]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[15]_i_1_n_0\
     );
 \comp_burst.data_phase_7[1]_i_1\: unisim.vcomponents.LUT3
@@ -71678,8 +72238,8 @@ begin
     )
         port map (
       I0 => data_phase_7(1),
-      I1 => p5_data(241),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[241]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[1]_i_1_n_0\
     );
 \comp_burst.data_phase_7[2]_i_1\: unisim.vcomponents.LUT3
@@ -71688,8 +72248,8 @@ begin
     )
         port map (
       I0 => data_phase_7(2),
-      I1 => p5_data(242),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[242]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[2]_i_1_n_0\
     );
 \comp_burst.data_phase_7[3]_i_1\: unisim.vcomponents.LUT3
@@ -71698,8 +72258,8 @@ begin
     )
         port map (
       I0 => data_phase_7(3),
-      I1 => p5_data(243),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[243]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[3]_i_1_n_0\
     );
 \comp_burst.data_phase_7[4]_i_1\: unisim.vcomponents.LUT3
@@ -71708,8 +72268,8 @@ begin
     )
         port map (
       I0 => data_phase_7(4),
-      I1 => p5_data(244),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[244]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[4]_i_1_n_0\
     );
 \comp_burst.data_phase_7[5]_i_1\: unisim.vcomponents.LUT3
@@ -71718,8 +72278,8 @@ begin
     )
         port map (
       I0 => data_phase_7(5),
-      I1 => p5_data(245),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[245]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[5]_i_1_n_0\
     );
 \comp_burst.data_phase_7[6]_i_1\: unisim.vcomponents.LUT3
@@ -71728,8 +72288,8 @@ begin
     )
         port map (
       I0 => data_phase_7(6),
-      I1 => p5_data(246),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[246]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[6]_i_1_n_0\
     );
 \comp_burst.data_phase_7[7]_i_1\: unisim.vcomponents.LUT3
@@ -71738,8 +72298,8 @@ begin
     )
         port map (
       I0 => data_phase_7(7),
-      I1 => p5_data(247),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[247]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[7]_i_1_n_0\
     );
 \comp_burst.data_phase_7[8]_i_1\: unisim.vcomponents.LUT3
@@ -71748,8 +72308,8 @@ begin
     )
         port map (
       I0 => data_phase_7(8),
-      I1 => p5_data(248),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[248]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[8]_i_1_n_0\
     );
 \comp_burst.data_phase_7[9]_i_1\: unisim.vcomponents.LUT3
@@ -71758,136 +72318,2184 @@ begin
     )
         port map (
       I0 => data_phase_7(9),
-      I1 => p5_data(249),
-      I2 => p5_data(79),
+      I1 => \comp_burst.data_reg_n_0_[249]\,
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.data_phase_7[9]_i_1_n_0\
     );
 \comp_burst.data_phase_7_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[0]_i_1_n_0\,
       Q => data_phase_7(0),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[10]_i_1_n_0\,
       Q => data_phase_7(10),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[11]_i_1_n_0\,
       Q => data_phase_7(11),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[12]_i_1_n_0\,
       Q => data_phase_7(12),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[13]_i_1_n_0\,
       Q => data_phase_7(13),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[14]_i_1_n_0\,
       Q => data_phase_7(14),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[15]_i_1_n_0\,
       Q => data_phase_7(15),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[1]_i_1_n_0\,
       Q => data_phase_7(1),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[2]_i_1_n_0\,
       Q => data_phase_7(2),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[3]_i_1_n_0\,
       Q => data_phase_7(3),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[4]_i_1_n_0\,
       Q => data_phase_7(4),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[5]_i_1_n_0\,
       Q => data_phase_7(5),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[6]_i_1_n_0\,
       Q => data_phase_7(6),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[7]_i_1_n_0\,
       Q => data_phase_7(7),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[8]_i_1_n_0\,
       Q => data_phase_7(8),
       R => '0'
     );
 \comp_burst.data_phase_7_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.data_phase_7[9]_i_1_n_0\,
       Q => data_phase_7(9),
+      R => '0'
+    );
+\comp_burst.data_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(0),
+      Q => \comp_burst.data_reg_n_0_[0]\,
+      R => '0'
+    );
+\comp_burst.data_reg[100]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(100),
+      Q => \comp_burst.data_reg_n_0_[100]\,
+      R => '0'
+    );
+\comp_burst.data_reg[101]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(101),
+      Q => \comp_burst.data_reg_n_0_[101]\,
+      R => '0'
+    );
+\comp_burst.data_reg[102]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(102),
+      Q => \comp_burst.data_reg_n_0_[102]\,
+      R => '0'
+    );
+\comp_burst.data_reg[103]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(103),
+      Q => \comp_burst.data_reg_n_0_[103]\,
+      R => '0'
+    );
+\comp_burst.data_reg[104]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(104),
+      Q => \comp_burst.data_reg_n_0_[104]\,
+      R => '0'
+    );
+\comp_burst.data_reg[105]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(105),
+      Q => \comp_burst.data_reg_n_0_[105]\,
+      R => '0'
+    );
+\comp_burst.data_reg[106]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(106),
+      Q => \comp_burst.data_reg_n_0_[106]\,
+      R => '0'
+    );
+\comp_burst.data_reg[107]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(107),
+      Q => \comp_burst.data_reg_n_0_[107]\,
+      R => '0'
+    );
+\comp_burst.data_reg[108]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(108),
+      Q => \comp_burst.data_reg_n_0_[108]\,
+      R => '0'
+    );
+\comp_burst.data_reg[109]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(109),
+      Q => \comp_burst.data_reg_n_0_[109]\,
+      R => '0'
+    );
+\comp_burst.data_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(10),
+      Q => \comp_burst.data_reg_n_0_[10]\,
+      R => '0'
+    );
+\comp_burst.data_reg[110]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(110),
+      Q => \comp_burst.data_reg_n_0_[110]\,
+      R => '0'
+    );
+\comp_burst.data_reg[111]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(111),
+      Q => \comp_burst.data_reg_n_0_[111]\,
+      R => '0'
+    );
+\comp_burst.data_reg[112]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(112),
+      Q => \comp_burst.data_reg_n_0_[112]\,
+      R => '0'
+    );
+\comp_burst.data_reg[113]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(113),
+      Q => \comp_burst.data_reg_n_0_[113]\,
+      R => '0'
+    );
+\comp_burst.data_reg[114]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(114),
+      Q => \comp_burst.data_reg_n_0_[114]\,
+      R => '0'
+    );
+\comp_burst.data_reg[115]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(115),
+      Q => \comp_burst.data_reg_n_0_[115]\,
+      R => '0'
+    );
+\comp_burst.data_reg[116]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(116),
+      Q => \comp_burst.data_reg_n_0_[116]\,
+      R => '0'
+    );
+\comp_burst.data_reg[117]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(117),
+      Q => \comp_burst.data_reg_n_0_[117]\,
+      R => '0'
+    );
+\comp_burst.data_reg[118]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(118),
+      Q => \comp_burst.data_reg_n_0_[118]\,
+      R => '0'
+    );
+\comp_burst.data_reg[119]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(119),
+      Q => \comp_burst.data_reg_n_0_[119]\,
+      R => '0'
+    );
+\comp_burst.data_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(11),
+      Q => \comp_burst.data_reg_n_0_[11]\,
+      R => '0'
+    );
+\comp_burst.data_reg[120]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(120),
+      Q => \comp_burst.data_reg_n_0_[120]\,
+      R => '0'
+    );
+\comp_burst.data_reg[121]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(121),
+      Q => \comp_burst.data_reg_n_0_[121]\,
+      R => '0'
+    );
+\comp_burst.data_reg[122]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(122),
+      Q => \comp_burst.data_reg_n_0_[122]\,
+      R => '0'
+    );
+\comp_burst.data_reg[123]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(123),
+      Q => \comp_burst.data_reg_n_0_[123]\,
+      R => '0'
+    );
+\comp_burst.data_reg[124]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(124),
+      Q => \comp_burst.data_reg_n_0_[124]\,
+      R => '0'
+    );
+\comp_burst.data_reg[125]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(125),
+      Q => \comp_burst.data_reg_n_0_[125]\,
+      R => '0'
+    );
+\comp_burst.data_reg[126]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(126),
+      Q => \comp_burst.data_reg_n_0_[126]\,
+      R => '0'
+    );
+\comp_burst.data_reg[127]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(127),
+      Q => \comp_burst.data_reg_n_0_[127]\,
+      R => '0'
+    );
+\comp_burst.data_reg[128]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(128),
+      Q => \comp_burst.data_reg_n_0_[128]\,
+      R => '0'
+    );
+\comp_burst.data_reg[129]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(129),
+      Q => \comp_burst.data_reg_n_0_[129]\,
+      R => '0'
+    );
+\comp_burst.data_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(12),
+      Q => \comp_burst.data_reg_n_0_[12]\,
+      R => '0'
+    );
+\comp_burst.data_reg[130]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(130),
+      Q => \comp_burst.data_reg_n_0_[130]\,
+      R => '0'
+    );
+\comp_burst.data_reg[131]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(131),
+      Q => \comp_burst.data_reg_n_0_[131]\,
+      R => '0'
+    );
+\comp_burst.data_reg[132]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(132),
+      Q => \comp_burst.data_reg_n_0_[132]\,
+      R => '0'
+    );
+\comp_burst.data_reg[133]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(133),
+      Q => \comp_burst.data_reg_n_0_[133]\,
+      R => '0'
+    );
+\comp_burst.data_reg[134]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(134),
+      Q => \comp_burst.data_reg_n_0_[134]\,
+      R => '0'
+    );
+\comp_burst.data_reg[135]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(135),
+      Q => \comp_burst.data_reg_n_0_[135]\,
+      R => '0'
+    );
+\comp_burst.data_reg[136]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(136),
+      Q => \comp_burst.data_reg_n_0_[136]\,
+      R => '0'
+    );
+\comp_burst.data_reg[137]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(137),
+      Q => \comp_burst.data_reg_n_0_[137]\,
+      R => '0'
+    );
+\comp_burst.data_reg[138]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(138),
+      Q => \comp_burst.data_reg_n_0_[138]\,
+      R => '0'
+    );
+\comp_burst.data_reg[139]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(139),
+      Q => \comp_burst.data_reg_n_0_[139]\,
+      R => '0'
+    );
+\comp_burst.data_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(13),
+      Q => \comp_burst.data_reg_n_0_[13]\,
+      R => '0'
+    );
+\comp_burst.data_reg[140]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(140),
+      Q => \comp_burst.data_reg_n_0_[140]\,
+      R => '0'
+    );
+\comp_burst.data_reg[141]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(141),
+      Q => \comp_burst.data_reg_n_0_[141]\,
+      R => '0'
+    );
+\comp_burst.data_reg[142]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(142),
+      Q => \comp_burst.data_reg_n_0_[142]\,
+      R => '0'
+    );
+\comp_burst.data_reg[143]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(143),
+      Q => \comp_burst.data_reg_n_0_[143]\,
+      R => '0'
+    );
+\comp_burst.data_reg[144]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(144),
+      Q => \comp_burst.data_reg_n_0_[144]\,
+      R => '0'
+    );
+\comp_burst.data_reg[145]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(145),
+      Q => \comp_burst.data_reg_n_0_[145]\,
+      R => '0'
+    );
+\comp_burst.data_reg[146]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(146),
+      Q => \comp_burst.data_reg_n_0_[146]\,
+      R => '0'
+    );
+\comp_burst.data_reg[147]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(147),
+      Q => \comp_burst.data_reg_n_0_[147]\,
+      R => '0'
+    );
+\comp_burst.data_reg[148]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(148),
+      Q => \comp_burst.data_reg_n_0_[148]\,
+      R => '0'
+    );
+\comp_burst.data_reg[149]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(149),
+      Q => \comp_burst.data_reg_n_0_[149]\,
+      R => '0'
+    );
+\comp_burst.data_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(14),
+      Q => \comp_burst.data_reg_n_0_[14]\,
+      R => '0'
+    );
+\comp_burst.data_reg[150]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(150),
+      Q => \comp_burst.data_reg_n_0_[150]\,
+      R => '0'
+    );
+\comp_burst.data_reg[151]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(151),
+      Q => \comp_burst.data_reg_n_0_[151]\,
+      R => '0'
+    );
+\comp_burst.data_reg[152]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(152),
+      Q => \comp_burst.data_reg_n_0_[152]\,
+      R => '0'
+    );
+\comp_burst.data_reg[153]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(153),
+      Q => \comp_burst.data_reg_n_0_[153]\,
+      R => '0'
+    );
+\comp_burst.data_reg[154]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(154),
+      Q => \comp_burst.data_reg_n_0_[154]\,
+      R => '0'
+    );
+\comp_burst.data_reg[155]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(155),
+      Q => \comp_burst.data_reg_n_0_[155]\,
+      R => '0'
+    );
+\comp_burst.data_reg[156]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(156),
+      Q => \comp_burst.data_reg_n_0_[156]\,
+      R => '0'
+    );
+\comp_burst.data_reg[157]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(157),
+      Q => \comp_burst.data_reg_n_0_[157]\,
+      R => '0'
+    );
+\comp_burst.data_reg[158]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(158),
+      Q => \comp_burst.data_reg_n_0_[158]\,
+      R => '0'
+    );
+\comp_burst.data_reg[159]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(159),
+      Q => \comp_burst.data_reg_n_0_[159]\,
+      R => '0'
+    );
+\comp_burst.data_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(15),
+      Q => \comp_burst.data_reg_n_0_[15]\,
+      R => '0'
+    );
+\comp_burst.data_reg[160]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(160),
+      Q => \comp_burst.data_reg_n_0_[160]\,
+      R => '0'
+    );
+\comp_burst.data_reg[161]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(161),
+      Q => \comp_burst.data_reg_n_0_[161]\,
+      R => '0'
+    );
+\comp_burst.data_reg[162]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(162),
+      Q => \comp_burst.data_reg_n_0_[162]\,
+      R => '0'
+    );
+\comp_burst.data_reg[163]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(163),
+      Q => \comp_burst.data_reg_n_0_[163]\,
+      R => '0'
+    );
+\comp_burst.data_reg[164]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(164),
+      Q => \comp_burst.data_reg_n_0_[164]\,
+      R => '0'
+    );
+\comp_burst.data_reg[165]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(165),
+      Q => \comp_burst.data_reg_n_0_[165]\,
+      R => '0'
+    );
+\comp_burst.data_reg[166]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(166),
+      Q => \comp_burst.data_reg_n_0_[166]\,
+      R => '0'
+    );
+\comp_burst.data_reg[167]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(167),
+      Q => \comp_burst.data_reg_n_0_[167]\,
+      R => '0'
+    );
+\comp_burst.data_reg[168]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(168),
+      Q => \comp_burst.data_reg_n_0_[168]\,
+      R => '0'
+    );
+\comp_burst.data_reg[169]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(169),
+      Q => \comp_burst.data_reg_n_0_[169]\,
+      R => '0'
+    );
+\comp_burst.data_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(16),
+      Q => \comp_burst.data_reg_n_0_[16]\,
+      R => '0'
+    );
+\comp_burst.data_reg[170]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(170),
+      Q => \comp_burst.data_reg_n_0_[170]\,
+      R => '0'
+    );
+\comp_burst.data_reg[171]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(171),
+      Q => \comp_burst.data_reg_n_0_[171]\,
+      R => '0'
+    );
+\comp_burst.data_reg[172]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(172),
+      Q => \comp_burst.data_reg_n_0_[172]\,
+      R => '0'
+    );
+\comp_burst.data_reg[173]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(173),
+      Q => \comp_burst.data_reg_n_0_[173]\,
+      R => '0'
+    );
+\comp_burst.data_reg[174]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(174),
+      Q => \comp_burst.data_reg_n_0_[174]\,
+      R => '0'
+    );
+\comp_burst.data_reg[175]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(175),
+      Q => \comp_burst.data_reg_n_0_[175]\,
+      R => '0'
+    );
+\comp_burst.data_reg[176]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(176),
+      Q => \comp_burst.data_reg_n_0_[176]\,
+      R => '0'
+    );
+\comp_burst.data_reg[177]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(177),
+      Q => \comp_burst.data_reg_n_0_[177]\,
+      R => '0'
+    );
+\comp_burst.data_reg[178]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(178),
+      Q => \comp_burst.data_reg_n_0_[178]\,
+      R => '0'
+    );
+\comp_burst.data_reg[179]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(179),
+      Q => \comp_burst.data_reg_n_0_[179]\,
+      R => '0'
+    );
+\comp_burst.data_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(17),
+      Q => \comp_burst.data_reg_n_0_[17]\,
+      R => '0'
+    );
+\comp_burst.data_reg[180]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(180),
+      Q => \comp_burst.data_reg_n_0_[180]\,
+      R => '0'
+    );
+\comp_burst.data_reg[181]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(181),
+      Q => \comp_burst.data_reg_n_0_[181]\,
+      R => '0'
+    );
+\comp_burst.data_reg[182]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(182),
+      Q => \comp_burst.data_reg_n_0_[182]\,
+      R => '0'
+    );
+\comp_burst.data_reg[183]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(183),
+      Q => \comp_burst.data_reg_n_0_[183]\,
+      R => '0'
+    );
+\comp_burst.data_reg[184]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(184),
+      Q => \comp_burst.data_reg_n_0_[184]\,
+      R => '0'
+    );
+\comp_burst.data_reg[185]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(185),
+      Q => \comp_burst.data_reg_n_0_[185]\,
+      R => '0'
+    );
+\comp_burst.data_reg[186]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(186),
+      Q => \comp_burst.data_reg_n_0_[186]\,
+      R => '0'
+    );
+\comp_burst.data_reg[187]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(187),
+      Q => \comp_burst.data_reg_n_0_[187]\,
+      R => '0'
+    );
+\comp_burst.data_reg[188]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(188),
+      Q => \comp_burst.data_reg_n_0_[188]\,
+      R => '0'
+    );
+\comp_burst.data_reg[189]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(189),
+      Q => \comp_burst.data_reg_n_0_[189]\,
+      R => '0'
+    );
+\comp_burst.data_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(18),
+      Q => \comp_burst.data_reg_n_0_[18]\,
+      R => '0'
+    );
+\comp_burst.data_reg[190]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(190),
+      Q => \comp_burst.data_reg_n_0_[190]\,
+      R => '0'
+    );
+\comp_burst.data_reg[191]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(191),
+      Q => \comp_burst.data_reg_n_0_[191]\,
+      R => '0'
+    );
+\comp_burst.data_reg[192]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(192),
+      Q => \comp_burst.data_reg_n_0_[192]\,
+      R => '0'
+    );
+\comp_burst.data_reg[193]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(193),
+      Q => \comp_burst.data_reg_n_0_[193]\,
+      R => '0'
+    );
+\comp_burst.data_reg[194]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(194),
+      Q => \comp_burst.data_reg_n_0_[194]\,
+      R => '0'
+    );
+\comp_burst.data_reg[195]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(195),
+      Q => \comp_burst.data_reg_n_0_[195]\,
+      R => '0'
+    );
+\comp_burst.data_reg[196]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(196),
+      Q => \comp_burst.data_reg_n_0_[196]\,
+      R => '0'
+    );
+\comp_burst.data_reg[197]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(197),
+      Q => \comp_burst.data_reg_n_0_[197]\,
+      R => '0'
+    );
+\comp_burst.data_reg[198]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(198),
+      Q => \comp_burst.data_reg_n_0_[198]\,
+      R => '0'
+    );
+\comp_burst.data_reg[199]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(199),
+      Q => \comp_burst.data_reg_n_0_[199]\,
+      R => '0'
+    );
+\comp_burst.data_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(19),
+      Q => \comp_burst.data_reg_n_0_[19]\,
+      R => '0'
+    );
+\comp_burst.data_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(1),
+      Q => \comp_burst.data_reg_n_0_[1]\,
+      R => '0'
+    );
+\comp_burst.data_reg[200]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(200),
+      Q => \comp_burst.data_reg_n_0_[200]\,
+      R => '0'
+    );
+\comp_burst.data_reg[201]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(201),
+      Q => \comp_burst.data_reg_n_0_[201]\,
+      R => '0'
+    );
+\comp_burst.data_reg[202]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(202),
+      Q => \comp_burst.data_reg_n_0_[202]\,
+      R => '0'
+    );
+\comp_burst.data_reg[203]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(203),
+      Q => \comp_burst.data_reg_n_0_[203]\,
+      R => '0'
+    );
+\comp_burst.data_reg[204]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(204),
+      Q => \comp_burst.data_reg_n_0_[204]\,
+      R => '0'
+    );
+\comp_burst.data_reg[205]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(205),
+      Q => \comp_burst.data_reg_n_0_[205]\,
+      R => '0'
+    );
+\comp_burst.data_reg[206]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(206),
+      Q => \comp_burst.data_reg_n_0_[206]\,
+      R => '0'
+    );
+\comp_burst.data_reg[207]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(207),
+      Q => \comp_burst.data_reg_n_0_[207]\,
+      R => '0'
+    );
+\comp_burst.data_reg[208]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(208),
+      Q => \comp_burst.data_reg_n_0_[208]\,
+      R => '0'
+    );
+\comp_burst.data_reg[209]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(209),
+      Q => \comp_burst.data_reg_n_0_[209]\,
+      R => '0'
+    );
+\comp_burst.data_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(20),
+      Q => \comp_burst.data_reg_n_0_[20]\,
+      R => '0'
+    );
+\comp_burst.data_reg[210]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(210),
+      Q => \comp_burst.data_reg_n_0_[210]\,
+      R => '0'
+    );
+\comp_burst.data_reg[211]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(211),
+      Q => \comp_burst.data_reg_n_0_[211]\,
+      R => '0'
+    );
+\comp_burst.data_reg[212]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(212),
+      Q => \comp_burst.data_reg_n_0_[212]\,
+      R => '0'
+    );
+\comp_burst.data_reg[213]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(213),
+      Q => \comp_burst.data_reg_n_0_[213]\,
+      R => '0'
+    );
+\comp_burst.data_reg[214]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(214),
+      Q => \comp_burst.data_reg_n_0_[214]\,
+      R => '0'
+    );
+\comp_burst.data_reg[215]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(215),
+      Q => \comp_burst.data_reg_n_0_[215]\,
+      R => '0'
+    );
+\comp_burst.data_reg[216]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(216),
+      Q => \comp_burst.data_reg_n_0_[216]\,
+      R => '0'
+    );
+\comp_burst.data_reg[217]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(217),
+      Q => \comp_burst.data_reg_n_0_[217]\,
+      R => '0'
+    );
+\comp_burst.data_reg[218]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(218),
+      Q => \comp_burst.data_reg_n_0_[218]\,
+      R => '0'
+    );
+\comp_burst.data_reg[219]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(219),
+      Q => \comp_burst.data_reg_n_0_[219]\,
+      R => '0'
+    );
+\comp_burst.data_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(21),
+      Q => \comp_burst.data_reg_n_0_[21]\,
+      R => '0'
+    );
+\comp_burst.data_reg[220]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(220),
+      Q => \comp_burst.data_reg_n_0_[220]\,
+      R => '0'
+    );
+\comp_burst.data_reg[221]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(221),
+      Q => \comp_burst.data_reg_n_0_[221]\,
+      R => '0'
+    );
+\comp_burst.data_reg[222]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(222),
+      Q => \comp_burst.data_reg_n_0_[222]\,
+      R => '0'
+    );
+\comp_burst.data_reg[223]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(223),
+      Q => \comp_burst.data_reg_n_0_[223]\,
+      R => '0'
+    );
+\comp_burst.data_reg[224]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(224),
+      Q => \comp_burst.data_reg_n_0_[224]\,
+      R => '0'
+    );
+\comp_burst.data_reg[225]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(225),
+      Q => \comp_burst.data_reg_n_0_[225]\,
+      R => '0'
+    );
+\comp_burst.data_reg[226]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(226),
+      Q => \comp_burst.data_reg_n_0_[226]\,
+      R => '0'
+    );
+\comp_burst.data_reg[227]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(227),
+      Q => \comp_burst.data_reg_n_0_[227]\,
+      R => '0'
+    );
+\comp_burst.data_reg[228]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(228),
+      Q => \comp_burst.data_reg_n_0_[228]\,
+      R => '0'
+    );
+\comp_burst.data_reg[229]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(229),
+      Q => \comp_burst.data_reg_n_0_[229]\,
+      R => '0'
+    );
+\comp_burst.data_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(22),
+      Q => \comp_burst.data_reg_n_0_[22]\,
+      R => '0'
+    );
+\comp_burst.data_reg[230]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(230),
+      Q => \comp_burst.data_reg_n_0_[230]\,
+      R => '0'
+    );
+\comp_burst.data_reg[231]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(231),
+      Q => \comp_burst.data_reg_n_0_[231]\,
+      R => '0'
+    );
+\comp_burst.data_reg[232]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(232),
+      Q => \comp_burst.data_reg_n_0_[232]\,
+      R => '0'
+    );
+\comp_burst.data_reg[233]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(233),
+      Q => \comp_burst.data_reg_n_0_[233]\,
+      R => '0'
+    );
+\comp_burst.data_reg[234]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(234),
+      Q => \comp_burst.data_reg_n_0_[234]\,
+      R => '0'
+    );
+\comp_burst.data_reg[235]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(235),
+      Q => \comp_burst.data_reg_n_0_[235]\,
+      R => '0'
+    );
+\comp_burst.data_reg[236]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(236),
+      Q => \comp_burst.data_reg_n_0_[236]\,
+      R => '0'
+    );
+\comp_burst.data_reg[237]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(237),
+      Q => \comp_burst.data_reg_n_0_[237]\,
+      R => '0'
+    );
+\comp_burst.data_reg[238]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(238),
+      Q => \comp_burst.data_reg_n_0_[238]\,
+      R => '0'
+    );
+\comp_burst.data_reg[239]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(239),
+      Q => \comp_burst.data_reg_n_0_[239]\,
+      R => '0'
+    );
+\comp_burst.data_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(23),
+      Q => \comp_burst.data_reg_n_0_[23]\,
+      R => '0'
+    );
+\comp_burst.data_reg[240]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(240),
+      Q => \comp_burst.data_reg_n_0_[240]\,
+      R => '0'
+    );
+\comp_burst.data_reg[241]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(241),
+      Q => \comp_burst.data_reg_n_0_[241]\,
+      R => '0'
+    );
+\comp_burst.data_reg[242]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(242),
+      Q => \comp_burst.data_reg_n_0_[242]\,
+      R => '0'
+    );
+\comp_burst.data_reg[243]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(243),
+      Q => \comp_burst.data_reg_n_0_[243]\,
+      R => '0'
+    );
+\comp_burst.data_reg[244]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(244),
+      Q => \comp_burst.data_reg_n_0_[244]\,
+      R => '0'
+    );
+\comp_burst.data_reg[245]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(245),
+      Q => \comp_burst.data_reg_n_0_[245]\,
+      R => '0'
+    );
+\comp_burst.data_reg[246]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(246),
+      Q => \comp_burst.data_reg_n_0_[246]\,
+      R => '0'
+    );
+\comp_burst.data_reg[247]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(247),
+      Q => \comp_burst.data_reg_n_0_[247]\,
+      R => '0'
+    );
+\comp_burst.data_reg[248]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(248),
+      Q => \comp_burst.data_reg_n_0_[248]\,
+      R => '0'
+    );
+\comp_burst.data_reg[249]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(249),
+      Q => \comp_burst.data_reg_n_0_[249]\,
+      R => '0'
+    );
+\comp_burst.data_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(24),
+      Q => \comp_burst.data_reg_n_0_[24]\,
+      R => '0'
+    );
+\comp_burst.data_reg[250]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(250),
+      Q => \comp_burst.data_reg_n_0_[250]\,
+      R => '0'
+    );
+\comp_burst.data_reg[251]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(251),
+      Q => \comp_burst.data_reg_n_0_[251]\,
+      R => '0'
+    );
+\comp_burst.data_reg[252]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(252),
+      Q => \comp_burst.data_reg_n_0_[252]\,
+      R => '0'
+    );
+\comp_burst.data_reg[253]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(253),
+      Q => \comp_burst.data_reg_n_0_[253]\,
+      R => '0'
+    );
+\comp_burst.data_reg[254]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(254),
+      Q => \comp_burst.data_reg_n_0_[254]\,
+      R => '0'
+    );
+\comp_burst.data_reg[255]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(255),
+      Q => \comp_burst.data_reg_n_0_[255]\,
+      R => '0'
+    );
+\comp_burst.data_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(25),
+      Q => \comp_burst.data_reg_n_0_[25]\,
+      R => '0'
+    );
+\comp_burst.data_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(26),
+      Q => \comp_burst.data_reg_n_0_[26]\,
+      R => '0'
+    );
+\comp_burst.data_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(27),
+      Q => \comp_burst.data_reg_n_0_[27]\,
+      R => '0'
+    );
+\comp_burst.data_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(28),
+      Q => \comp_burst.data_reg_n_0_[28]\,
+      R => '0'
+    );
+\comp_burst.data_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(29),
+      Q => \comp_burst.data_reg_n_0_[29]\,
+      R => '0'
+    );
+\comp_burst.data_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(2),
+      Q => \comp_burst.data_reg_n_0_[2]\,
+      R => '0'
+    );
+\comp_burst.data_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(30),
+      Q => \comp_burst.data_reg_n_0_[30]\,
+      R => '0'
+    );
+\comp_burst.data_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(31),
+      Q => \comp_burst.data_reg_n_0_[31]\,
+      R => '0'
+    );
+\comp_burst.data_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(32),
+      Q => \comp_burst.data_reg_n_0_[32]\,
+      R => '0'
+    );
+\comp_burst.data_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(33),
+      Q => \comp_burst.data_reg_n_0_[33]\,
+      R => '0'
+    );
+\comp_burst.data_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(34),
+      Q => \comp_burst.data_reg_n_0_[34]\,
+      R => '0'
+    );
+\comp_burst.data_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(35),
+      Q => \comp_burst.data_reg_n_0_[35]\,
+      R => '0'
+    );
+\comp_burst.data_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(36),
+      Q => \comp_burst.data_reg_n_0_[36]\,
+      R => '0'
+    );
+\comp_burst.data_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(37),
+      Q => \comp_burst.data_reg_n_0_[37]\,
+      R => '0'
+    );
+\comp_burst.data_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(38),
+      Q => \comp_burst.data_reg_n_0_[38]\,
+      R => '0'
+    );
+\comp_burst.data_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(39),
+      Q => \comp_burst.data_reg_n_0_[39]\,
+      R => '0'
+    );
+\comp_burst.data_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(3),
+      Q => \comp_burst.data_reg_n_0_[3]\,
+      R => '0'
+    );
+\comp_burst.data_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(40),
+      Q => \comp_burst.data_reg_n_0_[40]\,
+      R => '0'
+    );
+\comp_burst.data_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(41),
+      Q => \comp_burst.data_reg_n_0_[41]\,
+      R => '0'
+    );
+\comp_burst.data_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(42),
+      Q => \comp_burst.data_reg_n_0_[42]\,
+      R => '0'
+    );
+\comp_burst.data_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(43),
+      Q => \comp_burst.data_reg_n_0_[43]\,
+      R => '0'
+    );
+\comp_burst.data_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(44),
+      Q => \comp_burst.data_reg_n_0_[44]\,
+      R => '0'
+    );
+\comp_burst.data_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(45),
+      Q => \comp_burst.data_reg_n_0_[45]\,
+      R => '0'
+    );
+\comp_burst.data_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(46),
+      Q => \comp_burst.data_reg_n_0_[46]\,
+      R => '0'
+    );
+\comp_burst.data_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(47),
+      Q => \comp_burst.data_reg_n_0_[47]\,
+      R => '0'
+    );
+\comp_burst.data_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(48),
+      Q => \comp_burst.data_reg_n_0_[48]\,
+      R => '0'
+    );
+\comp_burst.data_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(49),
+      Q => \comp_burst.data_reg_n_0_[49]\,
+      R => '0'
+    );
+\comp_burst.data_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(4),
+      Q => \comp_burst.data_reg_n_0_[4]\,
+      R => '0'
+    );
+\comp_burst.data_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(50),
+      Q => \comp_burst.data_reg_n_0_[50]\,
+      R => '0'
+    );
+\comp_burst.data_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(51),
+      Q => \comp_burst.data_reg_n_0_[51]\,
+      R => '0'
+    );
+\comp_burst.data_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(52),
+      Q => \comp_burst.data_reg_n_0_[52]\,
+      R => '0'
+    );
+\comp_burst.data_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(53),
+      Q => \comp_burst.data_reg_n_0_[53]\,
+      R => '0'
+    );
+\comp_burst.data_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(54),
+      Q => \comp_burst.data_reg_n_0_[54]\,
+      R => '0'
+    );
+\comp_burst.data_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(55),
+      Q => \comp_burst.data_reg_n_0_[55]\,
+      R => '0'
+    );
+\comp_burst.data_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(56),
+      Q => \comp_burst.data_reg_n_0_[56]\,
+      R => '0'
+    );
+\comp_burst.data_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(57),
+      Q => \comp_burst.data_reg_n_0_[57]\,
+      R => '0'
+    );
+\comp_burst.data_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(58),
+      Q => \comp_burst.data_reg_n_0_[58]\,
+      R => '0'
+    );
+\comp_burst.data_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(59),
+      Q => \comp_burst.data_reg_n_0_[59]\,
+      R => '0'
+    );
+\comp_burst.data_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(5),
+      Q => \comp_burst.data_reg_n_0_[5]\,
+      R => '0'
+    );
+\comp_burst.data_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(60),
+      Q => \comp_burst.data_reg_n_0_[60]\,
+      R => '0'
+    );
+\comp_burst.data_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(61),
+      Q => \comp_burst.data_reg_n_0_[61]\,
+      R => '0'
+    );
+\comp_burst.data_reg[62]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(62),
+      Q => \comp_burst.data_reg_n_0_[62]\,
+      R => '0'
+    );
+\comp_burst.data_reg[63]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(63),
+      Q => \comp_burst.data_reg_n_0_[63]\,
+      R => '0'
+    );
+\comp_burst.data_reg[64]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(64),
+      Q => \comp_burst.data_reg_n_0_[64]\,
+      R => '0'
+    );
+\comp_burst.data_reg[65]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(65),
+      Q => \comp_burst.data_reg_n_0_[65]\,
+      R => '0'
+    );
+\comp_burst.data_reg[66]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(66),
+      Q => \comp_burst.data_reg_n_0_[66]\,
+      R => '0'
+    );
+\comp_burst.data_reg[67]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(67),
+      Q => \comp_burst.data_reg_n_0_[67]\,
+      R => '0'
+    );
+\comp_burst.data_reg[68]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(68),
+      Q => \comp_burst.data_reg_n_0_[68]\,
+      R => '0'
+    );
+\comp_burst.data_reg[69]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(69),
+      Q => \comp_burst.data_reg_n_0_[69]\,
+      R => '0'
+    );
+\comp_burst.data_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(6),
+      Q => \comp_burst.data_reg_n_0_[6]\,
+      R => '0'
+    );
+\comp_burst.data_reg[70]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(70),
+      Q => \comp_burst.data_reg_n_0_[70]\,
+      R => '0'
+    );
+\comp_burst.data_reg[71]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(71),
+      Q => \comp_burst.data_reg_n_0_[71]\,
+      R => '0'
+    );
+\comp_burst.data_reg[72]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(72),
+      Q => \comp_burst.data_reg_n_0_[72]\,
+      R => '0'
+    );
+\comp_burst.data_reg[73]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(73),
+      Q => \comp_burst.data_reg_n_0_[73]\,
+      R => '0'
+    );
+\comp_burst.data_reg[74]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(74),
+      Q => \comp_burst.data_reg_n_0_[74]\,
+      R => '0'
+    );
+\comp_burst.data_reg[75]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(75),
+      Q => \comp_burst.data_reg_n_0_[75]\,
+      R => '0'
+    );
+\comp_burst.data_reg[76]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(76),
+      Q => \comp_burst.data_reg_n_0_[76]\,
+      R => '0'
+    );
+\comp_burst.data_reg[77]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(77),
+      Q => \comp_burst.data_reg_n_0_[77]\,
+      R => '0'
+    );
+\comp_burst.data_reg[78]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(78),
+      Q => \comp_burst.data_reg_n_0_[78]\,
+      R => '0'
+    );
+\comp_burst.data_reg[79]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(79),
+      Q => \comp_burst.data_reg_n_0_[79]\,
+      R => '0'
+    );
+\comp_burst.data_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(7),
+      Q => \comp_burst.data_reg_n_0_[7]\,
+      R => '0'
+    );
+\comp_burst.data_reg[80]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(80),
+      Q => \comp_burst.data_reg_n_0_[80]\,
+      R => '0'
+    );
+\comp_burst.data_reg[81]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(81),
+      Q => \comp_burst.data_reg_n_0_[81]\,
+      R => '0'
+    );
+\comp_burst.data_reg[82]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(82),
+      Q => \comp_burst.data_reg_n_0_[82]\,
+      R => '0'
+    );
+\comp_burst.data_reg[83]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(83),
+      Q => \comp_burst.data_reg_n_0_[83]\,
+      R => '0'
+    );
+\comp_burst.data_reg[84]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(84),
+      Q => \comp_burst.data_reg_n_0_[84]\,
+      R => '0'
+    );
+\comp_burst.data_reg[85]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(85),
+      Q => \comp_burst.data_reg_n_0_[85]\,
+      R => '0'
+    );
+\comp_burst.data_reg[86]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(86),
+      Q => \comp_burst.data_reg_n_0_[86]\,
+      R => '0'
+    );
+\comp_burst.data_reg[87]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(87),
+      Q => \comp_burst.data_reg_n_0_[87]\,
+      R => '0'
+    );
+\comp_burst.data_reg[88]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(88),
+      Q => \comp_burst.data_reg_n_0_[88]\,
+      R => '0'
+    );
+\comp_burst.data_reg[89]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(89),
+      Q => \comp_burst.data_reg_n_0_[89]\,
+      R => '0'
+    );
+\comp_burst.data_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(8),
+      Q => \comp_burst.data_reg_n_0_[8]\,
+      R => '0'
+    );
+\comp_burst.data_reg[90]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(90),
+      Q => \comp_burst.data_reg_n_0_[90]\,
+      R => '0'
+    );
+\comp_burst.data_reg[91]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(91),
+      Q => \comp_burst.data_reg_n_0_[91]\,
+      R => '0'
+    );
+\comp_burst.data_reg[92]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(92),
+      Q => \comp_burst.data_reg_n_0_[92]\,
+      R => '0'
+    );
+\comp_burst.data_reg[93]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(93),
+      Q => \comp_burst.data_reg_n_0_[93]\,
+      R => '0'
+    );
+\comp_burst.data_reg[94]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(94),
+      Q => \comp_burst.data_reg_n_0_[94]\,
+      R => '0'
+    );
+\comp_burst.data_reg[95]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(95),
+      Q => \comp_burst.data_reg_n_0_[95]\,
+      R => '0'
+    );
+\comp_burst.data_reg[96]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(96),
+      Q => \comp_burst.data_reg_n_0_[96]\,
+      R => '0'
+    );
+\comp_burst.data_reg[97]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(97),
+      Q => \comp_burst.data_reg_n_0_[97]\,
+      R => '0'
+    );
+\comp_burst.data_reg[98]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(98),
+      Q => \comp_burst.data_reg_n_0_[98]\,
+      R => '0'
+    );
+\comp_burst.data_reg[99]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(99),
+      Q => \comp_burst.data_reg_n_0_[99]\,
+      R => '0'
+    );
+\comp_burst.data_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => \comp_burst.data[255]_i_1_n_0\,
+      D => fifo_data(9),
+      Q => \comp_burst.data_reg_n_0_[9]\,
       R => '0'
     );
 \comp_burst.env_0_reg[0]\: unisim.vcomponents.FDRE
@@ -72435,9 +75043,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(96),
+      I0 => \comp_burst.data_reg_n_0_[96]\,
       I1 => hdr_angle(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[0]_i_1_n_0\
     );
 \comp_burst.hdr_angle[10]_i_1\: unisim.vcomponents.LUT3
@@ -72445,9 +75053,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(106),
+      I0 => \comp_burst.data_reg_n_0_[106]\,
       I1 => hdr_angle(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[10]_i_1_n_0\
     );
 \comp_burst.hdr_angle[11]_i_1\: unisim.vcomponents.LUT3
@@ -72455,9 +75063,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(107),
+      I0 => \comp_burst.data_reg_n_0_[107]\,
       I1 => hdr_angle(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[11]_i_1_n_0\
     );
 \comp_burst.hdr_angle[12]_i_1\: unisim.vcomponents.LUT3
@@ -72465,9 +75073,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(108),
+      I0 => \comp_burst.data_reg_n_0_[108]\,
       I1 => hdr_angle(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[12]_i_1_n_0\
     );
 \comp_burst.hdr_angle[13]_i_1\: unisim.vcomponents.LUT3
@@ -72475,9 +75083,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(109),
+      I0 => \comp_burst.data_reg_n_0_[109]\,
       I1 => hdr_angle(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[13]_i_1_n_0\
     );
 \comp_burst.hdr_angle[14]_i_1\: unisim.vcomponents.LUT3
@@ -72485,9 +75093,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(110),
+      I0 => \comp_burst.data_reg_n_0_[110]\,
       I1 => hdr_angle(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[14]_i_1_n_0\
     );
 \comp_burst.hdr_angle[15]_i_1\: unisim.vcomponents.LUT3
@@ -72495,9 +75103,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(111),
+      I0 => \comp_burst.data_reg_n_0_[111]\,
       I1 => hdr_angle(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[15]_i_1_n_0\
     );
 \comp_burst.hdr_angle[1]_i_1\: unisim.vcomponents.LUT3
@@ -72505,9 +75113,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(97),
+      I0 => \comp_burst.data_reg_n_0_[97]\,
       I1 => hdr_angle(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[1]_i_1_n_0\
     );
 \comp_burst.hdr_angle[2]_i_1\: unisim.vcomponents.LUT3
@@ -72515,9 +75123,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(98),
+      I0 => \comp_burst.data_reg_n_0_[98]\,
       I1 => hdr_angle(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[2]_i_1_n_0\
     );
 \comp_burst.hdr_angle[3]_i_1\: unisim.vcomponents.LUT3
@@ -72525,9 +75133,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(99),
+      I0 => \comp_burst.data_reg_n_0_[99]\,
       I1 => hdr_angle(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[3]_i_1_n_0\
     );
 \comp_burst.hdr_angle[4]_i_1\: unisim.vcomponents.LUT3
@@ -72535,9 +75143,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(100),
+      I0 => \comp_burst.data_reg_n_0_[100]\,
       I1 => hdr_angle(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[4]_i_1_n_0\
     );
 \comp_burst.hdr_angle[5]_i_1\: unisim.vcomponents.LUT3
@@ -72545,9 +75153,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(101),
+      I0 => \comp_burst.data_reg_n_0_[101]\,
       I1 => hdr_angle(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[5]_i_1_n_0\
     );
 \comp_burst.hdr_angle[6]_i_1\: unisim.vcomponents.LUT3
@@ -72555,9 +75163,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(102),
+      I0 => \comp_burst.data_reg_n_0_[102]\,
       I1 => hdr_angle(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[6]_i_1_n_0\
     );
 \comp_burst.hdr_angle[7]_i_1\: unisim.vcomponents.LUT3
@@ -72565,9 +75173,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(103),
+      I0 => \comp_burst.data_reg_n_0_[103]\,
       I1 => hdr_angle(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[7]_i_1_n_0\
     );
 \comp_burst.hdr_angle[8]_i_1\: unisim.vcomponents.LUT3
@@ -72575,9 +75183,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(104),
+      I0 => \comp_burst.data_reg_n_0_[104]\,
       I1 => hdr_angle(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[8]_i_1_n_0\
     );
 \comp_burst.hdr_angle[9]_i_1\: unisim.vcomponents.LUT3
@@ -72585,135 +75193,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(105),
+      I0 => \comp_burst.data_reg_n_0_[105]\,
       I1 => hdr_angle(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_angle[9]_i_1_n_0\
     );
 \comp_burst.hdr_angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[0]_i_1_n_0\,
       Q => hdr_angle(0),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[10]_i_1_n_0\,
       Q => hdr_angle(10),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[11]_i_1_n_0\,
       Q => hdr_angle(11),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[12]_i_1_n_0\,
       Q => hdr_angle(12),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[13]_i_1_n_0\,
       Q => hdr_angle(13),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[14]_i_1_n_0\,
       Q => hdr_angle(14),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[15]_i_1_n_0\,
       Q => hdr_angle(15),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[1]_i_1_n_0\,
       Q => hdr_angle(1),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[2]_i_1_n_0\,
       Q => hdr_angle(2),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[3]_i_1_n_0\,
       Q => hdr_angle(3),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[4]_i_1_n_0\,
       Q => hdr_angle(4),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[5]_i_1_n_0\,
       Q => hdr_angle(5),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[6]_i_1_n_0\,
       Q => hdr_angle(6),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[7]_i_1_n_0\,
       Q => hdr_angle(7),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[8]_i_1_n_0\,
       Q => hdr_angle(8),
       R => '0'
     );
 \comp_burst.hdr_angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_angle[9]_i_1_n_0\,
       Q => hdr_angle(9),
       R => '0'
@@ -72723,8 +75331,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(64),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[64]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(0),
       O => \comp_burst.hdr_blocks[0]_i_1_n_0\
     );
@@ -72733,8 +75341,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(65),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[65]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(1),
       O => \comp_burst.hdr_blocks[1]_i_1_n_0\
     );
@@ -72743,8 +75351,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(66),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[66]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(2),
       O => \comp_burst.hdr_blocks[2]_i_1_n_0\
     );
@@ -72753,8 +75361,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(67),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[67]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(3),
       O => \comp_burst.hdr_blocks[3]_i_1_n_0\
     );
@@ -72763,8 +75371,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(68),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[68]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(4),
       O => \comp_burst.hdr_blocks[4]_i_1_n_0\
     );
@@ -72773,8 +75381,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(69),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[69]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(5),
       O => \comp_burst.hdr_blocks[5]_i_1_n_0\
     );
@@ -72783,8 +75391,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(70),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[70]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(6),
       O => \comp_burst.hdr_blocks[6]_i_1_n_0\
     );
@@ -72793,71 +75401,71 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(71),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[71]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_blocks(7),
       O => \comp_burst.hdr_blocks[7]_i_1_n_0\
     );
 \comp_burst.hdr_blocks_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[0]_i_1_n_0\,
       Q => hdr_blocks(0),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[1]_i_1_n_0\,
       Q => hdr_blocks(1),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[2]_i_1_n_0\,
       Q => hdr_blocks(2),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[3]_i_1_n_0\,
       Q => hdr_blocks(3),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[4]_i_1_n_0\,
       Q => hdr_blocks(4),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[5]_i_1_n_0\,
       Q => hdr_blocks(5),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[6]_i_1_n_0\,
       Q => hdr_blocks(6),
       R => '0'
     );
 \comp_burst.hdr_blocks_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_blocks[7]_i_1_n_0\,
       Q => hdr_blocks(7),
       R => '0'
@@ -72867,9 +75475,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(112),
+      I0 => \comp_burst.data_reg_n_0_[112]\,
       I1 => hdr_doa_error(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[0]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[10]_i_1\: unisim.vcomponents.LUT3
@@ -72877,9 +75485,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(122),
+      I0 => \comp_burst.data_reg_n_0_[122]\,
       I1 => hdr_doa_error(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[10]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[11]_i_1\: unisim.vcomponents.LUT3
@@ -72887,9 +75495,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(123),
+      I0 => \comp_burst.data_reg_n_0_[123]\,
       I1 => hdr_doa_error(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[11]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[12]_i_1\: unisim.vcomponents.LUT3
@@ -72897,9 +75505,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(124),
+      I0 => \comp_burst.data_reg_n_0_[124]\,
       I1 => hdr_doa_error(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[12]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[13]_i_1\: unisim.vcomponents.LUT3
@@ -72907,9 +75515,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(125),
+      I0 => \comp_burst.data_reg_n_0_[125]\,
       I1 => hdr_doa_error(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[13]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[14]_i_1\: unisim.vcomponents.LUT3
@@ -72917,9 +75525,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(126),
+      I0 => \comp_burst.data_reg_n_0_[126]\,
       I1 => hdr_doa_error(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[14]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[15]_i_1\: unisim.vcomponents.LUT3
@@ -72927,9 +75535,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(127),
+      I0 => \comp_burst.data_reg_n_0_[127]\,
       I1 => hdr_doa_error(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[15]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[1]_i_1\: unisim.vcomponents.LUT3
@@ -72937,9 +75545,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(113),
+      I0 => \comp_burst.data_reg_n_0_[113]\,
       I1 => hdr_doa_error(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[1]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[2]_i_1\: unisim.vcomponents.LUT3
@@ -72947,9 +75555,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(114),
+      I0 => \comp_burst.data_reg_n_0_[114]\,
       I1 => hdr_doa_error(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[2]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[3]_i_1\: unisim.vcomponents.LUT3
@@ -72957,9 +75565,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(115),
+      I0 => \comp_burst.data_reg_n_0_[115]\,
       I1 => hdr_doa_error(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[3]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[4]_i_1\: unisim.vcomponents.LUT3
@@ -72967,9 +75575,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(116),
+      I0 => \comp_burst.data_reg_n_0_[116]\,
       I1 => hdr_doa_error(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[4]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[5]_i_1\: unisim.vcomponents.LUT3
@@ -72977,9 +75585,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(117),
+      I0 => \comp_burst.data_reg_n_0_[117]\,
       I1 => hdr_doa_error(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[5]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[6]_i_1\: unisim.vcomponents.LUT3
@@ -72987,9 +75595,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(118),
+      I0 => \comp_burst.data_reg_n_0_[118]\,
       I1 => hdr_doa_error(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[6]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[7]_i_1\: unisim.vcomponents.LUT3
@@ -72997,9 +75605,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(119),
+      I0 => \comp_burst.data_reg_n_0_[119]\,
       I1 => hdr_doa_error(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[7]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[8]_i_1\: unisim.vcomponents.LUT3
@@ -73007,9 +75615,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(120),
+      I0 => \comp_burst.data_reg_n_0_[120]\,
       I1 => hdr_doa_error(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[8]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error[9]_i_1\: unisim.vcomponents.LUT3
@@ -73017,135 +75625,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(121),
+      I0 => \comp_burst.data_reg_n_0_[121]\,
       I1 => hdr_doa_error(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_doa_error[9]_i_1_n_0\
     );
 \comp_burst.hdr_doa_error_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[0]_i_1_n_0\,
       Q => hdr_doa_error(0),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[10]_i_1_n_0\,
       Q => hdr_doa_error(10),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[11]_i_1_n_0\,
       Q => hdr_doa_error(11),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[12]_i_1_n_0\,
       Q => hdr_doa_error(12),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[13]_i_1_n_0\,
       Q => hdr_doa_error(13),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[14]_i_1_n_0\,
       Q => hdr_doa_error(14),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[15]_i_1_n_0\,
       Q => hdr_doa_error(15),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[1]_i_1_n_0\,
       Q => hdr_doa_error(1),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[2]_i_1_n_0\,
       Q => hdr_doa_error(2),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[3]_i_1_n_0\,
       Q => hdr_doa_error(3),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[4]_i_1_n_0\,
       Q => hdr_doa_error(4),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[5]_i_1_n_0\,
       Q => hdr_doa_error(5),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[6]_i_1_n_0\,
       Q => hdr_doa_error(6),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[7]_i_1_n_0\,
       Q => hdr_doa_error(7),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[8]_i_1_n_0\,
       Q => hdr_doa_error(8),
       R => '0'
     );
 \comp_burst.hdr_doa_error_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_doa_error[9]_i_1_n_0\,
       Q => hdr_doa_error(9),
       R => '0'
@@ -73155,9 +75763,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(192),
+      I0 => \comp_burst.data_reg_n_0_[192]\,
       I1 => hdr_env_mean(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[0]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[10]_i_1\: unisim.vcomponents.LUT3
@@ -73165,9 +75773,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(202),
+      I0 => \comp_burst.data_reg_n_0_[202]\,
       I1 => hdr_env_mean(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[10]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[11]_i_1\: unisim.vcomponents.LUT3
@@ -73175,9 +75783,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(203),
+      I0 => \comp_burst.data_reg_n_0_[203]\,
       I1 => hdr_env_mean(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[11]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[12]_i_1\: unisim.vcomponents.LUT3
@@ -73185,9 +75793,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(204),
+      I0 => \comp_burst.data_reg_n_0_[204]\,
       I1 => hdr_env_mean(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[12]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[13]_i_1\: unisim.vcomponents.LUT3
@@ -73195,9 +75803,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(205),
+      I0 => \comp_burst.data_reg_n_0_[205]\,
       I1 => hdr_env_mean(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[13]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[14]_i_1\: unisim.vcomponents.LUT3
@@ -73205,9 +75813,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(206),
+      I0 => \comp_burst.data_reg_n_0_[206]\,
       I1 => hdr_env_mean(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[14]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[15]_i_1\: unisim.vcomponents.LUT3
@@ -73215,9 +75823,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(207),
+      I0 => \comp_burst.data_reg_n_0_[207]\,
       I1 => hdr_env_mean(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[15]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[1]_i_1\: unisim.vcomponents.LUT3
@@ -73225,9 +75833,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(193),
+      I0 => \comp_burst.data_reg_n_0_[193]\,
       I1 => hdr_env_mean(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[1]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[2]_i_1\: unisim.vcomponents.LUT3
@@ -73235,9 +75843,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(194),
+      I0 => \comp_burst.data_reg_n_0_[194]\,
       I1 => hdr_env_mean(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[2]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[3]_i_1\: unisim.vcomponents.LUT3
@@ -73245,9 +75853,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(195),
+      I0 => \comp_burst.data_reg_n_0_[195]\,
       I1 => hdr_env_mean(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[3]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[4]_i_1\: unisim.vcomponents.LUT3
@@ -73255,9 +75863,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(196),
+      I0 => \comp_burst.data_reg_n_0_[196]\,
       I1 => hdr_env_mean(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[4]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[5]_i_1\: unisim.vcomponents.LUT3
@@ -73265,9 +75873,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(197),
+      I0 => \comp_burst.data_reg_n_0_[197]\,
       I1 => hdr_env_mean(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[5]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[6]_i_1\: unisim.vcomponents.LUT3
@@ -73275,9 +75883,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(198),
+      I0 => \comp_burst.data_reg_n_0_[198]\,
       I1 => hdr_env_mean(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[6]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[7]_i_1\: unisim.vcomponents.LUT3
@@ -73285,9 +75893,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(199),
+      I0 => \comp_burst.data_reg_n_0_[199]\,
       I1 => hdr_env_mean(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[7]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[8]_i_1\: unisim.vcomponents.LUT3
@@ -73295,9 +75903,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(200),
+      I0 => \comp_burst.data_reg_n_0_[200]\,
       I1 => hdr_env_mean(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[8]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean[9]_i_1\: unisim.vcomponents.LUT3
@@ -73305,135 +75913,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(201),
+      I0 => \comp_burst.data_reg_n_0_[201]\,
       I1 => hdr_env_mean(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_mean[9]_i_1_n_0\
     );
 \comp_burst.hdr_env_mean_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[0]_i_1_n_0\,
       Q => hdr_env_mean(0),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[10]_i_1_n_0\,
       Q => hdr_env_mean(10),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[11]_i_1_n_0\,
       Q => hdr_env_mean(11),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[12]_i_1_n_0\,
       Q => hdr_env_mean(12),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[13]_i_1_n_0\,
       Q => hdr_env_mean(13),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[14]_i_1_n_0\,
       Q => hdr_env_mean(14),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[15]_i_1_n_0\,
       Q => hdr_env_mean(15),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[1]_i_1_n_0\,
       Q => hdr_env_mean(1),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[2]_i_1_n_0\,
       Q => hdr_env_mean(2),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[3]_i_1_n_0\,
       Q => hdr_env_mean(3),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[4]_i_1_n_0\,
       Q => hdr_env_mean(4),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[5]_i_1_n_0\,
       Q => hdr_env_mean(5),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[6]_i_1_n_0\,
       Q => hdr_env_mean(6),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[7]_i_1_n_0\,
       Q => hdr_env_mean(7),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[8]_i_1_n_0\,
       Q => hdr_env_mean(8),
       R => '0'
     );
 \comp_burst.hdr_env_mean_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_mean[9]_i_1_n_0\,
       Q => hdr_env_mean(9),
       R => '0'
@@ -73443,9 +76051,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(208),
+      I0 => \comp_burst.data_reg_n_0_[208]\,
       I1 => hdr_env_std(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[0]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[10]_i_1\: unisim.vcomponents.LUT3
@@ -73453,9 +76061,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(218),
+      I0 => \comp_burst.data_reg_n_0_[218]\,
       I1 => hdr_env_std(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[10]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[11]_i_1\: unisim.vcomponents.LUT3
@@ -73463,9 +76071,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(219),
+      I0 => \comp_burst.data_reg_n_0_[219]\,
       I1 => hdr_env_std(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[11]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[12]_i_1\: unisim.vcomponents.LUT3
@@ -73473,9 +76081,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(220),
+      I0 => \comp_burst.data_reg_n_0_[220]\,
       I1 => hdr_env_std(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[12]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[13]_i_1\: unisim.vcomponents.LUT3
@@ -73483,9 +76091,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(221),
+      I0 => \comp_burst.data_reg_n_0_[221]\,
       I1 => hdr_env_std(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[13]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[14]_i_1\: unisim.vcomponents.LUT3
@@ -73493,9 +76101,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(222),
+      I0 => \comp_burst.data_reg_n_0_[222]\,
       I1 => hdr_env_std(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[14]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[15]_i_1\: unisim.vcomponents.LUT3
@@ -73503,9 +76111,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(223),
+      I0 => \comp_burst.data_reg_n_0_[223]\,
       I1 => hdr_env_std(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[15]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[1]_i_1\: unisim.vcomponents.LUT3
@@ -73513,9 +76121,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(209),
+      I0 => \comp_burst.data_reg_n_0_[209]\,
       I1 => hdr_env_std(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[1]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[2]_i_1\: unisim.vcomponents.LUT3
@@ -73523,9 +76131,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(210),
+      I0 => \comp_burst.data_reg_n_0_[210]\,
       I1 => hdr_env_std(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[2]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[3]_i_1\: unisim.vcomponents.LUT3
@@ -73533,9 +76141,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(211),
+      I0 => \comp_burst.data_reg_n_0_[211]\,
       I1 => hdr_env_std(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[3]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[4]_i_1\: unisim.vcomponents.LUT3
@@ -73543,9 +76151,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(212),
+      I0 => \comp_burst.data_reg_n_0_[212]\,
       I1 => hdr_env_std(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[4]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[5]_i_1\: unisim.vcomponents.LUT3
@@ -73553,9 +76161,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(213),
+      I0 => \comp_burst.data_reg_n_0_[213]\,
       I1 => hdr_env_std(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[5]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[6]_i_1\: unisim.vcomponents.LUT3
@@ -73563,9 +76171,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(214),
+      I0 => \comp_burst.data_reg_n_0_[214]\,
       I1 => hdr_env_std(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[6]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[7]_i_1\: unisim.vcomponents.LUT3
@@ -73573,9 +76181,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(215),
+      I0 => \comp_burst.data_reg_n_0_[215]\,
       I1 => hdr_env_std(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[7]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[8]_i_1\: unisim.vcomponents.LUT3
@@ -73583,9 +76191,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(216),
+      I0 => \comp_burst.data_reg_n_0_[216]\,
       I1 => hdr_env_std(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[8]_i_1_n_0\
     );
 \comp_burst.hdr_env_std[9]_i_1\: unisim.vcomponents.LUT3
@@ -73593,135 +76201,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(217),
+      I0 => \comp_burst.data_reg_n_0_[217]\,
       I1 => hdr_env_std(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_env_std[9]_i_1_n_0\
     );
 \comp_burst.hdr_env_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[0]_i_1_n_0\,
       Q => hdr_env_std(0),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[10]_i_1_n_0\,
       Q => hdr_env_std(10),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[11]_i_1_n_0\,
       Q => hdr_env_std(11),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[12]_i_1_n_0\,
       Q => hdr_env_std(12),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[13]_i_1_n_0\,
       Q => hdr_env_std(13),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[14]_i_1_n_0\,
       Q => hdr_env_std(14),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[15]_i_1_n_0\,
       Q => hdr_env_std(15),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[1]_i_1_n_0\,
       Q => hdr_env_std(1),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[2]_i_1_n_0\,
       Q => hdr_env_std(2),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[3]_i_1_n_0\,
       Q => hdr_env_std(3),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[4]_i_1_n_0\,
       Q => hdr_env_std(4),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[5]_i_1_n_0\,
       Q => hdr_env_std(5),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[6]_i_1_n_0\,
       Q => hdr_env_std(6),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[7]_i_1_n_0\,
       Q => hdr_env_std(7),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[8]_i_1_n_0\,
       Q => hdr_env_std(8),
       R => '0'
     );
 \comp_burst.hdr_env_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_env_std[9]_i_1_n_0\,
       Q => hdr_env_std(9),
       R => '0'
@@ -73731,8 +76339,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(72),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[72]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(0),
       O => \comp_burst.hdr_flags[0]_i_1_n_0\
     );
@@ -73741,8 +76349,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(73),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[73]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(1),
       O => \comp_burst.hdr_flags[1]_i_1_n_0\
     );
@@ -73751,8 +76359,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(74),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[74]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(2),
       O => \comp_burst.hdr_flags[2]_i_1_n_0\
     );
@@ -73761,8 +76369,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(75),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[75]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(3),
       O => \comp_burst.hdr_flags[3]_i_1_n_0\
     );
@@ -73771,8 +76379,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(76),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[76]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(4),
       O => \comp_burst.hdr_flags[4]_i_1_n_0\
     );
@@ -73781,8 +76389,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(77),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[77]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(5),
       O => \comp_burst.hdr_flags[5]_i_1_n_0\
     );
@@ -73791,8 +76399,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(78),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[78]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_flags(6),
       O => \comp_burst.hdr_flags[6]_i_1_n_0\
     );
@@ -73803,69 +76411,69 @@ begin
         port map (
       I0 => hdr_flags(7),
       I1 => hdr_flags(7),
-      I2 => p5_wr,
-      I3 => p5_data(79),
+      I2 => \^wr\,
+      I3 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_flags[7]_i_1_n_0\
     );
 \comp_burst.hdr_flags_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[0]_i_1_n_0\,
       Q => hdr_flags(0),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[1]_i_1_n_0\,
       Q => hdr_flags(1),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[2]_i_1_n_0\,
       Q => hdr_flags(2),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[3]_i_1_n_0\,
       Q => hdr_flags(3),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[4]_i_1_n_0\,
       Q => hdr_flags(4),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[5]_i_1_n_0\,
       Q => hdr_flags(5),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_flags[6]_i_1_n_0\,
       Q => hdr_flags(6),
       R => '0'
     );
 \comp_burst.hdr_flags_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
+      C => rt_clk,
       CE => '1',
       D => \comp_burst.hdr_flags[7]_i_1_n_0\,
       Q => hdr_flags(7),
@@ -73876,8 +76484,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(128),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[128]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(0),
       O => \comp_burst.hdr_freq[0]_i_1_n_0\
     );
@@ -73886,8 +76494,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(138),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[138]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(10),
       O => \comp_burst.hdr_freq[10]_i_1_n_0\
     );
@@ -73896,8 +76504,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(139),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[139]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(11),
       O => \comp_burst.hdr_freq[11]_i_1_n_0\
     );
@@ -73906,8 +76514,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(140),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[140]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(12),
       O => \comp_burst.hdr_freq[12]_i_1_n_0\
     );
@@ -73916,8 +76524,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(141),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[141]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(13),
       O => \comp_burst.hdr_freq[13]_i_1_n_0\
     );
@@ -73926,8 +76534,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(142),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[142]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(14),
       O => \comp_burst.hdr_freq[14]_i_1_n_0\
     );
@@ -73936,8 +76544,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(143),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[143]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(15),
       O => \comp_burst.hdr_freq[15]_i_1_n_0\
     );
@@ -73946,8 +76554,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(144),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[144]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(16),
       O => \comp_burst.hdr_freq[16]_i_1_n_0\
     );
@@ -73956,8 +76564,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(145),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[145]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(17),
       O => \comp_burst.hdr_freq[17]_i_1_n_0\
     );
@@ -73966,8 +76574,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(146),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[146]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(18),
       O => \comp_burst.hdr_freq[18]_i_1_n_0\
     );
@@ -73976,8 +76584,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(147),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[147]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(19),
       O => \comp_burst.hdr_freq[19]_i_1_n_0\
     );
@@ -73986,8 +76594,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(129),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[129]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(1),
       O => \comp_burst.hdr_freq[1]_i_1_n_0\
     );
@@ -73996,8 +76604,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(148),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[148]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(20),
       O => \comp_burst.hdr_freq[20]_i_1_n_0\
     );
@@ -74006,8 +76614,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(149),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[149]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(21),
       O => \comp_burst.hdr_freq[21]_i_1_n_0\
     );
@@ -74016,8 +76624,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(150),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[150]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(22),
       O => \comp_burst.hdr_freq[22]_i_1_n_0\
     );
@@ -74026,8 +76634,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(151),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[151]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(23),
       O => \comp_burst.hdr_freq[23]_i_1_n_0\
     );
@@ -74036,8 +76644,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(152),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[152]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(24),
       O => \comp_burst.hdr_freq[24]_i_1_n_0\
     );
@@ -74046,8 +76654,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(153),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[153]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(25),
       O => \comp_burst.hdr_freq[25]_i_1_n_0\
     );
@@ -74056,8 +76664,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(154),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[154]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(26),
       O => \comp_burst.hdr_freq[26]_i_1_n_0\
     );
@@ -74066,8 +76674,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(155),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[155]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(27),
       O => \comp_burst.hdr_freq[27]_i_1_n_0\
     );
@@ -74076,8 +76684,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(156),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[156]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(28),
       O => \comp_burst.hdr_freq[28]_i_1_n_0\
     );
@@ -74086,8 +76694,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(157),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[157]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(29),
       O => \comp_burst.hdr_freq[29]_i_1_n_0\
     );
@@ -74096,8 +76704,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(130),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[130]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(2),
       O => \comp_burst.hdr_freq[2]_i_1_n_0\
     );
@@ -74106,8 +76714,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(158),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[158]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(30),
       O => \comp_burst.hdr_freq[30]_i_1_n_0\
     );
@@ -74116,8 +76724,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(159),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[159]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(31),
       O => \comp_burst.hdr_freq[31]_i_1_n_0\
     );
@@ -74126,8 +76734,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(131),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[131]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(3),
       O => \comp_burst.hdr_freq[3]_i_1_n_0\
     );
@@ -74136,8 +76744,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(132),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[132]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(4),
       O => \comp_burst.hdr_freq[4]_i_1_n_0\
     );
@@ -74146,8 +76754,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(133),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[133]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(5),
       O => \comp_burst.hdr_freq[5]_i_1_n_0\
     );
@@ -74156,8 +76764,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(134),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[134]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(6),
       O => \comp_burst.hdr_freq[6]_i_1_n_0\
     );
@@ -74166,8 +76774,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(135),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[135]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(7),
       O => \comp_burst.hdr_freq[7]_i_1_n_0\
     );
@@ -74176,8 +76784,8 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(136),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[136]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(8),
       O => \comp_burst.hdr_freq[8]_i_1_n_0\
     );
@@ -74186,263 +76794,263 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(137),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[137]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_freq(9),
       O => \comp_burst.hdr_freq[9]_i_1_n_0\
     );
 \comp_burst.hdr_freq_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[0]_i_1_n_0\,
       Q => hdr_freq(0),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[10]_i_1_n_0\,
       Q => hdr_freq(10),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[11]_i_1_n_0\,
       Q => hdr_freq(11),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[12]_i_1_n_0\,
       Q => hdr_freq(12),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[13]_i_1_n_0\,
       Q => hdr_freq(13),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[14]_i_1_n_0\,
       Q => hdr_freq(14),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[15]_i_1_n_0\,
       Q => hdr_freq(15),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[16]_i_1_n_0\,
       Q => hdr_freq(16),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[17]_i_1_n_0\,
       Q => hdr_freq(17),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[18]_i_1_n_0\,
       Q => hdr_freq(18),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[19]_i_1_n_0\,
       Q => hdr_freq(19),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[1]_i_1_n_0\,
       Q => hdr_freq(1),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[20]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[20]_i_1_n_0\,
       Q => hdr_freq(20),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[21]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[21]_i_1_n_0\,
       Q => hdr_freq(21),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[22]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[22]_i_1_n_0\,
       Q => hdr_freq(22),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[23]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[23]_i_1_n_0\,
       Q => hdr_freq(23),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[24]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[24]_i_1_n_0\,
       Q => hdr_freq(24),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[25]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[25]_i_1_n_0\,
       Q => hdr_freq(25),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[26]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[26]_i_1_n_0\,
       Q => hdr_freq(26),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[27]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[27]_i_1_n_0\,
       Q => hdr_freq(27),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[28]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[28]_i_1_n_0\,
       Q => hdr_freq(28),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[29]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[29]_i_1_n_0\,
       Q => hdr_freq(29),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[2]_i_1_n_0\,
       Q => hdr_freq(2),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[30]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[30]_i_1_n_0\,
       Q => hdr_freq(30),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[31]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[31]_i_1_n_0\,
       Q => hdr_freq(31),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[3]_i_1_n_0\,
       Q => hdr_freq(3),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[4]_i_1_n_0\,
       Q => hdr_freq(4),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[5]_i_1_n_0\,
       Q => hdr_freq(5),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[6]_i_1_n_0\,
       Q => hdr_freq(6),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[7]_i_1_n_0\,
       Q => hdr_freq(7),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[8]_i_1_n_0\,
       Q => hdr_freq(8),
       R => '0'
     );
 \comp_burst.hdr_freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq[9]_i_1_n_0\,
       Q => hdr_freq(9),
       R => '0'
@@ -74452,9 +77060,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(240),
+      I0 => \comp_burst.data_reg_n_0_[240]\,
       I1 => hdr_freq_std(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[0]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[10]_i_1\: unisim.vcomponents.LUT3
@@ -74462,9 +77070,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(250),
+      I0 => \comp_burst.data_reg_n_0_[250]\,
       I1 => hdr_freq_std(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[10]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[11]_i_1\: unisim.vcomponents.LUT3
@@ -74472,9 +77080,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(251),
+      I0 => \comp_burst.data_reg_n_0_[251]\,
       I1 => hdr_freq_std(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[11]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[12]_i_1\: unisim.vcomponents.LUT3
@@ -74482,9 +77090,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(252),
+      I0 => \comp_burst.data_reg_n_0_[252]\,
       I1 => hdr_freq_std(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[12]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[13]_i_1\: unisim.vcomponents.LUT3
@@ -74492,9 +77100,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(253),
+      I0 => \comp_burst.data_reg_n_0_[253]\,
       I1 => hdr_freq_std(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[13]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[14]_i_1\: unisim.vcomponents.LUT3
@@ -74502,9 +77110,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(254),
+      I0 => \comp_burst.data_reg_n_0_[254]\,
       I1 => hdr_freq_std(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[14]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[15]_i_1\: unisim.vcomponents.LUT3
@@ -74512,9 +77120,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(255),
+      I0 => \comp_burst.data_reg_n_0_[255]\,
       I1 => hdr_freq_std(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[15]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[1]_i_1\: unisim.vcomponents.LUT3
@@ -74522,9 +77130,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(241),
+      I0 => \comp_burst.data_reg_n_0_[241]\,
       I1 => hdr_freq_std(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[1]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[2]_i_1\: unisim.vcomponents.LUT3
@@ -74532,9 +77140,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(242),
+      I0 => \comp_burst.data_reg_n_0_[242]\,
       I1 => hdr_freq_std(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[2]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[3]_i_1\: unisim.vcomponents.LUT3
@@ -74542,9 +77150,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(243),
+      I0 => \comp_burst.data_reg_n_0_[243]\,
       I1 => hdr_freq_std(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[3]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[4]_i_1\: unisim.vcomponents.LUT3
@@ -74552,9 +77160,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(244),
+      I0 => \comp_burst.data_reg_n_0_[244]\,
       I1 => hdr_freq_std(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[4]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[5]_i_1\: unisim.vcomponents.LUT3
@@ -74562,9 +77170,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(245),
+      I0 => \comp_burst.data_reg_n_0_[245]\,
       I1 => hdr_freq_std(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[5]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[6]_i_1\: unisim.vcomponents.LUT3
@@ -74572,9 +77180,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(246),
+      I0 => \comp_burst.data_reg_n_0_[246]\,
       I1 => hdr_freq_std(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[6]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[7]_i_1\: unisim.vcomponents.LUT3
@@ -74582,9 +77190,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(247),
+      I0 => \comp_burst.data_reg_n_0_[247]\,
       I1 => hdr_freq_std(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[7]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[8]_i_1\: unisim.vcomponents.LUT3
@@ -74592,9 +77200,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(248),
+      I0 => \comp_burst.data_reg_n_0_[248]\,
       I1 => hdr_freq_std(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[8]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std[9]_i_1\: unisim.vcomponents.LUT3
@@ -74602,135 +77210,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(249),
+      I0 => \comp_burst.data_reg_n_0_[249]\,
       I1 => hdr_freq_std(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_freq_std[9]_i_1_n_0\
     );
 \comp_burst.hdr_freq_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[0]_i_1_n_0\,
       Q => hdr_freq_std(0),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[10]_i_1_n_0\,
       Q => hdr_freq_std(10),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[11]_i_1_n_0\,
       Q => hdr_freq_std(11),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[12]_i_1_n_0\,
       Q => hdr_freq_std(12),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[13]_i_1_n_0\,
       Q => hdr_freq_std(13),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[14]_i_1_n_0\,
       Q => hdr_freq_std(14),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[15]_i_1_n_0\,
       Q => hdr_freq_std(15),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[1]_i_1_n_0\,
       Q => hdr_freq_std(1),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[2]_i_1_n_0\,
       Q => hdr_freq_std(2),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[3]_i_1_n_0\,
       Q => hdr_freq_std(3),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[4]_i_1_n_0\,
       Q => hdr_freq_std(4),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[5]_i_1_n_0\,
       Q => hdr_freq_std(5),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[6]_i_1_n_0\,
       Q => hdr_freq_std(6),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[7]_i_1_n_0\,
       Q => hdr_freq_std(7),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[8]_i_1_n_0\,
       Q => hdr_freq_std(8),
       R => '0'
     );
 \comp_burst.hdr_freq_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_freq_std[9]_i_1_n_0\,
       Q => hdr_freq_std(9),
       R => '0'
@@ -74740,9 +77348,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(160),
+      I0 => \comp_burst.data_reg_n_0_[160]\,
       I1 => hdr_max_env(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[0]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[10]_i_1\: unisim.vcomponents.LUT3
@@ -74750,9 +77358,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(170),
+      I0 => \comp_burst.data_reg_n_0_[170]\,
       I1 => hdr_max_env(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[10]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[11]_i_1\: unisim.vcomponents.LUT3
@@ -74760,9 +77368,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(171),
+      I0 => \comp_burst.data_reg_n_0_[171]\,
       I1 => hdr_max_env(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[11]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[12]_i_1\: unisim.vcomponents.LUT3
@@ -74770,9 +77378,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(172),
+      I0 => \comp_burst.data_reg_n_0_[172]\,
       I1 => hdr_max_env(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[12]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[13]_i_1\: unisim.vcomponents.LUT3
@@ -74780,9 +77388,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(173),
+      I0 => \comp_burst.data_reg_n_0_[173]\,
       I1 => hdr_max_env(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[13]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[14]_i_1\: unisim.vcomponents.LUT3
@@ -74790,9 +77398,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(174),
+      I0 => \comp_burst.data_reg_n_0_[174]\,
       I1 => hdr_max_env(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[14]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[15]_i_1\: unisim.vcomponents.LUT3
@@ -74800,9 +77408,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(175),
+      I0 => \comp_burst.data_reg_n_0_[175]\,
       I1 => hdr_max_env(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[15]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[1]_i_1\: unisim.vcomponents.LUT3
@@ -74810,9 +77418,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(161),
+      I0 => \comp_burst.data_reg_n_0_[161]\,
       I1 => hdr_max_env(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[1]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[2]_i_1\: unisim.vcomponents.LUT3
@@ -74820,9 +77428,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(162),
+      I0 => \comp_burst.data_reg_n_0_[162]\,
       I1 => hdr_max_env(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[2]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[3]_i_1\: unisim.vcomponents.LUT3
@@ -74830,9 +77438,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(163),
+      I0 => \comp_burst.data_reg_n_0_[163]\,
       I1 => hdr_max_env(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[3]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[4]_i_1\: unisim.vcomponents.LUT3
@@ -74840,9 +77448,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(164),
+      I0 => \comp_burst.data_reg_n_0_[164]\,
       I1 => hdr_max_env(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[4]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[5]_i_1\: unisim.vcomponents.LUT3
@@ -74850,9 +77458,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(165),
+      I0 => \comp_burst.data_reg_n_0_[165]\,
       I1 => hdr_max_env(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[5]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[6]_i_1\: unisim.vcomponents.LUT3
@@ -74860,9 +77468,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(166),
+      I0 => \comp_burst.data_reg_n_0_[166]\,
       I1 => hdr_max_env(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[6]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[7]_i_1\: unisim.vcomponents.LUT3
@@ -74870,9 +77478,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(167),
+      I0 => \comp_burst.data_reg_n_0_[167]\,
       I1 => hdr_max_env(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[7]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[8]_i_1\: unisim.vcomponents.LUT3
@@ -74880,9 +77488,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(168),
+      I0 => \comp_burst.data_reg_n_0_[168]\,
       I1 => hdr_max_env(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[8]_i_1_n_0\
     );
 \comp_burst.hdr_max_env[9]_i_1\: unisim.vcomponents.LUT3
@@ -74890,135 +77498,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(169),
+      I0 => \comp_burst.data_reg_n_0_[169]\,
       I1 => hdr_max_env(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_env[9]_i_1_n_0\
     );
 \comp_burst.hdr_max_env_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[0]_i_1_n_0\,
       Q => hdr_max_env(0),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[10]_i_1_n_0\,
       Q => hdr_max_env(10),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[11]_i_1_n_0\,
       Q => hdr_max_env(11),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[12]_i_1_n_0\,
       Q => hdr_max_env(12),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[13]_i_1_n_0\,
       Q => hdr_max_env(13),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[14]_i_1_n_0\,
       Q => hdr_max_env(14),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[15]_i_1_n_0\,
       Q => hdr_max_env(15),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[1]_i_1_n_0\,
       Q => hdr_max_env(1),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[2]_i_1_n_0\,
       Q => hdr_max_env(2),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[3]_i_1_n_0\,
       Q => hdr_max_env(3),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[4]_i_1_n_0\,
       Q => hdr_max_env(4),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[5]_i_1_n_0\,
       Q => hdr_max_env(5),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[6]_i_1_n_0\,
       Q => hdr_max_env(6),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[7]_i_1_n_0\,
       Q => hdr_max_env(7),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[8]_i_1_n_0\,
       Q => hdr_max_env(8),
       R => '0'
     );
 \comp_burst.hdr_max_env_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_env[9]_i_1_n_0\,
       Q => hdr_max_env(9),
       R => '0'
@@ -75028,9 +77636,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(176),
+      I0 => \comp_burst.data_reg_n_0_[176]\,
       I1 => hdr_max_pos(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[0]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[10]_i_1\: unisim.vcomponents.LUT3
@@ -75038,9 +77646,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(186),
+      I0 => \comp_burst.data_reg_n_0_[186]\,
       I1 => hdr_max_pos(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[10]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[11]_i_1\: unisim.vcomponents.LUT3
@@ -75048,9 +77656,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(187),
+      I0 => \comp_burst.data_reg_n_0_[187]\,
       I1 => hdr_max_pos(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[11]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[12]_i_1\: unisim.vcomponents.LUT3
@@ -75058,9 +77666,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(188),
+      I0 => \comp_burst.data_reg_n_0_[188]\,
       I1 => hdr_max_pos(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[12]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[13]_i_1\: unisim.vcomponents.LUT3
@@ -75068,9 +77676,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(189),
+      I0 => \comp_burst.data_reg_n_0_[189]\,
       I1 => hdr_max_pos(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[13]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[14]_i_1\: unisim.vcomponents.LUT3
@@ -75078,9 +77686,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(190),
+      I0 => \comp_burst.data_reg_n_0_[190]\,
       I1 => hdr_max_pos(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[14]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[15]_i_1\: unisim.vcomponents.LUT3
@@ -75088,9 +77696,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(191),
+      I0 => \comp_burst.data_reg_n_0_[191]\,
       I1 => hdr_max_pos(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[15]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[1]_i_1\: unisim.vcomponents.LUT3
@@ -75098,9 +77706,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(177),
+      I0 => \comp_burst.data_reg_n_0_[177]\,
       I1 => hdr_max_pos(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[1]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[2]_i_1\: unisim.vcomponents.LUT3
@@ -75108,9 +77716,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(178),
+      I0 => \comp_burst.data_reg_n_0_[178]\,
       I1 => hdr_max_pos(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[2]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[3]_i_1\: unisim.vcomponents.LUT3
@@ -75118,9 +77726,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(179),
+      I0 => \comp_burst.data_reg_n_0_[179]\,
       I1 => hdr_max_pos(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[3]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[4]_i_1\: unisim.vcomponents.LUT3
@@ -75128,9 +77736,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(180),
+      I0 => \comp_burst.data_reg_n_0_[180]\,
       I1 => hdr_max_pos(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[4]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[5]_i_1\: unisim.vcomponents.LUT3
@@ -75138,9 +77746,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(181),
+      I0 => \comp_burst.data_reg_n_0_[181]\,
       I1 => hdr_max_pos(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[5]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[6]_i_1\: unisim.vcomponents.LUT3
@@ -75148,9 +77756,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(182),
+      I0 => \comp_burst.data_reg_n_0_[182]\,
       I1 => hdr_max_pos(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[6]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[7]_i_1\: unisim.vcomponents.LUT3
@@ -75158,9 +77766,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(183),
+      I0 => \comp_burst.data_reg_n_0_[183]\,
       I1 => hdr_max_pos(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[7]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[8]_i_1\: unisim.vcomponents.LUT3
@@ -75168,9 +77776,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(184),
+      I0 => \comp_burst.data_reg_n_0_[184]\,
       I1 => hdr_max_pos(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[8]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos[9]_i_1\: unisim.vcomponents.LUT3
@@ -75178,135 +77786,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(185),
+      I0 => \comp_burst.data_reg_n_0_[185]\,
       I1 => hdr_max_pos(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_max_pos[9]_i_1_n_0\
     );
 \comp_burst.hdr_max_pos_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[0]_i_1_n_0\,
       Q => hdr_max_pos(0),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[10]_i_1_n_0\,
       Q => hdr_max_pos(10),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[11]_i_1_n_0\,
       Q => hdr_max_pos(11),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[12]_i_1_n_0\,
       Q => hdr_max_pos(12),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[13]_i_1_n_0\,
       Q => hdr_max_pos(13),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[14]_i_1_n_0\,
       Q => hdr_max_pos(14),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[15]_i_1_n_0\,
       Q => hdr_max_pos(15),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[1]_i_1_n_0\,
       Q => hdr_max_pos(1),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[2]_i_1_n_0\,
       Q => hdr_max_pos(2),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[3]_i_1_n_0\,
       Q => hdr_max_pos(3),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[4]_i_1_n_0\,
       Q => hdr_max_pos(4),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[5]_i_1_n_0\,
       Q => hdr_max_pos(5),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[6]_i_1_n_0\,
       Q => hdr_max_pos(6),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[7]_i_1_n_0\,
       Q => hdr_max_pos(7),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[8]_i_1_n_0\,
       Q => hdr_max_pos(8),
       R => '0'
     );
 \comp_burst.hdr_max_pos_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_max_pos[9]_i_1_n_0\,
       Q => hdr_max_pos(9),
       R => '0'
@@ -75316,9 +77924,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(224),
+      I0 => \comp_burst.data_reg_n_0_[224]\,
       I1 => hdr_phase_std(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[0]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[10]_i_1\: unisim.vcomponents.LUT3
@@ -75326,9 +77934,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(234),
+      I0 => \comp_burst.data_reg_n_0_[234]\,
       I1 => hdr_phase_std(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[10]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[11]_i_1\: unisim.vcomponents.LUT3
@@ -75336,9 +77944,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(235),
+      I0 => \comp_burst.data_reg_n_0_[235]\,
       I1 => hdr_phase_std(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[11]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[12]_i_1\: unisim.vcomponents.LUT3
@@ -75346,9 +77954,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(236),
+      I0 => \comp_burst.data_reg_n_0_[236]\,
       I1 => hdr_phase_std(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[12]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[13]_i_1\: unisim.vcomponents.LUT3
@@ -75356,9 +77964,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(237),
+      I0 => \comp_burst.data_reg_n_0_[237]\,
       I1 => hdr_phase_std(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[13]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[14]_i_1\: unisim.vcomponents.LUT3
@@ -75366,9 +77974,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(238),
+      I0 => \comp_burst.data_reg_n_0_[238]\,
       I1 => hdr_phase_std(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[14]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[15]_i_1\: unisim.vcomponents.LUT3
@@ -75376,9 +77984,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(239),
+      I0 => \comp_burst.data_reg_n_0_[239]\,
       I1 => hdr_phase_std(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[15]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[1]_i_1\: unisim.vcomponents.LUT3
@@ -75386,9 +77994,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(225),
+      I0 => \comp_burst.data_reg_n_0_[225]\,
       I1 => hdr_phase_std(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[1]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[2]_i_1\: unisim.vcomponents.LUT3
@@ -75396,9 +78004,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(226),
+      I0 => \comp_burst.data_reg_n_0_[226]\,
       I1 => hdr_phase_std(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[2]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[3]_i_1\: unisim.vcomponents.LUT3
@@ -75406,9 +78014,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(227),
+      I0 => \comp_burst.data_reg_n_0_[227]\,
       I1 => hdr_phase_std(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[3]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[4]_i_1\: unisim.vcomponents.LUT3
@@ -75416,9 +78024,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(228),
+      I0 => \comp_burst.data_reg_n_0_[228]\,
       I1 => hdr_phase_std(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[4]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[5]_i_1\: unisim.vcomponents.LUT3
@@ -75426,9 +78034,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(229),
+      I0 => \comp_burst.data_reg_n_0_[229]\,
       I1 => hdr_phase_std(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[5]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[6]_i_1\: unisim.vcomponents.LUT3
@@ -75436,9 +78044,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(230),
+      I0 => \comp_burst.data_reg_n_0_[230]\,
       I1 => hdr_phase_std(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[6]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[7]_i_1\: unisim.vcomponents.LUT3
@@ -75446,9 +78054,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(231),
+      I0 => \comp_burst.data_reg_n_0_[231]\,
       I1 => hdr_phase_std(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[7]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[8]_i_1\: unisim.vcomponents.LUT3
@@ -75456,9 +78064,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(232),
+      I0 => \comp_burst.data_reg_n_0_[232]\,
       I1 => hdr_phase_std(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[8]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std[9]_i_1\: unisim.vcomponents.LUT3
@@ -75466,135 +78074,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(233),
+      I0 => \comp_burst.data_reg_n_0_[233]\,
       I1 => hdr_phase_std(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_phase_std[9]_i_1_n_0\
     );
 \comp_burst.hdr_phase_std_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[0]_i_1_n_0\,
       Q => hdr_phase_std(0),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[10]_i_1_n_0\,
       Q => hdr_phase_std(10),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[11]_i_1_n_0\,
       Q => hdr_phase_std(11),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[12]_i_1_n_0\,
       Q => hdr_phase_std(12),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[13]_i_1_n_0\,
       Q => hdr_phase_std(13),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[14]_i_1_n_0\,
       Q => hdr_phase_std(14),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[15]_i_1_n_0\,
       Q => hdr_phase_std(15),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[1]_i_1_n_0\,
       Q => hdr_phase_std(1),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[2]_i_1_n_0\,
       Q => hdr_phase_std(2),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[3]_i_1_n_0\,
       Q => hdr_phase_std(3),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[4]_i_1_n_0\,
       Q => hdr_phase_std(4),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[5]_i_1_n_0\,
       Q => hdr_phase_std(5),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[6]_i_1_n_0\,
       Q => hdr_phase_std(6),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[7]_i_1_n_0\,
       Q => hdr_phase_std(7),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[8]_i_1_n_0\,
       Q => hdr_phase_std(8),
       R => '0'
     );
 \comp_burst.hdr_phase_std_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_phase_std[9]_i_1_n_0\,
       Q => hdr_phase_std(9),
       R => '0'
@@ -75604,1150 +78212,1150 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(0),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[0]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(0),
-      O => \p_1_in__0\(0)
+      O => p_0_in1_in(0)
     );
 \comp_burst.hdr_sample[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(10),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[10]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(10),
-      O => \p_1_in__0\(10)
+      O => p_0_in1_in(10)
     );
 \comp_burst.hdr_sample[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(11),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[11]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(11),
-      O => \p_1_in__0\(11)
+      O => p_0_in1_in(11)
     );
 \comp_burst.hdr_sample[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(12),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[12]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(12),
-      O => \p_1_in__0\(12)
+      O => p_0_in1_in(12)
     );
 \comp_burst.hdr_sample[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(13),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[13]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(13),
-      O => \p_1_in__0\(13)
+      O => p_0_in1_in(13)
     );
 \comp_burst.hdr_sample[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(14),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[14]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(14),
-      O => \p_1_in__0\(14)
+      O => p_0_in1_in(14)
     );
 \comp_burst.hdr_sample[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(15),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[15]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(15),
-      O => \p_1_in__0\(15)
+      O => p_0_in1_in(15)
     );
 \comp_burst.hdr_sample[16]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(16),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[16]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(16),
-      O => \p_1_in__0\(16)
+      O => p_0_in1_in(16)
     );
 \comp_burst.hdr_sample[17]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(17),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[17]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(17),
-      O => \p_1_in__0\(17)
+      O => p_0_in1_in(17)
     );
 \comp_burst.hdr_sample[18]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(18),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[18]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(18),
-      O => \p_1_in__0\(18)
+      O => p_0_in1_in(18)
     );
 \comp_burst.hdr_sample[19]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(19),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[19]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(19),
-      O => \p_1_in__0\(19)
+      O => p_0_in1_in(19)
     );
 \comp_burst.hdr_sample[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(1),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[1]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(1),
-      O => \p_1_in__0\(1)
+      O => p_0_in1_in(1)
     );
 \comp_burst.hdr_sample[20]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(20),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[20]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(20),
-      O => \p_1_in__0\(20)
+      O => p_0_in1_in(20)
     );
 \comp_burst.hdr_sample[21]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(21),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[21]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(21),
-      O => \p_1_in__0\(21)
+      O => p_0_in1_in(21)
     );
 \comp_burst.hdr_sample[22]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(22),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[22]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(22),
-      O => \p_1_in__0\(22)
+      O => p_0_in1_in(22)
     );
 \comp_burst.hdr_sample[23]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(23),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[23]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(23),
-      O => \p_1_in__0\(23)
+      O => p_0_in1_in(23)
     );
 \comp_burst.hdr_sample[24]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(24),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[24]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(24),
-      O => \p_1_in__0\(24)
+      O => p_0_in1_in(24)
     );
 \comp_burst.hdr_sample[25]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(25),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[25]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(25),
-      O => \p_1_in__0\(25)
+      O => p_0_in1_in(25)
     );
 \comp_burst.hdr_sample[26]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(26),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[26]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(26),
-      O => \p_1_in__0\(26)
+      O => p_0_in1_in(26)
     );
 \comp_burst.hdr_sample[27]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(27),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[27]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(27),
-      O => \p_1_in__0\(27)
+      O => p_0_in1_in(27)
     );
 \comp_burst.hdr_sample[28]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(28),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[28]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(28),
-      O => \p_1_in__0\(28)
+      O => p_0_in1_in(28)
     );
 \comp_burst.hdr_sample[29]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(29),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[29]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(29),
-      O => \p_1_in__0\(29)
+      O => p_0_in1_in(29)
     );
 \comp_burst.hdr_sample[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(2),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[2]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(2),
-      O => \p_1_in__0\(2)
+      O => p_0_in1_in(2)
     );
 \comp_burst.hdr_sample[30]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(30),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[30]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(30),
-      O => \p_1_in__0\(30)
+      O => p_0_in1_in(30)
     );
 \comp_burst.hdr_sample[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(31),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[31]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(31),
-      O => \p_1_in__0\(31)
+      O => p_0_in1_in(31)
     );
 \comp_burst.hdr_sample[32]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(32),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[32]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(32),
-      O => \p_1_in__0\(32)
+      O => p_0_in1_in(32)
     );
 \comp_burst.hdr_sample[33]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(33),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[33]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(33),
-      O => \p_1_in__0\(33)
+      O => p_0_in1_in(33)
     );
 \comp_burst.hdr_sample[34]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(34),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[34]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(34),
-      O => \p_1_in__0\(34)
+      O => p_0_in1_in(34)
     );
 \comp_burst.hdr_sample[35]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(35),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[35]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(35),
-      O => \p_1_in__0\(35)
+      O => p_0_in1_in(35)
     );
 \comp_burst.hdr_sample[36]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(36),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[36]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(36),
-      O => \p_1_in__0\(36)
+      O => p_0_in1_in(36)
     );
 \comp_burst.hdr_sample[37]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(37),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[37]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(37),
-      O => \p_1_in__0\(37)
+      O => p_0_in1_in(37)
     );
 \comp_burst.hdr_sample[38]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(38),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[38]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(38),
-      O => \p_1_in__0\(38)
+      O => p_0_in1_in(38)
     );
 \comp_burst.hdr_sample[39]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(39),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[39]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(39),
-      O => \p_1_in__0\(39)
+      O => p_0_in1_in(39)
     );
 \comp_burst.hdr_sample[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(3),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[3]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(3),
-      O => \p_1_in__0\(3)
+      O => p_0_in1_in(3)
     );
 \comp_burst.hdr_sample[40]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(40),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[40]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(40),
-      O => \p_1_in__0\(40)
+      O => p_0_in1_in(40)
     );
 \comp_burst.hdr_sample[41]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(41),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[41]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(41),
-      O => \p_1_in__0\(41)
+      O => p_0_in1_in(41)
     );
 \comp_burst.hdr_sample[42]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(42),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[42]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(42),
-      O => \p_1_in__0\(42)
+      O => p_0_in1_in(42)
     );
 \comp_burst.hdr_sample[43]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(43),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[43]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(43),
-      O => \p_1_in__0\(43)
+      O => p_0_in1_in(43)
     );
 \comp_burst.hdr_sample[44]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(44),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[44]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(44),
-      O => \p_1_in__0\(44)
+      O => p_0_in1_in(44)
     );
 \comp_burst.hdr_sample[45]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(45),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[45]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(45),
-      O => \p_1_in__0\(45)
+      O => p_0_in1_in(45)
     );
 \comp_burst.hdr_sample[46]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(46),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[46]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(46),
-      O => \p_1_in__0\(46)
+      O => p_0_in1_in(46)
     );
 \comp_burst.hdr_sample[47]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(47),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[47]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(47),
-      O => \p_1_in__0\(47)
+      O => p_0_in1_in(47)
     );
 \comp_burst.hdr_sample[48]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(48),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[48]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(48),
-      O => \p_1_in__0\(48)
+      O => p_0_in1_in(48)
     );
 \comp_burst.hdr_sample[49]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(49),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[49]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(49),
-      O => \p_1_in__0\(49)
+      O => p_0_in1_in(49)
     );
 \comp_burst.hdr_sample[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(4),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[4]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(4),
-      O => \p_1_in__0\(4)
+      O => p_0_in1_in(4)
     );
 \comp_burst.hdr_sample[50]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(50),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[50]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(50),
-      O => \p_1_in__0\(50)
+      O => p_0_in1_in(50)
     );
 \comp_burst.hdr_sample[51]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(51),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[51]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(51),
-      O => \p_1_in__0\(51)
+      O => p_0_in1_in(51)
     );
 \comp_burst.hdr_sample[52]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(52),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[52]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(52),
-      O => \p_1_in__0\(52)
+      O => p_0_in1_in(52)
     );
 \comp_burst.hdr_sample[53]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(53),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[53]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(53),
-      O => \p_1_in__0\(53)
+      O => p_0_in1_in(53)
     );
 \comp_burst.hdr_sample[54]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(54),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[54]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(54),
-      O => \p_1_in__0\(54)
+      O => p_0_in1_in(54)
     );
 \comp_burst.hdr_sample[55]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(55),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[55]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(55),
-      O => \p_1_in__0\(55)
+      O => p_0_in1_in(55)
     );
 \comp_burst.hdr_sample[56]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(56),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[56]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(56),
-      O => \p_1_in__0\(56)
+      O => p_0_in1_in(56)
     );
 \comp_burst.hdr_sample[57]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(57),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[57]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(57),
-      O => \p_1_in__0\(57)
+      O => p_0_in1_in(57)
     );
 \comp_burst.hdr_sample[58]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(58),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[58]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(58),
-      O => \p_1_in__0\(58)
+      O => p_0_in1_in(58)
     );
 \comp_burst.hdr_sample[59]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(59),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[59]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(59),
-      O => \p_1_in__0\(59)
+      O => p_0_in1_in(59)
     );
 \comp_burst.hdr_sample[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(5),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[5]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(5),
-      O => \p_1_in__0\(5)
+      O => p_0_in1_in(5)
     );
 \comp_burst.hdr_sample[60]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(60),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[60]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(60),
-      O => \p_1_in__0\(60)
+      O => p_0_in1_in(60)
     );
 \comp_burst.hdr_sample[61]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(61),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[61]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(61),
-      O => \p_1_in__0\(61)
+      O => p_0_in1_in(61)
     );
 \comp_burst.hdr_sample[62]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(62),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[62]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(62),
-      O => \p_1_in__0\(62)
+      O => p_0_in1_in(62)
     );
 \comp_burst.hdr_sample[63]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(63),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[63]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(63),
-      O => \p_1_in__0\(63)
+      O => p_0_in1_in(63)
     );
 \comp_burst.hdr_sample[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(6),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[6]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(6),
-      O => \p_1_in__0\(6)
+      O => p_0_in1_in(6)
     );
 \comp_burst.hdr_sample[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(7),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[7]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(7),
-      O => \p_1_in__0\(7)
+      O => p_0_in1_in(7)
     );
 \comp_burst.hdr_sample[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(8),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[8]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(8),
-      O => \p_1_in__0\(8)
+      O => p_0_in1_in(8)
     );
 \comp_burst.hdr_sample[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
     )
         port map (
-      I0 => p5_data(9),
-      I1 => p5_data(79),
+      I0 => \comp_burst.data_reg_n_0_[9]\,
+      I1 => \comp_burst.data_reg_n_0_[79]\,
       I2 => hdr_sample(9),
-      O => \p_1_in__0\(9)
+      O => p_0_in1_in(9)
     );
 \comp_burst.hdr_sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(0),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(0),
       Q => hdr_sample(0),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(10),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(10),
       Q => hdr_sample(10),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(11),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(11),
       Q => hdr_sample(11),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(12),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(12),
       Q => hdr_sample(12),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(13),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(13),
       Q => hdr_sample(13),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(14),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(14),
       Q => hdr_sample(14),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(15),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(15),
       Q => hdr_sample(15),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(16),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(16),
       Q => hdr_sample(16),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(17),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(17),
       Q => hdr_sample(17),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(18),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(18),
       Q => hdr_sample(18),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(19),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(19),
       Q => hdr_sample(19),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(1),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(1),
       Q => hdr_sample(1),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(20),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(20),
       Q => hdr_sample(20),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(21),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(21),
       Q => hdr_sample(21),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(22),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(22),
       Q => hdr_sample(22),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(23),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(23),
       Q => hdr_sample(23),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(24),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(24),
       Q => hdr_sample(24),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(25),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(25),
       Q => hdr_sample(25),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(26),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(26),
       Q => hdr_sample(26),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(27),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(27),
       Q => hdr_sample(27),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(28),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(28),
       Q => hdr_sample(28),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(29),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(29),
       Q => hdr_sample(29),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(2),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(2),
       Q => hdr_sample(2),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(30),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(30),
       Q => hdr_sample(30),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(31),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(31),
       Q => hdr_sample(31),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[32]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(32),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(32),
       Q => hdr_sample(32),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[33]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(33),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(33),
       Q => hdr_sample(33),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[34]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(34),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(34),
       Q => hdr_sample(34),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[35]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(35),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(35),
       Q => hdr_sample(35),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[36]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(36),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(36),
       Q => hdr_sample(36),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[37]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(37),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(37),
       Q => hdr_sample(37),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[38]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(38),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(38),
       Q => hdr_sample(38),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[39]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(39),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(39),
       Q => hdr_sample(39),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(3),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(3),
       Q => hdr_sample(3),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[40]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(40),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(40),
       Q => hdr_sample(40),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[41]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(41),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(41),
       Q => hdr_sample(41),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[42]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(42),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(42),
       Q => hdr_sample(42),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[43]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(43),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(43),
       Q => hdr_sample(43),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[44]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(44),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(44),
       Q => hdr_sample(44),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[45]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(45),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(45),
       Q => hdr_sample(45),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[46]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(46),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(46),
       Q => hdr_sample(46),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[47]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(47),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(47),
       Q => hdr_sample(47),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[48]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(48),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(48),
       Q => hdr_sample(48),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[49]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(49),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(49),
       Q => hdr_sample(49),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(4),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(4),
       Q => hdr_sample(4),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[50]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(50),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(50),
       Q => hdr_sample(50),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[51]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(51),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(51),
       Q => hdr_sample(51),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[52]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(52),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(52),
       Q => hdr_sample(52),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[53]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(53),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(53),
       Q => hdr_sample(53),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[54]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(54),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(54),
       Q => hdr_sample(54),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[55]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(55),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(55),
       Q => hdr_sample(55),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[56]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(56),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(56),
       Q => hdr_sample(56),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[57]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(57),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(57),
       Q => hdr_sample(57),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[58]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(58),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(58),
       Q => hdr_sample(58),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[59]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(59),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(59),
       Q => hdr_sample(59),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(5),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(5),
       Q => hdr_sample(5),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[60]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(60),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(60),
       Q => hdr_sample(60),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[61]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(61),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(61),
       Q => hdr_sample(61),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[62]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(62),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(62),
       Q => hdr_sample(62),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[63]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(63),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(63),
       Q => hdr_sample(63),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(6),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(6),
       Q => hdr_sample(6),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(7),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(7),
       Q => hdr_sample(7),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(8),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(8),
       Q => hdr_sample(8),
       R => '0'
     );
 \comp_burst.hdr_sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
-      D => \p_1_in__0\(9),
+      C => rt_clk,
+      CE => \^wr\,
+      D => p_0_in1_in(9),
       Q => hdr_sample(9),
       R => '0'
     );
@@ -76756,9 +79364,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(80),
+      I0 => \comp_burst.data_reg_n_0_[80]\,
       I1 => hdr_size(0),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[0]_i_1_n_0\
     );
 \comp_burst.hdr_size[10]_i_1\: unisim.vcomponents.LUT3
@@ -76766,9 +79374,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(90),
+      I0 => \comp_burst.data_reg_n_0_[90]\,
       I1 => hdr_size(10),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[10]_i_1_n_0\
     );
 \comp_burst.hdr_size[11]_i_1\: unisim.vcomponents.LUT3
@@ -76776,9 +79384,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(91),
+      I0 => \comp_burst.data_reg_n_0_[91]\,
       I1 => hdr_size(11),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[11]_i_1_n_0\
     );
 \comp_burst.hdr_size[12]_i_1\: unisim.vcomponents.LUT3
@@ -76786,9 +79394,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(92),
+      I0 => \comp_burst.data_reg_n_0_[92]\,
       I1 => hdr_size(12),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[12]_i_1_n_0\
     );
 \comp_burst.hdr_size[13]_i_1\: unisim.vcomponents.LUT3
@@ -76796,9 +79404,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(93),
+      I0 => \comp_burst.data_reg_n_0_[93]\,
       I1 => hdr_size(13),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[13]_i_1_n_0\
     );
 \comp_burst.hdr_size[14]_i_1\: unisim.vcomponents.LUT3
@@ -76806,9 +79414,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(94),
+      I0 => \comp_burst.data_reg_n_0_[94]\,
       I1 => hdr_size(14),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[14]_i_1_n_0\
     );
 \comp_burst.hdr_size[15]_i_1\: unisim.vcomponents.LUT3
@@ -76816,9 +79424,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(95),
+      I0 => \comp_burst.data_reg_n_0_[95]\,
       I1 => hdr_size(15),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[15]_i_1_n_0\
     );
 \comp_burst.hdr_size[1]_i_1\: unisim.vcomponents.LUT3
@@ -76826,9 +79434,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(81),
+      I0 => \comp_burst.data_reg_n_0_[81]\,
       I1 => hdr_size(1),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[1]_i_1_n_0\
     );
 \comp_burst.hdr_size[2]_i_1\: unisim.vcomponents.LUT3
@@ -76836,9 +79444,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(82),
+      I0 => \comp_burst.data_reg_n_0_[82]\,
       I1 => hdr_size(2),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[2]_i_1_n_0\
     );
 \comp_burst.hdr_size[3]_i_1\: unisim.vcomponents.LUT3
@@ -76846,9 +79454,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(83),
+      I0 => \comp_burst.data_reg_n_0_[83]\,
       I1 => hdr_size(3),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[3]_i_1_n_0\
     );
 \comp_burst.hdr_size[4]_i_1\: unisim.vcomponents.LUT3
@@ -76856,9 +79464,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(84),
+      I0 => \comp_burst.data_reg_n_0_[84]\,
       I1 => hdr_size(4),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[4]_i_1_n_0\
     );
 \comp_burst.hdr_size[5]_i_1\: unisim.vcomponents.LUT3
@@ -76866,9 +79474,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(85),
+      I0 => \comp_burst.data_reg_n_0_[85]\,
       I1 => hdr_size(5),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[5]_i_1_n_0\
     );
 \comp_burst.hdr_size[6]_i_1\: unisim.vcomponents.LUT3
@@ -76876,9 +79484,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(86),
+      I0 => \comp_burst.data_reg_n_0_[86]\,
       I1 => hdr_size(6),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[6]_i_1_n_0\
     );
 \comp_burst.hdr_size[7]_i_1\: unisim.vcomponents.LUT3
@@ -76886,9 +79494,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(87),
+      I0 => \comp_burst.data_reg_n_0_[87]\,
       I1 => hdr_size(7),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[7]_i_1_n_0\
     );
 \comp_burst.hdr_size[8]_i_1\: unisim.vcomponents.LUT3
@@ -76896,9 +79504,9 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(88),
+      I0 => \comp_burst.data_reg_n_0_[88]\,
       I1 => hdr_size(8),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[8]_i_1_n_0\
     );
 \comp_burst.hdr_size[9]_i_1\: unisim.vcomponents.LUT3
@@ -76906,135 +79514,135 @@ begin
       INIT => X"AC"
     )
         port map (
-      I0 => p5_data(89),
+      I0 => \comp_burst.data_reg_n_0_[89]\,
       I1 => hdr_size(9),
-      I2 => p5_data(79),
+      I2 => \comp_burst.data_reg_n_0_[79]\,
       O => \comp_burst.hdr_size[9]_i_1_n_0\
     );
 \comp_burst.hdr_size_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[0]_i_1_n_0\,
       Q => hdr_size(0),
       R => '0'
     );
 \comp_burst.hdr_size_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[10]_i_1_n_0\,
       Q => hdr_size(10),
       R => '0'
     );
 \comp_burst.hdr_size_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[11]_i_1_n_0\,
       Q => hdr_size(11),
       R => '0'
     );
 \comp_burst.hdr_size_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[12]_i_1_n_0\,
       Q => hdr_size(12),
       R => '0'
     );
 \comp_burst.hdr_size_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[13]_i_1_n_0\,
       Q => hdr_size(13),
       R => '0'
     );
 \comp_burst.hdr_size_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[14]_i_1_n_0\,
       Q => hdr_size(14),
       R => '0'
     );
 \comp_burst.hdr_size_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[15]_i_1_n_0\,
       Q => hdr_size(15),
       R => '0'
     );
 \comp_burst.hdr_size_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[1]_i_1_n_0\,
       Q => hdr_size(1),
       R => '0'
     );
 \comp_burst.hdr_size_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[2]_i_1_n_0\,
       Q => hdr_size(2),
       R => '0'
     );
 \comp_burst.hdr_size_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[3]_i_1_n_0\,
       Q => hdr_size(3),
       R => '0'
     );
 \comp_burst.hdr_size_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[4]_i_1_n_0\,
       Q => hdr_size(4),
       R => '0'
     );
 \comp_burst.hdr_size_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[5]_i_1_n_0\,
       Q => hdr_size(5),
       R => '0'
     );
 \comp_burst.hdr_size_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[6]_i_1_n_0\,
       Q => hdr_size(6),
       R => '0'
     );
 \comp_burst.hdr_size_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[7]_i_1_n_0\,
       Q => hdr_size(7),
       R => '0'
     );
 \comp_burst.hdr_size_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[8]_i_1_n_0\,
       Q => hdr_size(8),
       R => '0'
     );
 \comp_burst.hdr_size_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => clk,
-      CE => p5_wr,
+      C => rt_clk,
+      CE => \^wr\,
       D => \comp_burst.hdr_size[9]_i_1_n_0\,
       Q => hdr_size(9),
       R => '0'
@@ -77057,10 +79665,19 @@ begin
       Q => \^idle\,
       R => '0'
     );
+\comp_burst.in_angle[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => p2_idle,
+      I1 => rt_meta_empty,
+      O => \comp_burst.in_angle[15]_i_1_n_0\
+    );
 \comp_burst.in_angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(82),
       Q => in_angle(0),
       R => '0'
@@ -77068,7 +79685,7 @@ begin
 \comp_burst.in_angle_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(92),
       Q => in_angle(10),
       R => '0'
@@ -77076,7 +79693,7 @@ begin
 \comp_burst.in_angle_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(93),
       Q => in_angle(11),
       R => '0'
@@ -77084,7 +79701,7 @@ begin
 \comp_burst.in_angle_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(94),
       Q => in_angle(12),
       R => '0'
@@ -77092,7 +79709,7 @@ begin
 \comp_burst.in_angle_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(95),
       Q => in_angle(13),
       R => '0'
@@ -77100,7 +79717,7 @@ begin
 \comp_burst.in_angle_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(96),
       Q => in_angle(14),
       R => '0'
@@ -77108,7 +79725,7 @@ begin
 \comp_burst.in_angle_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(97),
       Q => in_angle(15),
       R => '0'
@@ -77116,7 +79733,7 @@ begin
 \comp_burst.in_angle_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(83),
       Q => in_angle(1),
       R => '0'
@@ -77124,7 +79741,7 @@ begin
 \comp_burst.in_angle_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(84),
       Q => in_angle(2),
       R => '0'
@@ -77132,7 +79749,7 @@ begin
 \comp_burst.in_angle_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(85),
       Q => in_angle(3),
       R => '0'
@@ -77140,7 +79757,7 @@ begin
 \comp_burst.in_angle_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(86),
       Q => in_angle(4),
       R => '0'
@@ -77148,7 +79765,7 @@ begin
 \comp_burst.in_angle_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(87),
       Q => in_angle(5),
       R => '0'
@@ -77156,7 +79773,7 @@ begin
 \comp_burst.in_angle_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(88),
       Q => in_angle(6),
       R => '0'
@@ -77164,7 +79781,7 @@ begin
 \comp_burst.in_angle_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(89),
       Q => in_angle(7),
       R => '0'
@@ -77172,7 +79789,7 @@ begin
 \comp_burst.in_angle_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(90),
       Q => in_angle(8),
       R => '0'
@@ -77180,7 +79797,7 @@ begin
 \comp_burst.in_angle_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(91),
       Q => in_angle(9),
       R => '0'
@@ -77188,7 +79805,7 @@ begin
 \comp_burst.in_doa_error_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(98),
       Q => in_doa_error(0),
       R => '0'
@@ -77196,7 +79813,7 @@ begin
 \comp_burst.in_doa_error_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(99),
       Q => in_doa_error(1),
       R => '0'
@@ -77204,7 +79821,7 @@ begin
 \comp_burst.in_doa_error_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(100),
       Q => in_doa_error(2),
       R => '0'
@@ -77212,7 +79829,7 @@ begin
 \comp_burst.in_doa_error_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(101),
       Q => in_doa_error(3),
       R => '0'
@@ -77220,7 +79837,7 @@ begin
 \comp_burst.in_doa_error_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(102),
       Q => in_doa_error(4),
       R => '0'
@@ -77228,7 +79845,7 @@ begin
 \comp_burst.in_doa_error_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(103),
       Q => in_doa_error(5),
       R => '0'
@@ -77236,7 +79853,7 @@ begin
 \comp_burst.in_doa_error_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(104),
       Q => in_doa_error(6),
       R => '0'
@@ -77244,7 +79861,7 @@ begin
 \comp_burst.in_doa_error_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(105),
       Q => in_doa_error(7),
       R => '0'
@@ -77252,7 +79869,7 @@ begin
 \comp_burst.in_doa_error_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(106),
       Q => in_doa_error(8),
       R => '0'
@@ -77260,7 +79877,7 @@ begin
 \comp_burst.in_doa_error_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(107),
       Q => in_doa_error(9),
       R => '0'
@@ -77268,7 +79885,7 @@ begin
 \comp_burst.in_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(72),
       Q => in_freq(10),
       R => '0'
@@ -77276,7 +79893,7 @@ begin
 \comp_burst.in_freq_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(73),
       Q => in_freq(11),
       R => '0'
@@ -77284,7 +79901,7 @@ begin
 \comp_burst.in_freq_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(74),
       Q => in_freq(12),
       R => '0'
@@ -77292,7 +79909,7 @@ begin
 \comp_burst.in_freq_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(75),
       Q => in_freq(13),
       R => '0'
@@ -77300,7 +79917,7 @@ begin
 \comp_burst.in_freq_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(76),
       Q => in_freq(14),
       R => '0'
@@ -77308,7 +79925,7 @@ begin
 \comp_burst.in_freq_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(77),
       Q => in_freq(15),
       R => '0'
@@ -77316,7 +79933,7 @@ begin
 \comp_burst.in_freq_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(78),
       Q => in_freq(16),
       R => '0'
@@ -77324,7 +79941,7 @@ begin
 \comp_burst.in_freq_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(79),
       Q => in_freq(17),
       R => '0'
@@ -77332,7 +79949,7 @@ begin
 \comp_burst.in_freq_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(80),
       Q => in_freq(18),
       R => '0'
@@ -77340,7 +79957,7 @@ begin
 \comp_burst.in_freq_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(81),
       Q => in_freq(19),
       R => '0'
@@ -77348,7 +79965,7 @@ begin
 \comp_burst.in_freq_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(64),
       Q => in_freq(2),
       R => '0'
@@ -77356,7 +79973,7 @@ begin
 \comp_burst.in_freq_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(65),
       Q => in_freq(3),
       R => '0'
@@ -77364,7 +79981,7 @@ begin
 \comp_burst.in_freq_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(66),
       Q => in_freq(4),
       R => '0'
@@ -77372,7 +79989,7 @@ begin
 \comp_burst.in_freq_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(67),
       Q => in_freq(5),
       R => '0'
@@ -77380,7 +79997,7 @@ begin
 \comp_burst.in_freq_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(68),
       Q => in_freq(6),
       R => '0'
@@ -77388,7 +80005,7 @@ begin
 \comp_burst.in_freq_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(69),
       Q => in_freq(7),
       R => '0'
@@ -77396,7 +80013,7 @@ begin
 \comp_burst.in_freq_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(70),
       Q => in_freq(8),
       R => '0'
@@ -77404,24 +80021,15 @@ begin
 \comp_burst.in_freq_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(71),
       Q => in_freq(9),
       R => '0'
     );
-\comp_burst.in_sample[61]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => p2_idle,
-      I1 => rt_meta_empty,
-      O => \comp_burst.in_sample[61]_i_1_n_0\
-    );
 \comp_burst.in_sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(0),
       Q => in_sample(0),
       R => '0'
@@ -77429,7 +80037,7 @@ begin
 \comp_burst.in_sample_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(10),
       Q => in_sample(10),
       R => '0'
@@ -77437,7 +80045,7 @@ begin
 \comp_burst.in_sample_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(11),
       Q => in_sample(11),
       R => '0'
@@ -77445,7 +80053,7 @@ begin
 \comp_burst.in_sample_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(12),
       Q => in_sample(12),
       R => '0'
@@ -77453,7 +80061,7 @@ begin
 \comp_burst.in_sample_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(13),
       Q => in_sample(13),
       R => '0'
@@ -77461,7 +80069,7 @@ begin
 \comp_burst.in_sample_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(14),
       Q => in_sample(14),
       R => '0'
@@ -77469,7 +80077,7 @@ begin
 \comp_burst.in_sample_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(15),
       Q => in_sample(15),
       R => '0'
@@ -77477,7 +80085,7 @@ begin
 \comp_burst.in_sample_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(16),
       Q => in_sample(16),
       R => '0'
@@ -77485,7 +80093,7 @@ begin
 \comp_burst.in_sample_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(17),
       Q => in_sample(17),
       R => '0'
@@ -77493,7 +80101,7 @@ begin
 \comp_burst.in_sample_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(18),
       Q => in_sample(18),
       R => '0'
@@ -77501,7 +80109,7 @@ begin
 \comp_burst.in_sample_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(19),
       Q => in_sample(19),
       R => '0'
@@ -77509,7 +80117,7 @@ begin
 \comp_burst.in_sample_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(1),
       Q => in_sample(1),
       R => '0'
@@ -77517,7 +80125,7 @@ begin
 \comp_burst.in_sample_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(20),
       Q => in_sample(20),
       R => '0'
@@ -77525,7 +80133,7 @@ begin
 \comp_burst.in_sample_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(21),
       Q => in_sample(21),
       R => '0'
@@ -77533,7 +80141,7 @@ begin
 \comp_burst.in_sample_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(22),
       Q => in_sample(22),
       R => '0'
@@ -77541,7 +80149,7 @@ begin
 \comp_burst.in_sample_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(23),
       Q => in_sample(23),
       R => '0'
@@ -77549,7 +80157,7 @@ begin
 \comp_burst.in_sample_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(24),
       Q => in_sample(24),
       R => '0'
@@ -77557,7 +80165,7 @@ begin
 \comp_burst.in_sample_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(25),
       Q => in_sample(25),
       R => '0'
@@ -77565,7 +80173,7 @@ begin
 \comp_burst.in_sample_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(26),
       Q => in_sample(26),
       R => '0'
@@ -77573,7 +80181,7 @@ begin
 \comp_burst.in_sample_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(27),
       Q => in_sample(27),
       R => '0'
@@ -77581,7 +80189,7 @@ begin
 \comp_burst.in_sample_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(28),
       Q => in_sample(28),
       R => '0'
@@ -77589,7 +80197,7 @@ begin
 \comp_burst.in_sample_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(29),
       Q => in_sample(29),
       R => '0'
@@ -77597,7 +80205,7 @@ begin
 \comp_burst.in_sample_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(2),
       Q => in_sample(2),
       R => '0'
@@ -77605,7 +80213,7 @@ begin
 \comp_burst.in_sample_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(30),
       Q => in_sample(30),
       R => '0'
@@ -77613,7 +80221,7 @@ begin
 \comp_burst.in_sample_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(31),
       Q => in_sample(31),
       R => '0'
@@ -77621,7 +80229,7 @@ begin
 \comp_burst.in_sample_reg[32]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(32),
       Q => in_sample(32),
       R => '0'
@@ -77629,7 +80237,7 @@ begin
 \comp_burst.in_sample_reg[33]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(33),
       Q => in_sample(33),
       R => '0'
@@ -77637,7 +80245,7 @@ begin
 \comp_burst.in_sample_reg[34]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(34),
       Q => in_sample(34),
       R => '0'
@@ -77645,7 +80253,7 @@ begin
 \comp_burst.in_sample_reg[35]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(35),
       Q => in_sample(35),
       R => '0'
@@ -77653,7 +80261,7 @@ begin
 \comp_burst.in_sample_reg[36]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(36),
       Q => in_sample(36),
       R => '0'
@@ -77661,7 +80269,7 @@ begin
 \comp_burst.in_sample_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(37),
       Q => in_sample(37),
       R => '0'
@@ -77669,7 +80277,7 @@ begin
 \comp_burst.in_sample_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(38),
       Q => in_sample(38),
       R => '0'
@@ -77677,7 +80285,7 @@ begin
 \comp_burst.in_sample_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(39),
       Q => in_sample(39),
       R => '0'
@@ -77685,7 +80293,7 @@ begin
 \comp_burst.in_sample_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(3),
       Q => in_sample(3),
       R => '0'
@@ -77693,7 +80301,7 @@ begin
 \comp_burst.in_sample_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(40),
       Q => in_sample(40),
       R => '0'
@@ -77701,7 +80309,7 @@ begin
 \comp_burst.in_sample_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(41),
       Q => in_sample(41),
       R => '0'
@@ -77709,7 +80317,7 @@ begin
 \comp_burst.in_sample_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(42),
       Q => in_sample(42),
       R => '0'
@@ -77717,7 +80325,7 @@ begin
 \comp_burst.in_sample_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(43),
       Q => in_sample(43),
       R => '0'
@@ -77725,7 +80333,7 @@ begin
 \comp_burst.in_sample_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(44),
       Q => in_sample(44),
       R => '0'
@@ -77733,7 +80341,7 @@ begin
 \comp_burst.in_sample_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(45),
       Q => in_sample(45),
       R => '0'
@@ -77741,7 +80349,7 @@ begin
 \comp_burst.in_sample_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(46),
       Q => in_sample(46),
       R => '0'
@@ -77749,7 +80357,7 @@ begin
 \comp_burst.in_sample_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(47),
       Q => in_sample(47),
       R => '0'
@@ -77757,7 +80365,7 @@ begin
 \comp_burst.in_sample_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(48),
       Q => in_sample(48),
       R => '0'
@@ -77765,7 +80373,7 @@ begin
 \comp_burst.in_sample_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(49),
       Q => in_sample(49),
       R => '0'
@@ -77773,7 +80381,7 @@ begin
 \comp_burst.in_sample_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(4),
       Q => in_sample(4),
       R => '0'
@@ -77781,7 +80389,7 @@ begin
 \comp_burst.in_sample_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(50),
       Q => in_sample(50),
       R => '0'
@@ -77789,7 +80397,7 @@ begin
 \comp_burst.in_sample_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(51),
       Q => in_sample(51),
       R => '0'
@@ -77797,7 +80405,7 @@ begin
 \comp_burst.in_sample_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(52),
       Q => in_sample(52),
       R => '0'
@@ -77805,7 +80413,7 @@ begin
 \comp_burst.in_sample_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(53),
       Q => in_sample(53),
       R => '0'
@@ -77813,7 +80421,7 @@ begin
 \comp_burst.in_sample_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(54),
       Q => in_sample(54),
       R => '0'
@@ -77821,7 +80429,7 @@ begin
 \comp_burst.in_sample_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(55),
       Q => in_sample(55),
       R => '0'
@@ -77829,7 +80437,7 @@ begin
 \comp_burst.in_sample_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(56),
       Q => in_sample(56),
       R => '0'
@@ -77837,7 +80445,7 @@ begin
 \comp_burst.in_sample_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(57),
       Q => in_sample(57),
       R => '0'
@@ -77845,7 +80453,7 @@ begin
 \comp_burst.in_sample_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(58),
       Q => in_sample(58),
       R => '0'
@@ -77853,7 +80461,7 @@ begin
 \comp_burst.in_sample_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(59),
       Q => in_sample(59),
       R => '0'
@@ -77861,7 +80469,7 @@ begin
 \comp_burst.in_sample_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(5),
       Q => in_sample(5),
       R => '0'
@@ -77869,7 +80477,7 @@ begin
 \comp_burst.in_sample_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(60),
       Q => in_sample(60),
       R => '0'
@@ -77877,7 +80485,7 @@ begin
 \comp_burst.in_sample_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(61),
       Q => in_sample(61),
       R => '0'
@@ -77885,7 +80493,7 @@ begin
 \comp_burst.in_sample_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(6),
       Q => in_sample(6),
       R => '0'
@@ -77893,7 +80501,7 @@ begin
 \comp_burst.in_sample_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(7),
       Q => in_sample(7),
       R => '0'
@@ -77901,7 +80509,7 @@ begin
 \comp_burst.in_sample_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(8),
       Q => in_sample(8),
       R => '0'
@@ -77909,7 +80517,7 @@ begin
 \comp_burst.in_sample_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \comp_burst.in_sample[61]_i_1_n_0\,
+      CE => \comp_burst.in_angle[15]_i_1_n_0\,
       D => rt_meta_out(9),
       Q => in_sample(9),
       R => '0'
@@ -78065,6 +80673,15 @@ begin
       D => config_data_adr_out(17),
       Q => \comp_burst.min_env_reg_n_0_[9]\,
       R => '0'
+    );
+\comp_burst.p1_angle[15]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => rt_data_empty,
+      I1 => rt_meta_rd,
+      O => p1_freq
     );
 \comp_burst.p1_angle_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -78273,15 +80890,6 @@ begin
       D => in_doa_error(9),
       Q => p1_doa_error(9),
       R => '0'
-    );
-\comp_burst.p1_freq[19]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => rt_data_empty,
-      I1 => rt_meta_rd,
-      O => p1_freq
     );
 \comp_burst.p1_freq_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -80617,6 +83225,22 @@ begin
       CE => p2_done,
       D => p2_size(9),
       Q => p3_size(9),
+      R => '0'
+    );
+\comp_burst.pend_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => sample_empty,
+      O => \comp_burst.pend_i_1_n_0\
+    );
+\comp_burst.pend_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.pend_i_1_n_0\,
+      Q => \^pend\,
       R => '0'
     );
 \comp_burst.phase_0_reg[0]\: unisim.vcomponents.FDRE
@@ -83304,7 +85928,7 @@ begin
      port map (
       C => clk,
       CE => '1',
-      D => \comp_burst.in_sample[61]_i_1_n_0\,
+      D => \comp_burst.in_angle[15]_i_1_n_0\,
       Q => rt_meta_rd,
       R => '0'
     );
@@ -83315,6 +85939,39 @@ begin
       D => rt_start,
       Q => rt_meta_wr,
       R => '0'
+    );
+\comp_burst.wr_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFAAA8"
+    )
+        port map (
+      I0 => \^wr\,
+      I1 => \comp_burst.blocks_reg\(6),
+      I2 => \comp_burst.wr_i_2_n_0\,
+      I3 => \comp_burst.blocks_reg\(7),
+      I4 => get,
+      O => \comp_burst.wr_i_1_n_0\
+    );
+\comp_burst.wr_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => \comp_burst.blocks_reg\(4),
+      I1 => \comp_burst.blocks_reg\(2),
+      I2 => \comp_burst.blocks_reg\(0),
+      I3 => \comp_burst.blocks_reg\(1),
+      I4 => \comp_burst.blocks_reg\(3),
+      I5 => \comp_burst.blocks_reg\(5),
+      O => \comp_burst.wr_i_2_n_0\
+    );
+\comp_burst.wr_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => rt_clk,
+      CE => '1',
+      D => \comp_burst.wr_i_1_n_0\,
+      Q => \^wr\,
+      R => data_empty
     );
 fifo_config_i: component ps_comp_ana_0_1_fifo_config
      port map (
@@ -83331,6 +85988,18 @@ fifo_config_i: component ps_comp_ana_0_1_fifo_config
       wr_clk => config_clk,
       wr_en => config_wr,
       wr_rst_busy => NLW_fifo_config_i_wr_rst_busy_UNCONNECTED
+    );
+fifo_data_i: component ps_comp_ana_0_1_fifo_burst_data
+     port map (
+      din(255 downto 0) => p5_data(255 downto 0),
+      dout(255 downto 0) => fifo_data(255 downto 0),
+      empty => data_empty,
+      full => NLW_fifo_data_i_full_UNCONNECTED,
+      rd_clk => rt_clk,
+      rd_en => \^wr\,
+      rst => reset,
+      wr_clk => clk,
+      wr_en => p5_wr
     );
 fifo_rt_data_i: component ps_comp_ana_0_1_fifo_stat_data
      port map (
@@ -83360,6 +86029,19 @@ fifo_rt_meta_i: component ps_comp_ana_0_1_fifo_stat_meta
       wr_en => rt_meta_wr,
       wr_rst_busy => NLW_fifo_rt_meta_i_wr_rst_busy_UNCONNECTED
     );
+fifo_sample_i: component ps_comp_ana_0_1_fifo_burst_sample
+     port map (
+      clk => rt_clk,
+      din(19 downto 0) => rt_sample(19 downto 0),
+      dout(19 downto 0) => \^sample\(19 downto 0),
+      empty => sample_empty,
+      full => NLW_fifo_sample_i_full_UNCONNECTED,
+      rd_en => get,
+      rd_rst_busy => NLW_fifo_sample_i_rd_rst_busy_UNCONNECTED,
+      srst => rt_reset,
+      wr_en => rt_start,
+      wr_rst_busy => NLW_fifo_sample_i_wr_rst_busy_UNCONNECTED
+    );
 ila_i: component ps_comp_ana_0_1_ila_0
      port map (
       clk => clk,
@@ -83369,43 +86051,55 @@ ila_i: component ps_comp_ana_0_1_ila_0
       probe11(0) => p4_done,
       probe12(0) => p5_idle,
       probe13(0) => p5_wr,
-      probe14(63 downto 0) => hdr_sample(63 downto 0),
-      probe15(7 downto 0) => hdr_blocks(7 downto 0),
-      probe16(7 downto 0) => hdr_flags(7 downto 0),
-      probe17(15 downto 0) => hdr_size(15 downto 0),
-      probe18(31 downto 0) => hdr_freq(31 downto 0),
-      probe19(15 downto 0) => hdr_angle(15 downto 0),
       probe2(0) => p1_done,
-      probe20(15 downto 0) => hdr_doa_error(15 downto 0),
-      probe21(15 downto 0) => hdr_max_env(15 downto 0),
-      probe22(15 downto 0) => hdr_max_pos(15 downto 0),
-      probe23(15 downto 0) => hdr_env_mean(15 downto 0),
-      probe24(15 downto 0) => hdr_env_std(15 downto 0),
-      probe25(15 downto 0) => hdr_phase_std(15 downto 0),
-      probe26(15 downto 0) => hdr_freq_std(15 downto 0),
-      probe27(15 downto 0) => data_env_0(15 downto 0),
-      probe28(15 downto 0) => data_env_1(15 downto 0),
-      probe29(15 downto 0) => data_env_2(15 downto 0),
       probe3(0) => p2_idle,
-      probe30(15 downto 0) => data_env_3(15 downto 0),
-      probe31(15 downto 0) => data_env_4(15 downto 0),
-      probe32(15 downto 0) => data_env_5(15 downto 0),
-      probe33(15 downto 0) => data_env_6(15 downto 0),
-      probe34(15 downto 0) => data_env_7(15 downto 0),
-      probe35(15 downto 0) => data_phase_0(15 downto 0),
-      probe36(15 downto 0) => data_phase_1(15 downto 0),
-      probe37(15 downto 0) => data_phase_2(15 downto 0),
-      probe38(15 downto 0) => data_phase_3(15 downto 0),
-      probe39(15 downto 0) => data_phase_4(15 downto 0),
       probe4(0) => p2_wr,
-      probe40(15 downto 0) => data_phase_5(15 downto 0),
-      probe41(15 downto 0) => data_phase_6(15 downto 0),
-      probe42(15 downto 0) => data_phase_7(15 downto 0),
       probe5(0) => p2_done,
       probe6(0) => p3_idle,
       probe7(0) => p3_wr,
       probe8(0) => p3_done,
       probe9(0) => p4_idle
+    );
+ila_rt: component ps_comp_ana_0_1_ila_7
+     port map (
+      clk => rt_clk,
+      probe0(0) => sample_empty,
+      probe1(0) => data_empty,
+      probe10(7 downto 0) => hdr_flags(7 downto 0),
+      probe11(15 downto 0) => hdr_size(15 downto 0),
+      probe12(31 downto 0) => hdr_freq(31 downto 0),
+      probe13(15 downto 0) => hdr_angle(15 downto 0),
+      probe14(15 downto 0) => hdr_doa_error(15 downto 0),
+      probe15(15 downto 0) => hdr_max_env(15 downto 0),
+      probe16(15 downto 0) => hdr_max_pos(15 downto 0),
+      probe17(15 downto 0) => hdr_env_mean(15 downto 0),
+      probe18(15 downto 0) => hdr_env_std(15 downto 0),
+      probe19(15 downto 0) => hdr_phase_std(15 downto 0),
+      probe2(2 downto 0) => data_delay(2 downto 0),
+      probe20(15 downto 0) => hdr_freq_std(15 downto 0),
+      probe21(15 downto 0) => data_env_0(15 downto 0),
+      probe22(15 downto 0) => data_env_1(15 downto 0),
+      probe23(15 downto 0) => data_env_2(15 downto 0),
+      probe24(15 downto 0) => data_env_3(15 downto 0),
+      probe25(15 downto 0) => data_env_4(15 downto 0),
+      probe26(15 downto 0) => data_env_5(15 downto 0),
+      probe27(15 downto 0) => data_env_6(15 downto 0),
+      probe28(15 downto 0) => data_env_7(15 downto 0),
+      probe29(15 downto 0) => data_phase_0(15 downto 0),
+      probe3(0) => \^pend\,
+      probe30(15 downto 0) => data_phase_1(15 downto 0),
+      probe31(15 downto 0) => data_phase_2(15 downto 0),
+      probe32(15 downto 0) => data_phase_3(15 downto 0),
+      probe33(15 downto 0) => data_phase_4(15 downto 0),
+      probe34(15 downto 0) => data_phase_5(15 downto 0),
+      probe35(15 downto 0) => data_phase_6(15 downto 0),
+      probe36(15 downto 0) => data_phase_7(15 downto 0),
+      probe4(0) => \^avail\,
+      probe5(19 downto 0) => \^sample\(19 downto 0),
+      probe6(0) => get,
+      probe7(0) => \^wr\,
+      probe8(63 downto 0) => hdr_sample(63 downto 0),
+      probe9(7 downto 0) => hdr_blocks(7 downto 0)
     );
 p1_i: entity work.ps_comp_ana_0_1_burst_size
      port map (
@@ -84357,13 +87051,20 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute async_reg of stat_1_reset_1 : signal is "true";
   signal stat_1_reset_2 : STD_LOGIC;
   attribute async_reg of stat_1_reset_2 : signal is "true";
+  signal stat_avail : STD_LOGIC_VECTOR ( 0 to 0 );
   signal stat_clk_0 : STD_LOGIC;
   signal stat_clk_0_raw : STD_LOGIC;
+  signal stat_get : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal stat_get0_out : STD_LOGIC;
   signal stat_idle_in_0 : STD_LOGIC;
   signal stat_idle_sync_0 : STD_LOGIC;
   signal stat_reset_0 : STD_LOGIC;
   signal stat_wr : STD_LOGIC_VECTOR ( 0 to 0 );
   signal valid : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_burst_0_pend_UNCONNECTED : STD_LOGIC;
+  signal NLW_burst_0_wr_UNCONNECTED : STD_LOGIC;
+  signal NLW_burst_0_data_UNCONNECTED : STD_LOGIC_VECTOR ( 255 downto 0 );
+  signal NLW_burst_0_sample_UNCONNECTED : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \NLW_comp_ana.raw_sample_reg[15]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_ana.sample_counter_0_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   signal \NLW_comp_ana.sample_counter_1_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
@@ -84379,14 +87080,14 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of burst_0 : label is "soft";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \comp_ana.count[1]_i_1\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \comp_ana.count[4]_i_2\ : label is "soft_lutpair135";
-  attribute SOFT_HLUTNM of \comp_ana.count[5]_i_2\ : label is "soft_lutpair135";
-  attribute SOFT_HLUTNM of \comp_ana.count[8]_i_3\ : label is "soft_lutpair136";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair138";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair137";
-  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \comp_ana.count[1]_i_1\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \comp_ana.count[4]_i_2\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \comp_ana.count[5]_i_2\ : label is "soft_lutpair136";
+  attribute SOFT_HLUTNM of \comp_ana.count[8]_i_3\ : label is "soft_lutpair137";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[0]_i_1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[1]_i_1\ : label is "soft_lutpair139";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[2]_i_1\ : label is "soft_lutpair138";
+  attribute SOFT_HLUTNM of \comp_ana.raw_delay[3]_i_2\ : label is "soft_lutpair138";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[15]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \comp_ana.raw_sample_reg[7]_i_1\ : label is 35;
@@ -84430,12 +87131,16 @@ architecture STRUCTURE of ps_comp_ana_0_1_comp_ana is
 begin
 burst_0: entity work.ps_comp_ana_0_1_comp_burst
      port map (
+      avail => stat_avail(0),
       clk => stat_clk_0,
       config_adr(7 downto 0) => local_config_adr(7 downto 0),
       config_clk => config_clk,
       config_data(31 downto 0) => local_config_data(31 downto 0),
       config_wr => local_config_wr,
+      data(255 downto 0) => NLW_burst_0_data_UNCONNECTED(255 downto 0),
+      get => stat_get(0),
       idle => stat_idle_in_0,
+      pend => NLW_burst_0_pend_UNCONNECTED,
       reset => stat_reset_0,
       rt_angle(15) => \comp_ana.stat_angle_reg_n_0_[0][15]\,
       rt_angle(14) => \comp_ana.stat_angle_reg_n_0_[0][14]\,
@@ -84628,6 +87333,7 @@ burst_0: entity work.ps_comp_ana_0_1_comp_burst
       rt_phase_3(2) => \comp_ana.stat_phase_3_reg_n_0_[0][2]\,
       rt_phase_3(1) => \comp_ana.stat_phase_3_reg_n_0_[0][1]\,
       rt_phase_3(0) => \comp_ana.stat_phase_3_reg_n_0_[0][0]\,
+      rt_reset => reset_int,
       rt_sample(61) => \comp_ana.stat_sample_reg_n_0_[0][61]\,
       rt_sample(60) => \comp_ana.stat_sample_reg_n_0_[0][60]\,
       rt_sample(59) => \comp_ana.stat_sample_reg_n_0_[0][59]\,
@@ -84691,7 +87397,9 @@ burst_0: entity work.ps_comp_ana_0_1_comp_burst
       rt_sample(1) => \comp_ana.stat_sample_reg_n_0_[0][1]\,
       rt_sample(0) => \comp_ana.stat_sample_reg_n_0_[0][0]\,
       rt_start => \comp_ana.stat_start_reg_n_0_[0]\,
-      rt_wr => stat_wr(0)
+      rt_wr => stat_wr(0),
+      sample(19 downto 0) => NLW_burst_0_sample_UNCONNECTED(19 downto 0),
+      wr => NLW_burst_0_wr_UNCONNECTED
     );
 clk_wiz_stat_i: component ps_comp_ana_0_1_clk_wiz_stat
      port map (
@@ -92892,6 +95600,23 @@ clk_wiz_stat_i: component ps_comp_ana_0_1_clk_wiz_stat
       CE => \comp_ana.stat_sample[0][61]_i_1_n_0\,
       D => pend_freq(9),
       Q => \comp_ana.stat_freq_reg_n_0_[0][9]\,
+      R => '0'
+    );
+\comp_ana.stat_get[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => stat_avail(0),
+      I1 => stat_get(0),
+      O => stat_get0_out
+    );
+\comp_ana.stat_get_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => stat_get0_out,
+      Q => stat_get(0),
       R => '0'
     );
 \comp_ana.stat_idle_sync_0_reg\: unisim.vcomponents.FDRE

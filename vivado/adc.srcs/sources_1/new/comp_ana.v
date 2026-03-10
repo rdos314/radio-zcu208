@@ -158,6 +158,13 @@ module comp_ana(
     reg [19:0] stat_phase_2 [0:7];
     reg [19:0] stat_phase_3 [0:7];
 
+    wire [7:0] stat_pend;
+    wire [7:0] stat_avail;
+    wire [19:0] stat_pos [0:7];
+    reg [7:0] stat_get;
+    wire [7:0] stat_active;
+    wire [255:0] stat_data [0:7];
+
 	clk_wiz_stat clk_wiz_stat_i (
 		.clk_in1	(pl_clk),
 		.clk_out1	(stat_clk_0_raw)
@@ -235,6 +242,7 @@ module comp_ana(
         .config_adr(local_config_adr),
         .config_data(local_config_data),
         .rt_clk(clk),
+        .rt_reset(reset_int),
         .rt_start(stat_start[0]),
         .rt_sample(stat_sample[0]),
         .rt_freq(stat_freq[0]),
@@ -249,6 +257,12 @@ module comp_ana(
         .rt_phase_1(stat_phase_1[0]),
         .rt_phase_2(stat_phase_2[0]),
         .rt_phase_3(stat_phase_3[0]),
+        .pend(stat_pend[0]),
+        .avail(stat_avail[0]),
+        .sample(stat_pos[0]),
+        .get(stat_get[0]),
+        .wr(stat_active[0]),
+        .data(stat_data[0]),
         .clk(stat_clk_0),
         .reset(stat_reset_0),
         .idle(stat_idle_in_0)
@@ -532,6 +546,14 @@ generate
             end
         end
 	end
+
+    always @(posedge clk) 
+	begin
+        if (stat_get[0])
+            stat_get[0] <= 0;
+        else
+            stat_get[0] <= stat_avail[0];
+    end
 
   end
     
