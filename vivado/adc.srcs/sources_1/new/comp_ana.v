@@ -37,6 +37,8 @@ module comp_ana(
 	input wire [19:0] fifo_freq,
 	input wire [15:0] fifo_angle,
 	input wire [9:0] fifo_doa_error,
+	
+	input wire axi_clk,
 
     input wire pl_clk,
     input wire clk,
@@ -158,6 +160,9 @@ module comp_ana(
     reg [19:0] stat_phase_2 [0:7];
     reg [19:0] stat_phase_3 [0:7];
 
+
+// axi domain
+
     wire [7:0] stat_pend;
     wire [7:0] stat_avail;
     wire [19:0] stat_pos [0:7];
@@ -257,12 +262,13 @@ module comp_ana(
         .rt_phase_1(stat_phase_1[0]),
         .rt_phase_2(stat_phase_2[0]),
         .rt_phase_3(stat_phase_3[0]),
-        .pend(stat_pend[0]),
-        .avail(stat_avail[0]),
-        .sample(stat_pos[0]),
-        .get(stat_get[0]),
-        .wr(stat_active[0]),
-        .data(stat_data[0]),
+        .axi_clk(axi_clk),
+        .axi_pend(stat_pend[0]),
+        .axi_avail(stat_avail[0]),
+        .axi_sample(stat_pos[0]),
+        .axi_get(stat_get[0]),
+        .axi_wr(stat_active[0]),
+        .axi_data(stat_data[0]),
         .clk(stat_clk_0),
         .reset(stat_reset_0),
         .idle(stat_idle_in_0)
@@ -547,7 +553,7 @@ generate
         end
 	end
 
-    always @(posedge clk) 
+    always @(posedge axi_clk) 
 	begin
         if (stat_get[0])
             stat_get[0] <= 0;

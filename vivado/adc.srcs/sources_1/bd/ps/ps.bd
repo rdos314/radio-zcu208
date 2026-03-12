@@ -3877,6 +3877,24 @@
             "left": "9",
             "right": "0"
           },
+          "axi_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "333250000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.00",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
           "pl_clk": {
             "type": "clk",
             "direction": "I",
@@ -4013,6 +4031,24 @@
             "direction": "I",
             "left": "9",
             "right": "0"
+          },
+          "axi_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "333250000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.00",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
+                "value_src": "default_prop"
+              }
+            }
           },
           "pl_clk": {
             "type": "clk",
@@ -4639,8 +4675,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr"
+          "comp_ana_high/config_adr",
+          "comp_ana_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -4648,8 +4684,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_low/config_data",
-          "comp_ana_high/config_data"
+          "comp_ana_high/config_data",
+          "comp_ana_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -4980,7 +5016,9 @@
           "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "axi_int_0/clk"
+          "axi_int_0/clk",
+          "comp_ana_high/axi_clk",
+          "comp_ana_low/axi_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -5532,10 +5570,10 @@
           "adc_control_0/clk",
           "ana_low/config_clk",
           "ana_high/config_clk",
-          "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk"
+          "comp_ana_high/pl_clk",
+          "comp_ana_low/config_clk",
+          "comp_ana_low/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

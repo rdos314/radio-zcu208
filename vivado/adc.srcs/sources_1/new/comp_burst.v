@@ -219,12 +219,13 @@ module comp_burst(
     input wire [19:0] rt_phase_2,
     input wire [19:0] rt_phase_3,
 
-    output reg pend,
-    output reg avail,
-    output wire [19:0] sample,
-    input wire get,
-    output reg wr,
-    output reg [255:0] data,
+	input wire axi_clk,
+    output reg axi_pend,
+    output reg axi_avail,
+    output wire [19:0] axi_sample,
+    input wire axi_get,
+    output reg axi_wr,
+    output reg [255:0] axi_data,
     
     input wire clk,
     input wire reset,
@@ -424,12 +425,13 @@ module comp_burst(
 	);
 
     fifo_burst_sample fifo_sample_i (
-        .clk(rt_clk),                 // input wire clk
-        .srst(rt_reset),               // input wire rst
+        .rst(reset),                  // input wire rst
+        .wr_clk(rt_clk),              // input wire wr_clk
+        .rd_clk(axi_clk),             // input wire rd_clk
         .din(rt_sample[19:0]),        // input wire [19 : 0] din
         .wr_en(rt_start),             // input wire wr_en
-        .rd_en(get),                  // input wire rd_en
-        .dout(sample),                // output wire [19 : 0] dout
+        .rd_en(axi_get),              // input wire rd_en
+        .dout(axi_sample),            // output wire [19 : 0] dout
         .full(sample_full),           // output wire full
         .empty(sample_empty)          // output wire empty
     );
@@ -437,10 +439,10 @@ module comp_burst(
     fifo_burst_data fifo_data_i (
         .rst(reset),                  // input wire rst
         .wr_clk(clk),                 // input wire wr_clk
-        .rd_clk(rt_clk),              // input wire rd_clk
+        .rd_clk(axi_clk),             // input wire rd_clk
         .din(p5_data),                // input wire [255 : 0] din
         .wr_en(p5_wr),                // input wire wr_en
-        .rd_en(wr),                   // input wire rd_en
+        .rd_en(axi_wr),               // input wire rd_en
         .dout(fifo_data),             // output wire [255 : 0] dout
         .empty(data_empty)            // output wire empty
     );
@@ -593,15 +595,15 @@ module comp_burst(
 	);
 
 	ila_7 ila_rt (
-		.clk(rt_clk),                 // input wire clk
+		.clk(axi_clk),                 // input wire clk
 		.probe0(sample_empty),        // input wire [0:0]  probe3
 		.probe1(data_empty),          // input wire [0:0]  probe3
 		.probe2(data_delay),          // input wire [2:0]  probe3
-		.probe3(pend),                // input wire [0:0]  probe3
-		.probe4(avail),               // input wire [0:0]  probe3
-		.probe5(sample),              // input wire [19:0]  probe3
-		.probe6(get),                 // input wire [0:0]  probe3
-		.probe7(wr),                  // input wire [0:0]  probe3
+		.probe3(axi_pend),            // input wire [0:0]  probe3
+		.probe4(axi_avail),           // input wire [0:0]  probe3
+		.probe5(axi_sample),          // input wire [19:0]  probe3
+		.probe6(axi_get),             // input wire [0:0]  probe3
+		.probe7(axi_wr),              // input wire [0:0]  probe3
 		.probe8(hdr_sample),          // input wire [63:0]  probe3
 		.probe9(hdr_blocks),          // input wire [7:0]  probe3
 		.probe10(hdr_flags),          // input wire [7:0]  probe3
@@ -782,7 +784,7 @@ generate
         end
     end
 
-    always @(posedge rt_clk) 
+    always @(posedge axi_clk) 
     begin
         if (data_empty)
             data_delay <= 0;
@@ -791,92 +793,92 @@ generate
             if (data_delay)
                 data_delay <= data_delay - 1;
             else
-                if (!avail & !get & !wr)
+                if (!axi_avail & !axi_get & !axi_wr)
                     data_delay <= 7;
         end
     end
             
-    always @(posedge rt_clk) 
+    always @(posedge axi_clk) 
     begin
-        if (data_empty | get)
-            avail <= 0;
+        if (data_empty | axi_get)
+            axi_avail <= 0;
         else
             if (data_delay == 1)
-                avail <= 1;
+                axi_avail <= 1;
     end
 
-    always @(posedge rt_clk) 
+    always @(posedge axi_clk) 
     begin
-        pend <= !sample_empty;
+        axi_pend <= !sample_empty;
     end
         
-    always @(posedge rt_clk) 
+    always @(posedge axi_clk) 
     begin
         if (data_empty)
-            wr <= 0;
+            axi_wr <= 0;
         else
         begin
-            if (get)
+            if (axi_get)
             begin
-                data <= fifo_data;
-                wr <= 1;
+                axi_data <= fifo_data;
+                axi_wr <= 1;
                 blocks <= fifo_data[71:64];
             end
             else
             begin
-                if (wr)
+                if (axi_wr)
                 begin
                     if (blocks)
                     begin
-                        data <= fifo_data;
-                        wr <= 1;
+                        axi_data <= fifo_data;
+                        axi_wr <= 1;
                         blocks <= blocks - 1;
                     end
                     else
-                        wr <= 0;
+                        axi_wr <= 0;
                 end
             end
         end
     end
 
-    always @(posedge rt_clk) 
+    always @(posedge axi_clk) 
     begin
-        if (wr)
+        if (axi_wr)
 		begin
-			if (data[79])
+			if (axi_data[79])
 			begin
-				hdr_sample <= data[63:0];
-				hdr_blocks <= data[71:64];
-				hdr_flags <= data[79:72];
-				hdr_size <= data[95:80];
-				hdr_angle <= data[111:96];
-				hdr_doa_error <= data[127:112];
-				hdr_freq <= data[159:128];
-				hdr_max_env <= data[175:160];
-				hdr_max_pos <= data[191:176];
-				hdr_env_mean <= data[207:192];
-				hdr_env_std <= data[223:208];
-				hdr_phase_std <= data[239:224];
-				hdr_freq_std <= data[255:240];
+				hdr_sample <= axi_data[63:0];
+				hdr_blocks <= axi_data[71:64];
+				hdr_flags <= axi_data[79:72];
+				hdr_size <= axi_data[95:80];
+				hdr_angle <= axi_data[111:96];
+				hdr_doa_error <= axi_data[127:112];
+				hdr_freq <= axi_data[159:128];
+				hdr_max_env <= axi_data[175:160];
+				hdr_max_pos <= axi_data[191:176];
+				hdr_env_mean <= axi_data[207:192];
+				hdr_env_std <= axi_data[223:208];
+				hdr_phase_std <= axi_data[239:224];
+				hdr_freq_std <= axi_data[255:240];
 			end
 			else
 			begin
-				data_env_0 <= data[15:0];
-				data_phase_0 <= data[31:16];
-				data_env_1 <= data[47:32];
-				data_phase_1 <= data[63:48];
-				data_env_2 <= data[79:64];
-				data_phase_2 <= data[95:80];
-				data_env_3 <= data[111:96];
-				data_phase_3 <= data[127:112];
-				data_env_4 <= data[143:128];
-				data_phase_4 <= data[159:144];
-				data_env_5 <= data[175:160];
-				data_phase_5 <= data[191:176];
-				data_env_6 <= data[207:192];
-				data_phase_6 <= data[223:208];
-				data_env_7 <= data[239:224];
-				data_phase_7 <= data[255:240];
+				data_env_0 <= axi_data[15:0];
+				data_phase_0 <= axi_data[31:16];
+				data_env_1 <= axi_data[47:32];
+				data_phase_1 <= axi_data[63:48];
+				data_env_2 <= axi_data[79:64];
+				data_phase_2 <= axi_data[95:80];
+				data_env_3 <= axi_data[111:96];
+				data_phase_3 <= axi_data[127:112];
+				data_env_4 <= axi_data[143:128];
+				data_phase_4 <= axi_data[159:144];
+				data_env_5 <= axi_data[175:160];
+				data_phase_5 <= axi_data[191:176];
+				data_env_6 <= axi_data[207:192];
+				data_phase_6 <= axi_data[223:208];
+				data_env_7 <= axi_data[239:224];
+				data_phase_7 <= axi_data[255:240];
 			end
 		end
 	end

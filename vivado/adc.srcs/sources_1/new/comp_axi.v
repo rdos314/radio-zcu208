@@ -204,6 +204,7 @@ module comp_axi(
 	reg read_back;
 	reg std_done;
 	reg std_ok;
+	reg active_1;
 
     mul_freq mul_freq_i (
         .CLK(clk),     // input wire CLK
@@ -292,8 +293,10 @@ module comp_axi(
 		.probe16(std_done),           // input wire [0:0]  probe3
 		.probe17(std_ok),             // input wire [0:0]  probe3
 		.probe18(filling),            // input wire [0:0]  probe3
-		.probe19(active),             // input wire [0:0]  probe3
-		.probe20(read_back)           // input wire [0:0]  probe3
+		.probe19(active_1),           // input wire [0:0]  probe3
+		.probe20(active),             // input wire [0:0]  probe3
+		.probe21(data[15:0]),         // input wire [15:0]  probe3
+		.probe22(read_back)           // input wire [0:0]  probe3
 );
     	
 generate
@@ -505,17 +508,24 @@ generate
 
     always @(posedge clk)
     begin
+		active <= active_1;
+	end
+
+    always @(posedge clk)
+    begin
         if (read_back)
         begin
-            active <= 1;
+            active_1 <= 1;
             rd_ptr <= 1;
-            data <= header;
             rd_blocks <= wr_blocks;
         end
         else 
         begin
             if (reset)
-                active <= 0;
+			begin
+                active_1 <= 0;
+				rd_ptr <= 0;
+			end
             else
             begin
                 if (active)
@@ -528,10 +538,15 @@ generate
                     end
                     else
                     begin
-                        active <= 0;
+                        active_1 <= 0;
                         rd_ptr <= 0;
                     end
                 end
+				else
+				begin
+					if (active_1)
+						data <= header;
+				end
             end
         end
     end

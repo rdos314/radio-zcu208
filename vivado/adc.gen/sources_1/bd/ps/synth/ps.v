@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Tue Mar 10 20:50:01 2026
+//Date        : Thu Mar 12 00:39:20 2026
 //Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -812,7 +812,8 @@ module ps
         .s_axi_wstrb(axi_smc_M02_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M02_AXI_WVALID));
   ps_comp_ana_0_1 comp_ana_high
-       (.clk(mts_0_comp_ana1_clk),
+       (.axi_clk(ddr4_0_c0_ddr4_ui_clk),
+        .clk(mts_0_comp_ana1_clk),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),
@@ -830,7 +831,8 @@ module ps
         .pl_clk(zynq_ultra_ps_e_0_pl_clk0),
         .reset(mts_0_comp_ana1_reset));
   ps_comp_ana_0_0 comp_ana_low
-       (.clk(mts_0_comp_ana0_clk),
+       (.axi_clk(ddr4_0_c0_ddr4_ui_clk),
+        .clk(mts_0_comp_ana0_clk),
         .config_adr(adc_control_0_config_adr),
         .config_clk(zynq_ultra_ps_e_0_pl_clk0),
         .config_data(adc_control_0_config_data),

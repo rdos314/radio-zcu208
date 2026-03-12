@@ -52,6 +52,8 @@
 # #########################################################
 
 
+create_clock -period 3.001 -name axi_clk [get_ports axi_clk]
+
 create_clock -period 2 -name clk [get_ports clk]
 
 create_clock -period 10 -name config_clk [get_ports config_clk]
