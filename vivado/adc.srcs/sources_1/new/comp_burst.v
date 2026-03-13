@@ -442,7 +442,7 @@ module comp_burst(
         .rd_clk(axi_clk),             // input wire rd_clk
         .din(p5_data),                // input wire [255 : 0] din
         .wr_en(p5_wr),                // input wire wr_en
-        .rd_en(axi_wr),               // input wire rd_en
+        .rd_en(axi_wr | axi_get),     // input wire rd_en
         .dout(fifo_data),             // output wire [255 : 0] dout
         .empty(data_empty)            // output wire empty
     );

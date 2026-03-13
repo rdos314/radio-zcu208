@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Mar 13 00:41:53 2026
+-- Date        : Fri Mar 13 06:37:29 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_sim_netlist.vhdl
@@ -65506,6 +65506,70 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal \comp_burst.hdr_phase_std[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_phase_std[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_phase_std[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[0]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[10]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[11]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[12]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[13]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[14]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[15]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[16]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[17]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[18]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[19]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[1]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[20]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[21]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[22]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[23]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[24]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[25]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[26]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[27]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[28]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[29]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[2]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[30]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[31]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[32]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[33]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[34]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[35]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[36]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[37]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[38]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[39]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[3]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[40]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[41]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[42]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[43]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[44]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[45]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[46]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[47]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[48]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[49]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[4]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[50]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[51]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[52]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[53]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[54]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[55]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[56]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[57]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[58]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[59]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[5]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[60]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[61]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[62]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[63]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[6]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[7]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[8]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_burst.hdr_sample[9]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_size[0]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_size[10]_i_1_n_0\ : STD_LOGIC;
   signal \comp_burst.hdr_size[11]_i_1_n_0\ : STD_LOGIC;
@@ -65747,7 +65811,6 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal p5_data : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal p5_i_n_3 : STD_LOGIC;
   signal p5_wr : STD_LOGIC;
-  signal p_0_in1_in : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal phase_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -65757,6 +65820,7 @@ architecture STRUCTURE of ps_comp_ana_0_0_comp_burst is
   signal phase_diff_in01_out : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal phase_diff_in04_out : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal phase_diff_in07_out : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal rd_en0 : STD_LOGIC;
   signal read_back_i0 : STD_LOGIC;
   signal req_read_back : STD_LOGIC;
   signal rt_data_empty : STD_LOGIC;
@@ -77813,7 +77877,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[0]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(0),
-      O => p_0_in1_in(0)
+      O => \comp_burst.hdr_sample[0]_i_1_n_0\
     );
 \comp_burst.hdr_sample[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77823,7 +77887,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[10]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(10),
-      O => p_0_in1_in(10)
+      O => \comp_burst.hdr_sample[10]_i_1_n_0\
     );
 \comp_burst.hdr_sample[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77833,7 +77897,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[11]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(11),
-      O => p_0_in1_in(11)
+      O => \comp_burst.hdr_sample[11]_i_1_n_0\
     );
 \comp_burst.hdr_sample[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77843,7 +77907,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[12]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(12),
-      O => p_0_in1_in(12)
+      O => \comp_burst.hdr_sample[12]_i_1_n_0\
     );
 \comp_burst.hdr_sample[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77853,7 +77917,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[13]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(13),
-      O => p_0_in1_in(13)
+      O => \comp_burst.hdr_sample[13]_i_1_n_0\
     );
 \comp_burst.hdr_sample[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77863,7 +77927,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[14]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(14),
-      O => p_0_in1_in(14)
+      O => \comp_burst.hdr_sample[14]_i_1_n_0\
     );
 \comp_burst.hdr_sample[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77873,7 +77937,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[15]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(15),
-      O => p_0_in1_in(15)
+      O => \comp_burst.hdr_sample[15]_i_1_n_0\
     );
 \comp_burst.hdr_sample[16]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77883,7 +77947,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[16]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(16),
-      O => p_0_in1_in(16)
+      O => \comp_burst.hdr_sample[16]_i_1_n_0\
     );
 \comp_burst.hdr_sample[17]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77893,7 +77957,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[17]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(17),
-      O => p_0_in1_in(17)
+      O => \comp_burst.hdr_sample[17]_i_1_n_0\
     );
 \comp_burst.hdr_sample[18]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77903,7 +77967,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[18]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(18),
-      O => p_0_in1_in(18)
+      O => \comp_burst.hdr_sample[18]_i_1_n_0\
     );
 \comp_burst.hdr_sample[19]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77913,7 +77977,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[19]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(19),
-      O => p_0_in1_in(19)
+      O => \comp_burst.hdr_sample[19]_i_1_n_0\
     );
 \comp_burst.hdr_sample[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77923,7 +77987,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[1]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(1),
-      O => p_0_in1_in(1)
+      O => \comp_burst.hdr_sample[1]_i_1_n_0\
     );
 \comp_burst.hdr_sample[20]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77933,7 +77997,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[20]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(20),
-      O => p_0_in1_in(20)
+      O => \comp_burst.hdr_sample[20]_i_1_n_0\
     );
 \comp_burst.hdr_sample[21]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77943,7 +78007,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[21]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(21),
-      O => p_0_in1_in(21)
+      O => \comp_burst.hdr_sample[21]_i_1_n_0\
     );
 \comp_burst.hdr_sample[22]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77953,7 +78017,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[22]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(22),
-      O => p_0_in1_in(22)
+      O => \comp_burst.hdr_sample[22]_i_1_n_0\
     );
 \comp_burst.hdr_sample[23]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77963,7 +78027,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[23]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(23),
-      O => p_0_in1_in(23)
+      O => \comp_burst.hdr_sample[23]_i_1_n_0\
     );
 \comp_burst.hdr_sample[24]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77973,7 +78037,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[24]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(24),
-      O => p_0_in1_in(24)
+      O => \comp_burst.hdr_sample[24]_i_1_n_0\
     );
 \comp_burst.hdr_sample[25]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77983,7 +78047,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[25]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(25),
-      O => p_0_in1_in(25)
+      O => \comp_burst.hdr_sample[25]_i_1_n_0\
     );
 \comp_burst.hdr_sample[26]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77993,7 +78057,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[26]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(26),
-      O => p_0_in1_in(26)
+      O => \comp_burst.hdr_sample[26]_i_1_n_0\
     );
 \comp_burst.hdr_sample[27]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78003,7 +78067,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[27]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(27),
-      O => p_0_in1_in(27)
+      O => \comp_burst.hdr_sample[27]_i_1_n_0\
     );
 \comp_burst.hdr_sample[28]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78013,7 +78077,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[28]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(28),
-      O => p_0_in1_in(28)
+      O => \comp_burst.hdr_sample[28]_i_1_n_0\
     );
 \comp_burst.hdr_sample[29]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78023,7 +78087,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[29]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(29),
-      O => p_0_in1_in(29)
+      O => \comp_burst.hdr_sample[29]_i_1_n_0\
     );
 \comp_burst.hdr_sample[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78033,7 +78097,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[2]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(2),
-      O => p_0_in1_in(2)
+      O => \comp_burst.hdr_sample[2]_i_1_n_0\
     );
 \comp_burst.hdr_sample[30]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78043,7 +78107,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[30]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(30),
-      O => p_0_in1_in(30)
+      O => \comp_burst.hdr_sample[30]_i_1_n_0\
     );
 \comp_burst.hdr_sample[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78053,7 +78117,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[31]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(31),
-      O => p_0_in1_in(31)
+      O => \comp_burst.hdr_sample[31]_i_1_n_0\
     );
 \comp_burst.hdr_sample[32]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78063,7 +78127,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[32]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(32),
-      O => p_0_in1_in(32)
+      O => \comp_burst.hdr_sample[32]_i_1_n_0\
     );
 \comp_burst.hdr_sample[33]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78073,7 +78137,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[33]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(33),
-      O => p_0_in1_in(33)
+      O => \comp_burst.hdr_sample[33]_i_1_n_0\
     );
 \comp_burst.hdr_sample[34]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78083,7 +78147,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[34]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(34),
-      O => p_0_in1_in(34)
+      O => \comp_burst.hdr_sample[34]_i_1_n_0\
     );
 \comp_burst.hdr_sample[35]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78093,7 +78157,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[35]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(35),
-      O => p_0_in1_in(35)
+      O => \comp_burst.hdr_sample[35]_i_1_n_0\
     );
 \comp_burst.hdr_sample[36]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78103,7 +78167,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[36]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(36),
-      O => p_0_in1_in(36)
+      O => \comp_burst.hdr_sample[36]_i_1_n_0\
     );
 \comp_burst.hdr_sample[37]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78113,7 +78177,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[37]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(37),
-      O => p_0_in1_in(37)
+      O => \comp_burst.hdr_sample[37]_i_1_n_0\
     );
 \comp_burst.hdr_sample[38]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78123,7 +78187,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[38]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(38),
-      O => p_0_in1_in(38)
+      O => \comp_burst.hdr_sample[38]_i_1_n_0\
     );
 \comp_burst.hdr_sample[39]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78133,7 +78197,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[39]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(39),
-      O => p_0_in1_in(39)
+      O => \comp_burst.hdr_sample[39]_i_1_n_0\
     );
 \comp_burst.hdr_sample[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78143,7 +78207,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[3]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(3),
-      O => p_0_in1_in(3)
+      O => \comp_burst.hdr_sample[3]_i_1_n_0\
     );
 \comp_burst.hdr_sample[40]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78153,7 +78217,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[40]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(40),
-      O => p_0_in1_in(40)
+      O => \comp_burst.hdr_sample[40]_i_1_n_0\
     );
 \comp_burst.hdr_sample[41]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78163,7 +78227,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[41]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(41),
-      O => p_0_in1_in(41)
+      O => \comp_burst.hdr_sample[41]_i_1_n_0\
     );
 \comp_burst.hdr_sample[42]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78173,7 +78237,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[42]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(42),
-      O => p_0_in1_in(42)
+      O => \comp_burst.hdr_sample[42]_i_1_n_0\
     );
 \comp_burst.hdr_sample[43]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78183,7 +78247,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[43]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(43),
-      O => p_0_in1_in(43)
+      O => \comp_burst.hdr_sample[43]_i_1_n_0\
     );
 \comp_burst.hdr_sample[44]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78193,7 +78257,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[44]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(44),
-      O => p_0_in1_in(44)
+      O => \comp_burst.hdr_sample[44]_i_1_n_0\
     );
 \comp_burst.hdr_sample[45]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78203,7 +78267,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[45]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(45),
-      O => p_0_in1_in(45)
+      O => \comp_burst.hdr_sample[45]_i_1_n_0\
     );
 \comp_burst.hdr_sample[46]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78213,7 +78277,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[46]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(46),
-      O => p_0_in1_in(46)
+      O => \comp_burst.hdr_sample[46]_i_1_n_0\
     );
 \comp_burst.hdr_sample[47]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78223,7 +78287,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[47]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(47),
-      O => p_0_in1_in(47)
+      O => \comp_burst.hdr_sample[47]_i_1_n_0\
     );
 \comp_burst.hdr_sample[48]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78233,7 +78297,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[48]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(48),
-      O => p_0_in1_in(48)
+      O => \comp_burst.hdr_sample[48]_i_1_n_0\
     );
 \comp_burst.hdr_sample[49]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78243,7 +78307,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[49]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(49),
-      O => p_0_in1_in(49)
+      O => \comp_burst.hdr_sample[49]_i_1_n_0\
     );
 \comp_burst.hdr_sample[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78253,7 +78317,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[4]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(4),
-      O => p_0_in1_in(4)
+      O => \comp_burst.hdr_sample[4]_i_1_n_0\
     );
 \comp_burst.hdr_sample[50]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78263,7 +78327,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[50]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(50),
-      O => p_0_in1_in(50)
+      O => \comp_burst.hdr_sample[50]_i_1_n_0\
     );
 \comp_burst.hdr_sample[51]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78273,7 +78337,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[51]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(51),
-      O => p_0_in1_in(51)
+      O => \comp_burst.hdr_sample[51]_i_1_n_0\
     );
 \comp_burst.hdr_sample[52]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78283,7 +78347,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[52]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(52),
-      O => p_0_in1_in(52)
+      O => \comp_burst.hdr_sample[52]_i_1_n_0\
     );
 \comp_burst.hdr_sample[53]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78293,7 +78357,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[53]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(53),
-      O => p_0_in1_in(53)
+      O => \comp_burst.hdr_sample[53]_i_1_n_0\
     );
 \comp_burst.hdr_sample[54]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78303,7 +78367,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[54]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(54),
-      O => p_0_in1_in(54)
+      O => \comp_burst.hdr_sample[54]_i_1_n_0\
     );
 \comp_burst.hdr_sample[55]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78313,7 +78377,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[55]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(55),
-      O => p_0_in1_in(55)
+      O => \comp_burst.hdr_sample[55]_i_1_n_0\
     );
 \comp_burst.hdr_sample[56]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78323,7 +78387,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[56]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(56),
-      O => p_0_in1_in(56)
+      O => \comp_burst.hdr_sample[56]_i_1_n_0\
     );
 \comp_burst.hdr_sample[57]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78333,7 +78397,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[57]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(57),
-      O => p_0_in1_in(57)
+      O => \comp_burst.hdr_sample[57]_i_1_n_0\
     );
 \comp_burst.hdr_sample[58]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78343,7 +78407,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[58]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(58),
-      O => p_0_in1_in(58)
+      O => \comp_burst.hdr_sample[58]_i_1_n_0\
     );
 \comp_burst.hdr_sample[59]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78353,7 +78417,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[59]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(59),
-      O => p_0_in1_in(59)
+      O => \comp_burst.hdr_sample[59]_i_1_n_0\
     );
 \comp_burst.hdr_sample[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78363,7 +78427,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[5]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(5),
-      O => p_0_in1_in(5)
+      O => \comp_burst.hdr_sample[5]_i_1_n_0\
     );
 \comp_burst.hdr_sample[60]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78373,7 +78437,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[60]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(60),
-      O => p_0_in1_in(60)
+      O => \comp_burst.hdr_sample[60]_i_1_n_0\
     );
 \comp_burst.hdr_sample[61]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78383,7 +78447,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[61]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(61),
-      O => p_0_in1_in(61)
+      O => \comp_burst.hdr_sample[61]_i_1_n_0\
     );
 \comp_burst.hdr_sample[62]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78393,7 +78457,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[62]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(62),
-      O => p_0_in1_in(62)
+      O => \comp_burst.hdr_sample[62]_i_1_n_0\
     );
 \comp_burst.hdr_sample[63]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78403,7 +78467,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[63]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(63),
-      O => p_0_in1_in(63)
+      O => \comp_burst.hdr_sample[63]_i_1_n_0\
     );
 \comp_burst.hdr_sample[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78413,7 +78477,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[6]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(6),
-      O => p_0_in1_in(6)
+      O => \comp_burst.hdr_sample[6]_i_1_n_0\
     );
 \comp_burst.hdr_sample[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78423,7 +78487,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[7]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(7),
-      O => p_0_in1_in(7)
+      O => \comp_burst.hdr_sample[7]_i_1_n_0\
     );
 \comp_burst.hdr_sample[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78433,7 +78497,7 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[8]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(8),
-      O => p_0_in1_in(8)
+      O => \comp_burst.hdr_sample[8]_i_1_n_0\
     );
 \comp_burst.hdr_sample[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78443,13 +78507,13 @@ GND: unisim.vcomponents.GND
       I0 => \comp_burst.axi_data_reg_n_0_[9]\,
       I1 => \comp_burst.axi_data_reg_n_0_[79]\,
       I2 => hdr_sample(9),
-      O => p_0_in1_in(9)
+      O => \comp_burst.hdr_sample[9]_i_1_n_0\
     );
 \comp_burst.hdr_sample_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(0),
+      D => \comp_burst.hdr_sample[0]_i_1_n_0\,
       Q => hdr_sample(0),
       R => '0'
     );
@@ -78457,7 +78521,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(10),
+      D => \comp_burst.hdr_sample[10]_i_1_n_0\,
       Q => hdr_sample(10),
       R => '0'
     );
@@ -78465,7 +78529,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(11),
+      D => \comp_burst.hdr_sample[11]_i_1_n_0\,
       Q => hdr_sample(11),
       R => '0'
     );
@@ -78473,7 +78537,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(12),
+      D => \comp_burst.hdr_sample[12]_i_1_n_0\,
       Q => hdr_sample(12),
       R => '0'
     );
@@ -78481,7 +78545,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(13),
+      D => \comp_burst.hdr_sample[13]_i_1_n_0\,
       Q => hdr_sample(13),
       R => '0'
     );
@@ -78489,7 +78553,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(14),
+      D => \comp_burst.hdr_sample[14]_i_1_n_0\,
       Q => hdr_sample(14),
       R => '0'
     );
@@ -78497,7 +78561,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(15),
+      D => \comp_burst.hdr_sample[15]_i_1_n_0\,
       Q => hdr_sample(15),
       R => '0'
     );
@@ -78505,7 +78569,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(16),
+      D => \comp_burst.hdr_sample[16]_i_1_n_0\,
       Q => hdr_sample(16),
       R => '0'
     );
@@ -78513,7 +78577,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(17),
+      D => \comp_burst.hdr_sample[17]_i_1_n_0\,
       Q => hdr_sample(17),
       R => '0'
     );
@@ -78521,7 +78585,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(18),
+      D => \comp_burst.hdr_sample[18]_i_1_n_0\,
       Q => hdr_sample(18),
       R => '0'
     );
@@ -78529,7 +78593,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(19),
+      D => \comp_burst.hdr_sample[19]_i_1_n_0\,
       Q => hdr_sample(19),
       R => '0'
     );
@@ -78537,7 +78601,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(1),
+      D => \comp_burst.hdr_sample[1]_i_1_n_0\,
       Q => hdr_sample(1),
       R => '0'
     );
@@ -78545,7 +78609,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(20),
+      D => \comp_burst.hdr_sample[20]_i_1_n_0\,
       Q => hdr_sample(20),
       R => '0'
     );
@@ -78553,7 +78617,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(21),
+      D => \comp_burst.hdr_sample[21]_i_1_n_0\,
       Q => hdr_sample(21),
       R => '0'
     );
@@ -78561,7 +78625,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(22),
+      D => \comp_burst.hdr_sample[22]_i_1_n_0\,
       Q => hdr_sample(22),
       R => '0'
     );
@@ -78569,7 +78633,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(23),
+      D => \comp_burst.hdr_sample[23]_i_1_n_0\,
       Q => hdr_sample(23),
       R => '0'
     );
@@ -78577,7 +78641,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(24),
+      D => \comp_burst.hdr_sample[24]_i_1_n_0\,
       Q => hdr_sample(24),
       R => '0'
     );
@@ -78585,7 +78649,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(25),
+      D => \comp_burst.hdr_sample[25]_i_1_n_0\,
       Q => hdr_sample(25),
       R => '0'
     );
@@ -78593,7 +78657,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(26),
+      D => \comp_burst.hdr_sample[26]_i_1_n_0\,
       Q => hdr_sample(26),
       R => '0'
     );
@@ -78601,7 +78665,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(27),
+      D => \comp_burst.hdr_sample[27]_i_1_n_0\,
       Q => hdr_sample(27),
       R => '0'
     );
@@ -78609,7 +78673,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(28),
+      D => \comp_burst.hdr_sample[28]_i_1_n_0\,
       Q => hdr_sample(28),
       R => '0'
     );
@@ -78617,7 +78681,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(29),
+      D => \comp_burst.hdr_sample[29]_i_1_n_0\,
       Q => hdr_sample(29),
       R => '0'
     );
@@ -78625,7 +78689,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(2),
+      D => \comp_burst.hdr_sample[2]_i_1_n_0\,
       Q => hdr_sample(2),
       R => '0'
     );
@@ -78633,7 +78697,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(30),
+      D => \comp_burst.hdr_sample[30]_i_1_n_0\,
       Q => hdr_sample(30),
       R => '0'
     );
@@ -78641,7 +78705,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(31),
+      D => \comp_burst.hdr_sample[31]_i_1_n_0\,
       Q => hdr_sample(31),
       R => '0'
     );
@@ -78649,7 +78713,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(32),
+      D => \comp_burst.hdr_sample[32]_i_1_n_0\,
       Q => hdr_sample(32),
       R => '0'
     );
@@ -78657,7 +78721,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(33),
+      D => \comp_burst.hdr_sample[33]_i_1_n_0\,
       Q => hdr_sample(33),
       R => '0'
     );
@@ -78665,7 +78729,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(34),
+      D => \comp_burst.hdr_sample[34]_i_1_n_0\,
       Q => hdr_sample(34),
       R => '0'
     );
@@ -78673,7 +78737,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(35),
+      D => \comp_burst.hdr_sample[35]_i_1_n_0\,
       Q => hdr_sample(35),
       R => '0'
     );
@@ -78681,7 +78745,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(36),
+      D => \comp_burst.hdr_sample[36]_i_1_n_0\,
       Q => hdr_sample(36),
       R => '0'
     );
@@ -78689,7 +78753,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(37),
+      D => \comp_burst.hdr_sample[37]_i_1_n_0\,
       Q => hdr_sample(37),
       R => '0'
     );
@@ -78697,7 +78761,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(38),
+      D => \comp_burst.hdr_sample[38]_i_1_n_0\,
       Q => hdr_sample(38),
       R => '0'
     );
@@ -78705,7 +78769,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(39),
+      D => \comp_burst.hdr_sample[39]_i_1_n_0\,
       Q => hdr_sample(39),
       R => '0'
     );
@@ -78713,7 +78777,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(3),
+      D => \comp_burst.hdr_sample[3]_i_1_n_0\,
       Q => hdr_sample(3),
       R => '0'
     );
@@ -78721,7 +78785,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(40),
+      D => \comp_burst.hdr_sample[40]_i_1_n_0\,
       Q => hdr_sample(40),
       R => '0'
     );
@@ -78729,7 +78793,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(41),
+      D => \comp_burst.hdr_sample[41]_i_1_n_0\,
       Q => hdr_sample(41),
       R => '0'
     );
@@ -78737,7 +78801,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(42),
+      D => \comp_burst.hdr_sample[42]_i_1_n_0\,
       Q => hdr_sample(42),
       R => '0'
     );
@@ -78745,7 +78809,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(43),
+      D => \comp_burst.hdr_sample[43]_i_1_n_0\,
       Q => hdr_sample(43),
       R => '0'
     );
@@ -78753,7 +78817,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(44),
+      D => \comp_burst.hdr_sample[44]_i_1_n_0\,
       Q => hdr_sample(44),
       R => '0'
     );
@@ -78761,7 +78825,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(45),
+      D => \comp_burst.hdr_sample[45]_i_1_n_0\,
       Q => hdr_sample(45),
       R => '0'
     );
@@ -78769,7 +78833,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(46),
+      D => \comp_burst.hdr_sample[46]_i_1_n_0\,
       Q => hdr_sample(46),
       R => '0'
     );
@@ -78777,7 +78841,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(47),
+      D => \comp_burst.hdr_sample[47]_i_1_n_0\,
       Q => hdr_sample(47),
       R => '0'
     );
@@ -78785,7 +78849,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(48),
+      D => \comp_burst.hdr_sample[48]_i_1_n_0\,
       Q => hdr_sample(48),
       R => '0'
     );
@@ -78793,7 +78857,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(49),
+      D => \comp_burst.hdr_sample[49]_i_1_n_0\,
       Q => hdr_sample(49),
       R => '0'
     );
@@ -78801,7 +78865,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(4),
+      D => \comp_burst.hdr_sample[4]_i_1_n_0\,
       Q => hdr_sample(4),
       R => '0'
     );
@@ -78809,7 +78873,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(50),
+      D => \comp_burst.hdr_sample[50]_i_1_n_0\,
       Q => hdr_sample(50),
       R => '0'
     );
@@ -78817,7 +78881,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(51),
+      D => \comp_burst.hdr_sample[51]_i_1_n_0\,
       Q => hdr_sample(51),
       R => '0'
     );
@@ -78825,7 +78889,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(52),
+      D => \comp_burst.hdr_sample[52]_i_1_n_0\,
       Q => hdr_sample(52),
       R => '0'
     );
@@ -78833,7 +78897,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(53),
+      D => \comp_burst.hdr_sample[53]_i_1_n_0\,
       Q => hdr_sample(53),
       R => '0'
     );
@@ -78841,7 +78905,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(54),
+      D => \comp_burst.hdr_sample[54]_i_1_n_0\,
       Q => hdr_sample(54),
       R => '0'
     );
@@ -78849,7 +78913,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(55),
+      D => \comp_burst.hdr_sample[55]_i_1_n_0\,
       Q => hdr_sample(55),
       R => '0'
     );
@@ -78857,7 +78921,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(56),
+      D => \comp_burst.hdr_sample[56]_i_1_n_0\,
       Q => hdr_sample(56),
       R => '0'
     );
@@ -78865,7 +78929,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(57),
+      D => \comp_burst.hdr_sample[57]_i_1_n_0\,
       Q => hdr_sample(57),
       R => '0'
     );
@@ -78873,7 +78937,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(58),
+      D => \comp_burst.hdr_sample[58]_i_1_n_0\,
       Q => hdr_sample(58),
       R => '0'
     );
@@ -78881,7 +78945,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(59),
+      D => \comp_burst.hdr_sample[59]_i_1_n_0\,
       Q => hdr_sample(59),
       R => '0'
     );
@@ -78889,7 +78953,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(5),
+      D => \comp_burst.hdr_sample[5]_i_1_n_0\,
       Q => hdr_sample(5),
       R => '0'
     );
@@ -78897,7 +78961,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(60),
+      D => \comp_burst.hdr_sample[60]_i_1_n_0\,
       Q => hdr_sample(60),
       R => '0'
     );
@@ -78905,7 +78969,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(61),
+      D => \comp_burst.hdr_sample[61]_i_1_n_0\,
       Q => hdr_sample(61),
       R => '0'
     );
@@ -78913,7 +78977,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(62),
+      D => \comp_burst.hdr_sample[62]_i_1_n_0\,
       Q => hdr_sample(62),
       R => '0'
     );
@@ -78921,7 +78985,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(63),
+      D => \comp_burst.hdr_sample[63]_i_1_n_0\,
       Q => hdr_sample(63),
       R => '0'
     );
@@ -78929,7 +78993,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(6),
+      D => \comp_burst.hdr_sample[6]_i_1_n_0\,
       Q => hdr_sample(6),
       R => '0'
     );
@@ -78937,7 +79001,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(7),
+      D => \comp_burst.hdr_sample[7]_i_1_n_0\,
       Q => hdr_sample(7),
       R => '0'
     );
@@ -78945,7 +79009,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(8),
+      D => \comp_burst.hdr_sample[8]_i_1_n_0\,
       Q => hdr_sample(8),
       R => '0'
     );
@@ -78953,7 +79017,7 @@ GND: unisim.vcomponents.GND
      port map (
       C => axi_clk,
       CE => \^axi_wr\,
-      D => p_0_in1_in(9),
+      D => \comp_burst.hdr_sample[9]_i_1_n_0\,
       Q => hdr_sample(9),
       R => '0'
     );
@@ -85536,10 +85600,19 @@ fifo_data_i: component ps_comp_ana_0_0_fifo_burst_data
       empty => data_empty,
       full => NLW_fifo_data_i_full_UNCONNECTED,
       rd_clk => axi_clk,
-      rd_en => \^axi_wr\,
+      rd_en => rd_en0,
       rst => reset,
       wr_clk => clk,
       wr_en => p5_wr
+    );
+fifo_data_i_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \^axi_wr\,
+      I1 => axi_get,
+      O => rd_en0
     );
 fifo_rt_data_i: component ps_comp_ana_0_0_fifo_stat_data
      port map (
