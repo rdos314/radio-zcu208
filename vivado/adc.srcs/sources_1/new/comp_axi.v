@@ -204,7 +204,6 @@ module comp_axi(
 	reg read_back;
 	reg std_done;
 	reg std_ok;
-	reg active_1;
 
     mul_freq mul_freq_i (
         .CLK(clk),     // input wire CLK
@@ -272,6 +271,7 @@ module comp_axi(
         .m_axis_dout_tdata(freq_std_data)                  // output wire [23 : 0] m_axis_dout_tdata
     );
 
+/*
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(wr),                  // input wire [0:0]  probe3
@@ -283,21 +283,17 @@ module comp_axi(
 		.probe6(rd_blocks),           // input wire [7:0]  probe3
 		.probe7(stat_ok),         	  // input wire [0:0]  probe3
 		.probe8(div_start),           // input wire [0:0]  probe3
-		.probe9(freq_delay),          // input wire [2:0]  probe3
-		.probe10(idle),               // input wire [0:0]  probe3
-		.probe11(calc_freq),          // input wire [31:0]  probe3
-		.probe12(env_std),            // input wire [15:0]  probe3
-		.probe13(phase_std),          // input wire [15:0]  probe3
-		.probe14(raw_freq_std),       // input wire [19:0]  probe3
-		.probe15(freq_std),           // input wire [15:0]  probe3
-		.probe16(std_done),           // input wire [0:0]  probe3
-		.probe17(std_ok),             // input wire [0:0]  probe3
-		.probe18(filling),            // input wire [0:0]  probe3
-		.probe19(active_1),           // input wire [0:0]  probe3
-		.probe20(active),             // input wire [0:0]  probe3
-		.probe21(data[15:0]),         // input wire [15:0]  probe3
-		.probe22(read_back)           // input wire [0:0]  probe3
+		.probe9(idle),               // input wire [0:0]  probe3
+		.probe10(std_done),           // input wire [0:0]  probe3
+		.probe11(std_ok),             // input wire [0:0]  probe3
+		.probe12(filling),            // input wire [0:0]  probe3
+		.probe13(active),             // input wire [0:0]  probe3
+		.probe14(data_in[15:0]),      // input wire [15:0]  probe3
+		.probe15(data_out[15:0]),     // input wire [15:0]  probe3
+		.probe16(data[15:0]),         // input wire [15:0]  probe3
+		.probe17(read_back)           // input wire [0:0]  probe3
 );
+*/
     	
 generate
   begin : comp_axi
@@ -508,24 +504,17 @@ generate
 
     always @(posedge clk)
     begin
-		active <= active_1;
-	end
-
-    always @(posedge clk)
-    begin
         if (read_back)
         begin
-            active_1 <= 1;
+            active <= 1;
             rd_ptr <= 1;
+            data <= header;
             rd_blocks <= wr_blocks;
         end
         else 
         begin
             if (reset)
-			begin
-                active_1 <= 0;
-				rd_ptr <= 0;
-			end
+                active <= 0;
             else
             begin
                 if (active)
@@ -537,20 +526,14 @@ generate
                         rd_ptr <= rd_ptr + 1;
                     end
                     else
-                    begin
-                        active_1 <= 0;
-                        rd_ptr <= 0;
-                    end
+                        active <= 0;
                 end
-				else
-				begin
-					if (active_1)
-						data <= header;
-				end
+                else
+                    rd_ptr <= 0;
             end
         end
     end
-
+    
   end
     
 endgenerate

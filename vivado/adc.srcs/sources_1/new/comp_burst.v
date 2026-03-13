@@ -576,6 +576,7 @@ module comp_burst(
         .data(p5_data)
 	);
 
+/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(idle),                // input wire [0:0]  probe3
@@ -593,6 +594,7 @@ module comp_burst(
 		.probe12(p5_idle),            // input wire [0:0]  probe3
 		.probe13(p5_wr)               // input wire [0:0]  probe3
 	);
+*/
 
 	ila_7 ila_rt (
 		.clk(axi_clk),                 // input wire clk

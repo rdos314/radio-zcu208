@@ -62,7 +62,9 @@ module fifo_burst_sample (
   rd_en,
   dout,
   full,
-  empty
+  empty,
+  wr_rst_busy,
+  rd_rst_busy
 );
 
 input wire rst;
@@ -88,6 +90,8 @@ output wire [19 : 0] dout;
 output wire full;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *)
 output wire empty;
+output wire wr_rst_busy;
+output wire rd_rst_busy;
 
   fifo_generator_v13_2_13 #(
     .C_COMMON_CLOCK(0),
@@ -139,7 +143,7 @@ output wire empty;
     .C_UNDERFLOW_LOW(0),
     .C_USE_DOUT_RST(1),
     .C_USE_ECC(0),
-    .C_USE_EMBEDDED_REG(1),
+    .C_USE_EMBEDDED_REG(0),
     .C_USE_PIPELINE_REG(0),
     .C_POWER_SAVING_MODE(0),
     .C_USE_FIFO16_FLAGS(0),
@@ -153,7 +157,7 @@ output wire empty;
     .C_WR_RESPONSE_LATENCY(1),
     .C_MSGON_VAL(1),
     .C_ENABLE_RST_SYNC(1),
-    .C_EN_SAFETY_CKT(0),
+    .C_EN_SAFETY_CKT(1),
     .C_ERROR_INJECTION_TYPE(0),
     .C_SYNCHRONIZER_STAGE(2),
     .C_INTERFACE_TYPE(0),
@@ -331,8 +335,8 @@ output wire empty;
     .prog_empty(),
     .sbiterr(),
     .dbiterr(),
-    .wr_rst_busy(),
-    .rd_rst_busy(),
+    .wr_rst_busy(wr_rst_busy),
+    .rd_rst_busy(rd_rst_busy),
     .m_aclk(1'D0),
     .s_aclk(1'D0),
     .s_aresetn(1'D0),
