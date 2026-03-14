@@ -54,6 +54,9 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // clk_out1__400.00000______0.000______50.0_______90.074_____87.180
+// clk_out2__400.00000______0.000______50.0_______90.074_____87.180
+// clk_out3__400.00000______0.000______50.0_______90.074_____87.180
+// clk_out4__400.00000______0.000______50.0_______90.074_____87.180
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -67,6 +70,9 @@ module clk_wiz_stat_clk_wiz
  (// Clock in ports
   // Clock out ports
   output        clk_out1,
+  output        clk_out2,
+  output        clk_out3,
+  output        clk_out4,
   input         clk_in1
  );
   // Input buffering
@@ -102,11 +108,8 @@ wire clk_in2_clk_wiz_stat;
   wire        clkfbout_clk_wiz_stat;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
-   wire clkout1_unused;
    wire clkout1b_unused;
-   wire clkout2_unused;
    wire clkout2b_unused;
-   wire clkout3_unused;
    wire clkout3b_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
@@ -134,6 +137,18 @@ wire clk_in2_clk_wiz_stat;
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
+    .CLKOUT1_DIVIDE       (3),
+    .CLKOUT1_PHASE        (0.000),
+    .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKOUT2_DIVIDE       (3),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.500),
+    .CLKOUT2_USE_FINE_PS  ("FALSE"),
+    .CLKOUT3_DIVIDE       (3),
+    .CLKOUT3_PHASE        (0.000),
+    .CLKOUT3_DUTY_CYCLE   (0.500),
+    .CLKOUT3_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.000))
   
      mmcme4_adv_inst
@@ -143,11 +158,11 @@ wire clk_in2_clk_wiz_stat;
     .CLKFBOUTB           (clkfboutb_unused),
     .CLKOUT0             (clk_out1_clk_wiz_stat),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clkout1_unused),
+	.CLKOUT1             (clk_out2_clk_wiz_stat),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clkout2_unused),
+	.CLKOUT2             (clk_out3_clk_wiz_stat),
     .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clkout3_unused),
+	.CLKOUT3             (clk_out4_clk_wiz_stat),
     .CLKOUT3B            (clkout3b_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -194,6 +209,12 @@ wire clk_in2_clk_wiz_stat;
 
   assign clk_out1 = clk_out1_clk_wiz_stat;
 
+
+  assign clk_out2 = clk_out2_clk_wiz_stat;
+
+  assign clk_out3 = clk_out3_clk_wiz_stat;
+
+  assign clk_out4 = clk_out4_clk_wiz_stat;
 
 
 

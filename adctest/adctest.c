@@ -434,10 +434,25 @@ int main()
 //	    LoadLowCos(46.0, 30.0, 25000, 45.0);
     	LoadLowZero(46.0, 30.0);
 
-	    LoadHighZero(189.0, 120.0);
-	    LoadHighMorlet(189.0, 20.0, 1000, a);
-//  	LoadHighCos(189.0, 120.0, 25000, 45.0);
-	    LoadHighZero(189.0, 120.0);
+	    LoadHighZero(189.0, 50.0);
+	    LoadHighMorlet(189.0, 15.0, 1000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(189.5, 25.0, 5000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(190.0, 5.0, 8000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(190.5, 25.0, 2000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(188.5, 40.0, 500, a);
+	    LoadHighZero(189.0, 40.0);
+	    LoadHighMorlet(188.0, 10.0, 2000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(189.0, 15.0, 4000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(190.6, 19.0, 1000, a);
+	    LoadHighZero(189.0, 25.0);
+	    LoadHighMorlet(188.8, 10.0, 1000, a);
+	    LoadHighZero(189.0, 50.0);
 
     	StartSim();
     }
