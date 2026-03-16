@@ -57,6 +57,12 @@ module comp_ana(
 	(* ASYNC_REG="TRUE" *)	reg  stat_2_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  stat_3_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  stat_3_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  stat_4_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_4_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  stat_5_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_5_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  stat_6_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_6_reset_2;
 
     wire stat_idle_in_0;
     reg stat_idle_sync_0;
@@ -77,6 +83,21 @@ module comp_ana(
     reg stat_idle_sync_3;
 	(* ASYNC_REG="TRUE" *)	reg  stat_3_idle_1;
 	(* ASYNC_REG="TRUE" *)	reg  stat_3_idle_2;
+
+    wire stat_idle_in_4;
+    reg stat_idle_sync_4;
+	(* ASYNC_REG="TRUE" *)	reg  stat_4_idle_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_4_idle_2;
+
+    wire stat_idle_in_5;
+    reg stat_idle_sync_5;
+	(* ASYNC_REG="TRUE" *)	reg  stat_5_idle_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_5_idle_2;
+
+    wire stat_idle_in_6;
+    reg stat_idle_sync_6;
+	(* ASYNC_REG="TRUE" *)	reg  stat_6_idle_1;
+	(* ASYNC_REG="TRUE" *)	reg  stat_6_idle_2;
 	
     reg reset_int;
   
@@ -146,13 +167,13 @@ module comp_ana(
     reg [15:0] pend_angle;
     reg [9:0] pend_doa_error;
     
-    wire stat_01_clk_buf;
     wire stat_clk_0_raw;
     wire stat_clk_1_raw;
-
-    wire stat_23_clk_buf;
     wire stat_clk_2_raw;
     wire stat_clk_3_raw;
+    wire stat_clk_4_raw;
+    wire stat_clk_5_raw;
+    wire stat_clk_6_raw;
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_0, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	wire stat_clk_0;
@@ -165,11 +186,23 @@ module comp_ana(
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_3, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
 	wire stat_clk_3;
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_4, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	wire stat_clk_4;
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_5, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	wire stat_clk_5;
+
+    (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME STAT_CLK_6, FREQ_HZ 400000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
+	wire stat_clk_6;
 	
 	reg stat_reset_0;
 	reg stat_reset_1;
 	reg stat_reset_2;
 	reg stat_reset_3;
+	reg stat_reset_4;
+	reg stat_reset_5;
+	reg stat_reset_6;
 
     reg curr_error;
     reg [2:0] curr_stat;
@@ -177,37 +210,79 @@ module comp_ana(
 	reg [7:0] stat_wr;    
 	reg [7:0] stat_idle;
 	
-	reg [61:0] stat_sample [0:7];
-    reg [19:0] stat_freq [0:7];
-    reg [15:0] stat_angle [0:7];
-    reg [9:0] stat_doa_error [0:7];
+	reg [61:0] stat_sample [0:6];
+    reg [19:0] stat_freq [0:6];
+    reg [15:0] stat_angle [0:6];
+    reg [9:0] stat_doa_error [0:6];
 
-    reg [15:0] stat_env_0 [0:7]; 
-    reg [15:0] stat_env_1 [0:7];
-    reg [15:0] stat_env_2 [0:7];  
-    reg [15:0] stat_env_3 [0:7];
+    reg [15:0] stat_env_0 [0:6]; 
+    reg [15:0] stat_env_1 [0:6];
+    reg [15:0] stat_env_2 [0:6];  
+    reg [15:0] stat_env_3 [0:6];
   
-    reg [19:0] stat_phase_0 [0:7];
-    reg [19:0] stat_phase_1 [0:7];
-    reg [19:0] stat_phase_2 [0:7];
-    reg [19:0] stat_phase_3 [0:7];
-
+    reg [19:0] stat_phase_0 [0:6];
+    reg [19:0] stat_phase_1 [0:6];
+    reg [19:0] stat_phase_2 [0:6];
+    reg [19:0] stat_phase_3 [0:6];
 
 // axi domain
 
-    wire [7:0] stat_pend;
-    wire [7:0] stat_avail;
-    wire [19:0] stat_pos [0:7];
-    reg [7:0] stat_get;
-    wire [7:0] stat_active;
-    wire [255:0] stat_data [0:7];
+	localparam STAT_NONE = 2'b00;
+	localparam STAT_A = 2'b01;
+	localparam STAT_B = 2'b10;
+	localparam STAT_COMP = 2'b11;
+
+    wire [6:0] axi_pend;
+    wire [6:0] axi_avail;
+    wire [19:0] axi_pos [0:6];
+    reg [6:0] axi_get;
+    wire [6:0] axi_active;
+    wire [255:0] axi_data [0:6];
+	
+	reg [1:0] axi_state_01;
+	reg [1:0] axi_state_23;
+	reg [1:0] axi_state_45;
+	reg [1:0] axi_state_6;
+	
+	reg [19:0] axi_diff_01;
+	reg [19:0] axi_diff_23;
+	reg [19:0] axi_diff_45;
+
+	reg axi_ok_01;
+	reg axi_ok_23;
+	reg axi_ok_45;
+	reg axi_ok_6;
+	
+	reg axi_ind_01;
+	reg axi_ind_23;
+	reg axi_ind_45;
+
+	reg [1:0] axi_state_03;
+	reg [1:0] axi_state_46;
+
+	reg [19:0] axi_diff_03;
+	reg [19:0] axi_diff_46;
+
+	reg axi_ok_03;
+	reg axi_ok_46;
+
+	reg [1:0] axi_ind_03;
+	reg [1:0] axi_ind_46;
+
+	reg [1:0] axi_state;
+	reg [19:0] axi_diff;
+	reg axi_ok;
+	reg [2:0] axi_ind;
 
     clk_wiz_stat clk_wiz_stat_i (
        .clk_in1(pl_clk) ,              // input clk_in1
        .clk_out1(stat_clk_0_raw),     // output clk_out1
        .clk_out2(stat_clk_1_raw),     // output clk_out2
        .clk_out3(stat_clk_2_raw),     // output clk_out3
-       .clk_out4(stat_clk_3_raw)      // output clk_out4
+       .clk_out4(stat_clk_3_raw),     // output clk_out4
+       .clk_out5(stat_clk_4_raw),     // output clk_out5
+       .clk_out6(stat_clk_5_raw),     // output clk_out6
+       .clk_out7(stat_clk_6_raw)      // output clk_out7
     );
 
 	BUFG stat_clk_0_i (
@@ -225,6 +300,18 @@ module comp_ana(
 	BUFG stat_clk_3_i (
 		.I			(stat_clk_3_raw),
 		.O			(stat_clk_3));
+
+	BUFG stat_clk_4_i (
+		.I			(stat_clk_4_raw),
+		.O			(stat_clk_4));
+
+	BUFG stat_clk_5_i (
+		.I			(stat_clk_5_raw),
+		.O			(stat_clk_5));
+
+	BUFG stat_clk_6_i (
+		.I			(stat_clk_6_raw),
+		.O			(stat_clk_6));
 
     fifo_comp_ana fifo_ana_i (
         .rst(reset_int),              // input wire rst
@@ -310,12 +397,12 @@ module comp_ana(
         .rt_phase_2(stat_phase_2[0]),
         .rt_phase_3(stat_phase_3[0]),
         .axi_clk(axi_clk),
-        .axi_pend(stat_pend[0]),
-        .axi_avail(stat_avail[0]),
-        .axi_sample(stat_pos[0]),
-        .axi_get(stat_get[0]),
-        .axi_wr(stat_active[0]),
-        .axi_data(stat_data[0]),
+        .axi_pend(axi_pend[0]),
+        .axi_avail(axi_avail[0]),
+        .axi_sample(axi_pos[0]),
+        .axi_get(axi_get[0]),
+        .axi_wr(axi_active[0]),
+        .axi_data(axi_data[0]),
         .clk(stat_clk_0),
         .reset(stat_reset_0),
         .idle(stat_idle_in_0)
@@ -343,12 +430,12 @@ module comp_ana(
         .rt_phase_2(stat_phase_2[1]),
         .rt_phase_3(stat_phase_3[1]),
         .axi_clk(axi_clk),
-        .axi_pend(stat_pend[1]),
-        .axi_avail(stat_avail[1]),
-        .axi_sample(stat_pos[1]),
-        .axi_get(stat_get[1]),
-        .axi_wr(stat_active[1]),
-        .axi_data(stat_data[1]),
+        .axi_pend(axi_pend[1]),
+        .axi_avail(axi_avail[1]),
+        .axi_sample(axi_pos[1]),
+        .axi_get(axi_get[1]),
+        .axi_wr(axi_active[1]),
+        .axi_data(axi_data[1]),
         .clk(stat_clk_1),
         .reset(stat_reset_1),
         .idle(stat_idle_in_1)
@@ -376,12 +463,12 @@ module comp_ana(
         .rt_phase_2(stat_phase_2[2]),
         .rt_phase_3(stat_phase_3[2]),
         .axi_clk(axi_clk),
-        .axi_pend(stat_pend[2]),
-        .axi_avail(stat_avail[2]),
-        .axi_sample(stat_pos[2]),
-        .axi_get(stat_get[2]),
-        .axi_wr(stat_active[2]),
-        .axi_data(stat_data[2]),
+        .axi_pend(axi_pend[2]),
+        .axi_avail(axi_avail[2]),
+        .axi_sample(axi_pos[2]),
+        .axi_get(axi_get[2]),
+        .axi_wr(axi_active[2]),
+        .axi_data(axi_data[2]),
         .clk(stat_clk_2),
         .reset(stat_reset_2),
         .idle(stat_idle_in_2)
@@ -409,17 +496,115 @@ module comp_ana(
         .rt_phase_2(stat_phase_2[3]),
         .rt_phase_3(stat_phase_3[3]),
         .axi_clk(axi_clk),
-        .axi_pend(stat_pend[3]),
-        .axi_avail(stat_avail[3]),
-        .axi_sample(stat_pos[3]),
-        .axi_get(stat_get[3]),
-        .axi_wr(stat_active[3]),
-        .axi_data(stat_data[3]),
+        .axi_pend(axi_pend[3]),
+        .axi_avail(axi_avail[3]),
+        .axi_sample(axi_pos[3]),
+        .axi_get(axi_get[3]),
+        .axi_wr(axi_active[3]),
+        .axi_data(axi_data[3]),
         .clk(stat_clk_3),
         .reset(stat_reset_3),
         .idle(stat_idle_in_3)
     );
 
+    comp_burst burst_4(
+        .config_clk(config_clk),
+        .config_wr(local_config_wr),
+        .config_adr(local_config_adr),
+        .config_data(local_config_data),
+        .rt_clk(clk),
+        .rt_reset(reset_int),
+        .rt_start(stat_start[4]),
+        .rt_sample(stat_sample[4]),
+        .rt_freq(stat_freq[4]),
+        .rt_angle(stat_angle[4]),
+        .rt_doa_error(stat_doa_error[4]),
+        .rt_wr(stat_wr[4]),    
+        .rt_env_0(stat_env_0[4]), 
+        .rt_env_1(stat_env_1[4]), 
+        .rt_env_2(stat_env_2[4]), 
+        .rt_env_3(stat_env_3[4]), 
+        .rt_phase_0(stat_phase_0[4]),
+        .rt_phase_1(stat_phase_1[4]),
+        .rt_phase_2(stat_phase_2[4]),
+        .rt_phase_3(stat_phase_3[4]),
+        .axi_clk(axi_clk),
+        .axi_pend(axi_pend[4]),
+        .axi_avail(axi_avail[4]),
+        .axi_sample(axi_pos[4]),
+        .axi_get(axi_get[4]),
+        .axi_wr(axi_active[4]),
+        .axi_data(axi_data[4]),
+        .clk(stat_clk_4),
+        .reset(stat_reset_4),
+        .idle(stat_idle_in_4)
+    );
+
+    comp_burst burst_5(
+        .config_clk(config_clk),
+        .config_wr(local_config_wr),
+        .config_adr(local_config_adr),
+        .config_data(local_config_data),
+        .rt_clk(clk),
+        .rt_reset(reset_int),
+        .rt_start(stat_start[5]),
+        .rt_sample(stat_sample[5]),
+        .rt_freq(stat_freq[5]),
+        .rt_angle(stat_angle[5]),
+        .rt_doa_error(stat_doa_error[5]),
+        .rt_wr(stat_wr[5]),    
+        .rt_env_0(stat_env_0[5]), 
+        .rt_env_1(stat_env_1[5]), 
+        .rt_env_2(stat_env_2[5]), 
+        .rt_env_3(stat_env_3[5]), 
+        .rt_phase_0(stat_phase_0[5]),
+        .rt_phase_1(stat_phase_1[5]),
+        .rt_phase_2(stat_phase_2[5]),
+        .rt_phase_3(stat_phase_3[5]),
+        .axi_clk(axi_clk),
+        .axi_pend(axi_pend[5]),
+        .axi_avail(axi_avail[5]),
+        .axi_sample(axi_pos[5]),
+        .axi_get(axi_get[5]),
+        .axi_wr(axi_active[5]),
+        .axi_data(axi_data[5]),
+        .clk(stat_clk_5),
+        .reset(stat_reset_5),
+        .idle(stat_idle_in_5)
+    );
+
+    comp_burst burst_6(
+        .config_clk(config_clk),
+        .config_wr(local_config_wr),
+        .config_adr(local_config_adr),
+        .config_data(local_config_data),
+        .rt_clk(clk),
+        .rt_reset(reset_int),
+        .rt_start(stat_start[6]),
+        .rt_sample(stat_sample[6]),
+        .rt_freq(stat_freq[6]),
+        .rt_angle(stat_angle[6]),
+        .rt_doa_error(stat_doa_error[6]),
+        .rt_wr(stat_wr[6]),    
+        .rt_env_0(stat_env_0[6]), 
+        .rt_env_1(stat_env_1[6]), 
+        .rt_env_2(stat_env_2[6]), 
+        .rt_env_3(stat_env_3[6]), 
+        .rt_phase_0(stat_phase_0[6]),
+        .rt_phase_1(stat_phase_1[6]),
+        .rt_phase_2(stat_phase_2[6]),
+        .rt_phase_3(stat_phase_3[6]),
+        .axi_clk(axi_clk),
+        .axi_pend(axi_pend[6]),
+        .axi_avail(axi_avail[6]),
+        .axi_sample(axi_pos[6]),
+        .axi_get(axi_get[6]),
+        .axi_wr(axi_active[6]),
+        .axi_data(axi_data[6]),
+        .clk(stat_clk_6),
+        .reset(stat_reset_6),
+        .idle(stat_idle_in_6)
+    );
 
 	ila_3 ila_fifo (
 		.clk(fifo_clk),                    // input wire clk
@@ -445,15 +630,46 @@ module comp_ana(
 
 	ila_5 ila_axi (
 		.clk(axi_clk),                    // input wire clk
-		.probe0(stat_pend),               // input wire [7:0]  probe3
-		.probe1(stat_avail),              // input wire [7:0]  probe3
-		.probe2(stat_get),                // input wire [7:0]  probe3
-		.probe3(stat_active),             // input wire [7:0]  probe3
-		.probe4(stat_data[0][15:0]),      // input wire [15:0]  probe3
-		.probe5(stat_data[1][15:0]),      // input wire [15:0]  probe3
-		.probe6(stat_data[2][15:0]),      // input wire [15:0]  probe3
-		.probe7(stat_data[3][15:0])      // input wire [15:0]  probe3
+		.probe0(stat_pend),               // input wire [6:0]  probe3
+		.probe1(stat_avail),              // input wire [6:0]  probe3
+		.probe2(stat_get),                // input wire [6:0]  probe3
+		.probe3(stat_active),             // input wire [6:0]  probe3
+		.probe4(axi_pos[0]),              // input wire [19:0]  probe3
+		.probe5(axi_pos[1]),              // input wire [19:0]  probe3
+		.probe6(axi_pos[2]),              // input wire [19:0]  probe3
+		.probe7(axi_pos[3]),              // input wire [19:0]  probe3
+		.probe8(axi_state_01),            // input wire [1:0]  probe3
+		.probe9(axi_state_23),            // input wire [1:0]  probe3
+		.probe10(axi_state_45),           // input wire [1:0]  probe3
+		.probe11(axi_state_6),            // input wire [1:0]  probe3
+		.probe12(axi_diff_01[19]),        // input wire [0:0]  probe3
+		.probe13(axi_diff_23[19]),        // input wire [0:0]  probe3
+		.probe14(axi_diff_45[19]),        // input wire [0:0]  probe3
+		.probe15(axi_ok_01),              // input wire [0:0]  probe3
+		.probe16(axi_ok_23),              // input wire [0:0]  probe3
+		.probe17(axi_ok_45),              // input wire [0:0]  probe3
+		.probe18(axi_ok_6),               // input wire [0:0]  probe3
+		.probe19(axi_ind_01),             // input wire [0:0]  probe3
+		.probe20(axi_ind_23),             // input wire [0:0]  probe3
+		.probe21(axi_ind_45),             // input wire [0:0]  probe3
+		.probe22(axi_state_03),           // input wire [1:0]  probe3
+		.probe23(axi_state_46),           // input wire [1:0]  probe3
+		.probe24(axi_diff_03[19]),        // input wire [0:0]  probe3
+		.probe25(axi_diff_46[19]),        // input wire [0:0]  probe3
+		.probe26(axi_ok_03),              // input wire [0:0]  probe3
+		.probe27(axi_ok_46),              // input wire [0:0]  probe3
+		.probe28(axi_ind_03),             // input wire [1:0]  probe3
+		.probe29(axi_ind_46),             // input wire [1:0]  probe3
+		.probe30(axi_state),              // input wire [1:0]  probe3
+		.probe31(axi_diff[19]),           // input wire [0:0]  probe3
+		.probe32(axi_ok),                 // input wire [0:0]  probe3
+		.probe33(axi_ind),                // input wire [2:0]  probe3
+		.probe34(axi_data[0][15:0]),      // input wire [15:0]  probe3
+		.probe35(axi_data[1][15:0]),      // input wire [15:0]  probe3
+		.probe36(axi_data[2][15:0]),      // input wire [15:0]  probe3
+		.probe37(axi_data[3][15:0])       // input wire [15:0]  probe3
 	);
+
 
 generate
   begin : comp_ana
@@ -491,6 +707,27 @@ generate
 		stat_3_reset_1 <= reset_int;
 		stat_3_reset_2 <= stat_3_reset_1;
 		stat_reset_3 <= stat_3_reset_2;
+	end
+
+	always @(posedge stat_clk_4) 
+	begin
+		stat_4_reset_1 <= reset_int;
+		stat_4_reset_2 <= stat_4_reset_1;
+		stat_reset_4 <= stat_4_reset_2;
+	end
+
+	always @(posedge stat_clk_5) 
+	begin
+		stat_5_reset_1 <= reset_int;
+		stat_5_reset_2 <= stat_5_reset_1;
+		stat_reset_5 <= stat_5_reset_2;
+	end
+
+	always @(posedge stat_clk_6) 
+	begin
+		stat_6_reset_1 <= reset_int;
+		stat_6_reset_2 <= stat_6_reset_1;
+		stat_reset_6 <= stat_6_reset_2;
 	end
 
 	always @(posedge stat_clk_0) 
@@ -540,13 +777,41 @@ generate
 		stat_3_idle_2 <= stat_3_idle_1;
 		stat_idle[3] <= stat_3_idle_2 & !stat_wr[3] & !stat_start[3];
 	end
+
+	always @(posedge stat_clk_4) 
+	begin
+	    stat_idle_sync_4 <= stat_idle_in_4;
+	end
 	
 	always @(posedge clk) 
 	begin
-		stat_idle[4] <= 0;
-		stat_idle[5] <= 0;
-		stat_idle[6] <= 0;
-		stat_idle[7] <= 0;
+		stat_4_idle_1 <= stat_idle_sync_4;
+		stat_4_idle_2 <= stat_4_idle_1;
+		stat_idle[4] <= stat_4_idle_2 & !stat_wr[4] & !stat_start[4];
+	end
+
+	always @(posedge stat_clk_5) 
+	begin
+	    stat_idle_sync_5 <= stat_idle_in_5;
+	end
+	
+	always @(posedge clk) 
+	begin
+		stat_5_idle_1 <= stat_idle_sync_5;
+		stat_5_idle_2 <= stat_5_idle_1;
+		stat_idle[5] <= stat_5_idle_2 & !stat_wr[5] & !stat_start[5];
+	end
+
+	always @(posedge stat_clk_6) 
+	begin
+	    stat_idle_sync_6 <= stat_idle_in_6;
+	end
+	
+	always @(posedge clk) 
+	begin
+		stat_6_idle_1 <= stat_idle_sync_6;
+		stat_6_idle_2 <= stat_6_idle_1;
+		stat_idle[6] <= stat_6_idle_2 & !stat_wr[6] & !stat_start[6];
 	end
 
 	always @(posedge fifo_clk) 
@@ -723,14 +988,13 @@ generate
         begin
      	    curr_error <= 0;
 	        casex (stat_idle)
-	            8'bxxxxxxx1 : curr_stat <= 0;
-	            8'bxxxxxx10 : curr_stat <= 1;
-	            8'bxxxxx100 : curr_stat <= 2;
-	            8'bxxxx1000 : curr_stat <= 3;
-	            8'bxxx10000 : curr_stat <= 4;
-	            8'bxx100000 : curr_stat <= 5;
-	            8'bx1000000 : curr_stat <= 6;
-	            8'b10000000 : curr_stat <= 7;
+	            7'bxxxxxx1 : curr_stat <= 0;
+	            7'bxxxxx10 : curr_stat <= 1;
+	            7'bxxxx100 : curr_stat <= 2;
+	            7'bxxx1000 : curr_stat <= 3;
+	            7'bxx10000 : curr_stat <= 4;
+	            7'bx100000 : curr_stat <= 5;
+	            7'b1000000 : curr_stat <= 6;
 	            default: curr_error <= 1;
     	    endcase
     	end
@@ -809,34 +1073,247 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-        if (stat_get[0])
-            stat_get[0] <= 0;
+		case (axi_pend[1:0])
+			2'b00: axi_state_01 <= STAT_NONE;
+			2'b01: axi_state_01 <= STAT_A;
+			2'b10: axi_state_01 <= STAT_B;
+			2'b11:
+			begin
+				axi_state_01 <= STAT_COMP;
+				axi_diff_01 <= axi_pos[1] - axi_pos[0];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		case (axi_pend[3:2])
+			2'b00: axi_state_23 <= STAT_NONE;
+			2'b01: axi_state_23 <= STAT_A;
+			2'b10: axi_state_23 <= STAT_B;
+			2'b11:
+			begin
+				axi_state_23 <= STAT_COMP;
+				axi_diff_23 <= axi_pos[3] - axi_pos[2];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		case (axi_pend[5:4])
+			2'b00: axi_state_45 <= STAT_NONE;
+			2'b01: axi_state_45 <= STAT_A;
+			2'b10: axi_state_45 <= STAT_B;
+			2'b11:
+			begin
+				axi_state_45 <= STAT_COMP;
+				axi_diff_45 <= axi_pos[5] - axi_pos[4];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		if (axi_pend[6])
+			axi_state_6 <= STAT_A;
+		else
+			axi_state_6 <= STAT_NONE;
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok_01 <= 1;
+
+		case (axi_state_01)
+			STAT_NONE: axi_ok_01 <= 0;
+			STAT_A: axi_ind_01 <= 0;
+			STAT_B: axi_ind_01 <= 1;
+			STAT_COMP: axi_ind_01 <= axi_diff_01[19];
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok_23 <= 1;
+		
+		case (axi_state_23)
+			STAT_NONE: axi_ok_23 <= 0;
+			STAT_A: axi_ind_23 <= 0;
+			STAT_B: axi_ind_23 <= 1;
+			STAT_COMP: axi_ind_23 <= axi_diff_23[19];
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok_45 <= 1;
+		
+		case (axi_state_45)
+			STAT_NONE: axi_ok_45 <= 0;
+			STAT_A: axi_ind_45 <= 0;
+			STAT_B: axi_ind_45 <= 1;
+			STAT_COMP: axi_ind_45 <= axi_diff_45[19];
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+ 	    if (axi_state_6 == STAT_NONE)
+    		axi_ok_6 <= 0;
         else
-            stat_get[0] <= stat_avail[0];
+            axi_ok_6 <= 1;
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		case ({axi_ok_23, axi_ok_01})
+			2'b00: axi_state_03 <= STAT_NONE;
+			2'b01: axi_state_03 <= STAT_A;
+			2'b10: axi_state_03 <= STAT_B;
+			2'b11:
+			begin
+				axi_state_03 <= STAT_COMP;
+				axi_diff_03 <=  axi_pos[2 + axi_ind_23] - axi_pos[axi_ind_01];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		case ({axi_ok_6, axi_ok_45})
+			2'b00: axi_state_46 <= STAT_NONE;
+			2'b01: axi_state_46 <= STAT_A;
+			2'b10: axi_state_46 <= STAT_B;
+			2'b11:
+			begin
+				axi_state_46 <= STAT_COMP;
+				axi_diff_46 <=  axi_pos[6] - axi_pos[4 + axi_ind_45];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok_03 <= 1;
+		
+		case (axi_state_03)
+			STAT_NONE: axi_ok_03 <= 0;
+			STAT_A: axi_ind_03 <= {1'b0, axi_ind_01};
+			STAT_B: axi_ind_03 <= {1'b1, axi_ind_23};
+			STAT_COMP: 
+			begin
+				if (axi_diff_03[19])
+					axi_ind_03 <= {1'b1, axi_ind_23};
+				else
+					axi_ind_03 <= {1'b0, axi_ind_01};
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok_46 <= 1;
+		
+	    case (axi_state_46)
+			STAT_NONE: axi_ok_46 <= 0;
+			STAT_A: axi_ind_46 <= {1'b0, axi_ind_45};
+			STAT_B: axi_ind_46 <= 2'b10;
+			STAT_COMP: 
+			begin
+				if (axi_diff_46[19])
+					axi_ind_46 <= 2'b10;
+				else
+					axi_ind_46 <= {1'b0, axi_ind_45};
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		case ({axi_ok_46, axi_ok_03})
+			2'b00: axi_state <= STAT_NONE;
+			2'b01: axi_state <= STAT_A;
+			2'b10: axi_state <= STAT_B;
+			2'b11:
+			begin
+				axi_state <= STAT_COMP;
+				axi_diff <=  axi_pos[4 + axi_ind_46] - axi_pos[axi_ind_03];
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+		axi_ok <= 1;
+		case (axi_state)
+			STAT_NONE: axi_ok <= 0;
+			STAT_A: axi_ind <= {1'b0, axi_ind_03};
+			STAT_B: axi_ind <= {1'b1, axi_ind_46};
+			STAT_COMP: 
+			begin
+				if (axi_diff[19])
+					axi_ind <= {1'b1, axi_ind_46};
+				else
+					axi_ind <= {1'b0, axi_ind_03};
+			end
+		endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
+        if (axi_get[0])
+            axi_get[0] <= 0;
+        else
+            axi_get[0] <= axi_avail[0];
     end
 
     always @(posedge axi_clk) 
 	begin
-        if (stat_get[1])
-            stat_get[1] <= 0;
+        if (axi_get[1])
+            axi_get[1] <= 0;
         else
-            stat_get[1] <= stat_avail[1];
+            axi_get[1] <= axi_avail[1];
     end
 
     always @(posedge axi_clk) 
 	begin
-        if (stat_get[2])
-            stat_get[2] <= 0;
+        if (axi_get[2])
+            axi_get[2] <= 0;
         else
-            stat_get[2] <= stat_avail[2];
+            axi_get[2] <= axi_avail[2];
     end
 
     always @(posedge axi_clk) 
 	begin
-        if (stat_get[3])
-            stat_get[3] <= 0;
+        if (axi_get[3])
+            axi_get[3] <= 0;
         else
-            stat_get[3] <= stat_avail[3];
+            axi_get[3] <= axi_avail[3];
+    end
+
+    always @(posedge axi_clk) 
+	begin
+        if (axi_get[4])
+            axi_get[4] <= 0;
+        else
+            axi_get[4] <= axi_avail[4];
+    end
+
+    always @(posedge axi_clk) 
+	begin
+        if (axi_get[5])
+            axi_get[5] <= 0;
+        else
+            axi_get[5] <= axi_avail[5];
+    end
+
+    always @(posedge axi_clk) 
+	begin
+        if (axi_get[6])
+            axi_get[6] <= 0;
+        else
+            axi_get[6] <= axi_avail[6];
     end
 
   end

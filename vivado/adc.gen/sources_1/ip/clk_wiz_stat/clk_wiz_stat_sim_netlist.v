@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Mar 13 22:37:28 2026
+// Date        : Sun Mar 15 22:52:02 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_stat/clk_wiz_stat_sim_netlist.v
@@ -19,11 +19,17 @@ module clk_wiz_stat
     clk_out2,
     clk_out3,
     clk_out4,
+    clk_out5,
+    clk_out6,
+    clk_out7,
     clk_in1);
   output clk_out1;
   output clk_out2;
   output clk_out3;
   output clk_out4;
+  output clk_out5;
+  output clk_out6;
+  output clk_out7;
   input clk_in1;
 
   wire clk_in1;
@@ -31,13 +37,19 @@ module clk_wiz_stat
   wire clk_out2;
   wire clk_out3;
   wire clk_out4;
+  wire clk_out5;
+  wire clk_out6;
+  wire clk_out7;
 
   clk_wiz_stat_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .clk_out2(clk_out2),
         .clk_out3(clk_out3),
-        .clk_out4(clk_out4));
+        .clk_out4(clk_out4),
+        .clk_out5(clk_out5),
+        .clk_out6(clk_out6),
+        .clk_out7(clk_out7));
 endmodule
 
 module clk_wiz_stat_clk_wiz
@@ -45,11 +57,17 @@ module clk_wiz_stat_clk_wiz
     clk_out2,
     clk_out3,
     clk_out4,
+    clk_out5,
+    clk_out6,
+    clk_out7,
     clk_in1);
   output clk_out1;
   output clk_out2;
   output clk_out3;
   output clk_out4;
+  output clk_out5;
+  output clk_out6;
+  output clk_out7;
   input clk_in1;
 
   wire clk_in1;
@@ -58,6 +76,9 @@ module clk_wiz_stat_clk_wiz
   wire clk_out2;
   wire clk_out3;
   wire clk_out4;
+  wire clk_out5;
+  wire clk_out6;
+  wire clk_out7;
   wire NLW_mmcme4_adv_inst_CDDCDONE_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_CLKFBIN_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_CLKFBOUT_UNCONNECTED;
@@ -68,9 +89,6 @@ module clk_wiz_stat_clk_wiz
   wire NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED;
-  wire NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED;
-  wire NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED;
-  wire NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_DRDY_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_LOCKED_UNCONNECTED;
   wire NLW_mmcme4_adv_inst_PSDONE_UNCONNECTED;
@@ -112,15 +130,15 @@ module clk_wiz_stat_clk_wiz
     .CLKOUT3_PHASE(0.000000),
     .CLKOUT3_USE_FINE_PS("FALSE"),
     .CLKOUT4_CASCADE("FALSE"),
-    .CLKOUT4_DIVIDE(1),
+    .CLKOUT4_DIVIDE(3),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
     .CLKOUT4_USE_FINE_PS("FALSE"),
-    .CLKOUT5_DIVIDE(1),
+    .CLKOUT5_DIVIDE(3),
     .CLKOUT5_DUTY_CYCLE(0.500000),
     .CLKOUT5_PHASE(0.000000),
     .CLKOUT5_USE_FINE_PS("FALSE"),
-    .CLKOUT6_DIVIDE(1),
+    .CLKOUT6_DIVIDE(3),
     .CLKOUT6_DUTY_CYCLE(0.500000),
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
@@ -159,9 +177,9 @@ module clk_wiz_stat_clk_wiz
         .CLKOUT2B(NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED),
         .CLKOUT3(clk_out4),
         .CLKOUT3B(NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED),
-        .CLKOUT4(NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED),
-        .CLKOUT5(NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED),
-        .CLKOUT6(NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED),
+        .CLKOUT4(clk_out5),
+        .CLKOUT5(clk_out6),
+        .CLKOUT6(clk_out7),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .DCLK(1'b0),
         .DEN(1'b0),

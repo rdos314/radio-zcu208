@@ -2,10 +2,10 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Fri Nov 21 23:01:28 2025
+// Date        : Sun Mar 15 13:17:05 2026
 // Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top ps_usp_rf_data_converter_0_0 -prefix
-//               ps_usp_rf_data_converter_0_0_ ps_usp_rf_data_converter_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_usp_rf_data_converter_0_0/ps_usp_rf_data_converter_0_0_stub.v
 // Design      : ps_usp_rf_data_converter_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xczu48dr-fsvg1517-2-e

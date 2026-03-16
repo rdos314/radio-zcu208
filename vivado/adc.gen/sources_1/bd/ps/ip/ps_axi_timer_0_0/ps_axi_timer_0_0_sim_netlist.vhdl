@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Nov 21 22:59:51 2025
+-- Date        : Sun Mar 15 13:15:05 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top ps_axi_timer_0_0 -prefix
---               ps_axi_timer_0_0_ ps_axi_timer_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_timer_0_0/ps_axi_timer_0_0_sim_netlist.vhdl
 -- Design      : ps_axi_timer_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -30,6 +30,8 @@ entity ps_axi_timer_0_0_counter_f is
     loadReg_DBus_32 : in STD_LOGIC_VECTOR ( 10 downto 0 );
     \INFERRED_GEN.icount_out_reg[31]_1\ : in STD_LOGIC_VECTOR ( 20 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_counter_f : entity is "counter_f";
 end ps_axi_timer_0_0_counter_f;
 
 architecture STRUCTURE of ps_axi_timer_0_0_counter_f is
@@ -1275,6 +1277,8 @@ entity ps_axi_timer_0_0_mux_onehot_f is
     \GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_0\ : in STD_LOGIC;
     \GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[1].MUXCY_GEN.MUXCY_I_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_mux_onehot_f : entity is "mux_onehot_f";
 end ps_axi_timer_0_0_mux_onehot_f;
 
 architecture STRUCTURE of ps_axi_timer_0_0_mux_onehot_f is
@@ -1996,6 +2000,8 @@ entity ps_axi_timer_0_0_pselect_f is
     ce_expnd_i_7 : out STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]\ : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_pselect_f : entity is "pselect_f";
 end ps_axi_timer_0_0_pselect_f;
 
 architecture STRUCTURE of ps_axi_timer_0_0_pselect_f is
@@ -2156,6 +2162,8 @@ entity ps_axi_timer_0_0_xpm_cdc_single is
   attribute DEST_SYNC_FF of ps_axi_timer_0_0_xpm_cdc_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of ps_axi_timer_0_0_xpm_cdc_single : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of ps_axi_timer_0_0_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -2535,6 +2543,8 @@ entity ps_axi_timer_0_0_address_decoder is
     bus2ip_rnw_i : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[7].ce_out_i_reg[7]_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_address_decoder : entity is "address_decoder";
 end ps_axi_timer_0_0_address_decoder;
 
 architecture STRUCTURE of ps_axi_timer_0_0_address_decoder is
@@ -3975,6 +3985,8 @@ entity ps_axi_timer_0_0_count_module is
     s_axi_aresetn : in STD_LOGIC;
     p_0_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_count_module : entity is "count_module";
 end ps_axi_timer_0_0_count_module;
 
 architecture STRUCTURE of ps_axi_timer_0_0_count_module is
@@ -4537,6 +4549,8 @@ entity ps_axi_timer_0_0_timer_control is
     pwm0 : in STD_LOGIC;
     counterReg_DBus_32 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_timer_control : entity is "timer_control";
 end ps_axi_timer_0_0_timer_control;
 
 architecture STRUCTURE of ps_axi_timer_0_0_timer_control is
@@ -5626,6 +5640,8 @@ entity ps_axi_timer_0_0_slave_attachment is
     read_done0 : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_slave_attachment : entity is "slave_attachment";
 end ps_axi_timer_0_0_slave_attachment;
 
 architecture STRUCTURE of ps_axi_timer_0_0_slave_attachment is
@@ -6751,6 +6767,8 @@ entity ps_axi_timer_0_0_tc_core is
     \GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_0\ : in STD_LOGIC;
     \GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_1\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_tc_core : entity is "tc_core";
 end ps_axi_timer_0_0_tc_core;
 
 architecture STRUCTURE of ps_axi_timer_0_0_tc_core is
@@ -7094,6 +7112,8 @@ entity ps_axi_timer_0_0_axi_lite_ipif is
     read_done0 : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end ps_axi_timer_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of ps_axi_timer_0_0_axi_lite_ipif is
@@ -7334,6 +7354,8 @@ entity ps_axi_timer_0_0_axi_timer is
   attribute C_TRIG0_ASSERT of ps_axi_timer_0_0_axi_timer : entity is "1'b1";
   attribute C_TRIG1_ASSERT : string;
   attribute C_TRIG1_ASSERT of ps_axi_timer_0_0_axi_timer : entity is "1'b1";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axi_timer_0_0_axi_timer : entity is "axi_timer";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of ps_axi_timer_0_0_axi_timer : entity is "yes";
 end ps_axi_timer_0_0_axi_timer;

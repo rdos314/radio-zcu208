@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Fri Mar 13 22:37:28 2026
+-- Date        : Sun Mar 15 22:52:02 2026
 -- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_stat/clk_wiz_stat_sim_netlist.vhdl
@@ -21,6 +21,9 @@ entity clk_wiz_stat_clk_wiz is
     clk_out2 : out STD_LOGIC;
     clk_out3 : out STD_LOGIC;
     clk_out4 : out STD_LOGIC;
+    clk_out5 : out STD_LOGIC;
+    clk_out6 : out STD_LOGIC;
+    clk_out7 : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
 end clk_wiz_stat_clk_wiz;
@@ -37,9 +40,6 @@ architecture STRUCTURE of clk_wiz_stat_clk_wiz is
   signal NLW_mmcme4_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_LOCKED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcme4_adv_inst_PSDONE_UNCONNECTED : STD_LOGIC;
@@ -89,15 +89,15 @@ mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
       CLKOUT3_PHASE => 0.000000,
       CLKOUT3_USE_FINE_PS => "FALSE",
       CLKOUT4_CASCADE => "FALSE",
-      CLKOUT4_DIVIDE => 1,
+      CLKOUT4_DIVIDE => 3,
       CLKOUT4_DUTY_CYCLE => 0.500000,
       CLKOUT4_PHASE => 0.000000,
       CLKOUT4_USE_FINE_PS => "FALSE",
-      CLKOUT5_DIVIDE => 1,
+      CLKOUT5_DIVIDE => 3,
       CLKOUT5_DUTY_CYCLE => 0.500000,
       CLKOUT5_PHASE => 0.000000,
       CLKOUT5_USE_FINE_PS => "FALSE",
-      CLKOUT6_DIVIDE => 1,
+      CLKOUT6_DIVIDE => 3,
       CLKOUT6_DUTY_CYCLE => 0.500000,
       CLKOUT6_PHASE => 0.000000,
       CLKOUT6_USE_FINE_PS => "FALSE",
@@ -137,9 +137,9 @@ mmcme4_adv_inst: unisim.vcomponents.MMCME4_ADV
       CLKOUT2B => NLW_mmcme4_adv_inst_CLKOUT2B_UNCONNECTED,
       CLKOUT3 => clk_out4,
       CLKOUT3B => NLW_mmcme4_adv_inst_CLKOUT3B_UNCONNECTED,
-      CLKOUT4 => NLW_mmcme4_adv_inst_CLKOUT4_UNCONNECTED,
-      CLKOUT5 => NLW_mmcme4_adv_inst_CLKOUT5_UNCONNECTED,
-      CLKOUT6 => NLW_mmcme4_adv_inst_CLKOUT6_UNCONNECTED,
+      CLKOUT4 => clk_out5,
+      CLKOUT5 => clk_out6,
+      CLKOUT6 => clk_out7,
       DADDR(6 downto 0) => B"0000000",
       DCLK => '0',
       DEN => '0',
@@ -166,6 +166,9 @@ entity clk_wiz_stat is
     clk_out2 : out STD_LOGIC;
     clk_out3 : out STD_LOGIC;
     clk_out4 : out STD_LOGIC;
+    clk_out5 : out STD_LOGIC;
+    clk_out6 : out STD_LOGIC;
+    clk_out7 : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -180,6 +183,9 @@ inst: entity work.clk_wiz_stat_clk_wiz
       clk_out1 => clk_out1,
       clk_out2 => clk_out2,
       clk_out3 => clk_out3,
-      clk_out4 => clk_out4
+      clk_out4 => clk_out4,
+      clk_out5 => clk_out5,
+      clk_out6 => clk_out6,
+      clk_out7 => clk_out7
     );
 end STRUCTURE;
