@@ -76,9 +76,9 @@ input [8 : 0] probe5;
 input [3 : 0] probe6;
 input [0 : 0] probe7;
 input [2 : 0] probe8;
-input [7 : 0] probe9;
-input [7 : 0] probe10;
-input [7 : 0] probe11;
+input [6 : 0] probe9;
+input [6 : 0] probe10;
+input [6 : 0] probe11;
 
 
 endmodule

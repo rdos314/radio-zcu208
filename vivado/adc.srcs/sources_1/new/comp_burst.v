@@ -358,38 +358,6 @@ module comp_burst(
     wire [255:0] fifo_data;
     reg [2:0] data_delay;
     reg [7:0] blocks;
-
-	reg [63:0] hdr_sample;
-	reg [7:0] hdr_blocks;
-	reg [7:0] hdr_flags;
-	reg [15:0] hdr_size;
-	reg [31:0] hdr_freq;
-	reg [15:0] hdr_angle;
-	reg [15:0] hdr_doa_error;
-	reg [15:0] hdr_max_env;
-	reg [15:0] hdr_max_pos;
-	reg [15:0] hdr_env_mean;
-	reg [15:0] hdr_env_std;
-	reg [15:0] hdr_phase_std;
-	reg [15:0] hdr_freq_std;
-	
-	reg [15:0] data_env_0;
-	reg [15:0] data_env_1;
-	reg [15:0] data_env_2;
-	reg [15:0] data_env_3;
-	reg [15:0] data_env_4;
-	reg [15:0] data_env_5;
-	reg [15:0] data_env_6;
-	reg [15:0] data_env_7;
-
-	reg [15:0] data_phase_0;
-	reg [15:0] data_phase_1;
-	reg [15:0] data_phase_2;
-	reg [15:0] data_phase_3;
-	reg [15:0] data_phase_4;
-	reg [15:0] data_phase_5;
-	reg [15:0] data_phase_6;
-	reg [15:0] data_phase_7;
     
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
@@ -576,7 +544,7 @@ module comp_burst(
         .data(p5_data)
 	);
 
-
+/*
 	ila_0 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(idle),                // input wire [0:0]  probe3
@@ -593,48 +561,6 @@ module comp_burst(
 		.probe11(p4_done),            // input wire [0:0]  probe3
 		.probe12(p5_idle),            // input wire [0:0]  probe3
 		.probe13(p5_wr)               // input wire [0:0]  probe3
-	);
-
-/*
-	ila_7 ila_rt (
-		.clk(axi_clk),                 // input wire clk
-		.probe0(sample_empty),        // input wire [0:0]  probe3
-		.probe1(data_empty),          // input wire [0:0]  probe3
-		.probe2(data_delay),          // input wire [2:0]  probe3
-		.probe3(axi_pend),            // input wire [0:0]  probe3
-		.probe4(axi_avail),           // input wire [0:0]  probe3
-		.probe5(axi_sample),          // input wire [19:0]  probe3
-		.probe6(axi_get),             // input wire [0:0]  probe3
-		.probe7(axi_wr),              // input wire [0:0]  probe3
-		.probe8(hdr_sample),          // input wire [63:0]  probe3
-		.probe9(hdr_blocks),          // input wire [7:0]  probe3
-		.probe10(hdr_flags),          // input wire [7:0]  probe3
-		.probe11(hdr_size),           // input wire [15:0]  probe3
-		.probe12(hdr_freq),           // input wire [31:0]  probe3
-		.probe13(hdr_angle),          // input wire [15:0]  probe3
-		.probe14(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe15(hdr_max_env),        // input wire [15:0]  probe3
-		.probe16(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe17(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe18(hdr_env_std),        // input wire [15:0]  probe3
-		.probe19(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe20(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe21(data_env_0),         // input wire [15:0]  probe3
-		.probe22(data_env_1),         // input wire [15:0]  probe3
-		.probe23(data_env_2),         // input wire [15:0]  probe3
-		.probe24(data_env_3),         // input wire [15:0]  probe3
-		.probe25(data_env_4),         // input wire [15:0]  probe3
-		.probe26(data_env_5),         // input wire [15:0]  probe3
-		.probe27(data_env_6),         // input wire [15:0]  probe3
-		.probe28(data_env_7),         // input wire [15:0]  probe3
-		.probe29(data_phase_0),       // input wire [15:0]  probe3
-		.probe30(data_phase_1),       // input wire [15:0]  probe3
-		.probe31(data_phase_2),       // input wire [15:0]  probe3
-		.probe32(data_phase_3),       // input wire [15:0]  probe3
-		.probe33(data_phase_4),       // input wire [15:0]  probe3
-		.probe34(data_phase_5),       // input wire [15:0]  probe3
-		.probe35(data_phase_6),       // input wire [15:0]  probe3
-		.probe36(data_phase_7)        // input wire [15:0]  probe3
 	);
 */	
 
@@ -843,48 +769,6 @@ generate
             end
         end
     end
-
-    always @(posedge axi_clk) 
-    begin
-        if (axi_wr)
-		begin
-			if (axi_data[79])
-			begin
-				hdr_sample <= axi_data[63:0];
-				hdr_blocks <= axi_data[71:64];
-				hdr_flags <= axi_data[79:72];
-				hdr_size <= axi_data[95:80];
-				hdr_angle <= axi_data[111:96];
-				hdr_doa_error <= axi_data[127:112];
-				hdr_freq <= axi_data[159:128];
-				hdr_max_env <= axi_data[175:160];
-				hdr_max_pos <= axi_data[191:176];
-				hdr_env_mean <= axi_data[207:192];
-				hdr_env_std <= axi_data[223:208];
-				hdr_phase_std <= axi_data[239:224];
-				hdr_freq_std <= axi_data[255:240];
-			end
-			else
-			begin
-				data_env_0 <= axi_data[15:0];
-				data_phase_0 <= axi_data[31:16];
-				data_env_1 <= axi_data[47:32];
-				data_phase_1 <= axi_data[63:48];
-				data_env_2 <= axi_data[79:64];
-				data_phase_2 <= axi_data[95:80];
-				data_env_3 <= axi_data[111:96];
-				data_phase_3 <= axi_data[127:112];
-				data_env_4 <= axi_data[143:128];
-				data_phase_4 <= axi_data[159:144];
-				data_env_5 <= axi_data[175:160];
-				data_phase_5 <= axi_data[191:176];
-				data_env_6 <= axi_data[207:192];
-				data_phase_6 <= axi_data[223:208];
-				data_env_7 <= axi_data[239:224];
-				data_phase_7 <= axi_data[255:240];
-			end
-		end
-	end
         
   end
     
