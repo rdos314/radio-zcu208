@@ -1,0 +1,67 @@
+{
+  "name": "platform",
+  "type": "PLATFORM",
+  "configuration": {
+    "description": "",
+    "xsa": "C:\\radio-zcu208\\ps_wrapper.xsa",
+    "xsaPathInPlatform": "platform\\hw\\ps_wrapper.xsa",
+    "emulationXsa": "",
+    "emulationXsaPathInPlatform": "",
+    "isCustomFSBL": true,
+    "fsblPath": "",
+    "pmufwElf": "",
+    "flow": "EMBEDDED",
+    "processorsMap": {
+      "psu_cortexa53_0": "psu_cortexa53",
+      "psu_cortexa53_1": "psu_cortexa53",
+      "psu_cortexa53_2": "psu_cortexa53",
+      "psu_cortexa53_3": "psu_cortexa53",
+      "psu_cortexr5_0": "psu_cortexr5",
+      "psu_cortexr5_1": "psu_cortexr5",
+      "psu_pmu_0": "psu_pmu"
+    },
+    "supportedOS": [
+      "standalone",
+      "freertos",
+      "linux"
+    ],
+    "supportedFamily": "zynquplus",
+    "stdGenHookList": [
+      {
+        "key": "VITIS_SDT_REPO",
+        "value": ""
+      },
+      {
+        "key": "VITIS_SDT_BOARD_DTS",
+        "value": ""
+      },
+      {
+        "key": "VITIS_SDT_INCLUDE_DTS",
+        "value": ""
+      },
+      {
+        "key": "-dt_overlay",
+        "value": "0"
+      }
+    ],
+    "componentType": "PLATFORM",
+    "domains": [
+      {
+        "name": "linux_psu_cortexa53",
+        "displayName": "linux_psu_cortexa53",
+        "processor": "psu_cortexa53",
+        "cpuType": "cortex-a53",
+        "cpuInstance": "psu_cortexa53",
+        "os": "linux",
+        "qemuData": "",
+        "qemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\qemu_args.txt",
+        "pmcQemuArgsFile": "resources\\linux_psu_cortexa53\\qemu\\pmu_args.txt",
+        "bifFile": "",
+        "bootDirectory": "",
+        "sdCardDirectory": ""
+      }
+    ],
+    "emptyToolchainConfiguration": []
+  },
+  "useSysrootToolchain": false
+}
