@@ -1,1 +1,1 @@
-vopt -l elaborate.log +acc=npr -suppress 10016  -L xil_defaultlib -L xilinx_vip -L xpm -L fifo_generator_v13_2_13 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.fifo_burst_data xil_defaultlib.glbl -o fifo_burst_data_opt
+vopt -64 -l elaborate.log +acc=npr -suppress 10016  -L xil_defaultlib -L xilinx_vip -L xpm -L fifo_generator_v13_2_13 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.fifo_burst_data xil_defaultlib.glbl -o fifo_burst_data_opt

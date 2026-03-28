@@ -35,13 +35,13 @@
 					"isFsbl": false,
 					"usingFSBL": {
 						"initWithFSBL": true,
-						"fsblFile": "${workspaceFolder}\\platform\\export\\platform\\sw\\boot\\fsbl.elf",
+						"fsblFile": "${workspaceFolder}/platform/export/platform/sw/boot/fsbl.elf",
 						"fsblExitSymbol": "XFsbl_Exit"
 					},
 					"usingPsuInit": {
 						"runPsuInit": false,
 						"plPowerup": false,
-						"psuInitTclFile": "${workspaceFolder}\\adctest\\_ide\\psinit\\psu_init.tcl"
+						"psuInitTclFile": "${workspaceFolder}/adctest/_ide/psinit/psu_init.tcl"
 					}
 				},
 				"zuTraceOptions": {
@@ -54,7 +54,7 @@
 					{
 						"core": "psu_cortexr5_0",
 						"resetProcessor": true,
-						"elfFile": "${workspaceFolder}\\adctest\\build\\adctest.elf",
+						"elfFile": "${workspaceFolder}/adctest/build/adctest.elf",
 						"stopAtEntry": false,
 						"isSelfRelocatingApp": false,
 						"relativeAddress": ""

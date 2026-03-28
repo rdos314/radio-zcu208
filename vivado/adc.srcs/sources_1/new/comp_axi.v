@@ -151,21 +151,21 @@ module comp_axi(
 
     output reg idle,
     output reg active,
-    output reg [255:0] data
+    output reg [127:0] data
 );
     
-    (* ram_style = "block" *) reg [255:0] mem_data [0:255];
+    (* ram_style = "block" *) reg [127:0] mem_data [0:512];
 
     reg mem_wr;
-    reg [7:0] wr_ptr;
+    reg [8:0] wr_ptr;
     reg index;
     reg [7:0] wr_blocks;
-    reg [255:0] data_in;
+    reg [127:0] data_in;
     reg [255:0] header;
     
-    reg [7:0] rd_ptr;
-    reg [7:0] rd_blocks;
-    reg [255:0] data_out;
+    reg [8:0] rd_ptr;
+    reg [8:0] rd_blocks;
+    reg [127:0] data_out;
     
     wire [7:0] flags = 8'b10000000;
 
@@ -337,41 +337,25 @@ generate
         begin
             if (wr)
             begin
-                case (index)
-                    0:
-                    begin
-                        data_in[15:0] <= env_0;
-                        data_in[31:16] <= phase_0;
-                        data_in[47:32] <= env_1;
-                        data_in[63:48] <= phase_1;
-                        data_in[79:64] <= env_2;
-                        data_in[95:80] <= phase_2;
-                        data_in[111:96] <= env_3;
-                        data_in[127:112] <= phase_3;
-                        mem_wr <= 0;
-                    end
-                
-                    1:
-                    begin
-                        data_in[143:128] <= env_0;
-                        data_in[159:144] <= phase_0;
-                        data_in[175:160] <= env_1;
-                        data_in[191:176] <= phase_1;
-                        data_in[207:192] <= env_2;
-                        data_in[223:208] <= phase_2;
-                        data_in[239:224] <= env_3;
-                        data_in[255:240] <= phase_3;
-                        mem_wr <= 1;
-                        wr_blocks <= wr_blocks + 1;
-                    end
-                endcase
+                data_in[15:0] <= env_0;
+                data_in[31:16] <= phase_0;
+                data_in[47:32] <= env_1;
+                data_in[63:48] <= phase_1;
+                data_in[79:64] <= env_2;
+                data_in[95:80] <= phase_2;
+                data_in[111:96] <= env_3;
+                data_in[127:112] <= phase_3;
+                mem_wr <= 1;
                 index <= index + 1;
+ 
+                if (index)
+                    wr_blocks <= wr_blocks + 1;
             end
             else
             begin
                 if (index)
                 begin
-                    data_in[255:128] <= 0;
+                    data_in[127:0] <= 0;
                     mem_wr <= 1;
                     index <= 0;
                     wr_blocks <= wr_blocks + 1;
@@ -507,9 +491,9 @@ generate
         if (read_back)
         begin
             active <= 1;
-            rd_ptr <= 1;
-            data <= header;
-            rd_blocks <= wr_blocks;
+            rd_ptr <= 0;
+            data <= header[127:0];
+            rd_blocks <= {wr_blocks, 1'b0};
         end
         else 
         begin
@@ -519,14 +503,22 @@ generate
             begin
                 if (active)
                 begin
-                    if (rd_blocks)
+                    if (rd_ptr)
                     begin
-                        data <= data_out;
-                        rd_blocks <= rd_blocks - 1;
-                        rd_ptr <= rd_ptr + 1;
+                        if (rd_blocks)
+                        begin
+                            data <= data_out;
+                            rd_blocks <= rd_blocks - 1;
+                            rd_ptr <= rd_ptr + 1;
+                        end
+                        else
+                            active <= 0;
                     end
                     else
-                        active <= 0;
+                    begin
+                        data <= header[255:128];
+                        rd_ptr <= rd_ptr + 1;
+                    end
                 end
                 else
                     rd_ptr <= 0;

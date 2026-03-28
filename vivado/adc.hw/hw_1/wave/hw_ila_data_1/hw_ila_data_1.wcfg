@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+      <db_ref path="/media/ubuntu/large/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
          <top_modules>
          </top_modules>
       </db_ref>
@@ -14,34 +14,34 @@
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="59"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="66"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="22" />
    <wave_markers>
    </wave_markers>
-   <wvobject fp_name="ps_i/adc_control_0/inst/adc_active" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/adc_active">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/adc_active</obj_property>
       <obj_property name="ObjectShortName">adc_active</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/adc_start" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/adc_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/adc_start</obj_property>
       <obj_property name="ObjectShortName">adc_start</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/adc_stop" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/adc_stop">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/adc_stop</obj_property>
       <obj_property name="ObjectShortName">adc_stop</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/address" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/address">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/address[10:0]</obj_property>
       <obj_property name="ObjectShortName">address[10:0]</obj_property>
@@ -49,7 +49,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/cdata" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/cdata">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/cdata[31:0]</obj_property>
       <obj_property name="ObjectShortName">cdata[31:0]</obj_property>
@@ -57,14 +57,14 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/cmd_start" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/cmd_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/cmd_start</obj_property>
       <obj_property name="ObjectShortName">cmd_start</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/data_in" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/data_in">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/data_in[31:0]</obj_property>
       <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
@@ -72,7 +72,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/data_out" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/data_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/data_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
@@ -80,7 +80,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/padr" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/padr">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/padr[10:0]</obj_property>
       <obj_property name="ObjectShortName">padr[10:0]</obj_property>
@@ -88,7 +88,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/pdata" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/pdata">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/pdata[31:0]</obj_property>
       <obj_property name="ObjectShortName">pdata[31:0]</obj_property>
@@ -96,21 +96,21 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/resetn" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/resetn">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/resetn</obj_property>
       <obj_property name="ObjectShortName">resetn</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_active" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_active">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_active</obj_property>
       <obj_property name="ObjectShortName">sim_active</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_channel" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/sim_channel">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_channel[1:0]</obj_property>
       <obj_property name="ObjectShortName">sim_channel[1:0]</obj_property>
@@ -118,7 +118,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_data" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/sim_data">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_data[31:0]</obj_property>
       <obj_property name="ObjectShortName">sim_data[31:0]</obj_property>
@@ -126,28 +126,28 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_high_wr" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_high_wr">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_high_wr</obj_property>
       <obj_property name="ObjectShortName">sim_high_wr</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_low_wr" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_low_wr">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_low_wr</obj_property>
       <obj_property name="ObjectShortName">sim_low_wr</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_start" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_start</obj_property>
       <obj_property name="ObjectShortName">sim_start</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_wr_count" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/sim_wr_count">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_wr_count[10:0]</obj_property>
       <obj_property name="ObjectShortName">sim_wr_count[10:0]</obj_property>
@@ -155,28 +155,28 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_wr_done" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_wr_done">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_wr_done</obj_property>
       <obj_property name="ObjectShortName">sim_wr_done</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_wr_pend" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_wr_pend">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_wr_pend</obj_property>
       <obj_property name="ObjectShortName">sim_wr_pend</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/sim_wr_start" type="logic">
+   <wvobject type="logic" fp_name="ps_i/adc_control_0/inst/sim_wr_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/sim_wr_start</obj_property>
       <obj_property name="ObjectShortName">sim_wr_start</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/adc_control_0/inst/wr_en" type="array">
+   <wvobject type="array" fp_name="ps_i/adc_control_0/inst/wr_en">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/adc_control_0/inst/wr_en[3:0]</obj_property>
       <obj_property name="ObjectShortName">wr_en[3:0]</obj_property>

@@ -1,6 +1,6 @@
 # Ignore build output directory
 /build
-/resources
+/export
 
 # Ignore object files and dependent files
 .o

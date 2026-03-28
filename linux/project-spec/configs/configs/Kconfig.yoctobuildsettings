@@ -27,13 +27,13 @@ endmenu
 endif
 
 if !SUBSYSTEM_DISTRO_PETALINUX
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctomachinesettings
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctomachinesettings
 endif
 
 if SUBSYSTEM_DISTRO_PETALINUX
 menu "Yocto Settings"
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctomachinesettings
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctomachinesettings
 
 if SUBSYSTEM_SDT_FLOW
 config MC_PLNX_IMAGES_LOCATION

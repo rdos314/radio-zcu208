@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wdb" id="1">
+      <db_ref path="/media/ubuntu/large/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wdb" id="1">
          <top_modules>
          </top_modules>
       </db_ref>
@@ -14,13 +14,13 @@
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="117"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="101"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wave_markers>
    </wave_markers>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/count" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/count">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/count[8:0]</obj_property>
       <obj_property name="ObjectShortName">count[8:0]</obj_property>
@@ -28,7 +28,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/size" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/size">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/size[8:0]</obj_property>
       <obj_property name="ObjectShortName">size[8:0]</obj_property>
@@ -36,35 +36,35 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/ana_empty" type="logic">
+   <wvobject type="logic" fp_name="ps_i/comp_ana_high/inst/ana_empty">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/ana_empty</obj_property>
       <obj_property name="ObjectShortName">ana_empty</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/ana_rd" type="logic">
+   <wvobject type="logic" fp_name="ps_i/comp_ana_high/inst/ana_rd">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/ana_rd</obj_property>
       <obj_property name="ObjectShortName">ana_rd</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/ana_trig" type="logic">
+   <wvobject type="logic" fp_name="ps_i/comp_ana_high/inst/ana_trig">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/ana_trig</obj_property>
       <obj_property name="ObjectShortName">ana_trig</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/curr_error" type="logic">
+   <wvobject type="logic" fp_name="ps_i/comp_ana_high/inst/curr_error">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/curr_error</obj_property>
       <obj_property name="ObjectShortName">curr_error</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/curr_stat" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/curr_stat">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/curr_stat[2:0]</obj_property>
       <obj_property name="ObjectShortName">curr_stat[2:0]</obj_property>
@@ -72,14 +72,14 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/run" type="logic">
+   <wvobject type="logic" fp_name="ps_i/comp_ana_high/inst/run">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/run</obj_property>
       <obj_property name="ObjectShortName">run</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/stat_idle" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/stat_idle">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/stat_idle[6:0]</obj_property>
       <obj_property name="ObjectShortName">stat_idle[6:0]</obj_property>
@@ -87,7 +87,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/stat_start" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/stat_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/stat_start[6:0]</obj_property>
       <obj_property name="ObjectShortName">stat_start[6:0]</obj_property>
@@ -95,7 +95,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/stat_wr" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/stat_wr">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/stat_wr[6:0]</obj_property>
       <obj_property name="ObjectShortName">stat_wr[6:0]</obj_property>
@@ -103,7 +103,7 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="ps_i/comp_ana_high/inst/valid" type="array">
+   <wvobject type="array" fp_name="ps_i/comp_ana_high/inst/valid">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/comp_ana_high/inst/valid[3:0]</obj_property>
       <obj_property name="ObjectShortName">valid[3:0]</obj_property>

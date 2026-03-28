@@ -1,0 +1,43 @@
+# Additional clean files
+cmake_minimum_required(VERSION 3.16)
+
+if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
+  file(REMOVE_RECURSE
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/metal"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/sleep.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xfpga_config.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilfpga.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilfpga_pcap.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilfpga_pcap_common.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_bbramps_zynqmp_hw.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_bsp_config.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_eps_zynqmp.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_eps_zynqmp_hw.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_eps_zynqmp_puf.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xilskey_utils.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xiltimer.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_aes.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_aes_hw.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_aesalginfo.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_config.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_cryptochk.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_rsa.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_rsa_core.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_rsa_hw.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_rsaalginfo.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_sha.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_sha3alginfo.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_sha_hw.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_sss.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_utils.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xsecure_ver.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include/xtimer_config.h"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/libmetal.a"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/libxilfpga.a"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/libxilsecure.a"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/libxilskey.a"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/libxiltimer.a"
+  "/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/lib/metal.a"
+  )
+endif()

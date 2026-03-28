@@ -203,7 +203,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7ac48959</spirit:value>
+            <spirit:value>b732a2ac</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -216,7 +216,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7ac48959</spirit:value>
+            <spirit:value>b732a2ac</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -523,7 +523,7 @@
       <spirit:file>
         <spirit:name>xgui/axi_int_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -545,13 +545,12 @@
       </xilinx:taxonomies>
       <xilinx:displayName>axi_int_v1_0</xilinx:displayName>
       <xilinx:autoFamilySupportLevel>level_1</xilinx:autoFamilySupportLevel>
-      <xilinx:supportsAutoXDC>dynamic_params</xilinx:supportsAutoXDC>
       <xilinx:definitionSource>module_ref</xilinx:definitionSource>
       <xilinx:designToolContexts>
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-03-06T19:45:11Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-03-25T18:13:55Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>

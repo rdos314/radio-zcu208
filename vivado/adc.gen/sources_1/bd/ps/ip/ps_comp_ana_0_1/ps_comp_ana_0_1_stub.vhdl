@@ -1,11 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Wed Mar 18 00:21:33 2026
--- Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+-- Date        : Fri Mar 27 18:54:00 2026
+-- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_stub.vhdl
+--               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_stub.vhdl
 -- Design      : ps_comp_ana_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xczu48dr-fsvg1517-2-e

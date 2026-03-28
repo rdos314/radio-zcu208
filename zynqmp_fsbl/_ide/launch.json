@@ -30,18 +30,18 @@
         "enableRPUSplitMode": false,
         "resetAPU": false,
         "resetRPU": false,
-        "bitstreamFile": "${workspaceFolder}\\zynqmp_fsbl\\_ide\\bitstream\\ps_wrapper.bit",
+        "bitstreamFile": "${workspaceFolder}/zynqmp_fsbl/_ide/bitstream/ps_wrapper.bit",
         "zuInitialization": {
           "isFsbl": true,
           "usingFSBL": {
             "initWithFSBL": true,
-            "fsblFile": "${workspaceFolder}\\platform\\export\\platform\\sw\\boot\\fsbl.elf",
+            "fsblFile": "${workspaceFolder}/platform/export/platform/sw/boot/fsbl.elf",
             "fsblExitSymbol": "XFsbl_Exit"
           },
           "usingPsuInit": {
             "runPsuInit": true,
             "plPowerup": true,
-            "psuInitTclFile": "${workspaceFolder}\\zynqmp_fsbl\\_ide\\psinit\\psu_init.tcl"
+            "psuInitTclFile": "${workspaceFolder}/zynqmp_fsbl/_ide/psinit/psu_init.tcl"
           }
         },
         "zuTraceOptions": {
@@ -54,7 +54,7 @@
           {
             "core": "psu_cortexa53_0",
             "resetProcessor": true,
-            "elfFile": "${workspaceFolder}\\zynqmp_fsbl\\build\\zynqmp_fsbl.elf",
+            "elfFile": "${workspaceFolder}/zynqmp_fsbl/build/zynqmp_fsbl.elf",
             "stopAtEntry": false,
             "isSelfRelocatingApp": false,
             "relativeAddress": ""

@@ -5,23 +5,23 @@
         <sdx:configuration sdx:defaultProcessorGroup="linux_psu_cortexa53" sdx:displayName="platform" sdx:name="platform" sdx:runtimes="cpp">
             <sdx:description/>
             <sdx:bootImages sdx:default="standard">
-                <sdx:image sdx:bif="boot\" sdx:imageData="linux_psu_cortexa53\image" sdx:name="standard" sdx:qemuArguments="qemu/pmu_args.txt:qemu/qemu_args.txt" sdx:readme=""/>
-                <sdx:image sdx:name="standalone_psu_cortexr5_0" sdx:qemuArguments="standalone_psu_cortexr5_0\qemu\pmu_args.txt:standalone_psu_cortexr5_0\qemu\qemu_args.txt"/>
-                <sdx:image sdx:bif="boot\" sdx:imageData="linux_psu_cortexa53\image" sdx:name="linux_psu_cortexa53" sdx:qemuArguments="linux_psu_cortexa53\qemu\pmu_args.txt:linux_psu_cortexa53\qemu\qemu_args.txt" sdx:readme=""/>
-                <sdx:image sdx:name="standalone_psu_cortexa53" sdx:qemuArguments="standalone_psu_cortexa53\qemu\pmu_args.txt:standalone_psu_cortexa53\qemu\qemu_args.txt"/>
-                <sdx:image sdx:name="psu_pmu" sdx:qemuArguments="psu_pmu\qemu\pmu_args.txt:psu_pmu\qemu\qemu_args.txt"/>
+                <sdx:image sdx:bif="boot/" sdx:imageData="linux_psu_cortexa53/image" sdx:name="standard" sdx:qemuArguments="qemu/pmu_args.txt:qemu/qemu_args.txt" sdx:readme=""/>
+                <sdx:image sdx:bif="boot/" sdx:imageData="linux_psu_cortexa53/image" sdx:name="linux_psu_cortexa53" sdx:qemuArguments="linux_psu_cortexa53/qemu/pmu_args.txt:linux_psu_cortexa53/qemu/qemu_args.txt" sdx:readme=""/>
+                <sdx:image sdx:name="psu_cortexr5_0" sdx:qemuArguments="psu_cortexr5_0/qemu/pmu_args.txt:psu_cortexr5_0/qemu/qemu_args.txt"/>
+                <sdx:image sdx:name="psu_pmu_0" sdx:qemuArguments="psu_pmu_0/qemu/pmu_args.txt:psu_pmu_0/qemu/qemu_args.txt"/>
+                <sdx:image sdx:name="psu_cortexa53_0" sdx:qemuArguments="psu_cortexa53_0/qemu/pmu_args.txt:psu_cortexa53_0/qemu/qemu_args.txt"/>
             </sdx:bootImages>
-            <sdx:processorGroup sdx:cpuInstance="psu_cortexr5_0" sdx:cpuType="cortex-r5" sdx:displayName="standalone_psu_cortexr5_0" sdx:name="standalone_psu_cortexr5_0">
-                <sdx:os sdx:bspConfig="standalone_psu_cortexr5_0" sdx:displayName="standalone_psu_cortexr5_0" sdx:name="standalone"/>
-            </sdx:processorGroup>
             <sdx:processorGroup sdx:cpuType="cortex-a53" sdx:displayName="linux_psu_cortexa53" sdx:name="linux_psu_cortexa53">
                 <sdx:os sdx:displayName="linux_psu_cortexa53" sdx:name="linux"/>
             </sdx:processorGroup>
-            <sdx:processorGroup sdx:cpuInstance="psu_cortexa53_0" sdx:cpuType="cortex-a53" sdx:displayName="standalone_psu_cortexa53" sdx:name="standalone_psu_cortexa53">
-                <sdx:os sdx:bspConfig="standalone_psu_cortexa53" sdx:displayName="standalone_psu_cortexa53" sdx:name="standalone"/>
+            <sdx:processorGroup sdx:cpuInstance="psu_cortexr5_0" sdx:cpuType="cortex-r5" sdx:displayName="psu_cortexr5_0" sdx:name="psu_cortexr5_0">
+                <sdx:os sdx:bspConfig="psu_cortexr5_0" sdx:displayName="psu_cortexr5_0" sdx:name="standalone"/>
             </sdx:processorGroup>
-            <sdx:processorGroup sdx:cpuInstance="psu_pmu_0" sdx:cpuType="psu_pmu" sdx:displayName="psu_pmu" sdx:name="psu_pmu">
-                <sdx:os sdx:bspConfig="psu_pmu" sdx:displayName="psu_pmu" sdx:name="standalone"/>
+            <sdx:processorGroup sdx:cpuInstance="psu_pmu_0" sdx:cpuType="psu_pmu" sdx:displayName="psu_pmu_0" sdx:name="psu_pmu_0">
+                <sdx:os sdx:bspConfig="psu_pmu_0" sdx:displayName="psu_pmu_0" sdx:name="standalone"/>
+            </sdx:processorGroup>
+            <sdx:processorGroup sdx:cpuInstance="psu_cortexa53_0" sdx:cpuType="cortex-a53" sdx:displayName="psu_cortexa53_0" sdx:name="psu_cortexa53_0">
+                <sdx:os sdx:bspConfig="psu_cortexa53_0" sdx:displayName="psu_cortexa53_0" sdx:name="standalone"/>
             </sdx:processorGroup>
         </sdx:configuration>
     </sdx:systemConfigurations>

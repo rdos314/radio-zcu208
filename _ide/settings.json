@@ -1,4 +1,4 @@
 {
     "clangd.fallbackFlags": [],
-    "TCFAdapter.steppingGranularity": "statement"
+    "git.ignoreLimitWarning": true
 }

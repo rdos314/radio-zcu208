@@ -14,7 +14,7 @@ processor:
                 device_type: memory
                 ip_name: ddr4
                 baseaddr: '0x400000000'
-                highaddr: '0x400000000'
+                highaddr: '0x500000000'
             psu_ocm_0:
                 device_type: memory
                 ip_name: psu_ocm

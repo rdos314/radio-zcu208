@@ -1,4 +1,0 @@
-enable var-volatile-lib.service
-enable var-volatile-cache.service
-enable var-volatile-spool.service
-enable var-volatile-srv.service

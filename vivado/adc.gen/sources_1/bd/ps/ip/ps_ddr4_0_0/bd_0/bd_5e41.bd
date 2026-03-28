@@ -84,7 +84,7 @@
         "vlnv": "xilinx.com:ip:microblaze:11.0",
         "ip_revision": "15",
         "xci_name": "bd_5e41_microblaze_I_0",
-        "xci_path": "ip\\ip_0\\bd_5e41_microblaze_I_0.xci",
+        "xci_path": "ip/ip_0/bd_5e41_microblaze_I_0.xci",
         "inst_hier_path": "microblaze_I",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -197,7 +197,7 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "bd_5e41_rst_0_0",
-        "xci_path": "ip\\ip_1\\bd_5e41_rst_0_0.xci",
+        "xci_path": "ip/ip_1/bd_5e41_rst_0_0.xci",
         "inst_hier_path": "rst_0",
         "has_run_ip_tcl": "true"
       },
@@ -205,7 +205,7 @@
         "vlnv": "xilinx.com:ip:lmb_v10:3.0",
         "ip_revision": "15",
         "xci_name": "bd_5e41_ilmb_0",
-        "xci_path": "ip\\ip_2\\bd_5e41_ilmb_0.xci",
+        "xci_path": "ip/ip_2/bd_5e41_ilmb_0.xci",
         "inst_hier_path": "ilmb",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -254,7 +254,7 @@
         "vlnv": "xilinx.com:ip:lmb_v10:3.0",
         "ip_revision": "15",
         "xci_name": "bd_5e41_dlmb_0",
-        "xci_path": "ip\\ip_3\\bd_5e41_dlmb_0.xci",
+        "xci_path": "ip/ip_3/bd_5e41_dlmb_0.xci",
         "inst_hier_path": "dlmb",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -312,7 +312,7 @@
         "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
         "ip_revision": "26",
         "xci_name": "bd_5e41_dlmb_cntlr_0",
-        "xci_path": "ip\\ip_4\\bd_5e41_dlmb_cntlr_0.xci",
+        "xci_path": "ip/ip_4/bd_5e41_dlmb_cntlr_0.xci",
         "inst_hier_path": "dlmb_cntlr",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -351,7 +351,7 @@
         "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
         "ip_revision": "26",
         "xci_name": "bd_5e41_ilmb_cntlr_0",
-        "xci_path": "ip\\ip_5\\bd_5e41_ilmb_cntlr_0.xci",
+        "xci_path": "ip/ip_5/bd_5e41_ilmb_cntlr_0.xci",
         "inst_hier_path": "ilmb_cntlr",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -380,7 +380,7 @@
         "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
         "ip_revision": "11",
         "xci_name": "bd_5e41_lmb_bram_I_0",
-        "xci_path": "ip\\ip_6\\bd_5e41_lmb_bram_I_0.xci",
+        "xci_path": "ip/ip_6/bd_5e41_lmb_bram_I_0.xci",
         "inst_hier_path": "lmb_bram_I",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -393,7 +393,7 @@
         "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
         "ip_revision": "26",
         "xci_name": "bd_5e41_second_dlmb_cntlr_0",
-        "xci_path": "ip\\ip_7\\bd_5e41_second_dlmb_cntlr_0.xci",
+        "xci_path": "ip/ip_7/bd_5e41_second_dlmb_cntlr_0.xci",
         "inst_hier_path": "second_dlmb_cntlr",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -428,7 +428,7 @@
         "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
         "ip_revision": "26",
         "xci_name": "bd_5e41_second_ilmb_cntlr_0",
-        "xci_path": "ip\\ip_8\\bd_5e41_second_ilmb_cntlr_0.xci",
+        "xci_path": "ip/ip_8/bd_5e41_second_ilmb_cntlr_0.xci",
         "inst_hier_path": "second_ilmb_cntlr",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -457,7 +457,7 @@
         "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
         "ip_revision": "11",
         "xci_name": "bd_5e41_second_lmb_bram_I_0",
-        "xci_path": "ip\\ip_9\\bd_5e41_second_lmb_bram_I_0.xci",
+        "xci_path": "ip/ip_9/bd_5e41_second_lmb_bram_I_0.xci",
         "inst_hier_path": "second_lmb_bram_I",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -470,7 +470,7 @@
         "vlnv": "xilinx.com:ip:iomodule:3.1",
         "ip_revision": "12",
         "xci_name": "bd_5e41_iomodule_0_0",
-        "xci_path": "ip\\ip_10\\bd_5e41_iomodule_0_0.xci",
+        "xci_path": "ip/ip_10/bd_5e41_iomodule_0_0.xci",
         "inst_hier_path": "iomodule_0",
         "has_run_ip_tcl": "true",
         "parameters": {

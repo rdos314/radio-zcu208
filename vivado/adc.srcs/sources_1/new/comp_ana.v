@@ -204,26 +204,27 @@ module comp_ana(
 	reg stat_reset_5;
 	reg stat_reset_6;
 
+	reg [61:0] stat_sample;
+    reg [19:0] stat_freq;
+    reg [15:0] stat_angle;
+    reg [9:0] stat_doa_error;
+
+    reg [15:0] stat_env_0; 
+    reg [15:0] stat_env_1;
+    reg [15:0] stat_env_2;  
+    reg [15:0] stat_env_3;
+  
+    reg [19:0] stat_phase_0;
+    reg [19:0] stat_phase_1;
+    reg [19:0] stat_phase_2;
+    reg [19:0] stat_phase_3;
+
     reg curr_error;
     reg [2:0] curr_stat;
 	reg [7:0] stat_start;
 	reg [7:0] stat_wr;    
 	reg [7:0] stat_idle;
 	
-	reg [61:0] stat_sample [0:6];
-    reg [19:0] stat_freq [0:6];
-    reg [15:0] stat_angle [0:6];
-    reg [9:0] stat_doa_error [0:6];
-
-    reg [15:0] stat_env_0 [0:6]; 
-    reg [15:0] stat_env_1 [0:6];
-    reg [15:0] stat_env_2 [0:6];  
-    reg [15:0] stat_env_3 [0:6];
-  
-    reg [19:0] stat_phase_0 [0:6];
-    reg [19:0] stat_phase_1 [0:6];
-    reg [19:0] stat_phase_2 [0:6];
-    reg [19:0] stat_phase_3 [0:6];
 
 // axi domain
 
@@ -237,7 +238,7 @@ module comp_ana(
     wire [19:0] axi_pos [0:6];
     reg [6:0] axi_get;
     wire [6:0] axi_active;
-    wire [255:0] axi_data [0:6];
+    wire [127:0] axi_data [0:6];
 	
 	reg [1:0] axi_state_01;
 	reg [1:0] axi_state_23;
@@ -277,7 +278,9 @@ module comp_ana(
 	reg [2:0] axi_curr_ind;
 	reg axi_run;
 	reg axi_wr;
-	reg [255:0] axi_curr_data;
+	reg axi_hdr_high_1;
+	reg axi_hdr_high;
+	reg [127:0] axi_curr_data;
 
 	reg [63:0] hdr_sample;
 	reg [7:0] hdr_blocks;
@@ -420,19 +423,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[0]),
-        .rt_sample(stat_sample[0]),
-        .rt_freq(stat_freq[0]),
-        .rt_angle(stat_angle[0]),
-        .rt_doa_error(stat_doa_error[0]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[0]),    
-        .rt_env_0(stat_env_0[0]), 
-        .rt_env_1(stat_env_1[0]), 
-        .rt_env_2(stat_env_2[0]), 
-        .rt_env_3(stat_env_3[0]), 
-        .rt_phase_0(stat_phase_0[0]),
-        .rt_phase_1(stat_phase_1[0]),
-        .rt_phase_2(stat_phase_2[0]),
-        .rt_phase_3(stat_phase_3[0]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[0]),
         .axi_avail(axi_avail[0]),
@@ -453,19 +456,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[1]),
-        .rt_sample(stat_sample[1]),
-        .rt_freq(stat_freq[1]),
-        .rt_angle(stat_angle[1]),
-        .rt_doa_error(stat_doa_error[1]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[1]),    
-        .rt_env_0(stat_env_0[1]), 
-        .rt_env_1(stat_env_1[1]), 
-        .rt_env_2(stat_env_2[1]), 
-        .rt_env_3(stat_env_3[1]), 
-        .rt_phase_0(stat_phase_0[1]),
-        .rt_phase_1(stat_phase_1[1]),
-        .rt_phase_2(stat_phase_2[1]),
-        .rt_phase_3(stat_phase_3[1]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[1]),
         .axi_avail(axi_avail[1]),
@@ -486,19 +489,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[2]),
-        .rt_sample(stat_sample[2]),
-        .rt_freq(stat_freq[2]),
-        .rt_angle(stat_angle[2]),
-        .rt_doa_error(stat_doa_error[2]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[2]),    
-        .rt_env_0(stat_env_0[2]), 
-        .rt_env_1(stat_env_1[2]), 
-        .rt_env_2(stat_env_2[2]), 
-        .rt_env_3(stat_env_3[2]), 
-        .rt_phase_0(stat_phase_0[2]),
-        .rt_phase_1(stat_phase_1[2]),
-        .rt_phase_2(stat_phase_2[2]),
-        .rt_phase_3(stat_phase_3[2]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[2]),
         .axi_avail(axi_avail[2]),
@@ -519,19 +522,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[3]),
-        .rt_sample(stat_sample[3]),
-        .rt_freq(stat_freq[3]),
-        .rt_angle(stat_angle[3]),
-        .rt_doa_error(stat_doa_error[3]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[3]),    
-        .rt_env_0(stat_env_0[3]), 
-        .rt_env_1(stat_env_1[3]), 
-        .rt_env_2(stat_env_2[3]), 
-        .rt_env_3(stat_env_3[3]), 
-        .rt_phase_0(stat_phase_0[3]),
-        .rt_phase_1(stat_phase_1[3]),
-        .rt_phase_2(stat_phase_2[3]),
-        .rt_phase_3(stat_phase_3[3]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[3]),
         .axi_avail(axi_avail[3]),
@@ -552,19 +555,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[4]),
-        .rt_sample(stat_sample[4]),
-        .rt_freq(stat_freq[4]),
-        .rt_angle(stat_angle[4]),
-        .rt_doa_error(stat_doa_error[4]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[4]),    
-        .rt_env_0(stat_env_0[4]), 
-        .rt_env_1(stat_env_1[4]), 
-        .rt_env_2(stat_env_2[4]), 
-        .rt_env_3(stat_env_3[4]), 
-        .rt_phase_0(stat_phase_0[4]),
-        .rt_phase_1(stat_phase_1[4]),
-        .rt_phase_2(stat_phase_2[4]),
-        .rt_phase_3(stat_phase_3[4]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[4]),
         .axi_avail(axi_avail[4]),
@@ -585,19 +588,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[5]),
-        .rt_sample(stat_sample[5]),
-        .rt_freq(stat_freq[5]),
-        .rt_angle(stat_angle[5]),
-        .rt_doa_error(stat_doa_error[5]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[5]),    
-        .rt_env_0(stat_env_0[5]), 
-        .rt_env_1(stat_env_1[5]), 
-        .rt_env_2(stat_env_2[5]), 
-        .rt_env_3(stat_env_3[5]), 
-        .rt_phase_0(stat_phase_0[5]),
-        .rt_phase_1(stat_phase_1[5]),
-        .rt_phase_2(stat_phase_2[5]),
-        .rt_phase_3(stat_phase_3[5]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[5]),
         .axi_avail(axi_avail[5]),
@@ -618,19 +621,19 @@ module comp_ana(
         .rt_clk(clk),
         .rt_reset(reset_int),
         .rt_start(stat_start[6]),
-        .rt_sample(stat_sample[6]),
-        .rt_freq(stat_freq[6]),
-        .rt_angle(stat_angle[6]),
-        .rt_doa_error(stat_doa_error[6]),
+        .rt_sample(stat_sample),
+        .rt_freq(stat_freq),
+        .rt_angle(stat_angle),
+        .rt_doa_error(stat_doa_error),
         .rt_wr(stat_wr[6]),    
-        .rt_env_0(stat_env_0[6]), 
-        .rt_env_1(stat_env_1[6]), 
-        .rt_env_2(stat_env_2[6]), 
-        .rt_env_3(stat_env_3[6]), 
-        .rt_phase_0(stat_phase_0[6]),
-        .rt_phase_1(stat_phase_1[6]),
-        .rt_phase_2(stat_phase_2[6]),
-        .rt_phase_3(stat_phase_3[6]),
+        .rt_env_0(stat_env_0), 
+        .rt_env_1(stat_env_1), 
+        .rt_env_2(stat_env_2), 
+        .rt_env_3(stat_env_3), 
+        .rt_phase_0(stat_phase_0),
+        .rt_phase_1(stat_phase_1),
+        .rt_phase_2(stat_phase_2),
+        .rt_phase_3(stat_phase_3),
         .axi_clk(axi_clk),
         .axi_pend(axi_pend[6]),
         .axi_avail(axi_avail[6]),
@@ -687,18 +690,10 @@ module comp_ana(
 		.probe23(data_env_1),         // input wire [15:0]  probe3
 		.probe24(data_env_2),         // input wire [15:0]  probe3
 		.probe25(data_env_3),         // input wire [15:0]  probe3
-		.probe26(data_env_4),         // input wire [15:0]  probe3
-		.probe27(data_env_5),         // input wire [15:0]  probe3
-		.probe28(data_env_6),         // input wire [15:0]  probe3
-		.probe29(data_env_7),         // input wire [15:0]  probe3
-		.probe30(data_phase_0),       // input wire [15:0]  probe3
-		.probe31(data_phase_1),       // input wire [15:0]  probe3
-		.probe32(data_phase_2),       // input wire [15:0]  probe3
-		.probe33(data_phase_3),       // input wire [15:0]  probe3
-		.probe34(data_phase_4),       // input wire [15:0]  probe3
-		.probe35(data_phase_5),       // input wire [15:0]  probe3
-		.probe36(data_phase_6),       // input wire [15:0]  probe3
-		.probe37(data_phase_7)        // input wire [15:0]  probe3
+		.probe26(data_phase_0),       // input wire [15:0]  probe3
+		.probe27(data_phase_1),       // input wire [15:0]  probe3
+		.probe28(data_phase_2),       // input wire [15:0]  probe3
+		.probe29(data_phase_3)        // input wire [15:0]  probe3
 	);
 
 generate
@@ -1038,10 +1033,10 @@ generate
 		begin
 			if (count == 1)
 			begin
-				stat_sample[curr_stat] <= pend_sample;
-				stat_freq[curr_stat] <= pend_freq;
-				stat_angle[curr_stat] <= pend_angle;
-				stat_doa_error[curr_stat] <= pend_doa_error;
+				stat_sample <= pend_sample;
+				stat_freq <= pend_freq;
+				stat_angle <= pend_angle;
+				stat_doa_error <= pend_doa_error;
 				stat_start[curr_stat] <= 1;
 			end
 			else
@@ -1081,15 +1076,15 @@ generate
 					count <= count - 1;
 					stat_wr[curr_stat] <= 1;
 
-					stat_env_0[curr_stat] <= env_0;
-					stat_env_1[curr_stat] <= env_1;
-					stat_env_2[curr_stat] <= env_2;
-					stat_env_3[curr_stat] <= env_3;
+					stat_env_0 <= env_0;
+					stat_env_1 <= env_1;
+					stat_env_2 <= env_2;
+					stat_env_3 <= env_3;
 
-					stat_phase_0[curr_stat] <= phase_0;
-					stat_phase_1[curr_stat] <= phase_1;
-					stat_phase_2[curr_stat] <= phase_2;
-					stat_phase_3[curr_stat] <= phase_3;                        
+					stat_phase_0 <= phase_0;
+					stat_phase_1 <= phase_1;
+					stat_phase_2 <= phase_2;
+					stat_phase_3 <= phase_3;                        
 				end
 				else
 				begin
@@ -1325,53 +1320,66 @@ generate
 	        if (axi_active[axi_curr_ind])
 	        begin
 	            axi_curr_data <= axi_data[axi_curr_ind];
+	            if (axi_wr)
+	               	axi_hdr_high_1 <= 0;
+	            else
+	               	axi_hdr_high_1 <= 1;
 	            axi_wr <= 1;
 	        end
 	        else
+	        begin
 	            axi_wr <= 0;
+	           	axi_hdr_high_1 <= 0;
+	        end
 	    end
 	    else
+	    begin
 	        axi_wr <= 0;
+          	axi_hdr_high_1 <= 0;
+        end
+	end
+
+    always @(posedge axi_clk) 
+	begin
+	   axi_hdr_high <= axi_hdr_high_1;
 	end
 
     always @(posedge axi_clk) 
     begin
         if (axi_wr)
 		begin
-			if (axi_curr_data[79])
-			begin
-				hdr_sample <= axi_curr_data[63:0];
-				hdr_blocks <= axi_curr_data[71:64];
-				hdr_flags <= axi_curr_data[79:72];
-				hdr_size <= axi_curr_data[95:80];
-				hdr_angle <= axi_curr_data[111:96];
-				hdr_doa_error <= axi_curr_data[127:112];
-				hdr_freq <= axi_curr_data[159:128];
-				hdr_max_env <= axi_curr_data[175:160];
-				hdr_max_pos <= axi_curr_data[191:176];
-				hdr_env_mean <= axi_curr_data[207:192];
-				hdr_env_std <= axi_curr_data[223:208];
-				hdr_phase_std <= axi_curr_data[239:224];
-				hdr_freq_std <= axi_curr_data[255:240];
-			end
-			else
-			begin
-				data_env_0 <= axi_curr_data[15:0];
-				data_phase_0 <= axi_curr_data[31:16];
-				data_env_1 <= axi_curr_data[47:32];
-				data_phase_1 <= axi_curr_data[63:48];
-				data_env_2 <= axi_curr_data[79:64];
-				data_phase_2 <= axi_curr_data[95:80];
-				data_env_3 <= axi_curr_data[111:96];
-				data_phase_3 <= axi_curr_data[127:112];
-				data_env_4 <= axi_curr_data[143:128];
-				data_phase_4 <= axi_curr_data[159:144];
-				data_env_5 <= axi_curr_data[175:160];
-				data_phase_5 <= axi_curr_data[191:176];
-				data_env_6 <= axi_curr_data[207:192];
-				data_phase_6 <= axi_curr_data[223:208];
-				data_env_7 <= axi_curr_data[239:224];
-				data_phase_7 <= axi_curr_data[255:240];
+		    if (axi_hdr_high)
+		    begin
+				hdr_freq <= axi_curr_data[31:0];
+				hdr_max_env <= axi_curr_data[47:32];
+				hdr_max_pos <= axi_curr_data[63:48];
+				hdr_env_mean <= axi_curr_data[79:64];
+				hdr_env_std <= axi_curr_data[95:80];
+				hdr_phase_std <= axi_curr_data[111:96];
+				hdr_freq_std <= axi_curr_data[127:112];
+            end
+            else
+            begin
+    			if (axi_curr_data[79])
+	   		    begin
+				    hdr_sample <= axi_curr_data[63:0];
+				    hdr_blocks <= axi_curr_data[71:64];
+				    hdr_flags <= axi_curr_data[79:72];
+				    hdr_size <= axi_curr_data[95:80];
+				    hdr_angle <= axi_curr_data[111:96];
+				    hdr_doa_error <= axi_curr_data[127:112];
+				end
+    			else
+	       		begin
+			 	    data_env_0 <= axi_curr_data[15:0];
+    				data_phase_0 <= axi_curr_data[31:16];
+	   			    data_env_1 <= axi_curr_data[47:32];
+		  		    data_phase_1 <= axi_curr_data[63:48];
+				    data_env_2 <= axi_curr_data[79:64];
+				    data_phase_2 <= axi_curr_data[95:80];
+				    data_env_3 <= axi_curr_data[111:96];
+				    data_phase_3 <= axi_curr_data[127:112];
+				end
 			end
 		end
 	end

@@ -519,7 +519,7 @@
         "vlnv": "xilinx.com:ip:zynq_ultra_ps_e:3.5",
         "ip_revision": "7",
         "xci_name": "ps_zynq_ultra_ps_e_0_0",
-        "xci_path": "ip\\ps_zynq_ultra_ps_e_0_0\\ps_zynq_ultra_ps_e_0_0.xci",
+        "xci_path": "ip/ps_zynq_ultra_ps_e_0_0/ps_zynq_ultra_ps_e_0_0.xci",
         "inst_hier_path": "zynq_ultra_ps_e_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1556,7 +1556,7 @@
         "vlnv": "xilinx.com:ip:axi_timer:2.0",
         "ip_revision": "37",
         "xci_name": "ps_axi_timer_0_0",
-        "xci_path": "ip\\ps_axi_timer_0_0\\ps_axi_timer_0_0.xci",
+        "xci_path": "ip/ps_axi_timer_0_0/ps_axi_timer_0_0.xci",
         "inst_hier_path": "r5_timer",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1569,7 +1569,7 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "ps_axi_gpio_0_0",
-        "xci_path": "ip\\ps_axi_gpio_0_0\\ps_axi_gpio_0_0.xci",
+        "xci_path": "ip/ps_axi_gpio_0_0/ps_axi_gpio_0_0.xci",
         "inst_hier_path": "gpio_led",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1585,7 +1585,7 @@
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "ip_revision": "27",
         "xci_name": "ps_axi_smc_0",
-        "xci_path": "ip\\ps_axi_smc_0\\ps_axi_smc_0.xci",
+        "xci_path": "ip/ps_axi_smc_0/ps_axi_smc_0.xci",
         "inst_hier_path": "axi_smc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1818,7 +1818,7 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "ps_rst_ps8_0_99M_0",
-        "xci_path": "ip\\ps_rst_ps8_0_99M_0\\ps_rst_ps8_0_99M_0.xci",
+        "xci_path": "ip/ps_rst_ps8_0_99M_0/ps_rst_ps8_0_99M_0.xci",
         "inst_hier_path": "rst_ps8_0_99M",
         "has_run_ip_tcl": "true"
       },
@@ -1826,7 +1826,7 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "ps_axi_gpio_0_4",
-        "xci_path": "ip\\ps_axi_gpio_0_4\\ps_axi_gpio_0_4.xci",
+        "xci_path": "ip/ps_axi_gpio_0_4/ps_axi_gpio_0_4.xci",
         "inst_hier_path": "clk104_mux",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1842,7 +1842,7 @@
         "vlnv": "xilinx.com:ip:usp_rf_data_converter:2.6",
         "ip_revision": "11",
         "xci_name": "ps_usp_rf_data_converter_0_0",
-        "xci_path": "ip\\ps_usp_rf_data_converter_0_0\\ps_usp_rf_data_converter_0_0.xci",
+        "xci_path": "ip/ps_usp_rf_data_converter_0_0/ps_usp_rf_data_converter_0_0.xci",
         "inst_hier_path": "usp_rf_data_converter_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1978,7 +1978,7 @@
         "vlnv": "xilinx.com:module_ref:mts:1.0",
         "ip_revision": "1",
         "xci_name": "ps_mts_0_0",
-        "xci_path": "ip\\ps_mts_0_0\\ps_mts_0_0.xci",
+        "xci_path": "ip/ps_mts_0_0/ps_mts_0_0.xci",
         "inst_hier_path": "mts_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -2325,7 +2325,7 @@
         "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
         "ip_revision": "8",
         "xci_name": "ps_util_ds_buf_0_0",
-        "xci_path": "ip\\ps_util_ds_buf_0_0\\ps_util_ds_buf_0_0.xci",
+        "xci_path": "ip/ps_util_ds_buf_0_0/ps_util_ds_buf_0_0.xci",
         "inst_hier_path": "pl_clk_util_ds_buf",
         "has_run_ip_tcl": "true"
       },
@@ -2333,7 +2333,7 @@
         "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
         "ip_revision": "8",
         "xci_name": "ps_util_ds_buf_0_1",
-        "xci_path": "ip\\ps_util_ds_buf_0_1\\ps_util_ds_buf_0_1.xci",
+        "xci_path": "ip/ps_util_ds_buf_0_1/ps_util_ds_buf_0_1.xci",
         "inst_hier_path": "pl_sysref_ds_buf",
         "has_run_ip_tcl": "true"
       },
@@ -2341,7 +2341,7 @@
         "vlnv": "xilinx.com:module_ref:deci_low:1.0",
         "ip_revision": "1",
         "xci_name": "ps_deci_low_0_0",
-        "xci_path": "ip\\ps_deci_low_0_0\\ps_deci_low_0_0.xci",
+        "xci_path": "ip/ps_deci_low_0_0/ps_deci_low_0_0.xci",
         "inst_hier_path": "deci_low",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -2498,7 +2498,7 @@
         "vlnv": "xilinx.com:module_ref:deci_high:1.0",
         "ip_revision": "1",
         "xci_name": "ps_deci_high_0_0",
-        "xci_path": "ip\\ps_deci_high_0_0\\ps_deci_high_0_0.xci",
+        "xci_path": "ip/ps_deci_high_0_0/ps_deci_high_0_0.xci",
         "inst_hier_path": "deci_high",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -2655,7 +2655,7 @@
         "vlnv": "xilinx.com:module_ref:adc_control:1.0",
         "ip_revision": "1",
         "xci_name": "ps_adc_control_0_0",
-        "xci_path": "ip\\ps_adc_control_0_0\\ps_adc_control_0_0.xci",
+        "xci_path": "ip/ps_adc_control_0_0/ps_adc_control_0_0.xci",
         "inst_hier_path": "adc_control_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -2775,7 +2775,7 @@
         "vlnv": "xilinx.com:ip:axi_bram_ctrl:4.1",
         "ip_revision": "13",
         "xci_name": "ps_axi_bram_ctrl_0_0",
-        "xci_path": "ip\\ps_axi_bram_ctrl_0_0\\ps_axi_bram_ctrl_0_0.xci",
+        "xci_path": "ip/ps_axi_bram_ctrl_0_0/ps_axi_bram_ctrl_0_0.xci",
         "inst_hier_path": "axi_bram_ctrl_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -2798,7 +2798,7 @@
         "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
         "ip_revision": "11",
         "xci_name": "ps_axi_bram_ctrl_0_bram_0",
-        "xci_path": "ip\\ps_axi_bram_ctrl_0_bram_0\\ps_axi_bram_ctrl_0_bram_0.xci",
+        "xci_path": "ip/ps_axi_bram_ctrl_0_bram_0/ps_axi_bram_ctrl_0_bram_0.xci",
         "inst_hier_path": "axi_bram",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -2844,7 +2844,7 @@
         "vlnv": "xilinx.com:module_ref:freq_low_46:1.0",
         "ip_revision": "1",
         "xci_name": "ps_freq_low_46_0_0",
-        "xci_path": "ip\\ps_freq_low_46_0_0\\ps_freq_low_46_0_0.xci",
+        "xci_path": "ip/ps_freq_low_46_0_0/ps_freq_low_46_0_0.xci",
         "inst_hier_path": "freq_low_46_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -2965,7 +2965,7 @@
         "vlnv": "xilinx.com:module_ref:freq_high_189:1.0",
         "ip_revision": "1",
         "xci_name": "ps_freq_high_189_0_0",
-        "xci_path": "ip\\ps_freq_high_189_0_0\\ps_freq_high_189_0_0.xci",
+        "xci_path": "ip/ps_freq_high_189_0_0/ps_freq_high_189_0_0.xci",
         "inst_hier_path": "freq_high_189_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3086,7 +3086,7 @@
         "vlnv": "xilinx.com:module_ref:ana:1.0",
         "ip_revision": "1",
         "xci_name": "ps_ana_0_0",
-        "xci_path": "ip\\ps_ana_0_0\\ps_ana_0_0.xci",
+        "xci_path": "ip/ps_ana_0_0/ps_ana_0_0.xci",
         "inst_hier_path": "ana_high",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3259,7 +3259,7 @@
         "vlnv": "xilinx.com:module_ref:ana:1.0",
         "ip_revision": "1",
         "xci_name": "ps_ana_0_1",
-        "xci_path": "ip\\ps_ana_0_1\\ps_ana_0_1.xci",
+        "xci_path": "ip/ps_ana_0_1/ps_ana_0_1.xci",
         "inst_hier_path": "ana_low",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3432,7 +3432,7 @@
         "vlnv": "xilinx.com:module_ref:comp_low:1.0",
         "ip_revision": "1",
         "xci_name": "ps_comp_low_0_0",
-        "xci_path": "ip\\ps_comp_low_0_0\\ps_comp_low_0_0.xci",
+        "xci_path": "ip/ps_comp_low_0_0/ps_comp_low_0_0.xci",
         "inst_hier_path": "comp_low",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3607,7 +3607,7 @@
         "vlnv": "xilinx.com:module_ref:comp_high:1.0",
         "ip_revision": "1",
         "xci_name": "ps_comp_high_0_0",
-        "xci_path": "ip\\ps_comp_high_0_0\\ps_comp_high_0_0.xci",
+        "xci_path": "ip/ps_comp_high_0_0/ps_comp_high_0_0.xci",
         "inst_hier_path": "comp_high",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3782,7 +3782,7 @@
         "vlnv": "xilinx.com:module_ref:comp_ana:1.0",
         "ip_revision": "1",
         "xci_name": "ps_comp_ana_0_0",
-        "xci_path": "ip\\ps_comp_ana_0_0\\ps_comp_ana_0_0.xci",
+        "xci_path": "ip/ps_comp_ana_0_0/ps_comp_ana_0_0.xci",
         "inst_hier_path": "comp_ana_low",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -3937,7 +3937,7 @@
         "vlnv": "xilinx.com:module_ref:comp_ana:1.0",
         "ip_revision": "1",
         "xci_name": "ps_comp_ana_0_1",
-        "xci_path": "ip\\ps_comp_ana_0_1\\ps_comp_ana_0_1.xci",
+        "xci_path": "ip/ps_comp_ana_0_1/ps_comp_ana_0_1.xci",
         "inst_hier_path": "comp_ana_high",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -4092,7 +4092,7 @@
         "vlnv": "xilinx.com:ip:ddr4:2.2",
         "ip_revision": "27",
         "xci_name": "ps_ddr4_0_0",
-        "xci_path": "ip\\ps_ddr4_0_0\\ps_ddr4_0_0.xci",
+        "xci_path": "ip/ps_ddr4_0_0/ps_ddr4_0_0.xci",
         "inst_hier_path": "ddr4_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -4134,7 +4134,7 @@
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "ip_revision": "27",
         "xci_name": "ps_smartconnect_0_0",
-        "xci_path": "ip\\ps_smartconnect_0_0\\ps_smartconnect_0_0.xci",
+        "xci_path": "ip/ps_smartconnect_0_0/ps_smartconnect_0_0.xci",
         "inst_hier_path": "smartconnect_0",
         "has_run_ip_tcl": "true",
         "interface_ports": {
@@ -4233,7 +4233,7 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "ps_proc_sys_reset_0_0",
-        "xci_path": "ip\\ps_proc_sys_reset_0_0\\ps_proc_sys_reset_0_0.xci",
+        "xci_path": "ip/ps_proc_sys_reset_0_0/ps_proc_sys_reset_0_0.xci",
         "inst_hier_path": "proc_sys_reset_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -4249,7 +4249,7 @@
         "vlnv": "xilinx.com:module_ref:axi_int:1.0",
         "ip_revision": "1",
         "xci_name": "ps_axi_int_0_0",
-        "xci_path": "ip\\ps_axi_int_0_0\\ps_axi_int_0_0.xci",
+        "xci_path": "ip/ps_axi_int_0_0/ps_axi_int_0_0.xci",
         "inst_hier_path": "axi_int_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -4717,15 +4717,15 @@
       "adc_control_0_sim_channel": {
         "ports": [
           "adc_control_0/sim_channel",
-          "deci_low/sim_channel",
-          "deci_high/sim_channel"
+          "deci_high/sim_channel",
+          "deci_low/sim_channel"
         ]
       },
       "adc_control_0_sim_data": {
         "ports": [
           "adc_control_0/sim_data",
-          "deci_low/sim_data",
-          "deci_high/sim_data"
+          "deci_high/sim_data",
+          "deci_low/sim_data"
         ]
       },
       "adc_control_0_sim_high_wr": {
@@ -5252,8 +5252,8 @@
       "mts_0_ana0_clk": {
         "ports": [
           "mts_0/ana0_clk",
-          "ana_low/clk",
-          "comp_low/ana_fifo_clk"
+          "comp_low/ana_fifo_clk",
+          "ana_low/clk"
         ]
       },
       "mts_0_ana0_reset": {
@@ -5265,8 +5265,8 @@
       "mts_0_ana1_clk": {
         "ports": [
           "mts_0/ana1_clk",
-          "comp_high/ana_fifo_clk",
-          "ana_high/clk"
+          "ana_high/clk",
+          "comp_high/ana_fifo_clk"
         ]
       },
       "mts_0_ana1_reset": {
@@ -5328,8 +5328,8 @@
       "mts_0_deci_adc_active": {
         "ports": [
           "mts_0/deci_adc_active",
-          "deci_low/adc_active",
-          "deci_high/adc_active"
+          "deci_high/adc_active",
+          "deci_low/adc_active"
         ]
       },
       "mts_0_deci_clk": {
@@ -5339,12 +5339,12 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "deci_low/clk",
-          "deci_high/clk",
-          "freq_high_189_0/fifo_clk",
-          "freq_low_46_0/fifo_clk",
+          "comp_low/raw_fifo_clk",
           "comp_high/raw_fifo_clk",
-          "comp_low/raw_fifo_clk"
+          "freq_low_46_0/fifo_clk",
+          "freq_high_189_0/fifo_clk",
+          "deci_high/clk",
+          "deci_low/clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -5354,8 +5354,8 @@
           "usp_rf_data_converter_0/m1_axis_aresetn",
           "usp_rf_data_converter_0/m2_axis_aresetn",
           "usp_rf_data_converter_0/m3_axis_aresetn",
-          "deci_low/resetn",
-          "deci_high/resetn"
+          "deci_high/resetn",
+          "deci_low/resetn"
         ]
       },
       "mts_0_deci_sim_active": {
@@ -5367,15 +5367,15 @@
       "mts_0_deci_sim_start": {
         "ports": [
           "mts_0/deci_sim_start",
-          "deci_low/sim_start",
-          "deci_high/sim_start"
+          "deci_high/sim_start",
+          "deci_low/sim_start"
         ]
       },
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "freq_low_46_0/clk",
-          "ana_low/fifo_clk"
+          "ana_low/fifo_clk",
+          "freq_low_46_0/clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -5387,8 +5387,8 @@
       "mts_0_freq1_clk": {
         "ports": [
           "mts_0/freq1_clk",
-          "freq_high_189_0/clk",
-          "ana_high/fifo_clk"
+          "ana_high/fifo_clk",
+          "freq_high_189_0/clk"
         ]
       },
       "mts_0_freq1_reset": {
@@ -5463,8 +5463,8 @@
           "clk104_mux/s_axi_aresetn",
           "usp_rf_data_converter_0/s_axi_aresetn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "deci_low/sim_resetn",
           "deci_high/sim_resetn",
+          "deci_low/sim_resetn",
           "adc_control_0/resetn"
         ]
       },
@@ -5564,12 +5564,12 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "deci_low/sim_clk",
-          "deci_high/sim_clk",
-          "mts_0/axi_clk",
-          "adc_control_0/clk",
           "ana_low/config_clk",
           "ana_high/config_clk",
+          "deci_high/sim_clk",
+          "deci_low/sim_clk",
+          "adc_control_0/clk",
+          "mts_0/axi_clk",
           "comp_ana_high/config_clk",
           "comp_ana_high/pl_clk",
           "comp_ana_low/config_clk",

@@ -237,6 +237,7 @@ fir_comp_low_im fir_im_i (
   .m_axis_data_tdata(im_data)               // output wire [159 : 0] m_axis_data_tdata
 );
 
+/*
 	ila_2 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(ana_trig),            // input wire [0:0]  probe3
@@ -245,7 +246,7 @@ fir_comp_low_im fir_im_i (
 		.probe3(sample_W),            // input wire [5:0]  probe3
 		.probe4(doa_error)            // input wire [9:0]  probe3
 	);
-
+*/
 
 generate
   begin : comp_low

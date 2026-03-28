@@ -225,7 +225,7 @@ module comp_burst(
     output wire [19:0] axi_sample,
     input wire axi_get,
     output reg axi_wr,
-    output reg [255:0] axi_data,
+    output reg [127:0] axi_data,
     
     input wire clk,
     input wire reset,
@@ -350,14 +350,17 @@ module comp_burst(
 
     wire p5_idle;
     wire p5_wr;
-    wire [255:0] p5_data;
+    wire [127:0] p5_data;
+    
+    reg burst_wr;
+    reg [127:0] burst_data;
 
     wire sample_empty;
     wire sample_full;
     wire data_empty;
-    wire [255:0] fifo_data;
+    wire [127:0] fifo_data;
     reg [2:0] data_delay;
-    reg [7:0] blocks;
+    reg [8:0] blocks;
     
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
@@ -408,10 +411,10 @@ module comp_burst(
         .rst(reset),                  // input wire rst
         .wr_clk(clk),                 // input wire wr_clk
         .rd_clk(axi_clk),             // input wire rd_clk
-        .din(p5_data),                // input wire [255 : 0] din
-        .wr_en(p5_wr),                // input wire wr_en
+        .din(burst_data),             // input wire [127 : 0] din
+        .wr_en(burst_wr),             // input wire wr_en
         .rd_en(axi_wr | axi_get),     // input wire rd_en
-        .dout(fifo_data),             // output wire [255 : 0] dout
+        .dout(fifo_data),             // output wire [127 : 0] dout
         .empty(data_empty)            // output wire empty
     );
 
@@ -713,6 +716,13 @@ generate
         end
     end
 
+    always @(posedge clk) 
+    begin
+        burst_wr <= p5_wr;
+        if (p5_wr)
+            burst_data <= p5_data;
+    end
+
     always @(posedge axi_clk) 
     begin
         if (data_empty)
@@ -751,7 +761,7 @@ generate
             begin
                 axi_data <= fifo_data;
                 axi_wr <= 1;
-                blocks <= fifo_data[71:64];
+                blocks <= {fifo_data[71:64], 1'b0};
             end
             else
             begin

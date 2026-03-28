@@ -81,7 +81,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>257d7e88</spirit:value>
+            <spirit:value>1fd334d6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -94,7 +94,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>257d7e88</spirit:value>
+            <spirit:value>1fd334d6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -526,7 +526,7 @@
       <spirit:file>
         <spirit:name>xgui/comp_low_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -554,7 +554,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-03-08T22:18:30Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-03-25T18:11:05Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>

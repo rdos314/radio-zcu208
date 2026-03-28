@@ -1,4 +1,4 @@
-domain_path: C:\radio-zcu208\platform\export\platform\sw\psu_pmu
+domain_path: /media/ubuntu/large/radio-zcu208/platform/export/platform/sw/psu_pmu_0
 app_src_dir: C:\Xilinx\2025.1\Vitis\data\embeddedsw\lib\sw_apps\zynqmp_pmufw
 template: zynqmp_pmufw
 lang: c

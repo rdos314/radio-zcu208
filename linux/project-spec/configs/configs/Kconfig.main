@@ -33,28 +33,28 @@ config SUBSYSTEM_ENDIAN_LITTLE
 
 if SUBSYSTEM_SDT_FLOW
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.bootcompselection
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.bootcompselection
 
 endif
 
 if SUBSYSTEM_DISTRO_PETALINUX
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.linuxcompselection
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.linuxcompselection
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.autoconfigsettings
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.autoconfigsettings
 
 endif
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.syshw
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.syshw
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.dtgsettings
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.dtgsettings
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.bootcompconfigurations
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.bootcompconfigurations
 
 if SUBSYSTEM_DISTRO_PETALINUX
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.imagepkgconfigurations
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.imagepkgconfigurations
 
 endif
 
-source /home/ubuntu/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctobuildsettings
+source /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig.yoctobuildsettings
