@@ -1,0 +1,2 @@
+/usr/sbin/poweroff
+/usr/bin/systemctl 300

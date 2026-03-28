@@ -1,0 +1,17 @@
+# Ignore build output directory
+/bin
+/boot
+/etc
+/home
+/lib
+/media
+/mnt
+/proc
+/root
+/run
+/sbin
+/srv
+/sys
+/tmp
+/var
+

@@ -1,0 +1,19 @@
+[Unit]
+Description=Bind mount volatile /srv
+DefaultDependencies=no
+Before=local-fs.target
+RequiresMountsFor=/var/volatile 
+ConditionPathIsReadWrite=|/var/volatile
+ConditionPathExists=|!/var/volatile
+ConditionPathExists=/srv
+ConditionPathIsReadWrite=!/srv
+
+[Service]
+Type=oneshot
+RemainAfterExit=Yes
+Environment=MOUNT_COPYBIND_AVOID_OVERLAYFS=0
+ExecStart=/sbin/mount-copybind /var/volatile/srv /srv
+ExecStop=/bin/umount /srv
+
+[Install]
+WantedBy=local-fs.target

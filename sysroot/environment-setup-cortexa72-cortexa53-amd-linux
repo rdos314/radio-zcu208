@@ -1,0 +1,64 @@
+# Check for LD_LIBRARY_PATH being set, which can break SDK and generally is a bad practice
+# http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html#AEN80
+# http://xahlee.info/UnixResource_dir/_/ldpath.html
+# Only disable this check if you are absolutely know what you are doing!
+if [ ! -z "${LD_LIBRARY_PATH:-}" ]; then
+    echo "Your environment is misconfigured, you probably need to 'unset LD_LIBRARY_PATH'"
+    echo "but please check why this was set in the first place and that it's safe to unset."
+    echo "The SDK will not operate correctly in most cases when LD_LIBRARY_PATH is set."
+    echo "For more references see:"
+    echo "  http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html#AEN80"
+    echo "  http://xahlee.info/UnixResource_dir/_/ldpath.html"
+    return 1
+fi
+
+export SDKTARGETSYSROOT=/media/ubuntu/large/radio-zcu208/sysroot/sysroots/cortexa72-cortexa53-amd-linux
+export PATH=/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/bin:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/sbin:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/bin:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/sbin:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/bin/../x86_64-petalinux-linux/bin:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux:/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-amd-linux-musl:"$PATH"
+export PKG_CONFIG_SYSROOT_DIR=$SDKTARGETSYSROOT
+export PKG_CONFIG_PATH=$SDKTARGETSYSROOT/usr/lib/pkgconfig:$SDKTARGETSYSROOT/usr/share/pkgconfig
+export CONFIG_SITE=/media/ubuntu/large/radio-zcu208/sysroot/site-config-cortexa72-cortexa53-amd-linux
+export OECORE_NATIVE_SYSROOT="/media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux"
+export OECORE_TARGET_SYSROOT="$SDKTARGETSYSROOT"
+export OECORE_ACLOCAL_OPTS="-I /media/ubuntu/large/radio-zcu208/sysroot/sysroots/x86_64-petalinux-linux/usr/share/aclocal"
+export OECORE_BASELIB="lib"
+export OECORE_TARGET_ARCH="aarch64"
+export OECORE_TARGET_OS="linux"
+unset command_not_found_handle
+export CC="aarch64-amd-linux-gcc  -mcpu=cortex-a72.cortex-a53+crc -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=$SDKTARGETSYSROOT"
+export CXX="aarch64-amd-linux-g++  -mcpu=cortex-a72.cortex-a53+crc -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=$SDKTARGETSYSROOT"
+export CPP="aarch64-amd-linux-gcc -E  -mcpu=cortex-a72.cortex-a53+crc -mbranch-protection=standard -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=$SDKTARGETSYSROOT"
+export AS="aarch64-amd-linux-as "
+export LD="aarch64-amd-linux-ld  --sysroot=$SDKTARGETSYSROOT"
+export GDB=aarch64-amd-linux-gdb
+export STRIP=aarch64-amd-linux-strip
+export RANLIB=aarch64-amd-linux-ranlib
+export OBJCOPY=aarch64-amd-linux-objcopy
+export OBJDUMP=aarch64-amd-linux-objdump
+export READELF=aarch64-amd-linux-readelf
+export AR=aarch64-amd-linux-ar
+export NM=aarch64-amd-linux-nm
+export M4=m4
+export TARGET_PREFIX=aarch64-amd-linux-
+export CONFIGURE_FLAGS="--target=aarch64-amd-linux --host=aarch64-amd-linux --build=x86_64-linux --with-libtool-sysroot=$SDKTARGETSYSROOT"
+export CFLAGS=" -O2 -pipe -g -feliminate-unused-debug-types "
+export CXXFLAGS=" -O2 -pipe -g -feliminate-unused-debug-types "
+export LDFLAGS="-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed  -Wl,-z,relro,-z,now"
+export CPPFLAGS=""
+export KCFLAGS="--sysroot=$SDKTARGETSYSROOT"
+export OECORE_DISTRO_VERSION="2025.1+release-S05180137"
+export OECORE_SDK_VERSION="2025.1"
+export ARCH=arm64
+export CROSS_COMPILE=aarch64-amd-linux-
+export OECORE_TUNE_CCARGS=" -mcpu=cortex-a72.cortex-a53+crc -mbranch-protection=standard"
+
+# Append environment subscripts
+if [ -d "$OECORE_TARGET_SYSROOT/environment-setup.d" ]; then
+    for envfile in $OECORE_TARGET_SYSROOT/environment-setup.d/*.sh; do
+	    . $envfile
+    done
+fi
+if [ -d "$OECORE_NATIVE_SYSROOT/environment-setup.d" ]; then
+    for envfile in $OECORE_NATIVE_SYSROOT/environment-setup.d/*.sh; do
+	    . $envfile
+    done
+fi

@@ -1,0 +1,11 @@
+# Ignore build output directory
+/bin
+/games
+/libexec
+/sbin
+/share
+/src
+/lib/mariadb
+/lib/.debug/libmariadb*
+/lib/plugin
+
