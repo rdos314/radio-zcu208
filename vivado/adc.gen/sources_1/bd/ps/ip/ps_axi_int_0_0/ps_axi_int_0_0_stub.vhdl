@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Wed Mar 25 19:15:49 2026
+-- Date        : Sun Mar 29 20:11:13 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_stub.vhdl
@@ -17,6 +17,16 @@ entity ps_axi_int_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
+    low_remain_count : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    low_preview : in STD_LOGIC;
+    low_preview_data : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    low_wr : in STD_LOGIC;
+    low_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
+    high_remain_count : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    high_preview : in STD_LOGIC;
+    high_preview_data : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    high_wr : in STD_LOGIC;
+    high_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
     up : in STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXI_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -49,7 +59,7 @@ architecture stub of ps_axi_int_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,up,M_AXI_AWADDR[31:0],M_AXI_AWLEN[7:0],M_AXI_AWSIZE[2:0],M_AXI_AWPROT[1:0],M_AXI_AWBURST[1:0],M_AXI_WSTRB[31:0],M_AXI_AWVALID,M_AXI_AWREADY,M_AXI_WDATA[255:0],M_AXI_WLAST,M_AXI_WVALID,M_AXI_WREADY,M_AXI_BVALID,M_AXI_BRESP[1:0],M_AXI_BREADY";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,low_remain_count[8:0],low_preview,low_preview_data[19:0],low_wr,low_data[255:0],high_remain_count[8:0],high_preview,high_preview_data[19:0],high_wr,high_data[255:0],up,M_AXI_AWADDR[31:0],M_AXI_AWLEN[7:0],M_AXI_AWSIZE[2:0],M_AXI_AWPROT[1:0],M_AXI_AWBURST[1:0],M_AXI_WSTRB[31:0],M_AXI_AWVALID,M_AXI_AWREADY,M_AXI_WDATA[255:0],M_AXI_WLAST,M_AXI_WVALID,M_AXI_WREADY,M_AXI_BVALID,M_AXI_BRESP[1:0],M_AXI_BREADY";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

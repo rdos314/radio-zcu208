@@ -38,11 +38,16 @@ module comp_ana(
 	input wire [15:0] fifo_angle,
 	input wire [9:0] fifo_doa_error,
 	
-	input wire axi_clk,
-
     input wire pl_clk,
     input wire clk,
-    input wire reset
+    input wire reset,
+    
+	input wire axi_clk,
+	input wire [8:0] axi_remain_count,
+	output reg axi_preview,
+	output reg [19:0] axi_preview_data,
+	output reg axi_wr,
+	output reg [255:0] axi_data
 );
 
     reg local_config_wr;
@@ -237,8 +242,8 @@ module comp_ana(
     wire [6:0] axi_avail;
     wire [19:0] axi_pos [0:6];
     reg [6:0] axi_get;
-    wire [6:0] axi_active;
-    wire [127:0] axi_data [0:6];
+    wire [6:0] axi_stat_active;
+    wire [127:0] axi_stat_data [0:6];
 	
 	reg [1:0] axi_state_01;
 	reg [1:0] axi_state_23;
@@ -276,43 +281,14 @@ module comp_ana(
 	reg [2:0] axi_ind;
 
 	reg [2:0] axi_curr_ind;
-	reg axi_run;
-	reg axi_wr;
-	reg axi_hdr_high_1;
-	reg axi_hdr_high;
-	reg [127:0] axi_curr_data;
+	reg axi_stat_run;
+	reg axi_stat_wr;
 
-	reg [63:0] hdr_sample;
-	reg [7:0] hdr_blocks;
-	reg [7:0] hdr_flags;
-	reg [15:0] hdr_size;
-	reg [31:0] hdr_freq;
-	reg [15:0] hdr_angle;
-	reg [15:0] hdr_doa_error;
-	reg [15:0] hdr_max_env;
-	reg [15:0] hdr_max_pos;
-	reg [15:0] hdr_env_mean;
-	reg [15:0] hdr_env_std;
-	reg [15:0] hdr_phase_std;
-	reg [15:0] hdr_freq_std;
-	
-	reg [15:0] data_env_0;
-	reg [15:0] data_env_1;
-	reg [15:0] data_env_2;
-	reg [15:0] data_env_3;
-	reg [15:0] data_env_4;
-	reg [15:0] data_env_5;
-	reg [15:0] data_env_6;
-	reg [15:0] data_env_7;
-
-	reg [15:0] data_phase_0;
-	reg [15:0] data_phase_1;
-	reg [15:0] data_phase_2;
-	reg [15:0] data_phase_3;
-	reg [15:0] data_phase_4;
-	reg [15:0] data_phase_5;
-	reg [15:0] data_phase_6;
-	reg [15:0] data_phase_7;
+    reg axi_part;
+    reg axi_is_header;
+    reg axi_full;
+    reg [255:0] axi_curr_data;
+    reg [9:0] axi_margin;
 	
     clk_wiz_stat clk_wiz_stat_i (
        .clk_in1(pl_clk) ,              // input clk_in1
@@ -441,8 +417,8 @@ module comp_ana(
         .axi_avail(axi_avail[0]),
         .axi_sample(axi_pos[0]),
         .axi_get(axi_get[0]),
-        .axi_wr(axi_active[0]),
-        .axi_data(axi_data[0]),
+        .axi_wr(axi_stat_active[0]),
+        .axi_data(axi_stat_data[0]),
         .clk(stat_clk_0),
         .reset(stat_reset_0),
         .idle(stat_idle_in_0)
@@ -474,8 +450,8 @@ module comp_ana(
         .axi_avail(axi_avail[1]),
         .axi_sample(axi_pos[1]),
         .axi_get(axi_get[1]),
-        .axi_wr(axi_active[1]),
-        .axi_data(axi_data[1]),
+        .axi_wr(axi_stat_active[1]),
+        .axi_data(axi_stat_data[1]),
         .clk(stat_clk_1),
         .reset(stat_reset_1),
         .idle(stat_idle_in_1)
@@ -507,8 +483,8 @@ module comp_ana(
         .axi_avail(axi_avail[2]),
         .axi_sample(axi_pos[2]),
         .axi_get(axi_get[2]),
-        .axi_wr(axi_active[2]),
-        .axi_data(axi_data[2]),
+        .axi_wr(axi_stat_active[2]),
+        .axi_data(axi_stat_data[2]),
         .clk(stat_clk_2),
         .reset(stat_reset_2),
         .idle(stat_idle_in_2)
@@ -540,8 +516,8 @@ module comp_ana(
         .axi_avail(axi_avail[3]),
         .axi_sample(axi_pos[3]),
         .axi_get(axi_get[3]),
-        .axi_wr(axi_active[3]),
-        .axi_data(axi_data[3]),
+        .axi_wr(axi_stat_active[3]),
+        .axi_data(axi_stat_data[3]),
         .clk(stat_clk_3),
         .reset(stat_reset_3),
         .idle(stat_idle_in_3)
@@ -573,8 +549,8 @@ module comp_ana(
         .axi_avail(axi_avail[4]),
         .axi_sample(axi_pos[4]),
         .axi_get(axi_get[4]),
-        .axi_wr(axi_active[4]),
-        .axi_data(axi_data[4]),
+        .axi_wr(axi_stat_active[4]),
+        .axi_data(axi_stat_data[4]),
         .clk(stat_clk_4),
         .reset(stat_reset_4),
         .idle(stat_idle_in_4)
@@ -606,8 +582,8 @@ module comp_ana(
         .axi_avail(axi_avail[5]),
         .axi_sample(axi_pos[5]),
         .axi_get(axi_get[5]),
-        .axi_wr(axi_active[5]),
-        .axi_data(axi_data[5]),
+        .axi_wr(axi_stat_active[5]),
+        .axi_data(axi_stat_data[5]),
         .clk(stat_clk_5),
         .reset(stat_reset_5),
         .idle(stat_idle_in_5)
@@ -639,8 +615,8 @@ module comp_ana(
         .axi_avail(axi_avail[6]),
         .axi_sample(axi_pos[6]),
         .axi_get(axi_get[6]),
-        .axi_wr(axi_active[6]),
-        .axi_data(axi_data[6]),
+        .axi_wr(axi_stat_active[6]),
+        .axi_data(axi_stat_data[6]),
         .clk(stat_clk_6),
         .reset(stat_reset_6),
         .idle(stat_idle_in_6)
@@ -667,34 +643,22 @@ module comp_ana(
 		.probe0(axi_pend),            // input wire [6:0]  probe3
 		.probe1(axi_avail),           // input wire [6:0]  probe3
 		.probe2(axi_get),             // input wire [6:0]  probe3
-		.probe3(axi_active),          // input wire [6:0]  probe3
+		.probe3(axi_stat_active),     // input wire [6:0]  probe3
 		.probe4(axi_ok),              // input wire [0:0]  probe3
 		.probe5(axi_ind),             // input wire [2:0]  probe3
 		.probe6(axi_curr_ind),        // input wire [2:0]  probe3
-		.probe7(axi_run),             // input wire [0:0]  probe3
-		.probe8(axi_wr),              // input wire [0:0]  probe3
-		.probe9(hdr_sample),          // input wire [63:0]  probe3
-		.probe10(hdr_blocks),         // input wire [7:0]  probe3
-		.probe11(hdr_flags),          // input wire [7:0]  probe3
-		.probe12(hdr_size),           // input wire [15:0]  probe3
-		.probe13(hdr_freq),           // input wire [31:0]  probe3
-		.probe14(hdr_angle),          // input wire [15:0]  probe3
-		.probe15(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe16(hdr_max_env),        // input wire [15:0]  probe3
-		.probe17(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe18(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe19(hdr_env_std),        // input wire [15:0]  probe3
-		.probe20(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe21(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe22(data_env_0),         // input wire [15:0]  probe3
-		.probe23(data_env_1),         // input wire [15:0]  probe3
-		.probe24(data_env_2),         // input wire [15:0]  probe3
-		.probe25(data_env_3),         // input wire [15:0]  probe3
-		.probe26(data_phase_0),       // input wire [15:0]  probe3
-		.probe27(data_phase_1),       // input wire [15:0]  probe3
-		.probe28(data_phase_2),       // input wire [15:0]  probe3
-		.probe29(data_phase_3)        // input wire [15:0]  probe3
+		.probe7(axi_preview),         // input wire [0:0]  probe3
+		.probe8(axi_preview_data),    // input wire [19:0]  probe3
+		.probe9(axi_stat_run),        // input wire [0:0]  probe3
+		.probe10(axi_stat_wr),        // input wire [0:0]  probe3
+		.probe11(axi_part),           // input wire [0:0]  probe3
+		.probe12(axi_is_header),      // input wire [0:0]  probe3
+		.probe13(axi_full),           // input wire [0:0]  probe3
+		.probe14(axi_remain_count),   // input wire [8:0]  probe3
+		.probe15(axi_margin),         // input wire [9:0]  probe3
+		.probe16(axi_wr)              // input wire [0:0]  probe3
 	);
+
 
 generate
   begin : comp_ana
@@ -1287,16 +1251,30 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-        if (axi_run)
+        if (axi_ok)
 	    begin
+	        axi_preview <= 1;
+	        axi_preview_data <= axi_pos[axi_ind];
+	    end
+	    else
+	        axi_preview <= 0;
+	end
+
+    always @(posedge axi_clk) 
+	begin
+        if (axi_stat_run)
+	    begin
+	        axi_part <= !axi_part;
+
 			if (axi_get[axi_curr_ind])
 				axi_get[axi_curr_ind] <= 0;
 			else
 			begin
+			    axi_is_header <= 0;
 				axi_get[axi_ind] <= 0;
 
-				if (!axi_active[axi_curr_ind])
-					axi_run <= 0;
+				if (!axi_stat_active[axi_curr_ind])
+					axi_stat_run <= 0;
 			end
 	    end
 	    else
@@ -1307,7 +1285,9 @@ generate
 	            begin
 	                axi_get[axi_ind] <= 1;
  	                axi_curr_ind <= axi_ind;
-	                axi_run <= 1;
+	                axi_stat_run <= 1;
+	                axi_part <= 0;
+	                axi_is_header <= 1;
 	            end
 	        end
 	    end
@@ -1315,73 +1295,60 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-	    if (axi_run)
+	    if (axi_stat_run)
 	    begin
-	        if (axi_active[axi_curr_ind])
+	        if (axi_stat_active[axi_curr_ind])
 	        begin
-	            axi_curr_data <= axi_data[axi_curr_ind];
-	            if (axi_wr)
-	               	axi_hdr_high_1 <= 0;
+	            if (axi_part)
+	                axi_curr_data[255:128] <= axi_stat_data[axi_curr_ind];
 	            else
-	               	axi_hdr_high_1 <= 1;
-	            axi_wr <= 1;
+	                axi_curr_data[127:0] <= axi_stat_data[axi_curr_ind];
+
+	            if (axi_is_header)
+	            begin
+	                if (axi_part)
+                    begin
+                        if (axi_remain_count)
+                        begin
+                            axi_stat_wr <= 1;
+
+                            if (axi_margin[9])
+                            begin
+                                axi_full <= 0;
+                                axi_curr_data[71:64] <= 0;
+                                axi_curr_data[95:80] <= 0;
+                            end
+                            else
+                                axi_full <= 1;
+                        end
+                        else
+                        begin
+                            axi_stat_wr <= 0;
+                            axi_full <= 0;
+                        end
+                    end
+	                else
+    				    axi_margin <= {1'b0, axi_remain_count} - {2'b00, axi_stat_data[axi_curr_ind][71:64]} - 1;
+	            end
+	            else
+    	            axi_stat_wr <= axi_full & axi_part;
 	        end
 	        else
-	        begin
-	            axi_wr <= 0;
-	           	axi_hdr_high_1 <= 0;
-	        end
+	            axi_stat_wr <= 0;
 	    end
 	    else
-	    begin
-	        axi_wr <= 0;
-          	axi_hdr_high_1 <= 0;
-        end
+	        axi_stat_wr <= 0;
 	end
 
     always @(posedge axi_clk) 
 	begin
-	   axi_hdr_high <= axi_hdr_high_1;
-	end
-
-    always @(posedge axi_clk) 
-    begin
-        if (axi_wr)
-		begin
-		    if (axi_hdr_high)
-		    begin
-				hdr_freq <= axi_curr_data[31:0];
-				hdr_max_env <= axi_curr_data[47:32];
-				hdr_max_pos <= axi_curr_data[63:48];
-				hdr_env_mean <= axi_curr_data[79:64];
-				hdr_env_std <= axi_curr_data[95:80];
-				hdr_phase_std <= axi_curr_data[111:96];
-				hdr_freq_std <= axi_curr_data[127:112];
-            end
-            else
-            begin
-    			if (axi_curr_data[79])
-	   		    begin
-				    hdr_sample <= axi_curr_data[63:0];
-				    hdr_blocks <= axi_curr_data[71:64];
-				    hdr_flags <= axi_curr_data[79:72];
-				    hdr_size <= axi_curr_data[95:80];
-				    hdr_angle <= axi_curr_data[111:96];
-				    hdr_doa_error <= axi_curr_data[127:112];
-				end
-    			else
-	       		begin
-			 	    data_env_0 <= axi_curr_data[15:0];
-    				data_phase_0 <= axi_curr_data[31:16];
-	   			    data_env_1 <= axi_curr_data[47:32];
-		  		    data_phase_1 <= axi_curr_data[63:48];
-				    data_env_2 <= axi_curr_data[79:64];
-				    data_phase_2 <= axi_curr_data[95:80];
-				    data_env_3 <= axi_curr_data[111:96];
-				    data_phase_3 <= axi_curr_data[127:112];
-				end
-			end
-		end
+	    if (axi_stat_wr)
+	    begin
+	        axi_wr <= 1;
+	        axi_data <= axi_curr_data;
+	    end
+	    else
+	        axi_wr <= 0;
 	end
 
   end

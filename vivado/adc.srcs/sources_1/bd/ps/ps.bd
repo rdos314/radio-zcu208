@@ -3877,24 +3877,6 @@
             "left": "9",
             "right": "0"
           },
-          "axi_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "333250000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.00",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
           "pl_clk": {
             "type": "clk",
             "direction": "I",
@@ -3930,6 +3912,45 @@
           "reset": {
             "type": "rst",
             "direction": "I"
+          },
+          "axi_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "333250000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.00",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "axi_remain_count": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "axi_preview": {
+            "direction": "O"
+          },
+          "axi_preview_data": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "axi_wr": {
+            "direction": "O"
+          },
+          "axi_data": {
+            "direction": "O",
+            "left": "255",
+            "right": "0"
           }
         }
       },
@@ -4032,24 +4053,6 @@
             "left": "9",
             "right": "0"
           },
-          "axi_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "333250000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.00",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
           "pl_clk": {
             "type": "clk",
             "direction": "I",
@@ -4085,6 +4088,45 @@
           "reset": {
             "type": "rst",
             "direction": "I"
+          },
+          "axi_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "333250000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.00",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_ddr4_0_0_c0_ddr4_ui_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "axi_remain_count": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "axi_preview": {
+            "direction": "O"
+          },
+          "axi_preview_data": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "axi_wr": {
+            "direction": "O"
+          },
+          "axi_data": {
+            "direction": "O",
+            "left": "255",
+            "right": "0"
           }
         }
       },
@@ -4497,6 +4539,48 @@
               }
             }
           },
+          "low_remain_count": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "low_preview": {
+            "direction": "I"
+          },
+          "low_preview_data": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "low_wr": {
+            "direction": "I"
+          },
+          "low_data": {
+            "direction": "I",
+            "left": "255",
+            "right": "0"
+          },
+          "high_remain_count": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "high_preview": {
+            "direction": "I"
+          },
+          "high_preview_data": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "high_wr": {
+            "direction": "I"
+          },
+          "high_data": {
+            "direction": "I",
+            "left": "255",
+            "right": "0"
+          },
           "up": {
             "direction": "I"
           }
@@ -4902,6 +4986,66 @@
           "adc_control_0/data_in"
         ]
       },
+      "axi_int_0_high_remain_count": {
+        "ports": [
+          "axi_int_0/high_remain_count",
+          "comp_ana_high/axi_remain_count"
+        ]
+      },
+      "axi_int_0_low_remain_count": {
+        "ports": [
+          "axi_int_0/low_remain_count",
+          "comp_ana_low/axi_remain_count"
+        ]
+      },
+      "comp_ana_high_axi_data": {
+        "ports": [
+          "comp_ana_high/axi_data",
+          "axi_int_0/high_data"
+        ]
+      },
+      "comp_ana_high_axi_preview": {
+        "ports": [
+          "comp_ana_high/axi_preview",
+          "axi_int_0/high_preview"
+        ]
+      },
+      "comp_ana_high_axi_preview_data": {
+        "ports": [
+          "comp_ana_high/axi_preview_data",
+          "axi_int_0/high_preview_data"
+        ]
+      },
+      "comp_ana_high_axi_wr": {
+        "ports": [
+          "comp_ana_high/axi_wr",
+          "axi_int_0/high_wr"
+        ]
+      },
+      "comp_ana_low_axi_data": {
+        "ports": [
+          "comp_ana_low/axi_data",
+          "axi_int_0/low_data"
+        ]
+      },
+      "comp_ana_low_axi_preview": {
+        "ports": [
+          "comp_ana_low/axi_preview",
+          "axi_int_0/low_preview"
+        ]
+      },
+      "comp_ana_low_axi_preview_data": {
+        "ports": [
+          "comp_ana_low/axi_preview_data",
+          "axi_int_0/low_preview_data"
+        ]
+      },
+      "comp_ana_low_axi_wr": {
+        "ports": [
+          "comp_ana_low/axi_wr",
+          "axi_int_0/low_wr"
+        ]
+      },
       "comp_high_active": {
         "ports": [
           "comp_high/active",
@@ -5016,9 +5160,9 @@
           "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "axi_int_0/clk",
           "comp_ana_high/axi_clk",
-          "comp_ana_low/axi_clk"
+          "comp_ana_low/axi_clk",
+          "axi_int_0/clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {

@@ -58,6 +58,16 @@
 module ps_axi_int_0_0 (
   clk,
   resetn,
+  low_remain_count,
+  low_preview,
+  low_preview_data,
+  low_wr,
+  low_data,
+  high_remain_count,
+  high_preview,
+  high_preview_data,
+  high_wr,
+  high_data,
   up,
   M_AXI_AWADDR,
   M_AXI_AWLEN,
@@ -84,6 +94,16 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire resetn;
+output wire [8 : 0] low_remain_count;
+input wire low_preview;
+input wire [19 : 0] low_preview_data;
+input wire low_wr;
+input wire [255 : 0] low_data;
+output wire [8 : 0] high_remain_count;
+input wire high_preview;
+input wire [19 : 0] high_preview_data;
+input wire high_wr;
+input wire [255 : 0] high_data;
 input wire up;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *)
 (* X_INTERFACE_MODE = "master" *)
@@ -122,6 +142,16 @@ output wire M_AXI_BREADY;
   axi_int inst (
     .clk(clk),
     .resetn(resetn),
+    .low_remain_count(low_remain_count),
+    .low_preview(low_preview),
+    .low_preview_data(low_preview_data),
+    .low_wr(low_wr),
+    .low_data(low_data),
+    .high_remain_count(high_remain_count),
+    .high_preview(high_preview),
+    .high_preview_data(high_preview_data),
+    .high_wr(high_wr),
+    .high_data(high_data),
     .up(up),
     .M_AXI_AWADDR(M_AXI_AWADDR),
     .M_AXI_AWLEN(M_AXI_AWLEN),
