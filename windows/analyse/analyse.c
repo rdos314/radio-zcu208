@@ -10,13 +10,13 @@
 
 int main()
 {
-    int fd = open("/dev/uio0", O_RDWR);
+    int fd = open("/dev/mem", O_RDWR);
 
     void *map = mmap(NULL, MAP_SIZE,
                      PROT_READ | PROT_WRITE,
-                     MAP_SHARED, fd, 0);
+                     MAP_SHARED, fd, MAP_BASE);
 
-    volatile int *ptr = (int)map;
+    volatile int *ptr = (int *)map;
 
     // Write
     ptr[0] = 0x12345678;
