@@ -14,7 +14,7 @@
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="92"></NameColumnWidth>
+      <NameColumnWidth column_width="161"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="17" />
@@ -33,13 +33,6 @@
       <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_curr_ind[2:0]</obj_property>
       <obj_property name="ObjectShortName">axi_curr_ind[2:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="ps_i/comp_ana_low/inst/axi_full">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_full</obj_property>
-      <obj_property name="ObjectShortName">axi_full</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -124,6 +117,13 @@
       <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_stat_active[6:0]</obj_property>
       <obj_property name="ObjectShortName">axi_stat_active[6:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/comp_ana_low/inst/axi_stat_prepare">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_stat_prepare</obj_property>
+      <obj_property name="ObjectShortName">axi_stat_prepare</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

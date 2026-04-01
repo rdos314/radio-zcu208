@@ -5160,9 +5160,9 @@
           "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
+          "axi_int_0/clk",
           "comp_ana_high/axi_clk",
-          "comp_ana_low/axi_clk",
-          "axi_int_0/clk"
+          "comp_ana_low/axi_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {

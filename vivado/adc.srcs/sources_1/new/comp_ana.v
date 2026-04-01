@@ -281,12 +281,13 @@ module comp_ana(
 	reg [2:0] axi_ind;
 
 	reg [2:0] axi_curr_ind;
+	reg axi_stat_prepare;
 	reg axi_stat_run;
 	reg axi_stat_wr;
 
     reg axi_part;
     reg axi_is_header;
-    reg axi_full;
+    reg axi_has_space;
     reg [255:0] axi_curr_data;
     reg [9:0] axi_margin;
 	
@@ -649,14 +650,15 @@ module comp_ana(
 		.probe6(axi_curr_ind),        // input wire [2:0]  probe3
 		.probe7(axi_preview),         // input wire [0:0]  probe3
 		.probe8(axi_preview_data),    // input wire [19:0]  probe3
-		.probe9(axi_stat_run),        // input wire [0:0]  probe3
-		.probe10(axi_stat_wr),        // input wire [0:0]  probe3
-		.probe11(axi_part),           // input wire [0:0]  probe3
-		.probe12(axi_is_header),      // input wire [0:0]  probe3
-		.probe13(axi_full),           // input wire [0:0]  probe3
-		.probe14(axi_remain_count),   // input wire [8:0]  probe3
-		.probe15(axi_margin),         // input wire [9:0]  probe3
-		.probe16(axi_wr)              // input wire [0:0]  probe3
+		.probe9(axi_stat_prepare),    // input wire [0:0]  probe3
+		.probe10(axi_stat_run),       // input wire [0:0]  probe3
+		.probe11(axi_stat_wr),        // input wire [0:0]  probe3
+		.probe12(axi_part),           // input wire [0:0]  probe3
+		.probe13(axi_is_header),      // input wire [0:0]  probe3
+		.probe14(axi_has_space),      // input wire [0:0]  probe3
+		.probe15(axi_remain_count),   // input wire [8:0]  probe3
+		.probe16(axi_margin),         // input wire [9:0]  probe3
+		.probe17(axi_wr)              // input wire [0:0]  probe3
 	);
 
 
@@ -1262,34 +1264,43 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-        if (axi_stat_run)
+	    if (axi_stat_prepare)
 	    begin
-	        axi_part <= !axi_part;
-
-			if (axi_get[axi_curr_ind])
-				axi_get[axi_curr_ind] <= 0;
-			else
-			begin
-			    axi_is_header <= 0;
-				axi_get[axi_ind] <= 0;
-
-				if (!axi_stat_active[axi_curr_ind])
-					axi_stat_run <= 0;
-			end
+	        axi_stat_prepare <= 0;
+	        axi_stat_run <= 1;
+		    axi_get <= 0;
+	        axi_part <= 0;
+	        axi_is_header <= 1;
 	    end
 	    else
-	    begin
-    	    if (axi_ok)
+	    begin 
+            if (axi_stat_run)
 	        begin
-    	        if (axi_avail[axi_ind])
-	            begin
-	                axi_get[axi_ind] <= 1;
- 	                axi_curr_ind <= axi_ind;
-	                axi_stat_run <= 1;
-	                axi_part <= 0;
-	                axi_is_header <= 1;
-	            end
+	            axi_part <= !axi_part;
+	            if (axi_part)
+    			    axi_is_header <= 0;
+
+			    if (!axi_stat_active[axi_curr_ind])
+				    axi_stat_run <= 0;
 	        end
+	        else
+	        begin
+    	        if (axi_ok)
+	            begin
+    	            if (axi_avail[axi_ind])
+    	            begin
+    	                axi_stat_prepare <= 1;
+            	        axi_get[axi_ind] <= 1;
+            	        axi_part <= 0;
+             	        axi_curr_ind <= axi_ind;
+            	    end
+    	        end
+    	        else
+    	        begin
+    	            axi_stat_prepare <= 0;
+    	            axi_get <= 0;
+    	        end
+            end
 	    end
     end
 
@@ -1314,24 +1325,24 @@ generate
 
                             if (axi_margin[9])
                             begin
-                                axi_full <= 0;
+                                axi_has_space <= 0;
                                 axi_curr_data[71:64] <= 0;
                                 axi_curr_data[95:80] <= 0;
                             end
                             else
-                                axi_full <= 1;
+                                axi_has_space <= 1;
                         end
                         else
                         begin
                             axi_stat_wr <= 0;
-                            axi_full <= 0;
+                            axi_has_space <= 0;
                         end
                     end
 	                else
     				    axi_margin <= {1'b0, axi_remain_count} - {2'b00, axi_stat_data[axi_curr_ind][71:64]} - 1;
 	            end
 	            else
-    	            axi_stat_wr <= axi_full & axi_part;
+    	            axi_stat_wr <= axi_has_space & axi_part;
 	        end
 	        else
 	            axi_stat_wr <= 0;

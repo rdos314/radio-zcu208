@@ -66,7 +66,8 @@ probe12,
 probe13,
 probe14,
 probe15,
-probe16
+probe16,
+probe17
 );
 
 input clk;
@@ -86,9 +87,10 @@ input [0 : 0] probe10;
 input [0 : 0] probe11;
 input [0 : 0] probe12;
 input [0 : 0] probe13;
-input [8 : 0] probe14;
-input [9 : 0] probe15;
-input [0 : 0] probe16;
+input [0 : 0] probe14;
+input [8 : 0] probe15;
+input [9 : 0] probe16;
+input [0 : 0] probe17;
 
 
 endmodule
