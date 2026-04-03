@@ -74,10 +74,12 @@ module ps_comp_ana_0_0 (
   clk,
   reset,
   axi_clk,
-  axi_remain_count,
-  axi_preview,
-  axi_preview_data,
+  axi_rd,
   axi_wr,
+  axi_empty,
+  axi_full,
+  axi_pending,
+  axi_timestamp,
   axi_data
 );
 
@@ -117,10 +119,12 @@ input wire reset;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
 input wire axi_clk;
-input wire [8 : 0] axi_remain_count;
-output wire axi_preview;
-output wire [19 : 0] axi_preview_data;
+input wire axi_rd;
 output wire axi_wr;
+input wire axi_empty;
+input wire axi_full;
+output wire axi_pending;
+output wire [19 : 0] axi_timestamp;
 output wire [255 : 0] axi_data;
 
   comp_ana inst (
@@ -142,10 +146,12 @@ output wire [255 : 0] axi_data;
     .clk(clk),
     .reset(reset),
     .axi_clk(axi_clk),
-    .axi_remain_count(axi_remain_count),
-    .axi_preview(axi_preview),
-    .axi_preview_data(axi_preview_data),
+    .axi_rd(axi_rd),
     .axi_wr(axi_wr),
+    .axi_empty(axi_empty),
+    .axi_full(axi_full),
+    .axi_pending(axi_pending),
+    .axi_timestamp(axi_timestamp),
     .axi_data(axi_data)
   );
 endmodule

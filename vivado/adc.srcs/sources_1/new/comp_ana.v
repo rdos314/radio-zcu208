@@ -43,10 +43,12 @@ module comp_ana(
     input wire reset,
     
 	input wire axi_clk,
-	input wire [8:0] axi_remain_count,
-	output reg axi_preview,
-	output reg [19:0] axi_preview_data,
+	input wire axi_rd,
 	output reg axi_wr,
+	input wire axi_empty,	
+	input wire axi_full,
+	output reg axi_pending,
+	output reg [19:0] axi_timestamp,
 	output reg [255:0] axi_data
 );
 
@@ -237,7 +239,7 @@ module comp_ana(
 	localparam STAT_A = 2'b01;
 	localparam STAT_B = 2'b10;
 	localparam STAT_COMP = 2'b11;
-
+	
     wire [6:0] axi_pend;
     wire [6:0] axi_avail;
     wire [19:0] axi_pos [0:6];
@@ -284,12 +286,15 @@ module comp_ana(
 	reg axi_stat_prepare;
 	reg axi_stat_run;
 	reg axi_stat_wr;
+	reg axi_wr_1;
+	reg axi_wr_2;
 
     reg axi_part;
     reg axi_is_header;
     reg axi_has_space;
+    reg [8:0] axi_margin;
+    reg [13:0] axi_space;
     reg [255:0] axi_curr_data;
-    reg [9:0] axi_margin;
 	
     clk_wiz_stat clk_wiz_stat_i (
        .clk_in1(pl_clk) ,              // input clk_in1
@@ -648,17 +653,20 @@ module comp_ana(
 		.probe4(axi_ok),              // input wire [0:0]  probe3
 		.probe5(axi_ind),             // input wire [2:0]  probe3
 		.probe6(axi_curr_ind),        // input wire [2:0]  probe3
-		.probe7(axi_preview),         // input wire [0:0]  probe3
-		.probe8(axi_preview_data),    // input wire [19:0]  probe3
+		.probe7(axi_pending),         // input wire [0:0]  probe3
+		.probe8(axi_timestamp),       // input wire [19:0]  probe3
 		.probe9(axi_stat_prepare),    // input wire [0:0]  probe3
 		.probe10(axi_stat_run),       // input wire [0:0]  probe3
 		.probe11(axi_stat_wr),        // input wire [0:0]  probe3
 		.probe12(axi_part),           // input wire [0:0]  probe3
 		.probe13(axi_is_header),      // input wire [0:0]  probe3
 		.probe14(axi_has_space),      // input wire [0:0]  probe3
-		.probe15(axi_remain_count),   // input wire [8:0]  probe3
-		.probe16(axi_margin),         // input wire [9:0]  probe3
-		.probe17(axi_wr)              // input wire [0:0]  probe3
+		.probe15(axi_space),          // input wire [13:0]  probe3
+		.probe16(axi_margin),         // input wire [8:0]  probe3
+		.probe17(axi_empty),          // input wire [0:0]  probe3
+		.probe18(axi_full),           // input wire [0:0]  probe3
+		.probe19(axi_rd),             // input wire [0:0]  probe3
+		.probe20(axi_wr)              // input wire [0:0]  probe3
 	);
 
 
@@ -1253,13 +1261,24 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-        if (axi_ok)
+	    if (axi_empty)
 	    begin
-	        axi_preview <= 1;
-	        axi_preview_data <= axi_pos[axi_ind];
+            if (axi_ok)
+	        begin
+	            axi_pending <= 1;
+	            axi_timestamp <= axi_pos[axi_ind];
+    	    end
+    	    else
+	            axi_pending <= 0;
 	    end
 	    else
-	        axi_preview <= 0;
+	    begin
+	        if (!axi_stat_run)
+	        begin
+    	        axi_pending <= 1;        
+    	        axi_timestamp <= axi_data[19:0];
+    	    end
+	    end
 	end
 
     always @(posedge axi_clk) 
@@ -1306,46 +1325,66 @@ generate
 
     always @(posedge axi_clk) 
 	begin
+	    axi_wr_1 <= axi_wr;
+	    axi_wr_2 <= axi_wr_1;
+	end
+
+    always @(posedge axi_clk) 
+	begin
+	    case ({axi_empty, axi_rd, axi_wr_2})
+	       3'b000 : ;
+	       3'b001 : axi_space <= axi_space - 1;
+	       3'b010 : if (axi_space != 14'h3FFF) axi_space <= axi_space + 1;
+	       3'b011 : ;
+	       3'b100 : axi_space <= 14'h3FFF;
+	       3'b101 : axi_space <= 14'h3FFF;
+	       3'b110 : axi_space <= 14'h3FFF;
+	       3'b111 : axi_space <= 14'h3FFF;
+	    endcase
+	end
+
+    always @(posedge axi_clk) 
+	begin
 	    if (axi_stat_run)
 	    begin
-	        if (axi_stat_active[axi_curr_ind])
+	        if (axi_part)
+	            axi_curr_data[255:128] <= axi_stat_data[axi_curr_ind];
+	        else
+	            axi_curr_data[127:0] <= axi_stat_data[axi_curr_ind];
+
+	        if (axi_is_header)
 	        begin
 	            if (axi_part)
-	                axi_curr_data[255:128] <= axi_stat_data[axi_curr_ind];
-	            else
-	                axi_curr_data[127:0] <= axi_stat_data[axi_curr_ind];
-
-	            if (axi_is_header)
-	            begin
-	                if (axi_part)
+                begin
+                    if (axi_full)
                     begin
-                        if (axi_remain_count)
-                        begin
-                            axi_stat_wr <= 1;
+                        axi_stat_wr <= 0;
+                        axi_has_space <= 0;
+                    end
+                    else
+                    begin
+                        axi_stat_wr <= 1;
 
-                            if (axi_margin[9])
-                            begin
-                                axi_has_space <= 0;
-                                axi_curr_data[71:64] <= 0;
-                                axi_curr_data[95:80] <= 0;
-                            end
-                            else
-                                axi_has_space <= 1;
+                        if (axi_margin[8])
+                        begin
+                            axi_has_space <= 0;
+                            axi_curr_data[71:64] <= 0;
+                            axi_curr_data[95:80] <= 0;
                         end
                         else
-                        begin
-                            axi_stat_wr <= 0;
-                            axi_has_space <= 0;
-                        end
+                            axi_has_space <= 1;
                     end
-	                else
-    				    axi_margin <= {1'b0, axi_remain_count} - {2'b00, axi_stat_data[axi_curr_ind][71:64]} - 1;
-	            end
+                end
 	            else
-    	            axi_stat_wr <= axi_has_space & axi_part;
+	            begin
+	                if (axi_space[13:8] == 6'b000000)
+    	                axi_margin <= axi_space[8:0] - {1'b00, axi_stat_data[axi_curr_ind][71:64]} - 1;
+	                else 
+	                    axi_margin <= 0;
+    	        end
 	        end
 	        else
-	            axi_stat_wr <= 0;
+    	        axi_stat_wr <= axi_has_space & axi_part;
 	    end
 	    else
 	        axi_stat_wr <= 0;

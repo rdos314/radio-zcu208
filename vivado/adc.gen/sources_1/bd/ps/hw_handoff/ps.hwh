@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 31 23:56:08 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 21:22:09 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -367,16 +367,16 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_adr"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_adr"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_adr"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_data"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_data"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_data"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="config_high_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
@@ -1702,19 +1702,29 @@
             <CONNECTION INSTANCE="comp_ana_high" PORT="axi_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="high_preview" SIGIS="undef" SIGNAME="comp_ana_high_axi_preview">
+        <PORT DIR="O" NAME="high_empty" SIGIS="undef" SIGNAME="axi_int_0_high_empty">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_preview"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="19" NAME="high_preview_data" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_axi_preview_data">
+        <PORT DIR="O" NAME="high_full" SIGIS="undef" SIGNAME="axi_int_0_high_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_preview_data"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_full"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="high_remain_count" RIGHT="0" SIGIS="undef" SIGNAME="axi_int_0_high_remain_count">
+        <PORT DIR="I" NAME="high_pending" SIGIS="undef" SIGNAME="comp_ana_high_axi_pending">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_remain_count"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_pending"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="high_rd" SIGIS="undef" SIGNAME="axi_int_0_high_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="high_timestamp" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_axi_timestamp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_timestamp"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="high_wr" SIGIS="undef" SIGNAME="comp_ana_high_axi_wr">
@@ -1727,19 +1737,29 @@
             <CONNECTION INSTANCE="comp_ana_low" PORT="axi_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="low_preview" SIGIS="undef" SIGNAME="comp_ana_low_axi_preview">
+        <PORT DIR="O" NAME="low_empty" SIGIS="undef" SIGNAME="axi_int_0_low_empty">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_preview"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="19" NAME="low_preview_data" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_axi_preview_data">
+        <PORT DIR="O" NAME="low_full" SIGIS="undef" SIGNAME="axi_int_0_low_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_preview_data"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_full"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="low_remain_count" RIGHT="0" SIGIS="undef" SIGNAME="axi_int_0_low_remain_count">
+        <PORT DIR="I" NAME="low_pending" SIGIS="undef" SIGNAME="comp_ana_low_axi_pending">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_remain_count"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_pending"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="low_rd" SIGIS="undef" SIGNAME="axi_int_0_low_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="19" NAME="low_timestamp" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_axi_timestamp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_timestamp"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="low_wr" SIGIS="undef" SIGNAME="comp_ana_low_axi_wr">
@@ -3258,19 +3278,29 @@
             <CONNECTION INSTANCE="axi_int_0" PORT="high_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="axi_preview" SIGIS="undef" SIGNAME="comp_ana_high_axi_preview">
+        <PORT DIR="I" NAME="axi_empty" SIGIS="undef" SIGNAME="axi_int_0_high_empty">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="high_preview"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="high_empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="19" NAME="axi_preview_data" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_axi_preview_data">
+        <PORT DIR="I" NAME="axi_full" SIGIS="undef" SIGNAME="axi_int_0_high_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="high_preview_data"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="high_full"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="8" NAME="axi_remain_count" RIGHT="0" SIGIS="undef" SIGNAME="axi_int_0_high_remain_count">
+        <PORT DIR="O" NAME="axi_pending" SIGIS="undef" SIGNAME="comp_ana_high_axi_pending">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="high_remain_count"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="high_pending"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_rd" SIGIS="undef" SIGNAME="axi_int_0_high_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_int_0" PORT="high_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="axi_timestamp" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_high_axi_timestamp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_int_0" PORT="high_timestamp"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="axi_wr" SIGIS="undef" SIGNAME="comp_ana_high_axi_wr">
@@ -3383,19 +3413,29 @@
             <CONNECTION INSTANCE="axi_int_0" PORT="low_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="axi_preview" SIGIS="undef" SIGNAME="comp_ana_low_axi_preview">
+        <PORT DIR="I" NAME="axi_empty" SIGIS="undef" SIGNAME="axi_int_0_low_empty">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="low_preview"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="low_empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="19" NAME="axi_preview_data" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_axi_preview_data">
+        <PORT DIR="I" NAME="axi_full" SIGIS="undef" SIGNAME="axi_int_0_low_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="low_preview_data"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="low_full"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="8" NAME="axi_remain_count" RIGHT="0" SIGIS="undef" SIGNAME="axi_int_0_low_remain_count">
+        <PORT DIR="O" NAME="axi_pending" SIGIS="undef" SIGNAME="comp_ana_low_axi_pending">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_int_0" PORT="low_remain_count"/>
+            <CONNECTION INSTANCE="axi_int_0" PORT="low_pending"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_rd" SIGIS="undef" SIGNAME="axi_int_0_low_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_int_0" PORT="low_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="axi_timestamp" RIGHT="0" SIGIS="undef" SIGNAME="comp_ana_low_axi_timestamp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_int_0" PORT="low_timestamp"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="axi_wr" SIGIS="undef" SIGNAME="comp_ana_low_axi_wr">
@@ -4296,8 +4336,8 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="maxihpm0_fpd_aclk"/>
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="axi_int_0" PORT="clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_clk"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="c0_ddr4_ui_clk_sync_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
@@ -11128,10 +11168,10 @@
             <CONNECTION INSTANCE="deci_low" PORT="sim_clk"/>
             <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
             <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="pl_clk"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_clk"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="pl_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="pl_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">

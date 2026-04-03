@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Tue Mar 31 23:56:06 2026
+//Date        : Fri Apr  3 21:22:07 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -151,8 +151,10 @@ module ps
   wire axi_int_0_M_AXI_WREADY;
   wire [31:0]axi_int_0_M_AXI_WSTRB;
   wire axi_int_0_M_AXI_WVALID;
-  wire [8:0]axi_int_0_high_remain_count;
-  wire [8:0]axi_int_0_low_remain_count;
+  wire axi_int_0_high_full;
+  wire axi_int_0_high_rd;
+  wire axi_int_0_low_full;
+  wire axi_int_0_low_rd;
   wire [8:0]axi_smc_M00_AXI_ARADDR;
   wire axi_smc_M00_AXI_ARREADY;
   wire axi_smc_M00_AXI_ARVALID;
@@ -253,12 +255,14 @@ module ps
   wire [3:0]axi_smc_M04_AXI_WSTRB;
   wire axi_smc_M04_AXI_WVALID;
   wire [255:0]comp_ana_high_axi_data;
-  wire comp_ana_high_axi_preview;
-  wire [19:0]comp_ana_high_axi_preview_data;
+  wire comp_ana_high_axi_empty;
+  wire comp_ana_high_axi_pending;
+  wire [19:0]comp_ana_high_axi_timestamp;
   wire comp_ana_high_axi_wr;
   wire [255:0]comp_ana_low_axi_data;
-  wire comp_ana_low_axi_preview;
-  wire [19:0]comp_ana_low_axi_preview_data;
+  wire comp_ana_low_axi_empty;
+  wire comp_ana_low_axi_pending;
+  wire [19:0]comp_ana_low_axi_timestamp;
   wire comp_ana_low_axi_wr;
   wire comp_high_active;
   wire [15:0]comp_high_angle;
@@ -658,14 +662,18 @@ module ps
         .M_AXI_WVALID(axi_int_0_M_AXI_WVALID),
         .clk(ddr4_0_c0_ddr4_ui_clk),
         .high_data(comp_ana_high_axi_data),
-        .high_preview(comp_ana_high_axi_preview),
-        .high_preview_data(comp_ana_high_axi_preview_data),
-        .high_remain_count(axi_int_0_high_remain_count),
+        .high_empty(comp_ana_high_axi_empty),
+        .high_full(axi_int_0_high_full),
+        .high_pending(comp_ana_high_axi_pending),
+        .high_rd(axi_int_0_high_rd),
+        .high_timestamp(comp_ana_high_axi_timestamp),
         .high_wr(comp_ana_high_axi_wr),
         .low_data(comp_ana_low_axi_data),
-        .low_preview(comp_ana_low_axi_preview),
-        .low_preview_data(comp_ana_low_axi_preview_data),
-        .low_remain_count(axi_int_0_low_remain_count),
+        .low_empty(comp_ana_low_axi_empty),
+        .low_full(axi_int_0_low_full),
+        .low_pending(comp_ana_low_axi_pending),
+        .low_rd(axi_int_0_low_rd),
+        .low_timestamp(comp_ana_low_axi_timestamp),
         .low_wr(comp_ana_low_axi_wr),
         .resetn(proc_sys_reset_0_peripheral_aresetn),
         .up(ddr4_0_c0_init_calib_complete));
@@ -834,9 +842,11 @@ module ps
   ps_comp_ana_0_1 comp_ana_high
        (.axi_clk(ddr4_0_c0_ddr4_ui_clk),
         .axi_data(comp_ana_high_axi_data),
-        .axi_preview(comp_ana_high_axi_preview),
-        .axi_preview_data(comp_ana_high_axi_preview_data),
-        .axi_remain_count(axi_int_0_high_remain_count),
+        .axi_empty(comp_ana_high_axi_empty),
+        .axi_full(axi_int_0_high_full),
+        .axi_pending(comp_ana_high_axi_pending),
+        .axi_rd(axi_int_0_high_rd),
+        .axi_timestamp(comp_ana_high_axi_timestamp),
         .axi_wr(comp_ana_high_axi_wr),
         .clk(mts_0_comp_ana1_clk),
         .config_adr(adc_control_0_config_adr),
@@ -858,9 +868,11 @@ module ps
   ps_comp_ana_0_0 comp_ana_low
        (.axi_clk(ddr4_0_c0_ddr4_ui_clk),
         .axi_data(comp_ana_low_axi_data),
-        .axi_preview(comp_ana_low_axi_preview),
-        .axi_preview_data(comp_ana_low_axi_preview_data),
-        .axi_remain_count(axi_int_0_low_remain_count),
+        .axi_empty(comp_ana_low_axi_empty),
+        .axi_full(axi_int_0_low_full),
+        .axi_pending(comp_ana_low_axi_pending),
+        .axi_rd(axi_int_0_low_rd),
+        .axi_timestamp(comp_ana_low_axi_timestamp),
         .axi_wr(comp_ana_low_axi_wr),
         .clk(mts_0_comp_ana0_clk),
         .config_adr(adc_control_0_config_adr),

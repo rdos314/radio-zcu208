@@ -3931,21 +3931,25 @@
               }
             }
           },
-          "axi_remain_count": {
-            "direction": "I",
-            "left": "8",
-            "right": "0"
-          },
-          "axi_preview": {
-            "direction": "O"
-          },
-          "axi_preview_data": {
-            "direction": "O",
-            "left": "19",
-            "right": "0"
+          "axi_rd": {
+            "direction": "I"
           },
           "axi_wr": {
             "direction": "O"
+          },
+          "axi_empty": {
+            "direction": "I"
+          },
+          "axi_full": {
+            "direction": "I"
+          },
+          "axi_pending": {
+            "direction": "O"
+          },
+          "axi_timestamp": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
           },
           "axi_data": {
             "direction": "O",
@@ -4107,21 +4111,25 @@
               }
             }
           },
-          "axi_remain_count": {
-            "direction": "I",
-            "left": "8",
-            "right": "0"
-          },
-          "axi_preview": {
-            "direction": "O"
-          },
-          "axi_preview_data": {
-            "direction": "O",
-            "left": "19",
-            "right": "0"
+          "axi_rd": {
+            "direction": "I"
           },
           "axi_wr": {
             "direction": "O"
+          },
+          "axi_empty": {
+            "direction": "I"
+          },
+          "axi_full": {
+            "direction": "I"
+          },
+          "axi_pending": {
+            "direction": "O"
+          },
+          "axi_timestamp": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
           },
           "axi_data": {
             "direction": "O",
@@ -4539,42 +4547,50 @@
               }
             }
           },
-          "low_remain_count": {
-            "direction": "O",
-            "left": "8",
-            "right": "0"
-          },
-          "low_preview": {
-            "direction": "I"
-          },
-          "low_preview_data": {
-            "direction": "I",
-            "left": "19",
-            "right": "0"
+          "low_rd": {
+            "direction": "O"
           },
           "low_wr": {
             "direction": "I"
+          },
+          "low_empty": {
+            "direction": "O"
+          },
+          "low_full": {
+            "direction": "O"
+          },
+          "low_pending": {
+            "direction": "I"
+          },
+          "low_timestamp": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
           },
           "low_data": {
             "direction": "I",
             "left": "255",
             "right": "0"
           },
-          "high_remain_count": {
-            "direction": "O",
-            "left": "8",
-            "right": "0"
-          },
-          "high_preview": {
-            "direction": "I"
-          },
-          "high_preview_data": {
-            "direction": "I",
-            "left": "19",
-            "right": "0"
+          "high_rd": {
+            "direction": "O"
           },
           "high_wr": {
             "direction": "I"
+          },
+          "high_empty": {
+            "direction": "O"
+          },
+          "high_full": {
+            "direction": "O"
+          },
+          "high_pending": {
+            "direction": "I"
+          },
+          "high_timestamp": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
           },
           "high_data": {
             "direction": "I",
@@ -4759,8 +4775,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_high/config_adr",
-          "comp_ana_low/config_adr"
+          "comp_ana_low/config_adr",
+          "comp_ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -4768,8 +4784,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_high/config_data",
-          "comp_ana_low/config_data"
+          "comp_ana_low/config_data",
+          "comp_ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -4986,16 +5002,28 @@
           "adc_control_0/data_in"
         ]
       },
-      "axi_int_0_high_remain_count": {
+      "axi_int_0_high_full": {
         "ports": [
-          "axi_int_0/high_remain_count",
-          "comp_ana_high/axi_remain_count"
+          "axi_int_0/high_full",
+          "comp_ana_high/axi_full"
         ]
       },
-      "axi_int_0_low_remain_count": {
+      "axi_int_0_high_rd": {
         "ports": [
-          "axi_int_0/low_remain_count",
-          "comp_ana_low/axi_remain_count"
+          "axi_int_0/high_rd",
+          "comp_ana_high/axi_rd"
+        ]
+      },
+      "axi_int_0_low_full": {
+        "ports": [
+          "axi_int_0/low_full",
+          "comp_ana_low/axi_full"
+        ]
+      },
+      "axi_int_0_low_rd": {
+        "ports": [
+          "axi_int_0/low_rd",
+          "comp_ana_low/axi_rd"
         ]
       },
       "comp_ana_high_axi_data": {
@@ -5004,16 +5032,22 @@
           "axi_int_0/high_data"
         ]
       },
-      "comp_ana_high_axi_preview": {
+      "comp_ana_high_axi_empty": {
         "ports": [
-          "comp_ana_high/axi_preview",
-          "axi_int_0/high_preview"
+          "axi_int_0/high_empty",
+          "comp_ana_high/axi_empty"
         ]
       },
-      "comp_ana_high_axi_preview_data": {
+      "comp_ana_high_axi_pending": {
         "ports": [
-          "comp_ana_high/axi_preview_data",
-          "axi_int_0/high_preview_data"
+          "comp_ana_high/axi_pending",
+          "axi_int_0/high_pending"
+        ]
+      },
+      "comp_ana_high_axi_timestamp": {
+        "ports": [
+          "comp_ana_high/axi_timestamp",
+          "axi_int_0/high_timestamp"
         ]
       },
       "comp_ana_high_axi_wr": {
@@ -5028,16 +5062,22 @@
           "axi_int_0/low_data"
         ]
       },
-      "comp_ana_low_axi_preview": {
+      "comp_ana_low_axi_empty": {
         "ports": [
-          "comp_ana_low/axi_preview",
-          "axi_int_0/low_preview"
+          "axi_int_0/low_empty",
+          "comp_ana_low/axi_empty"
         ]
       },
-      "comp_ana_low_axi_preview_data": {
+      "comp_ana_low_axi_pending": {
         "ports": [
-          "comp_ana_low/axi_preview_data",
-          "axi_int_0/low_preview_data"
+          "comp_ana_low/axi_pending",
+          "axi_int_0/low_pending"
+        ]
+      },
+      "comp_ana_low_axi_timestamp": {
+        "ports": [
+          "comp_ana_low/axi_timestamp",
+          "axi_int_0/low_timestamp"
         ]
       },
       "comp_ana_low_axi_wr": {
@@ -5161,8 +5201,8 @@
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
           "axi_int_0/clk",
-          "comp_ana_high/axi_clk",
-          "comp_ana_low/axi_clk"
+          "comp_ana_low/axi_clk",
+          "comp_ana_high/axi_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -5714,10 +5754,10 @@
           "deci_low/sim_clk",
           "adc_control_0/clk",
           "mts_0/axi_clk",
-          "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk",
           "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk"
+          "comp_ana_low/pl_clk",
+          "comp_ana_high/config_clk",
+          "comp_ana_high/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

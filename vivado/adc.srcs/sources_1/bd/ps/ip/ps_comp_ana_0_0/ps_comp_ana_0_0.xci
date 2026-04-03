@@ -54,10 +54,12 @@
         "clk": [ { "direction": "in" } ],
         "reset": [ { "direction": "in" } ],
         "axi_clk": [ { "direction": "in" } ],
-        "axi_remain_count": [ { "direction": "in", "size_left": "8", "size_right": "0" } ],
-        "axi_preview": [ { "direction": "out" } ],
-        "axi_preview_data": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
+        "axi_rd": [ { "direction": "in" } ],
         "axi_wr": [ { "direction": "out" } ],
+        "axi_empty": [ { "direction": "in" } ],
+        "axi_full": [ { "direction": "in" } ],
+        "axi_pending": [ { "direction": "out" } ],
+        "axi_timestamp": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
         "axi_data": [ { "direction": "out", "size_left": "255", "size_right": "0" } ]
       },
       "interfaces": {
