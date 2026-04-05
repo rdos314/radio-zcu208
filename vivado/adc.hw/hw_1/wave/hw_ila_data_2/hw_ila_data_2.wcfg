@@ -9,15 +9,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,042"></ZoomStartTime>
-      <ZoomEndTime time="1,067"></ZoomEndTime>
-      <Cursor1Time time="1,685"></Cursor1Time>
+      <ZoomStartTime time="2,024"></ZoomStartTime>
+      <ZoomEndTime time="2,049"></ZoomEndTime>
+      <Cursor1Time time="1,024"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="161"></NameColumnWidth>
+      <NameColumnWidth column_width="153"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="35" />
+   <WVObjectSize size="34" />
    <wave_markers>
    </wave_markers>
    <wvobject type="array" fp_name="ps_i/axi_int_0/inst/high_blocks">
@@ -217,14 +217,6 @@
       <obj_property name="ElementShortName">ps_i/axi_int_0/inst/high_phase_2[15:0]</obj_property>
       <obj_property name="ObjectShortName">high_phase_2[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/axi_int_0/inst/high_data">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/axi_int_0/inst/high_data[63:0]</obj_property>
-      <obj_property name="ObjectShortName">high_data[63:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

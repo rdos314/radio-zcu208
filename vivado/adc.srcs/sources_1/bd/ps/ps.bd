@@ -3948,7 +3948,7 @@
           },
           "axi_timestamp": {
             "direction": "O",
-            "left": "19",
+            "left": "21",
             "right": "0"
           },
           "axi_data": {
@@ -4128,7 +4128,7 @@
           },
           "axi_timestamp": {
             "direction": "O",
-            "left": "19",
+            "left": "21",
             "right": "0"
           },
           "axi_data": {
@@ -4564,7 +4564,7 @@
           },
           "low_timestamp": {
             "direction": "I",
-            "left": "19",
+            "left": "21",
             "right": "0"
           },
           "low_data": {
@@ -4589,7 +4589,7 @@
           },
           "high_timestamp": {
             "direction": "I",
-            "left": "19",
+            "left": "21",
             "right": "0"
           },
           "high_data": {
@@ -5753,11 +5753,11 @@
           "deci_high/sim_clk",
           "deci_low/sim_clk",
           "adc_control_0/clk",
-          "mts_0/axi_clk",
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk"
+          "comp_ana_high/pl_clk",
+          "mts_0/axi_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

@@ -124,7 +124,7 @@ output wire axi_wr;
 input wire axi_empty;
 input wire axi_full;
 output wire axi_pending;
-output wire [19 : 0] axi_timestamp;
+output wire [21 : 0] axi_timestamp;
 output wire [255 : 0] axi_data;
 
   comp_ana inst (

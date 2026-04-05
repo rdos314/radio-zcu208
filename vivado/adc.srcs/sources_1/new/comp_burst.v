@@ -761,7 +761,7 @@ generate
             begin
                 axi_data <= fifo_data;
                 axi_wr <= 1;
-                blocks <= {fifo_data[71:64], 1'b0};
+                blocks <= {fifo_data[71:64], 1'b1};
             end
             else
             begin

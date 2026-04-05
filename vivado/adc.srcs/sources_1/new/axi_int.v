@@ -28,7 +28,7 @@ module axi_int(
 	output wire low_empty,
 	output wire low_full,
 	input wire low_pending,
-	input wire [19:0] low_timestamp,
+	input wire [21:0] low_timestamp,
 	input wire [255:0] low_data,
 	
 	output reg high_rd,
@@ -36,7 +36,7 @@ module axi_int(
 	output wire high_empty,
 	output wire high_full,
 	input wire high_pending,
-	input wire [19:0] high_timestamp,
+	input wire [21:0] high_timestamp,
 	input wire [255:0] high_data,
 
     input wire up,
@@ -209,7 +209,7 @@ module axi_int(
 		.probe2(low_empty),           // input wire [0:0]  probe3
 		.probe3(low_pending),         // input wire [0:0]  probe3
 		.probe4(low_blocks),          // input wire [13:0]  probe3
-		.probe5(low_data[63:0]),      // input wire [63:0]  probe3
+		.probe5(low_timestamp),       // input wire [21:0]  probe3
 		.probe6(low_hdr_sample),      // input wire [63:0]  probe3
 		.probe7(low_hdr_blocks),      // input wire [7:0]  probe3
 		.probe8(low_hdr_flags),       // input wire [7:0]  probe3
@@ -248,7 +248,7 @@ module axi_int(
 		.probe2(high_empty),           // input wire [0:0]  probe3
 		.probe3(high_pending),         // input wire [0:0]  probe3
 		.probe4(high_blocks),          // input wire [13:0]  probe3
-		.probe5(high_data[63:0]),      // input wire [63:0]  probe3
+		.probe5(high_timestamp),       // input wire [21:0]  probe3
 		.probe6(high_hdr_sample),      // input wire [63:0]  probe3
 		.probe7(high_hdr_blocks),      // input wire [7:0]  probe3
 		.probe8(high_hdr_flags),       // input wire [7:0]  probe3

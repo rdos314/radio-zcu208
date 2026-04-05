@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Fri Apr  3 15:13:52 2026
+-- Date        : Sat Apr  4 00:14:19 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.vhdl
@@ -18536,14 +18536,14 @@ entity ps_axi_int_0_0_axi_int is
     low_empty : out STD_LOGIC;
     low_full : out STD_LOGIC;
     low_pending : in STD_LOGIC;
-    low_timestamp : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    low_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     low_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
     high_rd : out STD_LOGIC;
     high_wr : in STD_LOGIC;
     high_empty : out STD_LOGIC;
     high_full : out STD_LOGIC;
     high_pending : in STD_LOGIC;
-    high_timestamp : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    high_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     high_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
     up : in STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -18602,7 +18602,7 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe33 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe34 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 21 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -18617,7 +18617,7 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 21 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -41975,7 +41975,7 @@ ila_high_i: component ila_6_HD22
       probe33(0) => high_phase_6(0),
       probe34(0) => high_phase_7(0),
       probe4(13 downto 0) => high_blocks(13 downto 0),
-      probe5(63 downto 0) => high_data(63 downto 0),
+      probe5(21 downto 0) => high_timestamp(21 downto 0),
       probe6(63 downto 0) => high_hdr_sample(63 downto 0),
       probe7(7 downto 0) => high_hdr_blocks(7 downto 0),
       probe8(7 downto 0) => high_hdr_flags(7 downto 0),
@@ -42014,7 +42014,7 @@ ila_low_i: component ps_axi_int_0_0_ila_6
       probe33(0) => low_phase_6(0),
       probe34(0) => low_phase_7(0),
       probe4(13 downto 0) => low_blocks(13 downto 0),
-      probe5(63 downto 0) => low_data(63 downto 0),
+      probe5(21 downto 0) => low_timestamp(21 downto 0),
       probe6(63 downto 0) => low_hdr_sample(63 downto 0),
       probe7(7 downto 0) => low_hdr_blocks(7 downto 0),
       probe8(7 downto 0) => low_hdr_flags(7 downto 0),
@@ -42034,14 +42034,14 @@ entity ps_axi_int_0_0 is
     low_empty : out STD_LOGIC;
     low_full : out STD_LOGIC;
     low_pending : in STD_LOGIC;
-    low_timestamp : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    low_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     low_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
     high_rd : out STD_LOGIC;
     high_wr : in STD_LOGIC;
     high_empty : out STD_LOGIC;
     high_full : out STD_LOGIC;
     high_pending : in STD_LOGIC;
-    high_timestamp : in STD_LOGIC_VECTOR ( 19 downto 0 );
+    high_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     high_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
     up : in STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -42481,14 +42481,14 @@ inst: entity work.ps_axi_int_0_0_axi_int
       high_full => high_full,
       high_pending => high_pending,
       high_rd => high_rd,
-      high_timestamp(19 downto 0) => B"00000000000000000000",
+      high_timestamp(21 downto 0) => high_timestamp(21 downto 0),
       high_wr => high_wr,
       low_data(255 downto 0) => low_data(255 downto 0),
       low_empty => low_empty,
       low_full => low_full,
       low_pending => low_pending,
       low_rd => low_rd,
-      low_timestamp(19 downto 0) => B"00000000000000000000",
+      low_timestamp(21 downto 0) => low_timestamp(21 downto 0),
       low_wr => low_wr,
       resetn => resetn,
       up => '0'

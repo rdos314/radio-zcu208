@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri Apr  3 21:23:35 2026
+// Date        : Sun Apr  5 00:33:33 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_1/ps_comp_ana_0_1_sim_netlist.v
@@ -117,7 +117,7 @@ module ps_comp_ana_0_1
   input axi_empty;
   input axi_full;
   output axi_pending;
-  output [19:0]axi_timestamp;
+  output [21:0]axi_timestamp;
   output [255:0]axi_data;
 
   wire axi_clk;
@@ -126,7 +126,7 @@ module ps_comp_ana_0_1
   wire axi_full;
   wire axi_pending;
   wire axi_rd;
-  wire [19:0]axi_timestamp;
+  wire [21:0]axi_timestamp;
   wire axi_wr;
   wire clk;
   wire [7:0]config_adr;
@@ -53822,7 +53822,7 @@ module ps_comp_ana_0_1_comp_ana
   input axi_empty;
   input axi_full;
   output axi_pending;
-  output [19:0]axi_timestamp;
+  output [21:0]axi_timestamp;
   output [255:0]axi_data;
 
   (* MARK_DEBUG *) wire ana_empty;
@@ -53892,8 +53892,8 @@ module ps_comp_ana_0_1_comp_ana
   wire [127:0]\axi_stat_data[6] ;
   (* MARK_DEBUG *) wire axi_stat_prepare;
   (* MARK_DEBUG *) wire axi_stat_run;
-  wire axi_stat_run7_out;
   (* MARK_DEBUG *) wire axi_stat_wr;
+  wire axi_stat_wr4_out;
   wire [1:0]axi_state;
   wire [1:0]axi_state_01;
   wire [1:0]axi_state_03;
@@ -53901,7 +53901,7 @@ module ps_comp_ana_0_1_comp_ana
   wire [1:0]axi_state_45;
   wire [1:0]axi_state_46;
   wire axi_state_6;
-  (* MARK_DEBUG *) wire [19:0]axi_timestamp;
+  (* MARK_DEBUG *) wire [21:0]axi_timestamp;
   (* MARK_DEBUG *) wire axi_wr;
   wire axi_wr_1;
   wire axi_wr_2;
@@ -54708,7 +54708,6 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.axi_diff_reg[19]_i_3_n_7 ;
   wire \comp_ana.axi_get[6]_i_2_n_0 ;
   wire \comp_ana.axi_has_space_i_1_n_0 ;
-  wire \comp_ana.axi_has_space_i_2_n_0 ;
   wire \comp_ana.axi_ind[0]_i_1_n_0 ;
   wire \comp_ana.axi_ind[1]_i_1_n_0 ;
   wire \comp_ana.axi_ind[2]_i_1_n_0 ;
@@ -54784,8 +54783,6 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.axi_space[4]_i_4_n_0 ;
   wire \comp_ana.axi_space[5]_i_1_n_0 ;
   wire \comp_ana.axi_space[5]_i_2_n_0 ;
-  wire \comp_ana.axi_space[5]_i_3_n_0 ;
-  wire \comp_ana.axi_space[5]_i_4_n_0 ;
   wire \comp_ana.axi_space[6]_i_1_n_0 ;
   wire \comp_ana.axi_space[6]_i_2_n_0 ;
   wire \comp_ana.axi_space[6]_i_3_n_0 ;
@@ -54796,18 +54793,17 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.axi_space[8]_i_2_n_0 ;
   wire \comp_ana.axi_space[8]_i_3_n_0 ;
   wire \comp_ana.axi_space[8]_i_4_n_0 ;
+  wire \comp_ana.axi_space[8]_i_5_n_0 ;
   wire \comp_ana.axi_space[9]_i_1_n_0 ;
   wire \comp_ana.axi_space[9]_i_2_n_0 ;
   wire \comp_ana.axi_stat_prepare_i_1_n_0 ;
   wire \comp_ana.axi_stat_prepare_i_2_n_0 ;
   wire \comp_ana.axi_stat_prepare_i_3_n_0 ;
   wire \comp_ana.axi_stat_run_i_1_n_0 ;
+  wire \comp_ana.axi_stat_run_i_2_n_0 ;
   wire \comp_ana.axi_stat_run_i_3_n_0 ;
-  wire \comp_ana.axi_stat_run_i_4_n_0 ;
   wire \comp_ana.axi_stat_wr_i_1_n_0 ;
   wire \comp_ana.axi_timestamp[0]_i_1_n_0 ;
-  wire \comp_ana.axi_timestamp[0]_i_2_n_0 ;
-  wire \comp_ana.axi_timestamp[0]_i_3_n_0 ;
   wire \comp_ana.axi_timestamp[10]_i_1_n_0 ;
   wire \comp_ana.axi_timestamp[10]_i_2_n_0 ;
   wire \comp_ana.axi_timestamp[10]_i_3_n_0 ;
@@ -54838,12 +54834,16 @@ module ps_comp_ana_0_1_comp_ana
   wire \comp_ana.axi_timestamp[19]_i_1_n_0 ;
   wire \comp_ana.axi_timestamp[19]_i_2_n_0 ;
   wire \comp_ana.axi_timestamp[19]_i_3_n_0 ;
-  wire \comp_ana.axi_timestamp[19]_i_4_n_0 ;
-  wire \comp_ana.axi_timestamp[19]_i_5_n_0 ;
-  wire \comp_ana.axi_timestamp[19]_i_6_n_0 ;
   wire \comp_ana.axi_timestamp[1]_i_1_n_0 ;
-  wire \comp_ana.axi_timestamp[1]_i_2_n_0 ;
-  wire \comp_ana.axi_timestamp[1]_i_3_n_0 ;
+  wire \comp_ana.axi_timestamp[20]_i_1_n_0 ;
+  wire \comp_ana.axi_timestamp[20]_i_2_n_0 ;
+  wire \comp_ana.axi_timestamp[20]_i_3_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_1_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_2_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_3_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_4_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_5_n_0 ;
+  wire \comp_ana.axi_timestamp[21]_i_6_n_0 ;
   wire \comp_ana.axi_timestamp[2]_i_1_n_0 ;
   wire \comp_ana.axi_timestamp[2]_i_2_n_0 ;
   wire \comp_ana.axi_timestamp[2]_i_3_n_0 ;
@@ -62055,22 +62055,22 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\comp_ana.axi_diff[19]_i_31_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_10_n_0 ));
   LUT5 #(
-    .INIT(32'h0FAC00AC)) 
+    .INIT(32'h0FCA00CA)) 
     \comp_ana.axi_diff[19]_i_12 
-       (.I0(\axi_pos[6] [15]),
-        .I1(\axi_pos[4]__0 [15]),
+       (.I0(\axi_pos[4]__0 [15]),
+        .I1(\axi_pos[6] [15]),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
         .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I4(\axi_pos[5]__0 [15]),
         .O(axi_diff1[15]));
   LUT5 #(
-    .INIT(32'h0FAC00AC)) 
+    .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_13 
        (.I0(\axi_pos[6] [14]),
-        .I1(\axi_pos[4]__0 [14]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I4(\axi_pos[5]__0 [14]),
+        .I1(\axi_pos[5]__0 [14]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I4(\axi_pos[4]__0 [14]),
         .O(axi_diff1[14]));
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
@@ -62100,49 +62100,49 @@ module ps_comp_ana_0_1_comp_ana
         .I4(\axi_pos[5]__0 [11]),
         .O(axi_diff1[11]));
   LUT5 #(
-    .INIT(32'h0FCA00CA)) 
+    .INIT(32'h0FAC00AC)) 
     \comp_ana.axi_diff[19]_i_17 
-       (.I0(\axi_pos[4]__0 [10]),
-        .I1(\axi_pos[6] [10]),
+       (.I0(\axi_pos[6] [10]),
+        .I1(\axi_pos[4]__0 [10]),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
         .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I4(\axi_pos[5]__0 [10]),
         .O(axi_diff1[10]));
   LUT5 #(
-    .INIT(32'h0FAC00AC)) 
+    .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_18 
        (.I0(\axi_pos[6] [9]),
-        .I1(\axi_pos[4]__0 [9]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I4(\axi_pos[5]__0 [9]),
+        .I1(\axi_pos[5]__0 [9]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I4(\axi_pos[4]__0 [9]),
         .O(axi_diff1[9]));
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_19 
-       (.I0(\axi_pos[6] [8]),
-        .I1(\axi_pos[5]__0 [8]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+       (.I0(\axi_pos[5]__0 [8]),
+        .I1(\axi_pos[6] [8]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I4(\axi_pos[4]__0 [8]),
         .O(axi_diff1[8]));
   LUT6 #(
-    .INIT(64'hC4C7F4F73B380B08)) 
+    .INIT(64'hC4F4C7F73B0B3808)) 
     \comp_ana.axi_diff[19]_i_20 
        (.I0(\axi_pos[5]__0 [15]),
         .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[4]__0 [15]),
-        .I4(\axi_pos[6] [15]),
+        .I3(\axi_pos[6] [15]),
+        .I4(\axi_pos[4]__0 [15]),
         .I5(\comp_ana.axi_diff[19]_i_48_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_20_n_0 ));
   LUT6 #(
-    .INIT(64'hC4C7F4F73B380B08)) 
+    .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_21 
-       (.I0(\axi_pos[5]__0 [14]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[4]__0 [14]),
+       (.I0(\axi_pos[4]__0 [14]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\axi_pos[5]__0 [14]),
         .I4(\axi_pos[6] [14]),
         .I5(\comp_ana.axi_diff[19]_i_49_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_21_n_0 ));
@@ -62177,22 +62177,22 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\comp_ana.axi_diff[19]_i_52_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_24_n_0 ));
   LUT6 #(
-    .INIT(64'hC4F4C7F73B0B3808)) 
+    .INIT(64'hC4C7F4F73B380B08)) 
     \comp_ana.axi_diff[19]_i_25 
        (.I0(\axi_pos[5]__0 [10]),
         .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[6] [10]),
-        .I4(\axi_pos[4]__0 [10]),
+        .I3(\axi_pos[4]__0 [10]),
+        .I4(\axi_pos[6] [10]),
         .I5(\comp_ana.axi_diff[19]_i_53_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_25_n_0 ));
   LUT6 #(
-    .INIT(64'hC4C7F4F73B380B08)) 
+    .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_26 
-       (.I0(\axi_pos[5]__0 [9]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[4]__0 [9]),
+       (.I0(\axi_pos[4]__0 [9]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\axi_pos[5]__0 [9]),
         .I4(\axi_pos[6] [9]),
         .I5(\comp_ana.axi_diff[19]_i_54_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_26_n_0 ));
@@ -62200,18 +62200,18 @@ module ps_comp_ana_0_1_comp_ana
     .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_27 
        (.I0(\axi_pos[4]__0 [8]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\axi_pos[5]__0 [8]),
-        .I4(\axi_pos[6] [8]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\axi_pos[6] [8]),
+        .I4(\axi_pos[5]__0 [8]),
         .I5(\comp_ana.axi_diff[19]_i_55_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_27_n_0 ));
   LUT6 #(
-    .INIT(64'hCCAAFFF0CCAA00F0)) 
+    .INIT(64'hF0CCFFAAF0CC00AA)) 
     \comp_ana.axi_diff[19]_i_28 
-       (.I0(\axi_pos[1] [19]),
-        .I1(\axi_pos[3] [19]),
-        .I2(\axi_pos[0] [19]),
+       (.I0(\axi_pos[0] [19]),
+        .I1(\axi_pos[1] [19]),
+        .I2(\axi_pos[3] [19]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
         .I5(\axi_pos[2] [19]),
@@ -62237,14 +62237,14 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [17]),
         .O(\comp_ana.axi_diff[19]_i_30_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h0055330FFF55330F)) 
     \comp_ana.axi_diff[19]_i_31 
-       (.I0(\axi_pos[0] [16]),
-        .I1(\axi_pos[1] [16]),
-        .I2(\axi_pos[3] [16]),
+       (.I0(\axi_pos[1] [16]),
+        .I1(\axi_pos[2] [16]),
+        .I2(\axi_pos[0] [16]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[2] [16]),
+        .I5(\axi_pos[3] [16]),
         .O(\comp_ana.axi_diff[19]_i_31_n_0 ));
   LUT5 #(
     .INIT(32'h0FCA00CA)) 
@@ -62258,10 +62258,10 @@ module ps_comp_ana_0_1_comp_ana
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_33 
-       (.I0(\axi_pos[6] [6]),
-        .I1(\axi_pos[5]__0 [6]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+       (.I0(\axi_pos[5]__0 [6]),
+        .I1(\axi_pos[6] [6]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I4(\axi_pos[4]__0 [6]),
         .O(axi_diff1[6]));
   LUT5 #(
@@ -62285,38 +62285,38 @@ module ps_comp_ana_0_1_comp_ana
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_36 
-       (.I0(\axi_pos[6] [3]),
-        .I1(\axi_pos[5]__0 [3]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+       (.I0(\axi_pos[5]__0 [3]),
+        .I1(\axi_pos[6] [3]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I4(\axi_pos[4]__0 [3]),
         .O(axi_diff1[3]));
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_37 
-       (.I0(\axi_pos[5]__0 [2]),
-        .I1(\axi_pos[6] [2]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+       (.I0(\axi_pos[6] [2]),
+        .I1(\axi_pos[5]__0 [2]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
         .I4(\axi_pos[4]__0 [2]),
         .O(axi_diff1[2]));
   LUT5 #(
     .INIT(32'h0ACF0AC0)) 
     \comp_ana.axi_diff[19]_i_38 
-       (.I0(\axi_pos[5]__0 [1]),
-        .I1(\axi_pos[6] [1]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+       (.I0(\axi_pos[6] [1]),
+        .I1(\axi_pos[5]__0 [1]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
         .I4(\axi_pos[4]__0 [1]),
         .O(axi_diff1[1]));
   LUT5 #(
-    .INIT(32'h0ACF0AC0)) 
+    .INIT(32'h0FAC00AC)) 
     \comp_ana.axi_diff[19]_i_39 
-       (.I0(\axi_pos[5]__0 [0]),
-        .I1(\axi_pos[6] [0]),
+       (.I0(\axi_pos[6] [0]),
+        .I1(\axi_pos[4]__0 [0]),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
         .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I4(\axi_pos[4]__0 [0]),
+        .I4(\axi_pos[5]__0 [0]),
         .O(axi_diff1[0]));
   LUT5 #(
     .INIT(32'h0FCA00CA)) 
@@ -62341,10 +62341,10 @@ module ps_comp_ana_0_1_comp_ana
     .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_41 
        (.I0(\axi_pos[4]__0 [6]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\axi_pos[5]__0 [6]),
-        .I4(\axi_pos[6] [6]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\axi_pos[6] [6]),
+        .I4(\axi_pos[5]__0 [6]),
         .I5(\comp_ana.axi_diff[19]_i_57_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_41_n_0 ));
   LUT6 #(
@@ -62371,40 +62371,40 @@ module ps_comp_ana_0_1_comp_ana
     .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_44 
        (.I0(\axi_pos[4]__0 [3]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\axi_pos[5]__0 [3]),
-        .I4(\axi_pos[6] [3]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\axi_pos[6] [3]),
+        .I4(\axi_pos[5]__0 [3]),
         .I5(\comp_ana.axi_diff[19]_i_60_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_44_n_0 ));
   LUT6 #(
     .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_45 
        (.I0(\axi_pos[4]__0 [2]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[6] [2]),
-        .I4(\axi_pos[5]__0 [2]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\axi_pos[5]__0 [2]),
+        .I4(\axi_pos[6] [2]),
         .I5(\comp_ana.axi_diff[19]_i_61_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_45_n_0 ));
   LUT6 #(
     .INIT(64'hC1F1CDFD3E0E3202)) 
     \comp_ana.axi_diff[19]_i_46 
        (.I0(\axi_pos[4]__0 [1]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[6] [1]),
-        .I4(\axi_pos[5]__0 [1]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I3(\axi_pos[5]__0 [1]),
+        .I4(\axi_pos[6] [1]),
         .I5(\comp_ana.axi_diff[19]_i_62_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_46_n_0 ));
   LUT6 #(
-    .INIT(64'hC1F1CDFD3E0E3202)) 
+    .INIT(64'hC4C7F4F73B380B08)) 
     \comp_ana.axi_diff[19]_i_47 
-       (.I0(\axi_pos[4]__0 [0]),
+       (.I0(\axi_pos[5]__0 [0]),
         .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
         .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I3(\axi_pos[6] [0]),
-        .I4(\axi_pos[5]__0 [0]),
+        .I3(\axi_pos[4]__0 [0]),
+        .I4(\axi_pos[6] [0]),
         .I5(\comp_ana.axi_diff[19]_i_63_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_47_n_0 ));
   LUT6 #(
@@ -62418,23 +62418,23 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [15]),
         .O(\comp_ana.axi_diff[19]_i_48_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h00330F55FF330F55)) 
     \comp_ana.axi_diff[19]_i_49 
        (.I0(\axi_pos[0] [14]),
         .I1(\axi_pos[1] [14]),
-        .I2(\axi_pos[3] [14]),
+        .I2(\axi_pos[2] [14]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[2] [14]),
+        .I5(\axi_pos[3] [14]),
         .O(\comp_ana.axi_diff[19]_i_49_n_0 ));
   LUT5 #(
-    .INIT(32'h0ACF0AC0)) 
+    .INIT(32'h0FAC00AC)) 
     \comp_ana.axi_diff[19]_i_5 
        (.I0(\axi_pos[6] [17]),
-        .I1(\axi_pos[5]__0 [17]),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I4(\axi_pos[4]__0 [17]),
+        .I1(\axi_pos[4]__0 [17]),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I4(\axi_pos[5]__0 [17]),
         .O(axi_diff1[17]));
   LUT6 #(
     .INIT(64'h0055330FFF55330F)) 
@@ -62447,24 +62447,24 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [13]),
         .O(\comp_ana.axi_diff[19]_i_50_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h3355000F3355FF0F)) 
     \comp_ana.axi_diff[19]_i_51 
-       (.I0(\axi_pos[0] [12]),
-        .I1(\axi_pos[1] [12]),
-        .I2(\axi_pos[3] [12]),
+       (.I0(\axi_pos[1] [12]),
+        .I1(\axi_pos[3] [12]),
+        .I2(\axi_pos[0] [12]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
         .I5(\axi_pos[2] [12]),
         .O(\comp_ana.axi_diff[19]_i_51_n_0 ));
   LUT6 #(
-    .INIT(64'h3355000F3355FF0F)) 
+    .INIT(64'h0055330FFF55330F)) 
     \comp_ana.axi_diff[19]_i_52 
        (.I0(\axi_pos[1] [11]),
-        .I1(\axi_pos[3] [11]),
+        .I1(\axi_pos[2] [11]),
         .I2(\axi_pos[0] [11]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[2] [11]),
+        .I5(\axi_pos[3] [11]),
         .O(\comp_ana.axi_diff[19]_i_52_n_0 ));
   LUT6 #(
     .INIT(64'h00330F55FF330F55)) 
@@ -62477,11 +62477,11 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [10]),
         .O(\comp_ana.axi_diff[19]_i_53_n_0 ));
   LUT6 #(
-    .INIT(64'h00330F55FF330F55)) 
+    .INIT(64'h0055330FFF55330F)) 
     \comp_ana.axi_diff[19]_i_54 
-       (.I0(\axi_pos[0] [9]),
-        .I1(\axi_pos[1] [9]),
-        .I2(\axi_pos[2] [9]),
+       (.I0(\axi_pos[1] [9]),
+        .I1(\axi_pos[2] [9]),
+        .I2(\axi_pos[0] [9]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
         .I5(\axi_pos[3] [9]),
@@ -62497,14 +62497,14 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [8]),
         .O(\comp_ana.axi_diff[19]_i_55_n_0 ));
   LUT6 #(
-    .INIT(64'h00330F55FF330F55)) 
+    .INIT(64'h0F3300550F33FF55)) 
     \comp_ana.axi_diff[19]_i_56 
        (.I0(\axi_pos[0] [7]),
         .I1(\axi_pos[1] [7]),
-        .I2(\axi_pos[2] [7]),
+        .I2(\axi_pos[3] [7]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[3] [7]),
+        .I5(\axi_pos[2] [7]),
         .O(\comp_ana.axi_diff[19]_i_56_n_0 ));
   LUT6 #(
     .INIT(64'h0055330FFF55330F)) 
@@ -62517,21 +62517,21 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[3] [6]),
         .O(\comp_ana.axi_diff[19]_i_57_n_0 ));
   LUT6 #(
-    .INIT(64'h0055330FFF55330F)) 
+    .INIT(64'h0F3300550F33FF55)) 
     \comp_ana.axi_diff[19]_i_58 
-       (.I0(\axi_pos[1] [5]),
-        .I1(\axi_pos[2] [5]),
-        .I2(\axi_pos[0] [5]),
+       (.I0(\axi_pos[0] [5]),
+        .I1(\axi_pos[1] [5]),
+        .I2(\axi_pos[3] [5]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[3] [5]),
+        .I5(\axi_pos[2] [5]),
         .O(\comp_ana.axi_diff[19]_i_58_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h3355000F3355FF0F)) 
     \comp_ana.axi_diff[19]_i_59 
-       (.I0(\axi_pos[0] [4]),
-        .I1(\axi_pos[1] [4]),
-        .I2(\axi_pos[3] [4]),
+       (.I0(\axi_pos[1] [4]),
+        .I1(\axi_pos[3] [4]),
+        .I2(\axi_pos[0] [4]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
         .I5(\axi_pos[2] [4]),
@@ -62556,34 +62556,34 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\axi_pos[2] [3]),
         .O(\comp_ana.axi_diff[19]_i_60_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h3355000F3355FF0F)) 
     \comp_ana.axi_diff[19]_i_61 
-       (.I0(\axi_pos[0] [2]),
-        .I1(\axi_pos[1] [2]),
-        .I2(\axi_pos[3] [2]),
+       (.I0(\axi_pos[1] [2]),
+        .I1(\axi_pos[3] [2]),
+        .I2(\axi_pos[0] [2]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
         .I5(\axi_pos[2] [2]),
         .O(\comp_ana.axi_diff[19]_i_61_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h00330F55FF330F55)) 
     \comp_ana.axi_diff[19]_i_62 
        (.I0(\axi_pos[0] [1]),
         .I1(\axi_pos[1] [1]),
-        .I2(\axi_pos[3] [1]),
+        .I2(\axi_pos[2] [1]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[2] [1]),
+        .I5(\axi_pos[3] [1]),
         .O(\comp_ana.axi_diff[19]_i_62_n_0 ));
   LUT6 #(
-    .INIT(64'h0F3300550F33FF55)) 
+    .INIT(64'h0055330FFF55330F)) 
     \comp_ana.axi_diff[19]_i_63 
-       (.I0(\axi_pos[0] [0]),
-        .I1(\axi_pos[1] [0]),
-        .I2(\axi_pos[3] [0]),
+       (.I0(\axi_pos[1] [0]),
+        .I1(\axi_pos[2] [0]),
+        .I2(\axi_pos[0] [0]),
         .I3(\comp_ana.axi_ind_03_reg_n_0_[1] ),
         .I4(\comp_ana.axi_ind_03_reg_n_0_[0] ),
-        .I5(\axi_pos[2] [0]),
+        .I5(\axi_pos[3] [0]),
         .O(\comp_ana.axi_diff[19]_i_63_n_0 ));
   LUT6 #(
     .INIT(64'h5A9A5A95559A5595)) 
@@ -62606,12 +62606,12 @@ module ps_comp_ana_0_1_comp_ana
         .I5(\comp_ana.axi_diff[19]_i_29_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hC1F1CDFD3E0E3202)) 
+    .INIT(64'hC4C7F4F73B380B08)) 
     \comp_ana.axi_diff[19]_i_9 
-       (.I0(\axi_pos[4]__0 [17]),
-        .I1(\comp_ana.axi_ind_46_reg_n_0_[1] ),
-        .I2(\comp_ana.axi_ind_46_reg_n_0_[0] ),
-        .I3(\axi_pos[5]__0 [17]),
+       (.I0(\axi_pos[5]__0 [17]),
+        .I1(\comp_ana.axi_ind_46_reg_n_0_[0] ),
+        .I2(\comp_ana.axi_ind_46_reg_n_0_[1] ),
+        .I3(\axi_pos[4]__0 [17]),
         .I4(\axi_pos[6] [17]),
         .I5(\comp_ana.axi_diff[19]_i_30_n_0 ),
         .O(\comp_ana.axi_diff[19]_i_9_n_0 ));
@@ -63811,15 +63811,15 @@ module ps_comp_ana_0_1_comp_ana
         .I2(axi_has_space),
         .I3(axi_margin[8]),
         .I4(axi_full),
-        .I5(\comp_ana.axi_has_space_i_2_n_0 ),
+        .I5(axi_stat_wr4_out),
         .O(\comp_ana.axi_has_space_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h80)) 
     \comp_ana.axi_has_space_i_2 
-       (.I0(axi_is_header),
+       (.I0(axi_stat_run),
         .I1(axi_part),
-        .I2(axi_stat_run),
-        .O(\comp_ana.axi_has_space_i_2_n_0 ));
+        .I2(axi_is_header),
+        .O(axi_stat_wr4_out));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_has_space_reg 
@@ -64328,17 +64328,18 @@ module ps_comp_ana_0_1_comp_ana
         .D(\comp_ana.axi_part_i_1_n_0 ),
         .Q(axi_part),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'hB)) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \comp_ana.axi_pending_i_1 
        (.I0(axi_ok),
         .I1(axi_empty),
+        .I2(axi_is_header),
         .O(\comp_ana.axi_pending_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_pending_reg 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_pending_i_1_n_0 ),
         .Q(axi_pending),
         .R(1'b0));
@@ -64352,7 +64353,7 @@ module ps_comp_ana_0_1_comp_ana
         .I4(axi_empty),
         .O(\comp_ana.axi_space[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFDFD0202F)) 
+    .INIT(64'hFFFFFFFFEFE0101F)) 
     \comp_ana.axi_space[10]_i_1 
        (.I0(\comp_ana.axi_space[10]_i_2_n_0 ),
         .I1(axi_space[9]),
@@ -64362,11 +64363,11 @@ module ps_comp_ana_0_1_comp_ana
         .I5(axi_empty),
         .O(\comp_ana.axi_space[10]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h00000001)) 
+    .INIT(32'hFFFFFFFE)) 
     \comp_ana.axi_space[10]_i_2 
        (.I0(axi_space[8]),
         .I1(axi_space[6]),
-        .I2(\comp_ana.axi_space[5]_i_3_n_0 ),
+        .I2(\comp_ana.axi_space[7]_i_2_n_0 ),
         .I3(axi_space[5]),
         .I4(axi_space[7]),
         .O(\comp_ana.axi_space[10]_i_2_n_0 ));
@@ -64379,7 +64380,7 @@ module ps_comp_ana_0_1_comp_ana
         .I3(axi_space[9]),
         .O(\comp_ana.axi_space[10]_i_3_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFF47B8)) 
+    .INIT(32'hFFFF8B74)) 
     \comp_ana.axi_space[11]_i_1 
        (.I0(\comp_ana.axi_space[11]_i_2_n_0 ),
         .I1(axi_wr_2),
@@ -64388,53 +64389,54 @@ module ps_comp_ana_0_1_comp_ana
         .I4(axi_empty),
         .O(\comp_ana.axi_space[11]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h02)) 
+    .INIT(8'hFE)) 
     \comp_ana.axi_space[11]_i_2 
        (.I0(\comp_ana.axi_space[10]_i_2_n_0 ),
         .I1(axi_space[9]),
         .I2(axi_space[10]),
         .O(\comp_ana.axi_space[11]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hBBABABBB)) 
+    .INIT(32'h66FF66F0)) 
     \comp_ana.axi_space[12]_i_1 
-       (.I0(axi_empty),
+       (.I0(axi_space[12]),
         .I1(\comp_ana.axi_space[12]_i_2_n_0 ),
-        .I2(axi_wr_2),
-        .I3(\comp_ana.axi_space[12]_i_3_n_0 ),
-        .I4(axi_space[12]),
-        .O(\comp_ana.axi_space[12]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h1111111111110141)) 
-    \comp_ana.axi_space[12]_i_2 
-       (.I0(axi_wr_2),
-        .I1(axi_space[12]),
-        .I2(axi_space[11]),
-        .I3(axi_space[13]),
+        .I2(\comp_ana.axi_space[12]_i_3_n_0 ),
+        .I3(axi_wr_2),
         .I4(\comp_ana.axi_space[12]_i_4_n_0 ),
-        .I5(\comp_ana.axi_space[12]_i_5_n_0 ),
-        .O(\comp_ana.axi_space[12]_i_2_n_0 ));
+        .O(\comp_ana.axi_space[12]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hFEFF)) 
-    \comp_ana.axi_space[12]_i_3 
+    .INIT(16'h0001)) 
+    \comp_ana.axi_space[12]_i_2 
        (.I0(axi_space[11]),
         .I1(axi_space[10]),
         .I2(axi_space[9]),
         .I3(\comp_ana.axi_space[10]_i_2_n_0 ),
+        .O(\comp_ana.axi_space[12]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h6AAA)) 
+    \comp_ana.axi_space[12]_i_3 
+       (.I0(axi_space[12]),
+        .I1(axi_space[11]),
+        .I2(axi_rd),
+        .I3(\comp_ana.axi_space[12]_i_5_n_0 ),
         .O(\comp_ana.axi_space[12]_i_3_n_0 ));
   LUT4 #(
-    .INIT(16'h7FFF)) 
+    .INIT(16'h0800)) 
     \comp_ana.axi_space[12]_i_4 
-       (.I0(axi_space[7]),
-        .I1(axi_space[8]),
-        .I2(axi_space[9]),
-        .I3(axi_space[10]),
+       (.I0(\comp_ana.axi_space[6]_i_3_n_0 ),
+        .I1(axi_space[6]),
+        .I2(\comp_ana.axi_space[8]_i_5_n_0 ),
+        .I3(axi_rd),
         .O(\comp_ana.axi_space[12]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hDF)) 
+  LUT6 #(
+    .INIT(64'h0080000000000000)) 
     \comp_ana.axi_space[12]_i_5 
-       (.I0(axi_rd),
-        .I1(\comp_ana.axi_space[8]_i_4_n_0 ),
-        .I2(axi_space[6]),
+       (.I0(axi_space[10]),
+        .I1(axi_space[9]),
+        .I2(axi_space[7]),
+        .I3(\comp_ana.axi_space[8]_i_5_n_0 ),
+        .I4(axi_space[6]),
+        .I5(axi_space[8]),
         .O(\comp_ana.axi_space[12]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF559AAA9A)) 
@@ -64462,13 +64464,13 @@ module ps_comp_ana_0_1_comp_ana
         .I4(axi_space[8]),
         .O(\comp_ana.axi_space[13]_i_3_n_0 ));
   LUT5 #(
-    .INIT(32'h00000004)) 
+    .INIT(32'h00000001)) 
     \comp_ana.axi_space[13]_i_4 
-       (.I0(axi_space[12]),
-        .I1(\comp_ana.axi_space[10]_i_2_n_0 ),
-        .I2(axi_space[9]),
-        .I3(axi_space[10]),
-        .I4(axi_space[11]),
+       (.I0(\comp_ana.axi_space[10]_i_2_n_0 ),
+        .I1(axi_space[9]),
+        .I2(axi_space[10]),
+        .I3(axi_space[11]),
+        .I4(axi_space[12]),
         .O(\comp_ana.axi_space[13]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFE1E1F03C)) 
@@ -64512,7 +64514,7 @@ module ps_comp_ana_0_1_comp_ana
        (.I0(axi_space[0]),
         .I1(axi_space[1]),
         .I2(axi_space[6]),
-        .I3(\comp_ana.axi_space[8]_i_4_n_0 ),
+        .I3(\comp_ana.axi_space[8]_i_5_n_0 ),
         .I4(\comp_ana.axi_space[6]_i_3_n_0 ),
         .I5(axi_rd),
         .O(\comp_ana.axi_space[3]_i_2_n_0 ));
@@ -64539,7 +64541,7 @@ module ps_comp_ana_0_1_comp_ana
     \comp_ana.axi_space[4]_i_2 
        (.I0(axi_rd),
         .I1(\comp_ana.axi_space[6]_i_3_n_0 ),
-        .I2(\comp_ana.axi_space[8]_i_4_n_0 ),
+        .I2(\comp_ana.axi_space[8]_i_5_n_0 ),
         .I3(axi_space[6]),
         .O(\comp_ana.axi_space[4]_i_2_n_0 ));
   LUT4 #(
@@ -64559,43 +64561,25 @@ module ps_comp_ana_0_1_comp_ana
         .I3(axi_space[1]),
         .I4(axi_space[2]),
         .O(\comp_ana.axi_space[4]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFEAEAEFE)) 
+  LUT6 #(
+    .INIT(64'hBBBBB8BB74747774)) 
     \comp_ana.axi_space[5]_i_1 
-       (.I0(axi_empty),
-        .I1(\comp_ana.axi_space[5]_i_2_n_0 ),
-        .I2(axi_wr_2),
-        .I3(\comp_ana.axi_space[5]_i_3_n_0 ),
-        .I4(axi_space[5]),
+       (.I0(\comp_ana.axi_space[7]_i_2_n_0 ),
+        .I1(axi_wr_2),
+        .I2(\comp_ana.axi_space[12]_i_4_n_0 ),
+        .I3(axi_rd),
+        .I4(\comp_ana.axi_space[5]_i_2_n_0 ),
+        .I5(axi_space[5]),
         .O(\comp_ana.axi_space[5]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFF8F00F0)) 
-    \comp_ana.axi_space[5]_i_2 
-       (.I0(axi_space[6]),
-        .I1(\comp_ana.axi_space[6]_i_3_n_0 ),
-        .I2(axi_rd),
-        .I3(\comp_ana.axi_space[5]_i_4_n_0 ),
-        .I4(axi_space[5]),
-        .O(\comp_ana.axi_space[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \comp_ana.axi_space[5]_i_3 
-       (.I0(axi_space[4]),
-        .I1(axi_space[2]),
-        .I2(axi_space[1]),
-        .I3(axi_space[0]),
-        .I4(axi_rd),
-        .I5(axi_space[3]),
-        .O(\comp_ana.axi_space[5]_i_3_n_0 ));
-  LUT5 #(
     .INIT(32'h7FFFFFFF)) 
-    \comp_ana.axi_space[5]_i_4 
+    \comp_ana.axi_space[5]_i_2 
        (.I0(axi_space[3]),
         .I1(axi_space[2]),
         .I2(axi_space[1]),
         .I3(axi_space[0]),
         .I4(axi_space[4]),
-        .O(\comp_ana.axi_space[5]_i_4_n_0 ));
+        .O(\comp_ana.axi_space[5]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFAA55FC0F)) 
     \comp_ana.axi_space[6]_i_1 
@@ -64610,45 +64594,51 @@ module ps_comp_ana_0_1_comp_ana
     .INIT(4'hE)) 
     \comp_ana.axi_space[6]_i_2 
        (.I0(axi_space[5]),
-        .I1(\comp_ana.axi_space[5]_i_3_n_0 ),
+        .I1(\comp_ana.axi_space[7]_i_2_n_0 ),
         .O(\comp_ana.axi_space[6]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h4000)) 
+  LUT6 #(
+    .INIT(64'h0000000080000000)) 
     \comp_ana.axi_space[6]_i_3 
-       (.I0(\comp_ana.axi_space[12]_i_4_n_0 ),
-        .I1(axi_space[13]),
-        .I2(axi_space[11]),
-        .I3(axi_space[12]),
+       (.I0(axi_space[10]),
+        .I1(axi_space[9]),
+        .I2(axi_space[8]),
+        .I3(axi_space[7]),
+        .I4(axi_space[13]),
+        .I5(\comp_ana.axi_space[13]_i_2_n_0 ),
         .O(\comp_ana.axi_space[6]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
     \comp_ana.axi_space[6]_i_4 
-       (.I0(\comp_ana.axi_space[8]_i_4_n_0 ),
+       (.I0(\comp_ana.axi_space[8]_i_5_n_0 ),
         .I1(axi_rd),
         .O(\comp_ana.axi_space[6]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFAEBAFEB)) 
+  LUT6 #(
+    .INIT(64'hFEFF0100FE0001FF)) 
     \comp_ana.axi_space[7]_i_1 
-       (.I0(axi_empty),
-        .I1(\comp_ana.axi_space[8]_i_3_n_0 ),
-        .I2(axi_space[7]),
+       (.I0(axi_space[5]),
+        .I1(\comp_ana.axi_space[7]_i_2_n_0 ),
+        .I2(axi_space[6]),
         .I3(axi_wr_2),
-        .I4(\comp_ana.axi_space[7]_i_2_n_0 ),
+        .I4(axi_space[7]),
+        .I5(\comp_ana.axi_space[8]_i_3_n_0 ),
         .O(\comp_ana.axi_space[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
     \comp_ana.axi_space[7]_i_2 
-       (.I0(axi_space[6]),
-        .I1(\comp_ana.axi_space[5]_i_3_n_0 ),
-        .I2(axi_space[5]),
+       (.I0(axi_space[4]),
+        .I1(axi_space[2]),
+        .I2(axi_space[1]),
+        .I3(axi_space[0]),
+        .I4(axi_rd),
+        .I5(axi_space[3]),
         .O(\comp_ana.axi_space[7]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFA5A5F03C)) 
+    .INIT(64'hFFFFFFFFAA55CF30)) 
     \comp_ana.axi_space[8]_i_1 
        (.I0(\comp_ana.axi_space[8]_i_2_n_0 ),
-        .I1(axi_space[7]),
-        .I2(axi_space[8]),
-        .I3(\comp_ana.axi_space[8]_i_3_n_0 ),
+        .I1(\comp_ana.axi_space[8]_i_3_n_0 ),
+        .I2(axi_space[7]),
+        .I3(axi_space[8]),
         .I4(axi_wr_2),
         .I5(axi_empty),
         .O(\comp_ana.axi_space[8]_i_1_n_0 ));
@@ -64657,31 +64647,39 @@ module ps_comp_ana_0_1_comp_ana
     \comp_ana.axi_space[8]_i_2 
        (.I0(axi_space[7]),
         .I1(axi_space[5]),
-        .I2(\comp_ana.axi_space[5]_i_3_n_0 ),
+        .I2(\comp_ana.axi_space[7]_i_2_n_0 ),
         .I3(axi_space[6]),
         .O(\comp_ana.axi_space[8]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFF04FFFFFFFFFF)) 
+    .INIT(64'hFFFF40FFFFFFFFFF)) 
     \comp_ana.axi_space[8]_i_3 
        (.I0(\comp_ana.axi_space[13]_i_2_n_0 ),
         .I1(axi_space[13]),
-        .I2(\comp_ana.axi_space[12]_i_4_n_0 ),
+        .I2(\comp_ana.axi_space[8]_i_4_n_0 ),
         .I3(axi_space[6]),
-        .I4(\comp_ana.axi_space[8]_i_4_n_0 ),
+        .I4(\comp_ana.axi_space[8]_i_5_n_0 ),
         .I5(axi_rd),
         .O(\comp_ana.axi_space[8]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \comp_ana.axi_space[8]_i_4 
+       (.I0(axi_space[7]),
+        .I1(axi_space[8]),
+        .I2(axi_space[9]),
+        .I3(axi_space[10]),
+        .O(\comp_ana.axi_space[8]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFFFFFFFFFF)) 
-    \comp_ana.axi_space[8]_i_4 
+    \comp_ana.axi_space[8]_i_5 
        (.I0(axi_space[4]),
         .I1(axi_space[0]),
         .I2(axi_space[1]),
         .I3(axi_space[2]),
         .I4(axi_space[3]),
         .I5(axi_space[5]),
-        .O(\comp_ana.axi_space[8]_i_4_n_0 ));
+        .O(\comp_ana.axi_space[8]_i_5_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFF66C3)) 
+    .INIT(32'hFFFF99C3)) 
     \comp_ana.axi_space[9]_i_1 
        (.I0(\comp_ana.axi_space[10]_i_2_n_0 ),
         .I1(axi_space[9]),
@@ -64690,11 +64688,11 @@ module ps_comp_ana_0_1_comp_ana
         .I4(axi_empty),
         .O(\comp_ana.axi_space[9]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hF7)) 
+    .INIT(8'hBF)) 
     \comp_ana.axi_space[9]_i_2 
-       (.I0(axi_space[7]),
-        .I1(axi_space[8]),
-        .I2(\comp_ana.axi_space[8]_i_3_n_0 ),
+       (.I0(\comp_ana.axi_space[8]_i_3_n_0 ),
+        .I1(axi_space[7]),
+        .I2(axi_space[8]),
         .O(\comp_ana.axi_space[9]_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.axi_space_reg[0] 
@@ -64718,12 +64716,12 @@ module ps_comp_ana_0_1_comp_ana
         .Q(axi_space[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  FDRE \comp_ana.axi_space_reg[12] 
+  FDSE \comp_ana.axi_space_reg[12] 
        (.C(axi_clk),
         .CE(1'b1),
         .D(\comp_ana.axi_space[12]_i_1_n_0 ),
         .Q(axi_space[12]),
-        .R(1'b0));
+        .S(axi_empty));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.axi_space_reg[13] 
        (.C(axi_clk),
@@ -64760,12 +64758,12 @@ module ps_comp_ana_0_1_comp_ana
         .Q(axi_space[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  FDRE \comp_ana.axi_space_reg[5] 
+  FDSE \comp_ana.axi_space_reg[5] 
        (.C(axi_clk),
         .CE(1'b1),
         .D(\comp_ana.axi_space[5]_i_1_n_0 ),
         .Q(axi_space[5]),
-        .R(1'b0));
+        .S(axi_empty));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.axi_space_reg[6] 
        (.C(axi_clk),
@@ -64774,12 +64772,12 @@ module ps_comp_ana_0_1_comp_ana
         .Q(axi_space[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  FDRE \comp_ana.axi_space_reg[7] 
+  FDSE \comp_ana.axi_space_reg[7] 
        (.C(axi_clk),
         .CE(1'b1),
         .D(\comp_ana.axi_space[7]_i_1_n_0 ),
         .Q(axi_space[7]),
-        .R(1'b0));
+        .S(axi_empty));
   (* KEEP = "yes" *) 
   FDRE \comp_ana.axi_space_reg[8] 
        (.C(axi_clk),
@@ -64827,23 +64825,25 @@ module ps_comp_ana_0_1_comp_ana
         .D(\comp_ana.axi_stat_prepare_i_1_n_0 ),
         .Q(axi_stat_prepare),
         .R(axi_stat_prepare));
-  LUT3 #(
-    .INIT(8'h32)) 
+  LUT5 #(
+    .INIT(32'hBAFFBA00)) 
     \comp_ana.axi_stat_run_i_1 
-       (.I0(axi_stat_run),
-        .I1(axi_stat_run7_out),
-        .I2(axi_stat_run),
+       (.I0(\comp_ana.axi_stat_run_i_2_n_0 ),
+        .I1(axi_curr_ind[2]),
+        .I2(\comp_ana.axi_stat_run_i_3_n_0 ),
+        .I3(axi_stat_run),
+        .I4(axi_stat_run),
         .O(\comp_ana.axi_stat_run_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000003F550000)) 
+    .INIT(64'hAAAAA8080000A808)) 
     \comp_ana.axi_stat_run_i_2 
-       (.I0(\comp_ana.axi_stat_run_i_3_n_0 ),
-        .I1(axi_curr_ind[1]),
-        .I2(axi_stat_active[6]),
-        .I3(axi_curr_ind[2]),
-        .I4(axi_stat_run),
-        .I5(\comp_ana.axi_stat_run_i_4_n_0 ),
-        .O(axi_stat_run7_out));
+       (.I0(axi_curr_ind[2]),
+        .I1(axi_stat_active[4]),
+        .I2(axi_curr_ind[0]),
+        .I3(axi_stat_active[5]),
+        .I4(axi_curr_ind[1]),
+        .I5(axi_stat_active[6]),
+        .O(\comp_ana.axi_stat_run_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_stat_run_i_3 
@@ -64854,14 +64854,6 @@ module ps_comp_ana_0_1_comp_ana
         .I4(axi_curr_ind[0]),
         .I5(axi_stat_active[0]),
         .O(\comp_ana.axi_stat_run_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'h00E2)) 
-    \comp_ana.axi_stat_run_i_4 
-       (.I0(axi_stat_active[4]),
-        .I1(axi_curr_ind[0]),
-        .I2(axi_stat_active[5]),
-        .I3(\comp_ana.axi_curr_data[95]_i_5_n_0 ),
-        .O(\comp_ana.axi_stat_run_i_4_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDSE \comp_ana.axi_stat_run_reg 
@@ -64871,12 +64863,12 @@ module ps_comp_ana_0_1_comp_ana
         .Q(axi_stat_run),
         .S(axi_stat_prepare));
   LUT6 #(
-    .INIT(64'h0AC00000FAC00000)) 
+    .INIT(64'h38080000F8C80000)) 
     \comp_ana.axi_stat_wr_i_1 
        (.I0(axi_has_space),
-        .I1(axi_stat_wr),
+        .I1(axi_part),
         .I2(axi_is_header),
-        .I3(axi_part),
+        .I3(axi_stat_wr),
         .I4(axi_stat_run),
         .I5(axi_full),
         .O(\comp_ana.axi_stat_wr_i_1_n_0 ));
@@ -64965,35 +64957,14 @@ module ps_comp_ana_0_1_comp_ana
         .D(axi_ok_46),
         .Q(axi_state[1]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
+  LUT4 #(
+    .INIT(16'h2F20)) 
     \comp_ana.axi_timestamp[0]_i_1 
-       (.I0(\comp_ana.axi_timestamp[0]_i_2_n_0 ),
+       (.I0(axi_timestamp[0]),
         .I1(axi_ok),
-        .I2(axi_timestamp[0]),
-        .I3(axi_empty),
-        .I4(axi_data[0]),
+        .I2(axi_empty),
+        .I3(axi_data[0]),
         .O(\comp_ana.axi_timestamp[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[0]_i_2 
-       (.I0(\axi_pos[4]__0 [0]),
-        .I1(\axi_pos[5]__0 [0]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [0]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
-        .I5(\comp_ana.axi_timestamp[0]_i_3_n_0 ),
-        .O(\comp_ana.axi_timestamp[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[0]_i_3 
-       (.I0(\axi_pos[3] [0]),
-        .I1(\axi_pos[2] [0]),
-        .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [0]),
-        .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [0]),
-        .O(\comp_ana.axi_timestamp[0]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     \comp_ana.axi_timestamp[10]_i_1 
@@ -65006,22 +64977,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[10]_i_2 
-       (.I0(\axi_pos[4]__0 [10]),
-        .I1(\axi_pos[5]__0 [10]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [10]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [8]),
+        .I1(\axi_pos[5]__0 [8]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [8]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[10]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[10]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[10]_i_3 
-       (.I0(\axi_pos[3] [10]),
-        .I1(\axi_pos[2] [10]),
+       (.I0(\axi_pos[3] [8]),
+        .I1(\axi_pos[2] [8]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [10]),
+        .I3(\axi_pos[1] [8]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [10]),
+        .I5(\axi_pos[0] [8]),
         .O(\comp_ana.axi_timestamp[10]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65035,22 +65006,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[11]_i_2 
-       (.I0(\axi_pos[4]__0 [11]),
-        .I1(\axi_pos[5]__0 [11]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [11]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [9]),
+        .I1(\axi_pos[5]__0 [9]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [9]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[11]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[11]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[11]_i_3 
-       (.I0(\axi_pos[3] [11]),
-        .I1(\axi_pos[2] [11]),
+       (.I0(\axi_pos[3] [9]),
+        .I1(\axi_pos[2] [9]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [11]),
+        .I3(\axi_pos[1] [9]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [11]),
+        .I5(\axi_pos[0] [9]),
         .O(\comp_ana.axi_timestamp[11]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65064,22 +65035,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[12]_i_2 
-       (.I0(\axi_pos[4]__0 [12]),
-        .I1(\axi_pos[5]__0 [12]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [12]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [10]),
+        .I1(\axi_pos[5]__0 [10]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [10]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[12]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[12]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[12]_i_3 
-       (.I0(\axi_pos[3] [12]),
-        .I1(\axi_pos[2] [12]),
+       (.I0(\axi_pos[3] [10]),
+        .I1(\axi_pos[2] [10]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [12]),
+        .I3(\axi_pos[1] [10]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [12]),
+        .I5(\axi_pos[0] [10]),
         .O(\comp_ana.axi_timestamp[12]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65093,22 +65064,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[13]_i_2 
-       (.I0(\axi_pos[4]__0 [13]),
-        .I1(\axi_pos[5]__0 [13]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [13]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [11]),
+        .I1(\axi_pos[5]__0 [11]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [11]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[13]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[13]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[13]_i_3 
-       (.I0(\axi_pos[3] [13]),
-        .I1(\axi_pos[2] [13]),
+       (.I0(\axi_pos[3] [11]),
+        .I1(\axi_pos[2] [11]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [13]),
+        .I3(\axi_pos[1] [11]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [13]),
+        .I5(\axi_pos[0] [11]),
         .O(\comp_ana.axi_timestamp[13]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65122,22 +65093,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[14]_i_2 
-       (.I0(\axi_pos[4]__0 [14]),
-        .I1(\axi_pos[5]__0 [14]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [14]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [12]),
+        .I1(\axi_pos[5]__0 [12]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [12]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[14]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[14]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[14]_i_3 
-       (.I0(\axi_pos[3] [14]),
-        .I1(\axi_pos[2] [14]),
+       (.I0(\axi_pos[3] [12]),
+        .I1(\axi_pos[2] [12]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [14]),
+        .I3(\axi_pos[1] [12]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [14]),
+        .I5(\axi_pos[0] [12]),
         .O(\comp_ana.axi_timestamp[14]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65151,22 +65122,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[15]_i_2 
-       (.I0(\axi_pos[4]__0 [15]),
-        .I1(\axi_pos[5]__0 [15]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [15]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [13]),
+        .I1(\axi_pos[5]__0 [13]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [13]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[15]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[15]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[15]_i_3 
-       (.I0(\axi_pos[3] [15]),
-        .I1(\axi_pos[2] [15]),
+       (.I0(\axi_pos[3] [13]),
+        .I1(\axi_pos[2] [13]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [15]),
+        .I3(\axi_pos[1] [13]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [15]),
+        .I5(\axi_pos[0] [13]),
         .O(\comp_ana.axi_timestamp[15]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65180,22 +65151,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[16]_i_2 
-       (.I0(\axi_pos[4]__0 [16]),
-        .I1(\axi_pos[5]__0 [16]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [16]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [14]),
+        .I1(\axi_pos[5]__0 [14]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [14]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[16]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[16]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[16]_i_3 
-       (.I0(\axi_pos[3] [16]),
-        .I1(\axi_pos[2] [16]),
+       (.I0(\axi_pos[3] [14]),
+        .I1(\axi_pos[2] [14]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [16]),
+        .I3(\axi_pos[1] [14]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [16]),
+        .I5(\axi_pos[0] [14]),
         .O(\comp_ana.axi_timestamp[16]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65209,22 +65180,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[17]_i_2 
-       (.I0(\axi_pos[4]__0 [17]),
-        .I1(\axi_pos[5]__0 [17]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [17]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [15]),
+        .I1(\axi_pos[5]__0 [15]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [15]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[17]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[17]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[17]_i_3 
-       (.I0(\axi_pos[3] [17]),
-        .I1(\axi_pos[2] [17]),
+       (.I0(\axi_pos[3] [15]),
+        .I1(\axi_pos[2] [15]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [17]),
+        .I3(\axi_pos[1] [15]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [17]),
+        .I5(\axi_pos[0] [15]),
         .O(\comp_ana.axi_timestamp[17]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65238,100 +65209,137 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[18]_i_2 
-       (.I0(\axi_pos[4]__0 [18]),
-        .I1(\axi_pos[5]__0 [18]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [18]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [16]),
+        .I1(\axi_pos[5]__0 [16]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [16]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[18]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[18]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[18]_i_3 
+       (.I0(\axi_pos[3] [16]),
+        .I1(\axi_pos[2] [16]),
+        .I2(axi_ind[1]),
+        .I3(\axi_pos[1] [16]),
+        .I4(axi_ind[0]),
+        .I5(\axi_pos[0] [16]),
+        .O(\comp_ana.axi_timestamp[18]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \comp_ana.axi_timestamp[19]_i_1 
+       (.I0(\comp_ana.axi_timestamp[19]_i_2_n_0 ),
+        .I1(axi_ok),
+        .I2(axi_timestamp[19]),
+        .I3(axi_empty),
+        .I4(axi_data[19]),
+        .O(\comp_ana.axi_timestamp[19]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \comp_ana.axi_timestamp[19]_i_2 
+       (.I0(\axi_pos[4]__0 [17]),
+        .I1(\axi_pos[5]__0 [17]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [17]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
+        .I5(\comp_ana.axi_timestamp[19]_i_3_n_0 ),
+        .O(\comp_ana.axi_timestamp[19]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \comp_ana.axi_timestamp[19]_i_3 
+       (.I0(\axi_pos[3] [17]),
+        .I1(\axi_pos[2] [17]),
+        .I2(axi_ind[1]),
+        .I3(\axi_pos[1] [17]),
+        .I4(axi_ind[0]),
+        .I5(\axi_pos[0] [17]),
+        .O(\comp_ana.axi_timestamp[19]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'h2F20)) 
+    \comp_ana.axi_timestamp[1]_i_1 
+       (.I0(axi_timestamp[1]),
+        .I1(axi_ok),
+        .I2(axi_empty),
+        .I3(axi_data[1]),
+        .O(\comp_ana.axi_timestamp[1]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \comp_ana.axi_timestamp[20]_i_1 
+       (.I0(\comp_ana.axi_timestamp[20]_i_2_n_0 ),
+        .I1(axi_ok),
+        .I2(axi_timestamp[20]),
+        .I3(axi_empty),
+        .I4(axi_data[20]),
+        .O(\comp_ana.axi_timestamp[20]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \comp_ana.axi_timestamp[20]_i_2 
+       (.I0(\axi_pos[4]__0 [18]),
+        .I1(\axi_pos[5]__0 [18]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [18]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
+        .I5(\comp_ana.axi_timestamp[20]_i_3_n_0 ),
+        .O(\comp_ana.axi_timestamp[20]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \comp_ana.axi_timestamp[20]_i_3 
        (.I0(\axi_pos[3] [18]),
         .I1(\axi_pos[2] [18]),
         .I2(axi_ind[1]),
         .I3(\axi_pos[1] [18]),
         .I4(axi_ind[0]),
         .I5(\axi_pos[0] [18]),
-        .O(\comp_ana.axi_timestamp[18]_i_3_n_0 ));
+        .O(\comp_ana.axi_timestamp[20]_i_3_n_0 ));
   LUT2 #(
-    .INIT(4'hB)) 
-    \comp_ana.axi_timestamp[19]_i_1 
-       (.I0(axi_empty),
-        .I1(axi_stat_run),
-        .O(\comp_ana.axi_timestamp[19]_i_1_n_0 ));
+    .INIT(4'hE)) 
+    \comp_ana.axi_timestamp[21]_i_1 
+       (.I0(axi_is_header),
+        .I1(axi_empty),
+        .O(\comp_ana.axi_timestamp[21]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \comp_ana.axi_timestamp[19]_i_2 
-       (.I0(\comp_ana.axi_timestamp[19]_i_3_n_0 ),
+    \comp_ana.axi_timestamp[21]_i_2 
+       (.I0(\comp_ana.axi_timestamp[21]_i_3_n_0 ),
         .I1(axi_ok),
-        .I2(axi_timestamp[19]),
+        .I2(axi_timestamp[21]),
         .I3(axi_empty),
-        .I4(axi_data[19]),
-        .O(\comp_ana.axi_timestamp[19]_i_2_n_0 ));
+        .I4(axi_data[21]),
+        .O(\comp_ana.axi_timestamp[21]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[19]_i_3 
+    \comp_ana.axi_timestamp[21]_i_3 
        (.I0(\axi_pos[4]__0 [19]),
         .I1(\axi_pos[5]__0 [19]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
         .I3(\axi_pos[6] [19]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
-        .I5(\comp_ana.axi_timestamp[19]_i_6_n_0 ),
-        .O(\comp_ana.axi_timestamp[19]_i_3_n_0 ));
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
+        .I5(\comp_ana.axi_timestamp[21]_i_6_n_0 ),
+        .O(\comp_ana.axi_timestamp[21]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h2)) 
-    \comp_ana.axi_timestamp[19]_i_4 
+    \comp_ana.axi_timestamp[21]_i_4 
        (.I0(axi_ind[2]),
         .I1(axi_ind[1]),
-        .O(\comp_ana.axi_timestamp[19]_i_4_n_0 ));
+        .O(\comp_ana.axi_timestamp[21]_i_4_n_0 ));
   LUT3 #(
     .INIT(8'h8A)) 
-    \comp_ana.axi_timestamp[19]_i_5 
+    \comp_ana.axi_timestamp[21]_i_5 
        (.I0(axi_ind[2]),
         .I1(axi_ind[1]),
         .I2(axi_ind[0]),
-        .O(\comp_ana.axi_timestamp[19]_i_5_n_0 ));
+        .O(\comp_ana.axi_timestamp[21]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[19]_i_6 
+    \comp_ana.axi_timestamp[21]_i_6 
        (.I0(\axi_pos[3] [19]),
         .I1(\axi_pos[2] [19]),
         .I2(axi_ind[1]),
         .I3(\axi_pos[1] [19]),
         .I4(axi_ind[0]),
         .I5(\axi_pos[0] [19]),
-        .O(\comp_ana.axi_timestamp[19]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \comp_ana.axi_timestamp[1]_i_1 
-       (.I0(\comp_ana.axi_timestamp[1]_i_2_n_0 ),
-        .I1(axi_ok),
-        .I2(axi_timestamp[1]),
-        .I3(axi_empty),
-        .I4(axi_data[1]),
-        .O(\comp_ana.axi_timestamp[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[1]_i_2 
-       (.I0(\axi_pos[4]__0 [1]),
-        .I1(\axi_pos[5]__0 [1]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [1]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
-        .I5(\comp_ana.axi_timestamp[1]_i_3_n_0 ),
-        .O(\comp_ana.axi_timestamp[1]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    \comp_ana.axi_timestamp[1]_i_3 
-       (.I0(\axi_pos[3] [1]),
-        .I1(\axi_pos[2] [1]),
-        .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [1]),
-        .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [1]),
-        .O(\comp_ana.axi_timestamp[1]_i_3_n_0 ));
+        .O(\comp_ana.axi_timestamp[21]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     \comp_ana.axi_timestamp[2]_i_1 
@@ -65344,22 +65352,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[2]_i_2 
-       (.I0(\axi_pos[4]__0 [2]),
-        .I1(\axi_pos[5]__0 [2]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [2]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [0]),
+        .I1(\axi_pos[5]__0 [0]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [0]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[2]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[2]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[2]_i_3 
-       (.I0(\axi_pos[3] [2]),
-        .I1(\axi_pos[2] [2]),
+       (.I0(\axi_pos[3] [0]),
+        .I1(\axi_pos[2] [0]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [2]),
+        .I3(\axi_pos[1] [0]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [2]),
+        .I5(\axi_pos[0] [0]),
         .O(\comp_ana.axi_timestamp[2]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65373,22 +65381,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[3]_i_2 
-       (.I0(\axi_pos[4]__0 [3]),
-        .I1(\axi_pos[5]__0 [3]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [3]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [1]),
+        .I1(\axi_pos[5]__0 [1]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [1]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[3]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[3]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[3]_i_3 
-       (.I0(\axi_pos[3] [3]),
-        .I1(\axi_pos[2] [3]),
+       (.I0(\axi_pos[3] [1]),
+        .I1(\axi_pos[2] [1]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [3]),
+        .I3(\axi_pos[1] [1]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [3]),
+        .I5(\axi_pos[0] [1]),
         .O(\comp_ana.axi_timestamp[3]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65402,22 +65410,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[4]_i_2 
-       (.I0(\axi_pos[4]__0 [4]),
-        .I1(\axi_pos[5]__0 [4]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [4]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [2]),
+        .I1(\axi_pos[5]__0 [2]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [2]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[4]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[4]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[4]_i_3 
-       (.I0(\axi_pos[3] [4]),
-        .I1(\axi_pos[2] [4]),
+       (.I0(\axi_pos[3] [2]),
+        .I1(\axi_pos[2] [2]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [4]),
+        .I3(\axi_pos[1] [2]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [4]),
+        .I5(\axi_pos[0] [2]),
         .O(\comp_ana.axi_timestamp[4]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65431,22 +65439,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[5]_i_2 
-       (.I0(\axi_pos[4]__0 [5]),
-        .I1(\axi_pos[5]__0 [5]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [5]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [3]),
+        .I1(\axi_pos[5]__0 [3]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [3]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[5]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[5]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[5]_i_3 
-       (.I0(\axi_pos[3] [5]),
-        .I1(\axi_pos[2] [5]),
+       (.I0(\axi_pos[3] [3]),
+        .I1(\axi_pos[2] [3]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [5]),
+        .I3(\axi_pos[1] [3]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [5]),
+        .I5(\axi_pos[0] [3]),
         .O(\comp_ana.axi_timestamp[5]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65460,22 +65468,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[6]_i_2 
-       (.I0(\axi_pos[4]__0 [6]),
-        .I1(\axi_pos[5]__0 [6]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [6]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [4]),
+        .I1(\axi_pos[5]__0 [4]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [4]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[6]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[6]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[6]_i_3 
-       (.I0(\axi_pos[3] [6]),
-        .I1(\axi_pos[2] [6]),
+       (.I0(\axi_pos[3] [4]),
+        .I1(\axi_pos[2] [4]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [6]),
+        .I3(\axi_pos[1] [4]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [6]),
+        .I5(\axi_pos[0] [4]),
         .O(\comp_ana.axi_timestamp[6]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65489,22 +65497,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[7]_i_2 
-       (.I0(\axi_pos[4]__0 [7]),
-        .I1(\axi_pos[5]__0 [7]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [7]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [5]),
+        .I1(\axi_pos[5]__0 [5]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [5]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[7]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[7]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[7]_i_3 
-       (.I0(\axi_pos[3] [7]),
-        .I1(\axi_pos[2] [7]),
+       (.I0(\axi_pos[3] [5]),
+        .I1(\axi_pos[2] [5]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [7]),
+        .I3(\axi_pos[1] [5]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [7]),
+        .I5(\axi_pos[0] [5]),
         .O(\comp_ana.axi_timestamp[7]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65518,22 +65526,22 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[8]_i_2 
-       (.I0(\axi_pos[4]__0 [8]),
-        .I1(\axi_pos[5]__0 [8]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [8]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [6]),
+        .I1(\axi_pos[5]__0 [6]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [6]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[8]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[8]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[8]_i_3 
-       (.I0(\axi_pos[3] [8]),
-        .I1(\axi_pos[2] [8]),
+       (.I0(\axi_pos[3] [6]),
+        .I1(\axi_pos[2] [6]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [8]),
+        .I3(\axi_pos[1] [6]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [8]),
+        .I5(\axi_pos[0] [6]),
         .O(\comp_ana.axi_timestamp[8]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -65547,28 +65555,28 @@ module ps_comp_ana_0_1_comp_ana
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[9]_i_2 
-       (.I0(\axi_pos[4]__0 [9]),
-        .I1(\axi_pos[5]__0 [9]),
-        .I2(\comp_ana.axi_timestamp[19]_i_4_n_0 ),
-        .I3(\axi_pos[6] [9]),
-        .I4(\comp_ana.axi_timestamp[19]_i_5_n_0 ),
+       (.I0(\axi_pos[4]__0 [7]),
+        .I1(\axi_pos[5]__0 [7]),
+        .I2(\comp_ana.axi_timestamp[21]_i_4_n_0 ),
+        .I3(\axi_pos[6] [7]),
+        .I4(\comp_ana.axi_timestamp[21]_i_5_n_0 ),
         .I5(\comp_ana.axi_timestamp[9]_i_3_n_0 ),
         .O(\comp_ana.axi_timestamp[9]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \comp_ana.axi_timestamp[9]_i_3 
-       (.I0(\axi_pos[3] [9]),
-        .I1(\axi_pos[2] [9]),
+       (.I0(\axi_pos[3] [7]),
+        .I1(\axi_pos[2] [7]),
         .I2(axi_ind[1]),
-        .I3(\axi_pos[1] [9]),
+        .I3(\axi_pos[1] [7]),
         .I4(axi_ind[0]),
-        .I5(\axi_pos[0] [9]),
+        .I5(\axi_pos[0] [7]),
         .O(\comp_ana.axi_timestamp[9]_i_3_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[0] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[0]_i_1_n_0 ),
         .Q(axi_timestamp[0]),
         .R(1'b0));
@@ -65576,7 +65584,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[10] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[10]_i_1_n_0 ),
         .Q(axi_timestamp[10]),
         .R(1'b0));
@@ -65584,7 +65592,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[11] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[11]_i_1_n_0 ),
         .Q(axi_timestamp[11]),
         .R(1'b0));
@@ -65592,7 +65600,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[12] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[12]_i_1_n_0 ),
         .Q(axi_timestamp[12]),
         .R(1'b0));
@@ -65600,7 +65608,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[13] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[13]_i_1_n_0 ),
         .Q(axi_timestamp[13]),
         .R(1'b0));
@@ -65608,7 +65616,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[14] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[14]_i_1_n_0 ),
         .Q(axi_timestamp[14]),
         .R(1'b0));
@@ -65616,7 +65624,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[15] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[15]_i_1_n_0 ),
         .Q(axi_timestamp[15]),
         .R(1'b0));
@@ -65624,7 +65632,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[16] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[16]_i_1_n_0 ),
         .Q(axi_timestamp[16]),
         .R(1'b0));
@@ -65632,7 +65640,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[17] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[17]_i_1_n_0 ),
         .Q(axi_timestamp[17]),
         .R(1'b0));
@@ -65640,7 +65648,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[18] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[18]_i_1_n_0 ),
         .Q(axi_timestamp[18]),
         .R(1'b0));
@@ -65648,23 +65656,39 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[19] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
-        .D(\comp_ana.axi_timestamp[19]_i_2_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
+        .D(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
         .Q(axi_timestamp[19]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[1] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[1]_i_1_n_0 ),
         .Q(axi_timestamp[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
+  FDRE \comp_ana.axi_timestamp_reg[20] 
+       (.C(axi_clk),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
+        .D(\comp_ana.axi_timestamp[20]_i_1_n_0 ),
+        .Q(axi_timestamp[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \comp_ana.axi_timestamp_reg[21] 
+       (.C(axi_clk),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
+        .D(\comp_ana.axi_timestamp[21]_i_2_n_0 ),
+        .Q(axi_timestamp[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[2] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[2]_i_1_n_0 ),
         .Q(axi_timestamp[2]),
         .R(1'b0));
@@ -65672,7 +65696,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[3] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[3]_i_1_n_0 ),
         .Q(axi_timestamp[3]),
         .R(1'b0));
@@ -65680,7 +65704,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[4] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[4]_i_1_n_0 ),
         .Q(axi_timestamp[4]),
         .R(1'b0));
@@ -65688,7 +65712,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[5] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[5]_i_1_n_0 ),
         .Q(axi_timestamp[5]),
         .R(1'b0));
@@ -65696,7 +65720,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[6] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[6]_i_1_n_0 ),
         .Q(axi_timestamp[6]),
         .R(1'b0));
@@ -65704,7 +65728,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[7] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[7]_i_1_n_0 ),
         .Q(axi_timestamp[7]),
         .R(1'b0));
@@ -65712,7 +65736,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[8] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[8]_i_1_n_0 ),
         .Q(axi_timestamp[8]),
         .R(1'b0));
@@ -65720,7 +65744,7 @@ module ps_comp_ana_0_1_comp_ana
   (* mark_debug = "yes" *) 
   FDRE \comp_ana.axi_timestamp_reg[9] 
        (.C(axi_clk),
-        .CE(\comp_ana.axi_timestamp[19]_i_1_n_0 ),
+        .CE(\comp_ana.axi_timestamp[21]_i_1_n_0 ),
         .D(\comp_ana.axi_timestamp[9]_i_1_n_0 ),
         .Q(axi_timestamp[9]),
         .R(1'b0));
@@ -124084,7 +124108,7 @@ module ps_comp_ana_0_1_comp_burst
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair320" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -131562,7 +131586,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__1
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair1130" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -139054,7 +139078,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__2
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair968" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -146546,7 +146570,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__3
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair806" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -154004,7 +154028,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__4
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair158" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -161448,7 +161472,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__5
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair482" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -168892,7 +168916,7 @@ module ps_comp_ana_0_1_comp_burst__xdcDup__6
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair644" *) 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hB)) 
     \comp_burst.blocks[0]_i_1 
        (.I0(axi_get),
         .I1(\comp_burst.blocks_reg [0]),
@@ -281377,7 +281401,7 @@ module ps_comp_ana_0_1_ila_5
   input [2:0]probe5;
   input [2:0]probe6;
   input [0:0]probe7;
-  input [19:0]probe8;
+  input [21:0]probe8;
   input [0:0]probe9;
   input [0:0]probe10;
   input [0:0]probe11;

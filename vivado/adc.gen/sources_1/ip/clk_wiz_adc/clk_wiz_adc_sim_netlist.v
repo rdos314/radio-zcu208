@@ -1,11 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-// Date        : Sun Mar  1 00:57:31 2026
-// Host        : DESKTOP-SA3FM6F running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+// Date        : Sun Apr  5 11:50:43 2026
+// Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
-//               c:/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_adc/clk_wiz_adc_sim_netlist.v
+//               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/ip/clk_wiz_adc/clk_wiz_adc_sim_netlist.v
 // Design      : clk_wiz_adc
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

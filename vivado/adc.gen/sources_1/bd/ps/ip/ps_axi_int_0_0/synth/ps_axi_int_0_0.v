@@ -103,14 +103,14 @@ input wire low_wr;
 output wire low_empty;
 output wire low_full;
 input wire low_pending;
-input wire [19 : 0] low_timestamp;
+input wire [21 : 0] low_timestamp;
 input wire [255 : 0] low_data;
 output wire high_rd;
 input wire high_wr;
 output wire high_empty;
 output wire high_full;
 input wire high_pending;
-input wire [19 : 0] high_timestamp;
+input wire [21 : 0] high_timestamp;
 input wire [255 : 0] high_data;
 input wire up;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *)

@@ -59,7 +59,7 @@
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________125.000____________0.010
+// __primary_____________125____________0.010
 
 `timescale 1ps/1ps
 
@@ -115,10 +115,6 @@ wire clk_in2_clk_wiz_adc;
   (* ASYNC_REG = "TRUE" *)
   reg  [7 :0] seq_reg2 = 0;
 
- 
-
-// Auto Instantiation//
-
   
     PLLE4_ADV
   #(
@@ -157,8 +153,6 @@ wire clk_in2_clk_wiz_adc;
     .LOCKED              (locked_int),
     .PWRDWN              (1'b0),
     .RST                 (1'b0));
-
-
 
   assign locked = locked_int;
 // Clock Monitor clock assigning

@@ -59,7 +59,7 @@
         "axi_empty": [ { "direction": "in" } ],
         "axi_full": [ { "direction": "in" } ],
         "axi_pending": [ { "direction": "out" } ],
-        "axi_timestamp": [ { "direction": "out", "size_left": "19", "size_right": "0" } ],
+        "axi_timestamp": [ { "direction": "out", "size_left": "21", "size_right": "0" } ],
         "axi_data": [ { "direction": "out", "size_left": "255", "size_right": "0" } ]
       },
       "interfaces": {

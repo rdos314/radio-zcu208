@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri Apr  3 15:13:52 2026
+// Date        : Sat Apr  4 00:14:19 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.v
@@ -83,7 +83,7 @@ module ila_6_HD22
   input [0:0]probe33;
   input [0:0]probe34;
   input [13:0]probe4;
-  input [63:0]probe5;
+  input [21:0]probe5;
   input [63:0]probe6;
   input [7:0]probe7;
   input [7:0]probe8;
@@ -135,14 +135,14 @@ module ps_axi_int_0_0
   output low_empty;
   output low_full;
   input low_pending;
-  input [19:0]low_timestamp;
+  input [21:0]low_timestamp;
   input [255:0]low_data;
   output high_rd;
   input high_wr;
   output high_empty;
   output high_full;
   input high_pending;
-  input [19:0]high_timestamp;
+  input [21:0]high_timestamp;
   input [255:0]high_data;
   input up;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, DATA_WIDTH 256, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 1, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) output [31:0]M_AXI_AWADDR;
@@ -171,12 +171,14 @@ module ps_axi_int_0_0
   wire high_full;
   wire high_pending;
   wire high_rd;
+  wire [21:0]high_timestamp;
   wire high_wr;
   wire [255:0]low_data;
   wire low_empty;
   wire low_full;
   wire low_pending;
   wire low_rd;
+  wire [21:0]low_timestamp;
   wire low_wr;
   wire resetn;
   wire NLW_inst_M_AXI_AWVALID_UNCONNECTED;
@@ -554,14 +556,14 @@ module ps_axi_int_0_0
         .high_full(high_full),
         .high_pending(high_pending),
         .high_rd(high_rd),
-        .high_timestamp({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .high_timestamp(high_timestamp),
         .high_wr(high_wr),
         .low_data(low_data),
         .low_empty(low_empty),
         .low_full(low_full),
         .low_pending(low_pending),
         .low_rd(low_rd),
-        .low_timestamp({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .low_timestamp(low_timestamp),
         .low_wr(low_wr),
         .resetn(resetn),
         .up(1'b0));
@@ -608,14 +610,14 @@ module ps_axi_int_0_0_axi_int
   output low_empty;
   output low_full;
   input low_pending;
-  input [19:0]low_timestamp;
+  input [21:0]low_timestamp;
   input [255:0]low_data;
   output high_rd;
   input high_wr;
   output high_empty;
   output high_full;
   input high_pending;
-  input [19:0]high_timestamp;
+  input [21:0]high_timestamp;
   input [255:0]high_data;
   input up;
   output [31:0]M_AXI_AWADDR;
@@ -1665,7 +1667,7 @@ module ps_axi_int_0_0_axi_int
   wire \axi_int.reset_i_1_n_0 ;
   wire clk;
   (* MARK_DEBUG *) wire [13:0]high_blocks;
-  (* MARK_DEBUG *) wire [255:0]high_data;
+  wire [255:0]high_data;
   wire [2:0]high_delay;
   (* MARK_DEBUG *) wire high_empty;
   (* MARK_DEBUG *) wire [15:0]high_env_0;
@@ -1701,11 +1703,12 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire [15:0]high_phase_6;
   (* MARK_DEBUG *) wire [15:0]high_phase_7;
   (* MARK_DEBUG *) wire high_rd;
+  (* MARK_DEBUG *) wire [21:0]high_timestamp;
   (* MARK_DEBUG *) wire high_wr;
   wire high_wr_1;
   wire high_wr_2;
   (* MARK_DEBUG *) wire [13:0]low_blocks;
-  (* MARK_DEBUG *) wire [255:0]low_data;
+  wire [255:0]low_data;
   wire [2:0]low_delay;
   (* MARK_DEBUG *) wire low_empty;
   (* MARK_DEBUG *) wire [15:0]low_env_0;
@@ -1741,6 +1744,7 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire [15:0]low_phase_6;
   (* MARK_DEBUG *) wire [15:0]low_phase_7;
   (* MARK_DEBUG *) wire low_rd;
+  (* MARK_DEBUG *) wire [21:0]low_timestamp;
   (* MARK_DEBUG *) wire low_wr;
   wire low_wr_1;
   wire low_wr_2;
@@ -18459,7 +18463,7 @@ module ps_axi_int_0_0_axi_int
         .probe33(high_phase_6[0]),
         .probe34(high_phase_7[0]),
         .probe4(high_blocks),
-        .probe5(high_data[63:0]),
+        .probe5(high_timestamp),
         .probe6(high_hdr_sample),
         .probe7(high_hdr_blocks),
         .probe8(high_hdr_flags),
@@ -18499,7 +18503,7 @@ module ps_axi_int_0_0_axi_int
         .probe33(low_phase_6[0]),
         .probe34(low_phase_7[0]),
         .probe4(low_blocks),
-        .probe5(low_data[63:0]),
+        .probe5(low_timestamp),
         .probe6(low_hdr_sample),
         .probe7(low_hdr_blocks),
         .probe8(low_hdr_flags),
@@ -18551,7 +18555,7 @@ module ps_axi_int_0_0_ila_6
   input [0:0]probe2;
   input [0:0]probe3;
   input [13:0]probe4;
-  input [63:0]probe5;
+  input [21:0]probe5;
   input [63:0]probe6;
   input [7:0]probe7;
   input [7:0]probe8;

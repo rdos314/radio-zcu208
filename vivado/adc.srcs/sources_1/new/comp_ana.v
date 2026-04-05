@@ -48,7 +48,7 @@ module comp_ana(
 	input wire axi_empty,	
 	input wire axi_full,
 	output reg axi_pending,
-	output reg [19:0] axi_timestamp,
+	output reg [21:0] axi_timestamp,
 	output reg [255:0] axi_data
 );
 
@@ -654,7 +654,7 @@ module comp_ana(
 		.probe5(axi_ind),             // input wire [2:0]  probe3
 		.probe6(axi_curr_ind),        // input wire [2:0]  probe3
 		.probe7(axi_pending),         // input wire [0:0]  probe3
-		.probe8(axi_timestamp),       // input wire [19:0]  probe3
+		.probe8(axi_timestamp),       // input wire [21:0]  probe3
 		.probe9(axi_stat_prepare),    // input wire [0:0]  probe3
 		.probe10(axi_stat_run),       // input wire [0:0]  probe3
 		.probe11(axi_stat_wr),        // input wire [0:0]  probe3
@@ -1266,17 +1266,17 @@ generate
             if (axi_ok)
 	        begin
 	            axi_pending <= 1;
-	            axi_timestamp <= axi_pos[axi_ind];
+	            axi_timestamp <= {axi_pos[axi_ind], 2'b00};
     	    end
     	    else
 	            axi_pending <= 0;
 	    end
 	    else
 	    begin
-	        if (!axi_stat_run)
+	        if (axi_is_header)
 	        begin
     	        axi_pending <= 1;        
-    	        axi_timestamp <= axi_data[19:0];
+    	        axi_timestamp <= axi_data[21:0];
     	    end
 	    end
 	end

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri Apr  3 21:23:35 2026
+// Date        : Sun Apr  5 00:33:33 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_ana_0_0/ps_comp_ana_0_0_stub.v
@@ -20,7 +20,7 @@ module ps_comp_ana_0_0(config_clk, config_wr, config_adr, config_data,
   fifo_clk, fifo_active, fifo_re, fifo_im, fifo_burst, fifo_sample, fifo_size, fifo_freq, 
   fifo_angle, fifo_doa_error, pl_clk, clk, reset, axi_clk, axi_rd, axi_wr, axi_empty, axi_full, 
   axi_pending, axi_timestamp, axi_data)
-/* synthesis syn_black_box black_box_pad_pin="config_wr,config_adr[7:0],config_data[31:0],fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[15:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],fifo_doa_error[9:0],pl_clk,reset,axi_rd,axi_wr,axi_empty,axi_full,axi_pending,axi_timestamp[19:0],axi_data[255:0]" */
+/* synthesis syn_black_box black_box_pad_pin="config_wr,config_adr[7:0],config_data[31:0],fifo_active,fifo_re[63:0],fifo_im[63:0],fifo_burst,fifo_sample[15:0],fifo_size[8:0],fifo_freq[19:0],fifo_angle[15:0],fifo_doa_error[9:0],pl_clk,reset,axi_rd,axi_wr,axi_empty,axi_full,axi_pending,axi_timestamp[21:0],axi_data[255:0]" */
 /* synthesis syn_force_seq_prim="config_clk" */
 /* synthesis syn_force_seq_prim="fifo_clk" */
 /* synthesis syn_force_seq_prim="clk" */
@@ -48,6 +48,6 @@ module ps_comp_ana_0_0(config_clk, config_wr, config_adr, config_data,
   input axi_empty;
   input axi_full;
   output axi_pending;
-  output [19:0]axi_timestamp;
+  output [21:0]axi_timestamp;
   output [255:0]axi_data;
 endmodule

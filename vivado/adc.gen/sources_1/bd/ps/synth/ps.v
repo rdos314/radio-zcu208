@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Fri Apr  3 21:22:07 2026
+//Date        : Sun Apr  5 11:54:03 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -257,12 +257,12 @@ module ps
   wire [255:0]comp_ana_high_axi_data;
   wire comp_ana_high_axi_empty;
   wire comp_ana_high_axi_pending;
-  wire [19:0]comp_ana_high_axi_timestamp;
+  wire [21:0]comp_ana_high_axi_timestamp;
   wire comp_ana_high_axi_wr;
   wire [255:0]comp_ana_low_axi_data;
   wire comp_ana_low_axi_empty;
   wire comp_ana_low_axi_pending;
-  wire [19:0]comp_ana_low_axi_timestamp;
+  wire [21:0]comp_ana_low_axi_timestamp;
   wire comp_ana_low_axi_wr;
   wire comp_high_active;
   wire [15:0]comp_high_angle;

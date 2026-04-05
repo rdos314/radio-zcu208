@@ -9,12 +9,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="2,049"></ZoomEndTime>
-      <Cursor1Time time="0"></Cursor1Time>
+      <ZoomStartTime time="17"></ZoomStartTime>
+      <ZoomEndTime time="42"></ZoomEndTime>
+      <Cursor1Time time="1,035"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="189"></NameColumnWidth>
+      <NameColumnWidth column_width="181"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="21" />
@@ -163,8 +163,8 @@
    </wvobject>
    <wvobject type="array" fp_name="ps_i/comp_ana_low/inst/axi_timestamp">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_timestamp[19:0]</obj_property>
-      <obj_property name="ObjectShortName">axi_timestamp[19:0]</obj_property>
+      <obj_property name="ElementShortName">ps_i/comp_ana_low/inst/axi_timestamp[21:0]</obj_property>
+      <obj_property name="ObjectShortName">axi_timestamp[21:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
