@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun Apr  5 11:54:34 2026
+-- Date        : Mon Apr  6 00:30:40 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -88,12 +88,14 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal adc_axi_start : STD_LOGIC;
   signal adc_axi_stop : STD_LOGIC;
   signal \^ana0_clk\ : STD_LOGIC;
+  signal ana0_raw_clk : STD_LOGIC;
   signal ana0_reset_1 : STD_LOGIC;
   attribute async_reg : string;
   attribute async_reg of ana0_reset_1 : signal is "true";
   signal ana0_reset_2 : STD_LOGIC;
   attribute async_reg of ana0_reset_2 : signal is "true";
   signal \^ana1_clk\ : STD_LOGIC;
+  signal ana1_raw_clk : STD_LOGIC;
   signal ana1_reset_1 : STD_LOGIC;
   attribute async_reg of ana1_reset_1 : signal is "true";
   signal ana1_reset_2 : STD_LOGIC;
@@ -113,21 +115,25 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal axi_sim_active_2 : STD_LOGIC;
   attribute async_reg of axi_sim_active_2 : signal is "true";
   signal \^comp0_clk\ : STD_LOGIC;
+  signal comp0_raw_clk : STD_LOGIC;
   signal comp0_reset_1 : STD_LOGIC;
   attribute async_reg of comp0_reset_1 : signal is "true";
   signal comp0_reset_2 : STD_LOGIC;
   attribute async_reg of comp0_reset_2 : signal is "true";
   signal \^comp1_clk\ : STD_LOGIC;
+  signal comp1_raw_clk : STD_LOGIC;
   signal comp1_reset_1 : STD_LOGIC;
   attribute async_reg of comp1_reset_1 : signal is "true";
   signal comp1_reset_2 : STD_LOGIC;
   attribute async_reg of comp1_reset_2 : signal is "true";
   signal \^comp_ana0_clk\ : STD_LOGIC;
+  signal comp_ana0_raw_clk : STD_LOGIC;
   signal comp_ana0_reset_1 : STD_LOGIC;
   attribute async_reg of comp_ana0_reset_1 : signal is "true";
   signal comp_ana0_reset_2 : STD_LOGIC;
   attribute async_reg of comp_ana0_reset_2 : signal is "true";
   signal \^comp_ana1_clk\ : STD_LOGIC;
+  signal comp_ana1_raw_clk : STD_LOGIC;
   signal comp_ana1_reset_1 : STD_LOGIC;
   attribute async_reg of comp_ana1_reset_1 : signal is "true";
   signal comp_ana1_reset_2 : STD_LOGIC;
@@ -156,6 +162,7 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal \^deci_clk\ : STD_LOGIC;
   signal deci_clk_buf : STD_LOGIC;
   signal deci_locked : STD_LOGIC;
+  signal deci_raw_clk : STD_LOGIC;
   signal deci_release_cnt : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute async_reg of deci_release_cnt : signal is "true";
   signal \deci_release_cnt__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -175,11 +182,13 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal deci_sim_start_curr : STD_LOGIC;
   signal deci_sim_start_prev : STD_LOGIC;
   signal \^freq0_clk\ : STD_LOGIC;
+  signal freq0_raw_clk : STD_LOGIC;
   signal freq0_reset_1 : STD_LOGIC;
   attribute async_reg of freq0_reset_1 : signal is "true";
   signal freq0_reset_2 : STD_LOGIC;
   attribute async_reg of freq0_reset_2 : signal is "true";
   signal \^freq1_clk\ : STD_LOGIC;
+  signal freq1_raw_clk : STD_LOGIC;
   signal freq1_reset_1 : STD_LOGIC;
   attribute async_reg of freq1_reset_1 : signal is "true";
   signal freq1_reset_2 : STD_LOGIC;
@@ -211,20 +220,47 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[2]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
   attribute FSM_ENCODED_STATES of \FSM_onehot_mts.deci_adc_counter_reg[3]\ : label is "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010";
   attribute BOX_TYPE : string;
-  attribute BOX_TYPE of buf_ana_clk_i : label is "PRIMITIVE";
+  attribute BOX_TYPE of buf_ana_clk_0 : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM : string;
-  attribute XILINX_LEGACY_PRIM of buf_ana_clk_i : label is "BUFG";
+  attribute XILINX_LEGACY_PRIM of buf_ana_clk_0 : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP : string;
+  attribute XILINX_TRANSFORM_PINMAP of buf_ana_clk_0 : label is "VCC:CE";
+  attribute BOX_TYPE of buf_ana_clk_1 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_ana_clk_1 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_ana_clk_1 : label is "VCC:CE";
+  attribute BOX_TYPE of buf_ana_clk_i : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_ana_clk_i : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP of buf_ana_clk_i : label is "VCC:CE";
+  attribute BOX_TYPE of buf_comp_ana_clk_0 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_comp_ana_clk_0 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_comp_ana_clk_0 : label is "VCC:CE";
+  attribute BOX_TYPE of buf_comp_ana_clk_1 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_comp_ana_clk_1 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_comp_ana_clk_1 : label is "VCC:CE";
   attribute BOX_TYPE of buf_comp_ana_clk_i : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM of buf_comp_ana_clk_i : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP of buf_comp_ana_clk_i : label is "VCC:CE";
+  attribute BOX_TYPE of buf_comp_clk_0 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_comp_clk_0 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_comp_clk_0 : label is "VCC:CE";
+  attribute BOX_TYPE of buf_comp_clk_1 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_comp_clk_1 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_comp_clk_1 : label is "VCC:CE";
   attribute BOX_TYPE of buf_comp_clk_i : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM of buf_comp_clk_i : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP of buf_comp_clk_i : label is "VCC:CE";
+  attribute BOX_TYPE of buf_deci_clk_0 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_deci_clk_0 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_deci_clk_0 : label is "VCC:CE";
   attribute BOX_TYPE of buf_deci_clk_i : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM of buf_deci_clk_i : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP of buf_deci_clk_i : label is "VCC:CE";
+  attribute BOX_TYPE of buf_freq_clk_0 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_freq_clk_0 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_freq_clk_0 : label is "VCC:CE";
+  attribute BOX_TYPE of buf_freq_clk_1 : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of buf_freq_clk_1 : label is "BUFG";
+  attribute XILINX_TRANSFORM_PINMAP of buf_freq_clk_1 : label is "VCC:CE";
   attribute BOX_TYPE of buf_freq_clk_i : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM of buf_freq_clk_i : label is "BUFG";
   attribute XILINX_TRANSFORM_PINMAP of buf_freq_clk_i : label is "VCC:CE";
@@ -402,6 +438,26 @@ begin
       Q => \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3]\,
       R => \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0\
     );
+buf_ana_clk_0: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => ana0_raw_clk,
+      O => \^ana0_clk\
+    );
+buf_ana_clk_1: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => ana1_raw_clk,
+      O => \^ana1_clk\
+    );
 buf_ana_clk_i: unisim.vcomponents.BUFGCE
     generic map(
       CE_TYPE => "ASYNC",
@@ -411,6 +467,26 @@ buf_ana_clk_i: unisim.vcomponents.BUFGCE
       CE => '1',
       I => pl_clk_buf,
       O => ana_clk_buf
+    );
+buf_comp_ana_clk_0: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => comp_ana0_raw_clk,
+      O => \^comp_ana0_clk\
+    );
+buf_comp_ana_clk_1: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => comp_ana1_raw_clk,
+      O => \^comp_ana1_clk\
     );
 buf_comp_ana_clk_i: unisim.vcomponents.BUFGCE
     generic map(
@@ -422,6 +498,26 @@ buf_comp_ana_clk_i: unisim.vcomponents.BUFGCE
       I => pl_clk_buf,
       O => comp_ana_clk_buf
     );
+buf_comp_clk_0: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => comp0_raw_clk,
+      O => \^comp0_clk\
+    );
+buf_comp_clk_1: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => comp1_raw_clk,
+      O => \^comp1_clk\
+    );
 buf_comp_clk_i: unisim.vcomponents.BUFGCE
     generic map(
       CE_TYPE => "ASYNC",
@@ -432,6 +528,16 @@ buf_comp_clk_i: unisim.vcomponents.BUFGCE
       I => pl_clk_buf,
       O => comp_clk_buf
     );
+buf_deci_clk_0: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => deci_raw_clk,
+      O => \^deci_clk\
+    );
 buf_deci_clk_i: unisim.vcomponents.BUFGCE
     generic map(
       CE_TYPE => "ASYNC",
@@ -441,6 +547,26 @@ buf_deci_clk_i: unisim.vcomponents.BUFGCE
       CE => '1',
       I => pl_clk_buf,
       O => deci_clk_buf
+    );
+buf_freq_clk_0: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => freq0_raw_clk,
+      O => \^freq0_clk\
+    );
+buf_freq_clk_1: unisim.vcomponents.BUFGCE
+    generic map(
+      CE_TYPE => "ASYNC",
+      SIM_DEVICE => "ULTRASCALE_PLUS"
+    )
+        port map (
+      CE => '1',
+      I => freq1_raw_clk,
+      O => \^freq1_clk\
     );
 buf_freq_clk_i: unisim.vcomponents.BUFGCE
     generic map(
@@ -455,35 +581,35 @@ buf_freq_clk_i: unisim.vcomponents.BUFGCE
 clk_wiz_ana_i: component ps_mts_0_0_clk_wiz_adc
      port map (
       clk_in1 => ana_clk_buf,
-      clk_out1 => \^ana0_clk\,
-      clk_out2 => \^ana1_clk\,
+      clk_out1 => ana0_raw_clk,
+      clk_out2 => ana1_raw_clk,
       locked => ana_locked
     );
 clk_wiz_comp_ana_i: component ps_mts_0_0_clk_wiz_adc_HD1
      port map (
       clk_in1 => comp_ana_clk_buf,
-      clk_out1 => \^comp_ana0_clk\,
-      clk_out2 => \^comp_ana1_clk\,
+      clk_out1 => comp_ana0_raw_clk,
+      clk_out2 => comp_ana1_raw_clk,
       locked => comp_ana_locked
     );
 clk_wiz_comp_i: component ps_mts_0_0_clk_wiz_adc
      port map (
       clk_in1 => comp_clk_buf,
-      clk_out1 => \^comp0_clk\,
-      clk_out2 => \^comp1_clk\,
+      clk_out1 => comp0_raw_clk,
+      clk_out2 => comp1_raw_clk,
       locked => comp_locked
     );
 clk_wiz_deci_i: component ps_mts_0_0_clk_wiz_deci
      port map (
       clk_in1 => deci_clk_buf,
-      clk_out1 => \^deci_clk\,
+      clk_out1 => deci_raw_clk,
       locked => deci_locked
     );
 clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
      port map (
       clk_in1 => freq_clk_buf,
-      clk_out1 => \^freq0_clk\,
-      clk_out2 => \^freq1_clk\,
+      clk_out1 => freq0_raw_clk,
+      clk_out2 => freq1_raw_clk,
       locked => freq_locked
     );
 \mts.adc_active_reg\: unisim.vcomponents.FDRE

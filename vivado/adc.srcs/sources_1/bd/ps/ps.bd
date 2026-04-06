@@ -4775,8 +4775,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr"
+          "comp_ana_high/config_adr",
+          "comp_ana_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -4784,8 +4784,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_low/config_data",
-          "comp_ana_high/config_data"
+          "comp_ana_high/config_data",
+          "comp_ana_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -5200,9 +5200,9 @@
           "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "axi_int_0/clk",
+          "comp_ana_high/axi_clk",
           "comp_ana_low/axi_clk",
-          "comp_ana_high/axi_clk"
+          "axi_int_0/clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -5436,8 +5436,8 @@
       "mts_0_ana0_clk": {
         "ports": [
           "mts_0/ana0_clk",
-          "comp_low/ana_fifo_clk",
-          "ana_low/clk"
+          "ana_low/clk",
+          "comp_low/ana_fifo_clk"
         ]
       },
       "mts_0_ana0_reset": {
@@ -5523,12 +5523,12 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "comp_low/raw_fifo_clk",
-          "comp_high/raw_fifo_clk",
           "freq_low_46_0/fifo_clk",
           "freq_high_189_0/fifo_clk",
           "deci_high/clk",
-          "deci_low/clk"
+          "deci_low/clk",
+          "comp_high/raw_fifo_clk",
+          "comp_low/raw_fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -5753,10 +5753,10 @@
           "deci_high/sim_clk",
           "deci_low/sim_clk",
           "adc_control_0/clk",
-          "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
           "comp_ana_high/pl_clk",
+          "comp_ana_low/config_clk",
+          "comp_ana_low/pl_clk",
           "mts_0/axi_clk"
         ]
       },

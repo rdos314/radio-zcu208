@@ -25,16 +25,16 @@ module axi_int(
 	
 	output reg low_rd,
 	input wire low_wr,
-	output wire low_empty,
-	output wire low_full,
+	output reg low_empty,
+	output reg low_full,
 	input wire low_pending,
 	input wire [21:0] low_timestamp,
 	input wire [255:0] low_data,
 	
 	output reg high_rd,
 	input wire high_wr,
-	output wire high_empty,
-	output wire high_full,
+	output reg high_empty,
+	output reg high_full,
 	input wire high_pending,
 	input wire [21:0] high_timestamp,
 	input wire [255:0] high_data,
@@ -82,86 +82,83 @@ module axi_int(
     reg [26:0] adr;
     reg [7:0] size;
     reg [7:0] counter;
+
+    reg u_low_wr;
+    reg [255:0] u_low_in_data;
+
+    reg u_high_wr;
+    reg [255:0] u_high_in_data;
+
+    reg [1:0] u_rd;
+    wire [255:0] u_low_out_data;
+    wire [255:0] u_high_out_data;
     
-    wire [255:0] low_out_data;
-    wire [255:0] high_out_data;
+    wire u_low_full;
+    wire u_low_empty;
+    wire u_high_full;
+    wire u_high_empty;
+
+	localparam STAT_NONE = 2'b00;
+	localparam STAT_A = 2'b01;
+	localparam STAT_B = 2'b10;
+	localparam STAT_COMP = 2'b11;
+
+    reg [255:0] state_data [0:1];
+	
+    reg [1:0] has_preview;
+    reg [21:0] preview_data[0:1];
+
+    reg [1:0] state;
+    reg [21:0] state_diff;
+    reg state_ok;
+    reg state_ind;
+
+    reg [13:0] pend_blocks [0:1];
+    reg [8:0] diff_blocks;
+
+    reg [1:0] mix_delay;
+    reg mix_active;
+    reg mix_ind;
+    reg [7:0] mix_blocks;
+    reg [255:0] mix_data;
     
     reg low_wr_1;
     reg low_wr_2;
 
     reg high_wr_1;
     reg high_wr_2;
-
-    reg [2:0] low_delay;
-    reg [2:0] high_delay;
     
-    reg [13:0] low_blocks;
-    reg [13:0] high_blocks;
-    
-	reg [63:0] low_hdr_sample;
-	reg [7:0] low_hdr_blocks;
-	reg [7:0] low_hdr_flags;
-	reg [15:0] low_hdr_size;
-	reg [31:0] low_hdr_freq;
-	reg [15:0] low_hdr_angle;
-	reg [15:0] low_hdr_doa_error;
-	reg [15:0] low_hdr_max_env;
-	reg [15:0] low_hdr_max_pos;
-	reg [15:0] low_hdr_env_mean;
-	reg [15:0] low_hdr_env_std;
-	reg [15:0] low_hdr_phase_std;
-	reg [15:0] low_hdr_freq_std;
+	reg [63:0] hdr_sample;
+	reg [7:0] hdr_blocks;
+	reg [7:0] hdr_flags;
+	reg [15:0] hdr_size;
+	reg [31:0] hdr_freq;
+	reg [15:0] hdr_angle;
+	reg [15:0] hdr_doa_error;
+	reg [15:0] hdr_max_env;
+	reg [15:0] hdr_max_pos;
+	reg [15:0] hdr_env_mean;
+	reg [15:0] hdr_env_std;
+	reg [15:0] hdr_phase_std;
+	reg [15:0] hdr_freq_std;
 	
-	reg [15:0] low_env_0;
-	reg [15:0] low_env_1;
-	reg [15:0] low_env_2;
-	reg [15:0] low_env_3;
-	reg [15:0] low_env_4;
-	reg [15:0] low_env_5;
-	reg [15:0] low_env_6;
-	reg [15:0] low_env_7;
+	reg [15:0] env_0;
+	reg [15:0] env_1;
+	reg [15:0] env_2;
+	reg [15:0] env_3;
+	reg [15:0] env_4;
+	reg [15:0] env_5;
+	reg [15:0] env_6;
+	reg [15:0] env_7;
 
-	reg [15:0] low_phase_0;
-	reg [15:0] low_phase_1;
-	reg [15:0] low_phase_2;
-	reg [15:0] low_phase_3;
-	reg [15:0] low_phase_4;
-	reg [15:0] low_phase_5;
-	reg [15:0] low_phase_6;
-	reg [15:0] low_phase_7;
-
-
-	reg [63:0] high_hdr_sample;
-	reg [7:0] high_hdr_blocks;
-	reg [7:0] high_hdr_flags;
-	reg [15:0] high_hdr_size;
-	reg [31:0] high_hdr_freq;
-	reg [15:0] high_hdr_angle;
-	reg [15:0] high_hdr_doa_error;
-	reg [15:0] high_hdr_max_env;
-	reg [15:0] high_hdr_max_pos;
-	reg [15:0] high_hdr_env_mean;
-	reg [15:0] high_hdr_env_std;
-	reg [15:0] high_hdr_phase_std;
-	reg [15:0] high_hdr_freq_std;
-	
-	reg [15:0] high_env_0;
-	reg [15:0] high_env_1;
-	reg [15:0] high_env_2;
-	reg [15:0] high_env_3;
-	reg [15:0] high_env_4;
-	reg [15:0] high_env_5;
-	reg [15:0] high_env_6;
-	reg [15:0] high_env_7;
-
-	reg [15:0] high_phase_0;
-	reg [15:0] high_phase_1;
-	reg [15:0] high_phase_2;
-	reg [15:0] high_phase_3;
-	reg [15:0] high_phase_4;
-	reg [15:0] high_phase_5;
-	reg [15:0] high_phase_6;
-	reg [15:0] high_phase_7;
+	reg [15:0] phase_0;
+	reg [15:0] phase_1;
+	reg [15:0] phase_2;
+	reg [15:0] phase_3;
+	reg [15:0] phase_4;
+	reg [15:0] phase_5;
+	reg [15:0] phase_6;
+	reg [15:0] phase_7;
 
 	
 	xpm_fifo_sync #(
@@ -175,12 +172,12 @@ module axi_int(
 	fifo_low_i(
 	    .rst(reset),
 	    .wr_clk(clk),
-	    .wr_en(low_wr),
-	    .din(low_data),
-	    .rd_en(low_rd),
-	    .dout(low_out_data),
-	    .full(low_full),
-	    .empty(low_empty)
+	    .wr_en(u_low_wr),
+	    .din(u_low_in_data),
+	    .rd_en(u_rd[0]),
+	    .dout(u_low_out_data),
+	    .full(u_low_full),
+	    .empty(u_low_empty)
 	);
 	
 	xpm_fifo_sync #(
@@ -194,90 +191,59 @@ module axi_int(
 	fifo_high_i(
 	    .rst(reset),
 	    .wr_clk(clk),
-	    .wr_en(high_wr),
-	    .din(high_data),
-	    .rd_en(high_rd),
-	    .dout(high_out_data),
-	    .full(high_full),
-	    .empty(high_empty)
+	    .wr_en(u_high_wr),
+	    .din(u_high_in_data),
+	    .rd_en(u_rd[1]),
+	    .dout(u_high_out_data),
+	    .full(u_high_full),
+	    .empty(u_high_empty)
 	);
 
-	ila_6 ila_low_i (
+	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(low_rd),              // input wire [0:0]  probe3
-		.probe1(low_wr),              // input wire [0:0]  probe3
-		.probe2(low_empty),           // input wire [0:0]  probe3
-		.probe3(low_pending),         // input wire [0:0]  probe3
-		.probe4(low_blocks),          // input wire [13:0]  probe3
-		.probe5(low_timestamp),       // input wire [21:0]  probe3
-		.probe6(low_hdr_sample),      // input wire [63:0]  probe3
-		.probe7(low_hdr_blocks),      // input wire [7:0]  probe3
-		.probe8(low_hdr_flags),       // input wire [7:0]  probe3
-		.probe9(low_hdr_size),        // input wire [15:0]  probe3
-		.probe10(low_hdr_freq),       // input wire [31:0]  probe3
-		.probe11(low_hdr_angle),      // input wire [15:0]  probe3
-		.probe12(low_hdr_doa_error),  // input wire [15:0]  probe3
-		.probe13(low_hdr_max_env),    // input wire [15:0]  probe3
-		.probe14(low_hdr_max_pos),    // input wire [15:0]  probe3
-		.probe15(low_hdr_env_mean),   // input wire [15:0]  probe3
-		.probe16(low_hdr_env_std),    // input wire [15:0]  probe3
-		.probe17(low_hdr_phase_std),  // input wire [15:0]  probe3
-		.probe18(low_hdr_freq_std),   // input wire [15:0]  probe3
-		.probe19(low_env_0),          // input wire [15:0]  probe3
-		.probe20(low_env_1),          // input wire [15:0]  probe3
-		.probe21(low_env_2),          // input wire [15:0]  probe3
-		.probe22(low_env_3),          // input wire [15:0]  probe3
-		.probe23(low_env_4),          // input wire [15:0]  probe3
-		.probe24(low_env_5),          // input wire [15:0]  probe3
-		.probe25(low_env_6),          // input wire [15:0]  probe3
-		.probe26(low_env_7),          // input wire [15:0]  probe3
-		.probe27(low_phase_0),        // input wire [15:0]  probe3
-		.probe28(low_phase_1),        // input wire [15:0]  probe3
-		.probe29(low_phase_2),        // input wire [15:0]  probe3
-		.probe30(low_phase_3),        // input wire [15:0]  probe3
-		.probe31(low_phase_4),        // input wire [15:0]  probe3
-		.probe32(low_phase_5),        // input wire [15:0]  probe3
-		.probe33(low_phase_6),        // input wire [15:0]  probe3
-		.probe34(low_phase_7)         // input wire [15:0]  probe3
-    );
-
-	ila_6 ila_high_i (
-		.clk(clk),                     // input wire clk
-		.probe0(high_rd),              // input wire [0:0]  probe3
-		.probe1(high_wr),              // input wire [0:0]  probe3
-		.probe2(high_empty),           // input wire [0:0]  probe3
-		.probe3(high_pending),         // input wire [0:0]  probe3
-		.probe4(high_blocks),          // input wire [13:0]  probe3
-		.probe5(high_timestamp),       // input wire [21:0]  probe3
-		.probe6(high_hdr_sample),      // input wire [63:0]  probe3
-		.probe7(high_hdr_blocks),      // input wire [7:0]  probe3
-		.probe8(high_hdr_flags),       // input wire [7:0]  probe3
-		.probe9(high_hdr_size),        // input wire [15:0]  probe3
-		.probe10(high_hdr_freq),       // input wire [31:0]  probe3
-		.probe11(high_hdr_angle),      // input wire [15:0]  probe3
-		.probe12(high_hdr_doa_error),  // input wire [15:0]  probe3
-		.probe13(high_hdr_max_env),    // input wire [15:0]  probe3
-		.probe14(high_hdr_max_pos),    // input wire [15:0]  probe3
-		.probe15(high_hdr_env_mean),   // input wire [15:0]  probe3
-		.probe16(high_hdr_env_std),    // input wire [15:0]  probe3
-		.probe17(high_hdr_phase_std),  // input wire [15:0]  probe3
-		.probe18(high_hdr_freq_std),   // input wire [15:0]  probe3
-		.probe19(high_env_0),          // input wire [15:0]  probe3
-		.probe20(high_env_1),          // input wire [15:0]  probe3
-		.probe21(high_env_2),          // input wire [15:0]  probe3
-		.probe22(high_env_3),          // input wire [15:0]  probe3
-		.probe23(high_env_4),          // input wire [15:0]  probe3
-		.probe24(high_env_5),          // input wire [15:0]  probe3
-		.probe25(high_env_6),          // input wire [15:0]  probe3
-		.probe26(high_env_7),          // input wire [15:0]  probe3
-		.probe27(high_phase_0),        // input wire [15:0]  probe3
-		.probe28(high_phase_1),        // input wire [15:0]  probe3
-		.probe29(high_phase_2),        // input wire [15:0]  probe3
-		.probe30(high_phase_3),        // input wire [15:0]  probe3
-		.probe31(high_phase_4),        // input wire [15:0]  probe3
-		.probe32(high_phase_5),        // input wire [15:0]  probe3
-		.probe33(high_phase_6),        // input wire [15:0]  probe3
-		.probe34(high_phase_7)         // input wire [15:0]  probe3
+		.probe0(has_preview),         // input wire [1:0]  probe3
+		.probe1(preview_data[0]),     // input wire [21:0]  probe3
+		.probe2(preview_data[1]),     // input wire [21:0]  probe3
+		.probe3(state),               // input wire [1:0]  probe3
+		.probe4(state_diff),          // input wire [21:0]  probe3
+		.probe5(state_ok),            // input wire [0:0]  probe3
+		.probe6(state_ind),           // input wire [0:0]  probe3
+		.probe7(pend_blocks[0]),      // input wire [13:0]  probe3
+		.probe8(pend_blocks[1]),      // input wire [13:0]  probe3
+		.probe9(diff_blocks),         // input wire [8:0]  probe3
+		.probe10(u_rd),               // input wire [1:0]  probe3
+		.probe11(mix_active),         // input wire [0:0]  probe3
+		.probe12(mix_ind),            // input wire [0:0]  probe3
+		.probe13(mix_blocks),         // input wire [7:0]  probe3
+		.probe14(hdr_sample),         // input wire [63:0]  probe3
+		.probe15(hdr_blocks),         // input wire [7:0]  probe3
+		.probe16(hdr_flags),          // input wire [7:0]  probe3
+		.probe17(hdr_size),           // input wire [15:0]  probe3
+		.probe18(hdr_freq),           // input wire [31:0]  probe3
+		.probe19(hdr_angle),          // input wire [15:0]  probe3
+		.probe20(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe21(hdr_max_env),        // input wire [15:0]  probe3
+		.probe22(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe23(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe24(hdr_env_std),        // input wire [15:0]  probe3
+		.probe25(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe26(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe27(env_0),              // input wire [15:0]  probe3
+		.probe28(env_1),              // input wire [15:0]  probe3
+		.probe29(env_2),              // input wire [15:0]  probe3
+		.probe30(env_3),              // input wire [15:0]  probe3
+		.probe31(env_4),              // input wire [15:0]  probe3
+		.probe32(env_5),              // input wire [15:0]  probe3
+		.probe33(env_6),              // input wire [15:0]  probe3
+		.probe34(env_7),              // input wire [15:0]  probe3
+		.probe35(phase_0),            // input wire [15:0]  probe3
+		.probe36(phase_1),            // input wire [15:0]  probe3
+		.probe37(phase_2),            // input wire [15:0]  probe3
+		.probe38(phase_3),            // input wire [15:0]  probe3
+		.probe39(phase_4),            // input wire [15:0]  probe3
+		.probe40(phase_5),            // input wire [15:0]  probe3
+		.probe41(phase_6),            // input wire [15:0]  probe3
+		.probe42(phase_7)             // input wire [15:0]  probe3
     );
     
 generate
@@ -290,61 +256,83 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset)
-        begin
-            low_delay <= 0;
-            low_rd <= 0;
-        end
-        else
-        begin
-            if (low_empty)
-            begin
-                low_delay <= 7;
-                low_rd <= 0;
-            end
-            else
-            begin
-                if (low_delay)
-                begin
-                    low_delay <= low_delay - 1;                
-                    low_rd <= 0;
-                end
-                else
-                    low_rd <= 1;
-            end
-        end
+        u_low_wr <= low_wr;
+        u_low_in_data <= low_data;
+    end        
+
+    always @(posedge clk) 
+    begin
+        u_high_wr <= high_wr;
+        u_high_in_data <= high_data;
+    end        
+
+    always @(posedge clk) 
+    begin
+        low_rd <= u_rd[0];
+        high_rd <= u_rd[1];
+    end        
+
+    always @(posedge clk) 
+    begin
+        low_empty <= u_low_empty;
+        low_full <= u_low_full;
     end
 
     always @(posedge clk) 
     begin
-        if (reset)
+        high_empty <= u_high_empty;
+        high_full <= u_high_full;
+    end
+
+    always @(posedge clk) 
+    begin
+        state_data[0] <= u_low_out_data;
+        state_data[1] <= u_high_out_data;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (low_empty)
         begin
-            high_delay <= 0;
-            high_rd <= 0;
+            has_preview[0] <= low_pending;
+            if (low_pending)
+                preview_data[0] <= low_timestamp;
+            else
+                preview_data[0] <= 0;
         end
         else
         begin
-            if (high_empty)
+		    if (state_data[0][79])
             begin
-                high_delay <= 7;
-                high_rd <= 0;
+                has_preview[0] <= 1;
+                preview_data[0] <= state_data[0][21:0];
             end
+        end        
+    end
+
+    always @(posedge clk) 
+    begin
+        if (high_empty)
+        begin
+            has_preview[1] <= high_pending;
+            if (high_pending)
+                preview_data[1] <= high_timestamp;
             else
-            begin
-                if (high_delay)
-                begin
-                    high_delay <= high_delay - 1;                
-                    high_rd <= 0;
-                end
-                else
-                    high_rd <= 1;
-            end
+                preview_data[1] <= 0;
         end
+        else
+        begin
+		    if (state_data[1][79])
+            begin
+                has_preview[1] <= 1;
+                preview_data[1] <= state_data[1][21:0];
+            end
+        end        
     end
             
     always @(posedge clk) 
     begin
-        low_wr_1 <= low_wr;
+        low_wr_1 <= u_low_wr;
         low_wr_2 <= low_wr_1;
     end
 
@@ -352,117 +340,164 @@ generate
     begin
         case ({low_empty, low_rd, low_wr_2})
             3'b000 : ;
-            3'b001 : low_blocks <= low_blocks + 1;
-            3'b010 : low_blocks <= low_blocks - 1;
+            3'b001 : pend_blocks[0] <= pend_blocks[0] + 1;
+            3'b010 : pend_blocks[0] <= pend_blocks[0] - 1;
             3'b011 : ;
-            3'b100 : low_blocks <= 0;
-            3'b101 : low_blocks <= 0;
-            3'b110 : low_blocks <= 0;            
-            3'b111 : low_blocks <= 0;
+            3'b100 : pend_blocks[0] <= 0;
+            3'b101 : pend_blocks[0] <= 0;
+            3'b110 : pend_blocks[0] <= 0;            
+            3'b111 : pend_blocks[0] <= 0;
         endcase
     end
     
     always @(posedge clk) 
     begin
-        high_wr_1 <= high_wr;
+        high_wr_1 <= u_high_wr;
         high_wr_2 <= high_wr_1;
     end
-
 
     always @(posedge clk) 
     begin
         case ({high_empty, high_rd, high_wr_2})
             3'b000 : ;
-            3'b001 : high_blocks <= high_blocks + 1;
-            3'b010 : high_blocks <= high_blocks - 1;
+            3'b001 : pend_blocks[1] <= pend_blocks[1] + 1;
+            3'b010 : pend_blocks[1] <= pend_blocks[1] - 1;
             3'b011 : ;
-            3'b100 : high_blocks <= 0;
-            3'b101 : high_blocks <= 0;
-            3'b110 : high_blocks <= 0;            
-            3'b111 : high_blocks <= 0;
+            3'b100 : pend_blocks[1] <= 0;
+            3'b101 : pend_blocks[1] <= 0;
+            3'b110 : pend_blocks[1] <= 0;            
+            3'b111 : pend_blocks[1] <= 0;
         endcase
     end
-            
+
     always @(posedge clk) 
-    begin
-        if (low_rd)
-		begin
-		    if (low_out_data[79])
-		    begin
-				low_hdr_sample <= low_out_data[63:0];
-				low_hdr_blocks <= low_out_data[71:64];
-				low_hdr_flags <= low_out_data[79:72];
-				low_hdr_size <= low_out_data[95:80];
-				low_hdr_angle <= low_out_data[111:96];
-				low_hdr_doa_error <= low_out_data[127:112];
-				low_hdr_freq <= low_out_data[159:128];
-				low_hdr_max_env <= low_out_data[175:160];
-				low_hdr_max_pos <= low_out_data[191:176];
-				low_hdr_env_mean <= low_out_data[207:192];				
-				low_hdr_env_std <= low_out_data[223:208];				
-				low_hdr_phase_std <= low_out_data[239:224];				
-				low_hdr_freq_std <= low_out_data[255:240];
+	begin
+		case (has_preview)
+			2'b00: state <= STAT_NONE;
+			2'b01: state <= STAT_A;
+			2'b10: state <= STAT_B;
+			2'b11:
+			begin
+				state <= STAT_COMP;
+				state_diff <= preview_data[1] - preview_data[0];
 			end
-    		else
-	   		begin
-			    low_env_0 <= low_out_data[15:0];
-    		    low_phase_0 <= low_out_data[31:16];
-	   			low_env_1 <= low_out_data[47:32];
-		  		low_phase_1 <= low_out_data[63:48];
-				low_env_2 <= low_out_data[79:64];
-				low_phase_2 <= low_out_data[95:80];
-				low_env_3 <= low_out_data[111:96];
-				low_phase_3 <= low_out_data[127:112];
-			    low_env_4 <= low_out_data[143:128];
-    		    low_phase_4 <= low_out_data[159:144];
-	   			low_env_5 <= low_out_data[175:160];
-		  		low_phase_5 <= low_out_data[191:176];
-				low_env_6 <= low_out_data[207:192];
-				low_phase_6 <= low_out_data[223:208];
-				low_env_7 <= low_out_data[239:224];
-				low_phase_7 <= low_out_data[255:240];
-			end
-		end
+		endcase
 	end
 
     always @(posedge clk) 
-    begin
-        if (high_rd)
+	begin
+		state_ok <= 1;
+		
+		case (state)
+			STAT_NONE: state_ok <= 0;
+			STAT_A: state_ind <= 0;
+			STAT_B: state_ind <= 1;
+			STAT_COMP: state_ind <= state_diff[21];
+		endcase
+	end
+
+    always @(posedge clk) 
+	begin
+		if (state_ok)
 		begin
-		    if (high_out_data[79])
+		    if (pend_blocks[state_ind][13:8] == 0)
 		    begin
-				high_hdr_sample <= high_out_data[63:0];
-				high_hdr_blocks <= high_out_data[71:64];
-				high_hdr_flags <= high_out_data[79:72];
-				high_hdr_size <= high_out_data[95:80];
-				high_hdr_angle <= high_out_data[111:96];
-				high_hdr_doa_error <= high_out_data[127:112];
-				high_hdr_freq <= high_out_data[159:128];
-				high_hdr_max_env <= high_out_data[175:160];
-				high_hdr_max_pos <= high_out_data[191:176];
-				high_hdr_env_mean <= high_out_data[207:192];				
-				high_hdr_env_std <= high_out_data[223:208];				
-				high_hdr_phase_std <= high_out_data[239:224];				
-				high_hdr_freq_std <= high_out_data[255:240];
+    		    if (pend_blocks[state_ind][7:0] == 0)
+		            diff_blocks[8] <= 1;
+		        else
+    		        diff_blocks <= pend_blocks[state_ind][8:0] - {1'b0, state_data[state_ind][71:64]};
+		    end
+  		    else
+  		        diff_blocks[8] <= 0;
+		end
+		else
+  		    diff_blocks[8] <= 1;
+    end
+
+    always @(posedge clk) 
+	begin
+	    if (reset)
+	    begin
+	        u_rd <= 0;
+	        mix_active <= 0;
+	        mix_delay <= 0;
+	    end
+	    else
+	    begin
+	        if (u_rd)
+	        begin
+                mix_data <= state_data[mix_ind];
+
+	            if (mix_blocks)
+ 	                mix_blocks <= mix_blocks - 1;
+	            else
+ 	                u_rd <= 0;
+	        end
+	        else
+	        begin
+	            if (mix_active)
+	            begin
+	                mix_active <= 0;
+	                mix_delay <= 3;
+	            end
+	            else
+	            begin
+	                if (mix_delay)
+	                    mix_delay <= mix_delay - 1;
+	                else
+    	            begin
+                        if (diff_blocks[8] == 0)
+                        begin
+                            mix_blocks <= state_data[state_ind][71:64];
+                            mix_ind <= state_ind;
+                            mix_data <= state_data[state_ind];
+                            mix_active <= 1;
+             	            u_rd[state_ind] <= 1;
+            	       end
+                    end        
+                end
+            end      
+        end
+    end      
+                	                       
+    always @(posedge clk) 
+    begin
+        if (mix_active)
+		begin
+		    if (mix_data[79])
+		    begin
+				hdr_sample <= mix_data[63:0];
+				hdr_blocks <= mix_data[71:64];
+				hdr_flags <= mix_data[79:72];
+				hdr_size <= mix_data[95:80];
+				hdr_angle <= mix_data[111:96];
+				hdr_doa_error <= mix_data[127:112];
+				hdr_freq <= mix_data[159:128];
+				hdr_max_env <= mix_data[175:160];
+				hdr_max_pos <= mix_data[191:176];
+				hdr_env_mean <= mix_data[207:192];				
+				hdr_env_std <= mix_data[223:208];				
+				hdr_phase_std <= mix_data[239:224];				
+				hdr_freq_std <= mix_data[255:240];
 			end
     		else
 	   		begin
-			    high_env_0 <= high_out_data[15:0];
-    		    high_phase_0 <= high_out_data[31:16];
-	   			high_env_1 <= high_out_data[47:32];
-		  		high_phase_1 <= high_out_data[63:48];
-				high_env_2 <= high_out_data[79:64];
-				high_phase_2 <= high_out_data[95:80];
-				high_env_3 <= high_out_data[111:96];
-				high_phase_3 <= high_out_data[127:112];
-			    high_env_4 <= high_out_data[143:128];
-    		    high_phase_4 <= high_out_data[159:144];
-	   			high_env_5 <= high_out_data[175:160];
-		  		high_phase_5 <= high_out_data[191:176];
-				high_env_6 <= high_out_data[207:192];
-				high_phase_6 <= high_out_data[223:208];
-				high_env_7 <= high_out_data[239:224];
-				high_phase_7 <= high_out_data[255:240];
+			    env_0 <= mix_data[15:0];
+    		    phase_0 <= mix_data[31:16];
+	   			env_1 <= mix_data[47:32];
+		  		phase_1 <= mix_data[63:48];
+				env_2 <= mix_data[79:64];
+				phase_2 <= mix_data[95:80];
+				env_3 <= mix_data[111:96];
+				phase_3 <= mix_data[127:112];
+			    env_4 <= mix_data[143:128];
+    		    phase_4 <= mix_data[159:144];
+	   			env_5 <= mix_data[175:160];
+		  		phase_5 <= mix_data[191:176];
+				env_6 <= mix_data[207:192];
+				phase_6 <= mix_data[223:208];
+				env_7 <= mix_data[239:224];
+				phase_7 <= mix_data[255:240];
 			end
 		end
 	end

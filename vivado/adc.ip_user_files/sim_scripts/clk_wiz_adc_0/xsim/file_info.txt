@@ -1,3 +1,0 @@
-clk_wiz_adc_0_clk_wiz.v,verilog,xil_defaultlib,../../../../adc.gen/sources_1/ip/clk_wiz_adc_0/clk_wiz_adc_0_clk_wiz.v,incdir="../../../ipstatic"incdir="../../../../../../2025.1/data/rsb/busdef"incdir="../../../ipstatic"
-clk_wiz_adc_0.v,verilog,xil_defaultlib,../../../../adc.gen/sources_1/ip/clk_wiz_adc_0/clk_wiz_adc_0.v,incdir="../../../ipstatic"incdir="../../../../../../2025.1/data/rsb/busdef"incdir="../../../ipstatic"
-glbl.v,Verilog,xil_defaultlib,glbl.v

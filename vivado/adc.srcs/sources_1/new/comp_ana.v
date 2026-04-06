@@ -1261,24 +1261,13 @@ generate
 
     always @(posedge axi_clk) 
 	begin
-	    if (axi_empty)
+        if (axi_ok)
 	    begin
-            if (axi_ok)
-	        begin
-	            axi_pending <= 1;
-	            axi_timestamp <= {axi_pos[axi_ind], 2'b00};
-    	    end
-    	    else
-	            axi_pending <= 0;
-	    end
-	    else
-	    begin
-	        if (axi_is_header)
-	        begin
-    	        axi_pending <= 1;        
-    	        axi_timestamp <= axi_data[21:0];
-    	    end
-	    end
+	        axi_pending <= 1;
+	        axi_timestamp <= {axi_pos[axi_ind], 2'b00};
+        end
+        else
+            axi_pending <= 0;
 	end
 
     always @(posedge axi_clk) 

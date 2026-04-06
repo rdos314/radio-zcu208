@@ -103,6 +103,16 @@ module mts(
 	wire comp_clk_buf;
 	wire comp_ana_clk_buf;
 
+    wire deci_raw_clk;
+    wire ana0_raw_clk;
+    wire ana1_raw_clk;
+    wire freq0_raw_clk;
+    wire freq1_raw_clk;
+    wire comp0_raw_clk;
+    wire comp1_raw_clk;
+    wire comp_ana0_raw_clk;
+    wire comp_ana1_raw_clk;
+
 	wire rst_async = sys_reset | (~deci_locked);
     wire ana_locked;
     wire freq_locked;
@@ -160,8 +170,12 @@ module mts(
     
 	clk_wiz_deci clk_wiz_deci_i (
 		.clk_in1	(deci_clk_buf),
-		.clk_out1	(deci_clk),
+		.clk_out1	(deci_raw_clk),
 		.locked		(deci_locked));
+
+	BUFG buf_deci_clk_0 (
+		.I			(deci_raw_clk),
+		.O			(deci_clk));
 
 	BUFG buf_ana_clk_i (
 		.I			(pl_clk_buf),
@@ -169,10 +183,18 @@ module mts(
 		
 	clk_wiz_adc clk_wiz_ana_i (
 		.clk_in1	(ana_clk_buf),
-		.clk_out1	(ana0_clk),
-		.clk_out2	(ana1_clk),
+		.clk_out1	(ana0_raw_clk),
+		.clk_out2	(ana1_raw_clk),
 		.locked		(ana_locked)
 		);
+
+	BUFG buf_ana_clk_0 (
+		.I			(ana0_raw_clk),
+		.O			(ana0_clk));
+
+	BUFG buf_ana_clk_1 (
+		.I			(ana1_raw_clk),
+		.O			(ana1_clk));
 
 	BUFG buf_freq_clk_i (
 		.I			(pl_clk_buf),
@@ -180,10 +202,18 @@ module mts(
 
 	clk_wiz_adc clk_wiz_freq_i (
 		.clk_in1	(freq_clk_buf),
-		.clk_out1	(freq0_clk),
-		.clk_out2	(freq1_clk),
+		.clk_out1	(freq0_raw_clk),
+		.clk_out2	(freq1_raw_clk),
 		.locked		(freq_locked)
 		);
+
+	BUFG buf_freq_clk_0 (
+		.I			(freq0_raw_clk),
+		.O			(freq0_clk));
+
+	BUFG buf_freq_clk_1 (
+		.I			(freq1_raw_clk),
+		.O			(freq1_clk));
 
 	BUFG buf_comp_clk_i (
 		.I			(pl_clk_buf),
@@ -191,10 +221,18 @@ module mts(
 		
 	clk_wiz_adc clk_wiz_comp_i (
 		.clk_in1	(comp_clk_buf),
-		.clk_out1	(comp0_clk),
-		.clk_out2	(comp1_clk),
+		.clk_out1	(comp0_raw_clk),
+		.clk_out2	(comp1_raw_clk),
 		.locked		(comp_locked)
 		);
+
+	BUFG buf_comp_clk_0 (
+		.I			(comp0_raw_clk),
+		.O			(comp0_clk));
+
+	BUFG buf_comp_clk_1 (
+		.I			(comp1_raw_clk),
+		.O			(comp1_clk));
 
 	BUFG buf_comp_ana_clk_i (
 		.I			(pl_clk_buf),
@@ -202,10 +240,18 @@ module mts(
 		
 	clk_wiz_adc clk_wiz_comp_ana_i (
 		.clk_in1	(comp_ana_clk_buf),
-		.clk_out1	(comp_ana0_clk),
-		.clk_out2	(comp_ana1_clk),
+		.clk_out1	(comp_ana0_raw_clk),
+		.clk_out2	(comp_ana1_raw_clk),
 		.locked		(comp_ana_locked)
 		);
+
+	BUFG buf_comp_ana_clk_0 (
+		.I			(comp_ana0_raw_clk),
+		.O			(comp_ana0_clk));
+
+	BUFG buf_comp_ana_clk_1 (
+		.I			(comp_ana1_raw_clk),
+		.O			(comp_ana1_clk));
 
 /*
 	ila_6 ila_i (

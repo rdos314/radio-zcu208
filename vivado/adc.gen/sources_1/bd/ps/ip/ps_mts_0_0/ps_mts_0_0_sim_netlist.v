@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun Apr  5 11:54:34 2026
+// Date        : Mon Apr  6 00:30:40 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -272,10 +272,12 @@ module ps_mts_0_0_mts
   wire adc_axi_start;
   wire adc_axi_stop;
   wire ana0_clk;
+  wire ana0_raw_clk;
   wire ana0_reset;
   (* async_reg = "true" *) wire ana0_reset_1;
   (* async_reg = "true" *) wire ana0_reset_2;
   wire ana1_clk;
+  wire ana1_raw_clk;
   wire ana1_reset;
   (* async_reg = "true" *) wire ana1_reset_1;
   (* async_reg = "true" *) wire ana1_reset_2;
@@ -295,18 +297,22 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire axi_sim_active_2;
   wire axi_sim_start;
   wire comp0_clk;
+  wire comp0_raw_clk;
   wire comp0_reset;
   (* async_reg = "true" *) wire comp0_reset_1;
   (* async_reg = "true" *) wire comp0_reset_2;
   wire comp1_clk;
+  wire comp1_raw_clk;
   wire comp1_reset;
   (* async_reg = "true" *) wire comp1_reset_1;
   (* async_reg = "true" *) wire comp1_reset_2;
   wire comp_ana0_clk;
+  wire comp_ana0_raw_clk;
   wire comp_ana0_reset;
   (* async_reg = "true" *) wire comp_ana0_reset_1;
   (* async_reg = "true" *) wire comp_ana0_reset_2;
   wire comp_ana1_clk;
+  wire comp_ana1_raw_clk;
   wire comp_ana1_reset;
   (* async_reg = "true" *) wire comp_ana1_reset_1;
   (* async_reg = "true" *) wire comp_ana1_reset_2;
@@ -330,6 +336,7 @@ module ps_mts_0_0_mts
   wire deci_clk;
   wire deci_clk_buf;
   wire deci_locked;
+  wire deci_raw_clk;
   (* async_reg = "true" *) wire [3:0]deci_release_cnt;
   wire [3:0]deci_release_cnt__0;
   (* async_reg = "true" *) wire deci_reset_1;
@@ -346,10 +353,12 @@ module ps_mts_0_0_mts
   wire deci_sim_start_curr;
   wire deci_sim_start_prev;
   wire freq0_clk;
+  wire freq0_raw_clk;
   wire freq0_reset;
   (* async_reg = "true" *) wire freq0_reset_1;
   (* async_reg = "true" *) wire freq0_reset_2;
   wire freq1_clk;
+  wire freq1_raw_clk;
   wire freq1_reset;
   (* async_reg = "true" *) wire freq1_reset_1;
   (* async_reg = "true" *) wire freq1_reset_2;
@@ -433,10 +442,50 @@ module ps_mts_0_0_mts
   BUFGCE #(
     .CE_TYPE("ASYNC"),
     .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_ana_clk_0
+       (.CE(1'b1),
+        .I(ana0_raw_clk),
+        .O(ana0_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_ana_clk_1
+       (.CE(1'b1),
+        .I(ana1_raw_clk),
+        .O(ana1_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
     buf_ana_clk_i
        (.CE(1'b1),
         .I(pl_clk_buf),
         .O(ana_clk_buf));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_comp_ana_clk_0
+       (.CE(1'b1),
+        .I(comp_ana0_raw_clk),
+        .O(comp_ana0_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_comp_ana_clk_1
+       (.CE(1'b1),
+        .I(comp_ana1_raw_clk),
+        .O(comp_ana1_clk));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* XILINX_LEGACY_PRIM = "BUFG" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
@@ -453,10 +502,40 @@ module ps_mts_0_0_mts
   BUFGCE #(
     .CE_TYPE("ASYNC"),
     .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_comp_clk_0
+       (.CE(1'b1),
+        .I(comp0_raw_clk),
+        .O(comp0_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_comp_clk_1
+       (.CE(1'b1),
+        .I(comp1_raw_clk),
+        .O(comp1_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
     buf_comp_clk_i
        (.CE(1'b1),
         .I(pl_clk_buf),
         .O(comp_clk_buf));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_deci_clk_0
+       (.CE(1'b1),
+        .I(deci_raw_clk),
+        .O(deci_clk));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* XILINX_LEGACY_PRIM = "BUFG" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
@@ -473,33 +552,53 @@ module ps_mts_0_0_mts
   BUFGCE #(
     .CE_TYPE("ASYNC"),
     .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_freq_clk_0
+       (.CE(1'b1),
+        .I(freq0_raw_clk),
+        .O(freq0_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
+    buf_freq_clk_1
+       (.CE(1'b1),
+        .I(freq1_raw_clk),
+        .O(freq1_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFG" *) 
+  (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
+  BUFGCE #(
+    .CE_TYPE("ASYNC"),
+    .SIM_DEVICE("ULTRASCALE_PLUS")) 
     buf_freq_clk_i
        (.CE(1'b1),
         .I(pl_clk_buf),
         .O(freq_clk_buf));
   ps_mts_0_0_clk_wiz_adc clk_wiz_ana_i
        (.clk_in1(ana_clk_buf),
-        .clk_out1(ana0_clk),
-        .clk_out2(ana1_clk),
+        .clk_out1(ana0_raw_clk),
+        .clk_out2(ana1_raw_clk),
         .locked(ana_locked));
   ps_mts_0_0_clk_wiz_adc_HD1 clk_wiz_comp_ana_i
        (.clk_in1(comp_ana_clk_buf),
-        .clk_out1(comp_ana0_clk),
-        .clk_out2(comp_ana1_clk),
+        .clk_out1(comp_ana0_raw_clk),
+        .clk_out2(comp_ana1_raw_clk),
         .locked(comp_ana_locked));
   ps_mts_0_0_clk_wiz_adc clk_wiz_comp_i
        (.clk_in1(comp_clk_buf),
-        .clk_out1(comp0_clk),
-        .clk_out2(comp1_clk),
+        .clk_out1(comp0_raw_clk),
+        .clk_out2(comp1_raw_clk),
         .locked(comp_locked));
   ps_mts_0_0_clk_wiz_deci clk_wiz_deci_i
        (.clk_in1(deci_clk_buf),
-        .clk_out1(deci_clk),
+        .clk_out1(deci_raw_clk),
         .locked(deci_locked));
   ps_mts_0_0_clk_wiz_adc clk_wiz_freq_i
        (.clk_in1(freq_clk_buf),
-        .clk_out1(freq0_clk),
-        .clk_out2(freq1_clk),
+        .clk_out1(freq0_raw_clk),
+        .clk_out2(freq1_raw_clk),
         .locked(freq_locked));
   FDRE \mts.adc_active_reg 
        (.C(deci_clk),
