@@ -130,6 +130,14 @@ module axi_int(
     reg high_wr_1;
     reg high_wr_2;
     
+    reg mig_rd;
+    wire [255:0] mig_out_data;
+    wire mig_full;
+    wire mig_empty;
+    
+    reg mig_wr;
+    reg [255:0] mig_data;
+    
 	reg [63:0] hdr_sample;
 	reg [7:0] hdr_blocks;
 	reg [7:0] hdr_flags;
@@ -200,52 +208,59 @@ module axi_int(
 	    .full(u_high_full),
 	    .empty(u_high_empty)
 	);
+	
+	xpm_fifo_sync #(
+	    .FIFO_MEMORY_TYPE("ultra"),
+	    .FIFO_WRITE_DEPTH(16384),
+	    .WRITE_DATA_WIDTH(256),
+	    .READ_DATA_WIDTH(256),
+	    .READ_MODE("fwft"),
+	    .FIFO_READ_LATENCY(1)
+	)
+	fifo_i(
+	    .rst(reset),
+	    .wr_clk(clk),
+	    .wr_en(mix_active),
+	    .din(mix_data),
+	    .rd_en(mig_rd),
+	    .dout(mig_out_data),
+	    .full(mig_full),
+	    .empty(mig_empty)
+	);
 
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(has_preview),         // input wire [1:0]  probe3
-		.probe1(preview_data[0]),     // input wire [21:0]  probe3
-		.probe2(preview_data[1]),     // input wire [21:0]  probe3
-		.probe3(state),               // input wire [1:0]  probe3
-		.probe4(state_diff),          // input wire [21:0]  probe3
-		.probe5(state_ok),            // input wire [0:0]  probe3
-		.probe6(state_ind),           // input wire [0:0]  probe3
-		.probe7(pend_blocks[0]),      // input wire [13:0]  probe3
-		.probe8(pend_blocks[1]),      // input wire [13:0]  probe3
-		.probe9(diff_blocks),         // input wire [8:0]  probe3
-		.probe10(u_rd),               // input wire [1:0]  probe3
-		.probe11(mix_active),         // input wire [0:0]  probe3
-		.probe12(mix_ind),            // input wire [0:0]  probe3
-		.probe13(mix_blocks),         // input wire [7:0]  probe3
-		.probe14(hdr_sample),         // input wire [63:0]  probe3
-		.probe15(hdr_blocks),         // input wire [7:0]  probe3
-		.probe16(hdr_flags),          // input wire [7:0]  probe3
-		.probe17(hdr_size),           // input wire [15:0]  probe3
-		.probe18(hdr_freq),           // input wire [31:0]  probe3
-		.probe19(hdr_angle),          // input wire [15:0]  probe3
-		.probe20(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe21(hdr_max_env),        // input wire [15:0]  probe3
-		.probe22(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe23(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe24(hdr_env_std),        // input wire [15:0]  probe3
-		.probe25(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe26(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe27(env_0),              // input wire [15:0]  probe3
-		.probe28(env_1),              // input wire [15:0]  probe3
-		.probe29(env_2),              // input wire [15:0]  probe3
-		.probe30(env_3),              // input wire [15:0]  probe3
-		.probe31(env_4),              // input wire [15:0]  probe3
-		.probe32(env_5),              // input wire [15:0]  probe3
-		.probe33(env_6),              // input wire [15:0]  probe3
-		.probe34(env_7),              // input wire [15:0]  probe3
-		.probe35(phase_0),            // input wire [15:0]  probe3
-		.probe36(phase_1),            // input wire [15:0]  probe3
-		.probe37(phase_2),            // input wire [15:0]  probe3
-		.probe38(phase_3),            // input wire [15:0]  probe3
-		.probe39(phase_4),            // input wire [15:0]  probe3
-		.probe40(phase_5),            // input wire [15:0]  probe3
-		.probe41(phase_6),            // input wire [15:0]  probe3
-		.probe42(phase_7)             // input wire [15:0]  probe3
+		.probe0(mig_empty),           // input wire [0:0]  probe3
+		.probe1(mig_wr),              // input wire [0:0]  probe3
+		.probe2(hdr_sample),          // input wire [63:0]  probe3
+		.probe3(hdr_blocks),          // input wire [7:0]  probe3
+		.probe4(hdr_flags),           // input wire [7:0]  probe3
+		.probe5(hdr_size),            // input wire [15:0]  probe3
+		.probe6(hdr_freq),            // input wire [31:0]  probe3
+		.probe7(hdr_angle),           // input wire [15:0]  probe3
+		.probe8(hdr_doa_error),       // input wire [15:0]  probe3
+		.probe9(hdr_max_env),         // input wire [15:0]  probe3
+		.probe10(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe11(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe12(hdr_env_std),        // input wire [15:0]  probe3
+		.probe13(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe14(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe15(env_0),              // input wire [15:0]  probe3
+		.probe16(env_1),              // input wire [15:0]  probe3
+		.probe17(env_2),              // input wire [15:0]  probe3
+		.probe18(env_3),              // input wire [15:0]  probe3
+		.probe19(env_4),              // input wire [15:0]  probe3
+		.probe20(env_5),              // input wire [15:0]  probe3
+		.probe21(env_6),              // input wire [15:0]  probe3
+		.probe22(env_7),              // input wire [15:0]  probe3
+		.probe23(phase_0),            // input wire [15:0]  probe3
+		.probe24(phase_1),            // input wire [15:0]  probe3
+		.probe25(phase_2),            // input wire [15:0]  probe3
+		.probe26(phase_3),            // input wire [15:0]  probe3
+		.probe27(phase_4),            // input wire [15:0]  probe3
+		.probe28(phase_5),            // input wire [15:0]  probe3
+		.probe29(phase_6),            // input wire [15:0]  probe3
+		.probe30(phase_7)             // input wire [15:0]  probe3
     );
     
 generate
@@ -487,45 +502,61 @@ generate
 	begin
 	    mix_active <= mix_active_1;
 	end
-                	                       
+
     always @(posedge clk) 
     begin
-        if (mix_active)
+        mig_rd <= !mig_empty;
+    end
+    
+    always @(posedge clk) 
+    begin
+        if (mig_rd)
+        begin
+            mig_wr <= 1;
+            mig_data <= mig_out_data;
+        end
+        else
+            mig_wr <= 0;
+    end
+                   	                       
+    always @(posedge clk) 
+    begin
+        if (mig_wr)
 		begin
-		    if (mix_data[79])
+		    if (mig_data[79])
 		    begin
-				hdr_sample <= mix_data[63:0];
-				hdr_blocks <= mix_data[71:64];
-				hdr_flags <= mix_data[79:72];
-				hdr_size <= mix_data[95:80];
-				hdr_angle <= mix_data[111:96];
-				hdr_doa_error <= mix_data[127:112];
-				hdr_freq <= mix_data[159:128];
-				hdr_max_env <= mix_data[175:160];
-				hdr_max_pos <= mix_data[191:176];
-				hdr_env_mean <= mix_data[207:192];				
-				hdr_env_std <= mix_data[223:208];				
-				hdr_phase_std <= mix_data[239:224];				
-				hdr_freq_std <= mix_data[255:240];
+				hdr_sample <= mig_data[63:0];
+				hdr_blocks <= mig_data[71:64];
+				hdr_flags <= mig_data[79:72];
+				hdr_size <= mig_data[95:80];
+				hdr_angle <= mig_data[111:96];
+				hdr_doa_error <= mig_data[127:112];
+				hdr_freq <= mig_data[159:128];
+				hdr_max_env <= mig_data[175:160];
+				hdr_max_pos <= mig_data[191:176];
+				hdr_env_mean <= mig_data[207:192];				
+				hdr_env_std <= mig_data[223:208];				
+				hdr_phase_std <= mig_data[239:224];				
+				hdr_freq_std <= mig_data[255:240];
 			end
     		else
 	   		begin
-			    env_0 <= mix_data[15:0];
-    		    phase_0 <= mix_data[31:16];
-	   			env_1 <= mix_data[47:32];
-		  		phase_1 <= mix_data[63:48];
-				env_2 <= mix_data[79:64];
-				phase_2 <= mix_data[95:80];
-				env_3 <= mix_data[111:96];
-				phase_3 <= mix_data[127:112];
-			    env_4 <= mix_data[143:128];
-    		    phase_4 <= mix_data[159:144];
-	   			env_5 <= mix_data[175:160];
-		  		phase_5 <= mix_data[191:176];
-				env_6 <= mix_data[207:192];
-				phase_6 <= mix_data[223:208];
-				env_7 <= mix_data[239:224];
-				phase_7 <= mix_data[255:240];
+			    env_0 <= mig_data[15:0];
+    		    phase_0 <= mig_data[31:16];
+	   			env_1 <= mig_data[47:32];
+		  		phase_1 <= mig_data[63:48];
+				env_2 <= mig_data[79:64];
+				phase_2 <= mig_data[95:80];
+				env_3 <= mig_data[111:96];
+				phase_3 <= mig_data[127:112];
+			    env_4 <= mig_data[143:128];
+    		    phase_4 <= mig_data[159:144];
+	   			env_5 <= mig_data[175:160];
+		  		phase_5 <= mig_data[191:176];
+				env_6 <= mig_data[207:192];
+				phase_6 <= mig_data[223:208];
+				env_7 <= mig_data[239:224];
+				phase_7 <= mig_data[255:240];
 			end
 		end
 	end
