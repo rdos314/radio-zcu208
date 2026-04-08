@@ -24,7 +24,6 @@
 		device_type = "memory";
 		memory_type = "memory";
 		reg = <0x00000004 0x00000000 0x00000001 0x00000000>;
-		no-map;
 	};
 	psu_ocm_ram_0_memory: memory@FFFC0000 {
 		compatible = "xlnx,psu-ocm-ram-0-1.0" , "mmio-sram";

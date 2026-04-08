@@ -106,8 +106,9 @@ module axi_int(
     reg [255:0] state_data [0:1];
 	
     reg [1:0] has_preview;
-    reg [21:0] preview_data[0:1];
+    reg [21:0] preview_data [0:1];
 
+    reg [7:0] state_blocks [0:1];
     reg [1:0] state;
     reg [21:0] state_diff;
     reg state_ok;
@@ -117,6 +118,7 @@ module axi_int(
     reg [8:0] diff_blocks;
 
     reg [1:0] mix_delay;
+    reg mix_active_1;
     reg mix_active;
     reg mix_ind;
     reg [7:0] mix_blocks;
@@ -292,6 +294,18 @@ generate
 
     always @(posedge clk) 
     begin
+		if (!low_empty & state_data[0][79])
+		    state_blocks[0] <= state_data[0][71:64];
+    end
+
+    always @(posedge clk) 
+    begin
+		if (!high_empty & state_data[1][79])
+		    state_blocks[1] <= state_data[1][71:64];
+    end
+
+    always @(posedge clk) 
+    begin
         if (low_empty)
         begin
             has_preview[0] <= low_pending;
@@ -405,7 +419,7 @@ generate
     		    if (pend_blocks[state_ind][7:0] == 0)
 		            diff_blocks[8] <= 1;
 		        else
-    		        diff_blocks <= pend_blocks[state_ind][8:0] - {1'b0, state_data[state_ind][71:64]};
+    		        diff_blocks <= pend_blocks[state_ind][8:0] - {1'b0, state_blocks[state_ind]};
 		    end
   		    else
   		        diff_blocks[8] <= 0;
@@ -419,7 +433,6 @@ generate
 	    if (reset)
 	    begin
 	        u_rd <= 0;
-	        mix_active <= 0;
 	        mix_delay <= 0;
 	    end
 	    else
@@ -431,34 +444,49 @@ generate
 	            if (mix_blocks)
  	                mix_blocks <= mix_blocks - 1;
 	            else
+	            begin
  	                u_rd <= 0;
+	                mix_delay <= 3;
+	            end
 	        end
 	        else
 	        begin
-	            if (mix_active)
-	            begin
-	                mix_active <= 0;
-	                mix_delay <= 3;
-	            end
-	            else
-	            begin
-	                if (mix_delay)
-	                    mix_delay <= mix_delay - 1;
-	                else
-    	            begin
+	            case (mix_delay)
+  	                3: 
+	                begin
+	                    mix_data <= state_data[mix_ind];
+                        mix_delay <= mix_delay - 1;
+                    end
+
+	                0:
+        	        begin
                         if (diff_blocks[8] == 0)
                         begin
-                            mix_blocks <= state_data[state_ind][71:64];
+                            mix_blocks <= state_blocks[state_ind];
                             mix_ind <= state_ind;
-                            mix_data <= state_data[state_ind];
-                            mix_active <= 1;
-             	            u_rd[state_ind] <= 1;
-            	       end
+                            u_rd[state_ind] <= 1;
+                	    end
                     end        
-                end
+                    
+                    default: mix_delay <= mix_delay - 1;
+
+	            endcase
             end      
         end
     end      
+
+    always @(posedge clk) 
+	begin
+	    if (u_rd)
+	        mix_active_1 <= 1;
+	    else
+	        mix_active_1 <= 0;
+	end
+
+    always @(posedge clk) 
+	begin
+	    mix_active <= mix_active_1;
+	end
                 	                       
     always @(posedge clk) 
     begin
