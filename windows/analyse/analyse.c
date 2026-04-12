@@ -8,6 +8,10 @@
 #define MAP_BASE 0x400000000
 #define MAP_SIZE 0x100000000
 
+#define bool int
+#define false 0
+#define true 1
+
 struct AdcEntry
 {
     short int env;
@@ -29,12 +33,53 @@ struct AdcHeader
     short int env_std;
     short int phase_std;
     short int freq_std;
-    struct AdcEntry entry_arr[100];
 };
+
+bool print_one(volatile struct AdcHeader *header)
+{
+    volatile struct AdcEntry *entry;
+    int i;
+
+    if (header->freq < 40000)
+        return false;
+
+    if (header->freq > 195000)
+        return false;
+
+    if (header->freq > 50000 && header->freq < 185000)
+        return false;
+
+    printf("{\n");
+    printf("  sample: %ld\n", header->sample);
+    printf("  angle: %d\n", header->angle);
+    printf("  doa_error: %d\n", header->doa_error);
+    printf("  freq: %d\n", header->freq);
+    printf("  freq_std: %d\n", header->freq_std);
+    printf("  phase_std: %d\n", header->phase_std);
+    printf("  max_pos: %d\n", header->max_pos);
+    printf("  max_env: %d\n", header->max_env);
+    printf("  env_mean: %d\n", header->env_mean);
+    printf("  env_std: %d\n", header->env_std);
+
+    entry = (volatile struct AdcEntry *)(header+1);
+    printf("  data: [");
+    for (i = 0; i < header->size; i++)
+    {
+        if (i != header->size - 1)
+            printf("%d, ", entry->env);
+        else
+            printf("%d", entry->env);
+        entry += 1;
+    }
+    printf("]\n");
+    printf("}\n\n");
+    return true;
+}
 
 int main()
 {
     int i;
+    bool ok;
     int fd = open("/dev/mem", O_RDWR);
 
     char *map = (char *)mmap(NULL, MAP_SIZE,
@@ -42,13 +87,13 @@ int main()
                      MAP_SHARED, fd, MAP_BASE);
 
     volatile struct AdcHeader *header = (struct AdcHeader *)map;
-    volatile struct AdcEntry *entry;
 
-    entry = &header->entry_arr[0];
-    for (i = 0; i < header->size; i++)
+    ok = print_one(header);
+
+    while (ok)
     {
-        printf("%d\r\n", entry->env);
-        entry += 1;
+        header += header->blocks + 1;
+        ok = print_one(header);
     }
 
     munmap(map, MAP_SIZE);
