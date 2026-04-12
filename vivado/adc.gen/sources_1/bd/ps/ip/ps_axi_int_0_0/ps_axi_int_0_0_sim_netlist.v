@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Thu Apr  9 23:57:56 2026
+// Date        : Sat Apr 11 14:49:25 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.v
@@ -347,6 +347,7 @@ module ps_axi_int_0_0_axi_int
   wire \axi_int.adr_reg[8]_i_1_n_8 ;
   wire \axi_int.adr_reg[8]_i_1_n_9 ;
   wire \axi_int.busy_i_1_n_0 ;
+  wire \axi_int.busy_reg0 ;
   wire \axi_int.counter[0]_i_1_n_0 ;
   wire \axi_int.counter[1]_i_1_n_0 ;
   wire \axi_int.counter[1]_i_2_n_0 ;
@@ -1775,8 +1776,7 @@ module ps_axi_int_0_0_axi_int
   wire \axi_int.u_rd[1]_i_2_n_0 ;
   wire \axi_int.u_rd_reg_n_0_[0] ;
   wire \axi_int.u_rd_reg_n_0_[1] ;
-  wire busy;
-  wire busy0;
+  (* MARK_DEBUG *) wire busy;
   wire clk;
   (* MARK_DEBUG *) wire [7:0]counter;
   wire [8:8]diff_blocks0;
@@ -1811,6 +1811,7 @@ module ps_axi_int_0_0_axi_int
   wire high_wr;
   wire high_wr_1;
   wire high_wr_2;
+  (* MARK_DEBUG *) wire last;
   wire [255:0]low_data;
   wire low_empty;
   wire low_full;
@@ -1827,15 +1828,15 @@ module ps_axi_int_0_0_axi_int
   wire mix_blocks;
   wire mix_data;
   (* MARK_DEBUG *) wire next;
+  wire p_0_in11_in;
   wire [13:1]p_0_in1_in;
-  wire p_0_in6_in;
-  wire p_0_in9_in;
+  wire p_0_in8_in;
   wire [7:0]p_0_in__0;
   wire p_0_out;
-  wire p_11_out;
+  wire p_10_out;
+  wire p_13_out;
   wire [7:0]p_1_in__0;
-  wire p_8_out;
-  wire rd_en0;
+  wire rd;
   (* MARK_DEBUG *) wire req;
   wire reset;
   wire resetn;
@@ -2276,13 +2277,13 @@ module ps_axi_int_0_0_axi_int
        (.I0(reset),
         .I1(M_AXI_BVALID),
         .I2(M_AXI_BREADY),
-        .O(busy0));
+        .O(\axi_int.busy_reg0 ));
   FDRE \axi_int.M_AXI_BREADY_reg 
        (.C(clk),
         .CE(1'b1),
         .D(M_AXI_BVALID),
         .Q(M_AXI_BREADY),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   LUT6 #(
     .INIT(64'h1515150000000000)) 
     \axi_int.M_AXI_WDATA[255]_i_1 
@@ -3847,14 +3848,14 @@ module ps_axi_int_0_0_axi_int
         .Q(M_AXI_WDATA[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h000000E000F100E0)) 
+    .INIT(64'h000000000000FE02)) 
     \axi_int.M_AXI_WLAST_i_1 
-       (.I0(next),
-        .I1(start),
-        .I2(\axi_int.M_AXI_WLAST_i_2_n_0 ),
-        .I3(busy0),
-        .I4(M_AXI_WLAST),
-        .I5(M_AXI_WREADY),
+       (.I0(M_AXI_WLAST),
+        .I1(next),
+        .I2(start),
+        .I3(\axi_int.M_AXI_WLAST_i_2_n_0 ),
+        .I4(last),
+        .I5(\axi_int.busy_reg0 ),
         .O(\axi_int.M_AXI_WLAST_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h00000010)) 
@@ -3871,14 +3872,15 @@ module ps_axi_int_0_0_axi_int
         .D(\axi_int.M_AXI_WLAST_i_1_n_0 ),
         .Q(M_AXI_WLAST),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h000E0E0E)) 
+  LUT6 #(
+    .INIT(64'h0000000E000E000E)) 
     \axi_int.M_AXI_WVALID_i_1 
        (.I0(M_AXI_WVALID),
         .I1(start),
-        .I2(busy0),
-        .I3(M_AXI_WLAST),
-        .I4(M_AXI_WREADY),
+        .I2(last),
+        .I3(reset),
+        .I4(M_AXI_BVALID),
+        .I5(M_AXI_BREADY),
         .O(\axi_int.M_AXI_WVALID_i_1_n_0 ));
   FDRE \axi_int.M_AXI_WVALID_reg 
        (.C(clk),
@@ -4145,12 +4147,14 @@ module ps_axi_int_0_0_axi_int
        (.I0(start),
         .I1(busy),
         .O(\axi_int.busy_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_int.busy_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.busy_i_1_n_0 ),
         .Q(busy),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   LUT6 #(
     .INIT(64'h11FFEEF0110FEE00)) 
     \axi_int.counter[0]_i_1 
@@ -4290,56 +4294,56 @@ module ps_axi_int_0_0_axi_int
         .CE(1'b1),
         .D(\axi_int.counter[0]_i_1_n_0 ),
         .Q(counter[0]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[1]_i_1_n_0 ),
         .Q(counter[1]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[2]_i_1_n_0 ),
         .Q(counter[2]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[3]_i_1_n_0 ),
         .Q(counter[3]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[4]_i_1_n_0 ),
         .Q(counter[4]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[5]_i_1_n_0 ),
         .Q(counter[5]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[6]_i_1_n_0 ),
         .Q(counter[6]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_int.counter_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_int.counter[7]_i_1_n_0 ),
         .Q(counter[7]),
-        .R(busy0));
+        .R(\axi_int.busy_reg0 ));
   LUT6 #(
     .INIT(64'hFFFF00FF40FF00FF)) 
     \axi_int.diff_blocks[8]_i_1 
@@ -6525,7 +6529,7 @@ module ps_axi_int_0_0_axi_int
   LUT3 #(
     .INIT(8'hE2)) 
     \axi_int.has_preview[0]_i_1 
-       (.I0(p_0_in9_in),
+       (.I0(p_0_in11_in),
         .I1(low_empty),
         .I2(low_pending),
         .O(\axi_int.has_preview[0]_i_1_n_0 ));
@@ -6533,7 +6537,7 @@ module ps_axi_int_0_0_axi_int
   LUT3 #(
     .INIT(8'hE2)) 
     \axi_int.has_preview[1]_i_1 
-       (.I0(p_0_in6_in),
+       (.I0(p_0_in8_in),
         .I1(high_empty),
         .I2(high_pending),
         .O(\axi_int.has_preview[1]_i_1_n_0 ));
@@ -12543,9 +12547,9 @@ module ps_axi_int_0_0_axi_int
   LUT3 #(
     .INIT(8'hB8)) 
     \axi_int.mix_data[79]_i_1 
-       (.I0(p_0_in6_in),
+       (.I0(p_0_in8_in),
         .I1(\axi_int.mix_ind_reg_rep_n_0 ),
-        .I2(p_0_in9_in),
+        .I2(p_0_in11_in),
         .O(state_data[79]));
   (* SOFT_HLUTNM = "soft_lutpair169" *) 
   LUT3 #(
@@ -14890,7 +14894,7 @@ module ps_axi_int_0_0_axi_int
     .INIT(4'hE)) 
     \axi_int.preview_data[0][21]_i_1 
        (.I0(low_empty),
-        .I1(p_0_in9_in),
+        .I1(p_0_in11_in),
         .O(\axi_int.preview_data[0][21]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h8F80)) 
@@ -15073,7 +15077,7 @@ module ps_axi_int_0_0_axi_int
     .INIT(4'hE)) 
     \axi_int.preview_data[1][21]_i_1 
        (.I0(high_empty),
-        .I1(p_0_in6_in),
+        .I1(p_0_in8_in),
         .O(\axi_int.preview_data[1][21]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h8F80)) 
@@ -15560,108 +15564,108 @@ module ps_axi_int_0_0_axi_int
   LUT2 #(
     .INIT(4'h2)) 
     \axi_int.state_blocks[0][7]_i_1 
-       (.I0(p_0_in9_in),
+       (.I0(p_0_in11_in),
         .I1(low_empty),
-        .O(p_11_out));
+        .O(p_13_out));
   LUT2 #(
     .INIT(4'h2)) 
     \axi_int.state_blocks[1][7]_i_1 
-       (.I0(p_0_in6_in),
+       (.I0(p_0_in8_in),
         .I1(high_empty),
-        .O(p_8_out));
+        .O(p_10_out));
   FDRE \axi_int.state_blocks_reg[0][0] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][64] ),
         .Q(\axi_int.state_blocks_reg[0] [0]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][1] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][65] ),
         .Q(\axi_int.state_blocks_reg[0] [1]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][2] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][66] ),
         .Q(\axi_int.state_blocks_reg[0] [2]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][3] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][67] ),
         .Q(\axi_int.state_blocks_reg[0] [3]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][4] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][68] ),
         .Q(\axi_int.state_blocks_reg[0] [4]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][5] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][69] ),
         .Q(\axi_int.state_blocks_reg[0] [5]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][6] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][70] ),
         .Q(\axi_int.state_blocks_reg[0] [6]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[0][7] 
        (.C(clk),
-        .CE(p_11_out),
+        .CE(p_13_out),
         .D(\axi_int.state_data_reg_n_0_[0][71] ),
         .Q(\axi_int.state_blocks_reg[0] [7]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][0] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[0]),
         .Q(\axi_int.state_blocks_reg[1] [0]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][1] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[1]),
         .Q(\axi_int.state_blocks_reg[1] [1]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][2] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[2]),
         .Q(\axi_int.state_blocks_reg[1] [2]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][3] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[3]),
         .Q(\axi_int.state_blocks_reg[1] [3]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][4] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[4]),
         .Q(\axi_int.state_blocks_reg[1] [4]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][5] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[5]),
         .Q(\axi_int.state_blocks_reg[1] [5]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][6] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[6]),
         .Q(\axi_int.state_blocks_reg[1] [6]),
         .R(1'b0));
   FDRE \axi_int.state_blocks_reg[1][7] 
        (.C(clk),
-        .CE(p_8_out),
+        .CE(p_10_out),
         .D(p_1_in__0[7]),
         .Q(\axi_int.state_blocks_reg[1] [7]),
         .R(1'b0));
@@ -17061,7 +17065,7 @@ module ps_axi_int_0_0_axi_int
        (.C(clk),
         .CE(1'b1),
         .D(u_low_out_data[79]),
-        .Q(p_0_in9_in),
+        .Q(p_0_in11_in),
         .R(1'b0));
   FDRE \axi_int.state_data_reg[0][7] 
        (.C(clk),
@@ -18597,7 +18601,7 @@ module ps_axi_int_0_0_axi_int
        (.C(clk),
         .CE(1'b1),
         .D(u_high_out_data[79]),
-        .Q(p_0_in6_in),
+        .Q(p_0_in8_in),
         .R(1'b0));
   FDRE \axi_int.state_data_reg[1][7] 
        (.C(clk),
@@ -22158,7 +22162,7 @@ module ps_axi_int_0_0_axi_int
         .prog_empty(NLW_fifo_i_prog_empty_UNCONNECTED),
         .prog_full(NLW_fifo_i_prog_full_UNCONNECTED),
         .rd_data_count(NLW_fifo_i_rd_data_count_UNCONNECTED[0]),
-        .rd_en(rd_en0),
+        .rd_en(rd),
         .rd_rst_busy(NLW_fifo_i_rd_rst_busy_UNCONNECTED),
         .rst(reset),
         .sbiterr(NLW_fifo_i_sbiterr_UNCONNECTED),
@@ -22169,12 +22173,13 @@ module ps_axi_int_0_0_axi_int
         .wr_data_count(NLW_fifo_i_wr_data_count_UNCONNECTED[0]),
         .wr_en(mix_active),
         .wr_rst_busy(NLW_fifo_i_wr_rst_busy_UNCONNECTED));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'hF4)) 
     fifo_i_i_1
-       (.I0(start),
+       (.I0(last),
         .I1(next),
-        .O(rd_en0));
+        .I2(start),
+        .O(rd));
   (* CASCADE_HEIGHT = "0" *) 
   (* DOUT_RESET_VALUE = "0" *) 
   (* ECC_MODE = "0" *) 
@@ -22233,31 +22238,39 @@ module ps_axi_int_0_0_axi_int
        (.clk(clk),
         .probe0(mig_empty),
         .probe1(req),
-        .probe10(hdr_freq),
-        .probe11(hdr_angle),
-        .probe12(hdr_doa_error),
-        .probe13(hdr_max_env),
-        .probe14(hdr_max_pos),
-        .probe15(hdr_env_mean),
-        .probe16(hdr_env_std),
-        .probe17(hdr_phase_std),
-        .probe18(hdr_freq_std),
-        .probe19(env_0),
-        .probe2(start),
-        .probe20(env_1),
-        .probe21(env_2),
-        .probe22(env_3),
-        .probe23(env_4),
-        .probe24(env_5),
-        .probe25(env_6),
-        .probe26(env_7),
-        .probe3(next),
-        .probe4(counter),
-        .probe5(adr),
-        .probe6(hdr_sample),
-        .probe7(hdr_blocks),
-        .probe8(hdr_flags),
-        .probe9(hdr_size));
+        .probe10(hdr_flags),
+        .probe11(hdr_size),
+        .probe12(hdr_freq),
+        .probe13(hdr_angle),
+        .probe14(hdr_doa_error),
+        .probe15(hdr_max_env),
+        .probe16(hdr_max_pos),
+        .probe17(hdr_env_mean),
+        .probe18(hdr_env_std),
+        .probe19(hdr_phase_std),
+        .probe2(busy),
+        .probe20(hdr_freq_std),
+        .probe21(env_0),
+        .probe22(env_1),
+        .probe23(env_2),
+        .probe24(env_3),
+        .probe25(env_4),
+        .probe26(env_5),
+        .probe27(env_6),
+        .probe28(env_7),
+        .probe3(start),
+        .probe4(next),
+        .probe5(last),
+        .probe6(counter),
+        .probe7(adr),
+        .probe8(hdr_sample),
+        .probe9(hdr_blocks));
+  LUT2 #(
+    .INIT(4'h8)) 
+    last_inferred_i_1
+       (.I0(M_AXI_WREADY),
+        .I1(M_AXI_WLAST),
+        .O(last));
   LUT2 #(
     .INIT(4'h8)) 
     next_inferred_i_1
@@ -22302,21 +22315,23 @@ module ps_axi_int_0_0_ila_6
     probe23,
     probe24,
     probe25,
-    probe26);
+    probe26,
+    probe27,
+    probe28);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
   input [0:0]probe2;
   input [0:0]probe3;
-  input [7:0]probe4;
-  input [26:0]probe5;
-  input [63:0]probe6;
-  input [7:0]probe7;
-  input [7:0]probe8;
-  input [15:0]probe9;
-  input [31:0]probe10;
+  input [0:0]probe4;
+  input [0:0]probe5;
+  input [7:0]probe6;
+  input [26:0]probe7;
+  input [63:0]probe8;
+  input [7:0]probe9;
+  input [7:0]probe10;
   input [15:0]probe11;
-  input [15:0]probe12;
+  input [31:0]probe12;
   input [15:0]probe13;
   input [15:0]probe14;
   input [15:0]probe15;
@@ -22331,6 +22346,8 @@ module ps_axi_int_0_0_ila_6
   input [15:0]probe24;
   input [15:0]probe25;
   input [15:0]probe26;
+  input [15:0]probe27;
+  input [15:0]probe28;
 
 
 endmodule

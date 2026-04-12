@@ -66,12 +66,15 @@ module axi_int(
     wire next;
     wire last;
     wire done;
+    wire rd;
     wire [255:0] data;
     
     assign start = M_AXI_AWREADY & M_AXI_AWVALID;
     assign next = M_AXI_WREADY & M_AXI_WVALID;
     assign last = M_AXI_WREADY & M_AXI_WLAST;
     assign done = M_AXI_BREADY & M_AXI_BVALID;
+    
+    assign rd = start | (!last & next); 
 
     assign data[255:0] = 0;
 
@@ -130,7 +133,6 @@ module axi_int(
     reg high_wr_1;
     reg high_wr_2;
     
-    reg mig_rd;
     wire [255:0] mig_data;
     wire mig_full;
     wire mig_empty;
@@ -219,7 +221,7 @@ module axi_int(
 	    .wr_clk(clk),
 	    .wr_en(mix_active),
 	    .din(mix_data),
-	    .rd_en(start | next),
+	    .rd_en(rd),
 	    .dout(mig_data),
 	    .full(mig_full),
 	    .empty(mig_empty)
@@ -230,31 +232,33 @@ module axi_int(
 		.clk(clk),                    // input wire clk
 		.probe0(mig_empty),           // input wire [0:0]  probe3
 		.probe1(req),                 // input wire [0:0]  probe3
-		.probe2(start),               // input wire [0:0]  probe3
-		.probe3(next),                // input wire [0:0]  probe3
-		.probe4(counter),             // input wire [7:0]  probe3
-		.probe5(adr),                 // input wire [26:0]  probe3
-		.probe6(hdr_sample),          // input wire [63:0]  probe3
-		.probe7(hdr_blocks),          // input wire [7:0]  probe3
-		.probe8(hdr_flags),           // input wire [7:0]  probe3
-		.probe9(hdr_size),            // input wire [15:0]  probe3
-		.probe10(hdr_freq),           // input wire [31:0]  probe3
-		.probe11(hdr_angle),          // input wire [15:0]  probe3
-		.probe12(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe13(hdr_max_env),        // input wire [15:0]  probe3
-		.probe14(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe15(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe16(hdr_env_std),        // input wire [15:0]  probe3
-		.probe17(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe18(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe19(env_0),              // input wire [15:0]  probe3
-		.probe20(env_1),              // input wire [15:0]  probe3
-		.probe21(env_2),              // input wire [15:0]  probe3
-		.probe22(env_3),              // input wire [15:0]  probe3
-		.probe23(env_4),              // input wire [15:0]  probe3
-		.probe24(env_5),              // input wire [15:0]  probe3
-		.probe25(env_6),              // input wire [15:0]  probe3
-		.probe26(env_7)               // input wire [15:0]  probe3
+		.probe2(busy),                // input wire [0:0]  probe3
+		.probe3(start),               // input wire [0:0]  probe3
+		.probe4(next),                // input wire [0:0]  probe3
+		.probe5(last),                // input wire [0:0]  probe3
+		.probe6(counter),             // input wire [7:0]  probe3
+		.probe7(adr),                 // input wire [26:0]  probe3
+		.probe8(hdr_sample),          // input wire [63:0]  probe3
+		.probe9(hdr_blocks),          // input wire [7:0]  probe3
+		.probe10(hdr_flags),          // input wire [7:0]  probe3
+		.probe11(hdr_size),           // input wire [15:0]  probe3
+		.probe12(hdr_freq),           // input wire [31:0]  probe3
+		.probe13(hdr_angle),          // input wire [15:0]  probe3
+		.probe14(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe15(hdr_max_env),        // input wire [15:0]  probe3
+		.probe16(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe17(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe18(hdr_env_std),        // input wire [15:0]  probe3
+		.probe19(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe20(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe21(env_0),              // input wire [15:0]  probe3
+		.probe22(env_1),              // input wire [15:0]  probe3
+		.probe23(env_2),              // input wire [15:0]  probe3
+		.probe24(env_3),              // input wire [15:0]  probe3
+		.probe25(env_4),              // input wire [15:0]  probe3
+		.probe26(env_5),              // input wire [15:0]  probe3
+		.probe27(env_6),              // input wire [15:0]  probe3
+		.probe28(env_7)               // input wire [15:0]  probe3
     );
     
 generate
@@ -576,7 +580,6 @@ generate
 
     always @(posedge clk) 
     begin
-        mig_rd <= 0;
         if (reset)
             counter <= 0;
         else
@@ -589,7 +592,6 @@ generate
 				begin
 					if (start | next)
 					begin
-					    mig_rd <= 1;
 						M_AXI_WDATA <= mig_data;
 						counter <= counter - 1;
 					end

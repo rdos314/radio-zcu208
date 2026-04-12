@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Thu Apr  9 23:57:56 2026
+-- Date        : Sat Apr 11 14:49:26 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.vhdl
@@ -27840,15 +27840,15 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 26 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -27862,7 +27862,9 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe23 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe24 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_axi_int_0_0_ila_6;
   signal \<const0>\ : STD_LOGIC;
@@ -27937,6 +27939,7 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal \axi_int.adr_reg[8]_i_1_n_8\ : STD_LOGIC;
   signal \axi_int.adr_reg[8]_i_1_n_9\ : STD_LOGIC;
   signal \axi_int.busy_i_1_n_0\ : STD_LOGIC;
+  signal \axi_int.busy_reg0\ : STD_LOGIC;
   signal \axi_int.counter[0]_i_1_n_0\ : STD_LOGIC;
   signal \axi_int.counter[1]_i_1_n_0\ : STD_LOGIC;
   signal \axi_int.counter[1]_i_2_n_0\ : STD_LOGIC;
@@ -29366,7 +29369,7 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal \axi_int.u_rd_reg_n_0_[0]\ : STD_LOGIC;
   signal \axi_int.u_rd_reg_n_0_[1]\ : STD_LOGIC;
   signal busy : STD_LOGIC;
-  signal busy0 : STD_LOGIC;
+  attribute MARK_DEBUG of busy : signal is std.standard.true;
   signal counter : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of counter : signal is std.standard.true;
   signal diff_blocks0 : STD_LOGIC_VECTOR ( 8 to 8 );
@@ -29417,6 +29420,8 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal \^high_rd\ : STD_LOGIC;
   signal high_wr_1 : STD_LOGIC;
   signal high_wr_2 : STD_LOGIC;
+  signal last : STD_LOGIC;
+  attribute MARK_DEBUG of last : signal is std.standard.true;
   signal \^low_empty\ : STD_LOGIC;
   signal \^low_rd\ : STD_LOGIC;
   signal low_wr_1 : STD_LOGIC;
@@ -29430,15 +29435,15 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal mix_data : STD_LOGIC;
   signal \next\ : STD_LOGIC;
   attribute MARK_DEBUG of \next\ : signal is std.standard.true;
+  signal p_0_in11_in : STD_LOGIC;
   signal p_0_in1_in : STD_LOGIC_VECTOR ( 13 downto 1 );
-  signal p_0_in6_in : STD_LOGIC;
-  signal p_0_in9_in : STD_LOGIC;
+  signal p_0_in8_in : STD_LOGIC;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal p_0_out : STD_LOGIC;
-  signal p_11_out : STD_LOGIC;
+  signal p_10_out : STD_LOGIC;
+  signal p_13_out : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal p_8_out : STD_LOGIC;
-  signal rd_en0 : STD_LOGIC;
+  signal rd : STD_LOGIC;
   signal req : STD_LOGIC;
   attribute MARK_DEBUG of req : signal is std.standard.true;
   signal reset : STD_LOGIC;
@@ -29587,6 +29592,8 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute ADDER_THRESHOLD of \axi_int.adr_reg[8]_i_1\ : label is 35;
   attribute KEEP of \axi_int.adr_reg[9]\ : label is "yes";
   attribute mark_debug_string of \axi_int.adr_reg[9]\ : label is "yes";
+  attribute KEEP of \axi_int.busy_reg\ : label is "yes";
+  attribute mark_debug_string of \axi_int.busy_reg\ : label is "yes";
   attribute KEEP of \axi_int.counter_reg[0]\ : label is "yes";
   attribute KEEP of \axi_int.counter_reg[1]\ : label is "yes";
   attribute KEEP of \axi_int.counter_reg[2]\ : label is "yes";
@@ -31245,7 +31252,7 @@ GND: unisim.vcomponents.GND
       I0 => reset,
       I1 => M_AXI_BVALID,
       I2 => \^m_axi_bready\,
-      O => busy0
+      O => \axi_int.busy_reg0\
     );
 \axi_int.M_AXI_BREADY_reg\: unisim.vcomponents.FDRE
      port map (
@@ -31253,7 +31260,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => M_AXI_BVALID,
       Q => \^m_axi_bready\,
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.M_AXI_WDATA[255]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -33341,15 +33348,15 @@ GND: unisim.vcomponents.GND
     );
 \axi_int.M_AXI_WLAST_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000E000F100E0"
+      INIT => X"000000000000FE02"
     )
         port map (
-      I0 => \next\,
-      I1 => start,
-      I2 => \axi_int.M_AXI_WLAST_i_2_n_0\,
-      I3 => busy0,
-      I4 => \^m_axi_wlast\,
-      I5 => M_AXI_WREADY,
+      I0 => \^m_axi_wlast\,
+      I1 => \next\,
+      I2 => start,
+      I3 => \axi_int.M_AXI_WLAST_i_2_n_0\,
+      I4 => last,
+      I5 => \axi_int.busy_reg0\,
       O => \axi_int.M_AXI_WLAST_i_1_n_0\
     );
 \axi_int.M_AXI_WLAST_i_2\: unisim.vcomponents.LUT5
@@ -33372,16 +33379,17 @@ GND: unisim.vcomponents.GND
       Q => \^m_axi_wlast\,
       R => '0'
     );
-\axi_int.M_AXI_WVALID_i_1\: unisim.vcomponents.LUT5
+\axi_int.M_AXI_WVALID_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000E0E0E"
+      INIT => X"0000000E000E000E"
     )
         port map (
       I0 => \^m_axi_wvalid\,
       I1 => start,
-      I2 => busy0,
-      I3 => \^m_axi_wlast\,
-      I4 => M_AXI_WREADY,
+      I2 => last,
+      I3 => reset,
+      I4 => M_AXI_BVALID,
+      I5 => \^m_axi_bready\,
       O => \axi_int.M_AXI_WVALID_i_1_n_0\
     );
 \axi_int.M_AXI_WVALID_reg\: unisim.vcomponents.FDRE
@@ -33713,7 +33721,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.busy_i_1_n_0\,
       Q => busy,
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -33899,7 +33907,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[0]_i_1_n_0\,
       Q => counter(0),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -33907,7 +33915,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[1]_i_1_n_0\,
       Q => counter(1),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -33915,7 +33923,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[2]_i_1_n_0\,
       Q => counter(2),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -33923,7 +33931,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[3]_i_1_n_0\,
       Q => counter(3),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -33931,7 +33939,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[4]_i_1_n_0\,
       Q => counter(4),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -33939,7 +33947,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[5]_i_1_n_0\,
       Q => counter(5),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -33947,7 +33955,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[6]_i_1_n_0\,
       Q => counter(6),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.counter_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -33955,7 +33963,7 @@ GND: unisim.vcomponents.GND
       CE => '1',
       D => \axi_int.counter[7]_i_1_n_0\,
       Q => counter(7),
-      R => busy0
+      R => \axi_int.busy_reg0\
     );
 \axi_int.diff_blocks[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -36634,7 +36642,7 @@ GND: unisim.vcomponents.GND
       INIT => X"E2"
     )
         port map (
-      I0 => p_0_in9_in,
+      I0 => p_0_in11_in,
       I1 => \^low_empty\,
       I2 => low_pending,
       O => \axi_int.has_preview[0]_i_1_n_0\
@@ -36644,7 +36652,7 @@ GND: unisim.vcomponents.GND
       INIT => X"E2"
     )
         port map (
-      I0 => p_0_in6_in,
+      I0 => p_0_in8_in,
       I1 => \^high_empty\,
       I2 => high_pending,
       O => \axi_int.has_preview[1]_i_1_n_0\
@@ -43983,9 +43991,9 @@ GND: unisim.vcomponents.GND
       INIT => X"B8"
     )
         port map (
-      I0 => p_0_in6_in,
+      I0 => p_0_in8_in,
       I1 => \axi_int.mix_ind_reg_rep_n_0\,
-      I2 => p_0_in9_in,
+      I2 => p_0_in11_in,
       O => state_data(79)
     );
 \axi_int.mix_data[7]_i_1\: unisim.vcomponents.LUT3
@@ -47194,7 +47202,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => \^low_empty\,
-      I1 => p_0_in9_in,
+      I1 => p_0_in11_in,
       O => \axi_int.preview_data[0][21]_i_1_n_0\
     );
 \axi_int.preview_data[0][21]_i_2\: unisim.vcomponents.LUT4
@@ -47445,7 +47453,7 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => \^high_empty\,
-      I1 => p_0_in6_in,
+      I1 => p_0_in8_in,
       O => \axi_int.preview_data[1][21]_i_1_n_0\
     );
 \axi_int.preview_data[1][21]_i_2\: unisim.vcomponents.LUT4
@@ -48096,23 +48104,23 @@ GND: unisim.vcomponents.GND
       INIT => X"2"
     )
         port map (
-      I0 => p_0_in9_in,
+      I0 => p_0_in11_in,
       I1 => \^low_empty\,
-      O => p_11_out
+      O => p_13_out
     );
 \axi_int.state_blocks[1][7]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
-      I0 => p_0_in6_in,
+      I0 => p_0_in8_in,
       I1 => \^high_empty\,
-      O => p_8_out
+      O => p_10_out
     );
 \axi_int.state_blocks_reg[0][0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][64]\,
       Q => \axi_int.state_blocks_reg[0]\(0),
       R => '0'
@@ -48120,7 +48128,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][65]\,
       Q => \axi_int.state_blocks_reg[0]\(1),
       R => '0'
@@ -48128,7 +48136,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][66]\,
       Q => \axi_int.state_blocks_reg[0]\(2),
       R => '0'
@@ -48136,7 +48144,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][67]\,
       Q => \axi_int.state_blocks_reg[0]\(3),
       R => '0'
@@ -48144,7 +48152,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][68]\,
       Q => \axi_int.state_blocks_reg[0]\(4),
       R => '0'
@@ -48152,7 +48160,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][69]\,
       Q => \axi_int.state_blocks_reg[0]\(5),
       R => '0'
@@ -48160,7 +48168,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][70]\,
       Q => \axi_int.state_blocks_reg[0]\(6),
       R => '0'
@@ -48168,7 +48176,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[0][7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_11_out,
+      CE => p_13_out,
       D => \axi_int.state_data_reg_n_0_[0][71]\,
       Q => \axi_int.state_blocks_reg[0]\(7),
       R => '0'
@@ -48176,7 +48184,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(0),
       Q => \axi_int.state_blocks_reg[1]\(0),
       R => '0'
@@ -48184,7 +48192,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(1),
       Q => \axi_int.state_blocks_reg[1]\(1),
       R => '0'
@@ -48192,7 +48200,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(2),
       Q => \axi_int.state_blocks_reg[1]\(2),
       R => '0'
@@ -48200,7 +48208,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(3),
       Q => \axi_int.state_blocks_reg[1]\(3),
       R => '0'
@@ -48208,7 +48216,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(4),
       Q => \axi_int.state_blocks_reg[1]\(4),
       R => '0'
@@ -48216,7 +48224,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(5),
       Q => \axi_int.state_blocks_reg[1]\(5),
       R => '0'
@@ -48224,7 +48232,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(6),
       Q => \axi_int.state_blocks_reg[1]\(6),
       R => '0'
@@ -48232,7 +48240,7 @@ GND: unisim.vcomponents.GND
 \axi_int.state_blocks_reg[1][7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => p_8_out,
+      CE => p_10_out,
       D => \p_1_in__0\(7),
       Q => \axi_int.state_blocks_reg[1]\(7),
       R => '0'
@@ -50098,7 +50106,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => u_low_out_data(79),
-      Q => p_0_in9_in,
+      Q => p_0_in11_in,
       R => '0'
     );
 \axi_int.state_data_reg[0][7]\: unisim.vcomponents.FDRE
@@ -52146,7 +52154,7 @@ GND: unisim.vcomponents.GND
       C => clk,
       CE => '1',
       D => u_high_out_data(79),
-      Q => p_0_in6_in,
+      Q => p_0_in8_in,
       R => '0'
     );
 \axi_int.state_data_reg[1][7]\: unisim.vcomponents.FDRE
@@ -57131,7 +57139,7 @@ fifo_i: entity work.ps_axi_int_0_0_xpm_fifo_sync
       prog_empty => NLW_fifo_i_prog_empty_UNCONNECTED,
       prog_full => NLW_fifo_i_prog_full_UNCONNECTED,
       rd_data_count(0) => NLW_fifo_i_rd_data_count_UNCONNECTED(0),
-      rd_en => rd_en0,
+      rd_en => rd,
       rd_rst_busy => NLW_fifo_i_rd_rst_busy_UNCONNECTED,
       rst => reset,
       sbiterr => NLW_fifo_i_sbiterr_UNCONNECTED,
@@ -57143,14 +57151,15 @@ fifo_i: entity work.ps_axi_int_0_0_xpm_fifo_sync
       wr_en => mix_active,
       wr_rst_busy => NLW_fifo_i_wr_rst_busy_UNCONNECTED
     );
-fifo_i_i_1: unisim.vcomponents.LUT2
+fifo_i_i_1: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"F4"
     )
         port map (
-      I0 => start,
+      I0 => last,
       I1 => \next\,
-      O => rd_en0
+      I2 => start,
+      O => rd
     );
 fifo_low_i: entity work.\ps_axi_int_0_0_xpm_fifo_sync__1\
      port map (
@@ -57185,31 +57194,42 @@ ila_i: component ps_axi_int_0_0_ila_6
       clk => clk,
       probe0(0) => mig_empty,
       probe1(0) => req,
-      probe10(31 downto 0) => hdr_freq(31 downto 0),
-      probe11(15 downto 0) => hdr_angle(15 downto 0),
-      probe12(15 downto 0) => hdr_doa_error(15 downto 0),
-      probe13(15 downto 0) => hdr_max_env(15 downto 0),
-      probe14(15 downto 0) => hdr_max_pos(15 downto 0),
-      probe15(15 downto 0) => hdr_env_mean(15 downto 0),
-      probe16(15 downto 0) => hdr_env_std(15 downto 0),
-      probe17(15 downto 0) => hdr_phase_std(15 downto 0),
-      probe18(15 downto 0) => hdr_freq_std(15 downto 0),
-      probe19(15 downto 0) => env_0(15 downto 0),
-      probe2(0) => start,
-      probe20(15 downto 0) => env_1(15 downto 0),
-      probe21(15 downto 0) => env_2(15 downto 0),
-      probe22(15 downto 0) => env_3(15 downto 0),
-      probe23(15 downto 0) => env_4(15 downto 0),
-      probe24(15 downto 0) => env_5(15 downto 0),
-      probe25(15 downto 0) => env_6(15 downto 0),
-      probe26(15 downto 0) => env_7(15 downto 0),
-      probe3(0) => \next\,
-      probe4(7 downto 0) => counter(7 downto 0),
-      probe5(26 downto 0) => adr(26 downto 0),
-      probe6(63 downto 0) => hdr_sample(63 downto 0),
-      probe7(7 downto 0) => hdr_blocks(7 downto 0),
-      probe8(7 downto 0) => hdr_flags(7 downto 0),
-      probe9(15 downto 0) => hdr_size(15 downto 0)
+      probe10(7 downto 0) => hdr_flags(7 downto 0),
+      probe11(15 downto 0) => hdr_size(15 downto 0),
+      probe12(31 downto 0) => hdr_freq(31 downto 0),
+      probe13(15 downto 0) => hdr_angle(15 downto 0),
+      probe14(15 downto 0) => hdr_doa_error(15 downto 0),
+      probe15(15 downto 0) => hdr_max_env(15 downto 0),
+      probe16(15 downto 0) => hdr_max_pos(15 downto 0),
+      probe17(15 downto 0) => hdr_env_mean(15 downto 0),
+      probe18(15 downto 0) => hdr_env_std(15 downto 0),
+      probe19(15 downto 0) => hdr_phase_std(15 downto 0),
+      probe2(0) => busy,
+      probe20(15 downto 0) => hdr_freq_std(15 downto 0),
+      probe21(15 downto 0) => env_0(15 downto 0),
+      probe22(15 downto 0) => env_1(15 downto 0),
+      probe23(15 downto 0) => env_2(15 downto 0),
+      probe24(15 downto 0) => env_3(15 downto 0),
+      probe25(15 downto 0) => env_4(15 downto 0),
+      probe26(15 downto 0) => env_5(15 downto 0),
+      probe27(15 downto 0) => env_6(15 downto 0),
+      probe28(15 downto 0) => env_7(15 downto 0),
+      probe3(0) => start,
+      probe4(0) => \next\,
+      probe5(0) => last,
+      probe6(7 downto 0) => counter(7 downto 0),
+      probe7(26 downto 0) => adr(26 downto 0),
+      probe8(63 downto 0) => hdr_sample(63 downto 0),
+      probe9(7 downto 0) => hdr_blocks(7 downto 0)
+    );
+last_inferred_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => M_AXI_WREADY,
+      I1 => \^m_axi_wlast\,
+      O => last
     );
 next_inferred_i_1: unisim.vcomponents.LUT2
     generic map(
