@@ -55,6 +55,15 @@
 		#clock-cells = <0>;
 		clock-frequency = <48000000>;
 	};
+
+	reserved_memory {
+		r5_shared: buffer@78000000 {
+			compatible = "shared_dma_pool";
+			reg = <0x0 0x78000000 0x0 0x02000000>;
+			no_map;
+		};
+}	;
+
 };
 
 &gpio {
