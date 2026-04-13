@@ -1,23 +1,107 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 01.01.2026 15:03:48
-// Design Name: 
-// Module Name: axi_int
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
+// Module: axi_int
+//------------------------------------------------------------------------------
+// Description:
+//   AXI4 write interface with dual-stream merge and buffering.
+//
+//   This module merges two input data streams ("low" and "high") based on
+//   timestamp ordering, buffers the merged data, and writes it to memory via
+//   an AXI4 master interface (typically connected to a MIG DDR controller).
+//
+//   Each input stream consists of 256-bit data blocks with embedded headers
+//   describing block size, timestamps, and metadata. The module performs:
+//
+//     - Dual FIFO buffering (URAM-based) for low/high streams
+//     - Timestamp-based arbitration between streams
+//     - Block-level merging and ordering
+//     - Packet/header extraction for monitoring/debug (ILA)
+//     - AXI4 burst generation (AW/W/B channels)
+//     - Continuous address generation (word-aligned)
+//
+//------------------------------------------------------------------------------
+// Clocking:
+//   clk        : Single clock domain for all logic
+//   resetn     : Active-low synchronous reset
+//
+//------------------------------------------------------------------------------
+// Input Streams:
+//   low_*      : Lower-frequency band input stream
+//   high_*     : Higher-frequency band input stream
+//
+//   Each stream provides:
+//     *_wr         : Write enable for incoming 256-bit word
+//     *_data       : 256-bit data word
+//     *_timestamp  : Timestamp for preview/ordering
+//     *_pending    : Indicates data pending when FIFO is empty
+//
+//   Flow control outputs:
+//     *_rd         : Read enable from internal FIFO
+//     *_empty      : FIFO empty indicator
+//     *_full       : FIFO full indicator
+//
+//------------------------------------------------------------------------------
+// Internal Operation:
+//   1. Input data is written into separate URAM FIFOs (low/high).
+//   2. Preview logic determines which stream has the earliest timestamp.
+//   3. Selected stream is read in blocks (multi-word packets).
+//   4. Data is merged into a common FIFO (mig FIFO).
+//   5. AXI write engine consumes merged data and generates bursts.
+//
+//------------------------------------------------------------------------------
+// AXI4 Interface (Write Only):
+//   M_AXI_AW* : Address write channel
+//   M_AXI_W*  : Write data channel (256-bit = 32 bytes per beat)
+//   M_AXI_B*  : Write response channel
+//
+//   Features:
+//     - Incremental bursts (AWBURST = INCR)
+//     - Burst size = 256 bits (AWSIZE = 5)
+//     - Burst length determined dynamically per packet
+//     - Continuous address increment (32 bytes per beat)
+//
+//------------------------------------------------------------------------------
+// Addressing:
+//   adr (internal) is a word address (256-bit aligned).
+//   M_AXI_AWADDR = {adr, 5'b00000}
+//
+//------------------------------------------------------------------------------
+// Packet Format (256-bit words):
+//
+//   Header word (identified by bit[79] = 1):
+//     [63:0]    : Sample ID / timestamp
+//     [71:64]   : Block count (number of following data words)
+//     [79:72]   : Flags
+//     [95:80]   : Size
+//     [111:96]  : Angle
+//     [127:112] : DOA error
+//     [159:128] : Frequency
+//     [175:160] : Max envelope
+//     [191:176] : Max position
+//     [207:192] : Mean envelope
+//     [223:208] : Envelope std dev
+//     [239:224] : Phase std dev
+//     [255:240] : Frequency std dev
+//
+//   Data word (bit[79] = 0):
+//     Contains 8 pairs of:
+//       [15:0] envelope
+//       [15:0] phase
+//
+//------------------------------------------------------------------------------
+// Notes:
+//   - Uses FWFT (First Word Fall Through) FIFOs for low latency
+//   - AXI burst size is derived from header block count
+//   - No explicit 4KB boundary handling; assumed handled by MIG
+//   - Designed for high-throughput streaming applications
+//
+//------------------------------------------------------------------------------
+// Performance Considerations:
+//   - Critical paths likely around FIFO → AXI data path
+//   - Merge logic and control paths should be carefully pipelined
+//   - Placement of FIFOs and AXI logic impacts timing closure
+//
+//------------------------------------------------------------------------------
 
 module axi_int(
     input wire clk,
