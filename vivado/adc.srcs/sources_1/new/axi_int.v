@@ -123,6 +123,10 @@ module axi_int(
 	input wire [21:0] high_timestamp,
 	input wire [255:0] high_data,
 
+    input wire lpd_clk,
+    input wire [31:0] lpd_rd_ptr,
+    output wire [31:0] lpd_wr_ptr,
+
     input wire up,
     output reg [31:0] M_AXI_AWADDR,
     output reg [7:0] M_AXI_AWLEN,
@@ -252,7 +256,24 @@ module axi_int(
 	reg [15:0] phase_5;
 	reg [15:0] phase_6;
 	reg [15:0] phase_7;
+	
 
+// local domain
+
+    reg wr_ptr_chg_1;
+    reg wr_ptr_chg;
+    wire fifo_rd_empty;
+    wire fifo_wr_full;
+    wire [31:0] curr_rd_ptr;
+    reg [31:0] curr_wr_ptr;
+	
+// LPD domain
+
+    reg rd_ptr_chg_1;
+    reg rd_ptr_chg;
+    wire fifo_wr_empty;
+    wire fifo_rd_full;
+    reg [31:0] curr_lpd_rd_ptr;
 	
 	xpm_fifo_sync #(
 	    .FIFO_MEMORY_TYPE("ultra"),
@@ -311,6 +332,27 @@ module axi_int(
 	    .empty(mig_empty)
 	);
 
+    fifo_ptr fifo_rd_ptr_i (
+        .wr_clk(lpd_clk),        // input wire wr_clk
+        .rd_clk(clk),            // input wire rd_clk
+        .din(curr_lpd_rd_ptr),   // input wire [31 : 0] din
+        .wr_en(rd_ptr_chg),      // input wire wr_en
+        .rd_en(!fifo_rd_empty),  // input wire rd_en
+        .dout(curr_rd_ptr),      // output wire [31 : 0] dout
+        .full(fifo_rd_full),     // output wire full
+        .empty(fifo_rd_empty)    // output wire empty
+    );
+
+    fifo_ptr fifo_wr_ptr_i (
+        .wr_clk(clk),            // input wire wr_clk
+        .rd_clk(lpd_clk),        // input wire rd_clk
+        .din(curr_wr_ptr),       // input wire [31 : 0] din
+        .wr_en(wr_ptr_chg),      // input wire wr_en
+        .rd_en(!fifo_wr_empty),  // input wire rd_en
+        .dout(lpd_wr_ptr),       // output wire [31 : 0] dout
+        .full(fifo_wr_full),     // output wire full
+        .empty(fifo_wr_empty)    // output wire empty
+    );
 
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
@@ -322,27 +364,31 @@ module axi_int(
 		.probe5(last),                // input wire [0:0]  probe3
 		.probe6(counter),             // input wire [7:0]  probe3
 		.probe7(adr),                 // input wire [26:0]  probe3
-		.probe8(hdr_sample),          // input wire [63:0]  probe3
-		.probe9(hdr_blocks),          // input wire [7:0]  probe3
-		.probe10(hdr_flags),          // input wire [7:0]  probe3
-		.probe11(hdr_size),           // input wire [15:0]  probe3
-		.probe12(hdr_freq),           // input wire [31:0]  probe3
-		.probe13(hdr_angle),          // input wire [15:0]  probe3
-		.probe14(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe15(hdr_max_env),        // input wire [15:0]  probe3
-		.probe16(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe17(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe18(hdr_env_std),        // input wire [15:0]  probe3
-		.probe19(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe20(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe21(env_0),              // input wire [15:0]  probe3
-		.probe22(env_1),              // input wire [15:0]  probe3
-		.probe23(env_2),              // input wire [15:0]  probe3
-		.probe24(env_3),              // input wire [15:0]  probe3
-		.probe25(env_4),              // input wire [15:0]  probe3
-		.probe26(env_5),              // input wire [15:0]  probe3
-		.probe27(env_6),              // input wire [15:0]  probe3
-		.probe28(env_7)               // input wire [15:0]  probe3
+		.probe8(wr_ptr_chg_1),        // input wire [0:0]  probe3
+		.probe9(wr_ptr_chg),          // input wire [0:0]  probe3
+		.probe10(curr_rd_ptr),         // input wire [31:0]  probe3
+		.probe11(curr_wr_ptr),         // input wire [31:0]  probe3
+		.probe12(hdr_sample),          // input wire [63:0]  probe3
+		.probe13(hdr_blocks),          // input wire [7:0]  probe3
+		.probe14(hdr_flags),          // input wire [7:0]  probe3
+		.probe15(hdr_size),           // input wire [15:0]  probe3
+		.probe16(hdr_freq),           // input wire [31:0]  probe3
+		.probe17(hdr_angle),          // input wire [15:0]  probe3
+		.probe18(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe19(hdr_max_env),        // input wire [15:0]  probe3
+		.probe20(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe21(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe22(hdr_env_std),        // input wire [15:0]  probe3
+		.probe23(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe24(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe25(env_0),              // input wire [15:0]  probe3
+		.probe26(env_1),              // input wire [15:0]  probe3
+		.probe27(env_2),              // input wire [15:0]  probe3
+		.probe28(env_3),              // input wire [15:0]  probe3
+		.probe29(env_4),              // input wire [15:0]  probe3
+		.probe30(env_5),              // input wire [15:0]  probe3
+		.probe31(env_6),              // input wire [15:0]  probe3
+		.probe32(env_7)               // input wire [15:0]  probe3
     );
     
 generate
@@ -733,6 +779,38 @@ generate
             M_AXI_BREADY <= M_AXI_BVALID;
     end
     
+    always @(posedge clk) 
+    begin
+        if (done)
+        begin
+            curr_wr_ptr <= {adr, 5'b00000};
+            wr_ptr_chg_1 <= 1;
+        end
+        else
+            wr_ptr_chg_1 <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        wr_ptr_chg <= wr_ptr_chg_1;
+    end
+
+    always @(posedge lpd_clk) 
+    begin
+        if (lpd_rd_ptr != curr_lpd_rd_ptr)
+        begin
+            rd_ptr_chg_1 <= 1;
+            curr_lpd_rd_ptr <= lpd_rd_ptr;
+        end
+        else
+            rd_ptr_chg_1 <= 0;
+    end
+
+    always @(posedge lpd_clk) 
+    begin
+        rd_ptr_chg <= rd_ptr_chg_1;
+    end
+
   end
 
      

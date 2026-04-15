@@ -1,0 +1,47 @@
+vlib modelsim_lib/work
+vlib modelsim_lib/msim
+
+vlib modelsim_lib/msim/xilinx_vip
+vlib modelsim_lib/msim/xpm
+vlib modelsim_lib/msim/fifo_generator_v13_2_13
+vlib modelsim_lib/msim/xil_defaultlib
+
+vmap xilinx_vip modelsim_lib/msim/xilinx_vip
+vmap xpm modelsim_lib/msim/xpm
+vmap fifo_generator_v13_2_13 modelsim_lib/msim/fifo_generator_v13_2_13
+vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
+
+vlog -work xilinx_vip -64 -incr -mfcu  -sv -L axi_vip_v1_1_21 -L smartconnect_v1_0 -L zynq_ultra_ps_e_vip_v1_0_21 -L xilinx_vip "+incdir+/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/include" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi4stream_vip_axi4streampc.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/xil_common_vip_pkg.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi4stream_vip_pkg.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi_vip_pkg.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi4stream_vip_if.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/axi_vip_if.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/clk_vip_if.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/hdl/rst_vip_if.sv" \
+
+vlog -work xpm -64 -incr -mfcu  -sv -L axi_vip_v1_1_21 -L smartconnect_v1_0 -L zynq_ultra_ps_e_vip_v1_0_21 -L xilinx_vip "+incdir+../../../../../../2025.1/data/rsb/busdef" "+incdir+/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/include" \
+"/media/ubuntu/large/2025.1/Vivado/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv" \
+"/media/ubuntu/large/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+
+vcom -work xpm -64 -93  \
+"/media/ubuntu/large/2025.1/data/ip/xpm/xpm_VCOMP.vhd" \
+
+vlog -work fifo_generator_v13_2_13 -64 -incr -mfcu  "+incdir+../../../../../../2025.1/data/rsb/busdef" "+incdir+/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/include" \
+"../../../ipstatic/simulation/fifo_generator_vlog_beh.v" \
+
+vcom -work fifo_generator_v13_2_13 -64 -93  \
+"../../../ipstatic/hdl/fifo_generator_v13_2_rfs.vhd" \
+
+vlog -work fifo_generator_v13_2_13 -64 -incr -mfcu  "+incdir+../../../../../../2025.1/data/rsb/busdef" "+incdir+/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/include" \
+"../../../ipstatic/hdl/fifo_generator_v13_2_rfs.v" \
+
+vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../../../2025.1/data/rsb/busdef" "+incdir+/media/ubuntu/large/2025.1/Vivado/data/xilinx_vip/include" \
+"../../../../adc.gen/sources_1/ip/fifo_ptr/sim/fifo_ptr.v" \
+
+vlog -work xil_defaultlib \
+"glbl.v"
+

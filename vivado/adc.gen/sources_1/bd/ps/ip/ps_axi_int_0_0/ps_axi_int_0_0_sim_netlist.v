@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sat Apr 11 14:49:25 2026
+// Date        : Tue Apr 14 23:03:22 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.v
@@ -33,6 +33,9 @@ module ps_axi_int_0_0
     high_pending,
     high_timestamp,
     high_data,
+    lpd_clk,
+    lpd_rd_ptr,
+    lpd_wr_ptr,
     up,
     M_AXI_AWADDR,
     M_AXI_AWLEN,
@@ -49,7 +52,7 @@ module ps_axi_int_0_0
     M_AXI_BVALID,
     M_AXI_BRESP,
     M_AXI_BREADY);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   output low_rd;
   input low_wr;
@@ -65,6 +68,9 @@ module ps_axi_int_0_0
   input high_pending;
   input [21:0]high_timestamp;
   input [255:0]high_data;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 lpd_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input lpd_clk;
+  input [31:0]lpd_rd_ptr;
+  output [31:0]lpd_wr_ptr;
   input up;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, DATA_WIDTH 256, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 1, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) output [31:0]M_AXI_AWADDR;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWLEN" *) output [7:0]M_AXI_AWLEN;
@@ -109,6 +115,9 @@ module ps_axi_int_0_0
   wire low_rd;
   wire [21:0]low_timestamp;
   wire low_wr;
+  wire lpd_clk;
+  wire [31:0]lpd_rd_ptr;
+  wire [31:0]lpd_wr_ptr;
   wire resetn;
   wire [4:0]NLW_inst_M_AXI_AWADDR_UNCONNECTED;
   wire [1:0]NLW_inst_M_AXI_AWBURST_UNCONNECTED;
@@ -200,6 +209,9 @@ module ps_axi_int_0_0
         .low_rd(low_rd),
         .low_timestamp(low_timestamp),
         .low_wr(low_wr),
+        .lpd_clk(lpd_clk),
+        .lpd_rd_ptr(lpd_rd_ptr),
+        .lpd_wr_ptr(lpd_wr_ptr),
         .resetn(resetn),
         .up(1'b0));
 endmodule
@@ -223,6 +235,9 @@ module ps_axi_int_0_0_axi_int
     high_pending,
     high_timestamp,
     high_data,
+    lpd_clk,
+    lpd_rd_ptr,
+    lpd_wr_ptr,
     up,
     M_AXI_AWADDR,
     M_AXI_AWLEN,
@@ -255,6 +270,9 @@ module ps_axi_int_0_0_axi_int
   input high_pending;
   input [21:0]high_timestamp;
   input [255:0]high_data;
+  input lpd_clk;
+  input [31:0]lpd_rd_ptr;
+  output [31:0]lpd_wr_ptr;
   input up;
   output [31:0]M_AXI_AWADDR;
   output [7:0]M_AXI_AWLEN;
@@ -363,6 +381,28 @@ module ps_axi_int_0_0_axi_int
   wire \axi_int.counter[7]_i_2_n_0 ;
   wire \axi_int.counter[7]_i_3_n_0 ;
   wire \axi_int.counter[7]_i_4_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_10_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_11_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_12_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_13_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_3_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_4_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_5_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_6_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_7_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_8_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr[31]_i_9_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_6 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_7 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_1 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_2 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_3 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_4 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_5 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_6 ;
+  wire \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_7 ;
   wire \axi_int.diff_blocks[8]_i_10_n_0 ;
   wire \axi_int.diff_blocks[8]_i_11_n_0 ;
   wire \axi_int.diff_blocks[8]_i_12_n_0 ;
@@ -1779,7 +1819,11 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire busy;
   wire clk;
   (* MARK_DEBUG *) wire [7:0]counter;
+  wire [31:0]curr_lpd_rd_ptr;
+  (* MARK_DEBUG *) wire [31:0]curr_rd_ptr;
+  (* MARK_DEBUG *) wire [31:0]curr_wr_ptr;
   wire [8:8]diff_blocks0;
+  wire done;
   (* MARK_DEBUG *) wire [15:0]env_0;
   (* MARK_DEBUG *) wire [15:0]env_1;
   (* MARK_DEBUG *) wire [15:0]env_2;
@@ -1788,6 +1832,10 @@ module ps_axi_int_0_0_axi_int
   (* MARK_DEBUG *) wire [15:0]env_5;
   (* MARK_DEBUG *) wire [15:0]env_6;
   (* MARK_DEBUG *) wire [15:0]env_7;
+  wire fifo_rd_empty;
+  wire fifo_rd_ptr_i_i_1_n_0;
+  wire fifo_wr_empty;
+  wire fifo_wr_ptr_i_i_1_n_0;
   wire [1:0]has_preview;
   (* MARK_DEBUG *) wire [15:0]hdr_angle;
   (* MARK_DEBUG *) wire [7:0]hdr_blocks;
@@ -1821,6 +1869,9 @@ module ps_axi_int_0_0_axi_int
   wire low_wr;
   wire low_wr_1;
   wire low_wr_2;
+  wire lpd_clk;
+  wire [31:0]lpd_rd_ptr;
+  wire [31:0]lpd_wr_ptr;
   wire [255:0]mig_data;
   (* MARK_DEBUG *) wire mig_empty;
   wire mix_active;
@@ -1837,6 +1888,8 @@ module ps_axi_int_0_0_axi_int
   wire p_13_out;
   wire [7:0]p_1_in__0;
   wire rd;
+  wire rd_ptr_chg;
+  wire rd_ptr_chg_1;
   (* MARK_DEBUG *) wire req;
   wire reset;
   wire resetn;
@@ -1860,8 +1913,13 @@ module ps_axi_int_0_0_axi_int
   wire [255:0]u_low_out_data;
   wire u_low_wr;
   wire u_rd;
+  (* MARK_DEBUG *) wire wr_ptr_chg;
+  (* MARK_DEBUG *) wire wr_ptr_chg_1;
   wire [7:1]\NLW_axi_int.adr_reg[26]_i_1_CO_UNCONNECTED ;
   wire [7:2]\NLW_axi_int.adr_reg[26]_i_1_O_UNCONNECTED ;
+  wire [7:3]\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_CO_UNCONNECTED ;
+  wire [7:0]\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_2_O_UNCONNECTED ;
   wire [7:0]\NLW_axi_int.diff_blocks_reg[8]_i_14_O_UNCONNECTED ;
   wire [7:0]\NLW_axi_int.diff_blocks_reg[8]_i_6_CO_UNCONNECTED ;
   wire [7:1]\NLW_axi_int.diff_blocks_reg[8]_i_6_O_UNCONNECTED ;
@@ -1916,6 +1974,8 @@ module ps_axi_int_0_0_axi_int
   wire NLW_fifo_low_i_wr_rst_busy_UNCONNECTED;
   wire [0:0]NLW_fifo_low_i_rd_data_count_UNCONNECTED;
   wire [0:0]NLW_fifo_low_i_wr_data_count_UNCONNECTED;
+  wire NLW_fifo_rd_ptr_i_full_UNCONNECTED;
+  wire NLW_fifo_wr_ptr_i_full_UNCONNECTED;
 
   assign M_AXI_AWADDR[31:5] = \^M_AXI_AWADDR [31:5];
   assign M_AXI_AWADDR[4] = \<const0> ;
@@ -4344,6 +4404,582 @@ module ps_axi_int_0_0_axi_int
         .D(\axi_int.counter[7]_i_1_n_0 ),
         .Q(counter[7]),
         .R(\axi_int.busy_reg0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_10 
+       (.I0(lpd_rd_ptr[9]),
+        .I1(curr_lpd_rd_ptr[9]),
+        .I2(curr_lpd_rd_ptr[11]),
+        .I3(lpd_rd_ptr[11]),
+        .I4(curr_lpd_rd_ptr[10]),
+        .I5(lpd_rd_ptr[10]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_11 
+       (.I0(lpd_rd_ptr[6]),
+        .I1(curr_lpd_rd_ptr[6]),
+        .I2(curr_lpd_rd_ptr[8]),
+        .I3(lpd_rd_ptr[8]),
+        .I4(curr_lpd_rd_ptr[7]),
+        .I5(lpd_rd_ptr[7]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_12 
+       (.I0(lpd_rd_ptr[3]),
+        .I1(curr_lpd_rd_ptr[3]),
+        .I2(curr_lpd_rd_ptr[5]),
+        .I3(lpd_rd_ptr[5]),
+        .I4(curr_lpd_rd_ptr[4]),
+        .I5(lpd_rd_ptr[4]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_12_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_13 
+       (.I0(lpd_rd_ptr[0]),
+        .I1(curr_lpd_rd_ptr[0]),
+        .I2(curr_lpd_rd_ptr[2]),
+        .I3(lpd_rd_ptr[2]),
+        .I4(curr_lpd_rd_ptr[1]),
+        .I5(lpd_rd_ptr[1]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_13_n_0 ));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_3 
+       (.I0(lpd_rd_ptr[30]),
+        .I1(curr_lpd_rd_ptr[30]),
+        .I2(lpd_rd_ptr[31]),
+        .I3(curr_lpd_rd_ptr[31]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_4 
+       (.I0(lpd_rd_ptr[27]),
+        .I1(curr_lpd_rd_ptr[27]),
+        .I2(curr_lpd_rd_ptr[29]),
+        .I3(lpd_rd_ptr[29]),
+        .I4(curr_lpd_rd_ptr[28]),
+        .I5(lpd_rd_ptr[28]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_5 
+       (.I0(lpd_rd_ptr[24]),
+        .I1(curr_lpd_rd_ptr[24]),
+        .I2(curr_lpd_rd_ptr[26]),
+        .I3(lpd_rd_ptr[26]),
+        .I4(curr_lpd_rd_ptr[25]),
+        .I5(lpd_rd_ptr[25]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_6 
+       (.I0(lpd_rd_ptr[21]),
+        .I1(curr_lpd_rd_ptr[21]),
+        .I2(curr_lpd_rd_ptr[23]),
+        .I3(lpd_rd_ptr[23]),
+        .I4(curr_lpd_rd_ptr[22]),
+        .I5(lpd_rd_ptr[22]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_7 
+       (.I0(lpd_rd_ptr[18]),
+        .I1(curr_lpd_rd_ptr[18]),
+        .I2(curr_lpd_rd_ptr[20]),
+        .I3(lpd_rd_ptr[20]),
+        .I4(curr_lpd_rd_ptr[19]),
+        .I5(lpd_rd_ptr[19]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_8 
+       (.I0(lpd_rd_ptr[15]),
+        .I1(curr_lpd_rd_ptr[15]),
+        .I2(curr_lpd_rd_ptr[17]),
+        .I3(lpd_rd_ptr[17]),
+        .I4(curr_lpd_rd_ptr[16]),
+        .I5(lpd_rd_ptr[16]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_int.curr_lpd_rd_ptr[31]_i_9 
+       (.I0(lpd_rd_ptr[12]),
+        .I1(curr_lpd_rd_ptr[12]),
+        .I2(curr_lpd_rd_ptr[14]),
+        .I3(lpd_rd_ptr[14]),
+        .I4(curr_lpd_rd_ptr[13]),
+        .I5(lpd_rd_ptr[13]),
+        .O(\axi_int.curr_lpd_rd_ptr[31]_i_9_n_0 ));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[0] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[0]),
+        .Q(curr_lpd_rd_ptr[0]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[10] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[10]),
+        .Q(curr_lpd_rd_ptr[10]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[11] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[11]),
+        .Q(curr_lpd_rd_ptr[11]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[12] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[12]),
+        .Q(curr_lpd_rd_ptr[12]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[13] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[13]),
+        .Q(curr_lpd_rd_ptr[13]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[14] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[14]),
+        .Q(curr_lpd_rd_ptr[14]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[15] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[15]),
+        .Q(curr_lpd_rd_ptr[15]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[16] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[16]),
+        .Q(curr_lpd_rd_ptr[16]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[17] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[17]),
+        .Q(curr_lpd_rd_ptr[17]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[18] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[18]),
+        .Q(curr_lpd_rd_ptr[18]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[19] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[19]),
+        .Q(curr_lpd_rd_ptr[19]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[1] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[1]),
+        .Q(curr_lpd_rd_ptr[1]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[20] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[20]),
+        .Q(curr_lpd_rd_ptr[20]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[21] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[21]),
+        .Q(curr_lpd_rd_ptr[21]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[22] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[22]),
+        .Q(curr_lpd_rd_ptr[22]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[23] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[23]),
+        .Q(curr_lpd_rd_ptr[23]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[24] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[24]),
+        .Q(curr_lpd_rd_ptr[24]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[25] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[25]),
+        .Q(curr_lpd_rd_ptr[25]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[26] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[26]),
+        .Q(curr_lpd_rd_ptr[26]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[27] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[27]),
+        .Q(curr_lpd_rd_ptr[27]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[28] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[28]),
+        .Q(curr_lpd_rd_ptr[28]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[29] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[29]),
+        .Q(curr_lpd_rd_ptr[29]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[2] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[2]),
+        .Q(curr_lpd_rd_ptr[2]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[30] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[30]),
+        .Q(curr_lpd_rd_ptr[30]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[31] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[31]),
+        .Q(curr_lpd_rd_ptr[31]),
+        .R(1'b0));
+  CARRY8 \axi_int.curr_lpd_rd_ptr_reg[31]_i_1 
+       (.CI(\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_CO_UNCONNECTED [7:3],\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_6 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b1,1'b1}),
+        .O(\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_O_UNCONNECTED [7:0]),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\axi_int.curr_lpd_rd_ptr[31]_i_3_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_4_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_5_n_0 }));
+  CARRY8 \axi_int.curr_lpd_rd_ptr_reg[31]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_1 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_2 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_3 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_4 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_5 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_6 ,\axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_7 }),
+        .DI({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
+        .O(\NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_2_O_UNCONNECTED [7:0]),
+        .S({\axi_int.curr_lpd_rd_ptr[31]_i_6_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_7_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_8_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_9_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_10_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_11_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_12_n_0 ,\axi_int.curr_lpd_rd_ptr[31]_i_13_n_0 }));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[3] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[3]),
+        .Q(curr_lpd_rd_ptr[3]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[4] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[4]),
+        .Q(curr_lpd_rd_ptr[4]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[5] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[5]),
+        .Q(curr_lpd_rd_ptr[5]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[6] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[6]),
+        .Q(curr_lpd_rd_ptr[6]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[7] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[7]),
+        .Q(curr_lpd_rd_ptr[7]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[8] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[8]),
+        .Q(curr_lpd_rd_ptr[8]),
+        .R(1'b0));
+  FDRE \axi_int.curr_lpd_rd_ptr_reg[9] 
+       (.C(lpd_clk),
+        .CE(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .D(lpd_rd_ptr[9]),
+        .Q(curr_lpd_rd_ptr[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \axi_int.curr_wr_ptr[31]_i_1 
+       (.I0(M_AXI_BVALID),
+        .I1(M_AXI_BREADY),
+        .O(done));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[0] 
+       (.C(clk),
+        .CE(done),
+        .D(1'b0),
+        .Q(curr_wr_ptr[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[10] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[5]),
+        .Q(curr_wr_ptr[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[11] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[6]),
+        .Q(curr_wr_ptr[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[12] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[7]),
+        .Q(curr_wr_ptr[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[13] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[8]),
+        .Q(curr_wr_ptr[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[14] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[9]),
+        .Q(curr_wr_ptr[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[15] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[10]),
+        .Q(curr_wr_ptr[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[16] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[11]),
+        .Q(curr_wr_ptr[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[17] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[12]),
+        .Q(curr_wr_ptr[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[18] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[13]),
+        .Q(curr_wr_ptr[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[19] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[14]),
+        .Q(curr_wr_ptr[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[1] 
+       (.C(clk),
+        .CE(done),
+        .D(1'b0),
+        .Q(curr_wr_ptr[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[20] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[15]),
+        .Q(curr_wr_ptr[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[21] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[16]),
+        .Q(curr_wr_ptr[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[22] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[17]),
+        .Q(curr_wr_ptr[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[23] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[18]),
+        .Q(curr_wr_ptr[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[24] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[19]),
+        .Q(curr_wr_ptr[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[25] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[20]),
+        .Q(curr_wr_ptr[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[26] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[21]),
+        .Q(curr_wr_ptr[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[27] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[22]),
+        .Q(curr_wr_ptr[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[28] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[23]),
+        .Q(curr_wr_ptr[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[29] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[24]),
+        .Q(curr_wr_ptr[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[2] 
+       (.C(clk),
+        .CE(done),
+        .D(1'b0),
+        .Q(curr_wr_ptr[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[30] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[25]),
+        .Q(curr_wr_ptr[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[31] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[26]),
+        .Q(curr_wr_ptr[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[3] 
+       (.C(clk),
+        .CE(done),
+        .D(1'b0),
+        .Q(curr_wr_ptr[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[4] 
+       (.C(clk),
+        .CE(done),
+        .D(1'b0),
+        .Q(curr_wr_ptr[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[5] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[0]),
+        .Q(curr_wr_ptr[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[6] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[1]),
+        .Q(curr_wr_ptr[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[7] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[2]),
+        .Q(curr_wr_ptr[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[8] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[3]),
+        .Q(curr_wr_ptr[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_int.curr_wr_ptr_reg[9] 
+       (.C(clk),
+        .CE(done),
+        .D(adr[4]),
+        .Q(curr_wr_ptr[9]),
+        .R(1'b0));
   LUT6 #(
     .INIT(64'hFFFF00FF40FF00FF)) 
     \axi_int.diff_blocks[8]_i_1 
@@ -15415,6 +16051,18 @@ module ps_axi_int_0_0_axi_int
         .D(\axi_int.preview_data[1][9]_i_1_n_0 ),
         .Q(\axi_int.preview_data_reg[1] [9]),
         .R(1'b0));
+  FDRE \axi_int.rd_ptr_chg_1_reg 
+       (.C(lpd_clk),
+        .CE(1'b1),
+        .D(\axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5 ),
+        .Q(rd_ptr_chg_1),
+        .R(1'b0));
+  FDRE \axi_int.rd_ptr_chg_reg 
+       (.C(lpd_clk),
+        .CE(1'b1),
+        .D(rd_ptr_chg_1),
+        .Q(rd_ptr_chg),
+        .R(1'b0));
   LUT2 #(
     .INIT(4'h1)) 
     \axi_int.req_i_1 
@@ -22071,6 +22719,20 @@ module ps_axi_int_0_0_axi_int
         .D(\axi_int.u_rd[1]_i_2_n_0 ),
         .Q(\axi_int.u_rd_reg_n_0_[1] ),
         .R(\axi_int.u_rd[1]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_int.wr_ptr_chg_1_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(done),
+        .Q(wr_ptr_chg_1),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_int.wr_ptr_chg_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(wr_ptr_chg_1),
+        .Q(wr_ptr_chg),
+        .R(1'b0));
   (* CASCADE_HEIGHT = "0" *) 
   (* DOUT_RESET_VALUE = "0" *) 
   (* ECC_MODE = "0" *) 
@@ -22231,40 +22893,78 @@ module ps_axi_int_0_0_axi_int
         .wr_data_count(NLW_fifo_low_i_wr_data_count_UNCONNECTED[0]),
         .wr_en(u_low_wr),
         .wr_rst_busy(NLW_fifo_low_i_wr_rst_busy_UNCONNECTED));
+  (* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+  ps_axi_int_0_0_fifo_ptr fifo_rd_ptr_i
+       (.din(curr_lpd_rd_ptr),
+        .dout(curr_rd_ptr),
+        .empty(fifo_rd_empty),
+        .full(NLW_fifo_rd_ptr_i_full_UNCONNECTED),
+        .rd_clk(clk),
+        .rd_en(fifo_rd_ptr_i_i_1_n_0),
+        .wr_clk(lpd_clk),
+        .wr_en(rd_ptr_chg));
+  LUT1 #(
+    .INIT(2'h1)) 
+    fifo_rd_ptr_i_i_1
+       (.I0(fifo_rd_empty),
+        .O(fifo_rd_ptr_i_i_1_n_0));
+  (* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+  ps_axi_int_0_0_fifo_ptr_HD37 fifo_wr_ptr_i
+       (.din(curr_wr_ptr),
+        .dout(lpd_wr_ptr),
+        .empty(fifo_wr_empty),
+        .full(NLW_fifo_wr_ptr_i_full_UNCONNECTED),
+        .rd_clk(lpd_clk),
+        .rd_en(fifo_wr_ptr_i_i_1_n_0),
+        .wr_clk(clk),
+        .wr_en(wr_ptr_chg));
+  LUT1 #(
+    .INIT(2'h1)) 
+    fifo_wr_ptr_i_i_1
+       (.I0(fifo_wr_empty),
+        .O(fifo_wr_ptr_i_i_1_n_0));
   (* CHECK_LICENSE_TYPE = "ila_6,ila,{}" *) 
-  (* DowngradeIPIdentifiedWarnings = "yes" *) 
-  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "ila,Vivado 2025.1" *) 
   ps_axi_int_0_0_ila_6 ila_i
        (.clk(clk),
         .probe0(mig_empty),
         .probe1(req),
-        .probe10(hdr_flags),
-        .probe11(hdr_size),
-        .probe12(hdr_freq),
-        .probe13(hdr_angle),
-        .probe14(hdr_doa_error),
-        .probe15(hdr_max_env),
-        .probe16(hdr_max_pos),
-        .probe17(hdr_env_mean),
-        .probe18(hdr_env_std),
-        .probe19(hdr_phase_std),
+        .probe10(curr_rd_ptr),
+        .probe11(curr_wr_ptr),
+        .probe12(hdr_sample),
+        .probe13(hdr_blocks),
+        .probe14(hdr_flags),
+        .probe15(hdr_size),
+        .probe16(hdr_freq),
+        .probe17(hdr_angle),
+        .probe18(hdr_doa_error),
+        .probe19(hdr_max_env),
         .probe2(busy),
-        .probe20(hdr_freq_std),
-        .probe21(env_0),
-        .probe22(env_1),
-        .probe23(env_2),
-        .probe24(env_3),
-        .probe25(env_4),
-        .probe26(env_5),
-        .probe27(env_6),
-        .probe28(env_7),
+        .probe20(hdr_max_pos),
+        .probe21(hdr_env_mean),
+        .probe22(hdr_env_std),
+        .probe23(hdr_phase_std),
+        .probe24(hdr_freq_std),
+        .probe25(env_0),
+        .probe26(env_1),
+        .probe27(env_2),
+        .probe28(env_3),
+        .probe29(env_4),
         .probe3(start),
+        .probe30(env_5),
+        .probe31(env_6),
+        .probe32(env_7),
         .probe4(next),
         .probe5(last),
         .probe6(counter),
         .probe7(adr),
-        .probe8(hdr_sample),
-        .probe9(hdr_blocks));
+        .probe8(wr_ptr_chg_1),
+        .probe9(wr_ptr_chg));
   LUT2 #(
     .INIT(4'h8)) 
     last_inferred_i_1
@@ -22283,6 +22983,56 @@ module ps_axi_int_0_0_axi_int
        (.I0(M_AXI_AWREADY),
         .I1(M_AXI_AWVALID),
         .O(start));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_ptr" *) 
+(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+module ps_axi_int_0_0_fifo_ptr
+   (wr_clk,
+    rd_clk,
+    din,
+    wr_en,
+    rd_en,
+    dout,
+    full,
+    empty);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input wr_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input rd_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [31:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [31:0]dout;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_ptr" *) 
+(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
+module ps_axi_int_0_0_fifo_ptr_HD37
+   (empty,
+    full,
+    rd_clk,
+    rd_en,
+    wr_clk,
+    wr_en,
+    din,
+    dout);
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input rd_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
+  (* syn_isclock = "1" *) input wr_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [31:0]din;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [31:0]dout;
+
+
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_6,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_6" *) 
@@ -22317,7 +23067,11 @@ module ps_axi_int_0_0_ila_6
     probe25,
     probe26,
     probe27,
-    probe28);
+    probe28,
+    probe29,
+    probe30,
+    probe31,
+    probe32);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -22327,15 +23081,15 @@ module ps_axi_int_0_0_ila_6
   input [0:0]probe5;
   input [7:0]probe6;
   input [26:0]probe7;
-  input [63:0]probe8;
-  input [7:0]probe9;
-  input [7:0]probe10;
-  input [15:0]probe11;
-  input [31:0]probe12;
-  input [15:0]probe13;
-  input [15:0]probe14;
+  input [0:0]probe8;
+  input [0:0]probe9;
+  input [31:0]probe10;
+  input [31:0]probe11;
+  input [63:0]probe12;
+  input [7:0]probe13;
+  input [7:0]probe14;
   input [15:0]probe15;
-  input [15:0]probe16;
+  input [31:0]probe16;
   input [15:0]probe17;
   input [15:0]probe18;
   input [15:0]probe19;
@@ -22348,6 +23102,10 @@ module ps_axi_int_0_0_ila_6
   input [15:0]probe26;
   input [15:0]probe27;
   input [15:0]probe28;
+  input [15:0]probe29;
+  input [15:0]probe30;
+  input [15:0]probe31;
+  input [15:0]probe32;
 
 
 endmodule

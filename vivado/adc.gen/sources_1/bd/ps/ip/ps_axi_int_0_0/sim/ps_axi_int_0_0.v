@@ -71,6 +71,9 @@ module ps_axi_int_0_0 (
   high_pending,
   high_timestamp,
   high_data,
+  lpd_clk,
+  lpd_rd_ptr,
+  lpd_wr_ptr,
   up,
   M_AXI_AWADDR,
   M_AXI_AWLEN,
@@ -91,7 +94,7 @@ module ps_axi_int_0_0 (
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
@@ -111,6 +114,12 @@ output wire high_full;
 input wire high_pending;
 input wire [21 : 0] high_timestamp;
 input wire [255 : 0] high_data;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 lpd_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+input wire lpd_clk;
+input wire [31 : 0] lpd_rd_ptr;
+output wire [31 : 0] lpd_wr_ptr;
 input wire up;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *)
 (* X_INTERFACE_MODE = "master" *)
@@ -163,6 +172,9 @@ output wire M_AXI_BREADY;
     .high_pending(high_pending),
     .high_timestamp(high_timestamp),
     .high_data(high_data),
+    .lpd_clk(lpd_clk),
+    .lpd_rd_ptr(lpd_rd_ptr),
+    .lpd_wr_ptr(lpd_wr_ptr),
     .up(up),
     .M_AXI_AWADDR(M_AXI_AWADDR),
     .M_AXI_AWLEN(M_AXI_AWLEN),

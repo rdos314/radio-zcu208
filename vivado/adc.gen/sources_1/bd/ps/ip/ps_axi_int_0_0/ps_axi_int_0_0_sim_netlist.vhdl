@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat Apr 11 14:49:26 2026
+-- Date        : Tue Apr 14 23:03:22 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.vhdl
@@ -27803,6 +27803,9 @@ entity ps_axi_int_0_0_axi_int is
     high_pending : in STD_LOGIC;
     high_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     high_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
+    lpd_clk : in STD_LOGIC;
+    lpd_rd_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    lpd_wr_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     up : in STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXI_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -27833,6 +27836,30 @@ entity ps_axi_int_0_0_axi_int is
 end ps_axi_int_0_0_axi_int;
 
 architecture STRUCTURE of ps_axi_int_0_0_axi_int is
+  component ps_axi_int_0_0_fifo_ptr is
+  port (
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC
+  );
+  end component ps_axi_int_0_0_fifo_ptr;
+  component ps_axi_int_0_0_fifo_ptr_HD37 is
+  port (
+    empty : out STD_LOGIC;
+    full : out STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    wr_en : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component ps_axi_int_0_0_fifo_ptr_HD37;
   component ps_axi_int_0_0_ila_6 is
   port (
     clk : in STD_LOGIC;
@@ -27844,15 +27871,15 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe19 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -27864,7 +27891,11 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
     probe25 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe26 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe27 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe28 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe31 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe32 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component ps_axi_int_0_0_ila_6;
   signal \<const0>\ : STD_LOGIC;
@@ -27955,6 +27986,28 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal \axi_int.counter[7]_i_2_n_0\ : STD_LOGIC;
   signal \axi_int.counter[7]_i_3_n_0\ : STD_LOGIC;
   signal \axi_int.counter[7]_i_4_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_10_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_11_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_12_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_13_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_3_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_4_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_5_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_6_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_7_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_8_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr[31]_i_9_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_6\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_7\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_1\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_2\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_3\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_4\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_5\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_6\ : STD_LOGIC;
+  signal \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_7\ : STD_LOGIC;
   signal \axi_int.diff_blocks[8]_i_10_n_0\ : STD_LOGIC;
   signal \axi_int.diff_blocks[8]_i_11_n_0\ : STD_LOGIC;
   signal \axi_int.diff_blocks[8]_i_12_n_0\ : STD_LOGIC;
@@ -29372,7 +29425,13 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute MARK_DEBUG of busy : signal is std.standard.true;
   signal counter : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of counter : signal is std.standard.true;
+  signal curr_lpd_rd_ptr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal curr_rd_ptr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of curr_rd_ptr : signal is std.standard.true;
+  signal curr_wr_ptr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute MARK_DEBUG of curr_wr_ptr : signal is std.standard.true;
   signal diff_blocks0 : STD_LOGIC_VECTOR ( 8 to 8 );
+  signal done : STD_LOGIC;
   signal env_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of env_0 : signal is std.standard.true;
   signal env_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -29389,6 +29448,10 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute MARK_DEBUG of env_6 : signal is std.standard.true;
   signal env_7 : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of env_7 : signal is std.standard.true;
+  signal fifo_rd_empty : STD_LOGIC;
+  signal fifo_rd_ptr_i_i_1_n_0 : STD_LOGIC;
+  signal fifo_wr_empty : STD_LOGIC;
+  signal fifo_wr_ptr_i_i_1_n_0 : STD_LOGIC;
   signal has_preview : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal hdr_angle : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG of hdr_angle : signal is std.standard.true;
@@ -29444,6 +29507,8 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal p_13_out : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal rd : STD_LOGIC;
+  signal rd_ptr_chg : STD_LOGIC;
+  signal rd_ptr_chg_1 : STD_LOGIC;
   signal req : STD_LOGIC;
   attribute MARK_DEBUG of req : signal is std.standard.true;
   signal reset : STD_LOGIC;
@@ -29468,8 +29533,15 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal u_low_out_data : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal u_low_wr : STD_LOGIC;
   signal u_rd : STD_LOGIC;
+  signal wr_ptr_chg : STD_LOGIC;
+  attribute MARK_DEBUG of wr_ptr_chg : signal is std.standard.true;
+  signal wr_ptr_chg_1 : STD_LOGIC;
+  attribute MARK_DEBUG of wr_ptr_chg_1 : signal is std.standard.true;
   signal \NLW_axi_int.adr_reg[26]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \NLW_axi_int.adr_reg[26]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
+  signal \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
+  signal \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_axi_int.diff_blocks_reg[8]_i_14_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_axi_int.diff_blocks_reg[8]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_axi_int.diff_blocks_reg[8]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 1 );
@@ -29524,6 +29596,8 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   signal NLW_fifo_low_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_low_i_rd_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_fifo_low_i_wr_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_fifo_rd_ptr_i_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_wr_ptr_i_full_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \axi_int.M_AXI_AWLEN[1]_i_1\ : label is "soft_lutpair194";
   attribute SOFT_HLUTNM of \axi_int.M_AXI_AWLEN[2]_i_1\ : label is "soft_lutpair194";
@@ -29602,6 +29676,70 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute KEEP of \axi_int.counter_reg[5]\ : label is "yes";
   attribute KEEP of \axi_int.counter_reg[6]\ : label is "yes";
   attribute KEEP of \axi_int.counter_reg[7]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[0]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[10]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[10]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[11]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[11]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[12]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[12]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[13]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[13]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[14]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[14]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[15]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[16]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[16]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[17]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[17]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[18]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[18]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[19]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[19]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[1]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[20]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[20]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[21]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[21]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[22]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[22]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[23]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[23]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[24]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[24]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[25]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[25]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[26]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[26]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[27]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[27]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[28]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[28]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[29]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[29]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[2]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[30]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[30]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[31]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[31]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[3]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[4]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[5]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[6]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[7]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[7]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[8]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[8]\ : label is "yes";
+  attribute KEEP of \axi_int.curr_wr_ptr_reg[9]\ : label is "yes";
+  attribute mark_debug_string of \axi_int.curr_wr_ptr_reg[9]\ : label is "yes";
   attribute SOFT_HLUTNM of \axi_int.diff_blocks[8]_i_10\ : label is "soft_lutpair61";
   attribute SOFT_HLUTNM of \axi_int.diff_blocks[8]_i_12\ : label is "soft_lutpair61";
   attribute SOFT_HLUTNM of \axi_int.diff_blocks[8]_i_7\ : label is "soft_lutpair58";
@@ -30674,6 +30812,8 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute ADDER_THRESHOLD of \axi_int.state_diff_reg[21]_i_3\ : label is 35;
   attribute SOFT_HLUTNM of \axi_int.state_ind_i_1\ : label is "soft_lutpair57";
   attribute SOFT_HLUTNM of \axi_int.state_ok_i_1\ : label is "soft_lutpair57";
+  attribute KEEP of \axi_int.wr_ptr_chg_1_reg\ : label is "yes";
+  attribute KEEP of \axi_int.wr_ptr_chg_reg\ : label is "yes";
   attribute CASCADE_HEIGHT : integer;
   attribute CASCADE_HEIGHT of fifo_high_i : label is 0;
   attribute DOUT_RESET_VALUE : string;
@@ -30775,11 +30915,17 @@ architecture STRUCTURE of ps_axi_int_0_0_axi_int is
   attribute WR_DATA_COUNT_WIDTH of fifo_low_i : label is 1;
   attribute XPM_MODULE of fifo_low_i : label is "TRUE";
   attribute CHECK_LICENSE_TYPE : string;
+  attribute CHECK_LICENSE_TYPE of fifo_rd_ptr_i : label is "fifo_ptr,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings : string;
+  attribute downgradeipidentifiedwarnings of fifo_rd_ptr_i : label is "yes";
+  attribute x_core_info : string;
+  attribute x_core_info of fifo_rd_ptr_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of fifo_wr_ptr_i : label is "fifo_ptr,fifo_generator_v13_2_13,{}";
+  attribute downgradeipidentifiedwarnings of fifo_wr_ptr_i : label is "yes";
+  attribute x_core_info of fifo_wr_ptr_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_6,ila,{}";
-  attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of ila_i : label is "yes";
-  attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of ila_i : label is "ila,Vivado 2025.1";
+  attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
+  attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
 begin
   M_AXI_AWADDR(31 downto 5) <= \^m_axi_awaddr\(31 downto 5);
   M_AXI_AWADDR(4) <= \<const0>\;
@@ -33964,6 +34110,706 @@ GND: unisim.vcomponents.GND
       D => \axi_int.counter[7]_i_1_n_0\,
       Q => counter(7),
       R => \axi_int.busy_reg0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_10\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(9),
+      I1 => curr_lpd_rd_ptr(9),
+      I2 => curr_lpd_rd_ptr(11),
+      I3 => lpd_rd_ptr(11),
+      I4 => curr_lpd_rd_ptr(10),
+      I5 => lpd_rd_ptr(10),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_10_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_11\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(6),
+      I1 => curr_lpd_rd_ptr(6),
+      I2 => curr_lpd_rd_ptr(8),
+      I3 => lpd_rd_ptr(8),
+      I4 => curr_lpd_rd_ptr(7),
+      I5 => lpd_rd_ptr(7),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_11_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_12\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(3),
+      I1 => curr_lpd_rd_ptr(3),
+      I2 => curr_lpd_rd_ptr(5),
+      I3 => lpd_rd_ptr(5),
+      I4 => curr_lpd_rd_ptr(4),
+      I5 => lpd_rd_ptr(4),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_12_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_13\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(0),
+      I1 => curr_lpd_rd_ptr(0),
+      I2 => curr_lpd_rd_ptr(2),
+      I3 => lpd_rd_ptr(2),
+      I4 => curr_lpd_rd_ptr(1),
+      I5 => lpd_rd_ptr(1),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_13_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"9009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(30),
+      I1 => curr_lpd_rd_ptr(30),
+      I2 => lpd_rd_ptr(31),
+      I3 => curr_lpd_rd_ptr(31),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_3_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(27),
+      I1 => curr_lpd_rd_ptr(27),
+      I2 => curr_lpd_rd_ptr(29),
+      I3 => lpd_rd_ptr(29),
+      I4 => curr_lpd_rd_ptr(28),
+      I5 => lpd_rd_ptr(28),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_4_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(24),
+      I1 => curr_lpd_rd_ptr(24),
+      I2 => curr_lpd_rd_ptr(26),
+      I3 => lpd_rd_ptr(26),
+      I4 => curr_lpd_rd_ptr(25),
+      I5 => lpd_rd_ptr(25),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_5_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_6\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(21),
+      I1 => curr_lpd_rd_ptr(21),
+      I2 => curr_lpd_rd_ptr(23),
+      I3 => lpd_rd_ptr(23),
+      I4 => curr_lpd_rd_ptr(22),
+      I5 => lpd_rd_ptr(22),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_6_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_7\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(18),
+      I1 => curr_lpd_rd_ptr(18),
+      I2 => curr_lpd_rd_ptr(20),
+      I3 => lpd_rd_ptr(20),
+      I4 => curr_lpd_rd_ptr(19),
+      I5 => lpd_rd_ptr(19),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_7_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(15),
+      I1 => curr_lpd_rd_ptr(15),
+      I2 => curr_lpd_rd_ptr(17),
+      I3 => lpd_rd_ptr(17),
+      I4 => curr_lpd_rd_ptr(16),
+      I5 => lpd_rd_ptr(16),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_8_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr[31]_i_9\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"9009000000009009"
+    )
+        port map (
+      I0 => lpd_rd_ptr(12),
+      I1 => curr_lpd_rd_ptr(12),
+      I2 => curr_lpd_rd_ptr(14),
+      I3 => lpd_rd_ptr(14),
+      I4 => curr_lpd_rd_ptr(13),
+      I5 => lpd_rd_ptr(13),
+      O => \axi_int.curr_lpd_rd_ptr[31]_i_9_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(0),
+      Q => curr_lpd_rd_ptr(0),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(10),
+      Q => curr_lpd_rd_ptr(10),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(11),
+      Q => curr_lpd_rd_ptr(11),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(12),
+      Q => curr_lpd_rd_ptr(12),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(13),
+      Q => curr_lpd_rd_ptr(13),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(14),
+      Q => curr_lpd_rd_ptr(14),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(15),
+      Q => curr_lpd_rd_ptr(15),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(16),
+      Q => curr_lpd_rd_ptr(16),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(17),
+      Q => curr_lpd_rd_ptr(17),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(18),
+      Q => curr_lpd_rd_ptr(18),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(19),
+      Q => curr_lpd_rd_ptr(19),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(1),
+      Q => curr_lpd_rd_ptr(1),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(20),
+      Q => curr_lpd_rd_ptr(20),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(21),
+      Q => curr_lpd_rd_ptr(21),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(22),
+      Q => curr_lpd_rd_ptr(22),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(23),
+      Q => curr_lpd_rd_ptr(23),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(24),
+      Q => curr_lpd_rd_ptr(24),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(25),
+      Q => curr_lpd_rd_ptr(25),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(26),
+      Q => curr_lpd_rd_ptr(26),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(27),
+      Q => curr_lpd_rd_ptr(27),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(28),
+      Q => curr_lpd_rd_ptr(28),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(29),
+      Q => curr_lpd_rd_ptr(29),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(2),
+      Q => curr_lpd_rd_ptr(2),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(30),
+      Q => curr_lpd_rd_ptr(30),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(31),
+      Q => curr_lpd_rd_ptr(31),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[31]_i_1\: unisim.vcomponents.CARRY8
+     port map (
+      CI => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0\,
+      CI_TOP => '0',
+      CO(7 downto 3) => \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_CO_UNCONNECTED\(7 downto 3),
+      CO(2) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      CO(1) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_6\,
+      CO(0) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_7\,
+      DI(7 downto 0) => B"00000111",
+      O(7 downto 0) => \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_1_O_UNCONNECTED\(7 downto 0),
+      S(7 downto 3) => B"00000",
+      S(2) => \axi_int.curr_lpd_rd_ptr[31]_i_3_n_0\,
+      S(1) => \axi_int.curr_lpd_rd_ptr[31]_i_4_n_0\,
+      S(0) => \axi_int.curr_lpd_rd_ptr[31]_i_5_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr_reg[31]_i_2\: unisim.vcomponents.CARRY8
+     port map (
+      CI => '0',
+      CI_TOP => '0',
+      CO(7) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_0\,
+      CO(6) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_1\,
+      CO(5) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_2\,
+      CO(4) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_3\,
+      CO(3) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_4\,
+      CO(2) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_5\,
+      CO(1) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_6\,
+      CO(0) => \axi_int.curr_lpd_rd_ptr_reg[31]_i_2_n_7\,
+      DI(7 downto 0) => B"11111111",
+      O(7 downto 0) => \NLW_axi_int.curr_lpd_rd_ptr_reg[31]_i_2_O_UNCONNECTED\(7 downto 0),
+      S(7) => \axi_int.curr_lpd_rd_ptr[31]_i_6_n_0\,
+      S(6) => \axi_int.curr_lpd_rd_ptr[31]_i_7_n_0\,
+      S(5) => \axi_int.curr_lpd_rd_ptr[31]_i_8_n_0\,
+      S(4) => \axi_int.curr_lpd_rd_ptr[31]_i_9_n_0\,
+      S(3) => \axi_int.curr_lpd_rd_ptr[31]_i_10_n_0\,
+      S(2) => \axi_int.curr_lpd_rd_ptr[31]_i_11_n_0\,
+      S(1) => \axi_int.curr_lpd_rd_ptr[31]_i_12_n_0\,
+      S(0) => \axi_int.curr_lpd_rd_ptr[31]_i_13_n_0\
+    );
+\axi_int.curr_lpd_rd_ptr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(3),
+      Q => curr_lpd_rd_ptr(3),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(4),
+      Q => curr_lpd_rd_ptr(4),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(5),
+      Q => curr_lpd_rd_ptr(5),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(6),
+      Q => curr_lpd_rd_ptr(6),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(7),
+      Q => curr_lpd_rd_ptr(7),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(8),
+      Q => curr_lpd_rd_ptr(8),
+      R => '0'
+    );
+\axi_int.curr_lpd_rd_ptr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      D => lpd_rd_ptr(9),
+      Q => curr_lpd_rd_ptr(9),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr[31]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => M_AXI_BVALID,
+      I1 => \^m_axi_bready\,
+      O => done
+    );
+\axi_int.curr_wr_ptr_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => '0',
+      Q => curr_wr_ptr(0),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(5),
+      Q => curr_wr_ptr(10),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(6),
+      Q => curr_wr_ptr(11),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(7),
+      Q => curr_wr_ptr(12),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(8),
+      Q => curr_wr_ptr(13),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(9),
+      Q => curr_wr_ptr(14),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(10),
+      Q => curr_wr_ptr(15),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(11),
+      Q => curr_wr_ptr(16),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(12),
+      Q => curr_wr_ptr(17),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(13),
+      Q => curr_wr_ptr(18),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(14),
+      Q => curr_wr_ptr(19),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => '0',
+      Q => curr_wr_ptr(1),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(15),
+      Q => curr_wr_ptr(20),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(16),
+      Q => curr_wr_ptr(21),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(17),
+      Q => curr_wr_ptr(22),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(18),
+      Q => curr_wr_ptr(23),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(19),
+      Q => curr_wr_ptr(24),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(20),
+      Q => curr_wr_ptr(25),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(21),
+      Q => curr_wr_ptr(26),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(22),
+      Q => curr_wr_ptr(27),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(23),
+      Q => curr_wr_ptr(28),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(24),
+      Q => curr_wr_ptr(29),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => '0',
+      Q => curr_wr_ptr(2),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(25),
+      Q => curr_wr_ptr(30),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(26),
+      Q => curr_wr_ptr(31),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => '0',
+      Q => curr_wr_ptr(3),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => '0',
+      Q => curr_wr_ptr(4),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(0),
+      Q => curr_wr_ptr(5),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(1),
+      Q => curr_wr_ptr(6),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(2),
+      Q => curr_wr_ptr(7),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(3),
+      Q => curr_wr_ptr(8),
+      R => '0'
+    );
+\axi_int.curr_wr_ptr_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => done,
+      D => adr(4),
+      Q => curr_wr_ptr(9),
+      R => '0'
     );
 \axi_int.diff_blocks[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -47907,6 +48753,22 @@ GND: unisim.vcomponents.GND
       Q => \axi_int.preview_data_reg[1]\(9),
       R => '0'
     );
+\axi_int.rd_ptr_chg_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => '1',
+      D => \axi_int.curr_lpd_rd_ptr_reg[31]_i_1_n_5\,
+      Q => rd_ptr_chg_1,
+      R => '0'
+    );
+\axi_int.rd_ptr_chg_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => lpd_clk,
+      CE => '1',
+      D => rd_ptr_chg_1,
+      Q => rd_ptr_chg,
+      R => '0'
+    );
 \axi_int.req_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
@@ -56840,6 +57702,22 @@ GND: unisim.vcomponents.GND
       Q => \axi_int.u_rd_reg_n_0_[1]\,
       R => \axi_int.u_rd[1]_i_1_n_0\
     );
+\axi_int.wr_ptr_chg_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => done,
+      Q => wr_ptr_chg_1,
+      R => '0'
+    );
+\axi_int.wr_ptr_chg_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => wr_ptr_chg_1,
+      Q => wr_ptr_chg,
+      R => '0'
+    );
 fifo_high_i: entity work.\ps_axi_int_0_0_xpm_fifo_sync__2\
      port map (
       almost_empty => NLW_fifo_high_i_almost_empty_UNCONNECTED,
@@ -57189,38 +58067,80 @@ fifo_low_i: entity work.\ps_axi_int_0_0_xpm_fifo_sync__1\
       wr_en => u_low_wr,
       wr_rst_busy => NLW_fifo_low_i_wr_rst_busy_UNCONNECTED
     );
+fifo_rd_ptr_i: component ps_axi_int_0_0_fifo_ptr
+     port map (
+      din(31 downto 0) => curr_lpd_rd_ptr(31 downto 0),
+      dout(31 downto 0) => curr_rd_ptr(31 downto 0),
+      empty => fifo_rd_empty,
+      full => NLW_fifo_rd_ptr_i_full_UNCONNECTED,
+      rd_clk => clk,
+      rd_en => fifo_rd_ptr_i_i_1_n_0,
+      wr_clk => lpd_clk,
+      wr_en => rd_ptr_chg
+    );
+fifo_rd_ptr_i_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => fifo_rd_empty,
+      O => fifo_rd_ptr_i_i_1_n_0
+    );
+fifo_wr_ptr_i: component ps_axi_int_0_0_fifo_ptr_HD37
+     port map (
+      din(31 downto 0) => curr_wr_ptr(31 downto 0),
+      dout(31 downto 0) => lpd_wr_ptr(31 downto 0),
+      empty => fifo_wr_empty,
+      full => NLW_fifo_wr_ptr_i_full_UNCONNECTED,
+      rd_clk => lpd_clk,
+      rd_en => fifo_wr_ptr_i_i_1_n_0,
+      wr_clk => clk,
+      wr_en => wr_ptr_chg
+    );
+fifo_wr_ptr_i_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => fifo_wr_empty,
+      O => fifo_wr_ptr_i_i_1_n_0
+    );
 ila_i: component ps_axi_int_0_0_ila_6
      port map (
       clk => clk,
       probe0(0) => mig_empty,
       probe1(0) => req,
-      probe10(7 downto 0) => hdr_flags(7 downto 0),
-      probe11(15 downto 0) => hdr_size(15 downto 0),
-      probe12(31 downto 0) => hdr_freq(31 downto 0),
-      probe13(15 downto 0) => hdr_angle(15 downto 0),
-      probe14(15 downto 0) => hdr_doa_error(15 downto 0),
-      probe15(15 downto 0) => hdr_max_env(15 downto 0),
-      probe16(15 downto 0) => hdr_max_pos(15 downto 0),
-      probe17(15 downto 0) => hdr_env_mean(15 downto 0),
-      probe18(15 downto 0) => hdr_env_std(15 downto 0),
-      probe19(15 downto 0) => hdr_phase_std(15 downto 0),
+      probe10(31 downto 0) => curr_rd_ptr(31 downto 0),
+      probe11(31 downto 0) => curr_wr_ptr(31 downto 0),
+      probe12(63 downto 0) => hdr_sample(63 downto 0),
+      probe13(7 downto 0) => hdr_blocks(7 downto 0),
+      probe14(7 downto 0) => hdr_flags(7 downto 0),
+      probe15(15 downto 0) => hdr_size(15 downto 0),
+      probe16(31 downto 0) => hdr_freq(31 downto 0),
+      probe17(15 downto 0) => hdr_angle(15 downto 0),
+      probe18(15 downto 0) => hdr_doa_error(15 downto 0),
+      probe19(15 downto 0) => hdr_max_env(15 downto 0),
       probe2(0) => busy,
-      probe20(15 downto 0) => hdr_freq_std(15 downto 0),
-      probe21(15 downto 0) => env_0(15 downto 0),
-      probe22(15 downto 0) => env_1(15 downto 0),
-      probe23(15 downto 0) => env_2(15 downto 0),
-      probe24(15 downto 0) => env_3(15 downto 0),
-      probe25(15 downto 0) => env_4(15 downto 0),
-      probe26(15 downto 0) => env_5(15 downto 0),
-      probe27(15 downto 0) => env_6(15 downto 0),
-      probe28(15 downto 0) => env_7(15 downto 0),
+      probe20(15 downto 0) => hdr_max_pos(15 downto 0),
+      probe21(15 downto 0) => hdr_env_mean(15 downto 0),
+      probe22(15 downto 0) => hdr_env_std(15 downto 0),
+      probe23(15 downto 0) => hdr_phase_std(15 downto 0),
+      probe24(15 downto 0) => hdr_freq_std(15 downto 0),
+      probe25(15 downto 0) => env_0(15 downto 0),
+      probe26(15 downto 0) => env_1(15 downto 0),
+      probe27(15 downto 0) => env_2(15 downto 0),
+      probe28(15 downto 0) => env_3(15 downto 0),
+      probe29(15 downto 0) => env_4(15 downto 0),
       probe3(0) => start,
+      probe30(15 downto 0) => env_5(15 downto 0),
+      probe31(15 downto 0) => env_6(15 downto 0),
+      probe32(15 downto 0) => env_7(15 downto 0),
       probe4(0) => \next\,
       probe5(0) => last,
       probe6(7 downto 0) => counter(7 downto 0),
       probe7(26 downto 0) => adr(26 downto 0),
-      probe8(63 downto 0) => hdr_sample(63 downto 0),
-      probe9(7 downto 0) => hdr_blocks(7 downto 0)
+      probe8(0) => wr_ptr_chg_1,
+      probe9(0) => wr_ptr_chg
     );
 last_inferred_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -57272,6 +58192,9 @@ entity ps_axi_int_0_0 is
     high_pending : in STD_LOGIC;
     high_timestamp : in STD_LOGIC_VECTOR ( 21 downto 0 );
     high_data : in STD_LOGIC_VECTOR ( 255 downto 0 );
+    lpd_clk : in STD_LOGIC;
+    lpd_rd_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    lpd_wr_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     up : in STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXI_AWLEN : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -57330,7 +58253,10 @@ architecture STRUCTURE of ps_axi_int_0_0 is
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of lpd_clk : signal is "xilinx.com:signal:clock:1.0 lpd_clk CLK";
+  attribute X_INTERFACE_MODE of lpd_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of lpd_clk : signal is "XIL_INTERFACENAME lpd_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
   attribute X_INTERFACE_MODE of resetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -57431,6 +58357,9 @@ inst: entity work.ps_axi_int_0_0_axi_int
       low_rd => low_rd,
       low_timestamp(21 downto 0) => low_timestamp(21 downto 0),
       low_wr => low_wr,
+      lpd_clk => lpd_clk,
+      lpd_rd_ptr(31 downto 0) => lpd_rd_ptr(31 downto 0),
+      lpd_wr_ptr(31 downto 0) => lpd_wr_ptr(31 downto 0),
       resetn => resetn,
       up => '0'
     );

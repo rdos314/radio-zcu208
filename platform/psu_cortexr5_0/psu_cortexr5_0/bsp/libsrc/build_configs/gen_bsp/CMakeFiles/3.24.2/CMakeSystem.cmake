@@ -1,6 +1,6 @@
-set(CMAKE_HOST_SYSTEM "Linux-6.8.0-106-generic")
+set(CMAKE_HOST_SYSTEM "Linux-6.8.0-107-generic")
 set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "6.8.0-106-generic")
+set(CMAKE_HOST_SYSTEM_VERSION "6.8.0-107-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
 include("/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/cortexr5_toolchain.cmake")

@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -80,6 +80,8 @@ ps_axi_smc_0_sc::ps_axi_smc_0_sc(const sc_core::sc_module_name& nm) : sc_core::s
   M03_AXI_tlm_aximm_write_socket = mp_impl->M03_AXI_tlm_aximm_write_socket;
   M04_AXI_tlm_aximm_read_socket = mp_impl->M04_AXI_tlm_aximm_read_socket;
   M04_AXI_tlm_aximm_write_socket = mp_impl->M04_AXI_tlm_aximm_write_socket;
+  M05_AXI_tlm_aximm_read_socket = mp_impl->M05_AXI_tlm_aximm_read_socket;
+  M05_AXI_tlm_aximm_write_socket = mp_impl->M05_AXI_tlm_aximm_write_socket;
 }
 
 ps_axi_smc_0_sc::~ps_axi_smc_0_sc()

@@ -1,13 +1,13 @@
-2026-04-12 21:35:49,136 - [INFO] Getting Platform info from HW file
-2026-04-12 21:35:49,136 - [DEBUG] Using the soc_family specified by user:zynqmp
-2026-04-12 21:35:49,137 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /media/ubuntu/large/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-machine-name.dts /media/ubuntu/large/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
-2026-04-12 21:35:50,097 - [DEBUG] 
+2026-04-13 22:12:50,202 - [INFO] Getting Platform info from HW file
+2026-04-13 22:12:50,202 - [DEBUG] Using the soc_family specified by user:zynqmp
+2026-04-13 22:12:50,204 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /media/ubuntu/large/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-machine-name.dts /media/ubuntu/large/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
+2026-04-13 22:12:51,190 - [DEBUG] 
 xlnx-zcu208 xczu48dr Xilinx ZynqMP
 
 
 
-2026-04-12 21:35:50,098 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /media/ubuntu/large/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-xilinx-id-cpus.dts /media/ubuntu/large/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
-2026-04-12 21:35:51,293 - [DEBUG] 
+2026-04-13 22:12:51,191 - [DEBUG] LOPPER_DTC_FLAGS="-b 0 -@" /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/bin/lopper -O /media/ubuntu/large/radio-zcu208/linux/project-spec/configs -f --enhanced   -i /home/ubuntu/petalinux/sysroots/x86_64-petalinux-linux/usr/lib/python3.12/site-packages/lopper/lops/lop-xilinx-id-cpus.dts /media/ubuntu/large/radio-zcu208/linux/project-spec/hw-description/system-top.dts 
+2026-04-13 22:12:52,361 - [DEBUG] 
 # global core_number no-domain cpu_name
 arm,cortex-a53 0 None psu_cortexa53_0 None
 arm,cortex-a53 1 None psu_cortexa53_1 None
@@ -19,23 +19,23 @@ pmu-microblaze 0 None psu_pmu_0 None
 
 
 
-2026-04-12 21:35:51,298 - [DEBUG] Hardware Configuration:
-2026-04-12 21:35:51,298 - [DEBUG] MODEL       = "Xilinx ZynqMP"
-2026-04-12 21:35:51,298 - [DEBUG] MACHINE     = "xlnx-zynqmp-zcu208-reva"
-2026-04-12 21:35:51,298 - [DEBUG] DEVICE_ID   = "xczu48dr"
-2026-04-12 21:35:51,298 - [DEBUG] SOC_FAMILY  = "zynqmp"
-2026-04-12 21:35:51,298 - [DEBUG] SOC_VARIANT = "dr"
-2026-04-12 21:35:51,298 - [DEBUG] CPUs:
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexa53_0 arm cortex-a53 0
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexa53_1 arm cortex-a53 1
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexa53_2 arm cortex-a53 2
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexa53_3 arm cortex-a53 3
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexr5_0 arm cortex-r5 0
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_cortexr5_1 arm cortex-r5 1
-2026-04-12 21:35:51,298 - [DEBUG] 	= psu_pmu_0 zynqmp-pmu 0
-2026-04-12 21:35:51,299 - [INFO] Silentconfig project
-2026-04-12 21:35:51,299 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/media/ubuntu/large/radio-zcu208/linux/project-spec/configs/config conf /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig
-2026-04-12 21:35:51,302 - [DEBUG] *
+2026-04-13 22:12:52,368 - [DEBUG] Hardware Configuration:
+2026-04-13 22:12:52,368 - [DEBUG] MODEL       = "Xilinx ZynqMP"
+2026-04-13 22:12:52,368 - [DEBUG] MACHINE     = "xlnx-zynqmp-zcu208-reva"
+2026-04-13 22:12:52,368 - [DEBUG] DEVICE_ID   = "xczu48dr"
+2026-04-13 22:12:52,368 - [DEBUG] SOC_FAMILY  = "zynqmp"
+2026-04-13 22:12:52,368 - [DEBUG] SOC_VARIANT = "dr"
+2026-04-13 22:12:52,368 - [DEBUG] CPUs:
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexa53_0 arm cortex-a53 0
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexa53_1 arm cortex-a53 1
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexa53_2 arm cortex-a53 2
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexa53_3 arm cortex-a53 3
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexr5_0 arm cortex-r5 0
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_cortexr5_1 arm cortex-r5 1
+2026-04-13 22:12:52,368 - [DEBUG] 	= psu_pmu_0 zynqmp-pmu 0
+2026-04-13 22:12:52,368 - [INFO] Silentconfig project
+2026-04-13 22:12:52,369 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/media/ubuntu/large/radio-zcu208/linux/project-spec/configs/config conf /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/configs/Kconfig
+2026-04-13 22:12:52,381 - [DEBUG] *
 * PetaLinux System Configuration
 *
 ZYNQMP Configuration (SYSTEM_ZYNQMP) [Y/?] y
@@ -318,9 +318,9 @@ user layer 0 (USER_LAYER_0) []
 #
 # configuration written to /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/config
 #
-2026-04-12 21:35:51,329 - [INFO] Silentconfig rootfs
-2026-04-12 21:35:51,329 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/media/ubuntu/large/radio-zcu208/linux/project-spec/configs/rootfs_config conf /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/rootfsconfigs/Kconfig
-2026-04-12 21:35:51,339 - [DEBUG] *
+2026-04-13 22:12:52,409 - [INFO] Silentconfig rootfs
+2026-04-13 22:12:52,409 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/media/ubuntu/large/radio-zcu208/linux/project-spec/configs/rootfs_config conf /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/rootfsconfigs/Kconfig
+2026-04-13 22:12:52,420 - [DEBUG] *
 * Configuration
 *
 *
@@ -3815,5 +3815,5 @@ Add Users to Sudo users (ADD_USERS_TO_SUDOERS) [petalinux]
 #
 # configuration written to /media/ubuntu/large/radio-zcu208/linux/project-spec/configs/rootfs_config
 #
-2026-04-12 21:35:51,345 - [INFO] Generating configuration files
-2026-04-12 21:35:51,360 - [DEBUG] Shutting down bitbake
+2026-04-13 22:12:52,425 - [INFO] Generating configuration files
+2026-04-13 22:12:52,440 - [DEBUG] Shutting down bitbake

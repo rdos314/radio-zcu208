@@ -56,13 +56,22 @@
 		clock-frequency = <48000000>;
 	};
 
-	reserved_memory {
-		r5_shared: buffer@78000000 {
-			compatible = "shared_dma_pool";
-			reg = <0x0 0x78000000 0x0 0x02000000>;
-			no_map;
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+		shm0_reserved: shm0@68000000 {
+			reg = <0x0 0x68000000 0x0 0x04000000>;
+			no-map;
 		};
 }	;
+
+	amba {
+		shm0: shm@0 {
+			compatible = "generic-uio";
+			reg = <0x0 0x68000000 0x0 0x04000000>;
+		};
+	};				
 
 };
 

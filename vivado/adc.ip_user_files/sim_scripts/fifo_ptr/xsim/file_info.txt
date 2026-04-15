@@ -1,0 +1,2 @@
+fifo_ptr.v,verilog,xil_defaultlib,../../../../adc.gen/sources_1/ip/fifo_ptr/sim/fifo_ptr.v,incdir="../../../../../../2025.1/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

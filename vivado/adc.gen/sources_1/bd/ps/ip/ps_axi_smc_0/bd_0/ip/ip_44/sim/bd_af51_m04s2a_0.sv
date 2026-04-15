@@ -156,7 +156,7 @@ input wire s_sc_ar_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AR RECV" *)
 output wire s_sc_ar_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AR PAYLD" *)
-input wire [168 : 0] s_sc_ar_payld;
+input wire [169 : 0] s_sc_ar_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW REQ" *)
 (* X_INTERFACE_MODE = "slave" *)
 input wire s_sc_aw_req;
@@ -167,7 +167,7 @@ input wire s_sc_aw_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW RECV" *)
 output wire s_sc_aw_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW PAYLD" *)
-input wire [168 : 0] s_sc_aw_payld;
+input wire [169 : 0] s_sc_aw_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W REQ" *)
 (* X_INTERFACE_MODE = "slave" *)
 input wire s_sc_w_req;
@@ -178,7 +178,7 @@ input wire s_sc_w_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W RECV" *)
 output wire s_sc_w_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W PAYLD" *)
-input wire [55 : 0] s_sc_w_payld;
+input wire [56 : 0] s_sc_w_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, DATA_WIDTH 32, PROTOCOL AXI4, FREQ_HZ 99999001, ID_WIDTH 3, ADDR_WIDTH 13, AWUSER_WIDTH 1024, ARUSER_WIDTH 1024, WUSER_WIDTH 1024, RUSER_WIDTH 1024, BUSER_WIDTH 1024, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS\
@@ -273,11 +273,11 @@ output wire m_axi_rready;
     .C_SC_ARUSER_WIDTH(16),
     .C_SC_AWUSER_WIDTH(16),
     .C_SC_BUSER_WIDTH(0),
-    .C_MSC_ROUTE_WIDTH(5),
+    .C_MSC_ROUTE_WIDTH(6),
     .C_SSC_ROUTE_WIDTH(1),
-    .C_AWPAYLD_WIDTH(169),
-    .C_ARPAYLD_WIDTH(169),
-    .C_WPAYLD_WIDTH(56),
+    .C_AWPAYLD_WIDTH(170),
+    .C_ARPAYLD_WIDTH(170),
+    .C_WPAYLD_WIDTH(57),
     .C_RPAYLD_WIDTH(53),
     .C_BPAYLD_WIDTH(7)
   ) inst (
