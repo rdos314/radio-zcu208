@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Tue Apr 14 23:01:48 2026
+//Date        : Wed Apr 15 20:07:35 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=28,numReposBlks=28,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=13,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_board_cnt=5,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=29,numReposBlks=29,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=13,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=10,da_board_cnt=5,da_bram_cntlr_cnt=1,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -136,7 +136,6 @@ module ps
   wire [31:0]axi_bram_ctrl_0_bram_wrdata_a;
   wire [31:0]axi_bram_douta;
   wire [31:0]axi_bram_doutb;
-  wire [31:0]axi_gpio_ptr_gpio2_io_o;
   wire [31:0]axi_int_0_M_AXI_AWADDR;
   wire [1:0]axi_int_0_M_AXI_AWBURST;
   wire [7:0]axi_int_0_M_AXI_AWLEN;
@@ -157,6 +156,7 @@ module ps
   wire axi_int_0_high_rd;
   wire axi_int_0_low_full;
   wire axi_int_0_low_rd;
+  wire [31:0]axi_ptr_rd_gpio_io_o;
   wire [8:0]axi_smc_M00_AXI_ARADDR;
   wire axi_smc_M00_AXI_ARREADY;
   wire axi_smc_M00_AXI_ARVALID;
@@ -273,6 +273,23 @@ module ps
   wire axi_smc_M05_AXI_WREADY;
   wire [3:0]axi_smc_M05_AXI_WSTRB;
   wire axi_smc_M05_AXI_WVALID;
+  wire [8:0]axi_smc_M06_AXI_ARADDR;
+  wire axi_smc_M06_AXI_ARREADY;
+  wire axi_smc_M06_AXI_ARVALID;
+  wire [8:0]axi_smc_M06_AXI_AWADDR;
+  wire axi_smc_M06_AXI_AWREADY;
+  wire axi_smc_M06_AXI_AWVALID;
+  wire axi_smc_M06_AXI_BREADY;
+  wire [1:0]axi_smc_M06_AXI_BRESP;
+  wire axi_smc_M06_AXI_BVALID;
+  wire [31:0]axi_smc_M06_AXI_RDATA;
+  wire axi_smc_M06_AXI_RREADY;
+  wire [1:0]axi_smc_M06_AXI_RRESP;
+  wire axi_smc_M06_AXI_RVALID;
+  wire [31:0]axi_smc_M06_AXI_WDATA;
+  wire axi_smc_M06_AXI_WREADY;
+  wire [3:0]axi_smc_M06_AXI_WSTRB;
+  wire axi_smc_M06_AXI_WVALID;
   wire [255:0]comp_ana_high_axi_data;
   wire comp_ana_high_axi_empty;
   wire comp_ana_high_axi_pending;
@@ -663,28 +680,6 @@ module ps
         .s_axi_wready(axi_smc_M04_AXI_WREADY),
         .s_axi_wstrb(axi_smc_M04_AXI_WSTRB),
         .s_axi_wvalid(axi_smc_M04_AXI_WVALID));
-  ps_axi_gpio_0_5 axi_gpio_ptr
-       (.gpio2_io_o(axi_gpio_ptr_gpio2_io_o),
-        .gpio_io_i(axi_int_0_axi_wr_ptr),
-        .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
-        .s_axi_araddr(axi_smc_M05_AXI_ARADDR),
-        .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
-        .s_axi_arready(axi_smc_M05_AXI_ARREADY),
-        .s_axi_arvalid(axi_smc_M05_AXI_ARVALID),
-        .s_axi_awaddr(axi_smc_M05_AXI_AWADDR),
-        .s_axi_awready(axi_smc_M05_AXI_AWREADY),
-        .s_axi_awvalid(axi_smc_M05_AXI_AWVALID),
-        .s_axi_bready(axi_smc_M05_AXI_BREADY),
-        .s_axi_bresp(axi_smc_M05_AXI_BRESP),
-        .s_axi_bvalid(axi_smc_M05_AXI_BVALID),
-        .s_axi_rdata(axi_smc_M05_AXI_RDATA),
-        .s_axi_rready(axi_smc_M05_AXI_RREADY),
-        .s_axi_rresp(axi_smc_M05_AXI_RRESP),
-        .s_axi_rvalid(axi_smc_M05_AXI_RVALID),
-        .s_axi_wdata(axi_smc_M05_AXI_WDATA),
-        .s_axi_wready(axi_smc_M05_AXI_WREADY),
-        .s_axi_wstrb(axi_smc_M05_AXI_WSTRB),
-        .s_axi_wvalid(axi_smc_M05_AXI_WVALID));
   ps_axi_int_0_0 axi_int_0
        (.M_AXI_AWADDR(axi_int_0_M_AXI_AWADDR),
         .M_AXI_AWBURST(axi_int_0_M_AXI_AWBURST),
@@ -717,10 +712,52 @@ module ps
         .low_timestamp(comp_ana_low_axi_timestamp),
         .low_wr(comp_ana_low_axi_wr),
         .lpd_clk(zynq_ultra_ps_e_0_pl_clk0),
-        .lpd_rd_ptr(axi_gpio_ptr_gpio2_io_o),
+        .lpd_rd_ptr(axi_ptr_rd_gpio_io_o),
         .lpd_wr_ptr(axi_int_0_axi_wr_ptr),
         .resetn(proc_sys_reset_0_peripheral_aresetn),
         .up(ddr4_0_c0_init_calib_complete));
+  ps_axi_gpio_0_7 axi_ptr_rd
+       (.gpio_io_o(axi_ptr_rd_gpio_io_o),
+        .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .s_axi_araddr(axi_smc_M06_AXI_ARADDR),
+        .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
+        .s_axi_arready(axi_smc_M06_AXI_ARREADY),
+        .s_axi_arvalid(axi_smc_M06_AXI_ARVALID),
+        .s_axi_awaddr(axi_smc_M06_AXI_AWADDR),
+        .s_axi_awready(axi_smc_M06_AXI_AWREADY),
+        .s_axi_awvalid(axi_smc_M06_AXI_AWVALID),
+        .s_axi_bready(axi_smc_M06_AXI_BREADY),
+        .s_axi_bresp(axi_smc_M06_AXI_BRESP),
+        .s_axi_bvalid(axi_smc_M06_AXI_BVALID),
+        .s_axi_rdata(axi_smc_M06_AXI_RDATA),
+        .s_axi_rready(axi_smc_M06_AXI_RREADY),
+        .s_axi_rresp(axi_smc_M06_AXI_RRESP),
+        .s_axi_rvalid(axi_smc_M06_AXI_RVALID),
+        .s_axi_wdata(axi_smc_M06_AXI_WDATA),
+        .s_axi_wready(axi_smc_M06_AXI_WREADY),
+        .s_axi_wstrb(axi_smc_M06_AXI_WSTRB),
+        .s_axi_wvalid(axi_smc_M06_AXI_WVALID));
+  ps_axi_gpio_0_5 axi_ptr_wr
+       (.gpio_io_i(axi_int_0_axi_wr_ptr),
+        .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .s_axi_araddr(axi_smc_M05_AXI_ARADDR),
+        .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
+        .s_axi_arready(axi_smc_M05_AXI_ARREADY),
+        .s_axi_arvalid(axi_smc_M05_AXI_ARVALID),
+        .s_axi_awaddr(axi_smc_M05_AXI_AWADDR),
+        .s_axi_awready(axi_smc_M05_AXI_AWREADY),
+        .s_axi_awvalid(axi_smc_M05_AXI_AWVALID),
+        .s_axi_bready(axi_smc_M05_AXI_BREADY),
+        .s_axi_bresp(axi_smc_M05_AXI_BRESP),
+        .s_axi_bvalid(axi_smc_M05_AXI_BVALID),
+        .s_axi_rdata(axi_smc_M05_AXI_RDATA),
+        .s_axi_rready(axi_smc_M05_AXI_RREADY),
+        .s_axi_rresp(axi_smc_M05_AXI_RRESP),
+        .s_axi_rvalid(axi_smc_M05_AXI_RVALID),
+        .s_axi_wdata(axi_smc_M05_AXI_WDATA),
+        .s_axi_wready(axi_smc_M05_AXI_WREADY),
+        .s_axi_wstrb(axi_smc_M05_AXI_WSTRB),
+        .s_axi_wvalid(axi_smc_M05_AXI_WVALID));
   ps_axi_smc_0 axi_smc
        (.M00_AXI_araddr(axi_smc_M00_AXI_ARADDR),
         .M00_AXI_arready(axi_smc_M00_AXI_ARREADY),
@@ -838,6 +875,23 @@ module ps
         .M05_AXI_wready(axi_smc_M05_AXI_WREADY),
         .M05_AXI_wstrb(axi_smc_M05_AXI_WSTRB),
         .M05_AXI_wvalid(axi_smc_M05_AXI_WVALID),
+        .M06_AXI_araddr(axi_smc_M06_AXI_ARADDR),
+        .M06_AXI_arready(axi_smc_M06_AXI_ARREADY),
+        .M06_AXI_arvalid(axi_smc_M06_AXI_ARVALID),
+        .M06_AXI_awaddr(axi_smc_M06_AXI_AWADDR),
+        .M06_AXI_awready(axi_smc_M06_AXI_AWREADY),
+        .M06_AXI_awvalid(axi_smc_M06_AXI_AWVALID),
+        .M06_AXI_bready(axi_smc_M06_AXI_BREADY),
+        .M06_AXI_bresp(axi_smc_M06_AXI_BRESP),
+        .M06_AXI_bvalid(axi_smc_M06_AXI_BVALID),
+        .M06_AXI_rdata(axi_smc_M06_AXI_RDATA),
+        .M06_AXI_rready(axi_smc_M06_AXI_RREADY),
+        .M06_AXI_rresp(axi_smc_M06_AXI_RRESP),
+        .M06_AXI_rvalid(axi_smc_M06_AXI_RVALID),
+        .M06_AXI_wdata(axi_smc_M06_AXI_WDATA),
+        .M06_AXI_wready(axi_smc_M06_AXI_WREADY),
+        .M06_AXI_wstrb(axi_smc_M06_AXI_WSTRB),
+        .M06_AXI_wvalid(axi_smc_M06_AXI_WVALID),
         .S00_AXI_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARADDR),
         .S00_AXI_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARBURST),
         .S00_AXI_arcache(zynq_ultra_ps_e_0_M_AXI_HPM0_LPD_ARCACHE),

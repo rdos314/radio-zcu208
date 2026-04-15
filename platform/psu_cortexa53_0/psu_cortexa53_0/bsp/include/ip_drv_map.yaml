@@ -1,7 +1,10 @@
 axi_bram_ctrl_0:
 - axi_bram_ctrl
 - bram
-axi_gpio_ptr:
+axi_ptr_rd:
+- axi_gpio
+- gpio
+axi_ptr_wr:
 - axi_gpio
 - gpio
 clk104_mux:

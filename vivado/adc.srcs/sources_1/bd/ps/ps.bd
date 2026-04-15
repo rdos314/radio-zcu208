@@ -38,7 +38,8 @@
       "smartconnect_0": "",
       "proc_sys_reset_0": "",
       "axi_int_0": "",
-      "axi_gpio_ptr": ""
+      "axi_ptr_wr": "",
+      "axi_ptr_rd": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -1591,7 +1592,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "NUM_MI": {
-            "value": "6"
+            "value": "7"
           },
           "NUM_SI": {
             "value": "1"
@@ -1616,11 +1617,12 @@
               "M02_AXI",
               "M03_AXI",
               "M04_AXI",
-              "M05_AXI"
+              "M05_AXI",
+              "M06_AXI"
             ],
             "bd_attributes": {
               "BRIDGES": {
-                "value": "M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI",
+                "value": "M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI:M06_AXI",
                 "value_src": "auto"
               },
               "TYPE": {
@@ -1815,6 +1817,43 @@
             }
           },
           "M05_AXI": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "parameters": {
+              "MAX_BURST_LENGTH": {
+                "value": "1"
+              },
+              "NUM_READ_OUTSTANDING": {
+                "value": "8"
+              },
+              "NUM_READ_THREADS": {
+                "value": "1"
+              },
+              "NUM_WRITE_OUTSTANDING": {
+                "value": "8"
+              },
+              "NUM_WRITE_THREADS": {
+                "value": "1"
+              },
+              "RUSER_BITS_PER_BYTE": {
+                "value": "0"
+              },
+              "SUPPORTS_NARROW_BURST": {
+                "value": "0"
+              },
+              "WUSER_BITS_PER_BYTE": {
+                "value": "0"
+              }
+            },
+            "bd_attributes": {
+              "TYPE": {
+                "value": "interior",
+                "value_src": "default"
+              }
+            }
+          },
+          "M06_AXI": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
@@ -4669,21 +4708,31 @@
           }
         }
       },
-      "axi_gpio_ptr": {
+      "axi_ptr_wr": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "ps_axi_gpio_0_5",
         "xci_path": "ip/ps_axi_gpio_0_5/ps_axi_gpio_0_5.xci",
-        "inst_hier_path": "axi_gpio_ptr",
+        "inst_hier_path": "axi_ptr_wr",
         "has_run_ip_tcl": "true",
         "parameters": {
           "C_ALL_INPUTS": {
             "value": "1"
           },
-          "C_ALL_OUTPUTS_2": {
-            "value": "1"
-          },
           "C_IS_DUAL": {
+            "value": "0"
+          }
+        }
+      },
+      "axi_ptr_rd": {
+        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+        "ip_revision": "37",
+        "xci_name": "ps_axi_gpio_0_7",
+        "xci_path": "ip/ps_axi_gpio_0_7/ps_axi_gpio_0_7.xci",
+        "inst_hier_path": "axi_ptr_rd",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_ALL_OUTPUTS": {
             "value": "1"
           }
         }
@@ -4741,7 +4790,13 @@
       "axi_smc_M05_AXI": {
         "interface_ports": [
           "axi_smc/M05_AXI",
-          "axi_gpio_ptr/S_AXI"
+          "axi_ptr_wr/S_AXI"
+        ]
+      },
+      "axi_smc_M06_AXI": {
+        "interface_ports": [
+          "axi_smc/M06_AXI",
+          "axi_ptr_rd/S_AXI"
         ]
       },
       "clk104_mux_GPIO": {
@@ -5086,16 +5141,10 @@
           "adc_control_0/data_in"
         ]
       },
-      "axi_gpio_ptr_gpio2_io_o": {
-        "ports": [
-          "axi_gpio_ptr/gpio2_io_o",
-          "axi_int_0/lpd_rd_ptr"
-        ]
-      },
       "axi_int_0_axi_wr_ptr": {
         "ports": [
           "axi_int_0/lpd_wr_ptr",
-          "axi_gpio_ptr/gpio_io_i"
+          "axi_ptr_wr/gpio_io_i"
         ]
       },
       "axi_int_0_high_full": {
@@ -5120,6 +5169,12 @@
         "ports": [
           "axi_int_0/low_rd",
           "comp_ana_low/axi_rd"
+        ]
+      },
+      "axi_ptr_rd_gpio_io_o": {
+        "ports": [
+          "axi_ptr_rd/gpio_io_o",
+          "axi_int_0/lpd_rd_ptr"
         ]
       },
       "comp_ana_high_axi_data": {
@@ -5746,7 +5801,8 @@
           "deci_high/sim_resetn",
           "deci_low/sim_resetn",
           "adc_control_0/resetn",
-          "axi_gpio_ptr/s_axi_aresetn"
+          "axi_ptr_wr/s_axi_aresetn",
+          "axi_ptr_rd/s_axi_aresetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -5855,8 +5911,9 @@
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "mts_0/axi_clk",
-          "axi_gpio_ptr/s_axi_aclk",
-          "axi_int_0/lpd_clk"
+          "axi_ptr_wr/s_axi_aclk",
+          "axi_int_0/lpd_clk",
+          "axi_ptr_rd/s_axi_aclk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -5877,9 +5934,14 @@
                 "range": "8K"
               },
               "SEG_axi_gpio_ptr_Reg": {
-                "address_block": "/axi_gpio_ptr/S_AXI/Reg",
+                "address_block": "/axi_ptr_wr/S_AXI/Reg",
                 "offset": "0x0080030000",
-                "range": "64K"
+                "range": "4K"
+              },
+              "SEG_axi_ptr_rd_Reg": {
+                "address_block": "/axi_ptr_rd/S_AXI/Reg",
+                "offset": "0x0080080000",
+                "range": "4K"
               },
               "SEG_clk104_mux_Reg": {
                 "address_block": "/clk104_mux/S_AXI/Reg",

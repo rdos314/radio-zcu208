@@ -411,11 +411,12 @@ int main()
 {
     int i;
     double a;
-	volatile int32_t *ptr = (volatile int32_t *)XPAR_AXI_GPIO_PTR_BASEADDR;
+	volatile int32_t *rptr = (volatile int32_t *)XPAR_AXI_PTR_WR_BASEADDR;
+	volatile int32_t *wptr = (volatile int32_t *)XPAR_AXI_PTR_RD_BASEADDR;
 
-    i = *ptr;
-    *(ptr + 1) = 12345678;
-    i = *(ptr + 1);
+    i = *rptr;
+    *wptr = 12345678;
+    i = *wptr;
 
     SetConfig(CONFIG_MIN_ENV, 25, 25);
     SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0, 8), CalcIncr(185.0, 8));

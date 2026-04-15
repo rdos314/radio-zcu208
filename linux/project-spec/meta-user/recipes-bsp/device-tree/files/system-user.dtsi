@@ -60,16 +60,17 @@
 		#address-cells = <2>;
 		#size-cells = <2>;
 		ranges;
-		shm0_reserved: shm0@68000000 {
-			reg = <0x0 0x68000000 0x0 0x04000000>;
+		r5_dma_reserved: uio0@74000000 {
+			reg = <0x0 0x74000000 0x0 0x04000000>;
 			no-map;
 		};
 }	;
 
 	amba {
-		shm0: shm@0 {
+		r5_uio_dma: uio@74000000 {
 			compatible = "generic-uio";
-			reg = <0x0 0x68000000 0x0 0x04000000>;
+			reg = <0x0 0x74000000 0x0 0x04000000>;
+			linux,uio_name = "r5-dma-buffer";
 		};
 	};				
 

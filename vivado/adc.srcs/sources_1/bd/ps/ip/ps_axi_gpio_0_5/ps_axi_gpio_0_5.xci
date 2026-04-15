@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "ps_axi_gpio_0_5",
-    "cell_name": "axi_gpio_ptr",
+    "cell_name": "axi_ptr_wr",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "37",
     "gen_directory": "../../../../../../adc.gen/sources_1/bd/ps/ip/ps_axi_gpio_0_5",
@@ -10,20 +10,20 @@
       "component_parameters": {
         "C_TRI_DEFAULT": [ { "value": "0xFFFFFFFF", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
         "C_GPIO_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "C_GPIO2_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "C_IS_DUAL": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_GPIO2_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_IS_DUAL": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_ALL_INPUTS": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_TRI_DEFAULT_2": [ { "value": "0xFFFFFFFF", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
-        "C_DOUT_DEFAULT_2": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
+        "C_DOUT_DEFAULT_2": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
         "C_DOUT_DEFAULT": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
-        "C_ALL_INPUTS_2": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_ALL_INPUTS_2": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "C_INTERRUPT_PRESENT": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "ps_axi_gpio_0_5", "resolve_type": "user", "usage": "all" } ],
         "USE_BOARD_FLOW": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "GPIO_BOARD_INTERFACE": [ { "value": "Custom", "resolve_type": "user", "usage": "all" } ],
         "GPIO2_BOARD_INTERFACE": [ { "value": "Custom", "resolve_type": "user", "usage": "all" } ],
         "C_ALL_OUTPUTS": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "C_ALL_OUTPUTS_2": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ]
+        "C_ALL_OUTPUTS_2": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ]
       },
       "model_parameters": {
         "C_FAMILY": [ { "value": "zynquplus", "resolve_type": "generated", "usage": "all" } ],
@@ -38,7 +38,7 @@
         "C_INTERRUPT_PRESENT": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DOUT_DEFAULT": [ { "value": "0x00000000", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_TRI_DEFAULT": [ { "value": "0xFFFFFFFF", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
-        "C_IS_DUAL": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_IS_DUAL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DOUT_DEFAULT_2": [ { "value": "0x00000000", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_TRI_DEFAULT_2": [ { "value": "0xFFFFFFFF", "resolve_type": "generated", "format": "bitString", "usage": "all" } ]
       },
@@ -87,8 +87,7 @@
         "s_axi_rresp": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
         "s_axi_rvalid": [ { "direction": "out" } ],
         "s_axi_rready": [ { "direction": "in", "driver_value": "0" } ],
-        "gpio_io_i": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
-        "gpio2_io_o": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
+        "gpio_io_i": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "S_AXI": {
@@ -188,17 +187,6 @@
           },
           "port_maps": {
             "TRI_I": [ { "physical_name": "gpio_io_i" } ]
-          }
-        },
-        "GPIO2": {
-          "vlnv": "xilinx.com:interface:gpio:1.0",
-          "abstraction_type": "xilinx.com:interface:gpio_rtl:1.0",
-          "mode": "master",
-          "parameters": {
-            "BOARD.ASSOCIATED_PARAM": [ { "value": "GPIO2_BOARD_INTERFACE", "value_src": "constant", "value_permission": "bd", "usage": "all" } ]
-          },
-          "port_maps": {
-            "TRI_O": [ { "physical_name": "gpio2_io_o" } ]
           }
         }
       },

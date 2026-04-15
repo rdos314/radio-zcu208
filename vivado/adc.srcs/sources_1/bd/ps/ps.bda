@@ -264,7 +264,7 @@
             "V7": {
                 "VT": "AC",
                 "BA": "0x0080030000",
-                "HA": "0x008003FFFF",
+                "HA": "0x0080030FFF",
                 "BP": "C_BASEADDR",
                 "HP": "C_HIGHADDR",
                 "MA": "Data",
@@ -272,7 +272,7 @@
                 "MI": "M_AXI_HPM0_LPD",
                 "MS": "SEG_axi_gpio_ptr_Reg",
                 "MV": "xilinx.com:ip:zynq_ultra_ps_e:3.5",
-                "SX": "/axi_gpio_ptr",
+                "SX": "/axi_ptr_wr",
                 "SI": "S_AXI",
                 "SS": "Reg",
                 "SV": "xilinx.com:ip:axi_gpio:2.0",
@@ -299,6 +299,24 @@
             },
             "V9": {
                 "VT": "AC",
+                "BA": "0x0080080000",
+                "HA": "0x0080080FFF",
+                "BP": "C_BASEADDR",
+                "HP": "C_HIGHADDR",
+                "MA": "Data",
+                "MX": "/zynq_ultra_ps_e_0",
+                "MI": "M_AXI_HPM0_LPD",
+                "MS": "SEG_axi_ptr_rd_Reg",
+                "MV": "xilinx.com:ip:zynq_ultra_ps_e:3.5",
+                "SX": "/axi_ptr_rd",
+                "SI": "S_AXI",
+                "SS": "Reg",
+                "SV": "xilinx.com:ip:axi_gpio:2.0",
+                "TM": "both",
+                "TU": "register"
+            },
+            "V10": {
+                "VT": "AC",
                 "BA": "0x0082000000",
                 "HA": "0x0082001FFF",
                 "BP": "C_S_AXI_BASEADDR",
@@ -315,7 +333,7 @@
                 "TM": "both",
                 "TU": "memory"
             },
-            "V10": {
+            "V11": {
                 "VT": "AC",
                 "BA": "0x0400000000",
                 "HA": "0x04FFFFFFFF",
@@ -381,6 +399,11 @@
             },
             {
                 "src": "V10",
+                "trg": "V2",
+                "EH": "2"
+            },
+            {
+                "src": "V11",
                 "trg": "V2",
                 "EH": "2"
             }
