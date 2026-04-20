@@ -356,7 +356,7 @@
             "V12": {
                 "VT": "AC",
                 "BA": "0x0080090000",
-                "HA": "0x008009FFFF",
+                "HA": "0x0080090FFF",
                 "BP": "C_BASEADDR",
                 "HP": "C_HIGHADDR",
                 "MA": "Data",

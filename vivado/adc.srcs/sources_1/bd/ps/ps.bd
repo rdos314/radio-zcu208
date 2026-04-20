@@ -42,7 +42,8 @@
       "axi_datamover_0": "",
       "axi_dma_0": "",
       "axi_smc_1": "",
-      "axi_dma_1": ""
+      "axi_dma_1": "",
+      "axi_spy_0": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -4272,6 +4273,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -4286,6 +4291,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -4300,6 +4309,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -5050,6 +5063,14 @@
             }
           }
         }
+      },
+      "axi_spy_0": {
+        "vlnv": "rdos.net:user:axi_spy:1.0",
+        "ip_revision": "1",
+        "xci_name": "ps_axi_spy_0_4",
+        "xci_path": "ip/ps_axi_spy_0_4/ps_axi_spy_0_4.xci",
+        "inst_hier_path": "axi_spy_0",
+        "has_run_ip_tcl": "true"
       }
     },
     "interface_nets": {
@@ -5151,8 +5172,9 @@
       },
       "axi_smc_M07_AXI": {
         "interface_ports": [
+          "axi_dma_0/S_AXI_LITE",
           "axi_smc/M07_AXI",
-          "axi_dma_0/S_AXI_LITE"
+          "axi_spy_0/s_axi"
         ]
       },
       "clk104_mux_GPIO": {
@@ -6165,8 +6187,9 @@
           "axi_ptr_rd/s_axi_aresetn",
           "axi_datamover_0/m_axi_mm2s_aresetn",
           "axi_dma_0/axi_resetn",
+          "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn",
           "axi_dma_1/resetn",
-          "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn"
+          "axi_spy_0/resetn"
         ]
       },
       "usp_rf_data_converter_0_m00_axis_tdata": {
@@ -6281,8 +6304,9 @@
           "axi_datamover_0/m_axi_mm2s_aclk",
           "smartconnect_0/aclk1",
           "axi_dma_0/s_axi_lite_aclk",
+          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
           "axi_dma_1/clk",
-          "axi_datamover_0/m_axis_mm2s_cmdsts_aclk"
+          "axi_spy_0/clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -6305,7 +6329,7 @@
               "SEG_axi_dma_0_Reg": {
                 "address_block": "/axi_dma_0/S_AXI_LITE/Reg",
                 "offset": "0x0080090000",
-                "range": "64K"
+                "range": "4K"
               },
               "SEG_axi_gpio_ptr_Reg": {
                 "address_block": "/axi_ptr_wr/S_AXI/Reg",
