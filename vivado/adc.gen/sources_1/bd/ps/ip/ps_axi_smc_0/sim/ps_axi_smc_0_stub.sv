@@ -256,7 +256,7 @@ module ps_axi_smc_0 (
   input bit [1 : 0] M06_AXI_rresp,
   input bit_as_bool M06_AXI_rvalid,
   output bit_as_bool M06_AXI_rready,
-  output bit [5 : 0] M07_AXI_awaddr,
+  output bit [9 : 0] M07_AXI_awaddr,
   output bit [2 : 0] M07_AXI_awprot,
   output bit_as_bool M07_AXI_awvalid,
   input bit_as_bool M07_AXI_awready,
@@ -267,7 +267,7 @@ module ps_axi_smc_0 (
   input bit [1 : 0] M07_AXI_bresp,
   input bit_as_bool M07_AXI_bvalid,
   output bit_as_bool M07_AXI_bready,
-  output bit [5 : 0] M07_AXI_araddr,
+  output bit [9 : 0] M07_AXI_araddr,
   output bit [2 : 0] M07_AXI_arprot,
   output bit_as_bool M07_AXI_arvalid,
   input bit_as_bool M07_AXI_arready,
@@ -474,7 +474,7 @@ module ps_axi_smc_0 (aclk,aresetn,S00_AXI_awid,S00_AXI_awaddr,S00_AXI_awlen,S00_
   input bit [1 : 0] M06_AXI_rresp;
   input bit M06_AXI_rvalid;
   output wire M06_AXI_rready;
-  output wire [5 : 0] M07_AXI_awaddr;
+  output wire [9 : 0] M07_AXI_awaddr;
   output wire [2 : 0] M07_AXI_awprot;
   output wire M07_AXI_awvalid;
   input bit M07_AXI_awready;
@@ -485,7 +485,7 @@ module ps_axi_smc_0 (aclk,aresetn,S00_AXI_awid,S00_AXI_awaddr,S00_AXI_awlen,S00_
   input bit [1 : 0] M07_AXI_bresp;
   input bit M07_AXI_bvalid;
   output wire M07_AXI_bready;
-  output wire [5 : 0] M07_AXI_araddr;
+  output wire [9 : 0] M07_AXI_araddr;
   output wire [2 : 0] M07_AXI_arprot;
   output wire M07_AXI_arvalid;
   input bit M07_AXI_arready;

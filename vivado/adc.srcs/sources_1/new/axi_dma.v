@@ -10,8 +10,8 @@ module axi_dma(
     input wire clk,
     input wire resetn,
 
-    output reg [31:0] rd_ptr,
-    input wire [31:0] wr_ptr,
+    output reg [26:0] rd_ptr,
+    input wire [26:0] wr_ptr,
     
     output reg [71:0] M_AXI_TDATA_cmd,
     output reg M_AXI_TVALID_cmd,
@@ -45,17 +45,21 @@ module axi_dma(
     
     reg start_cmd;
     reg cmd_done;
+    reg cmd_error;
     reg [7:0] blocks;
     reg [3:0] tag;
     
     reg has_mig_size;
     reg [7:0] mig_size;
+    reg [7:0] mig_diff;
 
     reg in_wr;
     reg [255:0] in_data;
     
     wire full;
     wire empty;
+    
+    reg spy_reset;
     
     reg r5_cmd_rd;
     wire [13:0] r5_cmd_data;
@@ -124,18 +128,33 @@ module axi_dma(
 	    .full(fifo_full),
 	    .empty(fifo_empty)
 	);
+
+	ila_7 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(cmd_state),           // input wire [2:0]  probe3
+		.probe1(adr),                 // input wire [26:0]  probe3
+		.probe2(mig_blocks),          // input wire [26:0]  probe3
+		.probe3(start_cmd),           // input wire [0:0]  probe3
+		.probe4(cmd_done),            // input wire [0:0]  probe3
+		.probe5(cmd_error),           // input wire [0:0]  probe3
+		.probe6(blocks),              // input wire [7:0]  probe3
+		.probe7(tag),                 // input wire [3:0]  probe3
+		.probe8(has_mig_size),        // input wire [0:0]  probe3
+		.probe9(mig_size),            // input wire [7:0]  probe3
+		.probe10(mig_diff)             // input wire [7:0]  probe3
+	);
     
 generate
   begin : axi_dma
 
     always @(posedge clk) 
     begin
-        reset <= !reset_n;
+        reset <= !resetn;
     end
 
     always @(posedge clk) 
     begin
-        mig_blocks <= wr_ptr[31:5] - adr;
+        mig_blocks <= wr_ptr - adr;
     end
 
     always @(posedge clk) 
@@ -174,16 +193,18 @@ generate
                         start_cmd <= 0;
 
                 CMD_ST_WAIT_HDR: 
-                    start_cmd <= 0;
-                    
-                    if (has_mig_size)
-                        state <= CMD_ST_WAIT_DONE;
+                    begin
+                        start_cmd <= 0;
+                        
+                        if (has_mig_size)
+                            cmd_state <= CMD_ST_WAIT_DONE;
+                    end
 
                 CMD_ST_WAIT_DONE:
                     if (cmd_done)
                     begin
                         mig_diff <= mig_blocks - mig_size - 1;
-                        state <= CMD_ST_WAIT_SPACE;
+                        cmd_state <= CMD_ST_WAIT_SPACE;
                     end
                         
                 CMD_ST_WAIT_SPACE:
@@ -292,14 +313,14 @@ generate
             in_wr <= 0;
     end
 
-    always @(posedge spy_clk) 
+    always @(posedge lpd_clk) 
     begin
-        spy_reset <= !spy_reset_n;
+        spy_reset <= !lpd_resetn;
     end
 
     always @(posedge clk) 
     begin
-        if (reset_n)
+        if (resetn)
         begin
             if (dma_active)
             begin
@@ -351,7 +372,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset_n)
+        if (resetn)
         begin
             case ({fifo_rd_en, in_wr})
                 2'b01: fifo_count <= fifo_count + 1;

@@ -123,8 +123,8 @@ module axi_int(
 	input wire [21:0] high_timestamp,
 	input wire [255:0] high_data,
 
-    input wire [31:0] rd_ptr,
-    output reg [31:0] wr_ptr,
+    input wire [26:0] rd_ptr,
+    output reg [26:0] wr_ptr,
 
     input wire up,
     output reg [31:0] M_AXI_AWADDR,
@@ -154,6 +154,7 @@ module axi_int(
     wire last;
     wire done;
     wire rd;
+    reg pad;
     wire [255:0] data;
     
     assign start = M_AXI_AWREADY & M_AXI_AWVALID;
@@ -171,7 +172,6 @@ module axi_int(
     reg check_space;
     reg check_pad;
     reg req;
-    reg pad;
     reg [26:0] adr;
     reg [7:0] size;
     reg [7:0] counter;
@@ -337,8 +337,8 @@ module axi_int(
 		.probe12(next_adr),           // input wire [26:0]  probe3
 		.probe13(rd_diff_low),        // input wire [26:0]  probe3
 		.probe14(rd_diff_high),       // input wire [26:0]  probe3
-		.probe15(rd_ptr),             // input wire [31:0]  probe3
-		.probe16(wr_ptr),             // input wire [31:0]  probe3
+		.probe15(rd_ptr),             // input wire [26:0]  probe3
+		.probe16(wr_ptr),             // input wire [26:0]  probe3
 		.probe17(hdr_sample),         // input wire [63:0]  probe3
 		.probe18(hdr_blocks),         // input wire [7:0]  probe3
 		.probe19(hdr_flags),          // input wire [7:0]  probe3
@@ -660,8 +660,8 @@ generate
     begin
         if (check_space)
         begin
-            rd_diff_low <= adr - rd_ptr[31:5];
-            rd_diff_high <= next_adr - rd_ptr[31:5];
+            rd_diff_low <= adr - rd_ptr;
+            rd_diff_high <= next_adr - rd_ptr;
             check_pad <= 1;
         end
         else
@@ -768,7 +768,7 @@ generate
 			if (done)
             begin
 				adr <= next_adr;
-                wr_ptr <= {next_adr, 5'b00000};
+                wr_ptr <= next_adr;
             end
 		end
     end

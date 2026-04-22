@@ -54,6 +54,4 @@
 
 create_clock -period 3.001 -name clk [get_ports clk]
 
-create_clock -period 10 -name lpd_clk [get_ports lpd_clk]
-
 

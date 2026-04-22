@@ -270,7 +270,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M06_AXI_rresp;
   sc_core::sc_in< bool > M06_AXI_rvalid;
   sc_core::sc_out< bool > M06_AXI_rready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_awaddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_awprot;
   sc_core::sc_out< bool > M07_AXI_awvalid;
   sc_core::sc_in< bool > M07_AXI_awready;
@@ -281,7 +281,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M07_AXI_bresp;
   sc_core::sc_in< bool > M07_AXI_bvalid;
   sc_core::sc_out< bool > M07_AXI_bready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_araddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_araddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_arprot;
   sc_core::sc_out< bool > M07_AXI_arvalid;
   sc_core::sc_in< bool > M07_AXI_arready;
@@ -315,7 +315,7 @@ private:
   sc_signal< bool > m_M04_AXI_arlock_converter_signal;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M05_AXI_transactor;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M06_AXI_transactor;
-  xtlm::xaximm_xtlm2pin_t<32,6,1,1,1,1,1,1>* mp_M07_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<32,10,1,1,1,1,1,1>* mp_M07_AXI_transactor;
 
 };
 #endif // XILINX_SIMULATOR
@@ -523,7 +523,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M06_AXI_rresp;
   sc_core::sc_in< bool > M06_AXI_rvalid;
   sc_core::sc_out< bool > M06_AXI_rready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_awaddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_awprot;
   sc_core::sc_out< bool > M07_AXI_awvalid;
   sc_core::sc_in< bool > M07_AXI_awready;
@@ -534,7 +534,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M07_AXI_bresp;
   sc_core::sc_in< bool > M07_AXI_bvalid;
   sc_core::sc_out< bool > M07_AXI_bready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_araddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_araddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_arprot;
   sc_core::sc_out< bool > M07_AXI_arvalid;
   sc_core::sc_in< bool > M07_AXI_arready;
@@ -568,7 +568,7 @@ private:
   sc_signal< bool > m_M04_AXI_arlock_converter_signal;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M05_AXI_transactor;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M06_AXI_transactor;
-  xtlm::xaximm_xtlm2pin_t<32,6,1,1,1,1,1,1>* mp_M07_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<32,10,1,1,1,1,1,1>* mp_M07_AXI_transactor;
 
 };
 #endif // XM_SYSTEMC
@@ -776,7 +776,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M06_AXI_rresp;
   sc_core::sc_in< bool > M06_AXI_rvalid;
   sc_core::sc_out< bool > M06_AXI_rready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_awaddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_awprot;
   sc_core::sc_out< bool > M07_AXI_awvalid;
   sc_core::sc_in< bool > M07_AXI_awready;
@@ -787,7 +787,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M07_AXI_bresp;
   sc_core::sc_in< bool > M07_AXI_bvalid;
   sc_core::sc_out< bool > M07_AXI_bready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_araddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_araddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_arprot;
   sc_core::sc_out< bool > M07_AXI_arvalid;
   sc_core::sc_in< bool > M07_AXI_arready;
@@ -821,7 +821,7 @@ private:
   sc_signal< bool > m_M04_AXI_arlock_converter_signal;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M05_AXI_transactor;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M06_AXI_transactor;
-  xtlm::xaximm_xtlm2pin_t<32,6,1,1,1,1,1,1>* mp_M07_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<32,10,1,1,1,1,1,1>* mp_M07_AXI_transactor;
 
 };
 #endif // RIVIERA
@@ -1033,7 +1033,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M06_AXI_rresp;
   sc_core::sc_in< bool > M06_AXI_rvalid;
   sc_core::sc_out< bool > M06_AXI_rready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_awaddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_awprot;
   sc_core::sc_out< bool > M07_AXI_awvalid;
   sc_core::sc_in< bool > M07_AXI_awready;
@@ -1044,7 +1044,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M07_AXI_bresp;
   sc_core::sc_in< bool > M07_AXI_bvalid;
   sc_core::sc_out< bool > M07_AXI_bready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_araddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_araddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_arprot;
   sc_core::sc_out< bool > M07_AXI_arvalid;
   sc_core::sc_in< bool > M07_AXI_arready;
@@ -1078,7 +1078,7 @@ private:
   sc_signal< bool > m_M04_AXI_arlock_converter_signal;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M05_AXI_transactor;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M06_AXI_transactor;
-  xtlm::xaximm_xtlm2pin_t<32,6,1,1,1,1,1,1>* mp_M07_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<32,10,1,1,1,1,1,1>* mp_M07_AXI_transactor;
 
   // Transactor stubs
   xtlm::xtlm_aximm_initiator_stub * M00_AXI_transactor_initiator_rd_socket_stub;
@@ -1312,7 +1312,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M06_AXI_rresp;
   sc_core::sc_in< bool > M06_AXI_rvalid;
   sc_core::sc_out< bool > M06_AXI_rready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_awaddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_awprot;
   sc_core::sc_out< bool > M07_AXI_awvalid;
   sc_core::sc_in< bool > M07_AXI_awready;
@@ -1323,7 +1323,7 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M07_AXI_bresp;
   sc_core::sc_in< bool > M07_AXI_bvalid;
   sc_core::sc_out< bool > M07_AXI_bready;
-  sc_core::sc_out< sc_dt::sc_bv<6> > M07_AXI_araddr;
+  sc_core::sc_out< sc_dt::sc_bv<10> > M07_AXI_araddr;
   sc_core::sc_out< sc_dt::sc_bv<3> > M07_AXI_arprot;
   sc_core::sc_out< bool > M07_AXI_arvalid;
   sc_core::sc_in< bool > M07_AXI_arready;
@@ -1357,7 +1357,7 @@ private:
   sc_signal< bool > m_M04_AXI_arlock_converter_signal;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M05_AXI_transactor;
   xtlm::xaximm_xtlm2pin_t<32,9,1,1,1,1,1,1>* mp_M06_AXI_transactor;
-  xtlm::xaximm_xtlm2pin_t<32,6,1,1,1,1,1,1>* mp_M07_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<32,10,1,1,1,1,1,1>* mp_M07_AXI_transactor;
 
   // Transactor stubs
   xtlm::xtlm_aximm_initiator_stub * M00_AXI_transactor_initiator_rd_socket_stub;
