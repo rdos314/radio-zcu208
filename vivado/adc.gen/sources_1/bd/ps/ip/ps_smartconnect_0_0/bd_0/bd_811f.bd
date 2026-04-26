@@ -662,7 +662,7 @@
           },
           "CLK_DOMAIN": {
             "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
-            "value_src": "default_prop"
+            "value_src": "default"
           },
           "FREQ_HZ": {
             "value": "99999001",

@@ -4,7 +4,7 @@ XRFdc_Config XRFdc_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 
 	{
 		"xlnx,usp-rf-data-converter-2.6", /* compatible */
-		0x80040000, /* reg */
+		0x80080000, /* reg */
 		0x1, /* xlnx,high-speed-adc */
 		0x0, /* xlnx,sysref-master */
 		0x0, /* xlnx,sysref-master */

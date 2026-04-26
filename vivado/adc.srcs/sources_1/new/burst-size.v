@@ -223,33 +223,35 @@ module burst_size(
 
     reg [8:0] curr_size;
 
-    reg env_has_start;
     reg [10:0] env_start_ind;
     reg [10:0] env_up_max_ind;
     reg [15:0] env_up_max_val;
 
-    reg env_has_end;
     reg [10:0] env_end_ind;
     reg [10:0] env_down_max_ind;
     reg [15:0] env_down_max_val;
 
-/*
-	ila_5 ila_i (
+	ila_9 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(scan_start),          // input wire [0:0]  probe3
 		.probe1(burst),               // input wire [0:0]  probe3
 		.probe2(wr),                  // input wire [0:0]  probe3
 		.probe3(no_data),             // input wire [0:0]  probe3
-		.probe4(done),                // input wire [0:0]  probe3
-		.probe5(sample),              // input wire [63:0]  probe3
-		.probe6(size),                // input wire [10:0]  probe3
-		.probe7(max_pos),             // input wire [10:0]  probe3
-		.probe8(max_env),             // input wire [15:0]  probe3
-		.probe9(active),              // input wire [0:0]  probe3
-		.probe10(env),                // input wire [15:0]  probe3
-		.probe11(phase)               // input wire [19:0]  probe3
+		.probe4(complete),            // input wire [0:0]  probe3
+		.probe5(done),                // input wire [0:0]  probe3
+		.probe6(sample),              // input wire [63:0]  probe3
+		.probe7(run_env),             // input wire [0:0]  probe3
+		.probe8(run_env_start),       // input wire [0:0]  probe3
+		.probe9(run_env_end),         // input wire [0:0]  probe3
+		.probe10(env_up_ind),          // input wire [10:0]  probe3
+		.probe11(env_down_ind),        // input wire [10:0]  probe3
+		.probe12(size),               // input wire [10:0]  probe3
+		.probe13(max_pos),            // input wire [10:0]  probe3
+		.probe14(max_env),            // input wire [15:0]  probe3
+		.probe15(active),             // input wire [0:0]  probe3
+		.probe16(env),                // input wire [15:0]  probe3
+		.probe17(phase)               // input wire [19:0]  probe3
 	);
-*/
 
 generate
   begin : burst_size

@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_8/hw_ila_data_8.wdb" id="1">
+      <db_ref path="/media/ubuntu/large/radio-zcu208/vivado/adc.hw/hw_1/wave/hw_ila_data_8/hw_ila_data_8.wdb" id="1">
          <top_modules>
          </top_modules>
       </db_ref>
@@ -14,8 +14,8 @@
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="170"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="94"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="0" />
 </wave_config>

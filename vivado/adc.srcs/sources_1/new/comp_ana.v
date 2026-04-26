@@ -295,6 +295,32 @@ module comp_ana(
     reg [8:0] axi_margin;
     reg [13:0] axi_space;
     reg [255:0] axi_curr_data;
+
+    
+	reg [63:0] hdr_sample;
+	reg [7:0] hdr_blocks;
+	reg [7:0] hdr_flags;
+	reg [15:0] hdr_size;
+	reg [31:0] hdr_freq;
+	reg [15:0] hdr_angle;
+	reg [15:0] hdr_doa_error;
+	reg [15:0] hdr_max_env;
+	reg [15:0] hdr_max_pos;
+	reg [15:0] hdr_env_mean;
+	reg [15:0] hdr_env_std;
+	reg [15:0] hdr_phase_std;
+	reg [15:0] hdr_freq_std;
+	
+	reg [15:0] c_env_0;
+	reg [15:0] c_env_1;
+	reg [15:0] c_env_2;
+	reg [15:0] c_env_3;
+	reg [15:0] c_env_4;
+	reg [15:0] c_env_5;
+	reg [15:0] c_env_6;
+	reg [15:0] c_env_7;
+
+
 	
     clk_wiz_stat clk_wiz_stat_i (
        .clk_in1(pl_clk) ,              // input clk_in1
@@ -628,6 +654,7 @@ module comp_ana(
         .idle(stat_idle_in_6)
     );
 
+/*
 	ila_1 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(ana_trig),            // input wire [0:0]  probe3
@@ -643,6 +670,8 @@ module comp_ana(
 		.probe10(stat_wr),             // input wire [6:0]  probe3
 		.probe11(stat_idle)            // input wire [6:0]  probe3
 	);
+*/	
+
 
 	ila_5 ila_axi (
 		.clk(axi_clk),                // input wire clk
@@ -666,9 +695,29 @@ module comp_ana(
 		.probe17(axi_empty),          // input wire [0:0]  probe3
 		.probe18(axi_full),           // input wire [0:0]  probe3
 		.probe19(axi_rd),             // input wire [0:0]  probe3
-		.probe20(axi_wr)              // input wire [0:0]  probe3
+		.probe20(axi_wr),              // input wire [0:0]  probe3
+		.probe21(hdr_sample),         // input wire [63:0]  probe3
+		.probe22(hdr_blocks),         // input wire [7:0]  probe3
+		.probe23(hdr_flags),          // input wire [7:0]  probe3
+		.probe24(hdr_size),           // input wire [15:0]  probe3
+		.probe25(hdr_freq),           // input wire [31:0]  probe3
+		.probe26(hdr_angle),          // input wire [15:0]  probe3
+		.probe27(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe28(hdr_max_env),        // input wire [15:0]  probe3
+		.probe29(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe30(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe31(hdr_env_std),        // input wire [15:0]  probe3
+		.probe32(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe33(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe34(c_env_0),              // input wire [15:0]  probe3
+		.probe35(c_env_1),              // input wire [15:0]  probe3
+		.probe36(c_env_2),              // input wire [15:0]  probe3
+		.probe37(c_env_3),              // input wire [15:0]  probe3
+		.probe38(c_env_4),              // input wire [15:0]  probe3
+		.probe39(c_env_5),              // input wire [15:0]  probe3
+		.probe40(c_env_6),              // input wire [15:0]  probe3
+		.probe41(c_env_7)               // input wire [15:0]  probe3
 	);
-
 
 generate
   begin : comp_ana
@@ -1378,6 +1427,37 @@ generate
 	    else
 	        axi_stat_wr <= 0;
 	end
+
+    always @(posedge axi_clk) 
+	begin
+		if (axi_curr_data[79])
+		begin
+	        hdr_sample <= axi_curr_data[63:0];
+	        hdr_blocks <= axi_curr_data[71:64];
+			hdr_flags <= axi_curr_data[79:72];
+			hdr_size <= axi_curr_data[95:80];
+			hdr_angle <= axi_curr_data[111:96];
+			hdr_doa_error <= axi_curr_data[127:112];
+			hdr_freq <= axi_curr_data[159:128];
+			hdr_max_env <= axi_curr_data[175:160];
+			hdr_max_pos <= axi_curr_data[191:176];
+			hdr_env_mean <= axi_curr_data[207:192];				
+			hdr_env_std <= axi_curr_data[223:208];				
+			hdr_phase_std <= axi_curr_data[239:224];				
+			hdr_freq_std <= axi_curr_data[255:240];
+		end
+    	else
+	   	begin
+		    c_env_0 <= axi_curr_data[15:0];
+	   		c_env_1 <= axi_curr_data[47:32];
+			c_env_2 <= axi_curr_data[79:64];
+			c_env_3 <= axi_curr_data[111:96];
+		    c_env_4 <= axi_curr_data[143:128];
+	   		c_env_5 <= axi_curr_data[175:160];
+			c_env_6 <= axi_curr_data[207:192];
+			c_env_7 <= axi_curr_data[239:224];
+		end
+    end
 
     always @(posedge axi_clk) 
 	begin

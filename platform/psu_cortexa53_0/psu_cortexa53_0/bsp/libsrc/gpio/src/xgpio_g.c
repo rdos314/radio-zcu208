@@ -4,7 +4,7 @@ XGpio_Config XGpio_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 
 	{
 		"xlnx,axi-gpio-2.0", /* compatible */
-		0x80080000, /* reg */
+		0x80020000, /* reg */
 		0x0, /* xlnx,interrupt-present */
 		0x0, /* xlnx,is-dual */
 		0xffff, /* interrupts */
@@ -22,7 +22,7 @@ XGpio_Config XGpio_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 	},
 	{
 		"xlnx,axi-gpio-2.0", /* compatible */
-		0x80020000, /* reg */
+		0x80040000, /* reg */
 		0x0, /* xlnx,interrupt-present */
 		0x0, /* xlnx,is-dual */
 		0xffff, /* interrupts */
@@ -31,7 +31,7 @@ XGpio_Config XGpio_ConfigTable[] __attribute__ ((section (".drvcfg_sec"))) = {
 	},
 	{
 		"xlnx,axi-gpio-2.0", /* compatible */
-		0x80000000, /* reg */
+		0x80050000, /* reg */
 		0x0, /* xlnx,interrupt-present */
 		0x0, /* xlnx,is-dual */
 		0xffff, /* interrupts */

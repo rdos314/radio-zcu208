@@ -337,6 +337,7 @@
 			xlnx,name = "psu_afi_1";
 		};
 		psu_afi_0: psu_afi@fd360000 {
+			xlnx,is-cache-coherent = <0>;
 			compatible = "xlnx,psu-afi-1.0";
 			status = "okay";
 			xlnx,ip-name = "psu_afi";

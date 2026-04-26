@@ -1,6 +1,9 @@
 axi_bram_ctrl_0:
 - axi_bram_ctrl
 - bram
+axi_dma_0:
+- axi_dma
+- axidma
 axi_ptr_rd:
 - axi_gpio
 - gpio

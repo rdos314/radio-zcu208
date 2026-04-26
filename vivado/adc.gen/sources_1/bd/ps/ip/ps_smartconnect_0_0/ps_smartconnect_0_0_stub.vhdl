@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Apr 21 22:56:21 2026
+-- Date        : Tue Apr 21 22:56:17 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_smartconnect_0_0/ps_smartconnect_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top ps_smartconnect_0_0 -prefix
+--               ps_smartconnect_0_0_ ps_smartconnect_0_0_stub.vhdl
 -- Design      : ps_smartconnect_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xczu48dr-fsvg1517-2-e

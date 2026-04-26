@@ -361,6 +361,72 @@ module axi_int(
 		.probe36(env_6),              // input wire [15:0]  probe3
 		.probe37(env_7)               // input wire [15:0]  probe3
     );
+
+/*
+	ila_8 ila_il (
+		.clk(clk),                        // input wire clk
+		.probe0(high_wr),                 // input wire [0:0]  probe3
+		.probe1(high_rd),                  // input wire [0:0]  probe3
+		.probe2(u_high_full),              // input wire [0:0]  probe3
+		.probe3(u_high_empty),             // input wire [0:0]  probe3
+		.probe4(high_full),                // input wire [0:0]  probe3
+		.probe5(high_empty),               // input wire [0:0]  probe3
+		.probe6(pend_blocks[1]),          // input wire [13:0]  probe3
+		.probe7(in_hdr_sample),          // input wire [63:0]  probe3
+		.probe8(in_hdr_blocks),          // input wire [7:0]  probe3
+		.probe9(in_hdr_flags),           // input wire [7:0]  probe3
+		.probe10(in_hdr_size),            // input wire [15:0]  probe3
+		.probe11(in_hdr_freq),            // input wire [31:0]  probe3
+		.probe12(in_hdr_angle),           // input wire [15:0]  probe3
+		.probe13(in_hdr_doa_error),       // input wire [15:0]  probe3
+		.probe14(in_hdr_max_env),         // input wire [15:0]  probe3
+		.probe15(in_hdr_max_pos),         // input wire [15:0]  probe3
+		.probe16(in_hdr_env_mean),       // input wire [15:0]  probe3
+		.probe17(in_hdr_env_std),        // input wire [15:0]  probe3
+		.probe18(in_hdr_phase_std),      // input wire [15:0]  probe3
+		.probe19(in_hdr_freq_std),       // input wire [15:0]  probe3
+		.probe20(in_env_0),              // input wire [15:0]  probe3
+		.probe21(in_env_1),              // input wire [15:0]  probe3
+		.probe22(in_env_2),              // input wire [15:0]  probe3
+		.probe23(in_env_3),              // input wire [15:0]  probe3
+		.probe24(in_env_4),              // input wire [15:0]  probe3
+		.probe25(in_env_5),              // input wire [15:0]  probe3
+		.probe26(in_env_6),              // input wire [15:0]  probe3
+		.probe27(in_env_7)               // input wire [15:0]  probe3
+    );
+
+	ila_8 ila_ih (
+		.clk(clk),                        // input wire clk
+		.probe0(u_rd[1]),                  // input wire [0:0]  probe3
+		.probe1(high_rd),                 // input wire [0:0]  probe3
+		.probe2(u_high_full),             // input wire [0:0]  probe3
+		.probe3(u_high_empty),            // input wire [0:0]  probe3
+		.probe4(high_full),                // input wire [0:0]  probe3
+		.probe5(high_empty),               // input wire [0:0]  probe3
+		.probe6(pend_blocks[1]),          // input wire [13:0]  probe3
+		.probe7(out_hdr_sample),          // input wire [63:0]  probe3
+		.probe8(out_hdr_blocks),          // input wire [7:0]  probe3
+		.probe9(out_hdr_flags),           // input wire [7:0]  probe3
+		.probe10(out_hdr_size),            // input wire [15:0]  probe3
+		.probe11(out_hdr_freq),            // input wire [31:0]  probe3
+		.probe12(out_hdr_angle),           // input wire [15:0]  probe3
+		.probe13(out_hdr_doa_error),       // input wire [15:0]  probe3
+		.probe14(out_hdr_max_env),         // input wire [15:0]  probe3
+		.probe15(out_hdr_max_pos),         // input wire [15:0]  probe3
+		.probe16(out_hdr_env_mean),       // input wire [15:0]  probe3
+		.probe17(out_hdr_env_std),        // input wire [15:0]  probe3
+		.probe18(out_hdr_phase_std),      // input wire [15:0]  probe3
+		.probe19(out_hdr_freq_std),       // input wire [15:0]  probe3
+		.probe20(out_env_0),              // input wire [15:0]  probe3
+		.probe21(out_env_1),              // input wire [15:0]  probe3
+		.probe22(out_env_2),              // input wire [15:0]  probe3
+		.probe23(out_env_3),              // input wire [15:0]  probe3
+		.probe24(out_env_4),              // input wire [15:0]  probe3
+		.probe25(out_env_5),              // input wire [15:0]  probe3
+		.probe26(out_env_6),              // input wire [15:0]  probe3
+		.probe27(out_env_7)               // input wire [15:0]  probe3
+    );
+    */
     
 generate
   begin : axi_int

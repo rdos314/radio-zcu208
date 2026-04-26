@@ -362,6 +362,15 @@ module comp_burst(
     reg [2:0] data_delay;
     reg [8:0] blocks;
     
+    reg [15:0] data_0;
+    reg [15:0] data_1;
+    reg [15:0] data_2;
+    reg [15:0] data_3;
+    reg [15:0] data_4;
+    reg [15:0] data_5;
+    reg [15:0] data_6;
+    reg [15:0] data_7;
+    
 	fifo_config fifo_config_i (
 		.rst(reset),                   // input wire rst
 		.wr_clk(config_clk),           // input wire wr_clk
@@ -548,24 +557,51 @@ module comp_burst(
 	);
 
 /*
-	ila_0 ila_i (
-		.clk(clk),                    // input wire clk
-		.probe0(idle),                // input wire [0:0]  probe3
-		.probe1(p1_wr),               // input wire [0:0]  probe3
-		.probe2(p1_done),             // input wire [0:0]  probe3
-		.probe3(p2_idle),             // input wire [0:0]  probe3
-		.probe4(p2_wr),               // input wire [0:0]  probe3
-		.probe5(p2_done),             // input wire [0:0]  probe3
-		.probe6(p3_idle),             // input wire [0:0]  probe3
-		.probe7(p3_wr),               // input wire [0:0]  probe3
-		.probe8(p3_done),             // input wire [0:0]  probe3
-		.probe9(p4_idle),             // input wire [0:0]  probe3
-		.probe10(p4_wr),              // input wire [0:0]  probe3
-		.probe11(p4_done),            // input wire [0:0]  probe3
-		.probe12(p5_idle),            // input wire [0:0]  probe3
-		.probe13(p5_wr)               // input wire [0:0]  probe3
+	ila_1 ila_i (
+		.clk(clk),                // input wire clk
+		.probe0(p1_wr),           // input wire [0:0]  probe3
+		.probe1(p2_idle),         // input wire [0:0]  probe3
+		.probe2(p2_done),         // input wire [0:0]  probe3
+		.probe3(p2_sample),       // input wire [63:0]  probe3
+		.probe4(p2_freq),         // input wire [19:0]  probe3
+		.probe5(p2_angle),        // input wire [15:0]  probe3
+		.probe6(p2_doa_error),    // input wire [9:0]  probe3
+		.probe7(p2_size),         // input wire [10:0]  probe3
+		.probe8(p2_max_pos),      // input wire [10:0]  probe3
+		.probe9(p2_max_env),      // input wire [15:0]  probe3
+		.probe10(p2_wr),          // input wire [0:0]  probe3
+		.probe11(p3_idle),        // input wire [0:0]  probe3
+		.probe12(p3_done),        // input wire [0:0]  probe3
+		.probe13(p3_wr),          // input wire [0:0]  probe3
+		.probe14(p3_pos),         // input wire [10:0]  probe3
+		.probe15(p3_env),         // input wire [15:0]  probe3
+		.probe16(p3_phase),       // input wire [15:0]  probe3
+		.probe17(p4_idle),        // input wire [0:0]  probe3
+		.probe18(p4_done),        // input wire [0:0]  probe3
+		.probe19(p4_wr),          // input wire [0:0]  probe3
+		.probe20(p5_idle),        // input wire [0:0]  probe3
+		.probe21(p5_wr),          // input wire [0:0]  probe3
+		.probe22(burst_wr)        // input wire [0:0]  probe3
 	);
-*/	
+*/
+
+/*
+	ila_0 ila_axi (
+		.clk(axi_clk),                // input wire clk
+		.probe0(data_empty),          // input wire [0:0]  probe3
+		.probe1(axi_get),             // input wire [0:0]  probe3
+		.probe2(axi_wr),              // input wire [0:0]  probe3
+		.probe3(blocks),              // input wire [8:0]  probe3
+		.probe4(data_0),              // input wire [15:0]  probe3
+		.probe5(data_1),              // input wire [15:0]  probe3
+		.probe6(data_2),              // input wire [15:0]  probe3
+		.probe7(data_3),              // input wire [15:0]  probe3
+		.probe8(data_4),              // input wire [15:0]  probe3
+		.probe9(data_5),              // input wire [15:0]  probe3
+		.probe10(data_6),             // input wire [15:0]  probe3
+		.probe11(data_7)              // input wire [15:0]  probe3
+	);
+*/
 
 generate
   begin : comp_burst
@@ -761,7 +797,7 @@ generate
             begin
                 axi_data <= fifo_data;
                 axi_wr <= 1;
-                blocks <= {fifo_data[71:64], 1'b1};
+                blocks <= {fifo_data[71:64], 1'b0};
             end
             else
             begin
@@ -778,6 +814,18 @@ generate
                 end
             end
         end
+    end
+
+    always @(posedge axi_clk) 
+    begin
+        data_0 <= fifo_data[15:0];
+        data_1 <= fifo_data[31:16];
+        data_2 <= fifo_data[47:32];
+        data_3 <= fifo_data[63:48];
+        data_4 <= fifo_data[79:64];
+        data_5 <= fifo_data[95:80];
+        data_6 <= fifo_data[111:96];
+        data_7 <= fifo_data[127:112];
     end
         
   end

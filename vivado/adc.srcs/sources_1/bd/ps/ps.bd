@@ -4352,6 +4352,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -4374,6 +4378,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -4396,6 +4404,10 @@
               "M00_AXI"
             ],
             "bd_attributes": {
+              "BRIDGES": {
+                "value": "M00_AXI",
+                "value_src": "auto"
+              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -5626,8 +5638,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_high/config_adr",
-          "comp_ana_low/config_adr"
+          "comp_ana_low/config_adr",
+          "comp_ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -5635,8 +5647,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_high/config_data",
-          "comp_ana_low/config_data"
+          "comp_ana_low/config_data",
+          "comp_ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -6085,15 +6097,15 @@
           "smartconnect_0/aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "comp_ana_high/axi_clk",
-          "comp_ana_low/axi_clk",
           "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
           "axi_smc_1/aclk",
           "axi_dma_0/m_axi_s2mm_aclk",
           "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
           "axi_datamover_0/m_axi_mm2s_aclk",
+          "axi_dma_1/clk",
           "axi_int_0/clk",
-          "axi_dma_1/clk"
+          "comp_ana_low/axi_clk",
+          "comp_ana_high/axi_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -6522,8 +6534,8 @@
           "axi_smc_1/aresetn",
           "axi_datamover_0/m_axis_mm2s_cmdsts_aresetn",
           "axi_datamover_0/m_axi_mm2s_aresetn",
-          "axi_int_0/resetn",
-          "axi_dma_1/resetn"
+          "axi_dma_1/resetn",
+          "axi_int_0/resetn"
         ]
       },
       "r5_timer_interrupt": {
@@ -6665,17 +6677,17 @@
           "deci_high/sim_clk",
           "deci_low/sim_clk",
           "adc_control_0/clk",
-          "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk",
-          "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk",
           "mts_0/axi_clk",
           "axi_ptr_wr/s_axi_aclk",
           "axi_ptr_rd/s_axi_aclk",
           "smartconnect_0/aclk1",
           "axi_dma_0/s_axi_lite_aclk",
           "axi_spy_0/clk",
-          "axi_dma_1/lpd_clk"
+          "axi_dma_1/lpd_clk",
+          "comp_ana_low/config_clk",
+          "comp_ana_low/pl_clk",
+          "comp_ana_high/config_clk",
+          "comp_ana_high/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
