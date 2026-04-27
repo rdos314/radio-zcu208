@@ -155,6 +155,7 @@ module burst_size(
     output reg [10:0] max_pos,
     output reg [15:0] max_env,
     
+    output reg idle,
     output reg active,
     output reg [15:0] env,
     output reg [19:0] phase
@@ -173,6 +174,7 @@ module burst_size(
     reg scan_start;
     reg complete;
     reg complete_1;
+    reg no_data_1;
 
     reg [8:0] wr_ptr;
             
@@ -233,24 +235,25 @@ module burst_size(
 
 	ila_9 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(scan_start),          // input wire [0:0]  probe3
-		.probe1(burst),               // input wire [0:0]  probe3
-		.probe2(wr),                  // input wire [0:0]  probe3
-		.probe3(no_data),             // input wire [0:0]  probe3
-		.probe4(complete),            // input wire [0:0]  probe3
-		.probe5(done),                // input wire [0:0]  probe3
-		.probe6(sample),              // input wire [63:0]  probe3
-		.probe7(run_env),             // input wire [0:0]  probe3
-		.probe8(run_env_start),       // input wire [0:0]  probe3
-		.probe9(run_env_end),         // input wire [0:0]  probe3
-		.probe10(env_up_ind),          // input wire [10:0]  probe3
-		.probe11(env_down_ind),        // input wire [10:0]  probe3
-		.probe12(size),               // input wire [10:0]  probe3
-		.probe13(max_pos),            // input wire [10:0]  probe3
-		.probe14(max_env),            // input wire [15:0]  probe3
-		.probe15(active),             // input wire [0:0]  probe3
-		.probe16(env),                // input wire [15:0]  probe3
-		.probe17(phase)               // input wire [19:0]  probe3
+		.probe0(idle),                // input wire [0:0]  probe3
+		.probe1(scan_start),          // input wire [0:0]  probe3
+		.probe2(burst),               // input wire [0:0]  probe3
+		.probe3(wr),                  // input wire [0:0]  probe3
+		.probe4(no_data),             // input wire [0:0]  probe3
+		.probe5(complete),            // input wire [0:0]  probe3
+		.probe6(done),                // input wire [0:0]  probe3
+		.probe7(sample),              // input wire [63:0]  probe3
+		.probe8(run_env),             // input wire [0:0]  probe3
+		.probe9(run_env_start),       // input wire [0:0]  probe3
+		.probe10(run_env_end),        // input wire [0:0]  probe3
+		.probe11(env_up_ind),         // input wire [10:0]  probe3
+		.probe12(env_down_ind),       // input wire [10:0]  probe3
+		.probe13(size),               // input wire [10:0]  probe3
+		.probe14(max_pos),            // input wire [10:0]  probe3
+		.probe15(max_env),            // input wire [15:0]  probe3
+		.probe16(active),             // input wire [0:0]  probe3
+		.probe17(env),                // input wire [15:0]  probe3
+		.probe18(phase)               // input wire [19:0]  probe3
 	);
 
 generate
@@ -446,6 +449,11 @@ generate
         complete_1 <= complete;
         done <= complete_1;
     end
+			
+    always @(posedge clk) 
+    begin
+        no_data_1 <= no_data;
+    end
 
     always @(posedge clk) 
     begin
@@ -471,7 +479,7 @@ generate
 					if (run_env_end | run_env_start)
 					begin
 						no_data <= 1;
-						complete <= 0;
+						complete <= 1;
 					end
 					else
 					begin
@@ -494,6 +502,15 @@ generate
                     run_env <= 0;
 			end
         end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (scan_start)
+            idle <= 0;
+        else
+            if (reset | complete)
+                idle <= 1;
     end
 
     always @(posedge clk) 
@@ -646,9 +663,18 @@ generate
 			sample[31:16] <= sample_counter_1;
 			sample[47:32] <= sample_counter_2;
 			sample[63:48] <= sample_counter_3;
-			size <= env_end_ind - env_start_ind + 1;
-			max_pos <= ((env_down_max_ind + env_up_max_ind) >> 1) - env_start_ind;
-			max_env <= env_up_max_val;
+            max_env <= env_up_max_val;
+
+            if (no_data_1)
+            begin
+                size <= 2;
+                max_pos <= 0;
+            end
+            else
+            begin
+                size <= env_end_ind - env_start_ind + 1;
+                max_pos <= ((env_down_max_ind + env_up_max_ind) >> 1) - env_start_ind;
+            end
         end
     end
     

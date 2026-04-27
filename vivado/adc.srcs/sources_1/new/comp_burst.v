@@ -243,6 +243,7 @@ module comp_burst(
     wire cfg_empty;
     
     reg [15:0] min_env;
+    reg [15:0] min_samples;
 
     wire err_no_data;
 
@@ -289,6 +290,7 @@ module comp_burst(
 	wire [10:0] p1_max_pos;
 	wire [15:0] p1_max_env;
     
+    wire p1_idle;
     wire p1_wr;
     wire [15:0] p1_env;
     wire [19:0] p1_phase;
@@ -354,6 +356,10 @@ module comp_burst(
     
     reg burst_wr;
     reg [127:0] burst_data;
+
+    reg [15:0] sample_diff;
+    reg axi_skip;
+    reg skip_wr;
 
     wire sample_empty;
     wire sample_full;
@@ -422,7 +428,7 @@ module comp_burst(
         .rd_clk(axi_clk),             // input wire rd_clk
         .din(burst_data),             // input wire [127 : 0] din
         .wr_en(burst_wr),             // input wire wr_en
-        .rd_en(axi_wr | axi_get),     // input wire rd_en
+        .rd_en(axi_wr | axi_get | skip_wr),  // input wire rd_en
         .dout(fifo_data),             // output wire [127 : 0] dout
         .empty(data_empty)            // output wire empty
     );
@@ -448,6 +454,7 @@ module comp_burst(
         .size(p1_size),
         .max_pos(p1_max_pos),
         .max_env(p1_max_env),
+        .idle(p1_idle),
         .active(p1_wr),
         .env(p1_env),
         .phase(p1_phase)
@@ -589,17 +596,20 @@ module comp_burst(
 	ila_0 ila_axi (
 		.clk(axi_clk),                // input wire clk
 		.probe0(data_empty),          // input wire [0:0]  probe3
-		.probe1(axi_get),             // input wire [0:0]  probe3
-		.probe2(axi_wr),              // input wire [0:0]  probe3
-		.probe3(blocks),              // input wire [8:0]  probe3
-		.probe4(data_0),              // input wire [15:0]  probe3
-		.probe5(data_1),              // input wire [15:0]  probe3
-		.probe6(data_2),              // input wire [15:0]  probe3
-		.probe7(data_3),              // input wire [15:0]  probe3
-		.probe8(data_4),              // input wire [15:0]  probe3
-		.probe9(data_5),              // input wire [15:0]  probe3
-		.probe10(data_6),             // input wire [15:0]  probe3
-		.probe11(data_7)              // input wire [15:0]  probe3
+		.probe1(sample_diff),         // input wire [15:0]  probe3
+		.probe2(axi_get),             // input wire [0:0]  probe3
+		.probe3(axi_wr),              // input wire [0:0]  probe3
+		.probe4(axi_skip),            // input wire [0:0]  probe3
+		.probe5(skip_wr),             // input wire [0:0]  probe3
+		.probe6(blocks),              // input wire [8:0]  probe3
+		.probe7(data_0),              // input wire [15:0]  probe3
+		.probe8(data_1),              // input wire [15:0]  probe3
+		.probe9(data_2),              // input wire [15:0]  probe3
+		.probe10(data_3),             // input wire [15:0]  probe3
+		.probe11(data_4),             // input wire [15:0]  probe3
+		.probe12(data_5),             // input wire [15:0]  probe3
+		.probe13(data_6),             // input wire [15:0]  probe3
+		.probe14(data_7)              // input wire [15:0]  probe3
 	);
 */
 
@@ -620,6 +630,7 @@ generate
         begin
             case (cfg_adr)
                 0 : min_env <= cfg_data[15:0];
+                4 : min_samples <= cfg_data[16:1];
             endcase            
         end
     end
@@ -719,10 +730,15 @@ generate
 
     always @(posedge clk) 
 	begin
-        if (filling | !rt_data_empty | !rt_meta_empty)
-	        idle <= 0;
-	    else
-	        idle <= 1;
+        if (p1_idle)
+        begin
+            if (filling | !rt_data_empty | !rt_meta_empty)
+                idle <= 0;
+            else
+                idle <= 1;
+        end
+        else
+            idle <= 0;
 	end
 
     always @(posedge clk) 
@@ -736,6 +752,12 @@ generate
             p2_size <= p1_size;
             p2_max_pos <= p1_max_pos;
             p2_max_env <= p1_max_env;
+            
+            case (p1_size)
+                0: p2_size <= 2;
+                1: p2_size <= 2;
+                default: p2_size <= p1_size;
+            endcase
         end
     end
     
@@ -768,18 +790,31 @@ generate
             if (data_delay)
                 data_delay <= data_delay - 1;
             else
-                if (!axi_avail & !axi_get & !axi_wr)
+                if (!axi_avail & !axi_get & !axi_wr & !axi_skip & !skip_wr)
                     data_delay <= 7;
         end
     end
             
     always @(posedge axi_clk) 
     begin
-        if (data_empty | axi_get)
+        if (data_empty | axi_get | axi_skip)
+        begin
             axi_avail <= 0;
+            axi_skip <= 0;
+        end
         else
-            if (data_delay == 1)
-                axi_avail <= 1;
+        begin
+            case (data_delay)
+                2 : sample_diff <= fifo_data[95:80] - min_samples;
+                1 : 
+                begin
+                    if (sample_diff[15])
+                        axi_skip <= 1;
+                    else
+                        axi_avail <= 1;
+                end
+            endcase
+        end
     end
 
     always @(posedge axi_clk) 
@@ -790,27 +825,40 @@ generate
     always @(posedge axi_clk) 
     begin
         if (data_empty)
+        begin
             axi_wr <= 0;
+            skip_wr <= 0;
+        end
         else
         begin
-            if (axi_get)
+            if (axi_get | axi_skip)
             begin
-                axi_data <= fifo_data;
-                axi_wr <= 1;
                 blocks <= {fifo_data[71:64], 1'b0};
+
+                if (axi_get)
+                begin
+                    axi_data <= fifo_data;
+                    axi_wr <= 1;
+                end
+                else
+                    skip_wr <= 1;
             end
             else
             begin
-                if (axi_wr)
+                if (axi_wr | skip_wr)
                 begin
                     if (blocks)
                     begin
-                        axi_data <= fifo_data;
-                        axi_wr <= 1;
                         blocks <= blocks - 1;
+
+                        if (axi_wr)
+                            axi_data <= fifo_data;
                     end
                     else
+                    begin
                         axi_wr <= 0;
+                        skip_wr <= 0;
+                    end
                 end
             end
         end
