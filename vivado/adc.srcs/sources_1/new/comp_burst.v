@@ -357,7 +357,6 @@ module comp_burst(
     reg burst_wr;
     reg [127:0] burst_data;
 
-    reg [15:0] sample_diff;
     reg axi_skip;
     reg skip_wr;
 
@@ -538,6 +537,7 @@ module comp_burst(
 		.clk(clk),
         .reset(reset),
         .wr(p4_wr),
+        .min_samples(min_samples),
         .sample(p3_sample),
         .freq(p3_freq),
         .angle(p3_angle),
@@ -804,16 +804,13 @@ generate
         end
         else
         begin
-            case (data_delay)
-                2 : sample_diff <= fifo_data[95:80] - min_samples;
-                1 : 
-                begin
-                    if (sample_diff[15])
-                        axi_skip <= 1;
-                    else
-                        axi_avail <= 1;
-                end
-            endcase
+            if (data_delay == 1)
+            begin
+                if (fifo_data[72])
+                    axi_skip <= 1;
+                else
+                    axi_avail <= 1;
+            end
         end
     end
 

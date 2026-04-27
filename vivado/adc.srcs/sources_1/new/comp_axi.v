@@ -127,6 +127,7 @@ module comp_axi(
     input wire reset,
 
     input wire wr,
+    input wire [10:0] min_samples,
     input wire [63:0] sample,
     input wire [19:0] freq,
     input wire [15:0] angle,
@@ -163,12 +164,12 @@ module comp_axi(
     reg [127:0] data_in;
     reg [255:0] header;
     
+    reg [10:0] size_diff;
+    
     reg [8:0] rd_ptr;
     reg [8:0] rd_blocks;
     reg [127:0] data_out;
     
-    wire [7:0] flags = 8'b10000000;
-
     wire [37:0] freq_p;
     wire [37:0] freq_std_p;
     reg [2:0] freq_delay;
@@ -436,6 +437,7 @@ generate
     begin
         if (freq_delay == 1)
         begin
+            size_diff <= size - min_samples;            
             std_done <= 1;
             freq_std <= freq_std_p[34:19];
         end
@@ -448,7 +450,6 @@ generate
         if (stat_ok)
         begin
             header[63:0] <= sample;
-            header[79:72] <= flags;
             header[95:80] <= {5'b00000, size};
             header[111:96] <= angle;
             header[127:112] <= {6'b000000, doa_error};
@@ -466,6 +467,11 @@ generate
         begin
             if (std_done)
             begin
+                if (size_diff[10])
+                    header[79:72] <= 8'b10000001;
+                else
+                    header[79:72] <= 8'b10000000;
+
                 header[159:128] <= calc_freq;
                 header[223:208] <= env_std;
                 header[239:224] <= phase_std;
