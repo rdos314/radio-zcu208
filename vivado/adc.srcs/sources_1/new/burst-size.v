@@ -233,6 +233,7 @@ module burst_size(
     reg [10:0] env_down_max_ind;
     reg [15:0] env_down_max_val;
 
+/*
 	ila_9 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(idle),                // input wire [0:0]  probe3
@@ -255,6 +256,7 @@ module burst_size(
 		.probe17(env),                // input wire [15:0]  probe3
 		.probe18(phase)               // input wire [19:0]  probe3
 	);
+*/
 
 generate
   begin : burst_size

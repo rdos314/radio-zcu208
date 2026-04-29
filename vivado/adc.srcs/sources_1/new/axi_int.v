@@ -331,35 +331,36 @@ module axi_int(
 		.probe6(start),               // input wire [0:0]  probe3
 		.probe7(next),                // input wire [0:0]  probe3
 		.probe8(last),                // input wire [0:0]  probe3
-		.probe9(counter),             // input wire [7:0]  probe3
-		.probe10(adr),                // input wire [26:0]  probe3
-		.probe11(end_adr),            // input wire [26:0]  probe3
-		.probe12(next_adr),           // input wire [26:0]  probe3
-		.probe13(rd_diff_low),        // input wire [26:0]  probe3
-		.probe14(rd_diff_high),       // input wire [26:0]  probe3
-		.probe15(rd_ptr),             // input wire [26:0]  probe3
-		.probe16(wr_ptr),             // input wire [26:0]  probe3
-		.probe17(hdr_sample),         // input wire [63:0]  probe3
-		.probe18(hdr_blocks),         // input wire [7:0]  probe3
-		.probe19(hdr_flags),          // input wire [7:0]  probe3
-		.probe20(hdr_size),           // input wire [15:0]  probe3
-		.probe21(hdr_freq),           // input wire [31:0]  probe3
-		.probe22(hdr_angle),          // input wire [15:0]  probe3
-		.probe23(hdr_doa_error),      // input wire [15:0]  probe3
-		.probe24(hdr_max_env),        // input wire [15:0]  probe3
-		.probe25(hdr_max_pos),        // input wire [15:0]  probe3
-		.probe26(hdr_env_mean),       // input wire [15:0]  probe3
-		.probe27(hdr_env_std),        // input wire [15:0]  probe3
-		.probe28(hdr_phase_std),      // input wire [15:0]  probe3
-		.probe29(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe30(env_0),              // input wire [15:0]  probe3
-		.probe31(env_1),              // input wire [15:0]  probe3
-		.probe32(env_2),              // input wire [15:0]  probe3
-		.probe33(env_3),              // input wire [15:0]  probe3
-		.probe34(env_4),              // input wire [15:0]  probe3
-		.probe35(env_5),              // input wire [15:0]  probe3
-		.probe36(env_6),              // input wire [15:0]  probe3
-		.probe37(env_7)               // input wire [15:0]  probe3
+		.probe9(size),                // input wire [7:0]  probe3
+		.probe10(counter),             // input wire [7:0]  probe3
+		.probe11(adr),                // input wire [26:0]  probe3
+		.probe12(end_adr),            // input wire [26:0]  probe3
+		.probe13(next_adr),           // input wire [26:0]  probe3
+		.probe14(rd_diff_low),        // input wire [26:0]  probe3
+		.probe15(rd_diff_high),       // input wire [26:0]  probe3
+		.probe16(rd_ptr),             // input wire [26:0]  probe3
+		.probe17(wr_ptr),             // input wire [26:0]  probe3
+		.probe18(hdr_sample),         // input wire [63:0]  probe3
+		.probe19(hdr_blocks),         // input wire [7:0]  probe3
+		.probe20(hdr_flags),          // input wire [7:0]  probe3
+		.probe21(hdr_size),           // input wire [15:0]  probe3
+		.probe22(hdr_freq),           // input wire [31:0]  probe3
+		.probe23(hdr_angle),          // input wire [15:0]  probe3
+		.probe24(hdr_doa_error),      // input wire [15:0]  probe3
+		.probe25(hdr_max_env),        // input wire [15:0]  probe3
+		.probe26(hdr_max_pos),        // input wire [15:0]  probe3
+		.probe27(hdr_env_mean),       // input wire [15:0]  probe3
+		.probe28(hdr_env_std),        // input wire [15:0]  probe3
+		.probe29(hdr_phase_std),      // input wire [15:0]  probe3
+		.probe30(hdr_freq_std),       // input wire [15:0]  probe3
+		.probe31(env_0),              // input wire [15:0]  probe3
+		.probe32(env_1),              // input wire [15:0]  probe3
+		.probe33(env_2),              // input wire [15:0]  probe3
+		.probe34(env_3),              // input wire [15:0]  probe3
+		.probe35(env_4),              // input wire [15:0]  probe3
+		.probe36(env_5),              // input wire [15:0]  probe3
+		.probe37(env_6),              // input wire [15:0]  probe3
+		.probe38(env_7)               // input wire [15:0]  probe3
     );
 
 /*
@@ -740,7 +741,7 @@ generate
         begin
             req <= 1;
 
-            if (adr[13] == end_adr[13])
+            if (adr[8] == end_adr[8])
             begin
                 pad <= 0;
                 size <= mig_data[71:64] + 1;
@@ -799,10 +800,16 @@ generate
                             M_AXI_WDATA[71:64] <= size - 1;
                             M_AXI_WDATA[79:72] <= 8'b11000000;
                             M_AXI_WDATA[255:80] <= 0;
+                            counter <= counter - 1;
                         end
                         else
+                        begin
                             if (next)
+                            begin
                                 M_AXI_WDATA <= 0;
+                                counter <= counter - 1;
+                            end
+                        end
                     end
                     else
                     begin
