@@ -713,14 +713,22 @@ generate
 
     always @(posedge clk) 
     begin
-        if (!mig_empty & !busy)
+        if (last & pad)
         begin
-            end_adr <= adr + {19'h00000, mig_data[71:64]};
-            next_adr <= adr + {19'h00000, mig_data[71:64]} + 1;
-            check_space <= 1;
+            next_adr[7:0] <= 0;
+            check_space <= 0;
         end
         else
-            check_space <= 0;
+        begin
+            if (!mig_empty & !busy)
+            begin
+                end_adr <= adr + {19'h00000, mig_data[71:64]};
+                next_adr <= adr + {19'h00000, mig_data[71:64]} + 1;
+                check_space <= 1;
+            end
+            else
+                check_space <= 0;
+        end
     end
 
     always @(posedge clk) 
