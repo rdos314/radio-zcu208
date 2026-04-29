@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "ps_axi_gpio_0_5",
-    "cell_name": "axi_ptr_wr",
+    "cell_name": "axi_avail_count",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "37",
     "gen_directory": "../../../../../../adc.gen/sources_1/bd/ps/ip/ps_axi_gpio_0_5",

@@ -1,0 +1,11 @@
+[Unit]
+Description=GDB Server for Remote Debugging
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gdbserver --multi :2000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

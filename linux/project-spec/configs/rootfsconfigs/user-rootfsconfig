@@ -8,3 +8,4 @@ CONFIG_apache2
 CONFIG_php
 CONFIG_phpmyadmin
 
+CONFIG_gdbserver-service

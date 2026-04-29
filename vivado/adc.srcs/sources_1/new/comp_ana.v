@@ -672,6 +672,7 @@ module comp_ana(
 	);
 */	
 
+/*
 
 	ila_5 ila_axi (
 		.clk(axi_clk),                // input wire clk
@@ -718,6 +719,7 @@ module comp_ana(
 		.probe40(c_env_6),              // input wire [15:0]  probe3
 		.probe41(c_env_7)               // input wire [15:0]  probe3
 	);
+*/	
 
 generate
   begin : comp_ana

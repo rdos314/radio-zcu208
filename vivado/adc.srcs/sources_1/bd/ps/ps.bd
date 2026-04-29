@@ -38,8 +38,7 @@
       "smartconnect_0": "",
       "proc_sys_reset_0": "",
       "axi_int_0": "",
-      "axi_ptr_wr": "",
-      "axi_ptr_rd": "",
+      "axi_avail_count": "",
       "axi_datamover_0": "",
       "axi_dma_0": "",
       "axi_smc_1": "",
@@ -1613,7 +1612,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "NUM_MI": {
-            "value": "8"
+            "value": "7"
           },
           "NUM_SI": {
             "value": "1"
@@ -1639,14 +1638,9 @@
               "M03_AXI",
               "M04_AXI",
               "M05_AXI",
-              "M06_AXI",
-              "M07_AXI"
+              "M06_AXI"
             ],
             "bd_attributes": {
-              "BRIDGES": {
-                "value": "M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI:M06_AXI:M07_AXI",
-                "value_src": "auto"
-              },
               "TYPE": {
                 "value": "interior",
                 "value_src": "default"
@@ -1876,43 +1870,6 @@
             }
           },
           "M06_AXI": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "parameters": {
-              "MAX_BURST_LENGTH": {
-                "value": "1"
-              },
-              "NUM_READ_OUTSTANDING": {
-                "value": "8"
-              },
-              "NUM_READ_THREADS": {
-                "value": "1"
-              },
-              "NUM_WRITE_OUTSTANDING": {
-                "value": "8"
-              },
-              "NUM_WRITE_THREADS": {
-                "value": "1"
-              },
-              "RUSER_BITS_PER_BYTE": {
-                "value": "0"
-              },
-              "SUPPORTS_NARROW_BURST": {
-                "value": "0"
-              },
-              "WUSER_BITS_PER_BYTE": {
-                "value": "0"
-              }
-            },
-            "bd_attributes": {
-              "TYPE": {
-                "value": "interior",
-                "value_src": "default"
-              }
-            }
-          },
-          "M07_AXI": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
@@ -4794,12 +4751,12 @@
           }
         }
       },
-      "axi_ptr_wr": {
+      "axi_avail_count": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "ps_axi_gpio_0_5",
         "xci_path": "ip/ps_axi_gpio_0_5/ps_axi_gpio_0_5.xci",
-        "inst_hier_path": "axi_ptr_wr",
+        "inst_hier_path": "axi_avail_count",
         "has_run_ip_tcl": "true",
         "parameters": {
           "C_ALL_INPUTS": {
@@ -4807,19 +4764,6 @@
           },
           "C_IS_DUAL": {
             "value": "0"
-          }
-        }
-      },
-      "axi_ptr_rd": {
-        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "ip_revision": "37",
-        "xci_name": "ps_axi_gpio_0_7",
-        "xci_path": "ip/ps_axi_gpio_0_7/ps_axi_gpio_0_7.xci",
-        "inst_hier_path": "axi_ptr_rd",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "C_ALL_OUTPUTS": {
-            "value": "1"
           }
         }
       },
@@ -5507,19 +5451,13 @@
       "axi_smc_M05_AXI": {
         "interface_ports": [
           "axi_smc/M05_AXI",
-          "axi_ptr_wr/S_AXI"
+          "axi_avail_count/S_AXI"
         ]
       },
       "axi_smc_M06_AXI": {
         "interface_ports": [
           "axi_smc/M06_AXI",
-          "axi_ptr_rd/S_AXI"
-        ]
-      },
-      "axi_smc_M07_AXI": {
-        "interface_ports": [
           "axi_dma_0/S_AXI_LITE",
-          "axi_smc/M07_AXI",
           "axi_spy_0/s_axi"
         ]
       },
@@ -5638,8 +5576,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr"
+          "comp_ana_high/config_adr",
+          "comp_ana_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -5647,8 +5585,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_low/config_data",
-          "comp_ana_high/config_data"
+          "comp_ana_high/config_data",
+          "comp_ana_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -5873,7 +5811,8 @@
       },
       "axi_int_0_axi_wr_ptr": {
         "ports": [
-          "axi_ptr_wr/gpio_io_i"
+          "axi_dma_1/avail_size",
+          "axi_avail_count/gpio_io_i"
         ]
       },
       "axi_int_0_high_full": {
@@ -5904,11 +5843,6 @@
         "ports": [
           "axi_int_0/wr_ptr",
           "axi_dma_1/wr_ptr"
-        ]
-      },
-      "axi_ptr_rd_gpio_io_o": {
-        "ports": [
-          "axi_ptr_rd/gpio_io_o"
         ]
       },
       "axi_spy_0_data": {
@@ -6103,9 +6037,9 @@
           "axi_datamover_0/m_axis_mm2s_cmdsts_aclk",
           "axi_datamover_0/m_axi_mm2s_aclk",
           "axi_dma_1/clk",
-          "comp_ana_low/axi_clk",
+          "axi_int_0/clk",
           "comp_ana_high/axi_clk",
-          "axi_int_0/clk"
+          "comp_ana_low/axi_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -6569,8 +6503,7 @@
           "deci_high/sim_resetn",
           "deci_low/sim_resetn",
           "adc_control_0/resetn",
-          "axi_ptr_wr/s_axi_aresetn",
-          "axi_ptr_rd/s_axi_aresetn",
+          "axi_avail_count/s_axi_aresetn",
           "axi_spy_0/resetn",
           "axi_dma_0/axi_resetn",
           "axi_dma_1/lpd_resetn"
@@ -6678,16 +6611,15 @@
           "deci_low/sim_clk",
           "adc_control_0/clk",
           "mts_0/axi_clk",
-          "axi_ptr_wr/s_axi_aclk",
-          "axi_ptr_rd/s_axi_aclk",
+          "axi_avail_count/s_axi_aclk",
           "smartconnect_0/aclk1",
           "axi_dma_0/s_axi_lite_aclk",
           "axi_spy_0/clk",
           "axi_dma_1/lpd_clk",
-          "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk"
+          "comp_ana_high/pl_clk",
+          "comp_ana_low/config_clk",
+          "comp_ana_low/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -6712,13 +6644,8 @@
                 "offset": "0x0080010000",
                 "range": "64K"
               },
-              "SEG_axi_ptr_rd_Reg": {
-                "address_block": "/axi_ptr_rd/S_AXI/Reg",
-                "offset": "0x0080020000",
-                "range": "64K"
-              },
               "SEG_axi_ptr_wr_Reg": {
-                "address_block": "/axi_ptr_wr/S_AXI/Reg",
+                "address_block": "/axi_avail_count/S_AXI/Reg",
                 "offset": "0x0080030000",
                 "range": "64K"
               },

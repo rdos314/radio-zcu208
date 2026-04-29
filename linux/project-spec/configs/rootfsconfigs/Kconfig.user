@@ -3,6 +3,10 @@ config apache2
 	 bool "apache2"
 	 help
 	
+config gdbserver-service  
+	 bool "gdbserver-service"
+	 help
+	
 config gpio-demo  
 	 bool "gpio-demo"
 	 help
