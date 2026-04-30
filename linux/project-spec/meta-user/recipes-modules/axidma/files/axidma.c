@@ -20,14 +20,12 @@
 
 #include <linux/module.h>
 #include <linux/platform_device.h>
-#include <linux/mailbox_client.h>
+#include <linux/interrupt.h>
 #include <linux/fs.h>
 #include <linux/poll.h>
 #include <linux/cdev.h>
-#include <linux/uaccess.h>
-#include <linux/of_address.h>
-#include <linux/of_reserved_mem.h>
 #include <linux/mm.h>
+#include <linux/of_address.h>
 
 /* Standard module information, edit as appropriate */
 MODULE_AUTHOR
@@ -39,8 +37,6 @@ MODULE_DESCRIPTION
 
 struct ipi_data
 {
-    struct mbox_client cl;
-    struct mbox_chan *chan;
     wait_queue_head_t wait_q;
     bool event_received;
     dev_t dev_num;
@@ -50,14 +46,15 @@ struct ipi_data
     size_t data_size;
     phys_addr_t ptr_phys;
     size_t ptr_size;
+    int irq;
 };
 
-// This runs when the RPU triggers the IPI
-static void ipi_rx_callback(struct mbox_client *cl, void *data)
+static irqreturn_t axidma_irq_handler(int irq, void *dev_id)
 {
-    struct ipi_data *priv = container_of(cl, struct ipi_data, cl);
+    struct ipi_data *priv = dev_id;
     priv->event_received = true;
     wake_up_interruptible(&priv->wait_q);
+    return IRQ_HANDLED;
 }
 
 static int dev_open(struct inode *inode, struct file *file)
@@ -89,14 +86,14 @@ static int dev_mmap(struct file *file, struct vm_area_struct *vma)
 
     // Use offset to distinguish which buffer is being mapped
     // offset 0 = Data Buffer, offset > 0 = Pointers Buffer
-    if (vma->vm_pgoff == 0) 
+    if (vma->vm_pgoff == 0)
     {
         if (size > priv->data_size) return -EINVAL;
         phys = priv->data_phys;
         // Write-through/Write-combine for high-speed data
         vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
-    } 
-    else 
+    }
+    else
     {
         if (size > priv->ptr_size) return -EINVAL;
         phys = priv->ptr_phys;
@@ -104,7 +101,7 @@ static int dev_mmap(struct file *file, struct vm_area_struct *vma)
         vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
     }
 
-    if (remap_pfn_range(vma, vma->vm_start, phys >> PAGE_SHIFT, size, vma->vm_page_prot)) 
+    if (remap_pfn_range(vma, vma->vm_start, phys >> PAGE_SHIFT, size, vma->vm_page_prot))
         return -EAGAIN;
     else
         return 0;
@@ -131,13 +128,12 @@ static int ipi_probe(struct platform_device *pdev)
     init_waitqueue_head(&priv->wait_q);
     platform_set_drvdata(pdev, priv);
 
-    // Setup Mailbox Client
-    priv->cl.dev = &pdev->dev;
-    priv->cl.rx_callback = ipi_rx_callback;
-    priv->cl.tx_block = false;
+    // Get IRQ (The first interrupt defined in DT)
+    priv->irq = platform_get_irq(pdev, 0);
+    if (priv->irq < 0) return priv->irq;
 
-    priv->chan = mbox_request_channel(&priv->cl, 0);
-    if (IS_ERR(priv->chan)) return PTR_ERR(priv->chan);
+    ret = devm_request_irq(&pdev->dev, priv->irq, axidma_irq_handler, 0, DEVICE_NAME, priv);
+    if (ret) return ret;
 
     // Register Char Device
     alloc_chrdev_region(&priv->dev_num, 0, 1, DEVICE_NAME);
@@ -147,16 +143,16 @@ static int ipi_probe(struct platform_device *pdev)
     device_create(priv->class, NULL, priv->dev_num, NULL, DEVICE_NAME);
 
     // Loop to get both memory regions
-    for (i = 0; i < 2; i++) 
+    for (i = 0; i < 2; i++)
     {
         mem_node = of_parse_phandle(pdev->dev.of_node, "memory-region", i);
-        if (!mem_node) 
+        if (!mem_node)
         {
             dev_err(&pdev->dev, "Memory-region not found in DT %d\n", i);
             return -ENODEV;
         }
 
-        if (of_address_to_resource(mem_node, 0, &res) == 0) 
+        if (of_address_to_resource(mem_node, 0, &res) == 0)
         {
             switch (i)
             {
@@ -164,7 +160,7 @@ static int ipi_probe(struct platform_device *pdev)
                     priv->data_phys = res.start;
                     priv->data_size = resource_size(&res);
                     break;
-                    
+
                 case 1:
                     priv->ptr_phys = res.start;
                     priv->ptr_size = resource_size(&res);
@@ -208,4 +204,4 @@ static struct platform_driver ipi_driver =
     .driver = { .name = "axidma", .of_match_table = ipi_of_match },
 };
 module_platform_driver(ipi_driver);
-MODULE_LICENSE("GPL");
+MODULE_LICENSE("GPL v2");
