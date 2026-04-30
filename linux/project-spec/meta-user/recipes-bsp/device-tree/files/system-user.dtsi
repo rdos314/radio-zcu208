@@ -72,6 +72,9 @@
 
     my_axidma {
         compatible = "my,axidma";
+        interrupt-parent = <&gic>;
+        /* SGI IDs are 0-15 */
+	interrupts = <1 15 1>;
         memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
     };
 

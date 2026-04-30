@@ -121,6 +121,7 @@ static int ipi_probe(struct platform_device *pdev)
     struct resource res;
     struct device_node *mem_node;
     int i;
+    int ret;
 
     priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
     if (!priv) return -ENOMEM;
@@ -187,7 +188,6 @@ static void ipi_remove(struct platform_device *pdev)
     class_destroy(priv->class);
     cdev_del(&priv->cdev);
     unregister_chrdev_region(priv->dev_num, 1);
-    mbox_free_channel(priv->chan);
 }
 
 static const struct of_device_id ipi_of_match[] =
