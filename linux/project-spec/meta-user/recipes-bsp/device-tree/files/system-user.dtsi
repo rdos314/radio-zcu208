@@ -60,20 +60,23 @@
 		#address-cells = <2>;
 		#size-cells = <2>;
 		ranges;
-		r5_dma_reserved: uio0@74000000 {
+		r5_dma_reserved: dma@74000000 {
 			reg = <0x0 0x74000000 0x0 0x04000000>;
 			no-map;
 		};
+
+        r5_ptr_reserved: ptr@78000000 {
+            reg = <0x0 0x78000000 0x0 0x00001000>;
+            no-map;
+        };
 	};
 
     axidma {
         compatible = "my,axidma";
-        mboxes = <&ipi_mailbox_rpu0 1>;
+        mboxes = <&psu_ipi_1_0 1>; 
         mbox-names = "rx";
-        /* Link the reserved memory to this driver */
-        memory-region = <&r5_dma_reserved>;
+        memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
     };
-
 
 };
 

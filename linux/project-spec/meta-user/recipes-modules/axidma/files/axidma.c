@@ -45,6 +45,10 @@ struct ipi_data
     dev_t dev_num;
     struct cdev cdev;
     struct class *class;
+    phys_addr_t data_phys;
+    size_t data_size;
+    phys_addr_t ptr_phys;
+    size_t ptr_size;
 };
 
 // This runs when the RPU triggers the IPI
@@ -80,16 +84,29 @@ static int dev_mmap(struct file *file, struct vm_area_struct *vma)
 {
     struct ipi_data *priv = file->private_data;
     size_t size = vma->vm_end - vma->vm_start;
+    phys_addr_t phys;
 
-    if (size > priv->shm_size) return -EINVAL;
-
-    // Use remap_pfn_range to map the physical RPU memory to the user VMA
-    vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot); // Disable caching for IPC
-    if (remap_pfn_range(vma, vma->vm_start, priv->shm_phys >> PAGE_SHIFT,
-                        size, vma->vm_page_prot)) {
-        return -EAGAIN;
+    // Use offset to distinguish which buffer is being mapped
+    // offset 0 = Data Buffer, offset > 0 = Pointers Buffer
+    if (vma->vm_pgoff == 0) 
+    {
+        if (size > priv->data_size) return -EINVAL;
+        phys = priv->data_phys;
+        // Write-through/Write-combine for high-speed data
+        vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
+    } 
+    else 
+    {
+        if (size > priv->ptr_size) return -EINVAL;
+        phys = priv->ptr_phys;
+        // Strictly non-cacheable for pointers
+        vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
     }
-    return 0;
+
+    if (remap_pfn_range(vma, vma->vm_start, phys >> PAGE_SHIFT, size, vma->vm_page_prot)) 
+        return -EAGAIN;
+    else
+        return 0;
 }
 
 static const struct file_operations fops =
@@ -106,6 +123,7 @@ static int ipi_probe(struct platform_device *pdev)
     int ret;
     struct resource res;
     struct device_node *mem_node;
+    int i;
 
     priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
     if (!priv) return -ENOMEM;
@@ -128,13 +146,40 @@ static int ipi_probe(struct platform_device *pdev)
     priv->class = class_create(THIS_MODULE, DEVICE_NAME);
     device_create(priv->class, NULL, priv->dev_num, NULL, DEVICE_NAME);
 
-    mem_node = of_parse_phandle(pdev->dev.of_node, "memory-region", 0);
-    if (of_address_to_resource(mem_node, 0, &res))
+    // Loop to get both memory regions
+    for (i = 0; i < 2; i++) 
     {
-        return -EINVAL;
+        mem_node = of_parse_phandle(pdev->dev.of_node, "memory-region", i);
+        if (!mem_node) 
+        {
+            dev_err(&pdev->dev, "Memory-region not found in DT %d\n", i);
+            return -ENODEV;
+        }
+
+        if (of_address_to_resource(mem_node, 0, &res) == 0) 
+        {
+            switch (i)
+            {
+                case 0:
+                    priv->data_phys = res.start;
+                    priv->data_size = resource_size(&res);
+                    break;
+                    
+                case 1:
+                    priv->ptr_phys = res.start;
+                    priv->ptr_size = resource_size(&res);
+                    break;
+            }
+            of_node_put(mem_node);
+        }
+        else
+        {
+            of_node_put(mem_node);
+            dev_err(&pdev->dev, "Address not found %d\n", i);
+            return -EINVAL;
+        }
+
     }
-    priv->shm_phys = res.start;
-    priv->shm_size = resource_size(&res);
 
     return 0;
 }
