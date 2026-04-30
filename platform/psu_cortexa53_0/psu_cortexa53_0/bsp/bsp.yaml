@@ -204,6 +204,10 @@ include_folder: include
 lib_folder: lib
 libsrc_folder: libsrc
 drv_info:
+  axi_avail_count:
+    driver: gpio
+    ip_name: axi_gpio
+    path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/gpio_v4_12
   axi_bram_ctrl_0:
     driver: bram
     ip_name: axi_bram_ctrl
@@ -212,14 +216,6 @@ drv_info:
     driver: axidma
     ip_name: axi_dma
     path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/axidma_v9_19
-  axi_ptr_rd:
-    driver: gpio
-    ip_name: axi_gpio
-    path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/gpio_v4_12
-  axi_ptr_wr:
-    driver: gpio
-    ip_name: axi_gpio
-    path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/gpio_v4_12
   clk104_mux:
     driver: gpio
     ip_name: axi_gpio

@@ -27,6 +27,7 @@
 #include <linux/uaccess.h>
 #include <linux/of_address.h>
 #include <linux/of_reserved_mem.h>
+#include <linux/mm.h>
 
 /* Standard module information, edit as appropriate */
 MODULE_AUTHOR
@@ -120,7 +121,6 @@ static const struct file_operations fops =
 static int ipi_probe(struct platform_device *pdev)
 {
     struct ipi_data *priv;
-    int ret;
     struct resource res;
     struct device_node *mem_node;
     int i;
@@ -143,7 +143,7 @@ static int ipi_probe(struct platform_device *pdev)
     alloc_chrdev_region(&priv->dev_num, 0, 1, DEVICE_NAME);
     cdev_init(&priv->cdev, &fops);
     cdev_add(&priv->cdev, priv->dev_num, 1);
-    priv->class = class_create(THIS_MODULE, DEVICE_NAME);
+    priv->class = class_create(DEVICE_NAME);
     device_create(priv->class, NULL, priv->dev_num, NULL, DEVICE_NAME);
 
     // Loop to get both memory regions
@@ -184,7 +184,7 @@ static int ipi_probe(struct platform_device *pdev)
     return 0;
 }
 
-static int ipi_remove(struct platform_device *pdev)
+static void ipi_remove(struct platform_device *pdev)
 {
     struct ipi_data *priv = platform_get_drvdata(pdev);
     device_destroy(priv->class, priv->dev_num);
@@ -192,7 +192,6 @@ static int ipi_remove(struct platform_device *pdev)
     cdev_del(&priv->cdev);
     unregister_chrdev_region(priv->dev_num, 1);
     mbox_free_channel(priv->chan);
-    return 0;
 }
 
 static const struct of_device_id ipi_of_match[] =

@@ -10,7 +10,6 @@
 
 /include/ "system-conf.dtsi"
 
-
 / {
 	model = "ZynqMP ZCU208 RevA";
 	compatible = "xlnx,zynqmp-zcu208-revA", "xlnx,zynqmp-zcu208", "xlnx,zynqmp";
@@ -73,10 +72,9 @@
 
     my_axidma {
         compatible = "my,axidma";
-        mboxes = <&psu_ipi_1_0 1>; 
-        mbox-names = "rx";
         memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
     };
+
 
 };
 
