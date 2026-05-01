@@ -49,6 +49,9 @@ CROSS_PREFIX:STRING=armr5-none-eabi-
 // Device Id
 DEVICE_ID:STRING=xczu48dr
 
+// The directory containing a CMake configuration file for INTC.
+INTC_DIR:PATH=INTC_DIR-NOTFOUND
+
 // 
 MACHINE:STRING=zynqmp_r5
 

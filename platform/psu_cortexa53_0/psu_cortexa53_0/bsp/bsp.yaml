@@ -216,10 +216,6 @@ drv_info:
     driver: axidma
     ip_name: axi_dma
     path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/axidma_v9_19
-  axi_intc_0:
-    driver: intc
-    ip_name: axi_intc
-    path: /media/ubuntu/large/2025.1/Vitis/data/embeddedsw/XilinxProcessorIPLib/drivers/intc_v3_20
   clk104_mux:
     driver: gpio
     ip_name: axi_gpio

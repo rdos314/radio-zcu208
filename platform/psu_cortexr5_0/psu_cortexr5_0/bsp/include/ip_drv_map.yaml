@@ -7,9 +7,6 @@ axi_bram_ctrl_0:
 axi_dma_0:
 - axi_dma
 - axidma
-axi_intc_0:
-- axi_intc
-- intc
 clk104_mux:
 - axi_gpio
 - gpio

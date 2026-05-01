@@ -70,15 +70,19 @@
         };
 	};
 
-    my_axidma {
-        compatible = "my,axidma";
-        interrupt-parent = <&gic>;
-        interrupts = <0 90 1>;
-        memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
-    };
+
+
+	my_axidma {
+        	compatible = "my,axidma";
+ 	       	interrupt-parent = <&gic>;
+ 	       	interrupts = <0 89 4>;
+ 	       	memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
+	};
 
 
 };
+
+
 
 &gpio {
 	gpio-line-names = "QSPI_LWR_CLK", "QSPI_LWR_DQ1", "QSPI_LWR_DQ2", "QSPI_LWR_DQ3", "QSPI_LWR_DQ0", /* 0 - 4 */

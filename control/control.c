@@ -42,6 +42,8 @@ int main(void)
     if (Status != XST_SUCCESS)
         return XST_FAILURE;
 
+    XTmrCtr_SetOptions(&TimerCounterInst, 0, XTC_INT_MODE_OPTION);
+
     XTmrCtr_SetResetValue(&TimerCounterInst, TIMER_CNTR_0, RESET_VALUE);
 
     while (1)

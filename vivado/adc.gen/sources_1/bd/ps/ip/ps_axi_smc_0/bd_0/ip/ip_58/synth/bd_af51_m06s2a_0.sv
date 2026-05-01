@@ -52,8 +52,8 @@
 
 (* X_CORE_INFO = "sc_sc2axi_v1_0_10_top,Vivado 2025.1" *)
 (* CHECK_LICENSE_TYPE = "bd_af51_m06s2a_0,sc_sc2axi_v1_0_10_top,{}" *)
-(* CORE_GENERATION_INFO = "bd_af51_m06s2a_0,sc_sc2axi_v1_0_10_top,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=sc_sc2axi,x_ipVersion=1.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI_ADDR_WIDTH=10,C_AXI_ID_WIDTH=3,C_AXI_RDATA_WIDTH=32,C_AXI_WDATA_WIDTH=32,C_SC_ADDR_WIDTH=40,C_SC_ID_WIDTH=3,C_SC_RDATA_WIDTH=32,C_SC_WDATA_WIDTH=32,C_SC_RUSER_BITS_PER_BYTE=0,C_SC_WUSER_BITS_PER_BYTE=0,C_SC_ARUSER_WIDTH=16,C_SC_AWUSER_WIDTH=16,C_SC_BUSER_WIDTH=0,C_MSC_ROUTE_WIDTH=8,C_SSC_ROUT\
-E_WIDTH=1,C_AWPAYLD_WIDTH=172,C_ARPAYLD_WIDTH=172,C_WPAYLD_WIDTH=59,C_RPAYLD_WIDTH=53,C_BPAYLD_WIDTH=7}" *)
+(* CORE_GENERATION_INFO = "bd_af51_m06s2a_0,sc_sc2axi_v1_0_10_top,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=sc_sc2axi,x_ipVersion=1.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI_ADDR_WIDTH=10,C_AXI_ID_WIDTH=3,C_AXI_RDATA_WIDTH=32,C_AXI_WDATA_WIDTH=32,C_SC_ADDR_WIDTH=40,C_SC_ID_WIDTH=3,C_SC_RDATA_WIDTH=32,C_SC_WDATA_WIDTH=32,C_SC_RUSER_BITS_PER_BYTE=0,C_SC_WUSER_BITS_PER_BYTE=0,C_SC_ARUSER_WIDTH=16,C_SC_AWUSER_WIDTH=16,C_SC_BUSER_WIDTH=0,C_MSC_ROUTE_WIDTH=7,C_SSC_ROUT\
+E_WIDTH=1,C_AWPAYLD_WIDTH=171,C_ARPAYLD_WIDTH=171,C_WPAYLD_WIDTH=58,C_RPAYLD_WIDTH=53,C_BPAYLD_WIDTH=7}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module bd_af51_m06s2a_0 (
   aclk,
@@ -158,7 +158,7 @@ input wire s_sc_ar_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AR RECV" *)
 output wire s_sc_ar_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AR PAYLD" *)
-input wire [171 : 0] s_sc_ar_payld;
+input wire [170 : 0] s_sc_ar_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW REQ" *)
 (* X_INTERFACE_MODE = "slave" *)
 input wire s_sc_aw_req;
@@ -169,7 +169,7 @@ input wire s_sc_aw_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW RECV" *)
 output wire s_sc_aw_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_AW PAYLD" *)
-input wire [171 : 0] s_sc_aw_payld;
+input wire [170 : 0] s_sc_aw_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W REQ" *)
 (* X_INTERFACE_MODE = "slave" *)
 input wire s_sc_w_req;
@@ -180,7 +180,7 @@ input wire s_sc_w_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W RECV" *)
 output wire s_sc_w_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S_SC_W PAYLD" *)
-input wire [58 : 0] s_sc_w_payld;
+input wire [57 : 0] s_sc_w_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, DATA_WIDTH 32, PROTOCOL AXI4, FREQ_HZ 99999001, ID_WIDTH 3, ADDR_WIDTH 10, AWUSER_WIDTH 1024, ARUSER_WIDTH 1024, WUSER_WIDTH 1024, RUSER_WIDTH 1024, BUSER_WIDTH 1024, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, NUM_READ_THREADS\
@@ -275,11 +275,11 @@ output wire m_axi_rready;
     .C_SC_ARUSER_WIDTH(16),
     .C_SC_AWUSER_WIDTH(16),
     .C_SC_BUSER_WIDTH(0),
-    .C_MSC_ROUTE_WIDTH(8),
+    .C_MSC_ROUTE_WIDTH(7),
     .C_SSC_ROUTE_WIDTH(1),
-    .C_AWPAYLD_WIDTH(172),
-    .C_ARPAYLD_WIDTH(172),
-    .C_WPAYLD_WIDTH(59),
+    .C_AWPAYLD_WIDTH(171),
+    .C_ARPAYLD_WIDTH(171),
+    .C_WPAYLD_WIDTH(58),
     .C_RPAYLD_WIDTH(53),
     .C_BPAYLD_WIDTH(7)
   ) inst (

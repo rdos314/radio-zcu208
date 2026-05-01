@@ -252,6 +252,9 @@ CROSS_PREFIX:STRING=armr5-none-eabi-
 //Device Id
 DEVICE_ID:STRING=xczu48dr
 
+//The directory containing a CMake configuration file for INTC.
+INTC_DIR:PATH=INTC_DIR-NOTFOUND
+
 MACHINE:STRING=zynqmp_r5
 
 //Number of slrs
@@ -415,15 +418,6 @@ iicps_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 iicps_SOURCE_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/iicps/src
-
-//Value Computed by CMake
-intc_BINARY_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/intc/src
-
-//Value Computed by CMake
-intc_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-intc_SOURCE_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/intc/src
 
 //Value Computed by CMake
 ipipsu_BINARY_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/ipipsu/src
@@ -760,7 +754,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=55
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=54
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
