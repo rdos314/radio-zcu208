@@ -131,10 +131,16 @@ static int ipi_probe(struct platform_device *pdev)
 
     // Get IRQ (The first interrupt defined in DT)
     priv->irq = platform_get_irq(pdev, 0);
-    if (priv->irq < 0) return priv->irq;
-
-    ret = devm_request_irq(&pdev->dev, priv->irq, axidma_irq_handler, 0, DEVICE_NAME, priv);
-    if (ret) return ret;
+    if (priv->irq < 0)
+    	dev_err(&pdev->dev, "Failed to get IRQ: %d\n", priv->irq);
+    else
+    {
+	ret = devm_request_irq(&pdev->dev, priv->irq, axidma_irq_handler, 0, DEVICE_NAME, priv);
+	if (ret)
+      	    dev_err(&pdev->dev, "Failed to request IRQ %d: %d\n", priv->irq, ret);
+        else
+      	    dev_err(&pdev->dev, "Interrupt %d hooked\n", priv->irq);
+    }
 
     // Register Char Device
     alloc_chrdev_region(&priv->dev_num, 0, 1, DEVICE_NAME);

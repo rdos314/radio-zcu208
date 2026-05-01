@@ -6,6 +6,6 @@ the_ROM_image:
 	[destination_device = pl]/media/ubuntu/large/radio-zcu208/vivado/adc.runs/v1/ps_wrapper.bit
 	[destination_cpu = r5-0]/media/ubuntu/large/radio-zcu208/control/build/control.elf
 	[destination_cpu = a53-0, exception_level = el-3, trustzone]/media/ubuntu/large/radio-zcu208/bl31.elf
-	[load = 0x100000, destination_cpu = a53-0]/media/ubuntu/large/radio-zcu208/system.dtb
+	[load = 0x100000, destination_cpu = a53-0]/media/ubuntu/large/radio-zcu208/linux/images/linux/system.dtb
 	[destination_cpu = a53-0, exception_level = el-2]/media/ubuntu/large/radio-zcu208/u-boot.elf
 }
