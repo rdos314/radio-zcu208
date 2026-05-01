@@ -13,6 +13,7 @@ addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/resetps/src/libresetps.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/qspipsu/src/libqspipsu.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/ipipsu/src/libipipsu.a
+addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/intc/src/libintc.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/iicps/src/libiicps.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/gpiops/src/libgpiops.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_cortexa53_0/psu_cortexa53_0/bsp/libsrc/build_configs/gen_bsp/libsrc/gpio/src/libgpio.a

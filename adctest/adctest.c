@@ -429,6 +429,9 @@ int main()
     {
         a = (double)i * 10.0;
 
+        Xil_Out32(0xFF310000, 1);
+
+
     	LoadLowZero(46.0, 10.0);
 	    LoadLowMorlet(46.0, 20.0, 5000, a);
 //	    LoadLowCos(46.0, 30.0, 25000, 45.0);

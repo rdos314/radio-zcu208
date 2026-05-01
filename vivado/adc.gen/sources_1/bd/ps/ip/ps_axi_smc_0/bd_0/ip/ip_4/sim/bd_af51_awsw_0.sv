@@ -79,16 +79,16 @@ input wire aclken;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S00_SC SEND" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_SC, BRIDGES M00_SC:M01_SC:M02_SC:M03_SC:M04_SC:M05_SC:M06_SC:M07_SC:M08_SC:M09_SC:M10_SC:M11_SC:M12_SC:M13_SC:M14_SC:M15_SC" *)
-input wire [6 : 0] s_sc_send;
+input wire [7 : 0] s_sc_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S00_SC REQ" *)
-input wire [6 : 0] s_sc_req;
+input wire [7 : 0] s_sc_req;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S00_SC INFO" *)
-input wire [6 : 0] s_sc_info;
+input wire [7 : 0] s_sc_info;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S00_SC PAYLD" *)
-input wire [170 : 0] s_sc_payld;
+input wire [171 : 0] s_sc_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 S00_SC RECV" *)
-output wire [6 : 0] s_sc_recv;
-(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC RECV [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC RECV [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC RECV [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC RECV [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC RECV [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC RECV [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC RECV [0:0] [6:6]" *)
+output wire [7 : 0] s_sc_recv;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC RECV [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC RECV [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC RECV [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC RECV [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC RECV [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC RECV [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC RECV [0:0] [6:6], xilinx.com:interface:sc:1.0 M07_SC RECV [0:0] [7:7]" *)
 (* X_INTERFACE_MODE = "master M00_SC" *)
 (* X_INTERFACE_MODE = "master M01_SC" *)
 (* X_INTERFACE_MODE = "master M02_SC" *)
@@ -96,30 +96,31 @@ output wire [6 : 0] s_sc_recv;
 (* X_INTERFACE_MODE = "master M04_SC" *)
 (* X_INTERFACE_MODE = "master M05_SC" *)
 (* X_INTERFACE_MODE = "master M06_SC" *)
-input wire [6 : 0] m_sc_recv;
-(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC SEND [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC SEND [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC SEND [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC SEND [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC SEND [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC SEND [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC SEND [0:0] [6:6]" *)
-output wire [6 : 0] m_sc_send;
-(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC REQ [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC REQ [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC REQ [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC REQ [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC REQ [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC REQ [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC REQ [0:0] [6:6]" *)
-output wire [6 : 0] m_sc_req;
-(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC INFO [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC INFO [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC INFO [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC INFO [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC INFO [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC INFO [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC INFO [0:0] [6:6]" *)
-output wire [6 : 0] m_sc_info;
-(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC PAYLD [170:0] [170:0], xilinx.com:interface:sc:1.0 M01_SC PAYLD [170:0] [341:171], xilinx.com:interface:sc:1.0 M02_SC PAYLD [170:0] [512:342], xilinx.com:interface:sc:1.0 M03_SC PAYLD [170:0] [683:513], xilinx.com:interface:sc:1.0 M04_SC PAYLD [170:0] [854:684], xilinx.com:interface:sc:1.0 M05_SC PAYLD [170:0] [1025:855], xilinx.com:interface:sc:1.0 M06_SC PAYLD [170:0] [1196:1026]" *)
-output wire [1196 : 0] m_sc_payld;
+(* X_INTERFACE_MODE = "master M07_SC" *)
+input wire [7 : 0] m_sc_recv;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC SEND [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC SEND [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC SEND [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC SEND [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC SEND [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC SEND [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC SEND [0:0] [6:6], xilinx.com:interface:sc:1.0 M07_SC SEND [0:0] [7:7]" *)
+output wire [7 : 0] m_sc_send;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC REQ [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC REQ [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC REQ [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC REQ [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC REQ [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC REQ [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC REQ [0:0] [6:6], xilinx.com:interface:sc:1.0 M07_SC REQ [0:0] [7:7]" *)
+output wire [7 : 0] m_sc_req;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC INFO [0:0] [0:0], xilinx.com:interface:sc:1.0 M01_SC INFO [0:0] [1:1], xilinx.com:interface:sc:1.0 M02_SC INFO [0:0] [2:2], xilinx.com:interface:sc:1.0 M03_SC INFO [0:0] [3:3], xilinx.com:interface:sc:1.0 M04_SC INFO [0:0] [4:4], xilinx.com:interface:sc:1.0 M05_SC INFO [0:0] [5:5], xilinx.com:interface:sc:1.0 M06_SC INFO [0:0] [6:6], xilinx.com:interface:sc:1.0 M07_SC INFO [0:0] [7:7]" *)
+output wire [7 : 0] m_sc_info;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M00_SC PAYLD [171:0] [171:0], xilinx.com:interface:sc:1.0 M01_SC PAYLD [171:0] [343:172], xilinx.com:interface:sc:1.0 M02_SC PAYLD [171:0] [515:344], xilinx.com:interface:sc:1.0 M03_SC PAYLD [171:0] [687:516], xilinx.com:interface:sc:1.0 M04_SC PAYLD [171:0] [859:688], xilinx.com:interface:sc:1.0 M05_SC PAYLD [171:0] [1031:860], xilinx.com:interface:sc:1.0 M06_SC PAYLD [171:0] [1203:1032], xilinx.com:interface:sc:1.0 M07_SC PAYLD [171:0] [1375:1204]" *)
+output wire [1375 : 0] m_sc_payld;
 
   sc_switchboard_v1_0_8_top #(
-    .C_PAYLD_WIDTH(171),
+    .C_PAYLD_WIDTH(172),
     .K_MAX_INFO_WIDTH(1),
     .C_S_PIPELINES(0),
     .C_M_PIPELINES(1),
     .C_S_LATENCY(0),
     .C_NUM_SI(1),
-    .C_NUM_MI(7),
+    .C_NUM_MI(8),
     .C_TESTING_MODE(0),
-    .C_CONNECTIVITY(7'B1111111)
+    .C_CONNECTIVITY(8'B11111111)
   ) inst (
     .aclk(aclk),
     .aclken(aclken),
-    .connectivity(7'B1111111),
+    .connectivity(8'B11111111),
     .s_sc_send(s_sc_send),
     .s_sc_req(s_sc_req),
     .s_sc_info(s_sc_info),

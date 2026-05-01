@@ -73,7 +73,7 @@
     my_axidma {
         compatible = "my,axidma";
         interrupt-parent = <&gic>;
-        interrupts = <0 90 4>;
+        interrupts = <0 90 1>;
         memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
     };
 

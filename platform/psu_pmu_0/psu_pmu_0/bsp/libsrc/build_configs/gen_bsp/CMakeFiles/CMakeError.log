@@ -27,9 +27,9 @@ The CXX compiler identification could not be found in "/media/ubuntu/large/radio
 Determining if files xintc.h exist failed with the following output:
 Change Dir: /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/media/ubuntu/large/2025.1/Vitis/bin/ninja cmTC_f62a2 && [1/2] Building C object CMakeFiles/cmTC_f62a2.dir/HAS_XINTC.c.obj
-FAILED: CMakeFiles/cmTC_f62a2.dir/HAS_XINTC.c.obj 
-/media/ubuntu/large/2025.1/Vitis/gnu/microblaze/lin/bin/mb-gcc -DXLNX_PLATFORM -D__BAREMETAL__  -O2  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mxl-reorder -mxl-soft-mul -mxl-soft-div -O2 -pipe -g -feliminate-unused-debug-types -Os -flto -ffat-lto-objects -DPSU_PMU=1U -mcpu=v9.2 -DSDT  -MMD -MP -specs=/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/Xilinx.spec -I/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include -c -o CMakeFiles/cmTC_f62a2.dir/HAS_XINTC.c.obj -c /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/CMakeFiles/CheckIncludeFiles/HAS_XINTC.c
+Run Build Command(s):/media/ubuntu/large/2025.1/Vitis/bin/ninja cmTC_63926 && [1/2] Building C object CMakeFiles/cmTC_63926.dir/HAS_XINTC.c.obj
+FAILED: CMakeFiles/cmTC_63926.dir/HAS_XINTC.c.obj 
+/media/ubuntu/large/2025.1/Vitis/gnu/microblaze/lin/bin/mb-gcc -DXLNX_PLATFORM -D__BAREMETAL__  -O2  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mxl-reorder -mxl-soft-mul -mxl-soft-div -O2 -pipe -g -feliminate-unused-debug-types -Os -flto -ffat-lto-objects -DPSU_PMU=1U -mcpu=v9.2 -DSDT  -MMD -MP -specs=/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/Xilinx.spec -I/media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/include -c -o CMakeFiles/cmTC_63926.dir/HAS_XINTC.c.obj -c /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/CMakeFiles/CheckIncludeFiles/HAS_XINTC.c
 /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/CMakeFiles/CheckIncludeFiles/HAS_XINTC.c:2:10: fatal error: xintc.h: No such file or directory
     2 | #include <xintc.h>
       |          ^~~~~~~~~
