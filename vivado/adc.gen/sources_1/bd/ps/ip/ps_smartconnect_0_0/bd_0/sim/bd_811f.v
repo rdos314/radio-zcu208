@@ -120,7 +120,6 @@ module bd_811f
     S02_AXI_rresp,
     S02_AXI_rvalid,
     aclk,
-    aclk1,
     aresetn);
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARADDR" *) (* X_INTERFACE_MODE = "Master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, ADDR_WIDTH 32, ARUSER_WIDTH 16, AWUSER_WIDTH 16, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 256, FREQ_HZ 333250000, HAS_BRESP 1, HAS_BURST 1, HAS_CACHE 1, HAS_LOCK 1, HAS_PROT 1, HAS_QOS 1, HAS_REGION 0, HAS_RRESP 1, HAS_WSTRB 1, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 256, NUM_READ_OUTSTANDING 8, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 8, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE READ_WRITE, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) output [31:0]M00_AXI_araddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARBURST" *) output [1:0]M00_AXI_arburst;
@@ -233,7 +232,6 @@ module bd_811f
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RRESP" *) output [1:0]S02_AXI_rresp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RVALID" *) output S02_AXI_rvalid;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ACLK, ASSOCIATED_BUSIF M00_AXI:S00_AXI:S01_AXI:S02_AXI, ASSOCIATED_CLKEN m_sc_aclken, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.00" *) input aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ACLK1 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ACLK1, ASSOCIATED_CLKEN m_sc_aclken, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input aclk1;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.ARESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.ARESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input aresetn;
 
   wire [31:0]M00_AXI_araddr;
@@ -422,7 +420,6 @@ module bd_811f
   wire [2:0]S_SC_W_3_REQ;
   wire [2:0]S_SC_W_3_SEND;
   wire aclk;
-  wire aclk1;
   wire aclk_1;
   wire aclk_2;
   wire aclk_3;
@@ -635,7 +632,6 @@ module bd_811f
         .S02_ACLK(aclk_3),
         .S02_ARESETN(aresetn_4),
         .aclk(aclk),
-        .aclk1(aclk1),
         .aresetn(aresetn),
         .aresetn_out(aresetn_net),
         .swbd_aclk(swbd_aclk_net),
@@ -1347,7 +1343,6 @@ module clk_map_imp_OPD9AK
     S02_ACLK,
     S02_ARESETN,
     aclk,
-    aclk1,
     aresetn,
     aresetn_out,
     swbd_aclk,
@@ -1361,7 +1356,6 @@ module clk_map_imp_OPD9AK
   output S02_ACLK;
   output [0:0]S02_ARESETN;
   input aclk;
-  input aclk1;
   input aresetn;
   output aresetn_out;
   output swbd_aclk;

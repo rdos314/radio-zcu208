@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Wed Apr 15 22:57:11 2026
+-- Date        : Sat May  2 15:21:41 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_zynq_ultra_ps_e_0_0/ps_zynq_ultra_ps_e_0_0_stub.vhdl
@@ -55,6 +55,46 @@ entity ps_zynq_ultra_ps_e_0_0 is
     maxigp0_rready : out STD_LOGIC;
     maxigp0_awqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
     maxigp0_arqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    maxihpm1_fpd_aclk : in STD_LOGIC;
+    maxigp1_awid : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_awaddr : out STD_LOGIC_VECTOR ( 39 downto 0 );
+    maxigp1_awlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    maxigp1_awsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    maxigp1_awburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    maxigp1_awlock : out STD_LOGIC;
+    maxigp1_awcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    maxigp1_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    maxigp1_awvalid : out STD_LOGIC;
+    maxigp1_awuser : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_awready : in STD_LOGIC;
+    maxigp1_wdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    maxigp1_wstrb : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_wlast : out STD_LOGIC;
+    maxigp1_wvalid : out STD_LOGIC;
+    maxigp1_wready : in STD_LOGIC;
+    maxigp1_bid : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    maxigp1_bvalid : in STD_LOGIC;
+    maxigp1_bready : out STD_LOGIC;
+    maxigp1_arid : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_araddr : out STD_LOGIC_VECTOR ( 39 downto 0 );
+    maxigp1_arlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    maxigp1_arsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    maxigp1_arburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    maxigp1_arlock : out STD_LOGIC;
+    maxigp1_arcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    maxigp1_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    maxigp1_arvalid : out STD_LOGIC;
+    maxigp1_aruser : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_arready : in STD_LOGIC;
+    maxigp1_rid : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    maxigp1_rdata : in STD_LOGIC_VECTOR ( 127 downto 0 );
+    maxigp1_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    maxigp1_rlast : in STD_LOGIC;
+    maxigp1_rvalid : in STD_LOGIC;
+    maxigp1_rready : out STD_LOGIC;
+    maxigp1_awqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    maxigp1_arqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
     maxihpm0_lpd_aclk : in STD_LOGIC;
     maxigp2_awid : out STD_LOGIC_VECTOR ( 15 downto 0 );
     maxigp2_awaddr : out STD_LOGIC_VECTOR ( 39 downto 0 );
@@ -152,7 +192,7 @@ architecture stub of ps_zynq_ultra_ps_e_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "maxihpm0_fpd_aclk,maxigp0_awid[15:0],maxigp0_awaddr[39:0],maxigp0_awlen[7:0],maxigp0_awsize[2:0],maxigp0_awburst[1:0],maxigp0_awlock,maxigp0_awcache[3:0],maxigp0_awprot[2:0],maxigp0_awvalid,maxigp0_awuser[15:0],maxigp0_awready,maxigp0_wdata[127:0],maxigp0_wstrb[15:0],maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid[15:0],maxigp0_bresp[1:0],maxigp0_bvalid,maxigp0_bready,maxigp0_arid[15:0],maxigp0_araddr[39:0],maxigp0_arlen[7:0],maxigp0_arsize[2:0],maxigp0_arburst[1:0],maxigp0_arlock,maxigp0_arcache[3:0],maxigp0_arprot[2:0],maxigp0_arvalid,maxigp0_aruser[15:0],maxigp0_arready,maxigp0_rid[15:0],maxigp0_rdata[127:0],maxigp0_rresp[1:0],maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos[3:0],maxigp0_arqos[3:0],maxihpm0_lpd_aclk,maxigp2_awid[15:0],maxigp2_awaddr[39:0],maxigp2_awlen[7:0],maxigp2_awsize[2:0],maxigp2_awburst[1:0],maxigp2_awlock,maxigp2_awcache[3:0],maxigp2_awprot[2:0],maxigp2_awvalid,maxigp2_awuser[15:0],maxigp2_awready,maxigp2_wdata[31:0],maxigp2_wstrb[3:0],maxigp2_wlast,maxigp2_wvalid,maxigp2_wready,maxigp2_bid[15:0],maxigp2_bresp[1:0],maxigp2_bvalid,maxigp2_bready,maxigp2_arid[15:0],maxigp2_araddr[39:0],maxigp2_arlen[7:0],maxigp2_arsize[2:0],maxigp2_arburst[1:0],maxigp2_arlock,maxigp2_arcache[3:0],maxigp2_arprot[2:0],maxigp2_arvalid,maxigp2_aruser[15:0],maxigp2_arready,maxigp2_rid[15:0],maxigp2_rdata[31:0],maxigp2_rresp[1:0],maxigp2_rlast,maxigp2_rvalid,maxigp2_rready,maxigp2_awqos[3:0],maxigp2_arqos[3:0],saxihpc0_fpd_aclk,saxigp0_aruser,saxigp0_awuser,saxigp0_awid[5:0],saxigp0_awaddr[48:0],saxigp0_awlen[7:0],saxigp0_awsize[2:0],saxigp0_awburst[1:0],saxigp0_awlock,saxigp0_awcache[3:0],saxigp0_awprot[2:0],saxigp0_awvalid,saxigp0_awready,saxigp0_wdata[127:0],saxigp0_wstrb[15:0],saxigp0_wlast,saxigp0_wvalid,saxigp0_wready,saxigp0_bid[5:0],saxigp0_bresp[1:0],saxigp0_bvalid,saxigp0_bready,saxigp0_arid[5:0],saxigp0_araddr[48:0],saxigp0_arlen[7:0],saxigp0_arsize[2:0],saxigp0_arburst[1:0],saxigp0_arlock,saxigp0_arcache[3:0],saxigp0_arprot[2:0],saxigp0_arvalid,saxigp0_arready,saxigp0_rid[5:0],saxigp0_rdata[127:0],saxigp0_rresp[1:0],saxigp0_rlast,saxigp0_rvalid,saxigp0_rready,saxigp0_awqos[3:0],saxigp0_arqos[3:0],pl_ps_irq0[0:0],pl_resetn0,pl_clk0";
+  attribute black_box_pad_pin of stub : architecture is "maxihpm0_fpd_aclk,maxigp0_awid[15:0],maxigp0_awaddr[39:0],maxigp0_awlen[7:0],maxigp0_awsize[2:0],maxigp0_awburst[1:0],maxigp0_awlock,maxigp0_awcache[3:0],maxigp0_awprot[2:0],maxigp0_awvalid,maxigp0_awuser[15:0],maxigp0_awready,maxigp0_wdata[127:0],maxigp0_wstrb[15:0],maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid[15:0],maxigp0_bresp[1:0],maxigp0_bvalid,maxigp0_bready,maxigp0_arid[15:0],maxigp0_araddr[39:0],maxigp0_arlen[7:0],maxigp0_arsize[2:0],maxigp0_arburst[1:0],maxigp0_arlock,maxigp0_arcache[3:0],maxigp0_arprot[2:0],maxigp0_arvalid,maxigp0_aruser[15:0],maxigp0_arready,maxigp0_rid[15:0],maxigp0_rdata[127:0],maxigp0_rresp[1:0],maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos[3:0],maxigp0_arqos[3:0],maxihpm1_fpd_aclk,maxigp1_awid[15:0],maxigp1_awaddr[39:0],maxigp1_awlen[7:0],maxigp1_awsize[2:0],maxigp1_awburst[1:0],maxigp1_awlock,maxigp1_awcache[3:0],maxigp1_awprot[2:0],maxigp1_awvalid,maxigp1_awuser[15:0],maxigp1_awready,maxigp1_wdata[127:0],maxigp1_wstrb[15:0],maxigp1_wlast,maxigp1_wvalid,maxigp1_wready,maxigp1_bid[15:0],maxigp1_bresp[1:0],maxigp1_bvalid,maxigp1_bready,maxigp1_arid[15:0],maxigp1_araddr[39:0],maxigp1_arlen[7:0],maxigp1_arsize[2:0],maxigp1_arburst[1:0],maxigp1_arlock,maxigp1_arcache[3:0],maxigp1_arprot[2:0],maxigp1_arvalid,maxigp1_aruser[15:0],maxigp1_arready,maxigp1_rid[15:0],maxigp1_rdata[127:0],maxigp1_rresp[1:0],maxigp1_rlast,maxigp1_rvalid,maxigp1_rready,maxigp1_awqos[3:0],maxigp1_arqos[3:0],maxihpm0_lpd_aclk,maxigp2_awid[15:0],maxigp2_awaddr[39:0],maxigp2_awlen[7:0],maxigp2_awsize[2:0],maxigp2_awburst[1:0],maxigp2_awlock,maxigp2_awcache[3:0],maxigp2_awprot[2:0],maxigp2_awvalid,maxigp2_awuser[15:0],maxigp2_awready,maxigp2_wdata[31:0],maxigp2_wstrb[3:0],maxigp2_wlast,maxigp2_wvalid,maxigp2_wready,maxigp2_bid[15:0],maxigp2_bresp[1:0],maxigp2_bvalid,maxigp2_bready,maxigp2_arid[15:0],maxigp2_araddr[39:0],maxigp2_arlen[7:0],maxigp2_arsize[2:0],maxigp2_arburst[1:0],maxigp2_arlock,maxigp2_arcache[3:0],maxigp2_arprot[2:0],maxigp2_arvalid,maxigp2_aruser[15:0],maxigp2_arready,maxigp2_rid[15:0],maxigp2_rdata[31:0],maxigp2_rresp[1:0],maxigp2_rlast,maxigp2_rvalid,maxigp2_rready,maxigp2_awqos[3:0],maxigp2_arqos[3:0],saxihpc0_fpd_aclk,saxigp0_aruser,saxigp0_awuser,saxigp0_awid[5:0],saxigp0_awaddr[48:0],saxigp0_awlen[7:0],saxigp0_awsize[2:0],saxigp0_awburst[1:0],saxigp0_awlock,saxigp0_awcache[3:0],saxigp0_awprot[2:0],saxigp0_awvalid,saxigp0_awready,saxigp0_wdata[127:0],saxigp0_wstrb[15:0],saxigp0_wlast,saxigp0_wvalid,saxigp0_wready,saxigp0_bid[5:0],saxigp0_bresp[1:0],saxigp0_bvalid,saxigp0_bready,saxigp0_arid[5:0],saxigp0_araddr[48:0],saxigp0_arlen[7:0],saxigp0_arsize[2:0],saxigp0_arburst[1:0],saxigp0_arlock,saxigp0_arcache[3:0],saxigp0_arprot[2:0],saxigp0_arvalid,saxigp0_arready,saxigp0_rid[5:0],saxigp0_rdata[127:0],saxigp0_rresp[1:0],saxigp0_rlast,saxigp0_rvalid,saxigp0_rready,saxigp0_awqos[3:0],saxigp0_arqos[3:0],pl_ps_irq0[0:0],pl_resetn0,pl_clk0";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of maxihpm0_fpd_aclk : signal is "xilinx.com:signal:clock:1.0 M_AXI_HPM0_FPD_ACLK CLK";
   attribute X_INTERFACE_MODE : string;
@@ -200,6 +240,50 @@ architecture stub of ps_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_INFO of maxigp0_rready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD RREADY";
   attribute X_INTERFACE_INFO of maxigp0_awqos : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD AWQOS";
   attribute X_INTERFACE_INFO of maxigp0_arqos : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM0_FPD ARQOS";
+  attribute X_INTERFACE_INFO of maxihpm1_fpd_aclk : signal is "xilinx.com:signal:clock:1.0 M_AXI_HPM1_FPD_ACLK CLK";
+  attribute X_INTERFACE_MODE of maxihpm1_fpd_aclk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of maxihpm1_fpd_aclk : signal is "XIL_INTERFACENAME M_AXI_HPM1_FPD_ACLK, ASSOCIATED_BUSIF M_AXI_HPM1_FPD, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of maxigp1_awid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWID";
+  attribute X_INTERFACE_MODE of maxigp1_awid : signal is "master";
+  attribute X_INTERFACE_PARAMETER of maxigp1_awid : signal is "XIL_INTERFACENAME M_AXI_HPM1_FPD, NUM_WRITE_OUTSTANDING 8, NUM_READ_OUTSTANDING 8, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 16, ADDR_WIDTH 40, AWUSER_WIDTH 16, ARUSER_WIDTH 16, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 1, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of maxigp1_awaddr : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWADDR";
+  attribute X_INTERFACE_INFO of maxigp1_awlen : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWLEN";
+  attribute X_INTERFACE_INFO of maxigp1_awsize : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWSIZE";
+  attribute X_INTERFACE_INFO of maxigp1_awburst : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWBURST";
+  attribute X_INTERFACE_INFO of maxigp1_awlock : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWLOCK";
+  attribute X_INTERFACE_INFO of maxigp1_awcache : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWCACHE";
+  attribute X_INTERFACE_INFO of maxigp1_awprot : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWPROT";
+  attribute X_INTERFACE_INFO of maxigp1_awvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWVALID";
+  attribute X_INTERFACE_INFO of maxigp1_awuser : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWUSER";
+  attribute X_INTERFACE_INFO of maxigp1_awready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWREADY";
+  attribute X_INTERFACE_INFO of maxigp1_wdata : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD WDATA";
+  attribute X_INTERFACE_INFO of maxigp1_wstrb : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD WSTRB";
+  attribute X_INTERFACE_INFO of maxigp1_wlast : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD WLAST";
+  attribute X_INTERFACE_INFO of maxigp1_wvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD WVALID";
+  attribute X_INTERFACE_INFO of maxigp1_wready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD WREADY";
+  attribute X_INTERFACE_INFO of maxigp1_bid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD BID";
+  attribute X_INTERFACE_INFO of maxigp1_bresp : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD BRESP";
+  attribute X_INTERFACE_INFO of maxigp1_bvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD BVALID";
+  attribute X_INTERFACE_INFO of maxigp1_bready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD BREADY";
+  attribute X_INTERFACE_INFO of maxigp1_arid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARID";
+  attribute X_INTERFACE_INFO of maxigp1_araddr : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARADDR";
+  attribute X_INTERFACE_INFO of maxigp1_arlen : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARLEN";
+  attribute X_INTERFACE_INFO of maxigp1_arsize : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARSIZE";
+  attribute X_INTERFACE_INFO of maxigp1_arburst : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARBURST";
+  attribute X_INTERFACE_INFO of maxigp1_arlock : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARLOCK";
+  attribute X_INTERFACE_INFO of maxigp1_arcache : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARCACHE";
+  attribute X_INTERFACE_INFO of maxigp1_arprot : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARPROT";
+  attribute X_INTERFACE_INFO of maxigp1_arvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARVALID";
+  attribute X_INTERFACE_INFO of maxigp1_aruser : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARUSER";
+  attribute X_INTERFACE_INFO of maxigp1_arready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARREADY";
+  attribute X_INTERFACE_INFO of maxigp1_rid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RID";
+  attribute X_INTERFACE_INFO of maxigp1_rdata : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RDATA";
+  attribute X_INTERFACE_INFO of maxigp1_rresp : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RRESP";
+  attribute X_INTERFACE_INFO of maxigp1_rlast : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RLAST";
+  attribute X_INTERFACE_INFO of maxigp1_rvalid : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RVALID";
+  attribute X_INTERFACE_INFO of maxigp1_rready : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD RREADY";
+  attribute X_INTERFACE_INFO of maxigp1_awqos : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD AWQOS";
+  attribute X_INTERFACE_INFO of maxigp1_arqos : signal is "xilinx.com:interface:aximm:1.0 M_AXI_HPM1_FPD ARQOS";
   attribute X_INTERFACE_INFO of maxihpm0_lpd_aclk : signal is "xilinx.com:signal:clock:1.0 M_AXI_HPM0_LPD_ACLK CLK";
   attribute X_INTERFACE_MODE of maxihpm0_lpd_aclk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of maxihpm0_lpd_aclk : signal is "XIL_INTERFACENAME M_AXI_HPM0_LPD_ACLK, ASSOCIATED_BUSIF M_AXI_HPM0_LPD, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
@@ -249,7 +333,7 @@ architecture stub of ps_zynq_ultra_ps_e_0_0 is
   attribute X_INTERFACE_PARAMETER of saxihpc0_fpd_aclk : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD_ACLK, ASSOCIATED_BUSIF S_AXI_HPC0_FPD, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp0_aruser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD ARUSER";
   attribute X_INTERFACE_MODE of saxigp0_aruser : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of saxigp0_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of saxigp0_aruser : signal is "XIL_INTERFACENAME S_AXI_HPC0_FPD, NUM_WRITE_OUTSTANDING 16, NUM_READ_OUTSTANDING 16, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 6, ADDR_WIDTH 49, AWUSER_WIDTH 1, ARUSER_WIDTH 1, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, MAX_BURST_LENGTH 32, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of saxigp0_awuser : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWUSER";
   attribute X_INTERFACE_INFO of saxigp0_awid : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWID";
   attribute X_INTERFACE_INFO of saxigp0_awaddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI_HPC0_FPD AWADDR";

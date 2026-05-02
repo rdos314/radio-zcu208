@@ -64,10 +64,6 @@
 			no-map;
 		};
 
-        r5_ptr_reserved: ptr@78000000 {
-            reg = <0x0 0x78000000 0x0 0x00001000>;
-            no-map;
-        };
 	};
 
 
@@ -75,13 +71,12 @@
 	my_axidma {
         	compatible = "my,axidma";
  	       	interrupt-parent = <&gic>;
- 	       	interrupts = <0 89 4>;
- 	       	memory-region = <&r5_dma_reserved>, <&r5_ptr_reserved>;
+ 	       	interrupts = <0 89 1>;
+ 	       	memory-region = <&r5_dma_reserved>;
 	};
 
 
 };
-
 
 
 &gpio {

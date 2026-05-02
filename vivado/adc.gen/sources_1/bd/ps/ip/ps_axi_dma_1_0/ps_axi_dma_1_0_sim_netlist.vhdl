@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Apr 21 22:55:13 2026
+-- Date        : Sat May  2 15:27:56 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.vhdl
@@ -9314,21 +9314,24 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_axi_dma_1_0_axi_dma is
   port (
-    lpd_clk : in STD_LOGIC;
-    lpd_resetn : in STD_LOGIC;
-    spy_wr : in STD_LOGIC;
-    spy_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    avail_size : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
-    wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    M_AXI_TDATA_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
-    M_AXI_TVALID_cmd : out STD_LOGIC;
-    M_AXI_TREADY_cmd : in STD_LOGIC;
-    M_AXI_STS_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    M_AXI_STS_tvalid : in STD_LOGIC;
-    M_AXI_STS_tready : out STD_LOGIC;
+    mig_rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
+    mig_wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
+    linux_rd_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_wr_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_TDATA_in_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
+    M_AXI_TVALID_in_cmd : out STD_LOGIC;
+    M_AXI_TREADY_in_cmd : in STD_LOGIC;
+    M_AXI_STS_in_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    M_AXI_STS_in_tvalid : in STD_LOGIC;
+    M_AXI_STS_in_tready : out STD_LOGIC;
+    M_AXI_TDATA_out_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
+    M_AXI_TVALID_out_cmd : out STD_LOGIC;
+    M_AXI_TREADY_out_cmd : in STD_LOGIC;
+    M_AXI_STS_out_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    M_AXI_STS_out_tvalid : in STD_LOGIC;
+    M_AXI_STS_out_tready : out STD_LOGIC;
     M_AXI_TDATA_in : in STD_LOGIC_VECTOR ( 255 downto 0 );
     M_AXI_TVALID_in : in STD_LOGIC;
     M_AXI_TREADY_in : out STD_LOGIC;
@@ -9350,31 +9353,6 @@ entity ps_axi_dma_1_0_axi_dma is
 end ps_axi_dma_1_0_axi_dma;
 
 architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
-  component ps_axi_dma_1_0_fifo_ptr is
-  port (
-    wr_clk : in STD_LOGIC;
-    rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    wr_en : in STD_LOGIC;
-    rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    full : out STD_LOGIC;
-    empty : out STD_LOGIC
-  );
-  end component ps_axi_dma_1_0_fifo_ptr;
-  component ps_axi_dma_1_0_fifo_spy is
-  port (
-    rst : in STD_LOGIC;
-    wr_clk : in STD_LOGIC;
-    rd_clk : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    wr_en : in STD_LOGIC;
-    rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    full : out STD_LOGIC;
-    empty : out STD_LOGIC
-  );
-  end component ps_axi_dma_1_0_fifo_spy;
   component ps_axi_dma_1_0_ila_7 is
   port (
     clk : in STD_LOGIC;
@@ -9392,27 +9370,19 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   );
   end component ps_axi_dma_1_0_ila_7;
   signal \<const0>\ : STD_LOGIC;
-  signal \^m_axi_sts_tready\ : STD_LOGIC;
-  signal \^m_axi_tdata_cmd\ : STD_LOGIC_VECTOR ( 67 downto 5 );
+  signal \^m_axi_sts_in_tready\ : STD_LOGIC;
+  signal \^m_axi_tdata_in_cmd\ : STD_LOGIC_VECTOR ( 67 downto 5 );
   signal \^m_axi_tlast_out\ : STD_LOGIC;
-  signal \^m_axi_tvalid_cmd\ : STD_LOGIC;
+  signal M_AXI_TLAST_out2_out : STD_LOGIC;
+  signal \^m_axi_tvalid_in_cmd\ : STD_LOGIC;
   signal adr : STD_LOGIC_VECTOR ( 26 downto 0 );
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of adr : signal is std.standard.true;
-  signal \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_10_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_11_n_0\ : STD_LOGIC;
+  signal \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.M_AXI_TLAST_out_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_2_n_0\ : STD_LOGIC;
   signal \axi_dma.M_AXI_TLAST_out_i_3_n_0\ : STD_LOGIC;
   signal \axi_dma.M_AXI_TLAST_out_i_4_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_5_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_6_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_7_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_8_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TLAST_out_i_9_n_0\ : STD_LOGIC;
-  signal \axi_dma.M_AXI_TVALID_cmd_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.avail_size[31]_i_1_n_0\ : STD_LOGIC;
+  signal \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.blocks[0]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.blocks[1]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.blocks[2]_i_1_n_0\ : STD_LOGIC;
@@ -9449,75 +9419,7 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   signal \axi_dma.curr_beat_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal \axi_dma.dma_active_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.dma_active_reg_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[0]_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_3_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_4_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_5_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_6_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[13]_i_7_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_10_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_2_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_3_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_4_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_5_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_6_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_7_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_8_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count[8]_i_9_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg\ : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal \axi_dma.fifo_count_reg[13]_i_2_n_4\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[13]_i_2_n_5\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[13]_i_2_n_6\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[13]_i_2_n_7\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_2\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_3\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_4\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_5\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_6\ : STD_LOGIC;
-  signal \axi_dma.fifo_count_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal \axi_dma.has_mig_size_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[13]_i_3_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[13]_i_4_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[13]_i_5_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[13]_i_6_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[13]_i_7_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_2_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_3_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_4_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_5_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_6_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_7_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_8_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat[8]_i_9_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[13]_i_2_n_4\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[13]_i_2_n_5\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[13]_i_2_n_6\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[13]_i_2_n_7\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_1\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_2\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_3\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_4\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_5\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_6\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg[8]_i_1_n_7\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[0]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[10]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[11]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[12]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[13]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[1]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[2]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[3]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[4]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[5]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[6]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[7]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[8]\ : STD_LOGIC;
-  signal \axi_dma.last_beat_reg_n_0_[9]\ : STD_LOGIC;
   signal \axi_dma.mig_blocks[15]_i_2_n_0\ : STD_LOGIC;
   signal \axi_dma.mig_blocks[15]_i_3_n_0\ : STD_LOGIC;
   signal \axi_dma.mig_blocks[15]_i_4_n_0\ : STD_LOGIC;
@@ -9611,9 +9513,7 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   signal \axi_dma.mig_size[6]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.mig_size[7]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.mig_size[7]_i_2_n_0\ : STD_LOGIC;
-  signal \axi_dma.r5_cmd_rd_i_1_n_0\ : STD_LOGIC;
-  signal \axi_dma.r5_cmd_rd_reg_n_0\ : STD_LOGIC;
-  signal \axi_dma.spy_reset_i_1_n_0\ : STD_LOGIC;
+  signal \axi_dma.reset_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.start_cmd_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.tag[0]_i_1_n_0\ : STD_LOGIC;
   signal \axi_dma.tag[1]_i_1_n_0\ : STD_LOGIC;
@@ -9621,7 +9521,6 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   signal \axi_dma.tag[3]_i_1_n_0\ : STD_LOGIC;
   signal blocks : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of blocks : signal is std.standard.true;
-  signal clear : STD_LOGIC;
   signal cmd_done : STD_LOGIC;
   attribute MARK_DEBUG of cmd_done : signal is std.standard.true;
   signal cmd_done0 : STD_LOGIC;
@@ -9630,19 +9529,12 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   signal cmd_state : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of cmd_state : signal is std.standard.true;
   signal curr_beat : STD_LOGIC;
-  signal fifo_chg : STD_LOGIC;
-  signal fifo_count : STD_LOGIC_VECTOR ( 13 downto 1 );
   signal fifo_empty : STD_LOGIC;
   signal fifo_rd_en : STD_LOGIC;
-  signal fifo_size_empty : STD_LOGIC;
-  signal fifo_size_out_data : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal fifo_size_rd : STD_LOGIC;
   signal has_mig_size : STD_LOGIC;
   attribute MARK_DEBUG of has_mig_size : signal is std.standard.true;
   signal in_data : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal in_wr : STD_LOGIC;
-  signal last_beat : STD_LOGIC;
-  signal last_beat0 : STD_LOGIC_VECTOR ( 13 downto 0 );
   signal mig_blocks : STD_LOGIC_VECTOR ( 26 downto 0 );
   attribute MARK_DEBUG of mig_blocks : signal is std.standard.true;
   signal mig_diff : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -9651,20 +9543,13 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   attribute MARK_DEBUG of mig_size : signal is std.standard.true;
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \p_0_in__1\ : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal r5_cmd_data : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal r5_cmd_empty : STD_LOGIC;
   signal reset : STD_LOGIC;
-  signal spy_reset : STD_LOGIC;
   signal start_cmd : STD_LOGIC;
   attribute MARK_DEBUG of start_cmd : signal is std.standard.true;
   signal tag : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of tag : signal is std.standard.true;
   signal \NLW_axi_dma.curr_beat_reg[13]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal \NLW_axi_dma.curr_beat_reg[13]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
-  signal \NLW_axi_dma.fifo_count_reg[13]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_axi_dma.fifo_count_reg[13]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
-  signal \NLW_axi_dma.last_beat_reg[13]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal \NLW_axi_dma.last_beat_reg[13]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal \NLW_axi_dma.mig_blocks_reg[26]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 2 );
   signal \NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 3 );
   signal NLW_fifo_i_almost_empty_UNCONNECTED : STD_LOGIC;
@@ -9682,13 +9567,8 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   signal NLW_fifo_i_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_i_rd_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_fifo_i_wr_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_fifo_size_ptr_i_full_UNCONNECTED : STD_LOGIC;
-  signal NLW_fifo_spy_i_full_UNCONNECTED : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of M_AXI_TVALID_out_INST_0 : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \axi_dma.M_AXI_TLAST_out_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \axi_dma.M_AXI_TLAST_out_i_7\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \axi_dma.M_AXI_TLAST_out_i_9\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \axi_dma.M_AXI_TLAST_out_i_2\ : label is "soft_lutpair17";
   attribute KEEP : string;
   attribute KEEP of \axi_dma.adr_reg[0]\ : label is "yes";
   attribute mark_debug_string : string;
@@ -9774,18 +9654,12 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   attribute FSM_ENCODED_STATES of \axi_dma.cmd_state_reg[2]\ : label is "CMD_ST_IDLE:000,CMD_ST_WAIT_HDR:001,CMD_ST_WAIT_DONE:010,CMD_ST_WAIT_SPACE:011";
   attribute KEEP of \axi_dma.cmd_state_reg[2]\ : label is "yes";
   attribute mark_debug_string of \axi_dma.cmd_state_reg[2]\ : label is "yes";
+  attribute SOFT_HLUTNM of \axi_dma.curr_beat[0]_i_1\ : label is "soft_lutpair17";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \axi_dma.curr_beat_reg[13]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \axi_dma.curr_beat_reg[8]_i_1\ : label is 35;
-  attribute ADDER_THRESHOLD of \axi_dma.fifo_count_reg[13]_i_2\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS : string;
-  attribute METHODOLOGY_DRC_VIOS of \axi_dma.fifo_count_reg[13]_i_2\ : label is "{SYNTH-8 {cell *THIS*}}";
-  attribute ADDER_THRESHOLD of \axi_dma.fifo_count_reg[8]_i_1\ : label is 35;
-  attribute METHODOLOGY_DRC_VIOS of \axi_dma.fifo_count_reg[8]_i_1\ : label is "{SYNTH-8 {cell *THIS*}}";
+  attribute SOFT_HLUTNM of \axi_dma.dma_active_i_1\ : label is "soft_lutpair18";
   attribute KEEP of \axi_dma.has_mig_size_reg\ : label is "yes";
-  attribute SOFT_HLUTNM of \axi_dma.last_beat[0]_i_1\ : label is "soft_lutpair19";
-  attribute ADDER_THRESHOLD of \axi_dma.last_beat_reg[13]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \axi_dma.last_beat_reg[8]_i_1\ : label is 35;
   attribute KEEP of \axi_dma.mig_blocks_reg[0]\ : label is "yes";
   attribute KEEP of \axi_dma.mig_blocks_reg[10]\ : label is "yes";
   attribute KEEP of \axi_dma.mig_blocks_reg[11]\ : label is "yes";
@@ -9841,7 +9715,6 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   attribute KEEP of \axi_dma.mig_size_reg[5]\ : label is "yes";
   attribute KEEP of \axi_dma.mig_size_reg[6]\ : label is "yes";
   attribute KEEP of \axi_dma.mig_size_reg[7]\ : label is "yes";
-  attribute SOFT_HLUTNM of \axi_dma.r5_cmd_rd_i_1\ : label is "soft_lutpair17";
   attribute KEEP of \axi_dma.start_cmd_reg\ : label is "yes";
   attribute mark_debug_string of \axi_dma.start_cmd_reg\ : label is "yes";
   attribute KEEP of \axi_dma.tag_reg[0]\ : label is "yes";
@@ -9902,85 +9775,186 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
   attribute WR_DATA_COUNT_WIDTH of fifo_i : label is 1;
   attribute XPM_MODULE : string;
   attribute XPM_MODULE of fifo_i : label is "TRUE";
+  attribute SOFT_HLUTNM of fifo_i_i_1 : label is "soft_lutpair18";
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fifo_size_ptr_i : label is "fifo_ptr,fifo_generator_v13_2_13,{}";
-  attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of fifo_size_ptr_i : label is "yes";
-  attribute x_core_info : string;
-  attribute x_core_info of fifo_size_ptr_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
-  attribute CHECK_LICENSE_TYPE of fifo_spy_i : label is "fifo_spy,fifo_generator_v13_2_13,{}";
-  attribute downgradeipidentifiedwarnings of fifo_spy_i : label is "yes";
-  attribute x_core_info of fifo_spy_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_7,ila,{}";
-  attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
-  attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
+  attribute DowngradeIPIdentifiedWarnings : string;
+  attribute DowngradeIPIdentifiedWarnings of ila_i : label is "yes";
+  attribute X_CORE_INFO : string;
+  attribute X_CORE_INFO of ila_i : label is "ila,Vivado 2025.1";
 begin
-  M_AXI_STS_tready <= \^m_axi_sts_tready\;
-  M_AXI_TDATA_cmd(71) <= \<const0>\;
-  M_AXI_TDATA_cmd(70) <= \<const0>\;
-  M_AXI_TDATA_cmd(69) <= \<const0>\;
-  M_AXI_TDATA_cmd(68) <= \<const0>\;
-  M_AXI_TDATA_cmd(67 downto 37) <= \^m_axi_tdata_cmd\(67 downto 37);
-  M_AXI_TDATA_cmd(36) <= \<const0>\;
-  M_AXI_TDATA_cmd(35) <= \<const0>\;
-  M_AXI_TDATA_cmd(34) <= \<const0>\;
-  M_AXI_TDATA_cmd(33) <= \<const0>\;
-  M_AXI_TDATA_cmd(32) <= \<const0>\;
-  M_AXI_TDATA_cmd(31) <= \<const0>\;
-  M_AXI_TDATA_cmd(30) <= \<const0>\;
-  M_AXI_TDATA_cmd(29) <= \<const0>\;
-  M_AXI_TDATA_cmd(28) <= \<const0>\;
-  M_AXI_TDATA_cmd(27) <= \<const0>\;
-  M_AXI_TDATA_cmd(26) <= \<const0>\;
-  M_AXI_TDATA_cmd(25) <= \<const0>\;
-  M_AXI_TDATA_cmd(24) <= \<const0>\;
-  M_AXI_TDATA_cmd(23) <= \<const0>\;
-  M_AXI_TDATA_cmd(22) <= \<const0>\;
-  M_AXI_TDATA_cmd(21) <= \<const0>\;
-  M_AXI_TDATA_cmd(20) <= \<const0>\;
-  M_AXI_TDATA_cmd(19) <= \<const0>\;
-  M_AXI_TDATA_cmd(18) <= \<const0>\;
-  M_AXI_TDATA_cmd(17) <= \<const0>\;
-  M_AXI_TDATA_cmd(16) <= \<const0>\;
-  M_AXI_TDATA_cmd(15) <= \<const0>\;
-  M_AXI_TDATA_cmd(14) <= \<const0>\;
-  M_AXI_TDATA_cmd(13) <= \<const0>\;
-  M_AXI_TDATA_cmd(12 downto 5) <= \^m_axi_tdata_cmd\(12 downto 5);
-  M_AXI_TDATA_cmd(4) <= \<const0>\;
-  M_AXI_TDATA_cmd(3) <= \<const0>\;
-  M_AXI_TDATA_cmd(2) <= \<const0>\;
-  M_AXI_TDATA_cmd(1) <= \<const0>\;
-  M_AXI_TDATA_cmd(0) <= \<const0>\;
+  M_AXI_STS_in_tready <= \^m_axi_sts_in_tready\;
+  M_AXI_STS_out_tready <= \<const0>\;
+  M_AXI_TDATA_in_cmd(71) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(70) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(69) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(68) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(67 downto 37) <= \^m_axi_tdata_in_cmd\(67 downto 37);
+  M_AXI_TDATA_in_cmd(36) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(35) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(34) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(33) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(32) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(31) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(30) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(29) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(28) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(27) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(26) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(25) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(24) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(23) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(22) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(21) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(20) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(19) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(18) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(17) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(16) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(15) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(14) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(13) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(12 downto 5) <= \^m_axi_tdata_in_cmd\(12 downto 5);
+  M_AXI_TDATA_in_cmd(4) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(3) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(2) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(1) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(0) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(71) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(70) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(69) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(68) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(67) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(66) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(65) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(64) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(63) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(62) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(61) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(60) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(59) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(58) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(57) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(56) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(55) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(54) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(53) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(52) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(51) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(50) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(49) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(48) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(47) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(46) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(45) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(44) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(43) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(42) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(41) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(40) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(39) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(38) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(37) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(36) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(35) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(34) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(33) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(32) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(31) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(30) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(29) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(28) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(27) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(26) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(25) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(24) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(23) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(22) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(21) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(20) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(19) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(18) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(17) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(16) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(15) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(14) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(13) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(12) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(11) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(10) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(9) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(8) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(7) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(6) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(5) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(4) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(3) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(2) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(1) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(0) <= \<const0>\;
   M_AXI_TLAST_out <= \^m_axi_tlast_out\;
   M_AXI_TREADY_in <= \<const0>\;
-  M_AXI_TVALID_cmd <= \^m_axi_tvalid_cmd\;
-  rd_ptr(26) <= \<const0>\;
-  rd_ptr(25) <= \<const0>\;
-  rd_ptr(24) <= \<const0>\;
-  rd_ptr(23) <= \<const0>\;
-  rd_ptr(22) <= \<const0>\;
-  rd_ptr(21) <= \<const0>\;
-  rd_ptr(20) <= \<const0>\;
-  rd_ptr(19) <= \<const0>\;
-  rd_ptr(18) <= \<const0>\;
-  rd_ptr(17) <= \<const0>\;
-  rd_ptr(16) <= \<const0>\;
-  rd_ptr(15) <= \<const0>\;
-  rd_ptr(14) <= \<const0>\;
-  rd_ptr(13) <= \<const0>\;
-  rd_ptr(12) <= \<const0>\;
-  rd_ptr(11) <= \<const0>\;
-  rd_ptr(10) <= \<const0>\;
-  rd_ptr(9) <= \<const0>\;
-  rd_ptr(8) <= \<const0>\;
-  rd_ptr(7) <= \<const0>\;
-  rd_ptr(6) <= \<const0>\;
-  rd_ptr(5) <= \<const0>\;
-  rd_ptr(4) <= \<const0>\;
-  rd_ptr(3) <= \<const0>\;
-  rd_ptr(2) <= \<const0>\;
-  rd_ptr(1) <= \<const0>\;
-  rd_ptr(0) <= \<const0>\;
+  M_AXI_TVALID_in_cmd <= \^m_axi_tvalid_in_cmd\;
+  M_AXI_TVALID_out_cmd <= \<const0>\;
+  linux_rd_ptr(31) <= \<const0>\;
+  linux_rd_ptr(30) <= \<const0>\;
+  linux_rd_ptr(29) <= \<const0>\;
+  linux_rd_ptr(28) <= \<const0>\;
+  linux_rd_ptr(27) <= \<const0>\;
+  linux_rd_ptr(26) <= \<const0>\;
+  linux_rd_ptr(25) <= \<const0>\;
+  linux_rd_ptr(24) <= \<const0>\;
+  linux_rd_ptr(23) <= \<const0>\;
+  linux_rd_ptr(22) <= \<const0>\;
+  linux_rd_ptr(21) <= \<const0>\;
+  linux_rd_ptr(20) <= \<const0>\;
+  linux_rd_ptr(19) <= \<const0>\;
+  linux_rd_ptr(18) <= \<const0>\;
+  linux_rd_ptr(17) <= \<const0>\;
+  linux_rd_ptr(16) <= \<const0>\;
+  linux_rd_ptr(15) <= \<const0>\;
+  linux_rd_ptr(14) <= \<const0>\;
+  linux_rd_ptr(13) <= \<const0>\;
+  linux_rd_ptr(12) <= \<const0>\;
+  linux_rd_ptr(11) <= \<const0>\;
+  linux_rd_ptr(10) <= \<const0>\;
+  linux_rd_ptr(9) <= \<const0>\;
+  linux_rd_ptr(8) <= \<const0>\;
+  linux_rd_ptr(7) <= \<const0>\;
+  linux_rd_ptr(6) <= \<const0>\;
+  linux_rd_ptr(5) <= \<const0>\;
+  linux_rd_ptr(4) <= \<const0>\;
+  linux_rd_ptr(3) <= \<const0>\;
+  linux_rd_ptr(2) <= \<const0>\;
+  linux_rd_ptr(1) <= \<const0>\;
+  linux_rd_ptr(0) <= \<const0>\;
+  mig_rd_ptr(26) <= \<const0>\;
+  mig_rd_ptr(25) <= \<const0>\;
+  mig_rd_ptr(24) <= \<const0>\;
+  mig_rd_ptr(23) <= \<const0>\;
+  mig_rd_ptr(22) <= \<const0>\;
+  mig_rd_ptr(21) <= \<const0>\;
+  mig_rd_ptr(20) <= \<const0>\;
+  mig_rd_ptr(19) <= \<const0>\;
+  mig_rd_ptr(18) <= \<const0>\;
+  mig_rd_ptr(17) <= \<const0>\;
+  mig_rd_ptr(16) <= \<const0>\;
+  mig_rd_ptr(15) <= \<const0>\;
+  mig_rd_ptr(14) <= \<const0>\;
+  mig_rd_ptr(13) <= \<const0>\;
+  mig_rd_ptr(12) <= \<const0>\;
+  mig_rd_ptr(11) <= \<const0>\;
+  mig_rd_ptr(10) <= \<const0>\;
+  mig_rd_ptr(9) <= \<const0>\;
+  mig_rd_ptr(8) <= \<const0>\;
+  mig_rd_ptr(7) <= \<const0>\;
+  mig_rd_ptr(6) <= \<const0>\;
+  mig_rd_ptr(5) <= \<const0>\;
+  mig_rd_ptr(4) <= \<const0>\;
+  mig_rd_ptr(3) <= \<const0>\;
+  mig_rd_ptr(2) <= \<const0>\;
+  mig_rd_ptr(1) <= \<const0>\;
+  mig_rd_ptr(0) <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -9994,473 +9968,385 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       I1 => fifo_empty,
       O => M_AXI_TVALID_out
     );
-\axi_dma.M_AXI_STS_tready_reg\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_STS_in_tready_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => '1',
-      Q => \^m_axi_sts_tready\,
+      Q => \^m_axi_sts_in_tready\,
       R => reset
     );
-\axi_dma.M_AXI_TDATA_cmd[67]_i_1\: unisim.vcomponents.LUT2
+\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => start_cmd,
-      I1 => \^m_axi_tvalid_cmd\,
-      O => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\
+      I1 => \^m_axi_tvalid_in_cmd\,
+      O => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[10]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(5),
-      Q => \^m_axi_tdata_cmd\(10),
+      Q => \^m_axi_tdata_in_cmd\(10),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[11]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(6),
-      Q => \^m_axi_tdata_cmd\(11),
+      Q => \^m_axi_tdata_in_cmd\(11),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[12]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(7),
-      Q => \^m_axi_tdata_cmd\(12),
+      Q => \^m_axi_tdata_in_cmd\(12),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[37]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[37]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(0),
-      Q => \^m_axi_tdata_cmd\(37),
+      Q => \^m_axi_tdata_in_cmd\(37),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[38]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[38]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(1),
-      Q => \^m_axi_tdata_cmd\(38),
+      Q => \^m_axi_tdata_in_cmd\(38),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[39]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[39]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(2),
-      Q => \^m_axi_tdata_cmd\(39),
+      Q => \^m_axi_tdata_in_cmd\(39),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[40]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[40]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(3),
-      Q => \^m_axi_tdata_cmd\(40),
+      Q => \^m_axi_tdata_in_cmd\(40),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[41]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[41]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(4),
-      Q => \^m_axi_tdata_cmd\(41),
+      Q => \^m_axi_tdata_in_cmd\(41),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[42]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[42]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(5),
-      Q => \^m_axi_tdata_cmd\(42),
+      Q => \^m_axi_tdata_in_cmd\(42),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[43]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[43]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(6),
-      Q => \^m_axi_tdata_cmd\(43),
+      Q => \^m_axi_tdata_in_cmd\(43),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[44]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[44]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(7),
-      Q => \^m_axi_tdata_cmd\(44),
+      Q => \^m_axi_tdata_in_cmd\(44),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[45]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[45]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(8),
-      Q => \^m_axi_tdata_cmd\(45),
+      Q => \^m_axi_tdata_in_cmd\(45),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[46]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[46]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(9),
-      Q => \^m_axi_tdata_cmd\(46),
+      Q => \^m_axi_tdata_in_cmd\(46),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[47]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[47]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(10),
-      Q => \^m_axi_tdata_cmd\(47),
+      Q => \^m_axi_tdata_in_cmd\(47),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[48]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[48]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(11),
-      Q => \^m_axi_tdata_cmd\(48),
+      Q => \^m_axi_tdata_in_cmd\(48),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[49]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[49]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(12),
-      Q => \^m_axi_tdata_cmd\(49),
+      Q => \^m_axi_tdata_in_cmd\(49),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[50]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[50]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(13),
-      Q => \^m_axi_tdata_cmd\(50),
+      Q => \^m_axi_tdata_in_cmd\(50),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[51]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[51]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(14),
-      Q => \^m_axi_tdata_cmd\(51),
+      Q => \^m_axi_tdata_in_cmd\(51),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[52]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[52]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(15),
-      Q => \^m_axi_tdata_cmd\(52),
+      Q => \^m_axi_tdata_in_cmd\(52),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[53]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[53]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(16),
-      Q => \^m_axi_tdata_cmd\(53),
+      Q => \^m_axi_tdata_in_cmd\(53),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[54]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[54]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(17),
-      Q => \^m_axi_tdata_cmd\(54),
+      Q => \^m_axi_tdata_in_cmd\(54),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[55]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[55]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(18),
-      Q => \^m_axi_tdata_cmd\(55),
+      Q => \^m_axi_tdata_in_cmd\(55),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[56]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[56]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(19),
-      Q => \^m_axi_tdata_cmd\(56),
+      Q => \^m_axi_tdata_in_cmd\(56),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[57]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[57]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(20),
-      Q => \^m_axi_tdata_cmd\(57),
+      Q => \^m_axi_tdata_in_cmd\(57),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[58]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[58]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(21),
-      Q => \^m_axi_tdata_cmd\(58),
+      Q => \^m_axi_tdata_in_cmd\(58),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[59]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[59]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(22),
-      Q => \^m_axi_tdata_cmd\(59),
+      Q => \^m_axi_tdata_in_cmd\(59),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[5]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(0),
-      Q => \^m_axi_tdata_cmd\(5),
+      Q => \^m_axi_tdata_in_cmd\(5),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[60]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[60]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(23),
-      Q => \^m_axi_tdata_cmd\(60),
+      Q => \^m_axi_tdata_in_cmd\(60),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[61]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[61]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(24),
-      Q => \^m_axi_tdata_cmd\(61),
+      Q => \^m_axi_tdata_in_cmd\(61),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[62]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[62]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(25),
-      Q => \^m_axi_tdata_cmd\(62),
+      Q => \^m_axi_tdata_in_cmd\(62),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[63]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[63]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => adr(26),
-      Q => \^m_axi_tdata_cmd\(63),
+      Q => \^m_axi_tdata_in_cmd\(63),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[64]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[64]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => tag(0),
-      Q => \^m_axi_tdata_cmd\(64),
+      Q => \^m_axi_tdata_in_cmd\(64),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[65]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[65]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => tag(1),
-      Q => \^m_axi_tdata_cmd\(65),
+      Q => \^m_axi_tdata_in_cmd\(65),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[66]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[66]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => tag(2),
-      Q => \^m_axi_tdata_cmd\(66),
+      Q => \^m_axi_tdata_in_cmd\(66),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[67]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[67]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => tag(3),
-      Q => \^m_axi_tdata_cmd\(67),
+      Q => \^m_axi_tdata_in_cmd\(67),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[6]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(1),
-      Q => \^m_axi_tdata_cmd\(6),
+      Q => \^m_axi_tdata_in_cmd\(6),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[7]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(2),
-      Q => \^m_axi_tdata_cmd\(7),
+      Q => \^m_axi_tdata_in_cmd\(7),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[8]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(3),
-      Q => \^m_axi_tdata_cmd\(8),
+      Q => \^m_axi_tdata_in_cmd\(8),
       R => '0'
     );
-\axi_dma.M_AXI_TDATA_cmd_reg[9]\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TDATA_in_cmd_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0\,
+      CE => \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0\,
       D => blocks(4),
-      Q => \^m_axi_tdata_cmd\(9),
+      Q => \^m_axi_tdata_in_cmd\(9),
       R => '0'
     );
-\axi_dma.M_AXI_TLAST_out_i_1\: unisim.vcomponents.LUT5
+\axi_dma.M_AXI_TLAST_out_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AABAAAAA"
+      INIT => X"FB00000008000000"
     )
         port map (
-      I0 => \axi_dma.M_AXI_TLAST_out_i_2_n_0\,
-      I1 => r5_cmd_empty,
-      I2 => \axi_dma.M_AXI_TLAST_out_i_3_n_0\,
+      I0 => M_AXI_TLAST_out2_out,
+      I1 => M_AXI_TREADY_out,
+      I2 => fifo_empty,
       I3 => \axi_dma.dma_active_reg_n_0\,
       I4 => resetn,
+      I5 => \^m_axi_tlast_out\,
       O => \axi_dma.M_AXI_TLAST_out_i_1_n_0\
     );
-\axi_dma.M_AXI_TLAST_out_i_10\: unisim.vcomponents.LUT6
+\axi_dma.M_AXI_TLAST_out_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"80000000"
     )
         port map (
-      I0 => \axi_dma.curr_beat_reg\(3),
-      I1 => \axi_dma.last_beat_reg_n_0_[3]\,
-      I2 => \axi_dma.last_beat_reg_n_0_[5]\,
-      I3 => \axi_dma.curr_beat_reg\(5),
-      I4 => \axi_dma.last_beat_reg_n_0_[4]\,
-      I5 => \axi_dma.curr_beat_reg\(4),
-      O => \axi_dma.M_AXI_TLAST_out_i_10_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_11\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => \axi_dma.curr_beat_reg\(0),
-      I1 => \axi_dma.last_beat_reg_n_0_[0]\,
-      I2 => \axi_dma.last_beat_reg_n_0_[2]\,
-      I3 => \axi_dma.curr_beat_reg\(2),
-      I4 => \axi_dma.last_beat_reg_n_0_[1]\,
-      I5 => \axi_dma.curr_beat_reg\(1),
-      O => \axi_dma.M_AXI_TLAST_out_i_11_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000FFFF00800000"
-    )
-        port map (
-      I0 => \axi_dma.M_AXI_TLAST_out_i_4_n_0\,
-      I1 => \axi_dma.M_AXI_TLAST_out_i_5_n_0\,
-      I2 => \axi_dma.M_AXI_TLAST_out_i_6_n_0\,
-      I3 => \axi_dma.curr_beat[13]_i_1_n_0\,
-      I4 => \axi_dma.M_AXI_TLAST_out_i_7_n_0\,
-      I5 => \^m_axi_tlast_out\,
-      O => \axi_dma.M_AXI_TLAST_out_i_2_n_0\
+      I0 => \axi_dma.M_AXI_TLAST_out_i_3_n_0\,
+      I1 => \axi_dma.curr_beat_reg\(2),
+      I2 => \axi_dma.curr_beat_reg\(1),
+      I3 => \axi_dma.curr_beat_reg\(0),
+      I4 => \axi_dma.M_AXI_TLAST_out_i_4_n_0\,
+      O => M_AXI_TLAST_out2_out
     );
 \axi_dma.M_AXI_TLAST_out_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000001"
+      INIT => X"0000800000000000"
     )
         port map (
-      I0 => \axi_dma.M_AXI_TLAST_out_i_8_n_0\,
-      I1 => \axi_dma.M_AXI_TLAST_out_i_9_n_0\,
-      I2 => r5_cmd_data(6),
-      I3 => r5_cmd_data(7),
-      I4 => r5_cmd_data(4),
-      I5 => r5_cmd_data(5),
+      I0 => \axi_dma.curr_beat_reg\(11),
+      I1 => \axi_dma.curr_beat_reg\(12),
+      I2 => \axi_dma.curr_beat_reg\(9),
+      I3 => \axi_dma.curr_beat_reg\(10),
+      I4 => \^m_axi_tlast_out\,
+      I5 => \axi_dma.curr_beat_reg\(13),
       O => \axi_dma.M_AXI_TLAST_out_i_3_n_0\
     );
 \axi_dma.M_AXI_TLAST_out_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9009000000009009"
+      INIT => X"8000000000000000"
     )
         port map (
-      I0 => \axi_dma.curr_beat_reg\(6),
-      I1 => \axi_dma.last_beat_reg_n_0_[6]\,
-      I2 => \axi_dma.last_beat_reg_n_0_[8]\,
-      I3 => \axi_dma.curr_beat_reg\(8),
-      I4 => \axi_dma.last_beat_reg_n_0_[7]\,
+      I0 => \axi_dma.curr_beat_reg\(5),
+      I1 => \axi_dma.curr_beat_reg\(6),
+      I2 => \axi_dma.curr_beat_reg\(3),
+      I3 => \axi_dma.curr_beat_reg\(4),
+      I4 => \axi_dma.curr_beat_reg\(8),
       I5 => \axi_dma.curr_beat_reg\(7),
       O => \axi_dma.M_AXI_TLAST_out_i_4_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000000000"
-    )
-        port map (
-      I0 => \axi_dma.last_beat_reg_n_0_[13]\,
-      I1 => \axi_dma.curr_beat_reg\(13),
-      I2 => \axi_dma.last_beat_reg_n_0_[12]\,
-      I3 => \axi_dma.curr_beat_reg\(12),
-      I4 => \axi_dma.M_AXI_TLAST_out_i_10_n_0\,
-      I5 => \axi_dma.M_AXI_TLAST_out_i_11_n_0\,
-      O => \axi_dma.M_AXI_TLAST_out_i_5_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_6\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"9009000000009009"
-    )
-        port map (
-      I0 => \axi_dma.curr_beat_reg\(9),
-      I1 => \axi_dma.last_beat_reg_n_0_[9]\,
-      I2 => \axi_dma.last_beat_reg_n_0_[11]\,
-      I3 => \axi_dma.curr_beat_reg\(11),
-      I4 => \axi_dma.last_beat_reg_n_0_[10]\,
-      I5 => \axi_dma.curr_beat_reg\(10),
-      O => \axi_dma.M_AXI_TLAST_out_i_6_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_7\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"2F0F2FFF"
-    )
-        port map (
-      I0 => M_AXI_TREADY_out,
-      I1 => fifo_empty,
-      I2 => resetn,
-      I3 => \axi_dma.dma_active_reg_n_0\,
-      I4 => r5_cmd_empty,
-      O => \axi_dma.M_AXI_TLAST_out_i_7_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_8\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => r5_cmd_data(13),
-      I1 => r5_cmd_data(12),
-      I2 => r5_cmd_data(9),
-      I3 => r5_cmd_data(8),
-      I4 => r5_cmd_data(11),
-      I5 => r5_cmd_data(10),
-      O => \axi_dma.M_AXI_TLAST_out_i_8_n_0\
-    );
-\axi_dma.M_AXI_TLAST_out_i_9\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFEF"
-    )
-        port map (
-      I0 => r5_cmd_data(2),
-      I1 => r5_cmd_data(3),
-      I2 => r5_cmd_data(0),
-      I3 => r5_cmd_data(1),
-      O => \axi_dma.M_AXI_TLAST_out_i_9_n_0\
     );
 \axi_dma.M_AXI_TLAST_out_reg\: unisim.vcomponents.FDRE
      port map (
@@ -10470,22 +10356,22 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       Q => \^m_axi_tlast_out\,
       R => '0'
     );
-\axi_dma.M_AXI_TVALID_cmd_i_1\: unisim.vcomponents.LUT3
+\axi_dma.M_AXI_TVALID_in_cmd_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"3A"
     )
         port map (
       I0 => start_cmd,
-      I1 => M_AXI_TREADY_cmd,
-      I2 => \^m_axi_tvalid_cmd\,
-      O => \axi_dma.M_AXI_TVALID_cmd_i_1_n_0\
+      I1 => M_AXI_TREADY_in_cmd,
+      I2 => \^m_axi_tvalid_in_cmd\,
+      O => \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0\
     );
-\axi_dma.M_AXI_TVALID_cmd_reg\: unisim.vcomponents.FDRE
+\axi_dma.M_AXI_TVALID_in_cmd_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \axi_dma.M_AXI_TVALID_cmd_i_1_n_0\,
-      Q => \^m_axi_tvalid_cmd\,
+      D => \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0\,
+      Q => \^m_axi_tvalid_in_cmd\,
       R => '0'
     );
 \axi_dma.adr_reg[0]\: unisim.vcomponents.FDRE
@@ -10704,270 +10590,6 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       Q => adr(9),
       R => reset
     );
-\axi_dma.avail_size[31]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => fifo_size_empty,
-      O => \axi_dma.avail_size[31]_i_1_n_0\
-    );
-\axi_dma.avail_size_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(0),
-      Q => avail_size(0),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(10),
-      Q => avail_size(10),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(11),
-      Q => avail_size(11),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(12),
-      Q => avail_size(12),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(13),
-      Q => avail_size(13),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(14),
-      Q => avail_size(14),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(15),
-      Q => avail_size(15),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(16),
-      Q => avail_size(16),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(17),
-      Q => avail_size(17),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(18),
-      Q => avail_size(18),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(19),
-      Q => avail_size(19),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(1),
-      Q => avail_size(1),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(20),
-      Q => avail_size(20),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(21),
-      Q => avail_size(21),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(22),
-      Q => avail_size(22),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(23),
-      Q => avail_size(23),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(24),
-      Q => avail_size(24),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(25),
-      Q => avail_size(25),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(26),
-      Q => avail_size(26),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(27),
-      Q => avail_size(27),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(28),
-      Q => avail_size(28),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(29),
-      Q => avail_size(29),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(2),
-      Q => avail_size(2),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(30),
-      Q => avail_size(30),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(31),
-      Q => avail_size(31),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(3),
-      Q => avail_size(3),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(4),
-      Q => avail_size(4),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(5),
-      Q => avail_size(5),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(6),
-      Q => avail_size(6),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(7),
-      Q => avail_size(7),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(8),
-      Q => avail_size(8),
-      R => '0'
-    );
-\axi_dma.avail_size_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => \axi_dma.avail_size[31]_i_1_n_0\,
-      D => fifo_size_out_data(9),
-      Q => avail_size(9),
-      R => '0'
-    );
 \axi_dma.blocks[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"F4"
@@ -11129,10 +10751,10 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
     )
         port map (
       I0 => cmd_done,
-      I1 => M_AXI_STS_tdata(7),
+      I1 => M_AXI_STS_in_tdata(7),
       I2 => cmd_done0,
-      I3 => M_AXI_STS_tvalid,
-      I4 => \^m_axi_sts_tready\,
+      I3 => M_AXI_STS_in_tvalid,
+      I4 => \^m_axi_sts_in_tready\,
       O => \axi_dma.cmd_done_i_1_n_0\
     );
 \axi_dma.cmd_done_i_2\: unisim.vcomponents.LUT3
@@ -11141,7 +10763,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
     )
         port map (
       I0 => tag(3),
-      I1 => M_AXI_STS_tdata(3),
+      I1 => M_AXI_STS_in_tdata(3),
       I2 => \axi_dma.cmd_done_i_3_n_0\,
       O => cmd_done0
     );
@@ -11151,10 +10773,10 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
     )
         port map (
       I0 => tag(0),
-      I1 => M_AXI_STS_tdata(0),
-      I2 => M_AXI_STS_tdata(2),
+      I1 => M_AXI_STS_in_tdata(0),
+      I2 => M_AXI_STS_in_tdata(2),
       I3 => tag(2),
-      I4 => M_AXI_STS_tdata(1),
+      I4 => M_AXI_STS_in_tdata(1),
       I5 => tag(1),
       O => \axi_dma.cmd_done_i_3_n_0\
     );
@@ -11173,9 +10795,9 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
         port map (
       I0 => cmd_done0,
       I1 => cmd_error,
-      I2 => M_AXI_STS_tdata(7),
-      I3 => M_AXI_STS_tvalid,
-      I4 => \^m_axi_sts_tready\,
+      I2 => M_AXI_STS_in_tdata(7),
+      I3 => M_AXI_STS_in_tvalid,
+      I4 => \^m_axi_sts_in_tready\,
       I5 => cmd_error,
       O => \axi_dma.cmd_error_i_1_n_0\
     );
@@ -11346,25 +10968,23 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       I0 => \axi_dma.curr_beat_reg\(0),
       O => \p_0_in__1\(0)
     );
-\axi_dma.curr_beat[13]_i_1\: unisim.vcomponents.LUT3
+\axi_dma.curr_beat[13]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1F"
+      INIT => X"7"
     )
         port map (
-      I0 => r5_cmd_empty,
+      I0 => resetn,
       I1 => \axi_dma.dma_active_reg_n_0\,
-      I2 => resetn,
       O => \axi_dma.curr_beat[13]_i_1_n_0\
     );
-\axi_dma.curr_beat[13]_i_2\: unisim.vcomponents.LUT4
+\axi_dma.curr_beat[13]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"1000"
+      INIT => X"10"
     )
         port map (
       I0 => \^m_axi_tlast_out\,
       I1 => fifo_empty,
-      I2 => \axi_dma.dma_active_reg_n_0\,
-      I3 => M_AXI_TREADY_out,
+      I2 => M_AXI_TREADY_out,
       O => curr_beat
     );
 \axi_dma.curr_beat_reg[0]\: unisim.vcomponents.FDSE
@@ -11512,14 +11132,14 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
     );
 \axi_dma.dma_active_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F3FF5555"
+      INIT => X"AAAA2AAA"
     )
         port map (
-      I0 => r5_cmd_empty,
-      I1 => \^m_axi_tlast_out\,
-      I2 => fifo_empty,
+      I0 => resetn,
+      I1 => \axi_dma.dma_active_reg_n_0\,
+      I2 => \^m_axi_tlast_out\,
       I3 => M_AXI_TREADY_out,
-      I4 => \axi_dma.dma_active_reg_n_0\,
+      I4 => fifo_empty,
       O => \axi_dma.dma_active_i_1_n_0\
     );
 \axi_dma.dma_active_reg\: unisim.vcomponents.FDRE
@@ -11528,328 +11148,6 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       CE => '1',
       D => \axi_dma.dma_active_i_1_n_0\,
       Q => \axi_dma.dma_active_reg_n_0\,
-      R => clear
-    );
-\axi_dma.fifo_chg_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => in_wr,
-      Q => fifo_chg,
-      R => '0'
-    );
-\axi_dma.fifo_count[0]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"40BFBF40"
-    )
-        port map (
-      I0 => fifo_empty,
-      I1 => \axi_dma.dma_active_reg_n_0\,
-      I2 => M_AXI_TREADY_out,
-      I3 => in_wr,
-      I4 => \axi_dma.fifo_count_reg\(0),
-      O => \axi_dma.fifo_count[0]_i_1_n_0\
-    );
-\axi_dma.fifo_count[13]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"AA6A"
-    )
-        port map (
-      I0 => in_wr,
-      I1 => M_AXI_TREADY_out,
-      I2 => \axi_dma.dma_active_reg_n_0\,
-      I3 => fifo_empty,
-      O => \axi_dma.fifo_count[13]_i_1_n_0\
-    );
-\axi_dma.fifo_count[13]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(12),
-      I1 => \axi_dma.fifo_count_reg\(13),
-      O => \axi_dma.fifo_count[13]_i_3_n_0\
-    );
-\axi_dma.fifo_count[13]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(11),
-      I1 => \axi_dma.fifo_count_reg\(12),
-      O => \axi_dma.fifo_count[13]_i_4_n_0\
-    );
-\axi_dma.fifo_count[13]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(10),
-      I1 => \axi_dma.fifo_count_reg\(11),
-      O => \axi_dma.fifo_count[13]_i_5_n_0\
-    );
-\axi_dma.fifo_count[13]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(9),
-      I1 => \axi_dma.fifo_count_reg\(10),
-      O => \axi_dma.fifo_count[13]_i_6_n_0\
-    );
-\axi_dma.fifo_count[13]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(8),
-      I1 => \axi_dma.fifo_count_reg\(9),
-      O => \axi_dma.fifo_count[13]_i_7_n_0\
-    );
-\axi_dma.fifo_count[8]_i_10\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"AA6A"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(1),
-      I1 => M_AXI_TREADY_out,
-      I2 => \axi_dma.dma_active_reg_n_0\,
-      I3 => fifo_empty,
-      O => \axi_dma.fifo_count[8]_i_10_n_0\
-    );
-\axi_dma.fifo_count[8]_i_2\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(1),
-      O => \axi_dma.fifo_count[8]_i_2_n_0\
-    );
-\axi_dma.fifo_count[8]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(7),
-      I1 => \axi_dma.fifo_count_reg\(8),
-      O => \axi_dma.fifo_count[8]_i_3_n_0\
-    );
-\axi_dma.fifo_count[8]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(6),
-      I1 => \axi_dma.fifo_count_reg\(7),
-      O => \axi_dma.fifo_count[8]_i_4_n_0\
-    );
-\axi_dma.fifo_count[8]_i_5\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(5),
-      I1 => \axi_dma.fifo_count_reg\(6),
-      O => \axi_dma.fifo_count[8]_i_5_n_0\
-    );
-\axi_dma.fifo_count[8]_i_6\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(4),
-      I1 => \axi_dma.fifo_count_reg\(5),
-      O => \axi_dma.fifo_count[8]_i_6_n_0\
-    );
-\axi_dma.fifo_count[8]_i_7\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(3),
-      I1 => \axi_dma.fifo_count_reg\(4),
-      O => \axi_dma.fifo_count[8]_i_7_n_0\
-    );
-\axi_dma.fifo_count[8]_i_8\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(2),
-      I1 => \axi_dma.fifo_count_reg\(3),
-      O => \axi_dma.fifo_count[8]_i_8_n_0\
-    );
-\axi_dma.fifo_count[8]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => \axi_dma.fifo_count_reg\(1),
-      I1 => \axi_dma.fifo_count_reg\(2),
-      O => \axi_dma.fifo_count[8]_i_9_n_0\
-    );
-\axi_dma.fifo_count_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \axi_dma.fifo_count[0]_i_1_n_0\,
-      Q => \axi_dma.fifo_count_reg\(0),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(10),
-      Q => \axi_dma.fifo_count_reg\(10),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(11),
-      Q => \axi_dma.fifo_count_reg\(11),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(12),
-      Q => \axi_dma.fifo_count_reg\(12),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(13),
-      Q => \axi_dma.fifo_count_reg\(13),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[13]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \axi_dma.fifo_count_reg[8]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 4) => \NLW_axi_dma.fifo_count_reg[13]_i_2_CO_UNCONNECTED\(7 downto 4),
-      CO(3) => \axi_dma.fifo_count_reg[13]_i_2_n_4\,
-      CO(2) => \axi_dma.fifo_count_reg[13]_i_2_n_5\,
-      CO(1) => \axi_dma.fifo_count_reg[13]_i_2_n_6\,
-      CO(0) => \axi_dma.fifo_count_reg[13]_i_2_n_7\,
-      DI(7 downto 4) => B"0000",
-      DI(3 downto 0) => \axi_dma.fifo_count_reg\(11 downto 8),
-      O(7 downto 5) => \NLW_axi_dma.fifo_count_reg[13]_i_2_O_UNCONNECTED\(7 downto 5),
-      O(4 downto 0) => fifo_count(13 downto 9),
-      S(7 downto 5) => B"000",
-      S(4) => \axi_dma.fifo_count[13]_i_3_n_0\,
-      S(3) => \axi_dma.fifo_count[13]_i_4_n_0\,
-      S(2) => \axi_dma.fifo_count[13]_i_5_n_0\,
-      S(1) => \axi_dma.fifo_count[13]_i_6_n_0\,
-      S(0) => \axi_dma.fifo_count[13]_i_7_n_0\
-    );
-\axi_dma.fifo_count_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(1),
-      Q => \axi_dma.fifo_count_reg\(1),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(2),
-      Q => \axi_dma.fifo_count_reg\(2),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(3),
-      Q => \axi_dma.fifo_count_reg\(3),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(4),
-      Q => \axi_dma.fifo_count_reg\(4),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(5),
-      Q => \axi_dma.fifo_count_reg\(5),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(6),
-      Q => \axi_dma.fifo_count_reg\(6),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(7),
-      Q => \axi_dma.fifo_count_reg\(7),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(8),
-      Q => \axi_dma.fifo_count_reg\(8),
-      R => clear
-    );
-\axi_dma.fifo_count_reg[8]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \axi_dma.fifo_count_reg\(0),
-      CI_TOP => '0',
-      CO(7) => \axi_dma.fifo_count_reg[8]_i_1_n_0\,
-      CO(6) => \axi_dma.fifo_count_reg[8]_i_1_n_1\,
-      CO(5) => \axi_dma.fifo_count_reg[8]_i_1_n_2\,
-      CO(4) => \axi_dma.fifo_count_reg[8]_i_1_n_3\,
-      CO(3) => \axi_dma.fifo_count_reg[8]_i_1_n_4\,
-      CO(2) => \axi_dma.fifo_count_reg[8]_i_1_n_5\,
-      CO(1) => \axi_dma.fifo_count_reg[8]_i_1_n_6\,
-      CO(0) => \axi_dma.fifo_count_reg[8]_i_1_n_7\,
-      DI(7 downto 1) => \axi_dma.fifo_count_reg\(7 downto 1),
-      DI(0) => \axi_dma.fifo_count[8]_i_2_n_0\,
-      O(7 downto 0) => fifo_count(8 downto 1),
-      S(7) => \axi_dma.fifo_count[8]_i_3_n_0\,
-      S(6) => \axi_dma.fifo_count[8]_i_4_n_0\,
-      S(5) => \axi_dma.fifo_count[8]_i_5_n_0\,
-      S(4) => \axi_dma.fifo_count[8]_i_6_n_0\,
-      S(3) => \axi_dma.fifo_count[8]_i_7_n_0\,
-      S(2) => \axi_dma.fifo_count[8]_i_8_n_0\,
-      S(1) => \axi_dma.fifo_count[8]_i_9_n_0\,
-      S(0) => \axi_dma.fifo_count[8]_i_10_n_0\
-    );
-\axi_dma.fifo_count_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => \axi_dma.fifo_count[13]_i_1_n_0\,
-      D => fifo_count(9),
-      Q => \axi_dma.fifo_count_reg\(9),
-      R => clear
-    );
-\axi_dma.fifo_size_rd_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => '1',
-      D => \axi_dma.avail_size[31]_i_1_n_0\,
-      Q => fifo_size_rd,
       R => '0'
     );
 \axi_dma.has_mig_size_i_1\: unisim.vcomponents.LUT5
@@ -13928,289 +13226,12 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       Q => in_wr,
       R => '0'
     );
-\axi_dma.last_beat[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(0),
-      O => last_beat0(0)
-    );
-\axi_dma.last_beat[13]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"02"
-    )
-        port map (
-      I0 => resetn,
-      I1 => r5_cmd_empty,
-      I2 => \axi_dma.dma_active_reg_n_0\,
-      O => last_beat
-    );
-\axi_dma.last_beat[13]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(13),
-      O => \axi_dma.last_beat[13]_i_3_n_0\
-    );
-\axi_dma.last_beat[13]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(12),
-      O => \axi_dma.last_beat[13]_i_4_n_0\
-    );
-\axi_dma.last_beat[13]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(11),
-      O => \axi_dma.last_beat[13]_i_5_n_0\
-    );
-\axi_dma.last_beat[13]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(10),
-      O => \axi_dma.last_beat[13]_i_6_n_0\
-    );
-\axi_dma.last_beat[13]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(9),
-      O => \axi_dma.last_beat[13]_i_7_n_0\
-    );
-\axi_dma.last_beat[8]_i_2\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(8),
-      O => \axi_dma.last_beat[8]_i_2_n_0\
-    );
-\axi_dma.last_beat[8]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(7),
-      O => \axi_dma.last_beat[8]_i_3_n_0\
-    );
-\axi_dma.last_beat[8]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(6),
-      O => \axi_dma.last_beat[8]_i_4_n_0\
-    );
-\axi_dma.last_beat[8]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(5),
-      O => \axi_dma.last_beat[8]_i_5_n_0\
-    );
-\axi_dma.last_beat[8]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(4),
-      O => \axi_dma.last_beat[8]_i_6_n_0\
-    );
-\axi_dma.last_beat[8]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(3),
-      O => \axi_dma.last_beat[8]_i_7_n_0\
-    );
-\axi_dma.last_beat[8]_i_8\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(2),
-      O => \axi_dma.last_beat[8]_i_8_n_0\
-    );
-\axi_dma.last_beat[8]_i_9\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => r5_cmd_data(1),
-      O => \axi_dma.last_beat[8]_i_9_n_0\
-    );
-\axi_dma.last_beat_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(0),
-      Q => \axi_dma.last_beat_reg_n_0_[0]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(10),
-      Q => \axi_dma.last_beat_reg_n_0_[10]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(11),
-      Q => \axi_dma.last_beat_reg_n_0_[11]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(12),
-      Q => \axi_dma.last_beat_reg_n_0_[12]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(13),
-      Q => \axi_dma.last_beat_reg_n_0_[13]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[13]_i_2\: unisim.vcomponents.CARRY8
-     port map (
-      CI => \axi_dma.last_beat_reg[8]_i_1_n_0\,
-      CI_TOP => '0',
-      CO(7 downto 4) => \NLW_axi_dma.last_beat_reg[13]_i_2_CO_UNCONNECTED\(7 downto 4),
-      CO(3) => \axi_dma.last_beat_reg[13]_i_2_n_4\,
-      CO(2) => \axi_dma.last_beat_reg[13]_i_2_n_5\,
-      CO(1) => \axi_dma.last_beat_reg[13]_i_2_n_6\,
-      CO(0) => \axi_dma.last_beat_reg[13]_i_2_n_7\,
-      DI(7 downto 4) => B"0000",
-      DI(3 downto 0) => r5_cmd_data(12 downto 9),
-      O(7 downto 5) => \NLW_axi_dma.last_beat_reg[13]_i_2_O_UNCONNECTED\(7 downto 5),
-      O(4 downto 0) => last_beat0(13 downto 9),
-      S(7 downto 5) => B"000",
-      S(4) => \axi_dma.last_beat[13]_i_3_n_0\,
-      S(3) => \axi_dma.last_beat[13]_i_4_n_0\,
-      S(2) => \axi_dma.last_beat[13]_i_5_n_0\,
-      S(1) => \axi_dma.last_beat[13]_i_6_n_0\,
-      S(0) => \axi_dma.last_beat[13]_i_7_n_0\
-    );
-\axi_dma.last_beat_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(1),
-      Q => \axi_dma.last_beat_reg_n_0_[1]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(2),
-      Q => \axi_dma.last_beat_reg_n_0_[2]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(3),
-      Q => \axi_dma.last_beat_reg_n_0_[3]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(4),
-      Q => \axi_dma.last_beat_reg_n_0_[4]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(5),
-      Q => \axi_dma.last_beat_reg_n_0_[5]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(6),
-      Q => \axi_dma.last_beat_reg_n_0_[6]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(7),
-      Q => \axi_dma.last_beat_reg_n_0_[7]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(8),
-      Q => \axi_dma.last_beat_reg_n_0_[8]\,
-      R => '0'
-    );
-\axi_dma.last_beat_reg[8]_i_1\: unisim.vcomponents.CARRY8
-     port map (
-      CI => r5_cmd_data(0),
-      CI_TOP => '0',
-      CO(7) => \axi_dma.last_beat_reg[8]_i_1_n_0\,
-      CO(6) => \axi_dma.last_beat_reg[8]_i_1_n_1\,
-      CO(5) => \axi_dma.last_beat_reg[8]_i_1_n_2\,
-      CO(4) => \axi_dma.last_beat_reg[8]_i_1_n_3\,
-      CO(3) => \axi_dma.last_beat_reg[8]_i_1_n_4\,
-      CO(2) => \axi_dma.last_beat_reg[8]_i_1_n_5\,
-      CO(1) => \axi_dma.last_beat_reg[8]_i_1_n_6\,
-      CO(0) => \axi_dma.last_beat_reg[8]_i_1_n_7\,
-      DI(7 downto 0) => r5_cmd_data(8 downto 1),
-      O(7 downto 0) => last_beat0(8 downto 1),
-      S(7) => \axi_dma.last_beat[8]_i_2_n_0\,
-      S(6) => \axi_dma.last_beat[8]_i_3_n_0\,
-      S(5) => \axi_dma.last_beat[8]_i_4_n_0\,
-      S(4) => \axi_dma.last_beat[8]_i_5_n_0\,
-      S(3) => \axi_dma.last_beat[8]_i_6_n_0\,
-      S(2) => \axi_dma.last_beat[8]_i_7_n_0\,
-      S(1) => \axi_dma.last_beat[8]_i_8_n_0\,
-      S(0) => \axi_dma.last_beat[8]_i_9_n_0\
-    );
-\axi_dma.last_beat_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => last_beat,
-      D => last_beat0(9),
-      Q => \axi_dma.last_beat_reg_n_0_[9]\,
-      R => '0'
-    );
 \axi_dma.mig_blocks[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(15),
+      I0 => mig_wr_ptr(15),
       I1 => adr(15),
       O => \axi_dma.mig_blocks[15]_i_2_n_0\
     );
@@ -14219,7 +13240,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(14),
+      I0 => mig_wr_ptr(14),
       I1 => adr(14),
       O => \axi_dma.mig_blocks[15]_i_3_n_0\
     );
@@ -14228,7 +13249,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(13),
+      I0 => mig_wr_ptr(13),
       I1 => adr(13),
       O => \axi_dma.mig_blocks[15]_i_4_n_0\
     );
@@ -14237,7 +13258,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(12),
+      I0 => mig_wr_ptr(12),
       I1 => adr(12),
       O => \axi_dma.mig_blocks[15]_i_5_n_0\
     );
@@ -14246,7 +13267,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(11),
+      I0 => mig_wr_ptr(11),
       I1 => adr(11),
       O => \axi_dma.mig_blocks[15]_i_6_n_0\
     );
@@ -14255,7 +13276,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(10),
+      I0 => mig_wr_ptr(10),
       I1 => adr(10),
       O => \axi_dma.mig_blocks[15]_i_7_n_0\
     );
@@ -14264,7 +13285,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(9),
+      I0 => mig_wr_ptr(9),
       I1 => adr(9),
       O => \axi_dma.mig_blocks[15]_i_8_n_0\
     );
@@ -14273,7 +13294,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(8),
+      I0 => mig_wr_ptr(8),
       I1 => adr(8),
       O => \axi_dma.mig_blocks[15]_i_9_n_0\
     );
@@ -14282,7 +13303,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(23),
+      I0 => mig_wr_ptr(23),
       I1 => adr(23),
       O => \axi_dma.mig_blocks[23]_i_2_n_0\
     );
@@ -14291,7 +13312,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(22),
+      I0 => mig_wr_ptr(22),
       I1 => adr(22),
       O => \axi_dma.mig_blocks[23]_i_3_n_0\
     );
@@ -14300,7 +13321,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(21),
+      I0 => mig_wr_ptr(21),
       I1 => adr(21),
       O => \axi_dma.mig_blocks[23]_i_4_n_0\
     );
@@ -14309,7 +13330,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(20),
+      I0 => mig_wr_ptr(20),
       I1 => adr(20),
       O => \axi_dma.mig_blocks[23]_i_5_n_0\
     );
@@ -14318,7 +13339,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(19),
+      I0 => mig_wr_ptr(19),
       I1 => adr(19),
       O => \axi_dma.mig_blocks[23]_i_6_n_0\
     );
@@ -14327,7 +13348,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(18),
+      I0 => mig_wr_ptr(18),
       I1 => adr(18),
       O => \axi_dma.mig_blocks[23]_i_7_n_0\
     );
@@ -14336,7 +13357,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(17),
+      I0 => mig_wr_ptr(17),
       I1 => adr(17),
       O => \axi_dma.mig_blocks[23]_i_8_n_0\
     );
@@ -14345,7 +13366,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(16),
+      I0 => mig_wr_ptr(16),
       I1 => adr(16),
       O => \axi_dma.mig_blocks[23]_i_9_n_0\
     );
@@ -14354,7 +13375,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(26),
+      I0 => mig_wr_ptr(26),
       I1 => adr(26),
       O => \axi_dma.mig_blocks[26]_i_2_n_0\
     );
@@ -14363,7 +13384,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(25),
+      I0 => mig_wr_ptr(25),
       I1 => adr(25),
       O => \axi_dma.mig_blocks[26]_i_3_n_0\
     );
@@ -14372,7 +13393,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(24),
+      I0 => mig_wr_ptr(24),
       I1 => adr(24),
       O => \axi_dma.mig_blocks[26]_i_4_n_0\
     );
@@ -14381,7 +13402,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(7),
+      I0 => mig_wr_ptr(7),
       I1 => adr(7),
       O => \axi_dma.mig_blocks[7]_i_2_n_0\
     );
@@ -14390,7 +13411,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(6),
+      I0 => mig_wr_ptr(6),
       I1 => adr(6),
       O => \axi_dma.mig_blocks[7]_i_3_n_0\
     );
@@ -14399,7 +13420,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(5),
+      I0 => mig_wr_ptr(5),
       I1 => adr(5),
       O => \axi_dma.mig_blocks[7]_i_4_n_0\
     );
@@ -14408,7 +13429,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(4),
+      I0 => mig_wr_ptr(4),
       I1 => adr(4),
       O => \axi_dma.mig_blocks[7]_i_5_n_0\
     );
@@ -14417,7 +13438,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(3),
+      I0 => mig_wr_ptr(3),
       I1 => adr(3),
       O => \axi_dma.mig_blocks[7]_i_6_n_0\
     );
@@ -14426,7 +13447,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(2),
+      I0 => mig_wr_ptr(2),
       I1 => adr(2),
       O => \axi_dma.mig_blocks[7]_i_7_n_0\
     );
@@ -14435,7 +13456,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(1),
+      I0 => mig_wr_ptr(1),
       I1 => adr(1),
       O => \axi_dma.mig_blocks[7]_i_8_n_0\
     );
@@ -14444,7 +13465,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => wr_ptr(0),
+      I0 => mig_wr_ptr(0),
       I1 => adr(0),
       O => \axi_dma.mig_blocks[7]_i_9_n_0\
     );
@@ -14516,7 +13537,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       CO(2) => \axi_dma.mig_blocks_reg[15]_i_1_n_5\,
       CO(1) => \axi_dma.mig_blocks_reg[15]_i_1_n_6\,
       CO(0) => \axi_dma.mig_blocks_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => wr_ptr(15 downto 8),
+      DI(7 downto 0) => mig_wr_ptr(15 downto 8),
       O(7 downto 0) => \axi_dma.mig_blocks_reg0\(15 downto 8),
       S(7) => \axi_dma.mig_blocks[15]_i_2_n_0\,
       S(6) => \axi_dma.mig_blocks[15]_i_3_n_0\,
@@ -14611,7 +13632,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       CO(2) => \axi_dma.mig_blocks_reg[23]_i_1_n_5\,
       CO(1) => \axi_dma.mig_blocks_reg[23]_i_1_n_6\,
       CO(0) => \axi_dma.mig_blocks_reg[23]_i_1_n_7\,
-      DI(7 downto 0) => wr_ptr(23 downto 16),
+      DI(7 downto 0) => mig_wr_ptr(23 downto 16),
       O(7 downto 0) => \axi_dma.mig_blocks_reg0\(23 downto 16),
       S(7) => \axi_dma.mig_blocks[23]_i_2_n_0\,
       S(6) => \axi_dma.mig_blocks[23]_i_3_n_0\,
@@ -14654,7 +13675,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       CO(1) => \axi_dma.mig_blocks_reg[26]_i_1_n_6\,
       CO(0) => \axi_dma.mig_blocks_reg[26]_i_1_n_7\,
       DI(7 downto 2) => B"000000",
-      DI(1 downto 0) => wr_ptr(25 downto 24),
+      DI(1 downto 0) => mig_wr_ptr(25 downto 24),
       O(7 downto 3) => \NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED\(7 downto 3),
       O(2 downto 0) => \axi_dma.mig_blocks_reg0\(26 downto 24),
       S(7 downto 3) => B"00000",
@@ -14722,7 +13743,7 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       CO(2) => \axi_dma.mig_blocks_reg[7]_i_1_n_5\,
       CO(1) => \axi_dma.mig_blocks_reg[7]_i_1_n_6\,
       CO(0) => \axi_dma.mig_blocks_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => wr_ptr(7 downto 0),
+      DI(7 downto 0) => mig_wr_ptr(7 downto 0),
       O(7 downto 0) => \axi_dma.mig_blocks_reg0\(7 downto 0),
       S(7) => \axi_dma.mig_blocks[7]_i_2_n_0\,
       S(6) => \axi_dma.mig_blocks[7]_i_3_n_0\,
@@ -15340,54 +14361,20 @@ M_AXI_TVALID_out_INST_0: unisim.vcomponents.LUT2
       Q => mig_size(7),
       R => '0'
     );
-\axi_dma.r5_cmd_rd_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"10"
-    )
-        port map (
-      I0 => r5_cmd_empty,
-      I1 => \axi_dma.dma_active_reg_n_0\,
-      I2 => resetn,
-      O => \axi_dma.r5_cmd_rd_i_1_n_0\
-    );
-\axi_dma.r5_cmd_rd_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => \axi_dma.r5_cmd_rd_i_1_n_0\,
-      Q => \axi_dma.r5_cmd_rd_reg_n_0\,
-      R => '0'
-    );
 \axi_dma.reset_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => resetn,
-      O => clear
+      O => \axi_dma.reset_i_1_n_0\
     );
 \axi_dma.reset_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => clear,
+      D => \axi_dma.reset_i_1_n_0\,
       Q => reset,
-      R => '0'
-    );
-\axi_dma.spy_reset_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => lpd_resetn,
-      O => \axi_dma.spy_reset_i_1_n_0\
-    );
-\axi_dma.spy_reset_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => lpd_clk,
-      CE => '1',
-      D => \axi_dma.spy_reset_i_1_n_0\,
-      Q => spy_reset,
       R => '0'
     );
 \axi_dma.start_cmd_i_1\: unisim.vcomponents.LUT5
@@ -15514,33 +14501,9 @@ fifo_i_i_1: unisim.vcomponents.LUT3
     )
         port map (
       I0 => fifo_empty,
-      I1 => \axi_dma.dma_active_reg_n_0\,
-      I2 => M_AXI_TREADY_out,
+      I1 => M_AXI_TREADY_out,
+      I2 => \axi_dma.dma_active_reg_n_0\,
       O => fifo_rd_en
-    );
-fifo_size_ptr_i: component ps_axi_dma_1_0_fifo_ptr
-     port map (
-      din(31 downto 14) => B"000000000000000000",
-      din(13 downto 0) => \axi_dma.fifo_count_reg\(13 downto 0),
-      dout(31 downto 0) => fifo_size_out_data(31 downto 0),
-      empty => fifo_size_empty,
-      full => NLW_fifo_size_ptr_i_full_UNCONNECTED,
-      rd_clk => lpd_clk,
-      rd_en => fifo_size_rd,
-      wr_clk => clk,
-      wr_en => fifo_chg
-    );
-fifo_spy_i: component ps_axi_dma_1_0_fifo_spy
-     port map (
-      din(13 downto 0) => spy_data(18 downto 5),
-      dout(13 downto 0) => r5_cmd_data(13 downto 0),
-      empty => r5_cmd_empty,
-      full => NLW_fifo_spy_i_full_UNCONNECTED,
-      rd_clk => clk,
-      rd_en => \axi_dma.r5_cmd_rd_reg_n_0\,
-      rst => spy_reset,
-      wr_clk => lpd_clk,
-      wr_en => spy_wr
     );
 ila_i: component ps_axi_dma_1_0_ila_7
      port map (
@@ -15564,21 +14527,24 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ps_axi_dma_1_0 is
   port (
-    lpd_clk : in STD_LOGIC;
-    lpd_resetn : in STD_LOGIC;
-    spy_wr : in STD_LOGIC;
-    spy_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    avail_size : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
-    wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    M_AXI_TDATA_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
-    M_AXI_TVALID_cmd : out STD_LOGIC;
-    M_AXI_TREADY_cmd : in STD_LOGIC;
-    M_AXI_STS_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    M_AXI_STS_tvalid : in STD_LOGIC;
-    M_AXI_STS_tready : out STD_LOGIC;
+    mig_rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
+    mig_wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
+    linux_rd_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_wr_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_TDATA_in_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
+    M_AXI_TVALID_in_cmd : out STD_LOGIC;
+    M_AXI_TREADY_in_cmd : in STD_LOGIC;
+    M_AXI_STS_in_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    M_AXI_STS_in_tvalid : in STD_LOGIC;
+    M_AXI_STS_in_tready : out STD_LOGIC;
+    M_AXI_TDATA_out_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
+    M_AXI_TVALID_out_cmd : out STD_LOGIC;
+    M_AXI_TREADY_out_cmd : in STD_LOGIC;
+    M_AXI_STS_out_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    M_AXI_STS_out_tvalid : in STD_LOGIC;
+    M_AXI_STS_out_tready : out STD_LOGIC;
     M_AXI_TDATA_in : in STD_LOGIC_VECTOR ( 255 downto 0 );
     M_AXI_TVALID_in : in STD_LOGIC;
     M_AXI_TREADY_in : out STD_LOGIC;
@@ -15602,10 +14568,14 @@ end ps_axi_dma_1_0;
 architecture STRUCTURE of ps_axi_dma_1_0 is
   signal \<const0>\ : STD_LOGIC;
   signal \<const1>\ : STD_LOGIC;
-  signal \^m_axi_tdata_cmd\ : STD_LOGIC_VECTOR ( 67 downto 5 );
+  signal \^m_axi_tdata_in_cmd\ : STD_LOGIC_VECTOR ( 67 downto 5 );
+  signal NLW_inst_M_AXI_STS_out_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_M_AXI_TREADY_in_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED : STD_LOGIC_VECTOR ( 71 downto 0 );
-  signal NLW_inst_rd_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 26 downto 0 );
+  signal NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED : STD_LOGIC;
+  signal NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED : STD_LOGIC_VECTOR ( 71 downto 0 );
+  signal NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED : STD_LOGIC_VECTOR ( 71 downto 0 );
+  signal NLW_inst_linux_rd_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_inst_mig_rd_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 26 downto 0 );
   attribute CMD_ST_IDLE : string;
   attribute CMD_ST_IDLE of inst : label is "3'b000";
   attribute CMD_ST_WAIT_DONE : string;
@@ -15615,105 +14585,215 @@ architecture STRUCTURE of ps_axi_dma_1_0 is
   attribute CMD_ST_WAIT_SPACE : string;
   attribute CMD_ST_WAIT_SPACE of inst : label is "3'b011";
   attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of M_AXI_STS_tready : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS TREADY";
-  attribute X_INTERFACE_INFO of M_AXI_STS_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS TVALID";
+  attribute X_INTERFACE_INFO of M_AXI_STS_in_tready : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_in TREADY";
+  attribute X_INTERFACE_INFO of M_AXI_STS_in_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_in TVALID";
+  attribute X_INTERFACE_INFO of M_AXI_STS_out_tready : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_out TREADY";
+  attribute X_INTERFACE_INFO of M_AXI_STS_out_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_out TVALID";
   attribute X_INTERFACE_INFO of M_AXI_TLAST_out : signal is "xilinx.com:interface:axis:1.0 M_AXI_out TLAST";
-  attribute X_INTERFACE_INFO of M_AXI_TREADY_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_cmd TREADY";
   attribute X_INTERFACE_INFO of M_AXI_TREADY_in : signal is "xilinx.com:interface:axis:1.0 M_AXI_in TREADY";
+  attribute X_INTERFACE_INFO of M_AXI_TREADY_in_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TREADY";
   attribute X_INTERFACE_INFO of M_AXI_TREADY_out : signal is "xilinx.com:interface:axis:1.0 M_AXI_out TREADY";
-  attribute X_INTERFACE_INFO of M_AXI_TVALID_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_cmd TVALID";
+  attribute X_INTERFACE_INFO of M_AXI_TREADY_out_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TREADY";
   attribute X_INTERFACE_INFO of M_AXI_TVALID_in : signal is "xilinx.com:interface:axis:1.0 M_AXI_in TVALID";
+  attribute X_INTERFACE_INFO of M_AXI_TVALID_in_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TVALID";
   attribute X_INTERFACE_INFO of M_AXI_TVALID_out : signal is "xilinx.com:interface:axis:1.0 M_AXI_out TVALID";
+  attribute X_INTERFACE_INFO of M_AXI_TVALID_out_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TVALID";
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
   attribute X_INTERFACE_MODE of clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS:M_AXI_cmd:M_AXI_in:M_AXI_out, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of lpd_clk : signal is "xilinx.com:signal:clock:1.0 lpd_clk CLK";
-  attribute X_INTERFACE_MODE of lpd_clk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of lpd_clk : signal is "XIL_INTERFACENAME lpd_clk, ASSOCIATED_RESET lpd_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of lpd_resetn : signal is "xilinx.com:signal:reset:1.0 lpd_resetn RST";
-  attribute X_INTERFACE_MODE of lpd_resetn : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of lpd_resetn : signal is "XIL_INTERFACENAME lpd_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
   attribute X_INTERFACE_MODE of resetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of M_AXI_STS_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS TDATA";
-  attribute X_INTERFACE_MODE of M_AXI_STS_tdata : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of M_AXI_STS_tdata : signal is "XIL_INTERFACENAME M_AXI_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of M_AXI_TDATA_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_cmd TDATA";
-  attribute X_INTERFACE_MODE of M_AXI_TDATA_cmd : signal is "master";
-  attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_cmd : signal is "XIL_INTERFACENAME M_AXI_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of M_AXI_STS_in_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_in TDATA";
+  attribute X_INTERFACE_MODE of M_AXI_STS_in_tdata : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of M_AXI_STS_in_tdata : signal is "XIL_INTERFACENAME M_AXI_STS_in, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of M_AXI_STS_out_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXI_STS_out TDATA";
+  attribute X_INTERFACE_MODE of M_AXI_STS_out_tdata : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of M_AXI_STS_out_tdata : signal is "XIL_INTERFACENAME M_AXI_STS_out, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of M_AXI_TDATA_in : signal is "xilinx.com:interface:axis:1.0 M_AXI_in TDATA";
   attribute X_INTERFACE_MODE of M_AXI_TDATA_in : signal is "slave";
   attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_in : signal is "XIL_INTERFACENAME M_AXI_in, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of M_AXI_TDATA_in_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA";
+  attribute X_INTERFACE_MODE of M_AXI_TDATA_in_cmd : signal is "master";
+  attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_in_cmd : signal is "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of M_AXI_TDATA_out : signal is "xilinx.com:interface:axis:1.0 M_AXI_out TDATA";
   attribute X_INTERFACE_MODE of M_AXI_TDATA_out : signal is "master";
   attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_out : signal is "XIL_INTERFACENAME M_AXI_out, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of M_AXI_TDATA_out_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TDATA";
+  attribute X_INTERFACE_MODE of M_AXI_TDATA_out_cmd : signal is "master";
+  attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_out_cmd : signal is "XIL_INTERFACENAME M_AXI_out_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
 begin
-  M_AXI_TDATA_cmd(71) <= \<const0>\;
-  M_AXI_TDATA_cmd(70) <= \<const0>\;
-  M_AXI_TDATA_cmd(69) <= \<const0>\;
-  M_AXI_TDATA_cmd(68) <= \<const0>\;
-  M_AXI_TDATA_cmd(67 downto 37) <= \^m_axi_tdata_cmd\(67 downto 37);
-  M_AXI_TDATA_cmd(36) <= \<const0>\;
-  M_AXI_TDATA_cmd(35) <= \<const0>\;
-  M_AXI_TDATA_cmd(34) <= \<const0>\;
-  M_AXI_TDATA_cmd(33) <= \<const0>\;
-  M_AXI_TDATA_cmd(32) <= \<const0>\;
-  M_AXI_TDATA_cmd(31) <= \<const0>\;
-  M_AXI_TDATA_cmd(30) <= \<const0>\;
-  M_AXI_TDATA_cmd(29) <= \<const0>\;
-  M_AXI_TDATA_cmd(28) <= \<const0>\;
-  M_AXI_TDATA_cmd(27) <= \<const0>\;
-  M_AXI_TDATA_cmd(26) <= \<const0>\;
-  M_AXI_TDATA_cmd(25) <= \<const0>\;
-  M_AXI_TDATA_cmd(24) <= \<const0>\;
-  M_AXI_TDATA_cmd(23) <= \<const1>\;
-  M_AXI_TDATA_cmd(22) <= \<const0>\;
-  M_AXI_TDATA_cmd(21) <= \<const0>\;
-  M_AXI_TDATA_cmd(20) <= \<const0>\;
-  M_AXI_TDATA_cmd(19) <= \<const0>\;
-  M_AXI_TDATA_cmd(18) <= \<const0>\;
-  M_AXI_TDATA_cmd(17) <= \<const0>\;
-  M_AXI_TDATA_cmd(16) <= \<const0>\;
-  M_AXI_TDATA_cmd(15) <= \<const0>\;
-  M_AXI_TDATA_cmd(14) <= \<const0>\;
-  M_AXI_TDATA_cmd(13) <= \<const0>\;
-  M_AXI_TDATA_cmd(12 downto 5) <= \^m_axi_tdata_cmd\(12 downto 5);
-  M_AXI_TDATA_cmd(4) <= \<const0>\;
-  M_AXI_TDATA_cmd(3) <= \<const0>\;
-  M_AXI_TDATA_cmd(2) <= \<const0>\;
-  M_AXI_TDATA_cmd(1) <= \<const0>\;
-  M_AXI_TDATA_cmd(0) <= \<const0>\;
+  M_AXI_STS_out_tready <= \<const0>\;
+  M_AXI_TDATA_in_cmd(71) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(70) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(69) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(68) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(67 downto 37) <= \^m_axi_tdata_in_cmd\(67 downto 37);
+  M_AXI_TDATA_in_cmd(36) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(35) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(34) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(33) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(32) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(31) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(30) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(29) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(28) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(27) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(26) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(25) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(24) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(23) <= \<const1>\;
+  M_AXI_TDATA_in_cmd(22) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(21) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(20) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(19) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(18) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(17) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(16) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(15) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(14) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(13) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(12 downto 5) <= \^m_axi_tdata_in_cmd\(12 downto 5);
+  M_AXI_TDATA_in_cmd(4) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(3) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(2) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(1) <= \<const0>\;
+  M_AXI_TDATA_in_cmd(0) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(71) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(70) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(69) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(68) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(67) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(66) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(65) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(64) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(63) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(62) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(61) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(60) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(59) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(58) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(57) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(56) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(55) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(54) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(53) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(52) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(51) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(50) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(49) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(48) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(47) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(46) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(45) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(44) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(43) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(42) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(41) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(40) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(39) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(38) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(37) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(36) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(35) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(34) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(33) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(32) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(31) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(30) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(29) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(28) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(27) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(26) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(25) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(24) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(23) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(22) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(21) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(20) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(19) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(18) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(17) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(16) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(15) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(14) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(13) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(12) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(11) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(10) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(9) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(8) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(7) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(6) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(5) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(4) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(3) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(2) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(1) <= \<const0>\;
+  M_AXI_TDATA_out_cmd(0) <= \<const0>\;
   M_AXI_TREADY_in <= \<const1>\;
-  rd_ptr(26) <= \<const0>\;
-  rd_ptr(25) <= \<const0>\;
-  rd_ptr(24) <= \<const0>\;
-  rd_ptr(23) <= \<const0>\;
-  rd_ptr(22) <= \<const0>\;
-  rd_ptr(21) <= \<const0>\;
-  rd_ptr(20) <= \<const0>\;
-  rd_ptr(19) <= \<const0>\;
-  rd_ptr(18) <= \<const0>\;
-  rd_ptr(17) <= \<const0>\;
-  rd_ptr(16) <= \<const0>\;
-  rd_ptr(15) <= \<const0>\;
-  rd_ptr(14) <= \<const0>\;
-  rd_ptr(13) <= \<const0>\;
-  rd_ptr(12) <= \<const0>\;
-  rd_ptr(11) <= \<const0>\;
-  rd_ptr(10) <= \<const0>\;
-  rd_ptr(9) <= \<const0>\;
-  rd_ptr(8) <= \<const0>\;
-  rd_ptr(7) <= \<const0>\;
-  rd_ptr(6) <= \<const0>\;
-  rd_ptr(5) <= \<const0>\;
-  rd_ptr(4) <= \<const0>\;
-  rd_ptr(3) <= \<const0>\;
-  rd_ptr(2) <= \<const0>\;
-  rd_ptr(1) <= \<const0>\;
-  rd_ptr(0) <= \<const0>\;
+  M_AXI_TVALID_out_cmd <= \<const0>\;
+  linux_rd_ptr(31) <= \<const0>\;
+  linux_rd_ptr(30) <= \<const0>\;
+  linux_rd_ptr(29) <= \<const0>\;
+  linux_rd_ptr(28) <= \<const0>\;
+  linux_rd_ptr(27) <= \<const0>\;
+  linux_rd_ptr(26) <= \<const0>\;
+  linux_rd_ptr(25) <= \<const0>\;
+  linux_rd_ptr(24) <= \<const0>\;
+  linux_rd_ptr(23) <= \<const0>\;
+  linux_rd_ptr(22) <= \<const0>\;
+  linux_rd_ptr(21) <= \<const0>\;
+  linux_rd_ptr(20) <= \<const0>\;
+  linux_rd_ptr(19) <= \<const0>\;
+  linux_rd_ptr(18) <= \<const0>\;
+  linux_rd_ptr(17) <= \<const0>\;
+  linux_rd_ptr(16) <= \<const0>\;
+  linux_rd_ptr(15) <= \<const0>\;
+  linux_rd_ptr(14) <= \<const0>\;
+  linux_rd_ptr(13) <= \<const0>\;
+  linux_rd_ptr(12) <= \<const0>\;
+  linux_rd_ptr(11) <= \<const0>\;
+  linux_rd_ptr(10) <= \<const0>\;
+  linux_rd_ptr(9) <= \<const0>\;
+  linux_rd_ptr(8) <= \<const0>\;
+  linux_rd_ptr(7) <= \<const0>\;
+  linux_rd_ptr(6) <= \<const0>\;
+  linux_rd_ptr(5) <= \<const0>\;
+  linux_rd_ptr(4) <= \<const0>\;
+  linux_rd_ptr(3) <= \<const0>\;
+  linux_rd_ptr(2) <= \<const0>\;
+  linux_rd_ptr(1) <= \<const0>\;
+  linux_rd_ptr(0) <= \<const0>\;
+  mig_rd_ptr(26) <= \<const0>\;
+  mig_rd_ptr(25) <= \<const0>\;
+  mig_rd_ptr(24) <= \<const0>\;
+  mig_rd_ptr(23) <= \<const0>\;
+  mig_rd_ptr(22) <= \<const0>\;
+  mig_rd_ptr(21) <= \<const0>\;
+  mig_rd_ptr(20) <= \<const0>\;
+  mig_rd_ptr(19) <= \<const0>\;
+  mig_rd_ptr(18) <= \<const0>\;
+  mig_rd_ptr(17) <= \<const0>\;
+  mig_rd_ptr(16) <= \<const0>\;
+  mig_rd_ptr(15) <= \<const0>\;
+  mig_rd_ptr(14) <= \<const0>\;
+  mig_rd_ptr(13) <= \<const0>\;
+  mig_rd_ptr(12) <= \<const0>\;
+  mig_rd_ptr(11) <= \<const0>\;
+  mig_rd_ptr(10) <= \<const0>\;
+  mig_rd_ptr(9) <= \<const0>\;
+  mig_rd_ptr(8) <= \<const0>\;
+  mig_rd_ptr(7) <= \<const0>\;
+  mig_rd_ptr(6) <= \<const0>\;
+  mig_rd_ptr(5) <= \<const0>\;
+  mig_rd_ptr(4) <= \<const0>\;
+  mig_rd_ptr(3) <= \<const0>\;
+  mig_rd_ptr(2) <= \<const0>\;
+  mig_rd_ptr(1) <= \<const0>\;
+  mig_rd_ptr(0) <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -15724,35 +14804,36 @@ VCC: unisim.vcomponents.VCC
     );
 inst: entity work.ps_axi_dma_1_0_axi_dma
      port map (
-      M_AXI_STS_tdata(7) => M_AXI_STS_tdata(7),
-      M_AXI_STS_tdata(6 downto 4) => B"000",
-      M_AXI_STS_tdata(3 downto 0) => M_AXI_STS_tdata(3 downto 0),
-      M_AXI_STS_tready => M_AXI_STS_tready,
-      M_AXI_STS_tvalid => M_AXI_STS_tvalid,
-      M_AXI_TDATA_cmd(71 downto 68) => NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED(71 downto 68),
-      M_AXI_TDATA_cmd(67 downto 37) => \^m_axi_tdata_cmd\(67 downto 37),
-      M_AXI_TDATA_cmd(36 downto 13) => NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED(36 downto 13),
-      M_AXI_TDATA_cmd(12 downto 5) => \^m_axi_tdata_cmd\(12 downto 5),
-      M_AXI_TDATA_cmd(4 downto 0) => NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED(4 downto 0),
+      M_AXI_STS_in_tdata(7) => M_AXI_STS_in_tdata(7),
+      M_AXI_STS_in_tdata(6 downto 4) => B"000",
+      M_AXI_STS_in_tdata(3 downto 0) => M_AXI_STS_in_tdata(3 downto 0),
+      M_AXI_STS_in_tready => M_AXI_STS_in_tready,
+      M_AXI_STS_in_tvalid => M_AXI_STS_in_tvalid,
+      M_AXI_STS_out_tdata(7 downto 0) => B"00000000",
+      M_AXI_STS_out_tready => NLW_inst_M_AXI_STS_out_tready_UNCONNECTED,
+      M_AXI_STS_out_tvalid => '0',
       M_AXI_TDATA_in(255 downto 0) => M_AXI_TDATA_in(255 downto 0),
+      M_AXI_TDATA_in_cmd(71 downto 68) => NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED(71 downto 68),
+      M_AXI_TDATA_in_cmd(67 downto 37) => \^m_axi_tdata_in_cmd\(67 downto 37),
+      M_AXI_TDATA_in_cmd(36 downto 13) => NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED(36 downto 13),
+      M_AXI_TDATA_in_cmd(12 downto 5) => \^m_axi_tdata_in_cmd\(12 downto 5),
+      M_AXI_TDATA_in_cmd(4 downto 0) => NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED(4 downto 0),
       M_AXI_TDATA_out(255 downto 0) => M_AXI_TDATA_out(255 downto 0),
+      M_AXI_TDATA_out_cmd(71 downto 0) => NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED(71 downto 0),
       M_AXI_TLAST_out => M_AXI_TLAST_out,
-      M_AXI_TREADY_cmd => M_AXI_TREADY_cmd,
       M_AXI_TREADY_in => NLW_inst_M_AXI_TREADY_in_UNCONNECTED,
+      M_AXI_TREADY_in_cmd => M_AXI_TREADY_in_cmd,
       M_AXI_TREADY_out => M_AXI_TREADY_out,
-      M_AXI_TVALID_cmd => M_AXI_TVALID_cmd,
+      M_AXI_TREADY_out_cmd => '0',
       M_AXI_TVALID_in => M_AXI_TVALID_in,
+      M_AXI_TVALID_in_cmd => M_AXI_TVALID_in_cmd,
       M_AXI_TVALID_out => M_AXI_TVALID_out,
-      avail_size(31 downto 0) => avail_size(31 downto 0),
+      M_AXI_TVALID_out_cmd => NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED,
       clk => clk,
-      lpd_clk => lpd_clk,
-      lpd_resetn => lpd_resetn,
-      rd_ptr(26 downto 0) => NLW_inst_rd_ptr_UNCONNECTED(26 downto 0),
-      resetn => resetn,
-      spy_data(31 downto 19) => B"0000000000000",
-      spy_data(18 downto 5) => spy_data(18 downto 5),
-      spy_data(4 downto 0) => B"00000",
-      spy_wr => spy_wr,
-      wr_ptr(26 downto 0) => wr_ptr(26 downto 0)
+      linux_rd_ptr(31 downto 0) => NLW_inst_linux_rd_ptr_UNCONNECTED(31 downto 0),
+      linux_wr_ptr(31 downto 0) => B"00000000000000000000000000000000",
+      mig_rd_ptr(26 downto 0) => NLW_inst_mig_rd_ptr_UNCONNECTED(26 downto 0),
+      mig_wr_ptr(26 downto 0) => mig_wr_ptr(26 downto 0),
+      resetn => resetn
     );
 end STRUCTURE;

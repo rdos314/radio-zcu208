@@ -56,21 +56,24 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_axi_dma_1_0 (
-  lpd_clk,
-  lpd_resetn,
-  spy_wr,
-  spy_data,
-  avail_size,
   clk,
   resetn,
-  rd_ptr,
-  wr_ptr,
-  M_AXI_TDATA_cmd,
-  M_AXI_TVALID_cmd,
-  M_AXI_TREADY_cmd,
-  M_AXI_STS_tdata,
-  M_AXI_STS_tvalid,
-  M_AXI_STS_tready,
+  mig_rd_ptr,
+  mig_wr_ptr,
+  linux_rd_ptr,
+  linux_wr_ptr,
+  M_AXI_TDATA_in_cmd,
+  M_AXI_TVALID_in_cmd,
+  M_AXI_TREADY_in_cmd,
+  M_AXI_STS_in_tdata,
+  M_AXI_STS_in_tvalid,
+  M_AXI_STS_in_tready,
+  M_AXI_TDATA_out_cmd,
+  M_AXI_TVALID_out_cmd,
+  M_AXI_TREADY_out_cmd,
+  M_AXI_STS_out_tdata,
+  M_AXI_STS_out_tvalid,
+  M_AXI_STS_out_tready,
   M_AXI_TDATA_in,
   M_AXI_TVALID_in,
   M_AXI_TREADY_in,
@@ -80,43 +83,50 @@ module ps_axi_dma_1_0 (
   M_AXI_TREADY_out
 );
 
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 lpd_clk CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_clk, ASSOCIATED_RESET lpd_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
-input wire lpd_clk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 lpd_resetn RST" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-input wire lpd_resetn;
-input wire spy_wr;
-input wire [31 : 0] spy_data;
-output wire [31 : 0] avail_size;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS:M_AXI_cmd:M_AXI_in:M_AXI_out, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
 input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire resetn;
-output wire [26 : 0] rd_ptr;
-input wire [26 : 0] wr_ptr;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TDATA" *)
+output wire [26 : 0] mig_rd_ptr;
+input wire [26 : 0] mig_wr_ptr;
+output wire [31 : 0] linux_rd_ptr;
+input wire [31 : 0] linux_wr_ptr;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
-output wire [71 : 0] M_AXI_TDATA_cmd;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TVALID" *)
-output wire M_AXI_TVALID_cmd;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TREADY" *)
-input wire M_AXI_TREADY_cmd;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TDATA" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+output wire [71 : 0] M_AXI_TDATA_in_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TVALID" *)
+output wire M_AXI_TVALID_in_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TREADY" *)
+input wire M_AXI_TREADY_in_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TDATA" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
-input wire [7 : 0] M_AXI_STS_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TVALID" *)
-input wire M_AXI_STS_tvalid;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TREADY" *)
-output wire M_AXI_STS_tready;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS_in, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+input wire [7 : 0] M_AXI_STS_in_tdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TVALID" *)
+input wire M_AXI_STS_in_tvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TREADY" *)
+output wire M_AXI_STS_in_tready;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TDATA" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+output wire [71 : 0] M_AXI_TDATA_out_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TVALID" *)
+output wire M_AXI_TVALID_out_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TREADY" *)
+input wire M_AXI_TREADY_out_cmd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TDATA" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS_out, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+input wire [7 : 0] M_AXI_STS_out_tdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TVALID" *)
+input wire M_AXI_STS_out_tvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TREADY" *)
+output wire M_AXI_STS_out_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TDATA" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
@@ -137,21 +147,24 @@ output wire M_AXI_TLAST_out;
 input wire M_AXI_TREADY_out;
 
   axi_dma inst (
-    .lpd_clk(lpd_clk),
-    .lpd_resetn(lpd_resetn),
-    .spy_wr(spy_wr),
-    .spy_data(spy_data),
-    .avail_size(avail_size),
     .clk(clk),
     .resetn(resetn),
-    .rd_ptr(rd_ptr),
-    .wr_ptr(wr_ptr),
-    .M_AXI_TDATA_cmd(M_AXI_TDATA_cmd),
-    .M_AXI_TVALID_cmd(M_AXI_TVALID_cmd),
-    .M_AXI_TREADY_cmd(M_AXI_TREADY_cmd),
-    .M_AXI_STS_tdata(M_AXI_STS_tdata),
-    .M_AXI_STS_tvalid(M_AXI_STS_tvalid),
-    .M_AXI_STS_tready(M_AXI_STS_tready),
+    .mig_rd_ptr(mig_rd_ptr),
+    .mig_wr_ptr(mig_wr_ptr),
+    .linux_rd_ptr(linux_rd_ptr),
+    .linux_wr_ptr(linux_wr_ptr),
+    .M_AXI_TDATA_in_cmd(M_AXI_TDATA_in_cmd),
+    .M_AXI_TVALID_in_cmd(M_AXI_TVALID_in_cmd),
+    .M_AXI_TREADY_in_cmd(M_AXI_TREADY_in_cmd),
+    .M_AXI_STS_in_tdata(M_AXI_STS_in_tdata),
+    .M_AXI_STS_in_tvalid(M_AXI_STS_in_tvalid),
+    .M_AXI_STS_in_tready(M_AXI_STS_in_tready),
+    .M_AXI_TDATA_out_cmd(M_AXI_TDATA_out_cmd),
+    .M_AXI_TVALID_out_cmd(M_AXI_TVALID_out_cmd),
+    .M_AXI_TREADY_out_cmd(M_AXI_TREADY_out_cmd),
+    .M_AXI_STS_out_tdata(M_AXI_STS_out_tdata),
+    .M_AXI_STS_out_tvalid(M_AXI_STS_out_tvalid),
+    .M_AXI_STS_out_tready(M_AXI_STS_out_tready),
     .M_AXI_TDATA_in(M_AXI_TDATA_in),
     .M_AXI_TVALID_in(M_AXI_TVALID_in),
     .M_AXI_TREADY_in(M_AXI_TREADY_in),

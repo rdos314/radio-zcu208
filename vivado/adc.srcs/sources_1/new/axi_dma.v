@@ -1,25 +1,30 @@
 `timescale 1ns / 1ps
 
 module axi_dma(
-    input wire lpd_clk,
-    input wire lpd_resetn,
-    input wire spy_wr,
-    input wire [31:0] spy_data,
-    output reg [31:0] avail_size,
-
     input wire clk,
     input wire resetn,
 
-    output reg [26:0] rd_ptr,
-    input wire [26:0] wr_ptr,
-    
-    output reg [71:0] M_AXI_TDATA_cmd,
-    output reg M_AXI_TVALID_cmd,
-    input wire M_AXI_TREADY_cmd,
+    output reg [26:0] mig_rd_ptr,
+    input wire [26:0] mig_wr_ptr,
 
-    input  wire [7:0] M_AXI_STS_tdata,
-    input  wire M_AXI_STS_tvalid,
-    output reg  M_AXI_STS_tready,
+    output reg [31:0] linux_rd_ptr,
+    input wire [31:0] linux_wr_ptr,
+        
+    output reg [71:0] M_AXI_TDATA_in_cmd,
+    output reg M_AXI_TVALID_in_cmd,
+    input wire M_AXI_TREADY_in_cmd,
+
+    input  wire [7:0] M_AXI_STS_in_tdata,
+    input  wire M_AXI_STS_in_tvalid,
+    output reg  M_AXI_STS_in_tready,
+    
+    output reg [71:0] M_AXI_TDATA_out_cmd,
+    output reg M_AXI_TVALID_out_cmd,
+    input wire M_AXI_TREADY_out_cmd,
+
+    input  wire [7:0] M_AXI_STS_out_tdata,
+    input  wire M_AXI_STS_out_tvalid,
+    output reg  M_AXI_STS_out_tready,
     
     input wire [255:0] M_AXI_TDATA_in,
     input wire M_AXI_TVALID_in,
@@ -59,8 +64,6 @@ module axi_dma(
     wire full;
     wire empty;
     
-    reg spy_reset;
-    
     reg r5_cmd_rd;
     wire [13:0] r5_cmd_data;
     wire r5_cmd_full;
@@ -85,29 +88,6 @@ module axi_dma(
     wire [31:0] fifo_size_out_data;
     wire fifo_size_full;
     wire fifo_size_empty;
-
-    fifo_spy fifo_spy_i (
-        .rst(spy_reset),
-        .wr_clk(lpd_clk),        // input wire wr_clk
-        .rd_clk(clk),            // input wire rd_clk
-        .din(spy_data[18:5]),    // input wire [13 : 0] din
-        .wr_en(spy_wr),          // input wire wr_en
-        .rd_en(r5_cmd_rd),       // input wire rd_en
-        .dout(r5_cmd_data),      // output wire [13 : 0] dout
-        .full(r5_cmd_full),      // output wire full
-        .empty(r5_cmd_empty)     // output wire empty
-    );
-
-    fifo_ptr fifo_size_ptr_i (
-        .wr_clk(clk),                 // input wire wr_clk
-        .rd_clk(lpd_clk),             // input wire rd_clk
-        .din(fifo_size_in_data),      // input wire [31 : 0] din
-        .wr_en(fifo_chg),             // input wire wr_en
-        .rd_en(fifo_size_rd),         // input wire rd_en
-        .dout(fifo_size_out_data),    // output wire [31 : 0] dout
-        .full(fifo_size_full),        // output wire full
-        .empty(fifo_size_empty)       // output wire empty
-    );
 
     	
 	xpm_fifo_sync #(
@@ -154,12 +134,12 @@ generate
 
     always @(posedge clk) 
     begin
-        mig_blocks <= wr_ptr - adr;
+        mig_blocks <= mig_wr_ptr - adr;
     end
 
     always @(posedge clk) 
     begin
-        rd_ptr <= 0;
+        mig_rd_ptr <= 0;
     end
 
     always @(posedge clk) 
@@ -216,27 +196,27 @@ generate
 
     always @(posedge clk) 
     begin
-        if (M_AXI_TVALID_cmd)
+        if (M_AXI_TVALID_in_cmd)
         begin
-            if (M_AXI_TREADY_cmd)
-                M_AXI_TVALID_cmd <= 0;
+            if (M_AXI_TREADY_in_cmd)
+                M_AXI_TVALID_in_cmd <= 0;
         end
         else
         begin
             if (start_cmd)
             begin
-                M_AXI_TDATA_cmd[4:0] <= 0; 
-                M_AXI_TDATA_cmd[12:5] <= blocks; 
-                M_AXI_TDATA_cmd[22:13] <= 0; 
-                M_AXI_TDATA_cmd[23] <= 1; 
-                M_AXI_TDATA_cmd[31:24] <= 0; 
-                M_AXI_TDATA_cmd[36:32] <= 0; 
-                M_AXI_TDATA_cmd[63:37] <= adr; 
-                M_AXI_TDATA_cmd[67:64] <= tag; 
-                M_AXI_TVALID_cmd <= 1;
+                M_AXI_TDATA_in_cmd[4:0] <= 0; 
+                M_AXI_TDATA_in_cmd[12:5] <= blocks; 
+                M_AXI_TDATA_in_cmd[22:13] <= 0; 
+                M_AXI_TDATA_in_cmd[23] <= 1; 
+                M_AXI_TDATA_in_cmd[31:24] <= 0; 
+                M_AXI_TDATA_in_cmd[36:32] <= 0; 
+                M_AXI_TDATA_in_cmd[63:37] <= adr; 
+                M_AXI_TDATA_in_cmd[67:64] <= tag; 
+                M_AXI_TVALID_in_cmd <= 1;
             end
             else
-                M_AXI_TVALID_cmd <= 0;
+                M_AXI_TVALID_in_cmd <= 0;
         end
     end
 
@@ -244,19 +224,19 @@ generate
     begin
         if (reset) 
         begin
-            M_AXI_STS_tready <= 0;
+            M_AXI_STS_in_tready <= 0;
             cmd_done <= 0;
             cmd_error <= 0;
         end 
         else 
         begin
-            M_AXI_STS_tready <= 1;
+            M_AXI_STS_in_tready <= 1;
 
-            if (M_AXI_STS_tvalid && M_AXI_STS_tready) 
+            if (M_AXI_STS_in_tvalid && M_AXI_STS_in_tready) 
             begin
-                if (M_AXI_STS_tdata[7])
+                if (M_AXI_STS_in_tdata[7])
                 begin
-                    if (tag == M_AXI_STS_tdata[3:0])
+                    if (tag == M_AXI_STS_in_tdata[3:0])
                         cmd_done <= 1;
                     else
                         cmd_error <= 1;
@@ -311,11 +291,6 @@ generate
         end
         else
             in_wr <= 0;
-    end
-
-    always @(posedge lpd_clk) 
-    begin
-        spy_reset <= !lpd_resetn;
     end
 
     always @(posedge clk) 
@@ -381,17 +356,6 @@ generate
         end
         else
             fifo_count <= 0;
-    end
-
-    always @(posedge lpd_clk) 
-    begin
-        if (fifo_size_empty)
-            fifo_size_rd <= 0;
-        else
-        begin
-            avail_size <= fifo_size_out_data;
-            fifo_size_rd <= 1;
-        end
     end
     
   end

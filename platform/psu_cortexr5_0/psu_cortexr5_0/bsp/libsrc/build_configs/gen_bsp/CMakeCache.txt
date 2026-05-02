@@ -303,15 +303,6 @@ XILTIMER_tick_timer:STRING=None
 YOCTO:BOOL=OFF
 
 //Value Computed by CMake
-axidma_BINARY_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src
-
-//Value Computed by CMake
-axidma_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-axidma_SOURCE_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/axidma/src
-
-//Value Computed by CMake
 axipmon_BINARY_DIR:STATIC=/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src
 
 //Value Computed by CMake
@@ -754,7 +745,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=54
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=53
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

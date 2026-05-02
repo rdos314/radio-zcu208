@@ -2103,32 +2103,6 @@
    clocks = <&zynqmp_clk 71>;
    #clock-cells = <0>;
   };
-  axi_avail_count: gpio@80030000 {
-   xlnx,gpio-board-interface = "Custom";
-   compatible = "xlnx,axi-gpio-2.0" , "xlnx,xps-gpio-1.00.a";
-   xlnx,all-outputs = <0>;
-   #gpio-cells = <2>;
-   xlnx,gpio-width = <32>;
-   xlnx,dout-default = <0x0>;
-   xlnx,is-dual = <0>;
-   xlnx,ip-name = "axi_gpio";
-   xlnx,tri-default-2 = <0xffffffff>;
-   reg = <0x0 0x80030000 0x0 0x10000>;
-   xlnx,all-inputs-2 = <0>;
-   clocks = <&zynqmp_clk 71>;
-   xlnx,all-outputs-2 = <1>;
-   gpio-controller;
-   xlnx,interrupt-present = <0>;
-   xlnx,gpio2-board-interface = "Custom";
-   xlnx,edk-iptype = "PERIPHERAL";
-   xlnx,dout-default-2 = <0x0>;
-   status = "okay";
-   xlnx,gpio2-width = <32>;
-   clock-names = "s_axi_aclk";
-   xlnx,tri-default = <0xffffffff>;
-   xlnx,name = "axi_avail_count";
-   xlnx,all-inputs = <1>;
-  };
   axi_bram_ctrl_0: axi_bram_ctrl_0@80000000 {
    xlnx,protocol = "AXI4";
    xlnx,edk-special = "BRAM_CTRL";
@@ -2160,50 +2134,6 @@
    xlnx,mem-depth = <2048>;
    xlnx,s-axi-id-width = <1>;
    xlnx,name = "axi_bram_ctrl_0";
-  };
-  axi_dma_0: dma@80010000 {
-   compatible = "xlnx,axi-dma-7.1" , "xlnx,axi-dma-1.00.a";
-   xlnx,s2mm-data-width = <0x100>;
-   xlnx,mm2s-burst-size = <16>;
-   xlnx,m-axi-mm2s-data-width = <32>;
-   xlnx,num-s2mm-channels = <1>;
-   xlnx,dlytmr-resolution = <125>;
-   xlnx,sg-length-width = <14>;
-   xlnx,prmry-is-aclk-async = <1>;
-   xlnx,include-s2mm-sf = <1>;
-   #dma-cells = <1>;
-   xlnx,ip-name = "axi_dma";
-   xlnx,single-interface = <0>;
-   xlnx,sg-include-stscntrl-strm = <0>;
-   xlnx,include-s2mm-dre = <0>;
-   reg = <0x0 0x80010000 0x0 0x10000>;
-   xlnx,addr-width = <32>;
-   xlnx,include-s2mm = <1>;
-   clocks = <&misc_clk_0>, <&zynqmp_clk 71>;
-   xlnx,s-axis-s2mm-tdata-width = <256>;
-   xlnx,micro-dma = <0>;
-   xlnx,increase-throughput = <0>;
-   xlnx,mm2s-data-width = <0x20>;
-   xlnx,addrwidth = <0x20>;
-   xlnx,sg-use-stsapp-length = <0>;
-   xlnx,m-axis-mm2s-tdata-width = <32>;
-   xlnx,edk-iptype = "PERIPHERAL";
-   xlnx,s2mm-burst-size = <128>;
-   xlnx,m-axi-s2mm-data-width = <256>;
-   xlnx,num-mm2s-channels = <1>;
-   xlnx,enable-multi-channel = <0>;
-   status = "okay";
-   xlnx,include-mm2s-sf = <1>;
-   clock-names = "m_axi_s2mm_aclk" , "s_axi_lite_aclk";
-   xlnx,include-mm2s = <0>;
-   xlnx,include-mm2s-dre = <0>;
-   xlnx,name = "axi_dma_0";
-   dma_channel_80010030: dma-channel@80010030 {
-    xlnx,datawidth = <0x100>;
-    xlnx,device-id = <0x0>;
-    compatible = "xlnx,axi-dma-s2mm-channel";
-    dma-channels = <0x1>;
-   };
   };
   clk104_mux: gpio@80040000 {
    xlnx,gpio-board-interface = "Custom";
@@ -2257,6 +2187,32 @@
    xlnx,tri-default = <0xffffffff>;
    xlnx,name = "gpio_led";
    xlnx,all-inputs = <0>;
+  };
+  gpio_linux_ptr: gpio@b0000000 {
+   xlnx,gpio-board-interface = "Custom";
+   compatible = "xlnx,axi-gpio-2.0" , "xlnx,xps-gpio-1.00.a";
+   xlnx,all-outputs = <0>;
+   #gpio-cells = <2>;
+   xlnx,gpio-width = <32>;
+   xlnx,dout-default = <0x0>;
+   xlnx,is-dual = <1>;
+   xlnx,ip-name = "axi_gpio";
+   xlnx,tri-default-2 = <0xffffffff>;
+   reg = <0x0 0xb0000000 0x0 0x1000>;
+   xlnx,all-inputs-2 = <0>;
+   clocks = <&misc_clk_0>;
+   xlnx,all-outputs-2 = <1>;
+   gpio-controller;
+   xlnx,interrupt-present = <0>;
+   xlnx,gpio2-board-interface = "Custom";
+   xlnx,edk-iptype = "PERIPHERAL";
+   xlnx,dout-default-2 = <0x0>;
+   status = "okay";
+   xlnx,gpio2-width = <32>;
+   clock-names = "s_axi_aclk";
+   xlnx,tri-default = <0xffffffff>;
+   xlnx,name = "gpio_linux_ptr";
+   xlnx,all-inputs = <1>;
   };
   r5_timer: timer@80060000 {
    interrupts = < 0 89 4 >;
@@ -5247,12 +5203,11 @@
          <0x0 0xff300000 &ipi0 0x0 0xff300000 0x0 0x10000>,
          <0x0 0x0 &psu_ddr_0_memory 0x0 0x0 0x0 0x7FF00000>,
          <0x00000008 0x00000000 &psu_ddr_1_memory 0x00000008 0x00000000 0x0 0x80000000>,
-         <0x0 0x80010000 &axi_dma_0 0x0 0x80010000 0x0 0x10000>,
-         <0x0 0x80030000 &axi_avail_count 0x0 0x80030000 0x0 0x10000>,
          <0x0 0x80040000 &clk104_mux 0x0 0x80040000 0x0 0x10000>,
          <0x0 0x80050000 &gpio_led 0x0 0x80050000 0x0 0x10000>,
          <0x0 0x80060000 &r5_timer 0x0 0x80060000 0x0 0x10000>,
          <0x0 0x80080000 &usp_rf_data_converter_0 0x0 0x80080000 0x0 0x40000>,
+         <0x0 0xb0000000 &gpio_linux_ptr 0x0 0xb0000000 0x0 0x1000>,
          <0x0 0xf9010000 &gic_a53 0x0 0xf9010000 0x0 0x70000>,
          <0x0 0xffa80000 &lpd_dma_chan1 0x0 0xffa80000 0x0 0x10000>,
          <0x0 0xffa90000 &lpd_dma_chan2 0x0 0xffa90000 0x0 0x10000>,
@@ -5361,12 +5316,11 @@
          <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>,
          <0xff310000 &ipi1 0xff310000 0x10000>,
          <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>,
-         <0x80010000 &axi_dma_0 0x80010000 0x10000>,
-         <0x80030000 &axi_avail_count 0x80030000 0x10000>,
          <0x80040000 &clk104_mux 0x80040000 0x10000>,
          <0x80050000 &gpio_led 0x80050000 0x10000>,
          <0x80060000 &r5_timer 0x80060000 0x10000>,
          <0x80080000 &usp_rf_data_converter_0 0x80080000 0x40000>,
+         <0xb0000000 &gpio_linux_ptr 0xb0000000 0x1000>,
          <0xffa80000 &lpd_dma_chan1 0xffa80000 0x10000>,
          <0xffa90000 &lpd_dma_chan2 0xffa90000 0x10000>,
          <0xffaa0000 &lpd_dma_chan3 0xffaa0000 0x10000>,
@@ -5474,12 +5428,11 @@
          <0xFFFC0000 &psu_ocm_ram_0_memory 0xFFFC0000 0x40000>,
          <0xff320000 &ipi2 0xff320000 0x10000>,
          <0x100000 &psu_r5_ddr_0_memory 0x100000 0x7FEFFFFF>,
-         <0x80010000 &axi_dma_0 0x80010000 0x10000>,
-         <0x80030000 &axi_avail_count 0x80030000 0x10000>,
          <0x80040000 &clk104_mux 0x80040000 0x10000>,
          <0x80050000 &gpio_led 0x80050000 0x10000>,
          <0x80060000 &r5_timer 0x80060000 0x10000>,
          <0x80080000 &usp_rf_data_converter_0 0x80080000 0x40000>,
+         <0xb0000000 &gpio_linux_ptr 0xb0000000 0x1000>,
          <0xffa80000 &lpd_dma_chan1 0xffa80000 0x10000>,
          <0xffa90000 &lpd_dma_chan2 0xffa90000 0x10000>,
          <0xffaa0000 &lpd_dma_chan3 0xffaa0000 0x10000>,
@@ -5589,12 +5542,11 @@
          <0xff333000 &ipi6 0xff333000 0x1000>,
          <0x0 &psu_ddr_0_memory 0x0 0x7FF00000>,
          <0x7FF00000 &psu_ddr_0_memory 0x7FF00000 0x100000>,
-         <0x80010000 &axi_dma_0 0x80010000 0x10000>,
-         <0x80030000 &axi_avail_count 0x80030000 0x10000>,
          <0x80040000 &clk104_mux 0x80040000 0x10000>,
          <0x80050000 &gpio_led 0x80050000 0x10000>,
          <0x80060000 &r5_timer 0x80060000 0x10000>,
          <0x80080000 &usp_rf_data_converter_0 0x80080000 0x40000>,
+         <0xb0000000 &gpio_linux_ptr 0xb0000000 0x1000>,
          <0xffa80000 &lpd_dma_chan1 0xffa80000 0x10000>,
          <0xffa90000 &lpd_dma_chan2 0xffa90000 0x10000>,
          <0xffaa0000 &lpd_dma_chan3 0xffaa0000 0x10000>,

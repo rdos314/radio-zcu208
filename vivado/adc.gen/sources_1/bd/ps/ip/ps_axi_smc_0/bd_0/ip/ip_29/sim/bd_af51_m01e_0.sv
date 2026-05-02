@@ -267,7 +267,7 @@ output wire m_axi_rready;
     .C_ADDR_WIDTH(5),
     .C_M_PROTOCOL(2),
     .C_HAS_LOCK(0),
-    .C_NUM_MSC(7),
+    .C_NUM_MSC(5),
     .C_SINGLE_ISSUING(0),
     .C_M_LIMIT_READ_LENGTH(1),
     .C_M_LIMIT_WRITE_LENGTH(1),

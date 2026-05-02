@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Apr 21 22:55:13 2026
+// Date        : Sat May  2 15:27:56 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.v
@@ -17,21 +17,24 @@
 (* X_CORE_INFO = "axi_dma,Vivado 2025.1" *) 
 (* NotValidForBitStream *)
 module ps_axi_dma_1_0
-   (lpd_clk,
-    lpd_resetn,
-    spy_wr,
-    spy_data,
-    avail_size,
-    clk,
+   (clk,
     resetn,
-    rd_ptr,
-    wr_ptr,
-    M_AXI_TDATA_cmd,
-    M_AXI_TVALID_cmd,
-    M_AXI_TREADY_cmd,
-    M_AXI_STS_tdata,
-    M_AXI_STS_tvalid,
-    M_AXI_STS_tready,
+    mig_rd_ptr,
+    mig_wr_ptr,
+    linux_rd_ptr,
+    linux_wr_ptr,
+    M_AXI_TDATA_in_cmd,
+    M_AXI_TVALID_in_cmd,
+    M_AXI_TREADY_in_cmd,
+    M_AXI_STS_in_tdata,
+    M_AXI_STS_in_tvalid,
+    M_AXI_STS_in_tready,
+    M_AXI_TDATA_out_cmd,
+    M_AXI_TVALID_out_cmd,
+    M_AXI_TREADY_out_cmd,
+    M_AXI_STS_out_tdata,
+    M_AXI_STS_out_tvalid,
+    M_AXI_STS_out_tready,
     M_AXI_TDATA_in,
     M_AXI_TVALID_in,
     M_AXI_TREADY_in,
@@ -39,21 +42,24 @@ module ps_axi_dma_1_0
     M_AXI_TVALID_out,
     M_AXI_TLAST_out,
     M_AXI_TREADY_out);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 lpd_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_clk, ASSOCIATED_RESET lpd_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input lpd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 lpd_resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME lpd_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input lpd_resetn;
-  input spy_wr;
-  input [31:0]spy_data;
-  output [31:0]avail_size;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS:M_AXI_cmd:M_AXI_in:M_AXI_out, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
-  output [26:0]rd_ptr;
-  input [26:0]wr_ptr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [71:0]M_AXI_TDATA_cmd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TVALID" *) output M_AXI_TVALID_cmd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_cmd TREADY" *) input M_AXI_TREADY_cmd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TDATA" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [7:0]M_AXI_STS_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TVALID" *) input M_AXI_STS_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS TREADY" *) output M_AXI_STS_tready;
+  output [26:0]mig_rd_ptr;
+  input [26:0]mig_wr_ptr;
+  output [31:0]linux_rd_ptr;
+  input [31:0]linux_wr_ptr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [71:0]M_AXI_TDATA_in_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TVALID" *) output M_AXI_TVALID_in_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TREADY" *) input M_AXI_TREADY_in_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TDATA" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS_in, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [7:0]M_AXI_STS_in_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TVALID" *) input M_AXI_STS_in_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_in TREADY" *) output M_AXI_STS_in_tready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [71:0]M_AXI_TDATA_out_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TVALID" *) output M_AXI_TVALID_out_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out_cmd TREADY" *) input M_AXI_TREADY_out_cmd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TDATA" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_STS_out, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [7:0]M_AXI_STS_out_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TVALID" *) input M_AXI_STS_out_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_STS_out TREADY" *) output M_AXI_STS_out_tready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TDATA" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [255:0]M_AXI_TDATA_in;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TVALID" *) input M_AXI_TVALID_in;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TREADY" *) output M_AXI_TREADY_in;
@@ -64,93 +70,198 @@ module ps_axi_dma_1_0
 
   wire \<const0> ;
   wire \<const1> ;
-  wire [7:0]M_AXI_STS_tdata;
-  wire M_AXI_STS_tready;
-  wire M_AXI_STS_tvalid;
-  wire [67:5]\^M_AXI_TDATA_cmd ;
+  wire [7:0]M_AXI_STS_in_tdata;
+  wire M_AXI_STS_in_tready;
+  wire M_AXI_STS_in_tvalid;
   wire [255:0]M_AXI_TDATA_in;
+  wire [67:5]\^M_AXI_TDATA_in_cmd ;
   wire [255:0]M_AXI_TDATA_out;
   wire M_AXI_TLAST_out;
-  wire M_AXI_TREADY_cmd;
+  wire M_AXI_TREADY_in_cmd;
   wire M_AXI_TREADY_out;
-  wire M_AXI_TVALID_cmd;
   wire M_AXI_TVALID_in;
+  wire M_AXI_TVALID_in_cmd;
   wire M_AXI_TVALID_out;
-  wire [31:0]avail_size;
   wire clk;
-  wire lpd_clk;
-  wire lpd_resetn;
+  wire [26:0]mig_wr_ptr;
   wire resetn;
-  wire [31:0]spy_data;
-  wire spy_wr;
-  wire [26:0]wr_ptr;
+  wire NLW_inst_M_AXI_STS_out_tready_UNCONNECTED;
   wire NLW_inst_M_AXI_TREADY_in_UNCONNECTED;
-  wire [71:0]NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED;
-  wire [26:0]NLW_inst_rd_ptr_UNCONNECTED;
+  wire NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED;
+  wire [71:0]NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED;
+  wire [71:0]NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED;
+  wire [31:0]NLW_inst_linux_rd_ptr_UNCONNECTED;
+  wire [26:0]NLW_inst_mig_rd_ptr_UNCONNECTED;
 
-  assign M_AXI_TDATA_cmd[71] = \<const0> ;
-  assign M_AXI_TDATA_cmd[70] = \<const0> ;
-  assign M_AXI_TDATA_cmd[69] = \<const0> ;
-  assign M_AXI_TDATA_cmd[68] = \<const0> ;
-  assign M_AXI_TDATA_cmd[67:37] = \^M_AXI_TDATA_cmd [67:37];
-  assign M_AXI_TDATA_cmd[36] = \<const0> ;
-  assign M_AXI_TDATA_cmd[35] = \<const0> ;
-  assign M_AXI_TDATA_cmd[34] = \<const0> ;
-  assign M_AXI_TDATA_cmd[33] = \<const0> ;
-  assign M_AXI_TDATA_cmd[32] = \<const0> ;
-  assign M_AXI_TDATA_cmd[31] = \<const0> ;
-  assign M_AXI_TDATA_cmd[30] = \<const0> ;
-  assign M_AXI_TDATA_cmd[29] = \<const0> ;
-  assign M_AXI_TDATA_cmd[28] = \<const0> ;
-  assign M_AXI_TDATA_cmd[27] = \<const0> ;
-  assign M_AXI_TDATA_cmd[26] = \<const0> ;
-  assign M_AXI_TDATA_cmd[25] = \<const0> ;
-  assign M_AXI_TDATA_cmd[24] = \<const0> ;
-  assign M_AXI_TDATA_cmd[23] = \<const1> ;
-  assign M_AXI_TDATA_cmd[22] = \<const0> ;
-  assign M_AXI_TDATA_cmd[21] = \<const0> ;
-  assign M_AXI_TDATA_cmd[20] = \<const0> ;
-  assign M_AXI_TDATA_cmd[19] = \<const0> ;
-  assign M_AXI_TDATA_cmd[18] = \<const0> ;
-  assign M_AXI_TDATA_cmd[17] = \<const0> ;
-  assign M_AXI_TDATA_cmd[16] = \<const0> ;
-  assign M_AXI_TDATA_cmd[15] = \<const0> ;
-  assign M_AXI_TDATA_cmd[14] = \<const0> ;
-  assign M_AXI_TDATA_cmd[13] = \<const0> ;
-  assign M_AXI_TDATA_cmd[12:5] = \^M_AXI_TDATA_cmd [12:5];
-  assign M_AXI_TDATA_cmd[4] = \<const0> ;
-  assign M_AXI_TDATA_cmd[3] = \<const0> ;
-  assign M_AXI_TDATA_cmd[2] = \<const0> ;
-  assign M_AXI_TDATA_cmd[1] = \<const0> ;
-  assign M_AXI_TDATA_cmd[0] = \<const0> ;
+  assign M_AXI_STS_out_tready = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[71] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[70] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[69] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[68] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[67:37] = \^M_AXI_TDATA_in_cmd [67:37];
+  assign M_AXI_TDATA_in_cmd[36] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[35] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[34] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[33] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[32] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[31] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[30] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[29] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[28] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[27] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[26] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[25] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[24] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[23] = \<const1> ;
+  assign M_AXI_TDATA_in_cmd[22] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[21] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[20] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[19] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[18] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[17] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[16] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[15] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[14] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[13] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[12:5] = \^M_AXI_TDATA_in_cmd [12:5];
+  assign M_AXI_TDATA_in_cmd[4] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[3] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[2] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[1] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[0] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[71] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[70] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[69] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[68] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[67] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[66] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[65] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[64] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[63] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[62] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[61] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[60] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[59] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[58] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[57] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[56] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[55] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[54] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[53] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[52] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[51] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[50] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[49] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[48] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[47] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[46] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[45] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[44] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[43] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[42] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[41] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[40] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[39] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[38] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[37] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[36] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[35] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[34] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[33] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[32] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[31] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[30] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[29] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[28] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[27] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[26] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[25] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[24] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[23] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[22] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[21] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[20] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[19] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[18] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[17] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[16] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[15] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[14] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[13] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[12] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[11] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[10] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[9] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[8] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[7] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[6] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[5] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[4] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[3] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[2] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[1] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
   assign M_AXI_TREADY_in = \<const1> ;
-  assign rd_ptr[26] = \<const0> ;
-  assign rd_ptr[25] = \<const0> ;
-  assign rd_ptr[24] = \<const0> ;
-  assign rd_ptr[23] = \<const0> ;
-  assign rd_ptr[22] = \<const0> ;
-  assign rd_ptr[21] = \<const0> ;
-  assign rd_ptr[20] = \<const0> ;
-  assign rd_ptr[19] = \<const0> ;
-  assign rd_ptr[18] = \<const0> ;
-  assign rd_ptr[17] = \<const0> ;
-  assign rd_ptr[16] = \<const0> ;
-  assign rd_ptr[15] = \<const0> ;
-  assign rd_ptr[14] = \<const0> ;
-  assign rd_ptr[13] = \<const0> ;
-  assign rd_ptr[12] = \<const0> ;
-  assign rd_ptr[11] = \<const0> ;
-  assign rd_ptr[10] = \<const0> ;
-  assign rd_ptr[9] = \<const0> ;
-  assign rd_ptr[8] = \<const0> ;
-  assign rd_ptr[7] = \<const0> ;
-  assign rd_ptr[6] = \<const0> ;
-  assign rd_ptr[5] = \<const0> ;
-  assign rd_ptr[4] = \<const0> ;
-  assign rd_ptr[3] = \<const0> ;
-  assign rd_ptr[2] = \<const0> ;
-  assign rd_ptr[1] = \<const0> ;
-  assign rd_ptr[0] = \<const0> ;
+  assign M_AXI_TVALID_out_cmd = \<const0> ;
+  assign linux_rd_ptr[31] = \<const0> ;
+  assign linux_rd_ptr[30] = \<const0> ;
+  assign linux_rd_ptr[29] = \<const0> ;
+  assign linux_rd_ptr[28] = \<const0> ;
+  assign linux_rd_ptr[27] = \<const0> ;
+  assign linux_rd_ptr[26] = \<const0> ;
+  assign linux_rd_ptr[25] = \<const0> ;
+  assign linux_rd_ptr[24] = \<const0> ;
+  assign linux_rd_ptr[23] = \<const0> ;
+  assign linux_rd_ptr[22] = \<const0> ;
+  assign linux_rd_ptr[21] = \<const0> ;
+  assign linux_rd_ptr[20] = \<const0> ;
+  assign linux_rd_ptr[19] = \<const0> ;
+  assign linux_rd_ptr[18] = \<const0> ;
+  assign linux_rd_ptr[17] = \<const0> ;
+  assign linux_rd_ptr[16] = \<const0> ;
+  assign linux_rd_ptr[15] = \<const0> ;
+  assign linux_rd_ptr[14] = \<const0> ;
+  assign linux_rd_ptr[13] = \<const0> ;
+  assign linux_rd_ptr[12] = \<const0> ;
+  assign linux_rd_ptr[11] = \<const0> ;
+  assign linux_rd_ptr[10] = \<const0> ;
+  assign linux_rd_ptr[9] = \<const0> ;
+  assign linux_rd_ptr[8] = \<const0> ;
+  assign linux_rd_ptr[7] = \<const0> ;
+  assign linux_rd_ptr[6] = \<const0> ;
+  assign linux_rd_ptr[5] = \<const0> ;
+  assign linux_rd_ptr[4] = \<const0> ;
+  assign linux_rd_ptr[3] = \<const0> ;
+  assign linux_rd_ptr[2] = \<const0> ;
+  assign linux_rd_ptr[1] = \<const0> ;
+  assign linux_rd_ptr[0] = \<const0> ;
+  assign mig_rd_ptr[26] = \<const0> ;
+  assign mig_rd_ptr[25] = \<const0> ;
+  assign mig_rd_ptr[24] = \<const0> ;
+  assign mig_rd_ptr[23] = \<const0> ;
+  assign mig_rd_ptr[22] = \<const0> ;
+  assign mig_rd_ptr[21] = \<const0> ;
+  assign mig_rd_ptr[20] = \<const0> ;
+  assign mig_rd_ptr[19] = \<const0> ;
+  assign mig_rd_ptr[18] = \<const0> ;
+  assign mig_rd_ptr[17] = \<const0> ;
+  assign mig_rd_ptr[16] = \<const0> ;
+  assign mig_rd_ptr[15] = \<const0> ;
+  assign mig_rd_ptr[14] = \<const0> ;
+  assign mig_rd_ptr[13] = \<const0> ;
+  assign mig_rd_ptr[12] = \<const0> ;
+  assign mig_rd_ptr[11] = \<const0> ;
+  assign mig_rd_ptr[10] = \<const0> ;
+  assign mig_rd_ptr[9] = \<const0> ;
+  assign mig_rd_ptr[8] = \<const0> ;
+  assign mig_rd_ptr[7] = \<const0> ;
+  assign mig_rd_ptr[6] = \<const0> ;
+  assign mig_rd_ptr[5] = \<const0> ;
+  assign mig_rd_ptr[4] = \<const0> ;
+  assign mig_rd_ptr[3] = \<const0> ;
+  assign mig_rd_ptr[2] = \<const0> ;
+  assign mig_rd_ptr[1] = \<const0> ;
+  assign mig_rd_ptr[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
   VCC VCC
@@ -160,48 +271,54 @@ module ps_axi_dma_1_0
   (* CMD_ST_WAIT_HDR = "3'b001" *) 
   (* CMD_ST_WAIT_SPACE = "3'b011" *) 
   ps_axi_dma_1_0_axi_dma inst
-       (.M_AXI_STS_tdata({M_AXI_STS_tdata[7],1'b0,1'b0,1'b0,M_AXI_STS_tdata[3:0]}),
-        .M_AXI_STS_tready(M_AXI_STS_tready),
-        .M_AXI_STS_tvalid(M_AXI_STS_tvalid),
-        .M_AXI_TDATA_cmd({NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED[71:68],\^M_AXI_TDATA_cmd ,NLW_inst_M_AXI_TDATA_cmd_UNCONNECTED[4:0]}),
+       (.M_AXI_STS_in_tdata({M_AXI_STS_in_tdata[7],1'b0,1'b0,1'b0,M_AXI_STS_in_tdata[3:0]}),
+        .M_AXI_STS_in_tready(M_AXI_STS_in_tready),
+        .M_AXI_STS_in_tvalid(M_AXI_STS_in_tvalid),
+        .M_AXI_STS_out_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .M_AXI_STS_out_tready(NLW_inst_M_AXI_STS_out_tready_UNCONNECTED),
+        .M_AXI_STS_out_tvalid(1'b0),
         .M_AXI_TDATA_in(M_AXI_TDATA_in),
+        .M_AXI_TDATA_in_cmd({NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[71:68],\^M_AXI_TDATA_in_cmd ,NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[4:0]}),
         .M_AXI_TDATA_out(M_AXI_TDATA_out),
+        .M_AXI_TDATA_out_cmd(NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED[71:0]),
         .M_AXI_TLAST_out(M_AXI_TLAST_out),
-        .M_AXI_TREADY_cmd(M_AXI_TREADY_cmd),
         .M_AXI_TREADY_in(NLW_inst_M_AXI_TREADY_in_UNCONNECTED),
+        .M_AXI_TREADY_in_cmd(M_AXI_TREADY_in_cmd),
         .M_AXI_TREADY_out(M_AXI_TREADY_out),
-        .M_AXI_TVALID_cmd(M_AXI_TVALID_cmd),
+        .M_AXI_TREADY_out_cmd(1'b0),
         .M_AXI_TVALID_in(M_AXI_TVALID_in),
+        .M_AXI_TVALID_in_cmd(M_AXI_TVALID_in_cmd),
         .M_AXI_TVALID_out(M_AXI_TVALID_out),
-        .avail_size(avail_size),
+        .M_AXI_TVALID_out_cmd(NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED),
         .clk(clk),
-        .lpd_clk(lpd_clk),
-        .lpd_resetn(lpd_resetn),
-        .rd_ptr(NLW_inst_rd_ptr_UNCONNECTED[26:0]),
-        .resetn(resetn),
-        .spy_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,spy_data[18:5],1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .spy_wr(spy_wr),
-        .wr_ptr(wr_ptr));
+        .linux_rd_ptr(NLW_inst_linux_rd_ptr_UNCONNECTED[31:0]),
+        .linux_wr_ptr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .mig_rd_ptr(NLW_inst_mig_rd_ptr_UNCONNECTED[26:0]),
+        .mig_wr_ptr(mig_wr_ptr),
+        .resetn(resetn));
 endmodule
 
 (* CMD_ST_IDLE = "3'b000" *) (* CMD_ST_WAIT_DONE = "3'b010" *) (* CMD_ST_WAIT_HDR = "3'b001" *) 
 (* CMD_ST_WAIT_SPACE = "3'b011" *) (* ORIG_REF_NAME = "axi_dma" *) 
 module ps_axi_dma_1_0_axi_dma
-   (lpd_clk,
-    lpd_resetn,
-    spy_wr,
-    spy_data,
-    avail_size,
-    clk,
+   (clk,
     resetn,
-    rd_ptr,
-    wr_ptr,
-    M_AXI_TDATA_cmd,
-    M_AXI_TVALID_cmd,
-    M_AXI_TREADY_cmd,
-    M_AXI_STS_tdata,
-    M_AXI_STS_tvalid,
-    M_AXI_STS_tready,
+    mig_rd_ptr,
+    mig_wr_ptr,
+    linux_rd_ptr,
+    linux_wr_ptr,
+    M_AXI_TDATA_in_cmd,
+    M_AXI_TVALID_in_cmd,
+    M_AXI_TREADY_in_cmd,
+    M_AXI_STS_in_tdata,
+    M_AXI_STS_in_tvalid,
+    M_AXI_STS_in_tready,
+    M_AXI_TDATA_out_cmd,
+    M_AXI_TVALID_out_cmd,
+    M_AXI_TREADY_out_cmd,
+    M_AXI_STS_out_tdata,
+    M_AXI_STS_out_tvalid,
+    M_AXI_STS_out_tready,
     M_AXI_TDATA_in,
     M_AXI_TVALID_in,
     M_AXI_TREADY_in,
@@ -209,21 +326,24 @@ module ps_axi_dma_1_0_axi_dma
     M_AXI_TVALID_out,
     M_AXI_TLAST_out,
     M_AXI_TREADY_out);
-  input lpd_clk;
-  input lpd_resetn;
-  input spy_wr;
-  input [31:0]spy_data;
-  output [31:0]avail_size;
   input clk;
   input resetn;
-  output [26:0]rd_ptr;
-  input [26:0]wr_ptr;
-  output [71:0]M_AXI_TDATA_cmd;
-  output M_AXI_TVALID_cmd;
-  input M_AXI_TREADY_cmd;
-  input [7:0]M_AXI_STS_tdata;
-  input M_AXI_STS_tvalid;
-  output M_AXI_STS_tready;
+  output [26:0]mig_rd_ptr;
+  input [26:0]mig_wr_ptr;
+  output [31:0]linux_rd_ptr;
+  input [31:0]linux_wr_ptr;
+  output [71:0]M_AXI_TDATA_in_cmd;
+  output M_AXI_TVALID_in_cmd;
+  input M_AXI_TREADY_in_cmd;
+  input [7:0]M_AXI_STS_in_tdata;
+  input M_AXI_STS_in_tvalid;
+  output M_AXI_STS_in_tready;
+  output [71:0]M_AXI_TDATA_out_cmd;
+  output M_AXI_TVALID_out_cmd;
+  input M_AXI_TREADY_out_cmd;
+  input [7:0]M_AXI_STS_out_tdata;
+  input M_AXI_STS_out_tvalid;
+  output M_AXI_STS_out_tready;
   input [255:0]M_AXI_TDATA_in;
   input M_AXI_TVALID_in;
   output M_AXI_TREADY_in;
@@ -233,34 +353,25 @@ module ps_axi_dma_1_0_axi_dma
   input M_AXI_TREADY_out;
 
   wire \<const0> ;
-  wire [7:0]M_AXI_STS_tdata;
-  wire M_AXI_STS_tready;
-  wire M_AXI_STS_tvalid;
-  wire [67:5]\^M_AXI_TDATA_cmd ;
+  wire [7:0]M_AXI_STS_in_tdata;
+  wire M_AXI_STS_in_tready;
+  wire M_AXI_STS_in_tvalid;
   wire [255:0]M_AXI_TDATA_in;
+  wire [67:5]\^M_AXI_TDATA_in_cmd ;
   wire [255:0]M_AXI_TDATA_out;
   wire M_AXI_TLAST_out;
-  wire M_AXI_TREADY_cmd;
+  wire M_AXI_TLAST_out2_out;
+  wire M_AXI_TREADY_in_cmd;
   wire M_AXI_TREADY_out;
-  wire M_AXI_TVALID_cmd;
   wire M_AXI_TVALID_in;
+  wire M_AXI_TVALID_in_cmd;
   wire M_AXI_TVALID_out;
   (* MARK_DEBUG *) wire [26:0]adr;
-  wire [31:0]avail_size;
-  wire \axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_10_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_11_n_0 ;
+  wire \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ;
   wire \axi_dma.M_AXI_TLAST_out_i_1_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_2_n_0 ;
   wire \axi_dma.M_AXI_TLAST_out_i_3_n_0 ;
   wire \axi_dma.M_AXI_TLAST_out_i_4_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_5_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_6_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_7_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_8_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_9_n_0 ;
-  wire \axi_dma.M_AXI_TVALID_cmd_i_1_n_0 ;
-  wire \axi_dma.avail_size[31]_i_1_n_0 ;
+  wire \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ;
   wire \axi_dma.blocks[0]_i_1_n_0 ;
   wire \axi_dma.blocks[1]_i_1_n_0 ;
   wire \axi_dma.blocks[2]_i_1_n_0 ;
@@ -297,75 +408,7 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.curr_beat_reg[8]_i_1_n_7 ;
   wire \axi_dma.dma_active_i_1_n_0 ;
   wire \axi_dma.dma_active_reg_n_0 ;
-  wire \axi_dma.fifo_count[0]_i_1_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_1_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_3_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_4_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_5_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_6_n_0 ;
-  wire \axi_dma.fifo_count[13]_i_7_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_10_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_2_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_3_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_4_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_5_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_6_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_7_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_8_n_0 ;
-  wire \axi_dma.fifo_count[8]_i_9_n_0 ;
-  wire [13:0]\axi_dma.fifo_count_reg ;
-  wire \axi_dma.fifo_count_reg[13]_i_2_n_4 ;
-  wire \axi_dma.fifo_count_reg[13]_i_2_n_5 ;
-  wire \axi_dma.fifo_count_reg[13]_i_2_n_6 ;
-  wire \axi_dma.fifo_count_reg[13]_i_2_n_7 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_0 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_1 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_2 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_3 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_4 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_5 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_6 ;
-  wire \axi_dma.fifo_count_reg[8]_i_1_n_7 ;
   wire \axi_dma.has_mig_size_i_1_n_0 ;
-  wire \axi_dma.last_beat[13]_i_3_n_0 ;
-  wire \axi_dma.last_beat[13]_i_4_n_0 ;
-  wire \axi_dma.last_beat[13]_i_5_n_0 ;
-  wire \axi_dma.last_beat[13]_i_6_n_0 ;
-  wire \axi_dma.last_beat[13]_i_7_n_0 ;
-  wire \axi_dma.last_beat[8]_i_2_n_0 ;
-  wire \axi_dma.last_beat[8]_i_3_n_0 ;
-  wire \axi_dma.last_beat[8]_i_4_n_0 ;
-  wire \axi_dma.last_beat[8]_i_5_n_0 ;
-  wire \axi_dma.last_beat[8]_i_6_n_0 ;
-  wire \axi_dma.last_beat[8]_i_7_n_0 ;
-  wire \axi_dma.last_beat[8]_i_8_n_0 ;
-  wire \axi_dma.last_beat[8]_i_9_n_0 ;
-  wire \axi_dma.last_beat_reg[13]_i_2_n_4 ;
-  wire \axi_dma.last_beat_reg[13]_i_2_n_5 ;
-  wire \axi_dma.last_beat_reg[13]_i_2_n_6 ;
-  wire \axi_dma.last_beat_reg[13]_i_2_n_7 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_0 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_1 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_2 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_3 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_4 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_5 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_6 ;
-  wire \axi_dma.last_beat_reg[8]_i_1_n_7 ;
-  wire \axi_dma.last_beat_reg_n_0_[0] ;
-  wire \axi_dma.last_beat_reg_n_0_[10] ;
-  wire \axi_dma.last_beat_reg_n_0_[11] ;
-  wire \axi_dma.last_beat_reg_n_0_[12] ;
-  wire \axi_dma.last_beat_reg_n_0_[13] ;
-  wire \axi_dma.last_beat_reg_n_0_[1] ;
-  wire \axi_dma.last_beat_reg_n_0_[2] ;
-  wire \axi_dma.last_beat_reg_n_0_[3] ;
-  wire \axi_dma.last_beat_reg_n_0_[4] ;
-  wire \axi_dma.last_beat_reg_n_0_[5] ;
-  wire \axi_dma.last_beat_reg_n_0_[6] ;
-  wire \axi_dma.last_beat_reg_n_0_[7] ;
-  wire \axi_dma.last_beat_reg_n_0_[8] ;
-  wire \axi_dma.last_beat_reg_n_0_[9] ;
   wire \axi_dma.mig_blocks[15]_i_2_n_0 ;
   wire \axi_dma.mig_blocks[15]_i_3_n_0 ;
   wire \axi_dma.mig_blocks[15]_i_4_n_0 ;
@@ -459,57 +502,36 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.mig_size[6]_i_1_n_0 ;
   wire \axi_dma.mig_size[7]_i_1_n_0 ;
   wire \axi_dma.mig_size[7]_i_2_n_0 ;
-  wire \axi_dma.r5_cmd_rd_i_1_n_0 ;
-  wire \axi_dma.r5_cmd_rd_reg_n_0 ;
-  wire \axi_dma.spy_reset_i_1_n_0 ;
+  wire \axi_dma.reset_i_1_n_0 ;
   wire \axi_dma.start_cmd_i_1_n_0 ;
   wire \axi_dma.tag[0]_i_1_n_0 ;
   wire \axi_dma.tag[1]_i_1_n_0 ;
   wire \axi_dma.tag[2]_i_1_n_0 ;
   wire \axi_dma.tag[3]_i_1_n_0 ;
   (* MARK_DEBUG *) wire [7:0]blocks;
-  wire clear;
   wire clk;
   (* MARK_DEBUG *) wire cmd_done;
   wire cmd_done0;
   (* MARK_DEBUG *) wire cmd_error;
   (* MARK_DEBUG *) wire [2:0]cmd_state;
   wire curr_beat;
-  wire fifo_chg;
-  wire [13:1]fifo_count;
   wire fifo_empty;
   wire fifo_rd_en;
-  wire fifo_size_empty;
-  wire [31:0]fifo_size_out_data;
-  wire fifo_size_rd;
   (* MARK_DEBUG *) wire has_mig_size;
   wire [255:0]in_data;
   wire in_wr;
-  wire last_beat;
-  wire [13:0]last_beat0;
-  wire lpd_clk;
-  wire lpd_resetn;
   (* MARK_DEBUG *) wire [26:0]mig_blocks;
   (* MARK_DEBUG *) wire [7:0]mig_diff;
   (* MARK_DEBUG *) wire [7:0]mig_size;
+  wire [26:0]mig_wr_ptr;
   wire [2:0]p_0_in__0;
   wire [13:0]p_0_in__1;
-  wire [13:0]r5_cmd_data;
-  wire r5_cmd_empty;
   wire reset;
   wire resetn;
-  wire [31:0]spy_data;
-  wire spy_reset;
-  wire spy_wr;
   (* MARK_DEBUG *) wire start_cmd;
   (* MARK_DEBUG *) wire [3:0]tag;
-  wire [26:0]wr_ptr;
   wire [7:4]\NLW_axi_dma.curr_beat_reg[13]_i_3_CO_UNCONNECTED ;
   wire [7:5]\NLW_axi_dma.curr_beat_reg[13]_i_3_O_UNCONNECTED ;
-  wire [7:4]\NLW_axi_dma.fifo_count_reg[13]_i_2_CO_UNCONNECTED ;
-  wire [7:5]\NLW_axi_dma.fifo_count_reg[13]_i_2_O_UNCONNECTED ;
-  wire [7:4]\NLW_axi_dma.last_beat_reg[13]_i_2_CO_UNCONNECTED ;
-  wire [7:5]\NLW_axi_dma.last_beat_reg[13]_i_2_O_UNCONNECTED ;
   wire [7:2]\NLW_axi_dma.mig_blocks_reg[26]_i_1_CO_UNCONNECTED ;
   wire [7:3]\NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED ;
   wire NLW_fifo_i_almost_empty_UNCONNECTED;
@@ -527,436 +549,470 @@ module ps_axi_dma_1_0_axi_dma
   wire NLW_fifo_i_wr_rst_busy_UNCONNECTED;
   wire [0:0]NLW_fifo_i_rd_data_count_UNCONNECTED;
   wire [0:0]NLW_fifo_i_wr_data_count_UNCONNECTED;
-  wire NLW_fifo_size_ptr_i_full_UNCONNECTED;
-  wire NLW_fifo_spy_i_full_UNCONNECTED;
 
-  assign M_AXI_TDATA_cmd[71] = \<const0> ;
-  assign M_AXI_TDATA_cmd[70] = \<const0> ;
-  assign M_AXI_TDATA_cmd[69] = \<const0> ;
-  assign M_AXI_TDATA_cmd[68] = \<const0> ;
-  assign M_AXI_TDATA_cmd[67:37] = \^M_AXI_TDATA_cmd [67:37];
-  assign M_AXI_TDATA_cmd[36] = \<const0> ;
-  assign M_AXI_TDATA_cmd[35] = \<const0> ;
-  assign M_AXI_TDATA_cmd[34] = \<const0> ;
-  assign M_AXI_TDATA_cmd[33] = \<const0> ;
-  assign M_AXI_TDATA_cmd[32] = \<const0> ;
-  assign M_AXI_TDATA_cmd[31] = \<const0> ;
-  assign M_AXI_TDATA_cmd[30] = \<const0> ;
-  assign M_AXI_TDATA_cmd[29] = \<const0> ;
-  assign M_AXI_TDATA_cmd[28] = \<const0> ;
-  assign M_AXI_TDATA_cmd[27] = \<const0> ;
-  assign M_AXI_TDATA_cmd[26] = \<const0> ;
-  assign M_AXI_TDATA_cmd[25] = \<const0> ;
-  assign M_AXI_TDATA_cmd[24] = \<const0> ;
-  assign M_AXI_TDATA_cmd[23] = \<const0> ;
-  assign M_AXI_TDATA_cmd[22] = \<const0> ;
-  assign M_AXI_TDATA_cmd[21] = \<const0> ;
-  assign M_AXI_TDATA_cmd[20] = \<const0> ;
-  assign M_AXI_TDATA_cmd[19] = \<const0> ;
-  assign M_AXI_TDATA_cmd[18] = \<const0> ;
-  assign M_AXI_TDATA_cmd[17] = \<const0> ;
-  assign M_AXI_TDATA_cmd[16] = \<const0> ;
-  assign M_AXI_TDATA_cmd[15] = \<const0> ;
-  assign M_AXI_TDATA_cmd[14] = \<const0> ;
-  assign M_AXI_TDATA_cmd[13] = \<const0> ;
-  assign M_AXI_TDATA_cmd[12:5] = \^M_AXI_TDATA_cmd [12:5];
-  assign M_AXI_TDATA_cmd[4] = \<const0> ;
-  assign M_AXI_TDATA_cmd[3] = \<const0> ;
-  assign M_AXI_TDATA_cmd[2] = \<const0> ;
-  assign M_AXI_TDATA_cmd[1] = \<const0> ;
-  assign M_AXI_TDATA_cmd[0] = \<const0> ;
+  assign M_AXI_STS_out_tready = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[71] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[70] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[69] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[68] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[67:37] = \^M_AXI_TDATA_in_cmd [67:37];
+  assign M_AXI_TDATA_in_cmd[36] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[35] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[34] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[33] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[32] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[31] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[30] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[29] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[28] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[27] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[26] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[25] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[24] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[23] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[22] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[21] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[20] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[19] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[18] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[17] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[16] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[15] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[14] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[13] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[12:5] = \^M_AXI_TDATA_in_cmd [12:5];
+  assign M_AXI_TDATA_in_cmd[4] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[3] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[2] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[1] = \<const0> ;
+  assign M_AXI_TDATA_in_cmd[0] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[71] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[70] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[69] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[68] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[67] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[66] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[65] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[64] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[63] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[62] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[61] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[60] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[59] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[58] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[57] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[56] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[55] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[54] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[53] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[52] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[51] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[50] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[49] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[48] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[47] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[46] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[45] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[44] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[43] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[42] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[41] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[40] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[39] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[38] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[37] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[36] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[35] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[34] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[33] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[32] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[31] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[30] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[29] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[28] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[27] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[26] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[25] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[24] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[23] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[22] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[21] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[20] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[19] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[18] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[17] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[16] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[15] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[14] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[13] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[12] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[11] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[10] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[9] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[8] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[7] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[6] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[5] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[4] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[3] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[2] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[1] = \<const0> ;
+  assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
   assign M_AXI_TREADY_in = \<const0> ;
-  assign rd_ptr[26] = \<const0> ;
-  assign rd_ptr[25] = \<const0> ;
-  assign rd_ptr[24] = \<const0> ;
-  assign rd_ptr[23] = \<const0> ;
-  assign rd_ptr[22] = \<const0> ;
-  assign rd_ptr[21] = \<const0> ;
-  assign rd_ptr[20] = \<const0> ;
-  assign rd_ptr[19] = \<const0> ;
-  assign rd_ptr[18] = \<const0> ;
-  assign rd_ptr[17] = \<const0> ;
-  assign rd_ptr[16] = \<const0> ;
-  assign rd_ptr[15] = \<const0> ;
-  assign rd_ptr[14] = \<const0> ;
-  assign rd_ptr[13] = \<const0> ;
-  assign rd_ptr[12] = \<const0> ;
-  assign rd_ptr[11] = \<const0> ;
-  assign rd_ptr[10] = \<const0> ;
-  assign rd_ptr[9] = \<const0> ;
-  assign rd_ptr[8] = \<const0> ;
-  assign rd_ptr[7] = \<const0> ;
-  assign rd_ptr[6] = \<const0> ;
-  assign rd_ptr[5] = \<const0> ;
-  assign rd_ptr[4] = \<const0> ;
-  assign rd_ptr[3] = \<const0> ;
-  assign rd_ptr[2] = \<const0> ;
-  assign rd_ptr[1] = \<const0> ;
-  assign rd_ptr[0] = \<const0> ;
+  assign M_AXI_TVALID_out_cmd = \<const0> ;
+  assign linux_rd_ptr[31] = \<const0> ;
+  assign linux_rd_ptr[30] = \<const0> ;
+  assign linux_rd_ptr[29] = \<const0> ;
+  assign linux_rd_ptr[28] = \<const0> ;
+  assign linux_rd_ptr[27] = \<const0> ;
+  assign linux_rd_ptr[26] = \<const0> ;
+  assign linux_rd_ptr[25] = \<const0> ;
+  assign linux_rd_ptr[24] = \<const0> ;
+  assign linux_rd_ptr[23] = \<const0> ;
+  assign linux_rd_ptr[22] = \<const0> ;
+  assign linux_rd_ptr[21] = \<const0> ;
+  assign linux_rd_ptr[20] = \<const0> ;
+  assign linux_rd_ptr[19] = \<const0> ;
+  assign linux_rd_ptr[18] = \<const0> ;
+  assign linux_rd_ptr[17] = \<const0> ;
+  assign linux_rd_ptr[16] = \<const0> ;
+  assign linux_rd_ptr[15] = \<const0> ;
+  assign linux_rd_ptr[14] = \<const0> ;
+  assign linux_rd_ptr[13] = \<const0> ;
+  assign linux_rd_ptr[12] = \<const0> ;
+  assign linux_rd_ptr[11] = \<const0> ;
+  assign linux_rd_ptr[10] = \<const0> ;
+  assign linux_rd_ptr[9] = \<const0> ;
+  assign linux_rd_ptr[8] = \<const0> ;
+  assign linux_rd_ptr[7] = \<const0> ;
+  assign linux_rd_ptr[6] = \<const0> ;
+  assign linux_rd_ptr[5] = \<const0> ;
+  assign linux_rd_ptr[4] = \<const0> ;
+  assign linux_rd_ptr[3] = \<const0> ;
+  assign linux_rd_ptr[2] = \<const0> ;
+  assign linux_rd_ptr[1] = \<const0> ;
+  assign linux_rd_ptr[0] = \<const0> ;
+  assign mig_rd_ptr[26] = \<const0> ;
+  assign mig_rd_ptr[25] = \<const0> ;
+  assign mig_rd_ptr[24] = \<const0> ;
+  assign mig_rd_ptr[23] = \<const0> ;
+  assign mig_rd_ptr[22] = \<const0> ;
+  assign mig_rd_ptr[21] = \<const0> ;
+  assign mig_rd_ptr[20] = \<const0> ;
+  assign mig_rd_ptr[19] = \<const0> ;
+  assign mig_rd_ptr[18] = \<const0> ;
+  assign mig_rd_ptr[17] = \<const0> ;
+  assign mig_rd_ptr[16] = \<const0> ;
+  assign mig_rd_ptr[15] = \<const0> ;
+  assign mig_rd_ptr[14] = \<const0> ;
+  assign mig_rd_ptr[13] = \<const0> ;
+  assign mig_rd_ptr[12] = \<const0> ;
+  assign mig_rd_ptr[11] = \<const0> ;
+  assign mig_rd_ptr[10] = \<const0> ;
+  assign mig_rd_ptr[9] = \<const0> ;
+  assign mig_rd_ptr[8] = \<const0> ;
+  assign mig_rd_ptr[7] = \<const0> ;
+  assign mig_rd_ptr[6] = \<const0> ;
+  assign mig_rd_ptr[5] = \<const0> ;
+  assign mig_rd_ptr[4] = \<const0> ;
+  assign mig_rd_ptr[3] = \<const0> ;
+  assign mig_rd_ptr[2] = \<const0> ;
+  assign mig_rd_ptr[1] = \<const0> ;
+  assign mig_rd_ptr[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
     .INIT(4'h2)) 
     M_AXI_TVALID_out_INST_0
        (.I0(\axi_dma.dma_active_reg_n_0 ),
         .I1(fifo_empty),
         .O(M_AXI_TVALID_out));
-  FDRE \axi_dma.M_AXI_STS_tready_reg 
+  FDRE \axi_dma.M_AXI_STS_in_tready_reg 
        (.C(clk),
         .CE(1'b1),
         .D(1'b1),
-        .Q(M_AXI_STS_tready),
+        .Q(M_AXI_STS_in_tready),
         .R(reset));
   LUT2 #(
     .INIT(4'h2)) 
-    \axi_dma.M_AXI_TDATA_cmd[67]_i_1 
+    \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1 
        (.I0(start_cmd),
-        .I1(M_AXI_TVALID_cmd),
-        .O(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[10] 
+        .I1(M_AXI_TVALID_in_cmd),
+        .O(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ));
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[10] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[5]),
-        .Q(\^M_AXI_TDATA_cmd [10]),
+        .Q(\^M_AXI_TDATA_in_cmd [10]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[11] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[11] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[6]),
-        .Q(\^M_AXI_TDATA_cmd [11]),
+        .Q(\^M_AXI_TDATA_in_cmd [11]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[12] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[12] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[7]),
-        .Q(\^M_AXI_TDATA_cmd [12]),
+        .Q(\^M_AXI_TDATA_in_cmd [12]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[37] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[37] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[0]),
-        .Q(\^M_AXI_TDATA_cmd [37]),
+        .Q(\^M_AXI_TDATA_in_cmd [37]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[38] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[38] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[1]),
-        .Q(\^M_AXI_TDATA_cmd [38]),
+        .Q(\^M_AXI_TDATA_in_cmd [38]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[39] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[39] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[2]),
-        .Q(\^M_AXI_TDATA_cmd [39]),
+        .Q(\^M_AXI_TDATA_in_cmd [39]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[40] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[40] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[3]),
-        .Q(\^M_AXI_TDATA_cmd [40]),
+        .Q(\^M_AXI_TDATA_in_cmd [40]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[41] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[41] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[4]),
-        .Q(\^M_AXI_TDATA_cmd [41]),
+        .Q(\^M_AXI_TDATA_in_cmd [41]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[42] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[42] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[5]),
-        .Q(\^M_AXI_TDATA_cmd [42]),
+        .Q(\^M_AXI_TDATA_in_cmd [42]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[43] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[43] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[6]),
-        .Q(\^M_AXI_TDATA_cmd [43]),
+        .Q(\^M_AXI_TDATA_in_cmd [43]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[44] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[44] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[7]),
-        .Q(\^M_AXI_TDATA_cmd [44]),
+        .Q(\^M_AXI_TDATA_in_cmd [44]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[45] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[45] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[8]),
-        .Q(\^M_AXI_TDATA_cmd [45]),
+        .Q(\^M_AXI_TDATA_in_cmd [45]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[46] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[46] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[9]),
-        .Q(\^M_AXI_TDATA_cmd [46]),
+        .Q(\^M_AXI_TDATA_in_cmd [46]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[47] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[47] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[10]),
-        .Q(\^M_AXI_TDATA_cmd [47]),
+        .Q(\^M_AXI_TDATA_in_cmd [47]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[48] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[48] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[11]),
-        .Q(\^M_AXI_TDATA_cmd [48]),
+        .Q(\^M_AXI_TDATA_in_cmd [48]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[49] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[49] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[12]),
-        .Q(\^M_AXI_TDATA_cmd [49]),
+        .Q(\^M_AXI_TDATA_in_cmd [49]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[50] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[50] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[13]),
-        .Q(\^M_AXI_TDATA_cmd [50]),
+        .Q(\^M_AXI_TDATA_in_cmd [50]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[51] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[51] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[14]),
-        .Q(\^M_AXI_TDATA_cmd [51]),
+        .Q(\^M_AXI_TDATA_in_cmd [51]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[52] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[52] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[15]),
-        .Q(\^M_AXI_TDATA_cmd [52]),
+        .Q(\^M_AXI_TDATA_in_cmd [52]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[53] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[53] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[16]),
-        .Q(\^M_AXI_TDATA_cmd [53]),
+        .Q(\^M_AXI_TDATA_in_cmd [53]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[54] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[54] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[17]),
-        .Q(\^M_AXI_TDATA_cmd [54]),
+        .Q(\^M_AXI_TDATA_in_cmd [54]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[55] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[55] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[18]),
-        .Q(\^M_AXI_TDATA_cmd [55]),
+        .Q(\^M_AXI_TDATA_in_cmd [55]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[56] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[56] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[19]),
-        .Q(\^M_AXI_TDATA_cmd [56]),
+        .Q(\^M_AXI_TDATA_in_cmd [56]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[57] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[57] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[20]),
-        .Q(\^M_AXI_TDATA_cmd [57]),
+        .Q(\^M_AXI_TDATA_in_cmd [57]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[58] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[58] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[21]),
-        .Q(\^M_AXI_TDATA_cmd [58]),
+        .Q(\^M_AXI_TDATA_in_cmd [58]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[59] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[59] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[22]),
-        .Q(\^M_AXI_TDATA_cmd [59]),
+        .Q(\^M_AXI_TDATA_in_cmd [59]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[5] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[5] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[0]),
-        .Q(\^M_AXI_TDATA_cmd [5]),
+        .Q(\^M_AXI_TDATA_in_cmd [5]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[60] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[60] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[23]),
-        .Q(\^M_AXI_TDATA_cmd [60]),
+        .Q(\^M_AXI_TDATA_in_cmd [60]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[61] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[61] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[24]),
-        .Q(\^M_AXI_TDATA_cmd [61]),
+        .Q(\^M_AXI_TDATA_in_cmd [61]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[62] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[62] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[25]),
-        .Q(\^M_AXI_TDATA_cmd [62]),
+        .Q(\^M_AXI_TDATA_in_cmd [62]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[63] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[63] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(adr[26]),
-        .Q(\^M_AXI_TDATA_cmd [63]),
+        .Q(\^M_AXI_TDATA_in_cmd [63]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[64] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[64] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(tag[0]),
-        .Q(\^M_AXI_TDATA_cmd [64]),
+        .Q(\^M_AXI_TDATA_in_cmd [64]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[65] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[65] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(tag[1]),
-        .Q(\^M_AXI_TDATA_cmd [65]),
+        .Q(\^M_AXI_TDATA_in_cmd [65]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[66] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[66] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(tag[2]),
-        .Q(\^M_AXI_TDATA_cmd [66]),
+        .Q(\^M_AXI_TDATA_in_cmd [66]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[67] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[67] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(tag[3]),
-        .Q(\^M_AXI_TDATA_cmd [67]),
+        .Q(\^M_AXI_TDATA_in_cmd [67]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[6] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[6] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[1]),
-        .Q(\^M_AXI_TDATA_cmd [6]),
+        .Q(\^M_AXI_TDATA_in_cmd [6]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[7] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[7] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[2]),
-        .Q(\^M_AXI_TDATA_cmd [7]),
+        .Q(\^M_AXI_TDATA_in_cmd [7]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[8] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[8] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[3]),
-        .Q(\^M_AXI_TDATA_cmd [8]),
+        .Q(\^M_AXI_TDATA_in_cmd [8]),
         .R(1'b0));
-  FDRE \axi_dma.M_AXI_TDATA_cmd_reg[9] 
+  FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[9] 
        (.C(clk),
-        .CE(\axi_dma.M_AXI_TDATA_cmd[67]_i_1_n_0 ),
+        .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
         .D(blocks[4]),
-        .Q(\^M_AXI_TDATA_cmd [9]),
+        .Q(\^M_AXI_TDATA_in_cmd [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT5 #(
-    .INIT(32'hAABAAAAA)) 
+  LUT6 #(
+    .INIT(64'hFB00000008000000)) 
     \axi_dma.M_AXI_TLAST_out_i_1 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_2_n_0 ),
-        .I1(r5_cmd_empty),
-        .I2(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ),
+       (.I0(M_AXI_TLAST_out2_out),
+        .I1(M_AXI_TREADY_out),
+        .I2(fifo_empty),
         .I3(\axi_dma.dma_active_reg_n_0 ),
         .I4(resetn),
-        .O(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \axi_dma.M_AXI_TLAST_out_i_10 
-       (.I0(\axi_dma.curr_beat_reg [3]),
-        .I1(\axi_dma.last_beat_reg_n_0_[3] ),
-        .I2(\axi_dma.last_beat_reg_n_0_[5] ),
-        .I3(\axi_dma.curr_beat_reg [5]),
-        .I4(\axi_dma.last_beat_reg_n_0_[4] ),
-        .I5(\axi_dma.curr_beat_reg [4]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \axi_dma.M_AXI_TLAST_out_i_11 
-       (.I0(\axi_dma.curr_beat_reg [0]),
-        .I1(\axi_dma.last_beat_reg_n_0_[0] ),
-        .I2(\axi_dma.last_beat_reg_n_0_[2] ),
-        .I3(\axi_dma.curr_beat_reg [2]),
-        .I4(\axi_dma.last_beat_reg_n_0_[1] ),
-        .I5(\axi_dma.curr_beat_reg [1]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000FFFF00800000)) 
-    \axi_dma.M_AXI_TLAST_out_i_2 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ),
-        .I1(\axi_dma.M_AXI_TLAST_out_i_5_n_0 ),
-        .I2(\axi_dma.M_AXI_TLAST_out_i_6_n_0 ),
-        .I3(\axi_dma.curr_beat[13]_i_1_n_0 ),
-        .I4(\axi_dma.M_AXI_TLAST_out_i_7_n_0 ),
         .I5(M_AXI_TLAST_out),
-        .O(\axi_dma.M_AXI_TLAST_out_i_2_n_0 ));
+        .O(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \axi_dma.M_AXI_TLAST_out_i_2 
+       (.I0(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ),
+        .I1(\axi_dma.curr_beat_reg [2]),
+        .I2(\axi_dma.curr_beat_reg [1]),
+        .I3(\axi_dma.curr_beat_reg [0]),
+        .I4(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ),
+        .O(M_AXI_TLAST_out2_out));
   LUT6 #(
-    .INIT(64'h0000000000000001)) 
+    .INIT(64'h0000800000000000)) 
     \axi_dma.M_AXI_TLAST_out_i_3 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_8_n_0 ),
-        .I1(\axi_dma.M_AXI_TLAST_out_i_9_n_0 ),
-        .I2(r5_cmd_data[6]),
-        .I3(r5_cmd_data[7]),
-        .I4(r5_cmd_data[4]),
-        .I5(r5_cmd_data[5]),
+       (.I0(\axi_dma.curr_beat_reg [11]),
+        .I1(\axi_dma.curr_beat_reg [12]),
+        .I2(\axi_dma.curr_beat_reg [9]),
+        .I3(\axi_dma.curr_beat_reg [10]),
+        .I4(M_AXI_TLAST_out),
+        .I5(\axi_dma.curr_beat_reg [13]),
         .O(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h9009000000009009)) 
+    .INIT(64'h8000000000000000)) 
     \axi_dma.M_AXI_TLAST_out_i_4 
-       (.I0(\axi_dma.curr_beat_reg [6]),
-        .I1(\axi_dma.last_beat_reg_n_0_[6] ),
-        .I2(\axi_dma.last_beat_reg_n_0_[8] ),
-        .I3(\axi_dma.curr_beat_reg [8]),
-        .I4(\axi_dma.last_beat_reg_n_0_[7] ),
+       (.I0(\axi_dma.curr_beat_reg [5]),
+        .I1(\axi_dma.curr_beat_reg [6]),
+        .I2(\axi_dma.curr_beat_reg [3]),
+        .I3(\axi_dma.curr_beat_reg [4]),
+        .I4(\axi_dma.curr_beat_reg [8]),
         .I5(\axi_dma.curr_beat_reg [7]),
         .O(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000000000)) 
-    \axi_dma.M_AXI_TLAST_out_i_5 
-       (.I0(\axi_dma.last_beat_reg_n_0_[13] ),
-        .I1(\axi_dma.curr_beat_reg [13]),
-        .I2(\axi_dma.last_beat_reg_n_0_[12] ),
-        .I3(\axi_dma.curr_beat_reg [12]),
-        .I4(\axi_dma.M_AXI_TLAST_out_i_10_n_0 ),
-        .I5(\axi_dma.M_AXI_TLAST_out_i_11_n_0 ),
-        .O(\axi_dma.M_AXI_TLAST_out_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \axi_dma.M_AXI_TLAST_out_i_6 
-       (.I0(\axi_dma.curr_beat_reg [9]),
-        .I1(\axi_dma.last_beat_reg_n_0_[9] ),
-        .I2(\axi_dma.last_beat_reg_n_0_[11] ),
-        .I3(\axi_dma.curr_beat_reg [11]),
-        .I4(\axi_dma.last_beat_reg_n_0_[10] ),
-        .I5(\axi_dma.curr_beat_reg [10]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT5 #(
-    .INIT(32'h2F0F2FFF)) 
-    \axi_dma.M_AXI_TLAST_out_i_7 
-       (.I0(M_AXI_TREADY_out),
-        .I1(fifo_empty),
-        .I2(resetn),
-        .I3(\axi_dma.dma_active_reg_n_0 ),
-        .I4(r5_cmd_empty),
-        .O(\axi_dma.M_AXI_TLAST_out_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \axi_dma.M_AXI_TLAST_out_i_8 
-       (.I0(r5_cmd_data[13]),
-        .I1(r5_cmd_data[12]),
-        .I2(r5_cmd_data[9]),
-        .I3(r5_cmd_data[8]),
-        .I4(r5_cmd_data[11]),
-        .I5(r5_cmd_data[10]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
-  LUT4 #(
-    .INIT(16'hFFEF)) 
-    \axi_dma.M_AXI_TLAST_out_i_9 
-       (.I0(r5_cmd_data[2]),
-        .I1(r5_cmd_data[3]),
-        .I2(r5_cmd_data[0]),
-        .I3(r5_cmd_data[1]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_9_n_0 ));
   FDRE \axi_dma.M_AXI_TLAST_out_reg 
        (.C(clk),
         .CE(1'b1),
@@ -965,16 +1021,16 @@ module ps_axi_dma_1_0_axi_dma
         .R(1'b0));
   LUT3 #(
     .INIT(8'h3A)) 
-    \axi_dma.M_AXI_TVALID_cmd_i_1 
+    \axi_dma.M_AXI_TVALID_in_cmd_i_1 
        (.I0(start_cmd),
-        .I1(M_AXI_TREADY_cmd),
-        .I2(M_AXI_TVALID_cmd),
-        .O(\axi_dma.M_AXI_TVALID_cmd_i_1_n_0 ));
-  FDRE \axi_dma.M_AXI_TVALID_cmd_reg 
+        .I1(M_AXI_TREADY_in_cmd),
+        .I2(M_AXI_TVALID_in_cmd),
+        .O(\axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ));
+  FDRE \axi_dma.M_AXI_TVALID_in_cmd_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_dma.M_AXI_TVALID_cmd_i_1_n_0 ),
-        .Q(M_AXI_TVALID_cmd),
+        .D(\axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ),
+        .Q(M_AXI_TVALID_in_cmd),
         .R(1'b0));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -1192,203 +1248,6 @@ module ps_axi_dma_1_0_axi_dma
         .D(adr[9]),
         .Q(adr[9]),
         .R(reset));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.avail_size[31]_i_1 
-       (.I0(fifo_size_empty),
-        .O(\axi_dma.avail_size[31]_i_1_n_0 ));
-  FDRE \axi_dma.avail_size_reg[0] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[0]),
-        .Q(avail_size[0]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[10] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[10]),
-        .Q(avail_size[10]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[11] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[11]),
-        .Q(avail_size[11]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[12] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[12]),
-        .Q(avail_size[12]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[13] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[13]),
-        .Q(avail_size[13]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[14] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[14]),
-        .Q(avail_size[14]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[15] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[15]),
-        .Q(avail_size[15]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[16] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[16]),
-        .Q(avail_size[16]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[17] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[17]),
-        .Q(avail_size[17]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[18] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[18]),
-        .Q(avail_size[18]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[19] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[19]),
-        .Q(avail_size[19]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[1] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[1]),
-        .Q(avail_size[1]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[20] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[20]),
-        .Q(avail_size[20]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[21] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[21]),
-        .Q(avail_size[21]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[22] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[22]),
-        .Q(avail_size[22]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[23] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[23]),
-        .Q(avail_size[23]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[24] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[24]),
-        .Q(avail_size[24]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[25] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[25]),
-        .Q(avail_size[25]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[26] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[26]),
-        .Q(avail_size[26]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[27] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[27]),
-        .Q(avail_size[27]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[28] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[28]),
-        .Q(avail_size[28]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[29] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[29]),
-        .Q(avail_size[29]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[2] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[2]),
-        .Q(avail_size[2]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[30] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[30]),
-        .Q(avail_size[30]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[31] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[31]),
-        .Q(avail_size[31]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[3] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[3]),
-        .Q(avail_size[3]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[4] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[4]),
-        .Q(avail_size[4]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[5] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[5]),
-        .Q(avail_size[5]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[6] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[6]),
-        .Q(avail_size[6]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[7] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[7]),
-        .Q(avail_size[7]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[8] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[8]),
-        .Q(avail_size[8]),
-        .R(1'b0));
-  FDRE \axi_dma.avail_size_reg[9] 
-       (.C(lpd_clk),
-        .CE(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .D(fifo_size_out_data[9]),
-        .Q(avail_size[9]),
-        .R(1'b0));
   LUT3 #(
     .INIT(8'hF4)) 
     \axi_dma.blocks[0]_i_1 
@@ -1521,26 +1380,26 @@ module ps_axi_dma_1_0_axi_dma
     .INIT(32'hEA000000)) 
     \axi_dma.cmd_done_i_1 
        (.I0(cmd_done),
-        .I1(M_AXI_STS_tdata[7]),
+        .I1(M_AXI_STS_in_tdata[7]),
         .I2(cmd_done0),
-        .I3(M_AXI_STS_tvalid),
-        .I4(M_AXI_STS_tready),
+        .I3(M_AXI_STS_in_tvalid),
+        .I4(M_AXI_STS_in_tready),
         .O(\axi_dma.cmd_done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h90)) 
     \axi_dma.cmd_done_i_2 
        (.I0(tag[3]),
-        .I1(M_AXI_STS_tdata[3]),
+        .I1(M_AXI_STS_in_tdata[3]),
         .I2(\axi_dma.cmd_done_i_3_n_0 ),
         .O(cmd_done0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \axi_dma.cmd_done_i_3 
        (.I0(tag[0]),
-        .I1(M_AXI_STS_tdata[0]),
-        .I2(M_AXI_STS_tdata[2]),
+        .I1(M_AXI_STS_in_tdata[0]),
+        .I2(M_AXI_STS_in_tdata[2]),
         .I3(tag[2]),
-        .I4(M_AXI_STS_tdata[1]),
+        .I4(M_AXI_STS_in_tdata[1]),
         .I5(tag[1]),
         .O(\axi_dma.cmd_done_i_3_n_0 ));
   (* KEEP = "yes" *) 
@@ -1555,9 +1414,9 @@ module ps_axi_dma_1_0_axi_dma
     \axi_dma.cmd_error_i_1 
        (.I0(cmd_done0),
         .I1(cmd_error),
-        .I2(M_AXI_STS_tdata[7]),
-        .I3(M_AXI_STS_tvalid),
-        .I4(M_AXI_STS_tready),
+        .I2(M_AXI_STS_in_tdata[7]),
+        .I3(M_AXI_STS_in_tvalid),
+        .I4(M_AXI_STS_in_tready),
         .I5(cmd_error),
         .O(\axi_dma.cmd_error_i_1_n_0 ));
   (* KEEP = "yes" *) 
@@ -1689,25 +1548,24 @@ module ps_axi_dma_1_0_axi_dma
         .D(p_0_in__0[2]),
         .Q(cmd_state[2]),
         .R(reset));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \axi_dma.curr_beat[0]_i_1 
        (.I0(\axi_dma.curr_beat_reg [0]),
         .O(p_0_in__1[0]));
-  LUT3 #(
-    .INIT(8'h1F)) 
+  LUT2 #(
+    .INIT(4'h7)) 
     \axi_dma.curr_beat[13]_i_1 
-       (.I0(r5_cmd_empty),
+       (.I0(resetn),
         .I1(\axi_dma.dma_active_reg_n_0 ),
-        .I2(resetn),
         .O(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h1000)) 
+  LUT3 #(
+    .INIT(8'h10)) 
     \axi_dma.curr_beat[13]_i_2 
        (.I0(M_AXI_TLAST_out),
         .I1(fifo_empty),
-        .I2(\axi_dma.dma_active_reg_n_0 ),
-        .I3(M_AXI_TREADY_out),
+        .I2(M_AXI_TREADY_out),
         .O(curr_beat));
   FDSE \axi_dma.curr_beat_reg[0] 
        (.C(clk),
@@ -1809,236 +1667,21 @@ module ps_axi_dma_1_0_axi_dma
         .D(p_0_in__1[9]),
         .Q(\axi_dma.curr_beat_reg [9]),
         .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT5 #(
-    .INIT(32'hF3FF5555)) 
+    .INIT(32'hAAAA2AAA)) 
     \axi_dma.dma_active_i_1 
-       (.I0(r5_cmd_empty),
-        .I1(M_AXI_TLAST_out),
-        .I2(fifo_empty),
+       (.I0(resetn),
+        .I1(\axi_dma.dma_active_reg_n_0 ),
+        .I2(M_AXI_TLAST_out),
         .I3(M_AXI_TREADY_out),
-        .I4(\axi_dma.dma_active_reg_n_0 ),
+        .I4(fifo_empty),
         .O(\axi_dma.dma_active_i_1_n_0 ));
   FDRE \axi_dma.dma_active_reg 
        (.C(clk),
         .CE(1'b1),
         .D(\axi_dma.dma_active_i_1_n_0 ),
         .Q(\axi_dma.dma_active_reg_n_0 ),
-        .R(clear));
-  FDRE \axi_dma.fifo_chg_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(in_wr),
-        .Q(fifo_chg),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'h40BFBF40)) 
-    \axi_dma.fifo_count[0]_i_1 
-       (.I0(fifo_empty),
-        .I1(\axi_dma.dma_active_reg_n_0 ),
-        .I2(M_AXI_TREADY_out),
-        .I3(in_wr),
-        .I4(\axi_dma.fifo_count_reg [0]),
-        .O(\axi_dma.fifo_count[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hAA6A)) 
-    \axi_dma.fifo_count[13]_i_1 
-       (.I0(in_wr),
-        .I1(M_AXI_TREADY_out),
-        .I2(\axi_dma.dma_active_reg_n_0 ),
-        .I3(fifo_empty),
-        .O(\axi_dma.fifo_count[13]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[13]_i_3 
-       (.I0(\axi_dma.fifo_count_reg [12]),
-        .I1(\axi_dma.fifo_count_reg [13]),
-        .O(\axi_dma.fifo_count[13]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[13]_i_4 
-       (.I0(\axi_dma.fifo_count_reg [11]),
-        .I1(\axi_dma.fifo_count_reg [12]),
-        .O(\axi_dma.fifo_count[13]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[13]_i_5 
-       (.I0(\axi_dma.fifo_count_reg [10]),
-        .I1(\axi_dma.fifo_count_reg [11]),
-        .O(\axi_dma.fifo_count[13]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[13]_i_6 
-       (.I0(\axi_dma.fifo_count_reg [9]),
-        .I1(\axi_dma.fifo_count_reg [10]),
-        .O(\axi_dma.fifo_count[13]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[13]_i_7 
-       (.I0(\axi_dma.fifo_count_reg [8]),
-        .I1(\axi_dma.fifo_count_reg [9]),
-        .O(\axi_dma.fifo_count[13]_i_7_n_0 ));
-  LUT4 #(
-    .INIT(16'hAA6A)) 
-    \axi_dma.fifo_count[8]_i_10 
-       (.I0(\axi_dma.fifo_count_reg [1]),
-        .I1(M_AXI_TREADY_out),
-        .I2(\axi_dma.dma_active_reg_n_0 ),
-        .I3(fifo_empty),
-        .O(\axi_dma.fifo_count[8]_i_10_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.fifo_count[8]_i_2 
-       (.I0(\axi_dma.fifo_count_reg [1]),
-        .O(\axi_dma.fifo_count[8]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_3 
-       (.I0(\axi_dma.fifo_count_reg [7]),
-        .I1(\axi_dma.fifo_count_reg [8]),
-        .O(\axi_dma.fifo_count[8]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_4 
-       (.I0(\axi_dma.fifo_count_reg [6]),
-        .I1(\axi_dma.fifo_count_reg [7]),
-        .O(\axi_dma.fifo_count[8]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_5 
-       (.I0(\axi_dma.fifo_count_reg [5]),
-        .I1(\axi_dma.fifo_count_reg [6]),
-        .O(\axi_dma.fifo_count[8]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_6 
-       (.I0(\axi_dma.fifo_count_reg [4]),
-        .I1(\axi_dma.fifo_count_reg [5]),
-        .O(\axi_dma.fifo_count[8]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_7 
-       (.I0(\axi_dma.fifo_count_reg [3]),
-        .I1(\axi_dma.fifo_count_reg [4]),
-        .O(\axi_dma.fifo_count[8]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_8 
-       (.I0(\axi_dma.fifo_count_reg [2]),
-        .I1(\axi_dma.fifo_count_reg [3]),
-        .O(\axi_dma.fifo_count[8]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.fifo_count[8]_i_9 
-       (.I0(\axi_dma.fifo_count_reg [1]),
-        .I1(\axi_dma.fifo_count_reg [2]),
-        .O(\axi_dma.fifo_count[8]_i_9_n_0 ));
-  FDRE \axi_dma.fifo_count_reg[0] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.fifo_count[0]_i_1_n_0 ),
-        .Q(\axi_dma.fifo_count_reg [0]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[10] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[10]),
-        .Q(\axi_dma.fifo_count_reg [10]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[11] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[11]),
-        .Q(\axi_dma.fifo_count_reg [11]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[12] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[12]),
-        .Q(\axi_dma.fifo_count_reg [12]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[13] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[13]),
-        .Q(\axi_dma.fifo_count_reg [13]),
-        .R(clear));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY8 \axi_dma.fifo_count_reg[13]_i_2 
-       (.CI(\axi_dma.fifo_count_reg[8]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_axi_dma.fifo_count_reg[13]_i_2_CO_UNCONNECTED [7:4],\axi_dma.fifo_count_reg[13]_i_2_n_4 ,\axi_dma.fifo_count_reg[13]_i_2_n_5 ,\axi_dma.fifo_count_reg[13]_i_2_n_6 ,\axi_dma.fifo_count_reg[13]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,\axi_dma.fifo_count_reg [11:8]}),
-        .O({\NLW_axi_dma.fifo_count_reg[13]_i_2_O_UNCONNECTED [7:5],fifo_count[13:9]}),
-        .S({1'b0,1'b0,1'b0,\axi_dma.fifo_count[13]_i_3_n_0 ,\axi_dma.fifo_count[13]_i_4_n_0 ,\axi_dma.fifo_count[13]_i_5_n_0 ,\axi_dma.fifo_count[13]_i_6_n_0 ,\axi_dma.fifo_count[13]_i_7_n_0 }));
-  FDRE \axi_dma.fifo_count_reg[1] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[1]),
-        .Q(\axi_dma.fifo_count_reg [1]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[2] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[2]),
-        .Q(\axi_dma.fifo_count_reg [2]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[3] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[3]),
-        .Q(\axi_dma.fifo_count_reg [3]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[4] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[4]),
-        .Q(\axi_dma.fifo_count_reg [4]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[5] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[5]),
-        .Q(\axi_dma.fifo_count_reg [5]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[6] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[6]),
-        .Q(\axi_dma.fifo_count_reg [6]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[7] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[7]),
-        .Q(\axi_dma.fifo_count_reg [7]),
-        .R(clear));
-  FDRE \axi_dma.fifo_count_reg[8] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[8]),
-        .Q(\axi_dma.fifo_count_reg [8]),
-        .R(clear));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY8 \axi_dma.fifo_count_reg[8]_i_1 
-       (.CI(\axi_dma.fifo_count_reg [0]),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.fifo_count_reg[8]_i_1_n_0 ,\axi_dma.fifo_count_reg[8]_i_1_n_1 ,\axi_dma.fifo_count_reg[8]_i_1_n_2 ,\axi_dma.fifo_count_reg[8]_i_1_n_3 ,\axi_dma.fifo_count_reg[8]_i_1_n_4 ,\axi_dma.fifo_count_reg[8]_i_1_n_5 ,\axi_dma.fifo_count_reg[8]_i_1_n_6 ,\axi_dma.fifo_count_reg[8]_i_1_n_7 }),
-        .DI({\axi_dma.fifo_count_reg [7:1],\axi_dma.fifo_count[8]_i_2_n_0 }),
-        .O(fifo_count[8:1]),
-        .S({\axi_dma.fifo_count[8]_i_3_n_0 ,\axi_dma.fifo_count[8]_i_4_n_0 ,\axi_dma.fifo_count[8]_i_5_n_0 ,\axi_dma.fifo_count[8]_i_6_n_0 ,\axi_dma.fifo_count[8]_i_7_n_0 ,\axi_dma.fifo_count[8]_i_8_n_0 ,\axi_dma.fifo_count[8]_i_9_n_0 ,\axi_dma.fifo_count[8]_i_10_n_0 }));
-  FDRE \axi_dma.fifo_count_reg[9] 
-       (.C(clk),
-        .CE(\axi_dma.fifo_count[13]_i_1_n_0 ),
-        .D(fifo_count[9]),
-        .Q(\axi_dma.fifo_count_reg [9]),
-        .R(clear));
-  FDRE \axi_dma.fifo_size_rd_reg 
-       (.C(lpd_clk),
-        .CE(1'b1),
-        .D(\axi_dma.avail_size[31]_i_1_n_0 ),
-        .Q(fifo_size_rd),
         .R(1'b0));
   LUT5 #(
     .INIT(32'h000000F8)) 
@@ -3598,344 +3241,166 @@ module ps_axi_dma_1_0_axi_dma
         .D(M_AXI_TVALID_in),
         .Q(in_wr),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[0]_i_1 
-       (.I0(r5_cmd_data[0]),
-        .O(last_beat0[0]));
-  LUT3 #(
-    .INIT(8'h02)) 
-    \axi_dma.last_beat[13]_i_1 
-       (.I0(resetn),
-        .I1(r5_cmd_empty),
-        .I2(\axi_dma.dma_active_reg_n_0 ),
-        .O(last_beat));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[13]_i_3 
-       (.I0(r5_cmd_data[13]),
-        .O(\axi_dma.last_beat[13]_i_3_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[13]_i_4 
-       (.I0(r5_cmd_data[12]),
-        .O(\axi_dma.last_beat[13]_i_4_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[13]_i_5 
-       (.I0(r5_cmd_data[11]),
-        .O(\axi_dma.last_beat[13]_i_5_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[13]_i_6 
-       (.I0(r5_cmd_data[10]),
-        .O(\axi_dma.last_beat[13]_i_6_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[13]_i_7 
-       (.I0(r5_cmd_data[9]),
-        .O(\axi_dma.last_beat[13]_i_7_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_2 
-       (.I0(r5_cmd_data[8]),
-        .O(\axi_dma.last_beat[8]_i_2_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_3 
-       (.I0(r5_cmd_data[7]),
-        .O(\axi_dma.last_beat[8]_i_3_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_4 
-       (.I0(r5_cmd_data[6]),
-        .O(\axi_dma.last_beat[8]_i_4_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_5 
-       (.I0(r5_cmd_data[5]),
-        .O(\axi_dma.last_beat[8]_i_5_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_6 
-       (.I0(r5_cmd_data[4]),
-        .O(\axi_dma.last_beat[8]_i_6_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_7 
-       (.I0(r5_cmd_data[3]),
-        .O(\axi_dma.last_beat[8]_i_7_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_8 
-       (.I0(r5_cmd_data[2]),
-        .O(\axi_dma.last_beat[8]_i_8_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.last_beat[8]_i_9 
-       (.I0(r5_cmd_data[1]),
-        .O(\axi_dma.last_beat[8]_i_9_n_0 ));
-  FDRE \axi_dma.last_beat_reg[0] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[0]),
-        .Q(\axi_dma.last_beat_reg_n_0_[0] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[10] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[10]),
-        .Q(\axi_dma.last_beat_reg_n_0_[10] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[11] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[11]),
-        .Q(\axi_dma.last_beat_reg_n_0_[11] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[12] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[12]),
-        .Q(\axi_dma.last_beat_reg_n_0_[12] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[13] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[13]),
-        .Q(\axi_dma.last_beat_reg_n_0_[13] ),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.last_beat_reg[13]_i_2 
-       (.CI(\axi_dma.last_beat_reg[8]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_axi_dma.last_beat_reg[13]_i_2_CO_UNCONNECTED [7:4],\axi_dma.last_beat_reg[13]_i_2_n_4 ,\axi_dma.last_beat_reg[13]_i_2_n_5 ,\axi_dma.last_beat_reg[13]_i_2_n_6 ,\axi_dma.last_beat_reg[13]_i_2_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,r5_cmd_data[12:9]}),
-        .O({\NLW_axi_dma.last_beat_reg[13]_i_2_O_UNCONNECTED [7:5],last_beat0[13:9]}),
-        .S({1'b0,1'b0,1'b0,\axi_dma.last_beat[13]_i_3_n_0 ,\axi_dma.last_beat[13]_i_4_n_0 ,\axi_dma.last_beat[13]_i_5_n_0 ,\axi_dma.last_beat[13]_i_6_n_0 ,\axi_dma.last_beat[13]_i_7_n_0 }));
-  FDRE \axi_dma.last_beat_reg[1] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[1]),
-        .Q(\axi_dma.last_beat_reg_n_0_[1] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[2] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[2]),
-        .Q(\axi_dma.last_beat_reg_n_0_[2] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[3] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[3]),
-        .Q(\axi_dma.last_beat_reg_n_0_[3] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[4] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[4]),
-        .Q(\axi_dma.last_beat_reg_n_0_[4] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[5] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[5]),
-        .Q(\axi_dma.last_beat_reg_n_0_[5] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[6] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[6]),
-        .Q(\axi_dma.last_beat_reg_n_0_[6] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[7] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[7]),
-        .Q(\axi_dma.last_beat_reg_n_0_[7] ),
-        .R(1'b0));
-  FDRE \axi_dma.last_beat_reg[8] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[8]),
-        .Q(\axi_dma.last_beat_reg_n_0_[8] ),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.last_beat_reg[8]_i_1 
-       (.CI(r5_cmd_data[0]),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.last_beat_reg[8]_i_1_n_0 ,\axi_dma.last_beat_reg[8]_i_1_n_1 ,\axi_dma.last_beat_reg[8]_i_1_n_2 ,\axi_dma.last_beat_reg[8]_i_1_n_3 ,\axi_dma.last_beat_reg[8]_i_1_n_4 ,\axi_dma.last_beat_reg[8]_i_1_n_5 ,\axi_dma.last_beat_reg[8]_i_1_n_6 ,\axi_dma.last_beat_reg[8]_i_1_n_7 }),
-        .DI(r5_cmd_data[8:1]),
-        .O(last_beat0[8:1]),
-        .S({\axi_dma.last_beat[8]_i_2_n_0 ,\axi_dma.last_beat[8]_i_3_n_0 ,\axi_dma.last_beat[8]_i_4_n_0 ,\axi_dma.last_beat[8]_i_5_n_0 ,\axi_dma.last_beat[8]_i_6_n_0 ,\axi_dma.last_beat[8]_i_7_n_0 ,\axi_dma.last_beat[8]_i_8_n_0 ,\axi_dma.last_beat[8]_i_9_n_0 }));
-  FDRE \axi_dma.last_beat_reg[9] 
-       (.C(clk),
-        .CE(last_beat),
-        .D(last_beat0[9]),
-        .Q(\axi_dma.last_beat_reg_n_0_[9] ),
-        .R(1'b0));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_2 
-       (.I0(wr_ptr[15]),
+       (.I0(mig_wr_ptr[15]),
         .I1(adr[15]),
         .O(\axi_dma.mig_blocks[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_3 
-       (.I0(wr_ptr[14]),
+       (.I0(mig_wr_ptr[14]),
         .I1(adr[14]),
         .O(\axi_dma.mig_blocks[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_4 
-       (.I0(wr_ptr[13]),
+       (.I0(mig_wr_ptr[13]),
         .I1(adr[13]),
         .O(\axi_dma.mig_blocks[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_5 
-       (.I0(wr_ptr[12]),
+       (.I0(mig_wr_ptr[12]),
         .I1(adr[12]),
         .O(\axi_dma.mig_blocks[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_6 
-       (.I0(wr_ptr[11]),
+       (.I0(mig_wr_ptr[11]),
         .I1(adr[11]),
         .O(\axi_dma.mig_blocks[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_7 
-       (.I0(wr_ptr[10]),
+       (.I0(mig_wr_ptr[10]),
         .I1(adr[10]),
         .O(\axi_dma.mig_blocks[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_8 
-       (.I0(wr_ptr[9]),
+       (.I0(mig_wr_ptr[9]),
         .I1(adr[9]),
         .O(\axi_dma.mig_blocks[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[15]_i_9 
-       (.I0(wr_ptr[8]),
+       (.I0(mig_wr_ptr[8]),
         .I1(adr[8]),
         .O(\axi_dma.mig_blocks[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_2 
-       (.I0(wr_ptr[23]),
+       (.I0(mig_wr_ptr[23]),
         .I1(adr[23]),
         .O(\axi_dma.mig_blocks[23]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_3 
-       (.I0(wr_ptr[22]),
+       (.I0(mig_wr_ptr[22]),
         .I1(adr[22]),
         .O(\axi_dma.mig_blocks[23]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_4 
-       (.I0(wr_ptr[21]),
+       (.I0(mig_wr_ptr[21]),
         .I1(adr[21]),
         .O(\axi_dma.mig_blocks[23]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_5 
-       (.I0(wr_ptr[20]),
+       (.I0(mig_wr_ptr[20]),
         .I1(adr[20]),
         .O(\axi_dma.mig_blocks[23]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_6 
-       (.I0(wr_ptr[19]),
+       (.I0(mig_wr_ptr[19]),
         .I1(adr[19]),
         .O(\axi_dma.mig_blocks[23]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_7 
-       (.I0(wr_ptr[18]),
+       (.I0(mig_wr_ptr[18]),
         .I1(adr[18]),
         .O(\axi_dma.mig_blocks[23]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_8 
-       (.I0(wr_ptr[17]),
+       (.I0(mig_wr_ptr[17]),
         .I1(adr[17]),
         .O(\axi_dma.mig_blocks[23]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[23]_i_9 
-       (.I0(wr_ptr[16]),
+       (.I0(mig_wr_ptr[16]),
         .I1(adr[16]),
         .O(\axi_dma.mig_blocks[23]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[26]_i_2 
-       (.I0(wr_ptr[26]),
+       (.I0(mig_wr_ptr[26]),
         .I1(adr[26]),
         .O(\axi_dma.mig_blocks[26]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[26]_i_3 
-       (.I0(wr_ptr[25]),
+       (.I0(mig_wr_ptr[25]),
         .I1(adr[25]),
         .O(\axi_dma.mig_blocks[26]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[26]_i_4 
-       (.I0(wr_ptr[24]),
+       (.I0(mig_wr_ptr[24]),
         .I1(adr[24]),
         .O(\axi_dma.mig_blocks[26]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_2 
-       (.I0(wr_ptr[7]),
+       (.I0(mig_wr_ptr[7]),
         .I1(adr[7]),
         .O(\axi_dma.mig_blocks[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_3 
-       (.I0(wr_ptr[6]),
+       (.I0(mig_wr_ptr[6]),
         .I1(adr[6]),
         .O(\axi_dma.mig_blocks[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_4 
-       (.I0(wr_ptr[5]),
+       (.I0(mig_wr_ptr[5]),
         .I1(adr[5]),
         .O(\axi_dma.mig_blocks[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_5 
-       (.I0(wr_ptr[4]),
+       (.I0(mig_wr_ptr[4]),
         .I1(adr[4]),
         .O(\axi_dma.mig_blocks[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_6 
-       (.I0(wr_ptr[3]),
+       (.I0(mig_wr_ptr[3]),
         .I1(adr[3]),
         .O(\axi_dma.mig_blocks[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_7 
-       (.I0(wr_ptr[2]),
+       (.I0(mig_wr_ptr[2]),
         .I1(adr[2]),
         .O(\axi_dma.mig_blocks[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_8 
-       (.I0(wr_ptr[1]),
+       (.I0(mig_wr_ptr[1]),
         .I1(adr[1]),
         .O(\axi_dma.mig_blocks[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \axi_dma.mig_blocks[7]_i_9 
-       (.I0(wr_ptr[0]),
+       (.I0(mig_wr_ptr[0]),
         .I1(adr[0]),
         .O(\axi_dma.mig_blocks[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
@@ -3992,7 +3457,7 @@ module ps_axi_dma_1_0_axi_dma
        (.CI(\axi_dma.mig_blocks_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\axi_dma.mig_blocks_reg[15]_i_1_n_0 ,\axi_dma.mig_blocks_reg[15]_i_1_n_1 ,\axi_dma.mig_blocks_reg[15]_i_1_n_2 ,\axi_dma.mig_blocks_reg[15]_i_1_n_3 ,\axi_dma.mig_blocks_reg[15]_i_1_n_4 ,\axi_dma.mig_blocks_reg[15]_i_1_n_5 ,\axi_dma.mig_blocks_reg[15]_i_1_n_6 ,\axi_dma.mig_blocks_reg[15]_i_1_n_7 }),
-        .DI(wr_ptr[15:8]),
+        .DI(mig_wr_ptr[15:8]),
         .O(\axi_dma.mig_blocks_reg0 [15:8]),
         .S({\axi_dma.mig_blocks[15]_i_2_n_0 ,\axi_dma.mig_blocks[15]_i_3_n_0 ,\axi_dma.mig_blocks[15]_i_4_n_0 ,\axi_dma.mig_blocks[15]_i_5_n_0 ,\axi_dma.mig_blocks[15]_i_6_n_0 ,\axi_dma.mig_blocks[15]_i_7_n_0 ,\axi_dma.mig_blocks[15]_i_8_n_0 ,\axi_dma.mig_blocks[15]_i_9_n_0 }));
   (* KEEP = "yes" *) 
@@ -4063,7 +3528,7 @@ module ps_axi_dma_1_0_axi_dma
        (.CI(\axi_dma.mig_blocks_reg[15]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\axi_dma.mig_blocks_reg[23]_i_1_n_0 ,\axi_dma.mig_blocks_reg[23]_i_1_n_1 ,\axi_dma.mig_blocks_reg[23]_i_1_n_2 ,\axi_dma.mig_blocks_reg[23]_i_1_n_3 ,\axi_dma.mig_blocks_reg[23]_i_1_n_4 ,\axi_dma.mig_blocks_reg[23]_i_1_n_5 ,\axi_dma.mig_blocks_reg[23]_i_1_n_6 ,\axi_dma.mig_blocks_reg[23]_i_1_n_7 }),
-        .DI(wr_ptr[23:16]),
+        .DI(mig_wr_ptr[23:16]),
         .O(\axi_dma.mig_blocks_reg0 [23:16]),
         .S({\axi_dma.mig_blocks[23]_i_2_n_0 ,\axi_dma.mig_blocks[23]_i_3_n_0 ,\axi_dma.mig_blocks[23]_i_4_n_0 ,\axi_dma.mig_blocks[23]_i_5_n_0 ,\axi_dma.mig_blocks[23]_i_6_n_0 ,\axi_dma.mig_blocks[23]_i_7_n_0 ,\axi_dma.mig_blocks[23]_i_8_n_0 ,\axi_dma.mig_blocks[23]_i_9_n_0 }));
   (* KEEP = "yes" *) 
@@ -4092,7 +3557,7 @@ module ps_axi_dma_1_0_axi_dma
        (.CI(\axi_dma.mig_blocks_reg[23]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_axi_dma.mig_blocks_reg[26]_i_1_CO_UNCONNECTED [7:2],\axi_dma.mig_blocks_reg[26]_i_1_n_6 ,\axi_dma.mig_blocks_reg[26]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,wr_ptr[25:24]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,mig_wr_ptr[25:24]}),
         .O({\NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED [7:3],\axi_dma.mig_blocks_reg0 [26:24]}),
         .S({1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.mig_blocks[26]_i_2_n_0 ,\axi_dma.mig_blocks[26]_i_3_n_0 ,\axi_dma.mig_blocks[26]_i_4_n_0 }));
   (* KEEP = "yes" *) 
@@ -4142,7 +3607,7 @@ module ps_axi_dma_1_0_axi_dma
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\axi_dma.mig_blocks_reg[7]_i_1_n_0 ,\axi_dma.mig_blocks_reg[7]_i_1_n_1 ,\axi_dma.mig_blocks_reg[7]_i_1_n_2 ,\axi_dma.mig_blocks_reg[7]_i_1_n_3 ,\axi_dma.mig_blocks_reg[7]_i_1_n_4 ,\axi_dma.mig_blocks_reg[7]_i_1_n_5 ,\axi_dma.mig_blocks_reg[7]_i_1_n_6 ,\axi_dma.mig_blocks_reg[7]_i_1_n_7 }),
-        .DI(wr_ptr[7:0]),
+        .DI(mig_wr_ptr[7:0]),
         .O(\axi_dma.mig_blocks_reg0 [7:0]),
         .S({\axi_dma.mig_blocks[7]_i_2_n_0 ,\axi_dma.mig_blocks[7]_i_3_n_0 ,\axi_dma.mig_blocks[7]_i_4_n_0 ,\axi_dma.mig_blocks[7]_i_5_n_0 ,\axi_dma.mig_blocks[7]_i_6_n_0 ,\axi_dma.mig_blocks[7]_i_7_n_0 ,\axi_dma.mig_blocks[7]_i_8_n_0 ,\axi_dma.mig_blocks[7]_i_9_n_0 }));
   (* KEEP = "yes" *) 
@@ -4625,41 +4090,16 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.mig_size[7]_i_2_n_0 ),
         .Q(mig_size[7]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT3 #(
-    .INIT(8'h10)) 
-    \axi_dma.r5_cmd_rd_i_1 
-       (.I0(r5_cmd_empty),
-        .I1(\axi_dma.dma_active_reg_n_0 ),
-        .I2(resetn),
-        .O(\axi_dma.r5_cmd_rd_i_1_n_0 ));
-  FDRE \axi_dma.r5_cmd_rd_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.r5_cmd_rd_i_1_n_0 ),
-        .Q(\axi_dma.r5_cmd_rd_reg_n_0 ),
-        .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
     \axi_dma.reset_i_1 
        (.I0(resetn),
-        .O(clear));
+        .O(\axi_dma.reset_i_1_n_0 ));
   FDRE \axi_dma.reset_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(clear),
+        .D(\axi_dma.reset_i_1_n_0 ),
         .Q(reset),
-        .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.spy_reset_i_1 
-       (.I0(lpd_resetn),
-        .O(\axi_dma.spy_reset_i_1_n_0 ));
-  FDRE \axi_dma.spy_reset_reg 
-       (.C(lpd_clk),
-        .CE(1'b1),
-        .D(\axi_dma.spy_reset_i_1_n_0 ),
-        .Q(spy_reset),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hFFF20002)) 
@@ -4787,41 +4227,17 @@ module ps_axi_dma_1_0_axi_dma
         .wr_data_count(NLW_fifo_i_wr_data_count_UNCONNECTED[0]),
         .wr_en(in_wr),
         .wr_rst_busy(NLW_fifo_i_wr_rst_busy_UNCONNECTED));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'h40)) 
     fifo_i_i_1
        (.I0(fifo_empty),
-        .I1(\axi_dma.dma_active_reg_n_0 ),
-        .I2(M_AXI_TREADY_out),
+        .I1(M_AXI_TREADY_out),
+        .I2(\axi_dma.dma_active_reg_n_0 ),
         .O(fifo_rd_en));
-  (* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_axi_dma_1_0_fifo_ptr fifo_size_ptr_i
-       (.din({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.fifo_count_reg }),
-        .dout(fifo_size_out_data),
-        .empty(fifo_size_empty),
-        .full(NLW_fifo_size_ptr_i_full_UNCONNECTED),
-        .rd_clk(lpd_clk),
-        .rd_en(fifo_size_rd),
-        .wr_clk(clk),
-        .wr_en(fifo_chg));
-  (* CHECK_LICENSE_TYPE = "fifo_spy,fifo_generator_v13_2_13,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-  ps_axi_dma_1_0_fifo_spy fifo_spy_i
-       (.din(spy_data[18:5]),
-        .dout(r5_cmd_data),
-        .empty(r5_cmd_empty),
-        .full(NLW_fifo_spy_i_full_UNCONNECTED),
-        .rd_clk(clk),
-        .rd_en(\axi_dma.r5_cmd_rd_reg_n_0 ),
-        .rst(spy_reset),
-        .wr_clk(lpd_clk),
-        .wr_en(spy_wr));
   (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* x_core_info = "ila,Vivado 2025.1" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_axi_dma_1_0_ila_7 ila_i
        (.clk(clk),
         .probe0(cmd_state),
@@ -4835,58 +4251,6 @@ module ps_axi_dma_1_0_axi_dma
         .probe7(tag),
         .probe8(has_mig_size),
         .probe9(mig_size));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "fifo_ptr,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_ptr" *) 
-(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-module ps_axi_dma_1_0_fifo_ptr
-   (wr_clk,
-    rd_clk,
-    din,
-    wr_en,
-    rd_en,
-    dout,
-    full,
-    empty);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input wr_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [31:0]din;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [31:0]dout;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
-
-
-endmodule
-
-(* CHECK_LICENSE_TYPE = "fifo_spy,fifo_generator_v13_2_13,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "fifo_spy" *) 
-(* X_CORE_INFO = "fifo_generator_v13_2_13,Vivado 2025.1" *) 
-module ps_axi_dma_1_0_fifo_spy
-   (rst,
-    wr_clk,
-    rd_clk,
-    din,
-    wr_en,
-    rd_en,
-    dout,
-    full,
-    empty);
-  input rst;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *) (* X_INTERFACE_MODE = "slave write_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input wr_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 read_clk CLK" *) (* X_INTERFACE_MODE = "slave read_clk" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME read_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0" *) 
-  (* syn_isclock = "1" *) input rd_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) (* X_INTERFACE_MODE = "slave FIFO_WRITE" *) input [13:0]din;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) (* X_INTERFACE_MODE = "slave FIFO_READ" *) input rd_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_DATA" *) output [13:0]dout;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL" *) output full;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
-
-
 endmodule
 
 (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_7" *) 

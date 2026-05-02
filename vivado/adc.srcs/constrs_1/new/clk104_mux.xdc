@@ -137,6 +137,7 @@ set_false_path -from [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_idle_sync_5
 set_false_path -from [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_idle_sync_6_reg/C] -to [get_pins ps_i/comp_ana_high/inst/comp_ana.stat_6_idle_1_reg/D]
 
 set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.axi_reset_1_reg/D]
+set_false_path -from [get_pins ps_i/mts_0/inst/mts.deci_reset_async_reg/C] -to [get_pins ps_i/mts_0/inst/mts.mig_reset_1_reg/D]
 
 #set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/CE}]
 #set_false_path -from [get_pins ps_i/mts_0/inst/mts.axi_reset_reg/C] -to [get_pins {ps_i/mts_0/inst/mts.deci_release_cnt_reg[*]/D}]

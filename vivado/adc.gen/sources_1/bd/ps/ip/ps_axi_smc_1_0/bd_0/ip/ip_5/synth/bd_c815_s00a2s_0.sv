@@ -52,8 +52,8 @@
 
 (* X_CORE_INFO = "sc_axi2sc_v1_0_10_top,Vivado 2025.1" *)
 (* CHECK_LICENSE_TYPE = "bd_c815_s00a2s_0,sc_axi2sc_v1_0_10_top,{}" *)
-(* CORE_GENERATION_INFO = "bd_c815_s00a2s_0,sc_axi2sc_v1_0_10_top,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=sc_axi2sc,x_ipVersion=1.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI_ADDR_WIDTH=32,C_AXI_ID_WIDTH=1,C_AXI_RDATA_WIDTH=256,C_AXI_WDATA_WIDTH=256,C_SC_ADDR_WIDTH=32,C_SC_ID_WIDTH=1,C_SC_RDATA_WIDTH=256,C_SC_WDATA_WIDTH=256,C_SC_RUSER_BITS_PER_BYTE=0,C_SC_WUSER_BITS_PER_BYTE=0,C_SC_ARUSER_WIDTH=0,C_SC_AWUSER_WIDTH=0,C_SC_BUSER_WIDTH=0,C_MSC_ROUTE_WIDTH=1,C_SSC_RO\
-UTE_WIDTH=1,C_AWPAYLD_WIDTH=138,C_ARPAYLD_WIDTH=138,C_WPAYLD_WIDTH=304,C_RPAYLD_WIDTH=275,C_BPAYLD_WIDTH=5}" *)
+(* CORE_GENERATION_INFO = "bd_c815_s00a2s_0,sc_axi2sc_v1_0_10_top,{x_ipProduct=Vivado 2025.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=sc_axi2sc,x_ipVersion=1.0,x_ipCoreRevision=10,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI_ADDR_WIDTH=32,C_AXI_ID_WIDTH=1,C_AXI_RDATA_WIDTH=256,C_AXI_WDATA_WIDTH=256,C_SC_ADDR_WIDTH=32,C_SC_ID_WIDTH=1,C_SC_RDATA_WIDTH=256,C_SC_WDATA_WIDTH=256,C_SC_RUSER_BITS_PER_BYTE=0,C_SC_WUSER_BITS_PER_BYTE=0,C_SC_ARUSER_WIDTH=0,C_SC_AWUSER_WIDTH=4,C_SC_BUSER_WIDTH=0,C_MSC_ROUTE_WIDTH=1,C_SSC_RO\
+UTE_WIDTH=1,C_AWPAYLD_WIDTH=141,C_ARPAYLD_WIDTH=138,C_WPAYLD_WIDTH=304,C_RPAYLD_WIDTH=275,C_BPAYLD_WIDTH=5}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module bd_c815_s00a2s_0 (
   aclk,
@@ -120,7 +120,7 @@ output wire m_sc_aw_send;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M_SC_AW RECV" *)
 input wire m_sc_aw_recv;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M_SC_AW PAYLD" *)
-output wire [137 : 0] m_sc_aw_payld;
+output wire [140 : 0] m_sc_aw_payld;
 (* X_INTERFACE_INFO = "xilinx.com:interface:sc:1.0 M_SC_W REQ" *)
 (* X_INTERFACE_MODE = "master" *)
 output wire m_sc_w_req;
@@ -190,11 +190,11 @@ input wire s_axi_bready;
     .C_SC_RUSER_BITS_PER_BYTE(0),
     .C_SC_WUSER_BITS_PER_BYTE(0),
     .C_SC_ARUSER_WIDTH(0),
-    .C_SC_AWUSER_WIDTH(0),
+    .C_SC_AWUSER_WIDTH(4),
     .C_SC_BUSER_WIDTH(0),
     .C_MSC_ROUTE_WIDTH(1),
     .C_SSC_ROUTE_WIDTH(1),
-    .C_AWPAYLD_WIDTH(138),
+    .C_AWPAYLD_WIDTH(141),
     .C_ARPAYLD_WIDTH(138),
     .C_WPAYLD_WIDTH(304),
     .C_RPAYLD_WIDTH(275),

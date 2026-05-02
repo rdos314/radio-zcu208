@@ -21,6 +21,5 @@ addlib /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/libsrc/clockps/src/libclockps.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/libsrc/bram/src/libbram.a
 addlib /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src/libaxipmon.a
-addlib /media/ubuntu/large/radio-zcu208/platform/psu_pmu_0/psu_pmu_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/libaxidma.a
 save
 end

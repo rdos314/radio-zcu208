@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xD1C881BCEA7AE806",
+      "boundary_crc": "0x181B14562E29D479",
       "design_src": "SBD",
       "device": "xczu48dr-fsvg1517-2-e",
       "name": "bd_811f",
@@ -652,36 +652,6 @@
           }
         }
       },
-      "aclk1": {
-        "type": "clk",
-        "direction": "I",
-        "parameters": {
-          "ASSOCIATED_CLKEN": {
-            "value": "m_sc_aclken",
-            "value_src": "constant"
-          },
-          "CLK_DOMAIN": {
-            "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
-            "value_src": "default"
-          },
-          "FREQ_HZ": {
-            "value": "99999001",
-            "value_src": "user_prop"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
-          }
-        }
-      },
       "aresetn": {
         "type": "rst",
         "direction": "I",
@@ -758,10 +728,6 @@
             "direction": "O"
           },
           "aclk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "aclk1": {
             "type": "clk",
             "direction": "I"
           }
@@ -6678,12 +6644,6 @@
       }
     },
     "nets": {
-      "aclk1_1": {
-        "ports": [
-          "aclk1",
-          "clk_map/aclk1"
-        ]
-      },
       "aclk_1": {
         "ports": [
           "clk_map/S00_ACLK",

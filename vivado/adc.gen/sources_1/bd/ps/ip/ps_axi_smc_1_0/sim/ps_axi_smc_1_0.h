@@ -120,6 +120,10 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M00_AXI_bresp;
   sc_core::sc_in< bool > M00_AXI_bvalid;
   sc_core::sc_out< bool > M00_AXI_bready;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awid;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awuser;
+  sc_core::sc_out< sc_dt::sc_bv<4> > S00_AXI_bid;
+  sc_core::sc_out< sc_dt::sc_bv<4> > M00_AXI_awuser;
 
   // Dummy Signals for IP Ports
 
@@ -130,10 +134,10 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<256,32,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xtlm::xaximm_pin2xtlm_t<256,32,4,4,1,1,1,1>* mp_S00_AXI_transactor;
   xsc::common::vectorN2scalar_converter<1>* mp_S00_AXI_awlock_converter;
   sc_signal< bool > m_S00_AXI_awlock_converter_signal;
-  xtlm::xaximm_xtlm2pin_t<128,49,1,1,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<128,49,1,4,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_M00_AXI_awlock_converter;
   sc_signal< bool > m_M00_AXI_awlock_converter_signal;
   xtlm::xtlm_aximm_initiator_stub* mp_S00_AXI_rd_socket_stub;
@@ -195,6 +199,10 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M00_AXI_bresp;
   sc_core::sc_in< bool > M00_AXI_bvalid;
   sc_core::sc_out< bool > M00_AXI_bready;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awid;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awuser;
+  sc_core::sc_out< sc_dt::sc_bv<4> > S00_AXI_bid;
+  sc_core::sc_out< sc_dt::sc_bv<4> > M00_AXI_awuser;
 
   // Dummy Signals for IP Ports
 
@@ -205,10 +213,10 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<256,32,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xtlm::xaximm_pin2xtlm_t<256,32,4,4,1,1,1,1>* mp_S00_AXI_transactor;
   xsc::common::vectorN2scalar_converter<1>* mp_S00_AXI_awlock_converter;
   sc_signal< bool > m_S00_AXI_awlock_converter_signal;
-  xtlm::xaximm_xtlm2pin_t<128,49,1,1,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<128,49,1,4,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_M00_AXI_awlock_converter;
   sc_signal< bool > m_M00_AXI_awlock_converter_signal;
   xtlm::xtlm_aximm_initiator_stub* mp_S00_AXI_rd_socket_stub;
@@ -270,6 +278,10 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M00_AXI_bresp;
   sc_core::sc_in< bool > M00_AXI_bvalid;
   sc_core::sc_out< bool > M00_AXI_bready;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awid;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awuser;
+  sc_core::sc_out< sc_dt::sc_bv<4> > S00_AXI_bid;
+  sc_core::sc_out< sc_dt::sc_bv<4> > M00_AXI_awuser;
 
   // Dummy Signals for IP Ports
 
@@ -280,10 +292,10 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<256,32,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xtlm::xaximm_pin2xtlm_t<256,32,4,4,1,1,1,1>* mp_S00_AXI_transactor;
   xsc::common::vectorN2scalar_converter<1>* mp_S00_AXI_awlock_converter;
   sc_signal< bool > m_S00_AXI_awlock_converter_signal;
-  xtlm::xaximm_xtlm2pin_t<128,49,1,1,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<128,49,1,4,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_M00_AXI_awlock_converter;
   sc_signal< bool > m_M00_AXI_awlock_converter_signal;
   xtlm::xtlm_aximm_initiator_stub* mp_S00_AXI_rd_socket_stub;
@@ -347,6 +359,10 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M00_AXI_bresp;
   sc_core::sc_in< bool > M00_AXI_bvalid;
   sc_core::sc_out< bool > M00_AXI_bready;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awid;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awuser;
+  sc_core::sc_out< sc_dt::sc_bv<4> > S00_AXI_bid;
+  sc_core::sc_out< sc_dt::sc_bv<4> > M00_AXI_awuser;
 
   // Dummy Signals for IP Ports
 
@@ -357,10 +373,10 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<256,32,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xtlm::xaximm_pin2xtlm_t<256,32,4,4,1,1,1,1>* mp_S00_AXI_transactor;
   xsc::common::vectorN2scalar_converter<1>* mp_S00_AXI_awlock_converter;
   sc_signal< bool > m_S00_AXI_awlock_converter_signal;
-  xtlm::xaximm_xtlm2pin_t<128,49,1,1,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<128,49,1,4,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_M00_AXI_awlock_converter;
   sc_signal< bool > m_M00_AXI_awlock_converter_signal;
 
@@ -430,6 +446,10 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<2> > M00_AXI_bresp;
   sc_core::sc_in< bool > M00_AXI_bvalid;
   sc_core::sc_out< bool > M00_AXI_bready;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awid;
+  sc_core::sc_in< sc_dt::sc_bv<4> > S00_AXI_awuser;
+  sc_core::sc_out< sc_dt::sc_bv<4> > S00_AXI_bid;
+  sc_core::sc_out< sc_dt::sc_bv<4> > M00_AXI_awuser;
 
   // Dummy Signals for IP Ports
 
@@ -440,10 +460,10 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<256,32,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xtlm::xaximm_pin2xtlm_t<256,32,4,4,1,1,1,1>* mp_S00_AXI_transactor;
   xsc::common::vectorN2scalar_converter<1>* mp_S00_AXI_awlock_converter;
   sc_signal< bool > m_S00_AXI_awlock_converter_signal;
-  xtlm::xaximm_xtlm2pin_t<128,49,1,1,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<128,49,1,4,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_M00_AXI_awlock_converter;
   sc_signal< bool > m_M00_AXI_awlock_converter_signal;
 

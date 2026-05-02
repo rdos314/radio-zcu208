@@ -1,16 +1,13 @@
-axi_avail_count:
-- axi_gpio
-- gpio
 axi_bram_ctrl_0:
 - axi_bram_ctrl
 - bram
-axi_dma_0:
-- axi_dma
-- axidma
 clk104_mux:
 - axi_gpio
 - gpio
 gpio_led:
+- axi_gpio
+- gpio
+gpio_linux_ptr:
 - axi_gpio
 - gpio
 psu_acpu_gic:

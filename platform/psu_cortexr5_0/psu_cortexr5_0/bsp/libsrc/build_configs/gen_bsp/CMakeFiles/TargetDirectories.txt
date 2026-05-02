@@ -11,13 +11,6 @@
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/CMakeFiles/install.dir
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/CMakeFiles/install/local.dir
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/CMakeFiles/install/strip.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/axidma.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/edit_cache.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/rebuild_cache.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/list_install_components.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/install.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/install/local.dir
-/media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axidma/src/CMakeFiles/install/strip.dir
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src/CMakeFiles/axipmon.dir
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src/CMakeFiles/edit_cache.dir
 /media/ubuntu/large/radio-zcu208/platform/psu_cortexr5_0/psu_cortexr5_0/bsp/libsrc/build_configs/gen_bsp/libsrc/axipmon/src/CMakeFiles/rebuild_cache.dir

@@ -23,9 +23,12 @@ module mts(
     input  wire pl_clk,
     input  wire	pl_sysref,
 	input  wire sys_reset,
+
+	input wire mig_clk,
+	output reg mig_resetn,
 	
 	input wire axi_clk,
-	output reg axi_reset_out,
+	output reg axi_resetn,
 	input wire axi_adc_start,
 	input wire axi_sim_start,
 	input wire axi_adc_stop,
@@ -127,6 +130,8 @@ module mts(
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_async;
 	(* ASYNC_REG="TRUE" *)	reg  axi_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  axi_reset_2;
+	(* ASYNC_REG="TRUE" *)	reg  mig_reset_1;
+	(* ASYNC_REG="TRUE" *)	reg  mig_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_1;
 	(* ASYNC_REG="TRUE" *)	reg  deci_reset_2;
 	(* ASYNC_REG="TRUE" *)	reg  ana0_reset_1;
@@ -307,7 +312,14 @@ generate
 	begin
 		axi_reset_1 <= deci_reset_async;
 		axi_reset_2 <= axi_reset_1;
-		axi_reset_out <= axi_reset_2;
+		axi_resetn <= axi_reset_2;
+	end
+
+	always @(posedge mig_clk) 
+	begin
+		mig_reset_1 <= deci_reset_async;
+		mig_reset_2 <= mig_reset_1;
+		mig_resetn <= mig_reset_2;
 	end
 
 	always @(posedge deci_clk) 

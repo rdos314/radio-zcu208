@@ -59,8 +59,10 @@ module ps_mts_0_0 (
   pl_clk,
   pl_sysref,
   sys_reset,
+  mig_clk,
+  mig_resetn,
   axi_clk,
-  axi_reset_out,
+  axi_resetn,
   axi_adc_start,
   axi_sim_start,
   axi_adc_stop,
@@ -100,11 +102,22 @@ input wire pl_sysref;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
 input wire sys_reset;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 mig_clk CLK" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_clk, ASSOCIATED_RESET mig_resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *)
+input wire mig_clk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 mig_resetn RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire mig_resetn;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 axi_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, ASSOCIATED_RESET axi_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 input wire axi_clk;
-output wire axi_reset_out;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 axi_resetn RST" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+output wire axi_resetn;
 input wire axi_adc_start;
 input wire axi_sim_start;
 input wire axi_adc_stop;
@@ -192,8 +205,10 @@ output wire comp_ana1_reset;
     .pl_clk(pl_clk),
     .pl_sysref(pl_sysref),
     .sys_reset(sys_reset),
+    .mig_clk(mig_clk),
+    .mig_resetn(mig_resetn),
     .axi_clk(axi_clk),
-    .axi_reset_out(axi_reset_out),
+    .axi_resetn(axi_resetn),
     .axi_adc_start(axi_adc_start),
     .axi_sim_start(axi_sim_start),
     .axi_adc_stop(axi_adc_stop),

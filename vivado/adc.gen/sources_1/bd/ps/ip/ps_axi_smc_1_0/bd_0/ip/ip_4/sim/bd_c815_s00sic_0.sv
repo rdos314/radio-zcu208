@@ -60,6 +60,7 @@ module bd_c815_s00sic_0 (
   s_axi_awaddr,
   s_axi_awlen,
   s_axi_awsize,
+  s_axi_awburst,
   s_axi_awlock,
   s_axi_awcache,
   s_axi_awprot,
@@ -111,7 +112,7 @@ input wire aclk;
 input wire aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWID" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, BRIDGES M_AXI, DATA_WIDTH 256, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 1, ADDR_WIDTH 32, AWUSER_WIDTH 1024, ARUSER_WIDTH 0, WUSER_WIDTH 1024, RUSER_WIDTH 0, BUSER_WIDTH 1024, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 0, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ\
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, BRIDGES M_AXI, DATA_WIDTH 256, PROTOCOL AXI4, FREQ_HZ 333250000, ID_WIDTH 1, ADDR_WIDTH 32, AWUSER_WIDTH 1024, ARUSER_WIDTH 0, WUSER_WIDTH 1024, RUSER_WIDTH 0, BUSER_WIDTH 1024, READ_WRITE_MODE WRITE_ONLY, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 0, SUPPORTS_NARROW_BURST 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 256, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, NUM_READ\
 _THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 input wire [0 : 0] s_axi_awid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
@@ -120,6 +121,8 @@ input wire [31 : 0] s_axi_awaddr;
 input wire [7 : 0] s_axi_awlen;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWSIZE" *)
 input wire [2 : 0] s_axi_awsize;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWBURST" *)
+input wire [1 : 0] s_axi_awburst;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWLOCK" *)
 input wire [0 : 0] s_axi_awlock;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWCACHE" *)
@@ -214,11 +217,11 @@ output wire m_axi_bready;
     .C_NUM_READ_THREADS(1),
     .C_MEP_IDENTIFIER_WIDTH(1),
     .C_SUPPORTS_NARROW(0),
-    .C_HAS_BURST(0),
-    .C_NUM_SEG(2),
-    .C_SEP_WDATA_WIDTH_ARRAY(64'H0000008000000080),
-    .C_SEP_RDATA_WIDTH_ARRAY(64'H0000008000000080),
-    .C_SEP_PROTOCOL_ARRAY(64'H0000000000000000),
+    .C_HAS_BURST(1),
+    .C_NUM_SEG(1),
+    .C_SEP_WDATA_WIDTH_ARRAY(32'H00000080),
+    .C_SEP_RDATA_WIDTH_ARRAY(32'H00000080),
+    .C_SEP_PROTOCOL_ARRAY(32'H00000000),
     .C_NUM_MSC(1),
     .C_MSC_WDATA_WIDTH_ARRAY(32'H00000080),
     .C_MSC_RDATA_WIDTH_ARRAY(32'H00000080),
@@ -232,7 +235,7 @@ output wire m_axi_bready;
     .C_MAX_RUSER_BITS_PER_BYTE(0),
     .C_SINGLE_ISSUING(0),
     .C_NUM_READ_OUTSTANDING(2),
-    .C_NUM_WRITE_OUTSTANDING(16),
+    .C_NUM_WRITE_OUTSTANDING(2),
     .C_SPLIT_WRAP_NARROW(0),
     .C_READ_ACCEPTANCE(32),
     .C_WRITE_ACCEPTANCE(32)
@@ -244,7 +247,7 @@ output wire m_axi_bready;
     .s_axi_awaddr(s_axi_awaddr),
     .s_axi_awlen(s_axi_awlen),
     .s_axi_awsize(s_axi_awsize),
-    .s_axi_awburst(2'H1),
+    .s_axi_awburst(s_axi_awburst),
     .s_axi_awlock(s_axi_awlock),
     .s_axi_awcache(s_axi_awcache),
     .s_axi_awprot(s_axi_awprot),

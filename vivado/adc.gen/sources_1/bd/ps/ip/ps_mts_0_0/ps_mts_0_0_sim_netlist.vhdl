@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Mon Apr  6 00:30:40 2026
+-- Date        : Sat May  2 17:34:14 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -20,8 +20,10 @@ entity ps_mts_0_0_mts is
     pl_clk : in STD_LOGIC;
     pl_sysref : in STD_LOGIC;
     sys_reset : in STD_LOGIC;
+    mig_clk : in STD_LOGIC;
+    mig_resetn : out STD_LOGIC;
     axi_clk : in STD_LOGIC;
-    axi_reset_out : out STD_LOGIC;
+    axi_resetn : out STD_LOGIC;
     axi_adc_start : in STD_LOGIC;
     axi_sim_start : in STD_LOGIC;
     axi_adc_stop : in STD_LOGIC;
@@ -195,6 +197,10 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute async_reg of freq1_reset_2 : signal is "true";
   signal freq_clk_buf : STD_LOGIC;
   signal freq_locked : STD_LOGIC;
+  signal mig_reset_1 : STD_LOGIC;
+  attribute async_reg of mig_reset_1 : signal is "true";
+  signal mig_reset_2 : STD_LOGIC;
+  attribute async_reg of mig_reset_2 : signal is "true";
   signal \mts.ana0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.comp_ana0_reset_1_reg0\ : STD_LOGIC;
@@ -338,6 +344,10 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   attribute KEEP of \mts.freq1_reset_1_reg\ : label is "yes";
   attribute ASYNC_REG_boolean of \mts.freq1_reset_2_reg\ : label is std.standard.true;
   attribute KEEP of \mts.freq1_reset_2_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.mig_reset_1_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.mig_reset_1_reg\ : label is "yes";
+  attribute ASYNC_REG_boolean of \mts.mig_reset_2_reg\ : label is std.standard.true;
+  attribute KEEP of \mts.mig_reset_2_reg\ : label is "yes";
   attribute SOFT_HLUTNM of \mts.sysref_active_i_1\ : label is "soft_lutpair0";
   attribute ASYNC_REG_boolean of \mts.sysref_r_reg\ : label is std.standard.true;
   attribute KEEP of \mts.sysref_r_reg\ : label is "yes";
@@ -733,12 +743,12 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
       Q => axi_reset_2,
       R => '0'
     );
-\mts.axi_reset_out_reg\: unisim.vcomponents.FDRE
+\mts.axi_resetn_reg\: unisim.vcomponents.FDRE
      port map (
       C => axi_clk,
       CE => '1',
       D => axi_reset_2,
-      Q => axi_reset_out,
+      Q => axi_resetn,
       R => '0'
     );
 \mts.axi_sim_active_1_reg\: unisim.vcomponents.FDRE
@@ -1239,6 +1249,30 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
       Q => freq1_reset,
       R => '0'
     );
+\mts.mig_reset_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => mig_clk,
+      CE => '1',
+      D => deci_reset_async,
+      Q => mig_reset_1,
+      R => '0'
+    );
+\mts.mig_reset_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => mig_clk,
+      CE => '1',
+      D => mig_reset_1,
+      Q => mig_reset_2,
+      R => '0'
+    );
+\mts.mig_resetn_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => mig_clk,
+      CE => '1',
+      D => mig_reset_2,
+      Q => mig_resetn,
+      R => '0'
+    );
 \mts.sim_active_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
@@ -1343,8 +1377,10 @@ entity ps_mts_0_0 is
     pl_clk : in STD_LOGIC;
     pl_sysref : in STD_LOGIC;
     sys_reset : in STD_LOGIC;
+    mig_clk : in STD_LOGIC;
+    mig_resetn : out STD_LOGIC;
     axi_clk : in STD_LOGIC;
-    axi_reset_out : out STD_LOGIC;
+    axi_resetn : out STD_LOGIC;
     axi_adc_start : in STD_LOGIC;
     axi_sim_start : in STD_LOGIC;
     axi_adc_stop : in STD_LOGIC;
@@ -1404,7 +1440,10 @@ architecture STRUCTURE of ps_mts_0_0 is
   attribute X_INTERFACE_PARAMETER of ana1_reset : signal is "XIL_INTERFACENAME ana1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of axi_clk : signal is "xilinx.com:signal:clock:1.0 axi_clk CLK";
   attribute X_INTERFACE_MODE of axi_clk : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of axi_clk : signal is "XIL_INTERFACENAME axi_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of axi_clk : signal is "XIL_INTERFACENAME axi_clk, ASSOCIATED_RESET axi_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of axi_resetn : signal is "xilinx.com:signal:reset:1.0 axi_resetn RST";
+  attribute X_INTERFACE_MODE of axi_resetn : signal is "master";
+  attribute X_INTERFACE_PARAMETER of axi_resetn : signal is "XIL_INTERFACENAME axi_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of comp0_clk : signal is "xilinx.com:signal:clock:1.0 comp0_clk CLK";
   attribute X_INTERFACE_MODE of comp0_clk : signal is "master";
   attribute X_INTERFACE_PARAMETER of comp0_clk : signal is "XIL_INTERFACENAME comp0_clk, ASSOCIATED_RESET comp0_reset, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0";
@@ -1447,6 +1486,12 @@ architecture STRUCTURE of ps_mts_0_0 is
   attribute X_INTERFACE_INFO of freq1_reset : signal is "xilinx.com:signal:reset:1.0 freq1_reset RST";
   attribute X_INTERFACE_MODE of freq1_reset : signal is "master";
   attribute X_INTERFACE_PARAMETER of freq1_reset : signal is "XIL_INTERFACENAME freq1_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of mig_clk : signal is "xilinx.com:signal:clock:1.0 mig_clk CLK";
+  attribute X_INTERFACE_MODE of mig_clk : signal is "slave";
+  attribute X_INTERFACE_PARAMETER of mig_clk : signal is "XIL_INTERFACENAME mig_clk, ASSOCIATED_RESET mig_resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of mig_resetn : signal is "xilinx.com:signal:reset:1.0 mig_resetn RST";
+  attribute X_INTERFACE_MODE of mig_resetn : signal is "master";
+  attribute X_INTERFACE_PARAMETER of mig_resetn : signal is "XIL_INTERFACENAME mig_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of pl_clk : signal is "xilinx.com:signal:clock:1.0 pl_clk CLK";
   attribute X_INTERFACE_MODE of pl_clk : signal is "slave";
   attribute X_INTERFACE_PARAMETER of pl_clk : signal is "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0";
@@ -1464,7 +1509,7 @@ inst: entity work.ps_mts_0_0_mts
       axi_adc_start => axi_adc_start,
       axi_adc_stop => axi_adc_stop,
       axi_clk => axi_clk,
-      axi_reset_out => axi_reset_out,
+      axi_resetn => axi_resetn,
       axi_sim_active => axi_sim_active,
       axi_sim_start => axi_sim_start,
       comp0_clk => comp0_clk,
@@ -1485,6 +1530,8 @@ inst: entity work.ps_mts_0_0_mts
       freq0_reset => freq0_reset,
       freq1_clk => freq1_clk,
       freq1_reset => freq1_reset,
+      mig_clk => mig_clk,
+      mig_resetn => mig_resetn,
       pl_clk => pl_clk,
       pl_sysref => pl_sysref,
       sys_reset => sys_reset,

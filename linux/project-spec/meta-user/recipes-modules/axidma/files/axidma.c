@@ -7,6 +7,7 @@
 *   it under the terms of the GNU General Public License as published by
 *   the Free Software Foundation; either version 2 of the License, or
 *   (at your option) any later version.
+        // Strictly non-cacheable for pointers
 
 *   This program is distributed in the hope that it will be useful,
 *   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,8 +45,6 @@ struct ipi_data
     struct class *class;
     phys_addr_t data_phys;
     size_t data_size;
-    phys_addr_t ptr_phys;
-    size_t ptr_size;
     int irq;
 };
 
@@ -95,8 +94,8 @@ static int dev_mmap(struct file *file, struct vm_area_struct *vma)
     }
     else
     {
-        if (size > priv->ptr_size) return -EINVAL;
-        phys = priv->ptr_phys;
+        // Use fixed address due to bugs in 2025.1 
+        phys = 0xB0000000;
         // Strictly non-cacheable for pointers
         vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
     }
@@ -120,7 +119,6 @@ static int ipi_probe(struct platform_device *pdev)
     struct ipi_data *priv;
     struct resource res;
     struct device_node *mem_node;
-    int i;
     int ret;
 
     priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
@@ -141,7 +139,7 @@ static int ipi_probe(struct platform_device *pdev)
         else
       	    dev_err(&pdev->dev, "Interrupt %d hooked\n", priv->irq);
     }
-
+-
     // Register Char Device
     alloc_chrdev_region(&priv->dev_num, 0, 1, DEVICE_NAME);
     cdev_init(&priv->cdev, &fops);
@@ -149,39 +147,24 @@ static int ipi_probe(struct platform_device *pdev)
     priv->class = class_create(DEVICE_NAME);
     device_create(priv->class, NULL, priv->dev_num, NULL, DEVICE_NAME);
 
-    // Loop to get both memory regions
-    for (i = 0; i < 2; i++)
+    mem_node = of_parse_phandle(pdev->dev.of_node, "memory-region", 0);
+    if (!mem_node)
     {
-        mem_node = of_parse_phandle(pdev->dev.of_node, "memory-region", i);
-        if (!mem_node)
-        {
-            dev_err(&pdev->dev, "Memory-region not found in DT %d\n", i);
-            return -ENODEV;
-        }
+        dev_err(&pdev->dev, "Memory-region not found in DT\n");
+        return -ENODEV;
+    }
 
-        if (of_address_to_resource(mem_node, 0, &res) == 0)
-        {
-            switch (i)
-            {
-                case 0:
-                    priv->data_phys = res.start;
-                    priv->data_size = resource_size(&res);
-                    break;
-
-                case 1:
-                    priv->ptr_phys = res.start;
-                    priv->ptr_size = resource_size(&res);
-                    break;
-            }
-            of_node_put(mem_node);
-        }
-        else
-        {
-            of_node_put(mem_node);
-            dev_err(&pdev->dev, "Address not found %d\n", i);
-            return -EINVAL;
-        }
-
+    if (of_address_to_resource(mem_node, 0, &res) == 0)
+    {
+        priv->data_phys = res.start;
+        priv->data_size = resource_size(&res);
+        of_node_put(mem_node);
+    }
+    else
+    {
+        of_node_put(mem_node);
+        dev_err(&pdev->dev, "Address not found\n");
+        return -EINVAL;
     }
 
     return 0;

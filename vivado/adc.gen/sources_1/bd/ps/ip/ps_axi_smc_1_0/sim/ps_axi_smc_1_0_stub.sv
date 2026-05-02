@@ -103,14 +103,18 @@ module ps_axi_smc_1_0 (
   input bit_as_bool M00_AXI_wready,
   input bit [1 : 0] M00_AXI_bresp,
   input bit_as_bool M00_AXI_bvalid,
-  output bit_as_bool M00_AXI_bready
+  output bit_as_bool M00_AXI_bready,
+  input bit [3 : 0] S00_AXI_awid,
+  input bit [3 : 0] S00_AXI_awuser,
+  output bit [3 : 0] S00_AXI_bid,
+  output bit [3 : 0] M00_AXI_awuser
 );
 endmodule
 `endif
 
 `ifdef XCELIUM
 (* XMSC_MODULE_EXPORT *)
-module ps_axi_smc_1_0 (aclk,aresetn,S00_AXI_awaddr,S00_AXI_awlen,S00_AXI_awsize,S00_AXI_awburst,S00_AXI_awlock,S00_AXI_awcache,S00_AXI_awprot,S00_AXI_awqos,S00_AXI_awvalid,S00_AXI_awready,S00_AXI_wdata,S00_AXI_wstrb,S00_AXI_wlast,S00_AXI_wvalid,S00_AXI_wready,S00_AXI_bresp,S00_AXI_bvalid,S00_AXI_bready,M00_AXI_awaddr,M00_AXI_awlen,M00_AXI_awsize,M00_AXI_awburst,M00_AXI_awlock,M00_AXI_awcache,M00_AXI_awprot,M00_AXI_awqos,M00_AXI_awvalid,M00_AXI_awready,M00_AXI_wdata,M00_AXI_wstrb,M00_AXI_wlast,M00_AXI_wvalid,M00_AXI_wready,M00_AXI_bresp,M00_AXI_bvalid,M00_AXI_bready)
+module ps_axi_smc_1_0 (aclk,aresetn,S00_AXI_awaddr,S00_AXI_awlen,S00_AXI_awsize,S00_AXI_awburst,S00_AXI_awlock,S00_AXI_awcache,S00_AXI_awprot,S00_AXI_awqos,S00_AXI_awvalid,S00_AXI_awready,S00_AXI_wdata,S00_AXI_wstrb,S00_AXI_wlast,S00_AXI_wvalid,S00_AXI_wready,S00_AXI_bresp,S00_AXI_bvalid,S00_AXI_bready,M00_AXI_awaddr,M00_AXI_awlen,M00_AXI_awsize,M00_AXI_awburst,M00_AXI_awlock,M00_AXI_awcache,M00_AXI_awprot,M00_AXI_awqos,M00_AXI_awvalid,M00_AXI_awready,M00_AXI_wdata,M00_AXI_wstrb,M00_AXI_wlast,M00_AXI_wvalid,M00_AXI_wready,M00_AXI_bresp,M00_AXI_bvalid,M00_AXI_bready,S00_AXI_awid,S00_AXI_awuser,S00_AXI_bid,M00_AXI_awuser)
 (* integer foreign = "SystemC";
 *);
   input bit aclk;
@@ -151,5 +155,9 @@ module ps_axi_smc_1_0 (aclk,aresetn,S00_AXI_awaddr,S00_AXI_awlen,S00_AXI_awsize,
   input bit [1 : 0] M00_AXI_bresp;
   input bit M00_AXI_bvalid;
   output wire M00_AXI_bready;
+  input bit [3 : 0] S00_AXI_awid;
+  input bit [3 : 0] S00_AXI_awuser;
+  output wire [3 : 0] S00_AXI_bid;
+  output wire [3 : 0] M00_AXI_awuser;
 endmodule
 `endif

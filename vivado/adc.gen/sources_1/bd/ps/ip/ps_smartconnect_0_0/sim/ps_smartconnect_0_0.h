@@ -82,7 +82,6 @@ public:
   // module pin-to-pin RTL interface
 
   sc_core::sc_in< bool > aclk;
-  sc_core::sc_in< bool > aclk1;
   sc_core::sc_in< bool > aresetn;
   sc_core::sc_in< sc_dt::sc_bv<16> > S00_AXI_awid;
   sc_core::sc_in< sc_dt::sc_bv<40> > S00_AXI_awaddr;
@@ -241,7 +240,6 @@ public:
   // module pin-to-pin RTL interface
 
   sc_core::sc_in< bool > aclk;
-  sc_core::sc_in< bool > aclk1;
   sc_core::sc_in< bool > aresetn;
   sc_core::sc_in< sc_dt::sc_bv<16> > S00_AXI_awid;
   sc_core::sc_in< sc_dt::sc_bv<40> > S00_AXI_awaddr;
@@ -400,7 +398,6 @@ public:
   // module pin-to-pin RTL interface
 
   sc_core::sc_in< bool > aclk;
-  sc_core::sc_in< bool > aclk1;
   sc_core::sc_in< bool > aresetn;
   sc_core::sc_in< sc_dt::sc_bv<16> > S00_AXI_awid;
   sc_core::sc_in< sc_dt::sc_bv<40> > S00_AXI_awaddr;
@@ -562,7 +559,6 @@ public:
   // module pin-to-pin RTL interface
 
   sc_core::sc_in< bool > aclk;
-  sc_core::sc_in< bool > aclk1;
   sc_core::sc_in< bool > aresetn;
   sc_core::sc_in< sc_dt::sc_bv<16> > S00_AXI_awid;
   sc_core::sc_in< sc_dt::sc_bv<40> > S00_AXI_awaddr;
@@ -734,7 +730,6 @@ public:
   // module pin-to-pin RTL interface
 
   sc_core::sc_in< bool > aclk;
-  sc_core::sc_in< bool > aclk1;
   sc_core::sc_in< bool > aresetn;
   sc_core::sc_in< sc_dt::sc_bv<16> > S00_AXI_awid;
   sc_core::sc_in< sc_dt::sc_bv<40> > S00_AXI_awaddr;

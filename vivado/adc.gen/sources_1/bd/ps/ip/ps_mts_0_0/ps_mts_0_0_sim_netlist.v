@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Mon Apr  6 00:30:40 2026
+// Date        : Sat May  2 17:34:14 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -20,8 +20,10 @@ module ps_mts_0_0
    (pl_clk,
     pl_sysref,
     sys_reset,
+    mig_clk,
+    mig_resetn,
     axi_clk,
-    axi_reset_out,
+    axi_resetn,
     axi_adc_start,
     axi_sim_start,
     axi_adc_stop,
@@ -53,8 +55,10 @@ module ps_mts_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 pl_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pl_clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_pl_clk_n, INSERT_VIP 0" *) input pl_clk;
   input pl_sysref;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input sys_reset;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 axi_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input axi_clk;
-  output axi_reset_out;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 mig_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_clk, ASSOCIATED_RESET mig_resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input mig_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 mig_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output mig_resetn;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 axi_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, ASSOCIATED_RESET axi_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input axi_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 axi_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output axi_resetn;
   input axi_adc_start;
   input axi_sim_start;
   input axi_adc_stop;
@@ -92,7 +96,7 @@ module ps_mts_0_0
   wire axi_adc_start;
   wire axi_adc_stop;
   wire axi_clk;
-  wire axi_reset_out;
+  wire axi_resetn;
   wire axi_sim_active;
   wire axi_sim_start;
   wire comp0_clk;
@@ -113,6 +117,8 @@ module ps_mts_0_0
   wire freq0_reset;
   wire freq1_clk;
   wire freq1_reset;
+  wire mig_clk;
+  wire mig_resetn;
   wire pl_clk;
   wire pl_sysref;
   wire sys_reset;
@@ -127,7 +133,7 @@ module ps_mts_0_0
         .axi_adc_start(axi_adc_start),
         .axi_adc_stop(axi_adc_stop),
         .axi_clk(axi_clk),
-        .axi_reset_out(axi_reset_out),
+        .axi_resetn(axi_resetn),
         .axi_sim_active(axi_sim_active),
         .axi_sim_start(axi_sim_start),
         .comp0_clk(comp0_clk),
@@ -148,6 +154,8 @@ module ps_mts_0_0
         .freq0_reset(freq0_reset),
         .freq1_clk(freq1_clk),
         .freq1_reset(freq1_reset),
+        .mig_clk(mig_clk),
+        .mig_resetn(mig_resetn),
         .pl_clk(pl_clk),
         .pl_sysref(pl_sysref),
         .sys_reset(sys_reset),
@@ -199,8 +207,10 @@ module ps_mts_0_0_mts
    (pl_clk,
     pl_sysref,
     sys_reset,
+    mig_clk,
+    mig_resetn,
     axi_clk,
-    axi_reset_out,
+    axi_resetn,
     axi_adc_start,
     axi_sim_start,
     axi_adc_stop,
@@ -232,8 +242,10 @@ module ps_mts_0_0_mts
   input pl_clk;
   input pl_sysref;
   input sys_reset;
+  input mig_clk;
+  output mig_resetn;
   input axi_clk;
-  output axi_reset_out;
+  output axi_resetn;
   input axi_adc_start;
   input axi_sim_start;
   input axi_adc_stop;
@@ -291,7 +303,7 @@ module ps_mts_0_0_mts
   wire axi_clk;
   (* async_reg = "true" *) wire axi_reset_1;
   (* async_reg = "true" *) wire axi_reset_2;
-  wire axi_reset_out;
+  wire axi_resetn;
   wire axi_sim_active;
   (* async_reg = "true" *) wire axi_sim_active_1;
   (* async_reg = "true" *) wire axi_sim_active_2;
@@ -364,6 +376,10 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire freq1_reset_2;
   wire freq_clk_buf;
   wire freq_locked;
+  wire mig_clk;
+  (* async_reg = "true" *) wire mig_reset_1;
+  (* async_reg = "true" *) wire mig_reset_2;
+  wire mig_resetn;
   wire \mts.ana0_reset_1_reg0 ;
   wire \mts.comp0_reset_1_reg0 ;
   wire \mts.comp_ana0_reset_1_reg0 ;
@@ -706,11 +722,11 @@ module ps_mts_0_0_mts
         .D(axi_reset_1),
         .Q(axi_reset_2),
         .R(1'b0));
-  FDRE \mts.axi_reset_out_reg 
+  FDRE \mts.axi_resetn_reg 
        (.C(axi_clk),
         .CE(1'b1),
         .D(axi_reset_2),
-        .Q(axi_reset_out),
+        .Q(axi_resetn),
         .R(1'b0));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -1132,6 +1148,28 @@ module ps_mts_0_0_mts
         .CE(1'b1),
         .D(freq1_reset_2),
         .Q(freq1_reset),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.mig_reset_1_reg 
+       (.C(mig_clk),
+        .CE(1'b1),
+        .D(deci_reset_async),
+        .Q(mig_reset_1),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE \mts.mig_reset_2_reg 
+       (.C(mig_clk),
+        .CE(1'b1),
+        .D(mig_reset_1),
+        .Q(mig_reset_2),
+        .R(1'b0));
+  FDRE \mts.mig_resetn_reg 
+       (.C(mig_clk),
+        .CE(1'b1),
+        .D(mig_reset_2),
+        .Q(mig_resetn),
         .R(1'b0));
   LUT2 #(
     .INIT(4'hE)) 

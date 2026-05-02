@@ -55,7 +55,6 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ps_smartconnect_0_0 (
   aclk,
-  aclk1,
   aresetn,
   S00_AXI_awid,
   S00_AXI_awaddr,
@@ -173,10 +172,6 @@ module ps_smartconnect_0_0 (
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.aclk, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, ASSOCIATED_BUSIF M00_AXI:S00_AXI:S01_AXI:S02_AXI, INSERT_VIP 0, ASSOCIATED_CLKEN m_sc_aclken" *)
 input wire aclk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.aclk1 CLK" *)
-(* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.aclk1, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0, ASSOCIATED_CLKEN m_sc_aclken" *)
-input wire aclk1;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.aresetn RST" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -416,7 +411,6 @@ output wire M00_AXI_rready;
 
   bd_811f inst (
     .aclk(aclk),
-    .aclk1(aclk1),
     .aresetn(aresetn),
     .S00_AXI_awid(S00_AXI_awid),
     .S00_AXI_awaddr(S00_AXI_awaddr),
