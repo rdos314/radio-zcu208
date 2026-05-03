@@ -39,6 +39,14 @@ bool print_one(volatile struct AdcHeader *header)
 {
     volatile struct AdcEntry *entry;
     int i;
+    double angle;
+    double perc;
+
+    if (header->flags & 0x40)
+    {
+        printf("  pad: %d\n", header->blocks);
+        return true;
+    }
 
     if (header->freq < 40000)
         return false;
@@ -51,8 +59,13 @@ bool print_one(volatile struct AdcHeader *header)
 
     printf("{\n");
     printf("  sample: %ld\n", header->sample);
-    printf("  angle: %d\n", header->angle);
-    printf("  doa_error: %d\n", header->doa_error);
+
+    angle = 180.0 / 32768.0 * (double)header->angle;
+    printf("  angle: %2.1f\n", angle);
+
+    perc = 0.1 * (double)header->doa_error;
+    printf("  doa_error: %2.1f%%\n", perc);
+
     printf("  freq: %d\n", header->freq);
     printf("  freq_std: %d\n", header->freq_std);
     printf("  phase_std: %d\n", header->phase_std);
@@ -76,6 +89,27 @@ bool print_one(volatile struct AdcHeader *header)
     return true;
 }
 
+void TestAxiDma()
+{
+    int fd = open("/dev/axidma", O_RDWR | O_SYNC);
+    int val;
+    char ch;
+
+// Map 64MB Data Buffer
+    char* data_buf = (char*)mmap(NULL, 0x4000000, PROT_READ, MAP_SHARED, fd, 0);
+
+// Map AXI GPIO Registers (using 1 page offset)
+    int* regs = (int*)mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 4096);
+
+// AXI GPIO Offsets: Channel 1 is 0x0, Channel 2 is 0x8
+    volatile int* write_ptr_reg = &regs[0]; // Input from PL
+    volatile int* read_ptr_reg  = &regs[2]; // Output to PL
+
+    ch = *data_buf;
+    val = *write_ptr_reg;
+    *read_ptr_reg = val;
+}
+
 int main()
 {
     int i;
@@ -87,6 +121,8 @@ int main()
                      MAP_SHARED, fd, MAP_BASE);
 
     volatile struct AdcHeader *header = (struct AdcHeader *)map;
+
+    TestAxiDma();
 
     ok = print_one(header);
 
