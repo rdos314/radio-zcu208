@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sat May  2 17:34:14 2026
+// Date        : Sun May  3 12:42:47 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -381,11 +381,13 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire mig_reset_2;
   wire mig_resetn;
   wire \mts.ana0_reset_1_reg0 ;
+  wire \mts.axi_resetn_i_1_n_0 ;
   wire \mts.comp0_reset_1_reg0 ;
   wire \mts.comp_ana0_reset_1_reg0 ;
   wire \mts.deci_adc_active_i_1_n_0 ;
   wire \mts.deci_resetn_i_1_n_0 ;
   wire \mts.freq0_reset_1_reg0 ;
+  wire \mts.mig_resetn_i_1_n_0 ;
   wire \mts.sim_active_reg0 ;
   wire \mts.sysref_active_i_1_n_0 ;
   wire \mts.sysref_active_reg_n_0 ;
@@ -722,10 +724,15 @@ module ps_mts_0_0_mts
         .D(axi_reset_1),
         .Q(axi_reset_2),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \mts.axi_resetn_i_1 
+       (.I0(axi_reset_2),
+        .O(\mts.axi_resetn_i_1_n_0 ));
   FDRE \mts.axi_resetn_reg 
        (.C(axi_clk),
         .CE(1'b1),
-        .D(axi_reset_2),
+        .D(\mts.axi_resetn_i_1_n_0 ),
         .Q(axi_resetn),
         .R(1'b0));
   (* ASYNC_REG *) 
@@ -1165,10 +1172,15 @@ module ps_mts_0_0_mts
         .D(mig_reset_1),
         .Q(mig_reset_2),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \mts.mig_resetn_i_1 
+       (.I0(mig_reset_2),
+        .O(\mts.mig_resetn_i_1_n_0 ));
   FDRE \mts.mig_resetn_reg 
        (.C(mig_clk),
         .CE(1'b1),
-        .D(mig_reset_2),
+        .D(\mts.mig_resetn_i_1_n_0 ),
         .Q(mig_resetn),
         .R(1'b0));
   LUT2 #(

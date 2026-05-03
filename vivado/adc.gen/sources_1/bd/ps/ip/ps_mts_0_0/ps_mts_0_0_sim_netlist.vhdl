@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat May  2 17:34:14 2026
+-- Date        : Sun May  3 12:42:47 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.vhdl
@@ -202,11 +202,13 @@ architecture STRUCTURE of ps_mts_0_0_mts is
   signal mig_reset_2 : STD_LOGIC;
   attribute async_reg of mig_reset_2 : signal is "true";
   signal \mts.ana0_reset_1_reg0\ : STD_LOGIC;
+  signal \mts.axi_resetn_i_1_n_0\ : STD_LOGIC;
   signal \mts.comp0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.comp_ana0_reset_1_reg0\ : STD_LOGIC;
   signal \mts.deci_adc_active_i_1_n_0\ : STD_LOGIC;
   signal \mts.deci_resetn_i_1_n_0\ : STD_LOGIC;
   signal \mts.freq0_reset_1_reg0\ : STD_LOGIC;
+  signal \mts.mig_resetn_i_1_n_0\ : STD_LOGIC;
   signal \mts.sim_active_reg0\ : STD_LOGIC;
   signal \mts.sysref_active_i_1_n_0\ : STD_LOGIC;
   signal \mts.sysref_active_reg_n_0\ : STD_LOGIC;
@@ -743,11 +745,19 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
       Q => axi_reset_2,
       R => '0'
     );
+\mts.axi_resetn_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => axi_reset_2,
+      O => \mts.axi_resetn_i_1_n_0\
+    );
 \mts.axi_resetn_reg\: unisim.vcomponents.FDRE
      port map (
       C => axi_clk,
       CE => '1',
-      D => axi_reset_2,
+      D => \mts.axi_resetn_i_1_n_0\,
       Q => axi_resetn,
       R => '0'
     );
@@ -1265,11 +1275,19 @@ clk_wiz_freq_i: component ps_mts_0_0_clk_wiz_adc
       Q => mig_reset_2,
       R => '0'
     );
+\mts.mig_resetn_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => mig_reset_2,
+      O => \mts.mig_resetn_i_1_n_0\
+    );
 \mts.mig_resetn_reg\: unisim.vcomponents.FDRE
      port map (
       C => mig_clk,
       CE => '1',
-      D => mig_reset_2,
+      D => \mts.mig_resetn_i_1_n_0\,
       Q => mig_resetn,
       R => '0'
     );
