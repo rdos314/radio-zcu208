@@ -5340,12 +5340,12 @@
             "left": "26",
             "right": "0"
           },
-          "linux_rd_ptr": {
+          "linux_wr_ptr": {
             "direction": "O",
             "left": "31",
             "right": "0"
           },
-          "linux_wr_ptr": {
+          "linux_rd_ptr": {
             "direction": "I",
             "left": "31",
             "right": "0"
@@ -5753,8 +5753,8 @@
           "adc_control_0/config_adr",
           "ana_low/config_adr",
           "ana_high/config_adr",
-          "comp_ana_high/config_adr",
-          "comp_ana_low/config_adr"
+          "comp_ana_low/config_adr",
+          "comp_ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -5762,8 +5762,8 @@
           "adc_control_0/config_data",
           "ana_low/config_data",
           "ana_high/config_data",
-          "comp_ana_high/config_data",
-          "comp_ana_low/config_data"
+          "comp_ana_low/config_data",
+          "comp_ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -5980,9 +5980,9 @@
           "adc_control_0/data_in"
         ]
       },
-      "axi_dma_1_linux_rd_ptr": {
+      "axi_dma_1_linux_wr_ptr": {
         "ports": [
-          "axi_dma_1/linux_rd_ptr",
+          "axi_dma_1/linux_wr_ptr",
           "gpio_linux_ptr/gpio_io_i"
         ]
       },
@@ -6204,11 +6204,11 @@
           "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
           "axi_datamover_1/m_axis_s2mm_cmdsts_awclk",
           "gpio_linux_ptr/s_axi_aclk",
-          "axi_dma_1/clk",
           "mts_0/mig_clk",
-          "comp_ana_high/axi_clk",
+          "axi_int_0/clk",
           "comp_ana_low/axi_clk",
-          "axi_int_0/clk"
+          "comp_ana_high/axi_clk",
+          "axi_dma_1/clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -6442,7 +6442,7 @@
       "gpio_linux_ptr_gpio2_io_o": {
         "ports": [
           "gpio_linux_ptr/gpio2_io_o",
-          "axi_dma_1/linux_wr_ptr"
+          "axi_dma_1/linux_rd_ptr"
         ]
       },
       "ilconstant_0_dout": {
@@ -6495,8 +6495,8 @@
           "smartconnect_0/aresetn",
           "gpio_linux_ptr/s_axi_aresetn",
           "axi_smc_2/aresetn",
-          "axi_dma_1/resetn",
-          "axi_int_0/resetn"
+          "axi_int_0/resetn",
+          "axi_dma_1/resetn"
         ]
       },
       "mts_0_comp0_clk": {
@@ -6787,10 +6787,10 @@
           "adc_control_0/clk",
           "proc_sys_reset_0/slowest_sync_clk",
           "mts_0/axi_clk",
-          "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk",
           "comp_ana_low/config_clk",
-          "comp_ana_low/pl_clk"
+          "comp_ana_low/pl_clk",
+          "comp_ana_high/config_clk",
+          "comp_ana_high/pl_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

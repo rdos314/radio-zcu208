@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May  3 12:42:12 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May  3 22:02:12 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -367,16 +367,16 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_adr"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_adr"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_adr"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_data"/>
             <CONNECTION INSTANCE="ana_high" PORT="config_data"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_data"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="config_high_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
@@ -2465,14 +2465,14 @@
             <CONNECTION INSTANCE="ddr4_0" PORT="c0_ddr4_ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="linux_rd_ptr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_1_linux_rd_ptr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="gpio_linux_ptr" PORT="gpio_io_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="linux_wr_ptr" RIGHT="0" SIGIS="undef" SIGNAME="gpio_linux_ptr_gpio2_io_o">
+        <PORT DIR="I" LEFT="31" NAME="linux_rd_ptr" RIGHT="0" SIGIS="undef" SIGNAME="gpio_linux_ptr_gpio2_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="gpio_linux_ptr" PORT="gpio2_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="linux_wr_ptr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_1_linux_wr_ptr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="gpio_linux_ptr" PORT="gpio_io_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="26" NAME="mig_rd_ptr" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_1_mig_rd_ptr">
@@ -6125,11 +6125,11 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="saxihpc0_fpd_aclk"/>
             <CONNECTION INSTANCE="axi_datamover_1" PORT="m_axis_s2mm_cmdsts_awclk"/>
             <CONNECTION INSTANCE="gpio_linux_ptr" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="axi_dma_1" PORT="clk"/>
             <CONNECTION INSTANCE="mts_0" PORT="mig_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_clk"/>
-            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_clk"/>
             <CONNECTION INSTANCE="axi_int_0" PORT="clk"/>
+            <CONNECTION INSTANCE="comp_ana_low" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="axi_clk"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="c0_ddr4_ui_clk_sync_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
@@ -7602,12 +7602,12 @@
       <PORTS>
         <PORT DIR="O" LEFT="31" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef" SIGNAME="gpio_linux_ptr_gpio2_io_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_1" PORT="linux_wr_ptr"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="linux_rd_ptr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_1_linux_rd_ptr">
+        <PORT DIR="I" LEFT="31" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_1_linux_wr_ptr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_1" PORT="linux_rd_ptr"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="linux_wr_ptr"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="333250000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="ddr4_0_c0_ddr4_ui_clk">
@@ -7957,8 +7957,8 @@
             <CONNECTION INSTANCE="smartconnect_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="gpio_linux_ptr" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_smc_2" PORT="aresetn"/>
-            <CONNECTION INSTANCE="axi_dma_1" PORT="resetn"/>
             <CONNECTION INSTANCE="axi_int_0" PORT="resetn"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="resetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="pl_clk" SIGIS="clk" SIGNAME="pl_clk_util_ds_buf_IBUF_OUT">
@@ -11653,10 +11653,10 @@
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_QSPI" RANGE="0x20000000" USAGE="memory"/>
@@ -11668,13 +11668,13 @@
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_QSPI" RANGE="0x20000000" USAGE="memory"/>
-      </ADDRESSBLOCKS>
-      <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_QSPI" RANGE="0x20000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
@@ -14039,10 +14039,10 @@
             <CONNECTION INSTANCE="adc_control_0" PORT="clk"/>
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="mts_0" PORT="axi_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
-            <CONNECTION INSTANCE="comp_ana_high" PORT="pl_clk"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_clk"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="pl_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
+            <CONNECTION INSTANCE="comp_ana_high" PORT="pl_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">

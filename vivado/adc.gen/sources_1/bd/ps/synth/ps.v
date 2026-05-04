@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Sun May  3 12:42:09 2026
+//Date        : Sun May  3 22:02:08 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -186,7 +186,7 @@ module ps
   wire [71:0]axi_dma_1_M_AXI_out_cmd_TDATA;
   wire axi_dma_1_M_AXI_out_cmd_TREADY;
   wire axi_dma_1_M_AXI_out_cmd_TVALID;
-  wire [31:0]axi_dma_1_linux_rd_ptr;
+  wire [31:0]axi_dma_1_linux_wr_ptr;
   wire [26:0]axi_dma_1_rd_ptr;
   wire [31:0]axi_int_0_M_AXI_AWADDR;
   wire [1:0]axi_int_0_M_AXI_AWBURST;
@@ -859,8 +859,8 @@ module ps
         .M_AXI_TVALID_out(axi_dma_1_M_AXI_out_TVALID),
         .M_AXI_TVALID_out_cmd(axi_dma_1_M_AXI_out_cmd_TVALID),
         .clk(ddr4_0_c0_ddr4_ui_clk),
-        .linux_rd_ptr(axi_dma_1_linux_rd_ptr),
-        .linux_wr_ptr(gpio_linux_ptr_gpio2_io_o),
+        .linux_rd_ptr(gpio_linux_ptr_gpio2_io_o),
+        .linux_wr_ptr(axi_dma_1_linux_wr_ptr),
         .mig_rd_ptr(axi_dma_1_rd_ptr),
         .mig_wr_ptr(axi_int_0_wr_ptr),
         .resetn(mts_0_axi_reset_out));
@@ -1433,7 +1433,7 @@ module ps
         .s_axi_wvalid(axi_smc_M00_AXI_WVALID));
   ps_axi_gpio_0_6 gpio_linux_ptr
        (.gpio2_io_o(gpio_linux_ptr_gpio2_io_o),
-        .gpio_io_i(axi_dma_1_linux_rd_ptr),
+        .gpio_io_i(axi_dma_1_linux_wr_ptr),
         .s_axi_aclk(ddr4_0_c0_ddr4_ui_clk),
         .s_axi_araddr(axi_smc_2_M00_AXI_ARADDR),
         .s_axi_aresetn(mts_0_axi_reset_out),

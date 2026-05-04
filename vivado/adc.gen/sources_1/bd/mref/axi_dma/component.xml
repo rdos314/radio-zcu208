@@ -265,7 +265,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>3d048a60</spirit:value>
+            <spirit:value>8031f9ce</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -278,7 +278,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>3d048a60</spirit:value>
+            <spirit:value>8031f9ce</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -353,7 +353,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>linux_rd_ptr</spirit:name>
+        <spirit:name>linux_wr_ptr</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -370,7 +370,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>linux_wr_ptr</spirit:name>
+        <spirit:name>linux_rd_ptr</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -718,7 +718,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-05-02T13:26:55Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-05-03T19:57:39Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>

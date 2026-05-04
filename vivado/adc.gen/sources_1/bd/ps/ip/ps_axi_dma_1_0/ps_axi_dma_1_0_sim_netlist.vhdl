@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat May  2 15:27:56 2026
+-- Date        : Sun May  3 22:02:49 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.vhdl
@@ -9318,8 +9318,8 @@ entity ps_axi_dma_1_0_axi_dma is
     resetn : in STD_LOGIC;
     mig_rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
     mig_wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    linux_rd_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    linux_wr_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_wr_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_rd_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXI_TDATA_in_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
     M_AXI_TVALID_in_cmd : out STD_LOGIC;
     M_AXI_TREADY_in_cmd : in STD_LOGIC;
@@ -9350,6 +9350,8 @@ entity ps_axi_dma_1_0_axi_dma is
   attribute CMD_ST_WAIT_SPACE of ps_axi_dma_1_0_axi_dma : entity is "3'b011";
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ps_axi_dma_1_0_axi_dma : entity is "axi_dma";
+  attribute keep_hierarchy : string;
+  attribute keep_hierarchy of ps_axi_dma_1_0_axi_dma : entity is "soft";
 end ps_axi_dma_1_0_axi_dma;
 
 architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
@@ -9366,7 +9368,8 @@ architecture STRUCTURE of ps_axi_dma_1_0_axi_dma is
     probe7 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component ps_axi_dma_1_0_ila_7;
   signal \<const0>\ : STD_LOGIC;
@@ -9896,38 +9899,38 @@ begin
   M_AXI_TREADY_in <= \<const0>\;
   M_AXI_TVALID_in_cmd <= \^m_axi_tvalid_in_cmd\;
   M_AXI_TVALID_out_cmd <= \<const0>\;
-  linux_rd_ptr(31) <= \<const0>\;
-  linux_rd_ptr(30) <= \<const0>\;
-  linux_rd_ptr(29) <= \<const0>\;
-  linux_rd_ptr(28) <= \<const0>\;
-  linux_rd_ptr(27) <= \<const0>\;
-  linux_rd_ptr(26) <= \<const0>\;
-  linux_rd_ptr(25) <= \<const0>\;
-  linux_rd_ptr(24) <= \<const0>\;
-  linux_rd_ptr(23) <= \<const0>\;
-  linux_rd_ptr(22) <= \<const0>\;
-  linux_rd_ptr(21) <= \<const0>\;
-  linux_rd_ptr(20) <= \<const0>\;
-  linux_rd_ptr(19) <= \<const0>\;
-  linux_rd_ptr(18) <= \<const0>\;
-  linux_rd_ptr(17) <= \<const0>\;
-  linux_rd_ptr(16) <= \<const0>\;
-  linux_rd_ptr(15) <= \<const0>\;
-  linux_rd_ptr(14) <= \<const0>\;
-  linux_rd_ptr(13) <= \<const0>\;
-  linux_rd_ptr(12) <= \<const0>\;
-  linux_rd_ptr(11) <= \<const0>\;
-  linux_rd_ptr(10) <= \<const0>\;
-  linux_rd_ptr(9) <= \<const0>\;
-  linux_rd_ptr(8) <= \<const0>\;
-  linux_rd_ptr(7) <= \<const0>\;
-  linux_rd_ptr(6) <= \<const0>\;
-  linux_rd_ptr(5) <= \<const0>\;
-  linux_rd_ptr(4) <= \<const0>\;
-  linux_rd_ptr(3) <= \<const0>\;
-  linux_rd_ptr(2) <= \<const0>\;
-  linux_rd_ptr(1) <= \<const0>\;
-  linux_rd_ptr(0) <= \<const0>\;
+  linux_wr_ptr(31) <= \<const0>\;
+  linux_wr_ptr(30) <= \<const0>\;
+  linux_wr_ptr(29) <= \<const0>\;
+  linux_wr_ptr(28) <= \<const0>\;
+  linux_wr_ptr(27) <= \<const0>\;
+  linux_wr_ptr(26) <= \<const0>\;
+  linux_wr_ptr(25) <= \<const0>\;
+  linux_wr_ptr(24) <= \<const0>\;
+  linux_wr_ptr(23) <= \<const0>\;
+  linux_wr_ptr(22) <= \<const0>\;
+  linux_wr_ptr(21) <= \<const0>\;
+  linux_wr_ptr(20) <= \<const0>\;
+  linux_wr_ptr(19) <= \<const0>\;
+  linux_wr_ptr(18) <= \<const0>\;
+  linux_wr_ptr(17) <= \<const0>\;
+  linux_wr_ptr(16) <= \<const0>\;
+  linux_wr_ptr(15) <= \<const0>\;
+  linux_wr_ptr(14) <= \<const0>\;
+  linux_wr_ptr(13) <= \<const0>\;
+  linux_wr_ptr(12) <= \<const0>\;
+  linux_wr_ptr(11) <= \<const0>\;
+  linux_wr_ptr(10) <= \<const0>\;
+  linux_wr_ptr(9) <= \<const0>\;
+  linux_wr_ptr(8) <= \<const0>\;
+  linux_wr_ptr(7) <= \<const0>\;
+  linux_wr_ptr(6) <= \<const0>\;
+  linux_wr_ptr(5) <= \<const0>\;
+  linux_wr_ptr(4) <= \<const0>\;
+  linux_wr_ptr(3) <= \<const0>\;
+  linux_wr_ptr(2) <= \<const0>\;
+  linux_wr_ptr(1) <= \<const0>\;
+  linux_wr_ptr(0) <= \<const0>\;
   mig_rd_ptr(26) <= \<const0>\;
   mig_rd_ptr(25) <= \<const0>\;
   mig_rd_ptr(24) <= \<const0>\;
@@ -14511,6 +14514,7 @@ ila_i: component ps_axi_dma_1_0_ila_7
       probe0(2 downto 0) => cmd_state(2 downto 0),
       probe1(26 downto 0) => adr(26 downto 0),
       probe10(7 downto 0) => mig_diff(7 downto 0),
+      probe11(31 downto 0) => linux_rd_ptr(31 downto 0),
       probe2(26 downto 0) => mig_blocks(26 downto 0),
       probe3(0) => start_cmd,
       probe4(0) => cmd_done,
@@ -14531,8 +14535,8 @@ entity ps_axi_dma_1_0 is
     resetn : in STD_LOGIC;
     mig_rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
     mig_wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    linux_rd_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    linux_wr_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_wr_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    linux_rd_ptr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXI_TDATA_in_cmd : out STD_LOGIC_VECTOR ( 71 downto 0 );
     M_AXI_TVALID_in_cmd : out STD_LOGIC;
     M_AXI_TREADY_in_cmd : in STD_LOGIC;
@@ -14574,7 +14578,7 @@ architecture STRUCTURE of ps_axi_dma_1_0 is
   signal NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED : STD_LOGIC_VECTOR ( 71 downto 0 );
   signal NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED : STD_LOGIC_VECTOR ( 71 downto 0 );
-  signal NLW_inst_linux_rd_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_inst_linux_wr_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_inst_mig_rd_ptr_UNCONNECTED : STD_LOGIC_VECTOR ( 26 downto 0 );
   attribute CMD_ST_IDLE : string;
   attribute CMD_ST_IDLE of inst : label is "3'b000";
@@ -14735,38 +14739,38 @@ begin
   M_AXI_TDATA_out_cmd(0) <= \<const0>\;
   M_AXI_TREADY_in <= \<const1>\;
   M_AXI_TVALID_out_cmd <= \<const0>\;
-  linux_rd_ptr(31) <= \<const0>\;
-  linux_rd_ptr(30) <= \<const0>\;
-  linux_rd_ptr(29) <= \<const0>\;
-  linux_rd_ptr(28) <= \<const0>\;
-  linux_rd_ptr(27) <= \<const0>\;
-  linux_rd_ptr(26) <= \<const0>\;
-  linux_rd_ptr(25) <= \<const0>\;
-  linux_rd_ptr(24) <= \<const0>\;
-  linux_rd_ptr(23) <= \<const0>\;
-  linux_rd_ptr(22) <= \<const0>\;
-  linux_rd_ptr(21) <= \<const0>\;
-  linux_rd_ptr(20) <= \<const0>\;
-  linux_rd_ptr(19) <= \<const0>\;
-  linux_rd_ptr(18) <= \<const0>\;
-  linux_rd_ptr(17) <= \<const0>\;
-  linux_rd_ptr(16) <= \<const0>\;
-  linux_rd_ptr(15) <= \<const0>\;
-  linux_rd_ptr(14) <= \<const0>\;
-  linux_rd_ptr(13) <= \<const0>\;
-  linux_rd_ptr(12) <= \<const0>\;
-  linux_rd_ptr(11) <= \<const0>\;
-  linux_rd_ptr(10) <= \<const0>\;
-  linux_rd_ptr(9) <= \<const0>\;
-  linux_rd_ptr(8) <= \<const0>\;
-  linux_rd_ptr(7) <= \<const0>\;
-  linux_rd_ptr(6) <= \<const0>\;
-  linux_rd_ptr(5) <= \<const0>\;
-  linux_rd_ptr(4) <= \<const0>\;
-  linux_rd_ptr(3) <= \<const0>\;
-  linux_rd_ptr(2) <= \<const0>\;
-  linux_rd_ptr(1) <= \<const0>\;
-  linux_rd_ptr(0) <= \<const0>\;
+  linux_wr_ptr(31) <= \<const0>\;
+  linux_wr_ptr(30) <= \<const0>\;
+  linux_wr_ptr(29) <= \<const0>\;
+  linux_wr_ptr(28) <= \<const0>\;
+  linux_wr_ptr(27) <= \<const0>\;
+  linux_wr_ptr(26) <= \<const0>\;
+  linux_wr_ptr(25) <= \<const0>\;
+  linux_wr_ptr(24) <= \<const0>\;
+  linux_wr_ptr(23) <= \<const0>\;
+  linux_wr_ptr(22) <= \<const0>\;
+  linux_wr_ptr(21) <= \<const0>\;
+  linux_wr_ptr(20) <= \<const0>\;
+  linux_wr_ptr(19) <= \<const0>\;
+  linux_wr_ptr(18) <= \<const0>\;
+  linux_wr_ptr(17) <= \<const0>\;
+  linux_wr_ptr(16) <= \<const0>\;
+  linux_wr_ptr(15) <= \<const0>\;
+  linux_wr_ptr(14) <= \<const0>\;
+  linux_wr_ptr(13) <= \<const0>\;
+  linux_wr_ptr(12) <= \<const1>\;
+  linux_wr_ptr(11) <= \<const0>\;
+  linux_wr_ptr(10) <= \<const0>\;
+  linux_wr_ptr(9) <= \<const0>\;
+  linux_wr_ptr(8) <= \<const1>\;
+  linux_wr_ptr(7) <= \<const0>\;
+  linux_wr_ptr(6) <= \<const0>\;
+  linux_wr_ptr(5) <= \<const1>\;
+  linux_wr_ptr(4) <= \<const0>\;
+  linux_wr_ptr(3) <= \<const0>\;
+  linux_wr_ptr(2) <= \<const0>\;
+  linux_wr_ptr(1) <= \<const1>\;
+  linux_wr_ptr(0) <= \<const0>\;
   mig_rd_ptr(26) <= \<const0>\;
   mig_rd_ptr(25) <= \<const0>\;
   mig_rd_ptr(24) <= \<const0>\;
@@ -14830,8 +14834,8 @@ inst: entity work.ps_axi_dma_1_0_axi_dma
       M_AXI_TVALID_out => M_AXI_TVALID_out,
       M_AXI_TVALID_out_cmd => NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED,
       clk => clk,
-      linux_rd_ptr(31 downto 0) => NLW_inst_linux_rd_ptr_UNCONNECTED(31 downto 0),
-      linux_wr_ptr(31 downto 0) => B"00000000000000000000000000000000",
+      linux_rd_ptr(31 downto 0) => linux_rd_ptr(31 downto 0),
+      linux_wr_ptr(31 downto 0) => NLW_inst_linux_wr_ptr_UNCONNECTED(31 downto 0),
       mig_rd_ptr(26 downto 0) => NLW_inst_mig_rd_ptr_UNCONNECTED(26 downto 0),
       mig_wr_ptr(26 downto 0) => mig_wr_ptr(26 downto 0),
       resetn => resetn

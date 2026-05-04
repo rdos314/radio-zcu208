@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sat May  2 15:27:56 2026
+// Date        : Sun May  3 22:02:49 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.v
@@ -21,8 +21,8 @@ module ps_axi_dma_1_0
     resetn,
     mig_rd_ptr,
     mig_wr_ptr,
-    linux_rd_ptr,
     linux_wr_ptr,
+    linux_rd_ptr,
     M_AXI_TDATA_in_cmd,
     M_AXI_TVALID_in_cmd,
     M_AXI_TREADY_in_cmd,
@@ -46,8 +46,8 @@ module ps_axi_dma_1_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
   output [26:0]mig_rd_ptr;
   input [26:0]mig_wr_ptr;
-  output [31:0]linux_rd_ptr;
-  input [31:0]linux_wr_ptr;
+  output [31:0]linux_wr_ptr;
+  input [31:0]linux_rd_ptr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [71:0]M_AXI_TDATA_in_cmd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TVALID" *) output M_AXI_TVALID_in_cmd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TREADY" *) input M_AXI_TREADY_in_cmd;
@@ -83,6 +83,7 @@ module ps_axi_dma_1_0
   wire M_AXI_TVALID_in_cmd;
   wire M_AXI_TVALID_out;
   wire clk;
+  wire [31:0]linux_rd_ptr;
   wire [26:0]mig_wr_ptr;
   wire resetn;
   wire NLW_inst_M_AXI_STS_out_tready_UNCONNECTED;
@@ -90,7 +91,7 @@ module ps_axi_dma_1_0
   wire NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED;
   wire [71:0]NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED;
   wire [71:0]NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED;
-  wire [31:0]NLW_inst_linux_rd_ptr_UNCONNECTED;
+  wire [31:0]NLW_inst_linux_wr_ptr_UNCONNECTED;
   wire [26:0]NLW_inst_mig_rd_ptr_UNCONNECTED;
 
   assign M_AXI_STS_out_tready = \<const0> ;
@@ -203,38 +204,38 @@ module ps_axi_dma_1_0
   assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
   assign M_AXI_TREADY_in = \<const1> ;
   assign M_AXI_TVALID_out_cmd = \<const0> ;
-  assign linux_rd_ptr[31] = \<const0> ;
-  assign linux_rd_ptr[30] = \<const0> ;
-  assign linux_rd_ptr[29] = \<const0> ;
-  assign linux_rd_ptr[28] = \<const0> ;
-  assign linux_rd_ptr[27] = \<const0> ;
-  assign linux_rd_ptr[26] = \<const0> ;
-  assign linux_rd_ptr[25] = \<const0> ;
-  assign linux_rd_ptr[24] = \<const0> ;
-  assign linux_rd_ptr[23] = \<const0> ;
-  assign linux_rd_ptr[22] = \<const0> ;
-  assign linux_rd_ptr[21] = \<const0> ;
-  assign linux_rd_ptr[20] = \<const0> ;
-  assign linux_rd_ptr[19] = \<const0> ;
-  assign linux_rd_ptr[18] = \<const0> ;
-  assign linux_rd_ptr[17] = \<const0> ;
-  assign linux_rd_ptr[16] = \<const0> ;
-  assign linux_rd_ptr[15] = \<const0> ;
-  assign linux_rd_ptr[14] = \<const0> ;
-  assign linux_rd_ptr[13] = \<const0> ;
-  assign linux_rd_ptr[12] = \<const0> ;
-  assign linux_rd_ptr[11] = \<const0> ;
-  assign linux_rd_ptr[10] = \<const0> ;
-  assign linux_rd_ptr[9] = \<const0> ;
-  assign linux_rd_ptr[8] = \<const0> ;
-  assign linux_rd_ptr[7] = \<const0> ;
-  assign linux_rd_ptr[6] = \<const0> ;
-  assign linux_rd_ptr[5] = \<const0> ;
-  assign linux_rd_ptr[4] = \<const0> ;
-  assign linux_rd_ptr[3] = \<const0> ;
-  assign linux_rd_ptr[2] = \<const0> ;
-  assign linux_rd_ptr[1] = \<const0> ;
-  assign linux_rd_ptr[0] = \<const0> ;
+  assign linux_wr_ptr[31] = \<const0> ;
+  assign linux_wr_ptr[30] = \<const0> ;
+  assign linux_wr_ptr[29] = \<const0> ;
+  assign linux_wr_ptr[28] = \<const0> ;
+  assign linux_wr_ptr[27] = \<const0> ;
+  assign linux_wr_ptr[26] = \<const0> ;
+  assign linux_wr_ptr[25] = \<const0> ;
+  assign linux_wr_ptr[24] = \<const0> ;
+  assign linux_wr_ptr[23] = \<const0> ;
+  assign linux_wr_ptr[22] = \<const0> ;
+  assign linux_wr_ptr[21] = \<const0> ;
+  assign linux_wr_ptr[20] = \<const0> ;
+  assign linux_wr_ptr[19] = \<const0> ;
+  assign linux_wr_ptr[18] = \<const0> ;
+  assign linux_wr_ptr[17] = \<const0> ;
+  assign linux_wr_ptr[16] = \<const0> ;
+  assign linux_wr_ptr[15] = \<const0> ;
+  assign linux_wr_ptr[14] = \<const0> ;
+  assign linux_wr_ptr[13] = \<const0> ;
+  assign linux_wr_ptr[12] = \<const1> ;
+  assign linux_wr_ptr[11] = \<const0> ;
+  assign linux_wr_ptr[10] = \<const0> ;
+  assign linux_wr_ptr[9] = \<const0> ;
+  assign linux_wr_ptr[8] = \<const1> ;
+  assign linux_wr_ptr[7] = \<const0> ;
+  assign linux_wr_ptr[6] = \<const0> ;
+  assign linux_wr_ptr[5] = \<const1> ;
+  assign linux_wr_ptr[4] = \<const0> ;
+  assign linux_wr_ptr[3] = \<const0> ;
+  assign linux_wr_ptr[2] = \<const0> ;
+  assign linux_wr_ptr[1] = \<const1> ;
+  assign linux_wr_ptr[0] = \<const0> ;
   assign mig_rd_ptr[26] = \<const0> ;
   assign mig_rd_ptr[25] = \<const0> ;
   assign mig_rd_ptr[24] = \<const0> ;
@@ -291,22 +292,22 @@ module ps_axi_dma_1_0
         .M_AXI_TVALID_out(M_AXI_TVALID_out),
         .M_AXI_TVALID_out_cmd(NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED),
         .clk(clk),
-        .linux_rd_ptr(NLW_inst_linux_rd_ptr_UNCONNECTED[31:0]),
-        .linux_wr_ptr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .linux_rd_ptr(linux_rd_ptr),
+        .linux_wr_ptr(NLW_inst_linux_wr_ptr_UNCONNECTED[31:0]),
         .mig_rd_ptr(NLW_inst_mig_rd_ptr_UNCONNECTED[26:0]),
         .mig_wr_ptr(mig_wr_ptr),
         .resetn(resetn));
 endmodule
 
 (* CMD_ST_IDLE = "3'b000" *) (* CMD_ST_WAIT_DONE = "3'b010" *) (* CMD_ST_WAIT_HDR = "3'b001" *) 
-(* CMD_ST_WAIT_SPACE = "3'b011" *) (* ORIG_REF_NAME = "axi_dma" *) 
+(* CMD_ST_WAIT_SPACE = "3'b011" *) (* ORIG_REF_NAME = "axi_dma" *) (* keep_hierarchy = "soft" *) 
 module ps_axi_dma_1_0_axi_dma
    (clk,
     resetn,
     mig_rd_ptr,
     mig_wr_ptr,
-    linux_rd_ptr,
     linux_wr_ptr,
+    linux_rd_ptr,
     M_AXI_TDATA_in_cmd,
     M_AXI_TVALID_in_cmd,
     M_AXI_TREADY_in_cmd,
@@ -330,8 +331,8 @@ module ps_axi_dma_1_0_axi_dma
   input resetn;
   output [26:0]mig_rd_ptr;
   input [26:0]mig_wr_ptr;
-  output [31:0]linux_rd_ptr;
-  input [31:0]linux_wr_ptr;
+  output [31:0]linux_wr_ptr;
+  input [31:0]linux_rd_ptr;
   output [71:0]M_AXI_TDATA_in_cmd;
   output M_AXI_TVALID_in_cmd;
   input M_AXI_TREADY_in_cmd;
@@ -520,6 +521,7 @@ module ps_axi_dma_1_0_axi_dma
   (* MARK_DEBUG *) wire has_mig_size;
   wire [255:0]in_data;
   wire in_wr;
+  (* MARK_DEBUG *) wire [31:0]linux_rd_ptr;
   (* MARK_DEBUG *) wire [26:0]mig_blocks;
   (* MARK_DEBUG *) wire [7:0]mig_diff;
   (* MARK_DEBUG *) wire [7:0]mig_size;
@@ -660,38 +662,38 @@ module ps_axi_dma_1_0_axi_dma
   assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
   assign M_AXI_TREADY_in = \<const0> ;
   assign M_AXI_TVALID_out_cmd = \<const0> ;
-  assign linux_rd_ptr[31] = \<const0> ;
-  assign linux_rd_ptr[30] = \<const0> ;
-  assign linux_rd_ptr[29] = \<const0> ;
-  assign linux_rd_ptr[28] = \<const0> ;
-  assign linux_rd_ptr[27] = \<const0> ;
-  assign linux_rd_ptr[26] = \<const0> ;
-  assign linux_rd_ptr[25] = \<const0> ;
-  assign linux_rd_ptr[24] = \<const0> ;
-  assign linux_rd_ptr[23] = \<const0> ;
-  assign linux_rd_ptr[22] = \<const0> ;
-  assign linux_rd_ptr[21] = \<const0> ;
-  assign linux_rd_ptr[20] = \<const0> ;
-  assign linux_rd_ptr[19] = \<const0> ;
-  assign linux_rd_ptr[18] = \<const0> ;
-  assign linux_rd_ptr[17] = \<const0> ;
-  assign linux_rd_ptr[16] = \<const0> ;
-  assign linux_rd_ptr[15] = \<const0> ;
-  assign linux_rd_ptr[14] = \<const0> ;
-  assign linux_rd_ptr[13] = \<const0> ;
-  assign linux_rd_ptr[12] = \<const0> ;
-  assign linux_rd_ptr[11] = \<const0> ;
-  assign linux_rd_ptr[10] = \<const0> ;
-  assign linux_rd_ptr[9] = \<const0> ;
-  assign linux_rd_ptr[8] = \<const0> ;
-  assign linux_rd_ptr[7] = \<const0> ;
-  assign linux_rd_ptr[6] = \<const0> ;
-  assign linux_rd_ptr[5] = \<const0> ;
-  assign linux_rd_ptr[4] = \<const0> ;
-  assign linux_rd_ptr[3] = \<const0> ;
-  assign linux_rd_ptr[2] = \<const0> ;
-  assign linux_rd_ptr[1] = \<const0> ;
-  assign linux_rd_ptr[0] = \<const0> ;
+  assign linux_wr_ptr[31] = \<const0> ;
+  assign linux_wr_ptr[30] = \<const0> ;
+  assign linux_wr_ptr[29] = \<const0> ;
+  assign linux_wr_ptr[28] = \<const0> ;
+  assign linux_wr_ptr[27] = \<const0> ;
+  assign linux_wr_ptr[26] = \<const0> ;
+  assign linux_wr_ptr[25] = \<const0> ;
+  assign linux_wr_ptr[24] = \<const0> ;
+  assign linux_wr_ptr[23] = \<const0> ;
+  assign linux_wr_ptr[22] = \<const0> ;
+  assign linux_wr_ptr[21] = \<const0> ;
+  assign linux_wr_ptr[20] = \<const0> ;
+  assign linux_wr_ptr[19] = \<const0> ;
+  assign linux_wr_ptr[18] = \<const0> ;
+  assign linux_wr_ptr[17] = \<const0> ;
+  assign linux_wr_ptr[16] = \<const0> ;
+  assign linux_wr_ptr[15] = \<const0> ;
+  assign linux_wr_ptr[14] = \<const0> ;
+  assign linux_wr_ptr[13] = \<const0> ;
+  assign linux_wr_ptr[12] = \<const0> ;
+  assign linux_wr_ptr[11] = \<const0> ;
+  assign linux_wr_ptr[10] = \<const0> ;
+  assign linux_wr_ptr[9] = \<const0> ;
+  assign linux_wr_ptr[8] = \<const0> ;
+  assign linux_wr_ptr[7] = \<const0> ;
+  assign linux_wr_ptr[6] = \<const0> ;
+  assign linux_wr_ptr[5] = \<const0> ;
+  assign linux_wr_ptr[4] = \<const0> ;
+  assign linux_wr_ptr[3] = \<const0> ;
+  assign linux_wr_ptr[2] = \<const0> ;
+  assign linux_wr_ptr[1] = \<const0> ;
+  assign linux_wr_ptr[0] = \<const0> ;
   assign mig_rd_ptr[26] = \<const0> ;
   assign mig_rd_ptr[25] = \<const0> ;
   assign mig_rd_ptr[24] = \<const0> ;
@@ -4243,6 +4245,7 @@ module ps_axi_dma_1_0_axi_dma
         .probe0(cmd_state),
         .probe1(adr),
         .probe10(mig_diff),
+        .probe11(linux_rd_ptr),
         .probe2(mig_blocks),
         .probe3(start_cmd),
         .probe4(cmd_done),
@@ -4267,7 +4270,8 @@ module ps_axi_dma_1_0_ila_7
     probe7,
     probe8,
     probe9,
-    probe10);
+    probe10,
+    probe11);
   (* syn_isclock = "1" *) input clk;
   input [2:0]probe0;
   input [26:0]probe1;
@@ -4280,6 +4284,7 @@ module ps_axi_dma_1_0_ila_7
   input [0:0]probe8;
   input [7:0]probe9;
   input [7:0]probe10;
+  input [31:0]probe11;
 
 
 endmodule

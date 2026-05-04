@@ -7,8 +7,8 @@ module axi_dma(
     output reg [26:0] mig_rd_ptr,
     input wire [26:0] mig_wr_ptr,
 
-    output reg [31:0] linux_rd_ptr,
-    input wire [31:0] linux_wr_ptr,
+    output reg [31:0] linux_wr_ptr,
+    input wire [31:0] linux_rd_ptr,
         
     output reg [71:0] M_AXI_TDATA_in_cmd,
     output reg M_AXI_TVALID_in_cmd,
@@ -121,7 +121,8 @@ module axi_dma(
 		.probe7(tag),                 // input wire [3:0]  probe3
 		.probe8(has_mig_size),        // input wire [0:0]  probe3
 		.probe9(mig_size),            // input wire [7:0]  probe3
-		.probe10(mig_diff)             // input wire [7:0]  probe3
+		.probe10(mig_diff),           // input wire [7:0]  probe3
+		.probe11(linux_rd_ptr)        // input wire [31:0]  probe3
 	);
     
 generate
@@ -130,6 +131,12 @@ generate
     always @(posedge clk) 
     begin
         reset <= !resetn;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+            linux_wr_ptr <= 32'h00001122;
     end
 
     always @(posedge clk) 
