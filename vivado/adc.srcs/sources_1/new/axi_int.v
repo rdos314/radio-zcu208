@@ -749,7 +749,7 @@ generate
         begin
             req <= 1;
 
-            if (adr[8] == end_adr[8])
+            if (adr[20] == end_adr[20])
             begin
                 pad <= 0;
                 size <= mig_data[71:64] + 1;
