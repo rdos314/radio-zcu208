@@ -104,9 +104,9 @@ module axi_dma(
     reg [20:0] app_diff_ptr;
     reg [20:0] app_space;
 
-    reg dma_active;
+    reg app_active;
 
-    assign M_AXI_TVALID_out = !fifo_empty && dma_active;
+    assign M_AXI_TVALID_out = !fifo_empty && app_active;
         	
 	xpm_fifo_sync #(
 	    .FIFO_MEMORY_TYPE("ultra"),
@@ -225,7 +225,7 @@ generate
         begin
             M_AXI_STS_in_tready <= 1;
 
-            if (M_AXI_STS_in_tvalid && M_AXI_STS_in_tready) 
+            if (M_AXI_STS_in_tvalid) 
             begin
                 if (M_AXI_STS_in_tdata[7])
                 begin
@@ -378,7 +378,7 @@ generate
  
     always @(posedge clk) 
     begin
-        M_AXI_TREADY_in <= !full;
+        M_AXI_TREADY_in <= !mig_full;
     end
 
     always @(posedge clk) 
@@ -491,7 +491,7 @@ generate
         begin
             M_AXI_STS_out_tready <= 1;
 
-            if (M_AXI_STS_out_tvalid && M_AXI_STS_out_tready) 
+            if (M_AXI_STS_out_tvalid) 
             begin
                 if (M_AXI_STS_out_tdata[7])
                 begin
@@ -528,7 +528,7 @@ generate
 
     always @(posedge clk) 
     begin
-        dma_active <= 0;
+        app_active <= 0;
         M_AXI_TLAST_out <= 0;
     end
 
@@ -543,13 +543,13 @@ generate
         end
         else
         begin
-            if (dma_active)
+            if (app_active)
             begin
                 if (M_AXI_TVALID_out && M_AXI_TREADY_out)
                 begin
                     if (M_AXI_TLAST_out)
                     begin
-                        dma_active <= 0;
+                        app_active <= 0;
                         M_AXI_TLAST_out <= 0;
                     end
                     else
@@ -568,7 +568,7 @@ generate
                     r5_cmd_rd <= 0;
                 else
                 begin
-                    dma_active <= 1;
+                    app_active <= 1;
                     r5_cmd_rd <= 1;
                     curr_beat <= 1;
                     last_beat <= r5_cmd_data - 1;
