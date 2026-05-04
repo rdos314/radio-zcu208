@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun May  3 12:42:55 2026
+-- Date        : Mon May  4 21:19:37 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_int_0_0/ps_axi_int_0_0_sim_netlist.vhdl
@@ -51039,8 +51039,8 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => adr(0),
-      I1 => adr(8),
-      I2 => end_adr(8),
+      I1 => adr(20),
+      I2 => end_adr(20),
       I3 => mig_data(64),
       O => \size__0\(0)
     );
@@ -51052,8 +51052,8 @@ GND: unisim.vcomponents.GND
       I0 => mig_data(64),
       I1 => adr(0),
       I2 => mig_data(65),
-      I3 => end_adr(8),
-      I4 => adr(8),
+      I3 => end_adr(20),
+      I4 => adr(20),
       I5 => adr(1),
       O => \size__0\(1)
     );
@@ -51091,8 +51091,8 @@ GND: unisim.vcomponents.GND
       I0 => mig_data(64),
       I1 => adr(0),
       I2 => mig_data(65),
-      I3 => end_adr(8),
-      I4 => adr(8),
+      I3 => end_adr(20),
+      I4 => adr(20),
       I5 => adr(1),
       O => \axi_int.size[3]_i_2_n_0\
     );
@@ -51204,8 +51204,8 @@ GND: unisim.vcomponents.GND
       INIT => X"6"
     )
         port map (
-      I0 => adr(8),
-      I1 => end_adr(8),
+      I0 => adr(20),
+      I1 => end_adr(20),
       O => \axi_int.size[7]_i_3_n_0\
     );
 \axi_int.size[7]_i_4\: unisim.vcomponents.LUT4
@@ -51214,8 +51214,8 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => adr(4),
-      I1 => adr(8),
-      I2 => end_adr(8),
+      I1 => adr(20),
+      I2 => end_adr(20),
       I3 => mig_data(68),
       O => \axi_int.size[7]_i_4_n_0\
     );
@@ -51225,8 +51225,8 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => adr(2),
-      I1 => adr(8),
-      I2 => end_adr(8),
+      I1 => adr(20),
+      I2 => end_adr(20),
       I3 => mig_data(66),
       O => \axi_int.size[7]_i_5_n_0\
     );
@@ -51236,8 +51236,8 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => adr(3),
-      I1 => adr(8),
-      I2 => end_adr(8),
+      I1 => adr(20),
+      I2 => end_adr(20),
       I3 => mig_data(67),
       O => \axi_int.size[7]_i_6_n_0\
     );
@@ -51247,8 +51247,8 @@ GND: unisim.vcomponents.GND
     )
         port map (
       I0 => adr(5),
-      I1 => adr(8),
-      I2 => end_adr(8),
+      I1 => adr(20),
+      I2 => end_adr(20),
       I3 => mig_data(69),
       O => \axi_int.size[7]_i_7_n_0\
     );

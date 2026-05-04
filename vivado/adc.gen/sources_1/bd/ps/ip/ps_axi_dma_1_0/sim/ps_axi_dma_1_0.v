@@ -57,6 +57,7 @@
 module ps_axi_dma_1_0 (
   clk,
   resetn,
+  irq,
   mig_rd_ptr,
   mig_wr_ptr,
   linux_wr_ptr,
@@ -90,6 +91,10 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire resetn;
+(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 irq INTERRUPT" *)
+(* X_INTERFACE_MODE = "master" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
+output wire irq;
 output wire [26 : 0] mig_rd_ptr;
 input wire [26 : 0] mig_wr_ptr;
 output wire [31 : 0] linux_wr_ptr;
@@ -148,6 +153,7 @@ input wire M_AXI_TREADY_out;
   axi_dma inst (
     .clk(clk),
     .resetn(resetn),
+    .irq(irq),
     .mig_rd_ptr(mig_rd_ptr),
     .mig_wr_ptr(mig_wr_ptr),
     .linux_wr_ptr(linux_wr_ptr),

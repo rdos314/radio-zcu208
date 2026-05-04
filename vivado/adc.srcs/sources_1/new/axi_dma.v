@@ -56,6 +56,7 @@ module axi_dma(
     reg mig_start_cmd;
     reg mig_cmd_done;
     reg mig_cmd_error;
+    reg mig_cmd_check;
     reg [7:0] mig_blocks;
     reg [3:0] mig_tag;
     
@@ -242,6 +243,11 @@ generate
         end
     end
 
+    always @(posedge clk) 
+    begin
+        mig_cmd_check <= mig_cmd_done;
+    end
+
    always @(posedge clk) 
     begin
         if (reset) 
@@ -311,7 +317,7 @@ generate
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_done)
+                        if (mig_cmd_check)
                         begin
                             mig_cmd_state <= MIG_ST_WAIT_SPACE;
                             mig_adr <= mig_adr + 1;
@@ -344,7 +350,7 @@ generate
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_done)
+                        if (mig_cmd_check)
                         begin
                             mig_cmd_state <= MIG_ST_IDLE;
                             mig_adr <= mig_adr + mig_blocks;
@@ -355,9 +361,9 @@ generate
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_done)
+                        if (mig_cmd_check)
                         begin
-                            mig_cmd_state <= MIG_ST_WAIT_SPACE:
+                            mig_cmd_state <= MIG_ST_WAIT_SPACE;
                             mig_adr <= mig_adr + mig_blocks;
                         end
                     end
@@ -378,7 +384,7 @@ generate
  
     always @(posedge clk) 
     begin
-        M_AXI_TREADY_in <= !mig_full;
+        M_AXI_TREADY_in <= !fifo_full;
     end
 
     always @(posedge clk) 
@@ -392,7 +398,7 @@ generate
             fifo_wr_en <= 0;
     end
 
-    always @(posedge axi_clk) 
+    always @(posedge clk) 
 	begin
         if (M_AXI_TVALID_in && M_AXI_TREADY_in)
         begin

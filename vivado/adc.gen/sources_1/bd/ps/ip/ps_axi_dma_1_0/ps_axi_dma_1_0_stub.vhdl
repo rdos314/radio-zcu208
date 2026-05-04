@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun May  3 22:02:49 2026
+-- Date        : Tue May  5 00:50:26 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_stub.vhdl
@@ -17,6 +17,7 @@ entity ps_axi_dma_1_0 is
   Port ( 
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
+    irq : out STD_LOGIC;
     mig_rd_ptr : out STD_LOGIC_VECTOR ( 26 downto 0 );
     mig_wr_ptr : in STD_LOGIC_VECTOR ( 26 downto 0 );
     linux_wr_ptr : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -56,7 +57,7 @@ architecture stub of ps_axi_dma_1_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,mig_rd_ptr[26:0],mig_wr_ptr[26:0],linux_wr_ptr[31:0],linux_rd_ptr[31:0],M_AXI_TDATA_in_cmd[71:0],M_AXI_TVALID_in_cmd,M_AXI_TREADY_in_cmd,M_AXI_STS_in_tdata[7:0],M_AXI_STS_in_tvalid,M_AXI_STS_in_tready,M_AXI_TDATA_out_cmd[71:0],M_AXI_TVALID_out_cmd,M_AXI_TREADY_out_cmd,M_AXI_STS_out_tdata[7:0],M_AXI_STS_out_tvalid,M_AXI_STS_out_tready,M_AXI_TDATA_in[255:0],M_AXI_TVALID_in,M_AXI_TREADY_in,M_AXI_TDATA_out[255:0],M_AXI_TVALID_out,M_AXI_TLAST_out,M_AXI_TREADY_out";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,irq,mig_rd_ptr[26:0],mig_wr_ptr[26:0],linux_wr_ptr[31:0],linux_rd_ptr[31:0],M_AXI_TDATA_in_cmd[71:0],M_AXI_TVALID_in_cmd,M_AXI_TREADY_in_cmd,M_AXI_STS_in_tdata[7:0],M_AXI_STS_in_tvalid,M_AXI_STS_in_tready,M_AXI_TDATA_out_cmd[71:0],M_AXI_TVALID_out_cmd,M_AXI_TREADY_out_cmd,M_AXI_STS_out_tdata[7:0],M_AXI_STS_out_tvalid,M_AXI_STS_out_tready,M_AXI_TDATA_in[255:0],M_AXI_TVALID_in,M_AXI_TREADY_in,M_AXI_TDATA_out[255:0],M_AXI_TVALID_out,M_AXI_TLAST_out,M_AXI_TREADY_out";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -66,6 +67,9 @@ architecture stub of ps_axi_dma_1_0 is
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 resetn RST";
   attribute X_INTERFACE_MODE of resetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of irq : signal is "xilinx.com:signal:interrupt:1.0 irq INTERRUPT";
+  attribute X_INTERFACE_MODE of irq : signal is "master";
+  attribute X_INTERFACE_PARAMETER of irq : signal is "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1";
   attribute X_INTERFACE_INFO of M_AXI_TDATA_in_cmd : signal is "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA";
   attribute X_INTERFACE_MODE of M_AXI_TDATA_in_cmd : signal is "master";
   attribute X_INTERFACE_PARAMETER of M_AXI_TDATA_in_cmd : signal is "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";

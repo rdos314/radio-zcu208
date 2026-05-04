@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun May  3 22:02:49 2026
+// Date        : Tue May  5 00:50:26 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.v
@@ -19,6 +19,7 @@
 module ps_axi_dma_1_0
    (clk,
     resetn,
+    irq,
     mig_rd_ptr,
     mig_wr_ptr,
     linux_wr_ptr,
@@ -44,6 +45,7 @@ module ps_axi_dma_1_0
     M_AXI_TREADY_out);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 irq INTERRUPT" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *) output irq;
   output [26:0]mig_rd_ptr;
   input [26:0]mig_wr_ptr;
   output [31:0]linux_wr_ptr;
@@ -73,28 +75,26 @@ module ps_axi_dma_1_0
   wire [7:0]M_AXI_STS_in_tdata;
   wire M_AXI_STS_in_tready;
   wire M_AXI_STS_in_tvalid;
+  wire M_AXI_STS_out_tready;
   wire [255:0]M_AXI_TDATA_in;
   wire [67:5]\^M_AXI_TDATA_in_cmd ;
   wire [255:0]M_AXI_TDATA_out;
-  wire M_AXI_TLAST_out;
+  wire M_AXI_TREADY_in;
   wire M_AXI_TREADY_in_cmd;
-  wire M_AXI_TREADY_out;
   wire M_AXI_TVALID_in;
   wire M_AXI_TVALID_in_cmd;
-  wire M_AXI_TVALID_out;
   wire clk;
-  wire [31:0]linux_rd_ptr;
+  wire [26:0]mig_rd_ptr;
   wire [26:0]mig_wr_ptr;
   wire resetn;
-  wire NLW_inst_M_AXI_STS_out_tready_UNCONNECTED;
-  wire NLW_inst_M_AXI_TREADY_in_UNCONNECTED;
+  wire NLW_inst_M_AXI_TLAST_out_UNCONNECTED;
+  wire NLW_inst_M_AXI_TVALID_out_UNCONNECTED;
   wire NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED;
+  wire NLW_inst_irq_UNCONNECTED;
   wire [71:0]NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED;
   wire [71:0]NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED;
   wire [31:0]NLW_inst_linux_wr_ptr_UNCONNECTED;
-  wire [26:0]NLW_inst_mig_rd_ptr_UNCONNECTED;
 
-  assign M_AXI_STS_out_tready = \<const0> ;
   assign M_AXI_TDATA_in_cmd[71] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[70] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[69] = \<const0> ;
@@ -202,8 +202,10 @@ module ps_axi_dma_1_0
   assign M_AXI_TDATA_out_cmd[2] = \<const0> ;
   assign M_AXI_TDATA_out_cmd[1] = \<const0> ;
   assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
-  assign M_AXI_TREADY_in = \<const1> ;
+  assign M_AXI_TLAST_out = \<const0> ;
+  assign M_AXI_TVALID_out = \<const0> ;
   assign M_AXI_TVALID_out_cmd = \<const0> ;
+  assign irq = \<const0> ;
   assign linux_wr_ptr[31] = \<const0> ;
   assign linux_wr_ptr[30] = \<const0> ;
   assign linux_wr_ptr[29] = \<const0> ;
@@ -223,87 +225,63 @@ module ps_axi_dma_1_0
   assign linux_wr_ptr[15] = \<const0> ;
   assign linux_wr_ptr[14] = \<const0> ;
   assign linux_wr_ptr[13] = \<const0> ;
-  assign linux_wr_ptr[12] = \<const1> ;
+  assign linux_wr_ptr[12] = \<const0> ;
   assign linux_wr_ptr[11] = \<const0> ;
   assign linux_wr_ptr[10] = \<const0> ;
   assign linux_wr_ptr[9] = \<const0> ;
-  assign linux_wr_ptr[8] = \<const1> ;
+  assign linux_wr_ptr[8] = \<const0> ;
   assign linux_wr_ptr[7] = \<const0> ;
   assign linux_wr_ptr[6] = \<const0> ;
-  assign linux_wr_ptr[5] = \<const1> ;
+  assign linux_wr_ptr[5] = \<const0> ;
   assign linux_wr_ptr[4] = \<const0> ;
   assign linux_wr_ptr[3] = \<const0> ;
   assign linux_wr_ptr[2] = \<const0> ;
-  assign linux_wr_ptr[1] = \<const1> ;
+  assign linux_wr_ptr[1] = \<const0> ;
   assign linux_wr_ptr[0] = \<const0> ;
-  assign mig_rd_ptr[26] = \<const0> ;
-  assign mig_rd_ptr[25] = \<const0> ;
-  assign mig_rd_ptr[24] = \<const0> ;
-  assign mig_rd_ptr[23] = \<const0> ;
-  assign mig_rd_ptr[22] = \<const0> ;
-  assign mig_rd_ptr[21] = \<const0> ;
-  assign mig_rd_ptr[20] = \<const0> ;
-  assign mig_rd_ptr[19] = \<const0> ;
-  assign mig_rd_ptr[18] = \<const0> ;
-  assign mig_rd_ptr[17] = \<const0> ;
-  assign mig_rd_ptr[16] = \<const0> ;
-  assign mig_rd_ptr[15] = \<const0> ;
-  assign mig_rd_ptr[14] = \<const0> ;
-  assign mig_rd_ptr[13] = \<const0> ;
-  assign mig_rd_ptr[12] = \<const0> ;
-  assign mig_rd_ptr[11] = \<const0> ;
-  assign mig_rd_ptr[10] = \<const0> ;
-  assign mig_rd_ptr[9] = \<const0> ;
-  assign mig_rd_ptr[8] = \<const0> ;
-  assign mig_rd_ptr[7] = \<const0> ;
-  assign mig_rd_ptr[6] = \<const0> ;
-  assign mig_rd_ptr[5] = \<const0> ;
-  assign mig_rd_ptr[4] = \<const0> ;
-  assign mig_rd_ptr[3] = \<const0> ;
-  assign mig_rd_ptr[2] = \<const0> ;
-  assign mig_rd_ptr[1] = \<const0> ;
-  assign mig_rd_ptr[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
   VCC VCC
        (.P(\<const1> ));
-  (* CMD_ST_IDLE = "3'b000" *) 
-  (* CMD_ST_WAIT_DONE = "3'b010" *) 
-  (* CMD_ST_WAIT_HDR = "3'b001" *) 
-  (* CMD_ST_WAIT_SPACE = "3'b011" *) 
+  (* MIG_ST_IDLE = "3'b000" *) 
+  (* MIG_ST_WAIT_DATA = "3'b011" *) 
+  (* MIG_ST_WAIT_HDR = "3'b001" *) 
+  (* MIG_ST_WAIT_NEXT = "3'b100" *) 
+  (* MIG_ST_WAIT_SPACE = "3'b010" *) 
   ps_axi_dma_1_0_axi_dma inst
        (.M_AXI_STS_in_tdata({M_AXI_STS_in_tdata[7],1'b0,1'b0,1'b0,M_AXI_STS_in_tdata[3:0]}),
         .M_AXI_STS_in_tready(M_AXI_STS_in_tready),
         .M_AXI_STS_in_tvalid(M_AXI_STS_in_tvalid),
         .M_AXI_STS_out_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .M_AXI_STS_out_tready(NLW_inst_M_AXI_STS_out_tready_UNCONNECTED),
+        .M_AXI_STS_out_tready(M_AXI_STS_out_tready),
         .M_AXI_STS_out_tvalid(1'b0),
         .M_AXI_TDATA_in(M_AXI_TDATA_in),
         .M_AXI_TDATA_in_cmd({NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[71:68],\^M_AXI_TDATA_in_cmd ,NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[4:0]}),
         .M_AXI_TDATA_out(M_AXI_TDATA_out),
         .M_AXI_TDATA_out_cmd(NLW_inst_M_AXI_TDATA_out_cmd_UNCONNECTED[71:0]),
-        .M_AXI_TLAST_out(M_AXI_TLAST_out),
-        .M_AXI_TREADY_in(NLW_inst_M_AXI_TREADY_in_UNCONNECTED),
+        .M_AXI_TLAST_out(NLW_inst_M_AXI_TLAST_out_UNCONNECTED),
+        .M_AXI_TREADY_in(M_AXI_TREADY_in),
         .M_AXI_TREADY_in_cmd(M_AXI_TREADY_in_cmd),
-        .M_AXI_TREADY_out(M_AXI_TREADY_out),
+        .M_AXI_TREADY_out(1'b0),
         .M_AXI_TREADY_out_cmd(1'b0),
         .M_AXI_TVALID_in(M_AXI_TVALID_in),
         .M_AXI_TVALID_in_cmd(M_AXI_TVALID_in_cmd),
-        .M_AXI_TVALID_out(M_AXI_TVALID_out),
+        .M_AXI_TVALID_out(NLW_inst_M_AXI_TVALID_out_UNCONNECTED),
         .M_AXI_TVALID_out_cmd(NLW_inst_M_AXI_TVALID_out_cmd_UNCONNECTED),
         .clk(clk),
-        .linux_rd_ptr(linux_rd_ptr),
+        .irq(NLW_inst_irq_UNCONNECTED),
+        .linux_rd_ptr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .linux_wr_ptr(NLW_inst_linux_wr_ptr_UNCONNECTED[31:0]),
-        .mig_rd_ptr(NLW_inst_mig_rd_ptr_UNCONNECTED[26:0]),
+        .mig_rd_ptr(mig_rd_ptr),
         .mig_wr_ptr(mig_wr_ptr),
         .resetn(resetn));
 endmodule
 
-(* CMD_ST_IDLE = "3'b000" *) (* CMD_ST_WAIT_DONE = "3'b010" *) (* CMD_ST_WAIT_HDR = "3'b001" *) 
-(* CMD_ST_WAIT_SPACE = "3'b011" *) (* ORIG_REF_NAME = "axi_dma" *) (* keep_hierarchy = "soft" *) 
+(* MIG_ST_IDLE = "3'b000" *) (* MIG_ST_WAIT_DATA = "3'b011" *) (* MIG_ST_WAIT_HDR = "3'b001" *) 
+(* MIG_ST_WAIT_NEXT = "3'b100" *) (* MIG_ST_WAIT_SPACE = "3'b010" *) (* ORIG_REF_NAME = "axi_dma" *) 
 module ps_axi_dma_1_0_axi_dma
    (clk,
     resetn,
+    irq,
     mig_rd_ptr,
     mig_wr_ptr,
     linux_wr_ptr,
@@ -329,6 +307,7 @@ module ps_axi_dma_1_0_axi_dma
     M_AXI_TREADY_out);
   input clk;
   input resetn;
+  output irq;
   output [26:0]mig_rd_ptr;
   input [26:0]mig_wr_ptr;
   output [31:0]linux_wr_ptr;
@@ -355,137 +334,257 @@ module ps_axi_dma_1_0_axi_dma
 
   wire \<const0> ;
   wire [7:0]M_AXI_STS_in_tdata;
-  wire M_AXI_STS_in_tready;
   wire M_AXI_STS_in_tvalid;
+  wire M_AXI_STS_out_tready;
   wire [255:0]M_AXI_TDATA_in;
   wire [67:5]\^M_AXI_TDATA_in_cmd ;
   wire [255:0]M_AXI_TDATA_out;
-  wire M_AXI_TLAST_out;
-  wire M_AXI_TLAST_out2_out;
+  wire M_AXI_TREADY_in;
   wire M_AXI_TREADY_in_cmd;
-  wire M_AXI_TREADY_out;
   wire M_AXI_TVALID_in;
   wire M_AXI_TVALID_in_cmd;
-  wire M_AXI_TVALID_out;
-  (* MARK_DEBUG *) wire [26:0]adr;
   wire \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_1_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_3_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_4_n_0 ;
+  wire \axi_dma.M_AXI_TREADY_in_i_1_n_0 ;
   wire \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ;
-  wire \axi_dma.blocks[0]_i_1_n_0 ;
-  wire \axi_dma.blocks[1]_i_1_n_0 ;
-  wire \axi_dma.blocks[2]_i_1_n_0 ;
-  wire \axi_dma.blocks[3]_i_1_n_0 ;
-  wire \axi_dma.blocks[4]_i_1_n_0 ;
-  wire \axi_dma.blocks[5]_i_1_n_0 ;
-  wire \axi_dma.blocks[6]_i_1_n_0 ;
-  wire \axi_dma.blocks[7]_i_1_n_0 ;
-  wire \axi_dma.blocks[7]_i_2_n_0 ;
-  wire \axi_dma.cmd_done_i_1_n_0 ;
-  wire \axi_dma.cmd_done_i_3_n_0 ;
-  wire \axi_dma.cmd_error_i_1_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_1_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_3_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_4_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_5_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_6_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_7_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_8_n_0 ;
-  wire \axi_dma.cmd_state[2]_i_9_n_0 ;
-  wire \axi_dma.curr_beat[13]_i_1_n_0 ;
-  wire [13:0]\axi_dma.curr_beat_reg ;
-  wire \axi_dma.curr_beat_reg[13]_i_3_n_4 ;
-  wire \axi_dma.curr_beat_reg[13]_i_3_n_5 ;
-  wire \axi_dma.curr_beat_reg[13]_i_3_n_6 ;
-  wire \axi_dma.curr_beat_reg[13]_i_3_n_7 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_0 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_1 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_2 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_3 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_4 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_5 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_6 ;
-  wire \axi_dma.curr_beat_reg[8]_i_1_n_7 ;
-  wire \axi_dma.dma_active_i_1_n_0 ;
-  wire \axi_dma.dma_active_reg_n_0 ;
-  wire \axi_dma.has_mig_size_i_1_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_2_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_3_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_4_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_5_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_6_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_7_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_8_n_0 ;
-  wire \axi_dma.mig_blocks[15]_i_9_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_2_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_3_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_4_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_5_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_6_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_7_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_8_n_0 ;
-  wire \axi_dma.mig_blocks[23]_i_9_n_0 ;
-  wire \axi_dma.mig_blocks[26]_i_2_n_0 ;
-  wire \axi_dma.mig_blocks[26]_i_3_n_0 ;
-  wire \axi_dma.mig_blocks[26]_i_4_n_0 ;
+  wire \axi_dma.fifo_count[0]_i_1_n_0 ;
+  wire \axi_dma.fifo_count[13]_i_2_n_0 ;
+  wire \axi_dma.fifo_count[13]_i_3_n_0 ;
+  wire \axi_dma.fifo_count[13]_i_4_n_0 ;
+  wire \axi_dma.fifo_count[13]_i_5_n_0 ;
+  wire \axi_dma.fifo_count[13]_i_6_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_2_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_3_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_4_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_5_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_6_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_7_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_8_n_0 ;
+  wire \axi_dma.fifo_count[8]_i_9_n_0 ;
+  wire \axi_dma.fifo_count_reg[13]_i_1_n_4 ;
+  wire \axi_dma.fifo_count_reg[13]_i_1_n_5 ;
+  wire \axi_dma.fifo_count_reg[13]_i_1_n_6 ;
+  wire \axi_dma.fifo_count_reg[13]_i_1_n_7 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_0 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_1 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_2 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_3 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_4 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_5 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_6 ;
+  wire \axi_dma.fifo_count_reg[8]_i_1_n_7 ;
+  wire \axi_dma.fifo_has_space_i_10_n_0 ;
+  wire \axi_dma.fifo_has_space_i_11_n_0 ;
+  wire \axi_dma.fifo_has_space_i_12_n_0 ;
+  wire \axi_dma.fifo_has_space_i_1_n_0 ;
+  wire \axi_dma.fifo_has_space_i_4_n_0 ;
+  wire \axi_dma.fifo_has_space_i_5_n_0 ;
+  wire \axi_dma.fifo_has_space_i_6_n_0 ;
+  wire \axi_dma.fifo_has_space_i_7_n_0 ;
+  wire \axi_dma.fifo_has_space_i_8_n_0 ;
+  wire \axi_dma.fifo_has_space_i_9_n_0 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_0 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_1 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_2 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_3 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_4 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_5 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_6 ;
+  wire \axi_dma.fifo_has_space_reg_i_3_n_7 ;
+  wire \axi_dma.fifo_space[10]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[11]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[12]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[13]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[1]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[2]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[3]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[4]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[5]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[6]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[7]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[8]_i_1_n_0 ;
+  wire \axi_dma.fifo_space[9]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[0]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[10]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[11]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[12]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[13]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[14]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[15]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[16]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[17]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[18]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[19]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[1]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[20]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[21]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[22]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[23]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[24]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[25]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[26]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[26]_i_2_n_0 ;
+  wire \axi_dma.mig_adr[2]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[3]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[4]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[5]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[6]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_10_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_11_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_12_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_4_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_5_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_6_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_7_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_8_n_0 ;
+  wire \axi_dma.mig_adr[7]_i_9_n_0 ;
+  wire \axi_dma.mig_adr[8]_i_1_n_0 ;
+  wire \axi_dma.mig_adr[9]_i_1_n_0 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_0 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_1 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_2 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_3 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_4 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_5 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_6 ;
+  wire \axi_dma.mig_adr_reg[15]_i_2_n_7 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_0 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_1 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_2 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_3 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_4 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_5 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_6 ;
+  wire \axi_dma.mig_adr_reg[15]_i_3_n_7 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_0 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_1 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_2 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_3 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_4 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_5 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_6 ;
+  wire \axi_dma.mig_adr_reg[23]_i_2_n_7 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_0 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_1 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_2 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_3 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_4 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_5 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_6 ;
+  wire \axi_dma.mig_adr_reg[23]_i_3_n_7 ;
+  wire \axi_dma.mig_adr_reg[26]_i_3_n_6 ;
+  wire \axi_dma.mig_adr_reg[26]_i_3_n_7 ;
+  wire \axi_dma.mig_adr_reg[26]_i_4_n_6 ;
+  wire \axi_dma.mig_adr_reg[26]_i_4_n_7 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_0 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_1 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_2 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_3 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_4 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_5 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_6 ;
+  wire \axi_dma.mig_adr_reg[7]_i_2_n_7 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_0 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_1 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_2 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_3 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_4 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_5 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_6 ;
+  wire \axi_dma.mig_adr_reg[7]_i_3_n_7 ;
+  wire \axi_dma.mig_avail[15]_i_2_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_3_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_4_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_5_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_6_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_7_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_8_n_0 ;
+  wire \axi_dma.mig_avail[15]_i_9_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_2_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_3_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_4_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_5_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_6_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_7_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_8_n_0 ;
+  wire \axi_dma.mig_avail[23]_i_9_n_0 ;
+  wire \axi_dma.mig_avail[26]_i_2_n_0 ;
+  wire \axi_dma.mig_avail[26]_i_3_n_0 ;
+  wire \axi_dma.mig_avail[26]_i_4_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_2_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_3_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_4_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_5_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_6_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_7_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_8_n_0 ;
+  wire \axi_dma.mig_avail[7]_i_9_n_0 ;
+  wire [26:0]\axi_dma.mig_avail_reg0 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_0 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_1 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_2 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_3 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_4 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_5 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_6 ;
+  wire \axi_dma.mig_avail_reg[15]_i_1_n_7 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_0 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_1 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_2 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_3 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_4 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_5 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_6 ;
+  wire \axi_dma.mig_avail_reg[23]_i_1_n_7 ;
+  wire \axi_dma.mig_avail_reg[26]_i_1_n_6 ;
+  wire \axi_dma.mig_avail_reg[26]_i_1_n_7 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_0 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_1 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_2 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_3 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_4 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_5 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_6 ;
+  wire \axi_dma.mig_avail_reg[7]_i_1_n_7 ;
+  wire \axi_dma.mig_blocks[0]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[0]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[1]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[1]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[2]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[2]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[3]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[4]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[5]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[5]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[5]_i_3_n_0 ;
+  wire \axi_dma.mig_blocks[6]_i_1_n_0 ;
+  wire \axi_dma.mig_blocks[6]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[7]_i_1_n_0 ;
   wire \axi_dma.mig_blocks[7]_i_2_n_0 ;
   wire \axi_dma.mig_blocks[7]_i_3_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_4_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_5_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_6_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_7_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_8_n_0 ;
-  wire \axi_dma.mig_blocks[7]_i_9_n_0 ;
-  wire [26:0]\axi_dma.mig_blocks_reg0 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_0 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_1 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_2 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_3 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_4 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_5 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_6 ;
-  wire \axi_dma.mig_blocks_reg[15]_i_1_n_7 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_0 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_1 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_2 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_3 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_4 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_5 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_6 ;
-  wire \axi_dma.mig_blocks_reg[23]_i_1_n_7 ;
-  wire \axi_dma.mig_blocks_reg[26]_i_1_n_6 ;
-  wire \axi_dma.mig_blocks_reg[26]_i_1_n_7 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_0 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_1 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_2 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_3 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_4 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_5 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_6 ;
-  wire \axi_dma.mig_blocks_reg[7]_i_1_n_7 ;
-  wire \axi_dma.mig_diff[0]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[1]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[1]_i_2_n_0 ;
-  wire \axi_dma.mig_diff[2]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[2]_i_2_n_0 ;
-  wire \axi_dma.mig_diff[3]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[3]_i_2_n_0 ;
-  wire \axi_dma.mig_diff[3]_i_3_n_0 ;
-  wire \axi_dma.mig_diff[4]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[4]_i_2_n_0 ;
-  wire \axi_dma.mig_diff[4]_i_3_n_0 ;
-  wire \axi_dma.mig_diff[4]_i_4_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_1_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_2_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_3_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_4_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_5_n_0 ;
-  wire \axi_dma.mig_diff[5]_i_6_n_0 ;
-  wire \axi_dma.mig_diff[6]_i_1_n_0 ;
+  wire \axi_dma.mig_cmd_done_i_1_n_0 ;
+  wire \axi_dma.mig_cmd_done_i_2_n_0 ;
+  wire \axi_dma.mig_cmd_error_i_1_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_10_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_11_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_12_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_2_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_3_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_4_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_5_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_6_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_7_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_8_n_0 ;
+  wire \axi_dma.mig_cmd_state[0]_i_9_n_0 ;
+  wire \axi_dma.mig_cmd_state[2]_i_1_n_0 ;
   wire \axi_dma.mig_diff[7]_i_10_n_0 ;
   wire \axi_dma.mig_diff[7]_i_11_n_0 ;
-  wire \axi_dma.mig_diff[7]_i_1_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_12_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_13_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_14_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_15_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_16_n_0 ;
+  wire \axi_dma.mig_diff[7]_i_17_n_0 ;
   wire \axi_dma.mig_diff[7]_i_2_n_0 ;
   wire \axi_dma.mig_diff[7]_i_3_n_0 ;
   wire \axi_dma.mig_diff[7]_i_4_n_0 ;
@@ -494,53 +593,586 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.mig_diff[7]_i_7_n_0 ;
   wire \axi_dma.mig_diff[7]_i_8_n_0 ;
   wire \axi_dma.mig_diff[7]_i_9_n_0 ;
-  wire \axi_dma.mig_size[0]_i_1_n_0 ;
-  wire \axi_dma.mig_size[1]_i_1_n_0 ;
-  wire \axi_dma.mig_size[2]_i_1_n_0 ;
-  wire \axi_dma.mig_size[3]_i_1_n_0 ;
-  wire \axi_dma.mig_size[4]_i_1_n_0 ;
-  wire \axi_dma.mig_size[5]_i_1_n_0 ;
-  wire \axi_dma.mig_size[6]_i_1_n_0 ;
-  wire \axi_dma.mig_size[7]_i_1_n_0 ;
-  wire \axi_dma.mig_size[7]_i_2_n_0 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_1 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_10 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_11 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_12 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_13 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_14 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_15 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_2 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_3 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_4 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_5 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_6 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_7 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_8 ;
+  wire \axi_dma.mig_diff_reg[7]_i_1_n_9 ;
+  wire \axi_dma.mig_env_0[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_0[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_1[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_2[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_3[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_4[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_5[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_6[9]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[0]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[10]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[11]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[12]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[13]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[14]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[15]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[1]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[2]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[3]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[4]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[5]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[6]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[7]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[8]_i_1_n_0 ;
+  wire \axi_dma.mig_env_7[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_angle[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_blocks[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_doa_error[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_mean[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_env_std[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_flags[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[16]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[17]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[18]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[19]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[20]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[21]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[22]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[23]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[24]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[25]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[26]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[27]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[28]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[29]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[30]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[31]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_freq_std[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_env[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_max_pos[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_phase_std[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[16]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[17]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[18]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[19]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[20]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[21]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[22]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[23]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[24]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[25]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[26]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[27]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[28]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[29]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[30]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[31]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[32]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[33]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[34]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[35]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[36]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[37]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[38]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[39]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[40]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[41]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[42]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[43]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[44]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[45]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[46]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[47]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[48]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[49]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[50]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[51]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[52]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[53]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[54]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[55]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[56]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[57]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[58]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[59]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[60]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[61]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[62]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[63]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_sample[9]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[0]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[10]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[11]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[12]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[13]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[14]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[15]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[1]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[2]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[3]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[4]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[5]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[6]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[7]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[8]_i_1_n_0 ;
+  wire \axi_dma.mig_hdr_size[9]_i_1_n_0 ;
+  wire \axi_dma.mig_preview_i_10_n_0 ;
+  wire \axi_dma.mig_preview_i_11_n_0 ;
+  wire \axi_dma.mig_preview_i_12_n_0 ;
+  wire \axi_dma.mig_preview_i_13_n_0 ;
+  wire \axi_dma.mig_preview_i_1_n_0 ;
+  wire \axi_dma.mig_preview_i_2_n_0 ;
+  wire \axi_dma.mig_preview_i_5_n_0 ;
+  wire \axi_dma.mig_preview_i_6_n_0 ;
+  wire \axi_dma.mig_preview_i_7_n_0 ;
+  wire \axi_dma.mig_preview_i_8_n_0 ;
+  wire \axi_dma.mig_preview_i_9_n_0 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_0 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_1 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_2 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_3 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_4 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_5 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_6 ;
+  wire \axi_dma.mig_preview_reg_i_4_n_7 ;
+  wire \axi_dma.mig_rd_ptr[0]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[10]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[11]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[12]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[13]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[14]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[15]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_10_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_3_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_4_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_5_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_6_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_7_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_8_n_0 ;
+  wire \axi_dma.mig_rd_ptr[16]_i_9_n_0 ;
+  wire \axi_dma.mig_rd_ptr[17]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[18]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[19]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[1]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[20]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[21]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[22]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[23]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_10_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_3_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_4_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_5_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_6_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_7_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_8_n_0 ;
+  wire \axi_dma.mig_rd_ptr[24]_i_9_n_0 ;
+  wire \axi_dma.mig_rd_ptr[25]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[26]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[26]_i_2_n_0 ;
+  wire \axi_dma.mig_rd_ptr[26]_i_4_n_0 ;
+  wire \axi_dma.mig_rd_ptr[26]_i_5_n_0 ;
+  wire \axi_dma.mig_rd_ptr[2]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[3]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[4]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[5]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[6]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[7]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_10_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_3_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_4_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_5_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_6_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_7_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_8_n_0 ;
+  wire \axi_dma.mig_rd_ptr[8]_i_9_n_0 ;
+  wire \axi_dma.mig_rd_ptr[9]_i_1_n_0 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_0 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_1 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_2 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_3 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_4 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_5 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_6 ;
+  wire \axi_dma.mig_rd_ptr_reg[16]_i_2_n_7 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_0 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_1 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_2 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_3 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_4 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_5 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_6 ;
+  wire \axi_dma.mig_rd_ptr_reg[24]_i_2_n_7 ;
+  wire \axi_dma.mig_rd_ptr_reg[26]_i_3_n_7 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_0 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_1 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_2 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_3 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_4 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_5 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_6 ;
+  wire \axi_dma.mig_rd_ptr_reg[8]_i_2_n_7 ;
+  wire \axi_dma.mig_size_reg0 ;
+  wire \axi_dma.mig_start_cmd_i_1_n_0 ;
+  wire \axi_dma.mig_tag[0]_i_1_n_0 ;
+  wire \axi_dma.mig_tag[1]_i_1_n_0 ;
+  wire \axi_dma.mig_tag[2]_i_1_n_0 ;
+  wire \axi_dma.mig_tag[3]_i_1_n_0 ;
   wire \axi_dma.reset_i_1_n_0 ;
-  wire \axi_dma.start_cmd_i_1_n_0 ;
-  wire \axi_dma.tag[0]_i_1_n_0 ;
-  wire \axi_dma.tag[1]_i_1_n_0 ;
-  wire \axi_dma.tag[2]_i_1_n_0 ;
-  wire \axi_dma.tag[3]_i_1_n_0 ;
-  (* MARK_DEBUG *) wire [7:0]blocks;
   wire clk;
-  (* MARK_DEBUG *) wire cmd_done;
-  wire cmd_done0;
-  (* MARK_DEBUG *) wire cmd_error;
-  (* MARK_DEBUG *) wire [2:0]cmd_state;
-  wire curr_beat;
-  wire fifo_empty;
-  wire fifo_rd_en;
-  (* MARK_DEBUG *) wire has_mig_size;
-  wire [255:0]in_data;
-  wire in_wr;
-  (* MARK_DEBUG *) wire [31:0]linux_rd_ptr;
-  (* MARK_DEBUG *) wire [26:0]mig_blocks;
+  wire data0;
+  (* MARK_DEBUG *) wire [13:0]fifo_count;
+  wire [13:1]fifo_count__0;
+  wire fifo_full;
+  (* MARK_DEBUG *) wire fifo_has_space;
+  wire [255:0]fifo_in_data;
+  (* MARK_DEBUG *) wire [13:0]fifo_space;
+  wire fifo_wr_en;
+  (* MARK_DEBUG *) wire [26:0]mig_adr;
+  wire [26:0]mig_adr0_in;
+  wire [26:0]mig_adr__0;
+  (* MARK_DEBUG *) wire [26:0]mig_avail;
+  (* MARK_DEBUG *) wire [7:0]mig_blocks;
+  wire [4:3]mig_blocks__0;
+  wire mig_cmd_check;
+  (* MARK_DEBUG *) wire mig_cmd_done;
+  wire mig_cmd_done0;
+  (* MARK_DEBUG *) wire mig_cmd_error;
+  (* MARK_DEBUG *) wire [2:0]mig_cmd_state;
   (* MARK_DEBUG *) wire [7:0]mig_diff;
+  (* MARK_DEBUG *) wire [15:0]mig_env_0;
+  (* MARK_DEBUG *) wire [15:0]mig_env_1;
+  (* MARK_DEBUG *) wire [15:0]mig_env_2;
+  (* MARK_DEBUG *) wire [15:0]mig_env_3;
+  (* MARK_DEBUG *) wire [15:0]mig_env_4;
+  (* MARK_DEBUG *) wire [15:0]mig_env_5;
+  (* MARK_DEBUG *) wire [15:0]mig_env_6;
+  (* MARK_DEBUG *) wire [15:0]mig_env_7;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_angle;
+  (* MARK_DEBUG *) wire [7:0]mig_hdr_blocks;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_doa_error;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_env_mean;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_env_std;
+  (* MARK_DEBUG *) wire [7:0]mig_hdr_flags;
+  (* MARK_DEBUG *) wire [31:0]mig_hdr_freq;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_freq_std;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_max_env;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_max_pos;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_phase_std;
+  (* MARK_DEBUG *) wire [63:0]mig_hdr_sample;
+  (* MARK_DEBUG *) wire [15:0]mig_hdr_size;
+  (* MARK_DEBUG *) wire mig_preview;
+  wire [26:0]mig_rd_ptr;
+  wire [26:1]mig_rd_ptr0;
   (* MARK_DEBUG *) wire [7:0]mig_size;
+  (* MARK_DEBUG *) wire mig_start_cmd;
+  (* MARK_DEBUG *) wire [3:0]mig_tag;
   wire [26:0]mig_wr_ptr;
   wire [2:0]p_0_in__0;
-  wire [13:0]p_0_in__1;
+  wire p_1_in__0;
+  wire p_7_in;
   wire reset;
   wire resetn;
-  (* MARK_DEBUG *) wire start_cmd;
-  (* MARK_DEBUG *) wire [3:0]tag;
-  wire [7:4]\NLW_axi_dma.curr_beat_reg[13]_i_3_CO_UNCONNECTED ;
-  wire [7:5]\NLW_axi_dma.curr_beat_reg[13]_i_3_O_UNCONNECTED ;
-  wire [7:2]\NLW_axi_dma.mig_blocks_reg[26]_i_1_CO_UNCONNECTED ;
-  wire [7:3]\NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED ;
+  wire [7:4]\NLW_axi_dma.fifo_count_reg[13]_i_1_CO_UNCONNECTED ;
+  wire [7:5]\NLW_axi_dma.fifo_count_reg[13]_i_1_O_UNCONNECTED ;
+  wire [7:0]\NLW_axi_dma.fifo_has_space_reg_i_2_CO_UNCONNECTED ;
+  wire [7:1]\NLW_axi_dma.fifo_has_space_reg_i_2_O_UNCONNECTED ;
+  wire [7:0]\NLW_axi_dma.fifo_has_space_reg_i_3_O_UNCONNECTED ;
+  wire [7:2]\NLW_axi_dma.mig_adr_reg[26]_i_3_CO_UNCONNECTED ;
+  wire [7:3]\NLW_axi_dma.mig_adr_reg[26]_i_3_O_UNCONNECTED ;
+  wire [7:2]\NLW_axi_dma.mig_adr_reg[26]_i_4_CO_UNCONNECTED ;
+  wire [7:3]\NLW_axi_dma.mig_adr_reg[26]_i_4_O_UNCONNECTED ;
+  wire [7:2]\NLW_axi_dma.mig_avail_reg[26]_i_1_CO_UNCONNECTED ;
+  wire [7:3]\NLW_axi_dma.mig_avail_reg[26]_i_1_O_UNCONNECTED ;
+  wire [7:7]\NLW_axi_dma.mig_diff_reg[7]_i_1_CO_UNCONNECTED ;
+  wire [7:1]\NLW_axi_dma.mig_preview_reg_i_3_CO_UNCONNECTED ;
+  wire [7:0]\NLW_axi_dma.mig_preview_reg_i_3_O_UNCONNECTED ;
+  wire [7:0]\NLW_axi_dma.mig_preview_reg_i_4_O_UNCONNECTED ;
+  wire [7:1]\NLW_axi_dma.mig_rd_ptr_reg[26]_i_3_CO_UNCONNECTED ;
+  wire [7:2]\NLW_axi_dma.mig_rd_ptr_reg[26]_i_3_O_UNCONNECTED ;
   wire NLW_fifo_i_almost_empty_UNCONNECTED;
   wire NLW_fifo_i_almost_full_UNCONNECTED;
   wire NLW_fifo_i_data_valid_UNCONNECTED;
   wire NLW_fifo_i_dbiterr_UNCONNECTED;
-  wire NLW_fifo_i_full_UNCONNECTED;
+  wire NLW_fifo_i_empty_UNCONNECTED;
   wire NLW_fifo_i_overflow_UNCONNECTED;
   wire NLW_fifo_i_prog_empty_UNCONNECTED;
   wire NLW_fifo_i_prog_full_UNCONNECTED;
@@ -552,7 +1184,7 @@ module ps_axi_dma_1_0_axi_dma
   wire [0:0]NLW_fifo_i_rd_data_count_UNCONNECTED;
   wire [0:0]NLW_fifo_i_wr_data_count_UNCONNECTED;
 
-  assign M_AXI_STS_out_tready = \<const0> ;
+  assign M_AXI_STS_in_tready = M_AXI_STS_out_tready;
   assign M_AXI_TDATA_in_cmd[71] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[70] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[69] = \<const0> ;
@@ -660,8 +1292,10 @@ module ps_axi_dma_1_0_axi_dma
   assign M_AXI_TDATA_out_cmd[2] = \<const0> ;
   assign M_AXI_TDATA_out_cmd[1] = \<const0> ;
   assign M_AXI_TDATA_out_cmd[0] = \<const0> ;
-  assign M_AXI_TREADY_in = \<const0> ;
+  assign M_AXI_TLAST_out = \<const0> ;
+  assign M_AXI_TVALID_out = \<const0> ;
   assign M_AXI_TVALID_out_cmd = \<const0> ;
+  assign irq = \<const0> ;
   assign linux_wr_ptr[31] = \<const0> ;
   assign linux_wr_ptr[30] = \<const0> ;
   assign linux_wr_ptr[29] = \<const0> ;
@@ -694,337 +1328,269 @@ module ps_axi_dma_1_0_axi_dma
   assign linux_wr_ptr[2] = \<const0> ;
   assign linux_wr_ptr[1] = \<const0> ;
   assign linux_wr_ptr[0] = \<const0> ;
-  assign mig_rd_ptr[26] = \<const0> ;
-  assign mig_rd_ptr[25] = \<const0> ;
-  assign mig_rd_ptr[24] = \<const0> ;
-  assign mig_rd_ptr[23] = \<const0> ;
-  assign mig_rd_ptr[22] = \<const0> ;
-  assign mig_rd_ptr[21] = \<const0> ;
-  assign mig_rd_ptr[20] = \<const0> ;
-  assign mig_rd_ptr[19] = \<const0> ;
-  assign mig_rd_ptr[18] = \<const0> ;
-  assign mig_rd_ptr[17] = \<const0> ;
-  assign mig_rd_ptr[16] = \<const0> ;
-  assign mig_rd_ptr[15] = \<const0> ;
-  assign mig_rd_ptr[14] = \<const0> ;
-  assign mig_rd_ptr[13] = \<const0> ;
-  assign mig_rd_ptr[12] = \<const0> ;
-  assign mig_rd_ptr[11] = \<const0> ;
-  assign mig_rd_ptr[10] = \<const0> ;
-  assign mig_rd_ptr[9] = \<const0> ;
-  assign mig_rd_ptr[8] = \<const0> ;
-  assign mig_rd_ptr[7] = \<const0> ;
-  assign mig_rd_ptr[6] = \<const0> ;
-  assign mig_rd_ptr[5] = \<const0> ;
-  assign mig_rd_ptr[4] = \<const0> ;
-  assign mig_rd_ptr[3] = \<const0> ;
-  assign mig_rd_ptr[2] = \<const0> ;
-  assign mig_rd_ptr[1] = \<const0> ;
-  assign mig_rd_ptr[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    M_AXI_TVALID_out_INST_0
-       (.I0(\axi_dma.dma_active_reg_n_0 ),
-        .I1(fifo_empty),
-        .O(M_AXI_TVALID_out));
   FDRE \axi_dma.M_AXI_STS_in_tready_reg 
        (.C(clk),
         .CE(1'b1),
         .D(1'b1),
-        .Q(M_AXI_STS_in_tready),
+        .Q(M_AXI_STS_out_tready),
         .R(reset));
   LUT2 #(
     .INIT(4'h2)) 
     \axi_dma.M_AXI_TDATA_in_cmd[67]_i_1 
-       (.I0(start_cmd),
+       (.I0(mig_start_cmd),
         .I1(M_AXI_TVALID_in_cmd),
         .O(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[10] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[5]),
+        .D(mig_blocks[5]),
         .Q(\^M_AXI_TDATA_in_cmd [10]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[11] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[6]),
+        .D(mig_blocks[6]),
         .Q(\^M_AXI_TDATA_in_cmd [11]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[12] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[7]),
+        .D(mig_blocks[7]),
         .Q(\^M_AXI_TDATA_in_cmd [12]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[37] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[0]),
+        .D(mig_adr[0]),
         .Q(\^M_AXI_TDATA_in_cmd [37]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[38] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[1]),
+        .D(mig_adr[1]),
         .Q(\^M_AXI_TDATA_in_cmd [38]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[39] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[2]),
+        .D(mig_adr[2]),
         .Q(\^M_AXI_TDATA_in_cmd [39]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[40] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[3]),
+        .D(mig_adr[3]),
         .Q(\^M_AXI_TDATA_in_cmd [40]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[41] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[4]),
+        .D(mig_adr[4]),
         .Q(\^M_AXI_TDATA_in_cmd [41]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[42] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[5]),
+        .D(mig_adr[5]),
         .Q(\^M_AXI_TDATA_in_cmd [42]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[43] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[6]),
+        .D(mig_adr[6]),
         .Q(\^M_AXI_TDATA_in_cmd [43]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[44] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[7]),
+        .D(mig_adr[7]),
         .Q(\^M_AXI_TDATA_in_cmd [44]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[45] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[8]),
+        .D(mig_adr[8]),
         .Q(\^M_AXI_TDATA_in_cmd [45]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[46] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[9]),
+        .D(mig_adr[9]),
         .Q(\^M_AXI_TDATA_in_cmd [46]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[47] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[10]),
+        .D(mig_adr[10]),
         .Q(\^M_AXI_TDATA_in_cmd [47]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[48] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[11]),
+        .D(mig_adr[11]),
         .Q(\^M_AXI_TDATA_in_cmd [48]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[49] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[12]),
+        .D(mig_adr[12]),
         .Q(\^M_AXI_TDATA_in_cmd [49]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[50] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[13]),
+        .D(mig_adr[13]),
         .Q(\^M_AXI_TDATA_in_cmd [50]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[51] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[14]),
+        .D(mig_adr[14]),
         .Q(\^M_AXI_TDATA_in_cmd [51]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[52] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[15]),
+        .D(mig_adr[15]),
         .Q(\^M_AXI_TDATA_in_cmd [52]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[53] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[16]),
+        .D(mig_adr[16]),
         .Q(\^M_AXI_TDATA_in_cmd [53]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[54] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[17]),
+        .D(mig_adr[17]),
         .Q(\^M_AXI_TDATA_in_cmd [54]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[55] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[18]),
+        .D(mig_adr[18]),
         .Q(\^M_AXI_TDATA_in_cmd [55]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[56] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[19]),
+        .D(mig_adr[19]),
         .Q(\^M_AXI_TDATA_in_cmd [56]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[57] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[20]),
+        .D(mig_adr[20]),
         .Q(\^M_AXI_TDATA_in_cmd [57]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[58] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[21]),
+        .D(mig_adr[21]),
         .Q(\^M_AXI_TDATA_in_cmd [58]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[59] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[22]),
+        .D(mig_adr[22]),
         .Q(\^M_AXI_TDATA_in_cmd [59]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[5] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[0]),
+        .D(mig_blocks[0]),
         .Q(\^M_AXI_TDATA_in_cmd [5]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[60] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[23]),
+        .D(mig_adr[23]),
         .Q(\^M_AXI_TDATA_in_cmd [60]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[61] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[24]),
+        .D(mig_adr[24]),
         .Q(\^M_AXI_TDATA_in_cmd [61]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[62] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[25]),
+        .D(mig_adr[25]),
         .Q(\^M_AXI_TDATA_in_cmd [62]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[63] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(adr[26]),
+        .D(mig_adr[26]),
         .Q(\^M_AXI_TDATA_in_cmd [63]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[64] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(tag[0]),
+        .D(mig_tag[0]),
         .Q(\^M_AXI_TDATA_in_cmd [64]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[65] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(tag[1]),
+        .D(mig_tag[1]),
         .Q(\^M_AXI_TDATA_in_cmd [65]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[66] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(tag[2]),
+        .D(mig_tag[2]),
         .Q(\^M_AXI_TDATA_in_cmd [66]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[67] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(tag[3]),
+        .D(mig_tag[3]),
         .Q(\^M_AXI_TDATA_in_cmd [67]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[6] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[1]),
+        .D(mig_blocks[1]),
         .Q(\^M_AXI_TDATA_in_cmd [6]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[7] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[2]),
+        .D(mig_blocks[2]),
         .Q(\^M_AXI_TDATA_in_cmd [7]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[8] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[3]),
+        .D(mig_blocks[3]),
         .Q(\^M_AXI_TDATA_in_cmd [8]),
         .R(1'b0));
   FDRE \axi_dma.M_AXI_TDATA_in_cmd_reg[9] 
        (.C(clk),
         .CE(\axi_dma.M_AXI_TDATA_in_cmd[67]_i_1_n_0 ),
-        .D(blocks[4]),
+        .D(mig_blocks[4]),
         .Q(\^M_AXI_TDATA_in_cmd [9]),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hFB00000008000000)) 
-    \axi_dma.M_AXI_TLAST_out_i_1 
-       (.I0(M_AXI_TLAST_out2_out),
-        .I1(M_AXI_TREADY_out),
-        .I2(fifo_empty),
-        .I3(\axi_dma.dma_active_reg_n_0 ),
-        .I4(resetn),
-        .I5(M_AXI_TLAST_out),
-        .O(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT5 #(
-    .INIT(32'h80000000)) 
-    \axi_dma.M_AXI_TLAST_out_i_2 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ),
-        .I1(\axi_dma.curr_beat_reg [2]),
-        .I2(\axi_dma.curr_beat_reg [1]),
-        .I3(\axi_dma.curr_beat_reg [0]),
-        .I4(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ),
-        .O(M_AXI_TLAST_out2_out));
-  LUT6 #(
-    .INIT(64'h0000800000000000)) 
-    \axi_dma.M_AXI_TLAST_out_i_3 
-       (.I0(\axi_dma.curr_beat_reg [11]),
-        .I1(\axi_dma.curr_beat_reg [12]),
-        .I2(\axi_dma.curr_beat_reg [9]),
-        .I3(\axi_dma.curr_beat_reg [10]),
-        .I4(M_AXI_TLAST_out),
-        .I5(\axi_dma.curr_beat_reg [13]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \axi_dma.M_AXI_TLAST_out_i_4 
-       (.I0(\axi_dma.curr_beat_reg [5]),
-        .I1(\axi_dma.curr_beat_reg [6]),
-        .I2(\axi_dma.curr_beat_reg [3]),
-        .I3(\axi_dma.curr_beat_reg [4]),
-        .I4(\axi_dma.curr_beat_reg [8]),
-        .I5(\axi_dma.curr_beat_reg [7]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ));
-  FDRE \axi_dma.M_AXI_TLAST_out_reg 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.M_AXI_TREADY_in_i_1 
+       (.I0(fifo_full),
+        .O(\axi_dma.M_AXI_TREADY_in_i_1_n_0 ));
+  FDRE \axi_dma.M_AXI_TREADY_in_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ),
-        .Q(M_AXI_TLAST_out),
+        .D(\axi_dma.M_AXI_TREADY_in_i_1_n_0 ),
+        .Q(M_AXI_TREADY_in),
         .R(1'b0));
   LUT3 #(
     .INIT(8'h3A)) 
     \axi_dma.M_AXI_TVALID_in_cmd_i_1 
-       (.I0(start_cmd),
+       (.I0(mig_start_cmd),
         .I1(M_AXI_TREADY_in_cmd),
         .I2(M_AXI_TVALID_in_cmd),
         .O(\axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ));
@@ -1034,3064 +1600,10134 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ),
         .Q(M_AXI_TVALID_in_cmd),
         .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[0] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[0]),
-        .Q(adr[0]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[10] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[10]),
-        .Q(adr[10]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[11] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[11]),
-        .Q(adr[11]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[12] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[12]),
-        .Q(adr[12]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[13] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[13]),
-        .Q(adr[13]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[14] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[14]),
-        .Q(adr[14]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[15] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[15]),
-        .Q(adr[15]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[16] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[16]),
-        .Q(adr[16]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[17]),
-        .Q(adr[17]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[18] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[18]),
-        .Q(adr[18]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[19]),
-        .Q(adr[19]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[1] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[1]),
-        .Q(adr[1]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[20] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[20]),
-        .Q(adr[20]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[21] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[21]),
-        .Q(adr[21]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[22] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[22]),
-        .Q(adr[22]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[23] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[23]),
-        .Q(adr[23]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[24] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[24]),
-        .Q(adr[24]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[25] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[25]),
-        .Q(adr[25]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[26] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[26]),
-        .Q(adr[26]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[2] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[2]),
-        .Q(adr[2]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[3] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[3]),
-        .Q(adr[3]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[4] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[4]),
-        .Q(adr[4]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[5] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[5]),
-        .Q(adr[5]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[6] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[6]),
-        .Q(adr[6]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[7] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[7]),
-        .Q(adr[7]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[8] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[8]),
-        .Q(adr[8]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.adr_reg[9] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(adr[9]),
-        .Q(adr[9]),
-        .R(reset));
-  LUT3 #(
-    .INIT(8'hF4)) 
-    \axi_dma.blocks[0]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .I2(blocks[0]),
-        .O(\axi_dma.blocks[0]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[1]_i_1 
-       (.I0(reset),
-        .I1(blocks[1]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[2]_i_1 
-       (.I0(reset),
-        .I1(blocks[2]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[3]_i_1 
-       (.I0(reset),
-        .I1(blocks[3]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[4]_i_1 
-       (.I0(reset),
-        .I1(blocks[4]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[4]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[5]_i_1 
-       (.I0(reset),
-        .I1(blocks[5]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[5]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[6]_i_1 
-       (.I0(reset),
-        .I1(blocks[6]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[6]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hAAAB)) 
-    \axi_dma.blocks[7]_i_1 
-       (.I0(reset),
-        .I1(cmd_state[2]),
-        .I2(cmd_state[0]),
-        .I3(cmd_state[1]),
-        .O(\axi_dma.blocks[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h8C)) 
-    \axi_dma.blocks[7]_i_2 
-       (.I0(reset),
-        .I1(blocks[7]),
-        .I2(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(\axi_dma.blocks[7]_i_2_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[0] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[0]_i_1_n_0 ),
-        .Q(blocks[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[1] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[1]_i_1_n_0 ),
-        .Q(blocks[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[2] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[2]_i_1_n_0 ),
-        .Q(blocks[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[3] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[3]_i_1_n_0 ),
-        .Q(blocks[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[4] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[4]_i_1_n_0 ),
-        .Q(blocks[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[5] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[5]_i_1_n_0 ),
-        .Q(blocks[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[6] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[6]_i_1_n_0 ),
-        .Q(blocks[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.blocks_reg[7] 
-       (.C(clk),
-        .CE(\axi_dma.blocks[7]_i_1_n_0 ),
-        .D(\axi_dma.blocks[7]_i_2_n_0 ),
-        .Q(blocks[7]),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'hEA000000)) 
-    \axi_dma.cmd_done_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_STS_in_tdata[7]),
-        .I2(cmd_done0),
-        .I3(M_AXI_STS_in_tvalid),
-        .I4(M_AXI_STS_in_tready),
-        .O(\axi_dma.cmd_done_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h90)) 
-    \axi_dma.cmd_done_i_2 
-       (.I0(tag[3]),
-        .I1(M_AXI_STS_in_tdata[3]),
-        .I2(\axi_dma.cmd_done_i_3_n_0 ),
-        .O(cmd_done0));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \axi_dma.cmd_done_i_3 
-       (.I0(tag[0]),
-        .I1(M_AXI_STS_in_tdata[0]),
-        .I2(M_AXI_STS_in_tdata[2]),
-        .I3(tag[2]),
-        .I4(M_AXI_STS_in_tdata[1]),
-        .I5(tag[1]),
-        .O(\axi_dma.cmd_done_i_3_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.cmd_done_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.cmd_done_i_1_n_0 ),
-        .Q(cmd_done),
-        .R(reset));
-  LUT6 #(
-    .INIT(64'hDFFFFFFFDF000000)) 
-    \axi_dma.cmd_error_i_1 
-       (.I0(cmd_done0),
-        .I1(cmd_error),
-        .I2(M_AXI_STS_in_tdata[7]),
-        .I3(M_AXI_STS_in_tvalid),
-        .I4(M_AXI_STS_in_tready),
-        .I5(cmd_error),
-        .O(\axi_dma.cmd_error_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.cmd_error_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.cmd_error_i_1_n_0 ),
-        .Q(cmd_error),
-        .R(reset));
-  LUT5 #(
-    .INIT(32'hCFBBCF88)) 
-    \axi_dma.cmd_state[0]_i_1 
-       (.I0(cmd_done),
-        .I1(cmd_state[1]),
-        .I2(has_mig_size),
-        .I3(cmd_state[0]),
-        .I4(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(p_0_in__0[0]));
-  LUT3 #(
-    .INIT(8'hEA)) 
-    \axi_dma.cmd_state[1]_i_1 
-       (.I0(cmd_state[1]),
-        .I1(has_mig_size),
-        .I2(cmd_state[0]),
-        .O(p_0_in__0[1]));
-  LUT3 #(
-    .INIT(8'h07)) 
-    \axi_dma.cmd_state[2]_i_1 
-       (.I0(cmd_state[1]),
-        .I1(cmd_state[0]),
-        .I2(cmd_state[2]),
-        .O(\axi_dma.cmd_state[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h4744000047770000)) 
-    \axi_dma.cmd_state[2]_i_2 
-       (.I0(cmd_done),
-        .I1(cmd_state[1]),
-        .I2(has_mig_size),
-        .I3(cmd_state[0]),
-        .I4(cmd_state[2]),
-        .I5(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .O(p_0_in__0[2]));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \axi_dma.cmd_state[2]_i_3 
-       (.I0(\axi_dma.cmd_state[2]_i_4_n_0 ),
-        .I1(mig_blocks[0]),
-        .I2(mig_blocks[2]),
-        .I3(mig_blocks[1]),
-        .I4(\axi_dma.cmd_state[2]_i_5_n_0 ),
-        .I5(\axi_dma.cmd_state[2]_i_6_n_0 ),
-        .O(\axi_dma.cmd_state[2]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \axi_dma.cmd_state[2]_i_4 
-       (.I0(mig_blocks[5]),
-        .I1(mig_blocks[6]),
-        .I2(mig_blocks[3]),
-        .I3(mig_blocks[4]),
-        .I4(\axi_dma.cmd_state[2]_i_7_n_0 ),
-        .O(\axi_dma.cmd_state[2]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \axi_dma.cmd_state[2]_i_5 
-       (.I0(mig_blocks[21]),
-        .I1(mig_blocks[22]),
-        .I2(mig_blocks[19]),
-        .I3(mig_blocks[20]),
-        .I4(\axi_dma.cmd_state[2]_i_8_n_0 ),
-        .O(\axi_dma.cmd_state[2]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \axi_dma.cmd_state[2]_i_6 
-       (.I0(mig_blocks[13]),
-        .I1(mig_blocks[14]),
-        .I2(mig_blocks[11]),
-        .I3(mig_blocks[12]),
-        .I4(\axi_dma.cmd_state[2]_i_9_n_0 ),
-        .O(\axi_dma.cmd_state[2]_i_6_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_dma.cmd_state[2]_i_7 
-       (.I0(mig_blocks[8]),
-        .I1(mig_blocks[7]),
-        .I2(mig_blocks[10]),
-        .I3(mig_blocks[9]),
-        .O(\axi_dma.cmd_state[2]_i_7_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_dma.cmd_state[2]_i_8 
-       (.I0(mig_blocks[24]),
-        .I1(mig_blocks[23]),
-        .I2(mig_blocks[26]),
-        .I3(mig_blocks[25]),
-        .O(\axi_dma.cmd_state[2]_i_8_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_dma.cmd_state[2]_i_9 
-       (.I0(mig_blocks[16]),
-        .I1(mig_blocks[15]),
-        .I2(mig_blocks[18]),
-        .I3(mig_blocks[17]),
-        .O(\axi_dma.cmd_state[2]_i_9_n_0 ));
-  (* FSM_ENCODED_STATES = "CMD_ST_IDLE:000,CMD_ST_WAIT_HDR:001,CMD_ST_WAIT_DONE:010,CMD_ST_WAIT_SPACE:011" *) 
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.cmd_state_reg[0] 
-       (.C(clk),
-        .CE(\axi_dma.cmd_state[2]_i_1_n_0 ),
-        .D(p_0_in__0[0]),
-        .Q(cmd_state[0]),
-        .R(reset));
-  (* FSM_ENCODED_STATES = "CMD_ST_IDLE:000,CMD_ST_WAIT_HDR:001,CMD_ST_WAIT_DONE:010,CMD_ST_WAIT_SPACE:011" *) 
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.cmd_state_reg[1] 
-       (.C(clk),
-        .CE(\axi_dma.cmd_state[2]_i_1_n_0 ),
-        .D(p_0_in__0[1]),
-        .Q(cmd_state[1]),
-        .R(reset));
-  (* FSM_ENCODED_STATES = "CMD_ST_IDLE:000,CMD_ST_WAIT_HDR:001,CMD_ST_WAIT_DONE:010,CMD_ST_WAIT_SPACE:011" *) 
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.cmd_state_reg[2] 
-       (.C(clk),
-        .CE(\axi_dma.cmd_state[2]_i_1_n_0 ),
-        .D(p_0_in__0[2]),
-        .Q(cmd_state[2]),
-        .R(reset));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT1 #(
     .INIT(2'h1)) 
-    \axi_dma.curr_beat[0]_i_1 
-       (.I0(\axi_dma.curr_beat_reg [0]),
-        .O(p_0_in__1[0]));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \axi_dma.curr_beat[13]_i_1 
-       (.I0(resetn),
-        .I1(\axi_dma.dma_active_reg_n_0 ),
-        .O(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h10)) 
-    \axi_dma.curr_beat[13]_i_2 
-       (.I0(M_AXI_TLAST_out),
-        .I1(fifo_empty),
-        .I2(M_AXI_TREADY_out),
-        .O(curr_beat));
-  FDSE \axi_dma.curr_beat_reg[0] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[0]),
-        .Q(\axi_dma.curr_beat_reg [0]),
-        .S(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[10] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[10]),
-        .Q(\axi_dma.curr_beat_reg [10]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[11] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[11]),
-        .Q(\axi_dma.curr_beat_reg [11]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[12] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[12]),
-        .Q(\axi_dma.curr_beat_reg [12]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[13] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[13]),
-        .Q(\axi_dma.curr_beat_reg [13]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.curr_beat_reg[13]_i_3 
-       (.CI(\axi_dma.curr_beat_reg[8]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_axi_dma.curr_beat_reg[13]_i_3_CO_UNCONNECTED [7:4],\axi_dma.curr_beat_reg[13]_i_3_n_4 ,\axi_dma.curr_beat_reg[13]_i_3_n_5 ,\axi_dma.curr_beat_reg[13]_i_3_n_6 ,\axi_dma.curr_beat_reg[13]_i_3_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_axi_dma.curr_beat_reg[13]_i_3_O_UNCONNECTED [7:5],p_0_in__1[13:9]}),
-        .S({1'b0,1'b0,1'b0,\axi_dma.curr_beat_reg [13:9]}));
-  FDRE \axi_dma.curr_beat_reg[1] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[1]),
-        .Q(\axi_dma.curr_beat_reg [1]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[2] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[2]),
-        .Q(\axi_dma.curr_beat_reg [2]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[3] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[3]),
-        .Q(\axi_dma.curr_beat_reg [3]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[4] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[4]),
-        .Q(\axi_dma.curr_beat_reg [4]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[5] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[5]),
-        .Q(\axi_dma.curr_beat_reg [5]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[6] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[6]),
-        .Q(\axi_dma.curr_beat_reg [6]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[7] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[7]),
-        .Q(\axi_dma.curr_beat_reg [7]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  FDRE \axi_dma.curr_beat_reg[8] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[8]),
-        .Q(\axi_dma.curr_beat_reg [8]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.curr_beat_reg[8]_i_1 
-       (.CI(\axi_dma.curr_beat_reg [0]),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.curr_beat_reg[8]_i_1_n_0 ,\axi_dma.curr_beat_reg[8]_i_1_n_1 ,\axi_dma.curr_beat_reg[8]_i_1_n_2 ,\axi_dma.curr_beat_reg[8]_i_1_n_3 ,\axi_dma.curr_beat_reg[8]_i_1_n_4 ,\axi_dma.curr_beat_reg[8]_i_1_n_5 ,\axi_dma.curr_beat_reg[8]_i_1_n_6 ,\axi_dma.curr_beat_reg[8]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .O(p_0_in__1[8:1]),
-        .S(\axi_dma.curr_beat_reg [8:1]));
-  FDRE \axi_dma.curr_beat_reg[9] 
-       (.C(clk),
-        .CE(curr_beat),
-        .D(p_0_in__1[9]),
-        .Q(\axi_dma.curr_beat_reg [9]),
-        .R(\axi_dma.curr_beat[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT5 #(
-    .INIT(32'hAAAA2AAA)) 
-    \axi_dma.dma_active_i_1 
-       (.I0(resetn),
-        .I1(\axi_dma.dma_active_reg_n_0 ),
-        .I2(M_AXI_TLAST_out),
-        .I3(M_AXI_TREADY_out),
-        .I4(fifo_empty),
-        .O(\axi_dma.dma_active_i_1_n_0 ));
-  FDRE \axi_dma.dma_active_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.dma_active_i_1_n_0 ),
-        .Q(\axi_dma.dma_active_reg_n_0 ),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'h000000F8)) 
-    \axi_dma.has_mig_size_i_1 
-       (.I0(M_AXI_TVALID_in),
-        .I1(M_AXI_TDATA_in[79]),
-        .I2(has_mig_size),
-        .I3(cmd_done),
-        .I4(reset),
-        .O(\axi_dma.has_mig_size_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.has_mig_size_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.has_mig_size_i_1_n_0 ),
-        .Q(has_mig_size),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[0] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[0]),
-        .Q(in_data[0]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[100] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[100]),
-        .Q(in_data[100]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[101] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[101]),
-        .Q(in_data[101]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[102] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[102]),
-        .Q(in_data[102]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[103] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[103]),
-        .Q(in_data[103]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[104] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[104]),
-        .Q(in_data[104]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[105] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[105]),
-        .Q(in_data[105]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[106] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[106]),
-        .Q(in_data[106]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[107] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[107]),
-        .Q(in_data[107]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[108] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[108]),
-        .Q(in_data[108]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[109] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[109]),
-        .Q(in_data[109]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[10] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[10]),
-        .Q(in_data[10]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[110] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[110]),
-        .Q(in_data[110]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[111] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[111]),
-        .Q(in_data[111]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[112] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[112]),
-        .Q(in_data[112]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[113] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[113]),
-        .Q(in_data[113]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[114] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[114]),
-        .Q(in_data[114]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[115] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[115]),
-        .Q(in_data[115]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[116] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[116]),
-        .Q(in_data[116]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[117] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[117]),
-        .Q(in_data[117]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[118] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[118]),
-        .Q(in_data[118]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[119] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[119]),
-        .Q(in_data[119]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[11] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[11]),
-        .Q(in_data[11]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[120] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[120]),
-        .Q(in_data[120]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[121] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[121]),
-        .Q(in_data[121]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[122] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[122]),
-        .Q(in_data[122]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[123] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[123]),
-        .Q(in_data[123]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[124] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[124]),
-        .Q(in_data[124]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[125] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[125]),
-        .Q(in_data[125]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[126] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[126]),
-        .Q(in_data[126]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[127] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[127]),
-        .Q(in_data[127]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[128] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[128]),
-        .Q(in_data[128]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[129] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[129]),
-        .Q(in_data[129]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[12] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[12]),
-        .Q(in_data[12]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[130] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[130]),
-        .Q(in_data[130]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[131] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[131]),
-        .Q(in_data[131]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[132] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[132]),
-        .Q(in_data[132]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[133] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[133]),
-        .Q(in_data[133]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[134] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[134]),
-        .Q(in_data[134]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[135] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[135]),
-        .Q(in_data[135]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[136] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[136]),
-        .Q(in_data[136]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[137] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[137]),
-        .Q(in_data[137]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[138] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[138]),
-        .Q(in_data[138]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[139] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[139]),
-        .Q(in_data[139]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[13] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[13]),
-        .Q(in_data[13]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[140] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[140]),
-        .Q(in_data[140]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[141] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[141]),
-        .Q(in_data[141]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[142] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[142]),
-        .Q(in_data[142]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[143] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[143]),
-        .Q(in_data[143]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[144] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[144]),
-        .Q(in_data[144]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[145] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[145]),
-        .Q(in_data[145]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[146] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[146]),
-        .Q(in_data[146]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[147] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[147]),
-        .Q(in_data[147]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[148] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[148]),
-        .Q(in_data[148]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[149] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[149]),
-        .Q(in_data[149]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[14] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[14]),
-        .Q(in_data[14]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[150] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[150]),
-        .Q(in_data[150]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[151] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[151]),
-        .Q(in_data[151]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[152] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[152]),
-        .Q(in_data[152]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[153] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[153]),
-        .Q(in_data[153]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[154] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[154]),
-        .Q(in_data[154]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[155] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[155]),
-        .Q(in_data[155]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[156] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[156]),
-        .Q(in_data[156]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[157] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[157]),
-        .Q(in_data[157]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[158] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[158]),
-        .Q(in_data[158]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[159] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[159]),
-        .Q(in_data[159]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[15] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[15]),
-        .Q(in_data[15]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[160] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[160]),
-        .Q(in_data[160]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[161] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[161]),
-        .Q(in_data[161]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[162] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[162]),
-        .Q(in_data[162]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[163] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[163]),
-        .Q(in_data[163]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[164] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[164]),
-        .Q(in_data[164]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[165] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[165]),
-        .Q(in_data[165]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[166] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[166]),
-        .Q(in_data[166]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[167] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[167]),
-        .Q(in_data[167]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[168] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[168]),
-        .Q(in_data[168]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[169] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[169]),
-        .Q(in_data[169]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[16] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[16]),
-        .Q(in_data[16]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[170] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[170]),
-        .Q(in_data[170]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[171] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[171]),
-        .Q(in_data[171]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[172] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[172]),
-        .Q(in_data[172]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[173] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[173]),
-        .Q(in_data[173]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[174] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[174]),
-        .Q(in_data[174]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[175] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[175]),
-        .Q(in_data[175]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[176] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[176]),
-        .Q(in_data[176]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[177] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[177]),
-        .Q(in_data[177]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[178] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[178]),
-        .Q(in_data[178]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[179] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[179]),
-        .Q(in_data[179]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[17] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[17]),
-        .Q(in_data[17]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[180] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[180]),
-        .Q(in_data[180]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[181] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[181]),
-        .Q(in_data[181]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[182] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[182]),
-        .Q(in_data[182]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[183] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[183]),
-        .Q(in_data[183]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[184] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[184]),
-        .Q(in_data[184]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[185] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[185]),
-        .Q(in_data[185]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[186] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[186]),
-        .Q(in_data[186]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[187] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[187]),
-        .Q(in_data[187]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[188] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[188]),
-        .Q(in_data[188]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[189] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[189]),
-        .Q(in_data[189]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[18] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[18]),
-        .Q(in_data[18]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[190] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[190]),
-        .Q(in_data[190]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[191] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[191]),
-        .Q(in_data[191]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[192] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[192]),
-        .Q(in_data[192]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[193] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[193]),
-        .Q(in_data[193]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[194] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[194]),
-        .Q(in_data[194]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[195] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[195]),
-        .Q(in_data[195]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[196] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[196]),
-        .Q(in_data[196]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[197] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[197]),
-        .Q(in_data[197]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[198] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[198]),
-        .Q(in_data[198]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[199] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[199]),
-        .Q(in_data[199]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[19] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[19]),
-        .Q(in_data[19]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[1] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[1]),
-        .Q(in_data[1]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[200] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[200]),
-        .Q(in_data[200]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[201] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[201]),
-        .Q(in_data[201]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[202] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[202]),
-        .Q(in_data[202]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[203] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[203]),
-        .Q(in_data[203]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[204] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[204]),
-        .Q(in_data[204]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[205] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[205]),
-        .Q(in_data[205]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[206] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[206]),
-        .Q(in_data[206]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[207] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[207]),
-        .Q(in_data[207]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[208] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[208]),
-        .Q(in_data[208]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[209] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[209]),
-        .Q(in_data[209]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[20] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[20]),
-        .Q(in_data[20]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[210] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[210]),
-        .Q(in_data[210]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[211] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[211]),
-        .Q(in_data[211]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[212] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[212]),
-        .Q(in_data[212]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[213] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[213]),
-        .Q(in_data[213]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[214] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[214]),
-        .Q(in_data[214]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[215] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[215]),
-        .Q(in_data[215]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[216] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[216]),
-        .Q(in_data[216]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[217] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[217]),
-        .Q(in_data[217]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[218] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[218]),
-        .Q(in_data[218]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[219] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[219]),
-        .Q(in_data[219]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[21] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[21]),
-        .Q(in_data[21]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[220] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[220]),
-        .Q(in_data[220]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[221] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[221]),
-        .Q(in_data[221]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[222] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[222]),
-        .Q(in_data[222]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[223] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[223]),
-        .Q(in_data[223]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[224] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[224]),
-        .Q(in_data[224]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[225] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[225]),
-        .Q(in_data[225]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[226] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[226]),
-        .Q(in_data[226]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[227] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[227]),
-        .Q(in_data[227]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[228] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[228]),
-        .Q(in_data[228]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[229] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[229]),
-        .Q(in_data[229]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[22] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[22]),
-        .Q(in_data[22]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[230] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[230]),
-        .Q(in_data[230]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[231] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[231]),
-        .Q(in_data[231]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[232] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[232]),
-        .Q(in_data[232]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[233] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[233]),
-        .Q(in_data[233]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[234] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[234]),
-        .Q(in_data[234]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[235] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[235]),
-        .Q(in_data[235]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[236] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[236]),
-        .Q(in_data[236]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[237] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[237]),
-        .Q(in_data[237]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[238] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[238]),
-        .Q(in_data[238]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[239] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[239]),
-        .Q(in_data[239]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[23] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[23]),
-        .Q(in_data[23]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[240] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[240]),
-        .Q(in_data[240]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[241] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[241]),
-        .Q(in_data[241]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[242] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[242]),
-        .Q(in_data[242]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[243] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[243]),
-        .Q(in_data[243]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[244] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[244]),
-        .Q(in_data[244]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[245] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[245]),
-        .Q(in_data[245]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[246] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[246]),
-        .Q(in_data[246]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[247] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[247]),
-        .Q(in_data[247]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[248] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[248]),
-        .Q(in_data[248]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[249] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[249]),
-        .Q(in_data[249]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[24] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[24]),
-        .Q(in_data[24]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[250] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[250]),
-        .Q(in_data[250]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[251] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[251]),
-        .Q(in_data[251]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[252] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[252]),
-        .Q(in_data[252]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[253] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[253]),
-        .Q(in_data[253]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[254] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[254]),
-        .Q(in_data[254]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[255] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[255]),
-        .Q(in_data[255]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[25] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[25]),
-        .Q(in_data[25]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[26] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[26]),
-        .Q(in_data[26]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[27] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[27]),
-        .Q(in_data[27]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[28] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[28]),
-        .Q(in_data[28]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[29] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[29]),
-        .Q(in_data[29]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[2] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[2]),
-        .Q(in_data[2]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[30] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[30]),
-        .Q(in_data[30]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[31] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[31]),
-        .Q(in_data[31]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[32] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[32]),
-        .Q(in_data[32]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[33] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[33]),
-        .Q(in_data[33]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[34] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[34]),
-        .Q(in_data[34]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[35] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[35]),
-        .Q(in_data[35]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[36] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[36]),
-        .Q(in_data[36]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[37] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[37]),
-        .Q(in_data[37]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[38] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[38]),
-        .Q(in_data[38]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[39] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[39]),
-        .Q(in_data[39]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[3] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[3]),
-        .Q(in_data[3]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[40] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[40]),
-        .Q(in_data[40]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[41] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[41]),
-        .Q(in_data[41]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[42] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[42]),
-        .Q(in_data[42]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[43] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[43]),
-        .Q(in_data[43]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[44] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[44]),
-        .Q(in_data[44]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[45] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[45]),
-        .Q(in_data[45]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[46] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[46]),
-        .Q(in_data[46]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[47] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[47]),
-        .Q(in_data[47]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[48] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[48]),
-        .Q(in_data[48]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[49] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[49]),
-        .Q(in_data[49]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[4] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[4]),
-        .Q(in_data[4]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[50] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[50]),
-        .Q(in_data[50]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[51] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[51]),
-        .Q(in_data[51]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[52] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[52]),
-        .Q(in_data[52]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[53] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[53]),
-        .Q(in_data[53]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[54] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[54]),
-        .Q(in_data[54]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[55] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[55]),
-        .Q(in_data[55]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[56] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[56]),
-        .Q(in_data[56]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[57] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[57]),
-        .Q(in_data[57]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[58] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[58]),
-        .Q(in_data[58]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[59] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[59]),
-        .Q(in_data[59]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[5] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[5]),
-        .Q(in_data[5]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[60] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[60]),
-        .Q(in_data[60]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[61] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[61]),
-        .Q(in_data[61]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[62] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[62]),
-        .Q(in_data[62]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[63] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[63]),
-        .Q(in_data[63]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[64] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[64]),
-        .Q(in_data[64]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[65] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[65]),
-        .Q(in_data[65]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[66] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[66]),
-        .Q(in_data[66]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[67] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[67]),
-        .Q(in_data[67]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[68] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[68]),
-        .Q(in_data[68]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[69] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[69]),
-        .Q(in_data[69]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[6] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[6]),
-        .Q(in_data[6]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[70] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[70]),
-        .Q(in_data[70]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[71] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[71]),
-        .Q(in_data[71]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[72] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[72]),
-        .Q(in_data[72]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[73] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[73]),
-        .Q(in_data[73]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[74] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[74]),
-        .Q(in_data[74]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[75] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[75]),
-        .Q(in_data[75]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[76] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[76]),
-        .Q(in_data[76]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[77] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[77]),
-        .Q(in_data[77]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[78] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[78]),
-        .Q(in_data[78]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[79] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[79]),
-        .Q(in_data[79]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[7] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[7]),
-        .Q(in_data[7]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[80] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[80]),
-        .Q(in_data[80]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[81] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[81]),
-        .Q(in_data[81]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[82] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[82]),
-        .Q(in_data[82]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[83] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[83]),
-        .Q(in_data[83]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[84] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[84]),
-        .Q(in_data[84]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[85] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[85]),
-        .Q(in_data[85]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[86] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[86]),
-        .Q(in_data[86]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[87] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[87]),
-        .Q(in_data[87]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[88] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[88]),
-        .Q(in_data[88]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[89] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[89]),
-        .Q(in_data[89]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[8] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[8]),
-        .Q(in_data[8]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[90] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[90]),
-        .Q(in_data[90]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[91] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[91]),
-        .Q(in_data[91]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[92] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[92]),
-        .Q(in_data[92]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[93] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[93]),
-        .Q(in_data[93]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[94] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[94]),
-        .Q(in_data[94]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[95] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[95]),
-        .Q(in_data[95]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[96] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[96]),
-        .Q(in_data[96]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[97] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[97]),
-        .Q(in_data[97]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[98] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[98]),
-        .Q(in_data[98]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[99] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[99]),
-        .Q(in_data[99]),
-        .R(1'b0));
-  FDRE \axi_dma.in_data_reg[9] 
-       (.C(clk),
-        .CE(M_AXI_TVALID_in),
-        .D(M_AXI_TDATA_in[9]),
-        .Q(in_data[9]),
-        .R(1'b0));
-  FDRE \axi_dma.in_wr_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(M_AXI_TVALID_in),
-        .Q(in_wr),
-        .R(1'b0));
+    \axi_dma.fifo_count[0]_i_1 
+       (.I0(fifo_count[0]),
+        .O(\axi_dma.fifo_count[0]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_2 
-       (.I0(mig_wr_ptr[15]),
-        .I1(adr[15]),
-        .O(\axi_dma.mig_blocks[15]_i_2_n_0 ));
+    \axi_dma.fifo_count[13]_i_2 
+       (.I0(fifo_count[12]),
+        .I1(fifo_count[13]),
+        .O(\axi_dma.fifo_count[13]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_3 
-       (.I0(mig_wr_ptr[14]),
-        .I1(adr[14]),
-        .O(\axi_dma.mig_blocks[15]_i_3_n_0 ));
+    \axi_dma.fifo_count[13]_i_3 
+       (.I0(fifo_count[11]),
+        .I1(fifo_count[12]),
+        .O(\axi_dma.fifo_count[13]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_4 
-       (.I0(mig_wr_ptr[13]),
-        .I1(adr[13]),
-        .O(\axi_dma.mig_blocks[15]_i_4_n_0 ));
+    \axi_dma.fifo_count[13]_i_4 
+       (.I0(fifo_count[10]),
+        .I1(fifo_count[11]),
+        .O(\axi_dma.fifo_count[13]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_5 
-       (.I0(mig_wr_ptr[12]),
-        .I1(adr[12]),
-        .O(\axi_dma.mig_blocks[15]_i_5_n_0 ));
+    \axi_dma.fifo_count[13]_i_5 
+       (.I0(fifo_count[9]),
+        .I1(fifo_count[10]),
+        .O(\axi_dma.fifo_count[13]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_6 
-       (.I0(mig_wr_ptr[11]),
-        .I1(adr[11]),
-        .O(\axi_dma.mig_blocks[15]_i_6_n_0 ));
+    \axi_dma.fifo_count[13]_i_6 
+       (.I0(fifo_count[8]),
+        .I1(fifo_count[9]),
+        .O(\axi_dma.fifo_count[13]_i_6_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_count[8]_i_2 
+       (.I0(fifo_count[1]),
+        .O(\axi_dma.fifo_count[8]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_7 
-       (.I0(mig_wr_ptr[10]),
-        .I1(adr[10]),
-        .O(\axi_dma.mig_blocks[15]_i_7_n_0 ));
+    \axi_dma.fifo_count[8]_i_3 
+       (.I0(fifo_count[7]),
+        .I1(fifo_count[8]),
+        .O(\axi_dma.fifo_count[8]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_8 
-       (.I0(mig_wr_ptr[9]),
-        .I1(adr[9]),
-        .O(\axi_dma.mig_blocks[15]_i_8_n_0 ));
+    \axi_dma.fifo_count[8]_i_4 
+       (.I0(fifo_count[6]),
+        .I1(fifo_count[7]),
+        .O(\axi_dma.fifo_count[8]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[15]_i_9 
-       (.I0(mig_wr_ptr[8]),
-        .I1(adr[8]),
-        .O(\axi_dma.mig_blocks[15]_i_9_n_0 ));
+    \axi_dma.fifo_count[8]_i_5 
+       (.I0(fifo_count[5]),
+        .I1(fifo_count[6]),
+        .O(\axi_dma.fifo_count[8]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_2 
-       (.I0(mig_wr_ptr[23]),
-        .I1(adr[23]),
-        .O(\axi_dma.mig_blocks[23]_i_2_n_0 ));
+    \axi_dma.fifo_count[8]_i_6 
+       (.I0(fifo_count[4]),
+        .I1(fifo_count[5]),
+        .O(\axi_dma.fifo_count[8]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_3 
-       (.I0(mig_wr_ptr[22]),
-        .I1(adr[22]),
-        .O(\axi_dma.mig_blocks[23]_i_3_n_0 ));
+    \axi_dma.fifo_count[8]_i_7 
+       (.I0(fifo_count[3]),
+        .I1(fifo_count[4]),
+        .O(\axi_dma.fifo_count[8]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_4 
-       (.I0(mig_wr_ptr[21]),
-        .I1(adr[21]),
-        .O(\axi_dma.mig_blocks[23]_i_4_n_0 ));
+    \axi_dma.fifo_count[8]_i_8 
+       (.I0(fifo_count[2]),
+        .I1(fifo_count[3]),
+        .O(\axi_dma.fifo_count[8]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_5 
-       (.I0(mig_wr_ptr[20]),
-        .I1(adr[20]),
-        .O(\axi_dma.mig_blocks[23]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_6 
-       (.I0(mig_wr_ptr[19]),
-        .I1(adr[19]),
-        .O(\axi_dma.mig_blocks[23]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_7 
-       (.I0(mig_wr_ptr[18]),
-        .I1(adr[18]),
-        .O(\axi_dma.mig_blocks[23]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_8 
-       (.I0(mig_wr_ptr[17]),
-        .I1(adr[17]),
-        .O(\axi_dma.mig_blocks[23]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[23]_i_9 
-       (.I0(mig_wr_ptr[16]),
-        .I1(adr[16]),
-        .O(\axi_dma.mig_blocks[23]_i_9_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[26]_i_2 
-       (.I0(mig_wr_ptr[26]),
-        .I1(adr[26]),
-        .O(\axi_dma.mig_blocks[26]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[26]_i_3 
-       (.I0(mig_wr_ptr[25]),
-        .I1(adr[25]),
-        .O(\axi_dma.mig_blocks[26]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[26]_i_4 
-       (.I0(mig_wr_ptr[24]),
-        .I1(adr[24]),
-        .O(\axi_dma.mig_blocks[26]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_2 
-       (.I0(mig_wr_ptr[7]),
-        .I1(adr[7]),
-        .O(\axi_dma.mig_blocks[7]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_3 
-       (.I0(mig_wr_ptr[6]),
-        .I1(adr[6]),
-        .O(\axi_dma.mig_blocks[7]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_4 
-       (.I0(mig_wr_ptr[5]),
-        .I1(adr[5]),
-        .O(\axi_dma.mig_blocks[7]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_5 
-       (.I0(mig_wr_ptr[4]),
-        .I1(adr[4]),
-        .O(\axi_dma.mig_blocks[7]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_6 
-       (.I0(mig_wr_ptr[3]),
-        .I1(adr[3]),
-        .O(\axi_dma.mig_blocks[7]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_7 
-       (.I0(mig_wr_ptr[2]),
-        .I1(adr[2]),
-        .O(\axi_dma.mig_blocks[7]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_8 
-       (.I0(mig_wr_ptr[1]),
-        .I1(adr[1]),
-        .O(\axi_dma.mig_blocks[7]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_blocks[7]_i_9 
-       (.I0(mig_wr_ptr[0]),
-        .I1(adr[0]),
-        .O(\axi_dma.mig_blocks[7]_i_9_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[0] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [0]),
-        .Q(mig_blocks[0]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[10] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [10]),
-        .Q(mig_blocks[10]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[11] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [11]),
-        .Q(mig_blocks[11]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[12] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [12]),
-        .Q(mig_blocks[12]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[13] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [13]),
-        .Q(mig_blocks[13]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[14] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [14]),
-        .Q(mig_blocks[14]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[15] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [15]),
-        .Q(mig_blocks[15]),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.mig_blocks_reg[15]_i_1 
-       (.CI(\axi_dma.mig_blocks_reg[7]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.mig_blocks_reg[15]_i_1_n_0 ,\axi_dma.mig_blocks_reg[15]_i_1_n_1 ,\axi_dma.mig_blocks_reg[15]_i_1_n_2 ,\axi_dma.mig_blocks_reg[15]_i_1_n_3 ,\axi_dma.mig_blocks_reg[15]_i_1_n_4 ,\axi_dma.mig_blocks_reg[15]_i_1_n_5 ,\axi_dma.mig_blocks_reg[15]_i_1_n_6 ,\axi_dma.mig_blocks_reg[15]_i_1_n_7 }),
-        .DI(mig_wr_ptr[15:8]),
-        .O(\axi_dma.mig_blocks_reg0 [15:8]),
-        .S({\axi_dma.mig_blocks[15]_i_2_n_0 ,\axi_dma.mig_blocks[15]_i_3_n_0 ,\axi_dma.mig_blocks[15]_i_4_n_0 ,\axi_dma.mig_blocks[15]_i_5_n_0 ,\axi_dma.mig_blocks[15]_i_6_n_0 ,\axi_dma.mig_blocks[15]_i_7_n_0 ,\axi_dma.mig_blocks[15]_i_8_n_0 ,\axi_dma.mig_blocks[15]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[16] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [16]),
-        .Q(mig_blocks[16]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[17] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [17]),
-        .Q(mig_blocks[17]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[18] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [18]),
-        .Q(mig_blocks[18]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[19] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [19]),
-        .Q(mig_blocks[19]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[1] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [1]),
-        .Q(mig_blocks[1]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[20] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [20]),
-        .Q(mig_blocks[20]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[21] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [21]),
-        .Q(mig_blocks[21]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[22] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [22]),
-        .Q(mig_blocks[22]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[23] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [23]),
-        .Q(mig_blocks[23]),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.mig_blocks_reg[23]_i_1 
-       (.CI(\axi_dma.mig_blocks_reg[15]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.mig_blocks_reg[23]_i_1_n_0 ,\axi_dma.mig_blocks_reg[23]_i_1_n_1 ,\axi_dma.mig_blocks_reg[23]_i_1_n_2 ,\axi_dma.mig_blocks_reg[23]_i_1_n_3 ,\axi_dma.mig_blocks_reg[23]_i_1_n_4 ,\axi_dma.mig_blocks_reg[23]_i_1_n_5 ,\axi_dma.mig_blocks_reg[23]_i_1_n_6 ,\axi_dma.mig_blocks_reg[23]_i_1_n_7 }),
-        .DI(mig_wr_ptr[23:16]),
-        .O(\axi_dma.mig_blocks_reg0 [23:16]),
-        .S({\axi_dma.mig_blocks[23]_i_2_n_0 ,\axi_dma.mig_blocks[23]_i_3_n_0 ,\axi_dma.mig_blocks[23]_i_4_n_0 ,\axi_dma.mig_blocks[23]_i_5_n_0 ,\axi_dma.mig_blocks[23]_i_6_n_0 ,\axi_dma.mig_blocks[23]_i_7_n_0 ,\axi_dma.mig_blocks[23]_i_8_n_0 ,\axi_dma.mig_blocks[23]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[24] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [24]),
-        .Q(mig_blocks[24]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[25] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [25]),
-        .Q(mig_blocks[25]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[26] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [26]),
-        .Q(mig_blocks[26]),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.mig_blocks_reg[26]_i_1 
-       (.CI(\axi_dma.mig_blocks_reg[23]_i_1_n_0 ),
-        .CI_TOP(1'b0),
-        .CO({\NLW_axi_dma.mig_blocks_reg[26]_i_1_CO_UNCONNECTED [7:2],\axi_dma.mig_blocks_reg[26]_i_1_n_6 ,\axi_dma.mig_blocks_reg[26]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,mig_wr_ptr[25:24]}),
-        .O({\NLW_axi_dma.mig_blocks_reg[26]_i_1_O_UNCONNECTED [7:3],\axi_dma.mig_blocks_reg0 [26:24]}),
-        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.mig_blocks[26]_i_2_n_0 ,\axi_dma.mig_blocks[26]_i_3_n_0 ,\axi_dma.mig_blocks[26]_i_4_n_0 }));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[2] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [2]),
-        .Q(mig_blocks[2]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[3] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [3]),
-        .Q(mig_blocks[3]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[4] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [4]),
-        .Q(mig_blocks[4]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[5] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [5]),
-        .Q(mig_blocks[5]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[6] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [6]),
-        .Q(mig_blocks[6]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[7] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [7]),
-        .Q(mig_blocks[7]),
-        .R(1'b0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY8 \axi_dma.mig_blocks_reg[7]_i_1 
-       (.CI(1'b1),
-        .CI_TOP(1'b0),
-        .CO({\axi_dma.mig_blocks_reg[7]_i_1_n_0 ,\axi_dma.mig_blocks_reg[7]_i_1_n_1 ,\axi_dma.mig_blocks_reg[7]_i_1_n_2 ,\axi_dma.mig_blocks_reg[7]_i_1_n_3 ,\axi_dma.mig_blocks_reg[7]_i_1_n_4 ,\axi_dma.mig_blocks_reg[7]_i_1_n_5 ,\axi_dma.mig_blocks_reg[7]_i_1_n_6 ,\axi_dma.mig_blocks_reg[7]_i_1_n_7 }),
-        .DI(mig_wr_ptr[7:0]),
-        .O(\axi_dma.mig_blocks_reg0 [7:0]),
-        .S({\axi_dma.mig_blocks[7]_i_2_n_0 ,\axi_dma.mig_blocks[7]_i_3_n_0 ,\axi_dma.mig_blocks[7]_i_4_n_0 ,\axi_dma.mig_blocks[7]_i_5_n_0 ,\axi_dma.mig_blocks[7]_i_6_n_0 ,\axi_dma.mig_blocks[7]_i_7_n_0 ,\axi_dma.mig_blocks[7]_i_8_n_0 ,\axi_dma.mig_blocks[7]_i_9_n_0 }));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[8] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [8]),
-        .Q(mig_blocks[8]),
-        .R(1'b0));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.mig_blocks_reg[9] 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.mig_blocks_reg0 [9]),
-        .Q(mig_blocks[9]),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'hEBFF4100)) 
-    \axi_dma.mig_diff[0]_i_1 
-       (.I0(reset),
-        .I1(mig_size[0]),
-        .I2(mig_blocks[0]),
-        .I3(cmd_done),
-        .I4(mig_diff[0]),
-        .O(\axi_dma.mig_diff[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hBEEBFFFF14410000)) 
-    \axi_dma.mig_diff[1]_i_1 
-       (.I0(reset),
-        .I1(mig_size[0]),
-        .I2(mig_blocks[0]),
-        .I3(\axi_dma.mig_diff[1]_i_2_n_0 ),
-        .I4(cmd_done),
-        .I5(mig_diff[1]),
-        .O(\axi_dma.mig_diff[1]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h4BB4)) 
-    \axi_dma.mig_diff[1]_i_2 
-       (.I0(mig_blocks[0]),
-        .I1(mig_size[0]),
-        .I2(mig_size[1]),
-        .I3(mig_blocks[1]),
-        .O(\axi_dma.mig_diff[1]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hEF40)) 
-    \axi_dma.mig_diff[2]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[2]_i_2_n_0 ),
-        .I2(cmd_done),
-        .I3(mig_diff[2]),
-        .O(\axi_dma.mig_diff[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h9666999696969999)) 
-    \axi_dma.mig_diff[2]_i_2 
-       (.I0(mig_blocks[2]),
-        .I1(mig_size[2]),
-        .I2(mig_size[1]),
-        .I3(mig_size[0]),
-        .I4(mig_blocks[1]),
-        .I5(mig_blocks[0]),
-        .O(\axi_dma.mig_diff[2]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hEBFF4100)) 
-    \axi_dma.mig_diff[3]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[3]_i_2_n_0 ),
-        .I2(\axi_dma.mig_diff[3]_i_3_n_0 ),
-        .I3(cmd_done),
-        .I4(mig_diff[3]),
-        .O(\axi_dma.mig_diff[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6FFFF6FFFF6FFFF6)) 
-    \axi_dma.mig_diff[3]_i_2 
-       (.I0(mig_blocks[2]),
-        .I1(mig_size[2]),
-        .I2(mig_size[1]),
-        .I3(mig_size[0]),
-        .I4(mig_blocks[1]),
-        .I5(mig_blocks[0]),
-        .O(\axi_dma.mig_diff[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h5556AAA9AAA95556)) 
-    \axi_dma.mig_diff[3]_i_3 
-       (.I0(\axi_dma.mig_diff[5]_i_6_n_0 ),
-        .I1(mig_size[2]),
-        .I2(mig_size[1]),
-        .I3(mig_size[0]),
-        .I4(mig_size[3]),
-        .I5(mig_blocks[3]),
-        .O(\axi_dma.mig_diff[3]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hEBFF4100)) 
-    \axi_dma.mig_diff[4]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[4]_i_2_n_0 ),
-        .I2(\axi_dma.mig_diff[4]_i_3_n_0 ),
-        .I3(cmd_done),
-        .I4(mig_diff[4]),
-        .O(\axi_dma.mig_diff[4]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEBBE)) 
-    \axi_dma.mig_diff[4]_i_2 
-       (.I0(\axi_dma.mig_diff[3]_i_2_n_0 ),
-        .I1(mig_blocks[3]),
-        .I2(\axi_dma.mig_diff[5]_i_5_n_0 ),
-        .I3(\axi_dma.mig_diff[5]_i_6_n_0 ),
-        .O(\axi_dma.mig_diff[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h1871E78EE78E1871)) 
-    \axi_dma.mig_diff[4]_i_3 
-       (.I0(\axi_dma.mig_diff[5]_i_6_n_0 ),
-        .I1(mig_blocks[3]),
-        .I2(mig_size[3]),
-        .I3(\axi_dma.mig_diff[4]_i_4_n_0 ),
-        .I4(mig_size[4]),
-        .I5(mig_blocks[4]),
-        .O(\axi_dma.mig_diff[4]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'h01)) 
-    \axi_dma.mig_diff[4]_i_4 
-       (.I0(mig_size[0]),
-        .I1(mig_size[1]),
-        .I2(mig_size[2]),
-        .O(\axi_dma.mig_diff[4]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hEBFF4100)) 
-    \axi_dma.mig_diff[5]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[5]_i_2_n_0 ),
-        .I2(\axi_dma.mig_diff[5]_i_3_n_0 ),
-        .I3(cmd_done),
-        .I4(mig_diff[5]),
-        .O(\axi_dma.mig_diff[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFEBEBFFEBFFFFBE)) 
-    \axi_dma.mig_diff[5]_i_2 
-       (.I0(\axi_dma.mig_diff[3]_i_2_n_0 ),
-        .I1(mig_blocks[4]),
-        .I2(\axi_dma.mig_diff[5]_i_4_n_0 ),
-        .I3(\axi_dma.mig_diff[5]_i_5_n_0 ),
-        .I4(mig_blocks[3]),
-        .I5(\axi_dma.mig_diff[5]_i_6_n_0 ),
-        .O(\axi_dma.mig_diff[5]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h96)) 
-    \axi_dma.mig_diff[5]_i_3 
-       (.I0(\axi_dma.mig_diff[7]_i_6_n_0 ),
-        .I1(\axi_dma.mig_diff[7]_i_8_n_0 ),
-        .I2(mig_blocks[5]),
-        .O(\axi_dma.mig_diff[5]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h0001FFFE)) 
-    \axi_dma.mig_diff[5]_i_4 
-       (.I0(mig_size[3]),
-        .I1(mig_size[0]),
-        .I2(mig_size[1]),
-        .I3(mig_size[2]),
-        .I4(mig_size[4]),
-        .O(\axi_dma.mig_diff[5]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'h01FE)) 
-    \axi_dma.mig_diff[5]_i_5 
-       (.I0(mig_size[2]),
-        .I1(mig_size[1]),
-        .I2(mig_size[0]),
-        .I3(mig_size[3]),
-        .O(\axi_dma.mig_diff[5]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFE547E1476105600)) 
-    \axi_dma.mig_diff[5]_i_6 
-       (.I0(mig_size[2]),
-        .I1(mig_size[1]),
-        .I2(mig_size[0]),
-        .I3(mig_blocks[2]),
-        .I4(mig_blocks[0]),
-        .I5(mig_blocks[1]),
-        .O(\axi_dma.mig_diff[5]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hEBFF4100)) 
-    \axi_dma.mig_diff[6]_i_1 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[7]_i_4_n_0 ),
-        .I2(\axi_dma.mig_diff[7]_i_3_n_0 ),
-        .I3(cmd_done),
-        .I4(mig_diff[6]),
-        .O(\axi_dma.mig_diff[6]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hABAA)) 
-    \axi_dma.mig_diff[7]_i_1 
-       (.I0(reset),
-        .I1(cmd_state[2]),
-        .I2(cmd_state[0]),
-        .I3(cmd_state[1]),
-        .O(\axi_dma.mig_diff[7]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h9969)) 
-    \axi_dma.mig_diff[7]_i_10 
-       (.I0(mig_blocks[7]),
-        .I1(mig_size[7]),
-        .I2(\axi_dma.mig_diff[7]_i_11_n_0 ),
-        .I3(mig_size[6]),
-        .O(\axi_dma.mig_diff[7]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \axi_dma.mig_diff[7]_i_11 
-       (.I0(mig_size[4]),
-        .I1(mig_size[2]),
-        .I2(mig_size[1]),
-        .I3(mig_size[0]),
-        .I4(mig_size[3]),
-        .I5(mig_size[5]),
-        .O(\axi_dma.mig_diff[7]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'hFEABFFFF54010000)) 
-    \axi_dma.mig_diff[7]_i_2 
-       (.I0(reset),
-        .I1(\axi_dma.mig_diff[7]_i_3_n_0 ),
-        .I2(\axi_dma.mig_diff[7]_i_4_n_0 ),
-        .I3(\axi_dma.mig_diff[7]_i_5_n_0 ),
-        .I4(cmd_done),
-        .I5(mig_diff[7]),
-        .O(\axi_dma.mig_diff[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h1871E78EE78E1871)) 
-    \axi_dma.mig_diff[7]_i_3 
-       (.I0(\axi_dma.mig_diff[7]_i_6_n_0 ),
-        .I1(mig_blocks[5]),
-        .I2(mig_size[5]),
-        .I3(\axi_dma.mig_diff[7]_i_7_n_0 ),
-        .I4(mig_size[6]),
-        .I5(mig_blocks[6]),
-        .O(\axi_dma.mig_diff[7]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hEBBE)) 
-    \axi_dma.mig_diff[7]_i_4 
-       (.I0(\axi_dma.mig_diff[5]_i_2_n_0 ),
-        .I1(mig_blocks[5]),
-        .I2(\axi_dma.mig_diff[7]_i_8_n_0 ),
-        .I3(\axi_dma.mig_diff[7]_i_6_n_0 ),
-        .O(\axi_dma.mig_diff[7]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h001717FFFFE8E800)) 
-    \axi_dma.mig_diff[7]_i_5 
-       (.I0(\axi_dma.mig_diff[7]_i_8_n_0 ),
-        .I1(mig_blocks[5]),
-        .I2(\axi_dma.mig_diff[7]_i_6_n_0 ),
-        .I3(mig_blocks[6]),
-        .I4(\axi_dma.mig_diff[7]_i_9_n_0 ),
-        .I5(\axi_dma.mig_diff[7]_i_10_n_0 ),
-        .O(\axi_dma.mig_diff[7]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF59DB41DB415900)) 
-    \axi_dma.mig_diff[7]_i_6 
-       (.I0(mig_size[4]),
-        .I1(\axi_dma.mig_diff[4]_i_4_n_0 ),
-        .I2(mig_size[3]),
-        .I3(mig_blocks[4]),
-        .I4(\axi_dma.mig_diff[5]_i_6_n_0 ),
-        .I5(mig_blocks[3]),
-        .O(\axi_dma.mig_diff[7]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    \axi_dma.mig_diff[7]_i_7 
-       (.I0(mig_size[3]),
-        .I1(mig_size[0]),
-        .I2(mig_size[1]),
-        .I3(mig_size[2]),
-        .I4(mig_size[4]),
-        .O(\axi_dma.mig_diff[7]_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'h00000001FFFFFFFE)) 
-    \axi_dma.mig_diff[7]_i_8 
-       (.I0(mig_size[4]),
-        .I1(mig_size[2]),
-        .I2(mig_size[1]),
-        .I3(mig_size[0]),
-        .I4(mig_size[3]),
-        .I5(mig_size[5]),
-        .O(\axi_dma.mig_diff[7]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \axi_dma.mig_diff[7]_i_9 
-       (.I0(\axi_dma.mig_diff[7]_i_11_n_0 ),
-        .I1(mig_size[6]),
-        .O(\axi_dma.mig_diff[7]_i_9_n_0 ));
+    \axi_dma.fifo_count[8]_i_9 
+       (.I0(fifo_count[1]),
+        .I1(fifo_count[2]),
+        .O(\axi_dma.fifo_count[8]_i_9_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[0] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(\axi_dma.fifo_count[0]_i_1_n_0 ),
+        .Q(fifo_count[0]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[10] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[10]),
+        .Q(fifo_count[10]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[11] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[11]),
+        .Q(fifo_count[11]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[12] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[12]),
+        .Q(fifo_count[12]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[13] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[13]),
+        .Q(fifo_count[13]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
+  CARRY8 \axi_dma.fifo_count_reg[13]_i_1 
+       (.CI(\axi_dma.fifo_count_reg[8]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.fifo_count_reg[13]_i_1_CO_UNCONNECTED [7:4],\axi_dma.fifo_count_reg[13]_i_1_n_4 ,\axi_dma.fifo_count_reg[13]_i_1_n_5 ,\axi_dma.fifo_count_reg[13]_i_1_n_6 ,\axi_dma.fifo_count_reg[13]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,fifo_count[11:8]}),
+        .O({\NLW_axi_dma.fifo_count_reg[13]_i_1_O_UNCONNECTED [7:5],fifo_count__0[13:9]}),
+        .S({1'b0,1'b0,1'b0,\axi_dma.fifo_count[13]_i_2_n_0 ,\axi_dma.fifo_count[13]_i_3_n_0 ,\axi_dma.fifo_count[13]_i_4_n_0 ,\axi_dma.fifo_count[13]_i_5_n_0 ,\axi_dma.fifo_count[13]_i_6_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[1] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[1]),
+        .Q(fifo_count[1]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[2] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[2]),
+        .Q(fifo_count[2]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[3] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[3]),
+        .Q(fifo_count[3]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[4] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[4]),
+        .Q(fifo_count[4]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[5] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[5]),
+        .Q(fifo_count[5]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[6] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[6]),
+        .Q(fifo_count[6]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[7] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[7]),
+        .Q(fifo_count[7]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[8] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[8]),
+        .Q(fifo_count[8]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
+  CARRY8 \axi_dma.fifo_count_reg[8]_i_1 
+       (.CI(fifo_count[0]),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.fifo_count_reg[8]_i_1_n_0 ,\axi_dma.fifo_count_reg[8]_i_1_n_1 ,\axi_dma.fifo_count_reg[8]_i_1_n_2 ,\axi_dma.fifo_count_reg[8]_i_1_n_3 ,\axi_dma.fifo_count_reg[8]_i_1_n_4 ,\axi_dma.fifo_count_reg[8]_i_1_n_5 ,\axi_dma.fifo_count_reg[8]_i_1_n_6 ,\axi_dma.fifo_count_reg[8]_i_1_n_7 }),
+        .DI({fifo_count[7:1],\axi_dma.fifo_count[8]_i_2_n_0 }),
+        .O(fifo_count__0[8:1]),
+        .S({\axi_dma.fifo_count[8]_i_3_n_0 ,\axi_dma.fifo_count[8]_i_4_n_0 ,\axi_dma.fifo_count[8]_i_5_n_0 ,\axi_dma.fifo_count[8]_i_6_n_0 ,\axi_dma.fifo_count[8]_i_7_n_0 ,\axi_dma.fifo_count[8]_i_8_n_0 ,\axi_dma.fifo_count[8]_i_9_n_0 ,fifo_count[1]}));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.fifo_count_reg[9] 
+       (.C(clk),
+        .CE(fifo_wr_en),
+        .D(fifo_count__0[9]),
+        .Q(fifo_count[9]),
+        .R(reset));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_dma.fifo_has_space_i_1 
+       (.I0(fifo_space[12]),
+        .I1(fifo_space[13]),
+        .I2(fifo_space[10]),
+        .I3(fifo_space[11]),
+        .I4(fifo_space[9]),
+        .I5(fifo_space[8]),
+        .O(\axi_dma.fifo_has_space_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_10 
+       (.I0(mig_size[2]),
+        .I1(fifo_space[2]),
+        .O(\axi_dma.fifo_has_space_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_11 
+       (.I0(mig_size[1]),
+        .I1(fifo_space[1]),
+        .O(\axi_dma.fifo_has_space_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_12 
+       (.I0(mig_size[0]),
+        .I1(fifo_space[0]),
+        .O(\axi_dma.fifo_has_space_i_12_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_has_space_i_4 
+       (.I0(fifo_space[8]),
+        .O(\axi_dma.fifo_has_space_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_5 
+       (.I0(mig_size[7]),
+        .I1(fifo_space[7]),
+        .O(\axi_dma.fifo_has_space_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_6 
+       (.I0(mig_size[6]),
+        .I1(fifo_space[6]),
+        .O(\axi_dma.fifo_has_space_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_7 
+       (.I0(mig_size[5]),
+        .I1(fifo_space[5]),
+        .O(\axi_dma.fifo_has_space_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_8 
+       (.I0(mig_size[4]),
+        .I1(fifo_space[4]),
+        .O(\axi_dma.fifo_has_space_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.fifo_has_space_i_9 
+       (.I0(mig_size[3]),
+        .I1(fifo_space[3]),
+        .O(\axi_dma.fifo_has_space_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDSE \axi_dma.fifo_has_space_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_1_in__0),
+        .Q(fifo_has_space),
+        .S(\axi_dma.fifo_has_space_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.fifo_has_space_reg_i_2 
+       (.CI(\axi_dma.fifo_has_space_reg_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO(\NLW_axi_dma.fifo_has_space_reg_i_2_CO_UNCONNECTED [7:0]),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_axi_dma.fifo_has_space_reg_i_2_O_UNCONNECTED [7:1],p_1_in__0}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.fifo_has_space_i_4_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.fifo_has_space_reg_i_3 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.fifo_has_space_reg_i_3_n_0 ,\axi_dma.fifo_has_space_reg_i_3_n_1 ,\axi_dma.fifo_has_space_reg_i_3_n_2 ,\axi_dma.fifo_has_space_reg_i_3_n_3 ,\axi_dma.fifo_has_space_reg_i_3_n_4 ,\axi_dma.fifo_has_space_reg_i_3_n_5 ,\axi_dma.fifo_has_space_reg_i_3_n_6 ,\axi_dma.fifo_has_space_reg_i_3_n_7 }),
+        .DI(mig_size),
+        .O(\NLW_axi_dma.fifo_has_space_reg_i_3_O_UNCONNECTED [7:0]),
+        .S({\axi_dma.fifo_has_space_i_5_n_0 ,\axi_dma.fifo_has_space_i_6_n_0 ,\axi_dma.fifo_has_space_i_7_n_0 ,\axi_dma.fifo_has_space_i_8_n_0 ,\axi_dma.fifo_has_space_i_9_n_0 ,\axi_dma.fifo_has_space_i_10_n_0 ,\axi_dma.fifo_has_space_i_11_n_0 ,\axi_dma.fifo_has_space_i_12_n_0 }));
+  FDRE \axi_dma.fifo_in_data_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[0]),
+        .Q(fifo_in_data[0]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[100] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[100]),
+        .Q(fifo_in_data[100]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[101] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[101]),
+        .Q(fifo_in_data[101]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[102] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[102]),
+        .Q(fifo_in_data[102]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[103] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[103]),
+        .Q(fifo_in_data[103]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[104] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[104]),
+        .Q(fifo_in_data[104]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[105] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[105]),
+        .Q(fifo_in_data[105]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[106] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[106]),
+        .Q(fifo_in_data[106]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[107] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[107]),
+        .Q(fifo_in_data[107]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[108] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[108]),
+        .Q(fifo_in_data[108]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[109] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[109]),
+        .Q(fifo_in_data[109]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[10]),
+        .Q(fifo_in_data[10]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[110] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[110]),
+        .Q(fifo_in_data[110]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[111] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[111]),
+        .Q(fifo_in_data[111]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[112] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[112]),
+        .Q(fifo_in_data[112]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[113] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[113]),
+        .Q(fifo_in_data[113]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[114] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[114]),
+        .Q(fifo_in_data[114]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[115] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[115]),
+        .Q(fifo_in_data[115]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[116] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[116]),
+        .Q(fifo_in_data[116]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[117] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[117]),
+        .Q(fifo_in_data[117]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[118] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[118]),
+        .Q(fifo_in_data[118]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[119] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[119]),
+        .Q(fifo_in_data[119]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[11]),
+        .Q(fifo_in_data[11]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[120] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[120]),
+        .Q(fifo_in_data[120]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[121] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[121]),
+        .Q(fifo_in_data[121]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[122] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[122]),
+        .Q(fifo_in_data[122]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[123] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[123]),
+        .Q(fifo_in_data[123]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[124] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[124]),
+        .Q(fifo_in_data[124]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[125] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[125]),
+        .Q(fifo_in_data[125]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[126] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[126]),
+        .Q(fifo_in_data[126]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[127] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[127]),
+        .Q(fifo_in_data[127]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[128] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[128]),
+        .Q(fifo_in_data[128]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[129] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[129]),
+        .Q(fifo_in_data[129]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[12]),
+        .Q(fifo_in_data[12]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[130] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[130]),
+        .Q(fifo_in_data[130]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[131] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[131]),
+        .Q(fifo_in_data[131]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[132] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[132]),
+        .Q(fifo_in_data[132]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[133] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[133]),
+        .Q(fifo_in_data[133]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[134] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[134]),
+        .Q(fifo_in_data[134]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[135] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[135]),
+        .Q(fifo_in_data[135]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[136] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[136]),
+        .Q(fifo_in_data[136]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[137] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[137]),
+        .Q(fifo_in_data[137]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[138] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[138]),
+        .Q(fifo_in_data[138]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[139] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[139]),
+        .Q(fifo_in_data[139]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[13]),
+        .Q(fifo_in_data[13]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[140] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[140]),
+        .Q(fifo_in_data[140]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[141] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[141]),
+        .Q(fifo_in_data[141]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[142] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[142]),
+        .Q(fifo_in_data[142]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[143] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[143]),
+        .Q(fifo_in_data[143]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[144] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[144]),
+        .Q(fifo_in_data[144]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[145] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[145]),
+        .Q(fifo_in_data[145]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[146] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[146]),
+        .Q(fifo_in_data[146]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[147] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[147]),
+        .Q(fifo_in_data[147]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[148] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[148]),
+        .Q(fifo_in_data[148]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[149] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[149]),
+        .Q(fifo_in_data[149]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[14]),
+        .Q(fifo_in_data[14]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[150] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[150]),
+        .Q(fifo_in_data[150]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[151] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[151]),
+        .Q(fifo_in_data[151]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[152] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[152]),
+        .Q(fifo_in_data[152]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[153] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[153]),
+        .Q(fifo_in_data[153]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[154] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[154]),
+        .Q(fifo_in_data[154]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[155] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[155]),
+        .Q(fifo_in_data[155]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[156] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[156]),
+        .Q(fifo_in_data[156]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[157] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[157]),
+        .Q(fifo_in_data[157]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[158] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[158]),
+        .Q(fifo_in_data[158]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[159] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[159]),
+        .Q(fifo_in_data[159]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[15]),
+        .Q(fifo_in_data[15]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[160] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[160]),
+        .Q(fifo_in_data[160]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[161] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[161]),
+        .Q(fifo_in_data[161]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[162] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[162]),
+        .Q(fifo_in_data[162]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[163] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[163]),
+        .Q(fifo_in_data[163]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[164] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[164]),
+        .Q(fifo_in_data[164]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[165] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[165]),
+        .Q(fifo_in_data[165]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[166] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[166]),
+        .Q(fifo_in_data[166]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[167] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[167]),
+        .Q(fifo_in_data[167]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[168] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[168]),
+        .Q(fifo_in_data[168]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[169] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[169]),
+        .Q(fifo_in_data[169]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[16] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[16]),
+        .Q(fifo_in_data[16]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[170] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[170]),
+        .Q(fifo_in_data[170]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[171] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[171]),
+        .Q(fifo_in_data[171]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[172] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[172]),
+        .Q(fifo_in_data[172]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[173] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[173]),
+        .Q(fifo_in_data[173]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[174] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[174]),
+        .Q(fifo_in_data[174]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[175] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[175]),
+        .Q(fifo_in_data[175]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[176] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[176]),
+        .Q(fifo_in_data[176]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[177] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[177]),
+        .Q(fifo_in_data[177]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[178] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[178]),
+        .Q(fifo_in_data[178]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[179] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[179]),
+        .Q(fifo_in_data[179]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[17] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[17]),
+        .Q(fifo_in_data[17]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[180] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[180]),
+        .Q(fifo_in_data[180]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[181] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[181]),
+        .Q(fifo_in_data[181]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[182] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[182]),
+        .Q(fifo_in_data[182]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[183] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[183]),
+        .Q(fifo_in_data[183]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[184] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[184]),
+        .Q(fifo_in_data[184]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[185] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[185]),
+        .Q(fifo_in_data[185]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[186] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[186]),
+        .Q(fifo_in_data[186]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[187] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[187]),
+        .Q(fifo_in_data[187]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[188] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[188]),
+        .Q(fifo_in_data[188]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[189] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[189]),
+        .Q(fifo_in_data[189]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[18] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[18]),
+        .Q(fifo_in_data[18]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[190] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[190]),
+        .Q(fifo_in_data[190]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[191] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[191]),
+        .Q(fifo_in_data[191]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[192] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[192]),
+        .Q(fifo_in_data[192]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[193] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[193]),
+        .Q(fifo_in_data[193]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[194] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[194]),
+        .Q(fifo_in_data[194]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[195] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[195]),
+        .Q(fifo_in_data[195]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[196] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[196]),
+        .Q(fifo_in_data[196]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[197] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[197]),
+        .Q(fifo_in_data[197]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[198] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[198]),
+        .Q(fifo_in_data[198]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[199] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[199]),
+        .Q(fifo_in_data[199]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[19] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[19]),
+        .Q(fifo_in_data[19]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[1]),
+        .Q(fifo_in_data[1]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[200] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[200]),
+        .Q(fifo_in_data[200]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[201] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[201]),
+        .Q(fifo_in_data[201]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[202] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[202]),
+        .Q(fifo_in_data[202]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[203] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[203]),
+        .Q(fifo_in_data[203]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[204] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[204]),
+        .Q(fifo_in_data[204]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[205] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[205]),
+        .Q(fifo_in_data[205]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[206] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[206]),
+        .Q(fifo_in_data[206]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[207] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[207]),
+        .Q(fifo_in_data[207]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[208] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[208]),
+        .Q(fifo_in_data[208]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[209] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[209]),
+        .Q(fifo_in_data[209]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[20] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[20]),
+        .Q(fifo_in_data[20]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[210] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[210]),
+        .Q(fifo_in_data[210]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[211] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[211]),
+        .Q(fifo_in_data[211]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[212] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[212]),
+        .Q(fifo_in_data[212]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[213] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[213]),
+        .Q(fifo_in_data[213]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[214] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[214]),
+        .Q(fifo_in_data[214]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[215] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[215]),
+        .Q(fifo_in_data[215]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[216] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[216]),
+        .Q(fifo_in_data[216]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[217] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[217]),
+        .Q(fifo_in_data[217]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[218] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[218]),
+        .Q(fifo_in_data[218]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[219] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[219]),
+        .Q(fifo_in_data[219]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[21] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[21]),
+        .Q(fifo_in_data[21]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[220] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[220]),
+        .Q(fifo_in_data[220]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[221] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[221]),
+        .Q(fifo_in_data[221]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[222] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[222]),
+        .Q(fifo_in_data[222]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[223] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[223]),
+        .Q(fifo_in_data[223]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[224] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[224]),
+        .Q(fifo_in_data[224]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[225] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[225]),
+        .Q(fifo_in_data[225]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[226] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[226]),
+        .Q(fifo_in_data[226]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[227] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[227]),
+        .Q(fifo_in_data[227]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[228] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[228]),
+        .Q(fifo_in_data[228]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[229] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[229]),
+        .Q(fifo_in_data[229]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[22] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[22]),
+        .Q(fifo_in_data[22]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[230] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[230]),
+        .Q(fifo_in_data[230]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[231] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[231]),
+        .Q(fifo_in_data[231]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[232] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[232]),
+        .Q(fifo_in_data[232]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[233] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[233]),
+        .Q(fifo_in_data[233]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[234] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[234]),
+        .Q(fifo_in_data[234]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[235] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[235]),
+        .Q(fifo_in_data[235]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[236] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[236]),
+        .Q(fifo_in_data[236]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[237] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[237]),
+        .Q(fifo_in_data[237]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[238] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[238]),
+        .Q(fifo_in_data[238]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[239] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[239]),
+        .Q(fifo_in_data[239]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[23] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[23]),
+        .Q(fifo_in_data[23]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[240] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[240]),
+        .Q(fifo_in_data[240]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[241] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[241]),
+        .Q(fifo_in_data[241]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[242] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[242]),
+        .Q(fifo_in_data[242]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[243] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[243]),
+        .Q(fifo_in_data[243]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[244] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[244]),
+        .Q(fifo_in_data[244]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[245] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[245]),
+        .Q(fifo_in_data[245]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[246] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[246]),
+        .Q(fifo_in_data[246]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[247] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[247]),
+        .Q(fifo_in_data[247]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[248] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[248]),
+        .Q(fifo_in_data[248]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[249] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[249]),
+        .Q(fifo_in_data[249]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[24] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[24]),
+        .Q(fifo_in_data[24]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[250] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[250]),
+        .Q(fifo_in_data[250]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[251] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[251]),
+        .Q(fifo_in_data[251]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[252] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[252]),
+        .Q(fifo_in_data[252]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[253] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[253]),
+        .Q(fifo_in_data[253]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[254] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[254]),
+        .Q(fifo_in_data[254]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[255] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[255]),
+        .Q(fifo_in_data[255]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[25] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[25]),
+        .Q(fifo_in_data[25]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[26] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[26]),
+        .Q(fifo_in_data[26]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[27] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[27]),
+        .Q(fifo_in_data[27]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[28] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[28]),
+        .Q(fifo_in_data[28]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[29] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[29]),
+        .Q(fifo_in_data[29]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[2]),
+        .Q(fifo_in_data[2]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[30] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[30]),
+        .Q(fifo_in_data[30]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[31] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[31]),
+        .Q(fifo_in_data[31]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[32] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[32]),
+        .Q(fifo_in_data[32]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[33] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[33]),
+        .Q(fifo_in_data[33]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[34] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[34]),
+        .Q(fifo_in_data[34]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[35] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[35]),
+        .Q(fifo_in_data[35]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[36] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[36]),
+        .Q(fifo_in_data[36]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[37] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[37]),
+        .Q(fifo_in_data[37]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[38] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[38]),
+        .Q(fifo_in_data[38]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[39] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[39]),
+        .Q(fifo_in_data[39]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[3]),
+        .Q(fifo_in_data[3]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[40] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[40]),
+        .Q(fifo_in_data[40]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[41] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[41]),
+        .Q(fifo_in_data[41]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[42] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[42]),
+        .Q(fifo_in_data[42]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[43] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[43]),
+        .Q(fifo_in_data[43]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[44] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[44]),
+        .Q(fifo_in_data[44]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[45] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[45]),
+        .Q(fifo_in_data[45]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[46] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[46]),
+        .Q(fifo_in_data[46]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[47] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[47]),
+        .Q(fifo_in_data[47]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[48] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[48]),
+        .Q(fifo_in_data[48]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[49] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[49]),
+        .Q(fifo_in_data[49]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[4]),
+        .Q(fifo_in_data[4]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[50] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[50]),
+        .Q(fifo_in_data[50]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[51] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[51]),
+        .Q(fifo_in_data[51]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[52] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[52]),
+        .Q(fifo_in_data[52]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[53] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[53]),
+        .Q(fifo_in_data[53]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[54] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[54]),
+        .Q(fifo_in_data[54]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[55] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[55]),
+        .Q(fifo_in_data[55]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[56] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[56]),
+        .Q(fifo_in_data[56]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[57] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[57]),
+        .Q(fifo_in_data[57]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[58] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[58]),
+        .Q(fifo_in_data[58]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[59] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[59]),
+        .Q(fifo_in_data[59]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[5]),
+        .Q(fifo_in_data[5]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[60] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[60]),
+        .Q(fifo_in_data[60]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[61] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[61]),
+        .Q(fifo_in_data[61]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[62] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[62]),
+        .Q(fifo_in_data[62]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[63] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[63]),
+        .Q(fifo_in_data[63]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[64] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[64]),
+        .Q(fifo_in_data[64]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[65] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[65]),
+        .Q(fifo_in_data[65]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[66] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[66]),
+        .Q(fifo_in_data[66]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[67] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[67]),
+        .Q(fifo_in_data[67]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[68] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[68]),
+        .Q(fifo_in_data[68]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[69] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[69]),
+        .Q(fifo_in_data[69]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[6]),
+        .Q(fifo_in_data[6]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[70] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[70]),
+        .Q(fifo_in_data[70]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[71] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[71]),
+        .Q(fifo_in_data[71]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[72] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[72]),
+        .Q(fifo_in_data[72]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[73] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[73]),
+        .Q(fifo_in_data[73]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[74] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[74]),
+        .Q(fifo_in_data[74]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[75] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[75]),
+        .Q(fifo_in_data[75]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[76] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[76]),
+        .Q(fifo_in_data[76]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[77] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[77]),
+        .Q(fifo_in_data[77]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[78] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[78]),
+        .Q(fifo_in_data[78]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[79] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[79]),
+        .Q(fifo_in_data[79]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[7]),
+        .Q(fifo_in_data[7]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[80] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[80]),
+        .Q(fifo_in_data[80]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[81] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[81]),
+        .Q(fifo_in_data[81]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[82] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[82]),
+        .Q(fifo_in_data[82]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[83] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[83]),
+        .Q(fifo_in_data[83]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[84] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[84]),
+        .Q(fifo_in_data[84]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[85] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[85]),
+        .Q(fifo_in_data[85]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[86] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[86]),
+        .Q(fifo_in_data[86]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[87] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[87]),
+        .Q(fifo_in_data[87]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[88] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[88]),
+        .Q(fifo_in_data[88]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[89] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[89]),
+        .Q(fifo_in_data[89]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[8]),
+        .Q(fifo_in_data[8]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[90] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[90]),
+        .Q(fifo_in_data[90]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[91] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[91]),
+        .Q(fifo_in_data[91]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[92] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[92]),
+        .Q(fifo_in_data[92]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[93] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[93]),
+        .Q(fifo_in_data[93]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[94] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[94]),
+        .Q(fifo_in_data[94]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[95] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[95]),
+        .Q(fifo_in_data[95]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[96] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[96]),
+        .Q(fifo_in_data[96]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[97] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[97]),
+        .Q(fifo_in_data[97]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[98] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[98]),
+        .Q(fifo_in_data[98]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[99] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[99]),
+        .Q(fifo_in_data[99]),
+        .R(1'b0));
+  FDRE \axi_dma.fifo_in_data_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(M_AXI_TDATA_in[9]),
+        .Q(fifo_in_data[9]),
+        .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[10]_i_1 
+       (.I0(fifo_count[10]),
+        .O(\axi_dma.fifo_space[10]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[11]_i_1 
+       (.I0(fifo_count[11]),
+        .O(\axi_dma.fifo_space[11]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[12]_i_1 
+       (.I0(fifo_count[12]),
+        .O(\axi_dma.fifo_space[12]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[13]_i_1 
+       (.I0(fifo_count[13]),
+        .O(\axi_dma.fifo_space[13]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[1]_i_1 
+       (.I0(fifo_count[1]),
+        .O(\axi_dma.fifo_space[1]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[2]_i_1 
+       (.I0(fifo_count[2]),
+        .O(\axi_dma.fifo_space[2]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[3]_i_1 
+       (.I0(fifo_count[3]),
+        .O(\axi_dma.fifo_space[3]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[4]_i_1 
+       (.I0(fifo_count[4]),
+        .O(\axi_dma.fifo_space[4]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[5]_i_1 
+       (.I0(fifo_count[5]),
+        .O(\axi_dma.fifo_space[5]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[6]_i_1 
+       (.I0(fifo_count[6]),
+        .O(\axi_dma.fifo_space[6]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[7]_i_1 
+       (.I0(fifo_count[7]),
+        .O(\axi_dma.fifo_space[7]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[8]_i_1 
+       (.I0(fifo_count[8]),
+        .O(\axi_dma.fifo_space[8]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.fifo_space[9]_i_1 
+       (.I0(fifo_count[9]),
+        .O(\axi_dma.fifo_space[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_count[0]_i_1_n_0 ),
+        .Q(fifo_space[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[10]_i_1_n_0 ),
+        .Q(fifo_space[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[11]_i_1_n_0 ),
+        .Q(fifo_space[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[12]_i_1_n_0 ),
+        .Q(fifo_space[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[13]_i_1_n_0 ),
+        .Q(fifo_space[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[1]_i_1_n_0 ),
+        .Q(fifo_space[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[2]_i_1_n_0 ),
+        .Q(fifo_space[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[3]_i_1_n_0 ),
+        .Q(fifo_space[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[4]_i_1_n_0 ),
+        .Q(fifo_space[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[5]_i_1_n_0 ),
+        .Q(fifo_space[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[6]_i_1_n_0 ),
+        .Q(fifo_space[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[7]_i_1_n_0 ),
+        .Q(fifo_space[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[8]_i_1_n_0 ),
+        .Q(fifo_space[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.fifo_space_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.fifo_space[9]_i_1_n_0 ),
+        .Q(fifo_space[9]),
+        .R(1'b0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \axi_dma.fifo_wr_en_i_1 
+       (.I0(M_AXI_TVALID_in),
+        .I1(M_AXI_TREADY_in),
+        .O(p_7_in));
+  FDRE \axi_dma.fifo_wr_en_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(p_7_in),
+        .Q(fifo_wr_en),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[0]_i_1 
+       (.I0(mig_adr__0[0]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[0]),
+        .O(\axi_dma.mig_adr[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[10]_i_1 
+       (.I0(mig_adr__0[10]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[10]),
+        .O(\axi_dma.mig_adr[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[11]_i_1 
+       (.I0(mig_adr__0[11]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[11]),
+        .O(\axi_dma.mig_adr[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[12]_i_1 
+       (.I0(mig_adr__0[12]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[12]),
+        .O(\axi_dma.mig_adr[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[13]_i_1 
+       (.I0(mig_adr__0[13]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[13]),
+        .O(\axi_dma.mig_adr[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[14]_i_1 
+       (.I0(mig_adr__0[14]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[14]),
+        .O(\axi_dma.mig_adr[14]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[15]_i_1 
+       (.I0(mig_adr__0[15]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[15]),
+        .O(\axi_dma.mig_adr[15]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[16]_i_1 
+       (.I0(mig_adr__0[16]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[16]),
+        .O(\axi_dma.mig_adr[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[17]_i_1 
+       (.I0(mig_adr__0[17]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[17]),
+        .O(\axi_dma.mig_adr[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[18]_i_1 
+       (.I0(mig_adr__0[18]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[18]),
+        .O(\axi_dma.mig_adr[18]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[19]_i_1 
+       (.I0(mig_adr__0[19]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[19]),
+        .O(\axi_dma.mig_adr[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[1]_i_1 
+       (.I0(mig_adr__0[1]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[1]),
+        .O(\axi_dma.mig_adr[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[20]_i_1 
+       (.I0(mig_adr__0[20]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[20]),
+        .O(\axi_dma.mig_adr[20]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[21]_i_1 
+       (.I0(mig_adr__0[21]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[21]),
+        .O(\axi_dma.mig_adr[21]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[22]_i_1 
+       (.I0(mig_adr__0[22]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[22]),
+        .O(\axi_dma.mig_adr[22]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[23]_i_1 
+       (.I0(mig_adr__0[23]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[23]),
+        .O(\axi_dma.mig_adr[23]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[24]_i_1 
+       (.I0(mig_adr__0[24]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[24]),
+        .O(\axi_dma.mig_adr[24]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[25]_i_1 
+       (.I0(mig_adr__0[25]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[25]),
+        .O(\axi_dma.mig_adr[25]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h34)) 
+    \axi_dma.mig_adr[26]_i_1 
+       (.I0(mig_cmd_state[1]),
+        .I1(mig_cmd_state[2]),
+        .I2(mig_cmd_state[0]),
+        .O(\axi_dma.mig_adr[26]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[26]_i_2 
+       (.I0(mig_adr__0[26]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[26]),
+        .O(\axi_dma.mig_adr[26]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[2]_i_1 
+       (.I0(mig_adr__0[2]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[2]),
+        .O(\axi_dma.mig_adr[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[3]_i_1 
+       (.I0(mig_adr__0[3]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[3]),
+        .O(\axi_dma.mig_adr[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[4]_i_1 
+       (.I0(mig_adr__0[4]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[4]),
+        .O(\axi_dma.mig_adr[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[5]_i_1 
+       (.I0(mig_adr__0[5]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[5]),
+        .O(\axi_dma.mig_adr[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[6]_i_1 
+       (.I0(mig_adr__0[6]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[6]),
+        .O(\axi_dma.mig_adr[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[7]_i_1 
+       (.I0(mig_adr__0[7]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[7]),
+        .O(\axi_dma.mig_adr[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_10 
+       (.I0(mig_adr[1]),
+        .I1(mig_blocks[1]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_10_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_11 
+       (.I0(mig_adr[0]),
+        .I1(mig_blocks[0]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_11_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \axi_dma.mig_adr[7]_i_12 
+       (.I0(mig_adr[0]),
+        .I1(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_12_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_4 
+       (.I0(mig_adr[7]),
+        .I1(mig_blocks[7]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_5 
+       (.I0(mig_adr[6]),
+        .I1(mig_blocks[6]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_6 
+       (.I0(mig_adr[5]),
+        .I1(mig_blocks[5]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_7 
+       (.I0(mig_adr[4]),
+        .I1(mig_blocks[4]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_8 
+       (.I0(mig_adr[3]),
+        .I1(mig_blocks[3]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'h6A)) 
+    \axi_dma.mig_adr[7]_i_9 
+       (.I0(mig_adr[2]),
+        .I1(mig_blocks[2]),
+        .I2(mig_cmd_check),
+        .O(\axi_dma.mig_adr[7]_i_9_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[8]_i_1 
+       (.I0(mig_adr__0[8]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[8]),
+        .O(\axi_dma.mig_adr[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \axi_dma.mig_adr[9]_i_1 
+       (.I0(mig_adr__0[9]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_cmd_state[2]),
+        .I3(mig_adr0_in[9]),
+        .O(\axi_dma.mig_adr[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[0] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[0]_i_1_n_0 ),
+        .Q(mig_adr[0]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[10] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[10]_i_1_n_0 ),
+        .Q(mig_adr[10]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[11] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[11]_i_1_n_0 ),
+        .Q(mig_adr[11]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[12] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[12]_i_1_n_0 ),
+        .Q(mig_adr[12]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[13] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[13]_i_1_n_0 ),
+        .Q(mig_adr[13]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[14] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[14]_i_1_n_0 ),
+        .Q(mig_adr[14]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[15] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[15]_i_1_n_0 ),
+        .Q(mig_adr[15]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[15]_i_2 
+       (.CI(\axi_dma.mig_adr_reg[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[15]_i_2_n_0 ,\axi_dma.mig_adr_reg[15]_i_2_n_1 ,\axi_dma.mig_adr_reg[15]_i_2_n_2 ,\axi_dma.mig_adr_reg[15]_i_2_n_3 ,\axi_dma.mig_adr_reg[15]_i_2_n_4 ,\axi_dma.mig_adr_reg[15]_i_2_n_5 ,\axi_dma.mig_adr_reg[15]_i_2_n_6 ,\axi_dma.mig_adr_reg[15]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(mig_adr__0[15:8]),
+        .S(mig_adr[15:8]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[15]_i_3 
+       (.CI(\axi_dma.mig_adr_reg[7]_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[15]_i_3_n_0 ,\axi_dma.mig_adr_reg[15]_i_3_n_1 ,\axi_dma.mig_adr_reg[15]_i_3_n_2 ,\axi_dma.mig_adr_reg[15]_i_3_n_3 ,\axi_dma.mig_adr_reg[15]_i_3_n_4 ,\axi_dma.mig_adr_reg[15]_i_3_n_5 ,\axi_dma.mig_adr_reg[15]_i_3_n_6 ,\axi_dma.mig_adr_reg[15]_i_3_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(mig_adr0_in[15:8]),
+        .S(mig_adr[15:8]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[16] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[16]_i_1_n_0 ),
+        .Q(mig_adr[16]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[17] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[17]_i_1_n_0 ),
+        .Q(mig_adr[17]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[18] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[18]_i_1_n_0 ),
+        .Q(mig_adr[18]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[19] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[19]_i_1_n_0 ),
+        .Q(mig_adr[19]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[1] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[1]_i_1_n_0 ),
+        .Q(mig_adr[1]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[20] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[20]_i_1_n_0 ),
+        .Q(mig_adr[20]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[21] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[21]_i_1_n_0 ),
+        .Q(mig_adr[21]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[22] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[22]_i_1_n_0 ),
+        .Q(mig_adr[22]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[23] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[23]_i_1_n_0 ),
+        .Q(mig_adr[23]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[23]_i_2 
+       (.CI(\axi_dma.mig_adr_reg[15]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[23]_i_2_n_0 ,\axi_dma.mig_adr_reg[23]_i_2_n_1 ,\axi_dma.mig_adr_reg[23]_i_2_n_2 ,\axi_dma.mig_adr_reg[23]_i_2_n_3 ,\axi_dma.mig_adr_reg[23]_i_2_n_4 ,\axi_dma.mig_adr_reg[23]_i_2_n_5 ,\axi_dma.mig_adr_reg[23]_i_2_n_6 ,\axi_dma.mig_adr_reg[23]_i_2_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(mig_adr__0[23:16]),
+        .S(mig_adr[23:16]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[23]_i_3 
+       (.CI(\axi_dma.mig_adr_reg[15]_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[23]_i_3_n_0 ,\axi_dma.mig_adr_reg[23]_i_3_n_1 ,\axi_dma.mig_adr_reg[23]_i_3_n_2 ,\axi_dma.mig_adr_reg[23]_i_3_n_3 ,\axi_dma.mig_adr_reg[23]_i_3_n_4 ,\axi_dma.mig_adr_reg[23]_i_3_n_5 ,\axi_dma.mig_adr_reg[23]_i_3_n_6 ,\axi_dma.mig_adr_reg[23]_i_3_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(mig_adr0_in[23:16]),
+        .S(mig_adr[23:16]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[24] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[24]_i_1_n_0 ),
+        .Q(mig_adr[24]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[25] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[25]_i_1_n_0 ),
+        .Q(mig_adr[25]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[26] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[26]_i_2_n_0 ),
+        .Q(mig_adr[26]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[26]_i_3 
+       (.CI(\axi_dma.mig_adr_reg[23]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_adr_reg[26]_i_3_CO_UNCONNECTED [7:2],\axi_dma.mig_adr_reg[26]_i_3_n_6 ,\axi_dma.mig_adr_reg[26]_i_3_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_axi_dma.mig_adr_reg[26]_i_3_O_UNCONNECTED [7:3],mig_adr__0[26:24]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,mig_adr[26:24]}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[26]_i_4 
+       (.CI(\axi_dma.mig_adr_reg[23]_i_3_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_adr_reg[26]_i_4_CO_UNCONNECTED [7:2],\axi_dma.mig_adr_reg[26]_i_4_n_6 ,\axi_dma.mig_adr_reg[26]_i_4_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_axi_dma.mig_adr_reg[26]_i_4_O_UNCONNECTED [7:3],mig_adr0_in[26:24]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,mig_adr[26:24]}));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[2] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[2]_i_1_n_0 ),
+        .Q(mig_adr[2]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[3] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[3]_i_1_n_0 ),
+        .Q(mig_adr[3]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[4] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[4]_i_1_n_0 ),
+        .Q(mig_adr[4]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[5] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[5]_i_1_n_0 ),
+        .Q(mig_adr[5]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[6] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[6]_i_1_n_0 ),
+        .Q(mig_adr[6]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[7] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[7]_i_1_n_0 ),
+        .Q(mig_adr[7]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[7]_i_2 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[7]_i_2_n_0 ,\axi_dma.mig_adr_reg[7]_i_2_n_1 ,\axi_dma.mig_adr_reg[7]_i_2_n_2 ,\axi_dma.mig_adr_reg[7]_i_2_n_3 ,\axi_dma.mig_adr_reg[7]_i_2_n_4 ,\axi_dma.mig_adr_reg[7]_i_2_n_5 ,\axi_dma.mig_adr_reg[7]_i_2_n_6 ,\axi_dma.mig_adr_reg[7]_i_2_n_7 }),
+        .DI(mig_adr[7:0]),
+        .O(mig_adr__0[7:0]),
+        .S({\axi_dma.mig_adr[7]_i_4_n_0 ,\axi_dma.mig_adr[7]_i_5_n_0 ,\axi_dma.mig_adr[7]_i_6_n_0 ,\axi_dma.mig_adr[7]_i_7_n_0 ,\axi_dma.mig_adr[7]_i_8_n_0 ,\axi_dma.mig_adr[7]_i_9_n_0 ,\axi_dma.mig_adr[7]_i_10_n_0 ,\axi_dma.mig_adr[7]_i_11_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_adr_reg[7]_i_3 
+       (.CI(1'b0),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_adr_reg[7]_i_3_n_0 ,\axi_dma.mig_adr_reg[7]_i_3_n_1 ,\axi_dma.mig_adr_reg[7]_i_3_n_2 ,\axi_dma.mig_adr_reg[7]_i_3_n_3 ,\axi_dma.mig_adr_reg[7]_i_3_n_4 ,\axi_dma.mig_adr_reg[7]_i_3_n_5 ,\axi_dma.mig_adr_reg[7]_i_3_n_6 ,\axi_dma.mig_adr_reg[7]_i_3_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,mig_adr[0]}),
+        .O(mig_adr0_in[7:0]),
+        .S({mig_adr[7:1],\axi_dma.mig_adr[7]_i_12_n_0 }));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[8] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[8]_i_1_n_0 ),
+        .Q(mig_adr[8]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_adr_reg[9] 
+       (.C(clk),
+        .CE(\axi_dma.mig_adr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_adr[9]_i_1_n_0 ),
+        .Q(mig_adr[9]),
+        .R(reset));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_2 
+       (.I0(mig_wr_ptr[15]),
+        .I1(mig_rd_ptr[15]),
+        .O(\axi_dma.mig_avail[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_3 
+       (.I0(mig_wr_ptr[14]),
+        .I1(mig_rd_ptr[14]),
+        .O(\axi_dma.mig_avail[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_4 
+       (.I0(mig_wr_ptr[13]),
+        .I1(mig_rd_ptr[13]),
+        .O(\axi_dma.mig_avail[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_5 
+       (.I0(mig_wr_ptr[12]),
+        .I1(mig_rd_ptr[12]),
+        .O(\axi_dma.mig_avail[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_6 
+       (.I0(mig_wr_ptr[11]),
+        .I1(mig_rd_ptr[11]),
+        .O(\axi_dma.mig_avail[15]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_7 
+       (.I0(mig_wr_ptr[10]),
+        .I1(mig_rd_ptr[10]),
+        .O(\axi_dma.mig_avail[15]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_8 
+       (.I0(mig_wr_ptr[9]),
+        .I1(mig_rd_ptr[9]),
+        .O(\axi_dma.mig_avail[15]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[15]_i_9 
+       (.I0(mig_wr_ptr[8]),
+        .I1(mig_rd_ptr[8]),
+        .O(\axi_dma.mig_avail[15]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_2 
+       (.I0(mig_wr_ptr[23]),
+        .I1(mig_rd_ptr[23]),
+        .O(\axi_dma.mig_avail[23]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_3 
+       (.I0(mig_wr_ptr[22]),
+        .I1(mig_rd_ptr[22]),
+        .O(\axi_dma.mig_avail[23]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_4 
+       (.I0(mig_wr_ptr[21]),
+        .I1(mig_rd_ptr[21]),
+        .O(\axi_dma.mig_avail[23]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_5 
+       (.I0(mig_wr_ptr[20]),
+        .I1(mig_rd_ptr[20]),
+        .O(\axi_dma.mig_avail[23]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_6 
+       (.I0(mig_wr_ptr[19]),
+        .I1(mig_rd_ptr[19]),
+        .O(\axi_dma.mig_avail[23]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_7 
+       (.I0(mig_wr_ptr[18]),
+        .I1(mig_rd_ptr[18]),
+        .O(\axi_dma.mig_avail[23]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_8 
+       (.I0(mig_wr_ptr[17]),
+        .I1(mig_rd_ptr[17]),
+        .O(\axi_dma.mig_avail[23]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[23]_i_9 
+       (.I0(mig_wr_ptr[16]),
+        .I1(mig_rd_ptr[16]),
+        .O(\axi_dma.mig_avail[23]_i_9_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[26]_i_2 
+       (.I0(mig_wr_ptr[26]),
+        .I1(mig_rd_ptr[26]),
+        .O(\axi_dma.mig_avail[26]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[26]_i_3 
+       (.I0(mig_wr_ptr[25]),
+        .I1(mig_rd_ptr[25]),
+        .O(\axi_dma.mig_avail[26]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[26]_i_4 
+       (.I0(mig_wr_ptr[24]),
+        .I1(mig_rd_ptr[24]),
+        .O(\axi_dma.mig_avail[26]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_2 
+       (.I0(mig_wr_ptr[7]),
+        .I1(mig_rd_ptr[7]),
+        .O(\axi_dma.mig_avail[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_3 
+       (.I0(mig_wr_ptr[6]),
+        .I1(mig_rd_ptr[6]),
+        .O(\axi_dma.mig_avail[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_4 
+       (.I0(mig_wr_ptr[5]),
+        .I1(mig_rd_ptr[5]),
+        .O(\axi_dma.mig_avail[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_5 
+       (.I0(mig_wr_ptr[4]),
+        .I1(mig_rd_ptr[4]),
+        .O(\axi_dma.mig_avail[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_6 
+       (.I0(mig_wr_ptr[3]),
+        .I1(mig_rd_ptr[3]),
+        .O(\axi_dma.mig_avail[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_7 
+       (.I0(mig_wr_ptr[2]),
+        .I1(mig_rd_ptr[2]),
+        .O(\axi_dma.mig_avail[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_8 
+       (.I0(mig_wr_ptr[1]),
+        .I1(mig_rd_ptr[1]),
+        .O(\axi_dma.mig_avail[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h9)) 
+    \axi_dma.mig_avail[7]_i_9 
+       (.I0(mig_wr_ptr[0]),
+        .I1(mig_rd_ptr[0]),
+        .O(\axi_dma.mig_avail[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [0]),
+        .Q(mig_avail[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [10]),
+        .Q(mig_avail[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [11]),
+        .Q(mig_avail[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [12]),
+        .Q(mig_avail[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [13]),
+        .Q(mig_avail[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [14]),
+        .Q(mig_avail[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [15]),
+        .Q(mig_avail[15]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_avail_reg[15]_i_1 
+       (.CI(\axi_dma.mig_avail_reg[7]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_avail_reg[15]_i_1_n_0 ,\axi_dma.mig_avail_reg[15]_i_1_n_1 ,\axi_dma.mig_avail_reg[15]_i_1_n_2 ,\axi_dma.mig_avail_reg[15]_i_1_n_3 ,\axi_dma.mig_avail_reg[15]_i_1_n_4 ,\axi_dma.mig_avail_reg[15]_i_1_n_5 ,\axi_dma.mig_avail_reg[15]_i_1_n_6 ,\axi_dma.mig_avail_reg[15]_i_1_n_7 }),
+        .DI(mig_wr_ptr[15:8]),
+        .O(\axi_dma.mig_avail_reg0 [15:8]),
+        .S({\axi_dma.mig_avail[15]_i_2_n_0 ,\axi_dma.mig_avail[15]_i_3_n_0 ,\axi_dma.mig_avail[15]_i_4_n_0 ,\axi_dma.mig_avail[15]_i_5_n_0 ,\axi_dma.mig_avail[15]_i_6_n_0 ,\axi_dma.mig_avail[15]_i_7_n_0 ,\axi_dma.mig_avail[15]_i_8_n_0 ,\axi_dma.mig_avail[15]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [16]),
+        .Q(mig_avail[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [17]),
+        .Q(mig_avail[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [18]),
+        .Q(mig_avail[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [19]),
+        .Q(mig_avail[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [1]),
+        .Q(mig_avail[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[20] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [20]),
+        .Q(mig_avail[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[21] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [21]),
+        .Q(mig_avail[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[22] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [22]),
+        .Q(mig_avail[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[23] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [23]),
+        .Q(mig_avail[23]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_avail_reg[23]_i_1 
+       (.CI(\axi_dma.mig_avail_reg[15]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_avail_reg[23]_i_1_n_0 ,\axi_dma.mig_avail_reg[23]_i_1_n_1 ,\axi_dma.mig_avail_reg[23]_i_1_n_2 ,\axi_dma.mig_avail_reg[23]_i_1_n_3 ,\axi_dma.mig_avail_reg[23]_i_1_n_4 ,\axi_dma.mig_avail_reg[23]_i_1_n_5 ,\axi_dma.mig_avail_reg[23]_i_1_n_6 ,\axi_dma.mig_avail_reg[23]_i_1_n_7 }),
+        .DI(mig_wr_ptr[23:16]),
+        .O(\axi_dma.mig_avail_reg0 [23:16]),
+        .S({\axi_dma.mig_avail[23]_i_2_n_0 ,\axi_dma.mig_avail[23]_i_3_n_0 ,\axi_dma.mig_avail[23]_i_4_n_0 ,\axi_dma.mig_avail[23]_i_5_n_0 ,\axi_dma.mig_avail[23]_i_6_n_0 ,\axi_dma.mig_avail[23]_i_7_n_0 ,\axi_dma.mig_avail[23]_i_8_n_0 ,\axi_dma.mig_avail[23]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[24] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [24]),
+        .Q(mig_avail[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[25] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [25]),
+        .Q(mig_avail[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[26] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [26]),
+        .Q(mig_avail[26]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_avail_reg[26]_i_1 
+       (.CI(\axi_dma.mig_avail_reg[23]_i_1_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_avail_reg[26]_i_1_CO_UNCONNECTED [7:2],\axi_dma.mig_avail_reg[26]_i_1_n_6 ,\axi_dma.mig_avail_reg[26]_i_1_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,mig_wr_ptr[25:24]}),
+        .O({\NLW_axi_dma.mig_avail_reg[26]_i_1_O_UNCONNECTED [7:3],\axi_dma.mig_avail_reg0 [26:24]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.mig_avail[26]_i_2_n_0 ,\axi_dma.mig_avail[26]_i_3_n_0 ,\axi_dma.mig_avail[26]_i_4_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [2]),
+        .Q(mig_avail[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [3]),
+        .Q(mig_avail[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [4]),
+        .Q(mig_avail[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [5]),
+        .Q(mig_avail[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [6]),
+        .Q(mig_avail[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [7]),
+        .Q(mig_avail[7]),
+        .R(1'b0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_avail_reg[7]_i_1 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_avail_reg[7]_i_1_n_0 ,\axi_dma.mig_avail_reg[7]_i_1_n_1 ,\axi_dma.mig_avail_reg[7]_i_1_n_2 ,\axi_dma.mig_avail_reg[7]_i_1_n_3 ,\axi_dma.mig_avail_reg[7]_i_1_n_4 ,\axi_dma.mig_avail_reg[7]_i_1_n_5 ,\axi_dma.mig_avail_reg[7]_i_1_n_6 ,\axi_dma.mig_avail_reg[7]_i_1_n_7 }),
+        .DI(mig_wr_ptr[7:0]),
+        .O(\axi_dma.mig_avail_reg0 [7:0]),
+        .S({\axi_dma.mig_avail[7]_i_2_n_0 ,\axi_dma.mig_avail[7]_i_3_n_0 ,\axi_dma.mig_avail[7]_i_4_n_0 ,\axi_dma.mig_avail[7]_i_5_n_0 ,\axi_dma.mig_avail[7]_i_6_n_0 ,\axi_dma.mig_avail[7]_i_7_n_0 ,\axi_dma.mig_avail[7]_i_8_n_0 ,\axi_dma.mig_avail[7]_i_9_n_0 }));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [8]),
+        .Q(mig_avail[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_avail_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_avail_reg0 [9]),
+        .Q(mig_avail[9]),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF33FF2020)) 
+    \axi_dma.mig_blocks[0]_i_1 
+       (.I0(\axi_dma.mig_cmd_state[0]_i_4_n_0 ),
+        .I1(mig_cmd_state[1]),
+        .I2(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .I3(fifo_has_space),
+        .I4(mig_blocks[0]),
+        .I5(\axi_dma.mig_blocks[0]_i_2_n_0 ),
+        .O(\axi_dma.mig_blocks[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h6000)) 
+    \axi_dma.mig_blocks[0]_i_2 
+       (.I0(mig_preview),
+        .I1(mig_size[0]),
+        .I2(mig_cmd_state[1]),
+        .I3(fifo_has_space),
+        .O(\axi_dma.mig_blocks[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAEEEAEAAAEEEAEEE)) 
+    \axi_dma.mig_blocks[1]_i_1 
+       (.I0(\axi_dma.mig_blocks[1]_i_2_n_0 ),
+        .I1(mig_blocks[1]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[1]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h6A000000)) 
+    \axi_dma.mig_blocks[1]_i_2 
+       (.I0(mig_size[1]),
+        .I1(mig_size[0]),
+        .I2(mig_preview),
+        .I3(mig_cmd_state[1]),
+        .I4(fifo_has_space),
+        .O(\axi_dma.mig_blocks[1]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAEEEAEAAAEEEAEEE)) 
+    \axi_dma.mig_blocks[2]_i_1 
+       (.I0(\axi_dma.mig_blocks[2]_i_2_n_0 ),
+        .I1(mig_blocks[2]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h6AAA000000000000)) 
+    \axi_dma.mig_blocks[2]_i_2 
+       (.I0(mig_size[2]),
+        .I1(mig_preview),
+        .I2(mig_size[1]),
+        .I3(mig_size[0]),
+        .I4(mig_cmd_state[1]),
+        .I5(fifo_has_space),
+        .O(\axi_dma.mig_blocks[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hACCCAC00ACCCACCC)) 
+    \axi_dma.mig_blocks[3]_i_1 
+       (.I0(mig_blocks__0[3]),
+        .I1(mig_blocks[3]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \axi_dma.mig_blocks[3]_i_2 
+       (.I0(mig_size[1]),
+        .I1(mig_size[0]),
+        .I2(mig_size[2]),
+        .I3(mig_preview),
+        .I4(mig_size[3]),
+        .O(mig_blocks__0[3]));
+  LUT6 #(
+    .INIT(64'hACCCAC00ACCCACCC)) 
+    \axi_dma.mig_blocks[4]_i_1 
+       (.I0(mig_blocks__0[4]),
+        .I1(mig_blocks[4]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
+    \axi_dma.mig_blocks[4]_i_2 
+       (.I0(mig_size[2]),
+        .I1(mig_size[0]),
+        .I2(mig_size[1]),
+        .I3(mig_size[3]),
+        .I4(mig_preview),
+        .I5(mig_size[4]),
+        .O(mig_blocks__0[4]));
+  LUT6 #(
+    .INIT(64'hAEEEAEAAAEEEAEEE)) 
+    \axi_dma.mig_blocks[5]_i_1 
+       (.I0(\axi_dma.mig_blocks[5]_i_2_n_0 ),
+        .I1(mig_blocks[5]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[5]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hA6000000)) 
+    \axi_dma.mig_blocks[5]_i_2 
+       (.I0(mig_size[5]),
+        .I1(mig_preview),
+        .I2(\axi_dma.mig_blocks[5]_i_3_n_0 ),
+        .I3(mig_cmd_state[1]),
+        .I4(fifo_has_space),
+        .O(\axi_dma.mig_blocks[5]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h7FFFFFFF)) 
+    \axi_dma.mig_blocks[5]_i_3 
+       (.I0(mig_size[3]),
+        .I1(mig_size[1]),
+        .I2(mig_size[0]),
+        .I3(mig_size[2]),
+        .I4(mig_size[4]),
+        .O(\axi_dma.mig_blocks[5]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hAEEEAEAAAEEEAEEE)) 
+    \axi_dma.mig_blocks[6]_i_1 
+       (.I0(\axi_dma.mig_blocks[6]_i_2_n_0 ),
+        .I1(mig_blocks[6]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[6]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hA6000000)) 
+    \axi_dma.mig_blocks[6]_i_2 
+       (.I0(mig_size[6]),
+        .I1(mig_preview),
+        .I2(\axi_dma.mig_preview_i_2_n_0 ),
+        .I3(mig_cmd_state[1]),
+        .I4(fifo_has_space),
+        .O(\axi_dma.mig_blocks[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAEEEAEAAAEEEAEEE)) 
+    \axi_dma.mig_blocks[7]_i_1 
+       (.I0(\axi_dma.mig_blocks[7]_i_2_n_0 ),
+        .I1(mig_blocks[7]),
+        .I2(fifo_has_space),
+        .I3(mig_cmd_state[1]),
+        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(\axi_dma.mig_blocks[7]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAA6A000000000000)) 
+    \axi_dma.mig_blocks[7]_i_2 
+       (.I0(mig_size[7]),
+        .I1(mig_preview),
+        .I2(mig_size[6]),
+        .I3(\axi_dma.mig_preview_i_2_n_0 ),
+        .I4(mig_cmd_state[1]),
+        .I5(fifo_has_space),
+        .O(\axi_dma.mig_blocks[7]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    \axi_dma.mig_blocks[7]_i_3 
+       (.I0(\axi_dma.mig_cmd_state[0]_i_7_n_0 ),
+        .I1(\axi_dma.mig_cmd_state[0]_i_11_n_0 ),
+        .I2(\axi_dma.mig_cmd_state[0]_i_10_n_0 ),
+        .I3(\axi_dma.mig_cmd_state[0]_i_9_n_0 ),
+        .I4(\axi_dma.mig_cmd_state[0]_i_8_n_0 ),
+        .O(\axi_dma.mig_blocks[7]_i_3_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[0] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[0]_i_1_n_0 ),
+        .Q(mig_blocks[0]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[1] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[1]_i_1_n_0 ),
+        .Q(mig_blocks[1]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[2] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[2]_i_1_n_0 ),
+        .Q(mig_blocks[2]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[3] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[3]_i_1_n_0 ),
+        .Q(mig_blocks[3]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[4] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[4]_i_1_n_0 ),
+        .Q(mig_blocks[4]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[5] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[5]_i_1_n_0 ),
+        .Q(mig_blocks[5]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[6] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[6]_i_1_n_0 ),
+        .Q(mig_blocks[6]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_blocks_reg[7] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_blocks[7]_i_1_n_0 ),
+        .Q(mig_blocks[7]),
+        .R(reset));
+  FDRE \axi_dma.mig_cmd_check_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(mig_cmd_done),
+        .Q(mig_cmd_check),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hEAAAAAEA00000000)) 
+    \axi_dma.mig_cmd_done_i_1 
+       (.I0(mig_cmd_done),
+        .I1(M_AXI_STS_in_tdata[7]),
+        .I2(\axi_dma.mig_cmd_done_i_2_n_0 ),
+        .I3(M_AXI_STS_in_tdata[3]),
+        .I4(mig_tag[3]),
+        .I5(M_AXI_STS_in_tvalid),
+        .O(\axi_dma.mig_cmd_done_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_dma.mig_cmd_done_i_2 
+       (.I0(mig_tag[0]),
+        .I1(M_AXI_STS_in_tdata[0]),
+        .I2(M_AXI_STS_in_tdata[2]),
+        .I3(mig_tag[2]),
+        .I4(M_AXI_STS_in_tdata[1]),
+        .I5(mig_tag[1]),
+        .O(\axi_dma.mig_cmd_done_i_2_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_cmd_done_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_cmd_done_i_1_n_0 ),
+        .Q(mig_cmd_done),
+        .R(reset));
+  LUT5 #(
+    .INIT(32'hDFFFDF00)) 
+    \axi_dma.mig_cmd_error_i_1 
+       (.I0(mig_cmd_done0),
+        .I1(mig_cmd_error),
+        .I2(M_AXI_STS_in_tdata[7]),
+        .I3(M_AXI_STS_in_tvalid),
+        .I4(mig_cmd_error),
+        .O(\axi_dma.mig_cmd_error_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h90)) 
+    \axi_dma.mig_cmd_error_i_2 
+       (.I0(mig_tag[3]),
+        .I1(M_AXI_STS_in_tdata[3]),
+        .I2(\axi_dma.mig_cmd_done_i_2_n_0 ),
+        .O(mig_cmd_done0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_cmd_error_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_cmd_error_i_1_n_0 ),
+        .Q(mig_cmd_error),
+        .R(reset));
+  LUT6 #(
+    .INIT(64'hEEEEFEEEEEEEEEEE)) 
+    \axi_dma.mig_cmd_state[0]_i_1 
+       (.I0(\axi_dma.mig_cmd_state[0]_i_2_n_0 ),
+        .I1(\axi_dma.mig_cmd_state[0]_i_3_n_0 ),
+        .I2(\axi_dma.mig_cmd_state[0]_i_4_n_0 ),
+        .I3(\axi_dma.mig_cmd_state[0]_i_5_n_0 ),
+        .I4(mig_cmd_state[1]),
+        .I5(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .O(p_0_in__0[0]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_10 
+       (.I0(mig_avail[15]),
+        .I1(mig_avail[16]),
+        .I2(mig_avail[17]),
+        .I3(mig_avail[18]),
+        .I4(mig_avail[19]),
+        .I5(mig_avail[20]),
+        .O(\axi_dma.mig_cmd_state[0]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_11 
+       (.I0(mig_avail[9]),
+        .I1(mig_avail[10]),
+        .I2(mig_avail[11]),
+        .I3(mig_avail[12]),
+        .I4(mig_avail[13]),
+        .I5(mig_avail[14]),
+        .O(\axi_dma.mig_cmd_state[0]_i_11_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_12 
+       (.I0(fifo_space[5]),
+        .I1(fifo_space[4]),
+        .I2(fifo_space[7]),
+        .I3(fifo_space[6]),
+        .O(\axi_dma.mig_cmd_state[0]_i_12_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_cmd_state[0]_i_2 
+       (.I0(mig_cmd_state[0]),
+        .I1(mig_cmd_check),
+        .O(\axi_dma.mig_cmd_state[0]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000040)) 
+    \axi_dma.mig_cmd_state[0]_i_3 
+       (.I0(mig_preview),
+        .I1(fifo_has_space),
+        .I2(mig_cmd_state[1]),
+        .I3(mig_cmd_state[2]),
+        .I4(mig_cmd_state[0]),
+        .O(\axi_dma.mig_cmd_state[0]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_4 
+       (.I0(\axi_dma.mig_cmd_state[0]_i_7_n_0 ),
+        .I1(\axi_dma.mig_cmd_state[0]_i_8_n_0 ),
+        .I2(\axi_dma.mig_cmd_state[0]_i_9_n_0 ),
+        .I3(\axi_dma.mig_cmd_state[0]_i_10_n_0 ),
+        .I4(\axi_dma.mig_cmd_state[0]_i_11_n_0 ),
+        .O(\axi_dma.mig_cmd_state[0]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \axi_dma.mig_cmd_state[0]_i_5 
+       (.I0(mig_cmd_state[0]),
+        .I1(mig_cmd_state[2]),
+        .O(\axi_dma.mig_cmd_state[0]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_6 
+       (.I0(\axi_dma.mig_cmd_state[0]_i_12_n_0 ),
+        .I1(fifo_space[1]),
+        .I2(fifo_space[0]),
+        .I3(fifo_space[3]),
+        .I4(fifo_space[2]),
+        .I5(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_cmd_state[0]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_7 
+       (.I0(mig_avail[0]),
+        .I1(mig_avail[7]),
+        .I2(mig_avail[8]),
+        .I3(mig_avail[2]),
+        .I4(mig_avail[1]),
+        .O(\axi_dma.mig_cmd_state[0]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_8 
+       (.I0(mig_avail[21]),
+        .I1(mig_avail[22]),
+        .I2(mig_avail[23]),
+        .I3(mig_avail[24]),
+        .I4(mig_avail[25]),
+        .I5(mig_avail[26]),
+        .O(\axi_dma.mig_cmd_state[0]_i_8_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \axi_dma.mig_cmd_state[0]_i_9 
+       (.I0(mig_avail[4]),
+        .I1(mig_avail[3]),
+        .I2(mig_avail[6]),
+        .I3(mig_avail[5]),
+        .O(\axi_dma.mig_cmd_state[0]_i_9_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFF0F00F77F000)) 
+    \axi_dma.mig_cmd_state[1]_i_1 
+       (.I0(fifo_has_space),
+        .I1(mig_preview),
+        .I2(mig_cmd_check),
+        .I3(mig_cmd_state[0]),
+        .I4(mig_cmd_state[1]),
+        .I5(mig_cmd_state[2]),
+        .O(p_0_in__0[1]));
+  LUT3 #(
+    .INIT(8'h1F)) 
+    \axi_dma.mig_cmd_state[2]_i_1 
+       (.I0(mig_cmd_state[1]),
+        .I1(mig_cmd_state[0]),
+        .I2(mig_cmd_state[2]),
+        .O(\axi_dma.mig_cmd_state[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000FFFF08000800)) 
+    \axi_dma.mig_cmd_state[2]_i_2 
+       (.I0(mig_preview),
+        .I1(fifo_has_space),
+        .I2(mig_cmd_state[0]),
+        .I3(mig_cmd_state[1]),
+        .I4(mig_cmd_check),
+        .I5(mig_cmd_state[2]),
+        .O(p_0_in__0[2]));
+  (* FSM_ENCODED_STATES = "MIG_ST_IDLE:000,MIG_ST_WAIT_HDR:001,MIG_ST_WAIT_SPACE:010,MIG_ST_WAIT_DATA:011,MIG_ST_WAIT_NEXT:100" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_cmd_state_reg[0] 
+       (.C(clk),
+        .CE(\axi_dma.mig_cmd_state[2]_i_1_n_0 ),
+        .D(p_0_in__0[0]),
+        .Q(mig_cmd_state[0]),
+        .R(reset));
+  (* FSM_ENCODED_STATES = "MIG_ST_IDLE:000,MIG_ST_WAIT_HDR:001,MIG_ST_WAIT_SPACE:010,MIG_ST_WAIT_DATA:011,MIG_ST_WAIT_NEXT:100" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_cmd_state_reg[1] 
+       (.C(clk),
+        .CE(\axi_dma.mig_cmd_state[2]_i_1_n_0 ),
+        .D(p_0_in__0[1]),
+        .Q(mig_cmd_state[1]),
+        .R(reset));
+  (* FSM_ENCODED_STATES = "MIG_ST_IDLE:000,MIG_ST_WAIT_HDR:001,MIG_ST_WAIT_SPACE:010,MIG_ST_WAIT_DATA:011,MIG_ST_WAIT_NEXT:100" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_cmd_state_reg[2] 
+       (.C(clk),
+        .CE(\axi_dma.mig_cmd_state[2]_i_1_n_0 ),
+        .D(p_0_in__0[2]),
+        .Q(mig_cmd_state[2]),
+        .R(reset));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_10 
+       (.I0(mig_size[7]),
+        .I1(fifo_space[7]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[7]),
+        .O(\axi_dma.mig_diff[7]_i_10_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_11 
+       (.I0(mig_size[6]),
+        .I1(fifo_space[6]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[6]),
+        .O(\axi_dma.mig_diff[7]_i_11_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_12 
+       (.I0(mig_size[5]),
+        .I1(fifo_space[5]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[5]),
+        .O(\axi_dma.mig_diff[7]_i_12_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_13 
+       (.I0(mig_size[4]),
+        .I1(fifo_space[4]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[4]),
+        .O(\axi_dma.mig_diff[7]_i_13_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_14 
+       (.I0(mig_size[3]),
+        .I1(fifo_space[3]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[3]),
+        .O(\axi_dma.mig_diff[7]_i_14_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_15 
+       (.I0(mig_size[2]),
+        .I1(fifo_space[2]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[2]),
+        .O(\axi_dma.mig_diff[7]_i_15_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_16 
+       (.I0(mig_size[1]),
+        .I1(fifo_space[1]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[1]),
+        .O(\axi_dma.mig_diff[7]_i_16_n_0 ));
+  LUT4 #(
+    .INIT(16'hF909)) 
+    \axi_dma.mig_diff[7]_i_17 
+       (.I0(mig_size[0]),
+        .I1(fifo_space[0]),
+        .I2(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .I3(mig_diff[0]),
+        .O(\axi_dma.mig_diff[7]_i_17_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
+    \axi_dma.mig_diff[7]_i_2 
+       (.I0(fifo_space[8]),
+        .I1(fifo_space[9]),
+        .I2(fifo_space[11]),
+        .I3(fifo_space[10]),
+        .I4(fifo_space[13]),
+        .I5(fifo_space[12]),
+        .O(\axi_dma.mig_diff[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_3 
+       (.I0(mig_size[6]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_4 
+       (.I0(mig_size[5]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_5 
+       (.I0(mig_size[4]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_6 
+       (.I0(mig_size[3]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_7 
+       (.I0(mig_size[2]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_8 
+       (.I0(mig_size[1]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_8_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \axi_dma.mig_diff[7]_i_9 
+       (.I0(mig_size[0]),
+        .I1(\axi_dma.fifo_has_space_i_1_n_0 ),
+        .O(\axi_dma.mig_diff[7]_i_9_n_0 ));
+  (* KEEP = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[0] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[0]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_15 ),
         .Q(mig_diff[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[1] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[1]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_14 ),
         .Q(mig_diff[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[2] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[2]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_13 ),
         .Q(mig_diff[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[3] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[3]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_12 ),
         .Q(mig_diff[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[4] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[4]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_11 ),
         .Q(mig_diff[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[5] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[5]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_10 ),
         .Q(mig_diff[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[6] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[6]_i_1_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_9 ),
         .Q(mig_diff[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_diff_reg[7] 
        (.C(clk),
-        .CE(\axi_dma.mig_diff[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_diff[7]_i_2_n_0 ),
+        .CE(1'b1),
+        .D(\axi_dma.mig_diff_reg[7]_i_1_n_8 ),
         .Q(mig_diff[7]),
         .R(1'b0));
+  CARRY8 \axi_dma.mig_diff_reg[7]_i_1 
+       (.CI(\axi_dma.mig_diff[7]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_diff_reg[7]_i_1_CO_UNCONNECTED [7],\axi_dma.mig_diff_reg[7]_i_1_n_1 ,\axi_dma.mig_diff_reg[7]_i_1_n_2 ,\axi_dma.mig_diff_reg[7]_i_1_n_3 ,\axi_dma.mig_diff_reg[7]_i_1_n_4 ,\axi_dma.mig_diff_reg[7]_i_1_n_5 ,\axi_dma.mig_diff_reg[7]_i_1_n_6 ,\axi_dma.mig_diff_reg[7]_i_1_n_7 }),
+        .DI({1'b0,\axi_dma.mig_diff[7]_i_3_n_0 ,\axi_dma.mig_diff[7]_i_4_n_0 ,\axi_dma.mig_diff[7]_i_5_n_0 ,\axi_dma.mig_diff[7]_i_6_n_0 ,\axi_dma.mig_diff[7]_i_7_n_0 ,\axi_dma.mig_diff[7]_i_8_n_0 ,\axi_dma.mig_diff[7]_i_9_n_0 }),
+        .O({\axi_dma.mig_diff_reg[7]_i_1_n_8 ,\axi_dma.mig_diff_reg[7]_i_1_n_9 ,\axi_dma.mig_diff_reg[7]_i_1_n_10 ,\axi_dma.mig_diff_reg[7]_i_1_n_11 ,\axi_dma.mig_diff_reg[7]_i_1_n_12 ,\axi_dma.mig_diff_reg[7]_i_1_n_13 ,\axi_dma.mig_diff_reg[7]_i_1_n_14 ,\axi_dma.mig_diff_reg[7]_i_1_n_15 }),
+        .S({\axi_dma.mig_diff[7]_i_10_n_0 ,\axi_dma.mig_diff[7]_i_11_n_0 ,\axi_dma.mig_diff[7]_i_12_n_0 ,\axi_dma.mig_diff[7]_i_13_n_0 ,\axi_dma.mig_diff[7]_i_14_n_0 ,\axi_dma.mig_diff[7]_i_15_n_0 ,\axi_dma.mig_diff[7]_i_16_n_0 ,\axi_dma.mig_diff[7]_i_17_n_0 }));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[0]_i_1 
+       (.I0(mig_env_0[0]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[0]),
+        .O(\axi_dma.mig_env_0[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[10]_i_1 
+       (.I0(mig_env_0[10]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[10]),
+        .O(\axi_dma.mig_env_0[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[11]_i_1 
+       (.I0(mig_env_0[11]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[11]),
+        .O(\axi_dma.mig_env_0[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[12]_i_1 
+       (.I0(mig_env_0[12]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[12]),
+        .O(\axi_dma.mig_env_0[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[13]_i_1 
+       (.I0(mig_env_0[13]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[13]),
+        .O(\axi_dma.mig_env_0[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[14]_i_1 
+       (.I0(mig_env_0[14]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[14]),
+        .O(\axi_dma.mig_env_0[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[15]_i_1 
+       (.I0(mig_env_0[15]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[15]),
+        .O(\axi_dma.mig_env_0[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[1]_i_1 
+       (.I0(mig_env_0[1]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[1]),
+        .O(\axi_dma.mig_env_0[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[2]_i_1 
+       (.I0(mig_env_0[2]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[2]),
+        .O(\axi_dma.mig_env_0[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[3]_i_1 
+       (.I0(mig_env_0[3]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[3]),
+        .O(\axi_dma.mig_env_0[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[4]_i_1 
+       (.I0(mig_env_0[4]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[4]),
+        .O(\axi_dma.mig_env_0[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[5]_i_1 
+       (.I0(mig_env_0[5]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[5]),
+        .O(\axi_dma.mig_env_0[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[6]_i_1 
+       (.I0(mig_env_0[6]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[6]),
+        .O(\axi_dma.mig_env_0[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[7]_i_1 
+       (.I0(mig_env_0[7]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[7]),
+        .O(\axi_dma.mig_env_0[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[8]_i_1 
+       (.I0(mig_env_0[8]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[8]),
+        .O(\axi_dma.mig_env_0[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_0[9]_i_1 
+       (.I0(mig_env_0[9]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[9]),
+        .O(\axi_dma.mig_env_0[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[0]_i_1_n_0 ),
+        .Q(mig_env_0[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[10]_i_1_n_0 ),
+        .Q(mig_env_0[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[11]_i_1_n_0 ),
+        .Q(mig_env_0[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[12]_i_1_n_0 ),
+        .Q(mig_env_0[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[13]_i_1_n_0 ),
+        .Q(mig_env_0[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[14]_i_1_n_0 ),
+        .Q(mig_env_0[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[15]_i_1_n_0 ),
+        .Q(mig_env_0[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[1]_i_1_n_0 ),
+        .Q(mig_env_0[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[2]_i_1_n_0 ),
+        .Q(mig_env_0[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[3]_i_1_n_0 ),
+        .Q(mig_env_0[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[4]_i_1_n_0 ),
+        .Q(mig_env_0[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[5]_i_1_n_0 ),
+        .Q(mig_env_0[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[6]_i_1_n_0 ),
+        .Q(mig_env_0[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[7]_i_1_n_0 ),
+        .Q(mig_env_0[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[8]_i_1_n_0 ),
+        .Q(mig_env_0[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_0_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_0[9]_i_1_n_0 ),
+        .Q(mig_env_0[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[0]_i_1 
+       (.I0(mig_env_1[0]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[32]),
+        .O(\axi_dma.mig_env_1[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[10]_i_1 
+       (.I0(mig_env_1[10]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[42]),
+        .O(\axi_dma.mig_env_1[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[11]_i_1 
+       (.I0(mig_env_1[11]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[43]),
+        .O(\axi_dma.mig_env_1[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[12]_i_1 
+       (.I0(mig_env_1[12]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[44]),
+        .O(\axi_dma.mig_env_1[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[13]_i_1 
+       (.I0(mig_env_1[13]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[45]),
+        .O(\axi_dma.mig_env_1[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[14]_i_1 
+       (.I0(mig_env_1[14]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[46]),
+        .O(\axi_dma.mig_env_1[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[15]_i_1 
+       (.I0(mig_env_1[15]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[47]),
+        .O(\axi_dma.mig_env_1[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[1]_i_1 
+       (.I0(mig_env_1[1]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[33]),
+        .O(\axi_dma.mig_env_1[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[2]_i_1 
+       (.I0(mig_env_1[2]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[34]),
+        .O(\axi_dma.mig_env_1[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[3]_i_1 
+       (.I0(mig_env_1[3]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[35]),
+        .O(\axi_dma.mig_env_1[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[4]_i_1 
+       (.I0(mig_env_1[4]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[36]),
+        .O(\axi_dma.mig_env_1[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[5]_i_1 
+       (.I0(mig_env_1[5]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[37]),
+        .O(\axi_dma.mig_env_1[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[6]_i_1 
+       (.I0(mig_env_1[6]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[38]),
+        .O(\axi_dma.mig_env_1[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[7]_i_1 
+       (.I0(mig_env_1[7]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[39]),
+        .O(\axi_dma.mig_env_1[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[8]_i_1 
+       (.I0(mig_env_1[8]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[40]),
+        .O(\axi_dma.mig_env_1[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_1[9]_i_1 
+       (.I0(mig_env_1[9]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[41]),
+        .O(\axi_dma.mig_env_1[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[0]_i_1_n_0 ),
+        .Q(mig_env_1[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[10]_i_1_n_0 ),
+        .Q(mig_env_1[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[11]_i_1_n_0 ),
+        .Q(mig_env_1[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[12]_i_1_n_0 ),
+        .Q(mig_env_1[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[13]_i_1_n_0 ),
+        .Q(mig_env_1[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[14]_i_1_n_0 ),
+        .Q(mig_env_1[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[15]_i_1_n_0 ),
+        .Q(mig_env_1[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[1]_i_1_n_0 ),
+        .Q(mig_env_1[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[2]_i_1_n_0 ),
+        .Q(mig_env_1[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[3]_i_1_n_0 ),
+        .Q(mig_env_1[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[4]_i_1_n_0 ),
+        .Q(mig_env_1[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[5]_i_1_n_0 ),
+        .Q(mig_env_1[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[6]_i_1_n_0 ),
+        .Q(mig_env_1[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[7]_i_1_n_0 ),
+        .Q(mig_env_1[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[8]_i_1_n_0 ),
+        .Q(mig_env_1[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_1_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_1[9]_i_1_n_0 ),
+        .Q(mig_env_1[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[0]_i_1 
+       (.I0(mig_env_2[0]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[64]),
+        .O(\axi_dma.mig_env_2[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[10]_i_1 
+       (.I0(mig_env_2[10]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[74]),
+        .O(\axi_dma.mig_env_2[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[11]_i_1 
+       (.I0(mig_env_2[11]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[75]),
+        .O(\axi_dma.mig_env_2[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[12]_i_1 
+       (.I0(mig_env_2[12]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[76]),
+        .O(\axi_dma.mig_env_2[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[13]_i_1 
+       (.I0(mig_env_2[13]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[77]),
+        .O(\axi_dma.mig_env_2[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[14]_i_1 
+       (.I0(mig_env_2[14]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[78]),
+        .O(\axi_dma.mig_env_2[14]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \axi_dma.mig_env_2[15]_i_1 
+       (.I0(mig_env_2[15]),
+        .I1(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_2[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[1]_i_1 
+       (.I0(mig_env_2[1]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[65]),
+        .O(\axi_dma.mig_env_2[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[2]_i_1 
+       (.I0(mig_env_2[2]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[66]),
+        .O(\axi_dma.mig_env_2[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[3]_i_1 
+       (.I0(mig_env_2[3]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[67]),
+        .O(\axi_dma.mig_env_2[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[4]_i_1 
+       (.I0(mig_env_2[4]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[68]),
+        .O(\axi_dma.mig_env_2[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[5]_i_1 
+       (.I0(mig_env_2[5]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[69]),
+        .O(\axi_dma.mig_env_2[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[6]_i_1 
+       (.I0(mig_env_2[6]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[70]),
+        .O(\axi_dma.mig_env_2[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[7]_i_1 
+       (.I0(mig_env_2[7]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[71]),
+        .O(\axi_dma.mig_env_2[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[8]_i_1 
+       (.I0(mig_env_2[8]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[72]),
+        .O(\axi_dma.mig_env_2[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_2[9]_i_1 
+       (.I0(mig_env_2[9]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[73]),
+        .O(\axi_dma.mig_env_2[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[0]_i_1_n_0 ),
+        .Q(mig_env_2[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[10]_i_1_n_0 ),
+        .Q(mig_env_2[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[11]_i_1_n_0 ),
+        .Q(mig_env_2[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[12]_i_1_n_0 ),
+        .Q(mig_env_2[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[13]_i_1_n_0 ),
+        .Q(mig_env_2[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[14]_i_1_n_0 ),
+        .Q(mig_env_2[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[15]_i_1_n_0 ),
+        .Q(mig_env_2[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[1]_i_1_n_0 ),
+        .Q(mig_env_2[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[2]_i_1_n_0 ),
+        .Q(mig_env_2[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[3]_i_1_n_0 ),
+        .Q(mig_env_2[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[4]_i_1_n_0 ),
+        .Q(mig_env_2[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[5]_i_1_n_0 ),
+        .Q(mig_env_2[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[6]_i_1_n_0 ),
+        .Q(mig_env_2[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[7]_i_1_n_0 ),
+        .Q(mig_env_2[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[8]_i_1_n_0 ),
+        .Q(mig_env_2[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_2_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_2[9]_i_1_n_0 ),
+        .Q(mig_env_2[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[0]_i_1 
+       (.I0(mig_env_3[0]),
+        .I1(M_AXI_TDATA_in[96]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[10]_i_1 
+       (.I0(mig_env_3[10]),
+        .I1(M_AXI_TDATA_in[106]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[11]_i_1 
+       (.I0(mig_env_3[11]),
+        .I1(M_AXI_TDATA_in[107]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[12]_i_1 
+       (.I0(mig_env_3[12]),
+        .I1(M_AXI_TDATA_in[108]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[13]_i_1 
+       (.I0(mig_env_3[13]),
+        .I1(M_AXI_TDATA_in[109]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[14]_i_1 
+       (.I0(mig_env_3[14]),
+        .I1(M_AXI_TDATA_in[110]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[15]_i_1 
+       (.I0(mig_env_3[15]),
+        .I1(M_AXI_TDATA_in[111]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[1]_i_1 
+       (.I0(mig_env_3[1]),
+        .I1(M_AXI_TDATA_in[97]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[2]_i_1 
+       (.I0(mig_env_3[2]),
+        .I1(M_AXI_TDATA_in[98]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[3]_i_1 
+       (.I0(mig_env_3[3]),
+        .I1(M_AXI_TDATA_in[99]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[4]_i_1 
+       (.I0(mig_env_3[4]),
+        .I1(M_AXI_TDATA_in[100]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[5]_i_1 
+       (.I0(mig_env_3[5]),
+        .I1(M_AXI_TDATA_in[101]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[6]_i_1 
+       (.I0(mig_env_3[6]),
+        .I1(M_AXI_TDATA_in[102]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[7]_i_1 
+       (.I0(mig_env_3[7]),
+        .I1(M_AXI_TDATA_in[103]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[8]_i_1 
+       (.I0(mig_env_3[8]),
+        .I1(M_AXI_TDATA_in[104]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_3[9]_i_1 
+       (.I0(mig_env_3[9]),
+        .I1(M_AXI_TDATA_in[105]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_3[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[0]_i_1_n_0 ),
+        .Q(mig_env_3[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[10]_i_1_n_0 ),
+        .Q(mig_env_3[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[11]_i_1_n_0 ),
+        .Q(mig_env_3[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[12]_i_1_n_0 ),
+        .Q(mig_env_3[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[13]_i_1_n_0 ),
+        .Q(mig_env_3[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[14]_i_1_n_0 ),
+        .Q(mig_env_3[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[15]_i_1_n_0 ),
+        .Q(mig_env_3[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[1]_i_1_n_0 ),
+        .Q(mig_env_3[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[2]_i_1_n_0 ),
+        .Q(mig_env_3[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[3]_i_1_n_0 ),
+        .Q(mig_env_3[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[4]_i_1_n_0 ),
+        .Q(mig_env_3[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[5]_i_1_n_0 ),
+        .Q(mig_env_3[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[6]_i_1_n_0 ),
+        .Q(mig_env_3[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[7]_i_1_n_0 ),
+        .Q(mig_env_3[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[8]_i_1_n_0 ),
+        .Q(mig_env_3[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_3_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_3[9]_i_1_n_0 ),
+        .Q(mig_env_3[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[0]_i_1 
+       (.I0(mig_env_4[0]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[128]),
+        .O(\axi_dma.mig_env_4[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[10]_i_1 
+       (.I0(mig_env_4[10]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[138]),
+        .O(\axi_dma.mig_env_4[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[11]_i_1 
+       (.I0(mig_env_4[11]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[139]),
+        .O(\axi_dma.mig_env_4[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[12]_i_1 
+       (.I0(mig_env_4[12]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[140]),
+        .O(\axi_dma.mig_env_4[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[13]_i_1 
+       (.I0(mig_env_4[13]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[141]),
+        .O(\axi_dma.mig_env_4[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[14]_i_1 
+       (.I0(mig_env_4[14]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[142]),
+        .O(\axi_dma.mig_env_4[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[15]_i_1 
+       (.I0(mig_env_4[15]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[143]),
+        .O(\axi_dma.mig_env_4[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[1]_i_1 
+       (.I0(mig_env_4[1]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[129]),
+        .O(\axi_dma.mig_env_4[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[2]_i_1 
+       (.I0(mig_env_4[2]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[130]),
+        .O(\axi_dma.mig_env_4[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[3]_i_1 
+       (.I0(mig_env_4[3]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[131]),
+        .O(\axi_dma.mig_env_4[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[4]_i_1 
+       (.I0(mig_env_4[4]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[132]),
+        .O(\axi_dma.mig_env_4[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[5]_i_1 
+       (.I0(mig_env_4[5]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[133]),
+        .O(\axi_dma.mig_env_4[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[6]_i_1 
+       (.I0(mig_env_4[6]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[134]),
+        .O(\axi_dma.mig_env_4[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[7]_i_1 
+       (.I0(mig_env_4[7]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[135]),
+        .O(\axi_dma.mig_env_4[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[8]_i_1 
+       (.I0(mig_env_4[8]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[136]),
+        .O(\axi_dma.mig_env_4[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_env_4[9]_i_1 
+       (.I0(mig_env_4[9]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(M_AXI_TDATA_in[137]),
+        .O(\axi_dma.mig_env_4[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[0]_i_1_n_0 ),
+        .Q(mig_env_4[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[10]_i_1_n_0 ),
+        .Q(mig_env_4[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[11]_i_1_n_0 ),
+        .Q(mig_env_4[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[12]_i_1_n_0 ),
+        .Q(mig_env_4[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[13]_i_1_n_0 ),
+        .Q(mig_env_4[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[14]_i_1_n_0 ),
+        .Q(mig_env_4[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[15]_i_1_n_0 ),
+        .Q(mig_env_4[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[1]_i_1_n_0 ),
+        .Q(mig_env_4[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[2]_i_1_n_0 ),
+        .Q(mig_env_4[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[3]_i_1_n_0 ),
+        .Q(mig_env_4[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[4]_i_1_n_0 ),
+        .Q(mig_env_4[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[5]_i_1_n_0 ),
+        .Q(mig_env_4[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[6]_i_1_n_0 ),
+        .Q(mig_env_4[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[7]_i_1_n_0 ),
+        .Q(mig_env_4[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[8]_i_1_n_0 ),
+        .Q(mig_env_4[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_4_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_4[9]_i_1_n_0 ),
+        .Q(mig_env_4[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[0]_i_1 
+       (.I0(mig_env_5[0]),
+        .I1(M_AXI_TDATA_in[160]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[10]_i_1 
+       (.I0(mig_env_5[10]),
+        .I1(M_AXI_TDATA_in[170]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[11]_i_1 
+       (.I0(mig_env_5[11]),
+        .I1(M_AXI_TDATA_in[171]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[12]_i_1 
+       (.I0(mig_env_5[12]),
+        .I1(M_AXI_TDATA_in[172]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[13]_i_1 
+       (.I0(mig_env_5[13]),
+        .I1(M_AXI_TDATA_in[173]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[14]_i_1 
+       (.I0(mig_env_5[14]),
+        .I1(M_AXI_TDATA_in[174]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[15]_i_1 
+       (.I0(mig_env_5[15]),
+        .I1(M_AXI_TDATA_in[175]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[1]_i_1 
+       (.I0(mig_env_5[1]),
+        .I1(M_AXI_TDATA_in[161]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[2]_i_1 
+       (.I0(mig_env_5[2]),
+        .I1(M_AXI_TDATA_in[162]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[3]_i_1 
+       (.I0(mig_env_5[3]),
+        .I1(M_AXI_TDATA_in[163]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[4]_i_1 
+       (.I0(mig_env_5[4]),
+        .I1(M_AXI_TDATA_in[164]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[5]_i_1 
+       (.I0(mig_env_5[5]),
+        .I1(M_AXI_TDATA_in[165]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[6]_i_1 
+       (.I0(mig_env_5[6]),
+        .I1(M_AXI_TDATA_in[166]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[7]_i_1 
+       (.I0(mig_env_5[7]),
+        .I1(M_AXI_TDATA_in[167]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[8]_i_1 
+       (.I0(mig_env_5[8]),
+        .I1(M_AXI_TDATA_in[168]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_5[9]_i_1 
+       (.I0(mig_env_5[9]),
+        .I1(M_AXI_TDATA_in[169]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_5[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[0]_i_1_n_0 ),
+        .Q(mig_env_5[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[10]_i_1_n_0 ),
+        .Q(mig_env_5[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[11]_i_1_n_0 ),
+        .Q(mig_env_5[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[12]_i_1_n_0 ),
+        .Q(mig_env_5[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[13]_i_1_n_0 ),
+        .Q(mig_env_5[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[14]_i_1_n_0 ),
+        .Q(mig_env_5[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[15]_i_1_n_0 ),
+        .Q(mig_env_5[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[1]_i_1_n_0 ),
+        .Q(mig_env_5[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[2]_i_1_n_0 ),
+        .Q(mig_env_5[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[3]_i_1_n_0 ),
+        .Q(mig_env_5[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[4]_i_1_n_0 ),
+        .Q(mig_env_5[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[5]_i_1_n_0 ),
+        .Q(mig_env_5[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[6]_i_1_n_0 ),
+        .Q(mig_env_5[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[7]_i_1_n_0 ),
+        .Q(mig_env_5[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[8]_i_1_n_0 ),
+        .Q(mig_env_5[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_5_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_5[9]_i_1_n_0 ),
+        .Q(mig_env_5[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[0]_i_1 
+       (.I0(mig_env_6[0]),
+        .I1(M_AXI_TDATA_in[192]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[10]_i_1 
+       (.I0(mig_env_6[10]),
+        .I1(M_AXI_TDATA_in[202]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[11]_i_1 
+       (.I0(mig_env_6[11]),
+        .I1(M_AXI_TDATA_in[203]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[12]_i_1 
+       (.I0(mig_env_6[12]),
+        .I1(M_AXI_TDATA_in[204]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[13]_i_1 
+       (.I0(mig_env_6[13]),
+        .I1(M_AXI_TDATA_in[205]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[14]_i_1 
+       (.I0(mig_env_6[14]),
+        .I1(M_AXI_TDATA_in[206]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[15]_i_1 
+       (.I0(mig_env_6[15]),
+        .I1(M_AXI_TDATA_in[207]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[1]_i_1 
+       (.I0(mig_env_6[1]),
+        .I1(M_AXI_TDATA_in[193]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[2]_i_1 
+       (.I0(mig_env_6[2]),
+        .I1(M_AXI_TDATA_in[194]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[3]_i_1 
+       (.I0(mig_env_6[3]),
+        .I1(M_AXI_TDATA_in[195]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[4]_i_1 
+       (.I0(mig_env_6[4]),
+        .I1(M_AXI_TDATA_in[196]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[5]_i_1 
+       (.I0(mig_env_6[5]),
+        .I1(M_AXI_TDATA_in[197]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[6]_i_1 
+       (.I0(mig_env_6[6]),
+        .I1(M_AXI_TDATA_in[198]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[7]_i_1 
+       (.I0(mig_env_6[7]),
+        .I1(M_AXI_TDATA_in[199]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[8]_i_1 
+       (.I0(mig_env_6[8]),
+        .I1(M_AXI_TDATA_in[200]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_6[9]_i_1 
+       (.I0(mig_env_6[9]),
+        .I1(M_AXI_TDATA_in[201]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_6[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[0]_i_1_n_0 ),
+        .Q(mig_env_6[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[10]_i_1_n_0 ),
+        .Q(mig_env_6[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[11]_i_1_n_0 ),
+        .Q(mig_env_6[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[12]_i_1_n_0 ),
+        .Q(mig_env_6[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[13]_i_1_n_0 ),
+        .Q(mig_env_6[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[14]_i_1_n_0 ),
+        .Q(mig_env_6[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[15]_i_1_n_0 ),
+        .Q(mig_env_6[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[1]_i_1_n_0 ),
+        .Q(mig_env_6[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[2]_i_1_n_0 ),
+        .Q(mig_env_6[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[3]_i_1_n_0 ),
+        .Q(mig_env_6[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[4]_i_1_n_0 ),
+        .Q(mig_env_6[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[5]_i_1_n_0 ),
+        .Q(mig_env_6[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[6]_i_1_n_0 ),
+        .Q(mig_env_6[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[7]_i_1_n_0 ),
+        .Q(mig_env_6[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[8]_i_1_n_0 ),
+        .Q(mig_env_6[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_6_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_6[9]_i_1_n_0 ),
+        .Q(mig_env_6[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[0]_i_1 
+       (.I0(mig_env_7[0]),
+        .I1(M_AXI_TDATA_in[224]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[10]_i_1 
+       (.I0(mig_env_7[10]),
+        .I1(M_AXI_TDATA_in[234]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[11]_i_1 
+       (.I0(mig_env_7[11]),
+        .I1(M_AXI_TDATA_in[235]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[12]_i_1 
+       (.I0(mig_env_7[12]),
+        .I1(M_AXI_TDATA_in[236]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[13]_i_1 
+       (.I0(mig_env_7[13]),
+        .I1(M_AXI_TDATA_in[237]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[14]_i_1 
+       (.I0(mig_env_7[14]),
+        .I1(M_AXI_TDATA_in[238]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[15]_i_1 
+       (.I0(mig_env_7[15]),
+        .I1(M_AXI_TDATA_in[239]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[1]_i_1 
+       (.I0(mig_env_7[1]),
+        .I1(M_AXI_TDATA_in[225]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[2]_i_1 
+       (.I0(mig_env_7[2]),
+        .I1(M_AXI_TDATA_in[226]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[3]_i_1 
+       (.I0(mig_env_7[3]),
+        .I1(M_AXI_TDATA_in[227]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[4]_i_1 
+       (.I0(mig_env_7[4]),
+        .I1(M_AXI_TDATA_in[228]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[5]_i_1 
+       (.I0(mig_env_7[5]),
+        .I1(M_AXI_TDATA_in[229]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[6]_i_1 
+       (.I0(mig_env_7[6]),
+        .I1(M_AXI_TDATA_in[230]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[7]_i_1 
+       (.I0(mig_env_7[7]),
+        .I1(M_AXI_TDATA_in[231]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[8]_i_1 
+       (.I0(mig_env_7[8]),
+        .I1(M_AXI_TDATA_in[232]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_env_7[9]_i_1 
+       (.I0(mig_env_7[9]),
+        .I1(M_AXI_TDATA_in[233]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_env_7[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[0]_i_1_n_0 ),
+        .Q(mig_env_7[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[10]_i_1_n_0 ),
+        .Q(mig_env_7[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[11]_i_1_n_0 ),
+        .Q(mig_env_7[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[12]_i_1_n_0 ),
+        .Q(mig_env_7[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[13]_i_1_n_0 ),
+        .Q(mig_env_7[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[14]_i_1_n_0 ),
+        .Q(mig_env_7[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[15]_i_1_n_0 ),
+        .Q(mig_env_7[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[1]_i_1_n_0 ),
+        .Q(mig_env_7[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[2]_i_1_n_0 ),
+        .Q(mig_env_7[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[3]_i_1_n_0 ),
+        .Q(mig_env_7[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[4]_i_1_n_0 ),
+        .Q(mig_env_7[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[5]_i_1_n_0 ),
+        .Q(mig_env_7[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[6]_i_1_n_0 ),
+        .Q(mig_env_7[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[7]_i_1_n_0 ),
+        .Q(mig_env_7[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[8]_i_1_n_0 ),
+        .Q(mig_env_7[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_env_7_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_env_7[9]_i_1_n_0 ),
+        .Q(mig_env_7[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[0]_i_1 
+       (.I0(M_AXI_TDATA_in[96]),
+        .I1(mig_hdr_angle[0]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[10]_i_1 
+       (.I0(M_AXI_TDATA_in[106]),
+        .I1(mig_hdr_angle[10]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[11]_i_1 
+       (.I0(M_AXI_TDATA_in[107]),
+        .I1(mig_hdr_angle[11]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[12]_i_1 
+       (.I0(M_AXI_TDATA_in[108]),
+        .I1(mig_hdr_angle[12]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[13]_i_1 
+       (.I0(M_AXI_TDATA_in[109]),
+        .I1(mig_hdr_angle[13]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[14]_i_1 
+       (.I0(M_AXI_TDATA_in[110]),
+        .I1(mig_hdr_angle[14]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[15]_i_1 
+       (.I0(M_AXI_TDATA_in[111]),
+        .I1(mig_hdr_angle[15]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[1]_i_1 
+       (.I0(M_AXI_TDATA_in[97]),
+        .I1(mig_hdr_angle[1]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[2]_i_1 
+       (.I0(M_AXI_TDATA_in[98]),
+        .I1(mig_hdr_angle[2]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[3]_i_1 
+       (.I0(M_AXI_TDATA_in[99]),
+        .I1(mig_hdr_angle[3]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[4]_i_1 
+       (.I0(M_AXI_TDATA_in[100]),
+        .I1(mig_hdr_angle[4]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[5]_i_1 
+       (.I0(M_AXI_TDATA_in[101]),
+        .I1(mig_hdr_angle[5]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[6]_i_1 
+       (.I0(M_AXI_TDATA_in[102]),
+        .I1(mig_hdr_angle[6]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[7]_i_1 
+       (.I0(M_AXI_TDATA_in[103]),
+        .I1(mig_hdr_angle[7]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[8]_i_1 
+       (.I0(M_AXI_TDATA_in[104]),
+        .I1(mig_hdr_angle[8]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_angle[9]_i_1 
+       (.I0(M_AXI_TDATA_in[105]),
+        .I1(mig_hdr_angle[9]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_angle[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[0]_i_1_n_0 ),
+        .Q(mig_hdr_angle[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[10]_i_1_n_0 ),
+        .Q(mig_hdr_angle[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[11]_i_1_n_0 ),
+        .Q(mig_hdr_angle[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[12]_i_1_n_0 ),
+        .Q(mig_hdr_angle[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[13]_i_1_n_0 ),
+        .Q(mig_hdr_angle[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[14]_i_1_n_0 ),
+        .Q(mig_hdr_angle[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[15]_i_1_n_0 ),
+        .Q(mig_hdr_angle[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[1]_i_1_n_0 ),
+        .Q(mig_hdr_angle[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[2]_i_1_n_0 ),
+        .Q(mig_hdr_angle[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[3]_i_1_n_0 ),
+        .Q(mig_hdr_angle[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[4]_i_1_n_0 ),
+        .Q(mig_hdr_angle[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[5]_i_1_n_0 ),
+        .Q(mig_hdr_angle[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[6]_i_1_n_0 ),
+        .Q(mig_hdr_angle[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[7]_i_1_n_0 ),
+        .Q(mig_hdr_angle[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[8]_i_1_n_0 ),
+        .Q(mig_hdr_angle[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_angle_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_angle[9]_i_1_n_0 ),
+        .Q(mig_hdr_angle[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[0]_i_1 
+       (.I0(M_AXI_TDATA_in[64]),
+        .I1(mig_hdr_blocks[0]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[1]_i_1 
+       (.I0(M_AXI_TDATA_in[65]),
+        .I1(mig_hdr_blocks[1]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[2]_i_1 
+       (.I0(M_AXI_TDATA_in[66]),
+        .I1(mig_hdr_blocks[2]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[3]_i_1 
+       (.I0(M_AXI_TDATA_in[67]),
+        .I1(mig_hdr_blocks[3]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[4]_i_1 
+       (.I0(M_AXI_TDATA_in[68]),
+        .I1(mig_hdr_blocks[4]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[5]_i_1 
+       (.I0(M_AXI_TDATA_in[69]),
+        .I1(mig_hdr_blocks[5]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[6]_i_1 
+       (.I0(M_AXI_TDATA_in[70]),
+        .I1(mig_hdr_blocks[6]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_blocks[7]_i_1 
+       (.I0(M_AXI_TDATA_in[71]),
+        .I1(mig_hdr_blocks[7]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_blocks[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[0]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[1]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[2]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[3]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[4]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[5]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[6]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_blocks_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_blocks[7]_i_1_n_0 ),
+        .Q(mig_hdr_blocks[7]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[0]_i_1 
+       (.I0(M_AXI_TDATA_in[112]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[0]),
+        .O(\axi_dma.mig_hdr_doa_error[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[10]_i_1 
+       (.I0(M_AXI_TDATA_in[122]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[10]),
+        .O(\axi_dma.mig_hdr_doa_error[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[11]_i_1 
+       (.I0(M_AXI_TDATA_in[123]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[11]),
+        .O(\axi_dma.mig_hdr_doa_error[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[12]_i_1 
+       (.I0(M_AXI_TDATA_in[124]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[12]),
+        .O(\axi_dma.mig_hdr_doa_error[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[13]_i_1 
+       (.I0(M_AXI_TDATA_in[125]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[13]),
+        .O(\axi_dma.mig_hdr_doa_error[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[14]_i_1 
+       (.I0(M_AXI_TDATA_in[126]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[14]),
+        .O(\axi_dma.mig_hdr_doa_error[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[15]_i_1 
+       (.I0(M_AXI_TDATA_in[127]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[15]),
+        .O(\axi_dma.mig_hdr_doa_error[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[1]_i_1 
+       (.I0(M_AXI_TDATA_in[113]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[1]),
+        .O(\axi_dma.mig_hdr_doa_error[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[2]_i_1 
+       (.I0(M_AXI_TDATA_in[114]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[2]),
+        .O(\axi_dma.mig_hdr_doa_error[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[3]_i_1 
+       (.I0(M_AXI_TDATA_in[115]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[3]),
+        .O(\axi_dma.mig_hdr_doa_error[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[4]_i_1 
+       (.I0(M_AXI_TDATA_in[116]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[4]),
+        .O(\axi_dma.mig_hdr_doa_error[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[5]_i_1 
+       (.I0(M_AXI_TDATA_in[117]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[5]),
+        .O(\axi_dma.mig_hdr_doa_error[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[6]_i_1 
+       (.I0(M_AXI_TDATA_in[118]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[6]),
+        .O(\axi_dma.mig_hdr_doa_error[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[7]_i_1 
+       (.I0(M_AXI_TDATA_in[119]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[7]),
+        .O(\axi_dma.mig_hdr_doa_error[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[8]_i_1 
+       (.I0(M_AXI_TDATA_in[120]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[8]),
+        .O(\axi_dma.mig_hdr_doa_error[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_doa_error[9]_i_1 
+       (.I0(M_AXI_TDATA_in[121]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_doa_error[9]),
+        .O(\axi_dma.mig_hdr_doa_error[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[0]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[10]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[11]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[12]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[13]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[14]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[15]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[1]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[2]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[3]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[4]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[5]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[6]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[7]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[8]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_doa_error_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_doa_error[9]_i_1_n_0 ),
+        .Q(mig_hdr_doa_error[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[0]_i_1 
+       (.I0(M_AXI_TDATA_in[192]),
+        .I1(mig_hdr_env_mean[0]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[10]_i_1 
+       (.I0(M_AXI_TDATA_in[202]),
+        .I1(mig_hdr_env_mean[10]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[11]_i_1 
+       (.I0(M_AXI_TDATA_in[203]),
+        .I1(mig_hdr_env_mean[11]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[12]_i_1 
+       (.I0(M_AXI_TDATA_in[204]),
+        .I1(mig_hdr_env_mean[12]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[13]_i_1 
+       (.I0(M_AXI_TDATA_in[205]),
+        .I1(mig_hdr_env_mean[13]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[14]_i_1 
+       (.I0(M_AXI_TDATA_in[206]),
+        .I1(mig_hdr_env_mean[14]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[15]_i_1 
+       (.I0(M_AXI_TDATA_in[207]),
+        .I1(mig_hdr_env_mean[15]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[1]_i_1 
+       (.I0(M_AXI_TDATA_in[193]),
+        .I1(mig_hdr_env_mean[1]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[2]_i_1 
+       (.I0(M_AXI_TDATA_in[194]),
+        .I1(mig_hdr_env_mean[2]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[3]_i_1 
+       (.I0(M_AXI_TDATA_in[195]),
+        .I1(mig_hdr_env_mean[3]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[4]_i_1 
+       (.I0(M_AXI_TDATA_in[196]),
+        .I1(mig_hdr_env_mean[4]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[5]_i_1 
+       (.I0(M_AXI_TDATA_in[197]),
+        .I1(mig_hdr_env_mean[5]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[6]_i_1 
+       (.I0(M_AXI_TDATA_in[198]),
+        .I1(mig_hdr_env_mean[6]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[7]_i_1 
+       (.I0(M_AXI_TDATA_in[199]),
+        .I1(mig_hdr_env_mean[7]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[8]_i_1 
+       (.I0(M_AXI_TDATA_in[200]),
+        .I1(mig_hdr_env_mean[8]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_env_mean[9]_i_1 
+       (.I0(M_AXI_TDATA_in[201]),
+        .I1(mig_hdr_env_mean[9]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_env_mean[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[0]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[10]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[11]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[12]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[13]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[14]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[15]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[1]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[2]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[3]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[4]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[5]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[6]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[7]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[8]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_mean_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_mean[9]_i_1_n_0 ),
+        .Q(mig_hdr_env_mean[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[0]_i_1 
+       (.I0(M_AXI_TDATA_in[208]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[0]),
+        .O(\axi_dma.mig_hdr_env_std[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[10]_i_1 
+       (.I0(M_AXI_TDATA_in[218]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[10]),
+        .O(\axi_dma.mig_hdr_env_std[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[11]_i_1 
+       (.I0(M_AXI_TDATA_in[219]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[11]),
+        .O(\axi_dma.mig_hdr_env_std[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[12]_i_1 
+       (.I0(M_AXI_TDATA_in[220]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[12]),
+        .O(\axi_dma.mig_hdr_env_std[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[13]_i_1 
+       (.I0(M_AXI_TDATA_in[221]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[13]),
+        .O(\axi_dma.mig_hdr_env_std[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[14]_i_1 
+       (.I0(M_AXI_TDATA_in[222]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[14]),
+        .O(\axi_dma.mig_hdr_env_std[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[15]_i_1 
+       (.I0(M_AXI_TDATA_in[223]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[15]),
+        .O(\axi_dma.mig_hdr_env_std[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[1]_i_1 
+       (.I0(M_AXI_TDATA_in[209]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[1]),
+        .O(\axi_dma.mig_hdr_env_std[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[2]_i_1 
+       (.I0(M_AXI_TDATA_in[210]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[2]),
+        .O(\axi_dma.mig_hdr_env_std[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[3]_i_1 
+       (.I0(M_AXI_TDATA_in[211]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[3]),
+        .O(\axi_dma.mig_hdr_env_std[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[4]_i_1 
+       (.I0(M_AXI_TDATA_in[212]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[4]),
+        .O(\axi_dma.mig_hdr_env_std[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[5]_i_1 
+       (.I0(M_AXI_TDATA_in[213]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[5]),
+        .O(\axi_dma.mig_hdr_env_std[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[6]_i_1 
+       (.I0(M_AXI_TDATA_in[214]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[6]),
+        .O(\axi_dma.mig_hdr_env_std[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[7]_i_1 
+       (.I0(M_AXI_TDATA_in[215]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[7]),
+        .O(\axi_dma.mig_hdr_env_std[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[8]_i_1 
+       (.I0(M_AXI_TDATA_in[216]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[8]),
+        .O(\axi_dma.mig_hdr_env_std[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_env_std[9]_i_1 
+       (.I0(M_AXI_TDATA_in[217]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_env_std[9]),
+        .O(\axi_dma.mig_hdr_env_std[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[0]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[10]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[11]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[12]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[13]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[14]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[15]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[1]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[2]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[3]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[4]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[5]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[6]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[7]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[8]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_env_std_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_env_std[9]_i_1_n_0 ),
+        .Q(mig_hdr_env_std[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[0]_i_1 
+       (.I0(M_AXI_TDATA_in[72]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[0]),
+        .O(\axi_dma.mig_hdr_flags[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[1]_i_1 
+       (.I0(M_AXI_TDATA_in[73]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[1]),
+        .O(\axi_dma.mig_hdr_flags[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[2]_i_1 
+       (.I0(M_AXI_TDATA_in[74]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[2]),
+        .O(\axi_dma.mig_hdr_flags[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[3]_i_1 
+       (.I0(M_AXI_TDATA_in[75]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[3]),
+        .O(\axi_dma.mig_hdr_flags[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[4]_i_1 
+       (.I0(M_AXI_TDATA_in[76]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[4]),
+        .O(\axi_dma.mig_hdr_flags[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[5]_i_1 
+       (.I0(M_AXI_TDATA_in[77]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[5]),
+        .O(\axi_dma.mig_hdr_flags[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_flags[6]_i_1 
+       (.I0(M_AXI_TDATA_in[78]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_flags[6]),
+        .O(\axi_dma.mig_hdr_flags[6]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[0]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[64]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[0]),
-        .O(\axi_dma.mig_size[0]_i_1_n_0 ));
+    .INIT(32'hF8F8F870)) 
+    \axi_dma.mig_hdr_flags[7]_i_1 
+       (.I0(M_AXI_TVALID_in),
+        .I1(M_AXI_TREADY_in),
+        .I2(mig_hdr_flags[7]),
+        .I3(mig_hdr_flags[7]),
+        .I4(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_flags[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[0]_i_1_n_0 ),
+        .Q(mig_hdr_flags[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[1]_i_1_n_0 ),
+        .Q(mig_hdr_flags[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[2]_i_1_n_0 ),
+        .Q(mig_hdr_flags[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[3]_i_1_n_0 ),
+        .Q(mig_hdr_flags[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[4]_i_1_n_0 ),
+        .Q(mig_hdr_flags[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[5]_i_1_n_0 ),
+        .Q(mig_hdr_flags[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_flags[6]_i_1_n_0 ),
+        .Q(mig_hdr_flags[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_flags_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_hdr_flags[7]_i_1_n_0 ),
+        .Q(mig_hdr_flags[7]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[0]_i_1 
+       (.I0(M_AXI_TDATA_in[128]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[0]),
+        .O(\axi_dma.mig_hdr_freq[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[10]_i_1 
+       (.I0(M_AXI_TDATA_in[138]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[10]),
+        .O(\axi_dma.mig_hdr_freq[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[11]_i_1 
+       (.I0(M_AXI_TDATA_in[139]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[11]),
+        .O(\axi_dma.mig_hdr_freq[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[12]_i_1 
+       (.I0(M_AXI_TDATA_in[140]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[12]),
+        .O(\axi_dma.mig_hdr_freq[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[13]_i_1 
+       (.I0(M_AXI_TDATA_in[141]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[13]),
+        .O(\axi_dma.mig_hdr_freq[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[14]_i_1 
+       (.I0(M_AXI_TDATA_in[142]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[14]),
+        .O(\axi_dma.mig_hdr_freq[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[15]_i_1 
+       (.I0(M_AXI_TDATA_in[143]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[15]),
+        .O(\axi_dma.mig_hdr_freq[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[16]_i_1 
+       (.I0(M_AXI_TDATA_in[144]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[16]),
+        .O(\axi_dma.mig_hdr_freq[16]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[17]_i_1 
+       (.I0(M_AXI_TDATA_in[145]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[17]),
+        .O(\axi_dma.mig_hdr_freq[17]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[18]_i_1 
+       (.I0(M_AXI_TDATA_in[146]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[18]),
+        .O(\axi_dma.mig_hdr_freq[18]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[19]_i_1 
+       (.I0(M_AXI_TDATA_in[147]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[19]),
+        .O(\axi_dma.mig_hdr_freq[19]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[1]_i_1 
+       (.I0(M_AXI_TDATA_in[129]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[1]),
+        .O(\axi_dma.mig_hdr_freq[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[20]_i_1 
+       (.I0(M_AXI_TDATA_in[148]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[20]),
+        .O(\axi_dma.mig_hdr_freq[20]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[21]_i_1 
+       (.I0(M_AXI_TDATA_in[149]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[21]),
+        .O(\axi_dma.mig_hdr_freq[21]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[22]_i_1 
+       (.I0(M_AXI_TDATA_in[150]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[22]),
+        .O(\axi_dma.mig_hdr_freq[22]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[23]_i_1 
+       (.I0(M_AXI_TDATA_in[151]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[23]),
+        .O(\axi_dma.mig_hdr_freq[23]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[24]_i_1 
+       (.I0(M_AXI_TDATA_in[152]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[24]),
+        .O(\axi_dma.mig_hdr_freq[24]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[25]_i_1 
+       (.I0(M_AXI_TDATA_in[153]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[25]),
+        .O(\axi_dma.mig_hdr_freq[25]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[26]_i_1 
+       (.I0(M_AXI_TDATA_in[154]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[26]),
+        .O(\axi_dma.mig_hdr_freq[26]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[27]_i_1 
+       (.I0(M_AXI_TDATA_in[155]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[27]),
+        .O(\axi_dma.mig_hdr_freq[27]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[28]_i_1 
+       (.I0(M_AXI_TDATA_in[156]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[28]),
+        .O(\axi_dma.mig_hdr_freq[28]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[29]_i_1 
+       (.I0(M_AXI_TDATA_in[157]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[29]),
+        .O(\axi_dma.mig_hdr_freq[29]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[2]_i_1 
+       (.I0(M_AXI_TDATA_in[130]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[2]),
+        .O(\axi_dma.mig_hdr_freq[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[30]_i_1 
+       (.I0(M_AXI_TDATA_in[158]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[30]),
+        .O(\axi_dma.mig_hdr_freq[30]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[31]_i_1 
+       (.I0(M_AXI_TDATA_in[159]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[31]),
+        .O(\axi_dma.mig_hdr_freq[31]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[3]_i_1 
+       (.I0(M_AXI_TDATA_in[131]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[3]),
+        .O(\axi_dma.mig_hdr_freq[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[4]_i_1 
+       (.I0(M_AXI_TDATA_in[132]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[4]),
+        .O(\axi_dma.mig_hdr_freq[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[5]_i_1 
+       (.I0(M_AXI_TDATA_in[133]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[5]),
+        .O(\axi_dma.mig_hdr_freq[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[6]_i_1 
+       (.I0(M_AXI_TDATA_in[134]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[6]),
+        .O(\axi_dma.mig_hdr_freq[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[7]_i_1 
+       (.I0(M_AXI_TDATA_in[135]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[7]),
+        .O(\axi_dma.mig_hdr_freq[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[8]_i_1 
+       (.I0(M_AXI_TDATA_in[136]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[8]),
+        .O(\axi_dma.mig_hdr_freq[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq[9]_i_1 
+       (.I0(M_AXI_TDATA_in[137]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq[9]),
+        .O(\axi_dma.mig_hdr_freq[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[0]_i_1_n_0 ),
+        .Q(mig_hdr_freq[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[10]_i_1_n_0 ),
+        .Q(mig_hdr_freq[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[11]_i_1_n_0 ),
+        .Q(mig_hdr_freq[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[12]_i_1_n_0 ),
+        .Q(mig_hdr_freq[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[13]_i_1_n_0 ),
+        .Q(mig_hdr_freq[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[14]_i_1_n_0 ),
+        .Q(mig_hdr_freq[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[15]_i_1_n_0 ),
+        .Q(mig_hdr_freq[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[16] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[16]_i_1_n_0 ),
+        .Q(mig_hdr_freq[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[17] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[17]_i_1_n_0 ),
+        .Q(mig_hdr_freq[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[18] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[18]_i_1_n_0 ),
+        .Q(mig_hdr_freq[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[19] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[19]_i_1_n_0 ),
+        .Q(mig_hdr_freq[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[1]_i_1_n_0 ),
+        .Q(mig_hdr_freq[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[20] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[20]_i_1_n_0 ),
+        .Q(mig_hdr_freq[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[21] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[21]_i_1_n_0 ),
+        .Q(mig_hdr_freq[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[22] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[22]_i_1_n_0 ),
+        .Q(mig_hdr_freq[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[23] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[23]_i_1_n_0 ),
+        .Q(mig_hdr_freq[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[24] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[24]_i_1_n_0 ),
+        .Q(mig_hdr_freq[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[25] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[25]_i_1_n_0 ),
+        .Q(mig_hdr_freq[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[26] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[26]_i_1_n_0 ),
+        .Q(mig_hdr_freq[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[27] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[27]_i_1_n_0 ),
+        .Q(mig_hdr_freq[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[28] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[28]_i_1_n_0 ),
+        .Q(mig_hdr_freq[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[29] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[29]_i_1_n_0 ),
+        .Q(mig_hdr_freq[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[2]_i_1_n_0 ),
+        .Q(mig_hdr_freq[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[30] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[30]_i_1_n_0 ),
+        .Q(mig_hdr_freq[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[31] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[31]_i_1_n_0 ),
+        .Q(mig_hdr_freq[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[3]_i_1_n_0 ),
+        .Q(mig_hdr_freq[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[4]_i_1_n_0 ),
+        .Q(mig_hdr_freq[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[5]_i_1_n_0 ),
+        .Q(mig_hdr_freq[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[6]_i_1_n_0 ),
+        .Q(mig_hdr_freq[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[7]_i_1_n_0 ),
+        .Q(mig_hdr_freq[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[8]_i_1_n_0 ),
+        .Q(mig_hdr_freq[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq[9]_i_1_n_0 ),
+        .Q(mig_hdr_freq[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[0]_i_1 
+       (.I0(M_AXI_TDATA_in[240]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[0]),
+        .O(\axi_dma.mig_hdr_freq_std[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[10]_i_1 
+       (.I0(M_AXI_TDATA_in[250]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[10]),
+        .O(\axi_dma.mig_hdr_freq_std[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[11]_i_1 
+       (.I0(M_AXI_TDATA_in[251]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[11]),
+        .O(\axi_dma.mig_hdr_freq_std[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[12]_i_1 
+       (.I0(M_AXI_TDATA_in[252]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[12]),
+        .O(\axi_dma.mig_hdr_freq_std[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[13]_i_1 
+       (.I0(M_AXI_TDATA_in[253]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[13]),
+        .O(\axi_dma.mig_hdr_freq_std[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[14]_i_1 
+       (.I0(M_AXI_TDATA_in[254]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[14]),
+        .O(\axi_dma.mig_hdr_freq_std[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[15]_i_1 
+       (.I0(M_AXI_TDATA_in[255]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[15]),
+        .O(\axi_dma.mig_hdr_freq_std[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[1]_i_1 
+       (.I0(M_AXI_TDATA_in[241]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[1]),
+        .O(\axi_dma.mig_hdr_freq_std[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[2]_i_1 
+       (.I0(M_AXI_TDATA_in[242]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[2]),
+        .O(\axi_dma.mig_hdr_freq_std[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[3]_i_1 
+       (.I0(M_AXI_TDATA_in[243]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[3]),
+        .O(\axi_dma.mig_hdr_freq_std[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[4]_i_1 
+       (.I0(M_AXI_TDATA_in[244]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[4]),
+        .O(\axi_dma.mig_hdr_freq_std[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[5]_i_1 
+       (.I0(M_AXI_TDATA_in[245]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[5]),
+        .O(\axi_dma.mig_hdr_freq_std[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[6]_i_1 
+       (.I0(M_AXI_TDATA_in[246]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[6]),
+        .O(\axi_dma.mig_hdr_freq_std[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[7]_i_1 
+       (.I0(M_AXI_TDATA_in[247]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[7]),
+        .O(\axi_dma.mig_hdr_freq_std[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[8]_i_1 
+       (.I0(M_AXI_TDATA_in[248]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[8]),
+        .O(\axi_dma.mig_hdr_freq_std[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_freq_std[9]_i_1 
+       (.I0(M_AXI_TDATA_in[249]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_freq_std[9]),
+        .O(\axi_dma.mig_hdr_freq_std[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[0]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[10]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[11]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[12]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[13]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[14]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[15]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[1]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[2]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[3]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[4]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[5]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[6]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[7]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[8]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_freq_std_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_freq_std[9]_i_1_n_0 ),
+        .Q(mig_hdr_freq_std[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[0]_i_1 
+       (.I0(M_AXI_TDATA_in[160]),
+        .I1(mig_hdr_max_env[0]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[10]_i_1 
+       (.I0(M_AXI_TDATA_in[170]),
+        .I1(mig_hdr_max_env[10]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[11]_i_1 
+       (.I0(M_AXI_TDATA_in[171]),
+        .I1(mig_hdr_max_env[11]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[12]_i_1 
+       (.I0(M_AXI_TDATA_in[172]),
+        .I1(mig_hdr_max_env[12]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[13]_i_1 
+       (.I0(M_AXI_TDATA_in[173]),
+        .I1(mig_hdr_max_env[13]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[14]_i_1 
+       (.I0(M_AXI_TDATA_in[174]),
+        .I1(mig_hdr_max_env[14]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[15]_i_1 
+       (.I0(M_AXI_TDATA_in[175]),
+        .I1(mig_hdr_max_env[15]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[1]_i_1 
+       (.I0(M_AXI_TDATA_in[161]),
+        .I1(mig_hdr_max_env[1]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[2]_i_1 
+       (.I0(M_AXI_TDATA_in[162]),
+        .I1(mig_hdr_max_env[2]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[3]_i_1 
+       (.I0(M_AXI_TDATA_in[163]),
+        .I1(mig_hdr_max_env[3]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[4]_i_1 
+       (.I0(M_AXI_TDATA_in[164]),
+        .I1(mig_hdr_max_env[4]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[5]_i_1 
+       (.I0(M_AXI_TDATA_in[165]),
+        .I1(mig_hdr_max_env[5]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[6]_i_1 
+       (.I0(M_AXI_TDATA_in[166]),
+        .I1(mig_hdr_max_env[6]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[7]_i_1 
+       (.I0(M_AXI_TDATA_in[167]),
+        .I1(mig_hdr_max_env[7]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[8]_i_1 
+       (.I0(M_AXI_TDATA_in[168]),
+        .I1(mig_hdr_max_env[8]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_max_env[9]_i_1 
+       (.I0(M_AXI_TDATA_in[169]),
+        .I1(mig_hdr_max_env[9]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_max_env[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[0]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[10]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[11]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[12]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[13]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[14]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[15]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[1]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[2]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[3]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[4]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[5]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[6]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[7]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[8]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_env_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_env[9]_i_1_n_0 ),
+        .Q(mig_hdr_max_env[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[0]_i_1 
+       (.I0(M_AXI_TDATA_in[176]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[0]),
+        .O(\axi_dma.mig_hdr_max_pos[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[10]_i_1 
+       (.I0(M_AXI_TDATA_in[186]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[10]),
+        .O(\axi_dma.mig_hdr_max_pos[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[11]_i_1 
+       (.I0(M_AXI_TDATA_in[187]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[11]),
+        .O(\axi_dma.mig_hdr_max_pos[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[12]_i_1 
+       (.I0(M_AXI_TDATA_in[188]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[12]),
+        .O(\axi_dma.mig_hdr_max_pos[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[13]_i_1 
+       (.I0(M_AXI_TDATA_in[189]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[13]),
+        .O(\axi_dma.mig_hdr_max_pos[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[14]_i_1 
+       (.I0(M_AXI_TDATA_in[190]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[14]),
+        .O(\axi_dma.mig_hdr_max_pos[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[15]_i_1 
+       (.I0(M_AXI_TDATA_in[191]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[15]),
+        .O(\axi_dma.mig_hdr_max_pos[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[1]_i_1 
+       (.I0(M_AXI_TDATA_in[177]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[1]),
+        .O(\axi_dma.mig_hdr_max_pos[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[2]_i_1 
+       (.I0(M_AXI_TDATA_in[178]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[2]),
+        .O(\axi_dma.mig_hdr_max_pos[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[3]_i_1 
+       (.I0(M_AXI_TDATA_in[179]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[3]),
+        .O(\axi_dma.mig_hdr_max_pos[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[4]_i_1 
+       (.I0(M_AXI_TDATA_in[180]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[4]),
+        .O(\axi_dma.mig_hdr_max_pos[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[5]_i_1 
+       (.I0(M_AXI_TDATA_in[181]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[5]),
+        .O(\axi_dma.mig_hdr_max_pos[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[6]_i_1 
+       (.I0(M_AXI_TDATA_in[182]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[6]),
+        .O(\axi_dma.mig_hdr_max_pos[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[7]_i_1 
+       (.I0(M_AXI_TDATA_in[183]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[7]),
+        .O(\axi_dma.mig_hdr_max_pos[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[8]_i_1 
+       (.I0(M_AXI_TDATA_in[184]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[8]),
+        .O(\axi_dma.mig_hdr_max_pos[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_max_pos[9]_i_1 
+       (.I0(M_AXI_TDATA_in[185]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_max_pos[9]),
+        .O(\axi_dma.mig_hdr_max_pos[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[0]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[10]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[11]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[12]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[13]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[14]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[15]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[1]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[2]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[3]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[4]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[5]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[6]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[7]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[8]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_max_pos_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_max_pos[9]_i_1_n_0 ),
+        .Q(mig_hdr_max_pos[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[0]_i_1 
+       (.I0(M_AXI_TDATA_in[224]),
+        .I1(mig_hdr_phase_std[0]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[10]_i_1 
+       (.I0(M_AXI_TDATA_in[234]),
+        .I1(mig_hdr_phase_std[10]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[11]_i_1 
+       (.I0(M_AXI_TDATA_in[235]),
+        .I1(mig_hdr_phase_std[11]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[12]_i_1 
+       (.I0(M_AXI_TDATA_in[236]),
+        .I1(mig_hdr_phase_std[12]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[13]_i_1 
+       (.I0(M_AXI_TDATA_in[237]),
+        .I1(mig_hdr_phase_std[13]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[14]_i_1 
+       (.I0(M_AXI_TDATA_in[238]),
+        .I1(mig_hdr_phase_std[14]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[15]_i_1 
+       (.I0(M_AXI_TDATA_in[239]),
+        .I1(mig_hdr_phase_std[15]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[1]_i_1 
+       (.I0(M_AXI_TDATA_in[225]),
+        .I1(mig_hdr_phase_std[1]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[2]_i_1 
+       (.I0(M_AXI_TDATA_in[226]),
+        .I1(mig_hdr_phase_std[2]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[3]_i_1 
+       (.I0(M_AXI_TDATA_in[227]),
+        .I1(mig_hdr_phase_std[3]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[4]_i_1 
+       (.I0(M_AXI_TDATA_in[228]),
+        .I1(mig_hdr_phase_std[4]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[5]_i_1 
+       (.I0(M_AXI_TDATA_in[229]),
+        .I1(mig_hdr_phase_std[5]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[6]_i_1 
+       (.I0(M_AXI_TDATA_in[230]),
+        .I1(mig_hdr_phase_std[6]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[7]_i_1 
+       (.I0(M_AXI_TDATA_in[231]),
+        .I1(mig_hdr_phase_std[7]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[8]_i_1 
+       (.I0(M_AXI_TDATA_in[232]),
+        .I1(mig_hdr_phase_std[8]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hAC)) 
+    \axi_dma.mig_hdr_phase_std[9]_i_1 
+       (.I0(M_AXI_TDATA_in[233]),
+        .I1(mig_hdr_phase_std[9]),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_hdr_phase_std[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[0]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[10]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[11]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[12]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[13]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[14]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[15]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[1]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[2]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[3]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[4]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[5]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[6]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[7]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[8]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_phase_std_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_phase_std[9]_i_1_n_0 ),
+        .Q(mig_hdr_phase_std[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[0]_i_1 
+       (.I0(M_AXI_TDATA_in[0]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[0]),
+        .O(\axi_dma.mig_hdr_sample[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[10]_i_1 
+       (.I0(M_AXI_TDATA_in[10]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[10]),
+        .O(\axi_dma.mig_hdr_sample[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[11]_i_1 
+       (.I0(M_AXI_TDATA_in[11]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[11]),
+        .O(\axi_dma.mig_hdr_sample[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[12]_i_1 
+       (.I0(M_AXI_TDATA_in[12]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[12]),
+        .O(\axi_dma.mig_hdr_sample[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[13]_i_1 
+       (.I0(M_AXI_TDATA_in[13]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[13]),
+        .O(\axi_dma.mig_hdr_sample[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[14]_i_1 
+       (.I0(M_AXI_TDATA_in[14]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[14]),
+        .O(\axi_dma.mig_hdr_sample[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[15]_i_1 
+       (.I0(M_AXI_TDATA_in[15]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[15]),
+        .O(\axi_dma.mig_hdr_sample[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[16]_i_1 
+       (.I0(M_AXI_TDATA_in[16]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[16]),
+        .O(\axi_dma.mig_hdr_sample[16]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[17]_i_1 
+       (.I0(M_AXI_TDATA_in[17]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[17]),
+        .O(\axi_dma.mig_hdr_sample[17]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[18]_i_1 
+       (.I0(M_AXI_TDATA_in[18]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[18]),
+        .O(\axi_dma.mig_hdr_sample[18]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[19]_i_1 
+       (.I0(M_AXI_TDATA_in[19]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[19]),
+        .O(\axi_dma.mig_hdr_sample[19]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[1]_i_1 
+       (.I0(M_AXI_TDATA_in[1]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[1]),
+        .O(\axi_dma.mig_hdr_sample[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[20]_i_1 
+       (.I0(M_AXI_TDATA_in[20]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[20]),
+        .O(\axi_dma.mig_hdr_sample[20]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[21]_i_1 
+       (.I0(M_AXI_TDATA_in[21]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[21]),
+        .O(\axi_dma.mig_hdr_sample[21]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[22]_i_1 
+       (.I0(M_AXI_TDATA_in[22]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[22]),
+        .O(\axi_dma.mig_hdr_sample[22]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[23]_i_1 
+       (.I0(M_AXI_TDATA_in[23]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[23]),
+        .O(\axi_dma.mig_hdr_sample[23]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[24]_i_1 
+       (.I0(M_AXI_TDATA_in[24]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[24]),
+        .O(\axi_dma.mig_hdr_sample[24]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[25]_i_1 
+       (.I0(M_AXI_TDATA_in[25]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[25]),
+        .O(\axi_dma.mig_hdr_sample[25]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[26]_i_1 
+       (.I0(M_AXI_TDATA_in[26]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[26]),
+        .O(\axi_dma.mig_hdr_sample[26]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[27]_i_1 
+       (.I0(M_AXI_TDATA_in[27]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[27]),
+        .O(\axi_dma.mig_hdr_sample[27]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[28]_i_1 
+       (.I0(M_AXI_TDATA_in[28]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[28]),
+        .O(\axi_dma.mig_hdr_sample[28]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[29]_i_1 
+       (.I0(M_AXI_TDATA_in[29]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[29]),
+        .O(\axi_dma.mig_hdr_sample[29]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[2]_i_1 
+       (.I0(M_AXI_TDATA_in[2]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[2]),
+        .O(\axi_dma.mig_hdr_sample[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[30]_i_1 
+       (.I0(M_AXI_TDATA_in[30]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[30]),
+        .O(\axi_dma.mig_hdr_sample[30]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[31]_i_1 
+       (.I0(M_AXI_TDATA_in[31]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[31]),
+        .O(\axi_dma.mig_hdr_sample[31]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[32]_i_1 
+       (.I0(M_AXI_TDATA_in[32]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[32]),
+        .O(\axi_dma.mig_hdr_sample[32]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[33]_i_1 
+       (.I0(M_AXI_TDATA_in[33]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[33]),
+        .O(\axi_dma.mig_hdr_sample[33]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[34]_i_1 
+       (.I0(M_AXI_TDATA_in[34]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[34]),
+        .O(\axi_dma.mig_hdr_sample[34]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[35]_i_1 
+       (.I0(M_AXI_TDATA_in[35]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[35]),
+        .O(\axi_dma.mig_hdr_sample[35]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[36]_i_1 
+       (.I0(M_AXI_TDATA_in[36]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[36]),
+        .O(\axi_dma.mig_hdr_sample[36]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[37]_i_1 
+       (.I0(M_AXI_TDATA_in[37]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[37]),
+        .O(\axi_dma.mig_hdr_sample[37]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[38]_i_1 
+       (.I0(M_AXI_TDATA_in[38]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[38]),
+        .O(\axi_dma.mig_hdr_sample[38]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[39]_i_1 
+       (.I0(M_AXI_TDATA_in[39]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[39]),
+        .O(\axi_dma.mig_hdr_sample[39]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[3]_i_1 
+       (.I0(M_AXI_TDATA_in[3]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[3]),
+        .O(\axi_dma.mig_hdr_sample[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[40]_i_1 
+       (.I0(M_AXI_TDATA_in[40]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[40]),
+        .O(\axi_dma.mig_hdr_sample[40]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[41]_i_1 
+       (.I0(M_AXI_TDATA_in[41]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[41]),
+        .O(\axi_dma.mig_hdr_sample[41]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[42]_i_1 
+       (.I0(M_AXI_TDATA_in[42]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[42]),
+        .O(\axi_dma.mig_hdr_sample[42]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[43]_i_1 
+       (.I0(M_AXI_TDATA_in[43]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[43]),
+        .O(\axi_dma.mig_hdr_sample[43]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[44]_i_1 
+       (.I0(M_AXI_TDATA_in[44]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[44]),
+        .O(\axi_dma.mig_hdr_sample[44]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[45]_i_1 
+       (.I0(M_AXI_TDATA_in[45]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[45]),
+        .O(\axi_dma.mig_hdr_sample[45]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[46]_i_1 
+       (.I0(M_AXI_TDATA_in[46]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[46]),
+        .O(\axi_dma.mig_hdr_sample[46]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[47]_i_1 
+       (.I0(M_AXI_TDATA_in[47]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[47]),
+        .O(\axi_dma.mig_hdr_sample[47]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[48]_i_1 
+       (.I0(M_AXI_TDATA_in[48]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[48]),
+        .O(\axi_dma.mig_hdr_sample[48]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[49]_i_1 
+       (.I0(M_AXI_TDATA_in[49]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[49]),
+        .O(\axi_dma.mig_hdr_sample[49]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[4]_i_1 
+       (.I0(M_AXI_TDATA_in[4]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[4]),
+        .O(\axi_dma.mig_hdr_sample[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[50]_i_1 
+       (.I0(M_AXI_TDATA_in[50]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[50]),
+        .O(\axi_dma.mig_hdr_sample[50]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[51]_i_1 
+       (.I0(M_AXI_TDATA_in[51]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[51]),
+        .O(\axi_dma.mig_hdr_sample[51]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[52]_i_1 
+       (.I0(M_AXI_TDATA_in[52]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[52]),
+        .O(\axi_dma.mig_hdr_sample[52]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[53]_i_1 
+       (.I0(M_AXI_TDATA_in[53]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[53]),
+        .O(\axi_dma.mig_hdr_sample[53]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[54]_i_1 
+       (.I0(M_AXI_TDATA_in[54]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[54]),
+        .O(\axi_dma.mig_hdr_sample[54]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[55]_i_1 
+       (.I0(M_AXI_TDATA_in[55]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[55]),
+        .O(\axi_dma.mig_hdr_sample[55]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[56]_i_1 
+       (.I0(M_AXI_TDATA_in[56]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[56]),
+        .O(\axi_dma.mig_hdr_sample[56]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[57]_i_1 
+       (.I0(M_AXI_TDATA_in[57]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[57]),
+        .O(\axi_dma.mig_hdr_sample[57]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[58]_i_1 
+       (.I0(M_AXI_TDATA_in[58]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[58]),
+        .O(\axi_dma.mig_hdr_sample[58]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[59]_i_1 
+       (.I0(M_AXI_TDATA_in[59]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[59]),
+        .O(\axi_dma.mig_hdr_sample[59]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[5]_i_1 
+       (.I0(M_AXI_TDATA_in[5]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[5]),
+        .O(\axi_dma.mig_hdr_sample[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[60]_i_1 
+       (.I0(M_AXI_TDATA_in[60]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[60]),
+        .O(\axi_dma.mig_hdr_sample[60]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[61]_i_1 
+       (.I0(M_AXI_TDATA_in[61]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[61]),
+        .O(\axi_dma.mig_hdr_sample[61]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[62]_i_1 
+       (.I0(M_AXI_TDATA_in[62]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[62]),
+        .O(\axi_dma.mig_hdr_sample[62]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[63]_i_1 
+       (.I0(M_AXI_TDATA_in[63]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[63]),
+        .O(\axi_dma.mig_hdr_sample[63]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[6]_i_1 
+       (.I0(M_AXI_TDATA_in[6]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[6]),
+        .O(\axi_dma.mig_hdr_sample[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[7]_i_1 
+       (.I0(M_AXI_TDATA_in[7]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[7]),
+        .O(\axi_dma.mig_hdr_sample[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[8]_i_1 
+       (.I0(M_AXI_TDATA_in[8]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[8]),
+        .O(\axi_dma.mig_hdr_sample[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_sample[9]_i_1 
+       (.I0(M_AXI_TDATA_in[9]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_sample[9]),
+        .O(\axi_dma.mig_hdr_sample[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[0]_i_1_n_0 ),
+        .Q(mig_hdr_sample[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[10]_i_1_n_0 ),
+        .Q(mig_hdr_sample[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[11]_i_1_n_0 ),
+        .Q(mig_hdr_sample[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[12]_i_1_n_0 ),
+        .Q(mig_hdr_sample[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[13]_i_1_n_0 ),
+        .Q(mig_hdr_sample[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[14]_i_1_n_0 ),
+        .Q(mig_hdr_sample[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[15]_i_1_n_0 ),
+        .Q(mig_hdr_sample[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[16] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[16]_i_1_n_0 ),
+        .Q(mig_hdr_sample[16]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[17] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[17]_i_1_n_0 ),
+        .Q(mig_hdr_sample[17]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[18] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[18]_i_1_n_0 ),
+        .Q(mig_hdr_sample[18]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[19] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[19]_i_1_n_0 ),
+        .Q(mig_hdr_sample[19]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[1]_i_1_n_0 ),
+        .Q(mig_hdr_sample[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[20] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[20]_i_1_n_0 ),
+        .Q(mig_hdr_sample[20]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[21] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[21]_i_1_n_0 ),
+        .Q(mig_hdr_sample[21]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[22] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[22]_i_1_n_0 ),
+        .Q(mig_hdr_sample[22]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[23] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[23]_i_1_n_0 ),
+        .Q(mig_hdr_sample[23]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[24] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[24]_i_1_n_0 ),
+        .Q(mig_hdr_sample[24]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[25] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[25]_i_1_n_0 ),
+        .Q(mig_hdr_sample[25]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[26] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[26]_i_1_n_0 ),
+        .Q(mig_hdr_sample[26]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[27] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[27]_i_1_n_0 ),
+        .Q(mig_hdr_sample[27]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[28] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[28]_i_1_n_0 ),
+        .Q(mig_hdr_sample[28]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[29] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[29]_i_1_n_0 ),
+        .Q(mig_hdr_sample[29]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[2]_i_1_n_0 ),
+        .Q(mig_hdr_sample[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[30] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[30]_i_1_n_0 ),
+        .Q(mig_hdr_sample[30]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[31] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[31]_i_1_n_0 ),
+        .Q(mig_hdr_sample[31]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[32] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[32]_i_1_n_0 ),
+        .Q(mig_hdr_sample[32]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[33] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[33]_i_1_n_0 ),
+        .Q(mig_hdr_sample[33]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[34] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[34]_i_1_n_0 ),
+        .Q(mig_hdr_sample[34]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[35] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[35]_i_1_n_0 ),
+        .Q(mig_hdr_sample[35]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[36] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[36]_i_1_n_0 ),
+        .Q(mig_hdr_sample[36]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[37] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[37]_i_1_n_0 ),
+        .Q(mig_hdr_sample[37]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[38] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[38]_i_1_n_0 ),
+        .Q(mig_hdr_sample[38]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[39] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[39]_i_1_n_0 ),
+        .Q(mig_hdr_sample[39]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[3]_i_1_n_0 ),
+        .Q(mig_hdr_sample[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[40] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[40]_i_1_n_0 ),
+        .Q(mig_hdr_sample[40]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[41] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[41]_i_1_n_0 ),
+        .Q(mig_hdr_sample[41]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[42] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[42]_i_1_n_0 ),
+        .Q(mig_hdr_sample[42]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[43] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[43]_i_1_n_0 ),
+        .Q(mig_hdr_sample[43]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[44] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[44]_i_1_n_0 ),
+        .Q(mig_hdr_sample[44]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[45] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[45]_i_1_n_0 ),
+        .Q(mig_hdr_sample[45]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[46] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[46]_i_1_n_0 ),
+        .Q(mig_hdr_sample[46]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[47] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[47]_i_1_n_0 ),
+        .Q(mig_hdr_sample[47]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[48] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[48]_i_1_n_0 ),
+        .Q(mig_hdr_sample[48]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[49] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[49]_i_1_n_0 ),
+        .Q(mig_hdr_sample[49]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[4]_i_1_n_0 ),
+        .Q(mig_hdr_sample[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[50] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[50]_i_1_n_0 ),
+        .Q(mig_hdr_sample[50]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[51] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[51]_i_1_n_0 ),
+        .Q(mig_hdr_sample[51]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[52] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[52]_i_1_n_0 ),
+        .Q(mig_hdr_sample[52]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[53] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[53]_i_1_n_0 ),
+        .Q(mig_hdr_sample[53]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[54] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[54]_i_1_n_0 ),
+        .Q(mig_hdr_sample[54]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[55] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[55]_i_1_n_0 ),
+        .Q(mig_hdr_sample[55]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[56] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[56]_i_1_n_0 ),
+        .Q(mig_hdr_sample[56]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[57] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[57]_i_1_n_0 ),
+        .Q(mig_hdr_sample[57]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[58] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[58]_i_1_n_0 ),
+        .Q(mig_hdr_sample[58]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[59] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[59]_i_1_n_0 ),
+        .Q(mig_hdr_sample[59]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[5]_i_1_n_0 ),
+        .Q(mig_hdr_sample[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[60] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[60]_i_1_n_0 ),
+        .Q(mig_hdr_sample[60]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[61] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[61]_i_1_n_0 ),
+        .Q(mig_hdr_sample[61]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[62] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[62]_i_1_n_0 ),
+        .Q(mig_hdr_sample[62]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[63] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[63]_i_1_n_0 ),
+        .Q(mig_hdr_sample[63]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[6]_i_1_n_0 ),
+        .Q(mig_hdr_sample[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[7]_i_1_n_0 ),
+        .Q(mig_hdr_sample[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[8]_i_1_n_0 ),
+        .Q(mig_hdr_sample[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_sample_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_sample[9]_i_1_n_0 ),
+        .Q(mig_hdr_sample[9]),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[0]_i_1 
+       (.I0(M_AXI_TDATA_in[80]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[0]),
+        .O(\axi_dma.mig_hdr_size[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[10]_i_1 
+       (.I0(M_AXI_TDATA_in[90]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[10]),
+        .O(\axi_dma.mig_hdr_size[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[11]_i_1 
+       (.I0(M_AXI_TDATA_in[91]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[11]),
+        .O(\axi_dma.mig_hdr_size[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[12]_i_1 
+       (.I0(M_AXI_TDATA_in[92]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[12]),
+        .O(\axi_dma.mig_hdr_size[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[13]_i_1 
+       (.I0(M_AXI_TDATA_in[93]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[13]),
+        .O(\axi_dma.mig_hdr_size[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[14]_i_1 
+       (.I0(M_AXI_TDATA_in[94]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[14]),
+        .O(\axi_dma.mig_hdr_size[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[15]_i_1 
+       (.I0(M_AXI_TDATA_in[95]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[15]),
+        .O(\axi_dma.mig_hdr_size[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[1]_i_1 
+       (.I0(M_AXI_TDATA_in[81]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[1]),
+        .O(\axi_dma.mig_hdr_size[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[2]_i_1 
+       (.I0(M_AXI_TDATA_in[82]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[2]),
+        .O(\axi_dma.mig_hdr_size[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[3]_i_1 
+       (.I0(M_AXI_TDATA_in[83]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[3]),
+        .O(\axi_dma.mig_hdr_size[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[4]_i_1 
+       (.I0(M_AXI_TDATA_in[84]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[4]),
+        .O(\axi_dma.mig_hdr_size[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[5]_i_1 
+       (.I0(M_AXI_TDATA_in[85]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[5]),
+        .O(\axi_dma.mig_hdr_size[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[6]_i_1 
+       (.I0(M_AXI_TDATA_in[86]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[6]),
+        .O(\axi_dma.mig_hdr_size[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[7]_i_1 
+       (.I0(M_AXI_TDATA_in[87]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[7]),
+        .O(\axi_dma.mig_hdr_size[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[8]_i_1 
+       (.I0(M_AXI_TDATA_in[88]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[8]),
+        .O(\axi_dma.mig_hdr_size[8]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_hdr_size[9]_i_1 
+       (.I0(M_AXI_TDATA_in[89]),
+        .I1(M_AXI_TDATA_in[79]),
+        .I2(mig_hdr_size[9]),
+        .O(\axi_dma.mig_hdr_size[9]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[0] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[0]_i_1_n_0 ),
+        .Q(mig_hdr_size[0]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[10] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[10]_i_1_n_0 ),
+        .Q(mig_hdr_size[10]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[11] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[11]_i_1_n_0 ),
+        .Q(mig_hdr_size[11]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[12] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[12]_i_1_n_0 ),
+        .Q(mig_hdr_size[12]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[13] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[13]_i_1_n_0 ),
+        .Q(mig_hdr_size[13]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[14] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[14]_i_1_n_0 ),
+        .Q(mig_hdr_size[14]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[15] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[15]_i_1_n_0 ),
+        .Q(mig_hdr_size[15]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[1] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[1]_i_1_n_0 ),
+        .Q(mig_hdr_size[1]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[2] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[2]_i_1_n_0 ),
+        .Q(mig_hdr_size[2]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[3] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[3]_i_1_n_0 ),
+        .Q(mig_hdr_size[3]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[4] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[4]_i_1_n_0 ),
+        .Q(mig_hdr_size[4]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[5] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[5]_i_1_n_0 ),
+        .Q(mig_hdr_size[5]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[6] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[6]_i_1_n_0 ),
+        .Q(mig_hdr_size[6]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[7] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[7]_i_1_n_0 ),
+        .Q(mig_hdr_size[7]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[8] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[8]_i_1_n_0 ),
+        .Q(mig_hdr_size[8]),
+        .R(1'b0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_hdr_size_reg[9] 
+       (.C(clk),
+        .CE(p_7_in),
+        .D(\axi_dma.mig_hdr_size[9]_i_1_n_0 ),
+        .Q(mig_hdr_size[9]),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'h00BF)) 
+    \axi_dma.mig_preview_i_1 
+       (.I0(\axi_dma.mig_preview_i_2_n_0 ),
+        .I1(mig_size[6]),
+        .I2(mig_size[7]),
+        .I3(data0),
+        .O(\axi_dma.mig_preview_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_10 
+       (.I0(mig_avail[9]),
+        .I1(mig_avail[10]),
+        .I2(mig_avail[11]),
+        .O(\axi_dma.mig_preview_i_10_n_0 ));
   LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[1]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[65]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[1]),
-        .O(\axi_dma.mig_size[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[2]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[66]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[2]),
-        .O(\axi_dma.mig_size[2]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[3]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[67]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
+    .INIT(32'h41000041)) 
+    \axi_dma.mig_preview_i_11 
+       (.I0(mig_avail[8]),
+        .I1(mig_avail[7]),
+        .I2(mig_size[7]),
+        .I3(mig_size[6]),
+        .I4(mig_avail[6]),
+        .O(\axi_dma.mig_preview_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_dma.mig_preview_i_12 
+       (.I0(mig_avail[5]),
+        .I1(mig_size[5]),
+        .I2(mig_avail[4]),
+        .I3(mig_size[4]),
         .I4(mig_size[3]),
-        .O(\axi_dma.mig_size[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[4]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[68]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[4]),
-        .O(\axi_dma.mig_size[4]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[5]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[69]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[5]),
-        .O(\axi_dma.mig_size[5]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[6]_i_1 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[70]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[6]),
-        .O(\axi_dma.mig_size[6]_i_1_n_0 ));
+        .I5(mig_avail[3]),
+        .O(\axi_dma.mig_preview_i_12_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_dma.mig_preview_i_13 
+       (.I0(mig_avail[2]),
+        .I1(mig_size[2]),
+        .I2(mig_avail[1]),
+        .I3(mig_size[1]),
+        .I4(mig_size[0]),
+        .I5(mig_avail[0]),
+        .O(\axi_dma.mig_preview_i_13_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \axi_dma.mig_preview_i_2 
+       (.I0(mig_size[4]),
+        .I1(mig_size[2]),
+        .I2(mig_size[0]),
+        .I3(mig_size[1]),
+        .I4(mig_size[3]),
+        .I5(mig_size[5]),
+        .O(\axi_dma.mig_preview_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_5 
+       (.I0(mig_avail[24]),
+        .I1(mig_avail[25]),
+        .I2(mig_avail[26]),
+        .O(\axi_dma.mig_preview_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_6 
+       (.I0(mig_avail[21]),
+        .I1(mig_avail[22]),
+        .I2(mig_avail[23]),
+        .O(\axi_dma.mig_preview_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_7 
+       (.I0(mig_avail[18]),
+        .I1(mig_avail[19]),
+        .I2(mig_avail[20]),
+        .O(\axi_dma.mig_preview_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_8 
+       (.I0(mig_avail[15]),
+        .I1(mig_avail[16]),
+        .I2(mig_avail[17]),
+        .O(\axi_dma.mig_preview_i_8_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \axi_dma.mig_preview_i_9 
+       (.I0(mig_avail[12]),
+        .I1(mig_avail[13]),
+        .I2(mig_avail[14]),
+        .O(\axi_dma.mig_preview_i_9_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.mig_preview_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.mig_preview_i_1_n_0 ),
+        .Q(mig_preview),
+        .R(1'b0));
+  CARRY8 \axi_dma.mig_preview_reg_i_3 
+       (.CI(\axi_dma.mig_preview_reg_i_4_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_preview_reg_i_3_CO_UNCONNECTED [7:1],data0}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(\NLW_axi_dma.mig_preview_reg_i_3_O_UNCONNECTED [7:0]),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.mig_preview_i_5_n_0 }));
+  CARRY8 \axi_dma.mig_preview_reg_i_4 
+       (.CI(1'b1),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_preview_reg_i_4_n_0 ,\axi_dma.mig_preview_reg_i_4_n_1 ,\axi_dma.mig_preview_reg_i_4_n_2 ,\axi_dma.mig_preview_reg_i_4_n_3 ,\axi_dma.mig_preview_reg_i_4_n_4 ,\axi_dma.mig_preview_reg_i_4_n_5 ,\axi_dma.mig_preview_reg_i_4_n_6 ,\axi_dma.mig_preview_reg_i_4_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .O(\NLW_axi_dma.mig_preview_reg_i_4_O_UNCONNECTED [7:0]),
+        .S({\axi_dma.mig_preview_i_6_n_0 ,\axi_dma.mig_preview_i_7_n_0 ,\axi_dma.mig_preview_i_8_n_0 ,\axi_dma.mig_preview_i_9_n_0 ,\axi_dma.mig_preview_i_10_n_0 ,\axi_dma.mig_preview_i_11_n_0 ,\axi_dma.mig_preview_i_12_n_0 ,\axi_dma.mig_preview_i_13_n_0 }));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \axi_dma.mig_rd_ptr[0]_i_1 
+       (.I0(mig_adr[0]),
+        .I1(mig_cmd_state[1]),
+        .O(\axi_dma.mig_rd_ptr[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[10]_i_1 
+       (.I0(mig_rd_ptr0[10]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[10]),
+        .O(\axi_dma.mig_rd_ptr[10]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[11]_i_1 
+       (.I0(mig_rd_ptr0[11]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[11]),
+        .O(\axi_dma.mig_rd_ptr[11]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[12]_i_1 
+       (.I0(mig_rd_ptr0[12]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[12]),
+        .O(\axi_dma.mig_rd_ptr[12]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[13]_i_1 
+       (.I0(mig_rd_ptr0[13]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[13]),
+        .O(\axi_dma.mig_rd_ptr[13]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[14]_i_1 
+       (.I0(mig_rd_ptr0[14]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[14]),
+        .O(\axi_dma.mig_rd_ptr[14]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[15]_i_1 
+       (.I0(mig_rd_ptr0[15]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[15]),
+        .O(\axi_dma.mig_rd_ptr[15]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[16]_i_1 
+       (.I0(mig_rd_ptr0[16]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[16]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_10 
+       (.I0(mig_adr[9]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_3 
+       (.I0(mig_adr[16]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_3_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_4 
+       (.I0(mig_adr[15]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_5 
+       (.I0(mig_adr[14]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_6 
+       (.I0(mig_adr[13]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_6_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_7 
+       (.I0(mig_adr[12]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_7_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_8 
+       (.I0(mig_adr[11]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[16]_i_9 
+       (.I0(mig_adr[10]),
+        .O(\axi_dma.mig_rd_ptr[16]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[17]_i_1 
+       (.I0(mig_rd_ptr0[17]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[17]),
+        .O(\axi_dma.mig_rd_ptr[17]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[18]_i_1 
+       (.I0(mig_rd_ptr0[18]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[18]),
+        .O(\axi_dma.mig_rd_ptr[18]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[19]_i_1 
+       (.I0(mig_rd_ptr0[19]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[19]),
+        .O(\axi_dma.mig_rd_ptr[19]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[1]_i_1 
+       (.I0(mig_rd_ptr0[1]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[1]),
+        .O(\axi_dma.mig_rd_ptr[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[20]_i_1 
+       (.I0(mig_rd_ptr0[20]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[20]),
+        .O(\axi_dma.mig_rd_ptr[20]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[21]_i_1 
+       (.I0(mig_rd_ptr0[21]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[21]),
+        .O(\axi_dma.mig_rd_ptr[21]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[22]_i_1 
+       (.I0(mig_rd_ptr0[22]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[22]),
+        .O(\axi_dma.mig_rd_ptr[22]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[23]_i_1 
+       (.I0(mig_rd_ptr0[23]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[23]),
+        .O(\axi_dma.mig_rd_ptr[23]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[24]_i_1 
+       (.I0(mig_rd_ptr0[24]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[24]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_10 
+       (.I0(mig_adr[17]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_3 
+       (.I0(mig_adr[24]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_3_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_4 
+       (.I0(mig_adr[23]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_5 
+       (.I0(mig_adr[22]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_6 
+       (.I0(mig_adr[21]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_6_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_7 
+       (.I0(mig_adr[20]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_7_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_8 
+       (.I0(mig_adr[19]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[24]_i_9 
+       (.I0(mig_adr[18]),
+        .O(\axi_dma.mig_rd_ptr[24]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[25]_i_1 
+       (.I0(mig_rd_ptr0[25]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[25]),
+        .O(\axi_dma.mig_rd_ptr[25]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h1)) 
+    \axi_dma.mig_rd_ptr[26]_i_1 
+       (.I0(mig_cmd_state[0]),
+        .I1(mig_cmd_state[2]),
+        .O(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[26]_i_2 
+       (.I0(mig_rd_ptr0[26]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[26]),
+        .O(\axi_dma.mig_rd_ptr[26]_i_2_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[26]_i_4 
+       (.I0(mig_adr[26]),
+        .O(\axi_dma.mig_rd_ptr[26]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[26]_i_5 
+       (.I0(mig_adr[25]),
+        .O(\axi_dma.mig_rd_ptr[26]_i_5_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[2]_i_1 
+       (.I0(mig_rd_ptr0[2]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[2]),
+        .O(\axi_dma.mig_rd_ptr[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[3]_i_1 
+       (.I0(mig_rd_ptr0[3]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[3]),
+        .O(\axi_dma.mig_rd_ptr[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[4]_i_1 
+       (.I0(mig_rd_ptr0[4]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[4]),
+        .O(\axi_dma.mig_rd_ptr[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[5]_i_1 
+       (.I0(mig_rd_ptr0[5]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[5]),
+        .O(\axi_dma.mig_rd_ptr[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[6]_i_1 
+       (.I0(mig_rd_ptr0[6]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[6]),
+        .O(\axi_dma.mig_rd_ptr[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[7]_i_1 
+       (.I0(mig_rd_ptr0[7]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[7]),
+        .O(\axi_dma.mig_rd_ptr[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[8]_i_1 
+       (.I0(mig_rd_ptr0[8]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[8]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_10 
+       (.I0(mig_adr[1]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_10_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_3 
+       (.I0(mig_adr[8]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_3_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_4 
+       (.I0(mig_adr[7]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_5 
+       (.I0(mig_adr[6]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_6 
+       (.I0(mig_adr[5]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_6_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_7 
+       (.I0(mig_adr[4]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_7_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_8 
+       (.I0(mig_adr[3]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_rd_ptr[8]_i_9 
+       (.I0(mig_adr[2]),
+        .O(\axi_dma.mig_rd_ptr[8]_i_9_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axi_dma.mig_rd_ptr[9]_i_1 
+       (.I0(mig_rd_ptr0[9]),
+        .I1(mig_cmd_state[1]),
+        .I2(mig_adr[9]),
+        .O(\axi_dma.mig_rd_ptr[9]_i_1_n_0 ));
+  FDRE \axi_dma.mig_rd_ptr_reg[0] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[0]_i_1_n_0 ),
+        .Q(mig_rd_ptr[0]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[10] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[10]_i_1_n_0 ),
+        .Q(mig_rd_ptr[10]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[11] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[11]_i_1_n_0 ),
+        .Q(mig_rd_ptr[11]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[12] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[12]_i_1_n_0 ),
+        .Q(mig_rd_ptr[12]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[13] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[13]_i_1_n_0 ),
+        .Q(mig_rd_ptr[13]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[14] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[14]_i_1_n_0 ),
+        .Q(mig_rd_ptr[14]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[15] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[15]_i_1_n_0 ),
+        .Q(mig_rd_ptr[15]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[16] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[16]_i_1_n_0 ),
+        .Q(mig_rd_ptr[16]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_rd_ptr_reg[16]_i_2 
+       (.CI(\axi_dma.mig_rd_ptr_reg[8]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_rd_ptr_reg[16]_i_2_n_0 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_1 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_2 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_3 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_4 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_5 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_6 ,\axi_dma.mig_rd_ptr_reg[16]_i_2_n_7 }),
+        .DI(mig_adr[16:9]),
+        .O(mig_rd_ptr0[16:9]),
+        .S({\axi_dma.mig_rd_ptr[16]_i_3_n_0 ,\axi_dma.mig_rd_ptr[16]_i_4_n_0 ,\axi_dma.mig_rd_ptr[16]_i_5_n_0 ,\axi_dma.mig_rd_ptr[16]_i_6_n_0 ,\axi_dma.mig_rd_ptr[16]_i_7_n_0 ,\axi_dma.mig_rd_ptr[16]_i_8_n_0 ,\axi_dma.mig_rd_ptr[16]_i_9_n_0 ,\axi_dma.mig_rd_ptr[16]_i_10_n_0 }));
+  FDRE \axi_dma.mig_rd_ptr_reg[17] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[17]_i_1_n_0 ),
+        .Q(mig_rd_ptr[17]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[18] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[18]_i_1_n_0 ),
+        .Q(mig_rd_ptr[18]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[19] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[19]_i_1_n_0 ),
+        .Q(mig_rd_ptr[19]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[1] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[1]_i_1_n_0 ),
+        .Q(mig_rd_ptr[1]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[20] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[20]_i_1_n_0 ),
+        .Q(mig_rd_ptr[20]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[21] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[21]_i_1_n_0 ),
+        .Q(mig_rd_ptr[21]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[22] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[22]_i_1_n_0 ),
+        .Q(mig_rd_ptr[22]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[23] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[23]_i_1_n_0 ),
+        .Q(mig_rd_ptr[23]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[24] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[24]_i_1_n_0 ),
+        .Q(mig_rd_ptr[24]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_rd_ptr_reg[24]_i_2 
+       (.CI(\axi_dma.mig_rd_ptr_reg[16]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_rd_ptr_reg[24]_i_2_n_0 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_1 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_2 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_3 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_4 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_5 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_6 ,\axi_dma.mig_rd_ptr_reg[24]_i_2_n_7 }),
+        .DI(mig_adr[24:17]),
+        .O(mig_rd_ptr0[24:17]),
+        .S({\axi_dma.mig_rd_ptr[24]_i_3_n_0 ,\axi_dma.mig_rd_ptr[24]_i_4_n_0 ,\axi_dma.mig_rd_ptr[24]_i_5_n_0 ,\axi_dma.mig_rd_ptr[24]_i_6_n_0 ,\axi_dma.mig_rd_ptr[24]_i_7_n_0 ,\axi_dma.mig_rd_ptr[24]_i_8_n_0 ,\axi_dma.mig_rd_ptr[24]_i_9_n_0 ,\axi_dma.mig_rd_ptr[24]_i_10_n_0 }));
+  FDRE \axi_dma.mig_rd_ptr_reg[25] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[25]_i_1_n_0 ),
+        .Q(mig_rd_ptr[25]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[26] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[26]_i_2_n_0 ),
+        .Q(mig_rd_ptr[26]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_rd_ptr_reg[26]_i_3 
+       (.CI(\axi_dma.mig_rd_ptr_reg[24]_i_2_n_0 ),
+        .CI_TOP(1'b0),
+        .CO({\NLW_axi_dma.mig_rd_ptr_reg[26]_i_3_CO_UNCONNECTED [7:1],\axi_dma.mig_rd_ptr_reg[26]_i_3_n_7 }),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,mig_adr[25]}),
+        .O({\NLW_axi_dma.mig_rd_ptr_reg[26]_i_3_O_UNCONNECTED [7:2],mig_rd_ptr0[26:25]}),
+        .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.mig_rd_ptr[26]_i_4_n_0 ,\axi_dma.mig_rd_ptr[26]_i_5_n_0 }));
+  FDRE \axi_dma.mig_rd_ptr_reg[2] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[2]_i_1_n_0 ),
+        .Q(mig_rd_ptr[2]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[3] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[3]_i_1_n_0 ),
+        .Q(mig_rd_ptr[3]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[4] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[4]_i_1_n_0 ),
+        .Q(mig_rd_ptr[4]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[5] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[5]_i_1_n_0 ),
+        .Q(mig_rd_ptr[5]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[6] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[6]_i_1_n_0 ),
+        .Q(mig_rd_ptr[6]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[7] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[7]_i_1_n_0 ),
+        .Q(mig_rd_ptr[7]),
+        .R(reset));
+  FDRE \axi_dma.mig_rd_ptr_reg[8] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[8]_i_1_n_0 ),
+        .Q(mig_rd_ptr[8]),
+        .R(reset));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY8 \axi_dma.mig_rd_ptr_reg[8]_i_2 
+       (.CI(mig_adr[0]),
+        .CI_TOP(1'b0),
+        .CO({\axi_dma.mig_rd_ptr_reg[8]_i_2_n_0 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_1 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_2 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_3 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_4 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_5 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_6 ,\axi_dma.mig_rd_ptr_reg[8]_i_2_n_7 }),
+        .DI(mig_adr[8:1]),
+        .O(mig_rd_ptr0[8:1]),
+        .S({\axi_dma.mig_rd_ptr[8]_i_3_n_0 ,\axi_dma.mig_rd_ptr[8]_i_4_n_0 ,\axi_dma.mig_rd_ptr[8]_i_5_n_0 ,\axi_dma.mig_rd_ptr[8]_i_6_n_0 ,\axi_dma.mig_rd_ptr[8]_i_7_n_0 ,\axi_dma.mig_rd_ptr[8]_i_8_n_0 ,\axi_dma.mig_rd_ptr[8]_i_9_n_0 ,\axi_dma.mig_rd_ptr[8]_i_10_n_0 }));
+  FDRE \axi_dma.mig_rd_ptr_reg[9] 
+       (.C(clk),
+        .CE(\axi_dma.mig_rd_ptr[26]_i_1_n_0 ),
+        .D(\axi_dma.mig_rd_ptr[9]_i_1_n_0 ),
+        .Q(mig_rd_ptr[9]),
+        .R(reset));
+  LUT3 #(
+    .INIT(8'h80)) 
     \axi_dma.mig_size[7]_i_1 
-       (.I0(reset),
-        .O(\axi_dma.mig_size[7]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hEFFF4000)) 
-    \axi_dma.mig_size[7]_i_2 
-       (.I0(cmd_done),
-        .I1(M_AXI_TDATA_in[71]),
-        .I2(M_AXI_TVALID_in),
-        .I3(M_AXI_TDATA_in[79]),
-        .I4(mig_size[7]),
-        .O(\axi_dma.mig_size[7]_i_2_n_0 ));
+       (.I0(M_AXI_TVALID_in),
+        .I1(M_AXI_TREADY_in),
+        .I2(M_AXI_TDATA_in[79]),
+        .O(\axi_dma.mig_size_reg0 ));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[0] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[0]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[64]),
         .Q(mig_size[0]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[1] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[1]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[65]),
         .Q(mig_size[1]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[2] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[2]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[66]),
         .Q(mig_size[2]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[3] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[3]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[67]),
         .Q(mig_size[3]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[4] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[4]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[68]),
         .Q(mig_size[4]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[5] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[5]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[69]),
         .Q(mig_size[5]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[6] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[6]_i_1_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[70]),
         .Q(mig_size[6]),
-        .R(1'b0));
+        .R(reset));
   (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_size_reg[7] 
        (.C(clk),
-        .CE(\axi_dma.mig_size[7]_i_1_n_0 ),
-        .D(\axi_dma.mig_size[7]_i_2_n_0 ),
+        .CE(\axi_dma.mig_size_reg0 ),
+        .D(M_AXI_TDATA_in[71]),
         .Q(mig_size[7]),
-        .R(1'b0));
+        .R(reset));
+  LUT6 #(
+    .INIT(64'h00000A0C00000A00)) 
+    \axi_dma.mig_start_cmd_i_1 
+       (.I0(fifo_has_space),
+        .I1(\axi_dma.mig_cmd_state[0]_i_6_n_0 ),
+        .I2(mig_cmd_state[0]),
+        .I3(mig_cmd_state[1]),
+        .I4(mig_cmd_state[2]),
+        .I5(\axi_dma.mig_cmd_state[0]_i_4_n_0 ),
+        .O(\axi_dma.mig_start_cmd_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_start_cmd_reg 
+       (.C(clk),
+        .CE(\axi_dma.mig_cmd_state[2]_i_1_n_0 ),
+        .D(\axi_dma.mig_start_cmd_i_1_n_0 ),
+        .Q(mig_start_cmd),
+        .R(reset));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \axi_dma.mig_tag[0]_i_1 
+       (.I0(mig_tag[0]),
+        .O(\axi_dma.mig_tag[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \axi_dma.mig_tag[1]_i_1 
+       (.I0(mig_tag[0]),
+        .I1(mig_tag[1]),
+        .O(\axi_dma.mig_tag[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h78)) 
+    \axi_dma.mig_tag[2]_i_1 
+       (.I0(mig_tag[0]),
+        .I1(mig_tag[1]),
+        .I2(mig_tag[2]),
+        .O(\axi_dma.mig_tag[2]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h7F80)) 
+    \axi_dma.mig_tag[3]_i_1 
+       (.I0(mig_tag[1]),
+        .I1(mig_tag[0]),
+        .I2(mig_tag[2]),
+        .I3(mig_tag[3]),
+        .O(\axi_dma.mig_tag[3]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_tag_reg[0] 
+       (.C(clk),
+        .CE(mig_cmd_done),
+        .D(\axi_dma.mig_tag[0]_i_1_n_0 ),
+        .Q(mig_tag[0]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_tag_reg[1] 
+       (.C(clk),
+        .CE(mig_cmd_done),
+        .D(\axi_dma.mig_tag[1]_i_1_n_0 ),
+        .Q(mig_tag[1]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_tag_reg[2] 
+       (.C(clk),
+        .CE(mig_cmd_done),
+        .D(\axi_dma.mig_tag[2]_i_1_n_0 ),
+        .Q(mig_tag[2]),
+        .R(reset));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \axi_dma.mig_tag_reg[3] 
+       (.C(clk),
+        .CE(mig_cmd_done),
+        .D(\axi_dma.mig_tag[3]_i_1_n_0 ),
+        .Q(mig_tag[3]),
+        .R(reset));
   LUT1 #(
     .INIT(2'h1)) 
     \axi_dma.reset_i_1 
@@ -4103,81 +11739,6 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.reset_i_1_n_0 ),
         .Q(reset),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hFFF20002)) 
-    \axi_dma.start_cmd_i_1 
-       (.I0(\axi_dma.cmd_state[2]_i_3_n_0 ),
-        .I1(cmd_state[0]),
-        .I2(cmd_state[2]),
-        .I3(cmd_state[1]),
-        .I4(start_cmd),
-        .O(\axi_dma.start_cmd_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.start_cmd_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.start_cmd_i_1_n_0 ),
-        .Q(start_cmd),
-        .R(reset));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \axi_dma.tag[0]_i_1 
-       (.I0(tag[0]),
-        .O(\axi_dma.tag[0]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \axi_dma.tag[1]_i_1 
-       (.I0(tag[0]),
-        .I1(tag[1]),
-        .O(\axi_dma.tag[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h78)) 
-    \axi_dma.tag[2]_i_1 
-       (.I0(tag[0]),
-        .I1(tag[1]),
-        .I2(tag[2]),
-        .O(\axi_dma.tag[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \axi_dma.tag[3]_i_1 
-       (.I0(tag[1]),
-        .I1(tag[0]),
-        .I2(tag[2]),
-        .I3(tag[3]),
-        .O(\axi_dma.tag[3]_i_1_n_0 ));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.tag_reg[0] 
-       (.C(clk),
-        .CE(cmd_done),
-        .D(\axi_dma.tag[0]_i_1_n_0 ),
-        .Q(tag[0]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.tag_reg[1] 
-       (.C(clk),
-        .CE(cmd_done),
-        .D(\axi_dma.tag[1]_i_1_n_0 ),
-        .Q(tag[1]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.tag_reg[2] 
-       (.C(clk),
-        .CE(cmd_done),
-        .D(\axi_dma.tag[2]_i_1_n_0 ),
-        .Q(tag[2]),
-        .R(reset));
-  (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \axi_dma.tag_reg[3] 
-       (.C(clk),
-        .CE(cmd_done),
-        .D(\axi_dma.tag[3]_i_1_n_0 ),
-        .Q(tag[3]),
-        .R(reset));
   (* CASCADE_HEIGHT = "0" *) 
   (* DOUT_RESET_VALUE = "0" *) 
   (* ECC_MODE = "0" *) 
@@ -4208,17 +11769,17 @@ module ps_axi_dma_1_0_axi_dma
         .almost_full(NLW_fifo_i_almost_full_UNCONNECTED),
         .data_valid(NLW_fifo_i_data_valid_UNCONNECTED),
         .dbiterr(NLW_fifo_i_dbiterr_UNCONNECTED),
-        .din(in_data),
+        .din(fifo_in_data),
         .dout(M_AXI_TDATA_out),
-        .empty(fifo_empty),
-        .full(NLW_fifo_i_full_UNCONNECTED),
+        .empty(NLW_fifo_i_empty_UNCONNECTED),
+        .full(fifo_full),
         .injectdbiterr(1'b0),
         .injectsbiterr(1'b0),
         .overflow(NLW_fifo_i_overflow_UNCONNECTED),
         .prog_empty(NLW_fifo_i_prog_empty_UNCONNECTED),
         .prog_full(NLW_fifo_i_prog_full_UNCONNECTED),
         .rd_data_count(NLW_fifo_i_rd_data_count_UNCONNECTED[0]),
-        .rd_en(fifo_rd_en),
+        .rd_en(1'b0),
         .rd_rst_busy(NLW_fifo_i_rd_rst_busy_UNCONNECTED),
         .rst(reset),
         .sbiterr(NLW_fifo_i_sbiterr_UNCONNECTED),
@@ -4227,32 +11788,47 @@ module ps_axi_dma_1_0_axi_dma
         .wr_ack(NLW_fifo_i_wr_ack_UNCONNECTED),
         .wr_clk(clk),
         .wr_data_count(NLW_fifo_i_wr_data_count_UNCONNECTED[0]),
-        .wr_en(in_wr),
+        .wr_en(fifo_wr_en),
         .wr_rst_busy(NLW_fifo_i_wr_rst_busy_UNCONNECTED));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT3 #(
-    .INIT(8'h40)) 
-    fifo_i_i_1
-       (.I0(fifo_empty),
-        .I1(M_AXI_TREADY_out),
-        .I2(\axi_dma.dma_active_reg_n_0 ),
-        .O(fifo_rd_en));
   (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_axi_dma_1_0_ila_7 ila_i
        (.clk(clk),
-        .probe0(cmd_state),
-        .probe1(adr),
+        .probe0(fifo_count),
+        .probe1(fifo_space),
         .probe10(mig_diff),
-        .probe11(linux_rd_ptr),
-        .probe2(mig_blocks),
-        .probe3(start_cmd),
-        .probe4(cmd_done),
-        .probe5(cmd_error),
-        .probe6(blocks),
-        .probe7(tag),
-        .probe8(has_mig_size),
+        .probe11(mig_avail),
+        .probe12(mig_preview),
+        .probe13(fifo_has_space),
+        .probe14(mig_hdr_sample),
+        .probe15(mig_hdr_blocks),
+        .probe16(mig_hdr_flags),
+        .probe17(mig_hdr_size),
+        .probe18(mig_hdr_freq),
+        .probe19(mig_hdr_angle),
+        .probe2(mig_cmd_state),
+        .probe20(mig_hdr_doa_error),
+        .probe21(mig_hdr_max_env),
+        .probe22(mig_hdr_max_pos),
+        .probe23(mig_hdr_env_mean),
+        .probe24(mig_hdr_env_std),
+        .probe25(mig_hdr_phase_std),
+        .probe26(mig_hdr_freq_std),
+        .probe27(mig_env_0),
+        .probe28(mig_env_1),
+        .probe29(mig_env_2),
+        .probe3(mig_adr),
+        .probe30(mig_env_3),
+        .probe31(mig_env_4),
+        .probe32(mig_env_5),
+        .probe33(mig_env_6),
+        .probe34(mig_env_7),
+        .probe4(mig_start_cmd),
+        .probe5(mig_cmd_done),
+        .probe6(mig_cmd_error),
+        .probe7(mig_blocks),
+        .probe8(mig_tag),
         .probe9(mig_size));
 endmodule
 
@@ -4271,20 +11847,66 @@ module ps_axi_dma_1_0_ila_7
     probe8,
     probe9,
     probe10,
-    probe11);
+    probe11,
+    probe12,
+    probe13,
+    probe14,
+    probe15,
+    probe16,
+    probe17,
+    probe18,
+    probe19,
+    probe20,
+    probe21,
+    probe22,
+    probe23,
+    probe24,
+    probe25,
+    probe26,
+    probe27,
+    probe28,
+    probe29,
+    probe30,
+    probe31,
+    probe32,
+    probe33,
+    probe34);
   (* syn_isclock = "1" *) input clk;
-  input [2:0]probe0;
-  input [26:0]probe1;
-  input [26:0]probe2;
-  input [0:0]probe3;
+  input [13:0]probe0;
+  input [13:0]probe1;
+  input [2:0]probe2;
+  input [26:0]probe3;
   input [0:0]probe4;
   input [0:0]probe5;
-  input [7:0]probe6;
-  input [3:0]probe7;
-  input [0:0]probe8;
+  input [0:0]probe6;
+  input [7:0]probe7;
+  input [3:0]probe8;
   input [7:0]probe9;
   input [7:0]probe10;
-  input [31:0]probe11;
+  input [26:0]probe11;
+  input [0:0]probe12;
+  input [0:0]probe13;
+  input [63:0]probe14;
+  input [7:0]probe15;
+  input [7:0]probe16;
+  input [15:0]probe17;
+  input [31:0]probe18;
+  input [15:0]probe19;
+  input [15:0]probe20;
+  input [15:0]probe21;
+  input [15:0]probe22;
+  input [15:0]probe23;
+  input [15:0]probe24;
+  input [15:0]probe25;
+  input [15:0]probe26;
+  input [15:0]probe27;
+  input [15:0]probe28;
+  input [15:0]probe29;
+  input [15:0]probe30;
+  input [15:0]probe31;
+  input [15:0]probe32;
+  input [15:0]probe33;
+  input [15:0]probe34;
 
 
 endmodule
@@ -4297,9 +11919,8 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
     ram_wr_en_pf,
     \count_value_i_reg[0]_0 ,
     \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg ,
-    \count_value_i_reg[1]_0 ,
-    rd_en,
     ram_empty_i,
+    \count_value_i_reg[2]_0 ,
     \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_3_0 ,
     \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_2_0 ,
     \count_value_i_reg[13]_0 ,
@@ -4310,9 +11931,8 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
   input ram_wr_en_pf;
   input \count_value_i_reg[0]_0 ;
   input \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg ;
-  input [1:0]\count_value_i_reg[1]_0 ;
-  input rd_en;
   input ram_empty_i;
+  input [1:0]\count_value_i_reg[2]_0 ;
   input [13:0]\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_3_0 ;
   input [13:0]\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_2_0 ;
   input [0:0]\count_value_i_reg[13]_0 ;
@@ -4322,8 +11942,8 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
   wire \count_value_i[0]_i_1__1_n_0 ;
   wire \count_value_i[10]_i_1__1_n_0 ;
   wire \count_value_i[11]_i_1__1_n_0 ;
-  wire \count_value_i[11]_i_2__1_n_0 ;
   wire \count_value_i[12]_i_1__1_n_0 ;
+  wire \count_value_i[12]_i_2_n_0 ;
   wire \count_value_i[13]_i_1__1_n_0 ;
   wire \count_value_i[13]_i_2__1_n_0 ;
   wire \count_value_i[1]_i_1__1_n_0 ;
@@ -4332,14 +11952,14 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
   wire \count_value_i[4]_i_1__1_n_0 ;
   wire \count_value_i[5]_i_1__1_n_0 ;
   wire \count_value_i[6]_i_1__1_n_0 ;
-  wire \count_value_i[6]_i_2__1_n_0 ;
   wire \count_value_i[7]_i_1__1_n_0 ;
+  wire \count_value_i[7]_i_2_n_0 ;
   wire \count_value_i[8]_i_1__1_n_0 ;
   wire \count_value_i[9]_i_1__1_n_0 ;
   wire \count_value_i[9]_i_2__1_n_0 ;
   wire \count_value_i_reg[0]_0 ;
   wire [0:0]\count_value_i_reg[13]_0 ;
-  wire [1:0]\count_value_i_reg[1]_0 ;
+  wire [1:0]\count_value_i_reg[2]_0 ;
   wire \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_10_n_0 ;
   wire \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_11_n_0 ;
   wire \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_12_n_0 ;
@@ -4358,57 +11978,54 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
   wire ram_empty_i;
   wire ram_full_i0;
   wire ram_wr_en_pf;
-  wire rd_en;
   wire wr_clk;
 
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h10EF)) 
+  LUT3 #(
+    .INIT(8'h4B)) 
     \count_value_i[0]_i_1__1 
-       (.I0(rd_en),
-        .I1(\count_value_i_reg[1]_0 [0]),
-        .I2(\count_value_i_reg[1]_0 [1]),
-        .I3(Q[0]),
+       (.I0(\count_value_i_reg[2]_0 [0]),
+        .I1(\count_value_i_reg[2]_0 [1]),
+        .I2(Q[0]),
         .O(\count_value_i[0]_i_1__1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \count_value_i[10]_i_1__1 
-       (.I0(Q[8]),
-        .I1(\count_value_i[11]_i_2__1_n_0 ),
-        .I2(Q[7]),
-        .I3(Q[9]),
-        .I4(Q[10]),
-        .O(\count_value_i[10]_i_1__1_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \count_value_i[11]_i_1__1 
-       (.I0(Q[9]),
-        .I1(Q[7]),
-        .I2(\count_value_i[11]_i_2__1_n_0 ),
-        .I3(Q[8]),
-        .I4(Q[10]),
-        .I5(Q[11]),
-        .O(\count_value_i[11]_i_1__1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \count_value_i[11]_i_2__1 
-       (.I0(Q[6]),
-        .I1(Q[4]),
-        .I2(Q[2]),
-        .I3(\count_value_i[6]_i_2__1_n_0 ),
-        .I4(Q[3]),
-        .I5(Q[5]),
-        .O(\count_value_i[11]_i_2__1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
+    \count_value_i[10]_i_1__1 
+       (.I0(Q[8]),
+        .I1(\count_value_i[12]_i_2_n_0 ),
+        .I2(Q[9]),
+        .I3(Q[10]),
+        .O(\count_value_i[10]_i_1__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \count_value_i[11]_i_1__1 
+       (.I0(Q[9]),
+        .I1(\count_value_i[12]_i_2_n_0 ),
+        .I2(Q[8]),
+        .I3(Q[10]),
+        .I4(Q[11]),
+        .O(\count_value_i[11]_i_1__1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[12]_i_1__1 
        (.I0(Q[10]),
-        .I1(\count_value_i[13]_i_2__1_n_0 ),
-        .I2(Q[11]),
-        .I3(Q[12]),
+        .I1(Q[8]),
+        .I2(\count_value_i[12]_i_2_n_0 ),
+        .I3(Q[9]),
+        .I4(Q[11]),
+        .I5(Q[12]),
         .O(\count_value_i[12]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    \count_value_i[12]_i_2 
+       (.I0(Q[7]),
+        .I1(Q[5]),
+        .I2(Q[3]),
+        .I3(\count_value_i[7]_i_2_n_0 ),
+        .I4(Q[4]),
+        .I5(Q[6]),
+        .O(\count_value_i[12]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[13]_i_1__1 
@@ -4429,21 +12046,23 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
         .I5(Q[8]),
         .O(\count_value_i[13]_i_2__1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT5 #(
-    .INIT(32'h02FFFD00)) 
+  LUT4 #(
+    .INIT(16'h2FD0)) 
     \count_value_i[1]_i_1__1 
-       (.I0(\count_value_i_reg[1]_0 [1]),
-        .I1(\count_value_i_reg[1]_0 [0]),
-        .I2(rd_en),
-        .I3(Q[0]),
-        .I4(Q[1]),
+       (.I0(\count_value_i_reg[2]_0 [1]),
+        .I1(\count_value_i_reg[2]_0 [0]),
+        .I2(Q[0]),
+        .I3(Q[1]),
         .O(\count_value_i[1]_i_1__1_n_0 ));
-  LUT3 #(
-    .INIT(8'h78)) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h75FF8A00)) 
     \count_value_i[2]_i_1__1 
        (.I0(Q[0]),
-        .I1(Q[1]),
-        .I2(Q[2]),
+        .I1(\count_value_i_reg[2]_0 [0]),
+        .I2(\count_value_i_reg[2]_0 [1]),
+        .I3(Q[1]),
+        .I4(Q[2]),
         .O(\count_value_i[2]_i_1__1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
@@ -4464,45 +12083,45 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0
         .I3(Q[3]),
         .I4(Q[4]),
         .O(\count_value_i[4]_i_1__1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \count_value_i[5]_i_1__1 
-       (.I0(Q[3]),
-        .I1(\count_value_i[6]_i_2__1_n_0 ),
-        .I2(Q[2]),
-        .I3(Q[4]),
-        .I4(Q[5]),
-        .O(\count_value_i[5]_i_1__1_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \count_value_i[6]_i_1__1 
-       (.I0(Q[4]),
-        .I1(Q[2]),
-        .I2(\count_value_i[6]_i_2__1_n_0 ),
-        .I3(Q[3]),
-        .I4(Q[5]),
-        .I5(Q[6]),
-        .O(\count_value_i[6]_i_1__1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000AAA200000000)) 
-    \count_value_i[6]_i_2__1 
-       (.I0(Q[1]),
-        .I1(\count_value_i_reg[1]_0 [1]),
-        .I2(\count_value_i_reg[1]_0 [0]),
-        .I3(rd_en),
-        .I4(ram_empty_i),
-        .I5(Q[0]),
-        .O(\count_value_i[6]_i_2__1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
+    \count_value_i[5]_i_1__1 
+       (.I0(Q[3]),
+        .I1(\count_value_i[7]_i_2_n_0 ),
+        .I2(Q[4]),
+        .I3(Q[5]),
+        .O(\count_value_i[5]_i_1__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \count_value_i[6]_i_1__1 
+       (.I0(Q[4]),
+        .I1(\count_value_i[7]_i_2_n_0 ),
+        .I2(Q[3]),
+        .I3(Q[5]),
+        .I4(Q[6]),
+        .O(\count_value_i[6]_i_1__1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[7]_i_1__1 
        (.I0(Q[5]),
-        .I1(\count_value_i[9]_i_2__1_n_0 ),
-        .I2(Q[6]),
-        .I3(Q[7]),
+        .I1(Q[3]),
+        .I2(\count_value_i[7]_i_2_n_0 ),
+        .I3(Q[4]),
+        .I4(Q[6]),
+        .I5(Q[7]),
         .O(\count_value_i[7]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT6 #(
+    .INIT(64'h0800080800000000)) 
+    \count_value_i[7]_i_2 
+       (.I0(Q[2]),
+        .I1(Q[0]),
+        .I2(ram_empty_i),
+        .I3(\count_value_i_reg[2]_0 [0]),
+        .I4(\count_value_i_reg[2]_0 [1]),
+        .I5(Q[1]),
+        .O(\count_value_i[7]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[8]_i_1__1 
@@ -4772,8 +12391,8 @@ endmodule
 (* ORIG_REF_NAME = "xpm_counter_updn" *) 
 module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
    (ram_empty_i0,
+    \count_value_i_reg[13]_0 ,
     Q,
-    \gen_pntr_flags_cc.ram_empty_i_reg ,
     leaving_empty0,
     ram_wr_en_pf,
     ram_empty_i,
@@ -4784,8 +12403,8 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
     \gen_pntr_flags_cc.ram_empty_i_i_2_0 ,
     wr_clk);
   output ram_empty_i0;
-  output [13:0]Q;
-  input \gen_pntr_flags_cc.ram_empty_i_reg ;
+  output [13:0]\count_value_i_reg[13]_0 ;
+  input [1:0]Q;
   input leaving_empty0;
   input ram_wr_en_pf;
   input ram_empty_i;
@@ -4796,7 +12415,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
   input [13:0]\gen_pntr_flags_cc.ram_empty_i_i_2_0 ;
   input wr_clk;
 
-  wire [13:0]Q;
+  wire [1:0]Q;
   wire \count_value_i[0]_i_1_n_0 ;
   wire \count_value_i[10]_i_1__0_n_0 ;
   wire \count_value_i[11]_i_1__0_n_0 ;
@@ -4816,6 +12435,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
   wire \count_value_i[9]_i_1__0_n_0 ;
   wire \count_value_i[9]_i_2__0_n_0 ;
   wire [0:0]\count_value_i_reg[0]_0 ;
+  wire [13:0]\count_value_i_reg[13]_0 ;
   wire \count_value_i_reg[5]_0 ;
   wire [13:0]\gen_pntr_flags_cc.ram_empty_i_i_2_0 ;
   wire \gen_pntr_flags_cc.ram_empty_i_i_3_n_0 ;
@@ -4823,7 +12443,6 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
   wire \gen_pntr_flags_cc.ram_empty_i_i_5_n_0 ;
   wire \gen_pntr_flags_cc.ram_empty_i_i_6_n_0 ;
   wire \gen_pntr_flags_cc.ram_empty_i_i_7_n_0 ;
-  wire \gen_pntr_flags_cc.ram_empty_i_reg ;
   wire going_empty1;
   wire leaving_empty0;
   wire ram_empty_i;
@@ -4836,167 +12455,167 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
   LUT1 #(
     .INIT(2'h1)) 
     \count_value_i[0]_i_1 
-       (.I0(Q[0]),
+       (.I0(\count_value_i_reg[13]_0 [0]),
         .O(\count_value_i[0]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[10]_i_1__0 
-       (.I0(Q[8]),
+       (.I0(\count_value_i_reg[13]_0 [8]),
         .I1(\count_value_i[11]_i_2__0_n_0 ),
-        .I2(Q[7]),
-        .I3(Q[9]),
-        .I4(Q[10]),
+        .I2(\count_value_i_reg[13]_0 [7]),
+        .I3(\count_value_i_reg[13]_0 [9]),
+        .I4(\count_value_i_reg[13]_0 [10]),
         .O(\count_value_i[10]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[11]_i_1__0 
-       (.I0(Q[9]),
-        .I1(Q[7]),
+       (.I0(\count_value_i_reg[13]_0 [9]),
+        .I1(\count_value_i_reg[13]_0 [7]),
         .I2(\count_value_i[11]_i_2__0_n_0 ),
-        .I3(Q[8]),
-        .I4(Q[10]),
-        .I5(Q[11]),
+        .I3(\count_value_i_reg[13]_0 [8]),
+        .I4(\count_value_i_reg[13]_0 [10]),
+        .I5(\count_value_i_reg[13]_0 [11]),
         .O(\count_value_i[11]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
     \count_value_i[11]_i_2__0 
-       (.I0(Q[6]),
-        .I1(Q[4]),
-        .I2(Q[2]),
+       (.I0(\count_value_i_reg[13]_0 [6]),
+        .I1(\count_value_i_reg[13]_0 [4]),
+        .I2(\count_value_i_reg[13]_0 [2]),
         .I3(\count_value_i[6]_i_2__0_n_0 ),
-        .I4(Q[3]),
-        .I5(Q[5]),
+        .I4(\count_value_i_reg[13]_0 [3]),
+        .I5(\count_value_i_reg[13]_0 [5]),
         .O(\count_value_i[11]_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[12]_i_1__0 
-       (.I0(Q[10]),
+       (.I0(\count_value_i_reg[13]_0 [10]),
         .I1(\count_value_i[13]_i_2__0_n_0 ),
-        .I2(Q[11]),
-        .I3(Q[12]),
+        .I2(\count_value_i_reg[13]_0 [11]),
+        .I3(\count_value_i_reg[13]_0 [12]),
         .O(\count_value_i[12]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[13]_i_1__0 
-       (.I0(Q[11]),
+       (.I0(\count_value_i_reg[13]_0 [11]),
         .I1(\count_value_i[13]_i_2__0_n_0 ),
-        .I2(Q[10]),
-        .I3(Q[12]),
-        .I4(Q[13]),
+        .I2(\count_value_i_reg[13]_0 [10]),
+        .I3(\count_value_i_reg[13]_0 [12]),
+        .I4(\count_value_i_reg[13]_0 [13]),
         .O(\count_value_i[13]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
     \count_value_i[13]_i_2__0 
-       (.I0(Q[9]),
-        .I1(Q[7]),
-        .I2(Q[5]),
+       (.I0(\count_value_i_reg[13]_0 [9]),
+        .I1(\count_value_i_reg[13]_0 [7]),
+        .I2(\count_value_i_reg[13]_0 [5]),
         .I3(\count_value_i[9]_i_2__0_n_0 ),
-        .I4(Q[6]),
-        .I5(Q[8]),
+        .I4(\count_value_i_reg[13]_0 [6]),
+        .I5(\count_value_i_reg[13]_0 [8]),
         .O(\count_value_i[13]_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \count_value_i[1]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[1]),
+       (.I0(\count_value_i_reg[13]_0 [0]),
+        .I1(\count_value_i_reg[13]_0 [1]),
         .O(\count_value_i[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[1]),
-        .I2(Q[2]),
+       (.I0(\count_value_i_reg[13]_0 [0]),
+        .I1(\count_value_i_reg[13]_0 [1]),
+        .I2(\count_value_i_reg[13]_0 [2]),
         .O(\count_value_i[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1 
-       (.I0(Q[1]),
-        .I1(Q[0]),
-        .I2(Q[2]),
-        .I3(Q[3]),
+       (.I0(\count_value_i_reg[13]_0 [1]),
+        .I1(\count_value_i_reg[13]_0 [0]),
+        .I2(\count_value_i_reg[13]_0 [2]),
+        .I3(\count_value_i_reg[13]_0 [3]),
         .O(\count_value_i[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[4]_i_1 
-       (.I0(Q[2]),
-        .I1(Q[0]),
-        .I2(Q[1]),
-        .I3(Q[3]),
-        .I4(Q[4]),
+       (.I0(\count_value_i_reg[13]_0 [2]),
+        .I1(\count_value_i_reg[13]_0 [0]),
+        .I2(\count_value_i_reg[13]_0 [1]),
+        .I3(\count_value_i_reg[13]_0 [3]),
+        .I4(\count_value_i_reg[13]_0 [4]),
         .O(\count_value_i[4]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[5]_i_1__0 
-       (.I0(Q[3]),
+       (.I0(\count_value_i_reg[13]_0 [3]),
         .I1(\count_value_i[6]_i_2__0_n_0 ),
-        .I2(Q[2]),
-        .I3(Q[4]),
-        .I4(Q[5]),
+        .I2(\count_value_i_reg[13]_0 [2]),
+        .I3(\count_value_i_reg[13]_0 [4]),
+        .I4(\count_value_i_reg[13]_0 [5]),
         .O(\count_value_i[5]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[6]_i_1__0 
-       (.I0(Q[4]),
-        .I1(Q[2]),
+       (.I0(\count_value_i_reg[13]_0 [4]),
+        .I1(\count_value_i_reg[13]_0 [2]),
         .I2(\count_value_i[6]_i_2__0_n_0 ),
-        .I3(Q[3]),
-        .I4(Q[5]),
-        .I5(Q[6]),
+        .I3(\count_value_i_reg[13]_0 [3]),
+        .I4(\count_value_i_reg[13]_0 [5]),
+        .I5(\count_value_i_reg[13]_0 [6]),
         .O(\count_value_i[6]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h0000000800000000)) 
     \count_value_i[6]_i_2__0 
-       (.I0(Q[1]),
+       (.I0(\count_value_i_reg[13]_0 [1]),
         .I1(wr_en),
         .I2(\count_value_i_reg[5]_0 ),
         .I3(\count_value_i_reg[0]_0 ),
         .I4(rst_d1),
-        .I5(Q[0]),
+        .I5(\count_value_i_reg[13]_0 [0]),
         .O(\count_value_i[6]_i_2__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[7]_i_1__0 
-       (.I0(Q[5]),
+       (.I0(\count_value_i_reg[13]_0 [5]),
         .I1(\count_value_i[9]_i_2__0_n_0 ),
-        .I2(Q[6]),
-        .I3(Q[7]),
+        .I2(\count_value_i_reg[13]_0 [6]),
+        .I3(\count_value_i_reg[13]_0 [7]),
         .O(\count_value_i[7]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[8]_i_1__0 
-       (.I0(Q[6]),
+       (.I0(\count_value_i_reg[13]_0 [6]),
         .I1(\count_value_i[9]_i_2__0_n_0 ),
-        .I2(Q[5]),
-        .I3(Q[7]),
-        .I4(Q[8]),
+        .I2(\count_value_i_reg[13]_0 [5]),
+        .I3(\count_value_i_reg[13]_0 [7]),
+        .I4(\count_value_i_reg[13]_0 [8]),
         .O(\count_value_i[8]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[9]_i_1__0 
-       (.I0(Q[7]),
-        .I1(Q[5]),
+       (.I0(\count_value_i_reg[13]_0 [7]),
+        .I1(\count_value_i_reg[13]_0 [5]),
         .I2(\count_value_i[9]_i_2__0_n_0 ),
-        .I3(Q[6]),
-        .I4(Q[8]),
-        .I5(Q[9]),
+        .I3(\count_value_i_reg[13]_0 [6]),
+        .I4(\count_value_i_reg[13]_0 [8]),
+        .I5(\count_value_i_reg[13]_0 [9]),
         .O(\count_value_i[9]_i_1__0_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
     \count_value_i[9]_i_2__0 
-       (.I0(Q[4]),
-        .I1(Q[2]),
-        .I2(Q[0]),
+       (.I0(\count_value_i_reg[13]_0 [4]),
+        .I1(\count_value_i_reg[13]_0 [2]),
+        .I2(\count_value_i_reg[13]_0 [0]),
         .I3(ram_wr_en_pf),
-        .I4(Q[1]),
-        .I5(Q[3]),
+        .I4(\count_value_i_reg[13]_0 [1]),
+        .I5(\count_value_i_reg[13]_0 [3]),
         .O(\count_value_i[9]_i_2__0_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5004,7 +12623,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[0]_i_1_n_0 ),
-        .Q(Q[0]),
+        .Q(\count_value_i_reg[13]_0 [0]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5012,7 +12631,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[10]_i_1__0_n_0 ),
-        .Q(Q[10]),
+        .Q(\count_value_i_reg[13]_0 [10]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5020,7 +12639,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[11]_i_1__0_n_0 ),
-        .Q(Q[11]),
+        .Q(\count_value_i_reg[13]_0 [11]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5028,7 +12647,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[12]_i_1__0_n_0 ),
-        .Q(Q[12]),
+        .Q(\count_value_i_reg[13]_0 [12]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5036,7 +12655,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[13]_i_1__0_n_0 ),
-        .Q(Q[13]),
+        .Q(\count_value_i_reg[13]_0 [13]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5044,7 +12663,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[1]_i_1_n_0 ),
-        .Q(Q[1]),
+        .Q(\count_value_i_reg[13]_0 [1]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5052,7 +12671,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[2]_i_1_n_0 ),
-        .Q(Q[2]),
+        .Q(\count_value_i_reg[13]_0 [2]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5060,7 +12679,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[3]_i_1_n_0 ),
-        .Q(Q[3]),
+        .Q(\count_value_i_reg[13]_0 [3]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5068,7 +12687,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[4]_i_1_n_0 ),
-        .Q(Q[4]),
+        .Q(\count_value_i_reg[13]_0 [4]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5076,7 +12695,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[5]_i_1__0_n_0 ),
-        .Q(Q[5]),
+        .Q(\count_value_i_reg[13]_0 [5]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5084,7 +12703,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[6]_i_1__0_n_0 ),
-        .Q(Q[6]),
+        .Q(\count_value_i_reg[13]_0 [6]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5092,7 +12711,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[7]_i_1__0_n_0 ),
-        .Q(Q[7]),
+        .Q(\count_value_i_reg[13]_0 [7]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5100,7 +12719,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[8]_i_1__0_n_0 ),
-        .Q(Q[8]),
+        .Q(\count_value_i_reg[13]_0 [8]),
         .R(\count_value_i_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5108,16 +12727,17 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
        (.C(wr_clk),
         .CE(ram_wr_en_pf),
         .D(\count_value_i[9]_i_1__0_n_0 ),
-        .Q(Q[9]),
+        .Q(\count_value_i_reg[13]_0 [9]),
         .R(\count_value_i_reg[0]_0 ));
-  LUT5 #(
-    .INIT(32'h0FFF0088)) 
+  LUT6 #(
+    .INIT(64'h00FFFFFF0000B0B0)) 
     \gen_pntr_flags_cc.ram_empty_i_i_1 
-       (.I0(\gen_pntr_flags_cc.ram_empty_i_reg ),
-        .I1(going_empty1),
-        .I2(leaving_empty0),
-        .I3(ram_wr_en_pf),
-        .I4(ram_empty_i),
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(going_empty1),
+        .I3(leaving_empty0),
+        .I4(ram_wr_en_pf),
+        .I5(ram_empty_i),
         .O(ram_empty_i0));
   LUT5 #(
     .INIT(32'h20000000)) 
@@ -5131,50 +12751,50 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \gen_pntr_flags_cc.ram_empty_i_i_3 
-       (.I0(Q[6]),
+       (.I0(\count_value_i_reg[13]_0 [6]),
         .I1(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [6]),
         .I2(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [8]),
-        .I3(Q[8]),
+        .I3(\count_value_i_reg[13]_0 [8]),
         .I4(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [7]),
-        .I5(Q[7]),
+        .I5(\count_value_i_reg[13]_0 [7]),
         .O(\gen_pntr_flags_cc.ram_empty_i_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h6FF6)) 
     \gen_pntr_flags_cc.ram_empty_i_i_4 
-       (.I0(Q[12]),
+       (.I0(\count_value_i_reg[13]_0 [12]),
         .I1(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [12]),
-        .I2(Q[13]),
+        .I2(\count_value_i_reg[13]_0 [13]),
         .I3(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [13]),
         .O(\gen_pntr_flags_cc.ram_empty_i_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \gen_pntr_flags_cc.ram_empty_i_i_5 
-       (.I0(Q[3]),
+       (.I0(\count_value_i_reg[13]_0 [3]),
         .I1(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [3]),
         .I2(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [5]),
-        .I3(Q[5]),
+        .I3(\count_value_i_reg[13]_0 [5]),
         .I4(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [4]),
-        .I5(Q[4]),
+        .I5(\count_value_i_reg[13]_0 [4]),
         .O(\gen_pntr_flags_cc.ram_empty_i_i_5_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \gen_pntr_flags_cc.ram_empty_i_i_6 
-       (.I0(Q[0]),
+       (.I0(\count_value_i_reg[13]_0 [0]),
         .I1(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [0]),
         .I2(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [2]),
-        .I3(Q[2]),
+        .I3(\count_value_i_reg[13]_0 [2]),
         .I4(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [1]),
-        .I5(Q[1]),
+        .I5(\count_value_i_reg[13]_0 [1]),
         .O(\gen_pntr_flags_cc.ram_empty_i_i_6_n_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     \gen_pntr_flags_cc.ram_empty_i_i_7 
-       (.I0(Q[9]),
+       (.I0(\count_value_i_reg[13]_0 [9]),
         .I1(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [9]),
         .I2(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [11]),
-        .I3(Q[11]),
+        .I3(\count_value_i_reg[13]_0 [11]),
         .I4(\gen_pntr_flags_cc.ram_empty_i_i_2_0 [10]),
-        .I5(Q[10]),
+        .I5(\count_value_i_reg[13]_0 [10]),
         .O(\gen_pntr_flags_cc.ram_empty_i_i_7_n_0 ));
 endmodule
 
@@ -5182,16 +12802,14 @@ endmodule
 module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
    (Q,
     \FSM_sequential_gen_fwft.curr_fwft_state_reg[1] ,
-    \count_value_i_reg[0]_0 ,
-    rd_en,
     ram_empty_i,
+    \count_value_i_reg[0]_0 ,
     \count_value_i_reg[1]_0 ,
     wr_clk);
   output [13:0]Q;
   output \FSM_sequential_gen_fwft.curr_fwft_state_reg[1] ;
-  input [1:0]\count_value_i_reg[0]_0 ;
-  input rd_en;
   input ram_empty_i;
+  input [1:0]\count_value_i_reg[0]_0 ;
   input [0:0]\count_value_i_reg[1]_0 ;
   input wr_clk;
 
@@ -5200,8 +12818,8 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
   wire \count_value_i[0]_i_1__2_n_0 ;
   wire \count_value_i[10]_i_1__2_n_0 ;
   wire \count_value_i[11]_i_1__2_n_0 ;
-  wire \count_value_i[11]_i_2__2_n_0 ;
   wire \count_value_i[12]_i_1__2_n_0 ;
+  wire \count_value_i[12]_i_2__0_n_0 ;
   wire \count_value_i[13]_i_1__2_n_0 ;
   wire \count_value_i[13]_i_2__2_n_0 ;
   wire \count_value_i[1]_i_1__2_n_0 ;
@@ -5210,64 +12828,62 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
   wire \count_value_i[4]_i_1__2_n_0 ;
   wire \count_value_i[5]_i_1__2_n_0 ;
   wire \count_value_i[6]_i_1__2_n_0 ;
-  wire \count_value_i[6]_i_2__2_n_0 ;
   wire \count_value_i[7]_i_1__2_n_0 ;
+  wire \count_value_i[7]_i_2__0_n_0 ;
   wire \count_value_i[8]_i_1__2_n_0 ;
   wire \count_value_i[9]_i_1__2_n_0 ;
   wire \count_value_i[9]_i_2__2_n_0 ;
   wire [1:0]\count_value_i_reg[0]_0 ;
   wire [0:0]\count_value_i_reg[1]_0 ;
   wire ram_empty_i;
-  wire rd_en;
   wire wr_clk;
 
-  LUT4 #(
-    .INIT(16'h10EF)) 
+  LUT3 #(
+    .INIT(8'h4B)) 
     \count_value_i[0]_i_1__2 
-       (.I0(rd_en),
-        .I1(\count_value_i_reg[0]_0 [0]),
-        .I2(\count_value_i_reg[0]_0 [1]),
-        .I3(Q[0]),
+       (.I0(\count_value_i_reg[0]_0 [0]),
+        .I1(\count_value_i_reg[0]_0 [1]),
+        .I2(Q[0]),
         .O(\count_value_i[0]_i_1__2_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \count_value_i[10]_i_1__2 
-       (.I0(Q[8]),
-        .I1(\count_value_i[11]_i_2__2_n_0 ),
-        .I2(Q[7]),
-        .I3(Q[9]),
-        .I4(Q[10]),
-        .O(\count_value_i[10]_i_1__2_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \count_value_i[11]_i_1__2 
-       (.I0(Q[9]),
-        .I1(Q[7]),
-        .I2(\count_value_i[11]_i_2__2_n_0 ),
-        .I3(Q[8]),
-        .I4(Q[10]),
-        .I5(Q[11]),
-        .O(\count_value_i[11]_i_1__2_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \count_value_i[11]_i_2__2 
-       (.I0(Q[6]),
-        .I1(Q[4]),
-        .I2(Q[2]),
-        .I3(\count_value_i[6]_i_2__2_n_0 ),
-        .I4(Q[3]),
-        .I5(Q[5]),
-        .O(\count_value_i[11]_i_2__2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
+    \count_value_i[10]_i_1__2 
+       (.I0(Q[8]),
+        .I1(\count_value_i[12]_i_2__0_n_0 ),
+        .I2(Q[9]),
+        .I3(Q[10]),
+        .O(\count_value_i[10]_i_1__2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \count_value_i[11]_i_1__2 
+       (.I0(Q[9]),
+        .I1(\count_value_i[12]_i_2__0_n_0 ),
+        .I2(Q[8]),
+        .I3(Q[10]),
+        .I4(Q[11]),
+        .O(\count_value_i[11]_i_1__2_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[12]_i_1__2 
        (.I0(Q[10]),
-        .I1(\count_value_i[13]_i_2__2_n_0 ),
-        .I2(Q[11]),
-        .I3(Q[12]),
+        .I1(Q[8]),
+        .I2(\count_value_i[12]_i_2__0_n_0 ),
+        .I3(Q[9]),
+        .I4(Q[11]),
+        .I5(Q[12]),
         .O(\count_value_i[12]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    \count_value_i[12]_i_2__0 
+       (.I0(Q[7]),
+        .I1(Q[5]),
+        .I2(Q[3]),
+        .I3(\count_value_i[7]_i_2__0_n_0 ),
+        .I4(Q[4]),
+        .I5(Q[6]),
+        .O(\count_value_i[12]_i_2__0_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[13]_i_1__2 
@@ -5287,23 +12903,26 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
         .I4(Q[6]),
         .I5(Q[8]),
         .O(\count_value_i[13]_i_2__2_n_0 ));
-  LUT5 #(
-    .INIT(32'h02FFFD00)) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h2FD0)) 
     \count_value_i[1]_i_1__2 
        (.I0(\count_value_i_reg[0]_0 [1]),
         .I1(\count_value_i_reg[0]_0 [0]),
-        .I2(rd_en),
-        .I3(Q[0]),
-        .I4(Q[1]),
+        .I2(Q[0]),
+        .I3(Q[1]),
         .O(\count_value_i[1]_i_1__2_n_0 ));
-  LUT3 #(
-    .INIT(8'h78)) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT5 #(
+    .INIT(32'h75FF8A00)) 
     \count_value_i[2]_i_1__2 
        (.I0(Q[0]),
-        .I1(Q[1]),
-        .I2(Q[2]),
+        .I1(\count_value_i_reg[0]_0 [0]),
+        .I2(\count_value_i_reg[0]_0 [1]),
+        .I3(Q[1]),
+        .I4(Q[2]),
         .O(\count_value_i[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__2 
@@ -5312,7 +12931,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
         .I2(Q[2]),
         .I3(Q[3]),
         .O(\count_value_i[3]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[4]_i_1__2 
@@ -5322,45 +12941,45 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
         .I3(Q[3]),
         .I4(Q[4]),
         .O(\count_value_i[4]_i_1__2_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \count_value_i[5]_i_1__2 
-       (.I0(Q[3]),
-        .I1(\count_value_i[6]_i_2__2_n_0 ),
-        .I2(Q[2]),
-        .I3(Q[4]),
-        .I4(Q[5]),
-        .O(\count_value_i[5]_i_1__2_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \count_value_i[6]_i_1__2 
-       (.I0(Q[4]),
-        .I1(Q[2]),
-        .I2(\count_value_i[6]_i_2__2_n_0 ),
-        .I3(Q[3]),
-        .I4(Q[5]),
-        .I5(Q[6]),
-        .O(\count_value_i[6]_i_1__2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000AAA200000000)) 
-    \count_value_i[6]_i_2__2 
-       (.I0(Q[1]),
-        .I1(\count_value_i_reg[0]_0 [1]),
-        .I2(\count_value_i_reg[0]_0 [0]),
-        .I3(rd_en),
-        .I4(ram_empty_i),
-        .I5(Q[0]),
-        .O(\count_value_i[6]_i_2__2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
+    \count_value_i[5]_i_1__2 
+       (.I0(Q[3]),
+        .I1(\count_value_i[7]_i_2__0_n_0 ),
+        .I2(Q[4]),
+        .I3(Q[5]),
+        .O(\count_value_i[5]_i_1__2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT5 #(
+    .INIT(32'h7FFF8000)) 
+    \count_value_i[6]_i_1__2 
+       (.I0(Q[4]),
+        .I1(\count_value_i[7]_i_2__0_n_0 ),
+        .I2(Q[3]),
+        .I3(Q[5]),
+        .I4(Q[6]),
+        .O(\count_value_i[6]_i_1__2_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
     \count_value_i[7]_i_1__2 
        (.I0(Q[5]),
-        .I1(\count_value_i[9]_i_2__2_n_0 ),
-        .I2(Q[6]),
-        .I3(Q[7]),
+        .I1(Q[3]),
+        .I2(\count_value_i[7]_i_2__0_n_0 ),
+        .I3(Q[4]),
+        .I4(Q[6]),
+        .I5(Q[7]),
         .O(\count_value_i[7]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT6 #(
+    .INIT(64'h0800080800000000)) 
+    \count_value_i[7]_i_2__0 
+       (.I0(Q[2]),
+        .I1(Q[0]),
+        .I2(ram_empty_i),
+        .I3(\count_value_i_reg[0]_0 [0]),
+        .I4(\count_value_i_reg[0]_0 [1]),
+        .I5(Q[1]),
+        .O(\count_value_i[7]_i_2__0_n_0 ));
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[8]_i_1__2 
@@ -5502,13 +13121,12 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1
         .D(\count_value_i[9]_i_1__2_n_0 ),
         .Q(Q[9]),
         .R(\count_value_i_reg[1]_0 ));
-  LUT4 #(
-    .INIT(16'h00FD)) 
+  LUT3 #(
+    .INIT(8'h0D)) 
     \gen_sdpram.xpm_memory_base_inst_i_2 
        (.I0(\count_value_i_reg[0]_0 [1]),
         .I1(\count_value_i_reg[0]_0 [0]),
-        .I2(rd_en),
-        .I3(ram_empty_i),
+        .I2(ram_empty_i),
         .O(\FSM_sequential_gen_fwft.curr_fwft_state_reg[1] ));
 endmodule
 
@@ -5589,7 +13207,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I4(Q[3]),
         .I5(Q[5]),
         .O(\count_value_i[11]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[12]_i_1 
@@ -5598,7 +13216,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I2(Q[11]),
         .I3(Q[12]),
         .O(\count_value_i[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[13]_i_1 
@@ -5618,14 +13236,14 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I4(Q[6]),
         .I5(Q[8]),
         .O(\count_value_i[13]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \count_value_i[1]_i_1__0 
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(\count_value_i[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__0 
@@ -5633,7 +13251,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__0 
@@ -5642,7 +13260,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I2(Q[2]),
         .I3(Q[3]),
         .O(\count_value_i[3]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[4]_i_1__0 
@@ -5681,7 +13299,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I4(rst_d1),
         .I5(Q[0]),
         .O(\count_value_i[6]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[7]_i_1 
@@ -5690,7 +13308,7 @@ module ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1
         .I2(Q[6]),
         .I3(Q[7]),
         .O(\count_value_i[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[8]_i_1 
@@ -5916,17 +13534,14 @@ module ps_axi_dma_1_0_xpm_fifo_base
   wire [1:0]curr_fwft_state;
   wire [255:0]din;
   wire [255:0]dout;
-  wire empty;
-  wire empty_fwft_i0;
-  wire \gen_fwft.ram_regout_en ;
-  wire \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ;
+  wire full;
+  wire \gen_sdpram.xpm_memory_base_inst_i_3_n_0 ;
   wire leaving_empty0;
   wire [1:0]next_fwft_state__0;
   wire ram_empty_i;
   wire ram_empty_i0;
   wire ram_full_i0;
   wire ram_wr_en_pf;
-  wire rd_en;
   wire [13:0]rd_pntr_ext;
   wire rdpp1_inst_n_0;
   wire rdpp1_inst_n_1;
@@ -5974,7 +13589,7 @@ module ps_axi_dma_1_0_xpm_fifo_base
   assign almost_full = \<const0> ;
   assign data_valid = \<const0> ;
   assign dbiterr = \<const0> ;
-  assign full = \<const0> ;
+  assign empty = \<const0> ;
   assign full_n = \<const0> ;
   assign overflow = \<const0> ;
   assign prog_empty = \<const0> ;
@@ -5987,21 +13602,18 @@ module ps_axi_dma_1_0_xpm_fifo_base
   assign wr_data_count[0] = \<const0> ;
   assign wr_rst_busy = \<const0> ;
   (* SOFT_HLUTNM = "soft_lutpair16" *) 
-  LUT4 #(
-    .INIT(16'h6A85)) 
+  LUT3 #(
+    .INIT(8'hA1)) 
     \FSM_sequential_gen_fwft.curr_fwft_state[0]_i_1 
        (.I0(curr_fwft_state[0]),
-        .I1(rd_en),
-        .I2(curr_fwft_state[1]),
-        .I3(ram_empty_i),
-        .O(next_fwft_state__0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
-  LUT3 #(
-    .INIT(8'h7C)) 
-    \FSM_sequential_gen_fwft.curr_fwft_state[1]_i_1 
-       (.I0(rd_en),
         .I1(curr_fwft_state[1]),
-        .I2(curr_fwft_state[0]),
+        .I2(ram_empty_i),
+        .O(next_fwft_state__0[0]));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \FSM_sequential_gen_fwft.curr_fwft_state[1]_i_1 
+       (.I0(curr_fwft_state[1]),
+        .I1(curr_fwft_state[0]),
         .O(next_fwft_state__0[1]));
   (* FSM_ENCODED_STATES = "invalid:00,stage1_valid:01,both_stages_valid:10,stage2_valid:11" *) 
   FDRE #(
@@ -6023,30 +13635,13 @@ module ps_axi_dma_1_0_xpm_fifo_base
         .R(xpm_fifo_rst_inst_n_1));
   GND GND
        (.G(\<const0> ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT4 #(
-    .INIT(16'hF380)) 
-    \gen_fwft.empty_fwft_i_i_1 
-       (.I0(rd_en),
-        .I1(curr_fwft_state[0]),
-        .I2(curr_fwft_state[1]),
-        .I3(empty),
-        .O(empty_fwft_i0));
-  FDSE #(
-    .INIT(1'b1)) 
-    \gen_fwft.empty_fwft_i_reg 
-       (.C(wr_clk),
-        .CE(1'b1),
-        .D(empty_fwft_i0),
-        .Q(empty),
-        .S(xpm_fifo_rst_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg 
        (.C(wr_clk),
         .CE(1'b1),
         .D(ram_full_i0),
-        .Q(\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ),
+        .Q(full),
         .R(xpm_fifo_rst_inst_n_1));
   FDSE #(
     .INIT(1'b1)) 
@@ -6155,7 +13750,7 @@ module ps_axi_dma_1_0_xpm_fifo_base
         .injectsbiterra(1'b0),
         .injectsbiterrb(1'b0),
         .regcea(1'b0),
-        .regceb(\gen_fwft.ram_regout_en ),
+        .regceb(\gen_sdpram.xpm_memory_base_inst_i_3_n_0 ),
         .rsta(1'b0),
         .rstb(xpm_fifo_rst_inst_n_1),
         .sbiterra(\NLW_gen_sdpram.xpm_memory_base_inst_sbiterra_UNCONNECTED ),
@@ -6163,27 +13758,25 @@ module ps_axi_dma_1_0_xpm_fifo_base
         .sleep(sleep),
         .wea(ram_wr_en_pf),
         .web(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT3 #(
-    .INIT(8'h62)) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \gen_sdpram.xpm_memory_base_inst_i_3 
        (.I0(curr_fwft_state[0]),
         .I1(curr_fwft_state[1]),
-        .I2(rd_en),
-        .O(\gen_fwft.ram_regout_en ));
+        .O(\gen_sdpram.xpm_memory_base_inst_i_3_n_0 ));
   ps_axi_dma_1_0_xpm_counter_updn__parameterized0 rdp_inst
        (.Q(rd_pntr_ext),
         .\count_value_i_reg[0]_0 (rdpp1_inst_n_14),
         .\count_value_i_reg[13]_0 (xpm_fifo_rst_inst_n_1),
-        .\count_value_i_reg[1]_0 (curr_fwft_state),
+        .\count_value_i_reg[2]_0 (curr_fwft_state),
         .\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_2_0 ({wrpp1_inst_n_0,wrpp1_inst_n_1,wrpp1_inst_n_2,wrpp1_inst_n_3,wrpp1_inst_n_4,wrpp1_inst_n_5,wrpp1_inst_n_6,wrpp1_inst_n_7,wrpp1_inst_n_8,wrpp1_inst_n_9,wrpp1_inst_n_10,wrpp1_inst_n_11,wrpp1_inst_n_12,wrpp1_inst_n_13}),
         .\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_i_3_0 (wr_pntr_ext),
-        .\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg (\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ),
+        .\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg (full),
         .leaving_empty0(leaving_empty0),
         .ram_empty_i(ram_empty_i),
         .ram_full_i0(ram_full_i0),
         .ram_wr_en_pf(ram_wr_en_pf),
-        .rd_en(rd_en),
         .wr_clk(wr_clk));
   ps_axi_dma_1_0_xpm_counter_updn__parameterized1 rdpp1_inst
        (.\FSM_sequential_gen_fwft.curr_fwft_state_reg[1] (rdpp1_inst_n_14),
@@ -6191,18 +13784,17 @@ module ps_axi_dma_1_0_xpm_fifo_base
         .\count_value_i_reg[0]_0 (curr_fwft_state),
         .\count_value_i_reg[1]_0 (xpm_fifo_rst_inst_n_1),
         .ram_empty_i(ram_empty_i),
-        .rd_en(rd_en),
         .wr_clk(wr_clk));
   ps_axi_dma_1_0_xpm_fifo_reg_bit rst_d1_inst
        (.Q(xpm_fifo_rst_inst_n_1),
         .rst_d1(rst_d1),
         .wr_clk(wr_clk));
   ps_axi_dma_1_0_xpm_counter_updn__parameterized0_0 wrp_inst
-       (.Q(wr_pntr_ext),
+       (.Q(curr_fwft_state),
         .\count_value_i_reg[0]_0 (xpm_fifo_rst_inst_n_1),
-        .\count_value_i_reg[5]_0 (\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ),
+        .\count_value_i_reg[13]_0 (wr_pntr_ext),
+        .\count_value_i_reg[5]_0 (full),
         .\gen_pntr_flags_cc.ram_empty_i_i_2_0 ({rdpp1_inst_n_0,rdpp1_inst_n_1,rdpp1_inst_n_2,rdpp1_inst_n_3,rdpp1_inst_n_4,rdpp1_inst_n_5,rdpp1_inst_n_6,rdpp1_inst_n_7,rdpp1_inst_n_8,rdpp1_inst_n_9,rdpp1_inst_n_10,rdpp1_inst_n_11,rdpp1_inst_n_12,rdpp1_inst_n_13}),
-        .\gen_pntr_flags_cc.ram_empty_i_reg (rdpp1_inst_n_14),
         .leaving_empty0(leaving_empty0),
         .ram_empty_i(ram_empty_i),
         .ram_empty_i0(ram_empty_i0),
@@ -6213,14 +13805,14 @@ module ps_axi_dma_1_0_xpm_fifo_base
   ps_axi_dma_1_0_xpm_counter_updn__parameterized1_1 wrpp1_inst
        (.Q({wrpp1_inst_n_0,wrpp1_inst_n_1,wrpp1_inst_n_2,wrpp1_inst_n_3,wrpp1_inst_n_4,wrpp1_inst_n_5,wrpp1_inst_n_6,wrpp1_inst_n_7,wrpp1_inst_n_8,wrpp1_inst_n_9,wrpp1_inst_n_10,wrpp1_inst_n_11,wrpp1_inst_n_12,wrpp1_inst_n_13}),
         .\count_value_i_reg[1]_0 (xpm_fifo_rst_inst_n_1),
-        .\count_value_i_reg[5]_0 (\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ),
+        .\count_value_i_reg[5]_0 (full),
         .ram_wr_en_pf(ram_wr_en_pf),
         .rst_d1(rst_d1),
         .wr_clk(wr_clk),
         .wr_en(wr_en));
   ps_axi_dma_1_0_xpm_fifo_rst xpm_fifo_rst_inst
        (.Q(xpm_fifo_rst_inst_n_1),
-        .\count_value_i_reg[13] (\gen_pntr_flags_cc.ngen_full_rst_val.ram_full_i_reg_n_0 ),
+        .\count_value_i_reg[13] (full),
         .ram_wr_en_pf(ram_wr_en_pf),
         .rst(rst),
         .rst_d1(rst_d1),
@@ -6400,8 +13992,7 @@ module ps_axi_dma_1_0_xpm_fifo_sync
   wire \<const0> ;
   wire [255:0]din;
   wire [255:0]dout;
-  wire empty;
-  wire rd_en;
+  wire full;
   wire rst;
   wire sleep;
   wire wr_clk;
@@ -6410,7 +14001,7 @@ module ps_axi_dma_1_0_xpm_fifo_sync
   wire NLW_xpm_fifo_base_inst_almost_full_UNCONNECTED;
   wire NLW_xpm_fifo_base_inst_data_valid_UNCONNECTED;
   wire NLW_xpm_fifo_base_inst_dbiterr_UNCONNECTED;
-  wire NLW_xpm_fifo_base_inst_full_UNCONNECTED;
+  wire NLW_xpm_fifo_base_inst_empty_UNCONNECTED;
   wire NLW_xpm_fifo_base_inst_full_n_UNCONNECTED;
   wire NLW_xpm_fifo_base_inst_overflow_UNCONNECTED;
   wire NLW_xpm_fifo_base_inst_prog_empty_UNCONNECTED;
@@ -6427,7 +14018,7 @@ module ps_axi_dma_1_0_xpm_fifo_sync
   assign almost_full = \<const0> ;
   assign data_valid = \<const0> ;
   assign dbiterr = \<const0> ;
-  assign full = \<const0> ;
+  assign empty = \<const0> ;
   assign overflow = \<const0> ;
   assign prog_empty = \<const0> ;
   assign prog_full = \<const0> ;
@@ -6510,8 +14101,8 @@ module ps_axi_dma_1_0_xpm_fifo_sync
         .dbiterr(NLW_xpm_fifo_base_inst_dbiterr_UNCONNECTED),
         .din(din),
         .dout(dout),
-        .empty(empty),
-        .full(NLW_xpm_fifo_base_inst_full_UNCONNECTED),
+        .empty(NLW_xpm_fifo_base_inst_empty_UNCONNECTED),
+        .full(full),
         .full_n(NLW_xpm_fifo_base_inst_full_n_UNCONNECTED),
         .injectdbiterr(1'b0),
         .injectsbiterr(1'b0),
@@ -6520,7 +14111,7 @@ module ps_axi_dma_1_0_xpm_fifo_sync
         .prog_full(NLW_xpm_fifo_base_inst_prog_full_UNCONNECTED),
         .rd_clk(1'b0),
         .rd_data_count(NLW_xpm_fifo_base_inst_rd_data_count_UNCONNECTED[0]),
-        .rd_en(rd_en),
+        .rd_en(1'b0),
         .rd_rst_busy(NLW_xpm_fifo_base_inst_rd_rst_busy_UNCONNECTED),
         .rst(rst),
         .sbiterr(NLW_xpm_fifo_base_inst_sbiterr_UNCONNECTED),
