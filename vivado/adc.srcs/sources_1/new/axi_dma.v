@@ -56,7 +56,7 @@ module axi_dma(
     reg mig_start_cmd;
     reg mig_cmd_done;
     reg mig_cmd_error;
-    reg mig_cmd_check;
+    reg [1:0] mig_delay;
     reg [7:0] mig_blocks;
     reg [3:0] mig_tag;
     
@@ -243,11 +243,6 @@ generate
         end
     end
 
-    always @(posedge clk) 
-    begin
-        mig_cmd_check <= mig_cmd_done;
-    end
-
    always @(posedge clk) 
     begin
         if (reset) 
@@ -302,8 +297,8 @@ generate
                 MIG_ST_IDLE: 
                     begin
                         mig_rd_ptr <= mig_adr;
-                    
-                        if (mig_avail != 0 && fifo_space != 0) 
+                        
+                        if (mig_wr_ptr != mig_adr && fifo_space != 0) 
                         begin
                             mig_blocks <= 1;
                             mig_cmd_state <= MIG_ST_WAIT_HDR;
@@ -317,40 +312,46 @@ generate
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_check)
+                        if (mig_cmd_done)
                         begin
                             mig_cmd_state <= MIG_ST_WAIT_SPACE;
                             mig_adr <= mig_adr + 1;
+                            mig_delay <= 3;
                         end
                     end
 
                 MIG_ST_WAIT_SPACE:
                     begin
                         mig_rd_ptr <= mig_adr - 1;
-
-                        if (fifo_has_space)
+                        
+                        if (mig_delay)
+                            mig_delay <= mig_delay - 1;
+                        else
                         begin
-                            if (mig_preview)
+                            if (fifo_has_space)
                             begin
-                                mig_blocks <= mig_size + 1;
-                                mig_cmd_state <= MIG_ST_WAIT_NEXT;
+                                if (mig_preview)
+                                begin
+                                    mig_blocks <= mig_size + 1;
+                                    mig_cmd_state <= MIG_ST_WAIT_NEXT;
+                                end
+                                else
+                                begin
+                                    mig_blocks <= mig_size;
+                                    mig_cmd_state <= MIG_ST_WAIT_DATA;
+                                end
+                                mig_start_cmd <= 1;
                             end
                             else
-                            begin
-                                mig_blocks <= mig_size;
-                                mig_cmd_state <= MIG_ST_WAIT_DATA;
-                            end
-                            mig_start_cmd <= 1;
+                                mig_start_cmd <= 0;
                         end
-                        else
-                            mig_start_cmd <= 0;
                     end
 
                 MIG_ST_WAIT_DATA: 
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_check)
+                        if (mig_cmd_done)
                         begin
                             mig_cmd_state <= MIG_ST_IDLE;
                             mig_adr <= mig_adr + mig_blocks;
@@ -361,10 +362,19 @@ generate
                     begin
                         mig_start_cmd <= 0;
 
-                        if (mig_cmd_check)
+                        if (mig_cmd_done)
                         begin
-                            mig_cmd_state <= MIG_ST_WAIT_SPACE;
-                            mig_adr <= mig_adr + mig_blocks;
+                            if ({19'h00000, mig_blocks} == mig_avail)
+                            begin
+                                mig_adr <= mig_adr + mig_blocks - 1;
+                                mig_cmd_state <= MIG_ST_IDLE;
+                            end
+                            else
+                            begin
+                                mig_cmd_state <= MIG_ST_WAIT_SPACE;
+                                mig_adr <= mig_adr + mig_blocks;
+                                mig_delay <= 3;
+                            end
                         end
                     end
             endcase
