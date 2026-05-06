@@ -61,6 +61,7 @@ module axi_dma(
     reg [3:0] mig_tag;
     
     reg [7:0] mig_size;
+    reg [8:0] mig_preview_size;
     reg [7:0] mig_diff;
 
     wire fifo_full;
@@ -140,31 +141,33 @@ module axi_dma(
 		.probe7(mig_blocks),          // input wire [7:0]  probe3
 		.probe8(mig_tag),             // input wire [3:0]  probe3
 		.probe9(mig_size),            // input wire [7:0]  probe3
-		.probe10(mig_diff),           // input wire [7:0]  probe3
-		.probe11(mig_avail),          // input wire [26:0]  probe3
-		.probe12(mig_preview),        // input wire [0:0]  probe3
-		.probe13(fifo_has_space),     // input wire [0:0]  probe3
-		.probe14(mig_hdr_sample),     // input wire [63:0]  probe3
-		.probe15(mig_hdr_blocks),     // input wire [7:0]  probe3
-		.probe16(mig_hdr_flags),      // input wire [7:0]  probe3
-		.probe17(mig_hdr_size),       // input wire [15:0]  probe3
-		.probe18(mig_hdr_freq),       // input wire [31:0]  probe3
-		.probe19(mig_hdr_angle),      // input wire [15:0]  probe3
-		.probe20(mig_hdr_doa_error),  // input wire [15:0]  probe3
-		.probe21(mig_hdr_max_env),    // input wire [15:0]  probe3
-		.probe22(mig_hdr_max_pos),    // input wire [15:0]  probe3
-		.probe23(mig_hdr_env_mean),   // input wire [15:0]  probe3
-		.probe24(mig_hdr_env_std),    // input wire [15:0]  probe3
-		.probe25(mig_hdr_phase_std),  // input wire [15:0]  probe3
-		.probe26(mig_hdr_freq_std),   // input wire [15:0]  probe3
-		.probe27(mig_env_0),          // input wire [15:0]  probe3
-		.probe28(mig_env_1),          // input wire [15:0]  probe3
-		.probe29(mig_env_2),          // input wire [15:0]  probe3
-		.probe30(mig_env_3),          // input wire [15:0]  probe3
-		.probe31(mig_env_4),          // input wire [15:0]  probe3
-		.probe32(mig_env_5),          // input wire [15:0]  probe3
-		.probe33(mig_env_6),          // input wire [15:0]  probe3
-		.probe34(mig_env_7)           // input wire [15:0]  probe3
+		.probe10(mig_preview_size),   // input wire [8:0]  probe3
+		.probe11(mig_diff),           // input wire [7:0]  probe3
+		.probe12(mig_delay),          // input wire [1:0]  probe3
+		.probe13(mig_avail),          // input wire [26:0]  probe3
+		.probe14(mig_preview),        // input wire [0:0]  probe3
+		.probe15(fifo_has_space),     // input wire [0:0]  probe3
+		.probe16(mig_hdr_sample),     // input wire [63:0]  probe3
+		.probe17(mig_hdr_blocks),     // input wire [7:0]  probe3
+		.probe18(mig_hdr_flags),      // input wire [7:0]  probe3
+		.probe19(mig_hdr_size),       // input wire [15:0]  probe3
+		.probe20(mig_hdr_freq),       // input wire [31:0]  probe3
+		.probe21(mig_hdr_angle),      // input wire [15:0]  probe3
+		.probe22(mig_hdr_doa_error),  // input wire [15:0]  probe3
+		.probe23(mig_hdr_max_env),    // input wire [15:0]  probe3
+		.probe24(mig_hdr_max_pos),    // input wire [15:0]  probe3
+		.probe25(mig_hdr_env_mean),   // input wire [15:0]  probe3
+		.probe26(mig_hdr_env_std),    // input wire [15:0]  probe3
+		.probe27(mig_hdr_phase_std),  // input wire [15:0]  probe3
+		.probe28(mig_hdr_freq_std),   // input wire [15:0]  probe3
+		.probe29(mig_env_0),          // input wire [15:0]  probe3
+		.probe30(mig_env_1),          // input wire [15:0]  probe3
+		.probe31(mig_env_2),          // input wire [15:0]  probe3
+		.probe32(mig_env_3),          // input wire [15:0]  probe3
+		.probe33(mig_env_4),          // input wire [15:0]  probe3
+		.probe34(mig_env_5),          // input wire [15:0]  probe3
+		.probe35(mig_env_6),          // input wire [15:0]  probe3
+		.probe36(mig_env_7)           // input wire [15:0]  probe3
 	);
     
 generate
@@ -254,7 +257,7 @@ generate
 
     always @(posedge clk) 
     begin
-        mig_avail <= mig_wr_ptr - mig_rd_ptr;
+        mig_avail <= mig_wr_ptr - mig_adr;
     end
 
     always @(posedge clk) 
@@ -267,7 +270,12 @@ generate
         if (fifo_space[13:8])
             fifo_has_space <= 1;
         else
-            {fifo_has_space, mig_diff} <= {1'b0, mig_size} - fifo_space[8:0];
+        begin
+            if (mig_preview)
+                {fifo_has_space, mig_diff} <= mig_preview_size - fifo_space[8:0];
+            else
+                {fifo_has_space, mig_diff} <= {1'b0, mig_size} - fifo_space[8:0];
+        end
     end
 
     always @(posedge clk) 
@@ -283,51 +291,66 @@ generate
 
     always @(posedge clk) 
     begin
+        if (reset)
+        begin
+            mig_adr <= 0;
+            mig_delay <= 3;
+        end
+        else
+        begin
+            if (mig_cmd_done)
+            begin
+                mig_adr <= mig_adr + mig_blocks;
+                mig_delay <= 3;
+            end
+            else
+            begin
+                if (mig_delay)
+                    mig_delay <= mig_delay - 1;
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
         if (reset) 
         begin
             mig_cmd_state <= MIG_ST_IDLE;
-            mig_adr <= 0;
             mig_blocks <= 0;
             mig_start_cmd <= 0;
             mig_rd_ptr <= 0;
         end 
         else 
         begin
-            case (mig_cmd_state)
-                MIG_ST_IDLE: 
-                    begin
-                        mig_rd_ptr <= mig_adr;
-                        
-                        if (mig_wr_ptr != mig_adr && fifo_space != 0) 
+            if (mig_delay == 0)
+            begin
+                case (mig_cmd_state)
+                    MIG_ST_IDLE: 
                         begin
-                            mig_blocks <= 1;
-                            mig_cmd_state <= MIG_ST_WAIT_HDR;
-                            mig_start_cmd <= 1;
+                            mig_rd_ptr <= mig_adr;
+                        
+                            if (mig_avail != 0 && fifo_space != 0) 
+                            begin
+                                mig_blocks <= 1;
+                                mig_cmd_state <= MIG_ST_WAIT_HDR;
+                                mig_start_cmd <= 1;
+                            end
+                            else
+                                mig_start_cmd <= 0;
                         end
-                        else
+
+                    MIG_ST_WAIT_HDR: 
+                        begin
                             mig_start_cmd <= 0;
-                    end
 
-                MIG_ST_WAIT_HDR: 
-                    begin
-                        mig_start_cmd <= 0;
-
-                        if (mig_cmd_done)
-                        begin
-                            mig_cmd_state <= MIG_ST_WAIT_SPACE;
-                            mig_adr <= mig_adr + 1;
-                            mig_delay <= 3;
+                            if (mig_cmd_done)
+                                mig_cmd_state <= MIG_ST_WAIT_SPACE;
                         end
-                    end
 
-                MIG_ST_WAIT_SPACE:
-                    begin
-                        mig_rd_ptr <= mig_adr - 1;
-                        
-                        if (mig_delay)
-                            mig_delay <= mig_delay - 1;
-                        else
+                    MIG_ST_WAIT_SPACE:
                         begin
+                            mig_rd_ptr <= mig_adr - 1;
+                        
                             if (fifo_has_space)
                             begin
                                 if (mig_preview)
@@ -345,50 +368,41 @@ generate
                             else
                                 mig_start_cmd <= 0;
                         end
-                    end
 
-                MIG_ST_WAIT_DATA: 
-                    begin
-                        mig_start_cmd <= 0;
-
-                        if (mig_cmd_done)
+                    MIG_ST_WAIT_DATA: 
                         begin
-                            mig_cmd_state <= MIG_ST_IDLE;
-                            mig_adr <= mig_adr + mig_blocks;
-                        end
-                    end
+                            mig_start_cmd <= 0;
 
-                MIG_ST_WAIT_NEXT: 
-                    begin
-                        mig_start_cmd <= 0;
-
-                        if (mig_cmd_done)
-                        begin
-                            if ({19'h00000, mig_blocks} == mig_avail)
-                            begin
-                                mig_adr <= mig_adr + mig_blocks - 1;
+                            if (mig_cmd_done)
                                 mig_cmd_state <= MIG_ST_IDLE;
-                            end
-                            else
-                            begin
-                                mig_cmd_state <= MIG_ST_WAIT_SPACE;
-                                mig_adr <= mig_adr + mig_blocks;
-                                mig_delay <= 3;
-                            end
                         end
-                    end
-            endcase
+
+                    MIG_ST_WAIT_NEXT: 
+                        begin
+                            mig_start_cmd <= 0;
+
+                            if (mig_cmd_done)
+                                mig_cmd_state <= MIG_ST_WAIT_SPACE;
+                        end
+                endcase
+            end
         end
     end
  
     always @(posedge clk) 
     begin
         if (reset)
+        begin
             mig_size <= 0;
+            mig_preview_size <= 0;
+        end
         else
         begin
             if (M_AXI_TVALID_in && M_AXI_TREADY_in && M_AXI_TDATA_in[79]) 
+            begin
                 mig_size <= M_AXI_TDATA_in[71:64];
+                mig_preview_size <= {1'b0, M_AXI_TDATA_in[71:64]} + 1;
+            end
         end
     end
  
