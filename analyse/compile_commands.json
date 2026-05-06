@@ -1,7 +1,0 @@
-[
-  {
-    "file": "C:/radio-zcu208/analyse/src/analyse.c",
-    "command": "C:/Xilinx/2025.1/Vitis/gnu/aarch64/nt/aarch64-linux/bin/aarch64-linux-gnu-gcc.exe -DVITIS_MAJOR_VERSION\u003d\"\" -DVITIS_MINOR_VERSION\u003d\"\" -DVITIS_VERSION\u003d\"\" -IC:/radio-zcu208/platform/usr/include -g \" -IC:\\radio-zcu208\\platform\\usr\\include\\c++\\11.2.0\\aarch64-xilinx-linux -IC:\\radio-zcu208\\platform\\usr\\include\\c++\\11.2.0\\backward -IC:\\radio-zcu208\\platform\\usr\\lib\\aarch64-xilinx-linux\\11.2.0\\include -IC:\\radio-zcu208\\platform\\usr\\include\\c++\\11.2.0 --sysroot\u003dC:\\\\radio-zcu208\\\\platform\" -Wall -Wextra -O0 -g3 -o CMakeFiles/analyse.elf.dir/src/analyse.c.obj -c C:/radio-zcu208/analyse/src/analyse.c",
-    "directory": "c:\\radio-zcu208\\analyse"
-  }
-]
