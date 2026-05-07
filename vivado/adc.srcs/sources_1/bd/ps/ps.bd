@@ -5294,16 +5294,39 @@
           }
         },
         "ports": {
+          "config_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "99999001",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "ps_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "config_wr": {
+            "direction": "I"
+          },
+          "config_adr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "config_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
           "clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
               "ASSOCIATED_BUSIF": {
                 "value": "M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd",
-                "value_src": "constant"
-              },
-              "ASSOCIATED_RESET": {
-                "value": "resetn",
                 "value_src": "constant"
               },
               "FREQ_HZ": {
@@ -5764,7 +5787,8 @@
           "ana_low/config_adr",
           "ana_high/config_adr",
           "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr"
+          "comp_ana_high/config_adr",
+          "axi_dma_1/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -5773,7 +5797,8 @@
           "ana_low/config_data",
           "ana_high/config_data",
           "comp_ana_low/config_data",
-          "comp_ana_high/config_data"
+          "comp_ana_high/config_data",
+          "axi_dma_1/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -5787,7 +5812,8 @@
         "ports": [
           "adc_control_0/config_low_wr",
           "ana_low/config_wr",
-          "comp_ana_low/config_wr"
+          "comp_ana_low/config_wr",
+          "axi_dma_1/config_wr"
         ]
       },
       "adc_control_0_data_out": {
@@ -5988,6 +6014,12 @@
         "ports": [
           "axi_bram/doutb",
           "adc_control_0/data_in"
+        ]
+      },
+      "axi_dma_1_irq": {
+        "ports": [
+          "axi_dma_1/irq",
+          "zynq_ultra_ps_e_0/pl_ps_irq0"
         ]
       },
       "axi_dma_1_linux_wr_ptr": {
@@ -6661,12 +6693,6 @@
           "pl_sysref_ds_buf/IBUF_DS_P"
         ]
       },
-      "r5_timer_interrupt": {
-        "ports": [
-          "r5_timer/interrupt",
-          "zynq_ultra_ps_e_0/pl_ps_irq0"
-        ]
-      },
       "reset_1": {
         "ports": [
           "reset",
@@ -6800,7 +6826,8 @@
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk"
+          "comp_ana_high/pl_clk",
+          "axi_dma_1/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

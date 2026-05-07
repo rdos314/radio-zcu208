@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May  6 20:00:40 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu May  7 21:11:15 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplusRFSOC" BOARD="xilinx.com:zcu208:part0:2.0" DEVICE="xczu48dr" NAME="ps" PACKAGE="fsvg1517" SPEEDGRADE="-2"/>
 
@@ -369,6 +369,7 @@
             <CONNECTION INSTANCE="ana_high" PORT="config_adr"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_adr"/>
             <CONNECTION INSTANCE="comp_ana_high" PORT="config_adr"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="config_adr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
@@ -377,6 +378,7 @@
             <CONNECTION INSTANCE="ana_high" PORT="config_data"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_data"/>
             <CONNECTION INSTANCE="comp_ana_high" PORT="config_data"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="config_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="config_high_wr" SIGIS="undef" SIGNAME="adc_control_0_config_high_wr">
@@ -389,6 +391,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ana_low" PORT="config_wr"/>
             <CONNECTION INSTANCE="comp_ana_low" PORT="config_wr"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="config_wr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_doutb">
@@ -2465,7 +2468,31 @@
             <CONNECTION INSTANCE="ddr4_0" PORT="c0_ddr4_ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
+        <PORT DIR="I" LEFT="7" NAME="config_adr" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_adr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_adr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="config_clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="config_data" RIGHT="0" SIGIS="undef" SIGNAME="adc_control_0_config_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="config_wr" SIGIS="undef" SIGNAME="adc_control_0_config_low_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adc_control_0" PORT="config_low_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_dma_1_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_ps_irq0"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="31" NAME="linux_rd_ptr" RIGHT="0" SIGIS="undef" SIGNAME="gpio_linux_ptr_gpio2_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="gpio_linux_ptr" PORT="gpio2_io_o"/>
@@ -8484,11 +8511,7 @@
         <PORT DIR="I" NAME="freeze" SIGIS="undef"/>
         <PORT DIR="O" NAME="generateout0" SIGIS="undef"/>
         <PORT DIR="O" NAME="generateout1" SIGIS="undef"/>
-        <PORT DIR="O" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_ps_irq0"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
         <PORT DIR="O" NAME="pwm0" SIGIS="undef"/>
         <PORT CLKFREQUENCY="99999001" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
@@ -11654,22 +11677,22 @@
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
-      </ADDRESSBLOCKS>
-      <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
-      </ADDRESSBLOCKS>
-      <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_QSPI" RANGE="0x20000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
-        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_HIGH" RANGE="0x800000000" USAGE="memory"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_LPS_OCM" RANGE="0x1000000" USAGE="register"/>
       </ADDRESSBLOCKS>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="SAXIGP0" NAME="HPC0_DDR_LOW" RANGE="0x80000000" USAGE="memory"/>
@@ -14044,11 +14067,12 @@
             <CONNECTION INSTANCE="comp_ana_low" PORT="pl_clk"/>
             <CONNECTION INSTANCE="comp_ana_high" PORT="config_clk"/>
             <CONNECTION INSTANCE="comp_ana_high" PORT="pl_clk"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="config_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="r5_timer_interrupt">
+        <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_dma_1_irq">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="r5_timer" PORT="interrupt"/>
+            <CONNECTION INSTANCE="axi_dma_1" PORT="irq"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="pl_resetn0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="zynq_ultra_ps_e_0_pl_resetn0">

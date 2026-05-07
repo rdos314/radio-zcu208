@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Wed May  6 20:00:37 2026
+//Date        : Thu May  7 21:11:12 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=35,numReposBlks=35,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=5,da_bram_cntlr_cnt=1,da_clkrst_cnt=8,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=35,numReposBlks=35,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=5,da_bram_cntlr_cnt=1,da_clkrst_cnt=9,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -186,6 +186,7 @@ module ps
   wire [71:0]axi_dma_1_M_AXI_out_cmd_TDATA;
   wire axi_dma_1_M_AXI_out_cmd_TREADY;
   wire axi_dma_1_M_AXI_out_cmd_TVALID;
+  wire axi_dma_1_irq;
   wire [31:0]axi_dma_1_linux_wr_ptr;
   wire [26:0]axi_dma_1_rd_ptr;
   wire [31:0]axi_int_0_M_AXI_AWADDR;
@@ -457,7 +458,6 @@ module ps
   wire pl_clk_p;
   wire pl_sysref_n;
   wire pl_sysref_p;
-  wire r5_timer_interrupt;
   wire reset;
   wire rst_ps8_0_99M_mb_reset;
   wire [0:0]rst_ps8_0_99M_peripheral_aresetn;
@@ -859,6 +859,11 @@ module ps
         .M_AXI_TVALID_out(axi_dma_1_M_AXI_out_TVALID),
         .M_AXI_TVALID_out_cmd(axi_dma_1_M_AXI_out_cmd_TVALID),
         .clk(ddr4_0_c0_ddr4_ui_clk),
+        .config_adr(adc_control_0_config_adr),
+        .config_clk(zynq_ultra_ps_e_0_pl_clk0),
+        .config_data(adc_control_0_config_data),
+        .config_wr(adc_control_0_config_low_wr),
+        .irq(axi_dma_1_irq),
         .linux_rd_ptr(gpio_linux_ptr_gpio2_io_o),
         .linux_wr_ptr(axi_dma_1_linux_wr_ptr),
         .mig_rd_ptr(axi_dma_1_rd_ptr),
@@ -1506,7 +1511,6 @@ module ps
        (.capturetrig0(1'b0),
         .capturetrig1(1'b0),
         .freeze(1'b0),
-        .interrupt(r5_timer_interrupt),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .s_axi_araddr(axi_smc_M01_AXI_ARADDR),
         .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
@@ -1829,7 +1833,7 @@ module ps
         .maxihpm0_lpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .maxihpm1_fpd_aclk(ddr4_0_c0_ddr4_ui_clk),
         .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
-        .pl_ps_irq0(r5_timer_interrupt),
+        .pl_ps_irq0(axi_dma_1_irq),
         .pl_resetn0(zynq_ultra_ps_e_0_pl_resetn0),
         .saxigp0_araddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .saxigp0_arburst({1'b0,1'b1}),
