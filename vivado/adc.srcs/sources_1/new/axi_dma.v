@@ -1,11 +1,6 @@
 `timescale 1ns / 1ps
 
 module axi_dma(
-    input wire config_clk,
-    input wire config_wr,
-    input wire [7:0] config_adr,
-    input wire [31:0] config_data,
-
     input wire clk,
     input wire resetn,
     output reg irq,
@@ -58,13 +53,7 @@ module axi_dma(
 
     reg reset;
 
-    wire [39:0] config_data_adr_out;
-    wire [7:0] cfg_adr = config_data_adr_out[7:0];
-    wire [31:0] cfg_data = config_data_adr_out[39:8];
-    reg cfg_rd;
-    wire cfg_empty;
-
-    reg [5:0] linux_base;
+    wire [5:0] linux_base = 6'b011101;   // Linux base is always 0x74000000
 
     reg [13:0] fifo_count;
     reg [13:0] fifo_space;
@@ -121,6 +110,7 @@ module axi_dma(
     reg app_cmd_done;
     reg app_cmd_error;
     reg [1:0] app_delay;
+    reg [1:0] app_hdr_delay;
     reg [7:0] app_blocks;
     reg [7:0] app_size;
     reg [8:0] app_tot;
@@ -142,6 +132,9 @@ module axi_dma(
 
     reg [7:0] app_curr_beat;
     reg [7:0] app_last_beat;
+
+	wire app_rd_ptr = {linux_base, app_rd_ptr, 5'b00000};
+	wire app_wr_ptr = {linux_base, app_wr_ptr, 5'b00000};
 
 	reg [63:0] app_hdr_sample;
 	reg [7:0] app_hdr_blocks;
@@ -165,17 +158,6 @@ module axi_dma(
 	reg [15:0] app_env_5;
 	reg [15:0] app_env_6;
 	reg [15:0] app_env_7;
-    
-	fifo_config fifo_config_i (
-		.rst(reset),                   // input wire rst
-		.wr_clk(config_clk),           // input wire wr_clk
-		.rd_clk(clk),                  // input wire rd_clk
-		.din(config_data_adr_in),      // input wire [39 : 0] din
-		.wr_en(config_wr),             // input wire wr_en
-		.rd_en(cfg_rd),                // input wire rd_en
-		.dout(config_data_adr_out),    // output wire [39 : 0] dout
-		.empty(cfg_empty)              // output wire empty
-	);
         	
 	xpm_fifo_sync #(
 	    .FIFO_MEMORY_TYPE("ultra"),
@@ -245,12 +227,12 @@ module axi_dma(
 		.probe3(app_fifo_ok),         // input wire [0:0]  probe3
 		.probe4(app_cmd_state),       // input wire [2:0]  probe3
 		.probe5(app_adr),             // input wire [20:0]  probe3
-		.probe6({linux_base, app_rd_ptr, 5'b00000}),  // input wire [31:0]  probe3
-		.probe7({linux_base, app_wr_ptr, 5'b00000}),  // input wire [31:0]  probe3
+		.probe6(app_rd_ptr),          // input wire [31:0]  probe3
+		.probe7({app_wr_ptr),         // input wire [31:0]  probe3
 		.probe8(linux_has_space),     // input wire [0:0]  probe3
 		.probe9(linux_diff),          // input wire [6:0]  probe3
-		.probe10(app_start_cmd),       // input wire [0:0]  probe3
-		.probe11(app_cmd_done),        // input wire [0:0]  probe3
+		.probe10(app_start_cmd),      // input wire [0:0]  probe3
+		.probe11(app_cmd_done),       // input wire [0:0]  probe3
 		.probe12(app_cmd_error),      // input wire [0:0]  probe3
 		.probe13(app_size),           // input wire [7:0]  probe3
 		.probe14(app_blocks),         // input wire [7:0]  probe3
@@ -286,29 +268,6 @@ module axi_dma(
 
 generate
   begin : axi_dma
-
-    always @(posedge clk) 
-	begin
-        if (cfg_empty)
-            cfg_rd <= 0;
-        else
-            cfg_rd <= 1;
-    end
-
-    always @(posedge clk) 
-	begin
-        if (reset)
-            linux_base <= 6'b011101;
-        else
-        begin
-            if (cfg_rd)
-            begin
-                case (cfg_adr)
-                    11 : linux_base <= cfg_data[31:26];
-                endcase            
-            end
-        end
-    end
 
     always @(posedge clk) 
     begin
@@ -746,17 +705,25 @@ generate
                             app_wr_ptr <= app_adr;
                         
                             if (fifo_count != 0) 
+							begin
                                 app_cmd_state <= APP_ST_HDR;
+								app_hdr_delay <= 3;
+							end
                         end
 
                     APP_ST_HDR: 
-                        if (app_fifo_ok && linux_has_space)
-                        begin
-                            if (app_size == 8'hFF)
-                                app_cmd_state <= APP_ST_FULL;
-                            else
-                                app_cmd_state <= APP_ST_DATA;
-                        end
+						if (app_hdr_delay)
+							app_hdr_delay <= app_hdr_delay - 1;
+						else
+						begin
+							if (app_fifo_ok && linux_has_space)
+							begin
+								if (app_size == 8'hFF)
+									app_cmd_state <= APP_ST_FULL;
+								else
+									app_cmd_state <= APP_ST_DATA;
+							end
+						end
 
                     APP_ST_DATA: 
                         begin
