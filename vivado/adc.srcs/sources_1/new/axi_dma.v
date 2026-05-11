@@ -32,6 +32,7 @@ module axi_dma(
     output reg M_AXI_TREADY_in,
 
     output wire [255:0] M_AXI_TDATA_out,
+    output reg [31:0] M_AXI_TKEEP_out,
     output wire M_AXI_TVALID_out,
     output reg M_AXI_TLAST_out,
     input wire M_AXI_TREADY_out      
@@ -45,11 +46,8 @@ module axi_dma(
 
     localparam APP_ST_IDLE          = 3'd0;
     localparam APP_ST_HDR           = 3'd1;
-    localparam APP_ST_DATA          = 3'd2;
-    localparam APP_ST_WAIT_DATA     = 3'd3;
-    localparam APP_ST_FULL          = 3'd4;
-    localparam APP_ST_WAIT_HDR      = 3'd5;
-    localparam APP_ST_WR_DATA       = 3'd6;
+    localparam APP_ST_WAIT_DATA     = 3'd2;
+    localparam APP_ST_WAIT_COMPLETE = 3'd3;
 
     reg reset;
 
@@ -111,10 +109,7 @@ module axi_dma(
     reg app_cmd_error;
     reg [1:0] app_delay;
     reg [1:0] app_hdr_delay;
-    reg [7:0] app_blocks;
     reg [7:0] app_size;
-    reg [8:0] app_tot;
-    reg [3:0] app_tag;
         
     reg [12:0] app_diff;
     reg app_fifo_ok;
@@ -132,9 +127,9 @@ module axi_dma(
 
     reg [7:0] app_curr_beat;
     reg [7:0] app_last_beat;
-
-	wire app_rd_ptr = {linux_base, app_rd_ptr, 5'b00000};
-	wire app_wr_ptr = {linux_base, app_wr_ptr, 5'b00000};
+    
+    reg [31:0] ddr_rd_ptr;
+    reg [31:0] ddr_wr_ptr;
 
 	reg [63:0] app_hdr_sample;
 	reg [7:0] app_hdr_blocks;
@@ -227,43 +222,60 @@ module axi_dma(
 		.probe3(app_fifo_ok),         // input wire [0:0]  probe3
 		.probe4(app_cmd_state),       // input wire [2:0]  probe3
 		.probe5(app_adr),             // input wire [20:0]  probe3
-		.probe6(app_rd_ptr),          // input wire [31:0]  probe3
-		.probe7({app_wr_ptr),         // input wire [31:0]  probe3
+		.probe6(ddr_rd_ptr),          // input wire [31:0]  probe3
+		.probe7(ddr_wr_ptr),          // input wire [31:0]  probe3
 		.probe8(linux_has_space),     // input wire [0:0]  probe3
 		.probe9(linux_diff),          // input wire [6:0]  probe3
 		.probe10(app_start_cmd),      // input wire [0:0]  probe3
 		.probe11(app_cmd_done),       // input wire [0:0]  probe3
 		.probe12(app_cmd_error),      // input wire [0:0]  probe3
 		.probe13(app_size),           // input wire [7:0]  probe3
-		.probe14(app_blocks),         // input wire [7:0]  probe3
-		.probe15(app_tag),            // input wire [3:0]  probe3
-		.probe16(app_delay),          // input wire [1:0]  probe3
-		.probe17(app_used),           // input wire [20:0]  probe3
-		.probe18(irq),                // input wire [0:0]  probe3
-		.probe19(app_active),         // input wire [0:0]  probe3
-		.probe20(app_curr_beat),      // input wire [7:0]  probe3
-		.probe21(app_last_beat),      // input wire [7:0]  probe3
-		.probe22(app_hdr_sample),     // input wire [63:0]  probe3
-		.probe23(app_hdr_blocks),     // input wire [7:0]  probe3
-		.probe24(app_hdr_flags),      // input wire [7:0]  probe3
-		.probe25(app_hdr_size),       // input wire [15:0]  probe3
-		.probe26(app_hdr_freq),       // input wire [31:0]  probe3
-		.probe27(app_hdr_angle),      // input wire [15:0]  probe3
-		.probe28(app_hdr_doa_error),  // input wire [15:0]  probe3
-		.probe29(app_hdr_max_env),    // input wire [15:0]  probe3
-		.probe30(app_hdr_max_pos),    // input wire [15:0]  probe3
-		.probe31(app_hdr_env_mean),   // input wire [15:0]  probe3
-		.probe32(app_hdr_env_std),    // input wire [15:0]  probe3
-		.probe33(app_hdr_phase_std),  // input wire [15:0]  probe3
-		.probe34(app_hdr_freq_std),   // input wire [15:0]  probe3
-		.probe35(app_env_0),          // input wire [15:0]  probe3
-		.probe36(app_env_1),          // input wire [15:0]  probe3
-		.probe37(app_env_2),          // input wire [15:0]  probe3
-		.probe38(app_env_3),          // input wire [15:0]  probe3
-		.probe39(app_env_4),          // input wire [15:0]  probe3
-		.probe40(app_env_5),          // input wire [15:0]  probe3
-		.probe41(app_env_6),          // input wire [15:0]  probe3
-		.probe42(app_env_7)           // input wire [15:0]  probe3
+		.probe14(app_delay),          // input wire [1:0]  probe3
+		.probe15(app_used),           // input wire [20:0]  probe3
+		.probe16(irq),                // input wire [0:0]  probe3
+		.probe17(app_active),         // input wire [0:0]  probe3
+		.probe18(app_curr_beat),      // input wire [7:0]  probe3
+		.probe19(app_last_beat),      // input wire [7:0]  probe3
+		.probe20(app_hdr_sample),     // input wire [63:0]  probe3
+		.probe21(app_hdr_blocks),     // input wire [7:0]  probe3
+		.probe22(app_hdr_flags),      // input wire [7:0]  probe3
+		.probe23(app_hdr_size),       // input wire [15:0]  probe3
+		.probe24(app_hdr_freq),       // input wire [31:0]  probe3
+		.probe25(app_hdr_angle),      // input wire [15:0]  probe3
+		.probe26(app_hdr_doa_error),  // input wire [15:0]  probe3
+		.probe27(app_hdr_max_env),    // input wire [15:0]  probe3
+		.probe28(app_hdr_max_pos),    // input wire [15:0]  probe3
+		.probe29(app_hdr_env_mean),   // input wire [15:0]  probe3
+		.probe30(app_hdr_env_std),    // input wire [15:0]  probe3
+		.probe31(app_hdr_phase_std),  // input wire [15:0]  probe3
+		.probe32(app_hdr_freq_std),   // input wire [15:0]  probe3
+		.probe33(app_env_0),          // input wire [15:0]  probe3
+		.probe34(app_env_1),          // input wire [15:0]  probe3
+		.probe35(app_env_2),          // input wire [15:0]  probe3
+		.probe36(app_env_3),          // input wire [15:0]  probe3
+		.probe37(app_env_4),          // input wire [15:0]  probe3
+		.probe38(app_env_5),          // input wire [15:0]  probe3
+		.probe39(app_env_6),          // input wire [15:0]  probe3
+		.probe40(app_env_7)           // input wire [15:0]  probe3
+	);
+
+	ila_8 ila_axi (
+		.clk(clk),                          // input wire clk
+		.probe0(fifo_count),                // input wire [13:0]  probe3
+		.probe1(app_fifo_ok),               // input wire [0:0]  probe3
+		.probe2(app_cmd_state),             // input wire [2:0]  probe3
+		.probe3(app_active),                // input wire [0:0]  probe3
+		.probe4(app_adr),                   // input wire [20:0]  probe3
+		.probe5(M_AXI_TDATA_out_cmd),       // input wire [71:0]  probe3
+		.probe6(M_AXI_TVALID_out_cmd),      // input wire [0:0]  probe3
+		.probe7(M_AXI_TREADY_out_cmd),      // input wire [0:0]  probe3
+		.probe8(M_AXI_STS_out_tdata),       // input wire [7:0]  probe3
+		.probe9(M_AXI_STS_out_tvalid),     // input wire [0:0]  probe3
+		.probe10(M_AXI_STS_out_tready),     // input wire [0:0]  probe3
+		.probe11(M_AXI_TDATA_out[15:0]),    // input wire [15:0]  probe3
+		.probe12(M_AXI_TVALID_out),         // input wire [0:0]  probe3
+		.probe13(M_AXI_TLAST_out),          // input wire [0:0]  probe3
+		.probe14(M_AXI_TREADY_out)          // input wire [0:0]  probe3
 	);
 
 generate
@@ -306,6 +318,7 @@ generate
                 M_AXI_TDATA_in_cmd[36:32] <= 0; 
                 M_AXI_TDATA_in_cmd[63:37] <= mig_adr; 
                 M_AXI_TDATA_in_cmd[67:64] <= mig_tag; 
+                M_AXI_TDATA_in_cmd[71:68] <= 0; 
                 M_AXI_TVALID_in_cmd <= 1;
             end
             else
@@ -562,6 +575,12 @@ generate
 
     always @(posedge clk) 
     begin
+        ddr_rd_ptr <= {linux_base, app_rd_ptr, 5'b00000};
+	    ddr_wr_ptr <= {linux_base, app_wr_ptr, 5'b00000};
+    end
+
+    always @(posedge clk) 
+    begin
         app_used <= app_adr - app_rd_ptr;
     end
 
@@ -590,14 +609,14 @@ generate
             if (app_start_cmd)
             begin
                 M_AXI_TDATA_out_cmd[4:0] <= 0; 
-                M_AXI_TDATA_out_cmd[12:5] <= app_blocks; 
-                M_AXI_TDATA_out_cmd[22:13] <= 0; 
+                M_AXI_TDATA_out_cmd[13:5] <= {1'b0, app_size} + 1; 
+                M_AXI_TDATA_out_cmd[22:14] <= 0; 
                 M_AXI_TDATA_out_cmd[23] <= 1; 
                 M_AXI_TDATA_out_cmd[31:24] <= 0; 
                 M_AXI_TDATA_out_cmd[36:32] <= 0; 
                 M_AXI_TDATA_out_cmd[57:37] <= app_adr; 
                 M_AXI_TDATA_out_cmd[63:58] <= linux_base; 
-                M_AXI_TDATA_out_cmd[67:64] <= app_tag; 
+                M_AXI_TDATA_out_cmd[71:64] <= 0; 
                 M_AXI_TVALID_out_cmd <= 1;
             end
             else
@@ -622,12 +641,7 @@ generate
             begin
                 irq <= 1;
                 if (M_AXI_STS_out_tdata[7])
-                begin
-                    if (app_tag == M_AXI_STS_out_tdata[3:0])
-                        app_cmd_done <= 1;
-                    else
-                        app_cmd_error <= 1;
-                end
+                    app_cmd_done <= 1;
                 else
                     app_cmd_error <= 1;
             end
@@ -637,15 +651,6 @@ generate
                 irq <= 0;
             end
         end
-    end
-
-   always @(posedge clk) 
-    begin
-        if (reset) 
-            app_tag <= 0;
-        else
-            if (app_cmd_done)
-                app_tag <= app_tag + 1;
     end
 
     always @(posedge clk) 
@@ -659,7 +664,7 @@ generate
         begin
             if (app_cmd_done)
             begin
-                app_adr <= app_adr + app_blocks;
+                app_adr <= app_adr + app_size + 1;
                 app_delay <= 3;
             end
             else
@@ -691,13 +696,12 @@ generate
         if (reset) 
         begin
             app_cmd_state <= APP_ST_IDLE;
-            app_blocks <= 0;
             app_start_cmd <= 0;
             app_wr_ptr <= 0;
         end 
         else 
         begin
-            if (app_delay == 0)
+            if (app_delay == 2'b00)
             begin
                 case (app_cmd_state)
                     APP_ST_IDLE: 
@@ -708,57 +712,32 @@ generate
 							begin
                                 app_cmd_state <= APP_ST_HDR;
 								app_hdr_delay <= 3;
+                                app_start_cmd <= 1;
 							end
                         end
 
                     APP_ST_HDR: 
-						if (app_hdr_delay)
-							app_hdr_delay <= app_hdr_delay - 1;
-						else
-						begin
-							if (app_fifo_ok && linux_has_space)
-							begin
-								if (app_size == 8'hFF)
-									app_cmd_state <= APP_ST_FULL;
-								else
-									app_cmd_state <= APP_ST_DATA;
-							end
-						end
-
-                    APP_ST_DATA: 
-                        begin
-                            app_blocks <= app_size + 1;
-                            app_start_cmd <= 1;
-                            app_cmd_state <= APP_ST_WAIT_DATA;
-                        end
-
-                    APP_ST_WAIT_DATA: 
                         begin
                             app_start_cmd <= 0;
+	   					    if (app_hdr_delay)
+		  					    app_hdr_delay <= app_hdr_delay - 1;
+    			 	   		else
+						    begin
+							    if (app_fifo_ok && linux_has_space)
+								    app_cmd_state <= APP_ST_WAIT_DATA;
+  						    end
+  						end
+
+                    APP_ST_WAIT_DATA: 
+                        if (app_active)
+						    app_cmd_state <= APP_ST_WAIT_COMPLETE;
+                        
+                    APP_ST_WAIT_COMPLETE: 
+                        begin
                             if (app_cmd_done)
                                 app_cmd_state <= APP_ST_IDLE;
                         end
 
-                    APP_ST_FULL: 
-                        begin
-                            app_blocks <= 1;
-                            app_start_cmd <= 1;
-                            app_cmd_state <= APP_ST_WAIT_HDR;
-                        end
-
-                    APP_ST_WAIT_HDR: 
-                        begin
-                            app_start_cmd <= 0;
-                            if (app_cmd_done)
-                                app_cmd_state <= APP_ST_WR_DATA;
-                        end
-
-                    APP_ST_WR_DATA: 
-                        begin
-                            app_blocks <= app_size;
-                            app_start_cmd <= 1;
-                            app_cmd_state <= APP_ST_WAIT_DATA;
-                        end
                 endcase
             end
             else 
@@ -802,6 +781,11 @@ generate
 
     always @(posedge clk) 
     begin
+        M_AXI_TKEEP_out <= 32'hFFFFFFFF;
+    end
+
+    always @(posedge clk) 
+    begin
         if (reset)
         begin
             app_active <= 0;
@@ -831,13 +815,13 @@ generate
             end
             else
             begin
-                if (app_start_cmd)
+                if (app_cmd_state == APP_ST_WAIT_DATA)
                 begin
                     app_active <= 1;
                     app_curr_beat <= 1;
-                    app_last_beat <= app_blocks - 1;
+                    app_last_beat <= app_size;
 
-                    if (app_blocks == 1)
+                    if (app_size == 0)
                         M_AXI_TLAST_out <= 1;
                     else
                         M_AXI_TLAST_out <= 0;

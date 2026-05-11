@@ -429,10 +429,10 @@ int main()
     {
         a = (double)i * 10.0;
 
-    	LoadLowZero(46.0, 10.0);
-	    LoadLowMorlet(46.0, 20.0, 5000, a);
+//    	LoadLowZero(46.0, 10.0);
+//	    LoadLowMorlet(46.0, 20.0, 5000, a);
 //	    LoadLowCos(46.0, 30.0, 25000, 45.0);
-    	LoadLowZero(46.0, 30.0);
+//    	LoadLowZero(46.0, 30.0);
 
 	    LoadHighZero(189.0, 50.0);
 	    LoadHighMorlet(189.0, 15.0, 1000, a);

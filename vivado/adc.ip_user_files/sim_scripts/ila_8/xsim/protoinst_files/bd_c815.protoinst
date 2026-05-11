@@ -17,14 +17,15 @@
 						"AWQOS": { "actual": "m_axi_awqos[3:0]"},
 						"AWREADY": { "actual": "m_axi_awready"},
 						"AWSIZE": { "actual": "m_axi_awsize[2:0]"},
+						"AWUSER": { "actual": "m_axi_awuser[3:0]"},
 						"AWVALID": { "actual": "m_axi_awvalid"},
 						"BREADY": { "actual": "m_axi_bready"},
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[127:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[15:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
 				},
@@ -48,10 +49,10 @@
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BUSER": { "actual": "s_axi_buser[1023:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[127:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[15:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "s_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
@@ -70,14 +71,15 @@
 						"AWQOS": { "actual": "m_axi_awqos[3:0]"},
 						"AWREADY": { "actual": "m_axi_awready"},
 						"AWSIZE": { "actual": "m_axi_awsize[2:0]"},
+						"AWUSER": { "actual": "m_axi_awuser[3:0]"},
 						"AWVALID": { "actual": "m_axi_awvalid"},
 						"BREADY": { "actual": "m_axi_bready"},
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[127:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[15:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
 				},
@@ -101,10 +103,10 @@
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BUSER": { "actual": "s_axi_buser[1023:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[127:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[15:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "s_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
@@ -128,10 +130,10 @@
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BUSER": { "actual": "m_axi_buser[1023:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[127:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[15:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "m_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
@@ -155,10 +157,10 @@
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BUSER": { "actual": "s_axi_buser[1023:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[255:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "s_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
@@ -183,10 +185,10 @@
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BUSER": { "actual": "m_axi_buser[1023:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[255:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "m_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
@@ -211,10 +213,10 @@
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BUSER": { "actual": "m_axi_buser[1023:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[255:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "m_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
@@ -233,14 +235,15 @@
 						"AWQOS": { "actual": "s_axi_awqos[3:0]"},
 						"AWREADY": { "actual": "s_axi_awready"},
 						"AWSIZE": { "actual": "s_axi_awsize[2:0]"},
+						"AWUSER": { "actual": "s_axi_awuser[3:0]"},
 						"AWVALID": { "actual": "s_axi_awvalid"},
 						"BREADY": { "actual": "s_axi_bready"},
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[255:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
@@ -264,10 +267,10 @@
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BUSER": { "actual": "m_axi_buser[1023:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[255:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "m_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
@@ -278,6 +281,7 @@
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
 						"AWADDR": { "actual": "s_axi_awaddr[31:0]"},
+						"AWBURST": { "actual": "s_axi_awburst[1:0]"},
 						"AWCACHE": { "actual": "s_axi_awcache[3:0]"},
 						"AWID": { "actual": "s_axi_awid[0:0]"},
 						"AWLEN": { "actual": "s_axi_awlen[7:0]"},
@@ -293,10 +297,10 @@
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BUSER": { "actual": "s_axi_buser[1023:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[255:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "s_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
@@ -323,10 +327,10 @@
 						"BRESP": { "actual": "m_axi_bresp[1:0]"},
 						"BUSER": { "actual": "m_axi_buser[1023:0]"},
 						"BVALID": { "actual": "m_axi_bvalid"},
-						"WDATA": { "actual": "m_axi_wdata[255:0]"},
+						"WDATA": { "actual": "m_axi_wdata[63:0]"},
 						"WLAST": { "actual": "m_axi_wlast"},
 						"WREADY": { "actual": "m_axi_wready"},
-						"WSTRB": { "actual": "m_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "m_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "m_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
@@ -351,10 +355,10 @@
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BUSER": { "actual": "s_axi_buser[1023:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[255:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WUSER": { "actual": "s_axi_wuser[1023:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
@@ -373,14 +377,15 @@
 						"AWQOS": { "actual": "s_axi_awqos[3:0]"},
 						"AWREADY": { "actual": "s_axi_awready"},
 						"AWSIZE": { "actual": "s_axi_awsize[2:0]"},
+						"AWUSER": { "actual": "s_axi_awuser[3:0]"},
 						"AWVALID": { "actual": "s_axi_awvalid"},
 						"BREADY": { "actual": "s_axi_bready"},
 						"BRESP": { "actual": "s_axi_bresp[1:0]"},
 						"BVALID": { "actual": "s_axi_bvalid"},
-						"WDATA": { "actual": "s_axi_wdata[255:0]"},
+						"WDATA": { "actual": "s_axi_wdata[63:0]"},
 						"WLAST": { "actual": "s_axi_wlast"},
 						"WREADY": { "actual": "s_axi_wready"},
-						"WSTRB": { "actual": "s_axi_wstrb[31:0]"},
+						"WSTRB": { "actual": "s_axi_wstrb[7:0]"},
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				}

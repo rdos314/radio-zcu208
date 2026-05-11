@@ -31,7 +31,6 @@ module bd_c815
     S00_AXI_awaddr,
     S00_AXI_awburst,
     S00_AXI_awcache,
-    S00_AXI_awid,
     S00_AXI_awlen,
     S00_AXI_awlock,
     S00_AXI_awprot,
@@ -40,7 +39,6 @@ module bd_c815
     S00_AXI_awsize,
     S00_AXI_awuser,
     S00_AXI_awvalid,
-    S00_AXI_bid,
     S00_AXI_bready,
     S00_AXI_bresp,
     S00_AXI_bvalid,
@@ -51,7 +49,7 @@ module bd_c815
     S00_AXI_wvalid,
     aclk,
     aresetn);
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWADDR" *) (* X_INTERFACE_MODE = "Master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, ADDR_WIDTH 49, ARUSER_WIDTH 0, AWUSER_WIDTH 4, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 128, FREQ_HZ 333250000, HAS_BRESP 1, HAS_BURST 1, HAS_CACHE 1, HAS_LOCK 1, HAS_PROT 1, HAS_QOS 1, HAS_REGION 0, HAS_RRESP 0, HAS_WSTRB 1, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 32, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE WRITE_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) output [48:0]M00_AXI_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWADDR" *) (* X_INTERFACE_MODE = "Master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, ADDR_WIDTH 49, ARUSER_WIDTH 0, AWUSER_WIDTH 4, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 128, FREQ_HZ 333250000, HAS_BRESP 1, HAS_BURST 1, HAS_CACHE 1, HAS_LOCK 1, HAS_PROT 1, HAS_QOS 1, HAS_REGION 0, HAS_RRESP 0, HAS_WSTRB 1, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 64, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE WRITE_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) output [48:0]M00_AXI_awaddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWBURST" *) output [1:0]M00_AXI_awburst;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWCACHE" *) output [3:0]M00_AXI_awcache;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWLEN" *) output [7:0]M00_AXI_awlen;
@@ -70,10 +68,9 @@ module bd_c815
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WREADY" *) input M00_AXI_wready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WSTRB" *) output [15:0]M00_AXI_wstrb;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WVALID" *) output M00_AXI_wvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_AXI, ADDR_WIDTH 32, ARUSER_WIDTH 0, AWUSER_WIDTH 4, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 256, FREQ_HZ 333250000, HAS_BRESP 1, HAS_BURST 1, HAS_CACHE 1, HAS_LOCK 0, HAS_PROT 1, HAS_QOS 0, HAS_REGION 0, HAS_RRESP 0, HAS_WSTRB 1, ID_WIDTH 4, INSERT_VIP 0, MAX_BURST_LENGTH 16, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE WRITE_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) input [31:0]S00_AXI_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_AXI, ADDR_WIDTH 32, ARUSER_WIDTH 0, AWUSER_WIDTH 4, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 128, FREQ_HZ 333250000, HAS_BRESP 1, HAS_BURST 1, HAS_CACHE 1, HAS_LOCK 0, HAS_PROT 1, HAS_QOS 0, HAS_REGION 0, HAS_RRESP 0, HAS_WSTRB 1, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 64, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE WRITE_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) input [31:0]S00_AXI_awaddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWBURST" *) input [1:0]S00_AXI_awburst;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWCACHE" *) input [3:0]S00_AXI_awcache;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWID" *) input [3:0]S00_AXI_awid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWLEN" *) input [7:0]S00_AXI_awlen;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWLOCK" *) input [0:0]S00_AXI_awlock;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT" *) input [2:0]S00_AXI_awprot;
@@ -82,14 +79,13 @@ module bd_c815
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWSIZE" *) input [2:0]S00_AXI_awsize;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWUSER" *) input [3:0]S00_AXI_awuser;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWVALID" *) input S00_AXI_awvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BID" *) output [3:0]S00_AXI_bid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BREADY" *) input S00_AXI_bready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BRESP" *) output [1:0]S00_AXI_bresp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BVALID" *) output S00_AXI_bvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WDATA" *) input [255:0]S00_AXI_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WDATA" *) input [127:0]S00_AXI_wdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WLAST" *) input S00_AXI_wlast;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WREADY" *) output S00_AXI_wready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB" *) input [31:0]S00_AXI_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB" *) input [15:0]S00_AXI_wstrb;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WVALID" *) input S00_AXI_wvalid;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ACLK, ASSOCIATED_BUSIF M00_AXI:S00_AXI, ASSOCIATED_CLKEN s_sc_aclken, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.00" *) input aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.ARESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.ARESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input aresetn;
@@ -116,7 +112,6 @@ module bd_c815
   wire [31:0]S00_AXI_awaddr;
   wire [1:0]S00_AXI_awburst;
   wire [3:0]S00_AXI_awcache;
-  wire [3:0]S00_AXI_awid;
   wire [7:0]S00_AXI_awlen;
   wire [0:0]S00_AXI_awlock;
   wire [2:0]S00_AXI_awprot;
@@ -125,14 +120,13 @@ module bd_c815
   wire [2:0]S00_AXI_awsize;
   wire [3:0]S00_AXI_awuser;
   wire S00_AXI_awvalid;
-  wire [3:0]S00_AXI_bid;
   wire S00_AXI_bready;
   wire [1:0]S00_AXI_bresp;
   wire S00_AXI_bvalid;
-  wire [255:0]S00_AXI_wdata;
+  wire [127:0]S00_AXI_wdata;
   wire S00_AXI_wlast;
   wire S00_AXI_wready;
-  wire [31:0]S00_AXI_wstrb;
+  wire [15:0]S00_AXI_wstrb;
   wire S00_AXI_wvalid;
   wire [0:0]S_SC_AW_1_INFO;
   wire [140:0]S_SC_AW_1_PAYLD;
@@ -145,7 +139,7 @@ module bd_c815
   wire S_SC_B_1_REQ;
   wire S_SC_B_1_SEND;
   wire [0:0]S_SC_W_1_INFO;
-  wire [303:0]S_SC_W_1_PAYLD;
+  wire [159:0]S_SC_W_1_PAYLD;
   wire [0:0]S_SC_W_1_RECV;
   wire S_SC_W_1_REQ;
   wire S_SC_W_1_SEND;
@@ -192,10 +186,10 @@ module bd_c815
   wire [1:0]s00_entry_pipeline_m_axi_BRESP;
   wire [1023:0]s00_entry_pipeline_m_axi_BUSER;
   wire s00_entry_pipeline_m_axi_BVALID;
-  wire [255:0]s00_entry_pipeline_m_axi_WDATA;
+  wire [127:0]s00_entry_pipeline_m_axi_WDATA;
   wire s00_entry_pipeline_m_axi_WLAST;
   wire s00_entry_pipeline_m_axi_WREADY;
-  wire [31:0]s00_entry_pipeline_m_axi_WSTRB;
+  wire [15:0]s00_entry_pipeline_m_axi_WSTRB;
   wire [1023:0]s00_entry_pipeline_m_axi_WUSER;
   wire s00_entry_pipeline_m_axi_WVALID;
   wire [0:0]s00_nodes_M_SC_AW_INFO;
@@ -209,7 +203,7 @@ module bd_c815
   wire [0:0]s00_nodes_M_SC_B_REQ;
   wire [0:0]s00_nodes_M_SC_B_SEND;
   wire [0:0]s00_nodes_M_SC_W_INFO;
-  wire [303:0]s00_nodes_M_SC_W_PAYLD;
+  wire [159:0]s00_nodes_M_SC_W_PAYLD;
   wire s00_nodes_M_SC_W_RECV;
   wire s00_nodes_M_SC_W_REQ;
   wire s00_nodes_M_SC_W_SEND;
@@ -372,7 +366,6 @@ module bd_c815
         .s_axi_awaddr(S00_AXI_awaddr),
         .s_axi_awburst(S00_AXI_awburst),
         .s_axi_awcache(S00_AXI_awcache),
-        .s_axi_awid(S00_AXI_awid),
         .s_axi_awlen(S00_AXI_awlen),
         .s_axi_awlock(S00_AXI_awlock),
         .s_axi_awprot(S00_AXI_awprot),
@@ -381,7 +374,6 @@ module bd_c815
         .s_axi_awsize(S00_AXI_awsize),
         .s_axi_awuser(S00_AXI_awuser),
         .s_axi_awvalid(S00_AXI_awvalid),
-        .s_axi_bid(S00_AXI_bid),
         .s_axi_bready(S00_AXI_bready),
         .s_axi_bresp(S00_AXI_bresp),
         .s_axi_bvalid(S00_AXI_bvalid),
@@ -669,7 +661,6 @@ module s00_entry_pipeline_imp_1I5PKOM
     s_axi_awaddr,
     s_axi_awburst,
     s_axi_awcache,
-    s_axi_awid,
     s_axi_awlen,
     s_axi_awlock,
     s_axi_awprot,
@@ -678,7 +669,6 @@ module s00_entry_pipeline_imp_1I5PKOM
     s_axi_awsize,
     s_axi_awuser,
     s_axi_awvalid,
-    s_axi_bid,
     s_axi_bready,
     s_axi_bresp,
     s_axi_bvalid,
@@ -704,16 +694,15 @@ module s00_entry_pipeline_imp_1I5PKOM
   input [1:0]m_axi_bresp;
   input [1023:0]m_axi_buser;
   input m_axi_bvalid;
-  output [255:0]m_axi_wdata;
+  output [127:0]m_axi_wdata;
   output m_axi_wlast;
   input m_axi_wready;
-  output [31:0]m_axi_wstrb;
+  output [15:0]m_axi_wstrb;
   output [1023:0]m_axi_wuser;
   output m_axi_wvalid;
   input [31:0]s_axi_awaddr;
   input [1:0]s_axi_awburst;
   input [3:0]s_axi_awcache;
-  input [3:0]s_axi_awid;
   input [7:0]s_axi_awlen;
   input [0:0]s_axi_awlock;
   input [2:0]s_axi_awprot;
@@ -722,14 +711,13 @@ module s00_entry_pipeline_imp_1I5PKOM
   input [2:0]s_axi_awsize;
   input [3:0]s_axi_awuser;
   input s_axi_awvalid;
-  output [3:0]s_axi_bid;
   input s_axi_bready;
   output [1:0]s_axi_bresp;
   output s_axi_bvalid;
-  input [255:0]s_axi_wdata;
+  input [127:0]s_axi_wdata;
   input s_axi_wlast;
   output s_axi_wready;
-  input [31:0]s_axi_wstrb;
+  input [15:0]s_axi_wstrb;
   input s_axi_wvalid;
 
   wire aclk;
@@ -749,16 +737,15 @@ module s00_entry_pipeline_imp_1I5PKOM
   wire [1:0]m_axi_bresp;
   wire [1023:0]m_axi_buser;
   wire m_axi_bvalid;
-  wire [255:0]m_axi_wdata;
+  wire [127:0]m_axi_wdata;
   wire m_axi_wlast;
   wire m_axi_wready;
-  wire [31:0]m_axi_wstrb;
+  wire [15:0]m_axi_wstrb;
   wire [1023:0]m_axi_wuser;
   wire m_axi_wvalid;
   wire [31:0]s00_mmu_M_AXI_AWADDR;
   wire [1:0]s00_mmu_M_AXI_AWBURST;
   wire [3:0]s00_mmu_M_AXI_AWCACHE;
-  wire [3:0]s00_mmu_M_AXI_AWID;
   wire [7:0]s00_mmu_M_AXI_AWLEN;
   wire [0:0]s00_mmu_M_AXI_AWLOCK;
   wire [2:0]s00_mmu_M_AXI_AWPROT;
@@ -767,15 +754,14 @@ module s00_entry_pipeline_imp_1I5PKOM
   wire [2:0]s00_mmu_M_AXI_AWSIZE;
   wire [1023:0]s00_mmu_M_AXI_AWUSER;
   wire s00_mmu_M_AXI_AWVALID;
-  wire [3:0]s00_mmu_M_AXI_BID;
   wire s00_mmu_M_AXI_BREADY;
   wire [1:0]s00_mmu_M_AXI_BRESP;
   wire [1023:0]s00_mmu_M_AXI_BUSER;
   wire s00_mmu_M_AXI_BVALID;
-  wire [255:0]s00_mmu_M_AXI_WDATA;
+  wire [127:0]s00_mmu_M_AXI_WDATA;
   wire s00_mmu_M_AXI_WLAST;
   wire s00_mmu_M_AXI_WREADY;
-  wire [31:0]s00_mmu_M_AXI_WSTRB;
+  wire [15:0]s00_mmu_M_AXI_WSTRB;
   wire [1023:0]s00_mmu_M_AXI_WUSER;
   wire s00_mmu_M_AXI_WVALID;
   wire [31:0]s00_transaction_regulator_M_AXI_AWADDR;
@@ -795,16 +781,15 @@ module s00_entry_pipeline_imp_1I5PKOM
   wire [1:0]s00_transaction_regulator_M_AXI_BRESP;
   wire [1023:0]s00_transaction_regulator_M_AXI_BUSER;
   wire s00_transaction_regulator_M_AXI_BVALID;
-  wire [255:0]s00_transaction_regulator_M_AXI_WDATA;
+  wire [127:0]s00_transaction_regulator_M_AXI_WDATA;
   wire s00_transaction_regulator_M_AXI_WLAST;
   wire s00_transaction_regulator_M_AXI_WREADY;
-  wire [31:0]s00_transaction_regulator_M_AXI_WSTRB;
+  wire [15:0]s00_transaction_regulator_M_AXI_WSTRB;
   wire [1023:0]s00_transaction_regulator_M_AXI_WUSER;
   wire s00_transaction_regulator_M_AXI_WVALID;
   wire [31:0]s_axi_awaddr;
   wire [1:0]s_axi_awburst;
   wire [3:0]s_axi_awcache;
-  wire [3:0]s_axi_awid;
   wire [7:0]s_axi_awlen;
   wire [0:0]s_axi_awlock;
   wire [2:0]s_axi_awprot;
@@ -813,14 +798,13 @@ module s00_entry_pipeline_imp_1I5PKOM
   wire [2:0]s_axi_awsize;
   wire [3:0]s_axi_awuser;
   wire s_axi_awvalid;
-  wire [3:0]s_axi_bid;
   wire s_axi_bready;
   wire [1:0]s_axi_bresp;
   wire s_axi_bvalid;
-  wire [255:0]s_axi_wdata;
+  wire [127:0]s_axi_wdata;
   wire s_axi_wlast;
   wire s_axi_wready;
-  wire [31:0]s_axi_wstrb;
+  wire [15:0]s_axi_wstrb;
   wire s_axi_wvalid;
 
   bd_c815_s00mmu_0 s00_mmu
@@ -829,7 +813,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .m_axi_awaddr(s00_mmu_M_AXI_AWADDR),
         .m_axi_awburst(s00_mmu_M_AXI_AWBURST),
         .m_axi_awcache(s00_mmu_M_AXI_AWCACHE),
-        .m_axi_awid(s00_mmu_M_AXI_AWID),
         .m_axi_awlen(s00_mmu_M_AXI_AWLEN),
         .m_axi_awlock(s00_mmu_M_AXI_AWLOCK),
         .m_axi_awprot(s00_mmu_M_AXI_AWPROT),
@@ -838,7 +821,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .m_axi_awsize(s00_mmu_M_AXI_AWSIZE),
         .m_axi_awuser(s00_mmu_M_AXI_AWUSER),
         .m_axi_awvalid(s00_mmu_M_AXI_AWVALID),
-        .m_axi_bid(s00_mmu_M_AXI_BID),
         .m_axi_bready(s00_mmu_M_AXI_BREADY),
         .m_axi_bresp(s00_mmu_M_AXI_BRESP),
         .m_axi_buser(s00_mmu_M_AXI_BUSER),
@@ -852,7 +834,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .s_axi_awaddr(s_axi_awaddr),
         .s_axi_awburst(s_axi_awburst),
         .s_axi_awcache(s_axi_awcache),
-        .s_axi_awid(s_axi_awid),
         .s_axi_awlen(s_axi_awlen),
         .s_axi_awlock(s_axi_awlock),
         .s_axi_awprot(s_axi_awprot),
@@ -861,7 +842,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .s_axi_awsize(s_axi_awsize),
         .s_axi_awuser(s_axi_awuser),
         .s_axi_awvalid(s_axi_awvalid),
-        .s_axi_bid(s_axi_bid),
         .s_axi_bready(s_axi_bready),
         .s_axi_bresp(s_axi_bresp),
         .s_axi_bvalid(s_axi_bvalid),
@@ -946,7 +926,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .s_axi_awaddr(s00_mmu_M_AXI_AWADDR),
         .s_axi_awburst(s00_mmu_M_AXI_AWBURST),
         .s_axi_awcache(s00_mmu_M_AXI_AWCACHE),
-        .s_axi_awid(s00_mmu_M_AXI_AWID),
         .s_axi_awlen(s00_mmu_M_AXI_AWLEN),
         .s_axi_awlock(s00_mmu_M_AXI_AWLOCK),
         .s_axi_awprot(s00_mmu_M_AXI_AWPROT),
@@ -955,7 +934,6 @@ module s00_entry_pipeline_imp_1I5PKOM
         .s_axi_awsize(s00_mmu_M_AXI_AWSIZE),
         .s_axi_awuser(s00_mmu_M_AXI_AWUSER),
         .s_axi_awvalid(s00_mmu_M_AXI_AWVALID),
-        .s_axi_bid(s00_mmu_M_AXI_BID),
         .s_axi_bready(s00_mmu_M_AXI_BREADY),
         .s_axi_bresp(s00_mmu_M_AXI_BRESP),
         .s_axi_buser(s00_mmu_M_AXI_BUSER),
@@ -1014,7 +992,7 @@ module s00_nodes_imp_1NIYL0S
   output [0:0]M_SC_B_req;
   output [0:0]M_SC_B_send;
   output [0:0]M_SC_W_info;
-  output [303:0]M_SC_W_payld;
+  output [159:0]M_SC_W_payld;
   input M_SC_W_recv;
   output M_SC_W_req;
   output M_SC_W_send;
@@ -1029,7 +1007,7 @@ module s00_nodes_imp_1NIYL0S
   input S_SC_B_req;
   input S_SC_B_send;
   input [0:0]S_SC_W_info;
-  input [303:0]S_SC_W_payld;
+  input [159:0]S_SC_W_payld;
   output [0:0]S_SC_W_recv;
   input [0:0]S_SC_W_req;
   input [0:0]S_SC_W_send;
@@ -1049,7 +1027,7 @@ module s00_nodes_imp_1NIYL0S
   wire [0:0]M_SC_B_req;
   wire [0:0]M_SC_B_send;
   wire [0:0]M_SC_W_info;
-  wire [303:0]M_SC_W_payld;
+  wire [159:0]M_SC_W_payld;
   wire M_SC_W_recv;
   wire [0:0]\^M_SC_W_req ;
   wire [0:0]\^M_SC_W_send ;
@@ -1064,7 +1042,7 @@ module s00_nodes_imp_1NIYL0S
   wire S_SC_B_req;
   wire S_SC_B_send;
   wire [0:0]S_SC_W_info;
-  wire [303:0]S_SC_W_payld;
+  wire [159:0]S_SC_W_payld;
   wire [0:0]S_SC_W_recv;
   wire [0:0]S_SC_W_req;
   wire [0:0]S_SC_W_send;

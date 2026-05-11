@@ -49,7 +49,7 @@
         "aresetn": [ { "direction": "in", "driver_value": "1" } ],
         "S00_AXI_awaddr": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
         "S00_AXI_awlen": [ { "direction": "in", "size_left": "7", "size_right": "0", "driver_value": "0" } ],
-        "S00_AXI_awsize": [ { "direction": "in", "size_left": "2", "size_right": "0", "driver_value": "101" } ],
+        "S00_AXI_awsize": [ { "direction": "in", "size_left": "2", "size_right": "0", "driver_value": "100" } ],
         "S00_AXI_awburst": [ { "direction": "in", "size_left": "1", "size_right": "0", "driver_value": "1" } ],
         "S00_AXI_awlock": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
         "S00_AXI_awcache": [ { "direction": "in", "size_left": "3", "size_right": "0", "driver_value": "3" } ],
@@ -57,8 +57,8 @@
         "S00_AXI_awqos": [ { "direction": "in", "size_left": "3", "size_right": "0", "driver_value": "0" } ],
         "S00_AXI_awvalid": [ { "direction": "in", "driver_value": "0" } ],
         "S00_AXI_awready": [ { "direction": "out", "driver_value": "0" } ],
-        "S00_AXI_wdata": [ { "direction": "in", "size_left": "255", "size_right": "0", "driver_value": "0" } ],
-        "S00_AXI_wstrb": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "1" } ],
+        "S00_AXI_wdata": [ { "direction": "in", "size_left": "127", "size_right": "0", "driver_value": "0" } ],
+        "S00_AXI_wstrb": [ { "direction": "in", "size_left": "15", "size_right": "0", "driver_value": "1" } ],
         "S00_AXI_wlast": [ { "direction": "in", "driver_value": "0" } ],
         "S00_AXI_wvalid": [ { "direction": "in", "driver_value": "0" } ],
         "S00_AXI_wready": [ { "direction": "out", "driver_value": "0" } ],
@@ -83,9 +83,7 @@
         "M00_AXI_bresp": [ { "direction": "in", "size_left": "1", "size_right": "0", "driver_value": "0" } ],
         "M00_AXI_bvalid": [ { "direction": "in", "driver_value": "0" } ],
         "M00_AXI_bready": [ { "direction": "out", "driver_value": "0" } ],
-        "S00_AXI_awid": [ { "direction": "in", "size_left": "3", "size_right": "0", "driver_value": "0" } ],
         "S00_AXI_awuser": [ { "direction": "in", "size_left": "3", "size_right": "0", "driver_value": "0" } ],
-        "S00_AXI_bid": [ { "direction": "out", "size_left": "3", "size_right": "0", "driver_value": "0" } ],
         "M00_AXI_awuser": [ { "direction": "out", "size_left": "3", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
@@ -125,10 +123,10 @@
           "abstraction_type": "xilinx.com:interface:aximm_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "DATA_WIDTH": [ { "value": "256", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
+            "DATA_WIDTH": [ { "value": "128", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "PROTOCOL": [ { "value": "AXI4", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "simulation.tlm", "is_static_object": false } ],
             "FREQ_HZ": [ { "value": "333250000", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
-            "ID_WIDTH": [ { "value": "4", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
+            "ID_WIDTH": [ { "value": "0", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "ADDR_WIDTH": [ { "value": "32", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "AWUSER_WIDTH": [ { "value": "4", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "ARUSER_WIDTH": [ { "value": "0", "value_src": "constant_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
@@ -148,7 +146,7 @@
             "SUPPORTS_NARROW_BURST": [ { "value": "0", "value_src": "ip_propagated", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_READ_OUTSTANDING": [ { "value": "2", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_WRITE_OUTSTANDING": [ { "value": "2", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
-            "MAX_BURST_LENGTH": [ { "value": "16", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
+            "MAX_BURST_LENGTH": [ { "value": "64", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "PHASE": [ { "value": "0.00", "value_src": "constant_prop", "value_permission": "bd", "resolve_type": "generated", "format": "float", "usage": "simulation.tlm", "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "ps_ddr4_0_0_c0_ddr4_ui_clk", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_READ_THREADS": [ { "value": "1", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
@@ -176,9 +174,7 @@
             "BRESP": [ { "physical_name": "S00_AXI_bresp" } ],
             "BVALID": [ { "physical_name": "S00_AXI_bvalid" } ],
             "BREADY": [ { "physical_name": "S00_AXI_bready" } ],
-            "AWID": [ { "physical_name": "S00_AXI_awid" } ],
-            "AWUSER": [ { "physical_name": "S00_AXI_awuser" } ],
-            "BID": [ { "physical_name": "S00_AXI_bid" } ]
+            "AWUSER": [ { "physical_name": "S00_AXI_awuser" } ]
           }
         },
         "M00_AXI": {
@@ -209,7 +205,7 @@
             "SUPPORTS_NARROW_BURST": [ { "value": "0", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_READ_OUTSTANDING": [ { "value": "2", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_WRITE_OUTSTANDING": [ { "value": "2", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
-            "MAX_BURST_LENGTH": [ { "value": "32", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
+            "MAX_BURST_LENGTH": [ { "value": "64", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "PHASE": [ { "value": "0.00", "value_src": "constant_prop", "value_permission": "bd", "resolve_type": "generated", "format": "float", "usage": "simulation.tlm", "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "ps_ddr4_0_0_c0_ddr4_ui_clk", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_READ_THREADS": [ { "value": "1", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],

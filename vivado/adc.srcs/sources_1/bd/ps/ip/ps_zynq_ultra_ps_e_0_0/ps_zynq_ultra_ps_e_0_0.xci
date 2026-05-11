@@ -2207,7 +2207,7 @@
             "HAS_BRESP": [ { "value": "1", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "HAS_RRESP": [ { "value": "1", "value_src": "propagated", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "SUPPORTS_NARROW_BURST": [ { "value": "0", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
-            "MAX_BURST_LENGTH": [ { "value": "32", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
+            "MAX_BURST_LENGTH": [ { "value": "64", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
             "PHASE": [ { "value": "0.00", "value_src": "constant_prop", "value_permission": "bd", "resolve_type": "generated", "format": "float", "usage": "simulation.tlm", "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "ps_ddr4_0_0_c0_ddr4_ui_clk", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "simulation.tlm", "is_static_object": false } ],
             "NUM_READ_THREADS": [ { "value": "1", "value_src": "user_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "simulation.tlm", "is_static_object": false } ],
