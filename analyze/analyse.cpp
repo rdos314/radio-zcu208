@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/mman.h>
+#include <poll.h>
+#include <fcntl.h>
 
-#define MAP_BASE 0x400000000
-#define MAP_SIZE 0x100000000
+#define MAP_SIZE     0x4000000
+#define MAP_ENTRIES  (MAP_SIZE >> 5)
 
 #define bool int
 #define false 0
@@ -89,50 +91,73 @@ bool print_one(volatile struct AdcHeader *header)
     return true;
 }
 
-void TestAxiDma()
-{
-    int fd = open("/dev/axidma", O_RDWR | O_SYNC);
-    int val;
-    char ch;
-
-// Map 64MB Data Buffer
-    char* data_buf = (char*)mmap(NULL, 0x4000000, PROT_READ, MAP_SHARED, fd, 0);
-
-// Map AXI GPIO Registers (using 1 page offset)
-    int* regs = (int*)mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 4096);
-
-// AXI GPIO Offsets: Channel 1 is 0x0, Channel 2 is 0x8
-    volatile int* write_ptr_reg = &regs[0]; // Input from PL
-    volatile int* read_ptr_reg  = &regs[2]; // Output to PL
-
-    ch = *data_buf;
-    val = *write_ptr_reg;
-    *read_ptr_reg = val;
-}
-
 int main()
 {
-    int i;
+    int fd;
+    struct pollfd fds[1];
+    char* data_buf;
+    int* regs;
     bool ok;
-    int fd = open("/dev/mem", O_RDWR);
+    int pos;
+    struct AdcHeader *header;
+    volatile int* write_ptr_reg; // Input from PL
+    volatile int* read_ptr_reg; // Output to PL
+    char dummy;
 
-    char *map = (char *)mmap(NULL, MAP_SIZE,
-                     PROT_READ | PROT_WRITE,
-                     MAP_SHARED, fd, MAP_BASE);
+    fd = open("/dev/axidma", O_RDWR | O_SYNC);
 
-    volatile struct AdcHeader *header = (struct AdcHeader *)map;
+    if (fd > 0)
+    {
+        data_buf = (char*)mmap(NULL, MAP_SIZE, PROT_READ, MAP_SHARED, fd, 0);
+        regs = (int*)mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 4096);
 
-    TestAxiDma();
+        fds[0].fd = fd;
+        fds[0].events = POLLIN; // Wait for "read" readiness (set in driver mask)
 
-    ok = print_one(header);
+        // AXI GPIO Offsets: Channel 1 is 0x0, Channel 2 is 0x8
+        write_ptr_reg = &regs[0];
+        read_ptr_reg  = &regs[2];
+
+        ok = true;
+    }
+    else
+        ok = false;
+
+    pos = 0;
+    *read_ptr_reg = pos;
 
     while (ok)
     {
-        header += header->blocks + 1;
+        // 1. If we are lagging, process immediately without polling
+        if (pos == *write_ptr_reg) 
+        {
+            // Tell the driver we are ready for a new interrupt signal
+            read(fd, &dummy, 1); 
+        
+            // Double check after arming to avoid a race condition
+            if (pos == *write_ptr_reg) {
+                poll(fds, 1, -1);
+            }
+        }
+    
+        header = (struct AdcHeader *)(data_buf + (pos << 5));
         ok = print_one(header);
+        
+        if (ok)
+        {
+            pos = (pos + header->blocks + 1) % MAP_ENTRIES;
+            *read_ptr_reg = pos;
+        }
+        else
+            printf("Invalid data at pos %d\n", pos);
     }
 
-    munmap(map, MAP_SIZE);
-    close(fd);
+    if (fd > 0)
+    {
+        munmap(data_buf, MAP_SIZE);
+        munmap(regs, 4096);
+        close(fd);
+    }
+    
     return 0;
 }

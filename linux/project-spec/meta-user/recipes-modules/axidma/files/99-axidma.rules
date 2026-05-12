@@ -1,0 +1,2 @@
+# Grant read/write access to all users for the axidma character device
+KERNEL=="axidma", MODE="0666"

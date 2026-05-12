@@ -46,13 +46,20 @@ struct ipi_data
     phys_addr_t data_phys;
     size_t data_size;
     int irq;
+    bool irq_enabled;
 };
 
 static irqreturn_t axidma_irq_handler(int irq, void *dev_id)
 {
     struct ipi_data *priv = dev_id;
-    priv->event_received = true;
-    wake_up_interruptible(&priv->wait_q);
+    
+    // Only wake up the app if it previously signaled it is ready/waiting
+    if (priv->irq_enabled) 
+    {
+        priv->event_received = true;
+        priv->irq_enabled = false; // "Consume" the enablement
+        wake_up_interruptible(&priv->wait_q);
+    }
     return IRQ_HANDLED;
 }
 
@@ -69,11 +76,21 @@ static __poll_t dev_poll(struct file *file, poll_table *wait)
 
     poll_wait(file, &priv->wait_q, wait);
 
-    if (priv->event_received) {
+    if (priv->event_received) 
+    {
         mask |= EPOLLIN | EPOLLRDNORM;
         priv->event_received = false; // Reset for next event
     }
     return mask;
+}
+
+static ssize_t dev_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
+{
+    struct ipi_data *priv = file->private_data;
+
+    priv->irq_enabled = true;
+    
+    return 0;
 }
 
 // Implement mmap to map physical memory to userspace
@@ -110,6 +127,7 @@ static const struct file_operations fops =
 {
     .owner = THIS_MODULE,
     .open = dev_open,
+    .read = dev_read,
     .poll = dev_poll,
     .mmap = dev_mmap,
 };
@@ -127,19 +145,22 @@ static int ipi_probe(struct platform_device *pdev)
     init_waitqueue_head(&priv->wait_q);
     platform_set_drvdata(pdev, priv);
 
+    priv->irq_enabled = true;
+    priv->event_received = false;
+
     // Get IRQ (The first interrupt defined in DT)
     priv->irq = platform_get_irq(pdev, 0);
     if (priv->irq < 0)
     	dev_err(&pdev->dev, "Failed to get IRQ: %d\n", priv->irq);
     else
     {
-	ret = devm_request_irq(&pdev->dev, priv->irq, axidma_irq_handler, 0, DEVICE_NAME, priv);
-	if (ret)
-      	    dev_err(&pdev->dev, "Failed to request IRQ %d: %d\n", priv->irq, ret);
+        ret = devm_request_irq(&pdev->dev, priv->irq, axidma_irq_handler, 0, DEVICE_NAME, priv);
+        if (ret)
+            dev_err(&pdev->dev, "Failed to request IRQ %d: %d\n", priv->irq, ret);
         else
       	    dev_err(&pdev->dev, "Interrupt %d hooked\n", priv->irq);
     }
--
+
     // Register Char Device
     alloc_chrdev_region(&priv->dev_num, 0, 1, DEVICE_NAME);
     cdev_init(&priv->cdev, &fops);
