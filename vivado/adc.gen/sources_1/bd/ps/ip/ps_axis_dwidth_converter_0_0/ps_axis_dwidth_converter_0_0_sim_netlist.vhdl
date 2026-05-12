@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat May  9 14:43:13 2026
+-- Date        : Tue May 12 20:28:12 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top ps_axis_dwidth_converter_0_0 -prefix
---               ps_axis_dwidth_converter_0_0_ ps_axis_dwidth_converter_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axis_dwidth_converter_0_0/ps_axis_dwidth_converter_0_0_sim_netlist.vhdl
 -- Design      : ps_axis_dwidth_converter_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -19,21 +19,18 @@ entity ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axisc_downsize
   port (
     \state_reg[1]_0\ : out STD_LOGIC;
     \state_reg[0]_0\ : out STD_LOGIC;
-    m_axis_tlast : out STD_LOGIC;
     m_axis_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
-    m_axis_tkeep : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    s_axis_tvalid : in STD_LOGIC;
+    m_axis_tready : in STD_LOGIC;
     areset_r : in STD_LOGIC;
     aclk : in STD_LOGIC;
-    m_axis_tready : in STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 255 downto 0 );
-    s_axis_tkeep : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_tlast : in STD_LOGIC
+    s_axis_tvalid : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axisc_downsizer : entity is "axis_dwidth_converter_v1_1_34_axisc_downsizer";
 end ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axisc_downsizer;
 
 architecture STRUCTURE of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axisc_downsizer is
-  signal p_0_in : STD_LOGIC;
   signal p_0_in1_in : STD_LOGIC_VECTOR ( 255 downto 0 );
   signal \r0_data_reg_n_0_[128]\ : STD_LOGIC;
   signal \r0_data_reg_n_0_[129]\ : STD_LOGIC;
@@ -163,19 +160,10 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_
   signal \r0_data_reg_n_0_[253]\ : STD_LOGIC;
   signal \r0_data_reg_n_0_[254]\ : STD_LOGIC;
   signal \r0_data_reg_n_0_[255]\ : STD_LOGIC;
-  signal r0_is_end : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \r0_is_null_r[1]_i_1_n_0\ : STD_LOGIC;
-  signal \r0_is_null_r[1]_i_2_n_0\ : STD_LOGIC;
-  signal \r0_is_null_r[1]_i_3_n_0\ : STD_LOGIC;
-  signal \r0_is_null_r[1]_i_4_n_0\ : STD_LOGIC;
-  signal r0_keep : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal r0_last_reg_n_0 : STD_LOGIC;
   signal r0_load : STD_LOGIC;
   signal \r0_out_sel_r[0]_i_1_n_0\ : STD_LOGIC;
   signal \r0_out_sel_r_reg_n_0_[0]\ : STD_LOGIC;
   signal \r1_data[127]_i_1_n_0\ : STD_LOGIC;
-  signal r1_keep : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal r1_last_reg_n_0 : STD_LOGIC;
   signal state : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \^state_reg[0]_0\ : STD_LOGIC;
   signal \^state_reg[1]_0\ : STD_LOGIC;
@@ -309,23 +297,7 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_
   attribute SOFT_HLUTNM of \m_axis_tdata[98]_INST_0\ : label is "soft_lutpair50";
   attribute SOFT_HLUTNM of \m_axis_tdata[99]_INST_0\ : label is "soft_lutpair50";
   attribute SOFT_HLUTNM of \m_axis_tdata[9]_INST_0\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[0]_INST_0\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[10]_INST_0\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[11]_INST_0\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[12]_INST_0\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[13]_INST_0\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[14]_INST_0\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[15]_INST_0\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[1]_INST_0\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[2]_INST_0\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[3]_INST_0\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[4]_INST_0\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[5]_INST_0\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[6]_INST_0\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[7]_INST_0\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[8]_INST_0\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \m_axis_tkeep[9]_INST_0\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \state[0]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \state[1]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \state[2]_i_1\ : label is "soft_lutpair0";
   attribute FSM_ENCODING : string;
   attribute FSM_ENCODING of \state_reg[0]\ : label is "none";
@@ -1613,179 +1585,6 @@ begin
       I1 => \r0_out_sel_r_reg_n_0_[0]\,
       I2 => p_0_in1_in(9),
       O => m_axis_tdata(9)
-    );
-\m_axis_tkeep[0]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(0),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(0),
-      O => m_axis_tkeep(0)
-    );
-\m_axis_tkeep[10]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(10),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(10),
-      O => m_axis_tkeep(10)
-    );
-\m_axis_tkeep[11]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(11),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(11),
-      O => m_axis_tkeep(11)
-    );
-\m_axis_tkeep[12]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(12),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(12),
-      O => m_axis_tkeep(12)
-    );
-\m_axis_tkeep[13]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(13),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(13),
-      O => m_axis_tkeep(13)
-    );
-\m_axis_tkeep[14]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(14),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(14),
-      O => m_axis_tkeep(14)
-    );
-\m_axis_tkeep[15]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(15),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(15),
-      O => m_axis_tkeep(15)
-    );
-\m_axis_tkeep[1]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(1),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(1),
-      O => m_axis_tkeep(1)
-    );
-\m_axis_tkeep[2]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(2),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(2),
-      O => m_axis_tkeep(2)
-    );
-\m_axis_tkeep[3]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(3),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(3),
-      O => m_axis_tkeep(3)
-    );
-\m_axis_tkeep[4]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(4),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(4),
-      O => m_axis_tkeep(4)
-    );
-\m_axis_tkeep[5]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(5),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(5),
-      O => m_axis_tkeep(5)
-    );
-\m_axis_tkeep[6]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(6),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(6),
-      O => m_axis_tkeep(6)
-    );
-\m_axis_tkeep[7]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(7),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(7),
-      O => m_axis_tkeep(7)
-    );
-\m_axis_tkeep[8]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(8),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(8),
-      O => m_axis_tkeep(8)
-    );
-\m_axis_tkeep[9]_INST_0\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => r1_keep(9),
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_keep(9),
-      O => m_axis_tkeep(9)
-    );
-m_axis_tlast_INST_0: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FBBF088008800880"
-    )
-        port map (
-      I0 => r1_last_reg_n_0,
-      I1 => \^state_reg[1]_0\,
-      I2 => \state_reg_n_0_[2]\,
-      I3 => \^state_reg[0]_0\,
-      I4 => r0_last_reg_n_0,
-      I5 => r0_is_end(0),
-      O => m_axis_tlast
     );
 \r0_data[255]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -3844,352 +3643,18 @@ m_axis_tlast_INST_0: unisim.vcomponents.LUT6
       Q => p_0_in1_in(9),
       R => '0'
     );
-\r0_is_null_r[1]_i_1\: unisim.vcomponents.LUT6
+\r0_out_sel_r[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"80FFFFFF80000000"
+      INIT => X"0000000066606666"
     )
         port map (
-      I0 => \r0_is_null_r[1]_i_2_n_0\,
-      I1 => \r0_is_null_r[1]_i_3_n_0\,
-      I2 => \r0_is_null_r[1]_i_4_n_0\,
-      I3 => r0_load,
-      I4 => s_axis_tvalid,
-      I5 => r0_is_end(0),
-      O => \r0_is_null_r[1]_i_1_n_0\
-    );
-\r0_is_null_r[1]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => s_axis_tkeep(28),
-      I1 => s_axis_tkeep(29),
-      I2 => s_axis_tkeep(26),
-      I3 => s_axis_tkeep(27),
-      I4 => s_axis_tkeep(31),
-      I5 => s_axis_tkeep(30),
-      O => \r0_is_null_r[1]_i_2_n_0\
-    );
-\r0_is_null_r[1]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => s_axis_tkeep(17),
-      I1 => s_axis_tkeep(16),
-      I2 => s_axis_tkeep(19),
-      I3 => s_axis_tkeep(18),
-      O => \r0_is_null_r[1]_i_3_n_0\
-    );
-\r0_is_null_r[1]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => s_axis_tkeep(22),
-      I1 => s_axis_tkeep(23),
-      I2 => s_axis_tkeep(20),
-      I3 => s_axis_tkeep(21),
-      I4 => s_axis_tkeep(25),
-      I5 => s_axis_tkeep(24),
-      O => \r0_is_null_r[1]_i_4_n_0\
-    );
-\r0_is_null_r_reg[1]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => aclk,
-      CE => '1',
-      D => \r0_is_null_r[1]_i_1_n_0\,
-      Q => r0_is_end(0),
-      R => areset_r
-    );
-\r0_keep_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(0),
-      Q => r0_keep(0),
-      R => '0'
-    );
-\r0_keep_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(10),
-      Q => r0_keep(10),
-      R => '0'
-    );
-\r0_keep_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(11),
-      Q => r0_keep(11),
-      R => '0'
-    );
-\r0_keep_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(12),
-      Q => r0_keep(12),
-      R => '0'
-    );
-\r0_keep_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(13),
-      Q => r0_keep(13),
-      R => '0'
-    );
-\r0_keep_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(14),
-      Q => r0_keep(14),
-      R => '0'
-    );
-\r0_keep_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(15),
-      Q => r0_keep(15),
-      R => '0'
-    );
-\r0_keep_reg[16]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(16),
-      Q => r0_keep(16),
-      R => '0'
-    );
-\r0_keep_reg[17]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(17),
-      Q => r0_keep(17),
-      R => '0'
-    );
-\r0_keep_reg[18]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(18),
-      Q => r0_keep(18),
-      R => '0'
-    );
-\r0_keep_reg[19]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(19),
-      Q => r0_keep(19),
-      R => '0'
-    );
-\r0_keep_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(1),
-      Q => r0_keep(1),
-      R => '0'
-    );
-\r0_keep_reg[20]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(20),
-      Q => r0_keep(20),
-      R => '0'
-    );
-\r0_keep_reg[21]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(21),
-      Q => r0_keep(21),
-      R => '0'
-    );
-\r0_keep_reg[22]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(22),
-      Q => r0_keep(22),
-      R => '0'
-    );
-\r0_keep_reg[23]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(23),
-      Q => r0_keep(23),
-      R => '0'
-    );
-\r0_keep_reg[24]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(24),
-      Q => r0_keep(24),
-      R => '0'
-    );
-\r0_keep_reg[25]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(25),
-      Q => r0_keep(25),
-      R => '0'
-    );
-\r0_keep_reg[26]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(26),
-      Q => r0_keep(26),
-      R => '0'
-    );
-\r0_keep_reg[27]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(27),
-      Q => r0_keep(27),
-      R => '0'
-    );
-\r0_keep_reg[28]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(28),
-      Q => r0_keep(28),
-      R => '0'
-    );
-\r0_keep_reg[29]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(29),
-      Q => r0_keep(29),
-      R => '0'
-    );
-\r0_keep_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(2),
-      Q => r0_keep(2),
-      R => '0'
-    );
-\r0_keep_reg[30]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(30),
-      Q => r0_keep(30),
-      R => '0'
-    );
-\r0_keep_reg[31]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(31),
-      Q => r0_keep(31),
-      R => '0'
-    );
-\r0_keep_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(3),
-      Q => r0_keep(3),
-      R => '0'
-    );
-\r0_keep_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(4),
-      Q => r0_keep(4),
-      R => '0'
-    );
-\r0_keep_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(5),
-      Q => r0_keep(5),
-      R => '0'
-    );
-\r0_keep_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(6),
-      Q => r0_keep(6),
-      R => '0'
-    );
-\r0_keep_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(7),
-      Q => r0_keep(7),
-      R => '0'
-    );
-\r0_keep_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(8),
-      Q => r0_keep(8),
-      R => '0'
-    );
-\r0_keep_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tkeep(9),
-      Q => r0_keep(9),
-      R => '0'
-    );
-r0_last_reg: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => r0_load,
-      D => s_axis_tlast,
-      Q => r0_last_reg_n_0,
-      R => '0'
-    );
-\r0_out_sel_r[0]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000046"
-    )
-        port map (
-      I0 => m_axis_tready,
-      I1 => \r0_out_sel_r_reg_n_0_[0]\,
-      I2 => r0_is_end(0),
-      I3 => p_0_in,
-      I4 => areset_r,
-      O => \r0_out_sel_r[0]_i_1_n_0\
-    );
-\r0_out_sel_r[0]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"02"
-    )
-        port map (
-      I0 => \^state_reg[0]_0\,
-      I1 => \state_reg_n_0_[2]\,
+      I0 => \r0_out_sel_r_reg_n_0_[0]\,
+      I1 => m_axis_tready,
       I2 => \^state_reg[1]_0\,
-      O => p_0_in
+      I3 => \state_reg_n_0_[2]\,
+      I4 => \^state_reg[0]_0\,
+      I5 => areset_r,
+      O => \r0_out_sel_r[0]_i_1_n_0\
     );
 \r0_out_sel_r_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -5236,142 +4701,6 @@ r0_last_reg: unisim.vcomponents.FDRE
       Q => p_0_in1_in(137),
       R => '0'
     );
-\r1_keep_reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(16),
-      Q => r1_keep(0),
-      R => '0'
-    );
-\r1_keep_reg[10]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(26),
-      Q => r1_keep(10),
-      R => '0'
-    );
-\r1_keep_reg[11]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(27),
-      Q => r1_keep(11),
-      R => '0'
-    );
-\r1_keep_reg[12]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(28),
-      Q => r1_keep(12),
-      R => '0'
-    );
-\r1_keep_reg[13]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(29),
-      Q => r1_keep(13),
-      R => '0'
-    );
-\r1_keep_reg[14]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(30),
-      Q => r1_keep(14),
-      R => '0'
-    );
-\r1_keep_reg[15]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(31),
-      Q => r1_keep(15),
-      R => '0'
-    );
-\r1_keep_reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(17),
-      Q => r1_keep(1),
-      R => '0'
-    );
-\r1_keep_reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(18),
-      Q => r1_keep(2),
-      R => '0'
-    );
-\r1_keep_reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(19),
-      Q => r1_keep(3),
-      R => '0'
-    );
-\r1_keep_reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(20),
-      Q => r1_keep(4),
-      R => '0'
-    );
-\r1_keep_reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(21),
-      Q => r1_keep(5),
-      R => '0'
-    );
-\r1_keep_reg[6]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(22),
-      Q => r1_keep(6),
-      R => '0'
-    );
-\r1_keep_reg[7]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(23),
-      Q => r1_keep(7),
-      R => '0'
-    );
-\r1_keep_reg[8]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(24),
-      Q => r1_keep(8),
-      R => '0'
-    );
-\r1_keep_reg[9]\: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_keep(25),
-      Q => r1_keep(9),
-      R => '0'
-    );
-r1_last_reg: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => \r1_data[127]_i_1_n_0\,
-      D => r0_last_reg_n_0,
-      Q => r1_last_reg_n_0,
-      R => '0'
-    );
 \state[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"FF550FCF"
@@ -5384,17 +4713,16 @@ r1_last_reg: unisim.vcomponents.FDRE
       I4 => \^state_reg[0]_0\,
       O => state(0)
     );
-\state[1]_i_1\: unisim.vcomponents.LUT6
+\state[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000AFAAFF003F00"
+      INIT => X"00BAF0F0"
     )
         port map (
       I0 => s_axis_tvalid,
-      I1 => r0_is_end(0),
-      I2 => m_axis_tready,
-      I3 => \^state_reg[1]_0\,
-      I4 => \state_reg_n_0_[2]\,
-      I5 => \^state_reg[0]_0\,
+      I1 => m_axis_tready,
+      I2 => \^state_reg[1]_0\,
+      I3 => \state_reg_n_0_[2]\,
+      I4 => \^state_reg[0]_0\,
       O => state(1)
     );
 \state[2]_i_1\: unisim.vcomponents.LUT5
@@ -5472,7 +4800,7 @@ entity ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_co
     m_axis_tuser : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute C_AXIS_SIGNAL_SET : integer;
-  attribute C_AXIS_SIGNAL_SET of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 27;
+  attribute C_AXIS_SIGNAL_SET of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 3;
   attribute C_AXIS_TDEST_WIDTH : integer;
   attribute C_AXIS_TDEST_WIDTH of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 1;
   attribute C_AXIS_TID_WIDTH : integer;
@@ -5527,8 +4855,10 @@ entity ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_co
   attribute G_TASK_SEVERITY_INFO of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 0;
   attribute G_TASK_SEVERITY_WARNING : integer;
   attribute G_TASK_SEVERITY_WARNING of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is "axis_dwidth_converter_v1_1_34_axis_dwidth_converter";
   attribute P_AXIS_SIGNAL_SET : string;
-  attribute P_AXIS_SIGNAL_SET of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is "32'b00000000000000000000000000011011";
+  attribute P_AXIS_SIGNAL_SET of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is "32'b00000000000000000000000000000011";
   attribute P_D1_REG_CONFIG : integer;
   attribute P_D1_REG_CONFIG of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 0;
   attribute P_D1_TUSER_WIDTH : integer;
@@ -5544,7 +4874,7 @@ entity ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_co
   attribute P_M_RATIO : integer;
   attribute P_M_RATIO of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 2;
   attribute P_SS_TKEEP_REQUIRED : integer;
-  attribute P_SS_TKEEP_REQUIRED of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 8;
+  attribute P_SS_TKEEP_REQUIRED of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 0;
   attribute P_S_RATIO : integer;
   attribute P_S_RATIO of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter : entity is 1;
 end ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter;
@@ -5556,6 +4886,23 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_
 begin
   m_axis_tdest(0) <= \<const0>\;
   m_axis_tid(0) <= \<const0>\;
+  m_axis_tkeep(15) <= \<const0>\;
+  m_axis_tkeep(14) <= \<const0>\;
+  m_axis_tkeep(13) <= \<const0>\;
+  m_axis_tkeep(12) <= \<const0>\;
+  m_axis_tkeep(11) <= \<const0>\;
+  m_axis_tkeep(10) <= \<const0>\;
+  m_axis_tkeep(9) <= \<const0>\;
+  m_axis_tkeep(8) <= \<const0>\;
+  m_axis_tkeep(7) <= \<const0>\;
+  m_axis_tkeep(6) <= \<const0>\;
+  m_axis_tkeep(5) <= \<const0>\;
+  m_axis_tkeep(4) <= \<const0>\;
+  m_axis_tkeep(3) <= \<const0>\;
+  m_axis_tkeep(2) <= \<const0>\;
+  m_axis_tkeep(1) <= \<const0>\;
+  m_axis_tkeep(0) <= \<const0>\;
+  m_axis_tlast <= \<const0>\;
   m_axis_tstrb(15) <= \<const0>\;
   m_axis_tstrb(14) <= \<const0>\;
   m_axis_tstrb(13) <= \<const0>\;
@@ -5601,12 +4948,8 @@ areset_r_reg: unisim.vcomponents.FDRE
       aclk => aclk,
       areset_r => areset_r,
       m_axis_tdata(127 downto 0) => m_axis_tdata(127 downto 0),
-      m_axis_tkeep(15 downto 0) => m_axis_tkeep(15 downto 0),
-      m_axis_tlast => m_axis_tlast,
       m_axis_tready => m_axis_tready,
       s_axis_tdata(255 downto 0) => s_axis_tdata(255 downto 0),
-      s_axis_tkeep(31 downto 0) => s_axis_tkeep(31 downto 0),
-      s_axis_tlast => s_axis_tlast,
       s_axis_tvalid => s_axis_tvalid,
       \state_reg[0]_0\ => s_axis_tready,
       \state_reg[1]_0\ => m_axis_tvalid
@@ -5623,13 +4966,9 @@ entity ps_axis_dwidth_converter_0_0 is
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 255 downto 0 );
-    s_axis_tkeep : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_tlast : in STD_LOGIC;
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
-    m_axis_tkeep : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_tlast : out STD_LOGIC
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ps_axis_dwidth_converter_0_0 : entity is true;
@@ -5642,12 +4981,14 @@ entity ps_axis_dwidth_converter_0_0 is
 end ps_axis_dwidth_converter_0_0;
 
 architecture STRUCTURE of ps_axis_dwidth_converter_0_0 is
+  signal NLW_inst_m_axis_tlast_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_m_axis_tdest_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_m_axis_tid_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_inst_m_axis_tkeep_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_inst_m_axis_tstrb_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_inst_m_axis_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute C_AXIS_SIGNAL_SET : integer;
-  attribute C_AXIS_SIGNAL_SET of inst : label is 27;
+  attribute C_AXIS_SIGNAL_SET of inst : label is 3;
   attribute C_AXIS_TDEST_WIDTH : integer;
   attribute C_AXIS_TDEST_WIDTH of inst : label is 1;
   attribute C_AXIS_TID_WIDTH : integer;
@@ -5702,7 +5043,7 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0 is
   attribute G_TASK_SEVERITY_WARNING : integer;
   attribute G_TASK_SEVERITY_WARNING of inst : label is 1;
   attribute P_AXIS_SIGNAL_SET : string;
-  attribute P_AXIS_SIGNAL_SET of inst : label is "32'b00000000000000000000000000011011";
+  attribute P_AXIS_SIGNAL_SET of inst : label is "32'b00000000000000000000000000000011";
   attribute P_D1_REG_CONFIG : integer;
   attribute P_D1_REG_CONFIG of inst : label is 0;
   attribute P_D1_TUSER_WIDTH : integer;
@@ -5718,7 +5059,7 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0 is
   attribute P_M_RATIO : integer;
   attribute P_M_RATIO of inst : label is 2;
   attribute P_SS_TKEEP_REQUIRED : integer;
-  attribute P_SS_TKEEP_REQUIRED of inst : label is 8;
+  attribute P_SS_TKEEP_REQUIRED of inst : label is 0;
   attribute P_S_RATIO : integer;
   attribute P_S_RATIO of inst : label is 1;
   attribute X_INTERFACE_INFO : string;
@@ -5730,20 +5071,16 @@ architecture STRUCTURE of ps_axis_dwidth_converter_0_0 is
   attribute X_INTERFACE_INFO of aresetn : signal is "xilinx.com:signal:reset:1.0 RSTIF RST";
   attribute X_INTERFACE_MODE of aresetn : signal is "slave";
   attribute X_INTERFACE_PARAMETER of aresetn : signal is "XIL_INTERFACENAME RSTIF, POLARITY ACTIVE_LOW, INSERT_VIP 0, TYPE INTERCONNECT";
-  attribute X_INTERFACE_INFO of m_axis_tlast : signal is "xilinx.com:interface:axis:1.0 M_AXIS TLAST";
   attribute X_INTERFACE_INFO of m_axis_tready : signal is "xilinx.com:interface:axis:1.0 M_AXIS TREADY";
   attribute X_INTERFACE_INFO of m_axis_tvalid : signal is "xilinx.com:interface:axis:1.0 M_AXIS TVALID";
   attribute X_INTERFACE_MODE of m_axis_tvalid : signal is "master";
-  attribute X_INTERFACE_PARAMETER of m_axis_tvalid : signal is "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of s_axis_tlast : signal is "xilinx.com:interface:axis:1.0 S_AXIS TLAST";
+  attribute X_INTERFACE_PARAMETER of m_axis_tvalid : signal is "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s_axis_tready : signal is "xilinx.com:interface:axis:1.0 S_AXIS TREADY";
   attribute X_INTERFACE_INFO of s_axis_tvalid : signal is "xilinx.com:interface:axis:1.0 S_AXIS TVALID";
   attribute X_INTERFACE_MODE of s_axis_tvalid : signal is "slave";
-  attribute X_INTERFACE_PARAMETER of s_axis_tvalid : signal is "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s_axis_tvalid : signal is "XIL_INTERFACENAME S_AXIS, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axis_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXIS TDATA";
-  attribute X_INTERFACE_INFO of m_axis_tkeep : signal is "xilinx.com:interface:axis:1.0 M_AXIS TKEEP";
   attribute X_INTERFACE_INFO of s_axis_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS TDATA";
-  attribute X_INTERFACE_INFO of s_axis_tkeep : signal is "xilinx.com:interface:axis:1.0 S_AXIS TKEEP";
 begin
 inst: entity work.ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axis_dwidth_converter
      port map (
@@ -5753,8 +5090,8 @@ inst: entity work.ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axi
       m_axis_tdata(127 downto 0) => m_axis_tdata(127 downto 0),
       m_axis_tdest(0) => NLW_inst_m_axis_tdest_UNCONNECTED(0),
       m_axis_tid(0) => NLW_inst_m_axis_tid_UNCONNECTED(0),
-      m_axis_tkeep(15 downto 0) => m_axis_tkeep(15 downto 0),
-      m_axis_tlast => m_axis_tlast,
+      m_axis_tkeep(15 downto 0) => NLW_inst_m_axis_tkeep_UNCONNECTED(15 downto 0),
+      m_axis_tlast => NLW_inst_m_axis_tlast_UNCONNECTED,
       m_axis_tready => m_axis_tready,
       m_axis_tstrb(15 downto 0) => NLW_inst_m_axis_tstrb_UNCONNECTED(15 downto 0),
       m_axis_tuser(0) => NLW_inst_m_axis_tuser_UNCONNECTED(0),
@@ -5762,8 +5099,8 @@ inst: entity work.ps_axis_dwidth_converter_0_0_axis_dwidth_converter_v1_1_34_axi
       s_axis_tdata(255 downto 0) => s_axis_tdata(255 downto 0),
       s_axis_tdest(0) => '0',
       s_axis_tid(0) => '0',
-      s_axis_tkeep(31 downto 0) => s_axis_tkeep(31 downto 0),
-      s_axis_tlast => s_axis_tlast,
+      s_axis_tkeep(31 downto 0) => B"11111111111111111111111111111111",
+      s_axis_tlast => '1',
       s_axis_tready => s_axis_tready,
       s_axis_tstrb(31 downto 0) => B"11111111111111111111111111111111",
       s_axis_tuser(0) => '0',

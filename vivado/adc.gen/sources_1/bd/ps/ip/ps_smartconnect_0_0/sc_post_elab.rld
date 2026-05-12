@@ -41,7 +41,7 @@
 /timing/S02_Buffer/AR_M_SEND_PIPE/value=1;range=0,1;strength=0
 /timing/S02_Buffer/R_SLR_PIPE/value=0;range=0..8;strength=0
 /config/S02_Entry/DATA_WIDTH/value=256;annotatable=1
-/config/S02_Entry/ID_WIDTH/value=4;annotatable=1
+/config/S02_Entry/ID_WIDTH/value=0;annotatable=1
 /config/S02_Entry/PROTOCOL/value=AXI4;annotatable=1
 /config/S02_Entry/ADDR_WIDTH/value=32;annotatable=1
 /timing/M00_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0

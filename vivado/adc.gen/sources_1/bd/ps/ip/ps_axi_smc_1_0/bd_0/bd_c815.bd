@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xC18E840078EA1574",
+      "boundary_crc": "0xC18E84001D58A12F",
       "design_src": "SBD",
       "device": "xczu48dr-fsvg1517-2-e",
       "name": "bd_c815",
@@ -111,7 +111,7 @@
             "value_src": "default"
           },
           "MAX_BURST_LENGTH": {
-            "value": "64",
+            "value": "32",
             "value_src": "user_prop"
           },
           "NUM_READ_OUTSTANDING": {
@@ -252,7 +252,7 @@
             "value_src": "default"
           },
           "MAX_BURST_LENGTH": {
-            "value": "64"
+            "value": "32"
           },
           "NUM_READ_OUTSTANDING": {
             "value": "2"
@@ -1727,7 +1727,7 @@
                 "value": "0"
               },
               "M_MAX_BURST_LENGTH": {
-                "value": "64"
+                "value": "32"
               },
               "M_PROTOCOL": {
                 "value": "AXI4"

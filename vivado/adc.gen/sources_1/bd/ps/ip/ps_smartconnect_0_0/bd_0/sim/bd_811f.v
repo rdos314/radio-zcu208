@@ -104,7 +104,6 @@ module bd_811f
     S02_AXI_araddr,
     S02_AXI_arburst,
     S02_AXI_arcache,
-    S02_AXI_arid,
     S02_AXI_arlen,
     S02_AXI_arlock,
     S02_AXI_arprot,
@@ -114,7 +113,6 @@ module bd_811f
     S02_AXI_aruser,
     S02_AXI_arvalid,
     S02_AXI_rdata,
-    S02_AXI_rid,
     S02_AXI_rlast,
     S02_AXI_rready,
     S02_AXI_rresp,
@@ -213,10 +211,9 @@ module bd_811f
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S01_AXI WREADY" *) output S01_AXI_wready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S01_AXI WSTRB" *) input [31:0]S01_AXI_wstrb;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S01_AXI WVALID" *) input S01_AXI_wvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARADDR" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S02_AXI, ADDR_WIDTH 32, ARUSER_WIDTH 4, AWUSER_WIDTH 0, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 256, FREQ_HZ 333250000, HAS_BRESP 0, HAS_BURST 0, HAS_CACHE 1, HAS_LOCK 0, HAS_PROT 1, HAS_QOS 0, HAS_REGION 0, HAS_RRESP 1, HAS_WSTRB 0, ID_WIDTH 4, INSERT_VIP 0, MAX_BURST_LENGTH 128, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE READ_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) input [31:0]S02_AXI_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARADDR" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S02_AXI, ADDR_WIDTH 32, ARUSER_WIDTH 4, AWUSER_WIDTH 0, BUSER_WIDTH 0, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, DATA_WIDTH 256, FREQ_HZ 333250000, HAS_BRESP 0, HAS_BURST 0, HAS_CACHE 1, HAS_LOCK 0, HAS_PROT 1, HAS_QOS 0, HAS_REGION 0, HAS_RRESP 1, HAS_WSTRB 0, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 128, NUM_READ_OUTSTANDING 2, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 2, NUM_WRITE_THREADS 1, PHASE 0.00, PROTOCOL AXI4, READ_WRITE_MODE READ_ONLY, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) input [31:0]S02_AXI_araddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARBURST" *) input [1:0]S02_AXI_arburst;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARCACHE" *) input [3:0]S02_AXI_arcache;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARID" *) input [3:0]S02_AXI_arid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARLEN" *) input [7:0]S02_AXI_arlen;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARLOCK" *) input [0:0]S02_AXI_arlock;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARPROT" *) input [2:0]S02_AXI_arprot;
@@ -226,7 +223,6 @@ module bd_811f
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARUSER" *) input [3:0]S02_AXI_aruser;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI ARVALID" *) input S02_AXI_arvalid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RDATA" *) output [255:0]S02_AXI_rdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RID" *) output [3:0]S02_AXI_rid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RLAST" *) output S02_AXI_rlast;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RREADY" *) input S02_AXI_rready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S02_AXI RRESP" *) output [1:0]S02_AXI_rresp;
@@ -329,7 +325,6 @@ module bd_811f
   wire [31:0]S02_AXI_araddr;
   wire [1:0]S02_AXI_arburst;
   wire [3:0]S02_AXI_arcache;
-  wire [3:0]S02_AXI_arid;
   wire [7:0]S02_AXI_arlen;
   wire [0:0]S02_AXI_arlock;
   wire [2:0]S02_AXI_arprot;
@@ -339,7 +334,6 @@ module bd_811f
   wire [3:0]S02_AXI_aruser;
   wire S02_AXI_arvalid;
   wire [255:0]S02_AXI_rdata;
-  wire [3:0]S02_AXI_rid;
   wire S02_AXI_rlast;
   wire S02_AXI_rready;
   wire [1:0]S02_AXI_rresp;
@@ -1199,7 +1193,6 @@ module bd_811f
         .s_axi_araddr(S02_AXI_araddr),
         .s_axi_arburst(S02_AXI_arburst),
         .s_axi_arcache(S02_AXI_arcache),
-        .s_axi_arid(S02_AXI_arid),
         .s_axi_arlen(S02_AXI_arlen),
         .s_axi_arlock(S02_AXI_arlock),
         .s_axi_arprot(S02_AXI_arprot),
@@ -1209,7 +1202,6 @@ module bd_811f
         .s_axi_aruser(S02_AXI_aruser),
         .s_axi_arvalid(S02_AXI_arvalid),
         .s_axi_rdata(S02_AXI_rdata),
-        .s_axi_rid(S02_AXI_rid),
         .s_axi_rlast(S02_AXI_rlast),
         .s_axi_rready(S02_AXI_rready),
         .s_axi_rresp(S02_AXI_rresp),
@@ -3248,7 +3240,6 @@ module s02_entry_pipeline_imp_1LGNV5P
     s_axi_araddr,
     s_axi_arburst,
     s_axi_arcache,
-    s_axi_arid,
     s_axi_arlen,
     s_axi_arlock,
     s_axi_arprot,
@@ -3258,7 +3249,6 @@ module s02_entry_pipeline_imp_1LGNV5P
     s_axi_aruser,
     s_axi_arvalid,
     s_axi_rdata,
-    s_axi_rid,
     s_axi_rlast,
     s_axi_rready,
     s_axi_rresp,
@@ -3285,7 +3275,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   input [31:0]s_axi_araddr;
   input [1:0]s_axi_arburst;
   input [3:0]s_axi_arcache;
-  input [3:0]s_axi_arid;
   input [7:0]s_axi_arlen;
   input [0:0]s_axi_arlock;
   input [2:0]s_axi_arprot;
@@ -3295,7 +3284,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   input [3:0]s_axi_aruser;
   input s_axi_arvalid;
   output [255:0]s_axi_rdata;
-  output [3:0]s_axi_rid;
   output s_axi_rlast;
   input s_axi_rready;
   output [1:0]s_axi_rresp;
@@ -3323,7 +3311,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   wire [31:0]s02_mmu_M_AXI_ARADDR;
   wire [1:0]s02_mmu_M_AXI_ARBURST;
   wire [3:0]s02_mmu_M_AXI_ARCACHE;
-  wire [3:0]s02_mmu_M_AXI_ARID;
   wire [7:0]s02_mmu_M_AXI_ARLEN;
   wire [0:0]s02_mmu_M_AXI_ARLOCK;
   wire [2:0]s02_mmu_M_AXI_ARPROT;
@@ -3333,7 +3320,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   wire [1023:0]s02_mmu_M_AXI_ARUSER;
   wire s02_mmu_M_AXI_ARVALID;
   wire [255:0]s02_mmu_M_AXI_RDATA;
-  wire [3:0]s02_mmu_M_AXI_RID;
   wire s02_mmu_M_AXI_RLAST;
   wire s02_mmu_M_AXI_RREADY;
   wire [1:0]s02_mmu_M_AXI_RRESP;
@@ -3360,7 +3346,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   wire [31:0]s_axi_araddr;
   wire [1:0]s_axi_arburst;
   wire [3:0]s_axi_arcache;
-  wire [3:0]s_axi_arid;
   wire [7:0]s_axi_arlen;
   wire [0:0]s_axi_arlock;
   wire [2:0]s_axi_arprot;
@@ -3370,7 +3355,6 @@ module s02_entry_pipeline_imp_1LGNV5P
   wire [3:0]s_axi_aruser;
   wire s_axi_arvalid;
   wire [255:0]s_axi_rdata;
-  wire [3:0]s_axi_rid;
   wire s_axi_rlast;
   wire s_axi_rready;
   wire [1:0]s_axi_rresp;
@@ -3382,7 +3366,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .m_axi_araddr(s02_mmu_M_AXI_ARADDR),
         .m_axi_arburst(s02_mmu_M_AXI_ARBURST),
         .m_axi_arcache(s02_mmu_M_AXI_ARCACHE),
-        .m_axi_arid(s02_mmu_M_AXI_ARID),
         .m_axi_arlen(s02_mmu_M_AXI_ARLEN),
         .m_axi_arlock(s02_mmu_M_AXI_ARLOCK),
         .m_axi_arprot(s02_mmu_M_AXI_ARPROT),
@@ -3392,7 +3375,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .m_axi_aruser(s02_mmu_M_AXI_ARUSER),
         .m_axi_arvalid(s02_mmu_M_AXI_ARVALID),
         .m_axi_rdata(s02_mmu_M_AXI_RDATA),
-        .m_axi_rid(s02_mmu_M_AXI_RID),
         .m_axi_rlast(s02_mmu_M_AXI_RLAST),
         .m_axi_rready(s02_mmu_M_AXI_RREADY),
         .m_axi_rresp(s02_mmu_M_AXI_RRESP),
@@ -3401,7 +3383,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .s_axi_araddr(s_axi_araddr),
         .s_axi_arburst(s_axi_arburst),
         .s_axi_arcache(s_axi_arcache),
-        .s_axi_arid(s_axi_arid),
         .s_axi_arlen(s_axi_arlen),
         .s_axi_arlock(s_axi_arlock),
         .s_axi_arprot(s_axi_arprot),
@@ -3411,7 +3392,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .s_axi_aruser(s_axi_aruser),
         .s_axi_arvalid(s_axi_arvalid),
         .s_axi_rdata(s_axi_rdata),
-        .s_axi_rid(s_axi_rid),
         .s_axi_rlast(s_axi_rlast),
         .s_axi_rready(s_axi_rready),
         .s_axi_rresp(s_axi_rresp),
@@ -3478,7 +3458,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .s_axi_araddr(s02_mmu_M_AXI_ARADDR),
         .s_axi_arburst(s02_mmu_M_AXI_ARBURST),
         .s_axi_arcache(s02_mmu_M_AXI_ARCACHE),
-        .s_axi_arid(s02_mmu_M_AXI_ARID),
         .s_axi_arlen(s02_mmu_M_AXI_ARLEN),
         .s_axi_arlock(s02_mmu_M_AXI_ARLOCK),
         .s_axi_arprot(s02_mmu_M_AXI_ARPROT),
@@ -3488,7 +3467,6 @@ module s02_entry_pipeline_imp_1LGNV5P
         .s_axi_aruser(s02_mmu_M_AXI_ARUSER),
         .s_axi_arvalid(s02_mmu_M_AXI_ARVALID),
         .s_axi_rdata(s02_mmu_M_AXI_RDATA),
-        .s_axi_rid(s02_mmu_M_AXI_RID),
         .s_axi_rlast(s02_mmu_M_AXI_RLAST),
         .s_axi_rready(s02_mmu_M_AXI_RREADY),
         .s_axi_rresp(s02_mmu_M_AXI_RRESP),

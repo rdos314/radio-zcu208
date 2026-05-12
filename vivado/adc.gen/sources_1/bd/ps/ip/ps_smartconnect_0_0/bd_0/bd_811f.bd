@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x181B14562E29D479",
+      "boundary_crc": "0x5FBA99D1A405478A",
       "design_src": "SBD",
       "device": "xczu48dr-fsvg1517-2-e",
       "name": "bd_811f",
@@ -422,7 +422,7 @@
             "value_src": "const_prop"
           },
           "ID_WIDTH": {
-            "value": "4",
+            "value": "0",
             "value_src": "auto_prop"
           },
           "INSERT_VIP": {
@@ -4197,7 +4197,7 @@
                 "value": "32"
               },
               "ID_WIDTH": {
-                "value": "4"
+                "value": "0"
               },
               "IS_CASCADED": {
                 "value": "0"
@@ -4339,7 +4339,7 @@
                 "value": "0"
               },
               "S_ID_WIDTH": {
-                "value": "4"
+                "value": "0"
               },
               "WDATA_WIDTH": {
                 "value": "256"

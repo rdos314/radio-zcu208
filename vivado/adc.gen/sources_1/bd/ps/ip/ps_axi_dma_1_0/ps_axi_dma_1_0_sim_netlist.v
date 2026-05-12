@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun May 10 23:51:43 2026
+// Date        : Tue May 12 22:13:37 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_axi_dma_1_0/ps_axi_dma_1_0_sim_netlist.v
@@ -40,9 +40,7 @@ module ps_axi_dma_1_0
     M_AXI_TVALID_in,
     M_AXI_TREADY_in,
     M_AXI_TDATA_out,
-    M_AXI_TKEEP_out,
     M_AXI_TVALID_out,
-    M_AXI_TLAST_out,
     M_AXI_TREADY_out);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF M_AXI_STS_in:M_AXI_STS_out:M_AXI_in:M_AXI_in_cmd:M_AXI_out:M_AXI_out_cmd, ASSOCIATED_RESET resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 resetn RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input resetn;
@@ -66,10 +64,8 @@ module ps_axi_dma_1_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TDATA" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [255:0]M_AXI_TDATA_in;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TVALID" *) input M_AXI_TVALID_in;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in TREADY" *) output M_AXI_TREADY_in;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [255:0]M_AXI_TDATA_out;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TKEEP" *) output [31:0]M_AXI_TKEEP_out;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TDATA" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [255:0]M_AXI_TDATA_out;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TVALID" *) output M_AXI_TVALID_out;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TLAST" *) output M_AXI_TLAST_out;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TREADY" *) input M_AXI_TREADY_out;
 
   wire \<const0> ;
@@ -84,7 +80,6 @@ module ps_axi_dma_1_0
   wire [67:5]\^M_AXI_TDATA_in_cmd ;
   wire [255:0]M_AXI_TDATA_out;
   wire [71:0]M_AXI_TDATA_out_cmd;
-  wire M_AXI_TLAST_out;
   wire M_AXI_TREADY_in;
   wire M_AXI_TREADY_in_cmd;
   wire M_AXI_TREADY_out;
@@ -101,7 +96,6 @@ module ps_axi_dma_1_0
   wire [26:0]mig_wr_ptr;
   wire resetn;
   wire [71:0]NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED;
-  wire [31:0]NLW_inst_M_AXI_TKEEP_out_UNCONNECTED;
   wire [31:21]NLW_inst_linux_wr_ptr_UNCONNECTED;
 
   assign M_AXI_TDATA_in_cmd[71] = \<const0> ;
@@ -139,38 +133,6 @@ module ps_axi_dma_1_0
   assign M_AXI_TDATA_in_cmd[2] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[1] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[0] = \<const0> ;
-  assign M_AXI_TKEEP_out[31] = \<const1> ;
-  assign M_AXI_TKEEP_out[30] = \<const1> ;
-  assign M_AXI_TKEEP_out[29] = \<const1> ;
-  assign M_AXI_TKEEP_out[28] = \<const1> ;
-  assign M_AXI_TKEEP_out[27] = \<const1> ;
-  assign M_AXI_TKEEP_out[26] = \<const1> ;
-  assign M_AXI_TKEEP_out[25] = \<const1> ;
-  assign M_AXI_TKEEP_out[24] = \<const1> ;
-  assign M_AXI_TKEEP_out[23] = \<const1> ;
-  assign M_AXI_TKEEP_out[22] = \<const1> ;
-  assign M_AXI_TKEEP_out[21] = \<const1> ;
-  assign M_AXI_TKEEP_out[20] = \<const1> ;
-  assign M_AXI_TKEEP_out[19] = \<const1> ;
-  assign M_AXI_TKEEP_out[18] = \<const1> ;
-  assign M_AXI_TKEEP_out[17] = \<const1> ;
-  assign M_AXI_TKEEP_out[16] = \<const1> ;
-  assign M_AXI_TKEEP_out[15] = \<const1> ;
-  assign M_AXI_TKEEP_out[14] = \<const1> ;
-  assign M_AXI_TKEEP_out[13] = \<const1> ;
-  assign M_AXI_TKEEP_out[12] = \<const1> ;
-  assign M_AXI_TKEEP_out[11] = \<const1> ;
-  assign M_AXI_TKEEP_out[10] = \<const1> ;
-  assign M_AXI_TKEEP_out[9] = \<const1> ;
-  assign M_AXI_TKEEP_out[8] = \<const1> ;
-  assign M_AXI_TKEEP_out[7] = \<const1> ;
-  assign M_AXI_TKEEP_out[6] = \<const1> ;
-  assign M_AXI_TKEEP_out[5] = \<const1> ;
-  assign M_AXI_TKEEP_out[4] = \<const1> ;
-  assign M_AXI_TKEEP_out[3] = \<const1> ;
-  assign M_AXI_TKEEP_out[2] = \<const1> ;
-  assign M_AXI_TKEEP_out[1] = \<const1> ;
-  assign M_AXI_TKEEP_out[0] = \<const1> ;
   assign linux_wr_ptr[31] = \<const0> ;
   assign linux_wr_ptr[30] = \<const0> ;
   assign linux_wr_ptr[29] = \<const0> ;
@@ -207,8 +169,6 @@ module ps_axi_dma_1_0
         .M_AXI_TDATA_in_cmd({NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[71:68],\^M_AXI_TDATA_in_cmd ,NLW_inst_M_AXI_TDATA_in_cmd_UNCONNECTED[4:0]}),
         .M_AXI_TDATA_out(M_AXI_TDATA_out),
         .M_AXI_TDATA_out_cmd(M_AXI_TDATA_out_cmd),
-        .M_AXI_TKEEP_out(NLW_inst_M_AXI_TKEEP_out_UNCONNECTED[31:0]),
-        .M_AXI_TLAST_out(M_AXI_TLAST_out),
         .M_AXI_TREADY_in(M_AXI_TREADY_in),
         .M_AXI_TREADY_in_cmd(M_AXI_TREADY_in_cmd),
         .M_AXI_TREADY_out(M_AXI_TREADY_out),
@@ -254,9 +214,7 @@ module ps_axi_dma_1_0_axi_dma
     M_AXI_TVALID_in,
     M_AXI_TREADY_in,
     M_AXI_TDATA_out,
-    M_AXI_TKEEP_out,
     M_AXI_TVALID_out,
-    M_AXI_TLAST_out,
     M_AXI_TREADY_out);
   input clk;
   input resetn;
@@ -281,16 +239,11 @@ module ps_axi_dma_1_0_axi_dma
   input M_AXI_TVALID_in;
   output M_AXI_TREADY_in;
   output [255:0]M_AXI_TDATA_out;
-  output [31:0]M_AXI_TKEEP_out;
   output M_AXI_TVALID_out;
-  output M_AXI_TLAST_out;
   input M_AXI_TREADY_out;
 
   wire \<const0> ;
   wire \FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ;
-  wire \FSM_sequential_axi_dma.app_cmd_state[0]_i_3_n_0 ;
-  wire \FSM_sequential_axi_dma.app_cmd_state[0]_i_4_n_0 ;
-  wire \FSM_sequential_axi_dma.app_cmd_state[0]_i_5_n_0 ;
   wire \FSM_sequential_axi_dma.app_cmd_state[1]_i_1_n_0 ;
   wire \FSM_sequential_axi_dma.app_cmd_state[1]_i_3_n_0 ;
   wire \FSM_sequential_axi_dma.mig_cmd_state[0]_i_10_n_0 ;
@@ -313,7 +266,6 @@ module ps_axi_dma_1_0_axi_dma
   wire [67:5]\^M_AXI_TDATA_in_cmd ;
   (* MARK_DEBUG *) wire [255:0]M_AXI_TDATA_out;
   (* MARK_DEBUG *) wire [71:0]M_AXI_TDATA_out_cmd;
-  (* MARK_DEBUG *) wire M_AXI_TLAST_out;
   wire M_AXI_TREADY_in;
   wire M_AXI_TREADY_in_cmd;
   (* MARK_DEBUG *) wire M_AXI_TREADY_out;
@@ -332,6 +284,7 @@ module ps_axi_dma_1_0_axi_dma
   (* MARK_DEBUG *) wire [1:0]app_delay;
   wire [1:0]app_delay__0;
   (* MARK_DEBUG *) wire [12:0]app_diff;
+  (* MARK_DEBUG *) wire app_done;
   (* MARK_DEBUG *) wire [15:0]app_env_0;
   (* MARK_DEBUG *) wire [15:0]app_env_1;
   (* MARK_DEBUG *) wire [15:0]app_env_2;
@@ -405,13 +358,6 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.M_AXI_TDATA_out_cmd[8]_i_1_n_0 ;
   wire \axi_dma.M_AXI_TDATA_out_cmd[9]_i_1_n_0 ;
   wire \axi_dma.M_AXI_TDATA_out_cmd[9]_i_2_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_1_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_2_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_3_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_4_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_5_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_6_n_0 ;
-  wire \axi_dma.M_AXI_TLAST_out_i_7_n_0 ;
   wire \axi_dma.M_AXI_TREADY_in_i_1_n_0 ;
   wire \axi_dma.M_AXI_TVALID_in_cmd_i_1_n_0 ;
   wire \axi_dma.M_AXI_TVALID_out_cmd_i_1_n_0 ;
@@ -471,10 +417,11 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.app_curr_beat[0]_i_2_n_0 ;
   wire \axi_dma.app_curr_beat[1]_i_1_n_0 ;
   wire \axi_dma.app_curr_beat[2]_i_1_n_0 ;
+  wire \axi_dma.app_curr_beat[2]_i_2_n_0 ;
   wire \axi_dma.app_curr_beat[3]_i_1_n_0 ;
   wire \axi_dma.app_curr_beat[4]_i_1_n_0 ;
-  wire \axi_dma.app_curr_beat[4]_i_2_n_0 ;
   wire \axi_dma.app_curr_beat[5]_i_1_n_0 ;
+  wire \axi_dma.app_curr_beat[5]_i_2_n_0 ;
   wire \axi_dma.app_curr_beat[6]_i_1_n_0 ;
   wire \axi_dma.app_curr_beat[6]_i_2_n_0 ;
   wire \axi_dma.app_curr_beat[6]_i_3_n_0 ;
@@ -505,6 +452,13 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.app_diff_reg[7]_i_1_n_7 ;
   wire \axi_dma.app_diff_reg[7]_i_1_n_8 ;
   wire \axi_dma.app_diff_reg[7]_i_1_n_9 ;
+  wire \axi_dma.app_done_i_1_n_0 ;
+  wire \axi_dma.app_done_i_2_n_0 ;
+  wire \axi_dma.app_done_i_3_n_0 ;
+  wire \axi_dma.app_done_i_4_n_0 ;
+  wire \axi_dma.app_done_i_5_n_0 ;
+  wire \axi_dma.app_done_i_6_n_0 ;
+  wire \axi_dma.app_done_i_7_n_0 ;
   wire \axi_dma.app_env_0[0]_i_1_n_0 ;
   wire \axi_dma.app_env_0[10]_i_1_n_0 ;
   wire \axi_dma.app_env_0[11]_i_1_n_0 ;
@@ -1067,6 +1021,7 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.fifo_space[7]_i_1_n_0 ;
   wire \axi_dma.fifo_space[8]_i_1_n_0 ;
   wire \axi_dma.fifo_space[9]_i_1_n_0 ;
+  wire \axi_dma.has_app_size_i_1_n_0 ;
   wire \axi_dma.linux_diff[0]_i_1_n_0 ;
   wire \axi_dma.linux_diff[1]_i_1_n_0 ;
   wire \axi_dma.linux_diff[2]_i_1_n_0 ;
@@ -1207,6 +1162,7 @@ module ps_axi_dma_1_0_axi_dma
   wire \axi_dma.mig_blocks[3]_i_2_n_0 ;
   wire \axi_dma.mig_blocks[4]_i_1_n_0 ;
   wire \axi_dma.mig_blocks[4]_i_2_n_0 ;
+  wire \axi_dma.mig_blocks[4]_i_3_n_0 ;
   wire \axi_dma.mig_blocks[5]_i_1_n_0 ;
   wire \axi_dma.mig_blocks[5]_i_2_n_0 ;
   wire \axi_dma.mig_blocks[5]_i_3_n_0 ;
@@ -1793,6 +1749,7 @@ module ps_axi_dma_1_0_axi_dma
   wire fifo_rd_en;
   (* MARK_DEBUG *) wire [13:0]fifo_space;
   wire fifo_wr_en;
+  (* MARK_DEBUG *) wire has_app_size;
   (* MARK_DEBUG *) wire irq;
   (* MARK_DEBUG *) wire [5:0]linux_base;
   (* MARK_DEBUG *) wire [6:0]linux_diff;
@@ -1838,7 +1795,7 @@ module ps_axi_dma_1_0_axi_dma
   (* MARK_DEBUG *) wire mig_start_cmd;
   (* MARK_DEBUG *) wire [3:0]mig_tag;
   wire [26:0]mig_wr_ptr;
-  wire p_19_in;
+  wire p_21_in;
   wire reset;
   wire resetn;
   wire [7:4]\NLW_axi_dma.app_adr_reg[20]_i_1_CO_UNCONNECTED ;
@@ -1912,38 +1869,6 @@ module ps_axi_dma_1_0_axi_dma
   assign M_AXI_TDATA_in_cmd[2] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[1] = \<const0> ;
   assign M_AXI_TDATA_in_cmd[0] = \<const0> ;
-  assign M_AXI_TKEEP_out[31] = \<const0> ;
-  assign M_AXI_TKEEP_out[30] = \<const0> ;
-  assign M_AXI_TKEEP_out[29] = \<const0> ;
-  assign M_AXI_TKEEP_out[28] = \<const0> ;
-  assign M_AXI_TKEEP_out[27] = \<const0> ;
-  assign M_AXI_TKEEP_out[26] = \<const0> ;
-  assign M_AXI_TKEEP_out[25] = \<const0> ;
-  assign M_AXI_TKEEP_out[24] = \<const0> ;
-  assign M_AXI_TKEEP_out[23] = \<const0> ;
-  assign M_AXI_TKEEP_out[22] = \<const0> ;
-  assign M_AXI_TKEEP_out[21] = \<const0> ;
-  assign M_AXI_TKEEP_out[20] = \<const0> ;
-  assign M_AXI_TKEEP_out[19] = \<const0> ;
-  assign M_AXI_TKEEP_out[18] = \<const0> ;
-  assign M_AXI_TKEEP_out[17] = \<const0> ;
-  assign M_AXI_TKEEP_out[16] = \<const0> ;
-  assign M_AXI_TKEEP_out[15] = \<const0> ;
-  assign M_AXI_TKEEP_out[14] = \<const0> ;
-  assign M_AXI_TKEEP_out[13] = \<const0> ;
-  assign M_AXI_TKEEP_out[12] = \<const0> ;
-  assign M_AXI_TKEEP_out[11] = \<const0> ;
-  assign M_AXI_TKEEP_out[10] = \<const0> ;
-  assign M_AXI_TKEEP_out[9] = \<const0> ;
-  assign M_AXI_TKEEP_out[8] = \<const0> ;
-  assign M_AXI_TKEEP_out[7] = \<const0> ;
-  assign M_AXI_TKEEP_out[6] = \<const0> ;
-  assign M_AXI_TKEEP_out[5] = \<const0> ;
-  assign M_AXI_TKEEP_out[4] = \<const0> ;
-  assign M_AXI_TKEEP_out[3] = \<const0> ;
-  assign M_AXI_TKEEP_out[2] = \<const0> ;
-  assign M_AXI_TKEEP_out[1] = \<const0> ;
-  assign M_AXI_TKEEP_out[0] = \<const0> ;
   assign linux_wr_ptr[31] = \<const0> ;
   assign linux_wr_ptr[30] = \<const0> ;
   assign linux_wr_ptr[29] = \<const0> ;
@@ -1957,51 +1882,23 @@ module ps_axi_dma_1_0_axi_dma
   assign linux_wr_ptr[21] = \<const0> ;
   assign linux_wr_ptr[20:0] = \^linux_wr_ptr [20:0];
   LUT6 #(
-    .INIT(64'h0E3ECEFE0232C2F2)) 
+    .INIT(64'h11FCDDFC1130DD30)) 
     \FSM_sequential_axi_dma.app_cmd_state[0]_i_1 
        (.I0(\FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ),
         .I1(app_cmd_state[1]),
-        .I2(app_cmd_state[0]),
-        .I3(\FSM_sequential_axi_dma.app_cmd_state[0]_i_3_n_0 ),
+        .I2(has_app_size),
+        .I3(app_cmd_state[0]),
         .I4(app_cmd_done),
         .I5(app_active),
         .O(app_cmd_state__0[0]));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FSM_sequential_axi_dma.app_cmd_state[0]_i_2 
-       (.I0(\FSM_sequential_axi_dma.app_cmd_state[0]_i_4_n_0 ),
-        .I1(\FSM_sequential_axi_dma.app_cmd_state[0]_i_5_n_0 ),
-        .I2(fifo_count[0]),
-        .I3(fifo_count[8]),
-        .I4(fifo_count[5]),
-        .I5(fifo_count[10]),
-        .O(\FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'h1000)) 
-    \FSM_sequential_axi_dma.app_cmd_state[0]_i_3 
+    \FSM_sequential_axi_dma.app_cmd_state[0]_i_2 
        (.I0(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
         .I1(\axi_dma.app_hdr_delay_reg_n_0_[1] ),
         .I2(app_fifo_ok),
         .I3(linux_has_space),
-        .O(\FSM_sequential_axi_dma.app_cmd_state[0]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FSM_sequential_axi_dma.app_cmd_state[0]_i_4 
-       (.I0(fifo_count[12]),
-        .I1(fifo_count[13]),
-        .I2(fifo_count[3]),
-        .I3(fifo_count[6]),
-        .I4(fifo_count[2]),
-        .I5(fifo_count[4]),
-        .O(\FSM_sequential_axi_dma.app_cmd_state[0]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \FSM_sequential_axi_dma.app_cmd_state[0]_i_5 
-       (.I0(fifo_count[1]),
-        .I1(fifo_count[11]),
-        .I2(fifo_count[7]),
-        .I3(fifo_count[9]),
-        .O(\FSM_sequential_axi_dma.app_cmd_state[0]_i_5_n_0 ));
+        .O(\FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h1)) 
     \FSM_sequential_axi_dma.app_cmd_state[1]_i_1 
@@ -3332,79 +3229,6 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.M_AXI_TDATA_out_cmd[9]_i_1_n_0 ),
         .Q(M_AXI_TDATA_out_cmd[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hEAAAAAAA)) 
-    \axi_dma.M_AXI_TLAST_out_i_1 
-       (.I0(reset),
-        .I1(M_AXI_TLAST_out),
-        .I2(app_active),
-        .I3(M_AXI_TREADY_out),
-        .I4(M_AXI_TVALID_out),
-        .O(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hBFB0BFBF8F808080)) 
-    \axi_dma.M_AXI_TLAST_out_i_2 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ),
-        .I1(fifo_rd_en),
-        .I2(app_active),
-        .I3(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ),
-        .I4(\axi_dma.app_curr_beat[0]_i_2_n_0 ),
-        .I5(M_AXI_TLAST_out),
-        .O(\axi_dma.M_AXI_TLAST_out_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4004000000004004)) 
-    \axi_dma.M_AXI_TLAST_out_i_3 
-       (.I0(\axi_dma.M_AXI_TLAST_out_i_5_n_0 ),
-        .I1(\axi_dma.M_AXI_TLAST_out_i_6_n_0 ),
-        .I2(app_curr_beat[7]),
-        .I3(app_last_beat[7]),
-        .I4(app_curr_beat[6]),
-        .I5(app_last_beat[6]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    \axi_dma.M_AXI_TLAST_out_i_4 
-       (.I0(app_size[3]),
-        .I1(app_size[6]),
-        .I2(app_size[4]),
-        .I3(app_size[5]),
-        .I4(\axi_dma.M_AXI_TLAST_out_i_7_n_0 ),
-        .O(\axi_dma.M_AXI_TLAST_out_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \axi_dma.M_AXI_TLAST_out_i_5 
-       (.I0(app_last_beat[0]),
-        .I1(app_curr_beat[0]),
-        .I2(app_curr_beat[1]),
-        .I3(app_last_beat[1]),
-        .I4(app_curr_beat[2]),
-        .I5(app_last_beat[2]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h9009000000009009)) 
-    \axi_dma.M_AXI_TLAST_out_i_6 
-       (.I0(app_curr_beat[5]),
-        .I1(app_last_beat[5]),
-        .I2(app_curr_beat[4]),
-        .I3(app_last_beat[4]),
-        .I4(app_last_beat[3]),
-        .I5(app_curr_beat[3]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_6_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \axi_dma.M_AXI_TLAST_out_i_7 
-       (.I0(app_size[0]),
-        .I1(app_size[1]),
-        .I2(app_size[7]),
-        .I3(app_size[2]),
-        .O(\axi_dma.M_AXI_TLAST_out_i_7_n_0 ));
-  (* KEEP = "yes" *) 
-  FDRE \axi_dma.M_AXI_TLAST_out_reg 
-       (.C(clk),
-        .CE(1'b1),
-        .D(\axi_dma.M_AXI_TLAST_out_i_2_n_0 ),
-        .Q(M_AXI_TLAST_out),
-        .R(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \axi_dma.M_AXI_TREADY_in_i_1 
@@ -3457,54 +3281,54 @@ module ps_axi_dma_1_0_axi_dma
         .CE(1'b1),
         .D(\axi_dma.app_active_i_1_n_0 ),
         .Q(app_active),
-        .R(\axi_dma.M_AXI_TLAST_out_i_1_n_0 ));
+        .R(\axi_dma.app_done_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_2 
        (.I0(app_adr[7]),
-        .I1(app_size[7]),
+        .I1(app_last_beat[7]),
         .O(\axi_dma.app_adr[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_3 
        (.I0(app_adr[6]),
-        .I1(app_size[6]),
+        .I1(app_last_beat[6]),
         .O(\axi_dma.app_adr[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_4 
        (.I0(app_adr[5]),
-        .I1(app_size[5]),
+        .I1(app_last_beat[5]),
         .O(\axi_dma.app_adr[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_5 
        (.I0(app_adr[4]),
-        .I1(app_size[4]),
+        .I1(app_last_beat[4]),
         .O(\axi_dma.app_adr[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_6 
        (.I0(app_adr[3]),
-        .I1(app_size[3]),
+        .I1(app_last_beat[3]),
         .O(\axi_dma.app_adr[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_7 
        (.I0(app_adr[2]),
-        .I1(app_size[2]),
+        .I1(app_last_beat[2]),
         .O(\axi_dma.app_adr[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_8 
        (.I0(app_adr[1]),
-        .I1(app_size[1]),
+        .I1(app_last_beat[1]),
         .O(\axi_dma.app_adr[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \axi_dma.app_adr[7]_i_9 
        (.I0(app_adr[0]),
-        .I1(app_size[0]),
+        .I1(app_last_beat[0]),
         .O(\axi_dma.app_adr[7]_i_9_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -3731,7 +3555,7 @@ module ps_axi_dma_1_0_axi_dma
   LUT6 #(
     .INIT(64'hBFFF40FFBFFF4000)) 
     \axi_dma.app_curr_beat[0]_i_1 
-       (.I0(M_AXI_TLAST_out),
+       (.I0(app_done),
         .I1(M_AXI_TREADY_out),
         .I2(M_AXI_TVALID_out),
         .I3(app_active),
@@ -3748,9 +3572,9 @@ module ps_axi_dma_1_0_axi_dma
   LUT6 #(
     .INIT(64'h515555550C000000)) 
     \axi_dma.app_curr_beat[1]_i_1 
-       (.I0(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
+       (.I0(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
         .I1(fifo_rd_en),
-        .I2(M_AXI_TLAST_out),
+        .I2(app_done),
         .I3(app_curr_beat[0]),
         .I4(app_active),
         .I5(app_curr_beat[1]),
@@ -3761,94 +3585,106 @@ module ps_axi_dma_1_0_axi_dma
        (.I0(app_cmd_state[0]),
         .I1(app_cmd_state[1]),
         .I2(app_cmd_state[2]),
-        .I3(\axi_dma.app_curr_beat[4]_i_2_n_0 ),
+        .I3(\axi_dma.app_curr_beat[2]_i_2_n_0 ),
         .I4(app_active),
         .I5(app_curr_beat[2]),
         .O(\axi_dma.app_curr_beat[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF7FFFFFF)) 
+    \axi_dma.app_curr_beat[2]_i_2 
+       (.I0(M_AXI_TVALID_out),
+        .I1(M_AXI_TREADY_out),
+        .I2(app_done),
+        .I3(app_curr_beat[0]),
+        .I4(app_curr_beat[1]),
+        .O(\axi_dma.app_curr_beat[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h6666666666626666)) 
+    .INIT(64'hD2D2D2D2D282D2D2)) 
     \axi_dma.app_curr_beat[3]_i_1 
-       (.I0(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
-        .I1(app_curr_beat[3]),
-        .I2(app_active),
+       (.I0(app_active),
+        .I1(\axi_dma.app_curr_beat[5]_i_2_n_0 ),
+        .I2(app_curr_beat[3]),
         .I3(app_cmd_state[0]),
         .I4(app_cmd_state[1]),
         .I5(app_cmd_state[2]),
         .O(\axi_dma.app_curr_beat[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h00004000BFFF4000)) 
+    .INIT(64'hD2D2D2D2D282D2D2)) 
     \axi_dma.app_curr_beat[4]_i_1 
-       (.I0(\axi_dma.app_curr_beat[4]_i_2_n_0 ),
-        .I1(app_curr_beat[2]),
-        .I2(app_active),
-        .I3(app_curr_beat[3]),
-        .I4(app_curr_beat[4]),
-        .I5(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
-        .O(\axi_dma.app_curr_beat[4]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hF7FFFFFF)) 
-    \axi_dma.app_curr_beat[4]_i_2 
-       (.I0(M_AXI_TVALID_out),
-        .I1(M_AXI_TREADY_out),
-        .I2(M_AXI_TLAST_out),
-        .I3(app_curr_beat[0]),
-        .I4(app_curr_beat[1]),
-        .O(\axi_dma.app_curr_beat[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h00807F80)) 
-    \axi_dma.app_curr_beat[5]_i_1 
-       (.I0(app_curr_beat[3]),
-        .I1(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
+       (.I0(app_active),
+        .I1(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
         .I2(app_curr_beat[4]),
-        .I3(app_curr_beat[5]),
-        .I4(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
+        .I3(app_cmd_state[0]),
+        .I4(app_cmd_state[1]),
+        .I5(app_cmd_state[2]),
+        .O(\axi_dma.app_curr_beat[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000800F7FF0800)) 
+    \axi_dma.app_curr_beat[5]_i_1 
+       (.I0(app_active),
+        .I1(app_curr_beat[4]),
+        .I2(\axi_dma.app_curr_beat[5]_i_2_n_0 ),
+        .I3(app_curr_beat[3]),
+        .I4(app_curr_beat[5]),
+        .I5(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
         .O(\axi_dma.app_curr_beat[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000080007FFF8000)) 
-    \axi_dma.app_curr_beat[6]_i_1 
-       (.I0(app_curr_beat[4]),
-        .I1(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
-        .I2(app_curr_beat[3]),
-        .I3(app_curr_beat[5]),
-        .I4(app_curr_beat[6]),
-        .I5(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
-        .O(\axi_dma.app_curr_beat[6]_i_1_n_0 ));
+    .INIT(64'hF7FFFFFFFFFFFFFF)) 
+    \axi_dma.app_curr_beat[5]_i_2 
+       (.I0(app_curr_beat[1]),
+        .I1(app_curr_beat[0]),
+        .I2(app_done),
+        .I3(M_AXI_TREADY_out),
+        .I4(M_AXI_TVALID_out),
+        .I5(app_curr_beat[2]),
+        .O(\axi_dma.app_curr_beat[5]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0080000000000000)) 
-    \axi_dma.app_curr_beat[6]_i_2 
-       (.I0(app_active),
-        .I1(app_curr_beat[2]),
-        .I2(fifo_rd_en),
-        .I3(M_AXI_TLAST_out),
-        .I4(app_curr_beat[0]),
-        .I5(app_curr_beat[1]),
-        .O(\axi_dma.app_curr_beat[6]_i_2_n_0 ));
+    .INIT(64'h2222522222222222)) 
+    \axi_dma.app_curr_beat[6]_i_1 
+       (.I0(app_curr_beat[6]),
+        .I1(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
+        .I2(app_active),
+        .I3(app_curr_beat[5]),
+        .I4(\axi_dma.app_curr_beat[6]_i_3_n_0 ),
+        .I5(app_curr_beat[4]),
+        .O(\axi_dma.app_curr_beat[6]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h0004)) 
-    \axi_dma.app_curr_beat[6]_i_3 
+    \axi_dma.app_curr_beat[6]_i_2 
        (.I0(app_cmd_state[2]),
         .I1(app_cmd_state[1]),
         .I2(app_cmd_state[0]),
         .I3(app_active),
+        .O(\axi_dma.app_curr_beat[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hF7FFFFFFFFFFFFFF)) 
+    \axi_dma.app_curr_beat[6]_i_3 
+       (.I0(app_curr_beat[2]),
+        .I1(fifo_rd_en),
+        .I2(app_done),
+        .I3(app_curr_beat[0]),
+        .I4(app_curr_beat[1]),
+        .I5(app_curr_beat[3]),
         .O(\axi_dma.app_curr_beat[6]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h6666666666626666)) 
+    .INIT(64'hFFEF00000000FFFF)) 
     \axi_dma.app_curr_beat[7]_i_1 
-       (.I0(\axi_dma.app_curr_beat[7]_i_2_n_0 ),
-        .I1(app_curr_beat[7]),
-        .I2(app_active),
-        .I3(app_cmd_state[0]),
-        .I4(app_cmd_state[1]),
-        .I5(app_cmd_state[2]),
+       (.I0(app_active),
+        .I1(app_cmd_state[0]),
+        .I2(app_cmd_state[1]),
+        .I3(app_cmd_state[2]),
+        .I4(app_curr_beat[7]),
+        .I5(\axi_dma.app_curr_beat[7]_i_2_n_0 ),
         .O(\axi_dma.app_curr_beat[7]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h80000000)) 
+  LUT6 #(
+    .INIT(64'hF7FFFFFFFFFFFFFF)) 
     \axi_dma.app_curr_beat[7]_i_2 
-       (.I0(app_curr_beat[5]),
-        .I1(app_curr_beat[3]),
-        .I2(\axi_dma.app_curr_beat[6]_i_2_n_0 ),
-        .I3(app_curr_beat[4]),
-        .I4(app_curr_beat[6]),
+       (.I0(app_curr_beat[6]),
+        .I1(app_curr_beat[4]),
+        .I2(\axi_dma.app_curr_beat[5]_i_2_n_0 ),
+        .I3(app_curr_beat[3]),
+        .I4(app_curr_beat[5]),
+        .I5(app_active),
         .O(\axi_dma.app_curr_beat[7]_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDSE \axi_dma.app_curr_beat_reg[0] 
@@ -4085,6 +3921,79 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.app_fifo_ok_reg_i_1_n_14 ),
         .Q(app_diff[9]),
         .R(1'b0));
+  LUT5 #(
+    .INIT(32'hEAAAAAAA)) 
+    \axi_dma.app_done_i_1 
+       (.I0(reset),
+        .I1(app_done),
+        .I2(app_active),
+        .I3(M_AXI_TREADY_out),
+        .I4(M_AXI_TVALID_out),
+        .O(\axi_dma.app_done_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFB0BFBF8F808080)) 
+    \axi_dma.app_done_i_2 
+       (.I0(\axi_dma.app_done_i_3_n_0 ),
+        .I1(fifo_rd_en),
+        .I2(app_active),
+        .I3(\axi_dma.app_done_i_4_n_0 ),
+        .I4(\axi_dma.app_curr_beat[0]_i_2_n_0 ),
+        .I5(app_done),
+        .O(\axi_dma.app_done_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h4004000000004004)) 
+    \axi_dma.app_done_i_3 
+       (.I0(\axi_dma.app_done_i_5_n_0 ),
+        .I1(\axi_dma.app_done_i_6_n_0 ),
+        .I2(app_curr_beat[7]),
+        .I3(app_last_beat[7]),
+        .I4(app_curr_beat[6]),
+        .I5(app_last_beat[6]),
+        .O(\axi_dma.app_done_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    \axi_dma.app_done_i_4 
+       (.I0(app_size[3]),
+        .I1(app_size[6]),
+        .I2(app_size[4]),
+        .I3(app_size[5]),
+        .I4(\axi_dma.app_done_i_7_n_0 ),
+        .O(\axi_dma.app_done_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h6FF6FFFFFFFF6FF6)) 
+    \axi_dma.app_done_i_5 
+       (.I0(app_last_beat[0]),
+        .I1(app_curr_beat[0]),
+        .I2(app_curr_beat[1]),
+        .I3(app_last_beat[1]),
+        .I4(app_curr_beat[2]),
+        .I5(app_last_beat[2]),
+        .O(\axi_dma.app_done_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h9009000000009009)) 
+    \axi_dma.app_done_i_6 
+       (.I0(app_curr_beat[5]),
+        .I1(app_last_beat[5]),
+        .I2(app_curr_beat[4]),
+        .I3(app_last_beat[4]),
+        .I4(app_last_beat[3]),
+        .I5(app_curr_beat[3]),
+        .O(\axi_dma.app_done_i_6_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \axi_dma.app_done_i_7 
+       (.I0(app_size[0]),
+        .I1(app_size[1]),
+        .I2(app_size[7]),
+        .I3(app_size[2]),
+        .O(\axi_dma.app_done_i_7_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.app_done_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.app_done_i_2_n_0 ),
+        .Q(app_done),
+        .R(\axi_dma.app_done_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \axi_dma.app_env_0[0]_i_1 
@@ -6409,41 +6318,43 @@ module ps_axi_dma_1_0_axi_dma
         .D(\axi_dma.app_hdr_blocks[7]_i_1_n_0 ),
         .Q(app_hdr_blocks[7]),
         .R(1'b0));
-  LUT2 #(
-    .INIT(4'h7)) 
+  LUT3 #(
+    .INIT(8'h2E)) 
     \axi_dma.app_hdr_delay[0]_i_1 
-       (.I0(app_cmd_state[0]),
-        .I1(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
+       (.I0(has_app_size),
+        .I1(app_cmd_state[0]),
+        .I2(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
         .O(\axi_dma.app_hdr_delay[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0E000E000E000400)) 
+    .INIT(64'h00000000A8A8A820)) 
     \axi_dma.app_hdr_delay[1]_i_1 
-       (.I0(app_cmd_state[0]),
-        .I1(\FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ),
-        .I2(\axi_dma.app_hdr_delay[1]_i_3_n_0 ),
-        .I3(\axi_dma.app_hdr_delay[1]_i_4_n_0 ),
-        .I4(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
-        .I5(\axi_dma.app_hdr_delay_reg_n_0_[1] ),
+       (.I0(\axi_dma.app_hdr_delay[1]_i_3_n_0 ),
+        .I1(app_cmd_state[0]),
+        .I2(has_app_size),
+        .I3(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
+        .I4(\axi_dma.app_hdr_delay_reg_n_0_[1] ),
+        .I5(\axi_dma.app_hdr_delay[1]_i_4_n_0 ),
         .O(app_hdr_delay));
-  LUT3 #(
-    .INIT(8'h9F)) 
+  LUT4 #(
+    .INIT(16'hC3AA)) 
     \axi_dma.app_hdr_delay[1]_i_2 
-       (.I0(\axi_dma.app_hdr_delay_reg_n_0_[1] ),
-        .I1(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
-        .I2(app_cmd_state[0]),
+       (.I0(has_app_size),
+        .I1(\axi_dma.app_hdr_delay_reg_n_0_[1] ),
+        .I2(\axi_dma.app_hdr_delay_reg_n_0_[0] ),
+        .I3(app_cmd_state[0]),
         .O(\axi_dma.app_hdr_delay[1]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h1)) 
+    \axi_dma.app_hdr_delay[1]_i_3 
+       (.I0(app_cmd_state[1]),
+        .I1(app_cmd_state[2]),
+        .O(\axi_dma.app_hdr_delay[1]_i_3_n_0 ));
   LUT3 #(
     .INIT(8'hFE)) 
-    \axi_dma.app_hdr_delay[1]_i_3 
+    \axi_dma.app_hdr_delay[1]_i_4 
        (.I0(reset),
         .I1(app_delay[1]),
         .I2(app_delay[0]),
-        .O(\axi_dma.app_hdr_delay[1]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \axi_dma.app_hdr_delay[1]_i_4 
-       (.I0(app_cmd_state[1]),
-        .I1(app_cmd_state[2]),
         .O(\axi_dma.app_hdr_delay[1]_i_4_n_0 ));
   FDRE \axi_dma.app_hdr_delay_reg[0] 
        (.C(clk),
@@ -10438,12 +10349,12 @@ module ps_axi_dma_1_0_axi_dma
   LUT6 #(
     .INIT(64'h00000000FFF30002)) 
     \axi_dma.app_start_cmd_i_1 
-       (.I0(\FSM_sequential_axi_dma.app_cmd_state[0]_i_2_n_0 ),
+       (.I0(has_app_size),
         .I1(app_cmd_state[0]),
         .I2(app_cmd_state[1]),
         .I3(app_cmd_state[2]),
         .I4(app_start_cmd),
-        .I5(\axi_dma.app_hdr_delay[1]_i_3_n_0 ),
+        .I5(\axi_dma.app_hdr_delay[1]_i_4_n_0 ),
         .O(\axi_dma.app_start_cmd_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_dma.app_start_cmd_reg 
@@ -11605,1537 +11516,1537 @@ module ps_axi_dma_1_0_axi_dma
         .S({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,\axi_dma.fifo_has_space_i_5_n_0 }));
   FDRE \axi_dma.fifo_in_data_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[0]),
         .Q(fifo_in_data[0]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[100] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[100]),
         .Q(fifo_in_data[100]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[101] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[101]),
         .Q(fifo_in_data[101]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[102] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[102]),
         .Q(fifo_in_data[102]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[103] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[103]),
         .Q(fifo_in_data[103]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[104] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[104]),
         .Q(fifo_in_data[104]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[105] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[105]),
         .Q(fifo_in_data[105]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[106] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[106]),
         .Q(fifo_in_data[106]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[107] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[107]),
         .Q(fifo_in_data[107]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[108] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[108]),
         .Q(fifo_in_data[108]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[109] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[109]),
         .Q(fifo_in_data[109]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[10]),
         .Q(fifo_in_data[10]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[110] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[110]),
         .Q(fifo_in_data[110]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[111] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[111]),
         .Q(fifo_in_data[111]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[112] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[112]),
         .Q(fifo_in_data[112]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[113] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[113]),
         .Q(fifo_in_data[113]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[114] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[114]),
         .Q(fifo_in_data[114]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[115] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[115]),
         .Q(fifo_in_data[115]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[116] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[116]),
         .Q(fifo_in_data[116]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[117] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[117]),
         .Q(fifo_in_data[117]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[118] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[118]),
         .Q(fifo_in_data[118]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[119] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[119]),
         .Q(fifo_in_data[119]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[11]),
         .Q(fifo_in_data[11]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[120] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[120]),
         .Q(fifo_in_data[120]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[121] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[121]),
         .Q(fifo_in_data[121]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[122] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[122]),
         .Q(fifo_in_data[122]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[123] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[123]),
         .Q(fifo_in_data[123]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[124] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[124]),
         .Q(fifo_in_data[124]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[125] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[125]),
         .Q(fifo_in_data[125]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[126] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[126]),
         .Q(fifo_in_data[126]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[127] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[127]),
         .Q(fifo_in_data[127]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[128] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[128]),
         .Q(fifo_in_data[128]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[129] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[129]),
         .Q(fifo_in_data[129]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[12]),
         .Q(fifo_in_data[12]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[130] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[130]),
         .Q(fifo_in_data[130]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[131] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[131]),
         .Q(fifo_in_data[131]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[132] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[132]),
         .Q(fifo_in_data[132]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[133] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[133]),
         .Q(fifo_in_data[133]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[134] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[134]),
         .Q(fifo_in_data[134]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[135] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[135]),
         .Q(fifo_in_data[135]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[136] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[136]),
         .Q(fifo_in_data[136]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[137] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[137]),
         .Q(fifo_in_data[137]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[138] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[138]),
         .Q(fifo_in_data[138]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[139] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[139]),
         .Q(fifo_in_data[139]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[13]),
         .Q(fifo_in_data[13]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[140] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[140]),
         .Q(fifo_in_data[140]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[141] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[141]),
         .Q(fifo_in_data[141]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[142] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[142]),
         .Q(fifo_in_data[142]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[143] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[143]),
         .Q(fifo_in_data[143]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[144] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[144]),
         .Q(fifo_in_data[144]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[145] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[145]),
         .Q(fifo_in_data[145]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[146] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[146]),
         .Q(fifo_in_data[146]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[147] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[147]),
         .Q(fifo_in_data[147]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[148] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[148]),
         .Q(fifo_in_data[148]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[149] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[149]),
         .Q(fifo_in_data[149]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[14]),
         .Q(fifo_in_data[14]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[150] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[150]),
         .Q(fifo_in_data[150]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[151] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[151]),
         .Q(fifo_in_data[151]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[152] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[152]),
         .Q(fifo_in_data[152]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[153] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[153]),
         .Q(fifo_in_data[153]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[154] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[154]),
         .Q(fifo_in_data[154]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[155] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[155]),
         .Q(fifo_in_data[155]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[156] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[156]),
         .Q(fifo_in_data[156]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[157] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[157]),
         .Q(fifo_in_data[157]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[158] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[158]),
         .Q(fifo_in_data[158]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[159] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[159]),
         .Q(fifo_in_data[159]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[15]),
         .Q(fifo_in_data[15]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[160] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[160]),
         .Q(fifo_in_data[160]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[161] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[161]),
         .Q(fifo_in_data[161]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[162] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[162]),
         .Q(fifo_in_data[162]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[163] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[163]),
         .Q(fifo_in_data[163]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[164] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[164]),
         .Q(fifo_in_data[164]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[165] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[165]),
         .Q(fifo_in_data[165]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[166] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[166]),
         .Q(fifo_in_data[166]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[167] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[167]),
         .Q(fifo_in_data[167]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[168] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[168]),
         .Q(fifo_in_data[168]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[169] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[169]),
         .Q(fifo_in_data[169]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[16] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[16]),
         .Q(fifo_in_data[16]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[170] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[170]),
         .Q(fifo_in_data[170]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[171] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[171]),
         .Q(fifo_in_data[171]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[172] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[172]),
         .Q(fifo_in_data[172]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[173] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[173]),
         .Q(fifo_in_data[173]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[174] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[174]),
         .Q(fifo_in_data[174]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[175] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[175]),
         .Q(fifo_in_data[175]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[176] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[176]),
         .Q(fifo_in_data[176]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[177] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[177]),
         .Q(fifo_in_data[177]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[178] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[178]),
         .Q(fifo_in_data[178]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[179] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[179]),
         .Q(fifo_in_data[179]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[17] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[17]),
         .Q(fifo_in_data[17]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[180] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[180]),
         .Q(fifo_in_data[180]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[181] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[181]),
         .Q(fifo_in_data[181]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[182] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[182]),
         .Q(fifo_in_data[182]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[183] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[183]),
         .Q(fifo_in_data[183]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[184] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[184]),
         .Q(fifo_in_data[184]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[185] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[185]),
         .Q(fifo_in_data[185]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[186] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[186]),
         .Q(fifo_in_data[186]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[187] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[187]),
         .Q(fifo_in_data[187]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[188] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[188]),
         .Q(fifo_in_data[188]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[189] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[189]),
         .Q(fifo_in_data[189]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[18] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[18]),
         .Q(fifo_in_data[18]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[190] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[190]),
         .Q(fifo_in_data[190]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[191] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[191]),
         .Q(fifo_in_data[191]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[192] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[192]),
         .Q(fifo_in_data[192]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[193] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[193]),
         .Q(fifo_in_data[193]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[194] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[194]),
         .Q(fifo_in_data[194]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[195] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[195]),
         .Q(fifo_in_data[195]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[196] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[196]),
         .Q(fifo_in_data[196]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[197] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[197]),
         .Q(fifo_in_data[197]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[198] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[198]),
         .Q(fifo_in_data[198]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[199] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[199]),
         .Q(fifo_in_data[199]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[19] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[19]),
         .Q(fifo_in_data[19]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[1]),
         .Q(fifo_in_data[1]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[200] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[200]),
         .Q(fifo_in_data[200]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[201] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[201]),
         .Q(fifo_in_data[201]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[202] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[202]),
         .Q(fifo_in_data[202]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[203] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[203]),
         .Q(fifo_in_data[203]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[204] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[204]),
         .Q(fifo_in_data[204]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[205] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[205]),
         .Q(fifo_in_data[205]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[206] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[206]),
         .Q(fifo_in_data[206]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[207] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[207]),
         .Q(fifo_in_data[207]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[208] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[208]),
         .Q(fifo_in_data[208]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[209] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[209]),
         .Q(fifo_in_data[209]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[20] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[20]),
         .Q(fifo_in_data[20]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[210] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[210]),
         .Q(fifo_in_data[210]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[211] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[211]),
         .Q(fifo_in_data[211]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[212] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[212]),
         .Q(fifo_in_data[212]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[213] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[213]),
         .Q(fifo_in_data[213]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[214] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[214]),
         .Q(fifo_in_data[214]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[215] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[215]),
         .Q(fifo_in_data[215]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[216] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[216]),
         .Q(fifo_in_data[216]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[217] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[217]),
         .Q(fifo_in_data[217]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[218] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[218]),
         .Q(fifo_in_data[218]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[219] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[219]),
         .Q(fifo_in_data[219]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[21] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[21]),
         .Q(fifo_in_data[21]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[220] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[220]),
         .Q(fifo_in_data[220]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[221] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[221]),
         .Q(fifo_in_data[221]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[222] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[222]),
         .Q(fifo_in_data[222]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[223] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[223]),
         .Q(fifo_in_data[223]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[224] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[224]),
         .Q(fifo_in_data[224]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[225] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[225]),
         .Q(fifo_in_data[225]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[226] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[226]),
         .Q(fifo_in_data[226]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[227] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[227]),
         .Q(fifo_in_data[227]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[228] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[228]),
         .Q(fifo_in_data[228]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[229] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[229]),
         .Q(fifo_in_data[229]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[22] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[22]),
         .Q(fifo_in_data[22]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[230] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[230]),
         .Q(fifo_in_data[230]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[231] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[231]),
         .Q(fifo_in_data[231]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[232] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[232]),
         .Q(fifo_in_data[232]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[233] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[233]),
         .Q(fifo_in_data[233]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[234] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[234]),
         .Q(fifo_in_data[234]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[235] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[235]),
         .Q(fifo_in_data[235]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[236] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[236]),
         .Q(fifo_in_data[236]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[237] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[237]),
         .Q(fifo_in_data[237]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[238] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[238]),
         .Q(fifo_in_data[238]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[239] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[239]),
         .Q(fifo_in_data[239]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[23] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[23]),
         .Q(fifo_in_data[23]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[240] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[240]),
         .Q(fifo_in_data[240]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[241] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[241]),
         .Q(fifo_in_data[241]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[242] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[242]),
         .Q(fifo_in_data[242]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[243] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[243]),
         .Q(fifo_in_data[243]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[244] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[244]),
         .Q(fifo_in_data[244]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[245] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[245]),
         .Q(fifo_in_data[245]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[246] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[246]),
         .Q(fifo_in_data[246]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[247] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[247]),
         .Q(fifo_in_data[247]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[248] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[248]),
         .Q(fifo_in_data[248]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[249] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[249]),
         .Q(fifo_in_data[249]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[24] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[24]),
         .Q(fifo_in_data[24]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[250] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[250]),
         .Q(fifo_in_data[250]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[251] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[251]),
         .Q(fifo_in_data[251]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[252] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[252]),
         .Q(fifo_in_data[252]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[253] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[253]),
         .Q(fifo_in_data[253]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[254] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[254]),
         .Q(fifo_in_data[254]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[255] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[255]),
         .Q(fifo_in_data[255]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[25] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[25]),
         .Q(fifo_in_data[25]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[26] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[26]),
         .Q(fifo_in_data[26]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[27] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[27]),
         .Q(fifo_in_data[27]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[28] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[28]),
         .Q(fifo_in_data[28]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[29] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[29]),
         .Q(fifo_in_data[29]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[2]),
         .Q(fifo_in_data[2]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[30] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[30]),
         .Q(fifo_in_data[30]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[31] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[31]),
         .Q(fifo_in_data[31]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[32] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[32]),
         .Q(fifo_in_data[32]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[33] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[33]),
         .Q(fifo_in_data[33]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[34] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[34]),
         .Q(fifo_in_data[34]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[35] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[35]),
         .Q(fifo_in_data[35]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[36] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[36]),
         .Q(fifo_in_data[36]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[37] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[37]),
         .Q(fifo_in_data[37]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[38] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[38]),
         .Q(fifo_in_data[38]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[39] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[39]),
         .Q(fifo_in_data[39]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[3]),
         .Q(fifo_in_data[3]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[40] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[40]),
         .Q(fifo_in_data[40]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[41] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[41]),
         .Q(fifo_in_data[41]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[42] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[42]),
         .Q(fifo_in_data[42]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[43] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[43]),
         .Q(fifo_in_data[43]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[44] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[44]),
         .Q(fifo_in_data[44]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[45] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[45]),
         .Q(fifo_in_data[45]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[46] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[46]),
         .Q(fifo_in_data[46]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[47] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[47]),
         .Q(fifo_in_data[47]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[48] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[48]),
         .Q(fifo_in_data[48]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[49] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[49]),
         .Q(fifo_in_data[49]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[4]),
         .Q(fifo_in_data[4]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[50] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[50]),
         .Q(fifo_in_data[50]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[51] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[51]),
         .Q(fifo_in_data[51]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[52] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[52]),
         .Q(fifo_in_data[52]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[53] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[53]),
         .Q(fifo_in_data[53]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[54] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[54]),
         .Q(fifo_in_data[54]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[55] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[55]),
         .Q(fifo_in_data[55]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[56] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[56]),
         .Q(fifo_in_data[56]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[57] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[57]),
         .Q(fifo_in_data[57]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[58] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[58]),
         .Q(fifo_in_data[58]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[59] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[59]),
         .Q(fifo_in_data[59]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[5]),
         .Q(fifo_in_data[5]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[60] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[60]),
         .Q(fifo_in_data[60]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[61] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[61]),
         .Q(fifo_in_data[61]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[62] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[62]),
         .Q(fifo_in_data[62]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[63] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[63]),
         .Q(fifo_in_data[63]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[64] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[64]),
         .Q(fifo_in_data[64]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[65] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[65]),
         .Q(fifo_in_data[65]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[66] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[66]),
         .Q(fifo_in_data[66]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[67] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[67]),
         .Q(fifo_in_data[67]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[68] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[68]),
         .Q(fifo_in_data[68]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[69] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[69]),
         .Q(fifo_in_data[69]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[6]),
         .Q(fifo_in_data[6]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[70] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[70]),
         .Q(fifo_in_data[70]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[71] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[71]),
         .Q(fifo_in_data[71]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[72] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[72]),
         .Q(fifo_in_data[72]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[73] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[73]),
         .Q(fifo_in_data[73]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[74] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[74]),
         .Q(fifo_in_data[74]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[75] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[75]),
         .Q(fifo_in_data[75]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[76] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[76]),
         .Q(fifo_in_data[76]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[77] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[77]),
         .Q(fifo_in_data[77]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[78] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[78]),
         .Q(fifo_in_data[78]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[79] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[79]),
         .Q(fifo_in_data[79]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[7]),
         .Q(fifo_in_data[7]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[80] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[80]),
         .Q(fifo_in_data[80]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[81] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[81]),
         .Q(fifo_in_data[81]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[82] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[82]),
         .Q(fifo_in_data[82]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[83] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[83]),
         .Q(fifo_in_data[83]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[84] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[84]),
         .Q(fifo_in_data[84]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[85] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[85]),
         .Q(fifo_in_data[85]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[86] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[86]),
         .Q(fifo_in_data[86]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[87] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[87]),
         .Q(fifo_in_data[87]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[88] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[88]),
         .Q(fifo_in_data[88]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[89] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[89]),
         .Q(fifo_in_data[89]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[8]),
         .Q(fifo_in_data[8]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[90] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[90]),
         .Q(fifo_in_data[90]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[91] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[91]),
         .Q(fifo_in_data[91]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[92] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[92]),
         .Q(fifo_in_data[92]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[93] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[93]),
         .Q(fifo_in_data[93]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[94] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[94]),
         .Q(fifo_in_data[94]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[95] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[95]),
         .Q(fifo_in_data[95]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[96] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[96]),
         .Q(fifo_in_data[96]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[97] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[97]),
         .Q(fifo_in_data[97]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[98] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[98]),
         .Q(fifo_in_data[98]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[99] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[99]),
         .Q(fifo_in_data[99]),
         .R(1'b0));
   FDRE \axi_dma.fifo_in_data_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(M_AXI_TDATA_in[9]),
         .Q(fifo_in_data[9]),
         .R(1'b0));
@@ -13307,13 +13218,28 @@ module ps_axi_dma_1_0_axi_dma
     \axi_dma.fifo_wr_en_i_1 
        (.I0(M_AXI_TVALID_in),
         .I1(M_AXI_TREADY_in),
-        .O(p_19_in));
+        .O(p_21_in));
   FDRE \axi_dma.fifo_wr_en_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(p_19_in),
+        .D(p_21_in),
         .Q(fifo_wr_en),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'h4F44)) 
+    \axi_dma.has_app_size_i_1 
+       (.I0(fifo_empty),
+        .I1(M_AXI_TDATA_out[79]),
+        .I2(app_start_cmd),
+        .I3(has_app_size),
+        .O(\axi_dma.has_app_size_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDRE \axi_dma.has_app_size_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\axi_dma.has_app_size_i_1_n_0 ),
+        .Q(has_app_size),
+        .R(reset));
   (* KEEP = "yes" *) 
   FDRE \axi_dma.irq_reg 
        (.C(clk),
@@ -14346,26 +14272,29 @@ module ps_axi_dma_1_0_axi_dma
     \axi_dma.mig_blocks[1]_i_2 
        (.I0(fifo_has_space),
         .I1(\axi_dma.mig_blocks[5]_i_2_n_0 ),
-        .I2(mig_preview),
-        .I3(mig_size[0]),
+        .I2(mig_size[0]),
+        .I3(mig_preview),
         .I4(mig_size[1]),
         .O(\axi_dma.mig_blocks[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h28AAFFFF28002800)) 
+    .INIT(64'h0100FFFF01000100)) 
     \axi_dma.mig_blocks[2]_i_1 
-       (.I0(\axi_dma.mig_blocks[5]_i_2_n_0 ),
-        .I1(mig_size[2]),
-        .I2(\axi_dma.mig_blocks[2]_i_2_n_0 ),
-        .I3(fifo_has_space),
+       (.I0(\axi_dma.mig_blocks[2]_i_2_n_0 ),
+        .I1(mig_cmd_state[2]),
+        .I2(mig_cmd_state[0]),
+        .I3(mig_cmd_state[1]),
         .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
         .I5(mig_blocks[2]),
         .O(\axi_dma.mig_blocks[2]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT6 #(
+    .INIT(64'h955500009555FFFF)) 
     \axi_dma.mig_blocks[2]_i_2 
-       (.I0(mig_preview),
+       (.I0(mig_size[2]),
         .I1(mig_size[0]),
-        .I2(mig_size[1]),
+        .I2(mig_preview),
+        .I3(mig_size[1]),
+        .I4(fifo_has_space),
+        .I5(mig_blocks[2]),
         .O(\axi_dma.mig_blocks[2]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h28AAFFFF28002800)) 
@@ -14385,25 +14314,34 @@ module ps_axi_dma_1_0_axi_dma
         .I2(mig_preview),
         .I3(mig_size[0]),
         .O(\axi_dma.mig_blocks[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h28AAFFFF28002800)) 
+  LUT5 #(
+    .INIT(32'hFFFF7500)) 
     \axi_dma.mig_blocks[4]_i_1 
-       (.I0(\axi_dma.mig_blocks[5]_i_2_n_0 ),
-        .I1(mig_size[4]),
-        .I2(\axi_dma.mig_blocks[4]_i_2_n_0 ),
-        .I3(fifo_has_space),
-        .I4(\axi_dma.mig_blocks[7]_i_3_n_0 ),
-        .I5(mig_blocks[4]),
+       (.I0(\axi_dma.mig_blocks[7]_i_3_n_0 ),
+        .I1(fifo_has_space),
+        .I2(mig_cmd_state[1]),
+        .I3(mig_blocks[4]),
+        .I4(\axi_dma.mig_blocks[4]_i_2_n_0 ),
         .O(\axi_dma.mig_blocks[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000020002000000)) 
+    \axi_dma.mig_blocks[4]_i_2 
+       (.I0(mig_cmd_state[1]),
+        .I1(mig_cmd_state[0]),
+        .I2(mig_cmd_state[2]),
+        .I3(fifo_has_space),
+        .I4(\axi_dma.mig_blocks[4]_i_3_n_0 ),
+        .I5(mig_size[4]),
+        .O(\axi_dma.mig_blocks[4]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'h80000000)) 
-    \axi_dma.mig_blocks[4]_i_2 
+    \axi_dma.mig_blocks[4]_i_3 
        (.I0(mig_size[0]),
         .I1(mig_preview),
         .I2(mig_size[2]),
         .I3(mig_size[1]),
         .I4(mig_size[3]),
-        .O(\axi_dma.mig_blocks[4]_i_2_n_0 ));
+        .O(\axi_dma.mig_blocks[4]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'h28AAFFFF28002800)) 
     \axi_dma.mig_blocks[5]_i_1 
@@ -14570,12 +14508,12 @@ module ps_axi_dma_1_0_axi_dma
   LUT6 #(
     .INIT(64'h6FF6FFFFFFFF6FF6)) 
     \axi_dma.mig_cmd_done_i_2 
-       (.I0(mig_tag[2]),
-        .I1(M_AXI_STS_in_tdata[2]),
-        .I2(mig_tag[1]),
-        .I3(M_AXI_STS_in_tdata[1]),
-        .I4(M_AXI_STS_in_tdata[0]),
-        .I5(mig_tag[0]),
+       (.I0(M_AXI_STS_in_tdata[0]),
+        .I1(mig_tag[0]),
+        .I2(mig_tag[2]),
+        .I3(M_AXI_STS_in_tdata[2]),
+        .I4(mig_tag[1]),
+        .I5(M_AXI_STS_in_tdata[1]),
         .O(\axi_dma.mig_cmd_done_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \axi_dma.mig_cmd_done_reg 
@@ -14992,7 +14930,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[0]_i_1_n_0 ),
         .Q(mig_env_0[0]),
         .R(1'b0));
@@ -15000,7 +14938,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[10]_i_1_n_0 ),
         .Q(mig_env_0[10]),
         .R(1'b0));
@@ -15008,7 +14946,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[11]_i_1_n_0 ),
         .Q(mig_env_0[11]),
         .R(1'b0));
@@ -15016,7 +14954,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[12]_i_1_n_0 ),
         .Q(mig_env_0[12]),
         .R(1'b0));
@@ -15024,7 +14962,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[13]_i_1_n_0 ),
         .Q(mig_env_0[13]),
         .R(1'b0));
@@ -15032,7 +14970,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[14]_i_1_n_0 ),
         .Q(mig_env_0[14]),
         .R(1'b0));
@@ -15040,7 +14978,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[15]_i_1_n_0 ),
         .Q(mig_env_0[15]),
         .R(1'b0));
@@ -15048,7 +14986,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[1]_i_1_n_0 ),
         .Q(mig_env_0[1]),
         .R(1'b0));
@@ -15056,7 +14994,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[2]_i_1_n_0 ),
         .Q(mig_env_0[2]),
         .R(1'b0));
@@ -15064,7 +15002,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[3]_i_1_n_0 ),
         .Q(mig_env_0[3]),
         .R(1'b0));
@@ -15072,7 +15010,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[4]_i_1_n_0 ),
         .Q(mig_env_0[4]),
         .R(1'b0));
@@ -15080,7 +15018,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[5]_i_1_n_0 ),
         .Q(mig_env_0[5]),
         .R(1'b0));
@@ -15088,7 +15026,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[6]_i_1_n_0 ),
         .Q(mig_env_0[6]),
         .R(1'b0));
@@ -15096,7 +15034,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[7]_i_1_n_0 ),
         .Q(mig_env_0[7]),
         .R(1'b0));
@@ -15104,7 +15042,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[8]_i_1_n_0 ),
         .Q(mig_env_0[8]),
         .R(1'b0));
@@ -15112,7 +15050,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_0_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_0[9]_i_1_n_0 ),
         .Q(mig_env_0[9]),
         .R(1'b0));
@@ -15232,7 +15170,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[0]_i_1_n_0 ),
         .Q(mig_env_1[0]),
         .R(1'b0));
@@ -15240,7 +15178,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[10]_i_1_n_0 ),
         .Q(mig_env_1[10]),
         .R(1'b0));
@@ -15248,7 +15186,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[11]_i_1_n_0 ),
         .Q(mig_env_1[11]),
         .R(1'b0));
@@ -15256,7 +15194,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[12]_i_1_n_0 ),
         .Q(mig_env_1[12]),
         .R(1'b0));
@@ -15264,7 +15202,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[13]_i_1_n_0 ),
         .Q(mig_env_1[13]),
         .R(1'b0));
@@ -15272,7 +15210,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[14]_i_1_n_0 ),
         .Q(mig_env_1[14]),
         .R(1'b0));
@@ -15280,7 +15218,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[15]_i_1_n_0 ),
         .Q(mig_env_1[15]),
         .R(1'b0));
@@ -15288,7 +15226,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[1]_i_1_n_0 ),
         .Q(mig_env_1[1]),
         .R(1'b0));
@@ -15296,7 +15234,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[2]_i_1_n_0 ),
         .Q(mig_env_1[2]),
         .R(1'b0));
@@ -15304,7 +15242,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[3]_i_1_n_0 ),
         .Q(mig_env_1[3]),
         .R(1'b0));
@@ -15312,7 +15250,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[4]_i_1_n_0 ),
         .Q(mig_env_1[4]),
         .R(1'b0));
@@ -15320,7 +15258,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[5]_i_1_n_0 ),
         .Q(mig_env_1[5]),
         .R(1'b0));
@@ -15328,7 +15266,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[6]_i_1_n_0 ),
         .Q(mig_env_1[6]),
         .R(1'b0));
@@ -15336,7 +15274,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[7]_i_1_n_0 ),
         .Q(mig_env_1[7]),
         .R(1'b0));
@@ -15344,7 +15282,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[8]_i_1_n_0 ),
         .Q(mig_env_1[8]),
         .R(1'b0));
@@ -15352,7 +15290,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_1_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_1[9]_i_1_n_0 ),
         .Q(mig_env_1[9]),
         .R(1'b0));
@@ -15471,7 +15409,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[0]_i_1_n_0 ),
         .Q(mig_env_2[0]),
         .R(1'b0));
@@ -15479,7 +15417,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[10]_i_1_n_0 ),
         .Q(mig_env_2[10]),
         .R(1'b0));
@@ -15487,7 +15425,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[11]_i_1_n_0 ),
         .Q(mig_env_2[11]),
         .R(1'b0));
@@ -15495,7 +15433,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[12]_i_1_n_0 ),
         .Q(mig_env_2[12]),
         .R(1'b0));
@@ -15503,7 +15441,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[13]_i_1_n_0 ),
         .Q(mig_env_2[13]),
         .R(1'b0));
@@ -15511,7 +15449,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[14]_i_1_n_0 ),
         .Q(mig_env_2[14]),
         .R(1'b0));
@@ -15519,7 +15457,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[15]_i_1_n_0 ),
         .Q(mig_env_2[15]),
         .R(1'b0));
@@ -15527,7 +15465,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[1]_i_1_n_0 ),
         .Q(mig_env_2[1]),
         .R(1'b0));
@@ -15535,7 +15473,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[2]_i_1_n_0 ),
         .Q(mig_env_2[2]),
         .R(1'b0));
@@ -15543,7 +15481,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[3]_i_1_n_0 ),
         .Q(mig_env_2[3]),
         .R(1'b0));
@@ -15551,7 +15489,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[4]_i_1_n_0 ),
         .Q(mig_env_2[4]),
         .R(1'b0));
@@ -15559,7 +15497,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[5]_i_1_n_0 ),
         .Q(mig_env_2[5]),
         .R(1'b0));
@@ -15567,7 +15505,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[6]_i_1_n_0 ),
         .Q(mig_env_2[6]),
         .R(1'b0));
@@ -15575,7 +15513,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[7]_i_1_n_0 ),
         .Q(mig_env_2[7]),
         .R(1'b0));
@@ -15583,7 +15521,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[8]_i_1_n_0 ),
         .Q(mig_env_2[8]),
         .R(1'b0));
@@ -15591,7 +15529,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_2_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_2[9]_i_1_n_0 ),
         .Q(mig_env_2[9]),
         .R(1'b0));
@@ -15711,7 +15649,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[0]_i_1_n_0 ),
         .Q(mig_env_3[0]),
         .R(1'b0));
@@ -15719,7 +15657,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[10]_i_1_n_0 ),
         .Q(mig_env_3[10]),
         .R(1'b0));
@@ -15727,7 +15665,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[11]_i_1_n_0 ),
         .Q(mig_env_3[11]),
         .R(1'b0));
@@ -15735,7 +15673,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[12]_i_1_n_0 ),
         .Q(mig_env_3[12]),
         .R(1'b0));
@@ -15743,7 +15681,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[13]_i_1_n_0 ),
         .Q(mig_env_3[13]),
         .R(1'b0));
@@ -15751,7 +15689,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[14]_i_1_n_0 ),
         .Q(mig_env_3[14]),
         .R(1'b0));
@@ -15759,7 +15697,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[15]_i_1_n_0 ),
         .Q(mig_env_3[15]),
         .R(1'b0));
@@ -15767,7 +15705,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[1]_i_1_n_0 ),
         .Q(mig_env_3[1]),
         .R(1'b0));
@@ -15775,7 +15713,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[2]_i_1_n_0 ),
         .Q(mig_env_3[2]),
         .R(1'b0));
@@ -15783,7 +15721,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[3]_i_1_n_0 ),
         .Q(mig_env_3[3]),
         .R(1'b0));
@@ -15791,7 +15729,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[4]_i_1_n_0 ),
         .Q(mig_env_3[4]),
         .R(1'b0));
@@ -15799,7 +15737,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[5]_i_1_n_0 ),
         .Q(mig_env_3[5]),
         .R(1'b0));
@@ -15807,7 +15745,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[6]_i_1_n_0 ),
         .Q(mig_env_3[6]),
         .R(1'b0));
@@ -15815,7 +15753,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[7]_i_1_n_0 ),
         .Q(mig_env_3[7]),
         .R(1'b0));
@@ -15823,7 +15761,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[8]_i_1_n_0 ),
         .Q(mig_env_3[8]),
         .R(1'b0));
@@ -15831,7 +15769,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_3_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_3[9]_i_1_n_0 ),
         .Q(mig_env_3[9]),
         .R(1'b0));
@@ -15951,7 +15889,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[0]_i_1_n_0 ),
         .Q(mig_env_4[0]),
         .R(1'b0));
@@ -15959,7 +15897,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[10]_i_1_n_0 ),
         .Q(mig_env_4[10]),
         .R(1'b0));
@@ -15967,7 +15905,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[11]_i_1_n_0 ),
         .Q(mig_env_4[11]),
         .R(1'b0));
@@ -15975,7 +15913,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[12]_i_1_n_0 ),
         .Q(mig_env_4[12]),
         .R(1'b0));
@@ -15983,7 +15921,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[13]_i_1_n_0 ),
         .Q(mig_env_4[13]),
         .R(1'b0));
@@ -15991,7 +15929,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[14]_i_1_n_0 ),
         .Q(mig_env_4[14]),
         .R(1'b0));
@@ -15999,7 +15937,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[15]_i_1_n_0 ),
         .Q(mig_env_4[15]),
         .R(1'b0));
@@ -16007,7 +15945,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[1]_i_1_n_0 ),
         .Q(mig_env_4[1]),
         .R(1'b0));
@@ -16015,7 +15953,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[2]_i_1_n_0 ),
         .Q(mig_env_4[2]),
         .R(1'b0));
@@ -16023,7 +15961,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[3]_i_1_n_0 ),
         .Q(mig_env_4[3]),
         .R(1'b0));
@@ -16031,7 +15969,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[4]_i_1_n_0 ),
         .Q(mig_env_4[4]),
         .R(1'b0));
@@ -16039,7 +15977,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[5]_i_1_n_0 ),
         .Q(mig_env_4[5]),
         .R(1'b0));
@@ -16047,7 +15985,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[6]_i_1_n_0 ),
         .Q(mig_env_4[6]),
         .R(1'b0));
@@ -16055,7 +15993,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[7]_i_1_n_0 ),
         .Q(mig_env_4[7]),
         .R(1'b0));
@@ -16063,7 +16001,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[8]_i_1_n_0 ),
         .Q(mig_env_4[8]),
         .R(1'b0));
@@ -16071,7 +16009,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_4_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_4[9]_i_1_n_0 ),
         .Q(mig_env_4[9]),
         .R(1'b0));
@@ -16191,7 +16129,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[0]_i_1_n_0 ),
         .Q(mig_env_5[0]),
         .R(1'b0));
@@ -16199,7 +16137,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[10]_i_1_n_0 ),
         .Q(mig_env_5[10]),
         .R(1'b0));
@@ -16207,7 +16145,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[11]_i_1_n_0 ),
         .Q(mig_env_5[11]),
         .R(1'b0));
@@ -16215,7 +16153,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[12]_i_1_n_0 ),
         .Q(mig_env_5[12]),
         .R(1'b0));
@@ -16223,7 +16161,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[13]_i_1_n_0 ),
         .Q(mig_env_5[13]),
         .R(1'b0));
@@ -16231,7 +16169,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[14]_i_1_n_0 ),
         .Q(mig_env_5[14]),
         .R(1'b0));
@@ -16239,7 +16177,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[15]_i_1_n_0 ),
         .Q(mig_env_5[15]),
         .R(1'b0));
@@ -16247,7 +16185,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[1]_i_1_n_0 ),
         .Q(mig_env_5[1]),
         .R(1'b0));
@@ -16255,7 +16193,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[2]_i_1_n_0 ),
         .Q(mig_env_5[2]),
         .R(1'b0));
@@ -16263,7 +16201,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[3]_i_1_n_0 ),
         .Q(mig_env_5[3]),
         .R(1'b0));
@@ -16271,7 +16209,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[4]_i_1_n_0 ),
         .Q(mig_env_5[4]),
         .R(1'b0));
@@ -16279,7 +16217,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[5]_i_1_n_0 ),
         .Q(mig_env_5[5]),
         .R(1'b0));
@@ -16287,7 +16225,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[6]_i_1_n_0 ),
         .Q(mig_env_5[6]),
         .R(1'b0));
@@ -16295,7 +16233,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[7]_i_1_n_0 ),
         .Q(mig_env_5[7]),
         .R(1'b0));
@@ -16303,7 +16241,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[8]_i_1_n_0 ),
         .Q(mig_env_5[8]),
         .R(1'b0));
@@ -16311,7 +16249,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_5_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_5[9]_i_1_n_0 ),
         .Q(mig_env_5[9]),
         .R(1'b0));
@@ -16431,7 +16369,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[0]_i_1_n_0 ),
         .Q(mig_env_6[0]),
         .R(1'b0));
@@ -16439,7 +16377,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[10]_i_1_n_0 ),
         .Q(mig_env_6[10]),
         .R(1'b0));
@@ -16447,7 +16385,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[11]_i_1_n_0 ),
         .Q(mig_env_6[11]),
         .R(1'b0));
@@ -16455,7 +16393,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[12]_i_1_n_0 ),
         .Q(mig_env_6[12]),
         .R(1'b0));
@@ -16463,7 +16401,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[13]_i_1_n_0 ),
         .Q(mig_env_6[13]),
         .R(1'b0));
@@ -16471,7 +16409,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[14]_i_1_n_0 ),
         .Q(mig_env_6[14]),
         .R(1'b0));
@@ -16479,7 +16417,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[15]_i_1_n_0 ),
         .Q(mig_env_6[15]),
         .R(1'b0));
@@ -16487,7 +16425,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[1]_i_1_n_0 ),
         .Q(mig_env_6[1]),
         .R(1'b0));
@@ -16495,7 +16433,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[2]_i_1_n_0 ),
         .Q(mig_env_6[2]),
         .R(1'b0));
@@ -16503,7 +16441,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[3]_i_1_n_0 ),
         .Q(mig_env_6[3]),
         .R(1'b0));
@@ -16511,7 +16449,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[4]_i_1_n_0 ),
         .Q(mig_env_6[4]),
         .R(1'b0));
@@ -16519,7 +16457,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[5]_i_1_n_0 ),
         .Q(mig_env_6[5]),
         .R(1'b0));
@@ -16527,7 +16465,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[6]_i_1_n_0 ),
         .Q(mig_env_6[6]),
         .R(1'b0));
@@ -16535,7 +16473,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[7]_i_1_n_0 ),
         .Q(mig_env_6[7]),
         .R(1'b0));
@@ -16543,7 +16481,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[8]_i_1_n_0 ),
         .Q(mig_env_6[8]),
         .R(1'b0));
@@ -16551,7 +16489,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_6_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_6[9]_i_1_n_0 ),
         .Q(mig_env_6[9]),
         .R(1'b0));
@@ -16671,7 +16609,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[0]_i_1_n_0 ),
         .Q(mig_env_7[0]),
         .R(1'b0));
@@ -16679,7 +16617,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[10]_i_1_n_0 ),
         .Q(mig_env_7[10]),
         .R(1'b0));
@@ -16687,7 +16625,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[11]_i_1_n_0 ),
         .Q(mig_env_7[11]),
         .R(1'b0));
@@ -16695,7 +16633,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[12]_i_1_n_0 ),
         .Q(mig_env_7[12]),
         .R(1'b0));
@@ -16703,7 +16641,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[13]_i_1_n_0 ),
         .Q(mig_env_7[13]),
         .R(1'b0));
@@ -16711,7 +16649,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[14]_i_1_n_0 ),
         .Q(mig_env_7[14]),
         .R(1'b0));
@@ -16719,7 +16657,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[15]_i_1_n_0 ),
         .Q(mig_env_7[15]),
         .R(1'b0));
@@ -16727,7 +16665,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[1]_i_1_n_0 ),
         .Q(mig_env_7[1]),
         .R(1'b0));
@@ -16735,7 +16673,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[2]_i_1_n_0 ),
         .Q(mig_env_7[2]),
         .R(1'b0));
@@ -16743,7 +16681,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[3]_i_1_n_0 ),
         .Q(mig_env_7[3]),
         .R(1'b0));
@@ -16751,7 +16689,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[4]_i_1_n_0 ),
         .Q(mig_env_7[4]),
         .R(1'b0));
@@ -16759,7 +16697,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[5]_i_1_n_0 ),
         .Q(mig_env_7[5]),
         .R(1'b0));
@@ -16767,7 +16705,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[6]_i_1_n_0 ),
         .Q(mig_env_7[6]),
         .R(1'b0));
@@ -16775,7 +16713,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[7]_i_1_n_0 ),
         .Q(mig_env_7[7]),
         .R(1'b0));
@@ -16783,7 +16721,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[8]_i_1_n_0 ),
         .Q(mig_env_7[8]),
         .R(1'b0));
@@ -16791,7 +16729,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_env_7_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_env_7[9]_i_1_n_0 ),
         .Q(mig_env_7[9]),
         .R(1'b0));
@@ -16911,7 +16849,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[0]_i_1_n_0 ),
         .Q(mig_hdr_angle[0]),
         .R(1'b0));
@@ -16919,7 +16857,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[10]_i_1_n_0 ),
         .Q(mig_hdr_angle[10]),
         .R(1'b0));
@@ -16927,7 +16865,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[11]_i_1_n_0 ),
         .Q(mig_hdr_angle[11]),
         .R(1'b0));
@@ -16935,7 +16873,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[12]_i_1_n_0 ),
         .Q(mig_hdr_angle[12]),
         .R(1'b0));
@@ -16943,7 +16881,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[13]_i_1_n_0 ),
         .Q(mig_hdr_angle[13]),
         .R(1'b0));
@@ -16951,7 +16889,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[14]_i_1_n_0 ),
         .Q(mig_hdr_angle[14]),
         .R(1'b0));
@@ -16959,7 +16897,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[15]_i_1_n_0 ),
         .Q(mig_hdr_angle[15]),
         .R(1'b0));
@@ -16967,7 +16905,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[1]_i_1_n_0 ),
         .Q(mig_hdr_angle[1]),
         .R(1'b0));
@@ -16975,7 +16913,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[2]_i_1_n_0 ),
         .Q(mig_hdr_angle[2]),
         .R(1'b0));
@@ -16983,7 +16921,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[3]_i_1_n_0 ),
         .Q(mig_hdr_angle[3]),
         .R(1'b0));
@@ -16991,7 +16929,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[4]_i_1_n_0 ),
         .Q(mig_hdr_angle[4]),
         .R(1'b0));
@@ -16999,7 +16937,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[5]_i_1_n_0 ),
         .Q(mig_hdr_angle[5]),
         .R(1'b0));
@@ -17007,7 +16945,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[6]_i_1_n_0 ),
         .Q(mig_hdr_angle[6]),
         .R(1'b0));
@@ -17015,7 +16953,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[7]_i_1_n_0 ),
         .Q(mig_hdr_angle[7]),
         .R(1'b0));
@@ -17023,7 +16961,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[8]_i_1_n_0 ),
         .Q(mig_hdr_angle[8]),
         .R(1'b0));
@@ -17031,7 +16969,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_angle_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_angle[9]_i_1_n_0 ),
         .Q(mig_hdr_angle[9]),
         .R(1'b0));
@@ -17095,7 +17033,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[0]_i_1_n_0 ),
         .Q(mig_hdr_blocks[0]),
         .R(1'b0));
@@ -17103,7 +17041,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[1]_i_1_n_0 ),
         .Q(mig_hdr_blocks[1]),
         .R(1'b0));
@@ -17111,7 +17049,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[2]_i_1_n_0 ),
         .Q(mig_hdr_blocks[2]),
         .R(1'b0));
@@ -17119,7 +17057,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[3]_i_1_n_0 ),
         .Q(mig_hdr_blocks[3]),
         .R(1'b0));
@@ -17127,7 +17065,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[4]_i_1_n_0 ),
         .Q(mig_hdr_blocks[4]),
         .R(1'b0));
@@ -17135,7 +17073,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[5]_i_1_n_0 ),
         .Q(mig_hdr_blocks[5]),
         .R(1'b0));
@@ -17143,7 +17081,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[6]_i_1_n_0 ),
         .Q(mig_hdr_blocks[6]),
         .R(1'b0));
@@ -17151,7 +17089,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_blocks_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_blocks[7]_i_1_n_0 ),
         .Q(mig_hdr_blocks[7]),
         .R(1'b0));
@@ -17271,7 +17209,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[0]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[0]),
         .R(1'b0));
@@ -17279,7 +17217,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[10]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[10]),
         .R(1'b0));
@@ -17287,7 +17225,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[11]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[11]),
         .R(1'b0));
@@ -17295,7 +17233,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[12]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[12]),
         .R(1'b0));
@@ -17303,7 +17241,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[13]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[13]),
         .R(1'b0));
@@ -17311,7 +17249,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[14]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[14]),
         .R(1'b0));
@@ -17319,7 +17257,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[15]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[15]),
         .R(1'b0));
@@ -17327,7 +17265,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[1]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[1]),
         .R(1'b0));
@@ -17335,7 +17273,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[2]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[2]),
         .R(1'b0));
@@ -17343,7 +17281,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[3]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[3]),
         .R(1'b0));
@@ -17351,7 +17289,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[4]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[4]),
         .R(1'b0));
@@ -17359,7 +17297,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[5]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[5]),
         .R(1'b0));
@@ -17367,7 +17305,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[6]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[6]),
         .R(1'b0));
@@ -17375,7 +17313,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[7]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[7]),
         .R(1'b0));
@@ -17383,7 +17321,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[8]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[8]),
         .R(1'b0));
@@ -17391,7 +17329,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_doa_error_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_doa_error[9]_i_1_n_0 ),
         .Q(mig_hdr_doa_error[9]),
         .R(1'b0));
@@ -17511,7 +17449,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[0]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[0]),
         .R(1'b0));
@@ -17519,7 +17457,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[10]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[10]),
         .R(1'b0));
@@ -17527,7 +17465,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[11]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[11]),
         .R(1'b0));
@@ -17535,7 +17473,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[12]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[12]),
         .R(1'b0));
@@ -17543,7 +17481,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[13]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[13]),
         .R(1'b0));
@@ -17551,7 +17489,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[14]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[14]),
         .R(1'b0));
@@ -17559,7 +17497,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[15]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[15]),
         .R(1'b0));
@@ -17567,7 +17505,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[1]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[1]),
         .R(1'b0));
@@ -17575,7 +17513,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[2]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[2]),
         .R(1'b0));
@@ -17583,7 +17521,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[3]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[3]),
         .R(1'b0));
@@ -17591,7 +17529,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[4]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[4]),
         .R(1'b0));
@@ -17599,7 +17537,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[5]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[5]),
         .R(1'b0));
@@ -17607,7 +17545,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[6]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[6]),
         .R(1'b0));
@@ -17615,7 +17553,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[7]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[7]),
         .R(1'b0));
@@ -17623,7 +17561,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[8]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[8]),
         .R(1'b0));
@@ -17631,7 +17569,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_mean_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_mean[9]_i_1_n_0 ),
         .Q(mig_hdr_env_mean[9]),
         .R(1'b0));
@@ -17751,7 +17689,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[0]_i_1_n_0 ),
         .Q(mig_hdr_env_std[0]),
         .R(1'b0));
@@ -17759,7 +17697,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[10]_i_1_n_0 ),
         .Q(mig_hdr_env_std[10]),
         .R(1'b0));
@@ -17767,7 +17705,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[11]_i_1_n_0 ),
         .Q(mig_hdr_env_std[11]),
         .R(1'b0));
@@ -17775,7 +17713,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[12]_i_1_n_0 ),
         .Q(mig_hdr_env_std[12]),
         .R(1'b0));
@@ -17783,7 +17721,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[13]_i_1_n_0 ),
         .Q(mig_hdr_env_std[13]),
         .R(1'b0));
@@ -17791,7 +17729,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[14]_i_1_n_0 ),
         .Q(mig_hdr_env_std[14]),
         .R(1'b0));
@@ -17799,7 +17737,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[15]_i_1_n_0 ),
         .Q(mig_hdr_env_std[15]),
         .R(1'b0));
@@ -17807,7 +17745,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[1]_i_1_n_0 ),
         .Q(mig_hdr_env_std[1]),
         .R(1'b0));
@@ -17815,7 +17753,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[2]_i_1_n_0 ),
         .Q(mig_hdr_env_std[2]),
         .R(1'b0));
@@ -17823,7 +17761,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[3]_i_1_n_0 ),
         .Q(mig_hdr_env_std[3]),
         .R(1'b0));
@@ -17831,7 +17769,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[4]_i_1_n_0 ),
         .Q(mig_hdr_env_std[4]),
         .R(1'b0));
@@ -17839,7 +17777,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[5]_i_1_n_0 ),
         .Q(mig_hdr_env_std[5]),
         .R(1'b0));
@@ -17847,7 +17785,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[6]_i_1_n_0 ),
         .Q(mig_hdr_env_std[6]),
         .R(1'b0));
@@ -17855,7 +17793,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[7]_i_1_n_0 ),
         .Q(mig_hdr_env_std[7]),
         .R(1'b0));
@@ -17863,7 +17801,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[8]_i_1_n_0 ),
         .Q(mig_hdr_env_std[8]),
         .R(1'b0));
@@ -17871,7 +17809,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_env_std_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_env_std[9]_i_1_n_0 ),
         .Q(mig_hdr_env_std[9]),
         .R(1'b0));
@@ -17937,7 +17875,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[0]_i_1_n_0 ),
         .Q(mig_hdr_flags[0]),
         .R(1'b0));
@@ -17945,7 +17883,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[1]_i_1_n_0 ),
         .Q(mig_hdr_flags[1]),
         .R(1'b0));
@@ -17953,7 +17891,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[2]_i_1_n_0 ),
         .Q(mig_hdr_flags[2]),
         .R(1'b0));
@@ -17961,7 +17899,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[3]_i_1_n_0 ),
         .Q(mig_hdr_flags[3]),
         .R(1'b0));
@@ -17969,7 +17907,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[4]_i_1_n_0 ),
         .Q(mig_hdr_flags[4]),
         .R(1'b0));
@@ -17977,7 +17915,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[5]_i_1_n_0 ),
         .Q(mig_hdr_flags[5]),
         .R(1'b0));
@@ -17985,7 +17923,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_flags_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_flags[6]_i_1_n_0 ),
         .Q(mig_hdr_flags[6]),
         .R(1'b0));
@@ -18225,7 +18163,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[0]_i_1_n_0 ),
         .Q(mig_hdr_freq[0]),
         .R(1'b0));
@@ -18233,7 +18171,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[10]_i_1_n_0 ),
         .Q(mig_hdr_freq[10]),
         .R(1'b0));
@@ -18241,7 +18179,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[11]_i_1_n_0 ),
         .Q(mig_hdr_freq[11]),
         .R(1'b0));
@@ -18249,7 +18187,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[12]_i_1_n_0 ),
         .Q(mig_hdr_freq[12]),
         .R(1'b0));
@@ -18257,7 +18195,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[13]_i_1_n_0 ),
         .Q(mig_hdr_freq[13]),
         .R(1'b0));
@@ -18265,7 +18203,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[14]_i_1_n_0 ),
         .Q(mig_hdr_freq[14]),
         .R(1'b0));
@@ -18273,7 +18211,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[15]_i_1_n_0 ),
         .Q(mig_hdr_freq[15]),
         .R(1'b0));
@@ -18281,7 +18219,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[16] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[16]_i_1_n_0 ),
         .Q(mig_hdr_freq[16]),
         .R(1'b0));
@@ -18289,7 +18227,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[17] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[17]_i_1_n_0 ),
         .Q(mig_hdr_freq[17]),
         .R(1'b0));
@@ -18297,7 +18235,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[18] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[18]_i_1_n_0 ),
         .Q(mig_hdr_freq[18]),
         .R(1'b0));
@@ -18305,7 +18243,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[19] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[19]_i_1_n_0 ),
         .Q(mig_hdr_freq[19]),
         .R(1'b0));
@@ -18313,7 +18251,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[1]_i_1_n_0 ),
         .Q(mig_hdr_freq[1]),
         .R(1'b0));
@@ -18321,7 +18259,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[20] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[20]_i_1_n_0 ),
         .Q(mig_hdr_freq[20]),
         .R(1'b0));
@@ -18329,7 +18267,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[21] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[21]_i_1_n_0 ),
         .Q(mig_hdr_freq[21]),
         .R(1'b0));
@@ -18337,7 +18275,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[22] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[22]_i_1_n_0 ),
         .Q(mig_hdr_freq[22]),
         .R(1'b0));
@@ -18345,7 +18283,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[23] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[23]_i_1_n_0 ),
         .Q(mig_hdr_freq[23]),
         .R(1'b0));
@@ -18353,7 +18291,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[24] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[24]_i_1_n_0 ),
         .Q(mig_hdr_freq[24]),
         .R(1'b0));
@@ -18361,7 +18299,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[25] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[25]_i_1_n_0 ),
         .Q(mig_hdr_freq[25]),
         .R(1'b0));
@@ -18369,7 +18307,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[26] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[26]_i_1_n_0 ),
         .Q(mig_hdr_freq[26]),
         .R(1'b0));
@@ -18377,7 +18315,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[27] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[27]_i_1_n_0 ),
         .Q(mig_hdr_freq[27]),
         .R(1'b0));
@@ -18385,7 +18323,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[28] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[28]_i_1_n_0 ),
         .Q(mig_hdr_freq[28]),
         .R(1'b0));
@@ -18393,7 +18331,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[29] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[29]_i_1_n_0 ),
         .Q(mig_hdr_freq[29]),
         .R(1'b0));
@@ -18401,7 +18339,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[2]_i_1_n_0 ),
         .Q(mig_hdr_freq[2]),
         .R(1'b0));
@@ -18409,7 +18347,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[30] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[30]_i_1_n_0 ),
         .Q(mig_hdr_freq[30]),
         .R(1'b0));
@@ -18417,7 +18355,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[31] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[31]_i_1_n_0 ),
         .Q(mig_hdr_freq[31]),
         .R(1'b0));
@@ -18425,7 +18363,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[3]_i_1_n_0 ),
         .Q(mig_hdr_freq[3]),
         .R(1'b0));
@@ -18433,7 +18371,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[4]_i_1_n_0 ),
         .Q(mig_hdr_freq[4]),
         .R(1'b0));
@@ -18441,7 +18379,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[5]_i_1_n_0 ),
         .Q(mig_hdr_freq[5]),
         .R(1'b0));
@@ -18449,7 +18387,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[6]_i_1_n_0 ),
         .Q(mig_hdr_freq[6]),
         .R(1'b0));
@@ -18457,7 +18395,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[7]_i_1_n_0 ),
         .Q(mig_hdr_freq[7]),
         .R(1'b0));
@@ -18465,7 +18403,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[8]_i_1_n_0 ),
         .Q(mig_hdr_freq[8]),
         .R(1'b0));
@@ -18473,7 +18411,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq[9]_i_1_n_0 ),
         .Q(mig_hdr_freq[9]),
         .R(1'b0));
@@ -18593,7 +18531,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[0]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[0]),
         .R(1'b0));
@@ -18601,7 +18539,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[10]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[10]),
         .R(1'b0));
@@ -18609,7 +18547,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[11]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[11]),
         .R(1'b0));
@@ -18617,7 +18555,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[12]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[12]),
         .R(1'b0));
@@ -18625,7 +18563,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[13]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[13]),
         .R(1'b0));
@@ -18633,7 +18571,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[14]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[14]),
         .R(1'b0));
@@ -18641,7 +18579,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[15]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[15]),
         .R(1'b0));
@@ -18649,7 +18587,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[1]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[1]),
         .R(1'b0));
@@ -18657,7 +18595,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[2]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[2]),
         .R(1'b0));
@@ -18665,7 +18603,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[3]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[3]),
         .R(1'b0));
@@ -18673,7 +18611,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[4]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[4]),
         .R(1'b0));
@@ -18681,7 +18619,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[5]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[5]),
         .R(1'b0));
@@ -18689,7 +18627,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[6]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[6]),
         .R(1'b0));
@@ -18697,7 +18635,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[7]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[7]),
         .R(1'b0));
@@ -18705,7 +18643,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[8]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[8]),
         .R(1'b0));
@@ -18713,7 +18651,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_freq_std_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_freq_std[9]_i_1_n_0 ),
         .Q(mig_hdr_freq_std[9]),
         .R(1'b0));
@@ -18833,7 +18771,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[0]_i_1_n_0 ),
         .Q(mig_hdr_max_env[0]),
         .R(1'b0));
@@ -18841,7 +18779,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[10]_i_1_n_0 ),
         .Q(mig_hdr_max_env[10]),
         .R(1'b0));
@@ -18849,7 +18787,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[11]_i_1_n_0 ),
         .Q(mig_hdr_max_env[11]),
         .R(1'b0));
@@ -18857,7 +18795,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[12]_i_1_n_0 ),
         .Q(mig_hdr_max_env[12]),
         .R(1'b0));
@@ -18865,7 +18803,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[13]_i_1_n_0 ),
         .Q(mig_hdr_max_env[13]),
         .R(1'b0));
@@ -18873,7 +18811,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[14]_i_1_n_0 ),
         .Q(mig_hdr_max_env[14]),
         .R(1'b0));
@@ -18881,7 +18819,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[15]_i_1_n_0 ),
         .Q(mig_hdr_max_env[15]),
         .R(1'b0));
@@ -18889,7 +18827,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[1]_i_1_n_0 ),
         .Q(mig_hdr_max_env[1]),
         .R(1'b0));
@@ -18897,7 +18835,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[2]_i_1_n_0 ),
         .Q(mig_hdr_max_env[2]),
         .R(1'b0));
@@ -18905,7 +18843,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[3]_i_1_n_0 ),
         .Q(mig_hdr_max_env[3]),
         .R(1'b0));
@@ -18913,7 +18851,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[4]_i_1_n_0 ),
         .Q(mig_hdr_max_env[4]),
         .R(1'b0));
@@ -18921,7 +18859,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[5]_i_1_n_0 ),
         .Q(mig_hdr_max_env[5]),
         .R(1'b0));
@@ -18929,7 +18867,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[6]_i_1_n_0 ),
         .Q(mig_hdr_max_env[6]),
         .R(1'b0));
@@ -18937,7 +18875,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[7]_i_1_n_0 ),
         .Q(mig_hdr_max_env[7]),
         .R(1'b0));
@@ -18945,7 +18883,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[8]_i_1_n_0 ),
         .Q(mig_hdr_max_env[8]),
         .R(1'b0));
@@ -18953,7 +18891,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_env_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_env[9]_i_1_n_0 ),
         .Q(mig_hdr_max_env[9]),
         .R(1'b0));
@@ -19073,7 +19011,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[0]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[0]),
         .R(1'b0));
@@ -19081,7 +19019,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[10]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[10]),
         .R(1'b0));
@@ -19089,7 +19027,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[11]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[11]),
         .R(1'b0));
@@ -19097,7 +19035,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[12]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[12]),
         .R(1'b0));
@@ -19105,7 +19043,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[13]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[13]),
         .R(1'b0));
@@ -19113,7 +19051,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[14]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[14]),
         .R(1'b0));
@@ -19121,7 +19059,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[15]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[15]),
         .R(1'b0));
@@ -19129,7 +19067,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[1]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[1]),
         .R(1'b0));
@@ -19137,7 +19075,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[2]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[2]),
         .R(1'b0));
@@ -19145,7 +19083,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[3]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[3]),
         .R(1'b0));
@@ -19153,7 +19091,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[4]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[4]),
         .R(1'b0));
@@ -19161,7 +19099,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[5]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[5]),
         .R(1'b0));
@@ -19169,7 +19107,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[6]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[6]),
         .R(1'b0));
@@ -19177,7 +19115,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[7]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[7]),
         .R(1'b0));
@@ -19185,7 +19123,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[8]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[8]),
         .R(1'b0));
@@ -19193,7 +19131,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_max_pos_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_max_pos[9]_i_1_n_0 ),
         .Q(mig_hdr_max_pos[9]),
         .R(1'b0));
@@ -19313,7 +19251,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[0]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[0]),
         .R(1'b0));
@@ -19321,7 +19259,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[10]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[10]),
         .R(1'b0));
@@ -19329,7 +19267,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[11]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[11]),
         .R(1'b0));
@@ -19337,7 +19275,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[12]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[12]),
         .R(1'b0));
@@ -19345,7 +19283,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[13]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[13]),
         .R(1'b0));
@@ -19353,7 +19291,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[14]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[14]),
         .R(1'b0));
@@ -19361,7 +19299,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[15]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[15]),
         .R(1'b0));
@@ -19369,7 +19307,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[1]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[1]),
         .R(1'b0));
@@ -19377,7 +19315,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[2]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[2]),
         .R(1'b0));
@@ -19385,7 +19323,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[3]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[3]),
         .R(1'b0));
@@ -19393,7 +19331,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[4]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[4]),
         .R(1'b0));
@@ -19401,7 +19339,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[5]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[5]),
         .R(1'b0));
@@ -19409,7 +19347,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[6]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[6]),
         .R(1'b0));
@@ -19417,7 +19355,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[7]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[7]),
         .R(1'b0));
@@ -19425,7 +19363,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[8]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[8]),
         .R(1'b0));
@@ -19433,7 +19371,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_phase_std_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_phase_std[9]_i_1_n_0 ),
         .Q(mig_hdr_phase_std[9]),
         .R(1'b0));
@@ -19889,7 +19827,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[0]_i_1_n_0 ),
         .Q(mig_hdr_sample[0]),
         .R(1'b0));
@@ -19897,7 +19835,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[10]_i_1_n_0 ),
         .Q(mig_hdr_sample[10]),
         .R(1'b0));
@@ -19905,7 +19843,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[11]_i_1_n_0 ),
         .Q(mig_hdr_sample[11]),
         .R(1'b0));
@@ -19913,7 +19851,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[12]_i_1_n_0 ),
         .Q(mig_hdr_sample[12]),
         .R(1'b0));
@@ -19921,7 +19859,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[13]_i_1_n_0 ),
         .Q(mig_hdr_sample[13]),
         .R(1'b0));
@@ -19929,7 +19867,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[14]_i_1_n_0 ),
         .Q(mig_hdr_sample[14]),
         .R(1'b0));
@@ -19937,7 +19875,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[15]_i_1_n_0 ),
         .Q(mig_hdr_sample[15]),
         .R(1'b0));
@@ -19945,7 +19883,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[16] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[16]_i_1_n_0 ),
         .Q(mig_hdr_sample[16]),
         .R(1'b0));
@@ -19953,7 +19891,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[17] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[17]_i_1_n_0 ),
         .Q(mig_hdr_sample[17]),
         .R(1'b0));
@@ -19961,7 +19899,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[18] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[18]_i_1_n_0 ),
         .Q(mig_hdr_sample[18]),
         .R(1'b0));
@@ -19969,7 +19907,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[19] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[19]_i_1_n_0 ),
         .Q(mig_hdr_sample[19]),
         .R(1'b0));
@@ -19977,7 +19915,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[1]_i_1_n_0 ),
         .Q(mig_hdr_sample[1]),
         .R(1'b0));
@@ -19985,7 +19923,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[20] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[20]_i_1_n_0 ),
         .Q(mig_hdr_sample[20]),
         .R(1'b0));
@@ -19993,7 +19931,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[21] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[21]_i_1_n_0 ),
         .Q(mig_hdr_sample[21]),
         .R(1'b0));
@@ -20001,7 +19939,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[22] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[22]_i_1_n_0 ),
         .Q(mig_hdr_sample[22]),
         .R(1'b0));
@@ -20009,7 +19947,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[23] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[23]_i_1_n_0 ),
         .Q(mig_hdr_sample[23]),
         .R(1'b0));
@@ -20017,7 +19955,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[24] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[24]_i_1_n_0 ),
         .Q(mig_hdr_sample[24]),
         .R(1'b0));
@@ -20025,7 +19963,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[25] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[25]_i_1_n_0 ),
         .Q(mig_hdr_sample[25]),
         .R(1'b0));
@@ -20033,7 +19971,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[26] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[26]_i_1_n_0 ),
         .Q(mig_hdr_sample[26]),
         .R(1'b0));
@@ -20041,7 +19979,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[27] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[27]_i_1_n_0 ),
         .Q(mig_hdr_sample[27]),
         .R(1'b0));
@@ -20049,7 +19987,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[28] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[28]_i_1_n_0 ),
         .Q(mig_hdr_sample[28]),
         .R(1'b0));
@@ -20057,7 +19995,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[29] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[29]_i_1_n_0 ),
         .Q(mig_hdr_sample[29]),
         .R(1'b0));
@@ -20065,7 +20003,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[2]_i_1_n_0 ),
         .Q(mig_hdr_sample[2]),
         .R(1'b0));
@@ -20073,7 +20011,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[30] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[30]_i_1_n_0 ),
         .Q(mig_hdr_sample[30]),
         .R(1'b0));
@@ -20081,7 +20019,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[31] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[31]_i_1_n_0 ),
         .Q(mig_hdr_sample[31]),
         .R(1'b0));
@@ -20089,7 +20027,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[32] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[32]_i_1_n_0 ),
         .Q(mig_hdr_sample[32]),
         .R(1'b0));
@@ -20097,7 +20035,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[33] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[33]_i_1_n_0 ),
         .Q(mig_hdr_sample[33]),
         .R(1'b0));
@@ -20105,7 +20043,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[34] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[34]_i_1_n_0 ),
         .Q(mig_hdr_sample[34]),
         .R(1'b0));
@@ -20113,7 +20051,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[35] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[35]_i_1_n_0 ),
         .Q(mig_hdr_sample[35]),
         .R(1'b0));
@@ -20121,7 +20059,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[36] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[36]_i_1_n_0 ),
         .Q(mig_hdr_sample[36]),
         .R(1'b0));
@@ -20129,7 +20067,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[37] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[37]_i_1_n_0 ),
         .Q(mig_hdr_sample[37]),
         .R(1'b0));
@@ -20137,7 +20075,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[38] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[38]_i_1_n_0 ),
         .Q(mig_hdr_sample[38]),
         .R(1'b0));
@@ -20145,7 +20083,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[39] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[39]_i_1_n_0 ),
         .Q(mig_hdr_sample[39]),
         .R(1'b0));
@@ -20153,7 +20091,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[3]_i_1_n_0 ),
         .Q(mig_hdr_sample[3]),
         .R(1'b0));
@@ -20161,7 +20099,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[40] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[40]_i_1_n_0 ),
         .Q(mig_hdr_sample[40]),
         .R(1'b0));
@@ -20169,7 +20107,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[41] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[41]_i_1_n_0 ),
         .Q(mig_hdr_sample[41]),
         .R(1'b0));
@@ -20177,7 +20115,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[42] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[42]_i_1_n_0 ),
         .Q(mig_hdr_sample[42]),
         .R(1'b0));
@@ -20185,7 +20123,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[43] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[43]_i_1_n_0 ),
         .Q(mig_hdr_sample[43]),
         .R(1'b0));
@@ -20193,7 +20131,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[44] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[44]_i_1_n_0 ),
         .Q(mig_hdr_sample[44]),
         .R(1'b0));
@@ -20201,7 +20139,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[45] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[45]_i_1_n_0 ),
         .Q(mig_hdr_sample[45]),
         .R(1'b0));
@@ -20209,7 +20147,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[46] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[46]_i_1_n_0 ),
         .Q(mig_hdr_sample[46]),
         .R(1'b0));
@@ -20217,7 +20155,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[47] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[47]_i_1_n_0 ),
         .Q(mig_hdr_sample[47]),
         .R(1'b0));
@@ -20225,7 +20163,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[48] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[48]_i_1_n_0 ),
         .Q(mig_hdr_sample[48]),
         .R(1'b0));
@@ -20233,7 +20171,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[49] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[49]_i_1_n_0 ),
         .Q(mig_hdr_sample[49]),
         .R(1'b0));
@@ -20241,7 +20179,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[4]_i_1_n_0 ),
         .Q(mig_hdr_sample[4]),
         .R(1'b0));
@@ -20249,7 +20187,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[50] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[50]_i_1_n_0 ),
         .Q(mig_hdr_sample[50]),
         .R(1'b0));
@@ -20257,7 +20195,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[51] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[51]_i_1_n_0 ),
         .Q(mig_hdr_sample[51]),
         .R(1'b0));
@@ -20265,7 +20203,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[52] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[52]_i_1_n_0 ),
         .Q(mig_hdr_sample[52]),
         .R(1'b0));
@@ -20273,7 +20211,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[53] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[53]_i_1_n_0 ),
         .Q(mig_hdr_sample[53]),
         .R(1'b0));
@@ -20281,7 +20219,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[54] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[54]_i_1_n_0 ),
         .Q(mig_hdr_sample[54]),
         .R(1'b0));
@@ -20289,7 +20227,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[55] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[55]_i_1_n_0 ),
         .Q(mig_hdr_sample[55]),
         .R(1'b0));
@@ -20297,7 +20235,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[56] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[56]_i_1_n_0 ),
         .Q(mig_hdr_sample[56]),
         .R(1'b0));
@@ -20305,7 +20243,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[57] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[57]_i_1_n_0 ),
         .Q(mig_hdr_sample[57]),
         .R(1'b0));
@@ -20313,7 +20251,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[58] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[58]_i_1_n_0 ),
         .Q(mig_hdr_sample[58]),
         .R(1'b0));
@@ -20321,7 +20259,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[59] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[59]_i_1_n_0 ),
         .Q(mig_hdr_sample[59]),
         .R(1'b0));
@@ -20329,7 +20267,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[5]_i_1_n_0 ),
         .Q(mig_hdr_sample[5]),
         .R(1'b0));
@@ -20337,7 +20275,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[60] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[60]_i_1_n_0 ),
         .Q(mig_hdr_sample[60]),
         .R(1'b0));
@@ -20345,7 +20283,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[61] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[61]_i_1_n_0 ),
         .Q(mig_hdr_sample[61]),
         .R(1'b0));
@@ -20353,7 +20291,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[62] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[62]_i_1_n_0 ),
         .Q(mig_hdr_sample[62]),
         .R(1'b0));
@@ -20361,7 +20299,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[63] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[63]_i_1_n_0 ),
         .Q(mig_hdr_sample[63]),
         .R(1'b0));
@@ -20369,7 +20307,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[6]_i_1_n_0 ),
         .Q(mig_hdr_sample[6]),
         .R(1'b0));
@@ -20377,7 +20315,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[7]_i_1_n_0 ),
         .Q(mig_hdr_sample[7]),
         .R(1'b0));
@@ -20385,7 +20323,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[8]_i_1_n_0 ),
         .Q(mig_hdr_sample[8]),
         .R(1'b0));
@@ -20393,7 +20331,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_sample_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_sample[9]_i_1_n_0 ),
         .Q(mig_hdr_sample[9]),
         .R(1'b0));
@@ -20513,7 +20451,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[0] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[0]_i_1_n_0 ),
         .Q(mig_hdr_size[0]),
         .R(1'b0));
@@ -20521,7 +20459,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[10] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[10]_i_1_n_0 ),
         .Q(mig_hdr_size[10]),
         .R(1'b0));
@@ -20529,7 +20467,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[11] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[11]_i_1_n_0 ),
         .Q(mig_hdr_size[11]),
         .R(1'b0));
@@ -20537,7 +20475,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[12] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[12]_i_1_n_0 ),
         .Q(mig_hdr_size[12]),
         .R(1'b0));
@@ -20545,7 +20483,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[13] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[13]_i_1_n_0 ),
         .Q(mig_hdr_size[13]),
         .R(1'b0));
@@ -20553,7 +20491,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[14] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[14]_i_1_n_0 ),
         .Q(mig_hdr_size[14]),
         .R(1'b0));
@@ -20561,7 +20499,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[15] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[15]_i_1_n_0 ),
         .Q(mig_hdr_size[15]),
         .R(1'b0));
@@ -20569,7 +20507,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[1] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[1]_i_1_n_0 ),
         .Q(mig_hdr_size[1]),
         .R(1'b0));
@@ -20577,7 +20515,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[2] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[2]_i_1_n_0 ),
         .Q(mig_hdr_size[2]),
         .R(1'b0));
@@ -20585,7 +20523,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[3] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[3]_i_1_n_0 ),
         .Q(mig_hdr_size[3]),
         .R(1'b0));
@@ -20593,7 +20531,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[4] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[4]_i_1_n_0 ),
         .Q(mig_hdr_size[4]),
         .R(1'b0));
@@ -20601,7 +20539,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[5] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[5]_i_1_n_0 ),
         .Q(mig_hdr_size[5]),
         .R(1'b0));
@@ -20609,7 +20547,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[6] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[6]_i_1_n_0 ),
         .Q(mig_hdr_size[6]),
         .R(1'b0));
@@ -20617,7 +20555,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[7] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[7]_i_1_n_0 ),
         .Q(mig_hdr_size[7]),
         .R(1'b0));
@@ -20625,7 +20563,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[8] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[8]_i_1_n_0 ),
         .Q(mig_hdr_size[8]),
         .R(1'b0));
@@ -20633,7 +20571,7 @@ module ps_axi_dma_1_0_axi_dma
   (* mark_debug = "yes" *) 
   FDRE \axi_dma.mig_hdr_size_reg[9] 
        (.C(clk),
-        .CE(p_19_in),
+        .CE(p_21_in),
         .D(\axi_dma.mig_hdr_size[9]_i_1_n_0 ),
         .Q(mig_hdr_size[9]),
         .R(1'b0));
@@ -21693,37 +21631,36 @@ module ps_axi_dma_1_0_axi_dma
         .probe10(app_start_cmd),
         .probe11(app_cmd_done),
         .probe12(app_cmd_error),
-        .probe13(app_size),
-        .probe14(app_delay),
-        .probe15(app_used),
-        .probe16(irq),
-        .probe17(app_active),
-        .probe18(app_curr_beat),
-        .probe19(app_last_beat),
+        .probe13(app_delay),
+        .probe14(app_used),
+        .probe15(irq),
+        .probe16(app_active),
+        .probe17(app_curr_beat),
+        .probe18(app_last_beat),
+        .probe19(app_hdr_sample),
         .probe2(app_diff),
-        .probe20(app_hdr_sample),
-        .probe21(app_hdr_blocks),
-        .probe22(app_hdr_flags),
-        .probe23(app_hdr_size),
-        .probe24(app_hdr_freq),
-        .probe25(app_hdr_angle),
-        .probe26(app_hdr_doa_error),
-        .probe27(app_hdr_max_env),
-        .probe28(app_hdr_max_pos),
-        .probe29(app_hdr_env_mean),
+        .probe20(app_hdr_blocks),
+        .probe21(app_hdr_flags),
+        .probe22(app_hdr_size),
+        .probe23(app_hdr_freq),
+        .probe24(app_hdr_angle),
+        .probe25(app_hdr_doa_error),
+        .probe26(app_hdr_max_env),
+        .probe27(app_hdr_max_pos),
+        .probe28(app_hdr_env_mean),
+        .probe29(app_hdr_env_std),
         .probe3(app_fifo_ok),
-        .probe30(app_hdr_env_std),
-        .probe31(app_hdr_phase_std),
-        .probe32(app_hdr_freq_std),
-        .probe33(app_env_0),
-        .probe34(app_env_1),
-        .probe35(app_env_2),
-        .probe36(app_env_3),
-        .probe37(app_env_4),
-        .probe38(app_env_5),
-        .probe39(app_env_6),
+        .probe30(app_hdr_phase_std),
+        .probe31(app_hdr_freq_std),
+        .probe32(app_env_0),
+        .probe33(app_env_1),
+        .probe34(app_env_2),
+        .probe35(app_env_3),
+        .probe36(app_env_4),
+        .probe37(app_env_5),
+        .probe38(app_env_6),
+        .probe39(app_env_7),
         .probe4(app_cmd_state),
-        .probe40(app_env_7),
         .probe5(app_adr),
         .probe6(ddr_rd_ptr),
         .probe7(ddr_wr_ptr),
@@ -21736,19 +21673,21 @@ module ps_axi_dma_1_0_axi_dma
        (.clk(clk),
         .probe0(fifo_count),
         .probe1(app_fifo_ok),
-        .probe10(M_AXI_STS_out_tready),
-        .probe11(M_AXI_TDATA_out[15:0]),
-        .probe12(M_AXI_TVALID_out),
-        .probe13(M_AXI_TLAST_out),
-        .probe14(M_AXI_TREADY_out),
+        .probe10(M_AXI_TREADY_out_cmd),
+        .probe11(M_AXI_STS_out_tdata),
+        .probe12(M_AXI_STS_out_tvalid),
+        .probe13(M_AXI_STS_out_tready),
+        .probe14(M_AXI_TDATA_out[15:0]),
+        .probe15(M_AXI_TVALID_out),
+        .probe16(M_AXI_TREADY_out),
         .probe2(app_cmd_state),
-        .probe3(app_active),
-        .probe4(app_adr),
-        .probe5(M_AXI_TDATA_out_cmd),
-        .probe6(M_AXI_TVALID_out_cmd),
-        .probe7(M_AXI_TREADY_out_cmd),
-        .probe8(M_AXI_STS_out_tdata),
-        .probe9(M_AXI_STS_out_tvalid));
+        .probe3(has_app_size),
+        .probe4(app_size),
+        .probe5(app_active),
+        .probe6(app_done),
+        .probe7(app_adr),
+        .probe8(M_AXI_TDATA_out_cmd),
+        .probe9(M_AXI_TVALID_out_cmd));
   (* CHECK_LICENSE_TYPE = "ila_7,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -21915,23 +21854,27 @@ module ps_axi_dma_1_0_ila_8
     probe11,
     probe12,
     probe13,
-    probe14);
+    probe14,
+    probe15,
+    probe16);
   (* syn_isclock = "1" *) input clk;
   input [13:0]probe0;
   input [0:0]probe1;
   input [2:0]probe2;
   input [0:0]probe3;
-  input [20:0]probe4;
-  input [71:0]probe5;
+  input [7:0]probe4;
+  input [0:0]probe5;
   input [0:0]probe6;
-  input [0:0]probe7;
-  input [7:0]probe8;
+  input [20:0]probe7;
+  input [71:0]probe8;
   input [0:0]probe9;
   input [0:0]probe10;
-  input [15:0]probe11;
+  input [7:0]probe11;
   input [0:0]probe12;
   input [0:0]probe13;
-  input [0:0]probe14;
+  input [15:0]probe14;
+  input [0:0]probe15;
+  input [0:0]probe16;
 
 
 endmodule
@@ -21979,8 +21922,7 @@ module ps_axi_dma_1_0_ila_9
     probe36,
     probe37,
     probe38,
-    probe39,
-    probe40);
+    probe39);
   (* syn_isclock = "1" *) input clk;
   input [5:0]probe0;
   input [13:0]probe1;
@@ -21995,18 +21937,18 @@ module ps_axi_dma_1_0_ila_9
   input [0:0]probe10;
   input [0:0]probe11;
   input [0:0]probe12;
-  input [7:0]probe13;
-  input [1:0]probe14;
-  input [20:0]probe15;
+  input [1:0]probe13;
+  input [20:0]probe14;
+  input [0:0]probe15;
   input [0:0]probe16;
-  input [0:0]probe17;
+  input [7:0]probe17;
   input [7:0]probe18;
-  input [7:0]probe19;
-  input [63:0]probe20;
+  input [63:0]probe19;
+  input [7:0]probe20;
   input [7:0]probe21;
-  input [7:0]probe22;
-  input [15:0]probe23;
-  input [31:0]probe24;
+  input [15:0]probe22;
+  input [31:0]probe23;
+  input [15:0]probe24;
   input [15:0]probe25;
   input [15:0]probe26;
   input [15:0]probe27;
@@ -22022,7 +21964,6 @@ module ps_axi_dma_1_0_ila_9
   input [15:0]probe37;
   input [15:0]probe38;
   input [15:0]probe39;
-  input [15:0]probe40;
 
 
 endmodule

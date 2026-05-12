@@ -78,9 +78,7 @@ module ps_axi_dma_1_0 (
   M_AXI_TVALID_in,
   M_AXI_TREADY_in,
   M_AXI_TDATA_out,
-  M_AXI_TKEEP_out,
   M_AXI_TVALID_out,
-  M_AXI_TLAST_out,
   M_AXI_TREADY_out
 );
 
@@ -142,14 +140,10 @@ input wire M_AXI_TVALID_in;
 output wire M_AXI_TREADY_in;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_out, TDATA_NUM_BYTES 32, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
 output wire [255 : 0] M_AXI_TDATA_out;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TKEEP" *)
-output wire [31 : 0] M_AXI_TKEEP_out;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TVALID" *)
 output wire M_AXI_TVALID_out;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TLAST" *)
-output wire M_AXI_TLAST_out;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_out TREADY" *)
 input wire M_AXI_TREADY_out;
 
@@ -177,9 +171,7 @@ input wire M_AXI_TREADY_out;
     .M_AXI_TVALID_in(M_AXI_TVALID_in),
     .M_AXI_TREADY_in(M_AXI_TREADY_in),
     .M_AXI_TDATA_out(M_AXI_TDATA_out),
-    .M_AXI_TKEEP_out(M_AXI_TKEEP_out),
     .M_AXI_TVALID_out(M_AXI_TVALID_out),
-    .M_AXI_TLAST_out(M_AXI_TLAST_out),
     .M_AXI_TREADY_out(M_AXI_TREADY_out)
   );
 endmodule

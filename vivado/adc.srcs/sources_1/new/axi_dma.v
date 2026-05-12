@@ -32,9 +32,7 @@ module axi_dma(
     output reg M_AXI_TREADY_in,
 
     output wire [255:0] M_AXI_TDATA_out,
-    output reg [31:0] M_AXI_TKEEP_out,
     output wire M_AXI_TVALID_out,
-    output reg M_AXI_TLAST_out,
     input wire M_AXI_TREADY_out      
 );
 
@@ -109,6 +107,8 @@ module axi_dma(
     reg app_cmd_error;
     reg [1:0] app_delay;
     reg [1:0] app_hdr_delay;
+    
+    reg has_app_size;
     reg [7:0] app_size;
         
     reg [12:0] app_diff;
@@ -122,6 +122,7 @@ module axi_dma(
     reg [6:0] linux_diff;
     
     reg app_active;
+    reg app_done;
 
     assign M_AXI_TVALID_out = !fifo_empty && app_active;
 
@@ -229,34 +230,33 @@ module axi_dma(
 		.probe10(app_start_cmd),      // input wire [0:0]  probe3
 		.probe11(app_cmd_done),       // input wire [0:0]  probe3
 		.probe12(app_cmd_error),      // input wire [0:0]  probe3
-		.probe13(app_size),           // input wire [7:0]  probe3
-		.probe14(app_delay),          // input wire [1:0]  probe3
-		.probe15(app_used),           // input wire [20:0]  probe3
-		.probe16(irq),                // input wire [0:0]  probe3
-		.probe17(app_active),         // input wire [0:0]  probe3
-		.probe18(app_curr_beat),      // input wire [7:0]  probe3
-		.probe19(app_last_beat),      // input wire [7:0]  probe3
-		.probe20(app_hdr_sample),     // input wire [63:0]  probe3
-		.probe21(app_hdr_blocks),     // input wire [7:0]  probe3
-		.probe22(app_hdr_flags),      // input wire [7:0]  probe3
-		.probe23(app_hdr_size),       // input wire [15:0]  probe3
-		.probe24(app_hdr_freq),       // input wire [31:0]  probe3
-		.probe25(app_hdr_angle),      // input wire [15:0]  probe3
-		.probe26(app_hdr_doa_error),  // input wire [15:0]  probe3
-		.probe27(app_hdr_max_env),    // input wire [15:0]  probe3
-		.probe28(app_hdr_max_pos),    // input wire [15:0]  probe3
-		.probe29(app_hdr_env_mean),   // input wire [15:0]  probe3
-		.probe30(app_hdr_env_std),    // input wire [15:0]  probe3
-		.probe31(app_hdr_phase_std),  // input wire [15:0]  probe3
-		.probe32(app_hdr_freq_std),   // input wire [15:0]  probe3
-		.probe33(app_env_0),          // input wire [15:0]  probe3
-		.probe34(app_env_1),          // input wire [15:0]  probe3
-		.probe35(app_env_2),          // input wire [15:0]  probe3
-		.probe36(app_env_3),          // input wire [15:0]  probe3
-		.probe37(app_env_4),          // input wire [15:0]  probe3
-		.probe38(app_env_5),          // input wire [15:0]  probe3
-		.probe39(app_env_6),          // input wire [15:0]  probe3
-		.probe40(app_env_7)           // input wire [15:0]  probe3
+		.probe13(app_delay),          // input wire [1:0]  probe3
+		.probe14(app_used),           // input wire [20:0]  probe3
+		.probe15(irq),                // input wire [0:0]  probe3
+		.probe16(app_active),         // input wire [0:0]  probe3
+		.probe17(app_curr_beat),      // input wire [7:0]  probe3
+		.probe18(app_last_beat),      // input wire [7:0]  probe3
+		.probe19(app_hdr_sample),     // input wire [63:0]  probe3
+		.probe20(app_hdr_blocks),     // input wire [7:0]  probe3
+		.probe21(app_hdr_flags),      // input wire [7:0]  probe3
+		.probe22(app_hdr_size),       // input wire [15:0]  probe3
+		.probe23(app_hdr_freq),       // input wire [31:0]  probe3
+		.probe24(app_hdr_angle),      // input wire [15:0]  probe3
+		.probe25(app_hdr_doa_error),  // input wire [15:0]  probe3
+		.probe26(app_hdr_max_env),    // input wire [15:0]  probe3
+		.probe27(app_hdr_max_pos),    // input wire [15:0]  probe3
+		.probe28(app_hdr_env_mean),   // input wire [15:0]  probe3
+		.probe29(app_hdr_env_std),    // input wire [15:0]  probe3
+		.probe30(app_hdr_phase_std),  // input wire [15:0]  probe3
+		.probe31(app_hdr_freq_std),   // input wire [15:0]  probe3
+		.probe32(app_env_0),          // input wire [15:0]  probe3
+		.probe33(app_env_1),          // input wire [15:0]  probe3
+		.probe34(app_env_2),          // input wire [15:0]  probe3
+		.probe35(app_env_3),          // input wire [15:0]  probe3
+		.probe36(app_env_4),          // input wire [15:0]  probe3
+		.probe37(app_env_5),          // input wire [15:0]  probe3
+		.probe38(app_env_6),          // input wire [15:0]  probe3
+		.probe39(app_env_7)           // input wire [15:0]  probe3
 	);
 
 	ila_8 ila_axi (
@@ -264,18 +264,20 @@ module axi_dma(
 		.probe0(fifo_count),                // input wire [13:0]  probe3
 		.probe1(app_fifo_ok),               // input wire [0:0]  probe3
 		.probe2(app_cmd_state),             // input wire [2:0]  probe3
-		.probe3(app_active),                // input wire [0:0]  probe3
-		.probe4(app_adr),                   // input wire [20:0]  probe3
-		.probe5(M_AXI_TDATA_out_cmd),       // input wire [71:0]  probe3
-		.probe6(M_AXI_TVALID_out_cmd),      // input wire [0:0]  probe3
-		.probe7(M_AXI_TREADY_out_cmd),      // input wire [0:0]  probe3
-		.probe8(M_AXI_STS_out_tdata),       // input wire [7:0]  probe3
-		.probe9(M_AXI_STS_out_tvalid),     // input wire [0:0]  probe3
-		.probe10(M_AXI_STS_out_tready),     // input wire [0:0]  probe3
-		.probe11(M_AXI_TDATA_out[15:0]),    // input wire [15:0]  probe3
-		.probe12(M_AXI_TVALID_out),         // input wire [0:0]  probe3
-		.probe13(M_AXI_TLAST_out),          // input wire [0:0]  probe3
-		.probe14(M_AXI_TREADY_out)          // input wire [0:0]  probe3
+		.probe3(has_app_size),              // input wire [0:0]  probe3
+		.probe4(app_size),                  // input wire [7:0]  probe3
+		.probe5(app_active),                // input wire [0:0]  probe3
+		.probe6(app_done),                 // input wire [0:0]  probe3
+		.probe7(app_adr),                   // input wire [20:0]  probe3
+		.probe8(M_AXI_TDATA_out_cmd),       // input wire [71:0]  probe3
+		.probe9(M_AXI_TVALID_out_cmd),      // input wire [0:0]  probe3
+		.probe10(M_AXI_TREADY_out_cmd),      // input wire [0:0]  probe3
+		.probe11(M_AXI_STS_out_tdata),       // input wire [7:0]  probe3
+		.probe12(M_AXI_STS_out_tvalid),      // input wire [0:0]  probe3
+		.probe13(M_AXI_STS_out_tready),     // input wire [0:0]  probe3
+		.probe14(M_AXI_TDATA_out[15:0]),    // input wire [15:0]  probe3
+		.probe15(M_AXI_TVALID_out),         // input wire [0:0]  probe3
+		.probe16(M_AXI_TREADY_out)          // input wire [0:0]  probe3
 	);
 
 generate
@@ -664,7 +666,7 @@ generate
         begin
             if (app_cmd_done)
             begin
-                app_adr <= app_adr + app_size + 1;
+                app_adr <= app_adr + app_last_beat + 1;
                 app_delay <= 3;
             end
             else
@@ -678,11 +680,22 @@ generate
     always @(posedge clk) 
     begin
         if (reset)
+        begin
             app_size <= 0;
+            has_app_size <= 0;
+        end
         else
         begin
             if (!fifo_empty && M_AXI_TDATA_out[79]) 
+            begin
                 app_size <= M_AXI_TDATA_out[71:64];
+                has_app_size <= 1;
+            end
+            else
+            begin
+                if (app_start_cmd)
+                    has_app_size <= 0;
+            end                
         end
     end
     
@@ -708,7 +721,7 @@ generate
                         begin
                             app_wr_ptr <= app_adr;
                         
-                            if (fifo_count != 0) 
+                            if (has_app_size) 
 							begin
                                 app_cmd_state <= APP_ST_HDR;
 								app_hdr_delay <= 3;
@@ -781,16 +794,11 @@ generate
 
     always @(posedge clk) 
     begin
-        M_AXI_TKEEP_out <= 32'hFFFFFFFF;
-    end
-
-    always @(posedge clk) 
-    begin
         if (reset)
         begin
             app_active <= 0;
             app_curr_beat <= 1;
-            M_AXI_TLAST_out <= 0;
+            app_done <= 0;
         end
         else
         begin
@@ -798,18 +806,18 @@ generate
             begin
                 if (M_AXI_TVALID_out && M_AXI_TREADY_out)
                 begin
-                    if (M_AXI_TLAST_out)
+                    if (app_done)
                     begin
                         app_active <= 0;
-                        M_AXI_TLAST_out <= 0;
+                        app_done <= 0;
                     end
                     else
                     begin
                         app_curr_beat <= app_curr_beat + 1;
                         if (app_curr_beat == app_last_beat)
-                            M_AXI_TLAST_out <= 1;
+                            app_done <= 1;
                         else
-                            M_AXI_TLAST_out <= 0;
+                            app_done <= 0;
                     end
                 end
             end
@@ -822,9 +830,9 @@ generate
                     app_last_beat <= app_size;
 
                     if (app_size == 0)
-                        M_AXI_TLAST_out <= 1;
+                        app_done <= 1;
                     else
-                        M_AXI_TLAST_out <= 0;
+                        app_done <= 0;
                 end
             end
         end

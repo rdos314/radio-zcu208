@@ -195,7 +195,7 @@
                 "BP": "C_BASEADDR",
                 "HP": "C_HIGHADDR",
                 "MA": "Data_S2MM",
-                "MX": "/axi_datamover_1",
+                "MX": "/axi_datamover_0",
                 "MI": "M_AXI_S2MM",
                 "MS": "SEG_zynq_ultra_ps_e_0_HPC0_DDR_LOW",
                 "MV": "xilinx.com:ip:axi_datamover:5.1",
