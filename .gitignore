@@ -1,6 +1,9 @@
 # Ignore build output directory
 /build
 /export
+/tmp-sdk
+**/.debug/
+/sysroot/usr/lib/mariadb
 
 # Ignore object files and dependent files
 .o
