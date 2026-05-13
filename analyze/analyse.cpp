@@ -10,10 +10,6 @@
 #define MAP_SIZE     0x4000000
 #define MAP_ENTRIES  (MAP_SIZE >> 5)
 
-#define bool int
-#define false 0
-#define true 1
-
 struct AdcEntry
 {
     short int env;
