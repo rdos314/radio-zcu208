@@ -230,9 +230,12 @@ preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 0 10 40 1230 400J 1060 NJ 1060 14
 preplace netloc adc1_clk_1 1 0 11 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ
 preplace netloc axi_datamover_0_M_AXIS_MM2S 1 4 4 2360 1220 NJ 1220 NJ 1220 3650
 preplace netloc axi_datamover_0_M_AXIS_MM2S_STS 1 4 4 2350 1060 NJ 1060 NJ 1060 3640
+preplace netloc axi_datamover_0_M_AXIS_S2MM_STS 1 4 4 2370 1230 NJ 1230 NJ 1230 3630
 preplace netloc axi_datamover_0_M_AXI_MM2S 1 7 9 3660J 1980 NJ 1980 4780J 1900 NJ 1900 NJ 1900 NJ 1900 NJ 1900 NJ 1900 8020
+preplace netloc axi_datamover_0_M_AXI_S2MM 1 7 1 N 1720
 preplace netloc axi_dma_1_M_AXI_cmd 1 5 2 NJ 1580 3110
 preplace netloc axi_dma_1_M_AXI_out 1 5 1 2730 1600n
+preplace netloc axi_dma_1_M_AXI_out_cmd 1 5 2 NJ 1620 3090
 preplace netloc axi_gpio_0_GPIO 1 17 1 NJ 3290
 preplace netloc axi_int_0_M_AXI 1 15 1 8070 1620n
 preplace netloc axi_smc_1_M00_AXI 1 8 1 4090 1760n
@@ -242,6 +245,7 @@ preplace netloc axi_smc_M01_AXI 1 10 1 5060 2130n
 preplace netloc axi_smc_M02_AXI 1 10 7 5080 2330 NJ 2330 NJ 2330 NJ 2330 NJ 2330 NJ 2330 8360J
 preplace netloc axi_smc_M03_AXI 1 10 1 5070 2170n
 preplace netloc axi_smc_M04_AXI 1 10 1 5090 220n
+preplace netloc axis_dwidth_converter_0_M_AXIS 1 6 1 3180 1660n
 preplace netloc clk104_mux_GPIO 1 17 1 NJ 3150
 preplace netloc ddr4_0_C0_DDR4 1 17 1 NJ 1990
 preplace netloc default_sysclk_c0_300mhz_1 1 0 17 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ 2020 NJ
@@ -256,10 +260,6 @@ preplace netloc vin3_01_1 1 0 11 NJ 2560 NJ 2560 NJ 2560 NJ 2560 NJ 2560 NJ 2560
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 9 7 4740J 1740 5160J 1910 NJ 1910 NJ 1910 7160J 1890 NJ 1890 8060
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_LPD 1 9 1 4740 1870n
 preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM1_FPD 1 9 1 4760 1800n
-preplace netloc axis_dwidth_converter_0_M_AXIS 1 6 1 3180 1660n
-preplace netloc axi_dma_1_M_AXI_out_cmd 1 5 2 NJ 1620 3090
-preplace netloc axi_datamover_0_M_AXI_S2MM 1 7 1 N 1720
-preplace netloc axi_datamover_0_M_AXIS_S2MM_STS 1 4 4 2370 1230 NJ 1230 NJ 1230 3630
 levelinfo -pg 1 0 220 640 1200 1810 2550 2980 3420 3870 4420 4920 5370 6100 6750 7360 7810 8210 8590 8800
 pagesize -pg 1 -db -bbox -sgen -240 0 9040 3370
 "

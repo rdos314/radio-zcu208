@@ -679,7 +679,7 @@ generate
 
     always @(posedge clk) 
     begin
-        if (reset)
+        if (reset | app_active)
         begin
             app_size <= 0;
             has_app_size <= 0;
@@ -691,11 +691,6 @@ generate
                 app_size <= M_AXI_TDATA_out[71:64];
                 has_app_size <= 1;
             end
-            else
-            begin
-                if (app_start_cmd)
-                    has_app_size <= 0;
-            end                
         end
     end
     
