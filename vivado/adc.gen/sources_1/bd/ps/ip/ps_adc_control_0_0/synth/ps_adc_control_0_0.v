@@ -64,10 +64,7 @@ module ps_adc_control_0_0 (
   data_in,
   wr_en,
   data_out,
-  adc_start,
-  adc_stop,
   sim_start,
-  adc_active,
   sim_active,
   config_low_wr,
   config_high_wr,
@@ -93,10 +90,7 @@ output wire [10 : 0] address;
 input wire [31 : 0] data_in;
 output wire [3 : 0] wr_en;
 output wire [31 : 0] data_out;
-output wire adc_start;
-output wire adc_stop;
 output wire sim_start;
-input wire adc_active;
 input wire sim_active;
 output wire config_low_wr;
 output wire config_high_wr;
@@ -116,10 +110,7 @@ output wire [31 : 0] sim_data;
     .data_in(data_in),
     .wr_en(wr_en),
     .data_out(data_out),
-    .adc_start(adc_start),
-    .adc_stop(adc_stop),
     .sim_start(sim_start),
-    .adc_active(adc_active),
     .sim_active(sim_active),
     .config_low_wr(config_low_wr),
     .config_high_wr(config_high_wr),

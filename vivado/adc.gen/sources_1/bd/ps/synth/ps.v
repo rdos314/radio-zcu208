@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Wed May 13 16:28:26 2026
+//Date        : Fri May 15 20:32:41 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -94,9 +94,6 @@ module ps
   wire [1:0]GPIO_0_tri_o;
   wire adc1_clk_clk_n;
   wire adc1_clk_clk_p;
-  wire adc_control_0_adc_active;
-  wire adc_control_0_adc_start;
-  wire adc_control_0_adc_stop;
   wire [10:0]adc_control_0_address;
   wire [10:0]adc_control_0_bram_adr_out;
   wire [7:0]adc_control_0_config_adr;
@@ -183,6 +180,8 @@ module ps
   wire [71:0]axi_dma_1_M_AXI_out_cmd_TDATA;
   wire axi_dma_1_M_AXI_out_cmd_TREADY;
   wire axi_dma_1_M_AXI_out_cmd_TVALID;
+  wire axi_dma_1_adc_start;
+  wire axi_dma_1_adc_stop;
   wire axi_dma_1_irq;
   wire [31:0]axi_dma_1_linux_wr_ptr;
   wire [26:0]axi_dma_1_rd_ptr;
@@ -453,6 +452,7 @@ module ps
   wire mts_0_freq0_reset;
   wire mts_0_freq1_clk;
   wire mts_0_freq1_reset;
+  wire mts_0_mig_adc_active;
   wire mts_0_user_sysref_adc;
   wire pl_clk_n;
   wire pl_clk_p;
@@ -647,10 +647,7 @@ module ps
   assign ddr4_sdram_c0_cke = \^ddr4_sdram_c0_cke [0];
   assign ddr4_sdram_c0_odt = \^ddr4_sdram_c0_odt [0];
   ps_adc_control_0_0 adc_control_0
-       (.adc_active(adc_control_0_adc_active),
-        .adc_start(adc_control_0_adc_start),
-        .adc_stop(adc_control_0_adc_stop),
-        .address(adc_control_0_address),
+       (.address(adc_control_0_address),
         .bram_adr_in(axi_bram_ctrl_0_bram_addr_a),
         .bram_adr_out(adc_control_0_bram_adr_out),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -854,6 +851,9 @@ module ps
         .M_AXI_TVALID_in_cmd(axi_dma_1_M_AXI_cmd_TVALID),
         .M_AXI_TVALID_out(axi_dma_1_M_AXI_out_TVALID),
         .M_AXI_TVALID_out_cmd(axi_dma_1_M_AXI_out_cmd_TVALID),
+        .adc_active(mts_0_mig_adc_active),
+        .adc_start(axi_dma_1_adc_start),
+        .adc_stop(axi_dma_1_adc_stop),
         .clk(ddr4_0_c0_ddr4_ui_clk),
         .irq(axi_dma_1_irq),
         .linux_rd_ptr(gpio_linux_ptr_gpio2_io_o),
@@ -1463,9 +1463,6 @@ module ps
         .ana0_reset(mts_0_ana0_reset),
         .ana1_clk(mts_0_ana1_clk),
         .ana1_reset(mts_0_ana1_reset),
-        .axi_adc_active(adc_control_0_adc_active),
-        .axi_adc_start(adc_control_0_adc_start),
-        .axi_adc_stop(adc_control_0_adc_stop),
         .axi_clk(zynq_ultra_ps_e_0_pl_clk0),
         .axi_sim_active(adc_control_0_sim_active),
         .axi_sim_start(adc_control_0_sim_start),
@@ -1487,6 +1484,9 @@ module ps
         .freq0_reset(mts_0_freq0_reset),
         .freq1_clk(mts_0_freq1_clk),
         .freq1_reset(mts_0_freq1_reset),
+        .mig_adc_active(mts_0_mig_adc_active),
+        .mig_adc_start(axi_dma_1_adc_start),
+        .mig_adc_stop(axi_dma_1_adc_stop),
         .mig_clk(ddr4_0_c0_ddr4_ui_clk),
         .mig_resetn(mts_0_axi_reset_out),
         .pl_clk(util_ds_buf_0_IBUF_OUT),

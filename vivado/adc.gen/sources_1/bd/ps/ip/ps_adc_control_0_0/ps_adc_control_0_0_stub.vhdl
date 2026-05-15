@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Wed Mar 25 19:15:54 2026
+-- Date        : Fri May 15 18:56:53 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_adc_control_0_0/ps_adc_control_0_0_stub.vhdl
@@ -23,10 +23,7 @@ entity ps_adc_control_0_0 is
     data_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     wr_en : out STD_LOGIC_VECTOR ( 3 downto 0 );
     data_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    adc_start : out STD_LOGIC;
-    adc_stop : out STD_LOGIC;
     sim_start : out STD_LOGIC;
-    adc_active : in STD_LOGIC;
     sim_active : in STD_LOGIC;
     config_low_wr : out STD_LOGIC;
     config_high_wr : out STD_LOGIC;
@@ -52,7 +49,7 @@ architecture stub of ps_adc_control_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,bram_adr_in[12:0],bram_adr_out[10:0],address[10:0],data_in[31:0],wr_en[3:0],data_out[31:0],adc_start,adc_stop,sim_start,adc_active,sim_active,config_low_wr,config_high_wr,config_adr[7:0],config_data[31:0],sim_low_wr,sim_high_wr,sim_channel[1:0],sim_data[31:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,bram_adr_in[12:0],bram_adr_out[10:0],address[10:0],data_in[31:0],wr_en[3:0],data_out[31:0],sim_start,sim_active,config_low_wr,config_high_wr,config_adr[7:0],config_data[31:0],sim_low_wr,sim_high_wr,sim_channel[1:0],sim_data[31:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

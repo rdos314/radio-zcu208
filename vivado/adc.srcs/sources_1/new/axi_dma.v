@@ -10,6 +10,10 @@ module axi_dma(
 
     output reg [31:0] linux_wr_ptr,
     input wire [31:0] linux_rd_ptr,
+    
+    input wire adc_active,
+    output reg adc_start,
+    output reg adc_stop,
             
     output reg [71:0] M_AXI_TDATA_in_cmd,
     output reg M_AXI_TVALID_in_cmd,
@@ -48,6 +52,9 @@ module axi_dma(
     localparam APP_ST_WAIT_COMPLETE = 3'd3;
 
     reg reset;
+    
+    reg [2:0] adc_start_delay;
+    reg [2:0] adc_stop_delay;
 
     wire [5:0] linux_base = 6'b011101;   // Linux base is always 0x74000000
 
@@ -174,6 +181,7 @@ module axi_dma(
 	    .empty(fifo_empty)
 	);
 
+/*
 	ila_7 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(fifo_count),          // input wire [13:0]  probe3
@@ -259,26 +267,8 @@ module axi_dma(
 		.probe39(app_env_7)           // input wire [15:0]  probe3
 	);
 
-	ila_8 ila_axi (
-		.clk(clk),                          // input wire clk
-		.probe0(fifo_count),                // input wire [13:0]  probe3
-		.probe1(app_fifo_ok),               // input wire [0:0]  probe3
-		.probe2(app_cmd_state),             // input wire [2:0]  probe3
-		.probe3(has_app_size),              // input wire [0:0]  probe3
-		.probe4(app_size),                  // input wire [7:0]  probe3
-		.probe5(app_active),                // input wire [0:0]  probe3
-		.probe6(app_done),                 // input wire [0:0]  probe3
-		.probe7(app_adr),                   // input wire [20:0]  probe3
-		.probe8(M_AXI_TDATA_out_cmd),       // input wire [71:0]  probe3
-		.probe9(M_AXI_TVALID_out_cmd),      // input wire [0:0]  probe3
-		.probe10(M_AXI_TREADY_out_cmd),      // input wire [0:0]  probe3
-		.probe11(M_AXI_STS_out_tdata),       // input wire [7:0]  probe3
-		.probe12(M_AXI_STS_out_tvalid),      // input wire [0:0]  probe3
-		.probe13(M_AXI_STS_out_tready),     // input wire [0:0]  probe3
-		.probe14(M_AXI_TDATA_out[15:0]),    // input wire [15:0]  probe3
-		.probe15(M_AXI_TVALID_out),         // input wire [0:0]  probe3
-		.probe16(M_AXI_TREADY_out)          // input wire [0:0]  probe3
-	);
+
+*/
 
 generate
   begin : axi_dma
@@ -572,7 +562,60 @@ generate
     always @(posedge clk) 
     begin
         linux_wr_ptr <= {11'b000000000000, app_wr_ptr};
-        app_rd_ptr <= linux_rd_ptr[20:0];
+        if (linux_rd_ptr[31] == 0)
+            app_rd_ptr <= linux_rd_ptr[20:0];
+    end
+
+    always @(posedge clk) 
+    begin
+        if (reset)
+        begin
+            adc_start_delay <= 0;
+            adc_stop_delay <= 0;
+        end
+        else
+        begin
+            if (adc_start_delay || adc_stop_delay)
+            begin
+                if (adc_start_delay)
+                    adc_start_delay <= adc_start_delay - 1;
+
+                if (adc_stop_delay)
+                    adc_stop_delay <= adc_stop_delay - 1;
+            end
+            else
+            begin
+                if (linux_rd_ptr[31] == 1)
+                begin
+                    if (linux_rd_ptr[0])
+                    begin
+                        if (!adc_active)
+                            adc_start_delay <= 3'b111;
+                    end
+                    else
+                    begin
+                        if (adc_active)
+                            adc_stop_delay <= 3'b111;
+                    end
+                end
+            end
+        end
+    end
+
+    always @(posedge clk) 
+    begin
+        if (adc_start_delay)
+            adc_start <= 1;
+        else
+            adc_start <= 0;
+    end
+
+    always @(posedge clk) 
+    begin
+        if (adc_stop_delay)
+            adc_stop <= 1;
+        else
+            adc_stop <= 0;
     end
 
     always @(posedge clk) 

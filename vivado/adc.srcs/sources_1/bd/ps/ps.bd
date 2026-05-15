@@ -2106,6 +2106,15 @@
               }
             }
           },
+          "mig_adc_start": {
+            "direction": "I"
+          },
+          "mig_adc_stop": {
+            "direction": "I"
+          },
+          "mig_adc_active": {
+            "direction": "O"
+          },
           "axi_clk": {
             "type": "clk",
             "direction": "I",
@@ -2134,17 +2143,8 @@
               }
             }
           },
-          "axi_adc_start": {
-            "direction": "I"
-          },
           "axi_sim_start": {
             "direction": "I"
-          },
-          "axi_adc_stop": {
-            "direction": "I"
-          },
-          "axi_adc_active": {
-            "direction": "O"
           },
           "axi_sim_active": {
             "direction": "O"
@@ -2807,17 +2807,8 @@
             "left": "31",
             "right": "0"
           },
-          "adc_start": {
-            "direction": "O"
-          },
-          "adc_stop": {
-            "direction": "O"
-          },
           "sim_start": {
             "direction": "O"
-          },
-          "adc_active": {
-            "direction": "I"
           },
           "sim_active": {
             "direction": "I"
@@ -5397,6 +5388,15 @@
             "direction": "I",
             "left": "31",
             "right": "0"
+          },
+          "adc_active": {
+            "direction": "I"
+          },
+          "adc_start": {
+            "direction": "O"
+          },
+          "adc_stop": {
+            "direction": "O"
           }
         }
       },
@@ -5783,24 +5783,6 @@
       }
     },
     "nets": {
-      "adc_control_0_adc_active": {
-        "ports": [
-          "mts_0/axi_adc_active",
-          "adc_control_0/adc_active"
-        ]
-      },
-      "adc_control_0_adc_start": {
-        "ports": [
-          "adc_control_0/adc_start",
-          "mts_0/axi_adc_start"
-        ]
-      },
-      "adc_control_0_adc_stop": {
-        "ports": [
-          "adc_control_0/adc_stop",
-          "mts_0/axi_adc_stop"
-        ]
-      },
       "adc_control_0_address": {
         "ports": [
           "adc_control_0/address",
@@ -5816,8 +5798,8 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "ana_low/config_adr",
           "ana_high/config_adr",
+          "ana_low/config_adr",
           "comp_ana_low/config_adr",
           "comp_ana_high/config_adr"
         ]
@@ -5825,8 +5807,8 @@
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "ana_low/config_data",
           "ana_high/config_data",
+          "ana_low/config_data",
           "comp_ana_low/config_data",
           "comp_ana_high/config_data"
         ]
@@ -6043,6 +6025,18 @@
         "ports": [
           "axi_bram/doutb",
           "adc_control_0/data_in"
+        ]
+      },
+      "axi_dma_1_adc_start": {
+        "ports": [
+          "axi_dma_1/adc_start",
+          "mts_0/mig_adc_start"
+        ]
+      },
+      "axi_dma_1_adc_stop": {
+        "ports": [
+          "axi_dma_1/adc_stop",
+          "mts_0/mig_adc_stop"
         ]
       },
       "axi_dma_1_irq": {
@@ -6273,15 +6267,15 @@
           "zynq_ultra_ps_e_0/maxihpm1_fpd_aclk",
           "zynq_ultra_ps_e_0/saxihpc0_fpd_aclk",
           "gpio_linux_ptr/s_axi_aclk",
-          "mts_0/mig_clk",
-          "comp_ana_low/axi_clk",
-          "comp_ana_high/axi_clk",
           "axi_int_0/clk",
           "axis_dwidth_converter_0/aclk",
           "rst_ps_333M/slowest_sync_clk",
           "axi_datamover_0/m_axi_s2mm_aclk",
           "axi_datamover_0/m_axis_s2mm_cmdsts_awclk",
-          "axi_dma_1/clk"
+          "comp_ana_low/axi_clk",
+          "comp_ana_high/axi_clk",
+          "axi_dma_1/clk",
+          "mts_0/mig_clk"
         ]
       },
       "ddr4_0_c0_init_calib_complete": {
@@ -6576,8 +6570,8 @@
       "mts_0_comp0_clk": {
         "ports": [
           "mts_0/comp0_clk",
-          "comp_low/clk",
-          "comp_ana_low/fifo_clk"
+          "comp_ana_low/fifo_clk",
+          "comp_low/clk"
         ]
       },
       "mts_0_comp0_reset": {
@@ -6672,8 +6666,8 @@
       "mts_0_freq0_clk": {
         "ports": [
           "mts_0/freq0_clk",
-          "ana_low/fifo_clk",
-          "freq_low_46_0/clk"
+          "freq_low_46_0/clk",
+          "ana_low/fifo_clk"
         ]
       },
       "mts_0_freq0_reset": {
@@ -6693,6 +6687,12 @@
         "ports": [
           "mts_0/freq1_reset",
           "freq_high_189_0/reset"
+        ]
+      },
+      "mts_0_mig_adc_active": {
+        "ports": [
+          "mts_0/mig_adc_active",
+          "axi_dma_1/adc_active"
         ]
       },
       "mts_0_user_sysref_adc": {
@@ -6849,17 +6849,17 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "ana_low/config_clk",
           "ana_high/config_clk",
           "deci_high/sim_clk",
           "deci_low/sim_clk",
-          "adc_control_0/clk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "mts_0/axi_clk",
+          "ana_low/config_clk",
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
-          "comp_ana_high/pl_clk"
+          "comp_ana_high/pl_clk",
+          "adc_control_0/clk",
+          "mts_0/axi_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

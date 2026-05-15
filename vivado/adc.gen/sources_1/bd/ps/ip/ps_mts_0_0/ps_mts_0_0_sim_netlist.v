@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun May  3 12:42:47 2026
+// Date        : Fri May 15 20:33:15 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_sim_netlist.v
@@ -22,12 +22,12 @@ module ps_mts_0_0
     sys_reset,
     mig_clk,
     mig_resetn,
+    mig_adc_start,
+    mig_adc_stop,
+    mig_adc_active,
     axi_clk,
     axi_resetn,
-    axi_adc_start,
     axi_sim_start,
-    axi_adc_stop,
-    axi_adc_active,
     axi_sim_active,
     deci_clk,
     deci_resetn,
@@ -57,12 +57,12 @@ module ps_mts_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input sys_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 mig_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_clk, ASSOCIATED_RESET mig_resetn, FREQ_HZ 333250000, FREQ_TOLERANCE_HZ 0, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, INSERT_VIP 0" *) input mig_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 mig_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output mig_resetn;
+  input mig_adc_start;
+  input mig_adc_stop;
+  output mig_adc_active;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 axi_clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, ASSOCIATED_RESET axi_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input axi_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 axi_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output axi_resetn;
-  input axi_adc_start;
   input axi_sim_start;
-  input axi_adc_stop;
-  output axi_adc_active;
   output axi_sim_active;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_clk, ASSOCIATED_RESET deci_resetn, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_deci_clk, INSERT_VIP 0" *) output deci_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 deci_resetn RST" *) (* X_INTERFACE_MODE = "master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME deci_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output deci_resetn;
@@ -92,9 +92,6 @@ module ps_mts_0_0
   wire ana0_reset;
   wire ana1_clk;
   wire ana1_reset;
-  wire axi_adc_active;
-  wire axi_adc_start;
-  wire axi_adc_stop;
   wire axi_clk;
   wire axi_resetn;
   wire axi_sim_active;
@@ -117,6 +114,9 @@ module ps_mts_0_0
   wire freq0_reset;
   wire freq1_clk;
   wire freq1_reset;
+  wire mig_adc_active;
+  wire mig_adc_start;
+  wire mig_adc_stop;
   wire mig_clk;
   wire mig_resetn;
   wire pl_clk;
@@ -129,9 +129,6 @@ module ps_mts_0_0
         .ana0_reset(ana0_reset),
         .ana1_clk(ana1_clk),
         .ana1_reset(ana1_reset),
-        .axi_adc_active(axi_adc_active),
-        .axi_adc_start(axi_adc_start),
-        .axi_adc_stop(axi_adc_stop),
         .axi_clk(axi_clk),
         .axi_resetn(axi_resetn),
         .axi_sim_active(axi_sim_active),
@@ -154,6 +151,9 @@ module ps_mts_0_0
         .freq0_reset(freq0_reset),
         .freq1_clk(freq1_clk),
         .freq1_reset(freq1_reset),
+        .mig_adc_active(mig_adc_active),
+        .mig_adc_start(mig_adc_start),
+        .mig_adc_stop(mig_adc_stop),
         .mig_clk(mig_clk),
         .mig_resetn(mig_resetn),
         .pl_clk(pl_clk),
@@ -202,19 +202,48 @@ module ps_mts_0_0_clk_wiz_deci
 
 endmodule
 
-(* ORIG_REF_NAME = "mts" *) 
+(* CHECK_LICENSE_TYPE = "ila_8,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_8" *) 
+(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+module ps_mts_0_0_ila_8
+   (clk,
+    probe0,
+    probe1,
+    probe2,
+    probe3,
+    probe4,
+    probe5,
+    probe6,
+    probe7,
+    probe8,
+    probe9);
+  (* syn_isclock = "1" *) input clk;
+  input [0:0]probe0;
+  input [0:0]probe1;
+  input [0:0]probe2;
+  input [0:0]probe3;
+  input [0:0]probe4;
+  input [1:0]probe5;
+  input [0:0]probe6;
+  input [0:0]probe7;
+  input [0:0]probe8;
+  input [0:0]probe9;
+
+
+endmodule
+
+(* ORIG_REF_NAME = "mts" *) (* keep_hierarchy = "soft" *) 
 module ps_mts_0_0_mts
    (pl_clk,
     pl_sysref,
     sys_reset,
     mig_clk,
     mig_resetn,
+    mig_adc_start,
+    mig_adc_stop,
+    mig_adc_active,
     axi_clk,
     axi_resetn,
-    axi_adc_start,
     axi_sim_start,
-    axi_adc_stop,
-    axi_adc_active,
     axi_sim_active,
     deci_clk,
     deci_resetn,
@@ -244,12 +273,12 @@ module ps_mts_0_0_mts
   input sys_reset;
   input mig_clk;
   output mig_resetn;
+  input mig_adc_start;
+  input mig_adc_stop;
+  output mig_adc_active;
   input axi_clk;
   output axi_resetn;
-  input axi_adc_start;
   input axi_sim_start;
-  input axi_adc_stop;
-  output axi_adc_active;
   output axi_sim_active;
   (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output deci_clk;
   output deci_resetn;
@@ -275,11 +304,6 @@ module ps_mts_0_0_mts
   (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME COMP_ANA1_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *) output comp_ana1_clk;
   output comp_ana1_reset;
 
-  wire \FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ;
-  wire \FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ;
-  wire \FSM_onehot_mts.deci_adc_counter_reg_n_0_[0] ;
-  wire \FSM_onehot_mts.deci_adc_counter_reg_n_0_[1] ;
-  wire \FSM_onehot_mts.deci_adc_counter_reg_n_0_[3] ;
   wire adc_active;
   wire adc_axi_start;
   wire adc_axi_stop;
@@ -295,11 +319,8 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire ana1_reset_2;
   wire ana_clk_buf;
   wire ana_locked;
-  wire axi_adc_active;
   (* async_reg = "true" *) wire axi_adc_active_1;
   (* async_reg = "true" *) wire axi_adc_active_2;
-  wire axi_adc_start;
-  wire axi_adc_stop;
   wire axi_clk;
   (* async_reg = "true" *) wire axi_reset_1;
   (* async_reg = "true" *) wire axi_reset_2;
@@ -332,15 +353,14 @@ module ps_mts_0_0_mts
   wire comp_ana_locked;
   wire comp_clk_buf;
   wire comp_locked;
-  wire deci_adc_active;
-  wire deci_adc_start;
-  wire deci_adc_start0;
+  (* MARK_DEBUG *) wire deci_adc_active;
+  (* MARK_DEBUG *) wire [1:0]deci_adc_counter;
+  (* MARK_DEBUG *) wire deci_adc_start;
   (* async_reg = "true" *) wire deci_adc_start_1;
   (* async_reg = "true" *) wire deci_adc_start_2;
   wire deci_adc_start_curr;
   wire deci_adc_start_prev;
-  wire deci_adc_stop;
-  wire deci_adc_stop0;
+  (* MARK_DEBUG *) wire deci_adc_stop;
   (* async_reg = "true" *) wire deci_adc_stop_1;
   (* async_reg = "true" *) wire deci_adc_stop_2;
   wire deci_adc_stop_curr;
@@ -354,12 +374,11 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire deci_reset_1;
   (* async_reg = "true" *) wire deci_reset_2;
   (* async_reg = "true" *) wire deci_reset_async;
-  wire deci_reset_async2_out;
-  wire deci_resetn;
-  wire deci_sim_active_high;
-  wire deci_sim_active_low;
-  wire deci_sim_start;
-  wire deci_sim_start0;
+  wire deci_reset_async6_out;
+  (* MARK_DEBUG *) wire deci_resetn;
+  (* MARK_DEBUG *) wire deci_sim_active_high;
+  (* MARK_DEBUG *) wire deci_sim_active_low;
+  (* MARK_DEBUG *) wire deci_sim_start;
   (* async_reg = "true" *) wire deci_sim_start_1;
   (* async_reg = "true" *) wire deci_sim_start_2;
   wire deci_sim_start_curr;
@@ -376,6 +395,9 @@ module ps_mts_0_0_mts
   (* async_reg = "true" *) wire freq1_reset_2;
   wire freq_clk_buf;
   wire freq_locked;
+  wire mig_adc_active;
+  wire mig_adc_start;
+  wire mig_adc_stop;
   wire mig_clk;
   (* async_reg = "true" *) wire mig_reset_1;
   (* async_reg = "true" *) wire mig_reset_2;
@@ -385,12 +407,16 @@ module ps_mts_0_0_mts
   wire \mts.comp0_reset_1_reg0 ;
   wire \mts.comp_ana0_reset_1_reg0 ;
   wire \mts.deci_adc_active_i_1_n_0 ;
+  wire \mts.deci_adc_counter[1]_i_1_n_0 ;
+  wire \mts.deci_adc_start_reg0 ;
+  wire \mts.deci_adc_stop_reg0 ;
   wire \mts.deci_resetn_i_1_n_0 ;
+  wire \mts.deci_sim_start_reg0 ;
   wire \mts.freq0_reset_1_reg0 ;
   wire \mts.mig_resetn_i_1_n_0 ;
   wire \mts.sim_active_reg0 ;
   wire \mts.sysref_active_i_1_n_0 ;
-  wire \mts.sysref_active_reg_n_0 ;
+  wire [1:0]p_0_in__0;
   wire pl_clk;
   wire pl_clk_buf;
   wire pl_sysref;
@@ -398,62 +424,11 @@ module ps_mts_0_0_mts
   wire sim_active;
   wire sim_axi_start;
   wire sys_reset;
-  wire sysref_active;
+  (* MARK_DEBUG *) wire sysref_active;
   (* async_reg = "true" *) wire sysref_r;
   (* async_reg = "true" *) wire [2:0]sysref_sync;
-  wire user_sysref_adc;
+  (* MARK_DEBUG *) wire user_sysref_adc;
 
-  LUT1 #(
-    .INIT(2'h1)) 
-    \FSM_onehot_mts.deci_adc_counter[3]_i_1 
-       (.I0(deci_resetn),
-        .O(\FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFEEEFEEEFEEE)) 
-    \FSM_onehot_mts.deci_adc_counter[3]_i_2 
-       (.I0(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[3] ),
-        .I1(sysref_active),
-        .I2(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[0] ),
-        .I3(deci_adc_start),
-        .I4(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[1] ),
-        .I5(user_sysref_adc),
-        .O(\FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010" *) 
-  FDSE #(
-    .INIT(1'b1)) 
-    \FSM_onehot_mts.deci_adc_counter_reg[0] 
-       (.C(deci_clk),
-        .CE(\FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ),
-        .D(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[3] ),
-        .Q(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[0] ),
-        .S(\FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_mts.deci_adc_counter_reg[1] 
-       (.C(deci_clk),
-        .CE(\FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ),
-        .D(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[0] ),
-        .Q(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[1] ),
-        .R(\FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_mts.deci_adc_counter_reg[2] 
-       (.C(deci_clk),
-        .CE(\FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ),
-        .D(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[1] ),
-        .Q(sysref_active),
-        .R(\FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:0001,iSTATE0:1000,iSTATE1:0100,iSTATE2:0010" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_mts.deci_adc_counter_reg[3] 
-       (.C(deci_clk),
-        .CE(\FSM_onehot_mts.deci_adc_counter[3]_i_2_n_0 ),
-        .D(sysref_active),
-        .Q(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[3] ),
-        .R(\FSM_onehot_mts.deci_adc_counter[3]_i_1_n_0 ));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* XILINX_LEGACY_PRIM = "BUFG" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
@@ -618,6 +593,21 @@ module ps_mts_0_0_mts
         .clk_out1(freq0_raw_clk),
         .clk_out2(freq1_raw_clk),
         .locked(freq_locked));
+  (* CHECK_LICENSE_TYPE = "ila_8,ila,{}" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+  ps_mts_0_0_ila_8 ila_i
+       (.clk(deci_clk),
+        .probe0(deci_resetn),
+        .probe1(sysref_active),
+        .probe2(user_sysref_adc),
+        .probe3(deci_adc_start),
+        .probe4(deci_adc_stop),
+        .probe5(deci_adc_counter),
+        .probe6(deci_adc_active),
+        .probe7(deci_sim_start),
+        .probe8(deci_sim_active_low),
+        .probe9(deci_sim_active_high));
   FDRE \mts.adc_active_reg 
        (.C(deci_clk),
         .CE(1'b1),
@@ -625,15 +615,15 @@ module ps_mts_0_0_mts
         .Q(adc_active),
         .R(1'b0));
   FDRE \mts.adc_axi_start_reg 
-       (.C(axi_clk),
+       (.C(mig_clk),
         .CE(1'b1),
-        .D(axi_adc_start),
+        .D(mig_adc_start),
         .Q(adc_axi_start),
         .R(1'b0));
   FDRE \mts.adc_axi_stop_reg 
-       (.C(axi_clk),
+       (.C(mig_clk),
         .CE(1'b1),
-        .D(axi_adc_stop),
+        .D(mig_adc_stop),
         .Q(adc_axi_stop),
         .R(1'b0));
   LUT2 #(
@@ -689,7 +679,7 @@ module ps_mts_0_0_mts
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDRE \mts.axi_adc_active_1_reg 
-       (.C(axi_clk),
+       (.C(mig_clk),
         .CE(1'b1),
         .D(adc_active),
         .Q(axi_adc_active_1),
@@ -697,16 +687,10 @@ module ps_mts_0_0_mts
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDRE \mts.axi_adc_active_2_reg 
-       (.C(axi_clk),
+       (.C(mig_clk),
         .CE(1'b1),
         .D(axi_adc_active_1),
         .Q(axi_adc_active_2),
-        .R(1'b0));
-  FDRE \mts.axi_adc_active_reg 
-       (.C(axi_clk),
-        .CE(1'b1),
-        .D(axi_adc_active_2),
-        .Q(axi_adc_active),
         .R(1'b0));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -857,21 +841,60 @@ module ps_mts_0_0_mts
         .D(comp_ana1_reset_2),
         .Q(comp_ana1_reset),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'hF400)) 
+  LUT5 #(
+    .INIT(32'h44F40000)) 
     \mts.deci_adc_active_i_1 
        (.I0(deci_adc_stop),
         .I1(deci_adc_active),
-        .I2(\FSM_onehot_mts.deci_adc_counter_reg_n_0_[3] ),
-        .I3(deci_resetn),
+        .I2(deci_adc_counter[0]),
+        .I3(deci_adc_counter[1]),
+        .I4(deci_resetn),
         .O(\mts.deci_adc_active_i_1_n_0 ));
+  (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_active_reg 
        (.C(deci_clk),
         .CE(1'b1),
         .D(\mts.deci_adc_active_i_1_n_0 ),
         .Q(deci_adc_active),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'h4F4C)) 
+    \mts.deci_adc_counter[0]_i_1 
+       (.I0(user_sysref_adc),
+        .I1(deci_adc_counter[1]),
+        .I2(deci_adc_counter[0]),
+        .I3(deci_adc_start),
+        .O(p_0_in__0[0]));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \mts.deci_adc_counter[1]_i_1 
+       (.I0(deci_resetn),
+        .O(\mts.deci_adc_counter[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hA4)) 
+    \mts.deci_adc_counter[1]_i_2 
+       (.I0(deci_adc_counter[0]),
+        .I1(deci_adc_start),
+        .I2(deci_adc_counter[1]),
+        .O(p_0_in__0[1]));
+  (* FSM_ENCODED_STATES = "iSTATE:00,iSTATE0:01,iSTATE1:10,iSTATE2:11" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \mts.deci_adc_counter_reg[0] 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(p_0_in__0[0]),
+        .Q(deci_adc_counter[0]),
+        .R(\mts.deci_adc_counter[1]_i_1_n_0 ));
+  (* FSM_ENCODED_STATES = "iSTATE:00,iSTATE0:01,iSTATE1:10,iSTATE2:11" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "yes" *) 
+  FDRE \mts.deci_adc_counter_reg[1] 
+       (.C(deci_clk),
+        .CE(1'b1),
+        .D(p_0_in__0[1]),
+        .Q(deci_adc_counter[1]),
+        .R(\mts.deci_adc_counter[1]_i_1_n_0 ));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_start_1_reg 
@@ -899,17 +922,18 @@ module ps_mts_0_0_mts
     \mts.deci_adc_start_i_1 
        (.I0(deci_adc_start_curr),
         .I1(deci_adc_start_prev),
-        .O(deci_adc_start0));
+        .O(\mts.deci_adc_start_reg0 ));
   FDRE \mts.deci_adc_start_prev_reg 
        (.C(deci_clk),
         .CE(1'b1),
         .D(deci_adc_start_curr),
         .Q(deci_adc_start_prev),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_start_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_adc_start0),
+        .D(\mts.deci_adc_start_reg0 ),
         .Q(deci_adc_start),
         .R(1'b0));
   (* ASYNC_REG *) 
@@ -939,17 +963,18 @@ module ps_mts_0_0_mts
     \mts.deci_adc_stop_i_1 
        (.I0(deci_adc_stop_curr),
         .I1(deci_adc_stop_prev),
-        .O(deci_adc_stop0));
+        .O(\mts.deci_adc_stop_reg0 ));
   FDRE \mts.deci_adc_stop_prev_reg 
        (.C(deci_clk),
         .CE(1'b1),
         .D(deci_adc_stop_curr),
         .Q(deci_adc_stop_prev),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \mts.deci_adc_stop_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_adc_stop0),
+        .D(\mts.deci_adc_stop_reg0 ),
         .Q(deci_adc_stop),
         .R(1'b0));
   LUT4 #(
@@ -1046,13 +1071,13 @@ module ps_mts_0_0_mts
         .I2(deci_release_cnt[2]),
         .I3(deci_release_cnt[0]),
         .I4(deci_release_cnt[1]),
-        .O(deci_reset_async2_out));
+        .O(deci_reset_async6_out));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDPE \mts.deci_reset_async_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_reset_async2_out),
+        .D(deci_reset_async6_out),
         .PRE(rst_async),
         .Q(deci_reset_async));
   LUT1 #(
@@ -1060,6 +1085,7 @@ module ps_mts_0_0_mts
     \mts.deci_resetn_i_1 
        (.I0(deci_reset_2),
         .O(\mts.deci_resetn_i_1_n_0 ));
+  (* KEEP = "yes" *) 
   FDRE \mts.deci_resetn_reg 
        (.C(deci_clk),
         .CE(1'b1),
@@ -1093,17 +1119,18 @@ module ps_mts_0_0_mts
     \mts.deci_sim_start_i_1 
        (.I0(deci_sim_start_curr),
         .I1(deci_sim_start_prev),
-        .O(deci_sim_start0));
+        .O(\mts.deci_sim_start_reg0 ));
   FDRE \mts.deci_sim_start_prev_reg 
        (.C(deci_clk),
         .CE(1'b1),
         .D(deci_sim_start_curr),
         .Q(deci_sim_start_prev),
         .R(1'b0));
+  (* KEEP = "yes" *) 
   FDRE \mts.deci_sim_start_reg 
        (.C(deci_clk),
         .CE(1'b1),
-        .D(deci_sim_start0),
+        .D(\mts.deci_sim_start_reg0 ),
         .Q(deci_sim_start),
         .R(1'b0));
   LUT2 #(
@@ -1156,6 +1183,12 @@ module ps_mts_0_0_mts
         .D(freq1_reset_2),
         .Q(freq1_reset),
         .R(1'b0));
+  FDRE \mts.mig_adc_active_reg 
+       (.C(mig_clk),
+        .CE(1'b1),
+        .D(axi_adc_active_2),
+        .Q(mig_adc_active),
+        .R(1'b0));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDRE \mts.mig_reset_1_reg 
@@ -1201,19 +1234,20 @@ module ps_mts_0_0_mts
         .D(axi_sim_start),
         .Q(sim_axi_start),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'h57)) 
+  LUT4 #(
+    .INIT(16'h55F7)) 
     \mts.sysref_active_i_1 
        (.I0(deci_resetn),
-        .I1(sysref_active),
-        .I2(deci_adc_active),
+        .I1(deci_adc_counter[1]),
+        .I2(deci_adc_counter[0]),
+        .I3(deci_adc_active),
         .O(\mts.sysref_active_i_1_n_0 ));
+  (* KEEP = "yes" *) 
   FDRE \mts.sysref_active_reg 
        (.C(deci_clk),
         .CE(1'b1),
         .D(\mts.sysref_active_i_1_n_0 ),
-        .Q(\mts.sysref_active_reg_n_0 ),
+        .Q(sysref_active),
         .R(1'b0));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -1259,8 +1293,8 @@ module ps_mts_0_0_mts
         .O(pl_clk_buf));
   LUT2 #(
     .INIT(4'h8)) 
-    user_sysref_adc_INST_0
-       (.I0(\mts.sysref_active_reg_n_0 ),
+    user_sysref_adc_inferred_i_1
+       (.I0(sysref_active),
         .I1(sysref_sync[2]),
         .O(user_sysref_adc));
 endmodule

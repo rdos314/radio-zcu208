@@ -590,9 +590,7 @@ module comp_burst(
 		.probe21(p5_wr),          // input wire [0:0]  probe3
 		.probe22(burst_wr)        // input wire [0:0]  probe3
 	);
-*/
 
-/*
 	ila_0 ila_axi (
 		.clk(axi_clk),                // input wire clk
 		.probe0(data_empty),          // input wire [0:0]  probe3
@@ -830,7 +828,7 @@ generate
         begin
             if (axi_get | axi_skip)
             begin
-                blocks <= {fifo_data[71:64], 1'b0};
+                blocks <= {fifo_data[71:64], 1'b1};
 
                 if (axi_get)
                 begin

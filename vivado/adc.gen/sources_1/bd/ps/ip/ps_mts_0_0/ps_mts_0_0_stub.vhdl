@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun May  3 12:42:47 2026
+-- Date        : Fri May 15 20:33:15 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_mts_0_0/ps_mts_0_0_stub.vhdl
@@ -20,12 +20,12 @@ entity ps_mts_0_0 is
     sys_reset : in STD_LOGIC;
     mig_clk : in STD_LOGIC;
     mig_resetn : out STD_LOGIC;
+    mig_adc_start : in STD_LOGIC;
+    mig_adc_stop : in STD_LOGIC;
+    mig_adc_active : out STD_LOGIC;
     axi_clk : in STD_LOGIC;
     axi_resetn : out STD_LOGIC;
-    axi_adc_start : in STD_LOGIC;
     axi_sim_start : in STD_LOGIC;
-    axi_adc_stop : in STD_LOGIC;
-    axi_adc_active : out STD_LOGIC;
     axi_sim_active : out STD_LOGIC;
     deci_clk : out STD_LOGIC;
     deci_resetn : out STD_LOGIC;
@@ -66,7 +66,7 @@ architecture stub of ps_mts_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,mig_clk,mig_resetn,axi_clk,axi_resetn,axi_adc_start,axi_sim_start,axi_adc_stop,axi_adc_active,axi_sim_active,deci_clk,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,ana0_clk,ana0_reset,ana1_clk,ana1_reset,freq0_clk,freq0_reset,freq1_clk,freq1_reset,comp0_clk,comp0_reset,comp1_clk,comp1_reset,comp_ana0_clk,comp_ana0_reset,comp_ana1_clk,comp_ana1_reset";
+  attribute black_box_pad_pin of stub : architecture is "pl_clk,pl_sysref,sys_reset,mig_clk,mig_resetn,mig_adc_start,mig_adc_stop,mig_adc_active,axi_clk,axi_resetn,axi_sim_start,axi_sim_active,deci_clk,deci_resetn,user_sysref_adc,deci_adc_active,deci_sim_start,deci_sim_active_low,deci_sim_active_high,ana0_clk,ana0_reset,ana1_clk,ana1_reset,freq0_clk,freq0_reset,freq1_clk,freq1_reset,comp0_clk,comp0_reset,comp1_clk,comp1_reset,comp_ana0_clk,comp_ana0_reset,comp_ana1_clk,comp_ana1_reset";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of pl_clk : signal is "xilinx.com:signal:clock:1.0 pl_clk CLK";
   attribute X_INTERFACE_MODE : string;

@@ -26,13 +26,13 @@ module mts(
 
 	input wire mig_clk,
 	output reg mig_resetn,
+	input wire mig_adc_start,
+	input wire mig_adc_stop,
+	output reg mig_adc_active,
 	
 	input wire axi_clk,
 	output reg axi_resetn,
-	input wire axi_adc_start,
 	input wire axi_sim_start,
-	input wire axi_adc_stop,
-	output reg axi_adc_active,
 	output reg axi_sim_active,
 
     (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DECI_CLK, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0" *)
@@ -258,8 +258,7 @@ module mts(
 		.I			(comp_ana1_raw_clk),
 		.O			(comp_ana1_clk));
 
-/*
-	ila_6 ila_i (
+	ila_8 ila_i (
 		.clk(deci_clk),  	              // input wire clk
 		.probe0(deci_resetn),             // input wire [0:0]  probe2
 		.probe1(sysref_active),           // input wire [0:0]  probe2
@@ -272,7 +271,6 @@ module mts(
 		.probe8(deci_sim_active_low),    // input wire [0:0]  probe2
 		.probe9(deci_sim_active_high)    // input wire [0:0]  probe2
 	);
-*/
 	
 generate
   begin : mts
@@ -380,9 +378,13 @@ generate
 
 	always @(posedge axi_clk) 
 	begin
-		adc_axi_start <= axi_adc_start;
-		adc_axi_stop <= axi_adc_stop;
 		sim_axi_start <= axi_sim_start;
+	end
+
+	always @(posedge mig_clk) 
+	begin
+		adc_axi_start <= mig_adc_start;
+		adc_axi_stop <= mig_adc_stop;
 	end
 
 	always @(posedge deci_clk) 
@@ -418,11 +420,11 @@ generate
 		sim_active <= deci_sim_active_low | deci_sim_active_high;
 	end
 
-	always @(posedge axi_clk) 
+	always @(posedge mig_clk) 
 	begin
 		axi_adc_active_1 <= adc_active;
 		axi_adc_active_2 <= axi_adc_active_1;
-		axi_adc_active <= axi_adc_active_2;
+		mig_adc_active <= axi_adc_active_2;
 	end
 
 	always @(posedge axi_clk) 

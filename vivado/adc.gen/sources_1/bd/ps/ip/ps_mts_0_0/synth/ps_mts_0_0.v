@@ -61,12 +61,12 @@ module ps_mts_0_0 (
   sys_reset,
   mig_clk,
   mig_resetn,
+  mig_adc_start,
+  mig_adc_stop,
+  mig_adc_active,
   axi_clk,
   axi_resetn,
-  axi_adc_start,
   axi_sim_start,
-  axi_adc_stop,
-  axi_adc_active,
   axi_sim_active,
   deci_clk,
   deci_resetn,
@@ -110,6 +110,9 @@ input wire mig_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mig_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire mig_resetn;
+input wire mig_adc_start;
+input wire mig_adc_stop;
+output wire mig_adc_active;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 axi_clk CLK" *)
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_clk, ASSOCIATED_RESET axi_resetn, FREQ_HZ 99999001, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -118,10 +121,7 @@ input wire axi_clk;
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 output wire axi_resetn;
-input wire axi_adc_start;
 input wire axi_sim_start;
-input wire axi_adc_stop;
-output wire axi_adc_active;
 output wire axi_sim_active;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 deci_clk CLK" *)
 (* X_INTERFACE_MODE = "master" *)
@@ -207,12 +207,12 @@ output wire comp_ana1_reset;
     .sys_reset(sys_reset),
     .mig_clk(mig_clk),
     .mig_resetn(mig_resetn),
+    .mig_adc_start(mig_adc_start),
+    .mig_adc_stop(mig_adc_stop),
+    .mig_adc_active(mig_adc_active),
     .axi_clk(axi_clk),
     .axi_resetn(axi_resetn),
-    .axi_adc_start(axi_adc_start),
     .axi_sim_start(axi_sim_start),
-    .axi_adc_stop(axi_adc_stop),
-    .axi_adc_active(axi_adc_active),
     .axi_sim_active(axi_sim_active),
     .deci_clk(deci_clk),
     .deci_resetn(deci_resetn),

@@ -671,9 +671,7 @@ module comp_ana(
 		.probe10(stat_wr),             // input wire [6:0]  probe3
 		.probe11(stat_idle)            // input wire [6:0]  probe3
 	);
-*/	
 
-/*
 	ila_5 ila_axi (
 		.clk(axi_clk),                // input wire clk
 		.probe0(axi_pend),            // input wire [6:0]  probe3
@@ -710,16 +708,19 @@ module comp_ana(
 		.probe31(hdr_env_std),        // input wire [15:0]  probe3
 		.probe32(hdr_phase_std),      // input wire [15:0]  probe3
 		.probe33(hdr_freq_std),       // input wire [15:0]  probe3
-		.probe34(c_env_0),              // input wire [15:0]  probe3
-		.probe35(c_env_1),              // input wire [15:0]  probe3
-		.probe36(c_env_2),              // input wire [15:0]  probe3
-		.probe37(c_env_3),              // input wire [15:0]  probe3
-		.probe38(c_env_4),              // input wire [15:0]  probe3
-		.probe39(c_env_5),              // input wire [15:0]  probe3
-		.probe40(c_env_6),              // input wire [15:0]  probe3
-		.probe41(c_env_7)               // input wire [15:0]  probe3
+		.probe34(axi_stat_data[0]),   // input wire [127:0]  probe3
+		.probe35(axi_stat_data[1]),   // input wire [127:0]  probe3
+		.probe36(c_env_0),              // input wire [15:0]  probe3
+		.probe37(c_env_1),              // input wire [15:0]  probe3
+		.probe38(c_env_2),              // input wire [15:0]  probe3
+		.probe39(c_env_3),              // input wire [15:0]  probe3
+		.probe40(c_env_4),              // input wire [15:0]  probe3
+		.probe41(c_env_5),              // input wire [15:0]  probe3
+		.probe42(c_env_6),              // input wire [15:0]  probe3
+		.probe43(c_env_7)               // input wire [15:0]  probe3
 	);
 */	
+
 
 generate
   begin : comp_ana

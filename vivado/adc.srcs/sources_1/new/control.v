@@ -31,10 +31,7 @@ module adc_control(
     output reg [3:0] wr_en,
     output reg [31:0] data_out,
 
-	output reg adc_start,
-	output reg adc_stop,
 	output reg sim_start,
-	input wire adc_active,
 	input wire sim_active,
     
     output reg config_low_wr,
@@ -71,6 +68,7 @@ module adc_control(
    	wire [11:0] adc_count = (cdata[27:16] + 1);
    	wire [7:0] config_count = cdata[23:16];
 
+/*
 ila_4 ila_4_i (
 		.clk(clk),                  // input wire clk
 		.probe0(resetn),            // input wire [0:0]  probe3
@@ -85,17 +83,15 @@ ila_4 ila_4_i (
 		.probe9(sim_high_wr),      // input wire [0:0]  probe3
 		.probe10(sim_channel),      // input wire [1:0]  probe3
 		.probe11(sim_data),         // input wire [31:0]  probe3
-		.probe12(adc_start),        // input wire [0:0]  probe3
-		.probe13(adc_stop),         // input wire [0:0]  probe3
-		.probe14(sim_start),        // input wire [0:0]  probe3
-		.probe15(adc_active),       // input wire [0:0]  probe3
-		.probe16(sim_active),       // input wire [0:0]  probe3
-		.probe17(cmd_start),        // input wire [0:0]  probe3
-		.probe18(sim_wr_start),     // input wire [0:0]  probe3
-		.probe19(sim_wr_pend),      // input wire [0:0]  probe3
-		.probe20(sim_wr_done),      // input wire [0:0]  probe3
-		.probe21(sim_wr_count)      // input wire [10:0]  probe3
+		.probe12(sim_start),        // input wire [0:0]  probe3
+		.probe13(sim_active),       // input wire [0:0]  probe3
+		.probe14(cmd_start),        // input wire [0:0]  probe3
+		.probe15(sim_wr_start),     // input wire [0:0]  probe3
+		.probe16(sim_wr_pend),      // input wire [0:0]  probe3
+		.probe17(sim_wr_done),      // input wire [0:0]  probe3
+		.probe18(sim_wr_count)      // input wire [10:0]  probe3
 	);
+*/	
 
 generate
   begin : adc_control
@@ -141,9 +137,7 @@ generate
 	  begin
         case (adc_cmd)
           8'h01 : sim_wr_start <= 1;
-          8'h02 : adc_start <= 1;
           8'h03 : sim_start <= 1;
-          8'h04 : adc_stop <= 1;
           8'h05 : config_wr_start <= 1;
         endcase
 	  end
@@ -151,9 +145,7 @@ generate
 	  begin
 	    config_wr_start <= 0;
 	    sim_wr_start <= 0;
-		adc_start <= 0;
 		sim_start <= 0;
-		adc_stop <= 0;
 	  end
     end
 
@@ -338,7 +330,7 @@ generate
 	    begin
 		  wr_en <= 4'b1111;
 		  data_out[7:0] <= data_out[7:0] + 1;
-		  data_out[8] <= adc_active;
+		  data_out[8] <= 0;
 		  data_out[9] <= sim_active;
   	    end
 	    else

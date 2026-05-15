@@ -62,6 +62,9 @@ module ps_axi_dma_1_0 (
   mig_wr_ptr,
   linux_wr_ptr,
   linux_rd_ptr,
+  adc_active,
+  adc_start,
+  adc_stop,
   M_AXI_TDATA_in_cmd,
   M_AXI_TVALID_in_cmd,
   M_AXI_TREADY_in_cmd,
@@ -98,6 +101,9 @@ output wire [26 : 0] mig_rd_ptr;
 input wire [26 : 0] mig_wr_ptr;
 output wire [31 : 0] linux_wr_ptr;
 input wire [31 : 0] linux_rd_ptr;
+input wire adc_active;
+output wire adc_start;
+output wire adc_stop;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXI_in_cmd TDATA" *)
 (* X_INTERFACE_MODE = "master" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_in_cmd, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 333250000, PHASE 0.00, CLK_DOMAIN ps_ddr4_0_0_c0_ddr4_ui_clk, LAYERED_METADATA undef, INSERT_VIP 0" *)
@@ -155,6 +161,9 @@ input wire M_AXI_TREADY_out;
     .mig_wr_ptr(mig_wr_ptr),
     .linux_wr_ptr(linux_wr_ptr),
     .linux_rd_ptr(linux_rd_ptr),
+    .adc_active(adc_active),
+    .adc_start(adc_start),
+    .adc_stop(adc_stop),
     .M_AXI_TDATA_in_cmd(M_AXI_TDATA_in_cmd),
     .M_AXI_TVALID_in_cmd(M_AXI_TVALID_in_cmd),
     .M_AXI_TREADY_in_cmd(M_AXI_TREADY_in_cmd),
