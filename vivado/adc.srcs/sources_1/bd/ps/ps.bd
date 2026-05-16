@@ -46,7 +46,8 @@
       "gpio_linux_ptr": "",
       "axi_smc_2": "",
       "axis_dwidth_converter_0": "",
-      "rst_ps_333M": ""
+      "rst_ps_333M": "",
+      "system_ila_0": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -5580,6 +5581,63 @@
             "value": "true"
           }
         }
+      },
+      "system_ila_0": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "ip_revision": "21",
+        "xci_name": "ps_system_ila_0_1",
+        "xci_path": "ip/ps_system_ila_0_1/ps_system_ila_0_1.xci",
+        "inst_hier_path": "system_ila_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_MON_TYPE": {
+            "value": "MIX"
+          },
+          "C_NUM_MONITOR_SLOTS": {
+            "value": "1"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "10"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE1_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE2_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE3_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE4_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE5_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE6_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE7_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE8_TYPE": {
+            "value": "1"
+          },
+          "C_PROBE9_TYPE": {
+            "value": "1"
+          }
+        },
+        "interface_ports": {
+          "SLOT_0_AXI": {
+            "mode": "Monitor",
+            "monitor_type": "SlaveType",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -5798,33 +5856,33 @@
       "adc_control_0_config_adr": {
         "ports": [
           "adc_control_0/config_adr",
-          "ana_high/config_adr",
-          "ana_low/config_adr",
           "comp_ana_low/config_adr",
-          "comp_ana_high/config_adr"
+          "comp_ana_high/config_adr",
+          "ana_low/config_adr",
+          "ana_high/config_adr"
         ]
       },
       "adc_control_0_config_data": {
         "ports": [
           "adc_control_0/config_data",
-          "ana_high/config_data",
-          "ana_low/config_data",
           "comp_ana_low/config_data",
-          "comp_ana_high/config_data"
+          "comp_ana_high/config_data",
+          "ana_low/config_data",
+          "ana_high/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
         "ports": [
           "adc_control_0/config_high_wr",
-          "ana_high/config_wr",
-          "comp_ana_high/config_wr"
+          "comp_ana_high/config_wr",
+          "ana_high/config_wr"
         ]
       },
       "adc_control_0_config_low_wr": {
         "ports": [
           "adc_control_0/config_low_wr",
-          "ana_low/config_wr",
-          "comp_ana_low/config_wr"
+          "comp_ana_low/config_wr",
+          "ana_low/config_wr"
         ]
       },
       "adc_control_0_data_out": {
@@ -6449,62 +6507,152 @@
       "freq_low_46_0_ana_wr": {
         "ports": [
           "freq_low_46_0/ana_wr",
+          "system_ila_0/probe0",
           "ana_low/ana_wr"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_env_E": {
         "ports": [
           "freq_low_46_0/env_E",
+          "system_ila_0/probe2",
           "ana_low/env_E"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_env_N": {
         "ports": [
           "freq_low_46_0/env_N",
+          "system_ila_0/probe1",
           "ana_low/env_N"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_env_W": {
         "ports": [
           "freq_low_46_0/env_W",
+          "system_ila_0/probe3",
           "ana_low/env_W"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_err_EW": {
         "ports": [
           "freq_low_46_0/err_EW",
+          "system_ila_0/probe5",
           "ana_low/err_EW"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_err_NE": {
         "ports": [
           "freq_low_46_0/err_NE",
+          "system_ila_0/probe4",
           "ana_low/err_NE"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_err_WN": {
         "ports": [
           "freq_low_46_0/err_WN",
+          "system_ila_0/probe6",
           "ana_low/err_WN"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_phase_E": {
         "ports": [
           "freq_low_46_0/phase_E",
+          "system_ila_0/probe8",
           "ana_low/phase_E"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_phase_N": {
         "ports": [
           "freq_low_46_0/phase_N",
+          "system_ila_0/probe7",
           "ana_low/phase_N"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "freq_low_46_0_phase_W": {
         "ports": [
           "freq_low_46_0/phase_W",
+          "system_ila_0/probe9",
           "ana_low/phase_W"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "gpio_linux_ptr_gpio2_io_o": {
         "ports": [
@@ -6527,8 +6675,8 @@
       "mts_0_ana0_clk": {
         "ports": [
           "mts_0/ana0_clk",
-          "ana_low/clk",
-          "comp_low/ana_fifo_clk"
+          "comp_low/ana_fifo_clk",
+          "ana_low/clk"
         ]
       },
       "mts_0_ana0_reset": {
@@ -6540,8 +6688,8 @@
       "mts_0_ana1_clk": {
         "ports": [
           "mts_0/ana1_clk",
-          "ana_high/clk",
-          "comp_high/ana_fifo_clk"
+          "comp_high/ana_fifo_clk",
+          "ana_high/clk"
         ]
       },
       "mts_0_ana1_reset": {
@@ -6667,20 +6815,22 @@
         "ports": [
           "mts_0/freq0_clk",
           "freq_low_46_0/clk",
+          "system_ila_0/clk",
           "ana_low/fifo_clk"
         ]
       },
       "mts_0_freq0_reset": {
         "ports": [
           "mts_0/freq0_reset",
-          "freq_low_46_0/reset"
+          "freq_low_46_0/reset",
+          "system_ila_0/resetn"
         ]
       },
       "mts_0_freq1_clk": {
         "ports": [
           "mts_0/freq1_clk",
-          "ana_high/fifo_clk",
-          "freq_high_189_0/clk"
+          "freq_high_189_0/clk",
+          "ana_high/fifo_clk"
         ]
       },
       "mts_0_freq1_reset": {
@@ -6849,17 +6999,17 @@
           "usp_rf_data_converter_0/s_axi_aclk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_bram/clkb",
-          "ana_high/config_clk",
           "deci_high/sim_clk",
           "deci_low/sim_clk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "ana_low/config_clk",
           "comp_ana_low/config_clk",
           "comp_ana_low/pl_clk",
           "comp_ana_high/config_clk",
           "comp_ana_high/pl_clk",
           "adc_control_0/clk",
-          "mts_0/axi_clk"
+          "mts_0/axi_clk",
+          "ana_low/config_clk",
+          "ana_high/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Fri May 15 20:32:41 2026
+//Date        : Sat May 16 17:26:51 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=36,numReposBlks=36,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=6,da_bram_cntlr_cnt=1,da_clkrst_cnt=9,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=37,numReposBlks=37,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=6,da_bram_cntlr_cnt=1,da_clkrst_cnt=9,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
@@ -416,16 +416,16 @@ module ps
   wire [19:0]freq_high_189_0_phase_E;
   wire [19:0]freq_high_189_0_phase_N;
   wire [19:0]freq_high_189_0_phase_W;
-  wire freq_low_46_0_ana_wr;
-  wire [15:0]freq_low_46_0_env_E;
-  wire [15:0]freq_low_46_0_env_N;
-  wire [15:0]freq_low_46_0_env_W;
-  wire [11:0]freq_low_46_0_err_EW;
-  wire [11:0]freq_low_46_0_err_NE;
-  wire [11:0]freq_low_46_0_err_WN;
-  wire [19:0]freq_low_46_0_phase_E;
-  wire [19:0]freq_low_46_0_phase_N;
-  wire [19:0]freq_low_46_0_phase_W;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire freq_low_46_0_ana_wr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]freq_low_46_0_env_E;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]freq_low_46_0_env_N;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]freq_low_46_0_env_W;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [11:0]freq_low_46_0_err_EW;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [11:0]freq_low_46_0_err_NE;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [11:0]freq_low_46_0_err_WN;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [19:0]freq_low_46_0_phase_E;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [19:0]freq_low_46_0_phase_N;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [19:0]freq_low_46_0_phase_W;
   wire [31:0]gpio_linux_ptr_gpio2_io_o;
   wire [3:0]ilconstant_0_dout;
   wire [2:0]ilconstant_0_dout1;
@@ -1653,6 +1653,54 @@ module ps
         .S02_AXI_rvalid(axi_datamover_0_M_AXI_MM2S_RVALID),
         .aclk(ddr4_0_c0_ddr4_ui_clk),
         .aresetn(mts_0_axi_reset_out));
+  ps_system_ila_0_1 system_ila_0
+       (.SLOT_0_AXI_araddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_arburst({1'b0,1'b1}),
+        .SLOT_0_AXI_arcache({1'b0,1'b0,1'b1,1'b1}),
+        .SLOT_0_AXI_arlen({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_arlock(1'b0),
+        .SLOT_0_AXI_arprot({1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_arqos({1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_arready(1'b0),
+        .SLOT_0_AXI_arregion({1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_arsize({1'b0,1'b1,1'b0}),
+        .SLOT_0_AXI_arvalid(1'b0),
+        .SLOT_0_AXI_awaddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_awburst({1'b0,1'b1}),
+        .SLOT_0_AXI_awcache({1'b0,1'b0,1'b1,1'b1}),
+        .SLOT_0_AXI_awlen({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_awlock(1'b0),
+        .SLOT_0_AXI_awprot({1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_awqos({1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_awready(1'b0),
+        .SLOT_0_AXI_awregion({1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_awsize({1'b0,1'b1,1'b0}),
+        .SLOT_0_AXI_awvalid(1'b0),
+        .SLOT_0_AXI_bready(1'b0),
+        .SLOT_0_AXI_bresp({1'b0,1'b0}),
+        .SLOT_0_AXI_bvalid(1'b0),
+        .SLOT_0_AXI_rdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_rlast(1'b0),
+        .SLOT_0_AXI_rready(1'b0),
+        .SLOT_0_AXI_rresp({1'b0,1'b0}),
+        .SLOT_0_AXI_rvalid(1'b0),
+        .SLOT_0_AXI_wdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .SLOT_0_AXI_wlast(1'b0),
+        .SLOT_0_AXI_wready(1'b0),
+        .SLOT_0_AXI_wstrb({1'b1,1'b1,1'b1,1'b1}),
+        .SLOT_0_AXI_wvalid(1'b0),
+        .clk(mts_0_freq0_clk),
+        .probe0(freq_low_46_0_ana_wr),
+        .probe1(freq_low_46_0_env_N),
+        .probe2(freq_low_46_0_env_E),
+        .probe3(freq_low_46_0_env_W),
+        .probe4(freq_low_46_0_err_NE),
+        .probe5(freq_low_46_0_err_EW),
+        .probe6(freq_low_46_0_err_WN),
+        .probe7(freq_low_46_0_phase_N),
+        .probe8(freq_low_46_0_phase_E),
+        .probe9(freq_low_46_0_phase_W),
+        .resetn(mts_0_freq0_reset));
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
        (.adc1_clk_n(adc1_clk_clk_n),
         .adc1_clk_p(adc1_clk_clk_p),
