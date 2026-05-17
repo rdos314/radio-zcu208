@@ -72,8 +72,7 @@ bool print_one(volatile struct AdcHeader *header)
     printf("  env_mean: %d\n", header->env_mean);
     printf("  env_std: %d\n", header->env_std);
 
-    /*
-    entry = (volatile struct AdcEntry *)(header+1);
+     entry = (volatile struct AdcEntry *)(header+1);
     printf("  data: [");
     for (i = 0; i < header->size; i++)
     {
@@ -86,8 +85,7 @@ bool print_one(volatile struct AdcHeader *header)
     printf("]\n");
     printf("}\n\n");
 
-*/
-    return true;
+   return true;
 }
 
 int main()
