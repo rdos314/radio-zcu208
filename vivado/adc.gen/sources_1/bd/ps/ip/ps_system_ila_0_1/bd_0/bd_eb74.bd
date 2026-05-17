@@ -45,7 +45,7 @@
           },
           "CLK_DOMAIN": {
             "value": "ps_mts_0_0_freq0_clk",
-            "value_src": "default_prop"
+            "value_src": "default"
           },
           "DATA_WIDTH": {
             "value": "32",

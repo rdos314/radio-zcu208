@@ -424,9 +424,9 @@ generate
 
     always @(posedge clk) 
 	begin
-        delay_N <= delay_NE - delay_WN;
-        delay_E <= delay_EW - delay_NE;
-        delay_W <= delay_WN - delay_EW;
+        delay_N <=  delay_WN - delay_NE;
+        delay_E <= delay_NE - delay_EW;
+        delay_W <=  delay_EW - delay_WN;
     end
 
     always @(posedge clk) 

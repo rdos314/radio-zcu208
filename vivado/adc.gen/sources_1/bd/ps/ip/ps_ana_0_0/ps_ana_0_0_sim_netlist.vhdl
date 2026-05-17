@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat May 16 17:27:34 2026
+-- Date        : Sun May 17 12:34:03 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.vhdl
@@ -10162,8 +10162,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(15),
-      I1 => phase_W(15),
+      I0 => phase_W(15),
+      I1 => phase_E(15),
       O => \det_signal.dsp_phase_EW[15]_i_2_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_3\: unisim.vcomponents.LUT2
@@ -10171,8 +10171,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(14),
-      I1 => phase_W(14),
+      I0 => phase_W(14),
+      I1 => phase_E(14),
       O => \det_signal.dsp_phase_EW[15]_i_3_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_4\: unisim.vcomponents.LUT2
@@ -10180,8 +10180,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(13),
-      I1 => phase_W(13),
+      I0 => phase_W(13),
+      I1 => phase_E(13),
       O => \det_signal.dsp_phase_EW[15]_i_4_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_5\: unisim.vcomponents.LUT2
@@ -10189,8 +10189,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(12),
-      I1 => phase_W(12),
+      I0 => phase_W(12),
+      I1 => phase_E(12),
       O => \det_signal.dsp_phase_EW[15]_i_5_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_6\: unisim.vcomponents.LUT2
@@ -10198,8 +10198,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(11),
-      I1 => phase_W(11),
+      I0 => phase_W(11),
+      I1 => phase_E(11),
       O => \det_signal.dsp_phase_EW[15]_i_6_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_7\: unisim.vcomponents.LUT2
@@ -10207,8 +10207,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(10),
-      I1 => phase_W(10),
+      I0 => phase_W(10),
+      I1 => phase_E(10),
       O => \det_signal.dsp_phase_EW[15]_i_7_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_8\: unisim.vcomponents.LUT2
@@ -10216,8 +10216,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(9),
-      I1 => phase_W(9),
+      I0 => phase_W(9),
+      I1 => phase_E(9),
       O => \det_signal.dsp_phase_EW[15]_i_8_n_0\
     );
 \det_signal.dsp_phase_EW[15]_i_9\: unisim.vcomponents.LUT2
@@ -10225,8 +10225,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(8),
-      I1 => phase_W(8),
+      I0 => phase_W(8),
+      I1 => phase_E(8),
       O => \det_signal.dsp_phase_EW[15]_i_9_n_0\
     );
 \det_signal.dsp_phase_EW[19]_i_2\: unisim.vcomponents.LUT2
@@ -10234,8 +10234,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(19),
-      I1 => phase_W(19),
+      I0 => phase_W(19),
+      I1 => phase_E(19),
       O => \det_signal.dsp_phase_EW[19]_i_2_n_0\
     );
 \det_signal.dsp_phase_EW[19]_i_3\: unisim.vcomponents.LUT2
@@ -10243,8 +10243,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(18),
-      I1 => phase_W(18),
+      I0 => phase_W(18),
+      I1 => phase_E(18),
       O => \det_signal.dsp_phase_EW[19]_i_3_n_0\
     );
 \det_signal.dsp_phase_EW[19]_i_4\: unisim.vcomponents.LUT2
@@ -10252,8 +10252,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(17),
-      I1 => phase_W(17),
+      I0 => phase_W(17),
+      I1 => phase_E(17),
       O => \det_signal.dsp_phase_EW[19]_i_4_n_0\
     );
 \det_signal.dsp_phase_EW[19]_i_5\: unisim.vcomponents.LUT2
@@ -10261,8 +10261,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(16),
-      I1 => phase_W(16),
+      I0 => phase_W(16),
+      I1 => phase_E(16),
       O => \det_signal.dsp_phase_EW[19]_i_5_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_2\: unisim.vcomponents.LUT2
@@ -10270,8 +10270,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(7),
-      I1 => phase_W(7),
+      I0 => phase_W(7),
+      I1 => phase_E(7),
       O => \det_signal.dsp_phase_EW[7]_i_2_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_3\: unisim.vcomponents.LUT2
@@ -10279,8 +10279,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(6),
-      I1 => phase_W(6),
+      I0 => phase_W(6),
+      I1 => phase_E(6),
       O => \det_signal.dsp_phase_EW[7]_i_3_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_4\: unisim.vcomponents.LUT2
@@ -10288,8 +10288,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(5),
-      I1 => phase_W(5),
+      I0 => phase_W(5),
+      I1 => phase_E(5),
       O => \det_signal.dsp_phase_EW[7]_i_4_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_5\: unisim.vcomponents.LUT2
@@ -10297,8 +10297,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(4),
-      I1 => phase_W(4),
+      I0 => phase_W(4),
+      I1 => phase_E(4),
       O => \det_signal.dsp_phase_EW[7]_i_5_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_6\: unisim.vcomponents.LUT2
@@ -10306,8 +10306,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(3),
-      I1 => phase_W(3),
+      I0 => phase_W(3),
+      I1 => phase_E(3),
       O => \det_signal.dsp_phase_EW[7]_i_6_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_7\: unisim.vcomponents.LUT2
@@ -10315,8 +10315,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(2),
-      I1 => phase_W(2),
+      I0 => phase_W(2),
+      I1 => phase_E(2),
       O => \det_signal.dsp_phase_EW[7]_i_7_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_8\: unisim.vcomponents.LUT2
@@ -10324,8 +10324,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(1),
-      I1 => phase_W(1),
+      I0 => phase_W(1),
+      I1 => phase_E(1),
       O => \det_signal.dsp_phase_EW[7]_i_8_n_0\
     );
 \det_signal.dsp_phase_EW[7]_i_9\: unisim.vcomponents.LUT2
@@ -10333,8 +10333,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_E(0),
-      I1 => phase_W(0),
+      I0 => phase_W(0),
+      I1 => phase_E(0),
       O => \det_signal.dsp_phase_EW[7]_i_9_n_0\
     );
 \det_signal.dsp_phase_EW_reg[0]\: unisim.vcomponents.FDRE
@@ -10405,7 +10405,7 @@ begin
       CO(2) => \det_signal.dsp_phase_EW_reg[15]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_EW_reg[15]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_EW_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => phase_E(15 downto 8),
+      DI(7 downto 0) => phase_W(15 downto 8),
       O(7 downto 0) => dsp_phase_EW01_out(15 downto 8),
       S(7) => \det_signal.dsp_phase_EW[15]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_EW[15]_i_3_n_0\,
@@ -10457,7 +10457,7 @@ begin
       CO(1) => \det_signal.dsp_phase_EW_reg[19]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_EW_reg[19]_i_1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => phase_E(18 downto 16),
+      DI(2 downto 0) => phase_W(18 downto 16),
       O(7 downto 4) => \NLW_det_signal.dsp_phase_EW_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
       O(3 downto 0) => dsp_phase_EW01_out(19 downto 16),
       S(7 downto 4) => B"0000",
@@ -10534,7 +10534,7 @@ begin
       CO(2) => \det_signal.dsp_phase_EW_reg[7]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_EW_reg[7]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_EW_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => phase_E(7 downto 0),
+      DI(7 downto 0) => phase_W(7 downto 0),
       O(7 downto 0) => dsp_phase_EW01_out(7 downto 0),
       S(7) => \det_signal.dsp_phase_EW[7]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_EW[7]_i_3_n_0\,
@@ -10726,8 +10726,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(15),
-      I1 => phase_E(15),
+      I0 => phase_E(15),
+      I1 => phase_N(15),
       O => \det_signal.dsp_phase_NE[15]_i_2_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_3\: unisim.vcomponents.LUT2
@@ -10735,8 +10735,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(14),
-      I1 => phase_E(14),
+      I0 => phase_E(14),
+      I1 => phase_N(14),
       O => \det_signal.dsp_phase_NE[15]_i_3_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_4\: unisim.vcomponents.LUT2
@@ -10744,8 +10744,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(13),
-      I1 => phase_E(13),
+      I0 => phase_E(13),
+      I1 => phase_N(13),
       O => \det_signal.dsp_phase_NE[15]_i_4_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_5\: unisim.vcomponents.LUT2
@@ -10753,8 +10753,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(12),
-      I1 => phase_E(12),
+      I0 => phase_E(12),
+      I1 => phase_N(12),
       O => \det_signal.dsp_phase_NE[15]_i_5_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_6\: unisim.vcomponents.LUT2
@@ -10762,8 +10762,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(11),
-      I1 => phase_E(11),
+      I0 => phase_E(11),
+      I1 => phase_N(11),
       O => \det_signal.dsp_phase_NE[15]_i_6_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_7\: unisim.vcomponents.LUT2
@@ -10771,8 +10771,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(10),
-      I1 => phase_E(10),
+      I0 => phase_E(10),
+      I1 => phase_N(10),
       O => \det_signal.dsp_phase_NE[15]_i_7_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_8\: unisim.vcomponents.LUT2
@@ -10780,8 +10780,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(9),
-      I1 => phase_E(9),
+      I0 => phase_E(9),
+      I1 => phase_N(9),
       O => \det_signal.dsp_phase_NE[15]_i_8_n_0\
     );
 \det_signal.dsp_phase_NE[15]_i_9\: unisim.vcomponents.LUT2
@@ -10789,8 +10789,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(8),
-      I1 => phase_E(8),
+      I0 => phase_E(8),
+      I1 => phase_N(8),
       O => \det_signal.dsp_phase_NE[15]_i_9_n_0\
     );
 \det_signal.dsp_phase_NE[19]_i_2\: unisim.vcomponents.LUT2
@@ -10798,8 +10798,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(19),
-      I1 => phase_E(19),
+      I0 => phase_E(19),
+      I1 => phase_N(19),
       O => \det_signal.dsp_phase_NE[19]_i_2_n_0\
     );
 \det_signal.dsp_phase_NE[19]_i_3\: unisim.vcomponents.LUT2
@@ -10807,8 +10807,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(18),
-      I1 => phase_E(18),
+      I0 => phase_E(18),
+      I1 => phase_N(18),
       O => \det_signal.dsp_phase_NE[19]_i_3_n_0\
     );
 \det_signal.dsp_phase_NE[19]_i_4\: unisim.vcomponents.LUT2
@@ -10816,8 +10816,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(17),
-      I1 => phase_E(17),
+      I0 => phase_E(17),
+      I1 => phase_N(17),
       O => \det_signal.dsp_phase_NE[19]_i_4_n_0\
     );
 \det_signal.dsp_phase_NE[19]_i_5\: unisim.vcomponents.LUT2
@@ -10825,8 +10825,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(16),
-      I1 => phase_E(16),
+      I0 => phase_E(16),
+      I1 => phase_N(16),
       O => \det_signal.dsp_phase_NE[19]_i_5_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_2\: unisim.vcomponents.LUT2
@@ -10834,8 +10834,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(7),
-      I1 => phase_E(7),
+      I0 => phase_E(7),
+      I1 => phase_N(7),
       O => \det_signal.dsp_phase_NE[7]_i_2_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_3\: unisim.vcomponents.LUT2
@@ -10843,8 +10843,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(6),
-      I1 => phase_E(6),
+      I0 => phase_E(6),
+      I1 => phase_N(6),
       O => \det_signal.dsp_phase_NE[7]_i_3_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_4\: unisim.vcomponents.LUT2
@@ -10852,8 +10852,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(5),
-      I1 => phase_E(5),
+      I0 => phase_E(5),
+      I1 => phase_N(5),
       O => \det_signal.dsp_phase_NE[7]_i_4_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_5\: unisim.vcomponents.LUT2
@@ -10861,8 +10861,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(4),
-      I1 => phase_E(4),
+      I0 => phase_E(4),
+      I1 => phase_N(4),
       O => \det_signal.dsp_phase_NE[7]_i_5_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_6\: unisim.vcomponents.LUT2
@@ -10870,8 +10870,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(3),
-      I1 => phase_E(3),
+      I0 => phase_E(3),
+      I1 => phase_N(3),
       O => \det_signal.dsp_phase_NE[7]_i_6_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_7\: unisim.vcomponents.LUT2
@@ -10879,8 +10879,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(2),
-      I1 => phase_E(2),
+      I0 => phase_E(2),
+      I1 => phase_N(2),
       O => \det_signal.dsp_phase_NE[7]_i_7_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_8\: unisim.vcomponents.LUT2
@@ -10888,8 +10888,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(1),
-      I1 => phase_E(1),
+      I0 => phase_E(1),
+      I1 => phase_N(1),
       O => \det_signal.dsp_phase_NE[7]_i_8_n_0\
     );
 \det_signal.dsp_phase_NE[7]_i_9\: unisim.vcomponents.LUT2
@@ -10897,8 +10897,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_N(0),
-      I1 => phase_E(0),
+      I0 => phase_E(0),
+      I1 => phase_N(0),
       O => \det_signal.dsp_phase_NE[7]_i_9_n_0\
     );
 \det_signal.dsp_phase_NE_reg[0]\: unisim.vcomponents.FDRE
@@ -10969,7 +10969,7 @@ begin
       CO(2) => \det_signal.dsp_phase_NE_reg[15]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_NE_reg[15]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_NE_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => phase_N(15 downto 8),
+      DI(7 downto 0) => phase_E(15 downto 8),
       O(7 downto 0) => dsp_phase_NE02_out(15 downto 8),
       S(7) => \det_signal.dsp_phase_NE[15]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_NE[15]_i_3_n_0\,
@@ -11021,7 +11021,7 @@ begin
       CO(1) => \det_signal.dsp_phase_NE_reg[19]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_NE_reg[19]_i_1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => phase_N(18 downto 16),
+      DI(2 downto 0) => phase_E(18 downto 16),
       O(7 downto 4) => \NLW_det_signal.dsp_phase_NE_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
       O(3 downto 0) => dsp_phase_NE02_out(19 downto 16),
       S(7 downto 4) => B"0000",
@@ -11098,7 +11098,7 @@ begin
       CO(2) => \det_signal.dsp_phase_NE_reg[7]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_NE_reg[7]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_NE_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => phase_N(7 downto 0),
+      DI(7 downto 0) => phase_E(7 downto 0),
       O(7 downto 0) => dsp_phase_NE02_out(7 downto 0),
       S(7) => \det_signal.dsp_phase_NE[7]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_NE[7]_i_3_n_0\,
@@ -11290,8 +11290,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(15),
-      I1 => phase_N(15),
+      I0 => phase_N(15),
+      I1 => phase_W(15),
       O => \det_signal.dsp_phase_WN[15]_i_2_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_3\: unisim.vcomponents.LUT2
@@ -11299,8 +11299,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(14),
-      I1 => phase_N(14),
+      I0 => phase_N(14),
+      I1 => phase_W(14),
       O => \det_signal.dsp_phase_WN[15]_i_3_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_4\: unisim.vcomponents.LUT2
@@ -11308,8 +11308,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(13),
-      I1 => phase_N(13),
+      I0 => phase_N(13),
+      I1 => phase_W(13),
       O => \det_signal.dsp_phase_WN[15]_i_4_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_5\: unisim.vcomponents.LUT2
@@ -11317,8 +11317,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(12),
-      I1 => phase_N(12),
+      I0 => phase_N(12),
+      I1 => phase_W(12),
       O => \det_signal.dsp_phase_WN[15]_i_5_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_6\: unisim.vcomponents.LUT2
@@ -11326,8 +11326,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(11),
-      I1 => phase_N(11),
+      I0 => phase_N(11),
+      I1 => phase_W(11),
       O => \det_signal.dsp_phase_WN[15]_i_6_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_7\: unisim.vcomponents.LUT2
@@ -11335,8 +11335,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(10),
-      I1 => phase_N(10),
+      I0 => phase_N(10),
+      I1 => phase_W(10),
       O => \det_signal.dsp_phase_WN[15]_i_7_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_8\: unisim.vcomponents.LUT2
@@ -11344,8 +11344,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(9),
-      I1 => phase_N(9),
+      I0 => phase_N(9),
+      I1 => phase_W(9),
       O => \det_signal.dsp_phase_WN[15]_i_8_n_0\
     );
 \det_signal.dsp_phase_WN[15]_i_9\: unisim.vcomponents.LUT2
@@ -11353,8 +11353,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(8),
-      I1 => phase_N(8),
+      I0 => phase_N(8),
+      I1 => phase_W(8),
       O => \det_signal.dsp_phase_WN[15]_i_9_n_0\
     );
 \det_signal.dsp_phase_WN[19]_i_2\: unisim.vcomponents.LUT2
@@ -11362,8 +11362,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(19),
-      I1 => phase_N(19),
+      I0 => phase_N(19),
+      I1 => phase_W(19),
       O => \det_signal.dsp_phase_WN[19]_i_2_n_0\
     );
 \det_signal.dsp_phase_WN[19]_i_3\: unisim.vcomponents.LUT2
@@ -11371,8 +11371,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(18),
-      I1 => phase_N(18),
+      I0 => phase_N(18),
+      I1 => phase_W(18),
       O => \det_signal.dsp_phase_WN[19]_i_3_n_0\
     );
 \det_signal.dsp_phase_WN[19]_i_4\: unisim.vcomponents.LUT2
@@ -11380,8 +11380,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(17),
-      I1 => phase_N(17),
+      I0 => phase_N(17),
+      I1 => phase_W(17),
       O => \det_signal.dsp_phase_WN[19]_i_4_n_0\
     );
 \det_signal.dsp_phase_WN[19]_i_5\: unisim.vcomponents.LUT2
@@ -11389,8 +11389,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(16),
-      I1 => phase_N(16),
+      I0 => phase_N(16),
+      I1 => phase_W(16),
       O => \det_signal.dsp_phase_WN[19]_i_5_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_2\: unisim.vcomponents.LUT2
@@ -11398,8 +11398,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(7),
-      I1 => phase_N(7),
+      I0 => phase_N(7),
+      I1 => phase_W(7),
       O => \det_signal.dsp_phase_WN[7]_i_2_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_3\: unisim.vcomponents.LUT2
@@ -11407,8 +11407,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(6),
-      I1 => phase_N(6),
+      I0 => phase_N(6),
+      I1 => phase_W(6),
       O => \det_signal.dsp_phase_WN[7]_i_3_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_4\: unisim.vcomponents.LUT2
@@ -11416,8 +11416,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(5),
-      I1 => phase_N(5),
+      I0 => phase_N(5),
+      I1 => phase_W(5),
       O => \det_signal.dsp_phase_WN[7]_i_4_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_5\: unisim.vcomponents.LUT2
@@ -11425,8 +11425,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(4),
-      I1 => phase_N(4),
+      I0 => phase_N(4),
+      I1 => phase_W(4),
       O => \det_signal.dsp_phase_WN[7]_i_5_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_6\: unisim.vcomponents.LUT2
@@ -11434,8 +11434,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(3),
-      I1 => phase_N(3),
+      I0 => phase_N(3),
+      I1 => phase_W(3),
       O => \det_signal.dsp_phase_WN[7]_i_6_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_7\: unisim.vcomponents.LUT2
@@ -11443,8 +11443,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(2),
-      I1 => phase_N(2),
+      I0 => phase_N(2),
+      I1 => phase_W(2),
       O => \det_signal.dsp_phase_WN[7]_i_7_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_8\: unisim.vcomponents.LUT2
@@ -11452,8 +11452,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(1),
-      I1 => phase_N(1),
+      I0 => phase_N(1),
+      I1 => phase_W(1),
       O => \det_signal.dsp_phase_WN[7]_i_8_n_0\
     );
 \det_signal.dsp_phase_WN[7]_i_9\: unisim.vcomponents.LUT2
@@ -11461,8 +11461,8 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => phase_W(0),
-      I1 => phase_N(0),
+      I0 => phase_N(0),
+      I1 => phase_W(0),
       O => \det_signal.dsp_phase_WN[7]_i_9_n_0\
     );
 \det_signal.dsp_phase_WN_reg[0]\: unisim.vcomponents.FDRE
@@ -11533,7 +11533,7 @@ begin
       CO(2) => \det_signal.dsp_phase_WN_reg[15]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_WN_reg[15]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_WN_reg[15]_i_1_n_7\,
-      DI(7 downto 0) => phase_W(15 downto 8),
+      DI(7 downto 0) => phase_N(15 downto 8),
       O(7 downto 0) => dsp_phase_WN00_out(15 downto 8),
       S(7) => \det_signal.dsp_phase_WN[15]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_WN[15]_i_3_n_0\,
@@ -11585,7 +11585,7 @@ begin
       CO(1) => \det_signal.dsp_phase_WN_reg[19]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_WN_reg[19]_i_1_n_7\,
       DI(7 downto 3) => B"00000",
-      DI(2 downto 0) => phase_W(18 downto 16),
+      DI(2 downto 0) => phase_N(18 downto 16),
       O(7 downto 4) => \NLW_det_signal.dsp_phase_WN_reg[19]_i_1_O_UNCONNECTED\(7 downto 4),
       O(3 downto 0) => dsp_phase_WN00_out(19 downto 16),
       S(7 downto 4) => B"0000",
@@ -11662,7 +11662,7 @@ begin
       CO(2) => \det_signal.dsp_phase_WN_reg[7]_i_1_n_5\,
       CO(1) => \det_signal.dsp_phase_WN_reg[7]_i_1_n_6\,
       CO(0) => \det_signal.dsp_phase_WN_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => phase_W(7 downto 0),
+      DI(7 downto 0) => phase_N(7 downto 0),
       O(7 downto 0) => dsp_phase_WN00_out(7 downto 0),
       S(7) => \det_signal.dsp_phase_WN[7]_i_2_n_0\,
       S(6) => \det_signal.dsp_phase_WN[7]_i_3_n_0\,
@@ -19335,13 +19335,13 @@ entity ps_ana_0_0_doa_angle is
     err_clr0 : out STD_LOGIC;
     reset_0 : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.delay_WN_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    \doa_angle.delay_NE_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_EW_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.sample_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_reg[8]_0\ : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    \doa_angle.delay_WN_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     O372 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     O373 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -19774,6 +19774,7 @@ architecture STRUCTURE of ps_ana_0_0_doa_angle is
   signal \doa_angle.delay_NE[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_NE[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_NE[9]_i_1_n_0\ : STD_LOGIC;
+  signal \^doa_angle.delay_ne_reg[15]_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_angle.delay_WN[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[11]_i_1_n_0\ : STD_LOGIC;
@@ -19790,7 +19791,6 @@ architecture STRUCTURE of ps_ana_0_0_doa_angle is
   signal \doa_angle.delay_WN[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[9]_i_1_n_0\ : STD_LOGIC;
-  signal \^doa_angle.delay_wn_reg[15]_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_angle.delay_base[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_base[15]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_base[1]_i_1_n_0\ : STD_LOGIC;
@@ -20148,41 +20148,41 @@ architecture STRUCTURE of ps_ana_0_0_doa_angle is
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair372";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair382";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair383";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair384";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair385";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair386";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair387";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair373";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair374";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair375";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair376";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair377";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair378";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair379";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair380";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair381";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair372";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair382";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair383";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair384";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair385";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair386";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair387";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair373";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair374";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair375";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair376";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair377";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair378";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair379";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair380";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair381";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair390";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair389";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair388";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair387";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair377";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair376";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair375";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair374";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair373";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair372";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair386";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair385";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair384";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair383";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair382";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair381";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair380";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair379";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair378";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair387";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair377";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair376";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair375";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair374";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair373";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair372";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair386";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair385";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair384";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair383";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair382";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair381";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair380";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair379";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair378";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[0]_i_1\ : label is "soft_lutpair388";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[1]_i_1\ : label is "soft_lutpair389";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[2]_i_1\ : label is "soft_lutpair390";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair390";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair388";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair389";
@@ -20224,7 +20224,7 @@ architecture STRUCTURE of ps_ana_0_0_doa_angle is
 begin
   Q(15 downto 0) <= \^q\(15 downto 0);
   \doa_angle.delay_EW_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_ew_reg[15]_0\(15 downto 0);
-  \doa_angle.delay_WN_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_wn_reg[15]_0\(15 downto 0);
+  \doa_angle.delay_NE_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_ne_reg[15]_0\(15 downto 0);
   \doa_calc.counter_reg[3]\ <= \^doa_calc.counter_reg[3]\;
 angle_run0_carry: unisim.vcomponents.CARRY8
      port map (
@@ -20704,8 +20704,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(14),
-      I1 => delay_mul(38),
+      I0 => delay_mul(38),
+      I1 => delay_sin_2(14),
       O => \delay_next0_carry__0_i_1_n_0\
     );
 \delay_next0_carry__0_i_2\: unisim.vcomponents.LUT2
@@ -20713,8 +20713,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(14),
-      I1 => delay_mul(37),
+      I0 => delay_mul(37),
+      I1 => delay_sin_2(14),
       O => \delay_next0_carry__0_i_2_n_0\
     );
 \delay_next0_carry__0_i_3\: unisim.vcomponents.LUT2
@@ -20722,8 +20722,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(13),
-      I1 => delay_mul(36),
+      I0 => delay_mul(36),
+      I1 => delay_sin_2(13),
       O => \delay_next0_carry__0_i_3_n_0\
     );
 \delay_next0_carry__0_i_4\: unisim.vcomponents.LUT2
@@ -20731,8 +20731,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(12),
-      I1 => delay_mul(35),
+      I0 => delay_mul(35),
+      I1 => delay_sin_2(12),
       O => \delay_next0_carry__0_i_4_n_0\
     );
 \delay_next0_carry__0_i_5\: unisim.vcomponents.LUT2
@@ -20740,8 +20740,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(11),
-      I1 => delay_mul(34),
+      I0 => delay_mul(34),
+      I1 => delay_sin_2(11),
       O => \delay_next0_carry__0_i_5_n_0\
     );
 \delay_next0_carry__0_i_6\: unisim.vcomponents.LUT2
@@ -20749,8 +20749,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(10),
-      I1 => delay_mul(33),
+      I0 => delay_mul(33),
+      I1 => delay_sin_2(10),
       O => \delay_next0_carry__0_i_6_n_0\
     );
 \delay_next0_carry__0_i_7\: unisim.vcomponents.LUT2
@@ -20758,8 +20758,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(9),
-      I1 => delay_mul(32),
+      I0 => delay_mul(32),
+      I1 => delay_sin_2(9),
       O => \delay_next0_carry__0_i_7_n_0\
     );
 \delay_next0_carry__0_i_8\: unisim.vcomponents.LUT2
@@ -20767,8 +20767,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(8),
-      I1 => delay_mul(31),
+      I0 => delay_mul(31),
+      I1 => delay_sin_2(8),
       O => \delay_next0_carry__0_i_8_n_0\
     );
 delay_next0_carry_i_1: unisim.vcomponents.LUT2
@@ -20776,8 +20776,8 @@ delay_next0_carry_i_1: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(7),
-      I1 => delay_mul(30),
+      I0 => delay_mul(30),
+      I1 => delay_sin_2(7),
       O => delay_next0_carry_i_1_n_0
     );
 delay_next0_carry_i_2: unisim.vcomponents.LUT2
@@ -20785,8 +20785,8 @@ delay_next0_carry_i_2: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(6),
-      I1 => delay_mul(29),
+      I0 => delay_mul(29),
+      I1 => delay_sin_2(6),
       O => delay_next0_carry_i_2_n_0
     );
 delay_next0_carry_i_3: unisim.vcomponents.LUT2
@@ -20794,8 +20794,8 @@ delay_next0_carry_i_3: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(5),
-      I1 => delay_mul(28),
+      I0 => delay_mul(28),
+      I1 => delay_sin_2(5),
       O => delay_next0_carry_i_3_n_0
     );
 delay_next0_carry_i_4: unisim.vcomponents.LUT2
@@ -20803,8 +20803,8 @@ delay_next0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(4),
-      I1 => delay_mul(27),
+      I0 => delay_mul(27),
+      I1 => delay_sin_2(4),
       O => delay_next0_carry_i_4_n_0
     );
 delay_next0_carry_i_5: unisim.vcomponents.LUT2
@@ -20812,8 +20812,8 @@ delay_next0_carry_i_5: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(3),
-      I1 => delay_mul(26),
+      I0 => delay_mul(26),
+      I1 => delay_sin_2(3),
       O => delay_next0_carry_i_5_n_0
     );
 delay_next0_carry_i_6: unisim.vcomponents.LUT2
@@ -20821,8 +20821,8 @@ delay_next0_carry_i_6: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(2),
-      I1 => delay_mul(25),
+      I0 => delay_mul(25),
+      I1 => delay_sin_2(2),
       O => delay_next0_carry_i_6_n_0
     );
 delay_next0_carry_i_7: unisim.vcomponents.LUT2
@@ -20830,8 +20830,8 @@ delay_next0_carry_i_7: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(1),
-      I1 => delay_mul(24),
+      I0 => delay_mul(24),
+      I1 => delay_sin_2(1),
       O => delay_next0_carry_i_7_n_0
     );
 delay_next0_carry_i_8: unisim.vcomponents.LUT2
@@ -20839,8 +20839,8 @@ delay_next0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(0),
-      I1 => delay_mul(23),
+      I0 => delay_mul(23),
+      I1 => delay_sin_2(0),
       O => delay_next0_carry_i_8_n_0
     );
 delay_prev0_carry: unisim.vcomponents.CARRY8
@@ -20895,8 +20895,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(38),
-      I1 => delay_sin_2(14),
+      I0 => delay_sin_2(14),
+      I1 => delay_mul(38),
       O => \delay_prev0_carry__0_i_1_n_0\
     );
 \delay_prev0_carry__0_i_2\: unisim.vcomponents.LUT2
@@ -20904,8 +20904,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(37),
-      I1 => delay_sin_2(14),
+      I0 => delay_sin_2(14),
+      I1 => delay_mul(37),
       O => \delay_prev0_carry__0_i_2_n_0\
     );
 \delay_prev0_carry__0_i_3\: unisim.vcomponents.LUT2
@@ -20913,8 +20913,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(36),
-      I1 => delay_sin_2(13),
+      I0 => delay_sin_2(13),
+      I1 => delay_mul(36),
       O => \delay_prev0_carry__0_i_3_n_0\
     );
 \delay_prev0_carry__0_i_4\: unisim.vcomponents.LUT2
@@ -20922,8 +20922,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(35),
-      I1 => delay_sin_2(12),
+      I0 => delay_sin_2(12),
+      I1 => delay_mul(35),
       O => \delay_prev0_carry__0_i_4_n_0\
     );
 \delay_prev0_carry__0_i_5\: unisim.vcomponents.LUT2
@@ -20931,8 +20931,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(34),
-      I1 => delay_sin_2(11),
+      I0 => delay_sin_2(11),
+      I1 => delay_mul(34),
       O => \delay_prev0_carry__0_i_5_n_0\
     );
 \delay_prev0_carry__0_i_6\: unisim.vcomponents.LUT2
@@ -20940,8 +20940,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(33),
-      I1 => delay_sin_2(10),
+      I0 => delay_sin_2(10),
+      I1 => delay_mul(33),
       O => \delay_prev0_carry__0_i_6_n_0\
     );
 \delay_prev0_carry__0_i_7\: unisim.vcomponents.LUT2
@@ -20949,8 +20949,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(32),
-      I1 => delay_sin_2(9),
+      I0 => delay_sin_2(9),
+      I1 => delay_mul(32),
       O => \delay_prev0_carry__0_i_7_n_0\
     );
 \delay_prev0_carry__0_i_8\: unisim.vcomponents.LUT2
@@ -20958,8 +20958,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(31),
-      I1 => delay_sin_2(8),
+      I0 => delay_sin_2(8),
+      I1 => delay_mul(31),
       O => \delay_prev0_carry__0_i_8_n_0\
     );
 delay_prev0_carry_i_1: unisim.vcomponents.LUT2
@@ -20967,8 +20967,8 @@ delay_prev0_carry_i_1: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(30),
-      I1 => delay_sin_2(7),
+      I0 => delay_sin_2(7),
+      I1 => delay_mul(30),
       O => delay_prev0_carry_i_1_n_0
     );
 delay_prev0_carry_i_2: unisim.vcomponents.LUT2
@@ -20976,8 +20976,8 @@ delay_prev0_carry_i_2: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(29),
-      I1 => delay_sin_2(6),
+      I0 => delay_sin_2(6),
+      I1 => delay_mul(29),
       O => delay_prev0_carry_i_2_n_0
     );
 delay_prev0_carry_i_3: unisim.vcomponents.LUT2
@@ -20985,8 +20985,8 @@ delay_prev0_carry_i_3: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(28),
-      I1 => delay_sin_2(5),
+      I0 => delay_sin_2(5),
+      I1 => delay_mul(28),
       O => delay_prev0_carry_i_3_n_0
     );
 delay_prev0_carry_i_4: unisim.vcomponents.LUT2
@@ -20994,8 +20994,8 @@ delay_prev0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(27),
-      I1 => delay_sin_2(4),
+      I0 => delay_sin_2(4),
+      I1 => delay_mul(27),
       O => delay_prev0_carry_i_4_n_0
     );
 delay_prev0_carry_i_5: unisim.vcomponents.LUT2
@@ -21003,8 +21003,8 @@ delay_prev0_carry_i_5: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(26),
-      I1 => delay_sin_2(3),
+      I0 => delay_sin_2(3),
+      I1 => delay_mul(26),
       O => delay_prev0_carry_i_5_n_0
     );
 delay_prev0_carry_i_6: unisim.vcomponents.LUT2
@@ -21012,8 +21012,8 @@ delay_prev0_carry_i_6: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(25),
-      I1 => delay_sin_2(2),
+      I0 => delay_sin_2(2),
+      I1 => delay_mul(25),
       O => delay_prev0_carry_i_6_n_0
     );
 delay_prev0_carry_i_7: unisim.vcomponents.LUT2
@@ -21021,8 +21021,8 @@ delay_prev0_carry_i_7: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(24),
-      I1 => delay_sin_2(1),
+      I0 => delay_sin_2(1),
+      I1 => delay_mul(24),
       O => delay_prev0_carry_i_7_n_0
     );
 delay_prev0_carry_i_8: unisim.vcomponents.LUT2
@@ -21030,8 +21030,8 @@ delay_prev0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(23),
-      I1 => delay_sin_2(0),
+      I0 => delay_sin_2(0),
+      I1 => delay_mul(23),
       O => delay_prev0_carry_i_8_n_0
     );
 diff_angle0_carry: unisim.vcomponents.CARRY8
@@ -23269,7 +23269,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[0]_i_1_n_0\,
-      Q => \^q\(0),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(0),
       R => '0'
     );
 \doa_angle.delay_NE_reg[10]\: unisim.vcomponents.FDRE
@@ -23277,7 +23277,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[10]_i_1_n_0\,
-      Q => \^q\(10),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(10),
       R => '0'
     );
 \doa_angle.delay_NE_reg[11]\: unisim.vcomponents.FDRE
@@ -23285,7 +23285,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[11]_i_1_n_0\,
-      Q => \^q\(11),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(11),
       R => '0'
     );
 \doa_angle.delay_NE_reg[12]\: unisim.vcomponents.FDRE
@@ -23293,7 +23293,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[12]_i_1_n_0\,
-      Q => \^q\(12),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(12),
       R => '0'
     );
 \doa_angle.delay_NE_reg[13]\: unisim.vcomponents.FDRE
@@ -23301,7 +23301,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[13]_i_1_n_0\,
-      Q => \^q\(13),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(13),
       R => '0'
     );
 \doa_angle.delay_NE_reg[14]\: unisim.vcomponents.FDRE
@@ -23309,7 +23309,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[14]_i_1_n_0\,
-      Q => \^q\(14),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(14),
       R => '0'
     );
 \doa_angle.delay_NE_reg[15]\: unisim.vcomponents.FDRE
@@ -23317,7 +23317,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[15]_i_1_n_0\,
-      Q => \^q\(15),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(15),
       R => '0'
     );
 \doa_angle.delay_NE_reg[1]\: unisim.vcomponents.FDRE
@@ -23325,7 +23325,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[1]_i_1_n_0\,
-      Q => \^q\(1),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(1),
       R => '0'
     );
 \doa_angle.delay_NE_reg[2]\: unisim.vcomponents.FDRE
@@ -23333,7 +23333,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[2]_i_1_n_0\,
-      Q => \^q\(2),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(2),
       R => '0'
     );
 \doa_angle.delay_NE_reg[3]\: unisim.vcomponents.FDRE
@@ -23341,7 +23341,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[3]_i_1_n_0\,
-      Q => \^q\(3),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(3),
       R => '0'
     );
 \doa_angle.delay_NE_reg[4]\: unisim.vcomponents.FDRE
@@ -23349,7 +23349,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[4]_i_1_n_0\,
-      Q => \^q\(4),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(4),
       R => '0'
     );
 \doa_angle.delay_NE_reg[5]\: unisim.vcomponents.FDRE
@@ -23357,7 +23357,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[5]_i_1_n_0\,
-      Q => \^q\(5),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(5),
       R => '0'
     );
 \doa_angle.delay_NE_reg[6]\: unisim.vcomponents.FDRE
@@ -23365,7 +23365,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[6]_i_1_n_0\,
-      Q => \^q\(6),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(6),
       R => '0'
     );
 \doa_angle.delay_NE_reg[7]\: unisim.vcomponents.FDRE
@@ -23373,7 +23373,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[7]_i_1_n_0\,
-      Q => \^q\(7),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(7),
       R => '0'
     );
 \doa_angle.delay_NE_reg[8]\: unisim.vcomponents.FDRE
@@ -23381,7 +23381,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[8]_i_1_n_0\,
-      Q => \^q\(8),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(8),
       R => '0'
     );
 \doa_angle.delay_NE_reg[9]\: unisim.vcomponents.FDRE
@@ -23389,7 +23389,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[9]_i_1_n_0\,
-      Q => \^q\(9),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(9),
       R => '0'
     );
 \doa_angle.delay_WN[0]_i_1\: unisim.vcomponents.LUT5
@@ -23589,7 +23589,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[0]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(0),
+      Q => \^q\(0),
       R => '0'
     );
 \doa_angle.delay_WN_reg[10]\: unisim.vcomponents.FDRE
@@ -23597,7 +23597,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[10]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(10),
+      Q => \^q\(10),
       R => '0'
     );
 \doa_angle.delay_WN_reg[11]\: unisim.vcomponents.FDRE
@@ -23605,7 +23605,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[11]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(11),
+      Q => \^q\(11),
       R => '0'
     );
 \doa_angle.delay_WN_reg[12]\: unisim.vcomponents.FDRE
@@ -23613,7 +23613,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[12]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(12),
+      Q => \^q\(12),
       R => '0'
     );
 \doa_angle.delay_WN_reg[13]\: unisim.vcomponents.FDRE
@@ -23621,7 +23621,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[13]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(13),
+      Q => \^q\(13),
       R => '0'
     );
 \doa_angle.delay_WN_reg[14]\: unisim.vcomponents.FDRE
@@ -23629,7 +23629,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[14]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(14),
+      Q => \^q\(14),
       R => '0'
     );
 \doa_angle.delay_WN_reg[15]\: unisim.vcomponents.FDRE
@@ -23637,7 +23637,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[15]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(15),
+      Q => \^q\(15),
       R => '0'
     );
 \doa_angle.delay_WN_reg[1]\: unisim.vcomponents.FDRE
@@ -23645,7 +23645,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[1]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(1),
+      Q => \^q\(1),
       R => '0'
     );
 \doa_angle.delay_WN_reg[2]\: unisim.vcomponents.FDRE
@@ -23653,7 +23653,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[2]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(2),
+      Q => \^q\(2),
       R => '0'
     );
 \doa_angle.delay_WN_reg[3]\: unisim.vcomponents.FDRE
@@ -23661,7 +23661,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[3]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(3),
+      Q => \^q\(3),
       R => '0'
     );
 \doa_angle.delay_WN_reg[4]\: unisim.vcomponents.FDRE
@@ -23669,7 +23669,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[4]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(4),
+      Q => \^q\(4),
       R => '0'
     );
 \doa_angle.delay_WN_reg[5]\: unisim.vcomponents.FDRE
@@ -23677,7 +23677,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[5]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(5),
+      Q => \^q\(5),
       R => '0'
     );
 \doa_angle.delay_WN_reg[6]\: unisim.vcomponents.FDRE
@@ -23685,7 +23685,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[6]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(6),
+      Q => \^q\(6),
       R => '0'
     );
 \doa_angle.delay_WN_reg[7]\: unisim.vcomponents.FDRE
@@ -23693,7 +23693,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[7]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(7),
+      Q => \^q\(7),
       R => '0'
     );
 \doa_angle.delay_WN_reg[8]\: unisim.vcomponents.FDRE
@@ -23701,7 +23701,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[8]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(8),
+      Q => \^q\(8),
       R => '0'
     );
 \doa_angle.delay_WN_reg[9]\: unisim.vcomponents.FDRE
@@ -23709,7 +23709,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[9]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(9),
+      Q => \^q\(9),
       R => '0'
     );
 \doa_angle.delay_base[0]_i_1\: unisim.vcomponents.LUT2
@@ -27865,8 +27865,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(15),
-      I1 => \^q\(15),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(15),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(15),
       O => \doa_calc.delay_E[15]_i_2_n_0\
     );
 \doa_calc.delay_E[15]_i_3\: unisim.vcomponents.LUT2
@@ -27874,8 +27874,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(14),
-      I1 => \^q\(14),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(14),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(14),
       O => \doa_calc.delay_E[15]_i_3_n_0\
     );
 \doa_calc.delay_E[15]_i_4\: unisim.vcomponents.LUT2
@@ -27883,8 +27883,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(13),
-      I1 => \^q\(13),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(13),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(13),
       O => \doa_calc.delay_E[15]_i_4_n_0\
     );
 \doa_calc.delay_E[15]_i_5\: unisim.vcomponents.LUT2
@@ -27892,8 +27892,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(12),
-      I1 => \^q\(12),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(12),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(12),
       O => \doa_calc.delay_E[15]_i_5_n_0\
     );
 \doa_calc.delay_E[15]_i_6\: unisim.vcomponents.LUT2
@@ -27901,8 +27901,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(11),
-      I1 => \^q\(11),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(11),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(11),
       O => \doa_calc.delay_E[15]_i_6_n_0\
     );
 \doa_calc.delay_E[15]_i_7\: unisim.vcomponents.LUT2
@@ -27910,8 +27910,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(10),
-      I1 => \^q\(10),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(10),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(10),
       O => \doa_calc.delay_E[15]_i_7_n_0\
     );
 \doa_calc.delay_E[15]_i_8\: unisim.vcomponents.LUT2
@@ -27919,8 +27919,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(9),
-      I1 => \^q\(9),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(9),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(9),
       O => \doa_calc.delay_E[15]_i_8_n_0\
     );
 \doa_calc.delay_E[15]_i_9\: unisim.vcomponents.LUT2
@@ -27928,8 +27928,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(8),
-      I1 => \^q\(8),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(8),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(8),
       O => \doa_calc.delay_E[15]_i_9_n_0\
     );
 \doa_calc.delay_E[7]_i_2\: unisim.vcomponents.LUT2
@@ -27937,8 +27937,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(7),
-      I1 => \^q\(7),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(7),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(7),
       O => \doa_calc.delay_E[7]_i_2_n_0\
     );
 \doa_calc.delay_E[7]_i_3\: unisim.vcomponents.LUT2
@@ -27946,8 +27946,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(6),
-      I1 => \^q\(6),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(6),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(6),
       O => \doa_calc.delay_E[7]_i_3_n_0\
     );
 \doa_calc.delay_E[7]_i_4\: unisim.vcomponents.LUT2
@@ -27955,8 +27955,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(5),
-      I1 => \^q\(5),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(5),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(5),
       O => \doa_calc.delay_E[7]_i_4_n_0\
     );
 \doa_calc.delay_E[7]_i_5\: unisim.vcomponents.LUT2
@@ -27964,8 +27964,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(4),
-      I1 => \^q\(4),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(4),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(4),
       O => \doa_calc.delay_E[7]_i_5_n_0\
     );
 \doa_calc.delay_E[7]_i_6\: unisim.vcomponents.LUT2
@@ -27973,8 +27973,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(3),
-      I1 => \^q\(3),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(3),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(3),
       O => \doa_calc.delay_E[7]_i_6_n_0\
     );
 \doa_calc.delay_E[7]_i_7\: unisim.vcomponents.LUT2
@@ -27982,8 +27982,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(2),
-      I1 => \^q\(2),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(2),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(2),
       O => \doa_calc.delay_E[7]_i_7_n_0\
     );
 \doa_calc.delay_E[7]_i_8\: unisim.vcomponents.LUT2
@@ -27991,8 +27991,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(1),
-      I1 => \^q\(1),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(1),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(1),
       O => \doa_calc.delay_E[7]_i_8_n_0\
     );
 \doa_calc.delay_E[7]_i_9\: unisim.vcomponents.LUT2
@@ -28000,8 +28000,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(0),
-      I1 => \^q\(0),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(0),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(0),
       O => \doa_calc.delay_E[7]_i_9_n_0\
     );
 \doa_calc.delay_E_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -28017,7 +28017,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_E_reg[15]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
-      DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
+      DI(6 downto 0) => \^doa_angle.delay_ne_reg[15]_0\(14 downto 8),
       O(7 downto 0) => O372(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
@@ -28040,7 +28040,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(2) => \doa_calc.delay_E_reg[7]_i_1_n_5\,
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
+      DI(7 downto 0) => \^doa_angle.delay_ne_reg[15]_0\(7 downto 0),
       O(7 downto 0) => O372(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
@@ -28057,7 +28057,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(15),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(15),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(15),
       O => \doa_calc.delay_N[15]_i_2_n_0\
     );
 \doa_calc.delay_N[15]_i_3\: unisim.vcomponents.LUT2
@@ -28066,7 +28066,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(14),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(14),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(14),
       O => \doa_calc.delay_N[15]_i_3_n_0\
     );
 \doa_calc.delay_N[15]_i_4\: unisim.vcomponents.LUT2
@@ -28075,7 +28075,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(13),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(13),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(13),
       O => \doa_calc.delay_N[15]_i_4_n_0\
     );
 \doa_calc.delay_N[15]_i_5\: unisim.vcomponents.LUT2
@@ -28084,7 +28084,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(12),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(12),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(12),
       O => \doa_calc.delay_N[15]_i_5_n_0\
     );
 \doa_calc.delay_N[15]_i_6\: unisim.vcomponents.LUT2
@@ -28093,7 +28093,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(11),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(11),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(11),
       O => \doa_calc.delay_N[15]_i_6_n_0\
     );
 \doa_calc.delay_N[15]_i_7\: unisim.vcomponents.LUT2
@@ -28102,7 +28102,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(10),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(10),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(10),
       O => \doa_calc.delay_N[15]_i_7_n_0\
     );
 \doa_calc.delay_N[15]_i_8\: unisim.vcomponents.LUT2
@@ -28111,7 +28111,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(9),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(9),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(9),
       O => \doa_calc.delay_N[15]_i_8_n_0\
     );
 \doa_calc.delay_N[15]_i_9\: unisim.vcomponents.LUT2
@@ -28120,7 +28120,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(8),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(8),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(8),
       O => \doa_calc.delay_N[15]_i_9_n_0\
     );
 \doa_calc.delay_N[7]_i_2\: unisim.vcomponents.LUT2
@@ -28129,7 +28129,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(7),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(7),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(7),
       O => \doa_calc.delay_N[7]_i_2_n_0\
     );
 \doa_calc.delay_N[7]_i_3\: unisim.vcomponents.LUT2
@@ -28138,7 +28138,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(6),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(6),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(6),
       O => \doa_calc.delay_N[7]_i_3_n_0\
     );
 \doa_calc.delay_N[7]_i_4\: unisim.vcomponents.LUT2
@@ -28147,7 +28147,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(5),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(5),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(5),
       O => \doa_calc.delay_N[7]_i_4_n_0\
     );
 \doa_calc.delay_N[7]_i_5\: unisim.vcomponents.LUT2
@@ -28156,7 +28156,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(4),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(4),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(4),
       O => \doa_calc.delay_N[7]_i_5_n_0\
     );
 \doa_calc.delay_N[7]_i_6\: unisim.vcomponents.LUT2
@@ -28165,7 +28165,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(3),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(3),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(3),
       O => \doa_calc.delay_N[7]_i_6_n_0\
     );
 \doa_calc.delay_N[7]_i_7\: unisim.vcomponents.LUT2
@@ -28174,7 +28174,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(2),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(2),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(2),
       O => \doa_calc.delay_N[7]_i_7_n_0\
     );
 \doa_calc.delay_N[7]_i_8\: unisim.vcomponents.LUT2
@@ -28183,7 +28183,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(1),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(1),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(1),
       O => \doa_calc.delay_N[7]_i_8_n_0\
     );
 \doa_calc.delay_N[7]_i_9\: unisim.vcomponents.LUT2
@@ -28192,7 +28192,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(0),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(0),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(0),
       O => \doa_calc.delay_N[7]_i_9_n_0\
     );
 \doa_calc.delay_N_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -28209,7 +28209,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_N_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^q\(14 downto 8),
-      O(7 downto 0) => \doa_angle.delay_NE_reg[14]_0\(15 downto 8),
+      O(7 downto 0) => \doa_angle.delay_WN_reg[14]_0\(15 downto 8),
       S(7) => \doa_calc.delay_N[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[15]_i_4_n_0\,
@@ -28232,7 +28232,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_N_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_N_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^q\(7 downto 0),
-      O(7 downto 0) => \doa_angle.delay_NE_reg[14]_0\(7 downto 0),
+      O(7 downto 0) => \doa_angle.delay_WN_reg[14]_0\(7 downto 0),
       S(7) => \doa_calc.delay_N[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[7]_i_4_n_0\,
@@ -28247,8 +28247,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(15),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(15),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(15),
+      I1 => \^q\(15),
       O => \doa_calc.delay_W[15]_i_2_n_0\
     );
 \doa_calc.delay_W[15]_i_3\: unisim.vcomponents.LUT2
@@ -28256,8 +28256,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(14),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(14),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(14),
+      I1 => \^q\(14),
       O => \doa_calc.delay_W[15]_i_3_n_0\
     );
 \doa_calc.delay_W[15]_i_4\: unisim.vcomponents.LUT2
@@ -28265,8 +28265,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(13),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(13),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(13),
+      I1 => \^q\(13),
       O => \doa_calc.delay_W[15]_i_4_n_0\
     );
 \doa_calc.delay_W[15]_i_5\: unisim.vcomponents.LUT2
@@ -28274,8 +28274,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(12),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(12),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(12),
+      I1 => \^q\(12),
       O => \doa_calc.delay_W[15]_i_5_n_0\
     );
 \doa_calc.delay_W[15]_i_6\: unisim.vcomponents.LUT2
@@ -28283,8 +28283,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(11),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(11),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(11),
+      I1 => \^q\(11),
       O => \doa_calc.delay_W[15]_i_6_n_0\
     );
 \doa_calc.delay_W[15]_i_7\: unisim.vcomponents.LUT2
@@ -28292,8 +28292,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(10),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(10),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(10),
+      I1 => \^q\(10),
       O => \doa_calc.delay_W[15]_i_7_n_0\
     );
 \doa_calc.delay_W[15]_i_8\: unisim.vcomponents.LUT2
@@ -28301,8 +28301,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(9),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(9),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(9),
+      I1 => \^q\(9),
       O => \doa_calc.delay_W[15]_i_8_n_0\
     );
 \doa_calc.delay_W[15]_i_9\: unisim.vcomponents.LUT2
@@ -28310,8 +28310,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(8),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(8),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(8),
+      I1 => \^q\(8),
       O => \doa_calc.delay_W[15]_i_9_n_0\
     );
 \doa_calc.delay_W[7]_i_2\: unisim.vcomponents.LUT2
@@ -28319,8 +28319,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(7),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(7),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(7),
+      I1 => \^q\(7),
       O => \doa_calc.delay_W[7]_i_2_n_0\
     );
 \doa_calc.delay_W[7]_i_3\: unisim.vcomponents.LUT2
@@ -28328,8 +28328,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(6),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(6),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(6),
+      I1 => \^q\(6),
       O => \doa_calc.delay_W[7]_i_3_n_0\
     );
 \doa_calc.delay_W[7]_i_4\: unisim.vcomponents.LUT2
@@ -28337,8 +28337,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(5),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(5),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(5),
+      I1 => \^q\(5),
       O => \doa_calc.delay_W[7]_i_4_n_0\
     );
 \doa_calc.delay_W[7]_i_5\: unisim.vcomponents.LUT2
@@ -28346,8 +28346,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(4),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(4),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(4),
+      I1 => \^q\(4),
       O => \doa_calc.delay_W[7]_i_5_n_0\
     );
 \doa_calc.delay_W[7]_i_6\: unisim.vcomponents.LUT2
@@ -28355,8 +28355,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(3),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(3),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(3),
+      I1 => \^q\(3),
       O => \doa_calc.delay_W[7]_i_6_n_0\
     );
 \doa_calc.delay_W[7]_i_7\: unisim.vcomponents.LUT2
@@ -28364,8 +28364,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(2),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(2),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(2),
+      I1 => \^q\(2),
       O => \doa_calc.delay_W[7]_i_7_n_0\
     );
 \doa_calc.delay_W[7]_i_8\: unisim.vcomponents.LUT2
@@ -28373,8 +28373,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(1),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(1),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(1),
+      I1 => \^q\(1),
       O => \doa_calc.delay_W[7]_i_8_n_0\
     );
 \doa_calc.delay_W[7]_i_9\: unisim.vcomponents.LUT2
@@ -28382,8 +28382,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(0),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(0),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(0),
+      I1 => \^q\(0),
       O => \doa_calc.delay_W[7]_i_9_n_0\
     );
 \doa_calc.delay_W_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -28399,7 +28399,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_W_reg[15]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
-      DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
+      DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
       O(7 downto 0) => O373(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
@@ -28422,7 +28422,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(2) => \doa_calc.delay_W_reg[7]_i_1_n_5\,
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
+      DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
       O(7 downto 0) => O373(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
@@ -29213,13 +29213,13 @@ entity \ps_ana_0_0_doa_angle__xdcDup__1\ is
     err_clr0 : out STD_LOGIC;
     reset_0 : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.delay_WN_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    \doa_angle.delay_NE_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.delay_EW_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.sample_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.size_reg[8]_0\ : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \doa_angle.freq_reg[19]_0\ : out STD_LOGIC_VECTOR ( 19 downto 0 );
     \doa_angle.angle_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    \doa_angle.delay_NE_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    \doa_angle.delay_WN_reg[14]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     O266 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     O267 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     \doa_angle.phase_NE_reg[19]_0\ : out STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -29652,6 +29652,7 @@ architecture STRUCTURE of \ps_ana_0_0_doa_angle__xdcDup__1\ is
   signal \doa_angle.delay_NE[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_NE[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_NE[9]_i_1_n_0\ : STD_LOGIC;
+  signal \^doa_angle.delay_ne_reg[15]_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_angle.delay_WN[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[10]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[11]_i_1_n_0\ : STD_LOGIC;
@@ -29668,7 +29669,6 @@ architecture STRUCTURE of \ps_ana_0_0_doa_angle__xdcDup__1\ is
   signal \doa_angle.delay_WN[7]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[8]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_WN[9]_i_1_n_0\ : STD_LOGIC;
-  signal \^doa_angle.delay_wn_reg[15]_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \doa_angle.delay_base[0]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_base[15]_i_1_n_0\ : STD_LOGIC;
   signal \doa_angle.delay_base[1]_i_1_n_0\ : STD_LOGIC;
@@ -30026,41 +30026,41 @@ architecture STRUCTURE of \ps_ana_0_0_doa_angle__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \doa_angle.d_next_reg[7]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[15]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \doa_angle.d_prev_reg[7]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[13]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[14]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \doa_angle.delay_WN[15]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[0]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[10]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[11]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[12]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[13]_i_1\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[14]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[15]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[1]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[2]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[3]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[4]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[5]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[6]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[7]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[8]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_angle.delay_EW[9]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[0]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[10]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[11]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[12]_i_1\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[13]_i_1\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[14]_i_1\ : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[15]_i_1\ : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[1]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[2]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[3]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[4]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[5]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[6]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[7]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[8]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \doa_angle.delay_NE[9]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[0]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[1]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \doa_angle.delay_WN[2]_i_1\ : label is "soft_lutpair193";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[0]_i_1\ : label is "soft_lutpair193";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[1]_i_1\ : label is "soft_lutpair191";
   attribute SOFT_HLUTNM of \doa_angle.delay_base[2]_i_1\ : label is "soft_lutpair192";
@@ -30102,7 +30102,7 @@ architecture STRUCTURE of \ps_ana_0_0_doa_angle__xdcDup__1\ is
 begin
   Q(15 downto 0) <= \^q\(15 downto 0);
   \doa_angle.delay_EW_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_ew_reg[15]_0\(15 downto 0);
-  \doa_angle.delay_WN_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_wn_reg[15]_0\(15 downto 0);
+  \doa_angle.delay_NE_reg[15]_0\(15 downto 0) <= \^doa_angle.delay_ne_reg[15]_0\(15 downto 0);
   \doa_calc.counter_reg[3]\ <= \^doa_calc.counter_reg[3]\;
 angle_run0_carry: unisim.vcomponents.CARRY8
      port map (
@@ -30582,8 +30582,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(14),
-      I1 => delay_mul(38),
+      I0 => delay_mul(38),
+      I1 => delay_sin_2(14),
       O => \delay_next0_carry__0_i_1_n_0\
     );
 \delay_next0_carry__0_i_2\: unisim.vcomponents.LUT2
@@ -30591,8 +30591,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(14),
-      I1 => delay_mul(37),
+      I0 => delay_mul(37),
+      I1 => delay_sin_2(14),
       O => \delay_next0_carry__0_i_2_n_0\
     );
 \delay_next0_carry__0_i_3\: unisim.vcomponents.LUT2
@@ -30600,8 +30600,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(13),
-      I1 => delay_mul(36),
+      I0 => delay_mul(36),
+      I1 => delay_sin_2(13),
       O => \delay_next0_carry__0_i_3_n_0\
     );
 \delay_next0_carry__0_i_4\: unisim.vcomponents.LUT2
@@ -30609,8 +30609,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(12),
-      I1 => delay_mul(35),
+      I0 => delay_mul(35),
+      I1 => delay_sin_2(12),
       O => \delay_next0_carry__0_i_4_n_0\
     );
 \delay_next0_carry__0_i_5\: unisim.vcomponents.LUT2
@@ -30618,8 +30618,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(11),
-      I1 => delay_mul(34),
+      I0 => delay_mul(34),
+      I1 => delay_sin_2(11),
       O => \delay_next0_carry__0_i_5_n_0\
     );
 \delay_next0_carry__0_i_6\: unisim.vcomponents.LUT2
@@ -30627,8 +30627,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(10),
-      I1 => delay_mul(33),
+      I0 => delay_mul(33),
+      I1 => delay_sin_2(10),
       O => \delay_next0_carry__0_i_6_n_0\
     );
 \delay_next0_carry__0_i_7\: unisim.vcomponents.LUT2
@@ -30636,8 +30636,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(9),
-      I1 => delay_mul(32),
+      I0 => delay_mul(32),
+      I1 => delay_sin_2(9),
       O => \delay_next0_carry__0_i_7_n_0\
     );
 \delay_next0_carry__0_i_8\: unisim.vcomponents.LUT2
@@ -30645,8 +30645,8 @@ delay_next0_carry: unisim.vcomponents.CARRY8
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(8),
-      I1 => delay_mul(31),
+      I0 => delay_mul(31),
+      I1 => delay_sin_2(8),
       O => \delay_next0_carry__0_i_8_n_0\
     );
 delay_next0_carry_i_1: unisim.vcomponents.LUT2
@@ -30654,8 +30654,8 @@ delay_next0_carry_i_1: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(7),
-      I1 => delay_mul(30),
+      I0 => delay_mul(30),
+      I1 => delay_sin_2(7),
       O => delay_next0_carry_i_1_n_0
     );
 delay_next0_carry_i_2: unisim.vcomponents.LUT2
@@ -30663,8 +30663,8 @@ delay_next0_carry_i_2: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(6),
-      I1 => delay_mul(29),
+      I0 => delay_mul(29),
+      I1 => delay_sin_2(6),
       O => delay_next0_carry_i_2_n_0
     );
 delay_next0_carry_i_3: unisim.vcomponents.LUT2
@@ -30672,8 +30672,8 @@ delay_next0_carry_i_3: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(5),
-      I1 => delay_mul(28),
+      I0 => delay_mul(28),
+      I1 => delay_sin_2(5),
       O => delay_next0_carry_i_3_n_0
     );
 delay_next0_carry_i_4: unisim.vcomponents.LUT2
@@ -30681,8 +30681,8 @@ delay_next0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(4),
-      I1 => delay_mul(27),
+      I0 => delay_mul(27),
+      I1 => delay_sin_2(4),
       O => delay_next0_carry_i_4_n_0
     );
 delay_next0_carry_i_5: unisim.vcomponents.LUT2
@@ -30690,8 +30690,8 @@ delay_next0_carry_i_5: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(3),
-      I1 => delay_mul(26),
+      I0 => delay_mul(26),
+      I1 => delay_sin_2(3),
       O => delay_next0_carry_i_5_n_0
     );
 delay_next0_carry_i_6: unisim.vcomponents.LUT2
@@ -30699,8 +30699,8 @@ delay_next0_carry_i_6: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(2),
-      I1 => delay_mul(25),
+      I0 => delay_mul(25),
+      I1 => delay_sin_2(2),
       O => delay_next0_carry_i_6_n_0
     );
 delay_next0_carry_i_7: unisim.vcomponents.LUT2
@@ -30708,8 +30708,8 @@ delay_next0_carry_i_7: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(1),
-      I1 => delay_mul(24),
+      I0 => delay_mul(24),
+      I1 => delay_sin_2(1),
       O => delay_next0_carry_i_7_n_0
     );
 delay_next0_carry_i_8: unisim.vcomponents.LUT2
@@ -30717,8 +30717,8 @@ delay_next0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => delay_sin_2(0),
-      I1 => delay_mul(23),
+      I0 => delay_mul(23),
+      I1 => delay_sin_2(0),
       O => delay_next0_carry_i_8_n_0
     );
 delay_prev0_carry: unisim.vcomponents.CARRY8
@@ -30773,8 +30773,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(38),
-      I1 => delay_sin_2(14),
+      I0 => delay_sin_2(14),
+      I1 => delay_mul(38),
       O => \delay_prev0_carry__0_i_1_n_0\
     );
 \delay_prev0_carry__0_i_2\: unisim.vcomponents.LUT2
@@ -30782,8 +30782,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(37),
-      I1 => delay_sin_2(14),
+      I0 => delay_sin_2(14),
+      I1 => delay_mul(37),
       O => \delay_prev0_carry__0_i_2_n_0\
     );
 \delay_prev0_carry__0_i_3\: unisim.vcomponents.LUT2
@@ -30791,8 +30791,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(36),
-      I1 => delay_sin_2(13),
+      I0 => delay_sin_2(13),
+      I1 => delay_mul(36),
       O => \delay_prev0_carry__0_i_3_n_0\
     );
 \delay_prev0_carry__0_i_4\: unisim.vcomponents.LUT2
@@ -30800,8 +30800,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(35),
-      I1 => delay_sin_2(12),
+      I0 => delay_sin_2(12),
+      I1 => delay_mul(35),
       O => \delay_prev0_carry__0_i_4_n_0\
     );
 \delay_prev0_carry__0_i_5\: unisim.vcomponents.LUT2
@@ -30809,8 +30809,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(34),
-      I1 => delay_sin_2(11),
+      I0 => delay_sin_2(11),
+      I1 => delay_mul(34),
       O => \delay_prev0_carry__0_i_5_n_0\
     );
 \delay_prev0_carry__0_i_6\: unisim.vcomponents.LUT2
@@ -30818,8 +30818,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(33),
-      I1 => delay_sin_2(10),
+      I0 => delay_sin_2(10),
+      I1 => delay_mul(33),
       O => \delay_prev0_carry__0_i_6_n_0\
     );
 \delay_prev0_carry__0_i_7\: unisim.vcomponents.LUT2
@@ -30827,8 +30827,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(32),
-      I1 => delay_sin_2(9),
+      I0 => delay_sin_2(9),
+      I1 => delay_mul(32),
       O => \delay_prev0_carry__0_i_7_n_0\
     );
 \delay_prev0_carry__0_i_8\: unisim.vcomponents.LUT2
@@ -30836,8 +30836,8 @@ delay_prev0_carry: unisim.vcomponents.CARRY8
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(31),
-      I1 => delay_sin_2(8),
+      I0 => delay_sin_2(8),
+      I1 => delay_mul(31),
       O => \delay_prev0_carry__0_i_8_n_0\
     );
 delay_prev0_carry_i_1: unisim.vcomponents.LUT2
@@ -30845,8 +30845,8 @@ delay_prev0_carry_i_1: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(30),
-      I1 => delay_sin_2(7),
+      I0 => delay_sin_2(7),
+      I1 => delay_mul(30),
       O => delay_prev0_carry_i_1_n_0
     );
 delay_prev0_carry_i_2: unisim.vcomponents.LUT2
@@ -30854,8 +30854,8 @@ delay_prev0_carry_i_2: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(29),
-      I1 => delay_sin_2(6),
+      I0 => delay_sin_2(6),
+      I1 => delay_mul(29),
       O => delay_prev0_carry_i_2_n_0
     );
 delay_prev0_carry_i_3: unisim.vcomponents.LUT2
@@ -30863,8 +30863,8 @@ delay_prev0_carry_i_3: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(28),
-      I1 => delay_sin_2(5),
+      I0 => delay_sin_2(5),
+      I1 => delay_mul(28),
       O => delay_prev0_carry_i_3_n_0
     );
 delay_prev0_carry_i_4: unisim.vcomponents.LUT2
@@ -30872,8 +30872,8 @@ delay_prev0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(27),
-      I1 => delay_sin_2(4),
+      I0 => delay_sin_2(4),
+      I1 => delay_mul(27),
       O => delay_prev0_carry_i_4_n_0
     );
 delay_prev0_carry_i_5: unisim.vcomponents.LUT2
@@ -30881,8 +30881,8 @@ delay_prev0_carry_i_5: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(26),
-      I1 => delay_sin_2(3),
+      I0 => delay_sin_2(3),
+      I1 => delay_mul(26),
       O => delay_prev0_carry_i_5_n_0
     );
 delay_prev0_carry_i_6: unisim.vcomponents.LUT2
@@ -30890,8 +30890,8 @@ delay_prev0_carry_i_6: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(25),
-      I1 => delay_sin_2(2),
+      I0 => delay_sin_2(2),
+      I1 => delay_mul(25),
       O => delay_prev0_carry_i_6_n_0
     );
 delay_prev0_carry_i_7: unisim.vcomponents.LUT2
@@ -30899,8 +30899,8 @@ delay_prev0_carry_i_7: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(24),
-      I1 => delay_sin_2(1),
+      I0 => delay_sin_2(1),
+      I1 => delay_mul(24),
       O => delay_prev0_carry_i_7_n_0
     );
 delay_prev0_carry_i_8: unisim.vcomponents.LUT2
@@ -30908,8 +30908,8 @@ delay_prev0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => delay_mul(23),
-      I1 => delay_sin_2(0),
+      I0 => delay_sin_2(0),
+      I1 => delay_mul(23),
       O => delay_prev0_carry_i_8_n_0
     );
 diff_angle0_carry: unisim.vcomponents.CARRY8
@@ -33147,7 +33147,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[0]_i_1_n_0\,
-      Q => \^q\(0),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(0),
       R => '0'
     );
 \doa_angle.delay_NE_reg[10]\: unisim.vcomponents.FDRE
@@ -33155,7 +33155,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[10]_i_1_n_0\,
-      Q => \^q\(10),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(10),
       R => '0'
     );
 \doa_angle.delay_NE_reg[11]\: unisim.vcomponents.FDRE
@@ -33163,7 +33163,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[11]_i_1_n_0\,
-      Q => \^q\(11),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(11),
       R => '0'
     );
 \doa_angle.delay_NE_reg[12]\: unisim.vcomponents.FDRE
@@ -33171,7 +33171,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[12]_i_1_n_0\,
-      Q => \^q\(12),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(12),
       R => '0'
     );
 \doa_angle.delay_NE_reg[13]\: unisim.vcomponents.FDRE
@@ -33179,7 +33179,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[13]_i_1_n_0\,
-      Q => \^q\(13),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(13),
       R => '0'
     );
 \doa_angle.delay_NE_reg[14]\: unisim.vcomponents.FDRE
@@ -33187,7 +33187,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[14]_i_1_n_0\,
-      Q => \^q\(14),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(14),
       R => '0'
     );
 \doa_angle.delay_NE_reg[15]\: unisim.vcomponents.FDRE
@@ -33195,7 +33195,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[15]_i_1_n_0\,
-      Q => \^q\(15),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(15),
       R => '0'
     );
 \doa_angle.delay_NE_reg[1]\: unisim.vcomponents.FDRE
@@ -33203,7 +33203,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[1]_i_1_n_0\,
-      Q => \^q\(1),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(1),
       R => '0'
     );
 \doa_angle.delay_NE_reg[2]\: unisim.vcomponents.FDRE
@@ -33211,7 +33211,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[2]_i_1_n_0\,
-      Q => \^q\(2),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(2),
       R => '0'
     );
 \doa_angle.delay_NE_reg[3]\: unisim.vcomponents.FDRE
@@ -33219,7 +33219,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[3]_i_1_n_0\,
-      Q => \^q\(3),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(3),
       R => '0'
     );
 \doa_angle.delay_NE_reg[4]\: unisim.vcomponents.FDRE
@@ -33227,7 +33227,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[4]_i_1_n_0\,
-      Q => \^q\(4),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(4),
       R => '0'
     );
 \doa_angle.delay_NE_reg[5]\: unisim.vcomponents.FDRE
@@ -33235,7 +33235,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[5]_i_1_n_0\,
-      Q => \^q\(5),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(5),
       R => '0'
     );
 \doa_angle.delay_NE_reg[6]\: unisim.vcomponents.FDRE
@@ -33243,7 +33243,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[6]_i_1_n_0\,
-      Q => \^q\(6),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(6),
       R => '0'
     );
 \doa_angle.delay_NE_reg[7]\: unisim.vcomponents.FDRE
@@ -33251,7 +33251,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[7]_i_1_n_0\,
-      Q => \^q\(7),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(7),
       R => '0'
     );
 \doa_angle.delay_NE_reg[8]\: unisim.vcomponents.FDRE
@@ -33259,7 +33259,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[8]_i_1_n_0\,
-      Q => \^q\(8),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(8),
       R => '0'
     );
 \doa_angle.delay_NE_reg[9]\: unisim.vcomponents.FDRE
@@ -33267,7 +33267,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_NE[9]_i_1_n_0\,
-      Q => \^q\(9),
+      Q => \^doa_angle.delay_ne_reg[15]_0\(9),
       R => '0'
     );
 \doa_angle.delay_WN[0]_i_1\: unisim.vcomponents.LUT5
@@ -33467,7 +33467,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[0]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(0),
+      Q => \^q\(0),
       R => '0'
     );
 \doa_angle.delay_WN_reg[10]\: unisim.vcomponents.FDRE
@@ -33475,7 +33475,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[10]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(10),
+      Q => \^q\(10),
       R => '0'
     );
 \doa_angle.delay_WN_reg[11]\: unisim.vcomponents.FDRE
@@ -33483,7 +33483,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[11]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(11),
+      Q => \^q\(11),
       R => '0'
     );
 \doa_angle.delay_WN_reg[12]\: unisim.vcomponents.FDRE
@@ -33491,7 +33491,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[12]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(12),
+      Q => \^q\(12),
       R => '0'
     );
 \doa_angle.delay_WN_reg[13]\: unisim.vcomponents.FDRE
@@ -33499,7 +33499,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[13]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(13),
+      Q => \^q\(13),
       R => '0'
     );
 \doa_angle.delay_WN_reg[14]\: unisim.vcomponents.FDRE
@@ -33507,7 +33507,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[14]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(14),
+      Q => \^q\(14),
       R => '0'
     );
 \doa_angle.delay_WN_reg[15]\: unisim.vcomponents.FDRE
@@ -33515,7 +33515,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[15]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(15),
+      Q => \^q\(15),
       R => '0'
     );
 \doa_angle.delay_WN_reg[1]\: unisim.vcomponents.FDRE
@@ -33523,7 +33523,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[1]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(1),
+      Q => \^q\(1),
       R => '0'
     );
 \doa_angle.delay_WN_reg[2]\: unisim.vcomponents.FDRE
@@ -33531,7 +33531,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[2]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(2),
+      Q => \^q\(2),
       R => '0'
     );
 \doa_angle.delay_WN_reg[3]\: unisim.vcomponents.FDRE
@@ -33539,7 +33539,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[3]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(3),
+      Q => \^q\(3),
       R => '0'
     );
 \doa_angle.delay_WN_reg[4]\: unisim.vcomponents.FDRE
@@ -33547,7 +33547,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[4]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(4),
+      Q => \^q\(4),
       R => '0'
     );
 \doa_angle.delay_WN_reg[5]\: unisim.vcomponents.FDRE
@@ -33555,7 +33555,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[5]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(5),
+      Q => \^q\(5),
       R => '0'
     );
 \doa_angle.delay_WN_reg[6]\: unisim.vcomponents.FDRE
@@ -33563,7 +33563,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[6]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(6),
+      Q => \^q\(6),
       R => '0'
     );
 \doa_angle.delay_WN_reg[7]\: unisim.vcomponents.FDRE
@@ -33571,7 +33571,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[7]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(7),
+      Q => \^q\(7),
       R => '0'
     );
 \doa_angle.delay_WN_reg[8]\: unisim.vcomponents.FDRE
@@ -33579,7 +33579,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[8]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(8),
+      Q => \^q\(8),
       R => '0'
     );
 \doa_angle.delay_WN_reg[9]\: unisim.vcomponents.FDRE
@@ -33587,7 +33587,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       C => clk,
       CE => \doa_angle.d_run_reg_n_0_[5]\,
       D => \doa_angle.delay_WN[9]_i_1_n_0\,
-      Q => \^doa_angle.delay_wn_reg[15]_0\(9),
+      Q => \^q\(9),
       R => '0'
     );
 \doa_angle.delay_base[0]_i_1\: unisim.vcomponents.LUT2
@@ -37743,8 +37743,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(15),
-      I1 => \^q\(15),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(15),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(15),
       O => \doa_calc.delay_E[15]_i_2_n_0\
     );
 \doa_calc.delay_E[15]_i_3\: unisim.vcomponents.LUT2
@@ -37752,8 +37752,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(14),
-      I1 => \^q\(14),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(14),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(14),
       O => \doa_calc.delay_E[15]_i_3_n_0\
     );
 \doa_calc.delay_E[15]_i_4\: unisim.vcomponents.LUT2
@@ -37761,8 +37761,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(13),
-      I1 => \^q\(13),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(13),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(13),
       O => \doa_calc.delay_E[15]_i_4_n_0\
     );
 \doa_calc.delay_E[15]_i_5\: unisim.vcomponents.LUT2
@@ -37770,8 +37770,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(12),
-      I1 => \^q\(12),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(12),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(12),
       O => \doa_calc.delay_E[15]_i_5_n_0\
     );
 \doa_calc.delay_E[15]_i_6\: unisim.vcomponents.LUT2
@@ -37779,8 +37779,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(11),
-      I1 => \^q\(11),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(11),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(11),
       O => \doa_calc.delay_E[15]_i_6_n_0\
     );
 \doa_calc.delay_E[15]_i_7\: unisim.vcomponents.LUT2
@@ -37788,8 +37788,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(10),
-      I1 => \^q\(10),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(10),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(10),
       O => \doa_calc.delay_E[15]_i_7_n_0\
     );
 \doa_calc.delay_E[15]_i_8\: unisim.vcomponents.LUT2
@@ -37797,8 +37797,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(9),
-      I1 => \^q\(9),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(9),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(9),
       O => \doa_calc.delay_E[15]_i_8_n_0\
     );
 \doa_calc.delay_E[15]_i_9\: unisim.vcomponents.LUT2
@@ -37806,8 +37806,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(8),
-      I1 => \^q\(8),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(8),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(8),
       O => \doa_calc.delay_E[15]_i_9_n_0\
     );
 \doa_calc.delay_E[7]_i_2\: unisim.vcomponents.LUT2
@@ -37815,8 +37815,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(7),
-      I1 => \^q\(7),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(7),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(7),
       O => \doa_calc.delay_E[7]_i_2_n_0\
     );
 \doa_calc.delay_E[7]_i_3\: unisim.vcomponents.LUT2
@@ -37824,8 +37824,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(6),
-      I1 => \^q\(6),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(6),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(6),
       O => \doa_calc.delay_E[7]_i_3_n_0\
     );
 \doa_calc.delay_E[7]_i_4\: unisim.vcomponents.LUT2
@@ -37833,8 +37833,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(5),
-      I1 => \^q\(5),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(5),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(5),
       O => \doa_calc.delay_E[7]_i_4_n_0\
     );
 \doa_calc.delay_E[7]_i_5\: unisim.vcomponents.LUT2
@@ -37842,8 +37842,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(4),
-      I1 => \^q\(4),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(4),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(4),
       O => \doa_calc.delay_E[7]_i_5_n_0\
     );
 \doa_calc.delay_E[7]_i_6\: unisim.vcomponents.LUT2
@@ -37851,8 +37851,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(3),
-      I1 => \^q\(3),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(3),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(3),
       O => \doa_calc.delay_E[7]_i_6_n_0\
     );
 \doa_calc.delay_E[7]_i_7\: unisim.vcomponents.LUT2
@@ -37860,8 +37860,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(2),
-      I1 => \^q\(2),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(2),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(2),
       O => \doa_calc.delay_E[7]_i_7_n_0\
     );
 \doa_calc.delay_E[7]_i_8\: unisim.vcomponents.LUT2
@@ -37869,8 +37869,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(1),
-      I1 => \^q\(1),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(1),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(1),
       O => \doa_calc.delay_E[7]_i_8_n_0\
     );
 \doa_calc.delay_E[7]_i_9\: unisim.vcomponents.LUT2
@@ -37878,8 +37878,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_ew_reg[15]_0\(0),
-      I1 => \^q\(0),
+      I0 => \^doa_angle.delay_ne_reg[15]_0\(0),
+      I1 => \^doa_angle.delay_ew_reg[15]_0\(0),
       O => \doa_calc.delay_E[7]_i_9_n_0\
     );
 \doa_calc.delay_E_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -37895,7 +37895,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_E_reg[15]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[15]_i_1_n_7\,
       DI(7) => '0',
-      DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
+      DI(6 downto 0) => \^doa_angle.delay_ne_reg[15]_0\(14 downto 8),
       O(7 downto 0) => O266(15 downto 8),
       S(7) => \doa_calc.delay_E[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[15]_i_3_n_0\,
@@ -37918,7 +37918,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(2) => \doa_calc.delay_E_reg[7]_i_1_n_5\,
       CO(1) => \doa_calc.delay_E_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_E_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
+      DI(7 downto 0) => \^doa_angle.delay_ne_reg[15]_0\(7 downto 0),
       O(7 downto 0) => O266(7 downto 0),
       S(7) => \doa_calc.delay_E[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_E[7]_i_3_n_0\,
@@ -37935,7 +37935,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(15),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(15),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(15),
       O => \doa_calc.delay_N[15]_i_2_n_0\
     );
 \doa_calc.delay_N[15]_i_3\: unisim.vcomponents.LUT2
@@ -37944,7 +37944,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(14),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(14),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(14),
       O => \doa_calc.delay_N[15]_i_3_n_0\
     );
 \doa_calc.delay_N[15]_i_4\: unisim.vcomponents.LUT2
@@ -37953,7 +37953,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(13),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(13),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(13),
       O => \doa_calc.delay_N[15]_i_4_n_0\
     );
 \doa_calc.delay_N[15]_i_5\: unisim.vcomponents.LUT2
@@ -37962,7 +37962,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(12),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(12),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(12),
       O => \doa_calc.delay_N[15]_i_5_n_0\
     );
 \doa_calc.delay_N[15]_i_6\: unisim.vcomponents.LUT2
@@ -37971,7 +37971,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(11),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(11),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(11),
       O => \doa_calc.delay_N[15]_i_6_n_0\
     );
 \doa_calc.delay_N[15]_i_7\: unisim.vcomponents.LUT2
@@ -37980,7 +37980,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(10),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(10),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(10),
       O => \doa_calc.delay_N[15]_i_7_n_0\
     );
 \doa_calc.delay_N[15]_i_8\: unisim.vcomponents.LUT2
@@ -37989,7 +37989,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(9),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(9),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(9),
       O => \doa_calc.delay_N[15]_i_8_n_0\
     );
 \doa_calc.delay_N[15]_i_9\: unisim.vcomponents.LUT2
@@ -37998,7 +37998,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(8),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(8),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(8),
       O => \doa_calc.delay_N[15]_i_9_n_0\
     );
 \doa_calc.delay_N[7]_i_2\: unisim.vcomponents.LUT2
@@ -38007,7 +38007,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(7),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(7),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(7),
       O => \doa_calc.delay_N[7]_i_2_n_0\
     );
 \doa_calc.delay_N[7]_i_3\: unisim.vcomponents.LUT2
@@ -38016,7 +38016,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(6),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(6),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(6),
       O => \doa_calc.delay_N[7]_i_3_n_0\
     );
 \doa_calc.delay_N[7]_i_4\: unisim.vcomponents.LUT2
@@ -38025,7 +38025,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(5),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(5),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(5),
       O => \doa_calc.delay_N[7]_i_4_n_0\
     );
 \doa_calc.delay_N[7]_i_5\: unisim.vcomponents.LUT2
@@ -38034,7 +38034,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(4),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(4),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(4),
       O => \doa_calc.delay_N[7]_i_5_n_0\
     );
 \doa_calc.delay_N[7]_i_6\: unisim.vcomponents.LUT2
@@ -38043,7 +38043,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(3),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(3),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(3),
       O => \doa_calc.delay_N[7]_i_6_n_0\
     );
 \doa_calc.delay_N[7]_i_7\: unisim.vcomponents.LUT2
@@ -38052,7 +38052,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(2),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(2),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(2),
       O => \doa_calc.delay_N[7]_i_7_n_0\
     );
 \doa_calc.delay_N[7]_i_8\: unisim.vcomponents.LUT2
@@ -38061,7 +38061,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(1),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(1),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(1),
       O => \doa_calc.delay_N[7]_i_8_n_0\
     );
 \doa_calc.delay_N[7]_i_9\: unisim.vcomponents.LUT2
@@ -38070,7 +38070,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       I0 => \^q\(0),
-      I1 => \^doa_angle.delay_wn_reg[15]_0\(0),
+      I1 => \^doa_angle.delay_ne_reg[15]_0\(0),
       O => \doa_calc.delay_N[7]_i_9_n_0\
     );
 \doa_calc.delay_N_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -38087,7 +38087,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(0) => \doa_calc.delay_N_reg[15]_i_1_n_7\,
       DI(7) => '0',
       DI(6 downto 0) => \^q\(14 downto 8),
-      O(7 downto 0) => \doa_angle.delay_NE_reg[14]_0\(15 downto 8),
+      O(7 downto 0) => \doa_angle.delay_WN_reg[14]_0\(15 downto 8),
       S(7) => \doa_calc.delay_N[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[15]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[15]_i_4_n_0\,
@@ -38110,7 +38110,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_N_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_N_reg[7]_i_1_n_7\,
       DI(7 downto 0) => \^q\(7 downto 0),
-      O(7 downto 0) => \doa_angle.delay_NE_reg[14]_0\(7 downto 0),
+      O(7 downto 0) => \doa_angle.delay_WN_reg[14]_0\(7 downto 0),
       S(7) => \doa_calc.delay_N[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_N[7]_i_3_n_0\,
       S(5) => \doa_calc.delay_N[7]_i_4_n_0\,
@@ -38125,8 +38125,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(15),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(15),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(15),
+      I1 => \^q\(15),
       O => \doa_calc.delay_W[15]_i_2_n_0\
     );
 \doa_calc.delay_W[15]_i_3\: unisim.vcomponents.LUT2
@@ -38134,8 +38134,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(14),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(14),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(14),
+      I1 => \^q\(14),
       O => \doa_calc.delay_W[15]_i_3_n_0\
     );
 \doa_calc.delay_W[15]_i_4\: unisim.vcomponents.LUT2
@@ -38143,8 +38143,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(13),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(13),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(13),
+      I1 => \^q\(13),
       O => \doa_calc.delay_W[15]_i_4_n_0\
     );
 \doa_calc.delay_W[15]_i_5\: unisim.vcomponents.LUT2
@@ -38152,8 +38152,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(12),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(12),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(12),
+      I1 => \^q\(12),
       O => \doa_calc.delay_W[15]_i_5_n_0\
     );
 \doa_calc.delay_W[15]_i_6\: unisim.vcomponents.LUT2
@@ -38161,8 +38161,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(11),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(11),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(11),
+      I1 => \^q\(11),
       O => \doa_calc.delay_W[15]_i_6_n_0\
     );
 \doa_calc.delay_W[15]_i_7\: unisim.vcomponents.LUT2
@@ -38170,8 +38170,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(10),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(10),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(10),
+      I1 => \^q\(10),
       O => \doa_calc.delay_W[15]_i_7_n_0\
     );
 \doa_calc.delay_W[15]_i_8\: unisim.vcomponents.LUT2
@@ -38179,8 +38179,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(9),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(9),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(9),
+      I1 => \^q\(9),
       O => \doa_calc.delay_W[15]_i_8_n_0\
     );
 \doa_calc.delay_W[15]_i_9\: unisim.vcomponents.LUT2
@@ -38188,8 +38188,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(8),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(8),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(8),
+      I1 => \^q\(8),
       O => \doa_calc.delay_W[15]_i_9_n_0\
     );
 \doa_calc.delay_W[7]_i_2\: unisim.vcomponents.LUT2
@@ -38197,8 +38197,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(7),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(7),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(7),
+      I1 => \^q\(7),
       O => \doa_calc.delay_W[7]_i_2_n_0\
     );
 \doa_calc.delay_W[7]_i_3\: unisim.vcomponents.LUT2
@@ -38206,8 +38206,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(6),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(6),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(6),
+      I1 => \^q\(6),
       O => \doa_calc.delay_W[7]_i_3_n_0\
     );
 \doa_calc.delay_W[7]_i_4\: unisim.vcomponents.LUT2
@@ -38215,8 +38215,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(5),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(5),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(5),
+      I1 => \^q\(5),
       O => \doa_calc.delay_W[7]_i_4_n_0\
     );
 \doa_calc.delay_W[7]_i_5\: unisim.vcomponents.LUT2
@@ -38224,8 +38224,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(4),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(4),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(4),
+      I1 => \^q\(4),
       O => \doa_calc.delay_W[7]_i_5_n_0\
     );
 \doa_calc.delay_W[7]_i_6\: unisim.vcomponents.LUT2
@@ -38233,8 +38233,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(3),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(3),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(3),
+      I1 => \^q\(3),
       O => \doa_calc.delay_W[7]_i_6_n_0\
     );
 \doa_calc.delay_W[7]_i_7\: unisim.vcomponents.LUT2
@@ -38242,8 +38242,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(2),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(2),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(2),
+      I1 => \^q\(2),
       O => \doa_calc.delay_W[7]_i_7_n_0\
     );
 \doa_calc.delay_W[7]_i_8\: unisim.vcomponents.LUT2
@@ -38251,8 +38251,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(1),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(1),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(1),
+      I1 => \^q\(1),
       O => \doa_calc.delay_W[7]_i_8_n_0\
     );
 \doa_calc.delay_W[7]_i_9\: unisim.vcomponents.LUT2
@@ -38260,8 +38260,8 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       INIT => X"9"
     )
         port map (
-      I0 => \^doa_angle.delay_wn_reg[15]_0\(0),
-      I1 => \^doa_angle.delay_ew_reg[15]_0\(0),
+      I0 => \^doa_angle.delay_ew_reg[15]_0\(0),
+      I1 => \^q\(0),
       O => \doa_calc.delay_W[7]_i_9_n_0\
     );
 \doa_calc.delay_W_reg[15]_i_1\: unisim.vcomponents.CARRY8
@@ -38277,7 +38277,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(1) => \doa_calc.delay_W_reg[15]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[15]_i_1_n_7\,
       DI(7) => '0',
-      DI(6 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(14 downto 8),
+      DI(6 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(14 downto 8),
       O(7 downto 0) => O267(15 downto 8),
       S(7) => \doa_calc.delay_W[15]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[15]_i_3_n_0\,
@@ -38300,7 +38300,7 @@ diff_angle0_carry_i_8: unisim.vcomponents.LUT2
       CO(2) => \doa_calc.delay_W_reg[7]_i_1_n_5\,
       CO(1) => \doa_calc.delay_W_reg[7]_i_1_n_6\,
       CO(0) => \doa_calc.delay_W_reg[7]_i_1_n_7\,
-      DI(7 downto 0) => \^doa_angle.delay_wn_reg[15]_0\(7 downto 0),
+      DI(7 downto 0) => \^doa_angle.delay_ew_reg[15]_0\(7 downto 0),
       O(7 downto 0) => O267(7 downto 0),
       S(7) => \doa_calc.delay_W[7]_i_2_n_0\,
       S(6) => \doa_calc.delay_W[7]_i_3_n_0\,
@@ -62930,13 +62930,13 @@ doa_angle_i: entity work.ps_ana_0_0_doa_angle
       O372(15 downto 0) => delay_E01_out(15 downto 0),
       O373(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
-      Q(15 downto 0) => delay_NE(15 downto 0),
+      Q(15 downto 0) => delay_WN(15 downto 0),
       clk => clk,
       counter(5 downto 0) => counter(5 downto 0),
       \doa_angle.angle_reg[15]_0\(15 downto 0) => angle_doa(15 downto 0),
       \doa_angle.delay_EW_reg[15]_0\(15 downto 0) => delay_EW(15 downto 0),
-      \doa_angle.delay_NE_reg[14]_0\(15 downto 0) => delay_N02_out(15 downto 0),
-      \doa_angle.delay_WN_reg[15]_0\(15 downto 0) => delay_WN(15 downto 0),
+      \doa_angle.delay_NE_reg[15]_0\(15 downto 0) => delay_NE(15 downto 0),
+      \doa_angle.delay_WN_reg[14]_0\(15 downto 0) => delay_N02_out(15 downto 0),
       \doa_angle.first_angle_reg[14]_0\(14 downto 0) => first_angle(14 downto 0),
       \doa_angle.freq_reg[19]_0\(19 downto 0) => freq_doa(19 downto 0),
       \doa_angle.freq_run_reg[19]_0\(19 downto 0) => freq_pair(19 downto 0),
@@ -69649,13 +69649,13 @@ doa_angle_i: entity work.\ps_ana_0_0_doa_angle__xdcDup__1\
       O266(15 downto 0) => delay_E01_out(15 downto 0),
       O267(15 downto 0) => delay_W00_out(15 downto 0),
       P(19 downto 0) => mul_NE(34 downto 15),
-      Q(15 downto 0) => delay_NE(15 downto 0),
+      Q(15 downto 0) => delay_WN(15 downto 0),
       clk => clk,
       counter(5 downto 0) => counter(5 downto 0),
       \doa_angle.angle_reg[15]_0\(15 downto 0) => angle_doa(15 downto 0),
       \doa_angle.delay_EW_reg[15]_0\(15 downto 0) => delay_EW(15 downto 0),
-      \doa_angle.delay_NE_reg[14]_0\(15 downto 0) => delay_N02_out(15 downto 0),
-      \doa_angle.delay_WN_reg[15]_0\(15 downto 0) => delay_WN(15 downto 0),
+      \doa_angle.delay_NE_reg[15]_0\(15 downto 0) => delay_NE(15 downto 0),
+      \doa_angle.delay_WN_reg[14]_0\(15 downto 0) => delay_N02_out(15 downto 0),
       \doa_angle.first_angle_reg[14]_0\(14 downto 0) => first_angle(14 downto 0),
       \doa_angle.freq_reg[19]_0\(19 downto 0) => freq_doa(19 downto 0),
       \doa_angle.freq_run_reg[19]_0\(19 downto 0) => freq_pair(19 downto 0),

@@ -602,9 +602,9 @@ generate
 	begin
         if (has_signal)
         begin
-            dsp_phase_NE <= phase_N - phase_E;
-            dsp_phase_EW <= phase_E - phase_W;
-            dsp_phase_WN <= phase_W - phase_N;
+            dsp_phase_NE <= phase_E - phase_N;
+            dsp_phase_EW <=  phase_W - phase_E;
+            dsp_phase_WN <= phase_N - phase_W;
         end
         else
         begin

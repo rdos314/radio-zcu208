@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sat May 16 17:27:34 2026
+// Date        : Sun May 17 12:34:02 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.v
@@ -12287,122 +12287,122 @@ module ps_ana_0_0_det_signal
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_2 
-       (.I0(phase_E[15]),
-        .I1(phase_W[15]),
+       (.I0(phase_W[15]),
+        .I1(phase_E[15]),
         .O(\det_signal.dsp_phase_EW[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_3 
-       (.I0(phase_E[14]),
-        .I1(phase_W[14]),
+       (.I0(phase_W[14]),
+        .I1(phase_E[14]),
         .O(\det_signal.dsp_phase_EW[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_4 
-       (.I0(phase_E[13]),
-        .I1(phase_W[13]),
+       (.I0(phase_W[13]),
+        .I1(phase_E[13]),
         .O(\det_signal.dsp_phase_EW[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_5 
-       (.I0(phase_E[12]),
-        .I1(phase_W[12]),
+       (.I0(phase_W[12]),
+        .I1(phase_E[12]),
         .O(\det_signal.dsp_phase_EW[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_6 
-       (.I0(phase_E[11]),
-        .I1(phase_W[11]),
+       (.I0(phase_W[11]),
+        .I1(phase_E[11]),
         .O(\det_signal.dsp_phase_EW[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_7 
-       (.I0(phase_E[10]),
-        .I1(phase_W[10]),
+       (.I0(phase_W[10]),
+        .I1(phase_E[10]),
         .O(\det_signal.dsp_phase_EW[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_8 
-       (.I0(phase_E[9]),
-        .I1(phase_W[9]),
+       (.I0(phase_W[9]),
+        .I1(phase_E[9]),
         .O(\det_signal.dsp_phase_EW[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[15]_i_9 
-       (.I0(phase_E[8]),
-        .I1(phase_W[8]),
+       (.I0(phase_W[8]),
+        .I1(phase_E[8]),
         .O(\det_signal.dsp_phase_EW[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[19]_i_2 
-       (.I0(phase_E[19]),
-        .I1(phase_W[19]),
+       (.I0(phase_W[19]),
+        .I1(phase_E[19]),
         .O(\det_signal.dsp_phase_EW[19]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[19]_i_3 
-       (.I0(phase_E[18]),
-        .I1(phase_W[18]),
+       (.I0(phase_W[18]),
+        .I1(phase_E[18]),
         .O(\det_signal.dsp_phase_EW[19]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[19]_i_4 
-       (.I0(phase_E[17]),
-        .I1(phase_W[17]),
+       (.I0(phase_W[17]),
+        .I1(phase_E[17]),
         .O(\det_signal.dsp_phase_EW[19]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[19]_i_5 
-       (.I0(phase_E[16]),
-        .I1(phase_W[16]),
+       (.I0(phase_W[16]),
+        .I1(phase_E[16]),
         .O(\det_signal.dsp_phase_EW[19]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_2 
-       (.I0(phase_E[7]),
-        .I1(phase_W[7]),
+       (.I0(phase_W[7]),
+        .I1(phase_E[7]),
         .O(\det_signal.dsp_phase_EW[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_3 
-       (.I0(phase_E[6]),
-        .I1(phase_W[6]),
+       (.I0(phase_W[6]),
+        .I1(phase_E[6]),
         .O(\det_signal.dsp_phase_EW[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_4 
-       (.I0(phase_E[5]),
-        .I1(phase_W[5]),
+       (.I0(phase_W[5]),
+        .I1(phase_E[5]),
         .O(\det_signal.dsp_phase_EW[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_5 
-       (.I0(phase_E[4]),
-        .I1(phase_W[4]),
+       (.I0(phase_W[4]),
+        .I1(phase_E[4]),
         .O(\det_signal.dsp_phase_EW[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_6 
-       (.I0(phase_E[3]),
-        .I1(phase_W[3]),
+       (.I0(phase_W[3]),
+        .I1(phase_E[3]),
         .O(\det_signal.dsp_phase_EW[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_7 
-       (.I0(phase_E[2]),
-        .I1(phase_W[2]),
+       (.I0(phase_W[2]),
+        .I1(phase_E[2]),
         .O(\det_signal.dsp_phase_EW[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_8 
-       (.I0(phase_E[1]),
-        .I1(phase_W[1]),
+       (.I0(phase_W[1]),
+        .I1(phase_E[1]),
         .O(\det_signal.dsp_phase_EW[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_EW[7]_i_9 
-       (.I0(phase_E[0]),
-        .I1(phase_W[0]),
+       (.I0(phase_W[0]),
+        .I1(phase_E[0]),
         .O(\det_signal.dsp_phase_EW[7]_i_9_n_0 ));
   FDRE \det_signal.dsp_phase_EW_reg[0] 
        (.C(clk),
@@ -12451,7 +12451,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_EW_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_EW_reg[15]_i_1_n_0 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_1 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_2 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_3 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_4 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_5 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_6 ,\det_signal.dsp_phase_EW_reg[15]_i_1_n_7 }),
-        .DI(phase_E[15:8]),
+        .DI(phase_W[15:8]),
         .O(dsp_phase_EW01_out[15:8]),
         .S({\det_signal.dsp_phase_EW[15]_i_2_n_0 ,\det_signal.dsp_phase_EW[15]_i_3_n_0 ,\det_signal.dsp_phase_EW[15]_i_4_n_0 ,\det_signal.dsp_phase_EW[15]_i_5_n_0 ,\det_signal.dsp_phase_EW[15]_i_6_n_0 ,\det_signal.dsp_phase_EW[15]_i_7_n_0 ,\det_signal.dsp_phase_EW[15]_i_8_n_0 ,\det_signal.dsp_phase_EW[15]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_EW_reg[16] 
@@ -12483,7 +12483,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_EW_reg[15]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.dsp_phase_EW_reg[19]_i_1_CO_UNCONNECTED [7:3],\det_signal.dsp_phase_EW_reg[19]_i_1_n_5 ,\det_signal.dsp_phase_EW_reg[19]_i_1_n_6 ,\det_signal.dsp_phase_EW_reg[19]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_E[18:16]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_W[18:16]}),
         .O({\NLW_det_signal.dsp_phase_EW_reg[19]_i_1_O_UNCONNECTED [7:4],dsp_phase_EW01_out[19:16]}),
         .S({1'b0,1'b0,1'b0,1'b0,\det_signal.dsp_phase_EW[19]_i_2_n_0 ,\det_signal.dsp_phase_EW[19]_i_3_n_0 ,\det_signal.dsp_phase_EW[19]_i_4_n_0 ,\det_signal.dsp_phase_EW[19]_i_5_n_0 }));
   FDRE \det_signal.dsp_phase_EW_reg[1] 
@@ -12533,7 +12533,7 @@ module ps_ana_0_0_det_signal
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_EW_reg[7]_i_1_n_0 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_1 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_2 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_3 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_4 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_5 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_6 ,\det_signal.dsp_phase_EW_reg[7]_i_1_n_7 }),
-        .DI(phase_E[7:0]),
+        .DI(phase_W[7:0]),
         .O(dsp_phase_EW01_out[7:0]),
         .S({\det_signal.dsp_phase_EW[7]_i_2_n_0 ,\det_signal.dsp_phase_EW[7]_i_3_n_0 ,\det_signal.dsp_phase_EW[7]_i_4_n_0 ,\det_signal.dsp_phase_EW[7]_i_5_n_0 ,\det_signal.dsp_phase_EW[7]_i_6_n_0 ,\det_signal.dsp_phase_EW[7]_i_7_n_0 ,\det_signal.dsp_phase_EW[7]_i_8_n_0 ,\det_signal.dsp_phase_EW[7]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_EW_reg[8] 
@@ -12671,122 +12671,122 @@ module ps_ana_0_0_det_signal
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_2 
-       (.I0(phase_N[15]),
-        .I1(phase_E[15]),
+       (.I0(phase_E[15]),
+        .I1(phase_N[15]),
         .O(\det_signal.dsp_phase_NE[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_3 
-       (.I0(phase_N[14]),
-        .I1(phase_E[14]),
+       (.I0(phase_E[14]),
+        .I1(phase_N[14]),
         .O(\det_signal.dsp_phase_NE[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_4 
-       (.I0(phase_N[13]),
-        .I1(phase_E[13]),
+       (.I0(phase_E[13]),
+        .I1(phase_N[13]),
         .O(\det_signal.dsp_phase_NE[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_5 
-       (.I0(phase_N[12]),
-        .I1(phase_E[12]),
+       (.I0(phase_E[12]),
+        .I1(phase_N[12]),
         .O(\det_signal.dsp_phase_NE[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_6 
-       (.I0(phase_N[11]),
-        .I1(phase_E[11]),
+       (.I0(phase_E[11]),
+        .I1(phase_N[11]),
         .O(\det_signal.dsp_phase_NE[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_7 
-       (.I0(phase_N[10]),
-        .I1(phase_E[10]),
+       (.I0(phase_E[10]),
+        .I1(phase_N[10]),
         .O(\det_signal.dsp_phase_NE[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_8 
-       (.I0(phase_N[9]),
-        .I1(phase_E[9]),
+       (.I0(phase_E[9]),
+        .I1(phase_N[9]),
         .O(\det_signal.dsp_phase_NE[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[15]_i_9 
-       (.I0(phase_N[8]),
-        .I1(phase_E[8]),
+       (.I0(phase_E[8]),
+        .I1(phase_N[8]),
         .O(\det_signal.dsp_phase_NE[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[19]_i_2 
-       (.I0(phase_N[19]),
-        .I1(phase_E[19]),
+       (.I0(phase_E[19]),
+        .I1(phase_N[19]),
         .O(\det_signal.dsp_phase_NE[19]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[19]_i_3 
-       (.I0(phase_N[18]),
-        .I1(phase_E[18]),
+       (.I0(phase_E[18]),
+        .I1(phase_N[18]),
         .O(\det_signal.dsp_phase_NE[19]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[19]_i_4 
-       (.I0(phase_N[17]),
-        .I1(phase_E[17]),
+       (.I0(phase_E[17]),
+        .I1(phase_N[17]),
         .O(\det_signal.dsp_phase_NE[19]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[19]_i_5 
-       (.I0(phase_N[16]),
-        .I1(phase_E[16]),
+       (.I0(phase_E[16]),
+        .I1(phase_N[16]),
         .O(\det_signal.dsp_phase_NE[19]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_2 
-       (.I0(phase_N[7]),
-        .I1(phase_E[7]),
+       (.I0(phase_E[7]),
+        .I1(phase_N[7]),
         .O(\det_signal.dsp_phase_NE[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_3 
-       (.I0(phase_N[6]),
-        .I1(phase_E[6]),
+       (.I0(phase_E[6]),
+        .I1(phase_N[6]),
         .O(\det_signal.dsp_phase_NE[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_4 
-       (.I0(phase_N[5]),
-        .I1(phase_E[5]),
+       (.I0(phase_E[5]),
+        .I1(phase_N[5]),
         .O(\det_signal.dsp_phase_NE[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_5 
-       (.I0(phase_N[4]),
-        .I1(phase_E[4]),
+       (.I0(phase_E[4]),
+        .I1(phase_N[4]),
         .O(\det_signal.dsp_phase_NE[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_6 
-       (.I0(phase_N[3]),
-        .I1(phase_E[3]),
+       (.I0(phase_E[3]),
+        .I1(phase_N[3]),
         .O(\det_signal.dsp_phase_NE[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_7 
-       (.I0(phase_N[2]),
-        .I1(phase_E[2]),
+       (.I0(phase_E[2]),
+        .I1(phase_N[2]),
         .O(\det_signal.dsp_phase_NE[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_8 
-       (.I0(phase_N[1]),
-        .I1(phase_E[1]),
+       (.I0(phase_E[1]),
+        .I1(phase_N[1]),
         .O(\det_signal.dsp_phase_NE[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_NE[7]_i_9 
-       (.I0(phase_N[0]),
-        .I1(phase_E[0]),
+       (.I0(phase_E[0]),
+        .I1(phase_N[0]),
         .O(\det_signal.dsp_phase_NE[7]_i_9_n_0 ));
   FDRE \det_signal.dsp_phase_NE_reg[0] 
        (.C(clk),
@@ -12835,7 +12835,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_NE_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_NE_reg[15]_i_1_n_0 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_1 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_2 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_3 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_4 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_5 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_6 ,\det_signal.dsp_phase_NE_reg[15]_i_1_n_7 }),
-        .DI(phase_N[15:8]),
+        .DI(phase_E[15:8]),
         .O(dsp_phase_NE02_out[15:8]),
         .S({\det_signal.dsp_phase_NE[15]_i_2_n_0 ,\det_signal.dsp_phase_NE[15]_i_3_n_0 ,\det_signal.dsp_phase_NE[15]_i_4_n_0 ,\det_signal.dsp_phase_NE[15]_i_5_n_0 ,\det_signal.dsp_phase_NE[15]_i_6_n_0 ,\det_signal.dsp_phase_NE[15]_i_7_n_0 ,\det_signal.dsp_phase_NE[15]_i_8_n_0 ,\det_signal.dsp_phase_NE[15]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_NE_reg[16] 
@@ -12867,7 +12867,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_NE_reg[15]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.dsp_phase_NE_reg[19]_i_1_CO_UNCONNECTED [7:3],\det_signal.dsp_phase_NE_reg[19]_i_1_n_5 ,\det_signal.dsp_phase_NE_reg[19]_i_1_n_6 ,\det_signal.dsp_phase_NE_reg[19]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_N[18:16]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_E[18:16]}),
         .O({\NLW_det_signal.dsp_phase_NE_reg[19]_i_1_O_UNCONNECTED [7:4],dsp_phase_NE02_out[19:16]}),
         .S({1'b0,1'b0,1'b0,1'b0,\det_signal.dsp_phase_NE[19]_i_2_n_0 ,\det_signal.dsp_phase_NE[19]_i_3_n_0 ,\det_signal.dsp_phase_NE[19]_i_4_n_0 ,\det_signal.dsp_phase_NE[19]_i_5_n_0 }));
   FDRE \det_signal.dsp_phase_NE_reg[1] 
@@ -12917,7 +12917,7 @@ module ps_ana_0_0_det_signal
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_NE_reg[7]_i_1_n_0 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_1 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_2 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_3 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_4 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_5 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_6 ,\det_signal.dsp_phase_NE_reg[7]_i_1_n_7 }),
-        .DI(phase_N[7:0]),
+        .DI(phase_E[7:0]),
         .O(dsp_phase_NE02_out[7:0]),
         .S({\det_signal.dsp_phase_NE[7]_i_2_n_0 ,\det_signal.dsp_phase_NE[7]_i_3_n_0 ,\det_signal.dsp_phase_NE[7]_i_4_n_0 ,\det_signal.dsp_phase_NE[7]_i_5_n_0 ,\det_signal.dsp_phase_NE[7]_i_6_n_0 ,\det_signal.dsp_phase_NE[7]_i_7_n_0 ,\det_signal.dsp_phase_NE[7]_i_8_n_0 ,\det_signal.dsp_phase_NE[7]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_NE_reg[8] 
@@ -13055,122 +13055,122 @@ module ps_ana_0_0_det_signal
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_2 
-       (.I0(phase_W[15]),
-        .I1(phase_N[15]),
+       (.I0(phase_N[15]),
+        .I1(phase_W[15]),
         .O(\det_signal.dsp_phase_WN[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_3 
-       (.I0(phase_W[14]),
-        .I1(phase_N[14]),
+       (.I0(phase_N[14]),
+        .I1(phase_W[14]),
         .O(\det_signal.dsp_phase_WN[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_4 
-       (.I0(phase_W[13]),
-        .I1(phase_N[13]),
+       (.I0(phase_N[13]),
+        .I1(phase_W[13]),
         .O(\det_signal.dsp_phase_WN[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_5 
-       (.I0(phase_W[12]),
-        .I1(phase_N[12]),
+       (.I0(phase_N[12]),
+        .I1(phase_W[12]),
         .O(\det_signal.dsp_phase_WN[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_6 
-       (.I0(phase_W[11]),
-        .I1(phase_N[11]),
+       (.I0(phase_N[11]),
+        .I1(phase_W[11]),
         .O(\det_signal.dsp_phase_WN[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_7 
-       (.I0(phase_W[10]),
-        .I1(phase_N[10]),
+       (.I0(phase_N[10]),
+        .I1(phase_W[10]),
         .O(\det_signal.dsp_phase_WN[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_8 
-       (.I0(phase_W[9]),
-        .I1(phase_N[9]),
+       (.I0(phase_N[9]),
+        .I1(phase_W[9]),
         .O(\det_signal.dsp_phase_WN[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[15]_i_9 
-       (.I0(phase_W[8]),
-        .I1(phase_N[8]),
+       (.I0(phase_N[8]),
+        .I1(phase_W[8]),
         .O(\det_signal.dsp_phase_WN[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[19]_i_2 
-       (.I0(phase_W[19]),
-        .I1(phase_N[19]),
+       (.I0(phase_N[19]),
+        .I1(phase_W[19]),
         .O(\det_signal.dsp_phase_WN[19]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[19]_i_3 
-       (.I0(phase_W[18]),
-        .I1(phase_N[18]),
+       (.I0(phase_N[18]),
+        .I1(phase_W[18]),
         .O(\det_signal.dsp_phase_WN[19]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[19]_i_4 
-       (.I0(phase_W[17]),
-        .I1(phase_N[17]),
+       (.I0(phase_N[17]),
+        .I1(phase_W[17]),
         .O(\det_signal.dsp_phase_WN[19]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[19]_i_5 
-       (.I0(phase_W[16]),
-        .I1(phase_N[16]),
+       (.I0(phase_N[16]),
+        .I1(phase_W[16]),
         .O(\det_signal.dsp_phase_WN[19]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_2 
-       (.I0(phase_W[7]),
-        .I1(phase_N[7]),
+       (.I0(phase_N[7]),
+        .I1(phase_W[7]),
         .O(\det_signal.dsp_phase_WN[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_3 
-       (.I0(phase_W[6]),
-        .I1(phase_N[6]),
+       (.I0(phase_N[6]),
+        .I1(phase_W[6]),
         .O(\det_signal.dsp_phase_WN[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_4 
-       (.I0(phase_W[5]),
-        .I1(phase_N[5]),
+       (.I0(phase_N[5]),
+        .I1(phase_W[5]),
         .O(\det_signal.dsp_phase_WN[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_5 
-       (.I0(phase_W[4]),
-        .I1(phase_N[4]),
+       (.I0(phase_N[4]),
+        .I1(phase_W[4]),
         .O(\det_signal.dsp_phase_WN[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_6 
-       (.I0(phase_W[3]),
-        .I1(phase_N[3]),
+       (.I0(phase_N[3]),
+        .I1(phase_W[3]),
         .O(\det_signal.dsp_phase_WN[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_7 
-       (.I0(phase_W[2]),
-        .I1(phase_N[2]),
+       (.I0(phase_N[2]),
+        .I1(phase_W[2]),
         .O(\det_signal.dsp_phase_WN[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_8 
-       (.I0(phase_W[1]),
-        .I1(phase_N[1]),
+       (.I0(phase_N[1]),
+        .I1(phase_W[1]),
         .O(\det_signal.dsp_phase_WN[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \det_signal.dsp_phase_WN[7]_i_9 
-       (.I0(phase_W[0]),
-        .I1(phase_N[0]),
+       (.I0(phase_N[0]),
+        .I1(phase_W[0]),
         .O(\det_signal.dsp_phase_WN[7]_i_9_n_0 ));
   FDRE \det_signal.dsp_phase_WN_reg[0] 
        (.C(clk),
@@ -13219,7 +13219,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_WN_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_WN_reg[15]_i_1_n_0 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_1 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_2 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_3 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_4 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_5 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_6 ,\det_signal.dsp_phase_WN_reg[15]_i_1_n_7 }),
-        .DI(phase_W[15:8]),
+        .DI(phase_N[15:8]),
         .O(dsp_phase_WN00_out[15:8]),
         .S({\det_signal.dsp_phase_WN[15]_i_2_n_0 ,\det_signal.dsp_phase_WN[15]_i_3_n_0 ,\det_signal.dsp_phase_WN[15]_i_4_n_0 ,\det_signal.dsp_phase_WN[15]_i_5_n_0 ,\det_signal.dsp_phase_WN[15]_i_6_n_0 ,\det_signal.dsp_phase_WN[15]_i_7_n_0 ,\det_signal.dsp_phase_WN[15]_i_8_n_0 ,\det_signal.dsp_phase_WN[15]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_WN_reg[16] 
@@ -13251,7 +13251,7 @@ module ps_ana_0_0_det_signal
        (.CI(\det_signal.dsp_phase_WN_reg[15]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_det_signal.dsp_phase_WN_reg[19]_i_1_CO_UNCONNECTED [7:3],\det_signal.dsp_phase_WN_reg[19]_i_1_n_5 ,\det_signal.dsp_phase_WN_reg[19]_i_1_n_6 ,\det_signal.dsp_phase_WN_reg[19]_i_1_n_7 }),
-        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_W[18:16]}),
+        .DI({1'b0,1'b0,1'b0,1'b0,1'b0,phase_N[18:16]}),
         .O({\NLW_det_signal.dsp_phase_WN_reg[19]_i_1_O_UNCONNECTED [7:4],dsp_phase_WN00_out[19:16]}),
         .S({1'b0,1'b0,1'b0,1'b0,\det_signal.dsp_phase_WN[19]_i_2_n_0 ,\det_signal.dsp_phase_WN[19]_i_3_n_0 ,\det_signal.dsp_phase_WN[19]_i_4_n_0 ,\det_signal.dsp_phase_WN[19]_i_5_n_0 }));
   FDRE \det_signal.dsp_phase_WN_reg[1] 
@@ -13301,7 +13301,7 @@ module ps_ana_0_0_det_signal
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\det_signal.dsp_phase_WN_reg[7]_i_1_n_0 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_1 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_2 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_3 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_4 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_5 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_6 ,\det_signal.dsp_phase_WN_reg[7]_i_1_n_7 }),
-        .DI(phase_W[7:0]),
+        .DI(phase_N[7:0]),
         .O(dsp_phase_WN00_out[7:0]),
         .S({\det_signal.dsp_phase_WN[7]_i_2_n_0 ,\det_signal.dsp_phase_WN[7]_i_3_n_0 ,\det_signal.dsp_phase_WN[7]_i_4_n_0 ,\det_signal.dsp_phase_WN[7]_i_5_n_0 ,\det_signal.dsp_phase_WN[7]_i_6_n_0 ,\det_signal.dsp_phase_WN[7]_i_7_n_0 ,\det_signal.dsp_phase_WN[7]_i_8_n_0 ,\det_signal.dsp_phase_WN[7]_i_9_n_0 }));
   FDRE \det_signal.dsp_phase_WN_reg[8] 
@@ -18709,13 +18709,13 @@ module ps_ana_0_0_doa_angle
     err_clr0,
     reset_0,
     Q,
-    \doa_angle.delay_WN_reg[15]_0 ,
+    \doa_angle.delay_NE_reg[15]_0 ,
     \doa_angle.delay_EW_reg[15]_0 ,
     \doa_angle.sample_reg[15]_0 ,
     \doa_angle.size_reg[8]_0 ,
     \doa_angle.freq_reg[19]_0 ,
     \doa_angle.angle_reg[15]_0 ,
-    \doa_angle.delay_NE_reg[14]_0 ,
+    \doa_angle.delay_WN_reg[14]_0 ,
     O372,
     O373,
     \doa_angle.phase_NE_reg[19]_0 ,
@@ -18754,13 +18754,13 @@ module ps_ana_0_0_doa_angle
   output err_clr0;
   output reset_0;
   output [15:0]Q;
-  output [15:0]\doa_angle.delay_WN_reg[15]_0 ;
+  output [15:0]\doa_angle.delay_NE_reg[15]_0 ;
   output [15:0]\doa_angle.delay_EW_reg[15]_0 ;
   output [15:0]\doa_angle.sample_reg[15]_0 ;
   output [8:0]\doa_angle.size_reg[8]_0 ;
   output [19:0]\doa_angle.freq_reg[19]_0 ;
   output [15:0]\doa_angle.angle_reg[15]_0 ;
-  output [15:0]\doa_angle.delay_NE_reg[14]_0 ;
+  output [15:0]\doa_angle.delay_WN_reg[14]_0 ;
   output [15:0]O372;
   output [15:0]O373;
   output [17:0]\doa_angle.phase_NE_reg[19]_0 ;
@@ -19178,7 +19178,7 @@ module ps_ana_0_0_doa_angle
   wire \doa_angle.delay_NE[7]_i_1_n_0 ;
   wire \doa_angle.delay_NE[8]_i_1_n_0 ;
   wire \doa_angle.delay_NE[9]_i_1_n_0 ;
-  wire [15:0]\doa_angle.delay_NE_reg[14]_0 ;
+  wire [15:0]\doa_angle.delay_NE_reg[15]_0 ;
   wire \doa_angle.delay_WN[0]_i_1_n_0 ;
   wire \doa_angle.delay_WN[10]_i_1_n_0 ;
   wire \doa_angle.delay_WN[11]_i_1_n_0 ;
@@ -19195,7 +19195,7 @@ module ps_ana_0_0_doa_angle
   wire \doa_angle.delay_WN[7]_i_1_n_0 ;
   wire \doa_angle.delay_WN[8]_i_1_n_0 ;
   wire \doa_angle.delay_WN[9]_i_1_n_0 ;
-  wire [15:0]\doa_angle.delay_WN_reg[15]_0 ;
+  wire [15:0]\doa_angle.delay_WN_reg[14]_0 ;
   wire \doa_angle.delay_base[0]_i_1_n_0 ;
   wire \doa_angle.delay_base[15]_i_1_n_0 ;
   wire \doa_angle.delay_base[1]_i_1_n_0 ;
@@ -19830,98 +19830,98 @@ module ps_ana_0_0_doa_angle
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_1
-       (.I0(delay_sin_2[14]),
-        .I1(delay_mul[38]),
+       (.I0(delay_mul[38]),
+        .I1(delay_sin_2[14]),
         .O(delay_next0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_2
-       (.I0(delay_sin_2[14]),
-        .I1(delay_mul[37]),
+       (.I0(delay_mul[37]),
+        .I1(delay_sin_2[14]),
         .O(delay_next0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_3
-       (.I0(delay_sin_2[13]),
-        .I1(delay_mul[36]),
+       (.I0(delay_mul[36]),
+        .I1(delay_sin_2[13]),
         .O(delay_next0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_4
-       (.I0(delay_sin_2[12]),
-        .I1(delay_mul[35]),
+       (.I0(delay_mul[35]),
+        .I1(delay_sin_2[12]),
         .O(delay_next0_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_5
-       (.I0(delay_sin_2[11]),
-        .I1(delay_mul[34]),
+       (.I0(delay_mul[34]),
+        .I1(delay_sin_2[11]),
         .O(delay_next0_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_6
-       (.I0(delay_sin_2[10]),
-        .I1(delay_mul[33]),
+       (.I0(delay_mul[33]),
+        .I1(delay_sin_2[10]),
         .O(delay_next0_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_7
-       (.I0(delay_sin_2[9]),
-        .I1(delay_mul[32]),
+       (.I0(delay_mul[32]),
+        .I1(delay_sin_2[9]),
         .O(delay_next0_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_8
-       (.I0(delay_sin_2[8]),
-        .I1(delay_mul[31]),
+       (.I0(delay_mul[31]),
+        .I1(delay_sin_2[8]),
         .O(delay_next0_carry__0_i_8_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_1
-       (.I0(delay_sin_2[7]),
-        .I1(delay_mul[30]),
+       (.I0(delay_mul[30]),
+        .I1(delay_sin_2[7]),
         .O(delay_next0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_2
-       (.I0(delay_sin_2[6]),
-        .I1(delay_mul[29]),
+       (.I0(delay_mul[29]),
+        .I1(delay_sin_2[6]),
         .O(delay_next0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_3
-       (.I0(delay_sin_2[5]),
-        .I1(delay_mul[28]),
+       (.I0(delay_mul[28]),
+        .I1(delay_sin_2[5]),
         .O(delay_next0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_4
-       (.I0(delay_sin_2[4]),
-        .I1(delay_mul[27]),
+       (.I0(delay_mul[27]),
+        .I1(delay_sin_2[4]),
         .O(delay_next0_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_5
-       (.I0(delay_sin_2[3]),
-        .I1(delay_mul[26]),
+       (.I0(delay_mul[26]),
+        .I1(delay_sin_2[3]),
         .O(delay_next0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_6
-       (.I0(delay_sin_2[2]),
-        .I1(delay_mul[25]),
+       (.I0(delay_mul[25]),
+        .I1(delay_sin_2[2]),
         .O(delay_next0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_7
-       (.I0(delay_sin_2[1]),
-        .I1(delay_mul[24]),
+       (.I0(delay_mul[24]),
+        .I1(delay_sin_2[1]),
         .O(delay_next0_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_8
-       (.I0(delay_sin_2[0]),
-        .I1(delay_mul[23]),
+       (.I0(delay_mul[23]),
+        .I1(delay_sin_2[0]),
         .O(delay_next0_carry_i_8_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 delay_prev0_carry
@@ -19942,98 +19942,98 @@ module ps_ana_0_0_doa_angle
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_1
-       (.I0(delay_mul[38]),
-        .I1(delay_sin_2[14]),
+       (.I0(delay_sin_2[14]),
+        .I1(delay_mul[38]),
         .O(delay_prev0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_2
-       (.I0(delay_mul[37]),
-        .I1(delay_sin_2[14]),
+       (.I0(delay_sin_2[14]),
+        .I1(delay_mul[37]),
         .O(delay_prev0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_3
-       (.I0(delay_mul[36]),
-        .I1(delay_sin_2[13]),
+       (.I0(delay_sin_2[13]),
+        .I1(delay_mul[36]),
         .O(delay_prev0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_4
-       (.I0(delay_mul[35]),
-        .I1(delay_sin_2[12]),
+       (.I0(delay_sin_2[12]),
+        .I1(delay_mul[35]),
         .O(delay_prev0_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_5
-       (.I0(delay_mul[34]),
-        .I1(delay_sin_2[11]),
+       (.I0(delay_sin_2[11]),
+        .I1(delay_mul[34]),
         .O(delay_prev0_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_6
-       (.I0(delay_mul[33]),
-        .I1(delay_sin_2[10]),
+       (.I0(delay_sin_2[10]),
+        .I1(delay_mul[33]),
         .O(delay_prev0_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_7
-       (.I0(delay_mul[32]),
-        .I1(delay_sin_2[9]),
+       (.I0(delay_sin_2[9]),
+        .I1(delay_mul[32]),
         .O(delay_prev0_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_8
-       (.I0(delay_mul[31]),
-        .I1(delay_sin_2[8]),
+       (.I0(delay_sin_2[8]),
+        .I1(delay_mul[31]),
         .O(delay_prev0_carry__0_i_8_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_1
-       (.I0(delay_mul[30]),
-        .I1(delay_sin_2[7]),
+       (.I0(delay_sin_2[7]),
+        .I1(delay_mul[30]),
         .O(delay_prev0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_2
-       (.I0(delay_mul[29]),
-        .I1(delay_sin_2[6]),
+       (.I0(delay_sin_2[6]),
+        .I1(delay_mul[29]),
         .O(delay_prev0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_3
-       (.I0(delay_mul[28]),
-        .I1(delay_sin_2[5]),
+       (.I0(delay_sin_2[5]),
+        .I1(delay_mul[28]),
         .O(delay_prev0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_4
-       (.I0(delay_mul[27]),
-        .I1(delay_sin_2[4]),
+       (.I0(delay_sin_2[4]),
+        .I1(delay_mul[27]),
         .O(delay_prev0_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_5
-       (.I0(delay_mul[26]),
-        .I1(delay_sin_2[3]),
+       (.I0(delay_sin_2[3]),
+        .I1(delay_mul[26]),
         .O(delay_prev0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_6
-       (.I0(delay_mul[25]),
-        .I1(delay_sin_2[2]),
+       (.I0(delay_sin_2[2]),
+        .I1(delay_mul[25]),
         .O(delay_prev0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_7
-       (.I0(delay_mul[24]),
-        .I1(delay_sin_2[1]),
+       (.I0(delay_sin_2[1]),
+        .I1(delay_mul[24]),
         .O(delay_prev0_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_8
-       (.I0(delay_mul[23]),
-        .I1(delay_sin_2[0]),
+       (.I0(delay_sin_2[0]),
+        .I1(delay_mul[23]),
         .O(delay_prev0_carry_i_8_n_0));
   CARRY8 diff_angle0_carry
        (.CI(1'b1),
@@ -21153,7 +21153,7 @@ module ps_ana_0_0_doa_angle
         .D(\doa_angle.d_run_reg_n_0_[4] ),
         .Q(\doa_angle.d_run_reg_n_0_[5] ),
         .R(d_run));
-  (* SOFT_HLUTNM = "soft_lutpair372" *) 
+  (* SOFT_HLUTNM = "soft_lutpair387" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[0]_i_1 
@@ -21163,7 +21163,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[0]),
         .O(\doa_angle.delay_EW[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair382" *) 
+  (* SOFT_HLUTNM = "soft_lutpair377" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[10]_i_1 
@@ -21173,7 +21173,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[10]),
         .O(\doa_angle.delay_EW[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair383" *) 
+  (* SOFT_HLUTNM = "soft_lutpair376" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[11]_i_1 
@@ -21183,7 +21183,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[11]),
         .O(\doa_angle.delay_EW[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair384" *) 
+  (* SOFT_HLUTNM = "soft_lutpair375" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[12]_i_1 
@@ -21193,7 +21193,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[12]),
         .O(\doa_angle.delay_EW[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair385" *) 
+  (* SOFT_HLUTNM = "soft_lutpair374" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[13]_i_1 
@@ -21203,7 +21203,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[13]),
         .O(\doa_angle.delay_EW[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair386" *) 
+  (* SOFT_HLUTNM = "soft_lutpair373" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[14]_i_1 
@@ -21213,7 +21213,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[14]),
         .O(\doa_angle.delay_EW[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair387" *) 
+  (* SOFT_HLUTNM = "soft_lutpair372" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[15]_i_1 
@@ -21223,7 +21223,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[15]),
         .O(\doa_angle.delay_EW[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair373" *) 
+  (* SOFT_HLUTNM = "soft_lutpair386" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[1]_i_1 
@@ -21233,7 +21233,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[1]),
         .O(\doa_angle.delay_EW[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair374" *) 
+  (* SOFT_HLUTNM = "soft_lutpair385" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[2]_i_1 
@@ -21243,7 +21243,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[2]),
         .O(\doa_angle.delay_EW[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair375" *) 
+  (* SOFT_HLUTNM = "soft_lutpair384" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[3]_i_1 
@@ -21253,7 +21253,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[3]),
         .O(\doa_angle.delay_EW[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair376" *) 
+  (* SOFT_HLUTNM = "soft_lutpair383" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[4]_i_1 
@@ -21263,7 +21263,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[4]),
         .O(\doa_angle.delay_EW[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair377" *) 
+  (* SOFT_HLUTNM = "soft_lutpair382" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[5]_i_1 
@@ -21273,7 +21273,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[5]),
         .O(\doa_angle.delay_EW[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair378" *) 
+  (* SOFT_HLUTNM = "soft_lutpair381" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[6]_i_1 
@@ -21283,7 +21283,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[6]),
         .O(\doa_angle.delay_EW[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair379" *) 
+  (* SOFT_HLUTNM = "soft_lutpair380" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[7]_i_1 
@@ -21293,7 +21293,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[7]),
         .O(\doa_angle.delay_EW[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair380" *) 
+  (* SOFT_HLUTNM = "soft_lutpair379" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[8]_i_1 
@@ -21303,7 +21303,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_prev[8]),
         .O(\doa_angle.delay_EW[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair381" *) 
+  (* SOFT_HLUTNM = "soft_lutpair378" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[9]_i_1 
@@ -21409,7 +21409,7 @@ module ps_ana_0_0_doa_angle
         .D(\doa_angle.delay_EW[9]_i_1_n_0 ),
         .Q(\doa_angle.delay_EW_reg[15]_0 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair372" *) 
+  (* SOFT_HLUTNM = "soft_lutpair387" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[0]_i_1 
@@ -21419,7 +21419,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[0]),
         .O(\doa_angle.delay_NE[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair382" *) 
+  (* SOFT_HLUTNM = "soft_lutpair377" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[10]_i_1 
@@ -21429,7 +21429,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[10]),
         .O(\doa_angle.delay_NE[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair383" *) 
+  (* SOFT_HLUTNM = "soft_lutpair376" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[11]_i_1 
@@ -21439,7 +21439,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[11]),
         .O(\doa_angle.delay_NE[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair384" *) 
+  (* SOFT_HLUTNM = "soft_lutpair375" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[12]_i_1 
@@ -21449,7 +21449,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[12]),
         .O(\doa_angle.delay_NE[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair385" *) 
+  (* SOFT_HLUTNM = "soft_lutpair374" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[13]_i_1 
@@ -21459,7 +21459,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[13]),
         .O(\doa_angle.delay_NE[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair386" *) 
+  (* SOFT_HLUTNM = "soft_lutpair373" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[14]_i_1 
@@ -21469,7 +21469,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[14]),
         .O(\doa_angle.delay_NE[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair387" *) 
+  (* SOFT_HLUTNM = "soft_lutpair372" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[15]_i_1 
@@ -21479,7 +21479,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[15]),
         .O(\doa_angle.delay_NE[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair373" *) 
+  (* SOFT_HLUTNM = "soft_lutpair386" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[1]_i_1 
@@ -21489,7 +21489,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[1]),
         .O(\doa_angle.delay_NE[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair374" *) 
+  (* SOFT_HLUTNM = "soft_lutpair385" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[2]_i_1 
@@ -21499,7 +21499,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[2]),
         .O(\doa_angle.delay_NE[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair375" *) 
+  (* SOFT_HLUTNM = "soft_lutpair384" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[3]_i_1 
@@ -21509,7 +21509,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[3]),
         .O(\doa_angle.delay_NE[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair376" *) 
+  (* SOFT_HLUTNM = "soft_lutpair383" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[4]_i_1 
@@ -21519,7 +21519,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[4]),
         .O(\doa_angle.delay_NE[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair377" *) 
+  (* SOFT_HLUTNM = "soft_lutpair382" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[5]_i_1 
@@ -21529,7 +21529,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[5]),
         .O(\doa_angle.delay_NE[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair378" *) 
+  (* SOFT_HLUTNM = "soft_lutpair381" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[6]_i_1 
@@ -21539,7 +21539,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[6]),
         .O(\doa_angle.delay_NE[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair379" *) 
+  (* SOFT_HLUTNM = "soft_lutpair380" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[7]_i_1 
@@ -21549,7 +21549,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[7]),
         .O(\doa_angle.delay_NE[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair380" *) 
+  (* SOFT_HLUTNM = "soft_lutpair379" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[8]_i_1 
@@ -21559,7 +21559,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_next[8]),
         .O(\doa_angle.delay_NE[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair381" *) 
+  (* SOFT_HLUTNM = "soft_lutpair378" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[9]_i_1 
@@ -21573,98 +21573,99 @@ module ps_ana_0_0_doa_angle
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[0]_i_1_n_0 ),
-        .Q(Q[0]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [0]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[10] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[10]_i_1_n_0 ),
-        .Q(Q[10]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [10]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[11] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[11]_i_1_n_0 ),
-        .Q(Q[11]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [11]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[12] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[12]_i_1_n_0 ),
-        .Q(Q[12]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [12]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[13] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[13]_i_1_n_0 ),
-        .Q(Q[13]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [13]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[14] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[14]_i_1_n_0 ),
-        .Q(Q[14]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [14]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[15] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[15]_i_1_n_0 ),
-        .Q(Q[15]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [15]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[1] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[1]_i_1_n_0 ),
-        .Q(Q[1]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [1]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[2] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[2]_i_1_n_0 ),
-        .Q(Q[2]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [2]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[3] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[3]_i_1_n_0 ),
-        .Q(Q[3]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [3]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[4] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[4]_i_1_n_0 ),
-        .Q(Q[4]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [4]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[5] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[5]_i_1_n_0 ),
-        .Q(Q[5]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [5]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[6] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[6]_i_1_n_0 ),
-        .Q(Q[6]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [6]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[7] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[7]_i_1_n_0 ),
-        .Q(Q[7]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [7]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[8] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[8]_i_1_n_0 ),
-        .Q(Q[8]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [8]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[9] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[9]_i_1_n_0 ),
-        .Q(Q[9]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [9]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair388" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[0]_i_1 
@@ -21701,7 +21702,6 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_curr[12]),
         .O(\doa_angle.delay_WN[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair390" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[13]_i_1 
@@ -21711,7 +21711,6 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_curr[13]),
         .O(\doa_angle.delay_WN[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair389" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[14]_i_1 
@@ -21721,7 +21720,6 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_curr[14]),
         .O(\doa_angle.delay_WN[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair388" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[15]_i_1 
@@ -21731,6 +21729,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_curr[15]),
         .O(\doa_angle.delay_WN[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair389" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[1]_i_1 
@@ -21740,6 +21739,7 @@ module ps_ana_0_0_doa_angle
         .I3(delay_id[0]),
         .I4(d_curr[1]),
         .O(\doa_angle.delay_WN[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair390" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[2]_i_1 
@@ -21816,97 +21816,97 @@ module ps_ana_0_0_doa_angle
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[0]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [0]),
+        .Q(Q[0]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[10] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[10]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [10]),
+        .Q(Q[10]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[11] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[11]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [11]),
+        .Q(Q[11]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[12] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[12]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [12]),
+        .Q(Q[12]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[13] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[13]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [13]),
+        .Q(Q[13]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[14] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[14]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [14]),
+        .Q(Q[14]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[15] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[15]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [15]),
+        .Q(Q[15]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[1] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[1]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [1]),
+        .Q(Q[1]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[2] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[2]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [2]),
+        .Q(Q[2]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[3] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[3]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [3]),
+        .Q(Q[3]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[4] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[4]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [4]),
+        .Q(Q[4]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[5] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[5]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [5]),
+        .Q(Q[5]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[6] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[6]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [6]),
+        .Q(Q[6]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[7] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[7]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [7]),
+        .Q(Q[7]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[8] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[8]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [8]),
+        .Q(Q[8]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[9] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[9]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [9]),
+        .Q(Q[9]),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair390" *) 
   LUT2 #(
@@ -25025,105 +25025,105 @@ module ps_ana_0_0_doa_angle
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_2 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [15]),
-        .I1(Q[15]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [15]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [15]),
         .O(\doa_calc.delay_E[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_3 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [14]),
-        .I1(Q[14]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [14]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [14]),
         .O(\doa_calc.delay_E[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_4 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [13]),
-        .I1(Q[13]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [13]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [13]),
         .O(\doa_calc.delay_E[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_5 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [12]),
-        .I1(Q[12]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [12]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [12]),
         .O(\doa_calc.delay_E[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_6 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [11]),
-        .I1(Q[11]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [11]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [11]),
         .O(\doa_calc.delay_E[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_7 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [10]),
-        .I1(Q[10]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [10]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [10]),
         .O(\doa_calc.delay_E[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_8 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [9]),
-        .I1(Q[9]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [9]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [9]),
         .O(\doa_calc.delay_E[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_9 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [8]),
-        .I1(Q[8]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [8]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [8]),
         .O(\doa_calc.delay_E[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_2 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [7]),
-        .I1(Q[7]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [7]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [7]),
         .O(\doa_calc.delay_E[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_3 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [6]),
-        .I1(Q[6]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [6]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [6]),
         .O(\doa_calc.delay_E[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_4 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [5]),
-        .I1(Q[5]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [5]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [5]),
         .O(\doa_calc.delay_E[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_5 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [4]),
-        .I1(Q[4]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [4]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [4]),
         .O(\doa_calc.delay_E[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_6 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [3]),
-        .I1(Q[3]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [3]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [3]),
         .O(\doa_calc.delay_E[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_7 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [2]),
-        .I1(Q[2]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [2]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [2]),
         .O(\doa_calc.delay_E[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_8 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [1]),
-        .I1(Q[1]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [1]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [1]),
         .O(\doa_calc.delay_E[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_9 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [0]),
-        .I1(Q[0]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [0]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [0]),
         .O(\doa_calc.delay_E[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_E_reg[15]_i_1 
        (.CI(\doa_calc.delay_E_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_E_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_E_reg[15]_i_1_n_1 ,\doa_calc.delay_E_reg[15]_i_1_n_2 ,\doa_calc.delay_E_reg[15]_i_1_n_3 ,\doa_calc.delay_E_reg[15]_i_1_n_4 ,\doa_calc.delay_E_reg[15]_i_1_n_5 ,\doa_calc.delay_E_reg[15]_i_1_n_6 ,\doa_calc.delay_E_reg[15]_i_1_n_7 }),
-        .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
+        .DI({1'b0,\doa_angle.delay_NE_reg[15]_0 [14:8]}),
         .O(O372[15:8]),
         .S({\doa_calc.delay_E[15]_i_2_n_0 ,\doa_calc.delay_E[15]_i_3_n_0 ,\doa_calc.delay_E[15]_i_4_n_0 ,\doa_calc.delay_E[15]_i_5_n_0 ,\doa_calc.delay_E[15]_i_6_n_0 ,\doa_calc.delay_E[15]_i_7_n_0 ,\doa_calc.delay_E[15]_i_8_n_0 ,\doa_calc.delay_E[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -25131,104 +25131,104 @@ module ps_ana_0_0_doa_angle
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_E_reg[7]_i_1_n_0 ,\doa_calc.delay_E_reg[7]_i_1_n_1 ,\doa_calc.delay_E_reg[7]_i_1_n_2 ,\doa_calc.delay_E_reg[7]_i_1_n_3 ,\doa_calc.delay_E_reg[7]_i_1_n_4 ,\doa_calc.delay_E_reg[7]_i_1_n_5 ,\doa_calc.delay_E_reg[7]_i_1_n_6 ,\doa_calc.delay_E_reg[7]_i_1_n_7 }),
-        .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
+        .DI(\doa_angle.delay_NE_reg[15]_0 [7:0]),
         .O(O372[7:0]),
         .S({\doa_calc.delay_E[7]_i_2_n_0 ,\doa_calc.delay_E[7]_i_3_n_0 ,\doa_calc.delay_E[7]_i_4_n_0 ,\doa_calc.delay_E[7]_i_5_n_0 ,\doa_calc.delay_E[7]_i_6_n_0 ,\doa_calc.delay_E[7]_i_7_n_0 ,\doa_calc.delay_E[7]_i_8_n_0 ,\doa_calc.delay_E[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_2 
        (.I0(Q[15]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [15]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [15]),
         .O(\doa_calc.delay_N[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_3 
        (.I0(Q[14]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [14]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [14]),
         .O(\doa_calc.delay_N[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_4 
        (.I0(Q[13]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [13]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [13]),
         .O(\doa_calc.delay_N[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_5 
        (.I0(Q[12]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [12]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [12]),
         .O(\doa_calc.delay_N[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_6 
        (.I0(Q[11]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [11]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [11]),
         .O(\doa_calc.delay_N[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_7 
        (.I0(Q[10]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [10]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [10]),
         .O(\doa_calc.delay_N[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_8 
        (.I0(Q[9]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [9]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [9]),
         .O(\doa_calc.delay_N[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_9 
        (.I0(Q[8]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [8]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [8]),
         .O(\doa_calc.delay_N[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_2 
        (.I0(Q[7]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [7]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [7]),
         .O(\doa_calc.delay_N[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_3 
        (.I0(Q[6]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [6]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [6]),
         .O(\doa_calc.delay_N[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_4 
        (.I0(Q[5]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [5]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [5]),
         .O(\doa_calc.delay_N[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_5 
        (.I0(Q[4]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [4]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [4]),
         .O(\doa_calc.delay_N[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_6 
        (.I0(Q[3]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [3]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [3]),
         .O(\doa_calc.delay_N[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_7 
        (.I0(Q[2]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [2]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [2]),
         .O(\doa_calc.delay_N[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_8 
        (.I0(Q[1]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [1]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [1]),
         .O(\doa_calc.delay_N[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_9 
        (.I0(Q[0]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [0]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [0]),
         .O(\doa_calc.delay_N[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_N_reg[15]_i_1 
@@ -25236,7 +25236,7 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_N_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_N_reg[15]_i_1_n_1 ,\doa_calc.delay_N_reg[15]_i_1_n_2 ,\doa_calc.delay_N_reg[15]_i_1_n_3 ,\doa_calc.delay_N_reg[15]_i_1_n_4 ,\doa_calc.delay_N_reg[15]_i_1_n_5 ,\doa_calc.delay_N_reg[15]_i_1_n_6 ,\doa_calc.delay_N_reg[15]_i_1_n_7 }),
         .DI({1'b0,Q[14:8]}),
-        .O(\doa_angle.delay_NE_reg[14]_0 [15:8]),
+        .O(\doa_angle.delay_WN_reg[14]_0 [15:8]),
         .S({\doa_calc.delay_N[15]_i_2_n_0 ,\doa_calc.delay_N[15]_i_3_n_0 ,\doa_calc.delay_N[15]_i_4_n_0 ,\doa_calc.delay_N[15]_i_5_n_0 ,\doa_calc.delay_N[15]_i_6_n_0 ,\doa_calc.delay_N[15]_i_7_n_0 ,\doa_calc.delay_N[15]_i_8_n_0 ,\doa_calc.delay_N[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_N_reg[7]_i_1 
@@ -25244,110 +25244,110 @@ module ps_ana_0_0_doa_angle
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_N_reg[7]_i_1_n_0 ,\doa_calc.delay_N_reg[7]_i_1_n_1 ,\doa_calc.delay_N_reg[7]_i_1_n_2 ,\doa_calc.delay_N_reg[7]_i_1_n_3 ,\doa_calc.delay_N_reg[7]_i_1_n_4 ,\doa_calc.delay_N_reg[7]_i_1_n_5 ,\doa_calc.delay_N_reg[7]_i_1_n_6 ,\doa_calc.delay_N_reg[7]_i_1_n_7 }),
         .DI(Q[7:0]),
-        .O(\doa_angle.delay_NE_reg[14]_0 [7:0]),
+        .O(\doa_angle.delay_WN_reg[14]_0 [7:0]),
         .S({\doa_calc.delay_N[7]_i_2_n_0 ,\doa_calc.delay_N[7]_i_3_n_0 ,\doa_calc.delay_N[7]_i_4_n_0 ,\doa_calc.delay_N[7]_i_5_n_0 ,\doa_calc.delay_N[7]_i_6_n_0 ,\doa_calc.delay_N[7]_i_7_n_0 ,\doa_calc.delay_N[7]_i_8_n_0 ,\doa_calc.delay_N[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_2 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [15]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [15]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [15]),
+        .I1(Q[15]),
         .O(\doa_calc.delay_W[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_3 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [14]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [14]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [14]),
+        .I1(Q[14]),
         .O(\doa_calc.delay_W[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_4 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [13]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [13]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [13]),
+        .I1(Q[13]),
         .O(\doa_calc.delay_W[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_5 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [12]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [12]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [12]),
+        .I1(Q[12]),
         .O(\doa_calc.delay_W[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_6 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [11]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [11]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [11]),
+        .I1(Q[11]),
         .O(\doa_calc.delay_W[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_7 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [10]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [10]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [10]),
+        .I1(Q[10]),
         .O(\doa_calc.delay_W[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_8 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [9]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [9]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [9]),
+        .I1(Q[9]),
         .O(\doa_calc.delay_W[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_9 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [8]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [8]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [8]),
+        .I1(Q[8]),
         .O(\doa_calc.delay_W[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_2 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [7]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [7]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [7]),
+        .I1(Q[7]),
         .O(\doa_calc.delay_W[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_3 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [6]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [6]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [6]),
+        .I1(Q[6]),
         .O(\doa_calc.delay_W[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_4 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [5]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [5]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [5]),
+        .I1(Q[5]),
         .O(\doa_calc.delay_W[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_5 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [4]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [4]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [4]),
+        .I1(Q[4]),
         .O(\doa_calc.delay_W[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_6 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [3]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [3]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [3]),
+        .I1(Q[3]),
         .O(\doa_calc.delay_W[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_7 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [2]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [2]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [2]),
+        .I1(Q[2]),
         .O(\doa_calc.delay_W[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_8 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [1]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [1]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [1]),
+        .I1(Q[1]),
         .O(\doa_calc.delay_W[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_9 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [0]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [0]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [0]),
+        .I1(Q[0]),
         .O(\doa_calc.delay_W[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_W_reg[15]_i_1 
        (.CI(\doa_calc.delay_W_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_W_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_W_reg[15]_i_1_n_1 ,\doa_calc.delay_W_reg[15]_i_1_n_2 ,\doa_calc.delay_W_reg[15]_i_1_n_3 ,\doa_calc.delay_W_reg[15]_i_1_n_4 ,\doa_calc.delay_W_reg[15]_i_1_n_5 ,\doa_calc.delay_W_reg[15]_i_1_n_6 ,\doa_calc.delay_W_reg[15]_i_1_n_7 }),
-        .DI({1'b0,\doa_angle.delay_WN_reg[15]_0 [14:8]}),
+        .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
         .O(O373[15:8]),
         .S({\doa_calc.delay_W[15]_i_2_n_0 ,\doa_calc.delay_W[15]_i_3_n_0 ,\doa_calc.delay_W[15]_i_4_n_0 ,\doa_calc.delay_W[15]_i_5_n_0 ,\doa_calc.delay_W[15]_i_6_n_0 ,\doa_calc.delay_W[15]_i_7_n_0 ,\doa_calc.delay_W[15]_i_8_n_0 ,\doa_calc.delay_W[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -25355,7 +25355,7 @@ module ps_ana_0_0_doa_angle
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_W_reg[7]_i_1_n_0 ,\doa_calc.delay_W_reg[7]_i_1_n_1 ,\doa_calc.delay_W_reg[7]_i_1_n_2 ,\doa_calc.delay_W_reg[7]_i_1_n_3 ,\doa_calc.delay_W_reg[7]_i_1_n_4 ,\doa_calc.delay_W_reg[7]_i_1_n_5 ,\doa_calc.delay_W_reg[7]_i_1_n_6 ,\doa_calc.delay_W_reg[7]_i_1_n_7 }),
-        .DI(\doa_angle.delay_WN_reg[15]_0 [7:0]),
+        .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
         .O(O373[7:0]),
         .S({\doa_calc.delay_W[7]_i_2_n_0 ,\doa_calc.delay_W[7]_i_3_n_0 ,\doa_calc.delay_W[7]_i_4_n_0 ,\doa_calc.delay_W[7]_i_5_n_0 ,\doa_calc.delay_W[7]_i_6_n_0 ,\doa_calc.delay_W[7]_i_7_n_0 ,\doa_calc.delay_W[7]_i_8_n_0 ,\doa_calc.delay_W[7]_i_9_n_0 }));
   LUT2 #(
@@ -25823,13 +25823,13 @@ module ps_ana_0_0_doa_angle__xdcDup__1
     err_clr0,
     reset_0,
     Q,
-    \doa_angle.delay_WN_reg[15]_0 ,
+    \doa_angle.delay_NE_reg[15]_0 ,
     \doa_angle.delay_EW_reg[15]_0 ,
     \doa_angle.sample_reg[15]_0 ,
     \doa_angle.size_reg[8]_0 ,
     \doa_angle.freq_reg[19]_0 ,
     \doa_angle.angle_reg[15]_0 ,
-    \doa_angle.delay_NE_reg[14]_0 ,
+    \doa_angle.delay_WN_reg[14]_0 ,
     O266,
     O267,
     \doa_angle.phase_NE_reg[19]_0 ,
@@ -25868,13 +25868,13 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   output err_clr0;
   output reset_0;
   output [15:0]Q;
-  output [15:0]\doa_angle.delay_WN_reg[15]_0 ;
+  output [15:0]\doa_angle.delay_NE_reg[15]_0 ;
   output [15:0]\doa_angle.delay_EW_reg[15]_0 ;
   output [15:0]\doa_angle.sample_reg[15]_0 ;
   output [8:0]\doa_angle.size_reg[8]_0 ;
   output [19:0]\doa_angle.freq_reg[19]_0 ;
   output [15:0]\doa_angle.angle_reg[15]_0 ;
-  output [15:0]\doa_angle.delay_NE_reg[14]_0 ;
+  output [15:0]\doa_angle.delay_WN_reg[14]_0 ;
   output [15:0]O266;
   output [15:0]O267;
   output [17:0]\doa_angle.phase_NE_reg[19]_0 ;
@@ -26292,7 +26292,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   wire \doa_angle.delay_NE[7]_i_1_n_0 ;
   wire \doa_angle.delay_NE[8]_i_1_n_0 ;
   wire \doa_angle.delay_NE[9]_i_1_n_0 ;
-  wire [15:0]\doa_angle.delay_NE_reg[14]_0 ;
+  wire [15:0]\doa_angle.delay_NE_reg[15]_0 ;
   wire \doa_angle.delay_WN[0]_i_1_n_0 ;
   wire \doa_angle.delay_WN[10]_i_1_n_0 ;
   wire \doa_angle.delay_WN[11]_i_1_n_0 ;
@@ -26309,7 +26309,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   wire \doa_angle.delay_WN[7]_i_1_n_0 ;
   wire \doa_angle.delay_WN[8]_i_1_n_0 ;
   wire \doa_angle.delay_WN[9]_i_1_n_0 ;
-  wire [15:0]\doa_angle.delay_WN_reg[15]_0 ;
+  wire [15:0]\doa_angle.delay_WN_reg[14]_0 ;
   wire \doa_angle.delay_base[0]_i_1_n_0 ;
   wire \doa_angle.delay_base[15]_i_1_n_0 ;
   wire \doa_angle.delay_base[1]_i_1_n_0 ;
@@ -26944,98 +26944,98 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_1
-       (.I0(delay_sin_2[14]),
-        .I1(delay_mul[38]),
+       (.I0(delay_mul[38]),
+        .I1(delay_sin_2[14]),
         .O(delay_next0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_2
-       (.I0(delay_sin_2[14]),
-        .I1(delay_mul[37]),
+       (.I0(delay_mul[37]),
+        .I1(delay_sin_2[14]),
         .O(delay_next0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_3
-       (.I0(delay_sin_2[13]),
-        .I1(delay_mul[36]),
+       (.I0(delay_mul[36]),
+        .I1(delay_sin_2[13]),
         .O(delay_next0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_4
-       (.I0(delay_sin_2[12]),
-        .I1(delay_mul[35]),
+       (.I0(delay_mul[35]),
+        .I1(delay_sin_2[12]),
         .O(delay_next0_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_5
-       (.I0(delay_sin_2[11]),
-        .I1(delay_mul[34]),
+       (.I0(delay_mul[34]),
+        .I1(delay_sin_2[11]),
         .O(delay_next0_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_6
-       (.I0(delay_sin_2[10]),
-        .I1(delay_mul[33]),
+       (.I0(delay_mul[33]),
+        .I1(delay_sin_2[10]),
         .O(delay_next0_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_7
-       (.I0(delay_sin_2[9]),
-        .I1(delay_mul[32]),
+       (.I0(delay_mul[32]),
+        .I1(delay_sin_2[9]),
         .O(delay_next0_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry__0_i_8
-       (.I0(delay_sin_2[8]),
-        .I1(delay_mul[31]),
+       (.I0(delay_mul[31]),
+        .I1(delay_sin_2[8]),
         .O(delay_next0_carry__0_i_8_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_1
-       (.I0(delay_sin_2[7]),
-        .I1(delay_mul[30]),
+       (.I0(delay_mul[30]),
+        .I1(delay_sin_2[7]),
         .O(delay_next0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_2
-       (.I0(delay_sin_2[6]),
-        .I1(delay_mul[29]),
+       (.I0(delay_mul[29]),
+        .I1(delay_sin_2[6]),
         .O(delay_next0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_3
-       (.I0(delay_sin_2[5]),
-        .I1(delay_mul[28]),
+       (.I0(delay_mul[28]),
+        .I1(delay_sin_2[5]),
         .O(delay_next0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_4
-       (.I0(delay_sin_2[4]),
-        .I1(delay_mul[27]),
+       (.I0(delay_mul[27]),
+        .I1(delay_sin_2[4]),
         .O(delay_next0_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_5
-       (.I0(delay_sin_2[3]),
-        .I1(delay_mul[26]),
+       (.I0(delay_mul[26]),
+        .I1(delay_sin_2[3]),
         .O(delay_next0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_6
-       (.I0(delay_sin_2[2]),
-        .I1(delay_mul[25]),
+       (.I0(delay_mul[25]),
+        .I1(delay_sin_2[2]),
         .O(delay_next0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_7
-       (.I0(delay_sin_2[1]),
-        .I1(delay_mul[24]),
+       (.I0(delay_mul[24]),
+        .I1(delay_sin_2[1]),
         .O(delay_next0_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     delay_next0_carry_i_8
-       (.I0(delay_sin_2[0]),
-        .I1(delay_mul[23]),
+       (.I0(delay_mul[23]),
+        .I1(delay_sin_2[0]),
         .O(delay_next0_carry_i_8_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 delay_prev0_carry
@@ -27056,98 +27056,98 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_1
-       (.I0(delay_mul[38]),
-        .I1(delay_sin_2[14]),
+       (.I0(delay_sin_2[14]),
+        .I1(delay_mul[38]),
         .O(delay_prev0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_2
-       (.I0(delay_mul[37]),
-        .I1(delay_sin_2[14]),
+       (.I0(delay_sin_2[14]),
+        .I1(delay_mul[37]),
         .O(delay_prev0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_3
-       (.I0(delay_mul[36]),
-        .I1(delay_sin_2[13]),
+       (.I0(delay_sin_2[13]),
+        .I1(delay_mul[36]),
         .O(delay_prev0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_4
-       (.I0(delay_mul[35]),
-        .I1(delay_sin_2[12]),
+       (.I0(delay_sin_2[12]),
+        .I1(delay_mul[35]),
         .O(delay_prev0_carry__0_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_5
-       (.I0(delay_mul[34]),
-        .I1(delay_sin_2[11]),
+       (.I0(delay_sin_2[11]),
+        .I1(delay_mul[34]),
         .O(delay_prev0_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_6
-       (.I0(delay_mul[33]),
-        .I1(delay_sin_2[10]),
+       (.I0(delay_sin_2[10]),
+        .I1(delay_mul[33]),
         .O(delay_prev0_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_7
-       (.I0(delay_mul[32]),
-        .I1(delay_sin_2[9]),
+       (.I0(delay_sin_2[9]),
+        .I1(delay_mul[32]),
         .O(delay_prev0_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry__0_i_8
-       (.I0(delay_mul[31]),
-        .I1(delay_sin_2[8]),
+       (.I0(delay_sin_2[8]),
+        .I1(delay_mul[31]),
         .O(delay_prev0_carry__0_i_8_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_1
-       (.I0(delay_mul[30]),
-        .I1(delay_sin_2[7]),
+       (.I0(delay_sin_2[7]),
+        .I1(delay_mul[30]),
         .O(delay_prev0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_2
-       (.I0(delay_mul[29]),
-        .I1(delay_sin_2[6]),
+       (.I0(delay_sin_2[6]),
+        .I1(delay_mul[29]),
         .O(delay_prev0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_3
-       (.I0(delay_mul[28]),
-        .I1(delay_sin_2[5]),
+       (.I0(delay_sin_2[5]),
+        .I1(delay_mul[28]),
         .O(delay_prev0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_4
-       (.I0(delay_mul[27]),
-        .I1(delay_sin_2[4]),
+       (.I0(delay_sin_2[4]),
+        .I1(delay_mul[27]),
         .O(delay_prev0_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_5
-       (.I0(delay_mul[26]),
-        .I1(delay_sin_2[3]),
+       (.I0(delay_sin_2[3]),
+        .I1(delay_mul[26]),
         .O(delay_prev0_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_6
-       (.I0(delay_mul[25]),
-        .I1(delay_sin_2[2]),
+       (.I0(delay_sin_2[2]),
+        .I1(delay_mul[25]),
         .O(delay_prev0_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_7
-       (.I0(delay_mul[24]),
-        .I1(delay_sin_2[1]),
+       (.I0(delay_sin_2[1]),
+        .I1(delay_mul[24]),
         .O(delay_prev0_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     delay_prev0_carry_i_8
-       (.I0(delay_mul[23]),
-        .I1(delay_sin_2[0]),
+       (.I0(delay_sin_2[0]),
+        .I1(delay_mul[23]),
         .O(delay_prev0_carry_i_8_n_0));
   CARRY8 diff_angle0_carry
        (.CI(1'b1),
@@ -28267,7 +28267,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .D(\doa_angle.d_run_reg_n_0_[4] ),
         .Q(\doa_angle.d_run_reg_n_0_[5] ),
         .R(d_run));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[0]_i_1 
@@ -28277,7 +28277,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[0]),
         .O(\doa_angle.delay_EW[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[10]_i_1 
@@ -28287,7 +28287,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[10]),
         .O(\doa_angle.delay_EW[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[11]_i_1 
@@ -28297,7 +28297,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[11]),
         .O(\doa_angle.delay_EW[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[12]_i_1 
@@ -28307,7 +28307,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[12]),
         .O(\doa_angle.delay_EW[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[13]_i_1 
@@ -28317,7 +28317,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[13]),
         .O(\doa_angle.delay_EW[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[14]_i_1 
@@ -28327,7 +28327,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[14]),
         .O(\doa_angle.delay_EW[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[15]_i_1 
@@ -28337,7 +28337,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[15]),
         .O(\doa_angle.delay_EW[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[1]_i_1 
@@ -28347,7 +28347,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[1]),
         .O(\doa_angle.delay_EW[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[2]_i_1 
@@ -28357,7 +28357,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[2]),
         .O(\doa_angle.delay_EW[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[3]_i_1 
@@ -28367,7 +28367,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[3]),
         .O(\doa_angle.delay_EW[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[4]_i_1 
@@ -28377,7 +28377,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[4]),
         .O(\doa_angle.delay_EW[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[5]_i_1 
@@ -28387,7 +28387,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[5]),
         .O(\doa_angle.delay_EW[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[6]_i_1 
@@ -28397,7 +28397,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[6]),
         .O(\doa_angle.delay_EW[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[7]_i_1 
@@ -28407,7 +28407,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[7]),
         .O(\doa_angle.delay_EW[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[8]_i_1 
@@ -28417,7 +28417,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_prev[8]),
         .O(\doa_angle.delay_EW[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_EW[9]_i_1 
@@ -28523,7 +28523,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .D(\doa_angle.delay_EW[9]_i_1_n_0 ),
         .Q(\doa_angle.delay_EW_reg[15]_0 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[0]_i_1 
@@ -28533,7 +28533,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[0]),
         .O(\doa_angle.delay_NE[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[10]_i_1 
@@ -28543,7 +28543,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[10]),
         .O(\doa_angle.delay_NE[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[11]_i_1 
@@ -28553,7 +28553,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[11]),
         .O(\doa_angle.delay_NE[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[12]_i_1 
@@ -28563,7 +28563,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[12]),
         .O(\doa_angle.delay_NE[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[13]_i_1 
@@ -28573,7 +28573,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[13]),
         .O(\doa_angle.delay_NE[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[14]_i_1 
@@ -28583,7 +28583,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[14]),
         .O(\doa_angle.delay_NE[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[15]_i_1 
@@ -28593,7 +28593,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[15]),
         .O(\doa_angle.delay_NE[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[1]_i_1 
@@ -28603,7 +28603,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[1]),
         .O(\doa_angle.delay_NE[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[2]_i_1 
@@ -28613,7 +28613,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[2]),
         .O(\doa_angle.delay_NE[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[3]_i_1 
@@ -28623,7 +28623,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[3]),
         .O(\doa_angle.delay_NE[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[4]_i_1 
@@ -28633,7 +28633,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[4]),
         .O(\doa_angle.delay_NE[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[5]_i_1 
@@ -28643,7 +28643,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[5]),
         .O(\doa_angle.delay_NE[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[6]_i_1 
@@ -28653,7 +28653,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[6]),
         .O(\doa_angle.delay_NE[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[7]_i_1 
@@ -28663,7 +28663,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[7]),
         .O(\doa_angle.delay_NE[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[8]_i_1 
@@ -28673,7 +28673,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_next[8]),
         .O(\doa_angle.delay_NE[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_NE[9]_i_1 
@@ -28687,98 +28687,99 @@ module ps_ana_0_0_doa_angle__xdcDup__1
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[0]_i_1_n_0 ),
-        .Q(Q[0]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [0]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[10] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[10]_i_1_n_0 ),
-        .Q(Q[10]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [10]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[11] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[11]_i_1_n_0 ),
-        .Q(Q[11]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [11]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[12] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[12]_i_1_n_0 ),
-        .Q(Q[12]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [12]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[13] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[13]_i_1_n_0 ),
-        .Q(Q[13]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [13]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[14] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[14]_i_1_n_0 ),
-        .Q(Q[14]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [14]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[15] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[15]_i_1_n_0 ),
-        .Q(Q[15]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [15]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[1] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[1]_i_1_n_0 ),
-        .Q(Q[1]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [1]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[2] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[2]_i_1_n_0 ),
-        .Q(Q[2]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [2]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[3] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[3]_i_1_n_0 ),
-        .Q(Q[3]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [3]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[4] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[4]_i_1_n_0 ),
-        .Q(Q[4]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [4]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[5] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[5]_i_1_n_0 ),
-        .Q(Q[5]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [5]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[6] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[6]_i_1_n_0 ),
-        .Q(Q[6]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [6]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[7] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[7]_i_1_n_0 ),
-        .Q(Q[7]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [7]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[8] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[8]_i_1_n_0 ),
-        .Q(Q[8]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [8]),
         .R(1'b0));
   FDRE \doa_angle.delay_NE_reg[9] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_NE[9]_i_1_n_0 ),
-        .Q(Q[9]),
+        .Q(\doa_angle.delay_NE_reg[15]_0 [9]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[0]_i_1 
@@ -28815,7 +28816,6 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_curr[12]),
         .O(\doa_angle.delay_WN[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[13]_i_1 
@@ -28825,7 +28825,6 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_curr[13]),
         .O(\doa_angle.delay_WN[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[14]_i_1 
@@ -28835,7 +28834,6 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_curr[14]),
         .O(\doa_angle.delay_WN[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[15]_i_1 
@@ -28845,6 +28843,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_curr[15]),
         .O(\doa_angle.delay_WN[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[1]_i_1 
@@ -28854,6 +28853,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .I3(delay_id[0]),
         .I4(d_curr[1]),
         .O(\doa_angle.delay_WN[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT5 #(
     .INIT(32'hCAFCCA0C)) 
     \doa_angle.delay_WN[2]_i_1 
@@ -28930,97 +28930,97 @@ module ps_ana_0_0_doa_angle__xdcDup__1
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[0]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [0]),
+        .Q(Q[0]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[10] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[10]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [10]),
+        .Q(Q[10]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[11] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[11]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [11]),
+        .Q(Q[11]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[12] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[12]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [12]),
+        .Q(Q[12]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[13] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[13]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [13]),
+        .Q(Q[13]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[14] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[14]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [14]),
+        .Q(Q[14]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[15] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[15]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [15]),
+        .Q(Q[15]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[1] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[1]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [1]),
+        .Q(Q[1]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[2] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[2]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [2]),
+        .Q(Q[2]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[3] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[3]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [3]),
+        .Q(Q[3]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[4] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[4]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [4]),
+        .Q(Q[4]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[5] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[5]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [5]),
+        .Q(Q[5]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[6] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[6]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [6]),
+        .Q(Q[6]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[7] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[7]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [7]),
+        .Q(Q[7]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[8] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[8]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [8]),
+        .Q(Q[8]),
         .R(1'b0));
   FDRE \doa_angle.delay_WN_reg[9] 
        (.C(clk),
         .CE(\doa_angle.d_run_reg_n_0_[5] ),
         .D(\doa_angle.delay_WN[9]_i_1_n_0 ),
-        .Q(\doa_angle.delay_WN_reg[15]_0 [9]),
+        .Q(Q[9]),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT2 #(
@@ -32139,105 +32139,105 @@ module ps_ana_0_0_doa_angle__xdcDup__1
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_2 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [15]),
-        .I1(Q[15]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [15]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [15]),
         .O(\doa_calc.delay_E[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_3 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [14]),
-        .I1(Q[14]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [14]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [14]),
         .O(\doa_calc.delay_E[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_4 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [13]),
-        .I1(Q[13]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [13]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [13]),
         .O(\doa_calc.delay_E[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_5 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [12]),
-        .I1(Q[12]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [12]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [12]),
         .O(\doa_calc.delay_E[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_6 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [11]),
-        .I1(Q[11]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [11]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [11]),
         .O(\doa_calc.delay_E[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_7 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [10]),
-        .I1(Q[10]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [10]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [10]),
         .O(\doa_calc.delay_E[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_8 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [9]),
-        .I1(Q[9]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [9]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [9]),
         .O(\doa_calc.delay_E[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[15]_i_9 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [8]),
-        .I1(Q[8]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [8]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [8]),
         .O(\doa_calc.delay_E[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_2 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [7]),
-        .I1(Q[7]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [7]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [7]),
         .O(\doa_calc.delay_E[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_3 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [6]),
-        .I1(Q[6]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [6]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [6]),
         .O(\doa_calc.delay_E[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_4 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [5]),
-        .I1(Q[5]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [5]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [5]),
         .O(\doa_calc.delay_E[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_5 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [4]),
-        .I1(Q[4]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [4]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [4]),
         .O(\doa_calc.delay_E[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_6 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [3]),
-        .I1(Q[3]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [3]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [3]),
         .O(\doa_calc.delay_E[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_7 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [2]),
-        .I1(Q[2]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [2]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [2]),
         .O(\doa_calc.delay_E[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_8 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [1]),
-        .I1(Q[1]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [1]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [1]),
         .O(\doa_calc.delay_E[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_E[7]_i_9 
-       (.I0(\doa_angle.delay_EW_reg[15]_0 [0]),
-        .I1(Q[0]),
+       (.I0(\doa_angle.delay_NE_reg[15]_0 [0]),
+        .I1(\doa_angle.delay_EW_reg[15]_0 [0]),
         .O(\doa_calc.delay_E[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_E_reg[15]_i_1 
        (.CI(\doa_calc.delay_E_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_E_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_E_reg[15]_i_1_n_1 ,\doa_calc.delay_E_reg[15]_i_1_n_2 ,\doa_calc.delay_E_reg[15]_i_1_n_3 ,\doa_calc.delay_E_reg[15]_i_1_n_4 ,\doa_calc.delay_E_reg[15]_i_1_n_5 ,\doa_calc.delay_E_reg[15]_i_1_n_6 ,\doa_calc.delay_E_reg[15]_i_1_n_7 }),
-        .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
+        .DI({1'b0,\doa_angle.delay_NE_reg[15]_0 [14:8]}),
         .O(O266[15:8]),
         .S({\doa_calc.delay_E[15]_i_2_n_0 ,\doa_calc.delay_E[15]_i_3_n_0 ,\doa_calc.delay_E[15]_i_4_n_0 ,\doa_calc.delay_E[15]_i_5_n_0 ,\doa_calc.delay_E[15]_i_6_n_0 ,\doa_calc.delay_E[15]_i_7_n_0 ,\doa_calc.delay_E[15]_i_8_n_0 ,\doa_calc.delay_E[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -32245,104 +32245,104 @@ module ps_ana_0_0_doa_angle__xdcDup__1
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_E_reg[7]_i_1_n_0 ,\doa_calc.delay_E_reg[7]_i_1_n_1 ,\doa_calc.delay_E_reg[7]_i_1_n_2 ,\doa_calc.delay_E_reg[7]_i_1_n_3 ,\doa_calc.delay_E_reg[7]_i_1_n_4 ,\doa_calc.delay_E_reg[7]_i_1_n_5 ,\doa_calc.delay_E_reg[7]_i_1_n_6 ,\doa_calc.delay_E_reg[7]_i_1_n_7 }),
-        .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
+        .DI(\doa_angle.delay_NE_reg[15]_0 [7:0]),
         .O(O266[7:0]),
         .S({\doa_calc.delay_E[7]_i_2_n_0 ,\doa_calc.delay_E[7]_i_3_n_0 ,\doa_calc.delay_E[7]_i_4_n_0 ,\doa_calc.delay_E[7]_i_5_n_0 ,\doa_calc.delay_E[7]_i_6_n_0 ,\doa_calc.delay_E[7]_i_7_n_0 ,\doa_calc.delay_E[7]_i_8_n_0 ,\doa_calc.delay_E[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_2 
        (.I0(Q[15]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [15]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [15]),
         .O(\doa_calc.delay_N[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_3 
        (.I0(Q[14]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [14]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [14]),
         .O(\doa_calc.delay_N[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_4 
        (.I0(Q[13]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [13]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [13]),
         .O(\doa_calc.delay_N[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_5 
        (.I0(Q[12]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [12]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [12]),
         .O(\doa_calc.delay_N[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_6 
        (.I0(Q[11]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [11]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [11]),
         .O(\doa_calc.delay_N[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_7 
        (.I0(Q[10]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [10]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [10]),
         .O(\doa_calc.delay_N[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_8 
        (.I0(Q[9]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [9]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [9]),
         .O(\doa_calc.delay_N[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[15]_i_9 
        (.I0(Q[8]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [8]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [8]),
         .O(\doa_calc.delay_N[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_2 
        (.I0(Q[7]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [7]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [7]),
         .O(\doa_calc.delay_N[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_3 
        (.I0(Q[6]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [6]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [6]),
         .O(\doa_calc.delay_N[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_4 
        (.I0(Q[5]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [5]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [5]),
         .O(\doa_calc.delay_N[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_5 
        (.I0(Q[4]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [4]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [4]),
         .O(\doa_calc.delay_N[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_6 
        (.I0(Q[3]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [3]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [3]),
         .O(\doa_calc.delay_N[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_7 
        (.I0(Q[2]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [2]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [2]),
         .O(\doa_calc.delay_N[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_8 
        (.I0(Q[1]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [1]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [1]),
         .O(\doa_calc.delay_N[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_N[7]_i_9 
        (.I0(Q[0]),
-        .I1(\doa_angle.delay_WN_reg[15]_0 [0]),
+        .I1(\doa_angle.delay_NE_reg[15]_0 [0]),
         .O(\doa_calc.delay_N[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_N_reg[15]_i_1 
@@ -32350,7 +32350,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_N_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_N_reg[15]_i_1_n_1 ,\doa_calc.delay_N_reg[15]_i_1_n_2 ,\doa_calc.delay_N_reg[15]_i_1_n_3 ,\doa_calc.delay_N_reg[15]_i_1_n_4 ,\doa_calc.delay_N_reg[15]_i_1_n_5 ,\doa_calc.delay_N_reg[15]_i_1_n_6 ,\doa_calc.delay_N_reg[15]_i_1_n_7 }),
         .DI({1'b0,Q[14:8]}),
-        .O(\doa_angle.delay_NE_reg[14]_0 [15:8]),
+        .O(\doa_angle.delay_WN_reg[14]_0 [15:8]),
         .S({\doa_calc.delay_N[15]_i_2_n_0 ,\doa_calc.delay_N[15]_i_3_n_0 ,\doa_calc.delay_N[15]_i_4_n_0 ,\doa_calc.delay_N[15]_i_5_n_0 ,\doa_calc.delay_N[15]_i_6_n_0 ,\doa_calc.delay_N[15]_i_7_n_0 ,\doa_calc.delay_N[15]_i_8_n_0 ,\doa_calc.delay_N[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_N_reg[7]_i_1 
@@ -32358,110 +32358,110 @@ module ps_ana_0_0_doa_angle__xdcDup__1
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_N_reg[7]_i_1_n_0 ,\doa_calc.delay_N_reg[7]_i_1_n_1 ,\doa_calc.delay_N_reg[7]_i_1_n_2 ,\doa_calc.delay_N_reg[7]_i_1_n_3 ,\doa_calc.delay_N_reg[7]_i_1_n_4 ,\doa_calc.delay_N_reg[7]_i_1_n_5 ,\doa_calc.delay_N_reg[7]_i_1_n_6 ,\doa_calc.delay_N_reg[7]_i_1_n_7 }),
         .DI(Q[7:0]),
-        .O(\doa_angle.delay_NE_reg[14]_0 [7:0]),
+        .O(\doa_angle.delay_WN_reg[14]_0 [7:0]),
         .S({\doa_calc.delay_N[7]_i_2_n_0 ,\doa_calc.delay_N[7]_i_3_n_0 ,\doa_calc.delay_N[7]_i_4_n_0 ,\doa_calc.delay_N[7]_i_5_n_0 ,\doa_calc.delay_N[7]_i_6_n_0 ,\doa_calc.delay_N[7]_i_7_n_0 ,\doa_calc.delay_N[7]_i_8_n_0 ,\doa_calc.delay_N[7]_i_9_n_0 }));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_2 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [15]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [15]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [15]),
+        .I1(Q[15]),
         .O(\doa_calc.delay_W[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_3 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [14]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [14]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [14]),
+        .I1(Q[14]),
         .O(\doa_calc.delay_W[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_4 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [13]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [13]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [13]),
+        .I1(Q[13]),
         .O(\doa_calc.delay_W[15]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_5 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [12]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [12]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [12]),
+        .I1(Q[12]),
         .O(\doa_calc.delay_W[15]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_6 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [11]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [11]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [11]),
+        .I1(Q[11]),
         .O(\doa_calc.delay_W[15]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_7 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [10]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [10]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [10]),
+        .I1(Q[10]),
         .O(\doa_calc.delay_W[15]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_8 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [9]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [9]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [9]),
+        .I1(Q[9]),
         .O(\doa_calc.delay_W[15]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[15]_i_9 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [8]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [8]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [8]),
+        .I1(Q[8]),
         .O(\doa_calc.delay_W[15]_i_9_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_2 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [7]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [7]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [7]),
+        .I1(Q[7]),
         .O(\doa_calc.delay_W[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_3 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [6]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [6]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [6]),
+        .I1(Q[6]),
         .O(\doa_calc.delay_W[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_4 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [5]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [5]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [5]),
+        .I1(Q[5]),
         .O(\doa_calc.delay_W[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_5 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [4]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [4]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [4]),
+        .I1(Q[4]),
         .O(\doa_calc.delay_W[7]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_6 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [3]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [3]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [3]),
+        .I1(Q[3]),
         .O(\doa_calc.delay_W[7]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_7 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [2]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [2]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [2]),
+        .I1(Q[2]),
         .O(\doa_calc.delay_W[7]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_8 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [1]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [1]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [1]),
+        .I1(Q[1]),
         .O(\doa_calc.delay_W[7]_i_8_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \doa_calc.delay_W[7]_i_9 
-       (.I0(\doa_angle.delay_WN_reg[15]_0 [0]),
-        .I1(\doa_angle.delay_EW_reg[15]_0 [0]),
+       (.I0(\doa_angle.delay_EW_reg[15]_0 [0]),
+        .I1(Q[0]),
         .O(\doa_calc.delay_W[7]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY8 \doa_calc.delay_W_reg[15]_i_1 
        (.CI(\doa_calc.delay_W_reg[7]_i_1_n_0 ),
         .CI_TOP(1'b0),
         .CO({\NLW_doa_calc.delay_W_reg[15]_i_1_CO_UNCONNECTED [7],\doa_calc.delay_W_reg[15]_i_1_n_1 ,\doa_calc.delay_W_reg[15]_i_1_n_2 ,\doa_calc.delay_W_reg[15]_i_1_n_3 ,\doa_calc.delay_W_reg[15]_i_1_n_4 ,\doa_calc.delay_W_reg[15]_i_1_n_5 ,\doa_calc.delay_W_reg[15]_i_1_n_6 ,\doa_calc.delay_W_reg[15]_i_1_n_7 }),
-        .DI({1'b0,\doa_angle.delay_WN_reg[15]_0 [14:8]}),
+        .DI({1'b0,\doa_angle.delay_EW_reg[15]_0 [14:8]}),
         .O(O267[15:8]),
         .S({\doa_calc.delay_W[15]_i_2_n_0 ,\doa_calc.delay_W[15]_i_3_n_0 ,\doa_calc.delay_W[15]_i_4_n_0 ,\doa_calc.delay_W[15]_i_5_n_0 ,\doa_calc.delay_W[15]_i_6_n_0 ,\doa_calc.delay_W[15]_i_7_n_0 ,\doa_calc.delay_W[15]_i_8_n_0 ,\doa_calc.delay_W[15]_i_9_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -32469,7 +32469,7 @@ module ps_ana_0_0_doa_angle__xdcDup__1
        (.CI(1'b1),
         .CI_TOP(1'b0),
         .CO({\doa_calc.delay_W_reg[7]_i_1_n_0 ,\doa_calc.delay_W_reg[7]_i_1_n_1 ,\doa_calc.delay_W_reg[7]_i_1_n_2 ,\doa_calc.delay_W_reg[7]_i_1_n_3 ,\doa_calc.delay_W_reg[7]_i_1_n_4 ,\doa_calc.delay_W_reg[7]_i_1_n_5 ,\doa_calc.delay_W_reg[7]_i_1_n_6 ,\doa_calc.delay_W_reg[7]_i_1_n_7 }),
-        .DI(\doa_angle.delay_WN_reg[15]_0 [7:0]),
+        .DI(\doa_angle.delay_EW_reg[15]_0 [7:0]),
         .O(O267[7:0]),
         .S({\doa_calc.delay_W[7]_i_2_n_0 ,\doa_calc.delay_W[7]_i_3_n_0 ,\doa_calc.delay_W[7]_i_4_n_0 ,\doa_calc.delay_W[7]_i_5_n_0 ,\doa_calc.delay_W[7]_i_6_n_0 ,\doa_calc.delay_W[7]_i_7_n_0 ,\doa_calc.delay_W[7]_i_8_n_0 ,\doa_calc.delay_W[7]_i_9_n_0 }));
   LUT2 #(
@@ -33345,13 +33345,13 @@ module ps_ana_0_0_doa_calc
         .O372(delay_E01_out),
         .O373(delay_W00_out),
         .P(mul_NE),
-        .Q(delay_NE),
+        .Q(delay_WN),
         .clk(clk),
         .counter(counter),
         .\doa_angle.angle_reg[15]_0 (angle_doa),
         .\doa_angle.delay_EW_reg[15]_0 (delay_EW),
-        .\doa_angle.delay_NE_reg[14]_0 (delay_N02_out),
-        .\doa_angle.delay_WN_reg[15]_0 (delay_WN),
+        .\doa_angle.delay_NE_reg[15]_0 (delay_NE),
+        .\doa_angle.delay_WN_reg[14]_0 (delay_N02_out),
         .\doa_angle.first_angle_reg[14]_0 (first_angle),
         .\doa_angle.freq_reg[19]_0 (freq_doa),
         .\doa_angle.freq_run_reg[19]_0 (freq_pair),
@@ -38331,13 +38331,13 @@ module ps_ana_0_0_doa_calc__xdcDup__1
         .O266(delay_E01_out),
         .O267(delay_W00_out),
         .P(mul_NE),
-        .Q(delay_NE),
+        .Q(delay_WN),
         .clk(clk),
         .counter(counter),
         .\doa_angle.angle_reg[15]_0 (angle_doa),
         .\doa_angle.delay_EW_reg[15]_0 (delay_EW),
-        .\doa_angle.delay_NE_reg[14]_0 (delay_N02_out),
-        .\doa_angle.delay_WN_reg[15]_0 (delay_WN),
+        .\doa_angle.delay_NE_reg[15]_0 (delay_NE),
+        .\doa_angle.delay_WN_reg[14]_0 (delay_N02_out),
         .\doa_angle.first_angle_reg[14]_0 (first_angle),
         .\doa_angle.freq_reg[19]_0 (freq_doa),
         .\doa_angle.freq_run_reg[19]_0 (freq_pair),

@@ -176,10 +176,10 @@ int main(void)
     if (Status != XST_SUCCESS)
         return XST_FAILURE;
 
-    SetConfig(CONFIG_MIN_ENV, 25, 25);
+    SetConfig(CONFIG_MIN_ENV, 100, 100);
     SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0, 8), CalcIncr(185.0, 8));
     SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0, 8), CalcIncr(195.0, 8));
-    SetConfig(CONFIG_MAX_DOA_DIFF, 100, 100);
+    SetConfig(CONFIG_MAX_DOA_DIFF, 1000, 1000);
     SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
     SetConfig(CONFIG_INV_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));
