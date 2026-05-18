@@ -93,8 +93,8 @@ bool StartAdc()
     if (status != XRFDC_SUCCESS)
 		return false;
 	
-    DsaSettings.DisableDSA = 0;      // Keep the attenuator active
-    DsaSettings.Attenuation = 12.0;   // Set our exact protection ceiling
+    DsaSettings.DisableRTS = 0;      // Keep the attenuator active
+    DsaSettings.Attenuation = 9.0;   // Set our exact protection ceiling
 
     status = XRFdc_SetDSA(&RFdcInst, 0, 0, &DsaSettings);
     if (status != XRFDC_SUCCESS) return false;
