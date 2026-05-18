@@ -77,6 +77,7 @@ bool StartAdc()
 	u32 pll;
 	XRFdc_PLL_Settings pllc;
 	XRFdc_Config *ConfigPtr;
+	XRFdc_DSA_Settings DsaSettings;
     XRFdc_MultiConverter_Sync_Config ADC_Sync_Config;
 	XRFdc_IPStatus IPStatus;
 
@@ -91,6 +92,27 @@ bool StartAdc()
 	status = XRFdc_GetIPStatus(&RFdcInst, &IPStatus);
     if (status != XRFDC_SUCCESS)
 		return false;
+	
+    DsaSettings.DisableDSA = 0;      // Keep the attenuator active
+    DsaSettings.Attenuation = 12.0;   // Set our exact protection ceiling
+
+    status = XRFdc_SetDSA(&RFdcInst, 0, 0, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
+
+    status = XRFdc_SetDSA(&RFdcInst, 0, 1, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
+
+    status = XRFdc_SetDSA(&RFdcInst, 1, 0, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
+
+    status = XRFdc_SetDSA(&RFdcInst, 2, 0, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
+
+    status = XRFdc_SetDSA(&RFdcInst, 2, 1, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
+
+    status = XRFdc_SetDSA(&RFdcInst, 3, 0, &DsaSettings);
+    if (status != XRFDC_SUCCESS) return false;
 
     /* Initialize ADC MTS Settings */
     XRFdc_MultiConverter_Init(&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);
