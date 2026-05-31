@@ -39,6 +39,12 @@ bool print_one(volatile struct AdcHeader *header)
     int i;
     double angle;
     double perc;
+    long long s2;
+    int part;
+    int s;
+    int ns;
+    int ms;
+    int us;
 
     if (header->flags & 0x40)
     {
@@ -56,7 +62,14 @@ bool print_one(volatile struct AdcHeader *header)
         return false;
 
     printf("{\n");
-    printf("  sample: %ld\n", header->sample);
+
+    s2 = header->sample / 2;
+    part = (int)(s2 % 1000000000);
+    s = (int)(s2 / 1000000000);
+    ms = part / 1000000;
+    us = (part % 1000000) / 1000;
+    ns = part % 1000;
+    printf("  sample: %d.%03d %03d %03d\n", s, ms, us, ns);
 
     angle = 180.0 / 32768.0 * (double)header->angle;
     printf("  angle: %2.1f\n", angle);
@@ -72,8 +85,8 @@ bool print_one(volatile struct AdcHeader *header)
     printf("  env_mean: %d\n", header->env_mean);
     printf("  env_std: %d\n", header->env_std);
 
-     entry = (volatile struct AdcEntry *)(header+1);
-    printf("  data: [");
+    entry = (volatile struct AdcEntry *)(header+1);
+    printf("  env: [");
     for (i = 0; i < header->size; i++)
     {
         if (i != header->size - 1)
@@ -83,6 +96,20 @@ bool print_one(volatile struct AdcHeader *header)
         entry += 1;
     }
     printf("]\n");
+
+    printf("  phase: [");
+    for (i = 0; i < header->size; i++)
+    {
+        angle = 180.0 / 32768.0 * (double)entry->phase;
+        if (i != header->size - 1)
+            printf("%2.1f, ", angle);
+        else
+            printf("%2.1f", angle);
+        entry += 1;
+    }
+    printf("]\n");
+
+
     printf("}\n\n");
 
    return true;
