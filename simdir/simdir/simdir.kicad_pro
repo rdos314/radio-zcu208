@@ -60,64 +60,17 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.44,
+          "min_clearance": 0.5,
           "min_island_area": 10.0,
           "min_thickness": 0.25,
           "pad_connection": 1,
           "remove_islands": 0,
-          "thermal_relief_gap": 0.44,
-          "thermal_relief_spoke_width": 1.0
+          "thermal_relief_gap": 0.5,
+          "thermal_relief_spoke_width": 0.5
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.0,
-          "via_gap": 0.0,
-          "width": 0.0
-        }
-      ],
-      "drc_exclusions": [
-        [
-          "copper_edge_clearance|102322500|126000000|8345bb63-16ba-4049-afa4-715236c99c86|92858fe8-90ae-4e58-b480-51c13d07dd20",
-          ""
-        ],
-        [
-          "copper_edge_clearance|102322500|126000000|8345bb63-16ba-4049-afa4-715236c99c86|be0f42a0-7827-432e-90ee-38c5271e1fe1",
-          ""
-        ],
-        [
-          "copper_edge_clearance|102322500|130250000|8345bb63-16ba-4049-afa4-715236c99c86|b850fa34-8ada-44c3-af07-c1c2f6e153d9",
-          ""
-        ],
-        [
-          "copper_edge_clearance|102322500|134500000|8345bb63-16ba-4049-afa4-715236c99c86|4ec5cb2d-1634-4360-a4ed-834920ff457e",
-          ""
-        ],
-        [
-          "copper_edge_clearance|102322500|134500000|8345bb63-16ba-4049-afa4-715236c99c86|7b8acae5-96a8-41ee-a6ad-3f1eac232e2e",
-          ""
-        ],
-        [
-          "copper_edge_clearance|132500000|149250000|8345bb63-16ba-4049-afa4-715236c99c86|7f099ab0-8e81-4286-a219-7201310340e2",
-          ""
-        ],
-        [
-          "copper_edge_clearance|132500000|149250000|8345bb63-16ba-4049-afa4-715236c99c86|a456f481-cb63-4dcb-9b42-2de255d42dd2",
-          ""
-        ],
-        [
-          "copper_edge_clearance|136750000|149250000|8345bb63-16ba-4049-afa4-715236c99c86|d04acc8e-d44b-4188-a095-fe51ecc68c5b",
-          ""
-        ],
-        [
-          "copper_edge_clearance|141000000|149250000|8345bb63-16ba-4049-afa4-715236c99c86|1074fce1-2704-4c6b-9adb-c921b30ceb7a",
-          ""
-        ],
-        [
-          "copper_edge_clearance|141000000|149250000|8345bb63-16ba-4049-afa4-715236c99c86|319e7e14-d427-4449-982c-12e0cf7347c5",
-          ""
-        ]
-      ],
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -250,12 +203,7 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [
-        0.0,
-        0.6,
-        1.0,
-        2.0
-      ],
+      "track_widths": [],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -282,16 +230,7 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [
-        {
-          "diameter": 0.0,
-          "drill": 0.0
-        },
-        {
-          "diameter": 0.6,
-          "drill": 0.3
-        }
-      ],
+      "via_dimensions": [],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -549,7 +488,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "lna.kicad_pro",
+    "filename": "simdir.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -572,22 +511,6 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "name": "Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5,
-        "tuning_profile": ""
-      },
-      {
-        "name": "RF_50",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.38,
-        "tuning_profile": ""
       }
     ],
     "meta": {
@@ -601,7 +524,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "../gerber/",
+      "plot": "",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
@@ -614,7 +537,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "..\\bill.csv",
+    "bom_export_filename": "${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -667,6 +590,18 @@
         },
         {
           "group_by": true,
+          "label": "Exclude from Simulation",
+          "name": "${EXCLUDE_FROM_SIM}",
+          "show": true
+        },
+        {
+          "group_by": true,
+          "label": "Exclude from Position Files",
+          "name": "${EXCLUDE_FROM_POS_FILES}",
+          "show": true
+        },
+        {
+          "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
           "show": true
@@ -676,24 +611,12 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "",
+      "name": "Default Editing",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -733,18 +656,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "lna.kicad_sch",
-        "name": "lna",
-        "uuid": "461f7b76-3c4a-4e4c-832f-83a45da2a2b5"
+        "filename": "simdir.kicad_sch",
+        "name": "Root",
+        "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-    "used_designators": "U1-2,C1-8,#PWR1-3,L1-4,#FLG1-2,J1-3",
+    "used_designators": "U1-7",
     "variants": []
   },
   "sheets": [
     [
-      "461f7b76-3c4a-4e4c-832f-83a45da2a2b5",
-      "lna"
+      "d849bf5c-31fe-4f75-acae-03ca15e628fd",
+      "Root"
     ]
   ],
   "text_variables": {},
