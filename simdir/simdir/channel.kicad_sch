@@ -4557,6 +4557,166 @@
 		)
 		(uuid "ff2341a2-58c0-4a37-b475-d3f187ba8c32")
 	)
+	(label "RF3_ref"
+		(at 64.77 109.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "067102ca-08f1-4d82-a558-ca0c12d545a6")
+	)
+	(label "RF1_ref"
+		(at 66.04 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1854fccc-e31c-4322-b9c4-3d58b8624daf")
+	)
+	(label "RF2_meander"
+		(at 67.31 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "24a20380-bcab-4271-bc93-cb42df07b8ff")
+	)
+	(label "RF7_meander"
+		(at 194.31 118.11 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2b0a9cbc-9b17-435a-a28c-e27679264891")
+	)
+	(label "RF5_ref"
+		(at 191.77 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "31e9e867-9679-465f-a935-da5c6e41897b")
+	)
+	(label "RF4_meander"
+		(at 193.04 36.83 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "32d52da7-823f-44e2-b977-a016c03d82c2")
+	)
+	(label "RF7_ref"
+		(at 193.04 110.49 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "60f81c74-93b1-4582-abd4-df3a12fd4782")
+	)
+	(label "RF0_meander"
+		(at 67.31 36.83 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f3a3d56-f428-430a-889f-7a0aad1e40a1")
+	)
+	(label "RF0_ref"
+		(at 67.31 29.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9825f13a-8535-4ef3-bbfa-b700b9fac271")
+	)
+	(label "RF2_ref"
+		(at 66.04 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aa6ded12-2583-4e57-b7a2-4e0ab9b05103")
+	)
+	(label "RF6_ref"
+		(at 191.77 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b301ee80-67b4-44cf-baed-376b6026849c")
+	)
+	(label "RF1_meander"
+		(at 68.58 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b66f0c9a-bdce-48a7-9ced-b5fa59040063")
+	)
+	(label "RF4_ref"
+		(at 191.77 29.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bd70f175-abce-49f1-b2fd-41dfcf6fd05b")
+	)
+	(label "RF3_meander"
+		(at 67.31 118.11 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bec5c401-daa2-4e1c-831a-0bd239b7347a")
+	)
+	(label "RF6_meander"
+		(at 193.04 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c2979dcd-c762-448f-96d8-d60b80119bbb")
+	)
+	(label "RF5_meander"
+		(at 193.04 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "db9ae4ac-fc8a-4fa1-8e56-1189826e93f9")
+	)
 	(hierarchical_label "RF-In"
 		(shape input)
 		(at 26.67 31.75 180)
