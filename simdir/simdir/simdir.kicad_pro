@@ -146,7 +146,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.2,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -211,7 +211,8 @@
       ],
       "track_widths": [
         0.0,
-        0.38
+        0.38,
+        1.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -719,7 +720,7 @@
         "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-    "used_designators": "U1-20,R1-40,SWLSB1,Q1-16,FB1-3,C1-2,SWMSB1,SW1-3",
+    "used_designators": "U1-20,R1-40,SWLSB1,Q1-16,FB1-3,C1-2,SWMSB1,SW1-3,J1",
     "variants": []
   },
   "sheets": [
