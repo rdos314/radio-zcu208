@@ -719,7 +719,7 @@
         "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-    "used_designators": "U1-16,R1-24,Q1-8",
+    "used_designators": "U1-20,R1-40,SWLSB1,Q1-16,FB1-3,C1-2,SWMSB1,SW1-3",
     "variants": []
   },
   "sheets": [
