@@ -43,96 +43,6 @@
 				(justify left top)
 			)
 		)
-		(pin "D0" input
-			(at 44.45 96.52 180)
-			(uuid "e7f1f37b-f6d6-423b-a5b3-521cb0490487")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D1" input
-			(at 44.45 100.33 180)
-			(uuid "73687350-bebd-4f0a-b166-0ab3eb9c79ee")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D2" input
-			(at 44.45 104.14 180)
-			(uuid "2ca353d6-e803-424b-8ea1-4b132b633390")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D3" input
-			(at 44.45 107.95 180)
-			(uuid "77943509-5b1d-4226-b46e-ae908a737beb")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D4" input
-			(at 44.45 111.76 180)
-			(uuid "6611c6a9-46cc-4e19-b16a-0a8ae53338a2")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D5" input
-			(at 44.45 115.57 180)
-			(uuid "c874cde6-3c7a-4cc3-826b-6fd7be942cb8")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D6" input
-			(at 44.45 119.38 180)
-			(uuid "307fe444-15c3-4ff8-8f7d-b112c92e80d5")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "D7" input
-			(at 44.45 123.19 180)
-			(uuid "5e70066e-aaa3-47cb-8cfd-63d5830d2923")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "GND" input
-			(at 71.12 137.16 270)
-			(uuid "c769abd7-0d05-4e0b-8b2a-7e564155f38c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "RF-In" input
 			(at 44.45 132.08 180)
 			(uuid "a85095f6-c146-4f50-ae21-ad177a67058c")
@@ -143,9 +53,9 @@
 				(justify left)
 			)
 		)
-		(pin "RF-Out" input
-			(at 95.25 132.08 0)
-			(uuid "6a149a1b-d31d-46a3-aa56-be538e206ec7")
+		(pin "5v" input
+			(at 69.85 87.63 90)
+			(uuid "5faad426-6f03-4b97-9124-736229213f0c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -153,14 +63,84 @@
 				(justify right)
 			)
 		)
-		(pin "VCC" input
-			(at 71.12 87.63 90)
-			(uuid "b1fcc79f-0878-4b71-b072-310c0d51c9a7")
+		(pin "CLK" input
+			(at 44.45 106.68 180)
+			(uuid "5c2b599e-5e95-4bb0-9bc8-bf95d278c352")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
+			)
+		)
+		(pin "DIG_GND" input
+			(at 73.66 137.16 270)
+			(uuid "c2626956-643c-44e1-b7b1-a089f619b389")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIN" input
+			(at 44.45 102.87 180)
+			(uuid "c39e8b53-6286-4f93-99fb-c30fea0203eb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DOUT" output
+			(at 44.45 99.06 180)
+			(uuid "7094f75d-5e6e-4330-a4f5-9e736f7fae56")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ENABLE" input
+			(at 44.45 114.3 180)
+			(uuid "93292fa7-ca73-407b-9501-2fefa85879af")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RCLK" input
+			(at 44.45 118.11 180)
+			(uuid "583c4583-56df-4e76-876c-888df2b736fa")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RESET" input
+			(at 44.45 121.92 180)
+			(uuid "84607af8-3133-4cf1-a66a-81cad954c3d9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RF_GND" input
+			(at 67.31 137.16 270)
+			(uuid "aa4617ea-a62c-4d7d-9041-9b209276c5e3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances

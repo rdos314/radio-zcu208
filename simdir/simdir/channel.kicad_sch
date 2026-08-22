@@ -9127,26 +9127,6 @@
 		)
 		(uuid "1854fccc-e31c-4322-b9c4-3d58b8624daf")
 	)
-	(label "DIN"
-		(at 24.13 224.79 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1a6f6378-e739-42b0-82a9-5274e457622e")
-	)
-	(label "RCLK"
-		(at 21.59 250.19 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1a6fb169-19b4-4616-b800-f07045ba3709")
-	)
 	(label "RF2_meander"
 		(at 152.4 96.52 0)
 		(effects
@@ -9166,16 +9146,6 @@
 			(justify left bottom)
 		)
 		(uuid "2b0a9cbc-9b17-435a-a28c-e27679264891")
-	)
-	(label "ENABLE"
-		(at 22.86 245.11 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "2c7db365-abce-4a73-b4d1-426fb4b1c2aa")
 	)
 	(label "RF5_ref"
 		(at 276.86 60.96 0)
@@ -9197,26 +9167,6 @@
 		)
 		(uuid "32d52da7-823f-44e2-b977-a016c03d82c2")
 	)
-	(label "Dig_GND"
-		(at 25.4 215.9 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "34ed37fd-c1ea-4075-a02d-600836bc5e22")
-	)
-	(label "DOUT"
-		(at 24.13 229.87 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "4e7b6774-ac74-4a64-a06f-af70a4c7a63a")
-	)
 	(label "RF7_ref"
 		(at 278.13 115.57 0)
 		(effects
@@ -9226,16 +9176,6 @@
 			(justify left bottom)
 		)
 		(uuid "60f81c74-93b1-4582-abd4-df3a12fd4782")
-	)
-	(label "RESET"
-		(at 22.86 240.03 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8c1eab3c-cd10-46b9-8058-b6e42c8e9642")
 	)
 	(label "RF0_meander"
 		(at 152.4 41.91 0)
@@ -9307,16 +9247,6 @@
 		)
 		(uuid "bec5c401-daa2-4e1c-831a-0bd239b7347a")
 	)
-	(label "5v"
-		(at 25.4 157.48 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "c09c4e6d-f45e-4591-8247-91de71d02c38")
-	)
 	(label "RF6_meander"
 		(at 278.13 96.52 0)
 		(effects
@@ -9326,26 +9256,6 @@
 			(justify left bottom)
 		)
 		(uuid "c2979dcd-c762-448f-96d8-d60b80119bbb")
-	)
-	(label "CLK"
-		(at 22.86 234.95 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "c2afb62f-9d27-4610-99d5-1aa0a07a8aed")
-	)
-	(label "RF_GND"
-		(at 25.4 175.26 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "cac6a95f-194a-43a8-becb-67128bb88cc1")
 	)
 	(label "RF5_meander"
 		(at 278.13 68.58 0)
@@ -9368,16 +9278,104 @@
 		)
 		(uuid "019d903a-9b9b-4639-a5a2-a5953389add9")
 	)
-	(hierarchical_label "VCC"
+	(hierarchical_label "RCLK"
 		(shape input)
-		(at 360.68 21.59 0)
+		(at 21.59 250.19 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
-		(uuid "a410de2c-bbd8-4425-936d-e62689e16e0e")
+		(uuid "0987d423-74dc-48b9-9690-1f4b9a6b98a2")
+	)
+	(hierarchical_label "ENABLE"
+		(shape input)
+		(at 22.86 245.11 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "188691bf-a648-44f8-8660-271e78affd51")
+	)
+	(hierarchical_label "DOUT"
+		(shape output)
+		(at 24.13 229.87 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "330238d2-eaa6-4dee-8895-8574ced457c9")
+	)
+	(hierarchical_label "RF_GND"
+		(shape input)
+		(at 26.67 175.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6de12638-ce32-4fa6-86db-2f7c46ca29c4")
+	)
+	(hierarchical_label "DIG_GND"
+		(shape input)
+		(at 25.4 215.9 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7b675602-7071-4feb-85b4-99dcbca91efd")
+	)
+	(hierarchical_label "5v"
+		(shape input)
+		(at 25.4 157.48 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "999931e8-30ea-4537-8b08-89853ae841ea")
+	)
+	(hierarchical_label "DIN"
+		(shape input)
+		(at 24.13 224.79 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9b68b726-269f-4afd-a109-cfd598845500")
+	)
+	(hierarchical_label "CLK"
+		(shape input)
+		(at 24.13 234.95 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b276555a-482c-45a3-8f86-2cd1f40e7f61")
+	)
+	(hierarchical_label "RESET"
+		(shape input)
+		(at 22.86 240.03 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d06a4e84-538d-4c2e-8ac9-fd54c63821cc")
 	)
 	(symbol
 		(lib_id "Device:R")
