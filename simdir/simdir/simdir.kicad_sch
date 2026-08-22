@@ -6,7 +6,7 @@
 	(paper "A4")
 	(lib_symbols)
 	(sheet
-		(at 44.45 87.63)
+		(at 119.38 17.78)
 		(size 50.8 49.53)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22,7 +22,7 @@
 		)
 		(uuid "06d64e16-5bc4-495a-b1fd-e1ec392e238c")
 		(property "Sheetname" "channel1"
-			(at 44.45 86.9184 0)
+			(at 119.38 17.0684 0)
 			(show_name yes)
 			(do_not_autoplace no)
 			(effects
@@ -33,7 +33,7 @@
 			)
 		)
 		(property "Sheetfile" "channel.kicad_sch"
-			(at 44.45 137.7446 0)
+			(at 119.38 67.8946 0)
 			(show_name yes)
 			(do_not_autoplace no)
 			(effects
@@ -44,7 +44,7 @@
 			)
 		)
 		(pin "RF-In" input
-			(at 44.45 132.08 180)
+			(at 119.38 62.23 180)
 			(uuid "a85095f6-c146-4f50-ae21-ad177a67058c")
 			(effects
 				(font
@@ -54,7 +54,7 @@
 			)
 		)
 		(pin "5v" input
-			(at 69.85 87.63 90)
+			(at 144.78 17.78 90)
 			(uuid "5faad426-6f03-4b97-9124-736229213f0c")
 			(effects
 				(font
@@ -64,7 +64,7 @@
 			)
 		)
 		(pin "CLK" input
-			(at 44.45 106.68 180)
+			(at 119.38 36.83 180)
 			(uuid "5c2b599e-5e95-4bb0-9bc8-bf95d278c352")
 			(effects
 				(font
@@ -74,7 +74,7 @@
 			)
 		)
 		(pin "DIG_GND" input
-			(at 73.66 137.16 270)
+			(at 148.59 67.31 270)
 			(uuid "c2626956-643c-44e1-b7b1-a089f619b389")
 			(effects
 				(font
@@ -84,7 +84,7 @@
 			)
 		)
 		(pin "DIN" input
-			(at 44.45 102.87 180)
+			(at 119.38 33.02 180)
 			(uuid "c39e8b53-6286-4f93-99fb-c30fea0203eb")
 			(effects
 				(font
@@ -94,7 +94,7 @@
 			)
 		)
 		(pin "DOUT" output
-			(at 44.45 99.06 180)
+			(at 119.38 29.21 180)
 			(uuid "7094f75d-5e6e-4330-a4f5-9e736f7fae56")
 			(effects
 				(font
@@ -104,7 +104,7 @@
 			)
 		)
 		(pin "ENABLE" input
-			(at 44.45 114.3 180)
+			(at 119.38 44.45 180)
 			(uuid "93292fa7-ca73-407b-9501-2fefa85879af")
 			(effects
 				(font
@@ -114,7 +114,7 @@
 			)
 		)
 		(pin "RCLK" input
-			(at 44.45 118.11 180)
+			(at 119.38 48.26 180)
 			(uuid "583c4583-56df-4e76-876c-888df2b736fa")
 			(effects
 				(font
@@ -124,7 +124,7 @@
 			)
 		)
 		(pin "RESET" input
-			(at 44.45 121.92 180)
+			(at 119.38 52.07 180)
 			(uuid "84607af8-3133-4cf1-a66a-81cad954c3d9")
 			(effects
 				(font
@@ -134,7 +134,7 @@
 			)
 		)
 		(pin "RF_GND" input
-			(at 67.31 137.16 270)
+			(at 142.24 67.31 270)
 			(uuid "aa4617ea-a62c-4d7d-9041-9b209276c5e3")
 			(effects
 				(font
@@ -147,6 +147,298 @@
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
 					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 119.38 137.16)
+		(size 50.8 49.53)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3d82cb01-842c-4a68-bcf4-579701311fc1")
+		(property "Sheetname" "channel3"
+			(at 119.38 136.4484 0)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "channel.kicad_sch"
+			(at 119.38 187.2746 0)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "RF-In" input
+			(at 119.38 181.61 180)
+			(uuid "4634ec5f-f6b4-4db5-b430-409561cc0d99")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "5v" input
+			(at 144.78 137.16 90)
+			(uuid "01c76595-2b69-44cb-8a82-4fdcf6376821")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CLK" input
+			(at 119.38 156.21 180)
+			(uuid "16185186-07e8-4dc7-9e13-305efac67a22")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIG_GND" input
+			(at 148.59 186.69 270)
+			(uuid "581278fd-4d8d-4633-b7a9-73c65b7ebb9d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIN" input
+			(at 119.38 152.4 180)
+			(uuid "3529925d-b6aa-444d-a5df-3e47909647fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DOUT" output
+			(at 119.38 148.59 180)
+			(uuid "d9a8b5af-a132-4416-9712-3bf3588b2f7f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ENABLE" input
+			(at 119.38 163.83 180)
+			(uuid "c5286c5c-6017-4573-9c91-d58186525425")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RCLK" input
+			(at 119.38 167.64 180)
+			(uuid "c26e1a4d-c743-4907-a83d-0e4e8aa670a2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RESET" input
+			(at 119.38 171.45 180)
+			(uuid "00e0ac49-298a-4131-9dbd-b15b5ed601d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RF_GND" input
+			(at 142.24 186.69 270)
+			(uuid "2fd4db1b-a297-4581-9ca5-2fb691b88dce")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 119.38 78.74)
+		(size 50.8 49.53)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "4007ca99-1b34-4567-be16-803d3aef07c1")
+		(property "Sheetname" "channel2"
+			(at 119.38 78.0284 0)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "channel.kicad_sch"
+			(at 119.38 128.8546 0)
+			(show_name yes)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "RF-In" input
+			(at 119.38 123.19 180)
+			(uuid "15948033-d764-40ae-b9ba-754f8a4b0e56")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "5v" input
+			(at 144.78 78.74 90)
+			(uuid "490d5e8e-3562-4160-9cbf-a856be5f1ddf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CLK" input
+			(at 119.38 97.79 180)
+			(uuid "b8d10fc6-19fe-46ec-af64-9b6e3ccea456")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIG_GND" input
+			(at 148.59 128.27 270)
+			(uuid "989f9bac-27a2-44a2-91e3-48bee78fc5af")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIN" input
+			(at 119.38 93.98 180)
+			(uuid "b219cb3d-3036-4ff3-a46e-d5cebf92f4bd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DOUT" output
+			(at 119.38 90.17 180)
+			(uuid "514c78b6-1c8d-4a25-b15d-374b5cbf2be2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ENABLE" input
+			(at 119.38 105.41 180)
+			(uuid "f68d75a1-19cb-45fb-aba8-17d0c378ad8b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RCLK" input
+			(at 119.38 109.22 180)
+			(uuid "810ebbce-4f82-463e-b9f4-26b7c2ff1e04")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RESET" input
+			(at 119.38 113.03 180)
+			(uuid "a5aa266e-0ed6-47b3-9c20-4264c5376860")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RF_GND" input
+			(at 142.24 128.27 270)
+			(uuid "6e151bc4-4115-405b-9826-508ce0006181")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(page "3")
 				)
 			)
 		)
