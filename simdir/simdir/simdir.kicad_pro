@@ -552,6 +552,14 @@
       {
         "netclass": "RF-50",
         "pattern": ""
+      },
+      {
+        "netclass": "RF-50",
+        "pattern": "RF_GND"
+      },
+      {
+        "netclass": "RF-50",
+        "pattern": "5v"
       }
     ]
   },
@@ -720,7 +728,7 @@
         "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-    "used_designators": "U1-57,R1-129,Q1-48,SWLSB1-3,FB1-3,C1-6,SW1-3,SWMSB1-3,J1-3",
+    "used_designators": "U1-57,R1-133,Q1-48,SWLSB1-3,FB1-3,C1-6,SW1-3,SWMSB1-3,J1-5",
     "variants": []
   },
   "sheets": [
@@ -733,11 +741,11 @@
       "channel1"
     ],
     [
-      "4007ca99-1b34-4567-be16-803d3aef07c1",
+      "5067c77e-d8c7-4ff7-a9cd-408de95641ab",
       "channel2"
     ],
     [
-      "3d82cb01-842c-4a68-bcf4-579701311fc1",
+      "f73551e4-b64a-41a5-a265-5cf14a5a681a",
       "channel3"
     ]
   ],
