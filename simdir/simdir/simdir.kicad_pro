@@ -76,7 +76,100 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "clearance|38500000|43575000|a9ae35f5-ef53-4040-9904-1ee91c154cd8|dedbe511-8172-4d2a-9c03-8eaf40fd28f0",
+          ""
+        ],
+        [
+          "clearance|38500000|44475000|2e40f243-d3b9-4019-bd35-4d5ad6a65875|a9ae35f5-ef53-4040-9904-1ee91c154cd8",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26700000|74370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|d53423e6-9471-4aac-b82d-cafd7d5bab61",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26700000|74370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|eaebde19-be58-4ba3-9a2d-828eb4ede00a",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26700000|78620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|60ec26f9-0f6b-4f19-bb43-147248d0d1f5",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26700000|82870000|0b74e0c0-a283-40eb-9958-3dff18739fd0|2b47c1e2-767b-4b96-b5db-e617eb5bc804",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26700000|82870000|0b74e0c0-a283-40eb-9958-3dff18739fd0|5cbc85db-17c0-4ba4-a2d9-67eeb26572a0",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26822500|39025000|0b74e0c0-a283-40eb-9958-3dff18739fd0|640a0a17-2a99-42f5-90c9-7be706d75fa9",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26822500|39025000|0b74e0c0-a283-40eb-9958-3dff18739fd0|8101893c-4d58-4950-8a99-acbb95453a9f",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26822500|43275000|0b74e0c0-a283-40eb-9958-3dff18739fd0|0da9ba3f-3956-446f-835e-26b47825c0d6",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26822500|47525000|0b74e0c0-a283-40eb-9958-3dff18739fd0|559fdcf0-27e4-483f-a517-f77c2d96cb89",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26822500|47525000|0b74e0c0-a283-40eb-9958-3dff18739fd0|9848d3f2-8585-4f23-9a62-5d2528cad030",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26872500|175895000|0b74e0c0-a283-40eb-9958-3dff18739fd0|8afcdc31-3cb6-44e0-841e-65fada1426d0",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26872500|175895000|0b74e0c0-a283-40eb-9958-3dff18739fd0|fa2b57bf-7319-4e2c-9452-c56da4070f16",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26872500|180145000|0b74e0c0-a283-40eb-9958-3dff18739fd0|40ce3fd6-29e4-4505-9eb1-4eecc882e3bc",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26872500|184395000|0b74e0c0-a283-40eb-9958-3dff18739fd0|3284ffcd-a94d-4132-99d7-d53119a9b157",
+          ""
+        ],
+        [
+          "copper_edge_clearance|26872500|184395000|0b74e0c0-a283-40eb-9958-3dff18739fd0|df90152e-6e74-42d1-90b9-2390f9372586",
+          ""
+        ],
+        [
+          "copper_edge_clearance|27099641|125120000|0b74e0c0-a283-40eb-9958-3dff18739fd0|14d33939-eb8e-40ca-be82-5ec4bccca8fe",
+          ""
+        ],
+        [
+          "copper_edge_clearance|27099641|125120000|0b74e0c0-a283-40eb-9958-3dff18739fd0|3a8faaee-dfe3-40fb-b054-57c1505c0fd5",
+          ""
+        ],
+        [
+          "copper_edge_clearance|27099641|129370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|ca7b3035-3b13-4219-9a4c-cbcd5a667ba5",
+          ""
+        ],
+        [
+          "copper_edge_clearance|27099641|133620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|adf6cb29-603a-424d-9703-7ce705c79064",
+          ""
+        ],
+        [
+          "copper_edge_clearance|27099641|133620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|dbb3c9d3-79d7-4441-8bd8-21b8b93514b4",
+          ""
+        ],
+        [
+          "track_dangling|41299390|43924390|65092753-a774-4ea5-b492-278d0fdf31e7|00000000-0000-0000-0000-000000000000",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -567,7 +660,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "gerber",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
@@ -728,7 +821,7 @@
         "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-    "used_designators": "U1-59,R1-133,SWLSB1-3,Q1-48,FB1-5,C1-9,SWMSB1-3,SW1-3,J1-7",
+    "used_designators": "U1-59,R1-134,SWLSB1-3,Q1-48,FB1-5,C1-9,SWMSB1-3,SW1-3,J1-7",
     "variants": []
   },
   "sheets": [
