@@ -1115,10 +1115,10 @@ bool ConfigAdc()
     if (!XRFClk_SetConfigLMK())
 		return false;
 
-    if (!XRFClk_SetConfigLMX(RFCLK_LMX2594_1, LMX2594G2000, LMX2594_COUNT))
+    if (!XRFClk_SetConfigLMX(RFCLK_LMX2594_1, LMX2594G4000, LMX2594_COUNT))
 		return false;
 
-    if (!XRFClk_SetConfigLMX(RFCLK_LMX2594_2, LMX2594G4000, LMX2594_COUNT))
+    if (!XRFClk_SetConfigLMX(RFCLK_LMX2594_2, LMX2594G2000, LMX2594_COUNT))
 		return false;
 
 	return true;
