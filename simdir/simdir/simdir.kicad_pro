@@ -39,9 +39,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 5.08,
-          "width": 1.5
+          "drill": 0.8,
+          "height": 1.27,
+          "width": 1.27
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -60,7 +60,7 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.0,
+          "min_clearance": 0.5,
           "min_island_area": 10.0,
           "min_thickness": 0.25,
           "pad_connection": 1,
@@ -76,100 +76,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "clearance|38500000|43575000|a9ae35f5-ef53-4040-9904-1ee91c154cd8|dedbe511-8172-4d2a-9c03-8eaf40fd28f0",
-          ""
-        ],
-        [
-          "clearance|38500000|44475000|2e40f243-d3b9-4019-bd35-4d5ad6a65875|a9ae35f5-ef53-4040-9904-1ee91c154cd8",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26700000|74370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|d53423e6-9471-4aac-b82d-cafd7d5bab61",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26700000|74370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|eaebde19-be58-4ba3-9a2d-828eb4ede00a",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26700000|78620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|60ec26f9-0f6b-4f19-bb43-147248d0d1f5",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26700000|82870000|0b74e0c0-a283-40eb-9958-3dff18739fd0|2b47c1e2-767b-4b96-b5db-e617eb5bc804",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26700000|82870000|0b74e0c0-a283-40eb-9958-3dff18739fd0|5cbc85db-17c0-4ba4-a2d9-67eeb26572a0",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26822500|39025000|0b74e0c0-a283-40eb-9958-3dff18739fd0|640a0a17-2a99-42f5-90c9-7be706d75fa9",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26822500|39025000|0b74e0c0-a283-40eb-9958-3dff18739fd0|8101893c-4d58-4950-8a99-acbb95453a9f",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26822500|43275000|0b74e0c0-a283-40eb-9958-3dff18739fd0|0da9ba3f-3956-446f-835e-26b47825c0d6",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26822500|47525000|0b74e0c0-a283-40eb-9958-3dff18739fd0|559fdcf0-27e4-483f-a517-f77c2d96cb89",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26822500|47525000|0b74e0c0-a283-40eb-9958-3dff18739fd0|9848d3f2-8585-4f23-9a62-5d2528cad030",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26872500|175895000|0b74e0c0-a283-40eb-9958-3dff18739fd0|8afcdc31-3cb6-44e0-841e-65fada1426d0",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26872500|175895000|0b74e0c0-a283-40eb-9958-3dff18739fd0|fa2b57bf-7319-4e2c-9452-c56da4070f16",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26872500|180145000|0b74e0c0-a283-40eb-9958-3dff18739fd0|40ce3fd6-29e4-4505-9eb1-4eecc882e3bc",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26872500|184395000|0b74e0c0-a283-40eb-9958-3dff18739fd0|3284ffcd-a94d-4132-99d7-d53119a9b157",
-          ""
-        ],
-        [
-          "copper_edge_clearance|26872500|184395000|0b74e0c0-a283-40eb-9958-3dff18739fd0|df90152e-6e74-42d1-90b9-2390f9372586",
-          ""
-        ],
-        [
-          "copper_edge_clearance|27099641|125120000|0b74e0c0-a283-40eb-9958-3dff18739fd0|14d33939-eb8e-40ca-be82-5ec4bccca8fe",
-          ""
-        ],
-        [
-          "copper_edge_clearance|27099641|125120000|0b74e0c0-a283-40eb-9958-3dff18739fd0|3a8faaee-dfe3-40fb-b054-57c1505c0fd5",
-          ""
-        ],
-        [
-          "copper_edge_clearance|27099641|129370000|0b74e0c0-a283-40eb-9958-3dff18739fd0|ca7b3035-3b13-4219-9a4c-cbcd5a667ba5",
-          ""
-        ],
-        [
-          "copper_edge_clearance|27099641|133620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|adf6cb29-603a-424d-9703-7ce705c79064",
-          ""
-        ],
-        [
-          "copper_edge_clearance|27099641|133620000|0b74e0c0-a283-40eb-9958-3dff18739fd0|dbb3c9d3-79d7-4441-8bd8-21b8b93514b4",
-          ""
-        ],
-        [
-          "track_dangling|41299390|43924390|65092753-a774-4ea5-b492-278d0fdf31e7|00000000-0000-0000-0000-000000000000",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -239,7 +146,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.2,
+        "min_clearance": 0.0,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -303,9 +210,7 @@
         }
       ],
       "track_widths": [
-        0.0,
-        0.38,
-        1.0
+        0.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -591,6 +496,7 @@
       "wire_dangling": "error"
     }
   },
+  "legacy": [],
   "libraries": {
     "pinned_footprint_libs": [],
     "pinned_symbol_libs": []
@@ -614,26 +520,11 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.38,
+        "track_width": 0.2,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "clearance": 0.2,
-        "diff_pair_gap": 0.25,
-        "diff_pair_width": 0.2,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
-        "name": "RF-50",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.38,
-        "tuning_profile": "Meander",
-        "via_diameter": 0.6,
-        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -641,28 +532,14 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": [
-      {
-        "netclass": "RF-50",
-        "pattern": ""
-      },
-      {
-        "netclass": "RF-50",
-        "pattern": "RF_GND"
-      },
-      {
-        "netclass": "RF-50",
-        "pattern": "5v"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "gerber",
+      "plot": "",
       "specctra_dsn": "",
-      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -726,18 +603,6 @@
         },
         {
           "group_by": true,
-          "label": "Exclude from Simulation",
-          "name": "${EXCLUDE_FROM_SIM}",
-          "show": true
-        },
-        {
-          "group_by": true,
-          "label": "Exclude from Position Files",
-          "name": "${EXCLUDE_FROM_POS_FILES}",
-          "show": true
-        },
-        {
-          "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
           "show": true
@@ -747,36 +612,12 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Pins",
-          "name": "Sim.Pins",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Device",
-          "name": "Sim.Device",
-          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "",
+      "name": "Default Editing",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -795,14 +636,14 @@
       "intersheets_ref_show": false,
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
-      "label_size_ratio": 0.375,
+      "label_size_ratio": 0.25,
       "operating_point_overlay_i_precision": 3,
       "operating_point_overlay_i_range": "~A",
       "operating_point_overlay_v_precision": 3,
       "operating_point_overlay_v_range": "~V",
       "overbar_offset_ratio": 1.23,
-      "pin_symbol_size": 25.0,
-      "text_offset_ratio": 0.15
+      "pin_symbol_size": 0.0,
+      "text_offset_ratio": 0.08
     },
     "legacy_lib_dir": "",
     "legacy_lib_list": [],
@@ -821,11 +662,7 @@
         "uuid": "d849bf5c-31fe-4f75-acae-03ca15e628fd"
       }
     ],
-<<<<<<< Updated upstream
-    "used_designators": "U1-106,R1-134,Q1-48,SWLSB1-3,FB1-5,C1-9,SW1-3,SWMSB1-3,J1-7",
-=======
-    "used_designators": "U1-59,R1-134,Q1-48,SWLSB1-3,FB1-5,C1-9,SW1-3,SWMSB1-3,J1-7",
->>>>>>> Stashed changes
+    "used_designators": "C9-35",
     "variants": []
   },
   "sheets": [
@@ -851,25 +688,6 @@
     "meta": {
       "version": 0
     },
-    "tuning_profiles_impedance_geometric": [
-      {
-        "enable_time_domain_tuning": true,
-        "layer_entries": [
-          {
-            "bottom_reference_layer": "In1.Cu",
-            "delay": 5850000,
-            "diff_pair_gap": 0,
-            "signal_layer": "F.Cu",
-            "top_reference_layer": "F.Cu",
-            "width": 380000
-          }
-        ],
-        "profile_name": "Meander",
-        "target_impedance": 50.0,
-        "type": 0,
-        "via_overrides": [],
-        "via_prop_delay": 0
-      }
-    ]
+    "tuning_profiles_impedance_geometric": []
   }
 }
