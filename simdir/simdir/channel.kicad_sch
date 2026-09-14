@@ -1576,6 +1576,363 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "RF_Switch:AS179-92LF"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -7.62 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "AS179-92LF"
+				(at 2.54 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+				(at 2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+				(at 2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "rf spdt switch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT*363*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AS179-92LF_1_1"
+				(polyline
+					(pts
+						(xy -3.175 -3.81) (xy -2.54 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -3.048 2.54)
+					(radius 0.2794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.794 2.54) (xy 2.921 5.207)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 -3.81) (xy -1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 -3.81) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.175) (xy 0 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.905) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0.635) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -0.635) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.905) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.175) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 3.048 0)
+					(radius 0.2794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 3.175 5.207)
+					(radius 0.2794)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 -7.62)
+					(end -7.62 6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "J3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 2.54 -10.16 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "J2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "V1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "J1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -5.08 0)
+					(length 2.54)
+					(name "V2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_BJT:BC847"
 			(pin_names
 				(offset 0)
@@ -2182,556 +2539,12 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "hand:MASWSS0178"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at -8.89 8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MASWSS0178"
-				(at 3.556 8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-				(at 2.032 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "RF switch SPDT"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "MSOP*3x3mm*P0.65mm*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "MASWSS0178_0_1"
-				(polyline
-					(pts
-						(xy -4.318 2.54) (xy -5.842 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.286 1.524) (xy -0.508 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.508 3.556) (xy -2.286 3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "MASWSS0178_1_1"
-				(rectangle
-					(start -10.16 7.62)
-					(end 10.16 -7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(circle
-					(center -4.064 2.54)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 2.54) (xy -2.286 3.302)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.54 3.556)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.54 1.524)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -0.254 3.556)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -0.254 1.524)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0.508 5.08)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.508 4.826) (xy 0 3.302)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.508 0.254) (xy 1.016 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0.508 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 5.08) (xy 5.08 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0) (xy 5.08 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 3.556)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 1.524)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.524 3.556) (xy 2.54 3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.524 1.524) (xy 2.54 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 2.54 3.048)
-					(end 4.826 4.064)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 2.54 1.016)
-					(end 4.826 2.032)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.826 3.556) (xy 5.588 3.556) (xy 5.588 3.048) (xy 6.35 3.556) (xy 5.588 4.064) (xy 5.588 3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.826 1.524) (xy 5.588 1.524) (xy 5.588 1.016) (xy 6.35 1.524) (xy 5.588 2.032) (xy 5.588 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(text "50"
-					(at 3.683 3.556 0)
-					(effects
-						(font
-							(size 0.635 0.635)
-						)
-					)
-				)
-				(text "50"
-					(at 3.683 1.524 0)
-					(effects
-						(font
-							(size 0.635 0.635)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -2.54 0)
-					(length 2.54)
-					(name "CTL1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -5.08 0)
-					(length 2.54)
-					(name "CTL2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 2.54 0)
-					(length 2.54)
-					(name "RFC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -10.16 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 0 180)
-					(length 2.54)
-					(name "RF2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -10.16 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -10.16 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 5.08 180)
-					(length 2.54)
-					(name "RF1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -10.16 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(junction
-		(at 251.46 63.5)
+		(at 266.7 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "07a05d43-f5e5-4515-b75c-fbdcf8ee9149")
+		(uuid "05f43d45-17e3-4c39-99be-63bf3799f9bf")
 	)
 	(junction
 		(at 189.23 218.44)
@@ -2806,22 +2619,10 @@
 		(uuid "2486ca36-ae21-492c-a89a-4243bde1fed0")
 	)
 	(junction
-		(at 297.18 49.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "253906fd-b24d-4961-b449-44a91b62f0f4")
-	)
-	(junction
 		(at 194.31 190.5)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "28bad56a-a9e1-48c4-8afa-4adcd4a00602")
-	)
-	(junction
-		(at 170.18 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2c8258cf-9b1e-4b3e-b994-1288ec9e0297")
 	)
 	(junction
 		(at 209.55 40.64)
@@ -2848,22 +2649,10 @@
 		(uuid "3032d922-1c4a-4afd-abb5-a780989b6e34")
 	)
 	(junction
-		(at 251.46 118.11)
+		(at 140.97 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3100f2e4-522d-4a48-8e59-7f20175f1f2c")
-	)
-	(junction
-		(at 171.45 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "312dc322-216d-439e-b289-cf3e0dee05f8")
-	)
-	(junction
-		(at 158.75 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "32536f6a-634b-4159-bc75-9217bc14fed8")
+		(uuid "312ff278-a7e5-4f71-831a-2324ee47384e")
 	)
 	(junction
 		(at 331.47 52.07)
@@ -2872,22 +2661,28 @@
 		(uuid "328862d1-65cd-4fd5-9e5d-2e36cd12271d")
 	)
 	(junction
-		(at 264.16 49.53)
+		(at 140.97 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "33d72f4e-1723-437a-ab7c-66cd2eb8d9f0")
+		(uuid "36176b27-50af-4ecc-a919-127748fdc637")
 	)
 	(junction
-		(at 170.18 134.62)
+		(at 294.64 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3743edd8-6cd5-427a-bfe7-19574bdb0863")
+		(uuid "383eb5bf-bf95-4227-8fca-ef2cb1294279")
 	)
 	(junction
 		(at 97.79 135.89)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "38bd36f1-c3e2-4b65-952b-54a7af552b58")
+	)
+	(junction
+		(at 294.64 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "38dd0c17-8c7f-4002-a00a-1d8d135fd2a5")
 	)
 	(junction
 		(at 105.41 213.36)
@@ -2974,12 +2769,6 @@
 		(uuid "4e44aa17-a579-4357-ac39-e20b1a545020")
 	)
 	(junction
-		(at 297.18 134.62)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4e5d68f9-bf90-44fb-a83f-aaa33332dd7d")
-	)
-	(junction
 		(at 336.55 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2992,16 +2781,10 @@
 		(uuid "4f43330e-a94b-4d33-a697-af316195e160")
 	)
 	(junction
-		(at 125.73 41.91)
+		(at 140.97 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "522d1b40-c4c7-4296-b3e3-38aaeb91ddeb")
-	)
-	(junction
-		(at 264.16 134.62)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "535bb246-73eb-432b-8832-6641b56cb3b9")
+		(uuid "52e6eab5-33a5-4510-a61c-a05e47234a94")
 	)
 	(junction
 		(at 34.29 77.47)
@@ -3076,10 +2859,16 @@
 		(uuid "69cf0c5f-80df-4f18-a506-3e0db5397750")
 	)
 	(junction
-		(at 171.45 49.53)
+		(at 294.64 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "6d932b18-c92e-4d9d-a79e-5d6f3269a9eb")
+		(uuid "6abe34f1-6f41-49f1-a37c-2edad0c782db")
+	)
+	(junction
+		(at 167.64 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6d7a2b00-9e76-4623-9edd-60bf26c48ec3")
 	)
 	(junction
 		(at 232.41 134.62)
@@ -3100,6 +2889,12 @@
 		(uuid "702cfe50-3bbb-4ac5-8698-85bfefce6657")
 	)
 	(junction
+		(at 266.7 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "73a02328-442e-4f9b-b06b-2f8fe15da0db")
+	)
+	(junction
 		(at 110.49 208.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3118,6 +2913,12 @@
 		(uuid "75fd8b59-ae09-4aa5-9ccb-f8c3d26a55f2")
 	)
 	(junction
+		(at 254 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7bb5a7dc-09bc-4a67-847b-57c303d47a61")
+	)
+	(junction
 		(at 215.9 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3128,6 +2929,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7d8f7d4f-a430-437f-b437-9200726ce4a2")
+	)
+	(junction
+		(at 167.64 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "80f2aed8-6e39-4a25-a48f-3241dbed86e2")
+	)
+	(junction
+		(at 168.91 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "81c81f3a-905b-4446-b35a-fed5e5326284")
 	)
 	(junction
 		(at 232.41 110.49)
@@ -3178,6 +2991,12 @@
 		(uuid "90cf443a-aeb8-4b44-9ad2-0c419a102b68")
 	)
 	(junction
+		(at 140.97 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9316ad0b-b51e-4986-b45c-2af8e76f3047")
+	)
+	(junction
 		(at 134.62 191.77)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3194,6 +3013,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "98b7dc9f-3d4b-4974-881d-80b07d01a5aa")
+	)
+	(junction
+		(at 168.91 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98dc99f3-5ee9-46d8-9358-e564bf3a278b")
 	)
 	(junction
 		(at 133.35 227.33)
@@ -3226,6 +3051,12 @@
 		(uuid "a69c1eb5-9f44-425e-a165-e1d5c6bcd6d6")
 	)
 	(junction
+		(at 266.7 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a7ca7068-eb0c-49f4-abd7-81c970074d9f")
+	)
+	(junction
 		(at 322.58 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3256,12 +3087,6 @@
 		(uuid "aca92e25-123c-441d-87b3-6670903054ec")
 	)
 	(junction
-		(at 264.16 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b010d82b-0ebf-42b4-bc9f-0afbe43ef304")
-	)
-	(junction
 		(at 240.03 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3278,12 +3103,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b6c99346-ac4b-4260-baf6-98c492c46987")
-	)
-	(junction
-		(at 297.18 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b73601ab-c078-4a99-8077-e8998e2279f9")
 	)
 	(junction
 		(at 232.41 92.71)
@@ -3364,16 +3183,10 @@
 		(uuid "c7081ba8-ac8d-4117-9ff4-976e1898d196")
 	)
 	(junction
-		(at 125.73 118.11)
+		(at 287.02 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c962719b-44e6-432a-9a2f-9e79fff0cf1d")
-	)
-	(junction
-		(at 138.43 134.62)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "caa29698-80cf-4418-a97e-da8699174435")
+		(uuid "cab2b15b-f045-4f0f-ae9a-30ac7c8caf34")
 	)
 	(junction
 		(at 232.41 49.53)
@@ -3418,22 +3231,16 @@
 		(uuid "d2f24f08-fa4d-43e5-af59-9e8d932fa186")
 	)
 	(junction
-		(at 297.18 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d4979dab-828a-4f83-ab82-dec679b3f7f4")
-	)
-	(junction
 		(at 161.29 168.91)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dcb05437-28e8-4702-87f0-5cab6383418d")
 	)
 	(junction
-		(at 264.16 104.14)
+		(at 294.64 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "de46da86-0f3f-4dfe-ba95-d388ff7845a5")
+		(uuid "df1d36d9-c32c-478e-9838-01b447fff72a")
 	)
 	(junction
 		(at 232.41 123.19)
@@ -3496,6 +3303,12 @@
 		(uuid "f3f875f5-f0c5-4fcb-bd96-58d8fe61083b")
 	)
 	(junction
+		(at 266.7 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f428d9aa-52df-4d44-aedf-4130491ebfcd")
+	)
+	(junction
 		(at 209.55 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3529,7 +3342,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 88.9) (xy 157.48 88.9)
+			(xy 156.21 88.9) (xy 160.02 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3569,7 +3382,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 99.06) (xy 125.73 99.06)
+			(xy 116.84 99.06) (xy 128.27 99.06)
 		)
 		(stroke
 			(width 0)
@@ -3659,7 +3472,17 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 91.44) (xy 125.73 91.44)
+			(xy 294.64 134.62) (xy 327.66 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0789ea7e-c660-4487-967b-19591ff3dcc6")
+	)
+	(wire
+		(pts
+			(xy 121.92 91.44) (xy 128.27 91.44)
 		)
 		(stroke
 			(width 0)
@@ -3669,17 +3492,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 71.12) (xy 125.73 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08d2ad2d-5729-4e94-9abd-01f0b77d2b75")
-	)
-	(wire
-		(pts
-			(xy 138.43 104.14) (xy 170.18 104.14)
+			(xy 138.43 104.14) (xy 140.97 104.14)
 		)
 		(stroke
 			(width 0)
@@ -3739,6 +3552,16 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 63.5) (xy 128.27 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d14e561-94ca-480e-a907-b7572c3a7b2e")
+	)
+	(wire
+		(pts
 			(xy 314.96 91.44) (xy 314.96 106.68)
 		)
 		(stroke
@@ -3759,16 +3582,6 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 130.81) (xy 264.16 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0e90bc95-1a77-49f4-8ab5-bf6823c69ea7")
-	)
-	(wire
-		(pts
 			(xy 209.55 71.12) (xy 213.36 71.12)
 		)
 		(stroke
@@ -3779,16 +3592,6 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 63.5) (xy 251.46 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ef48e20-0ad5-4516-b4df-d0aeb4f9fcc0")
-	)
-	(wire
-		(pts
 			(xy 232.41 80.01) (xy 240.03 80.01)
 		)
 		(stroke
@@ -3796,6 +3599,16 @@
 			(type default)
 		)
 		(uuid "0f0a9b14-8c52-48af-b2b9-9ed5544b8d57")
+	)
+	(wire
+		(pts
+			(xy 307.34 91.44) (xy 314.96 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f644516-2006-44eb-b81a-0b09a61f5672")
 	)
 	(wire
 		(pts
@@ -3849,6 +3662,16 @@
 	)
 	(wire
 		(pts
+			(xy 148.59 120.65) (xy 151.13 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "138bb529-35cf-4b78-a2d2-2897a787d503")
+	)
+	(wire
+		(pts
 			(xy 313.69 160.02) (xy 358.14 160.02)
 		)
 		(stroke
@@ -3889,16 +3712,6 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 60.96) (xy 153.67 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15878cfe-cd18-4627-a840-4f3fc441c0b7")
-	)
-	(wire
-		(pts
 			(xy 73.66 276.86) (xy 147.32 276.86)
 		)
 		(stroke
@@ -3909,7 +3722,17 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 91.44) (xy 251.46 91.44)
+			(xy 168.91 49.53) (xy 232.41 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16277542-6632-4c68-8f6f-70904614ae64")
+	)
+	(wire
+		(pts
+			(xy 247.65 91.44) (xy 254 91.44)
 		)
 		(stroke
 			(width 0)
@@ -3949,7 +3772,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 34.29) (xy 284.48 34.29)
+			(xy 281.94 34.29) (xy 287.02 34.29)
 		)
 		(stroke
 			(width 0)
@@ -3989,6 +3812,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 115.57) (xy 279.4 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a1b0709-0aa0-482d-96a7-810bc6ba6223")
+	)
+	(wire
+		(pts
 			(xy 113.03 266.7) (xy 133.35 266.7)
 		)
 		(stroke
@@ -4009,23 +3842,13 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 36.83) (xy 194.31 36.83)
+			(xy 140.97 134.62) (xy 167.64 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1adb2ec3-7e8e-48d0-a2aa-673b0cd8e9c6")
-	)
-	(wire
-		(pts
-			(xy 264.16 76.2) (xy 297.18 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1b28b33f-73be-47c2-bd8e-b980c94c438d")
+		(uuid "1aa438b4-cb8d-41f8-9fce-fdf3f0e5de85")
 	)
 	(wire
 		(pts
@@ -4049,7 +3872,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 49.53) (xy 327.66 49.53)
+			(xy 232.41 49.53) (xy 266.7 49.53)
 		)
 		(stroke
 			(width 0)
@@ -4066,16 +3889,6 @@
 			(type default)
 		)
 		(uuid "1c3ee29f-488a-46b3-bdca-d1d9634206b8")
-	)
-	(wire
-		(pts
-			(xy 276.86 34.29) (xy 279.4 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c77a5a3-19a9-467c-a584-b75ca198cc47")
 	)
 	(wire
 		(pts
@@ -4119,6 +3932,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 63.5) (xy 314.96 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f312df1-f377-43d2-964f-6c5075005107")
+	)
+	(wire
+		(pts
 			(xy 281.94 96.52) (xy 281.94 88.9)
 		)
 		(stroke
@@ -4139,6 +3962,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 130.81) (xy 266.7 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2161b648-1603-4553-a627-0e7aa2b0f827")
+	)
+	(wire
+		(pts
 			(xy 276.86 66.04) (xy 276.86 68.58)
 		)
 		(stroke
@@ -4149,13 +3982,13 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 34.29) (xy 153.67 34.29)
+			(xy 307.34 71.12) (xy 317.5 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "22016ee9-723a-4b40-9b3c-35276528afe3")
+		(uuid "2321bb8b-dab6-493c-910d-650485d0493c")
 	)
 	(wire
 		(pts
@@ -4166,16 +3999,6 @@
 			(type default)
 		)
 		(uuid "2329c0ef-04a2-4df8-97fd-fcda26fe7200")
-	)
-	(wire
-		(pts
-			(xy 309.88 118.11) (xy 313.69 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2491f476-d140-4afa-92bf-ecc639bde122")
 	)
 	(wire
 		(pts
@@ -4199,6 +4022,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 93.98) (xy 276.86 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24b2f09b-0053-4840-9f46-5d775dedcc48")
+	)
+	(wire
+		(pts
 			(xy 179.07 205.74) (xy 179.07 195.58)
 		)
 		(stroke
@@ -4206,6 +4039,16 @@
 			(type default)
 		)
 		(uuid "24d0313b-0178-428b-8c2c-2d96d28013fd")
+	)
+	(wire
+		(pts
+			(xy 148.59 34.29) (xy 153.67 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25481abf-4eb0-4299-9324-5bbeb9c8ad72")
 	)
 	(wire
 		(pts
@@ -4289,7 +4132,7 @@
 	)
 	(wire
 		(pts
-			(xy 153.67 93.98) (xy 157.48 93.98)
+			(xy 153.67 93.98) (xy 160.02 93.98)
 		)
 		(stroke
 			(width 0)
@@ -4349,16 +4192,6 @@
 	)
 	(wire
 		(pts
-			(xy 232.41 76.2) (xy 264.16 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2a39583a-b243-40af-b5ce-0577ae0316dc")
-	)
-	(wire
-		(pts
 			(xy 110.49 255.27) (xy 133.35 255.27)
 		)
 		(stroke
@@ -4379,7 +4212,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 44.45) (xy 251.46 44.45)
+			(xy 250.19 44.45) (xy 254 44.45)
 		)
 		(stroke
 			(width 0)
@@ -4409,7 +4242,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 134.62) (xy 170.18 134.62)
+			(xy 138.43 134.62) (xy 140.97 134.62)
 		)
 		(stroke
 			(width 0)
@@ -4419,7 +4252,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 123.19) (xy 251.46 123.19)
+			(xy 245.11 123.19) (xy 254 123.19)
 		)
 		(stroke
 			(width 0)
@@ -4436,6 +4269,16 @@
 			(type default)
 		)
 		(uuid "2bdec0f0-1a5b-4f9a-ab85-b5cc8a2d8bed")
+	)
+	(wire
+		(pts
+			(xy 274.32 88.9) (xy 279.4 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bdf7f0e-b82d-4e4f-8597-07a85ecc9eb9")
 	)
 	(wire
 		(pts
@@ -4489,17 +4332,17 @@
 	)
 	(wire
 		(pts
-			(xy 127 41.91) (xy 125.73 41.91)
+			(xy 151.13 39.37) (xy 151.13 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2f13b6cd-6f8c-4fe9-944e-8033c10ad4e1")
+		(uuid "2ed60ace-ae59-42d6-b8e4-c98cc7d8c84d")
 	)
 	(wire
 		(pts
-			(xy 232.41 104.14) (xy 264.16 104.14)
+			(xy 232.41 104.14) (xy 266.7 104.14)
 		)
 		(stroke
 			(width 0)
@@ -4519,13 +4362,13 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 96.52) (xy 198.12 96.52)
+			(xy 180.34 91.44) (xy 194.31 91.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3167b419-b41f-4569-9d08-f9f81b4324f5")
+		(uuid "30a9f03d-c159-4ad0-9ee1-50a51ef4421a")
 	)
 	(wire
 		(pts
@@ -4546,6 +4389,16 @@
 			(type default)
 		)
 		(uuid "32bf6cc8-d41f-40c3-92ac-3342503de365")
+	)
+	(wire
+		(pts
+			(xy 167.64 130.81) (xy 167.64 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33095ca3-e8fd-4cf9-9814-419649fc3055")
 	)
 	(wire
 		(pts
@@ -4629,6 +4482,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 134.62) (xy 294.64 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3821f1c1-b62f-4312-9989-742b2ea413d7")
+	)
+	(wire
+		(pts
 			(xy 347.98 44.45) (xy 351.79 44.45)
 		)
 		(stroke
@@ -4709,13 +4572,13 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 134.62) (xy 232.41 134.62)
+			(xy 118.11 44.45) (xy 128.27 44.45)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3a9bf236-c030-40b4-a6ed-9ea37397b208")
+		(uuid "3ab703bc-862b-4af3-8a8d-869d856deb04")
 	)
 	(wire
 		(pts
@@ -4736,6 +4599,16 @@
 			(type default)
 		)
 		(uuid "3b9d5383-d6e2-4247-ac8d-69be462e2dfe")
+	)
+	(wire
+		(pts
+			(xy 140.97 130.81) (xy 140.97 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bc6fc31-a8a6-4ce5-9d4f-ab555ca7edad")
 	)
 	(wire
 		(pts
@@ -4779,6 +4652,26 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 123.19) (xy 205.74 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d473bac-8334-4570-8e53-e2c235d6e66a")
+	)
+	(wire
+		(pts
+			(xy 140.97 49.53) (xy 168.91 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d643f40-e82c-479d-b8f6-37fe99c96170")
+	)
+	(wire
+		(pts
 			(xy 190.5 71.12) (xy 190.5 140.97)
 		)
 		(stroke
@@ -4799,6 +4692,16 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 118.11) (xy 182.88 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e416a1e-68c1-495f-90ea-a5da0a0edb26")
+	)
+	(wire
+		(pts
 			(xy 347.98 129.54) (xy 351.79 129.54)
 		)
 		(stroke
@@ -4806,16 +4709,6 @@
 			(type default)
 		)
 		(uuid "3e831fe4-163c-4bfe-88db-00da8d78b191")
-	)
-	(wire
-		(pts
-			(xy 171.45 49.53) (xy 232.41 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e8bbd5b-9e98-4d32-aa64-5aeabaca462b")
 	)
 	(wire
 		(pts
@@ -4829,7 +4722,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 96.52) (xy 251.46 96.52)
+			(xy 245.11 96.52) (xy 254 96.52)
 		)
 		(stroke
 			(width 0)
@@ -4839,13 +4732,13 @@
 	)
 	(wire
 		(pts
-			(xy 309.88 99.06) (xy 325.12 99.06)
+			(xy 294.64 130.81) (xy 294.64 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "403ed159-b844-4918-9a5d-443f1b0f7a71")
+		(uuid "3fd5c18d-55de-4846-b348-c536b2b07aaf")
 	)
 	(wire
 		(pts
@@ -4879,7 +4772,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 88.9) (xy 284.48 88.9)
+			(xy 281.94 88.9) (xy 287.02 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4949,6 +4842,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 118.11) (xy 313.69 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "454bc034-d019-4c4c-9783-24520187a343")
+	)
+	(wire
+		(pts
 			(xy 175.26 208.28) (xy 194.31 208.28)
 		)
 		(stroke
@@ -4969,26 +4872,6 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 118.11) (xy 127 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "463984c4-1915-42bd-9bbd-0ba2e5ee8a52")
-	)
-	(wire
-		(pts
-			(xy 125.73 36.83) (xy 67.31 36.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "46aa5dcb-53ce-478a-b44b-4a1269d1186f")
-	)
-	(wire
-		(pts
 			(xy 330.2 123.19) (xy 330.2 138.43)
 		)
 		(stroke
@@ -4999,7 +4882,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 34.29) (xy 158.75 34.29)
+			(xy 156.21 34.29) (xy 161.29 34.29)
 		)
 		(stroke
 			(width 0)
@@ -5079,16 +4962,6 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 99.06) (xy 201.93 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a5ccfd5-7503-43e8-b5f8-b368869f04a5")
-	)
-	(wire
-		(pts
 			(xy 201.93 54.61) (xy 201.93 71.12)
 		)
 		(stroke
@@ -5096,6 +4969,36 @@
 			(type default)
 		)
 		(uuid "4a9494fe-3bd4-4fd8-9b47-b5d32c831caa")
+	)
+	(wire
+		(pts
+			(xy 119.38 68.58) (xy 128.27 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b30ffb7-8426-4d5f-9d1e-e7122a4e8915")
+	)
+	(wire
+		(pts
+			(xy 148.59 115.57) (xy 153.67 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b5d150c-60f4-4995-aad6-470792c502ac")
+	)
+	(wire
+		(pts
+			(xy 120.65 41.91) (xy 128.27 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b66c1a5-b622-4b13-9e9a-b5d2395e74f1")
 	)
 	(wire
 		(pts
@@ -5169,7 +5072,7 @@
 	)
 	(wire
 		(pts
-			(xy 153.67 66.04) (xy 158.75 66.04)
+			(xy 153.67 66.04) (xy 161.29 66.04)
 		)
 		(stroke
 			(width 0)
@@ -5239,7 +5142,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 99.06) (xy 251.46 99.06)
+			(xy 250.19 99.06) (xy 254 99.06)
 		)
 		(stroke
 			(width 0)
@@ -5299,16 +5202,6 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 118.11) (xy 252.73 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "52e71d09-ab82-4904-8bbf-4e451531fcce")
-	)
-	(wire
-		(pts
 			(xy 127 153.67) (xy 142.24 153.67)
 		)
 		(stroke
@@ -5326,6 +5219,16 @@
 			(type default)
 		)
 		(uuid "543d8e26-5242-4506-af74-83672e5c06d7")
+	)
+	(wire
+		(pts
+			(xy 279.4 39.37) (xy 287.02 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55d1e5ba-cbad-4385-84cc-b3686e472faa")
 	)
 	(wire
 		(pts
@@ -5366,6 +5269,26 @@
 			(type default)
 		)
 		(uuid "5867bdeb-76c6-456a-9eed-156bdee82837")
+	)
+	(wire
+		(pts
+			(xy 138.43 49.53) (xy 140.97 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58cbd7de-176d-441f-97b6-4a4a08048276")
+	)
+	(wire
+		(pts
+			(xy 274.32 60.96) (xy 279.4 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5908bdf7-e3b9-4016-84b4-f4ea3e971991")
 	)
 	(wire
 		(pts
@@ -5439,7 +5362,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 60.96) (xy 158.75 60.96)
+			(xy 156.21 60.96) (xy 161.29 60.96)
 		)
 		(stroke
 			(width 0)
@@ -5456,6 +5379,16 @@
 			(type default)
 		)
 		(uuid "5d7002b5-6f35-4625-ab58-20dd2349f371")
+	)
+	(wire
+		(pts
+			(xy 67.31 36.83) (xy 128.27 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e209000-b6c2-431d-bbcf-c8907fe65d8f")
 	)
 	(wire
 		(pts
@@ -5499,16 +5432,6 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 134.62) (xy 297.18 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6049895e-fc37-49e5-8449-b4a2c35a9357")
-	)
-	(wire
-		(pts
 			(xy 213.36 195.58) (xy 215.9 195.58)
 		)
 		(stroke
@@ -5539,7 +5462,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 93.98) (xy 284.48 93.98)
+			(xy 279.4 93.98) (xy 287.02 93.98)
 		)
 		(stroke
 			(width 0)
@@ -5576,16 +5499,6 @@
 			(type default)
 		)
 		(uuid "6482ea53-0564-4971-9689-8d6ec74b1477")
-	)
-	(wire
-		(pts
-			(xy 297.18 104.14) (xy 327.66 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "648ed01a-3274-4e83-9760-4687a77f83fc")
 	)
 	(wire
 		(pts
@@ -5629,16 +5542,6 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 76.2) (xy 232.41 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66ff205a-5b7f-4c75-87dd-7e6a14c1d1e0")
-	)
-	(wire
-		(pts
 			(xy 157.48 168.91) (xy 161.29 168.91)
 		)
 		(stroke
@@ -5659,13 +5562,23 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 123.19) (xy 125.73 123.19)
+			(xy 119.38 123.19) (xy 128.27 123.19)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "689cb3a3-a9d2-4b14-bd85-d6bf2da94959")
+	)
+	(wire
+		(pts
+			(xy 266.7 104.14) (xy 294.64 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68dfaecb-1294-49d0-a2e3-c99fac95f344")
 	)
 	(wire
 		(pts
@@ -5679,7 +5592,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 66.04) (xy 284.48 66.04)
+			(xy 279.4 66.04) (xy 287.02 66.04)
 		)
 		(stroke
 			(width 0)
@@ -5726,6 +5639,16 @@
 			(type default)
 		)
 		(uuid "6b2efa0f-8525-4086-b04e-15ea82f61e73")
+	)
+	(wire
+		(pts
+			(xy 274.32 34.29) (xy 279.4 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b6c70b1-f4a0-492a-b082-76fb60fd50be")
 	)
 	(wire
 		(pts
@@ -5789,16 +5712,6 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 104.14) (xy 297.18 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6de8d70e-7d46-4ac9-a3e0-8ccc5b2daaa5")
-	)
-	(wire
-		(pts
 			(xy 33.02 229.87) (xy 33.02 262.89)
 		)
 		(stroke
@@ -5816,16 +5729,6 @@
 			(type default)
 		)
 		(uuid "6e750155-99c5-4e2c-a231-563a00e5d017")
-	)
-	(wire
-		(pts
-			(xy 309.88 96.52) (xy 322.58 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e9fad1d-5b38-4f38-8bf9-38df8732460f")
 	)
 	(wire
 		(pts
@@ -5869,6 +5772,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 99.06) (xy 325.12 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7051bd59-f82a-427c-9c0b-119317511053")
+	)
+	(wire
+		(pts
 			(xy 198.12 40.64) (xy 198.12 44.45)
 		)
 		(stroke
@@ -5886,6 +5799,16 @@
 			(type default)
 		)
 		(uuid "711023ee-7191-46d6-a244-26b23afdc080")
+	)
+	(wire
+		(pts
+			(xy 274.32 39.37) (xy 276.86 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "717024e0-b680-42ad-844e-4130098167ac")
 	)
 	(wire
 		(pts
@@ -5929,23 +5852,23 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 125.73) (xy 125.73 125.73)
+			(xy 294.64 104.14) (xy 327.66 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "727c697f-7cb8-4f58-86f4-e7420b0f819e")
+	)
+	(wire
+		(pts
+			(xy 119.38 125.73) (xy 128.27 125.73)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "72e52e94-486a-4f73-a401-44f5ce0e5117")
-	)
-	(wire
-		(pts
-			(xy 118.11 44.45) (xy 125.73 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "72f7db87-240d-48c9-95aa-c4b4ca68380f")
 	)
 	(wire
 		(pts
@@ -5956,6 +5879,16 @@
 			(type default)
 		)
 		(uuid "735d0812-36da-42f3-a75d-04f17674d2a1")
+	)
+	(wire
+		(pts
+			(xy 148.59 66.04) (xy 151.13 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7390d0a1-0d84-46b8-a5a3-d4fff1dc9e07")
 	)
 	(wire
 		(pts
@@ -5976,6 +5909,16 @@
 			(type default)
 		)
 		(uuid "747ad6ba-b858-4c20-9a93-868c054ace5d")
+	)
+	(wire
+		(pts
+			(xy 294.64 49.53) (xy 327.66 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "753ac331-ec04-47c0-99a8-272ba9642374")
 	)
 	(wire
 		(pts
@@ -6019,6 +5962,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 120.65) (xy 276.86 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7643e4fd-cf33-4008-bb67-fadfd2c41f8c")
+	)
+	(wire
+		(pts
 			(xy 336.55 166.37) (xy 219.71 166.37)
 		)
 		(stroke
@@ -6049,13 +6002,13 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 91.44) (xy 194.31 91.44)
+			(xy 148.59 60.96) (xy 153.67 60.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "76f51b8d-09f3-40bf-86e0-eeef62de40f2")
+		(uuid "7702640c-e52c-4b45-b100-c3dbd70931ef")
 	)
 	(wire
 		(pts
@@ -6069,16 +6022,6 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 36.83) (xy 194.31 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7755b2c7-78c8-4a0c-b239-ca32e790c803")
-	)
-	(wire
-		(pts
 			(xy 198.12 92.71) (xy 198.12 83.82)
 		)
 		(stroke
@@ -6089,23 +6032,13 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 60.96) (xy 160.02 60.96)
+			(xy 148.59 39.37) (xy 151.13 39.37)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "79026d1e-2ceb-4835-a355-6181bcabc518")
-	)
-	(wire
-		(pts
-			(xy 184.15 41.91) (xy 190.5 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "793e26fa-5472-4c1b-9db1-8b7da6665f6c")
+		(uuid "796306e7-5d2e-4ec7-a73d-ac062326ad71")
 	)
 	(wire
 		(pts
@@ -6116,16 +6049,6 @@
 			(type default)
 		)
 		(uuid "79795606-4636-42e8-acc3-55b5fafc8e7a")
-	)
-	(wire
-		(pts
-			(xy 279.4 39.37) (xy 284.48 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79953e70-9f89-405e-a95e-58ec4ba6dce4")
 	)
 	(wire
 		(pts
@@ -6149,7 +6072,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 60.96) (xy 284.48 60.96)
+			(xy 281.94 60.96) (xy 287.02 60.96)
 		)
 		(stroke
 			(width 0)
@@ -6166,16 +6089,6 @@
 			(type default)
 		)
 		(uuid "7abd01c0-6cfb-42a1-a3a1-32d2cb9e1c5e")
-	)
-	(wire
-		(pts
-			(xy 151.13 39.37) (xy 151.13 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b0a9182-09b9-4bf1-b0aa-e62589024a5a")
 	)
 	(wire
 		(pts
@@ -6299,16 +6212,6 @@
 	)
 	(wire
 		(pts
-			(xy 309.88 63.5) (xy 314.96 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "81b81daf-1e22-4559-be75-dfd727767576")
-	)
-	(wire
-		(pts
 			(xy 161.29 154.94) (xy 161.29 157.48)
 		)
 		(stroke
@@ -6419,16 +6322,6 @@
 	)
 	(wire
 		(pts
-			(xy 309.88 123.19) (xy 330.2 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88564a1e-97be-497b-9021-633c731c32b0")
-	)
-	(wire
-		(pts
 			(xy 205.74 40.64) (xy 198.12 40.64)
 		)
 		(stroke
@@ -6479,13 +6372,23 @@
 	)
 	(wire
 		(pts
-			(xy 309.88 91.44) (xy 314.96 91.44)
+			(xy 307.34 125.73) (xy 325.12 125.73)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8cf7429c-a6a5-4623-b2f8-654db41ba843")
+		(uuid "8ca955f0-8373-4959-ae81-28f607320f4c")
+	)
+	(wire
+		(pts
+			(xy 181.61 41.91) (xy 190.5 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ce62058-0273-43f2-9066-6afbf2af9ef1")
 	)
 	(wire
 		(pts
@@ -6496,16 +6399,6 @@
 			(type default)
 		)
 		(uuid "8d0dfb8c-c139-41a4-a83f-983f425ff35c")
-	)
-	(wire
-		(pts
-			(xy 309.88 71.12) (xy 317.5 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d607c1f-0cfc-423d-b8f1-b31bf545ac2e")
 	)
 	(wire
 		(pts
@@ -6546,16 +6439,6 @@
 			(type default)
 		)
 		(uuid "8fca9f53-f042-4375-87db-b9d7f6ef60ec")
-	)
-	(wire
-		(pts
-			(xy 170.18 134.62) (xy 170.18 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9067b7fd-db45-41a7-9781-38c566dac56a")
 	)
 	(wire
 		(pts
@@ -6619,26 +6502,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 49.53) (xy 171.45 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93134764-2a83-4461-a06a-79c023800a9e")
-	)
-	(wire
-		(pts
-			(xy 125.73 41.91) (xy 120.65 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9338f64b-9875-478a-960c-ebd79dc955b0")
-	)
-	(wire
-		(pts
 			(xy 30.48 46.99) (xy 34.29 46.99)
 		)
 		(stroke
@@ -6646,6 +6509,16 @@
 			(type default)
 		)
 		(uuid "93450306-3587-48b1-b846-a0dc1388a26e")
+	)
+	(wire
+		(pts
+			(xy 180.34 125.73) (xy 201.93 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93786ef8-87b5-4f02-ab7e-6965b09fc4cf")
 	)
 	(wire
 		(pts
@@ -6699,17 +6572,7 @@
 	)
 	(wire
 		(pts
-			(xy 276.86 60.96) (xy 279.4 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9641a975-1b27-436d-a03c-a83c3c02b422")
-	)
-	(wire
-		(pts
-			(xy 251.46 63.5) (xy 252.73 63.5)
+			(xy 247.65 63.5) (xy 254 63.5)
 		)
 		(stroke
 			(width 0)
@@ -6726,6 +6589,16 @@
 			(type default)
 		)
 		(uuid "98cea5cd-1bcc-4cc9-a914-f48869226945")
+	)
+	(wire
+		(pts
+			(xy 181.61 68.58) (xy 198.12 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9918dd4e-93e0-4bdf-806b-72eeb271359a")
 	)
 	(wire
 		(pts
@@ -6749,13 +6622,13 @@
 	)
 	(wire
 		(pts
-			(xy 309.88 68.58) (xy 322.58 68.58)
+			(xy 254 71.12) (xy 255.27 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9a0dd2a2-a1f1-4a23-b053-3d5da55c4349")
+		(uuid "9aa8d3f4-c94a-4fb5-b1eb-dd611c267c09")
 	)
 	(wire
 		(pts
@@ -6769,7 +6642,7 @@
 	)
 	(wire
 		(pts
-			(xy 232.41 134.62) (xy 170.18 134.62)
+			(xy 167.64 134.62) (xy 232.41 134.62)
 		)
 		(stroke
 			(width 0)
@@ -6809,16 +6682,6 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 68.58) (xy 125.73 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9c019f29-52b5-40a1-bbec-e9ff599441ba")
-	)
-	(wire
-		(pts
 			(xy 232.41 123.19) (xy 205.74 123.19)
 		)
 		(stroke
@@ -6846,6 +6709,16 @@
 			(type default)
 		)
 		(uuid "9d106a0b-2d33-46ed-8d36-c4d77945d781")
+	)
+	(wire
+		(pts
+			(xy 181.61 71.12) (xy 190.5 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d37448f-b863-48df-ab46-e4108638fc39")
 	)
 	(wire
 		(pts
@@ -6889,7 +6762,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 41.91) (xy 251.46 41.91)
+			(xy 247.65 41.91) (xy 254 41.91)
 		)
 		(stroke
 			(width 0)
@@ -6906,16 +6779,6 @@
 			(type default)
 		)
 		(uuid "9f21bb7e-64d4-4b55-b0df-6df7cff712f2")
-	)
-	(wire
-		(pts
-			(xy 309.88 125.73) (xy 325.12 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9fb53e91-a3f3-41ad-87c1-96c09f28c51a")
 	)
 	(wire
 		(pts
@@ -6986,6 +6849,16 @@
 			(type default)
 		)
 		(uuid "a4df8b93-bb7a-40c4-98d5-190cb314bbcf")
+	)
+	(wire
+		(pts
+			(xy 287.02 39.37) (xy 288.29 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a58d382e-4a8c-4efd-8017-51032f90d5ca")
 	)
 	(wire
 		(pts
@@ -7069,7 +6942,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 120.65) (xy 284.48 120.65)
+			(xy 279.4 120.65) (xy 287.02 120.65)
 		)
 		(stroke
 			(width 0)
@@ -7179,16 +7052,6 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 115.57) (xy 153.67 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ad694d8c-f658-440c-ad33-427fa7db0a2f")
-	)
-	(wire
-		(pts
 			(xy 219.71 143.51) (xy 219.71 147.32)
 		)
 		(stroke
@@ -7219,13 +7082,13 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 63.5) (xy 194.31 63.5)
+			(xy 116.84 71.12) (xy 128.27 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "aff5f55a-dd02-4578-b143-c3b2b6b15422")
+		(uuid "af454761-35bf-4b3e-91f1-d79156de2d1a")
 	)
 	(wire
 		(pts
@@ -7289,6 +7152,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 123.19) (xy 330.2 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2bb2e35-d4ec-4ac6-b33f-0db9e49928b1")
+	)
+	(wire
+		(pts
 			(xy 314.96 63.5) (xy 314.96 78.74)
 		)
 		(stroke
@@ -7296,16 +7169,6 @@
 			(type default)
 		)
 		(uuid "b33071f5-cc9e-4a87-8b2b-69ff93e9cf76")
-	)
-	(wire
-		(pts
-			(xy 184.15 71.12) (xy 190.5 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b38503e3-2785-4f00-bc00-8c6324eb822f")
 	)
 	(wire
 		(pts
@@ -7339,7 +7202,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 76.2) (xy 171.45 76.2)
+			(xy 138.43 76.2) (xy 140.97 76.2)
 		)
 		(stroke
 			(width 0)
@@ -7369,7 +7232,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 68.58) (xy 251.46 68.58)
+			(xy 245.11 68.58) (xy 254 68.58)
 		)
 		(stroke
 			(width 0)
@@ -7439,13 +7302,13 @@
 	)
 	(wire
 		(pts
-			(xy 276.86 115.57) (xy 279.4 115.57)
+			(xy 168.91 76.2) (xy 232.41 76.2)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b8dc38fa-abed-4954-b452-5739bba83357")
+		(uuid "b8e2a30f-0199-4cc1-9db5-b2d085695e39")
 	)
 	(wire
 		(pts
@@ -7499,16 +7362,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 130.81) (xy 138.43 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc8b5c3b-3444-44f5-a29d-dbaaf9c71a93")
-	)
-	(wire
-		(pts
 			(xy 175.26 208.28) (xy 175.26 181.61)
 		)
 		(stroke
@@ -7529,13 +7382,13 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 125.73) (xy 201.93 125.73)
+			(xy 266.7 49.53) (xy 294.64 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "bcda836b-f0f1-4ddf-8596-4f023f080433")
+		(uuid "bd6dd57c-9a9e-4d61-8da4-21422064360e")
 	)
 	(wire
 		(pts
@@ -7576,26 +7429,6 @@
 			(type default)
 		)
 		(uuid "bfe997d5-4d17-45a7-9e8b-93c82efdb0de")
-	)
-	(wire
-		(pts
-			(xy 198.12 44.45) (xy 184.15 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c019ff5a-4292-41bc-8fcb-8378517b8ce1")
-	)
-	(wire
-		(pts
-			(xy 182.88 123.19) (xy 205.74 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c0282f14-f8e4-4094-a9a5-5d1a74e9c06b")
 	)
 	(wire
 		(pts
@@ -7669,6 +7502,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 96.52) (xy 322.58 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c42f2cc1-c92b-4932-ab4d-a57057d379e1")
+	)
+	(wire
+		(pts
 			(xy 331.47 52.07) (xy 331.47 80.01)
 		)
 		(stroke
@@ -7676,16 +7519,6 @@
 			(type default)
 		)
 		(uuid "c4510420-f87d-4434-8b4e-51ede8c4c535")
-	)
-	(wire
-		(pts
-			(xy 264.16 49.53) (xy 297.18 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4720a7e-72a3-45d0-8d99-32e677463283")
 	)
 	(wire
 		(pts
@@ -7699,16 +7532,6 @@
 	)
 	(wire
 		(pts
-			(xy 276.86 88.9) (xy 279.4 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6abd518-8059-4620-8aeb-2beb1201cd51")
-	)
-	(wire
-		(pts
 			(xy 110.49 245.11) (xy 110.49 208.28)
 		)
 		(stroke
@@ -7719,7 +7542,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 71.12) (xy 251.46 71.12)
+			(xy 250.19 71.12) (xy 254 71.12)
 		)
 		(stroke
 			(width 0)
@@ -7869,7 +7692,7 @@
 	)
 	(wire
 		(pts
-			(xy 327.66 76.2) (xy 297.18 76.2)
+			(xy 232.41 76.2) (xy 266.7 76.2)
 		)
 		(stroke
 			(width 0)
@@ -7929,7 +7752,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 118.11) (xy 125.73 118.11)
+			(xy 121.92 118.11) (xy 128.27 118.11)
 		)
 		(stroke
 			(width 0)
@@ -8029,7 +7852,7 @@
 	)
 	(wire
 		(pts
-			(xy 242.57 36.83) (xy 251.46 36.83)
+			(xy 242.57 36.83) (xy 254 36.83)
 		)
 		(stroke
 			(width 0)
@@ -8046,6 +7869,16 @@
 			(type default)
 		)
 		(uuid "cdef30c9-9077-483b-82d9-9603624696a2")
+	)
+	(wire
+		(pts
+			(xy 194.31 36.83) (xy 194.31 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce23ba75-a1f1-4591-b674-21c4852f51e9")
 	)
 	(wire
 		(pts
@@ -8159,6 +7992,26 @@
 	)
 	(wire
 		(pts
+			(xy 140.97 104.14) (xy 167.64 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d42a4fd6-56e1-40e3-915a-eab0782b21cc")
+	)
+	(wire
+		(pts
+			(xy 266.7 76.2) (xy 294.64 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4682a7f-5e20-4dba-84cd-dc2cae05d3ad")
+	)
+	(wire
+		(pts
 			(xy 240.03 21.59) (xy 331.47 21.59)
 		)
 		(stroke
@@ -8189,6 +8042,16 @@
 	)
 	(wire
 		(pts
+			(xy 140.97 76.2) (xy 168.91 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d62e6093-1b9e-43df-b8ae-cd35cc4d45bc")
+	)
+	(wire
+		(pts
 			(xy 209.55 99.06) (xy 201.93 99.06)
 		)
 		(stroke
@@ -8199,7 +8062,7 @@
 	)
 	(wire
 		(pts
-			(xy 153.67 39.37) (xy 158.75 39.37)
+			(xy 153.67 39.37) (xy 161.29 39.37)
 		)
 		(stroke
 			(width 0)
@@ -8349,7 +8212,7 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 134.62) (xy 297.18 134.62)
+			(xy 232.41 134.62) (xy 266.7 134.62)
 		)
 		(stroke
 			(width 0)
@@ -8416,16 +8279,6 @@
 			(type default)
 		)
 		(uuid "df66067a-9302-44df-98a7-9ab4b5706e31")
-	)
-	(wire
-		(pts
-			(xy 170.18 104.14) (xy 232.41 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df82f7c6-74f5-44f4-a49b-64ebd60357ec")
 	)
 	(wire
 		(pts
@@ -8499,7 +8352,7 @@
 	)
 	(wire
 		(pts
-			(xy 248.92 125.73) (xy 251.46 125.73)
+			(xy 248.92 125.73) (xy 254 125.73)
 		)
 		(stroke
 			(width 0)
@@ -8659,17 +8512,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 63.5) (xy 125.73 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e88496e1-f2fd-4cd6-bf5a-7ca5d6441401")
-	)
-	(wire
-		(pts
-			(xy 247.65 118.11) (xy 251.46 118.11)
+			(xy 247.65 118.11) (xy 254 118.11)
 		)
 		(stroke
 			(width 0)
@@ -8709,13 +8552,13 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 134.62) (xy 297.18 130.81)
+			(xy 307.34 68.58) (xy 322.58 68.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "eba05089-df2c-46e0-bb7b-a04b1a3dc32a")
+		(uuid "ebd911c9-9386-4578-b44c-1fa75696b712")
 	)
 	(wire
 		(pts
@@ -8766,6 +8609,16 @@
 			(type default)
 		)
 		(uuid "ed1a4b5c-4209-425b-928b-971217d1fa5b")
+	)
+	(wire
+		(pts
+			(xy 180.34 96.52) (xy 198.12 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ede79884-8522-4710-9461-88a169d8ce8e")
 	)
 	(wire
 		(pts
@@ -8879,6 +8732,26 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 36.83) (xy 194.31 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f17da1ce-544b-4c90-8b4c-c5dfa3cc3373")
+	)
+	(wire
+		(pts
+			(xy 274.32 66.04) (xy 276.86 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1a031db-933a-41c4-98ba-6c56f5ad648d")
+	)
+	(wire
+		(pts
 			(xy 189.23 227.33) (xy 189.23 218.44)
 		)
 		(stroke
@@ -8979,6 +8852,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 44.45) (xy 198.12 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f77249d0-b058-4c4e-bb62-1bf08f800641")
+	)
+	(wire
+		(pts
 			(xy 198.12 57.15) (xy 116.84 57.15)
 		)
 		(stroke
@@ -8986,6 +8869,16 @@
 			(type default)
 		)
 		(uuid "f7dea62a-36bf-4f1e-9f53-59e2dbe868cb")
+	)
+	(wire
+		(pts
+			(xy 181.61 63.5) (xy 194.31 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7f29c48-990e-466d-a771-ff328a4c8b86")
 	)
 	(wire
 		(pts
@@ -8999,13 +8892,13 @@
 	)
 	(wire
 		(pts
-			(xy 232.41 49.53) (xy 264.16 49.53)
+			(xy 180.34 99.06) (xy 201.93 99.06)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f89e684b-0051-47b9-8ce6-fd897a646f35")
+		(uuid "f84f9d9a-5fac-44ae-a78d-33a19b21d624")
 	)
 	(wire
 		(pts
@@ -9039,7 +8932,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 115.57) (xy 284.48 115.57)
+			(xy 281.94 115.57) (xy 287.02 115.57)
 		)
 		(stroke
 			(width 0)
@@ -9049,7 +8942,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 96.52) (xy 125.73 96.52)
+			(xy 119.38 96.52) (xy 128.27 96.52)
 		)
 		(stroke
 			(width 0)
@@ -9069,6 +8962,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 104.14) (xy 232.41 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fd85f3d1-3d52-42ee-8199-4628075b455d")
+	)
+	(wire
+		(pts
 			(xy 57.15 257.81) (xy 57.15 252.73)
 		)
 		(stroke
@@ -9079,6 +8982,16 @@
 	)
 	(wire
 		(pts
+			(xy 294.64 76.2) (xy 327.66 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe1b044c-d6fa-4d53-a396-05c4121329d4")
+	)
+	(wire
+		(pts
 			(xy 325.12 125.73) (xy 325.12 129.54)
 		)
 		(stroke
@@ -9086,16 +8999,6 @@
 			(type default)
 		)
 		(uuid "fe217423-57d0-460d-b66d-45c24c4272b7")
-	)
-	(wire
-		(pts
-			(xy 184.15 68.58) (xy 198.12 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fec05290-e04c-4160-a075-70d48e0d23b2")
 	)
 	(wire
 		(pts
@@ -9625,6 +9528,106 @@
 		)
 	)
 	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 171.45 66.04 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "01c97dc3-1792-4e90-9b03-38bcb3ef9a38")
+		(property "Reference" "U65"
+			(at 171.45 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 171.45 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 168.91 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 168.91 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 171.45 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "815b317c-326a-4dfc-95d8-7b173246f481")
+		)
+		(pin "1"
+			(uuid "184abec4-7c20-4b52-9569-031d1b698b2b")
+		)
+		(pin "2"
+			(uuid "c95bfe3a-39bd-4862-a24c-58897f6207be")
+		)
+		(pin "4"
+			(uuid "76ed87ed-042f-41c8-9f1c-1695524e216d")
+		)
+		(pin "3"
+			(uuid "9dd1fc74-9e1f-49a8-b3e0-72ea83584aac")
+		)
+		(pin "5"
+			(uuid "4a7c945b-5e3e-455d-818f-03aabd77c539")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U65")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U66")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 217.17 40.64 90)
 		(unit 1)
@@ -9795,6 +9798,106 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R91")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 264.16 120.65 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0b49256c-e99b-49b7-8e4e-42fb4232be6c")
+		(property "Reference" "U101"
+			(at 264.16 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 264.16 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 266.7 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 266.7 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 264.16 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7473591d-6bed-4432-8cad-8c390631d5be")
+		)
+		(pin "3"
+			(uuid "ff1f9135-e3a1-4e63-bdf2-a1a93d3811a7")
+		)
+		(pin "4"
+			(uuid "0e8add66-baef-4b20-a099-d677cfe72876")
+		)
+		(pin "6"
+			(uuid "5493dc1f-2548-405e-a2c1-5e51eabbf752")
+		)
+		(pin "2"
+			(uuid "c3d5d311-7ec9-4137-8679-bc518f10ddbf")
+		)
+		(pin "5"
+			(uuid "e89c6d09-7371-41c2-a2e2-9bf0c9d3194a")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U101")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U102")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U103")
 					(unit 1)
 				)
 			)
@@ -10221,6 +10324,106 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R87")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 171.45 39.37 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "17ad97d6-e655-4674-b919-854529163705")
+		(property "Reference" "U62"
+			(at 171.45 27.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 171.45 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 168.91 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 168.91 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 171.45 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "815b317c-326a-4dfc-95d8-7b173246f482")
+		)
+		(pin "1"
+			(uuid "184abec4-7c20-4b52-9569-031d1b698b2c")
+		)
+		(pin "2"
+			(uuid "c95bfe3a-39bd-4862-a24c-58897f6207bf")
+		)
+		(pin "4"
+			(uuid "76ed87ed-042f-41c8-9f1c-1695524e216e")
+		)
+		(pin "3"
+			(uuid "9dd1fc74-9e1f-49a8-b3e0-72ea83584aad")
+		)
+		(pin "5"
+			(uuid "4a7c945b-5e3e-455d-818f-03aabd77c53a")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U62")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U63")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U64")
 					(unit 1)
 				)
 			)
@@ -10771,8 +10974,9 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 138.43 66.04 0)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 297.18 39.37 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10780,10 +10984,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3079fcd7-af69-4a11-9e86-99a981c40d92")
-		(property "Reference" "U2"
-			(at 138.43 53.34 0)
+		(uuid "2ff5713e-464d-430d-bc86-205e4c772799")
+		(property "Reference" "U86"
+			(at 297.18 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10792,8 +10995,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 138.43 55.88 0)
+		(property "Value" "AS179-92LF"
+			(at 297.18 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10802,8 +11005,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 138.43 66.04 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 294.64 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10813,8 +11016,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 140.462 63.5 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 294.64 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10824,8 +11027,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 138.43 66.04 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 297.18 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10834,46 +11037,137 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "093d99e1-0e41-4c7d-a8e1-980ea3d3fd3f")
-		)
-		(pin "1"
-			(uuid "6427a221-9862-4e65-a6a1-c23f3a5cdd9f")
-		)
-		(pin "7"
-			(uuid "5f1148ba-72ae-4cdc-ae45-b2c23eeb7018")
-		)
-		(pin "2"
-			(uuid "103b8593-4ec4-4fea-b130-c013c0699ea4")
-		)
-		(pin "8"
-			(uuid "801d5c89-30e1-4926-9a9b-f007b19119b7")
 		)
 		(pin "6"
-			(uuid "8064de01-4d7d-4d94-bb7b-ba3e13f61edd")
+			(uuid "ff8565c1-c4cf-4286-ba4e-cdcf6e0396f0")
 		)
-		(pin "5"
-			(uuid "06025e6a-7129-428e-8919-2f8b13d5d0e9")
+		(pin "1"
+			(uuid "e6b32372-58d9-447c-aa9a-7b925176d25d")
+		)
+		(pin "2"
+			(uuid "0aa4f7c6-9cbf-42b3-b400-1754492e2a45")
 		)
 		(pin "4"
-			(uuid "e78010b0-42fe-4e23-83a8-4fe468ca7fc7")
+			(uuid "8c748973-89e4-404f-8063-acca353ba377")
 		)
-		(pin "9"
-			(uuid "37d0904b-3c7b-4ced-8ce0-bc9f8abd2c0d")
+		(pin "3"
+			(uuid "c6610741-8e9c-4e86-9345-7adfb6e4fa6e")
+		)
+		(pin "5"
+			(uuid "76a333ba-95a4-4375-b53b-a62b9ac507e3")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U2")
+					(reference "U86")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U22")
+					(reference "U87")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U41")
+					(reference "U88")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 170.18 120.65 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "30613589-d72e-45df-b9c2-fb5d0aa72356")
+		(property "Reference" "U80"
+			(at 170.18 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 170.18 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 167.64 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 167.64 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 170.18 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "839a513c-e137-4fad-ae39-bb61807c5737")
+		)
+		(pin "1"
+			(uuid "02f64e5c-c4f8-4b4c-8104-566ab81162af")
+		)
+		(pin "2"
+			(uuid "5798cfc5-e66c-4ef0-bb24-14925cd8574c")
+		)
+		(pin "4"
+			(uuid "32f57ec4-1d53-4af9-b5dc-2a591be66431")
+		)
+		(pin "3"
+			(uuid "9f0644aa-1632-4acd-a5b4-e3e09c17412c")
+		)
+		(pin "5"
+			(uuid "6b645f53-405d-4ec4-9203-94d4acab6afb")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U80")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U81")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U82")
 					(unit 1)
 				)
 			)
@@ -11082,115 +11376,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R128")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 297.18 66.04 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "37a009ba-6c05-4906-a89f-c4f3778a071a")
-		(property "Reference" "U14"
-			(at 297.18 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 297.18 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 297.18 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 295.148 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 297.18 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "e7c090d5-43f2-4210-88d3-ce97a57b013f")
-		)
-		(pin "1"
-			(uuid "c3a6714d-c708-4169-9054-a84c6f6a215e")
-		)
-		(pin "7"
-			(uuid "42fa50a7-c6b4-4a11-b021-8477de34a795")
-		)
-		(pin "2"
-			(uuid "f2479939-9872-458c-8fce-6f57285dfe82")
-		)
-		(pin "8"
-			(uuid "ba606c4b-0dd3-4c8c-84f4-122f3bb41636")
-		)
-		(pin "6"
-			(uuid "8a412ba2-5d54-44aa-bd9d-06fd08595a07")
-		)
-		(pin "5"
-			(uuid "5840fe4c-58c6-486c-a237-b4ffdb4c7b6f")
-		)
-		(pin "4"
-			(uuid "3bfc07ba-947f-4608-a3fc-f7d755e90a46")
-		)
-		(pin "9"
-			(uuid "7512d53a-0bb0-4464-9f07-f9cc7b0c58e5")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U14")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U36")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U55")
 					(unit 1)
 				)
 			)
@@ -11891,6 +12076,106 @@
 		)
 	)
 	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 138.43 66.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3f8bd9b5-4d8d-4f6f-bf86-9be3536bff58")
+		(property "Reference" "U59"
+			(at 138.43 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 138.43 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 140.97 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 140.97 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 138.43 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "815b317c-326a-4dfc-95d8-7b173246f483")
+		)
+		(pin "1"
+			(uuid "184abec4-7c20-4b52-9569-031d1b698b2d")
+		)
+		(pin "2"
+			(uuid "c95bfe3a-39bd-4862-a24c-58897f6207c0")
+		)
+		(pin "4"
+			(uuid "76ed87ed-042f-41c8-9f1c-1695524e216f")
+		)
+		(pin "3"
+			(uuid "9dd1fc74-9e1f-49a8-b3e0-72ea83584aae")
+		)
+		(pin "5"
+			(uuid "4a7c945b-5e3e-455d-818f-03aabd77c53b")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U59")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U60")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 232.41 29.21 180)
 		(unit 1)
@@ -12093,115 +12378,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "Q46")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 138.43 120.65 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "42e8167a-5e42-4e00-932c-419e8abb330b")
-		(property "Reference" "U4"
-			(at 138.43 107.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 138.43 110.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 138.43 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 140.462 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 138.43 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "2efcdcb6-2c31-4e94-a324-bf877ff4bb9c")
-		)
-		(pin "1"
-			(uuid "3bdfcb0b-65f9-4788-92e0-16766c720fac")
-		)
-		(pin "7"
-			(uuid "389a541d-5bef-4a73-8a41-757927729c19")
-		)
-		(pin "2"
-			(uuid "5bde7463-7117-4362-88eb-30a62e637eb5")
-		)
-		(pin "8"
-			(uuid "10b83368-93b9-4493-b88b-08d54a8c1641")
-		)
-		(pin "6"
-			(uuid "65ff4a40-99b9-4ff7-9898-7b71e4287f1b")
-		)
-		(pin "5"
-			(uuid "a8941ccb-e745-4ede-8526-0627aacee033")
-		)
-		(pin "4"
-			(uuid "004ce1fd-56a0-46eb-9eb4-90754a75d1de")
-		)
-		(pin "9"
-			(uuid "f526eb42-7aac-4d8e-9bee-22d683738018")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U4")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U24")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U43")
 					(unit 1)
 				)
 			)
@@ -13296,115 +13472,6 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 170.18 93.98 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5a45bcb1-c2a0-43cb-a8c3-dd58327221a1")
-		(property "Reference" "U7"
-			(at 170.18 81.28 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 170.18 83.82 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 170.18 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 168.148 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 170.18 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "0de52a49-01d4-4e27-b807-4dc57efaa30c")
-		)
-		(pin "1"
-			(uuid "45b4796c-468b-4b64-9e14-915aa9ce7cbc")
-		)
-		(pin "7"
-			(uuid "dfbc5c71-ee8d-4335-b4d1-ee1bfd498adf")
-		)
-		(pin "2"
-			(uuid "e321e7d7-fe8c-4ac8-bbbe-0d1109e3ceaa")
-		)
-		(pin "8"
-			(uuid "fd59a7d2-cb8f-4aed-b891-d66beeec21bd")
-		)
-		(pin "6"
-			(uuid "5a859e10-484e-49ed-89db-5e72d0fa65a4")
-		)
-		(pin "5"
-			(uuid "193ca29f-e65d-4ab8-9566-4b9e805b998a")
-		)
-		(pin "4"
-			(uuid "9d84140a-f927-4c48-82b3-2ec28bf20c1e")
-		)
-		(pin "9"
-			(uuid "80ef2c08-f4fc-4a4a-bee0-df8feabf0870")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U7")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U26")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U45")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 232.41 118.11 180)
 		(unit 1)
@@ -13879,8 +13946,9 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 264.16 93.98 0)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 297.18 93.98 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13888,10 +13956,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "67c9db8a-4926-4b28-b2d0-346f2b77715a")
-		(property "Reference" "U11"
-			(at 264.16 81.28 0)
+		(uuid "661da3fc-27d7-49cb-acad-79df52315556")
+		(property "Reference" "U98"
+			(at 297.18 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13900,8 +13967,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 264.16 83.82 0)
+		(property "Value" "AS179-92LF"
+			(at 297.18 85.09 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13910,8 +13977,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 264.16 93.98 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 294.64 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13921,8 +13988,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 266.192 91.44 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 294.64 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13932,8 +13999,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 264.16 93.98 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 297.18 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13942,46 +14009,37 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "72cf652b-a74a-4a56-9188-efc18b38e396")
-		)
-		(pin "1"
-			(uuid "3acddabd-7bd8-4ada-8347-f15d4a536b56")
-		)
-		(pin "7"
-			(uuid "c170d62d-80e3-4440-8e84-6ea38679baa4")
-		)
-		(pin "2"
-			(uuid "af53759f-387b-42f4-8d4a-af6befaa3207")
-		)
-		(pin "8"
-			(uuid "a2e22373-cbb9-43cb-83e6-24a1b8d7db9b")
 		)
 		(pin "6"
-			(uuid "b1ef5a4e-4657-4b98-b027-8ed49ffbab00")
+			(uuid "00e903f6-fd14-4c0c-a8a6-370451cac24d")
 		)
-		(pin "5"
-			(uuid "8196a5d4-62b9-4c8e-a784-7b3371e0cc87")
+		(pin "1"
+			(uuid "0c27fd1b-1f8a-42d8-8a8a-a3da29014d4e")
+		)
+		(pin "2"
+			(uuid "3949a2aa-2caa-4cfe-871b-190079f3ef1f")
 		)
 		(pin "4"
-			(uuid "cdf0e936-a1a6-4dff-88d7-7fb7182662b7")
+			(uuid "dd50debe-a9f7-4af1-9743-c9b031f2ae28")
 		)
-		(pin "9"
-			(uuid "9bfd4b8c-b74e-4a8c-bb0b-c4116cc39829")
+		(pin "3"
+			(uuid "137320a2-987b-4a63-8e4b-8b94cbef4c19")
+		)
+		(pin "5"
+			(uuid "7e401584-3785-42fe-80b7-da342e16d47e")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U11")
+					(reference "U98")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U33")
+					(reference "U99")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U52")
+					(reference "U100")
 					(unit 1)
 				)
 			)
@@ -14190,224 +14248,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "Q44")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 170.18 120.65 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "6dff330b-800c-48b4-afe3-52497fa329b7")
-		(property "Reference" "U8"
-			(at 170.18 107.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 170.18 110.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 170.18 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 168.148 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 170.18 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "51affbf7-ea7c-4e73-9d28-504d3c93dc13")
-		)
-		(pin "1"
-			(uuid "c6bac31f-59cc-4b24-b4b3-2c098295f5ce")
-		)
-		(pin "7"
-			(uuid "0856aeb6-56d1-4505-9ed4-a7756b3504af")
-		)
-		(pin "2"
-			(uuid "9fd6cc53-972e-4e2b-a5b4-ebcc73f19b4d")
-		)
-		(pin "8"
-			(uuid "5915934c-5cc7-4aea-9a1e-c4faa515a362")
-		)
-		(pin "6"
-			(uuid "3fefcdf6-e301-47f5-afae-e862eeb1cdd9")
-		)
-		(pin "5"
-			(uuid "8b942891-b98f-4887-aa63-d2948c9c6ccb")
-		)
-		(pin "4"
-			(uuid "2b0a519f-14b9-407b-83b9-d3b7e2d6260e")
-		)
-		(pin "9"
-			(uuid "9711c74e-48a1-4145-8363-a8bd75f6e1cf")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U8")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U27")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U46")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 264.16 66.04 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6f7fa6a2-b8b1-4642-9c7e-d2817aaec6cf")
-		(property "Reference" "U10"
-			(at 264.16 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 264.16 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 264.16 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 266.192 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 264.16 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "6bca3beb-808b-4108-b82f-2fa8c5b579ae")
-		)
-		(pin "1"
-			(uuid "2e603b09-d4f9-412f-b94a-f25f302b2b9e")
-		)
-		(pin "7"
-			(uuid "aaf708e6-beba-497c-a7f8-33a9efa0f5e1")
-		)
-		(pin "2"
-			(uuid "d9fa33b5-e7c1-4efa-9240-76d1d86b8ce2")
-		)
-		(pin "8"
-			(uuid "e60365fe-299c-4fa4-8771-6102253f311b")
-		)
-		(pin "6"
-			(uuid "db2ea6f8-7340-44d0-a3c7-cf1c004c3c60")
-		)
-		(pin "5"
-			(uuid "bd0d02ec-2029-4b81-b1e4-a38995ee1ae2")
-		)
-		(pin "4"
-			(uuid "b7ccf041-91c7-4dce-985d-7aae9bf69434")
-		)
-		(pin "9"
-			(uuid "6fa9521f-de1c-408f-aec1-af54021a2f67")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U10")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U32")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U51")
 					(unit 1)
 				)
 			)
@@ -15254,8 +15094,8 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 297.18 39.37 0)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 297.18 66.04 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -15264,9 +15104,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "904685f4-d9c0-4f83-a461-5bbe5aca71bf")
-		(property "Reference" "U13"
-			(at 297.18 26.67 0)
+		(uuid "91582d2e-f78f-47a0-9a6b-f5ee8e8af57d")
+		(property "Reference" "U92"
+			(at 297.18 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15275,8 +15115,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 297.18 29.21 0)
+		(property "Value" "AS179-92LF"
+			(at 297.18 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15285,8 +15125,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 297.18 39.37 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 294.64 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15296,8 +15136,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 295.148 36.83 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 294.64 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15307,8 +15147,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 297.18 39.37 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 297.18 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15317,46 +15157,37 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "2dc59e53-a079-4966-a7d1-9393e145b8ec")
-		)
-		(pin "1"
-			(uuid "df4ab6d2-7f08-4526-b373-a61cca42874e")
-		)
-		(pin "7"
-			(uuid "99717c25-4e4f-4f5a-a920-7f1901f6a578")
-		)
-		(pin "2"
-			(uuid "a7d06e75-324f-48c9-b5e4-ff4b2b755b57")
-		)
-		(pin "8"
-			(uuid "47de7f50-9c25-434d-8f17-2fcf29c52388")
 		)
 		(pin "6"
-			(uuid "c9e4fe76-f9e6-444a-9d48-3dc8f28ff54f")
+			(uuid "6f3b5feb-e321-445d-844a-f64dd96c45a8")
 		)
-		(pin "5"
-			(uuid "153d9409-6011-4dd0-afc6-15cfb4176806")
+		(pin "1"
+			(uuid "75d02593-b862-4366-9ae4-10b6d6ed0d8a")
+		)
+		(pin "2"
+			(uuid "e996ef3e-1618-4f7f-a5a5-dbed43c9398d")
 		)
 		(pin "4"
-			(uuid "10d4c543-22d0-4f7b-b5e0-c224bc9927cf")
+			(uuid "18870104-9332-4bf9-a5ee-314dbbcf046a")
 		)
-		(pin "9"
-			(uuid "66374dfd-8eb7-4358-be4b-322348cd6a1c")
+		(pin "3"
+			(uuid "e5316598-f871-4ab1-b0eb-c65c4404ef46")
+		)
+		(pin "5"
+			(uuid "a0c214fd-f4dc-4abc-a221-507b8eef60d2")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U13")
+					(reference "U92")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U35")
+					(reference "U93")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U54")
+					(reference "U94")
 					(unit 1)
 				)
 			)
@@ -15535,6 +15366,206 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R126")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 170.18 93.98 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "951221df-8127-4e74-af88-0f6046d39266")
+		(property "Reference" "U74"
+			(at 170.18 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 170.18 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 167.64 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 167.64 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 170.18 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "a0487619-eb42-4040-ac23-c0c641b70326")
+		)
+		(pin "1"
+			(uuid "1c5f0635-f590-4970-a1dc-b5d41ab3d987")
+		)
+		(pin "2"
+			(uuid "c91d3d7f-98c5-4d3c-a380-e9018f9d505e")
+		)
+		(pin "4"
+			(uuid "fcceb92e-1255-48f4-b069-a3cd690300b9")
+		)
+		(pin "3"
+			(uuid "1a5a94fa-b67a-4d71-9b28-0b0fed45e5aa")
+		)
+		(pin "5"
+			(uuid "8244dcd6-8491-4d2d-8ff7-5fe3e6459563")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U74")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U75")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U76")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 138.43 93.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "96015879-5385-4c75-a97e-ebce7fcdad6d")
+		(property "Reference" "U71"
+			(at 138.43 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 138.43 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 140.97 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 140.97 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 138.43 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "7fe2ae36-d481-4b73-83f8-64435e47c1bb")
+		)
+		(pin "1"
+			(uuid "8903d060-4b66-4a3d-aaf0-7609f0abbdcf")
+		)
+		(pin "2"
+			(uuid "a514c911-943f-4eac-aba1-a42b79de316a")
+		)
+		(pin "4"
+			(uuid "d27efed4-a6d3-4246-9d51-2d353adf1788")
+		)
+		(pin "3"
+			(uuid "6b7cd315-4ab6-43f3-b464-25eef7ec9763")
+		)
+		(pin "5"
+			(uuid "51b983e9-4706-42e3-8a98-daf76cf3be46")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U71")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U72")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U73")
 					(unit 1)
 				)
 			)
@@ -15743,115 +15774,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "Q39")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 264.16 120.65 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9b3ad770-c23d-4a6a-b80b-7c471d9da35a")
-		(property "Reference" "U12"
-			(at 264.16 107.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 264.16 110.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 264.16 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 266.192 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 264.16 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "b5abc748-000c-446f-b5a7-2a73e1070031")
-		)
-		(pin "1"
-			(uuid "e4226e62-0214-4e13-b114-11a00aa6eb28")
-		)
-		(pin "7"
-			(uuid "258d0da0-fec8-480e-af13-b458e9a92532")
-		)
-		(pin "2"
-			(uuid "f3c7bb8b-7bd6-4b7c-a2e6-75b7fec7ac5b")
-		)
-		(pin "8"
-			(uuid "46d10b5b-763a-46bd-beb5-c6f82b825abc")
-		)
-		(pin "6"
-			(uuid "77ada344-5611-4f5a-8c2c-167042afa1ba")
-		)
-		(pin "5"
-			(uuid "d7bd5324-6958-4af7-bd74-006094454809")
-		)
-		(pin "4"
-			(uuid "93a4ddc4-5cc5-422d-bb2b-391a672d2a46")
-		)
-		(pin "9"
-			(uuid "317c5c43-b96e-4d0b-814b-726831b3e84d")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U12")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U34")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U53")
 					(unit 1)
 				)
 			)
@@ -16070,115 +15992,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R102")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 171.45 39.37 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "a2d8895c-7ecf-4947-b63f-f0bbb12ef52f")
-		(property "Reference" "U5"
-			(at 171.45 26.67 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 171.45 29.21 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 171.45 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 169.418 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 171.45 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "b2c70c26-9f27-453f-8890-4c166aec9b1a")
-		)
-		(pin "1"
-			(uuid "77512012-0c86-40f5-9e3b-9a9a749b66c0")
-		)
-		(pin "7"
-			(uuid "8e156bab-8311-4ac2-b38a-dbe87766c623")
-		)
-		(pin "2"
-			(uuid "5263d443-4eae-4cf6-aa6e-a719ec592266")
-		)
-		(pin "8"
-			(uuid "f1c0cf47-ccc6-44a5-8de9-32d435feb3c7")
-		)
-		(pin "6"
-			(uuid "2d6c640b-1f27-481d-ada4-c3af8cd4318d")
-		)
-		(pin "5"
-			(uuid "991a4c4c-b513-413c-b8b6-b3ffe86e0950")
-		)
-		(pin "4"
-			(uuid "dd0b1343-5a92-4ae1-aee4-ec1c7bfd5621")
-		)
-		(pin "9"
-			(uuid "1d0f8a02-c59d-4085-b30f-a7fa048ecf36")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U5")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U28")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U47")
 					(unit 1)
 				)
 			)
@@ -16701,117 +16514,8 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 297.18 120.65 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b491b9fa-7537-4271-a450-1562c1662557")
-		(property "Reference" "U16"
-			(at 297.18 107.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 297.18 110.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 297.18 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 295.148 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 297.18 120.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "214b9073-6ada-4cc9-8ae7-f4e32b761ee7")
-		)
-		(pin "1"
-			(uuid "2be39e95-d723-4802-874d-97b614b68dba")
-		)
-		(pin "7"
-			(uuid "42899a9b-8c6c-4055-a02d-3beb74f3fc64")
-		)
-		(pin "2"
-			(uuid "546bf371-0798-476c-9c09-b40f87c1ac48")
-		)
-		(pin "8"
-			(uuid "a73c933a-0f01-451a-8905-91568a5497cd")
-		)
-		(pin "6"
-			(uuid "aa8a3137-5e8d-4da6-8ce2-5abe1ebccc49")
-		)
-		(pin "5"
-			(uuid "c20635fc-76b9-4556-850e-ba1b5b0ca757")
-		)
-		(pin "4"
-			(uuid "c4656c9a-ac8e-422b-afc8-0ae30c90d897")
-		)
-		(pin "9"
-			(uuid "56cd2a22-8d8c-4857-8f10-5825094ef733")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U16")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U38")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U57")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 138.43 93.98 0)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 264.16 39.37 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16820,9 +16524,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "b6828adf-5e7e-4812-86ee-08d4d86b1c86")
-		(property "Reference" "U3"
-			(at 138.43 81.28 0)
+		(uuid "b153f045-b731-4157-b7c0-33b7fe54b8f0")
+		(property "Reference" "U83"
+			(at 264.16 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16831,8 +16535,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 138.43 83.82 0)
+		(property "Value" "AS179-92LF"
+			(at 264.16 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16841,8 +16545,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 138.43 93.98 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 266.7 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16852,8 +16556,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 140.462 91.44 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 266.7 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16863,8 +16567,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 138.43 93.98 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 264.16 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16873,46 +16577,137 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "8016fe45-48e9-4869-8cd5-e85c87c4c125")
 		)
 		(pin "1"
-			(uuid "c5b1b583-7505-45e0-9275-fde623895772")
+			(uuid "66d070a5-fc93-49ed-bebb-1f4b601ecd70")
 		)
-		(pin "7"
-			(uuid "9b79b2d1-f79d-4b88-b79e-c065e30ff3b9")
-		)
-		(pin "2"
-			(uuid "6113623f-f333-4beb-afd9-b07bb51aa03f")
-		)
-		(pin "8"
-			(uuid "0ece277b-b067-4d84-a6b0-94908732d0e6")
-		)
-		(pin "6"
-			(uuid "7506447c-31f4-47ee-92bd-43a32a6e705f")
-		)
-		(pin "5"
-			(uuid "f40ef06b-bd49-4eda-9c34-ad6f0d7d8050")
+		(pin "3"
+			(uuid "e5f1db21-c183-4e23-a9ac-86cf4209a0f5")
 		)
 		(pin "4"
-			(uuid "efd670cf-0b99-4472-9a1d-315e6732c3a3")
+			(uuid "6aa2b99b-bbfe-4443-a035-924ff7d2c96e")
 		)
-		(pin "9"
-			(uuid "e0e8c421-992f-4b99-82ee-39bf4a7e3be6")
+		(pin "6"
+			(uuid "88876cea-f780-4bea-b18f-c310599a01b6")
+		)
+		(pin "2"
+			(uuid "15ffc03c-64ad-40f8-a763-fab55caf3ce2")
+		)
+		(pin "5"
+			(uuid "f7d05fa9-89c2-45de-91e1-64937f54f11d")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U3")
+					(reference "U83")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U23")
+					(reference "U84")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U42")
+					(reference "U85")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 138.43 120.65 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b9b443f6-ad68-46d7-ba77-4565377528e5")
+		(property "Reference" "U77"
+			(at 138.43 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 138.43 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 140.97 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 140.97 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 138.43 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "6649397a-d10d-4b86-b46a-cf380ac35076")
+		)
+		(pin "1"
+			(uuid "c876a0f0-15d3-40c7-88f1-ac9a2d0b8e46")
+		)
+		(pin "2"
+			(uuid "11237e36-9da3-421a-a360-27d7b5450de0")
+		)
+		(pin "4"
+			(uuid "75b736f3-fc07-48f0-aaaf-036aefc959c7")
+		)
+		(pin "3"
+			(uuid "13a2d767-98e7-4f68-8373-722b8f996bab")
+		)
+		(pin "5"
+			(uuid "a34d2911-0c41-4c59-b0ed-0fffea1a926d")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U77")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U78")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U79")
 					(unit 1)
 				)
 			)
@@ -17037,115 +16832,6 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 138.43 39.37 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bf3c67c5-16b5-4096-842d-c88731ed7e19")
-		(property "Reference" "U1"
-			(at 138.43 26.67 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 138.43 29.21 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 138.43 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 140.462 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 138.43 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "a6c231ce-54b9-4ed0-a245-dd4a87173528")
-		)
-		(pin "1"
-			(uuid "d9eef92e-2d01-49cf-9b31-bb93c42aff42")
-		)
-		(pin "7"
-			(uuid "14c6cd92-e6fe-42c7-95fe-3f6a37d47c40")
-		)
-		(pin "2"
-			(uuid "6b2ed5fe-21aa-42d5-8941-bb40fc4aeecc")
-		)
-		(pin "8"
-			(uuid "24e2f36e-b6bd-45e4-8a8c-3f6a730eead9")
-		)
-		(pin "6"
-			(uuid "7c6cc104-615f-43c8-a883-c5f646c69b1c")
-		)
-		(pin "5"
-			(uuid "bd571454-22b6-4876-ba4f-09185fa2e80a")
-		)
-		(pin "4"
-			(uuid "ea9aeba4-b2e2-4930-9820-c7ecea3c4c2d")
-		)
-		(pin "9"
-			(uuid "dc6a844f-443a-4364-bcac-f47e9a0bb538")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U1")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U21")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U40")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:FerriteBead")
 		(at 58.42 157.48 90)
 		(unit 1)
@@ -17234,8 +16920,9 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 264.16 39.37 0)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 297.18 120.65 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17243,10 +16930,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c2964546-ba48-4b25-b1ad-e31592b8f657")
-		(property "Reference" "U9"
-			(at 264.16 26.67 0)
+		(uuid "c4b7de78-b1fb-4938-aa47-b9deb853e911")
+		(property "Reference" "U104"
+			(at 297.18 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17255,8 +16941,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 264.16 29.21 0)
+		(property "Value" "AS179-92LF"
+			(at 297.18 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17265,8 +16951,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 264.16 39.37 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 294.64 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17276,8 +16962,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 266.192 36.83 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 294.64 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17287,8 +16973,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 264.16 39.37 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 297.18 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17297,46 +16983,37 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "da6929fb-65ed-4940-aa35-ea5f60b2e30e")
-		)
-		(pin "1"
-			(uuid "559c51ea-dfca-4560-835c-52818f412197")
-		)
-		(pin "7"
-			(uuid "96350f78-90df-4af5-a073-0f3754734ea3")
-		)
-		(pin "2"
-			(uuid "5646a699-18bc-4aee-a6d7-5f46fc939ec1")
-		)
-		(pin "8"
-			(uuid "5f1b0251-8085-4513-b4e4-c30e128af4ca")
 		)
 		(pin "6"
-			(uuid "33bba84e-903d-434f-bafb-d25530881289")
+			(uuid "4408f1d8-6c3c-4743-aa6a-6d0fc467fa47")
 		)
-		(pin "5"
-			(uuid "702f216e-2aa0-4f50-9e41-928718f2613a")
+		(pin "1"
+			(uuid "94887411-9d4a-4628-a3f5-cfd46677beeb")
+		)
+		(pin "2"
+			(uuid "8a8bf573-36ee-4342-8bb0-49b30cea56db")
 		)
 		(pin "4"
-			(uuid "991ea615-00b8-4919-b599-b7760d86aeb0")
+			(uuid "67bcc5f4-299a-4d3a-8a85-b912a57d11f0")
 		)
-		(pin "9"
-			(uuid "10f8f195-7a7a-4734-a1dc-5ae17eec72af")
+		(pin "3"
+			(uuid "8cd3230a-b831-4501-9d9e-070fd3b38de7")
+		)
+		(pin "5"
+			(uuid "873a7fe3-2b93-4dc6-8e73-470636c72ce3")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U9")
+					(reference "U104")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U31")
+					(reference "U105")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U50")
+					(reference "U106")
 					(unit 1)
 				)
 			)
@@ -17467,6 +17144,106 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "U49")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 264.16 66.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c81b4fea-dadc-479b-a8d9-23d537beb825")
+		(property "Reference" "U89"
+			(at 264.16 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 264.16 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 266.7 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 266.7 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 264.16 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1de05e4e-53bd-4071-9fbe-e29ec69fcd65")
+		)
+		(pin "3"
+			(uuid "1187c765-4665-4a76-93fa-148de1e9f7c7")
+		)
+		(pin "4"
+			(uuid "ec5885ec-a120-49a5-9a83-28d7217d3ff2")
+		)
+		(pin "6"
+			(uuid "d8401c49-7dad-4770-8b60-57d8fd0124b6")
+		)
+		(pin "2"
+			(uuid "6683f0c0-bd36-4c1a-b1e0-a43bc8a52695")
+		)
+		(pin "5"
+			(uuid "cc4f9d19-a193-4426-8a7a-7bf12b2f07e2")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U89")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U90")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U91")
 					(unit 1)
 				)
 			)
@@ -17655,115 +17432,6 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "R99")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 297.18 93.98 0)
-		(mirror y)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ce1ab270-715b-4642-954b-d84b2e2bb55c")
-		(property "Reference" "U15"
-			(at 297.18 81.28 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MASWSS0178"
-			(at 297.18 83.82 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 297.18 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 295.148 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 297.18 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "4062c6e4-bdc5-4775-9b45-fd4d60197ea3")
-		)
-		(pin "1"
-			(uuid "7a7f85a7-bb56-403a-9de5-939ed4792072")
-		)
-		(pin "7"
-			(uuid "d84d6d3d-28d8-4793-98a3-c988e30aef7f")
-		)
-		(pin "2"
-			(uuid "73d686fd-1c66-4693-ac14-28d615f610b6")
-		)
-		(pin "8"
-			(uuid "b1c5a109-20fa-4277-9abf-12b20a7ddba3")
-		)
-		(pin "6"
-			(uuid "79fd07fb-8c95-40e3-9bdb-ae684763c2f1")
-		)
-		(pin "5"
-			(uuid "3ba5a574-ba8c-40be-8c56-fc2c1cfa8986")
-		)
-		(pin "4"
-			(uuid "30f11428-d743-4baa-ada6-17352e989b79")
-		)
-		(pin "9"
-			(uuid "4e4f0b53-2be6-4946-88ad-83b8092f4ad2")
-		)
-		(instances
-			(project "simdir"
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U15")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U37")
-					(unit 1)
-				)
-				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U56")
 					(unit 1)
 				)
 			)
@@ -18196,9 +17864,8 @@
 		)
 	)
 	(symbol
-		(lib_id "hand:MASWSS0178")
-		(at 171.45 66.04 0)
-		(mirror y)
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 264.16 93.98 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18206,9 +17873,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "d8789e3c-cf89-41d2-b12f-6494b726b2a4")
-		(property "Reference" "U6"
-			(at 171.45 53.34 0)
+		(fields_autoplaced yes)
+		(uuid "d56a4858-90e8-41ae-82eb-01e9f8603307")
+		(property "Reference" "U95"
+			(at 264.16 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18217,8 +17885,8 @@
 				)
 			)
 		)
-		(property "Value" "MASWSS0178"
-			(at 171.45 55.88 0)
+		(property "Value" "AS179-92LF"
+			(at 264.16 85.09 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18227,8 +17895,8 @@
 				)
 			)
 		)
-		(property "Footprint" "hand:MSOP-8-1EP_3x3mm_P0.65mm_EP1.73x1.85mm_hand"
-			(at 171.45 66.04 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 266.7 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18238,8 +17906,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://cdn.macom.com/datasheets/MASWSS0178.pdf"
-			(at 169.418 63.5 0)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 266.7 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18249,8 +17917,8 @@
 				)
 			)
 		)
-		(property "Description" "SPDT High Isolation Terminated Switch, 0.01-3.0 GHz, MSOP-8"
-			(at 171.45 66.04 0)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 264.16 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18259,46 +17927,37 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "a66fded4-99e6-4a43-ae12-a57e6e110672")
 		)
 		(pin "1"
-			(uuid "ea591aad-aa83-46d5-9fc6-e79792c4bef0")
+			(uuid "5d675b19-0ddf-425c-ae7c-d6244e4ede16")
 		)
-		(pin "7"
-			(uuid "6ef7aff4-16a9-4281-95cf-09abc695438f")
-		)
-		(pin "2"
-			(uuid "667f7a59-8fec-4686-816d-377d50f78e6a")
-		)
-		(pin "8"
-			(uuid "f4ff2205-0fc3-4db2-a2a5-e415592700bc")
-		)
-		(pin "6"
-			(uuid "af7ea736-64d2-464e-8e2e-647d2df77524")
-		)
-		(pin "5"
-			(uuid "bf0834e1-385e-40c6-acfa-6ec4f189b5e1")
+		(pin "3"
+			(uuid "e635eebf-2ad5-434d-bdb7-c170ea347e81")
 		)
 		(pin "4"
-			(uuid "ae135b43-353c-456a-b8c6-f0655832671b")
+			(uuid "a3f8a778-d5a3-4327-bfd3-3e7600439c30")
 		)
-		(pin "9"
-			(uuid "477201ab-8b7f-4423-ab7d-203033499464")
+		(pin "6"
+			(uuid "9b1816e7-4d74-4d99-b4a2-13f231ac3f06")
+		)
+		(pin "2"
+			(uuid "ffa2dae2-1533-457b-965b-e7d7287fa058")
+		)
+		(pin "5"
+			(uuid "809f76aa-a48f-4aea-b65b-ced372122ec5")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
-					(reference "U6")
+					(reference "U95")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
-					(reference "U29")
+					(reference "U96")
 					(unit 1)
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
-					(reference "U48")
+					(reference "U97")
 					(unit 1)
 				)
 			)
@@ -18507,6 +18166,106 @@
 				)
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
 					(reference "Q36")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Switch:AS179-92LF")
+		(at 138.43 39.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f83178fd-3e7f-43e4-ba25-3bdf631fc50b")
+		(property "Reference" "U68"
+			(at 138.43 27.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AS179-92LF"
+			(at 138.43 30.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-363_SC-70-6"
+			(at 140.97 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.skyworksinc.com/uploads/documents/AS179_92LF_200176H.pdf"
+			(at 140.97 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "20 MHz to 4.0 GHz GaAs SPDT Switch, SC-70"
+			(at 138.43 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c0bd8c5e-b779-40d2-b998-580c66aa42f8")
+		)
+		(pin "3"
+			(uuid "6a02b0c3-513a-4fac-a1ab-88ca88911ff1")
+		)
+		(pin "4"
+			(uuid "eb301947-2998-4d29-a318-1cbe56f08f43")
+		)
+		(pin "6"
+			(uuid "858b6825-f8a0-4a98-a4d3-b14b2776a83e")
+		)
+		(pin "2"
+			(uuid "55918fd6-46e3-4395-8563-f81d7005edf2")
+		)
+		(pin "5"
+			(uuid "3cdea9d4-d0d7-408c-a7b5-314f7ca45b71")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/06d64e16-5bc4-495a-b1fd-e1ec392e238c"
+					(reference "U68")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/5067c77e-d8c7-4ff7-a9cd-408de95641ab"
+					(reference "U69")
+					(unit 1)
+				)
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd/f73551e4-b64a-41a5-a265-5cf14a5a681a"
+					(reference "U70")
 					(unit 1)
 				)
 			)
