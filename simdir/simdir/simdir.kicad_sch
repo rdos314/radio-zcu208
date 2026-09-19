@@ -1071,20 +1071,21 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:FerriteBead"
+		(symbol "Device:NetTie_2"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
-			(in_bom yes)
+			(in_bom no)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "FB"
-				(at -3.81 0.635 90)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1093,8 +1094,8 @@
 					)
 				)
 			)
-			(property "Value" "FerriteBead"
-				(at 3.81 0 90)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1104,7 +1105,7 @@
 				)
 			)
 			(property "Footprint" ""
-				(at -1.778 0 90)
+				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1125,7 +1126,7 @@
 					)
 				)
 			)
-			(property "Description" "Ferrite bead"
+			(property "Description" "Net tie, 2 pins"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1136,7 +1137,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "L ferrite bead inductor filter"
+			(property "ki_keywords" "net tie short"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1147,7 +1148,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "Inductor_* L_* *Ferrite*"
+			(property "ki_fp_filters" "Net*Tie*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1158,37 +1159,13 @@
 					)
 				)
 			)
-			(symbol "FerriteBead_0_1"
+			(symbol "NetTie_2_0_1"
 				(polyline
 					(pts
-						(xy -2.7686 0.4064) (xy -1.7018 2.2606) (xy 2.7686 -0.3048) (xy 1.6764 -2.159) (xy -2.7686 0.4064)
+						(xy -1.27 0) (xy 1.27 0)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.27) (xy 0 1.2954)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy 0 -1.2192)
-					)
-					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -1196,11 +1173,11 @@
 					)
 				)
 			)
-			(symbol "FerriteBead_1_1"
+			(symbol "NetTie_2_1_1"
 				(pin passive line
-					(at 0 3.81 270)
+					(at -2.54 0 0)
 					(length 2.54)
-					(name ""
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1216,9 +1193,9 @@
 					)
 				)
 				(pin passive line
-					(at 0 -3.81 90)
+					(at 2.54 0 180)
 					(length 2.54)
-					(name ""
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1366,6 +1343,129 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1571,12 +1671,6 @@
 		(uuid "a0b630cc-3daa-4e2b-936a-49fa011cbf3a")
 	)
 	(junction
-		(at 236.22 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ab00b4bc-f875-49ec-b800-be33103414c3")
-	)
-	(junction
 		(at 118.11 163.83)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1605,6 +1699,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e06370b7-ce36-4b78-8c2e-66b82f5298dd")
+	)
+	(junction
+		(at 236.22 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e8285dc9-5193-43dd-b418-d75b3d25fcc4")
 	)
 	(junction
 		(at 127 171.45)
@@ -1657,6 +1757,16 @@
 			(type default)
 		)
 		(uuid "10de0811-75bb-46df-b9dc-ef0e0aabb546")
+	)
+	(wire
+		(pts
+			(xy 220.98 185.42) (xy 238.76 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1605f623-143e-48de-99f6-9a5c76fe6fb7")
 	)
 	(wire
 		(pts
@@ -1860,6 +1970,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 148.59) (xy 240.03 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61fd22de-ba6c-47e9-9016-0d06cb488234")
+	)
+	(wire
+		(pts
 			(xy 74.93 109.22) (xy 135.89 109.22)
 		)
 		(stroke
@@ -1867,6 +1987,16 @@
 			(type default)
 		)
 		(uuid "6204a8ff-adae-462a-8b9c-d238bd563691")
+	)
+	(wire
+		(pts
+			(xy 251.46 109.22) (xy 261.62 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62ef46fb-64a2-4d41-a87f-0ba1dc66fada")
 	)
 	(wire
 		(pts
@@ -1917,16 +2047,6 @@
 			(type default)
 		)
 		(uuid "66cb9f96-e79c-4923-bca1-bdcc53d242d9")
-	)
-	(wire
-		(pts
-			(xy 236.22 109.22) (xy 243.84 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67164bbf-6397-40db-a668-7c6d08ee9c70")
 	)
 	(wire
 		(pts
@@ -2180,6 +2300,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 199.39) (xy 238.76 199.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bd1e808-cc3a-47c0-a79c-4dd027b6cb5f")
+	)
+	(wire
+		(pts
 			(xy 63.5 92.71) (xy 106.68 92.71)
 		)
 		(stroke
@@ -2187,6 +2317,16 @@
 			(type default)
 		)
 		(uuid "a1043c3a-0deb-4008-b892-f3845c5d3b5d")
+	)
+	(wire
+		(pts
+			(xy 222.25 168.91) (xy 240.03 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a92cf86b-a22a-4da6-9d3e-948e98cc2031")
 	)
 	(wire
 		(pts
@@ -2330,16 +2470,6 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 109.22) (xy 260.35 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cfccc907-d6c9-4501-b9df-f43a088b1fa7")
-	)
-	(wire
-		(pts
 			(xy 53.34 102.87) (xy 53.34 92.71)
 		)
 		(stroke
@@ -2357,6 +2487,16 @@
 			(type default)
 		)
 		(uuid "d7f955ab-59af-4f6c-a806-be7e0122aa36")
+	)
+	(wire
+		(pts
+			(xy 236.22 109.22) (xy 246.38 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc138df2-09ef-455e-b179-702bffe3c6bc")
 	)
 	(wire
 		(pts
@@ -2470,6 +2610,30 @@
 	)
 	(global_label "DIG_GND"
 		(shape input)
+		(at 240.03 148.59 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1558d88b-84ab-45c2-9987-d646ffb362fb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 250.3439 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "DIG_GND"
+		(shape input)
 		(at 73.66 171.45 180)
 		(fields_autoplaced yes)
 		(effects
@@ -2489,6 +2653,30 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "DIG_GND"
+		(shape input)
+		(at 240.03 168.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "70cef8dd-77fc-49c7-a27a-dbf2f8f46b2c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 250.3439 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 	)
@@ -2612,6 +2800,30 @@
 			)
 		)
 	)
+	(global_label "RF_GND"
+		(shape input)
+		(at 238.76 185.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c2ff852b-d874-4d22-a595-e0b7548b89db")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 248.9419 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "DIG_GND"
 		(shape input)
 		(at 222.25 116.84 270)
@@ -2633,6 +2845,107 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+	)
+	(global_label "RF_GND"
+		(shape input)
+		(at 238.76 199.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f15efd29-6c44-4ec4-8289-1d45d2bfc819")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 248.9419 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 219.71 168.91 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15e0e8d6-71d2-4ae5-b330-d2223b19c263")
+		(property "Reference" "H2"
+			(at 218.44 162.56 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 218.44 165.1 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 219.71 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 219.71 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6103f5ff-bf85-4bd3-ab8d-d1c466770e91")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(reference "H2")
+					(unit 1)
+				)
 			)
 		)
 	)
@@ -2791,6 +3104,83 @@
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
 					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 218.44 199.39 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "257a2925-8be3-4633-bbee-72dacdd7f19d")
+		(property "Reference" "H4"
+			(at 217.17 193.04 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 217.17 195.58 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 218.44 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 218.44 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0fd8f278-2d29-4e9d-8f7d-4f2e22374c51")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -3121,6 +3511,86 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 248.92 109.22 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4f66cad3-2052-4836-b4a0-83f098a353ee")
+		(property "Reference" "NT1"
+			(at 248.92 104.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 248.92 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_THT_Pad1.0mm"
+			(at 248.92 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 248.92 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "41a28a70-a7ef-4947-95b1-63c0e2a61391")
+		)
+		(pin "1"
+			(uuid "447a3ea6-2bcd-40ec-a217-e749bb460a13")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(reference "NT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Regulator_Linear:LM78M05_TO220")
 		(at 222.25 92.71 0)
 		(unit 1)
@@ -3286,18 +3756,19 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:FerriteBead")
-		(at 247.65 109.22 270)
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 220.98 148.59 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "80d974a0-9474-4c6d-8847-d9c523581227")
-		(property "Reference" "FB4"
-			(at 247.65 104.394 90)
+		(fields_autoplaced yes)
+		(uuid "801250b9-95d0-4074-b4d1-b606bdfc9726")
+		(property "Reference" "H1"
+			(at 219.71 142.24 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3306,8 +3777,8 @@
 				)
 			)
 		)
-		(property "Value" "FerriteBead"
-			(at 247.65 114.046 90)
+		(property "Value" "MountingHole_Pad"
+			(at 219.71 144.78 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3316,8 +3787,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_0805_2012Metric_Pad1.05x1.20mm_HandSolder"
-			(at 247.65 107.442 90)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 220.98 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3328,7 +3799,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 247.65 109.22 0)
+			(at 220.98 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3338,8 +3809,8 @@
 				)
 			)
 		)
-		(property "Description" "Ferrite bead"
-			(at 247.65 109.22 0)
+		(property "Description" "Mounting Hole with connection"
+			(at 220.98 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3350,15 +3821,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "a48e2d65-6796-4ef1-a538-680329103233")
-		)
-		(pin "2"
-			(uuid "77eab0cb-6060-4d13-9977-e97b772054cf")
+			(uuid "a766db42-8aac-4fe0-8948-521e38c49083")
 		)
 		(instances
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
-					(reference "FB4")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -3623,6 +4091,83 @@
 			(project "simdir"
 				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
 					(reference "R131")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 218.44 185.42 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f310e2b9-c6f9-4fdd-94c7-ae405c99d3a5")
+		(property "Reference" "H3"
+			(at 217.17 179.07 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 217.17 181.61 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via"
+			(at 218.44 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 218.44 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7a7240eb-0e0f-460c-9ac0-b9756b2aa8ee")
+		)
+		(instances
+			(project "simdir"
+				(path "/d849bf5c-31fe-4f75-acae-03ca15e628fd"
+					(reference "H3")
 					(unit 1)
 				)
 			)
