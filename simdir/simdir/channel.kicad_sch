@@ -9864,6 +9864,16 @@
 		)
 		(uuid "c2979dcd-c762-448f-96d8-d60b80119bbb")
 	)
+	(label "RF-5v"
+		(at 62.23 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cef43d84-f816-452c-bc7b-ce118907c735")
+	)
 	(label "RF5_meander"
 		(at 297.18 60.96 0)
 		(effects
@@ -10046,7 +10056,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 379.73 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10413,7 +10423,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 217.17 36.83 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10820,7 +10830,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 212.09 30.4799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11615,7 +11625,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 364.49 154.94 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11704,7 +11714,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 356.87 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11911,7 +11921,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 109.22 58.42 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12524,7 +12534,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 379.73 88.8999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12614,7 +12624,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 212.09 60.9599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13408,7 +13418,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 234.95 30.4799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13615,7 +13625,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 85.09 31.75 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14009,7 +14019,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 110.49 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14187,7 +14197,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 361.95 95.25 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14497,7 +14507,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 217.17 125.73 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14703,7 +14713,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 217.17 95.25 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14791,7 +14801,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 361.95 40.64 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14880,7 +14890,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 234.95 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15354,7 +15364,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 234.95 60.9599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15544,7 +15554,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 356.87 88.8999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15929,7 +15939,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 110.49 113.03 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16018,7 +16028,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 212.09 88.8999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16107,7 +16117,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 361.95 125.73 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16196,7 +16206,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 379.73 60.9599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16374,7 +16384,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 212.09 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16681,7 +16691,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 217.17 67.31 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16958,7 +16968,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 379.73 34.2899 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17248,7 +17258,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 234.95 88.8999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17673,7 +17683,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 255.27 31.75 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17761,7 +17771,7 @@
 				)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "47k"
 			(at 361.95 67.31 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17850,7 +17860,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 356.87 34.2899 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18367,7 +18377,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 255.27 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19281,7 +19291,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 255.27 113.03 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20084,7 +20094,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "1.5k"
 			(at 356.87 60.9599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20381,7 +20391,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 255.27 58.42 90)
 			(show_name no)
 			(do_not_autoplace no)
