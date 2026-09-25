@@ -1,8 +1,8 @@
 {
   "board": {
-    "active_layer": 4,
+    "active_layer": 1,
     "active_layer_preset": "",
-    "auto_track_width": false,
+    "auto_track_width": true,
     "hidden_netclasses": [],
     "hidden_nets": [],
     "high_contrast_mode": 1,
@@ -63,7 +63,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "simdir.kicad_prl",
+    "filename": "spi-amp.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
