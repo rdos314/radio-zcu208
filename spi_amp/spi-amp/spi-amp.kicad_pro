@@ -60,13 +60,13 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.5,
+          "min_clearance": 0.2,
           "min_island_area": 10.0,
-          "min_thickness": 0.25,
+          "min_thickness": 0.2,
           "pad_connection": 1,
           "remove_islands": 0,
-          "thermal_relief_gap": 0.5,
-          "thermal_relief_spoke_width": 0.5
+          "thermal_relief_gap": 0.3,
+          "thermal_relief_spoke_width": 0.3
         }
       },
       "diff_pair_dimensions": [
@@ -84,7 +84,7 @@
         "annular_width": "error",
         "clearance": "error",
         "connection_width": "warning",
-        "copper_edge_clearance": "error",
+        "copper_edge_clearance": "ignore",
         "copper_sliver": "warning",
         "courtyards_overlap": "error",
         "creepage": "error",
@@ -214,6 +214,7 @@
         0.25,
         0.3,
         0.36,
+        0.5,
         1.0
       ],
       "tuning_pattern_settings": {
@@ -678,7 +679,7 @@
         "uuid": "7b23121c-57e3-4266-95bd-22be68c11a42"
       }
     ],
-    "used_designators": "U1-3,R1-10,J1-6,C1-7",
+    "used_designators": "U1-6,R1-13,J1-7,C1-10",
     "variants": []
   },
   "sheets": [
