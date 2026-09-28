@@ -213,7 +213,8 @@
         0.0,
         0.25,
         0.3,
-        0.36
+        0.36,
+        1.0
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -677,7 +678,7 @@
         "uuid": "7b23121c-57e3-4266-95bd-22be68c11a42"
       }
     ],
-    "used_designators": "U1-3,R1-10,J1-6,C1-6",
+    "used_designators": "U1-3,R1-10,J1-6,C1-7",
     "variants": []
   },
   "sheets": [
