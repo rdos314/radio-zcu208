@@ -2999,16 +2999,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 81.28) (xy 91.44 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f993a53-5778-4df0-b15e-4c11fb2f4e3c")
-	)
-	(wire
-		(pts
 			(xy 71.12 189.23) (xy 106.68 189.23)
 		)
 		(stroke
@@ -3076,6 +3066,16 @@
 			(type default)
 		)
 		(uuid "26c083e9-2c31-43dc-b0de-65dc784ec913")
+	)
+	(wire
+		(pts
+			(xy 52.07 81.28) (xy 67.31 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b3401b8-f5e3-4946-88ac-2227f81d27fc")
 	)
 	(wire
 		(pts
@@ -3609,6 +3609,16 @@
 	)
 	(wire
 		(pts
+			(xy 73.66 101.6) (xy 91.44 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83dfa53c-189a-495a-a1cd-e759add8409b")
+	)
+	(wire
+		(pts
 			(xy 83.82 124.46) (xy 96.52 124.46)
 		)
 		(stroke
@@ -3616,6 +3626,16 @@
 			(type default)
 		)
 		(uuid "83e2694b-acd2-45e3-b16c-896467921dd4")
+	)
+	(wire
+		(pts
+			(xy 91.44 81.28) (xy 74.93 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8428452b-b3dd-4f22-867a-0fbede01559f")
 	)
 	(wire
 		(pts
@@ -4169,16 +4189,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 101.6) (xy 91.44 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6fb0657-863f-4269-bb4f-31ca112317a8")
-	)
-	(wire
-		(pts
 			(xy 153.67 46.99) (xy 170.18 46.99)
 		)
 		(stroke
@@ -4466,6 +4476,16 @@
 			(type default)
 		)
 		(uuid "ef33878a-87e2-4a58-905e-d9cbfce7a83b")
+	)
+	(wire
+		(pts
+			(xy 52.07 101.6) (xy 66.04 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1eb737c-0c71-43f4-8207-e534185e3865")
 	)
 	(wire
 		(pts
@@ -5466,6 +5486,86 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 71.12 81.28 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1f69dcdc-8d55-43cc-baef-cdfc0b96e6b2")
+		(property "Reference" "C11"
+			(at 71.12 73.66 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 71.12 76.2 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 74.93 80.3148 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 71.12 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "82cc7f39-f4db-41b6-977d-bae25845cdf1")
+		)
+		(pin "2"
+			(uuid "cddb0c52-eb01-4370-9cfd-daa19cbf5a5a")
+		)
+		(instances
+			(project "spi-amp"
+				(path "/7b23121c-57e3-4266-95bd-22be68c11a42"
+					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 252.73 151.13 180)
 		(unit 1)
 		(body_style 1)
@@ -5703,6 +5803,86 @@
 			(project "spi-amp"
 				(path "/7b23121c-57e3-4266-95bd-22be68c11a42"
 					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 69.85 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "50014c98-9562-4f52-9b2b-f73acd98e6f4")
+		(property "Reference" "C12"
+			(at 69.85 93.98 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 69.85 96.52 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 73.66 100.6348 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 69.85 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 69.85 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "60a8b253-23cb-472b-9474-ebf6de8178a7")
+		)
+		(pin "2"
+			(uuid "4e7781f0-230b-4730-87e8-5e8d2e11e119")
+		)
+		(instances
+			(project "spi-amp"
+				(path "/7b23121c-57e3-4266-95bd-22be68c11a42"
+					(reference "C12")
 					(unit 1)
 				)
 			)
