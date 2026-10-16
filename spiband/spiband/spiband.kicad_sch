@@ -1223,6 +1223,164 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x02"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x02"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x02_1_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -2978,6 +3136,12 @@
 		(uuid "09474913-e9f9-4ed2-a3d4-6986ca5d8a44")
 	)
 	(junction
+		(at 140.97 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0cca4446-b7d4-4054-8b9f-0928a8d9f27c")
+	)
+	(junction
 		(at 148.59 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3038,6 +3202,12 @@
 		(uuid "5048c6bb-40a6-421a-b4e6-f08d95ab53aa")
 	)
 	(junction
+		(at 157.48 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "521226c9-afa0-418e-8c2a-dcbbe3568ce7")
+	)
+	(junction
 		(at 148.59 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3068,12 +3238,6 @@
 		(uuid "80187ed5-3344-46d8-ae85-c2a0f01f7034")
 	)
 	(junction
-		(at 140.97 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "81436ee6-12a0-49f1-be7e-c00e15d137d7")
-	)
-	(junction
 		(at 120.65 187.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3102,6 +3266,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a3bdeac8-ff0e-4792-a994-fa9ef013f13b")
+	)
+	(junction
+		(at 261.62 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ad8c9a2e-9be2-4ced-9e03-21a2141892b7")
 	)
 	(junction
 		(at 60.96 31.75)
@@ -3158,6 +3328,12 @@
 		(uuid "e4a15182-de43-45cd-a0c1-061050b2ec29")
 	)
 	(junction
+		(at 157.48 16.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb135e9d-166c-42db-9c57-d64551e2a072")
+	)
+	(junction
 		(at 144.78 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3168,6 +3344,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f388c096-25d0-4bdc-a0a9-248860f9b10f")
+	)
+	(junction
+		(at 261.62 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4ad6861-a918-4a21-87a3-66b4b6043a75")
 	)
 	(junction
 		(at 60.96 71.12)
@@ -3237,6 +3419,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 144.78) (xy 274.32 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0795e018-750a-4537-8a62-3ef70abf6d80")
+	)
+	(wire
+		(pts
 			(xy 261.62 152.4) (xy 261.62 163.83)
 		)
 		(stroke
@@ -3277,7 +3469,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 82.55) (xy 140.97 82.55)
+			(xy 166.37 82.55) (xy 157.48 82.55)
 		)
 		(stroke
 			(width 0)
@@ -3354,6 +3546,16 @@
 			(type default)
 		)
 		(uuid "163e1879-8852-4fa5-970e-68cee8f5bdc7")
+	)
+	(wire
+		(pts
+			(xy 157.48 16.51) (xy 116.84 16.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18402674-e531-4e5a-9d5c-e27a640c5415")
 	)
 	(wire
 		(pts
@@ -3677,6 +3879,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 57.15) (xy 29.21 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3dfba5e9-3a9b-49a6-9222-e242e94580ed")
+	)
+	(wire
+		(pts
 			(xy 140.97 82.55) (xy 116.84 82.55)
 		)
 		(stroke
@@ -3877,6 +4089,16 @@
 	)
 	(wire
 		(pts
+			(xy 157.48 82.55) (xy 140.97 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59757115-7d0f-41ac-81c7-54e4cc8a27d2")
+	)
+	(wire
+		(pts
 			(xy 255.27 41.91) (xy 254 41.91)
 		)
 		(stroke
@@ -3894,6 +4116,16 @@
 			(type default)
 		)
 		(uuid "5e7dd6cd-d0ea-402a-a566-daa13934e8ab")
+	)
+	(wire
+		(pts
+			(xy 157.48 16.51) (xy 157.48 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fc73893-0129-404e-89ab-9b7b8dcdc7ef")
 	)
 	(wire
 		(pts
@@ -3917,6 +4149,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 135.89) (xy 261.62 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "602cc48d-d8a0-49d4-9426-5d8224f7e58d")
+	)
+	(wire
+		(pts
 			(xy 57.15 71.12) (xy 60.96 71.12)
 		)
 		(stroke
@@ -3937,7 +4179,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 15.24) (xy 116.84 17.78)
+			(xy 116.84 16.51) (xy 116.84 17.78)
 		)
 		(stroke
 			(width 0)
@@ -3964,6 +4206,16 @@
 			(type default)
 		)
 		(uuid "64b70efe-ac94-43f7-afd9-af207da47ca4")
+	)
+	(wire
+		(pts
+			(xy 157.48 53.34) (xy 157.48 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65f1ec94-a4db-4462-ac57-98272612356f")
 	)
 	(wire
 		(pts
@@ -4067,6 +4319,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 152.4) (xy 274.32 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f7a7c8e-d2bf-4b19-b4f8-ff8d4ad0cd98")
+	)
+	(wire
+		(pts
 			(xy 60.96 71.12) (xy 60.96 91.44)
 		)
 		(stroke
@@ -4074,6 +4336,16 @@
 			(type default)
 		)
 		(uuid "6fb235e7-c3c6-4052-8d86-e224de3b7732")
+	)
+	(wire
+		(pts
+			(xy 25.4 59.69) (xy 29.21 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "712e8a5c-23ec-48d2-9a7e-9ea359826d73")
 	)
 	(wire
 		(pts
@@ -4517,7 +4789,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 15.24) (xy 116.84 15.24)
+			(xy 168.91 16.51) (xy 157.48 16.51)
 		)
 		(stroke
 			(width 0)
@@ -4774,6 +5046,16 @@
 			(type default)
 		)
 		(uuid "cb34bb15-ad40-486c-9a42-7b955e831df5")
+	)
+	(wire
+		(pts
+			(xy 22.86 132.08) (xy 22.86 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc7e17d5-44ac-4482-94f7-1293859a57c8")
 	)
 	(wire
 		(pts
@@ -5117,6 +5399,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 163.83) (xy 261.62 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fce74be4-4938-4761-8263-2b0230da5d0b")
+	)
+	(wire
+		(pts
 			(xy 256.54 107.95) (xy 252.73 107.95)
 		)
 		(stroke
@@ -5309,9 +5601,33 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape passive)
+		(at 29.21 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "27382dc7-f2ac-4ce1-9244-c1909ec2d71c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.9544 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "3.3v"
 		(shape passive)
-		(at 147.32 15.24 0)
+		(at 168.91 16.51 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5321,7 +5637,7 @@
 		)
 		(uuid "2ab468da-0bd2-4c15-aa06-701f5660d2a9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.1853 15.24 0)
+			(at 174.7753 16.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5383,7 +5699,7 @@
 	)
 	(global_label "GND"
 		(shape passive)
-		(at 147.32 82.55 0)
+		(at 166.37 82.55 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5393,7 +5709,7 @@
 		)
 		(uuid "33dcf73a-0d3a-42ac-b2fe-92a45f7ca73c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.0644 82.55 0)
+			(at 172.1144 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5621,6 +5937,30 @@
 			)
 		)
 	)
+	(global_label "9v"
+		(shape passive)
+		(at 29.21 57.15 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "66c6abb8-26b3-4bf9-b9b6-5c4ea3ae669c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.261 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "GND"
 		(shape passive)
 		(at 208.28 83.82 180)
@@ -5634,6 +5974,30 @@
 		(uuid "68437711-02b0-414a-b02f-36bb5d33c897")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 202.5356 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 22.86 135.89 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6b2acb19-f41a-4789-809f-7a7b527507fa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 22.86 141.6344 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6545,7 +6909,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 264.16 107.95 180)
+		(at 262.89 29.21 180)
 		(unit 3)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6556,7 +6920,7 @@
 		(fields_autoplaced yes)
 		(uuid "263d2864-493e-416d-9593-cc70dce899d2")
 		(property "Reference" "U5"
-			(at 264.16 99.06 0)
+			(at 262.89 20.32 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6566,7 +6930,7 @@
 			)
 		)
 		(property "Value" "74HC04"
-			(at 264.16 101.6 0)
+			(at 262.89 22.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6576,7 +6940,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
-			(at 264.16 107.95 0)
+			(at 262.89 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6587,7 +6951,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 264.16 107.95 0)
+			(at 262.89 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6598,7 +6962,7 @@
 			)
 		)
 		(property "Description" "Hex Inverter"
-			(at 264.16 107.95 0)
+			(at 262.89 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7375,7 +7739,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 262.89 29.21 180)
+		(at 264.16 107.95 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7386,7 +7750,7 @@
 		(fields_autoplaced yes)
 		(uuid "7292fe52-2b05-40f1-b3ea-0947ed2e25ac")
 		(property "Reference" "U5"
-			(at 262.89 20.32 0)
+			(at 264.16 99.06 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7396,7 +7760,7 @@
 			)
 		)
 		(property "Value" "74HC04"
-			(at 262.89 22.86 0)
+			(at 264.16 101.6 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7406,7 +7770,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
-			(at 262.89 29.21 0)
+			(at 264.16 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7417,7 +7781,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 262.89 29.21 0)
+			(at 264.16 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7428,7 +7792,7 @@
 			)
 		)
 		(property "Description" "Hex Inverter"
-			(at 262.89 29.21 0)
+			(at 264.16 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7491,7 +7855,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 262.89 41.91 180)
+		(at 264.16 120.65 180)
 		(unit 2)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7502,7 +7866,7 @@
 		(fields_autoplaced yes)
 		(uuid "883de930-e53b-4c5b-89be-fad289f03cee")
 		(property "Reference" "U5"
-			(at 262.89 33.02 0)
+			(at 264.16 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7512,7 +7876,7 @@
 			)
 		)
 		(property "Value" "74HC04"
-			(at 262.89 35.56 0)
+			(at 264.16 114.3 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7522,7 +7886,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
-			(at 262.89 41.91 0)
+			(at 264.16 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7533,7 +7897,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 262.89 41.91 0)
+			(at 264.16 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7544,7 +7908,7 @@
 			)
 		)
 		(property "Description" "Hex Inverter"
-			(at 262.89 41.91 0)
+			(at 264.16 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7601,6 +7965,88 @@
 				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
 					(reference "U5")
 					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 274.32 148.59 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "90488946-d441-480f-ad45-cc35da92d578")
+		(property "Reference" "C21"
+			(at 278.13 147.3199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 278.13 149.8599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 275.2852 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 274.32 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 274.32 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "77f962d4-5978-456d-aa67-4b572375f20e")
+		)
+		(pin "2"
+			(uuid "0856bf10-76c1-42ba-93cd-cb12a3fb4793")
+		)
+		(instances
+			(project "spiband"
+				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
+					(reference "C21")
+					(unit 1)
 				)
 			)
 		)
@@ -7687,7 +8133,7 @@
 	)
 	(symbol
 		(lib_id "74xx:74LS04")
-		(at 264.16 120.65 180)
+		(at 262.89 41.91 180)
 		(unit 4)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7698,7 +8144,7 @@
 		(fields_autoplaced yes)
 		(uuid "9f1e91eb-b39e-40d7-b01e-4baac05b36e7")
 		(property "Reference" "U5"
-			(at 264.16 111.76 0)
+			(at 262.89 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7708,7 +8154,7 @@
 			)
 		)
 		(property "Value" "74HC04"
-			(at 264.16 114.3 0)
+			(at 262.89 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7718,7 +8164,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
-			(at 264.16 120.65 0)
+			(at 262.89 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7729,7 +8175,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS04"
-			(at 264.16 120.65 0)
+			(at 262.89 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7740,7 +8186,7 @@
 			)
 		)
 		(property "Description" "Hex Inverter"
-			(at 264.16 120.65 0)
+			(at 262.89 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7797,6 +8243,88 @@
 				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
 					(reference "U5")
 					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 157.48 49.53 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a4aed368-58d6-4ee5-84bd-46ab3ef83231")
+		(property "Reference" "C20"
+			(at 161.29 48.2599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 161.29 50.7999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 158.4452 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 157.48 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 157.48 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2c847780-6c89-48e4-a0f4-93a9ed86a090")
+		)
+		(pin "2"
+			(uuid "83b9a930-9199-405f-b068-5570eebaaf75")
+		)
+		(instances
+			(project "spiband"
+				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
+					(reference "C20")
+					(unit 1)
 				)
 			)
 		)
@@ -8857,6 +9385,86 @@
 			(project "spiband"
 				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
 					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 20.32 59.69 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f3417411-a6fb-4f25-9134-18ac4cdacf41")
+		(property "Reference" "J5"
+			(at 20.32 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x02"
+			(at 20.32 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 20.32 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 20.32 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 20.32 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "094a7adb-a43a-43f8-afd4-94d85909544d")
+		)
+		(pin "1"
+			(uuid "9e46c2e1-ce75-4496-a5fc-e9d92a28862b")
+		)
+		(instances
+			(project "spiband"
+				(path "/8368e55c-e309-4bdd-b721-ce7a0ff80dac"
+					(reference "J5")
 					(unit 1)
 				)
 			)
