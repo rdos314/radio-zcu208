@@ -1243,7 +1243,7 @@
 		)
 		(uuid "a50ae146-b572-434d-87ad-683e9781b9c6")
 	)
-	(hierarchical_label "5v"
+	(hierarchical_label "3.3v"
 		(shape passive)
 		(at 76.2 118.11 180)
 		(effects
