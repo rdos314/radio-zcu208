@@ -10415,6 +10415,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 163.83) (xy 41.91 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78d9ff57-4904-49f6-b932-b780ce68dcb5")
+	)
+	(wire
+		(pts
 			(xy 241.3 262.89) (xy 241.3 260.35)
 		)
 		(stroke
@@ -10925,6 +10935,16 @@
 	)
 	(wire
 		(pts
+			(xy 19.05 175.26) (xy 21.59 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ac24e1f-5b06-4d64-9ff4-18ff4e3776df")
+	)
+	(wire
+		(pts
 			(xy 31.75 238.76) (xy 35.56 238.76)
 		)
 		(stroke
@@ -11312,6 +11332,16 @@
 			(type default)
 		)
 		(uuid "abbcee98-cdaf-4050-9d0f-a527511b8833")
+	)
+	(wire
+		(pts
+			(xy 19.05 179.07) (xy 21.59 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "accc0487-ad5d-42be-8d68-54dacd8f8459")
 	)
 	(wire
 		(pts
@@ -15129,6 +15159,30 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape passive)
+		(at 19.05 179.07 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a4776648-3068-4922-8cf0-2f198fd096be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 13.3056 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "HDR_RF_SEL2"
 		(shape output)
 		(at 29.21 147.32 180)
@@ -15249,6 +15303,30 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape passive)
+		(at 41.91 165.1 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "aaa8e6b2-9c3d-4366-a6ff-dba481aadf2f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 41.91 170.8444 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "HDR_RF_SEL0"
 		(shape input)
 		(at 124.46 156.21 180)
@@ -15262,6 +15340,30 @@
 		(uuid "aae4f538-ba99-4377-8782-6081f3eee31b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 108.7144 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "5v"
+		(shape passive)
+		(at 19.05 175.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ab29a486-e7a6-4591-b4b7-76c43a0b9273")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 14.999 175.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17092,7 +17194,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TSSOP-20_4.4x6.5mm_P0.65mm"
+		(property "Footprint" "Package_SO:Texas_PW0020A_TSSOP-20_4.4x6.5mm_P0.65mm"
 			(at 132.08 251.46 0)
 			(hide yes)
 			(show_name no)
@@ -19287,7 +19389,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x12_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x12_P2.54mm_Vertical"
 			(at 68.58 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -20975,7 +21077,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x12_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x12_P2.54mm_Vertical"
 			(at 30.48 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -21121,7 +21223,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x12_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x12_P2.54mm_Vertical"
 			(at 21.59 176.53 0)
 			(hide yes)
 			(show_name no)
@@ -22516,7 +22618,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TSSOP-20_4.4x6.5mm_P0.65mm"
+		(property "Footprint" "Package_SO:Texas_PW0020A_TSSOP-20_4.4x6.5mm_P0.65mm"
 			(at 48.26 251.46 0)
 			(hide yes)
 			(show_name no)
