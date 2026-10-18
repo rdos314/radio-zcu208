@@ -504,7 +504,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "adcio.kicad_pro",
+    "filename": "dacio.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -660,12 +660,12 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "adcio.kicad_sch",
+        "filename": "dacio.kicad_sch",
         "name": "Root",
         "uuid": "5e5d26d6-6f87-474c-8bed-bf7a7546c8ba"
       }
     ],
-    "used_designators": "J1-4,U1-13,C1-24",
+    "used_designators": "R1-2,J1-5,U1-18,C1-32",
     "variants": []
   },
   "sheets": [
