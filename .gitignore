@@ -34,3 +34,7 @@ spiband/spiband/.history
 simdir/simdir/.history
 
 dacio/dacio/.history
+
+debug/debug/.history
+
+*.bak
