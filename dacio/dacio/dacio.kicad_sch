@@ -18005,7 +18005,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_RJ:RJ45_Amphenol_RJHSE5380"
+		(property "Footprint" "custom:RJ45"
 			(at 347.98 117.475 90)
 			(hide yes)
 			(show_name no)
@@ -18680,7 +18680,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_RJ:RJ45_Amphenol_RJHSE5380"
+		(property "Footprint" "custom:RJ45"
 			(at 264.16 116.205 90)
 			(hide yes)
 			(show_name no)
