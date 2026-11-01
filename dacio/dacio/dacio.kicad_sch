@@ -15999,7 +15999,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SN74LVC1T45DBV"
+		(property "Value" "SN74LVC8T245"
 			(at 44.0533 279.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16478,7 +16478,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SN74LVC1T45DBV"
+		(property "Value" "SN74LVC8T245"
 			(at 138.0333 279.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19005,7 +19005,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SN74LVC1T45DBV"
+		(property "Value" "SN74LVC8T245"
 			(at 139.3033 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)

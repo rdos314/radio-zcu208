@@ -3491,7 +3491,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1n"
 			(at 71.12 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3731,7 +3731,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1n"
 			(at 69.85 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4057,7 +4057,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1n"
 			(at 184.15 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5076,7 +5076,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1n"
 			(at 184.15 74.93 90)
 			(show_name no)
 			(do_not_autoplace no)
