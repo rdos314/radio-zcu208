@@ -9077,7 +9077,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "cce89b9b-da09-4578-99b0-8d312c0ef5d8")
-		(property "Sheetname" "Band_High1"
+		(property "Sheetname" "Band_Low"
 			(at 96.52 24.6884 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9272,7 +9272,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "e7c72f5f-a91a-402e-9ea6-96e8da44fa60")
-		(property "Sheetname" "Band_High2"
+		(property "Sheetname" "Band_High"
 			(at 93.98 79.2984 0)
 			(show_name no)
 			(do_not_autoplace no)
