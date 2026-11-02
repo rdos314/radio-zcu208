@@ -1589,7 +1589,13 @@
 		(at 119.38 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1808d647-7e81-4d79-8e6c-357149525990")
+		(uuid "1e8c8428-be32-4da1-906e-2ef6090ba4e3")
+	)
+	(junction
+		(at 119.38 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "264126c5-8cb9-4f62-9f13-73b130f857db")
 	)
 	(junction
 		(at 107.95 55.88)
@@ -1598,16 +1604,28 @@
 		(uuid "26516aea-71fd-4b62-b799-0659a21b6555")
 	)
 	(junction
+		(at 119.38 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2654dae1-1c84-4f68-a62e-f132152f6931")
+	)
+	(junction
+		(at 119.38 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27a7a479-ddda-4092-9280-1077e2e1366b")
+	)
+	(junction
 		(at 107.95 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "368b0fe5-44e4-42c2-9d0f-59fa6087c53d")
 	)
 	(junction
-		(at 119.38 163.83)
+		(at 119.38 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3a917cb0-1890-4701-83ba-6aa072544592")
+		(uuid "38777fee-1773-4f86-a30a-186832db84e5")
 	)
 	(junction
 		(at 107.95 72.39)
@@ -1622,16 +1640,16 @@
 		(uuid "66639152-30c2-485c-83c6-0a1663541359")
 	)
 	(junction
+		(at 119.38 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "711cf81a-df06-4833-926d-9497ec2b10a9")
+	)
+	(junction
 		(at 107.95 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8f661a66-1f2f-49a4-8f31-76493366f9f6")
-	)
-	(junction
-		(at 119.38 90.17)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "90ee0602-b774-429c-802a-84940957ab42")
 	)
 	(junction
 		(at 107.95 107.95)
@@ -1640,10 +1658,10 @@
 		(uuid "a30aa644-3a52-4227-af86-7427d48a29e0")
 	)
 	(junction
-		(at 119.38 127)
+		(at 119.38 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b56a0cb0-f7e0-4423-97bf-6c591c1ff1b0")
+		(uuid "a7c887b3-1c10-4d9c-97d1-667b6c727aff")
 	)
 	(junction
 		(at 107.95 127)
@@ -1658,40 +1676,22 @@
 		(uuid "bbfce04a-bf92-4dc8-96e9-c47c4abf9fe5")
 	)
 	(junction
-		(at 119.38 146.05)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c2c64402-57d4-4771-8b1f-caabf4abc3dc")
-	)
-	(junction
 		(at 52.07 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c7670e38-79e8-4ef1-bf30-e4cbe9e8104f")
 	)
 	(junction
-		(at 119.38 38.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cd165886-e12e-49b1-bf63-f8b3222d6ff9")
-	)
-	(junction
-		(at 119.38 55.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "eba7f8dc-e7d4-4cef-aef6-acecfcd98e86")
-	)
-	(junction
-		(at 119.38 72.39)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f204658f-449b-47fa-91e3-6e76eb560fd3")
-	)
-	(junction
 		(at 107.95 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f45c916a-07a6-4787-8ef7-89ca347be435")
+	)
+	(junction
+		(at 119.38 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fbb2b8e9-2cf2-4f01-b9e5-cd3d221f4bdf")
 	)
 	(wire
 		(pts
@@ -3135,7 +3135,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 105.41 270)
+		(at 114.3 161.29 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3146,7 +3146,7 @@
 		(fields_autoplaced yes)
 		(uuid "22be2fca-2f3a-495f-a0c7-cbe1a534baac")
 		(property "Reference" "Q7"
-			(at 114.3 113.03 90)
+			(at 114.3 168.91 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3156,7 +3156,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 115.57 90)
+			(at 114.3 171.45 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3165,8 +3165,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 116.84 110.49 0)
+		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
+			(at 116.84 166.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3177,7 +3177,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 105.41 0)
+			(at 114.3 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3188,7 +3188,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 105.41 0)
+			(at 114.3 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3551,7 +3551,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 124.46 270)
+		(at 114.3 143.51 270)
 		(unit 2)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3562,7 +3562,7 @@
 		(fields_autoplaced yes)
 		(uuid "7c09938f-7ca0-4577-bff4-e71241a73a67")
 		(property "Reference" "Q7"
-			(at 114.3 132.08 90)
+			(at 114.3 151.13 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3572,7 +3572,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 134.62 90)
+			(at 114.3 153.67 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3581,8 +3581,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 116.84 129.54 0)
+		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
+			(at 116.84 148.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3593,7 +3593,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 124.46 0)
+			(at 114.3 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3604,7 +3604,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 124.46 0)
+			(at 114.3 143.51 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3811,7 +3811,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 161.29 270)
+		(at 114.3 105.41 270)
 		(unit 4)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3822,7 +3822,7 @@
 		(fields_autoplaced yes)
 		(uuid "8375c86c-4485-44b3-a9b8-1dfc184152be")
 		(property "Reference" "Q7"
-			(at 114.3 168.91 90)
+			(at 114.3 113.03 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3832,7 +3832,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 171.45 90)
+			(at 114.3 115.57 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3841,8 +3841,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 116.84 166.37 0)
+		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
+			(at 116.84 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3853,7 +3853,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 161.29 0)
+			(at 114.3 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3864,7 +3864,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 161.29 0)
+			(at 114.3 105.41 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3953,7 +3953,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 143.51 270)
+		(at 114.3 124.46 270)
 		(unit 3)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3964,7 +3964,7 @@
 		(fields_autoplaced yes)
 		(uuid "85cecc50-67ba-405a-afd9-265e21767c8f")
 		(property "Reference" "Q7"
-			(at 114.3 151.13 90)
+			(at 114.3 132.08 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3974,7 +3974,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 153.67 90)
+			(at 114.3 134.62 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3983,8 +3983,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 116.84 148.59 0)
+		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
+			(at 116.84 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3995,7 +3995,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 143.51 0)
+			(at 114.3 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4006,7 +4006,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 143.51 0)
+			(at 114.3 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4212,7 +4212,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 87.63 270)
+		(at 114.3 35.56 270)
 		(unit 4)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4223,7 +4223,7 @@
 		(fields_autoplaced yes)
 		(uuid "88a5e6aa-186a-44b0-92d5-3e7322e48f5e")
 		(property "Reference" "Q1"
-			(at 114.3 95.25 90)
+			(at 114.3 43.18 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4233,7 +4233,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 97.79 90)
+			(at 114.3 45.72 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4243,7 +4243,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
-			(at 116.84 92.71 0)
+			(at 116.84 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4254,7 +4254,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 87.63 0)
+			(at 114.3 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4265,7 +4265,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 87.63 0)
+			(at 114.3 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4456,7 +4456,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 53.34 270)
+		(at 114.3 69.85 270)
 		(unit 2)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4467,7 +4467,7 @@
 		(fields_autoplaced yes)
 		(uuid "af0bf537-2e61-4b2f-8b95-ffa3f2f66e2b")
 		(property "Reference" "Q1"
-			(at 114.3 60.96 90)
+			(at 114.3 77.47 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4477,7 +4477,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 63.5 90)
+			(at 114.3 80.01 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4487,7 +4487,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
-			(at 116.84 58.42 0)
+			(at 116.84 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4498,7 +4498,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 53.34 0)
+			(at 114.3 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4509,7 +4509,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 53.34 0)
+			(at 114.3 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4598,7 +4598,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 69.85 270)
+		(at 114.3 53.34 270)
 		(unit 3)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4609,7 +4609,7 @@
 		(fields_autoplaced yes)
 		(uuid "b4590715-e4a0-4749-bb75-f94183138e67")
 		(property "Reference" "Q1"
-			(at 114.3 77.47 90)
+			(at 114.3 60.96 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4619,7 +4619,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 80.01 90)
+			(at 114.3 63.5 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4629,7 +4629,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
-			(at 116.84 74.93 0)
+			(at 116.84 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4640,7 +4640,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 69.85 0)
+			(at 114.3 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4651,7 +4651,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 69.85 0)
+			(at 114.3 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4858,7 +4858,7 @@
 	)
 	(symbol
 		(lib_id "custom:MMPQ2222A")
-		(at 114.3 35.56 270)
+		(at 114.3 87.63 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4869,7 +4869,7 @@
 		(fields_autoplaced yes)
 		(uuid "cc68f21d-7b2a-4767-8714-18df30e7e3dc")
 		(property "Reference" "Q1"
-			(at 114.3 43.18 90)
+			(at 114.3 95.25 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4879,7 +4879,7 @@
 			)
 		)
 		(property "Value" "MMPQ2222A"
-			(at 114.3 45.72 90)
+			(at 114.3 97.79 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4889,7 +4889,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SO-16_3.9x9.9mm_P1.27mm"
-			(at 116.84 40.64 0)
+			(at 116.84 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4900,7 +4900,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 35.56 0)
+			(at 114.3 87.63 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4911,7 +4911,7 @@
 			)
 		)
 		(property "Description" "NPN transistor, base/collector/emitter, collector connected to mounting plane"
-			(at 114.3 35.56 0)
+			(at 114.3 87.63 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

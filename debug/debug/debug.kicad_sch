@@ -7053,7 +7053,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 223.52 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -7330,7 +7330,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 160.02 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -7526,7 +7526,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 161.29 189.23 0)
 			(hide yes)
 			(show_name no)
@@ -7642,7 +7642,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 248.92 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -7919,7 +7919,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 161.29 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -8035,7 +8035,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 161.29 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -8232,7 +8232,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 250.19 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -8483,7 +8483,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 222.25 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -8736,7 +8736,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 27.94 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -8978,7 +8978,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-14-16_3.9x9.9mm_P1.27mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 50.8 143.51 0)
 			(hide yes)
 			(show_name no)
