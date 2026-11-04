@@ -7320,7 +7320,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX3485"
+		(property "Value" "SP3483CN-L/TR"
 			(at 76.5967 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9162,7 +9162,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX3485"
+		(property "Value" "SP3483CN-L/TR"
 			(at 76.5967 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9963,7 +9963,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX3485"
+		(property "Value" "SP3483CN-L/TR"
 			(at 76.5967 151.13 0)
 			(show_name no)
 			(do_not_autoplace no)

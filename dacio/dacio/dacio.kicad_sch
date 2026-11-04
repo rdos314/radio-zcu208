@@ -15478,7 +15478,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 305.6733 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15578,7 +15578,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 305.6733 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16147,7 +16147,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 221.8533 104.14 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19235,7 +19235,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 306.9433 101.6 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20330,7 +20330,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 221.8533 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21072,7 +21072,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MAX487CSA+"
+		(property "Value" "SP483ECN-L/TR"
 			(at 221.8533 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
