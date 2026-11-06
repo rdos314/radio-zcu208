@@ -1,6 +1,6 @@
 <Qucs Schematic 0.0.19>
 <Properties>
-  <View=0,0,1602,1144,1,0,133>
+  <View=0,0,1602,1144,1,0,0>
   <Grid=10,10,0>
   <DataSet=sim.dat>
   <DataDisplay=sim.sch>
@@ -31,8 +31,8 @@
 	<"dBS21" #0000ff 0 3 0 0 0>
 	<"dBS11" #ff0000 0 3 0 0 0>
   </Rect>
-  <Rect 820 1040 735 390 3 #c0c0c0 1 00 1 2e+07 2e+07 2.5e+08 0 0 1e-08 1e-07 1 -1 0.2 1 315 0 225 "" "" "">
-	<"dBDelay" #0000ff 0 3 0 0 0>
+  <Rect 820 1040 735 390 3 #c0c0c0 1 00 1 -1 0.2 1 0 0 1e-08 1e-07 1 -1 0.2 1 315 0 225 "" "" "">
+	<"gd" #0000ff 0 3 0 0 0>
   </Rect>
 </Diagrams>
 <Paintings>
