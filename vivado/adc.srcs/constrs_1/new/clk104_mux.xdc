@@ -12,6 +12,86 @@ set_property IOSTANDARD LVDS_25 [get_ports pl_clk_n]
 set_property IOSTANDARD LVDS_25 [get_ports pl_sysref_p]
 set_property IOSTANDARD LVDS_25 [get_ports pl_sysref_n]
 
+set_property PACKAGE_PIN A9       [get_ports "rf_sel[0]"] ;# Bank  87 VCCO - VCC1V8   - IO_L12N_AD8N_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_sel[0]"] ;# Bank  87 VCCO - VCC1V8   - IO_L12N_AD8N_87
+set_property SLEW        SLOW     [get_ports "rf_sel[0]"]
+set_property DRIVE       12       [get_ports "rf_sel[0]"]
+
+set_property PACKAGE_PIN A10      [get_ports "rf_sel[1]"] ;# Bank  87 VCCO - VCC1V8   - IO_L12P_AD8P_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_sel[1]"] ;# Bank  87 VCCO - VCC1V8   - IO_L12P_AD8P_87
+set_property SLEW        SLOW     [get_ports "rf_sel[1]"]
+set_property DRIVE       12       [get_ports "rf_sel[1]"]
+
+set_property PACKAGE_PIN A6       [get_ports "rf_sel[2]"] ;# Bank  87 VCCO - VCC1V8   - IO_L11N_AD9N_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_sel[2]"] ;# Bank  87 VCCO - VCC1V8   - IO_L11N_AD9N_87
+set_property SLEW        SLOW     [get_ports "rf_sel[2]"]
+set_property DRIVE       12       [get_ports "rf_sel[2]"]
+
+set_property PACKAGE_PIN A7       [get_ports "rf_clk"] ;# Bank  87 VCCO - VCC1V8   - IO_L11P_AD9P_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_clk"] ;# Bank  87 VCCO - VCC1V8   - IO_L11P_AD9P_87
+set_property SLEW        SLOW     [get_ports "rf_clk"]
+set_property DRIVE       12       [get_ports "rf_clk"]
+
+set_property PACKAGE_PIN A5       [get_ports "rf_out"] ;# Bank  87 VCCO - VCC1V8   - IO_L10N_AD10N_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_out"] ;# Bank  87 VCCO - VCC1V8   - IO_L10N_AD10N_87
+set_property SLEW        SLOW     [get_ports "rf_out"]
+set_property DRIVE       12       [get_ports "rf_out"]
+
+//set_property PACKAGE_PIN B5       [get_ports "DACIO_05"] ;# Bank  87 VCCO - VCC1V8   - IO_L10P_AD10P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_05"] ;# Bank  87 VCCO - VCC1V8   - IO_L10P_AD10P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_05"]
+//set_property DRIVE       12       [get_ports "DACIO_05"]
+
+//set_property PACKAGE_PIN C5       [get_ports "DACIO_06"] ;# Bank  87 VCCO - VCC1V8   - IO_L9N_AD11N_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_06"] ;# Bank  87 VCCO - VCC1V8   - IO_L9N_AD11N_87
+//set_property SLEW        SLOW     [get_ports "DACIO_06"]
+//set_property DRIVE       12       [get_ports "DACIO_06"]
+
+//set_property PACKAGE_PIN C6       [get_ports "DACIO_07"] ;# Bank  87 VCCO - VCC1V8   - IO_L9P_AD11P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_07"] ;# Bank  87 VCCO - VCC1V8   - IO_L9P_AD11P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_07"]
+//set_property DRIVE       12       [get_ports "DACIO_07"]
+
+set_property PACKAGE_PIN C10      [get_ports "rf_in"] ;# Bank  87 VCCO - VCC1V8   - IO_L4N_AD12N_87
+set_property IOSTANDARD  LVCMOS18 [get_ports "rf_in"] ;# Bank  87 VCCO - VCC1V8   - IO_L4N_AD12N_87
+set_property PULLDOWN    TRUE     [get_ports "rf_in"]
+
+//set_property PACKAGE_PIN D10      [get_ports "DACIO_09"] ;# Bank  87 VCCO - VCC1V8   - IO_L4P_AD12P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_09"] ;# Bank  87 VCCO - VCC1V8   - IO_L4P_AD12P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_09"]
+//set_property DRIVE       12       [get_ports "DACIO_09"]
+
+//set_property PACKAGE_PIN D6       [get_ports "DACIO_10"] ;# Bank  87 VCCO - VCC1V8   - IO_L3N_AD13N_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_10"] ;# Bank  87 VCCO - VCC1V8   - IO_L3N_AD13N_87
+//set_property SLEW        SLOW     [get_ports "DACIO_10"]
+//set_property DRIVE       12       [get_ports "DACIO_10"]
+
+//set_property PACKAGE_PIN E7       [get_ports "DACIO_11"] ;# Bank  87 VCCO - VCC1V8   - IO_L3P_AD13P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_11"] ;# Bank  87 VCCO - VCC1V8   - IO_L3P_AD13P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_11"]
+//set_property DRIVE       12       [get_ports "DACIO_11"]
+
+//set_property PACKAGE_PIN E8       [get_ports "DACIO_12"] ;# Bank  87 VCCO - VCC1V8   - IO_L2N_AD14N_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_12"] ;# Bank  87 VCCO - VCC1V8   - IO_L2N_AD14N_87
+//set_property SLEW        SLOW     [get_ports "DACIO_12"]
+//set_property DRIVE       12       [get_ports "DACIO_12"]
+
+//set_property PACKAGE_PIN E9       [get_ports "DACIO_13"] ;# Bank  87 VCCO - VCC1V8   - IO_L2P_AD14P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_13"] ;# Bank  87 VCCO - VCC1V8   - IO_L2P_AD14P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_13"]
+//set_property DRIVE       12       [get_ports "DACIO_13"]
+
+//set_property PACKAGE_PIN E6       [get_ports "DACIO_14"] ;# Bank  87 VCCO - VCC1V8   - IO_L1N_AD15N_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_14"] ;# Bank  87 VCCO - VCC1V8   - IO_L1N_AD15N_87
+//set_property SLEW        SLOW     [get_ports "DACIO_14"]
+//set_property DRIVE       12       [get_ports "DACIO_14"]
+
+//set_property PACKAGE_PIN F6       [get_ports "DACIO_15"] ;# Bank  87 VCCO - VCC1V8   - IO_L1P_AD15P_87
+//set_property IOSTANDARD  LVCMOS18 [get_ports "DACIO_15"] ;# Bank  87 VCCO - VCC1V8   - IO_L1P_AD15P_87
+//set_property SLEW        SLOW     [get_ports "DACIO_15"]
+//set_property DRIVE       12       [get_ports "DACIO_15"]
+
+
 create_clock -period 8.0 -name pl_clk [get_ports pl_clk_p]
 create_generated_clock -name deci_clk [get_pins ps_i/mts_0/inst/buf_deci_clk_0/O]
 create_generated_clock -name ana0_clk [get_pins ps_i/mts_0/inst/buf_ana_clk_0/O]
