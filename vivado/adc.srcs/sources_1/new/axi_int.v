@@ -320,6 +320,7 @@ module axi_int(
 	    .empty(mig_empty)
 	);
 
+/*
 	ila_6 ila_i (
 		.clk(clk),                    // input wire clk
 		.probe0(mig_empty),           // input wire [0:0]  probe3
@@ -363,7 +364,6 @@ module axi_int(
 		.probe38(env_7)               // input wire [15:0]  probe3
     );
 
-/*
 	ila_8 ila_il (
 		.clk(clk),                        // input wire clk
 		.probe0(high_wr),                 // input wire [0:0]  probe3

@@ -258,6 +258,7 @@ module mts(
 		.I			(comp_ana1_raw_clk),
 		.O			(comp_ana1_clk));
 
+/*
 	ila_8 ila_i (
 		.clk(deci_clk),  	              // input wire clk
 		.probe0(deci_resetn),             // input wire [0:0]  probe2
@@ -271,6 +272,7 @@ module mts(
 		.probe8(deci_sim_active_low),    // input wire [0:0]  probe2
 		.probe9(deci_sim_active_high)    // input wire [0:0]  probe2
 	);
+*/	
 	
 generate
   begin : mts

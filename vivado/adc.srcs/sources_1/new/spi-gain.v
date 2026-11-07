@@ -31,8 +31,33 @@ module spi_gain(
 	output reg spi_sel[2:0]
     );
 
+	ila_2 ila_i (
+		.clk(clk),                    // input wire clk
+		.probe0(axi_in),              // input wire [31:0]  probe3
+		.probe1(axi_out),             // input wire [31:0]  probe3
+		.probe2(spi_clk),             // input wire [0:0]  probe3
+		.probe3(spi_in),              // input wire [0:0]  probe3
+		.probe4(spi_out),             // input wire [0:0]  probe3
+		.probe5(spi_sel)              // input wire [2:0]  probe3
+	);
+
+
 generate
   begin : spi_gain
+
+  always @(posedge clk) 
+  begin
+    if (resetn)
+	begin
+	end
+	else
+	begin
+	  axi_out <= 0;
+	  spi_clk <= 0;
+	  spi_out <= 0;
+	  spi_sel <= 0;
+	end
+  end
 
 		
   end
