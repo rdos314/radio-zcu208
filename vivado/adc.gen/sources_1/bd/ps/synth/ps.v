@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Mon Jun  1 23:05:49 2026
+//Date        : Sat Nov  7 16:19:50 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -10,11 +10,13 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=36,numReposBlks=36,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=6,da_bram_cntlr_cnt=1,da_clkrst_cnt=9,da_rf_converter_usp_cnt=8,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
+(* CORE_GENERATION_INFO = "ps,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=ps,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=36,numReposBlks=36,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=6,da_bram_cntlr_cnt=1,da_clkrst_cnt=9,da_rf_converter_usp_cnt=9,da_zynq_ultra_ps_e_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "ps.hwdef" *) 
 module ps
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
     adc1_clk_clk_p,
+    dac0_clk_clk_n,
+    dac0_clk_clk_p,
     ddr4_sdram_c0_act_n,
     ddr4_sdram_c0_adr,
     ddr4_sdram_c0_ba,
@@ -50,10 +52,14 @@ module ps
     vin2_23_v_n,
     vin2_23_v_p,
     vin3_01_v_n,
-    vin3_01_v_p);
+    vin3_01_v_p,
+    vout00_v_n,
+    vout00_v_p);
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO_0 TRI_O" *) (* X_INTERFACE_MODE = "Master" *) output [1:0]GPIO_0_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME adc1_clk, CAN_DEBUG false, FREQ_HZ 500000000.0" *) input adc1_clk_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 adc1_clk CLK_P" *) input adc1_clk_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 dac0_clk CLK_N" *) (* X_INTERFACE_MODE = "Slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME dac0_clk, CAN_DEBUG false, FREQ_HZ 2000000000.0" *) input dac0_clk_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 dac0_clk CLK_P" *) input dac0_clk_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 ACT_N" *) (* X_INTERFACE_MODE = "Master" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ddr4_sdram_c0, AXI_ARBITRATION_SCHEME RD_PRI_REG, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 18, CAS_WRITE_LATENCY 14, CS_ENABLED true, CUSTOM_PARTS no_file_loaded, DATA_MASK_ENABLED DM_NO_DBI, DATA_WIDTH 32, MEMORY_PART MT40A1G8WE-075E, MEMORY_TYPE Components, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 750" *) output ddr4_sdram_c0_act_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 ADR" *) output [16:0]ddr4_sdram_c0_adr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddr4:1.0 ddr4_sdram_c0 BA" *) output [1:0]ddr4_sdram_c0_ba;
@@ -90,6 +96,8 @@ module ps
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin2_23 V_P" *) input vin2_23_v_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin3_01 V_N" *) (* X_INTERFACE_MODE = "Slave" *) input vin3_01_v_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vin3_01 V_P" *) input vin3_01_v_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vout00 V_N" *) (* X_INTERFACE_MODE = "Master" *) output vout00_v_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 vout00 V_P" *) output vout00_v_p;
 
   wire [1:0]GPIO_0_tri_o;
   wire adc1_clk_clk_n;
@@ -365,12 +373,15 @@ module ps
   wire comp_low_active;
   wire [15:0]comp_low_angle;
   wire comp_low_burst;
+  wire [63:0]comp_low_comp;
   wire [9:0]comp_low_doa_error;
   wire [19:0]comp_low_freq;
   wire [63:0]comp_low_im;
   wire [63:0]comp_low_re;
   wire [15:0]comp_low_sample;
   wire [8:0]comp_low_size;
+  wire dac0_clk_clk_n;
+  wire dac0_clk_clk_p;
   wire ddr4_0_c0_ddr4_ui_clk;
   wire ddr4_0_c0_init_calib_complete;
   wire ddr4_sdram_c0_act_n;
@@ -522,6 +533,8 @@ module ps
   wire vin2_23_v_p;
   wire vin3_01_v_n;
   wire vin3_01_v_p;
+  wire vout00_v_n;
+  wire vout00_v_p;
   wire [39:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARADDR;
   wire [1:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARBURST;
   wire [3:0]zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARCACHE;
@@ -1261,6 +1274,7 @@ module ps
         .angle(comp_low_angle),
         .burst(comp_low_burst),
         .clk(mts_0_comp0_clk),
+        .comp(comp_low_comp),
         .doa_error(comp_low_doa_error),
         .freq(comp_low_freq),
         .im(comp_low_im),
@@ -1656,6 +1670,8 @@ module ps
   ps_usp_rf_data_converter_0_0 usp_rf_data_converter_0
        (.adc1_clk_n(adc1_clk_clk_n),
         .adc1_clk_p(adc1_clk_clk_p),
+        .dac0_clk_n(dac0_clk_clk_n),
+        .dac0_clk_p(dac0_clk_clk_p),
         .m00_axis_tdata(usp_rf_data_converter_0_m00_axis_tdata),
         .m00_axis_tready(1'b1),
         .m00_axis_tvalid(usp_rf_data_converter_0_m00_axis_tvalid),
@@ -1682,6 +1698,10 @@ module ps
         .m30_axis_tvalid(usp_rf_data_converter_0_m30_axis_tvalid),
         .m3_axis_aclk(mts_0_deci_clk),
         .m3_axis_aresetn(mts_0_deci_resetn),
+        .s00_axis_tdata(comp_low_comp),
+        .s00_axis_tvalid(comp_low_active),
+        .s0_axis_aclk(mts_0_comp0_clk),
+        .s0_axis_aresetn(mts_0_comp0_reset),
         .s_axi_aclk(zynq_ultra_ps_e_0_pl_clk0),
         .s_axi_araddr(axi_smc_M03_AXI_ARADDR),
         .s_axi_aresetn(rst_ps8_0_99M_peripheral_aresetn),
@@ -1715,7 +1735,9 @@ module ps
         .vin2_23_n(vin2_23_v_n),
         .vin2_23_p(vin2_23_v_p),
         .vin3_01_n(vin3_01_v_n),
-        .vin3_01_p(vin3_01_v_p));
+        .vin3_01_p(vin3_01_v_p),
+        .vout00_n(vout00_v_n),
+        .vout00_p(vout00_v_p));
   ps_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
        (.maxigp0_araddr(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARADDR),
         .maxigp0_arburst(zynq_ultra_ps_e_0_M_AXI_HPM0_FPD_ARBURST),

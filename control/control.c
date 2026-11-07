@@ -13,8 +13,8 @@ bool StartAdc();
 
 #define PI              3.1415926535897932384626433832795028841971693993751
 #define SPEED_OF_LIGHT  299792458.0 // m/s
-#define LOW_DIST        2.32 // m
-#define HIGH_DIST       0.79 // m
+#define LOW_DIST        2.0 // m
+#define HIGH_DIST       0.5 // m
 #define FS              4000.0
 
 #define CMD_CONFIG		5
@@ -176,10 +176,10 @@ int main(void)
     if (Status != XST_SUCCESS)
         return XST_FAILURE;
 
-    SetConfig(CONFIG_MIN_ENV, 30, 30);
+    SetConfig(CONFIG_MIN_ENV, 100, 100);
     SetConfig(CONFIG_MIN_INCR, CalcIncr(42.0, 8), CalcIncr(185.0, 8));
     SetConfig(CONFIG_MAX_INCR, CalcIncr(50.0, 8), CalcIncr(195.0, 8));
-    SetConfig(CONFIG_MAX_DOA_DIFF, 500, 500);
+    SetConfig(CONFIG_MAX_DOA_DIFF, 1000, 1000);
     SetConfig(CONFIG_MIN_SAMPLES, CalcSamples(46.0, 1.5), CalcSamples(189.0, 1.5));
     SetConfig(CONFIG_INV_SAMPLE_DIST, CalcInvSampleDistance(LOW_DIST, 8), CalcInvSampleDistance(HIGH_DIST, 8));
     SetConfig(CONFIG_SHADOW_ANGLE, CalcShadowAngle(15.0), CalcShadowAngle(15.0));

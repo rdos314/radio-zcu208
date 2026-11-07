@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 //
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -76,7 +76,7 @@ module ps_usp_rf_data_converter_0_0_device_rom (
     // 29:27 |  26:24  |    23:16    |    15:0
     // Tile  |  Slice  | DRP Address |  DRP Data
 
-    (* rom_style = "distributed" *) reg [29:0] data_array [0:248] = '{
+    (* rom_style = "distributed" *) reg [29:0] data_array [0:272] = '{
        30'h07230000,  // Clock Network Control 0 (ADC0)
        30'h07240008,  // Clock Network Control 1 (ADC0)
        30'h07226028,  // Clock Distribution Control (ADC0)
@@ -321,7 +321,31 @@ module ps_usp_rf_data_converter_0_0_device_rom (
        30'h1947012c,  // ADC31_SIG_DET_THRESHOLD_LEVEL0_CNT_ON
        30'h1948012c,  // ADC31_SIG_DET_THRESHOLD_LEVEL0_CNT_OFF
        30'h19060008,  // ADC31 FABRIC_DEBUG
+       30'h27230000,  // Clock Network Control 0 (DAC0)
+       30'h27240024,  // Clock Network Control 1 (DAC0)
+       30'h27223000,  // Clock Distribution Control (DAC0)
+       30'h270c0000,  // PLL Output Divide (DAC0)
+       30'h272c0012,  // CLK_DIV (DAC0)
        30'h2728ca80,  // SYSREF Distribution (DAC0)
+       30'h272df2fc,  // HSCOM_PWR_MASK (DAC0)
+       30'h273103e6,  // CLOCK_DETECT_CTRL0 (DAC0)
+       30'h273204e1,  // CLOCK_DETECT_CTRL1 (DAC0)
+       30'h20020804,  // DAC00 Data Width
+       30'h20100001,  // DAC00 Interpolation Control
+       30'h20110000,  // DAC00 Interpolation Data
+       30'h20200000,  // DAC00 Mixer Config 0
+       30'h20210924,  // DAC00 Mixer Config 1
+       30'h20300000,  // DAC00 Inv Sinc Filter
+       30'h20310040,  // DAC00 Multiband Config
+       30'h20600009,  // DAC00 Decoder Control
+       30'h20610001,  // DAC00 Decoder Clock Enable
+       30'h2071a000,  // DAC00 MC_CONFIG0
+       30'h2073aa53,  // DAC00 MC_CONFIG2
+       30'h20746a45,  // DAC00 MC_CONFIG3
+       30'h20660001,  // DAC00 VOP_CTRL
+       30'h200d0000,  // DAC00 DATAPATH
+       30'h20040000,  // DAC00 FIFO_START
+       30'h20070008,  // DAC00 FABRIC_DEBUG
        30'h2f282400,  // SYSREF Distribution (DAC1)
        30'h37280980,  // SYSREF Distribution (DAC2)
        30'h3f280100,  // SYSREF Distribution (DAC3)

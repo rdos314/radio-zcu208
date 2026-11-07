@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Fri May 15 18:57:00 2026
+-- Date        : Sat Nov  7 16:16:19 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_stub.vhdl
@@ -32,6 +32,7 @@ entity ps_comp_low_0_0 is
     raw_fifo_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
+    comp : out STD_LOGIC_VECTOR ( 63 downto 0 );
     active : out STD_LOGIC;
     re : out STD_LOGIC_VECTOR ( 63 downto 0 );
     im : out STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -57,7 +58,7 @@ architecture stub of ps_comp_low_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "ana_fifo_clk,ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_doa_error[9:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_clk,raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],clk,reset,active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0],doa_error[9:0]";
+  attribute black_box_pad_pin of stub : architecture is "ana_fifo_clk,ana_fifo_wr,ana_fifo_sample[15:0],ana_fifo_size[8:0],ana_fifo_freq[19:0],ana_fifo_angle[15:0],ana_fifo_doa_error[9:0],ana_fifo_sample_N[5:0],ana_fifo_sample_E[5:0],ana_fifo_sample_W[5:0],raw_fifo_clk,raw_fifo_wr,raw_fifo_N[127:0],raw_fifo_E[127:0],raw_fifo_W[127:0],clk,reset,comp[63:0],active,re[63:0],im[63:0],burst,sample[15:0],size[8:0],freq[19:0],angle[15:0],doa_error[9:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of ana_fifo_clk : signal is "xilinx.com:signal:clock:1.0 ana_fifo_clk CLK";
   attribute X_INTERFACE_MODE : string;

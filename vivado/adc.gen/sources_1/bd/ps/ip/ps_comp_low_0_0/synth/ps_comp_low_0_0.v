@@ -73,6 +73,7 @@ module ps_comp_low_0_0 (
   raw_fifo_W,
   clk,
   reset,
+  comp,
   active,
   re,
   im,
@@ -113,6 +114,7 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset;
+output wire [63 : 0] comp;
 output wire active;
 output wire [63 : 0] re;
 output wire [63 : 0] im;
@@ -141,6 +143,7 @@ output wire [9 : 0] doa_error;
     .raw_fifo_W(raw_fifo_W),
     .clk(clk),
     .reset(reset),
+    .comp(comp),
     .active(active),
     .re(re),
     .im(im),

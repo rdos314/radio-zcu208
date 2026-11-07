@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 //
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -57,6 +57,10 @@
 //***********************************Entity Declaration************************
 (* DowngradeIPIdentifiedWarnings="yes" *)
 module ps_usp_rf_data_converter_0_0_bufg_gt_ctrl (
+  // DAC Fabric Feedback Clock for Tile 0
+  input    clk_dac0,
+  output   clk_dac0_buf,
+      
   // ADC Fabric Feedback Clock for Tile 0
   input    clk_adc0,
   
@@ -78,6 +82,17 @@ module ps_usp_rf_data_converter_0_0_bufg_gt_ctrl (
   output   clk_adc3_buf
     
 );
+
+  BUFG_GT dac0_bufg_gt
+  (
+    .I       (clk_dac0),
+    .CE      (1'b1),
+    .CEMASK  (1'b1),
+    .CLR     (1'b0),
+    .CLRMASK (1'b1),
+    .DIV     (3'b000),
+    .O       (clk_dac0_buf)
+  );  
 
  
   BUFG_GT adc0_bufg_gt

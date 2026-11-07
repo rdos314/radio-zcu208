@@ -6,7 +6,7 @@
 #---------------------------------------------------------------------
 #
 # (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+# (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of AMD and is protected under U.S. and international copyright
@@ -74,6 +74,9 @@ create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc2_clk [get_port
 # ADC Reference Clock for Tile 3 running at 4000.000 MHz
 create_clock -period 0.250 -name ps_usp_rf_data_converter_0_0_adc3_clk [get_ports adc3_clk_p]
 
+# DAC Reference Clock for Tile 0 running at 2000.000 MHz
+create_clock -period 0.500 -name ps_usp_rf_data_converter_0_0_dac0_clk [get_ports dac0_clk_p]
+
 
 #AXI Streaming Clock for ADC0
 create_clock -period 2.000 -name ps_usp_rf_data_converter_0_0_m0_axis_aclk [get_ports m0_axis_aclk]
@@ -84,3 +87,5 @@ create_clock -period 2.000 -name ps_usp_rf_data_converter_0_0_m2_axis_aclk [get_
 #AXI Streaming Clock for ADC3
 create_clock -period 2.000 -name ps_usp_rf_data_converter_0_0_m3_axis_aclk [get_ports m3_axis_aclk]
 
+#AXI Streaming Clock for DAC0
+create_clock -period 2.000 -name ps_usp_rf_data_converter_0_0_s0_axis_aclk [get_ports s0_axis_aclk]

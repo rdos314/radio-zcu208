@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 //
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -216,6 +216,25 @@ module ps_usp_rf_data_converter_0_0_block (
   output            m30_axis_tvalid,
   input             m30_axis_tready,
 
+  // DAC Reference Clock for Tile 0
+  input             dac0_clk_p,
+  input             dac0_clk_n,
+
+  // DAC Fabric Feedback Clock for Tile 0
+  output            clk_dac0,
+
+  // DAC AXI Streaming and Reset for DAC0
+  input             s0_axis_aclk,
+  input             s0_axis_aresetn,
+
+  output            vout00_p,
+  output            vout00_n,
+
+  // DAC AXI Streaming Data for DAC00
+  input  [63:0]    s00_axis_tdata,
+  input             s00_axis_tvalid,
+  output            s00_axis_tready,
+
   // DAC Debug Ports
   // DAC0
   input   [14:0]    dac0_cmn_control,
@@ -414,9 +433,9 @@ module ps_usp_rf_data_converter_0_0_block (
 
   // DAC Default Configuration Settings
   // NO NOT MODIFY
-  localparam       dac00_enable        = 1'b0;
+  localparam       dac00_enable        = 1'b1;
   localparam       dac00_data_type     = 1'b0;
-  localparam [5:0] dac00_interpolation = 6'd0;
+  localparam [5:0] dac00_interpolation = 6'd1;
   localparam [1:0] dac00_mixer         = 2'd2;
   localparam       dac00_sinc          = 1'b0;
   localparam       dac01_enable        = 1'b0;
@@ -1283,6 +1302,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire             dac3_sm_reset_i;
   wire   [7:0]     dac3_reset_cnt;
 
+  wire   [0:0]     dac_reset_cnt_ack;
   wire               dac_reset_cnt_ack_i;
 
   reg    [3:0]     adc0_start_stage;
@@ -1512,6 +1532,8 @@ module ps_usp_rf_data_converter_0_0_block (
   wire   [3:0]     adc_reset_cnt_ack;
   wire               adc_reset_cnt_ack_i;
 
+  wire             clk_dac0_i;
+  wire             s0_axis_aclk_val_sync;
 
   wire             clk_adc0_i;
   wire             m0_axis_aclk_val_sync;
@@ -1716,6 +1738,7 @@ module ps_usp_rf_data_converter_0_0_block (
   wire   [1:0]     dac33_irq_i;
   reg              dac33_irq_en;
 
+  wire  [255:0]    dac00_data_i;
 
   wire  [191:0]    adc00_data_i;
   wire  [191:0]    adc02_data_i;
@@ -1790,6 +1813,8 @@ module ps_usp_rf_data_converter_0_0_block (
 
   reg  [1:0]      mts_sysref_count_start; // SysRef counter start pulse
 
+  assign  dac00_data_i[255:64]  =  192'b0;
+  assign  dac00_data_i[63:0]    =  s00_axis_tdata;
 
   ps_usp_rf_data_converter_0_0_rf_wrapper
   ps_usp_rf_data_converter_0_0_rf_wrapper_i(
@@ -1968,17 +1993,18 @@ module ps_usp_rf_data_converter_0_0_block (
     .adc32_stat            (adc32_stat),
     .adc33_stat            (adc33_stat),
     // DAC Reference Clock for Tile 0
-    .dac0_clk_p            (1'b0),
-    .dac0_clk_n            (1'b0),
+    .dac0_clk_p            (dac0_clk_p),
+    .dac0_clk_n            (dac0_clk_n),
 
     // DAC PLL Reference Clock for Tile 0
+    // TODO. How to connect this?
     .dac0_pll_clk          (1'b0),
 
-    .dac0_fabricclk        (1'b0),
-    .dac0_fabricclk_val    (1'b0),
+    .dac0_fabricclk        (s0_axis_aclk),
+    .dac0_fabricclk_val    (s0_axis_aclk_val_sync),
 
     // DAC Fabric Feedback Clock for Tile 0
-    .clk_dac0              (),
+    .clk_dac0              (clk_dac0_i),
 
     // DAC Common Status for Tile 0
     .dac0_common_stat      (dac0_common_stat),
@@ -2039,10 +2065,13 @@ module ps_usp_rf_data_converter_0_0_block (
     // DAC Clock Detection for Tile 3
     .dac3_clk_detect       (dac3_clk_detect),
 
+    .vout00_p              (vout00_p),
+    .vout00_n              (vout00_n),
+
     // DAC data for DAC00
-    .dac00_data_in         (256'b0),
-    .dac00_valid_in        (1'b0),
-    .dac00_ready_out       (),
+    .dac00_data_in         (dac00_data_i),
+    .dac00_valid_in        (s00_axis_tvalid),
+    .dac00_ready_out       (s00_axis_tready),
 
     // DAC data for DAC01
     .dac01_data_in         (256'b0),
@@ -2670,6 +2699,13 @@ module ps_usp_rf_data_converter_0_0_block (
       .dest_out (m3_axis_aclk_val_sync)
     );
   // Synchronize the asynchronous DAC clock valid inputs onto the DRP clock
+  xpm_cdc_single #(.SRC_INPUT_REG(0))
+    cdc_dac0_clk_valid_i (
+      .src_clk  (1'b0                              ),
+      .src_in   (s0_axis_aresetn      ),
+      .dest_clk (s_axi_aclk                        ),
+      .dest_out (s0_axis_aclk_val_sync)
+    );
   // Synchronize the asynchronous DAC clock valid inputs onto the DRP clock
   // Synchronize the asynchronous DAC clock valid inputs onto the DRP clock
   // Synchronize the asynchronous DAC clock valid inputs onto the DRP clock
@@ -3014,7 +3050,7 @@ module ps_usp_rf_data_converter_0_0_block (
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      dac0_clk_detect   <= 16'h0;
+      dac0_clk_detect   <= 16'h100;
     end
     else if (bank1_write[32])
     begin
@@ -3186,7 +3222,7 @@ module ps_usp_rf_data_converter_0_0_block (
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      dac0_ref_clk_freq <= 32'd6400000;
+      dac0_ref_clk_freq <= 32'd2000000;
     end
     else if (bank1_write[192])
     begin
@@ -3197,7 +3233,7 @@ module ps_usp_rf_data_converter_0_0_block (
   always @(posedge Bus2IP_Clk)
     if (~Bus2IP_Resetn)
     begin
-      dac0_sample_rate <= 32'd6400000;
+      dac0_sample_rate <= 32'd2000000;
     end
     else if (bank1_write[193])
     begin
@@ -6665,7 +6701,7 @@ always @(posedge Bus2IP_Clk)
                                bank0_read[6] ? {31'b0, mt_mrk_rst_ff } :
                                bank0_read[8] ? {16'b0, 8'd228, 7'b0, 1'b1} :
                                // DAC Tile Config Bit 0:DAC Tile 0 Enable, Bit 1 Tile 0 PLL Enable Bits 3:2 Reserved, Bit 4: DAC Tile 1 Enabled, Bit 5: Tile 1 PLL Enable Bits 7:6 Reserved...
-                               bank0_read[9] ? {4'h0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0} :
+                               bank0_read[9] ? {4'h0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b0, 2'b00, 1'b0, 1'b1} :
                                bank0_read[10] ? {3'b000, dac01_sinc, 2'b00, dac01_mixer, dac01_interpolation, dac01_data_type, dac01_enable,  3'b000, dac00_sinc, 2'b00, dac00_mixer, dac00_interpolation, dac00_data_type, dac00_enable} :
                                bank0_read[11] ? {3'b000, dac03_sinc, 2'b00, dac03_mixer, dac03_interpolation, dac03_data_type, dac03_enable,  3'b000, dac02_sinc, 2'b00, dac02_mixer, dac02_interpolation, dac02_data_type, dac02_enable} :
                                bank0_read[12] ? {3'b000, dac11_sinc, 2'b00, dac11_mixer, dac11_interpolation, dac11_data_type, dac11_enable,  3'b000, dac10_sinc, 2'b00, dac10_mixer, dac10_interpolation, dac10_data_type, dac10_enable} :
@@ -6687,9 +6723,9 @@ always @(posedge Bus2IP_Clk)
                                bank0_read[31] ? {6'b0, adc23_mixer, adc23_decimation, adc23_data_type, adc23_enable,  6'b0, adc22_mixer, adc22_decimation, adc22_data_type, adc22_enable} :
                                bank0_read[32] ? {6'b0, adc31_mixer, adc31_decimation, adc31_data_type, adc31_enable,  6'b0, adc30_mixer, adc30_decimation, adc30_data_type, adc30_enable} :
                                bank0_read[33] ? {6'b0, adc33_mixer, adc33_decimation, adc33_data_type, adc33_enable,  6'b0, adc32_mixer, adc32_decimation, adc32_data_type, adc32_enable} :
-                               bank0_read[40] ? {24'h000000, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1} :
+                               bank0_read[40] ? {24'h000000, 1'b0, 1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1} :
                                bank0_read[41] ? {1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b0, 1'b0, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1, 1'b1} :
-                               bank0_read[42] ? {1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0} :
+                               bank0_read[42] ? {1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1} :
                                bank0_read[64] ? tile_irq2axi :
                                bank0_read[65] ? {axi_timeout_en, 23'b0, adc3_irq_en, adc2_irq_en, adc1_irq_en, adc0_irq_en, dac3_irq_en, dac2_irq_en, dac1_irq_en, dac0_irq_en} :
                                32'h00000000;
@@ -7169,6 +7205,9 @@ always @(posedge Bus2IP_Clk)
   assign irq  =  |tile_irq2axi;
 
   ps_usp_rf_data_converter_0_0_bufg_gt_ctrl i_ps_usp_rf_data_converter_0_0_bufg_gt_ctrl (
+  // DAC Fabric Feedback Clock for Tile 0
+    .clk_dac0         (clk_dac0_i),
+    .clk_dac0_buf     (clk_dac0),
   // ADC Fabric Feedback Clock for Tile 0
     .clk_adc0         (clk_adc0_i),
     .clk_adc0_buf     (clk_adc0),
@@ -7183,11 +7222,20 @@ always @(posedge Bus2IP_Clk)
     .clk_adc3_buf     (clk_adc3)
   );
 
+  // DAC Reset Module Counter for Tile 0
+  ps_usp_rf_data_converter_0_0_reset_count i_dac0_reset_count (
+    .clk          (s_axi_aclk),
+    .reset        (~s_axi_aresetn),
+    .sm_reset     (dac0_sm_reset_i),
+    .axi_read_req (bank1_read[14]),
+    .read_ack     (dac_reset_cnt_ack[0]),
+    .count        (dac0_reset_cnt)
+  );
 
 
 
 
-  assign dac_reset_cnt_ack_i = 1'b0;
+  assign dac_reset_cnt_ack_i = |dac_reset_cnt_ack;
 
   // ADC Reset Module Counter for Tile 0
   ps_usp_rf_data_converter_0_0_reset_count i_adc0_reset_count (

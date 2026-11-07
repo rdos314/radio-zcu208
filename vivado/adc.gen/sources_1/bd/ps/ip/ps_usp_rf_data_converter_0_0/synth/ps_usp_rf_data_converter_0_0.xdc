@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 #
 # (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+# (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of AMD and is protected under U.S. and international copyright
@@ -361,6 +361,14 @@ create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
   -description "Paths wrongly related to DRP clock" \
   -from [list [get_pins -filter {REF_PIN_NAME =~ DCLK} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx3_u_adc]]] \
   -to   [list [get_pins -filter {REF_PIN_NAME =~ DATA_ADC*} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/rx3_u_adc]]]
+
+# Workaround to exclude paths that are wrongly related to DCLK
+set_false_path -from $ps_usp_rf_data_converter_0_0_axi_aclk -through [get_pins -filter {REF_PIN_NAME =~ DATA_DAC*} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/tx0_u_dac]]
+create_waiver -internal -scope -user USP_RF_DATA_CONVERTER -type CDC -id CDC-1 \
+  -tags "1033132" \
+  -description "Paths wrongly related to DRP clock" \
+  -from [list [get_pins -filter {REF_PIN_NAME =~ DCLK} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/tx0_u_dac]]] \
+  -to   [list [get_pins -filter {REF_PIN_NAME =~ DATA_DAC*} -of [get_cells ps_usp_rf_data_converter_0_0_rf_wrapper_i/tx0_u_dac]]]
 
 # To path not found in RFADC and RFDAC
 #set_multicycle_path -from [get_pins -filter {REF_PIN_NAME==C} -of [get_cells -hier -filter {name =~  *tile_config/ram/data_reg[*]}]] -to [get_pins -filter {REF_PIN_NAME=~DI[*]} -of [get_cells -hier -filter {name =~ *rf_wrapper_i/*_u_*c}]] -setup 3

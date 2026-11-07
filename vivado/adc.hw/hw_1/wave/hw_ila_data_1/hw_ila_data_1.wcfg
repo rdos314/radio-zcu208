@@ -9,46 +9,32 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,030"></ZoomStartTime>
-      <ZoomEndTime time="1,041"></ZoomEndTime>
+      <ZoomStartTime time="0"></ZoomStartTime>
+      <ZoomEndTime time="8"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="327"></NameColumnWidth>
-      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
-   <wave_markers>
-   </wave_markers>
-   <wvobject type="logic" fp_name="ps_i/ana_high/inst/ana_wr">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/ana_wr</obj_property>
-      <obj_property name="ObjectShortName">ana_wr</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_E">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_E[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_E[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_N">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_N[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_N[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="ps_i/ana_high/inst/env_W">
-      <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/ana_high/inst/env_W[15:0]</obj_property>
       <obj_property name="ObjectShortName">env_W[15:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/ana_high/inst/ana_wr">
+      <obj_property name="ElementShortName">ps_i/ana_high/inst/ana_wr</obj_property>
+      <obj_property name="ObjectShortName">ana_wr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_E">
+      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_E[15:0]</obj_property>
+      <obj_property name="ObjectShortName">env_E[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_N">
+      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_N[15:0]</obj_property>
+      <obj_property name="ObjectShortName">env_N[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

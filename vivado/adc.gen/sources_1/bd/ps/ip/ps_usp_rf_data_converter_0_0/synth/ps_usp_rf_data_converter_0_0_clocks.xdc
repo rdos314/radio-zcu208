@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 #
 # (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+# (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of AMD and is protected under U.S. and international copyright
@@ -96,9 +96,9 @@ set RFADC3_CLK  [get_clocks -of_objects [get_pins -hier rx3_u_adc/INTERNAL_FBRC_
 set_false_path -from $RFADC3_CLK -to [get_pins -filter {REF_PIN_NAME == D} -of [get_cells -hier IP2Bus_Data_reg[*]]]
 
 
-# Workarounds for disabled tiles
-create_clock -period 10.000 -name RFDAC0_CLK [get_pins -hier tx0_u_dac/INTERNAL_FBRC_MUX*]
-set RFDAC0_CLK [get_clocks -of_objects [get_pins -hier tx0_u_dac/INTERNAL_FBRC_MUX*]]
+#Generated clocks on internal nodes inside IP
+create_clock -period 8.000 -name RFDAC0_CLK [get_pins -hier tx0_u_dac/INTERNAL_FBRC_MUX*]
+set RFDAC0_CLK  [get_clocks -of_objects [get_pins -hier tx0_u_dac/INTERNAL_FBRC_MUX*]]
 
 # Exclude paths from the fabric clock to the status registers
 set_false_path -from $RFDAC0_CLK -to [get_pins -filter {REF_PIN_NAME == D} -of [get_cells -hier IP2Bus_Data_reg[*]]]

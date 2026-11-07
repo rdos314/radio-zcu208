@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Mon Jun  1 23:05:49 2026
+//Date        : Sat Nov  7 16:19:50 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps_wrapper.bd
 //Design      : ps_wrapper
@@ -14,6 +14,8 @@ module ps_wrapper
    (GPIO_0_tri_o,
     adc1_clk_clk_n,
     adc1_clk_clk_p,
+    dac0_clk_clk_n,
+    dac0_clk_clk_p,
     ddr4_sdram_c0_act_n,
     ddr4_sdram_c0_adr,
     ddr4_sdram_c0_ba,
@@ -49,10 +51,14 @@ module ps_wrapper
     vin2_23_v_n,
     vin2_23_v_p,
     vin3_01_v_n,
-    vin3_01_v_p);
+    vin3_01_v_p,
+    vout00_v_n,
+    vout00_v_p);
   output [1:0]GPIO_0_tri_o;
   input adc1_clk_clk_n;
   input adc1_clk_clk_p;
+  input dac0_clk_clk_n;
+  input dac0_clk_clk_p;
   output ddr4_sdram_c0_act_n;
   output [16:0]ddr4_sdram_c0_adr;
   output [1:0]ddr4_sdram_c0_ba;
@@ -89,10 +95,14 @@ module ps_wrapper
   input vin2_23_v_p;
   input vin3_01_v_n;
   input vin3_01_v_p;
+  output vout00_v_n;
+  output vout00_v_p;
 
   wire [1:0]GPIO_0_tri_o;
   wire adc1_clk_clk_n;
   wire adc1_clk_clk_p;
+  wire dac0_clk_clk_n;
+  wire dac0_clk_clk_p;
   wire ddr4_sdram_c0_act_n;
   wire [16:0]ddr4_sdram_c0_adr;
   wire [1:0]ddr4_sdram_c0_ba;
@@ -129,11 +139,15 @@ module ps_wrapper
   wire vin2_23_v_p;
   wire vin3_01_v_n;
   wire vin3_01_v_p;
+  wire vout00_v_n;
+  wire vout00_v_p;
 
   ps ps_i
        (.GPIO_0_tri_o(GPIO_0_tri_o),
         .adc1_clk_clk_n(adc1_clk_clk_n),
         .adc1_clk_clk_p(adc1_clk_clk_p),
+        .dac0_clk_clk_n(dac0_clk_clk_n),
+        .dac0_clk_clk_p(dac0_clk_clk_p),
         .ddr4_sdram_c0_act_n(ddr4_sdram_c0_act_n),
         .ddr4_sdram_c0_adr(ddr4_sdram_c0_adr),
         .ddr4_sdram_c0_ba(ddr4_sdram_c0_ba),
@@ -169,5 +183,7 @@ module ps_wrapper
         .vin2_23_v_n(vin2_23_v_n),
         .vin2_23_v_p(vin2_23_v_p),
         .vin3_01_v_n(vin3_01_v_n),
-        .vin3_01_v_p(vin3_01_v_p));
+        .vin3_01_v_p(vin3_01_v_p),
+        .vout00_v_n(vout00_v_n),
+        .vout00_v_p(vout00_v_p));
 endmodule

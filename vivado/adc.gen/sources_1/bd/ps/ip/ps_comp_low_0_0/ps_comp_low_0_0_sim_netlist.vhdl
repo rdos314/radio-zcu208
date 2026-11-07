@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Fri May 15 18:57:00 2026
+-- Date        : Sat Nov  7 16:16:19 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.vhdl
@@ -104128,6 +104128,7 @@ entity ps_comp_low_0_0_comp_low is
     raw_fifo_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
+    comp : out STD_LOGIC_VECTOR ( 63 downto 0 );
     active : out STD_LOGIC;
     re : out STD_LOGIC_VECTOR ( 63 downto 0 );
     im : out STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -104710,6 +104711,7 @@ architecture STRUCTURE of ps_comp_low_0_0_comp_low is
   signal \comp_low.angle[7]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.angle[8]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.angle[9]_i_1_n_0\ : STD_LOGIC;
+  signal \comp_low.comp[63]_i_1_n_0\ : STD_LOGIC;
   signal \comp_low.deci_0[7]_i_2_n_0\ : STD_LOGIC;
   signal \comp_low.deci_0_reg[15]_i_1_n_1\ : STD_LOGIC;
   signal \comp_low.deci_0_reg[15]_i_1_n_2\ : STD_LOGIC;
@@ -114509,6 +114511,526 @@ begin
       D => \comp_low.sample[15]_i_1_n_0\,
       Q => \^burst\,
       R => '0'
+    );
+\comp_low.comp[63]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => fir_run,
+      O => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(0),
+      Q => comp(0),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(10),
+      Q => comp(10),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(11),
+      Q => comp(11),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(12),
+      Q => comp(12),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(13),
+      Q => comp(13),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(14),
+      Q => comp(14),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(15),
+      Q => comp(15),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(16),
+      Q => comp(16),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[17]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(17),
+      Q => comp(17),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[18]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(18),
+      Q => comp(18),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[19]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(19),
+      Q => comp(19),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(1),
+      Q => comp(1),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[20]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(20),
+      Q => comp(20),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[21]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(21),
+      Q => comp(21),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[22]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(22),
+      Q => comp(22),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[23]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(23),
+      Q => comp(23),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[24]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(24),
+      Q => comp(24),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[25]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(25),
+      Q => comp(25),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[26]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(26),
+      Q => comp(26),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[27]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(27),
+      Q => comp(27),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(28),
+      Q => comp(28),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[29]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(29),
+      Q => comp(29),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(2),
+      Q => comp(2),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[30]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(30),
+      Q => comp(30),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[31]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(31),
+      Q => comp(31),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[32]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(32),
+      Q => comp(32),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[33]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(33),
+      Q => comp(33),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[34]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(34),
+      Q => comp(34),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[35]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(35),
+      Q => comp(35),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[36]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(36),
+      Q => comp(36),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[37]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(37),
+      Q => comp(37),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[38]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(38),
+      Q => comp(38),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[39]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(39),
+      Q => comp(39),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(3),
+      Q => comp(3),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[40]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(40),
+      Q => comp(40),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[41]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(41),
+      Q => comp(41),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[42]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(42),
+      Q => comp(42),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[43]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(43),
+      Q => comp(43),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[44]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(44),
+      Q => comp(44),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[45]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(45),
+      Q => comp(45),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[46]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(46),
+      Q => comp(46),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[47]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(47),
+      Q => comp(47),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[48]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(48),
+      Q => comp(48),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[49]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(49),
+      Q => comp(49),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(4),
+      Q => comp(4),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[50]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(50),
+      Q => comp(50),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[51]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(51),
+      Q => comp(51),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[52]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(52),
+      Q => comp(52),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[53]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(53),
+      Q => comp(53),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[54]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(54),
+      Q => comp(54),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[55]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(55),
+      Q => comp(55),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[56]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(56),
+      Q => comp(56),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[57]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(57),
+      Q => comp(57),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[58]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(58),
+      Q => comp(58),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[59]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(59),
+      Q => comp(59),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(5),
+      Q => comp(5),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[60]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(60),
+      Q => comp(60),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[61]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(61),
+      Q => comp(61),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[62]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(62),
+      Q => comp(62),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[63]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(63),
+      Q => comp(63),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(6),
+      Q => comp(6),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(7),
+      Q => comp(7),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(8),
+      Q => comp(8),
+      R => \comp_low.comp[63]_i_1_n_0\
+    );
+\comp_low.comp_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => fir_in(9),
+      Q => comp(9),
+      R => \comp_low.comp[63]_i_1_n_0\
     );
 \comp_low.deci_0[7]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -128657,6 +129179,7 @@ entity ps_comp_low_0_0 is
     raw_fifo_W : in STD_LOGIC_VECTOR ( 127 downto 0 );
     clk : in STD_LOGIC;
     reset : in STD_LOGIC;
+    comp : out STD_LOGIC_VECTOR ( 63 downto 0 );
     active : out STD_LOGIC;
     re : out STD_LOGIC_VECTOR ( 63 downto 0 );
     im : out STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -128712,6 +129235,7 @@ inst: entity work.ps_comp_low_0_0_comp_low
       angle(15 downto 0) => angle(15 downto 0),
       burst => burst,
       clk => clk,
+      comp(63 downto 0) => comp(63 downto 0),
       doa_error(9 downto 0) => doa_error(9 downto 0),
       freq(19 downto 0) => freq(19 downto 0),
       im(63 downto 0) => im(63 downto 0),

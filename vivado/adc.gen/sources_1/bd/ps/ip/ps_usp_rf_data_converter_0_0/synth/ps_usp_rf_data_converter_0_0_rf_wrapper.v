@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 //
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -319,6 +319,9 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
 
   // DAC Clock Detection for Tile 3
   input   [15:0]    dac3_clk_detect,
+
+  output            vout00_p,
+  output            vout00_n,
 
   // DAC AXI Streaming Data for DAC33
   input  [255:0]    dac00_data_in,
@@ -1090,7 +1093,30 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
 
   // Synchronize common control bus onto the fabric clock for input
   // to the common control bus of the converters
-  assign dac0_done_sync = 1'b0;
+  xpm_cdc_single #(.SRC_INPUT_REG(0))
+    cdc_dac0_done_i (
+      .src_clk(1'b0),
+      .src_in(dac0_done_i),
+      .dest_clk(dac_fabric_clk[0]),
+      .dest_out(dac0_done_sync)
+    );
+
+  // Only assert common control bit 15 if the clocks are active
+  always @(posedge drpclk)
+  begin
+    if (dac0_end_stage >= 4'hA) begin
+      if (dac0_fifo_disable == 1'b0 && dac0_fabricclk_val == 1'b1) begin
+        dac0_done_i <= dac0_done;
+      end
+      else begin
+        dac0_done_i <= 1'b0;
+      end
+    end
+    else begin
+      dac0_done_i <= 1'b0;
+    end
+  end
+
   assign dac1_done_sync = 1'b0;
   assign dac2_done_sync = 1'b0;
   assign dac3_done_sync = 1'b0;
@@ -1107,7 +1133,7 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
   assign data_dac2        = {dac32_data_in, dac22_data_in, dac12_data_in, dac02_data_in};
   // Data from Slice 3 in all Tiles
   assign data_dac3        = {dac33_data_in, dac23_data_in, dac13_data_in, dac03_data_in};
-  assign dac00_ready_out = 1'b0;
+  assign dac00_ready_out = dac0_done_sync;
   assign dac01_ready_out = 1'b0;
   assign dac02_ready_out = 1'b0;
   assign dac03_ready_out = 1'b0;
@@ -1466,11 +1492,21 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
 
   // Synchronize common status bus onto the DRP clock for input
   // to the status_bits bus of the converters (DAC0)
-  assign dac0_pll_lock_sync = 1'b0;
-  assign dac0_clk_present_sync = 1'b0;
-  assign dac0_powerup_state_sync = 1'b0;
-  assign dac0_powerup_state_interrupt = 1'b0;
-
+  xpm_cdc_single #(.SRC_INPUT_REG(0))
+    cdc_dac0_pll_lock_i (
+      .src_clk(1'b0),
+      .src_in(dac_common_stat[3]),
+      .dest_clk(drpclk),
+      .dest_out(dac0_pll_lock_sync)
+    );
+  xpm_cdc_single #(.SRC_INPUT_REG(0))
+    cdc_dac0_powerup_state_i (
+      .src_clk(1'b0),
+      .src_in(dac_common_stat[2]),
+      .dest_clk(drpclk),
+      .dest_out(dac0_powerup_state_sync)
+    );
+  assign dac0_powerup_state_interrupt = (dac0_status == 4'hf) ? ~dac0_powerup_state_sync : 1'b0;
   xpm_cdc_single #(.SRC_INPUT_REG(0))
     cdc_dac0_supplies_up_i (
       .src_clk(1'b0),
@@ -1478,7 +1514,13 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
       .dest_clk(drpclk),
       .dest_out(dac0_supplies_up_sync)
     );
-
+  xpm_cdc_single #(.SRC_INPUT_REG(0))
+    cdc_dac0_clk_present_i (
+      .src_clk(1'b0),
+      .src_in(dac_common_stat[0]),
+      .dest_clk(drpclk),
+      .dest_out(dac0_clk_present_sync)
+    );
   assign dac0_status_bits    = {dac_common_stat[6], dac0_pll_lock_sync, dac0_supplies_up_sync, dac0_clk_present_sync};
   assign dac0_pll_lock       = dac0_pll_lock_sync;
 
@@ -1904,11 +1946,11 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
   RFDAC #(
     .OPT_CLK_DIST         (228),
     .SIM_DEVICE           ("ULTRASCALE_PLUS"),
-    .XPA_SAMPLE_RATE_MSPS (6400.0),
-    .XPA_NUM_DACS         (0),
+    .XPA_SAMPLE_RATE_MSPS (2000.0),
+    .XPA_NUM_DACS         (1),
     .XPA_PLL_USED         ("EXTERNAL"),
     .XPA_NUM_DUCS         (0),
-    .XPA_CFG0             (0),
+    .XPA_CFG0             (1),
     .XPA_CFG1             (0),
     .XPA_CFG2             (0),
     .XPA_ACTIVE_DUTYCYCLE (100),
@@ -1964,8 +2006,8 @@ module ps_usp_rf_data_converter_0_0_rf_wrapper (
     .DATA_DAC1          ( data_dac1[255:0] ),            // input  [255:0]
     .DATA_DAC2          ( data_dac2[255:0] ),            // input  [255:0]
     .DATA_DAC3          ( data_dac3[255:0] ),            // input  [255:0]
-    .VOUT0_N            (),                               // output
-    .VOUT0_P            (),                               // output
+    .VOUT0_N            (vout00_n),                      // output
+    .VOUT0_P            (vout00_p),                      // output
     .VOUT1_N            (),                               // output
     .VOUT1_P            (),                               // output
     .VOUT2_N            (),                               // output
@@ -2630,7 +2672,7 @@ RFADC #(
   assign adc2_sm_reset = (adc2_sm_reset_i | ~adc2_supplies_up_sync) & adc2_done;
   assign adc3_sm_reset = (adc3_sm_reset_i | ~adc3_supplies_up_sync) & adc3_done;
 
-  assign dac0_sm_reset = 1'b0;
+  assign dac0_sm_reset = (dac0_sm_reset_i | ~dac0_supplies_up_sync) & dac0_done;
   assign dac1_sm_reset = 1'b0;
   assign dac2_sm_reset = 1'b0;
   assign dac3_sm_reset = 1'b0;

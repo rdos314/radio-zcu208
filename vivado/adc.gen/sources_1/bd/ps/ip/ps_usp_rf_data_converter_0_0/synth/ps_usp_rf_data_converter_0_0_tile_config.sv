@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------
 //
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2025 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2026 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -313,7 +313,7 @@ module ps_usp_rf_data_converter_0_0_tile_config (
               tc_sm_state       <= write_drp;
             end
             else begin
-              if (data_index < 247) begin
+              if (data_index < 271) begin
                 data_index <= data_index + 1;
                 tc_sm_state  <= memory_delay;
               end
@@ -333,7 +333,7 @@ module ps_usp_rf_data_converter_0_0_tile_config (
             drp_den      <= 1'b0;
             drp_wen      <= 1'b0;
             if (drp_rdy == 1'b1) begin
-              if (data_index < 247) begin
+              if (data_index < 271) begin
                 data_index <= data_index + 1;
                 tc_sm_state <= memory_delay;
               end

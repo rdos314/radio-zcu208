@@ -40,6 +40,7 @@ module comp_low(
 
     input wire clk,
     input wire reset,
+    output reg [63:0] comp,
     
     output reg active,
     output reg [63:0] re,
@@ -223,6 +224,7 @@ fir_comp_deci fir_deci_i (
 
 fir_comp_low_re fir_re_i (
   .aclk(clk),                               // input wire aclk
+
   .s_axis_data_tvalid(fir_run),             // input wire s_axis_data_tvalid
   .s_axis_data_tdata(fir_in),               // input wire [63 : 0] s_axis_data_tdata
   .m_axis_data_tvalid(fir_re_active),       // output wire m_axis_data_tvalid
@@ -326,6 +328,16 @@ generate
 			raw_run <= 0;
 		end
 	end
+
+
+    always @(posedge clk) 
+    begin
+        if (fir_run)
+            comp <= fir_in;
+        else
+            comp <= 0;
+    end
+
 
     always @(posedge clk) 
     begin

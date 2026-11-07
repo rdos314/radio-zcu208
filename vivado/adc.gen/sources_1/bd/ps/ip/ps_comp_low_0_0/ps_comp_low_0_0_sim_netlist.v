@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri May 15 18:57:00 2026
+// Date        : Sat Nov  7 16:16:19 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_comp_low_0_0/ps_comp_low_0_0_sim_netlist.v
@@ -34,6 +34,7 @@ module ps_comp_low_0_0
     raw_fifo_W,
     clk,
     reset,
+    comp,
     active,
     re,
     im,
@@ -60,6 +61,7 @@ module ps_comp_low_0_0
   input [127:0]raw_fifo_W;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 500000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_mts_0_0_comp0_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset;
+  output [63:0]comp;
   output active;
   output [63:0]re;
   output [63:0]im;
@@ -84,6 +86,7 @@ module ps_comp_low_0_0
   wire [15:0]angle;
   wire burst;
   wire clk;
+  wire [63:0]comp;
   wire [9:0]doa_error;
   wire [19:0]freq;
   wire [63:0]im;
@@ -112,6 +115,7 @@ module ps_comp_low_0_0
         .angle(angle),
         .burst(burst),
         .clk(clk),
+        .comp(comp),
         .doa_error(doa_error),
         .freq(freq),
         .im(im),
@@ -145,6 +149,7 @@ module ps_comp_low_0_0_comp_low
     raw_fifo_W,
     clk,
     reset,
+    comp,
     active,
     re,
     im,
@@ -171,6 +176,7 @@ module ps_comp_low_0_0_comp_low
   input [127:0]raw_fifo_W;
   input clk;
   input reset;
+  output [63:0]comp;
   output active;
   output [63:0]re;
   output [63:0]im;
@@ -240,6 +246,7 @@ module ps_comp_low_0_0_comp_low
   (* MARK_DEBUG *) wire burst;
   wire clear;
   wire clk;
+  wire [63:0]comp;
   wire \comp_low.C0[15]_i_10_n_0 ;
   wire \comp_low.C0[15]_i_11_n_0 ;
   wire \comp_low.C0[15]_i_12_n_0 ;
@@ -680,6 +687,7 @@ module ps_comp_low_0_0_comp_low
   wire \comp_low.angle[7]_i_1_n_0 ;
   wire \comp_low.angle[8]_i_1_n_0 ;
   wire \comp_low.angle[9]_i_1_n_0 ;
+  wire \comp_low.comp[63]_i_1_n_0 ;
   wire \comp_low.deci_0[7]_i_2_n_0 ;
   wire \comp_low.deci_0_reg[15]_i_1_n_1 ;
   wire \comp_low.deci_0_reg[15]_i_1_n_2 ;
@@ -7743,6 +7751,395 @@ module ps_comp_low_0_0_comp_low
         .D(\comp_low.sample[15]_i_1_n_0 ),
         .Q(burst),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \comp_low.comp[63]_i_1 
+       (.I0(fir_run),
+        .O(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[0]),
+        .Q(comp[0]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[10]),
+        .Q(comp[10]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[11] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[11]),
+        .Q(comp[11]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[12] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[12]),
+        .Q(comp[12]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[13] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[13]),
+        .Q(comp[13]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[14] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[14]),
+        .Q(comp[14]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[15] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[15]),
+        .Q(comp[15]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[16] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[16]),
+        .Q(comp[16]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[17] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[17]),
+        .Q(comp[17]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[18] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[18]),
+        .Q(comp[18]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[19] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[19]),
+        .Q(comp[19]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[1] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[1]),
+        .Q(comp[1]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[20] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[20]),
+        .Q(comp[20]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[21] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[21]),
+        .Q(comp[21]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[22] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[22]),
+        .Q(comp[22]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[23] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[23]),
+        .Q(comp[23]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[24] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[24]),
+        .Q(comp[24]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[25] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[25]),
+        .Q(comp[25]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[26] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[26]),
+        .Q(comp[26]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[27] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[27]),
+        .Q(comp[27]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[28] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[28]),
+        .Q(comp[28]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[29] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[29]),
+        .Q(comp[29]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[2] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[2]),
+        .Q(comp[2]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[30] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[30]),
+        .Q(comp[30]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[31] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[31]),
+        .Q(comp[31]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[32] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[32]),
+        .Q(comp[32]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[33] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[33]),
+        .Q(comp[33]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[34] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[34]),
+        .Q(comp[34]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[35] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[35]),
+        .Q(comp[35]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[36] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[36]),
+        .Q(comp[36]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[37] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[37]),
+        .Q(comp[37]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[38] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[38]),
+        .Q(comp[38]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[39] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[39]),
+        .Q(comp[39]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[3] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[3]),
+        .Q(comp[3]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[40] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[40]),
+        .Q(comp[40]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[41] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[41]),
+        .Q(comp[41]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[42] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[42]),
+        .Q(comp[42]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[43] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[43]),
+        .Q(comp[43]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[44] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[44]),
+        .Q(comp[44]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[45] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[45]),
+        .Q(comp[45]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[46] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[46]),
+        .Q(comp[46]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[47] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[47]),
+        .Q(comp[47]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[48] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[48]),
+        .Q(comp[48]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[49] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[49]),
+        .Q(comp[49]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[4] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[4]),
+        .Q(comp[4]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[50] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[50]),
+        .Q(comp[50]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[51] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[51]),
+        .Q(comp[51]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[52] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[52]),
+        .Q(comp[52]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[53] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[53]),
+        .Q(comp[53]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[54] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[54]),
+        .Q(comp[54]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[55] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[55]),
+        .Q(comp[55]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[56] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[56]),
+        .Q(comp[56]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[57] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[57]),
+        .Q(comp[57]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[58] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[58]),
+        .Q(comp[58]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[59] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[59]),
+        .Q(comp[59]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[5] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[5]),
+        .Q(comp[5]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[60] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[60]),
+        .Q(comp[60]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[61] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[61]),
+        .Q(comp[61]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[62] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[62]),
+        .Q(comp[62]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[63] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[63]),
+        .Q(comp[63]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[6] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[6]),
+        .Q(comp[6]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[7] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[7]),
+        .Q(comp[7]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[8] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[8]),
+        .Q(comp[8]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
+  FDRE \comp_low.comp_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(fir_in[9]),
+        .Q(comp[9]),
+        .R(\comp_low.comp[63]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \comp_low.deci_0[7]_i_2 
