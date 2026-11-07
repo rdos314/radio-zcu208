@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun May 17 12:34:03 2026
+// Date        : Mon Jun  1 23:06:30 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_1/ps_ana_0_1_sim_netlist.v
@@ -318,22 +318,6 @@ module ps_ana_0_1_ana
   wire \ana.phase_WN_0_reg_n_0_[7] ;
   wire \ana.phase_WN_0_reg_n_0_[8] ;
   wire \ana.phase_WN_0_reg_n_0_[9] ;
-  wire \ana.sample[0]_i_1_n_0 ;
-  wire \ana.sample[10]_i_1_n_0 ;
-  wire \ana.sample[11]_i_1_n_0 ;
-  wire \ana.sample[12]_i_1_n_0 ;
-  wire \ana.sample[13]_i_1_n_0 ;
-  wire \ana.sample[14]_i_1_n_0 ;
-  wire \ana.sample[15]_i_1_n_0 ;
-  wire \ana.sample[1]_i_1_n_0 ;
-  wire \ana.sample[2]_i_1_n_0 ;
-  wire \ana.sample[3]_i_1_n_0 ;
-  wire \ana.sample[4]_i_1_n_0 ;
-  wire \ana.sample[5]_i_1_n_0 ;
-  wire \ana.sample[6]_i_1_n_0 ;
-  wire \ana.sample[7]_i_1_n_0 ;
-  wire \ana.sample[8]_i_1_n_0 ;
-  wire \ana.sample[9]_i_1_n_0 ;
   wire \ana.sample_0_reg_n_0_[0] ;
   wire \ana.sample_0_reg_n_0_[10] ;
   wire \ana.sample_0_reg_n_0_[11] ;
@@ -402,7 +386,7 @@ module ps_ana_0_1_ana
   wire [143:0]ana_out_data;
   wire ana_valid;
   wire ana_valid0;
-  wire ana_wr;
+  (* MARK_DEBUG *) wire ana_wr;
   (* MARK_DEBUG *) wire [15:0]angle;
   (* MARK_DEBUG *) wire [1:0]burst;
   wire cfg_empty;
@@ -424,9 +408,9 @@ module ps_ana_0_1_ana
   (* MARK_DEBUG *) wire [8:0]curr_size;
   wire det_sig_i_i_1_n_0;
   wire [9:0]doa_error;
-  wire [15:0]env_E;
-  wire [15:0]env_N;
-  wire [15:0]env_W;
+  (* MARK_DEBUG *) wire [15:0]env_E;
+  (* MARK_DEBUG *) wire [15:0]env_N;
+  (* MARK_DEBUG *) wire [15:0]env_W;
   wire [11:0]err_EW;
   wire [11:0]err_NE;
   wire [11:0]err_WN;
@@ -434,6 +418,7 @@ module ps_ana_0_1_ana
   (* MARK_DEBUG *) wire [19:0]freq;
   wire [19:0]freq_0;
   wire [19:0]freq_1;
+  wire [15:0]p_0_in__0;
   wire [19:0]phase_E;
   wire [19:0]phase_EW_0;
   wire [19:0]phase_EW_1;
@@ -4016,112 +4001,112 @@ module ps_ana_0_1_ana
        (.I0(save_sample_1[0]),
         .I1(save_sample_0[0]),
         .I2(save[1]),
-        .O(\ana.sample[0]_i_1_n_0 ));
+        .O(p_0_in__0[0]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[10]_i_1 
        (.I0(save_sample_1[10]),
         .I1(save_sample_0[10]),
         .I2(save[1]),
-        .O(\ana.sample[10]_i_1_n_0 ));
+        .O(p_0_in__0[10]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[11]_i_1 
        (.I0(save_sample_1[11]),
         .I1(save_sample_0[11]),
         .I2(save[1]),
-        .O(\ana.sample[11]_i_1_n_0 ));
+        .O(p_0_in__0[11]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[12]_i_1 
        (.I0(save_sample_1[12]),
         .I1(save_sample_0[12]),
         .I2(save[1]),
-        .O(\ana.sample[12]_i_1_n_0 ));
+        .O(p_0_in__0[12]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[13]_i_1 
        (.I0(save_sample_1[13]),
         .I1(save_sample_0[13]),
         .I2(save[1]),
-        .O(\ana.sample[13]_i_1_n_0 ));
+        .O(p_0_in__0[13]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[14]_i_1 
        (.I0(save_sample_1[14]),
         .I1(save_sample_0[14]),
         .I2(save[1]),
-        .O(\ana.sample[14]_i_1_n_0 ));
+        .O(p_0_in__0[14]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[15]_i_1 
        (.I0(save_sample_1[15]),
         .I1(save_sample_0[15]),
         .I2(save[1]),
-        .O(\ana.sample[15]_i_1_n_0 ));
+        .O(p_0_in__0[15]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[1]_i_1 
        (.I0(save_sample_1[1]),
         .I1(save_sample_0[1]),
         .I2(save[1]),
-        .O(\ana.sample[1]_i_1_n_0 ));
+        .O(p_0_in__0[1]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[2]_i_1 
        (.I0(save_sample_1[2]),
         .I1(save_sample_0[2]),
         .I2(save[1]),
-        .O(\ana.sample[2]_i_1_n_0 ));
+        .O(p_0_in__0[2]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[3]_i_1 
        (.I0(save_sample_1[3]),
         .I1(save_sample_0[3]),
         .I2(save[1]),
-        .O(\ana.sample[3]_i_1_n_0 ));
+        .O(p_0_in__0[3]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[4]_i_1 
        (.I0(save_sample_1[4]),
         .I1(save_sample_0[4]),
         .I2(save[1]),
-        .O(\ana.sample[4]_i_1_n_0 ));
+        .O(p_0_in__0[4]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[5]_i_1 
        (.I0(save_sample_1[5]),
         .I1(save_sample_0[5]),
         .I2(save[1]),
-        .O(\ana.sample[5]_i_1_n_0 ));
+        .O(p_0_in__0[5]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[6]_i_1 
        (.I0(save_sample_1[6]),
         .I1(save_sample_0[6]),
         .I2(save[1]),
-        .O(\ana.sample[6]_i_1_n_0 ));
+        .O(p_0_in__0[6]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[7]_i_1 
        (.I0(save_sample_1[7]),
         .I1(save_sample_0[7]),
         .I2(save[1]),
-        .O(\ana.sample[7]_i_1_n_0 ));
+        .O(p_0_in__0[7]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[8]_i_1 
        (.I0(save_sample_1[8]),
         .I1(save_sample_0[8]),
         .I2(save[1]),
-        .O(\ana.sample[8]_i_1_n_0 ));
+        .O(p_0_in__0[8]));
   LUT3 #(
     .INIT(8'hAC)) 
     \ana.sample[9]_i_1 
        (.I0(save_sample_1[9]),
         .I1(save_sample_0[9]),
         .I2(save[1]),
-        .O(\ana.sample[9]_i_1_n_0 ));
+        .O(p_0_in__0[9]));
   FDRE \ana.sample_0_reg[0] 
        (.C(clk),
         .CE(\ana.burst[0]_i_1_n_0 ),
@@ -4595,7 +4580,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[0] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[0]_i_1_n_0 ),
+        .D(p_0_in__0[0]),
         .Q(sample[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4603,7 +4588,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[10] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[10]_i_1_n_0 ),
+        .D(p_0_in__0[10]),
         .Q(sample[10]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4611,7 +4596,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[11] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[11]_i_1_n_0 ),
+        .D(p_0_in__0[11]),
         .Q(sample[11]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4619,7 +4604,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[12] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[12]_i_1_n_0 ),
+        .D(p_0_in__0[12]),
         .Q(sample[12]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4627,7 +4612,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[13] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[13]_i_1_n_0 ),
+        .D(p_0_in__0[13]),
         .Q(sample[13]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4635,7 +4620,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[14] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[14]_i_1_n_0 ),
+        .D(p_0_in__0[14]),
         .Q(sample[14]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4643,7 +4628,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[15] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[15]_i_1_n_0 ),
+        .D(p_0_in__0[15]),
         .Q(sample[15]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4651,7 +4636,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[1] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[1]_i_1_n_0 ),
+        .D(p_0_in__0[1]),
         .Q(sample[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4659,7 +4644,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[2] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[2]_i_1_n_0 ),
+        .D(p_0_in__0[2]),
         .Q(sample[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4667,7 +4652,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[3] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[3]_i_1_n_0 ),
+        .D(p_0_in__0[3]),
         .Q(sample[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4675,7 +4660,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[4] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[4]_i_1_n_0 ),
+        .D(p_0_in__0[4]),
         .Q(sample[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4683,7 +4668,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[5] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[5]_i_1_n_0 ),
+        .D(p_0_in__0[5]),
         .Q(sample[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4691,7 +4676,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[6] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[6]_i_1_n_0 ),
+        .D(p_0_in__0[6]),
         .Q(sample[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4699,7 +4684,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[7] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[7]_i_1_n_0 ),
+        .D(p_0_in__0[7]),
         .Q(sample[7]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4707,7 +4692,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[8] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[8]_i_1_n_0 ),
+        .D(p_0_in__0[8]),
         .Q(sample[8]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -4715,7 +4700,7 @@ module ps_ana_0_1_ana
   FDRE \ana.sample_reg[9] 
        (.C(clk),
         .CE(\ana.doa_error[9]_i_1_n_0 ),
-        .D(\ana.sample[9]_i_1_n_0 ),
+        .D(p_0_in__0[9]),
         .Q(sample[9]),
         .R(1'b0));
   LUT3 #(
@@ -5062,6 +5047,15 @@ module ps_ana_0_1_ana
         .wr_clk(fifo_clk),
         .wr_en(ana_fifo_wr),
         .wr_rst_busy(NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED));
+  (* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* x_core_info = "ila,Vivado 2025.1" *) 
+  ps_ana_0_1_ila_0 ila_fifo
+       (.clk(fifo_clk),
+        .probe0(ana_wr),
+        .probe1(env_N),
+        .probe2(env_E),
+        .probe3(env_W));
   (* CHECK_LICENSE_TYPE = "ila_9,ila,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "ila,Vivado 2025.1" *) 
@@ -60092,6 +60086,23 @@ module ps_ana_0_1_fifo_doa
   (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *) output empty;
   output wr_rst_busy;
   output rd_rst_busy;
+
+
+endmodule
+
+(* CHECK_LICENSE_TYPE = "ila_0,ila,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "ila_0" *) 
+(* X_CORE_INFO = "ila,Vivado 2025.1" *) 
+module ps_ana_0_1_ila_0
+   (clk,
+    probe0,
+    probe1,
+    probe2,
+    probe3);
+  (* syn_isclock = "1" *) input clk;
+  input [0:0]probe0;
+  input [15:0]probe1;
+  input [15:0]probe2;
+  input [15:0]probe3;
 
 
 endmodule

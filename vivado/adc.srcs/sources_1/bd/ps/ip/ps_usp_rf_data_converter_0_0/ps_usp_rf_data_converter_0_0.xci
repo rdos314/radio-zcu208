@@ -24,17 +24,17 @@
         "DAC230_En": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "DAC231_En": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ADC_Debug": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "DAC_Debug": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
+        "DAC_Debug": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "DAC_Output_Current": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC_VOP_Mode": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "DAC_VOP_Mode": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ADC_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "DAC_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
+        "DAC_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Analog_Detection": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Calibration_Freeze": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Auto_Calibration_Freeze": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "Calibration_Time": [ { "value": "10", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "DAC_NCO_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC_VOP_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
+        "DAC_VOP_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "DAC_MTS_Variable_Fabric_Width": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "ADC_NCO_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "ADC_DSA_RTS": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -477,36 +477,36 @@
         "mADC_RESERVED_1_03": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "mADC_TDD_RTS03": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "mADC_OBS03": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC0_Enable": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC0_PLL_Enable": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC0_Sampling_Rate": [ { "value": "6.4", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
-        "DAC0_Refclk_Freq": [ { "value": "6400.000", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
-        "DAC0_Outclk_Freq": [ { "value": "50.000", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
-        "DAC0_Fabric_Freq": [ { "value": "0.0", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
-        "DAC0_Link_Coupling": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC0_Multi_Tile_Sync": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
+        "DAC0_Enable": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "DAC0_PLL_Enable": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "DAC0_Sampling_Rate": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "DAC0_Refclk_Freq": [ { "value": "2000.000", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "DAC0_Outclk_Freq": [ { "value": "125.000", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "DAC0_Fabric_Freq": [ { "value": "500.000", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
+        "DAC0_Link_Coupling": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DAC0_Multi_Tile_Sync": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "DAC0_Band": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
-        "DAC0_VOP": [ { "value": "20.0", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
+        "DAC0_VOP": [ { "value": "20.0", "resolve_type": "user", "format": "float", "usage": "all" } ],
         "DAC0_Refclk_Div": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC0_Clock_Source": [ { "value": "4", "resolve_type": "user", "enabled": false, "usage": "all" } ],
+        "DAC0_Clock_Source": [ { "value": "4", "resolve_type": "user", "usage": "all" } ],
         "DAC0_Clock_Source_MX": [ { "value": "4", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC0_Clock_Dist": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Slice00_Enable": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "DAC_Data_Type00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Data_Width00": [ { "value": "16", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC_Interpolation_Mode00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Decoder_Mode00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Mixer_Type00": [ { "value": "3", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Mixer_Mode00": [ { "value": "2", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "DAC_Invsinc_Ctrl00": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC_Coarse_Mixer_Freq00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
+        "DAC0_Clock_Dist": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Slice00_Enable": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "DAC_Data_Type00": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Data_Width00": [ { "value": "4", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DAC_Interpolation_Mode00": [ { "value": "1", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Decoder_Mode00": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Mixer_Type00": [ { "value": "1", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Mixer_Mode00": [ { "value": "2", "resolve_type": "user", "usage": "all" } ],
+        "DAC_Invsinc_Ctrl00": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "DAC_Coarse_Mixer_Freq00": [ { "value": "3", "resolve_type": "user", "usage": "all" } ],
         "DAC_NCO_Freq00": [ { "value": "0.0", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
         "DAC_NCO_Phase00": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "DAC_Neg_Quadrature00": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC_Nyquist00": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
-        "DAC_Mode00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
+        "DAC_Nyquist00": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DAC_Mode00": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "DAC_RESERVED_1_00": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
-        "DAC_TDD_RTS00": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
+        "DAC_TDD_RTS00": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
         "DAC_Slice01_Enable": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "DAC_Data_Type01": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "DAC_Data_Width01": [ { "value": "16", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
@@ -1302,35 +1302,35 @@
         "C_ADC_TDD_RTS33": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADC_OBS33": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_ADC33_Dig_Port": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC0_Enable": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC0_Enable": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_PLL_Enable": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
-        "C_DAC0_Sampling_Rate": [ { "value": "6.4", "resolve_type": "generated", "format": "float", "usage": "all" } ],
-        "C_DAC0_Fs_Max": [ { "value": "10.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
-        "C_DAC0_Refclk_Freq": [ { "value": "6400.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
-        "C_DAC0_Outclk_Freq": [ { "value": "50.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_DAC0_Sampling_Rate": [ { "value": "2", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_DAC0_Fs_Max": [ { "value": "7.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_DAC0_Refclk_Freq": [ { "value": "2000.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_DAC0_Outclk_Freq": [ { "value": "125.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "C_DAC0_FBDIV": [ { "value": "10", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_OutDiv": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Vco": [ { "value": "8500.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
-        "C_DAC0_Fabric_Freq": [ { "value": "0.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
+        "C_DAC0_Fabric_Freq": [ { "value": "500.000", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "C_DAC0_Multi_Tile_Sync": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_DAC0_Link_Coupling": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Band": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_VOP": [ { "value": "20.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "C_DAC0_Refclk_Div": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Slices": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC0_Interpolation": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC0_Interpolation": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Clock_Source": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Clock_Source_MX": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC0_Clock_Dist": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC_Slice00_Enable": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
+        "C_DAC_Slice00_Enable": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
         "C_DAC_Data_Type00": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC_Data_Width00": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC_Interpolation_Mode00": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC_Data_Width00": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC_Interpolation_Mode00": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC_Decoder_Mode00": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_DAC_Mixer_Type00": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC_Mixer_Type00": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC_Mixer_Mode00": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC_Invsinc_Ctrl00": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
-        "C_DAC_Coarse_Mixer_Freq00": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DAC_Coarse_Mixer_Freq00": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC_NCO_Freq00": [ { "value": "0.0", "resolve_type": "generated", "format": "float", "usage": "all" } ],
         "C_DAC_NCO_Phase00": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DAC_Neg_Quadrature00": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -1684,6 +1684,9 @@
         "clk_adc1": [ { "direction": "out" } ],
         "clk_adc2": [ { "direction": "out" } ],
         "clk_adc3": [ { "direction": "out" } ],
+        "dac0_clk_p": [ { "direction": "in", "driver_value": "0" } ],
+        "dac0_clk_n": [ { "direction": "in", "driver_value": "0" } ],
+        "clk_dac0": [ { "direction": "out" } ],
         "s_axi_aclk": [ { "direction": "in", "driver_value": "0" } ],
         "s_axi_aresetn": [ { "direction": "in", "driver_value": "1" } ],
         "s_axi_awaddr": [ { "direction": "in", "size_left": "17", "size_right": "0", "driver_value": "0" } ],
@@ -1719,6 +1722,8 @@
         "vin2_23_n": [ { "direction": "in", "driver_value": "0" } ],
         "vin3_01_p": [ { "direction": "in", "driver_value": "0" } ],
         "vin3_01_n": [ { "direction": "in", "driver_value": "0" } ],
+        "vout00_p": [ { "direction": "out" } ],
+        "vout00_n": [ { "direction": "out" } ],
         "m0_axis_aresetn": [ { "direction": "in", "driver_value": "1" } ],
         "m0_axis_aclk": [ { "direction": "in", "driver_value": "0" } ],
         "m00_axis_tdata": [ { "direction": "out", "size_left": "127", "size_right": "0" } ],
@@ -1744,7 +1749,12 @@
         "m3_axis_aclk": [ { "direction": "in", "driver_value": "0" } ],
         "m30_axis_tdata": [ { "direction": "out", "size_left": "127", "size_right": "0" } ],
         "m30_axis_tvalid": [ { "direction": "out" } ],
-        "m30_axis_tready": [ { "direction": "in", "driver_value": "0" } ]
+        "m30_axis_tready": [ { "direction": "in", "driver_value": "0" } ],
+        "s0_axis_aresetn": [ { "direction": "in", "driver_value": "1" } ],
+        "s0_axis_aclk": [ { "direction": "in", "driver_value": "0" } ],
+        "s00_axis_tdata": [ { "direction": "in", "size_left": "63", "size_right": "0", "driver_value": "0" } ],
+        "s00_axis_tvalid": [ { "direction": "in", "driver_value": "0" } ],
+        "s00_axis_tready": [ { "direction": "out" } ]
       },
       "interfaces": {
         "s_axi": {
@@ -2105,6 +2115,61 @@
             "TVALID": [ { "physical_name": "m30_axis_tvalid" } ]
           }
         },
+        "s0_axis_aresetn": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "s0_axis_aresetn" } ]
+          }
+        },
+        "s0_axis_aclk": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "ASSOCIATED_BUSIF": [ { "value": "s03_axis:s02_axis:s01_axis:s00_axis", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
+            "ASSOCIATED_RESET": [ { "value": "s0_axis_aresetn", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "100000000", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "s0_axis_aclk" } ]
+          }
+        },
+        "s00_axis": {
+          "vlnv": "xilinx.com:interface:axis:1.0",
+          "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "TDATA_NUM_BYTES": [ { "value": "8", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "TID_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "TUSER_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "HAS_TREADY": [ { "value": "1", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "HAS_TSTRB": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "HAS_TKEEP": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "HAS_TLAST": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "100000000", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "LAYERED_METADATA": [ { "value": "undef", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_static_object": false } ]
+          },
+          "port_maps": {
+            "TDATA": [ { "physical_name": "s00_axis_tdata" } ],
+            "TREADY": [ { "physical_name": "s00_axis_tready" } ],
+            "TVALID": [ { "physical_name": "s00_axis_tvalid" } ]
+          }
+        },
         "irq": {
           "vlnv": "xilinx.com:signal:interrupt:1.0",
           "abstraction_type": "xilinx.com:signal:interrupt_rtl:1.0",
@@ -2202,6 +2267,37 @@
             "CLK": [ { "physical_name": "clk_adc3" } ]
           }
         },
+        "dac0_clk": {
+          "vlnv": "xilinx.com:interface:diff_clock:1.0",
+          "abstraction_type": "xilinx.com:interface:diff_clock_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "CAN_DEBUG": [ { "value": "false", "value_permission": "bd", "resolve_type": "generated", "format": "bool", "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "100000000", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK_N": [ { "physical_name": "dac0_clk_n" } ],
+            "CLK_P": [ { "physical_name": "dac0_clk_p" } ]
+          }
+        },
+        "clk_dac0": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "FREQ_HZ": [ { "value": "125000000", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "ps_usp_rf_data_converter_0_0_clk_dac0", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_RESET": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "clk_dac0" } ]
+          }
+        },
         "vin0_01": {
           "vlnv": "xilinx.com:interface:diff_analog_io:1.0",
           "abstraction_type": "xilinx.com:interface:diff_analog_io_rtl:1.0",
@@ -2254,6 +2350,15 @@
           "port_maps": {
             "V_N": [ { "physical_name": "vin3_01_n" } ],
             "V_P": [ { "physical_name": "vin3_01_p" } ]
+          }
+        },
+        "vout00": {
+          "vlnv": "xilinx.com:interface:diff_analog_io:1.0",
+          "abstraction_type": "xilinx.com:interface:diff_analog_io_rtl:1.0",
+          "mode": "master",
+          "port_maps": {
+            "V_N": [ { "physical_name": "vout00_n" } ],
+            "V_P": [ { "physical_name": "vout00_p" } ]
           }
         },
         "sysref_in": {

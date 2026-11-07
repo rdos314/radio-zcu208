@@ -6713,7 +6713,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s0_axis_aresetn" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s0_axis_aresetn" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -6801,7 +6801,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s0_axis_aclk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s0_axis_aclk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -6841,7 +6841,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXIS.TDATA_NUM_BYTES">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXIS.TDATA_NUM_BYTES">8</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -6960,7 +6960,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s00_axis" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.s00_axis" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -10423,7 +10423,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.dac0_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.dac0_clk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -10448,7 +10448,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_DAC0.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_DAC0.FREQ_HZ">125000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10475,7 +10475,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_DAC0.CLK_DOMAIN"/>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK_DAC0.CLK_DOMAIN">ps_usp_rf_data_converter_0_0_clk_dac0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10522,7 +10522,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.clk_dac0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.clk_dac0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -11803,7 +11803,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.vout00" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.vout00" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -19593,7 +19593,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.dac0_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.dac0_clk_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19616,7 +19616,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.dac0_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.dac0_clk_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1) &amp;&amp; (((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 4) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) != 0)) || ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Clock_Source&apos;)) == 3) &amp;&amp; (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ADC3_Slices&apos;)) == 0)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19636,7 +19636,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.clk_dac0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.clk_dac0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -21371,7 +21371,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.vout00_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.vout00_p" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -21391,7 +21391,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.vout00_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.vout00_n" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -24526,7 +24526,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s0_axis_aresetn" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s0_axis_aresetn" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -24549,7 +24549,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s0_axis_aclk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s0_axis_aclk" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC0_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -24559,7 +24559,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Data_Width00&apos;)) * 16) - 1)">255</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Data_Width00&apos;)) * 16) - 1)">63</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -24576,7 +24576,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tdata" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tdata" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -24599,7 +24599,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tvalid" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tvalid" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -24619,7 +24619,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tready" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.s00_axis_tready" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_DAC_Slice00_Enable&apos;)) == 1)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -48294,7 +48294,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC0_Enable</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Enable">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Enable">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>C_DAC0_PLL_Enable</spirit:name>
@@ -48302,19 +48302,19 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC0_Sampling_Rate</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Sampling_Rate">6.4</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Sampling_Rate">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC0_Fs_Max</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Fs_Max">10.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Fs_Max">7.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC0_Refclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Refclk_Freq">6400.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Refclk_Freq">2000.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC0_Outclk_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Outclk_Freq">50.000</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Outclk_Freq">125.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="long">
         <spirit:name>C_DAC0_FBDIV</spirit:name>
@@ -48330,7 +48330,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC0_Fabric_Freq</spirit:name>
-        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Fabric_Freq">0.0</spirit:value>
+        <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Fabric_Freq">500.000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>C_DAC0_Multi_Tile_Sync</spirit:name>
@@ -48358,7 +48358,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC0_Interpolation</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Interpolation">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC0_Interpolation">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC0_Clock_Source</spirit:name>
@@ -48374,7 +48374,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>C_DAC_Slice00_Enable</spirit:name>
-        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Slice00_Enable">false</spirit:value>
+        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Slice00_Enable">true</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Data_Type00</spirit:name>
@@ -48382,11 +48382,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Data_Width00</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Data_Width00">16</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Data_Width00">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Interpolation_Mode00</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Interpolation_Mode00">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Interpolation_Mode00">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Decoder_Mode00</spirit:name>
@@ -48394,7 +48394,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Mixer_Type00</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Mixer_Type00">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Mixer_Type00">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Mixer_Mode00</spirit:name>
@@ -48406,7 +48406,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DAC_Coarse_Mixer_Freq00</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Coarse_Mixer_Freq00">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DAC_Coarse_Mixer_Freq00">3</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="float">
         <spirit:name>C_DAC_NCO_Freq00</spirit:name>
@@ -49781,6 +49781,30 @@
       <spirit:enumeration>8</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_list_dbda4657</spirit:name>
+      <spirit:enumeration>15.625</spirit:enumeration>
+      <spirit:enumeration>31.250</spirit:enumeration>
+      <spirit:enumeration>62.500</spirit:enumeration>
+      <spirit:enumeration>125.000</spirit:enumeration>
+      <spirit:enumeration>250.000</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_ee293667</spirit:name>
+      <spirit:enumeration>4</spirit:enumeration>
+      <spirit:enumeration>5</spirit:enumeration>
+      <spirit:enumeration>6</spirit:enumeration>
+      <spirit:enumeration>7</spirit:enumeration>
+      <spirit:enumeration>8</spirit:enumeration>
+      <spirit:enumeration>9</spirit:enumeration>
+      <spirit:enumeration>10</spirit:enumeration>
+      <spirit:enumeration>11</spirit:enumeration>
+      <spirit:enumeration>12</spirit:enumeration>
+      <spirit:enumeration>13</spirit:enumeration>
+      <spirit:enumeration>14</spirit:enumeration>
+      <spirit:enumeration>15</spirit:enumeration>
+      <spirit:enumeration>16</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_pairs_0d7a4b90</spirit:name>
       <spirit:enumeration spirit:text="Off">0</spirit:enumeration>
       <spirit:enumeration spirit:text="1x">1</spirit:enumeration>
@@ -49846,6 +49870,11 @@
     <spirit:choice>
       <spirit:name>choice_pairs_4de6c91d</spirit:name>
       <spirit:enumeration spirit:text="Off">0</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_52db7e42</spirit:name>
+      <spirit:enumeration spirit:text="Coarse">1</spirit:enumeration>
+      <spirit:enumeration spirit:text="Fine">2</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_544e3626</spirit:name>
@@ -49919,6 +49948,16 @@
       <spirit:enumeration spirit:text="Tile229">5</spirit:enumeration>
       <spirit:enumeration spirit:text="Tile230">6</spirit:enumeration>
       <spirit:enumeration spirit:text="Tile231">7</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_b0ec4e06</spirit:name>
+      <spirit:enumeration spirit:text="I/Q->Real">0</spirit:enumeration>
+      <spirit:enumeration spirit:text="Real->Real">2</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_b87a9c35</spirit:name>
+      <spirit:enumeration spirit:text="SNR Optimized">0</spirit:enumeration>
+      <spirit:enumeration spirit:text="Linearity Optimized">1</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_b8a35c0f</spirit:name>
@@ -50528,7 +50567,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Debug">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Debug">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -50552,7 +50591,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_VOP_Mode">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_VOP_Mode">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -50576,7 +50615,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_RTS">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_RTS">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -50648,7 +50687,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_VOP_RTS">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_VOP_RTS">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -55882,7 +55921,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC0_Enable</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Enable" spirit:choiceRef="choice_pairs_4cd72aff" spirit:order="471">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Enable" spirit:choiceRef="choice_pairs_4cd72aff" spirit:order="471">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -55898,47 +55937,47 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_PLL_Enable">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_PLL_Enable">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC0_Sampling_Rate</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Sampling_Rate" spirit:order="473" spirit:minimum="0.5" spirit:maximum="10.0">6.4</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Sampling_Rate" spirit:order="473" spirit:minimum="0.5" spirit:maximum="7.0">2</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Sampling_Rate">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Sampling_Rate">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC0_Refclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Refclk_Freq" spirit:choiceRef="choice_list_948aac48" spirit:order="474">6400.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Refclk_Freq" spirit:choiceRef="choice_list_43b6ede9" spirit:order="474">2000.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Refclk_Freq">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Refclk_Freq">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC0_Outclk_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Outclk_Freq" spirit:choiceRef="choice_list_cb070d77" spirit:order="475">50.000</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Outclk_Freq" spirit:choiceRef="choice_list_dbda4657" spirit:order="475">125.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Outclk_Freq">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Outclk_Freq">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC0_Fabric_Freq</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Fabric_Freq" spirit:order="476">0.0</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC0_Fabric_Freq" spirit:order="476">500.000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -55954,7 +55993,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Link_Coupling">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Link_Coupling">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -55966,7 +56005,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Multi_Tile_Sync">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Multi_Tile_Sync">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -55990,7 +56029,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_VOP">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_VOP">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56013,7 +56052,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Clock_Source">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Clock_Source">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56035,7 +56074,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Clock_Dist">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC0_Clock_Dist">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56043,7 +56082,7 @@
     <spirit:parameter>
       <spirit:name>DAC_Slice00_Enable</spirit:name>
       <spirit:displayName>Enable DAC</spirit:displayName>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Slice00_Enable" spirit:order="485">false</spirit:value>
+      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Slice00_Enable" spirit:order="485">true</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -56059,18 +56098,18 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Data_Type00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Data_Type00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC_Data_Width00</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width00" spirit:choiceRef="choice_list_95ac5d5c" spirit:order="487">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width00" spirit:choiceRef="choice_list_ee293667" spirit:order="487">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Data_Width00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Data_Width00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56078,11 +56117,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Interpolation_Mode00</spirit:name>
       <spirit:displayName>Interpolation Mode</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Interpolation_Mode00" spirit:choiceRef="choice_pairs_4de6c91d" spirit:order="488">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Interpolation_Mode00" spirit:choiceRef="choice_pairs_ea37892d" spirit:order="488">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Interpolation_Mode00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Interpolation_Mode00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56090,11 +56129,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Decoder_Mode00</spirit:name>
       <spirit:displayName>Decoder Mode</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Decoder_Mode00" spirit:choiceRef="choice_pairs_544e3626" spirit:order="489">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Decoder_Mode00" spirit:choiceRef="choice_pairs_b87a9c35" spirit:order="489">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Decoder_Mode00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Decoder_Mode00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56102,11 +56141,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Mixer_Type00</spirit:name>
       <spirit:displayName>Mixer Type</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mixer_Type00" spirit:choiceRef="choice_pairs_d4ef98a7" spirit:order="490">3</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mixer_Type00" spirit:choiceRef="choice_pairs_52db7e42" spirit:order="490">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mixer_Type00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mixer_Type00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56114,11 +56153,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Mixer_Mode00</spirit:name>
       <spirit:displayName>Mixer Mode</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mixer_Mode00" spirit:choiceRef="choice_pairs_abf6f0ea" spirit:order="491">2</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mixer_Mode00" spirit:choiceRef="choice_pairs_b0ec4e06" spirit:order="491">2</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mixer_Mode00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mixer_Mode00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56130,7 +56169,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Invsinc_Ctrl00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Invsinc_Ctrl00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56138,11 +56177,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Coarse_Mixer_Freq00</spirit:name>
       <spirit:displayName>Frequency</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Coarse_Mixer_Freq00" spirit:choiceRef="choice_pairs_3f1ccca9" spirit:order="493">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Coarse_Mixer_Freq00" spirit:choiceRef="choice_pairs_415383ed" spirit:order="493">3</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Coarse_Mixer_Freq00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Coarse_Mixer_Freq00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56190,7 +56229,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Nyquist00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Nyquist00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56198,11 +56237,11 @@
     <spirit:parameter>
       <spirit:name>DAC_Mode00</spirit:name>
       <spirit:displayName>Datapath Mode</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mode00" spirit:choiceRef="choice_pairs_9b39dc27" spirit:order="498">0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Mode00" spirit:choiceRef="choice_pairs_8d876557" spirit:order="498">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mode00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_Mode00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56226,7 +56265,7 @@
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_TDD_RTS00">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="generated" xilinx:id="PARAM_ENABLEMENT.DAC_TDD_RTS00">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -56257,7 +56296,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC_Data_Width01</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width01" spirit:choiceRef="choice_list_95ac5d5c" spirit:order="503">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width01" spirit:choiceRef="choice_list_ee293667" spirit:order="503">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -56448,7 +56487,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC_Data_Width02</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width02" spirit:choiceRef="choice_list_95ac5d5c" spirit:order="519">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width02" spirit:choiceRef="choice_list_ee293667" spirit:order="519">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -56639,7 +56678,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DAC_Data_Width03</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width03" spirit:choiceRef="choice_list_95ac5d5c" spirit:order="535">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DAC_Data_Width03" spirit:choiceRef="choice_list_ee293667" spirit:order="535">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -60646,6 +60685,15 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_ADC3.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_ADC3.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_ADC3.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.ASSOCIATED_PORT" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.CLK_DOMAIN" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK_DAC0.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.DAC0_CLK.CAN_DEBUG" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.DAC0_CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.IRQ.PortWidth" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.IRQ.SENSITIVITY" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXIS.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
@@ -60752,6 +60800,26 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M3_AXIS_ACLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M3_AXIS_ACLK.PHASE" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M3_AXIS_ARESETN.POLARITY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.CLK_DOMAIN" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.HAS_TREADY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.LAYERED_METADATA" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXIS.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.ASSOCIATED_PORT" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.CLK_DOMAIN" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ACLK.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S0_AXIS_ARESETN.POLARITY" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ADDR_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.AWUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -60831,6 +60899,9 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC_Slice22_Enable" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADC_Slice30_Enable" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Axiclk_Freq" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.DAC0_Sampling_Rate" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.DAC_Data_Width00" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.DAC_Slice00_Enable" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.RF_Analyzer" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>

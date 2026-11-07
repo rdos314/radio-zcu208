@@ -10,104 +10,55 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="1,025"></ZoomEndTime>
+      <ZoomEndTime time="12"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="229"></NameColumnWidth>
+      <NameColumnWidth column_width="213"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
-   <wave_markers>
-   </wave_markers>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe2">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe2[15:0]</obj_property>
-      <obj_property name="ObjectShortName">probe2[15:0]</obj_property>
+   <WVObjectSize size="9" />
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/sample_E">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/sample_E[5:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_E[5:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_env_E</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe4">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe4[11:0]</obj_property>
-      <obj_property name="ObjectShortName">probe4[11:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/sample_N">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/sample_N[5:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_N[5:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_err_NE</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe6">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe6[11:0]</obj_property>
-      <obj_property name="ObjectShortName">probe6[11:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/sample_W">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/sample_W[5:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_W[5:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_err_WN</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe0">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe0[0:0]</obj_property>
-      <obj_property name="ObjectShortName">probe0[0:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/size">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/size[8:0]</obj_property>
+      <obj_property name="ObjectShortName">size[8:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_ana_wr</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe1">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe1[15:0]</obj_property>
-      <obj_property name="ObjectShortName">probe1[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_env_N</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   <wvobject type="logic" fp_name="ps_i/comp_low/inst/ana_trig">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/ana_trig</obj_property>
+      <obj_property name="ObjectShortName">ana_trig</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe3">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe3[15:0]</obj_property>
-      <obj_property name="ObjectShortName">probe3[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_env_W</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe5">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe5[11:0]</obj_property>
-      <obj_property name="ObjectShortName">probe5[11:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/angle">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/angle[15:0]</obj_property>
+      <obj_property name="ObjectShortName">angle[15:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_err_EW</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe8">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe8[19:0]</obj_property>
-      <obj_property name="ObjectShortName">probe8[19:0]</obj_property>
+   <wvobject type="logic" fp_name="ps_i/comp_low/inst/burst">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/burst</obj_property>
+      <obj_property name="ObjectShortName">burst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/doa_error">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/doa_error[9:0]</obj_property>
+      <obj_property name="ObjectShortName">doa_error[9:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_phase_E</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe7">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe7[19:0]</obj_property>
-      <obj_property name="ObjectShortName">probe7[19:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/comp_low/inst/freq">
+      <obj_property name="ElementShortName">ps_i/comp_low/inst/freq[19:0]</obj_property>
+      <obj_property name="ObjectShortName">freq[19:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_phase_N</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/system_ila_0/inst/probe9">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">ps_i/system_ila_0/inst/probe9[19:0]</obj_property>
-      <obj_property name="ObjectShortName">probe9[19:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="label">freq_low_46_0_phase_W</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
 </wave_config>

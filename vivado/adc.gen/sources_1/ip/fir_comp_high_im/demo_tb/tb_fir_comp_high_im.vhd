@@ -112,10 +112,10 @@ architecture tb of tb_fir_comp_high_im is
   signal s_axis_data_tdata_vect3        : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_vect0        : std_logic_vector(33 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect1        : std_logic_vector(33 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect2        : std_logic_vector(33 downto 0) := (others => '0');
-  signal m_axis_data_tdata_vect3        : std_logic_vector(33 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect0        : std_logic_vector(35 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect1        : std_logic_vector(35 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect2        : std_logic_vector(35 downto 0) := (others => '0');
+  signal m_axis_data_tdata_vect3        : std_logic_vector(35 downto 0) := (others => '0');
 
 
 begin
@@ -186,7 +186,7 @@ begin
 
     -- Procedure to drive an impulse and let the impulse response emerge on the data master channel
     -- samples is the number of input samples to drive; default is enough for impulse response output to emerge
-    procedure drive_impulse ( samples : natural := 45 ) is
+    procedure drive_impulse ( samples : natural := 129 ) is
       variable impulse : std_logic_vector(63 downto 0);
     begin
       impulse := (others => '0');  -- initialize unused bits to zero
@@ -210,7 +210,7 @@ begin
     drive_impulse(2);  -- start of impulse; data is now zero
     s_axis_data_tvalid <= '0';
     wait for CLOCK_PERIOD * 5;  -- provide no data for 5 input samples worth
-    drive_zeros(43);  -- back to normal operation
+    drive_zeros(127);  -- back to normal operation
 
     -- End of test
     report "Not a real failure. Simulation finished successfully. Test completed successfully" severity failure;
@@ -259,9 +259,9 @@ begin
   s_axis_data_tdata_vect3        <= s_axis_data_tdata(63 downto 48);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_vect0        <= m_axis_data_tdata(33 downto 0) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect1        <= m_axis_data_tdata(73 downto 40) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect2        <= m_axis_data_tdata(113 downto 80) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_vect3        <= m_axis_data_tdata(153 downto 120) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect0        <= m_axis_data_tdata(35 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect1        <= m_axis_data_tdata(75 downto 40) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect2        <= m_axis_data_tdata(115 downto 80) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_vect3        <= m_axis_data_tdata(155 downto 120) when m_axis_data_tvalid = '1';
 
 end tb;

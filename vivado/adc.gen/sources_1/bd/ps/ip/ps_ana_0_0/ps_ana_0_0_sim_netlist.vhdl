@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun May 17 12:34:03 2026
+-- Date        : Mon Jun  1 23:06:30 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_ana_0_0/ps_ana_0_0_sim_netlist.vhdl
@@ -75890,6 +75890,15 @@ architecture STRUCTURE of ps_ana_0_0_ana is
     rd_rst_busy : out STD_LOGIC
   );
   end component ps_ana_0_0_fifo_doa;
+  component ps_ana_0_0_ila_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component ps_ana_0_0_ila_0;
   component ps_ana_0_0_ila_9 is
   port (
     clk : in STD_LOGIC;
@@ -75990,22 +75999,6 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   signal \ana.phase_WN_0_reg_n_0_[7]\ : STD_LOGIC;
   signal \ana.phase_WN_0_reg_n_0_[8]\ : STD_LOGIC;
   signal \ana.phase_WN_0_reg_n_0_[9]\ : STD_LOGIC;
-  signal \ana.sample[0]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[10]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[11]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[12]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[13]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[14]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[15]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[1]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[2]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[3]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[4]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[5]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[6]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[7]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[8]_i_1_n_0\ : STD_LOGIC;
-  signal \ana.sample[9]_i_1_n_0\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[0]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[10]\ : STD_LOGIC;
   signal \ana.sample_0_reg_n_0_[11]\ : STD_LOGIC;
@@ -76105,6 +76098,7 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   attribute MARK_DEBUG of \^freq\ : signal is std.standard.true;
   signal freq_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal freq_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
+  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal phase_EW_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_EW_1 : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal phase_NE_0 : STD_LOGIC_VECTOR ( 19 downto 0 );
@@ -76333,6 +76327,9 @@ architecture STRUCTURE of ps_ana_0_0_ana is
   attribute CHECK_LICENSE_TYPE of fifo_doa_i : label is "fifo_doa,fifo_generator_v13_2_13,{}";
   attribute downgradeipidentifiedwarnings of fifo_doa_i : label is "yes";
   attribute x_core_info of fifo_doa_i : label is "fifo_generator_v13_2_13,Vivado 2025.1";
+  attribute CHECK_LICENSE_TYPE of ila_fifo : label is "ila_0,ila,{}";
+  attribute downgradeipidentifiedwarnings of ila_fifo : label is "yes";
+  attribute x_core_info of ila_fifo : label is "ila,Vivado 2025.1";
   attribute CHECK_LICENSE_TYPE of ila_i : label is "ila_9,ila,{}";
   attribute downgradeipidentifiedwarnings of ila_i : label is "yes";
   attribute x_core_info of ila_i : label is "ila,Vivado 2025.1";
@@ -80991,7 +80988,7 @@ begin
       I0 => save_sample_1(0),
       I1 => save_sample_0(0),
       I2 => save(1),
-      O => \ana.sample[0]_i_1_n_0\
+      O => \p_0_in__0\(0)
     );
 \ana.sample[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81001,7 +80998,7 @@ begin
       I0 => save_sample_1(10),
       I1 => save_sample_0(10),
       I2 => save(1),
-      O => \ana.sample[10]_i_1_n_0\
+      O => \p_0_in__0\(10)
     );
 \ana.sample[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81011,7 +81008,7 @@ begin
       I0 => save_sample_1(11),
       I1 => save_sample_0(11),
       I2 => save(1),
-      O => \ana.sample[11]_i_1_n_0\
+      O => \p_0_in__0\(11)
     );
 \ana.sample[12]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81021,7 +81018,7 @@ begin
       I0 => save_sample_1(12),
       I1 => save_sample_0(12),
       I2 => save(1),
-      O => \ana.sample[12]_i_1_n_0\
+      O => \p_0_in__0\(12)
     );
 \ana.sample[13]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81031,7 +81028,7 @@ begin
       I0 => save_sample_1(13),
       I1 => save_sample_0(13),
       I2 => save(1),
-      O => \ana.sample[13]_i_1_n_0\
+      O => \p_0_in__0\(13)
     );
 \ana.sample[14]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81041,7 +81038,7 @@ begin
       I0 => save_sample_1(14),
       I1 => save_sample_0(14),
       I2 => save(1),
-      O => \ana.sample[14]_i_1_n_0\
+      O => \p_0_in__0\(14)
     );
 \ana.sample[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81051,7 +81048,7 @@ begin
       I0 => save_sample_1(15),
       I1 => save_sample_0(15),
       I2 => save(1),
-      O => \ana.sample[15]_i_1_n_0\
+      O => \p_0_in__0\(15)
     );
 \ana.sample[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81061,7 +81058,7 @@ begin
       I0 => save_sample_1(1),
       I1 => save_sample_0(1),
       I2 => save(1),
-      O => \ana.sample[1]_i_1_n_0\
+      O => \p_0_in__0\(1)
     );
 \ana.sample[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81071,7 +81068,7 @@ begin
       I0 => save_sample_1(2),
       I1 => save_sample_0(2),
       I2 => save(1),
-      O => \ana.sample[2]_i_1_n_0\
+      O => \p_0_in__0\(2)
     );
 \ana.sample[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81081,7 +81078,7 @@ begin
       I0 => save_sample_1(3),
       I1 => save_sample_0(3),
       I2 => save(1),
-      O => \ana.sample[3]_i_1_n_0\
+      O => \p_0_in__0\(3)
     );
 \ana.sample[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81091,7 +81088,7 @@ begin
       I0 => save_sample_1(4),
       I1 => save_sample_0(4),
       I2 => save(1),
-      O => \ana.sample[4]_i_1_n_0\
+      O => \p_0_in__0\(4)
     );
 \ana.sample[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81101,7 +81098,7 @@ begin
       I0 => save_sample_1(5),
       I1 => save_sample_0(5),
       I2 => save(1),
-      O => \ana.sample[5]_i_1_n_0\
+      O => \p_0_in__0\(5)
     );
 \ana.sample[6]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81111,7 +81108,7 @@ begin
       I0 => save_sample_1(6),
       I1 => save_sample_0(6),
       I2 => save(1),
-      O => \ana.sample[6]_i_1_n_0\
+      O => \p_0_in__0\(6)
     );
 \ana.sample[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81121,7 +81118,7 @@ begin
       I0 => save_sample_1(7),
       I1 => save_sample_0(7),
       I2 => save(1),
-      O => \ana.sample[7]_i_1_n_0\
+      O => \p_0_in__0\(7)
     );
 \ana.sample[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81131,7 +81128,7 @@ begin
       I0 => save_sample_1(8),
       I1 => save_sample_0(8),
       I2 => save(1),
-      O => \ana.sample[8]_i_1_n_0\
+      O => \p_0_in__0\(8)
     );
 \ana.sample[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -81141,7 +81138,7 @@ begin
       I0 => save_sample_1(9),
       I1 => save_sample_0(9),
       I2 => save(1),
-      O => \ana.sample[9]_i_1_n_0\
+      O => \p_0_in__0\(9)
     );
 \ana.sample_0_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -81736,7 +81733,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[0]_i_1_n_0\,
+      D => \p_0_in__0\(0),
       Q => \^sample\(0),
       R => '0'
     );
@@ -81744,7 +81741,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[10]_i_1_n_0\,
+      D => \p_0_in__0\(10),
       Q => \^sample\(10),
       R => '0'
     );
@@ -81752,7 +81749,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[11]_i_1_n_0\,
+      D => \p_0_in__0\(11),
       Q => \^sample\(11),
       R => '0'
     );
@@ -81760,7 +81757,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[12]_i_1_n_0\,
+      D => \p_0_in__0\(12),
       Q => \^sample\(12),
       R => '0'
     );
@@ -81768,7 +81765,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[13]_i_1_n_0\,
+      D => \p_0_in__0\(13),
       Q => \^sample\(13),
       R => '0'
     );
@@ -81776,7 +81773,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[14]_i_1_n_0\,
+      D => \p_0_in__0\(14),
       Q => \^sample\(14),
       R => '0'
     );
@@ -81784,7 +81781,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[15]_i_1_n_0\,
+      D => \p_0_in__0\(15),
       Q => \^sample\(15),
       R => '0'
     );
@@ -81792,7 +81789,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[1]_i_1_n_0\,
+      D => \p_0_in__0\(1),
       Q => \^sample\(1),
       R => '0'
     );
@@ -81800,7 +81797,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[2]_i_1_n_0\,
+      D => \p_0_in__0\(2),
       Q => \^sample\(2),
       R => '0'
     );
@@ -81808,7 +81805,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[3]_i_1_n_0\,
+      D => \p_0_in__0\(3),
       Q => \^sample\(3),
       R => '0'
     );
@@ -81816,7 +81813,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[4]_i_1_n_0\,
+      D => \p_0_in__0\(4),
       Q => \^sample\(4),
       R => '0'
     );
@@ -81824,7 +81821,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[5]_i_1_n_0\,
+      D => \p_0_in__0\(5),
       Q => \^sample\(5),
       R => '0'
     );
@@ -81832,7 +81829,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[6]_i_1_n_0\,
+      D => \p_0_in__0\(6),
       Q => \^sample\(6),
       R => '0'
     );
@@ -81840,7 +81837,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[7]_i_1_n_0\,
+      D => \p_0_in__0\(7),
       Q => \^sample\(7),
       R => '0'
     );
@@ -81848,7 +81845,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[8]_i_1_n_0\,
+      D => \p_0_in__0\(8),
       Q => \^sample\(8),
       R => '0'
     );
@@ -81856,7 +81853,7 @@ begin
      port map (
       C => clk,
       CE => \ana.doa_error[9]_i_1_n_0\,
-      D => \ana.sample[9]_i_1_n_0\,
+      D => \p_0_in__0\(9),
       Q => \^sample\(9),
       R => '0'
     );
@@ -82321,6 +82318,14 @@ fifo_doa_i: component ps_ana_0_0_fifo_doa
       wr_clk => fifo_clk,
       wr_en => ana_fifo_wr,
       wr_rst_busy => NLW_fifo_doa_i_wr_rst_busy_UNCONNECTED
+    );
+ila_fifo: component ps_ana_0_0_ila_0
+     port map (
+      clk => fifo_clk,
+      probe0(0) => ana_wr,
+      probe1(15 downto 0) => env_N(15 downto 0),
+      probe2(15 downto 0) => env_E(15 downto 0),
+      probe3(15 downto 0) => env_W(15 downto 0)
     );
 ila_i: component ps_ana_0_0_ila_9
      port map (

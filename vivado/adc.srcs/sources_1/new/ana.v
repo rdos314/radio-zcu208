@@ -214,7 +214,13 @@ doa_calc doa_calc_1 (
     .sample_W(save_sample_W_1)    
 );
 
-
+	ila_0 ila_fifo (
+		.clk(fifo_clk),                // input wire clk
+		.probe0(ana_wr),               // input wire [0:0]  probe3
+		.probe1(env_N),                // input wire [15:0]  probe3
+		.probe2(env_E),                // input wire [15:0]  probe3
+		.probe3(env_W)                 // input wire [15:0]  probe3
+);
 
 	ila_9 ila_i (
 		.clk(clk),                    // input wire clk

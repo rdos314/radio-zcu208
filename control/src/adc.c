@@ -92,7 +92,8 @@ bool StartAdc()
 	status = XRFdc_GetIPStatus(&RFdcInst, &IPStatus);
     if (status != XRFDC_SUCCESS)
 		return false;
-	
+
+/*	
     DsaSettings.DisableRTS = 0;      // Keep the attenuator active
     DsaSettings.Attenuation = 9.0;   // Set our exact protection ceiling
 
@@ -114,6 +115,7 @@ bool StartAdc()
     status = XRFdc_SetDSA(&RFdcInst, 3, 0, &DsaSettings);
     if (status != XRFDC_SUCCESS) return false;
 
+*/
     /* Initialize ADC MTS Settings */
     XRFdc_MultiConverter_Init(&ADC_Sync_Config, 0, 0, XRFDC_TILE_ID0);
  

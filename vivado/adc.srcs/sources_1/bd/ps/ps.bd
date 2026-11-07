@@ -7,8 +7,7 @@
       "name": "ps",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2025.1",
-      "validated": "true"
+      "tool_version": "2025.1"
     },
     "design_tree": {
       "zynq_ultra_ps_e_0": "",
@@ -46,8 +45,7 @@
       "gpio_linux_ptr": "",
       "axi_smc_2": "",
       "axis_dwidth_converter_0": "",
-      "rst_ps_333M": "",
-      "system_ila_0": ""
+      "rst_ps_333M": ""
     },
     "interface_ports": {
       "led_8bits": {
@@ -414,24 +412,8 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "CLK_DOMAIN": {
-            "value": "ps_pl_clk_p",
-            "value_src": "default"
-          },
           "FREQ_HZ": {
             "value": "125000000"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
           }
         }
       },
@@ -439,24 +421,8 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "CLK_DOMAIN": {
-            "value": "ps_pl_clk_n",
-            "value_src": "default"
-          },
           "FREQ_HZ": {
             "value": "125000000"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
           }
         }
       },
@@ -464,24 +430,8 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "CLK_DOMAIN": {
-            "value": "ps_pl_sysref_p",
-            "value_src": "default"
-          },
           "FREQ_HZ": {
             "value": "10000000"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
           }
         }
       },
@@ -489,24 +439,8 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "CLK_DOMAIN": {
-            "value": "ps_pl_sysref_n",
-            "value_src": "default"
-          },
           "FREQ_HZ": {
             "value": "10000000"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
           }
         }
       },
@@ -514,10 +448,6 @@
         "type": "rst",
         "direction": "I",
         "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
           "POLARITY": {
             "value": "ACTIVE_HIGH"
           }
@@ -2011,6 +1941,15 @@
           },
           "Axiclk_Freq": {
             "value": "100"
+          },
+          "DAC0_Sampling_Rate": {
+            "value": "2"
+          },
+          "DAC_Data_Width00": {
+            "value": "4"
+          },
+          "DAC_Slice00_Enable": {
+            "value": "true"
           },
           "RF_Analyzer": {
             "value": "0"
@@ -5581,63 +5520,6 @@
             "value": "true"
           }
         }
-      },
-      "system_ila_0": {
-        "vlnv": "xilinx.com:ip:system_ila:1.1",
-        "ip_revision": "21",
-        "xci_name": "ps_system_ila_0_1",
-        "xci_path": "ip/ps_system_ila_0_1/ps_system_ila_0_1.xci",
-        "inst_hier_path": "system_ila_0",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "C_MON_TYPE": {
-            "value": "MIX"
-          },
-          "C_NUM_MONITOR_SLOTS": {
-            "value": "1"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "10"
-          },
-          "C_PROBE0_TYPE": {
-            "value": "0"
-          },
-          "C_PROBE1_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE2_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE3_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE4_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE5_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE6_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE7_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE8_TYPE": {
-            "value": "1"
-          },
-          "C_PROBE9_TYPE": {
-            "value": "1"
-          }
-        },
-        "interface_ports": {
-          "SLOT_0_AXI": {
-            "mode": "Monitor",
-            "monitor_type": "SlaveType",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -5858,8 +5740,8 @@
           "adc_control_0/config_adr",
           "comp_ana_low/config_adr",
           "comp_ana_high/config_adr",
-          "ana_low/config_adr",
-          "ana_high/config_adr"
+          "ana_high/config_adr",
+          "ana_low/config_adr"
         ]
       },
       "adc_control_0_config_data": {
@@ -5867,8 +5749,8 @@
           "adc_control_0/config_data",
           "comp_ana_low/config_data",
           "comp_ana_high/config_data",
-          "ana_low/config_data",
-          "ana_high/config_data"
+          "ana_high/config_data",
+          "ana_low/config_data"
         ]
       },
       "adc_control_0_config_high_wr": {
@@ -6507,152 +6389,62 @@
       "freq_low_46_0_ana_wr": {
         "ports": [
           "freq_low_46_0/ana_wr",
-          "system_ila_0/probe0",
           "ana_low/ana_wr"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_env_E": {
         "ports": [
           "freq_low_46_0/env_E",
-          "system_ila_0/probe2",
           "ana_low/env_E"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_env_N": {
         "ports": [
           "freq_low_46_0/env_N",
-          "system_ila_0/probe1",
           "ana_low/env_N"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_env_W": {
         "ports": [
           "freq_low_46_0/env_W",
-          "system_ila_0/probe3",
           "ana_low/env_W"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_err_EW": {
         "ports": [
           "freq_low_46_0/err_EW",
-          "system_ila_0/probe5",
           "ana_low/err_EW"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_err_NE": {
         "ports": [
           "freq_low_46_0/err_NE",
-          "system_ila_0/probe4",
           "ana_low/err_NE"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_err_WN": {
         "ports": [
           "freq_low_46_0/err_WN",
-          "system_ila_0/probe6",
           "ana_low/err_WN"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_phase_E": {
         "ports": [
           "freq_low_46_0/phase_E",
-          "system_ila_0/probe8",
           "ana_low/phase_E"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_phase_N": {
         "ports": [
           "freq_low_46_0/phase_N",
-          "system_ila_0/probe7",
           "ana_low/phase_N"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "freq_low_46_0_phase_W": {
         "ports": [
           "freq_low_46_0/phase_W",
-          "system_ila_0/probe9",
           "ana_low/phase_W"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
+        ]
       },
       "gpio_linux_ptr_gpio2_io_o": {
         "ports": [
@@ -6731,8 +6523,8 @@
       "mts_0_comp1_clk": {
         "ports": [
           "mts_0/comp1_clk",
-          "comp_high/clk",
-          "comp_ana_high/fifo_clk"
+          "comp_ana_high/fifo_clk",
+          "comp_high/clk"
         ]
       },
       "mts_0_comp1_reset": {
@@ -6779,12 +6571,12 @@
           "usp_rf_data_converter_0/m1_axis_aclk",
           "usp_rf_data_converter_0/m2_axis_aclk",
           "usp_rf_data_converter_0/m3_axis_aclk",
-          "freq_low_46_0/fifo_clk",
-          "freq_high_189_0/fifo_clk",
           "deci_high/clk",
           "deci_low/clk",
+          "comp_low/raw_fifo_clk",
           "comp_high/raw_fifo_clk",
-          "comp_low/raw_fifo_clk"
+          "freq_low_46_0/fifo_clk",
+          "freq_high_189_0/fifo_clk"
         ]
       },
       "mts_0_deci_resetn": {
@@ -6815,15 +6607,13 @@
         "ports": [
           "mts_0/freq0_clk",
           "freq_low_46_0/clk",
-          "system_ila_0/clk",
           "ana_low/fifo_clk"
         ]
       },
       "mts_0_freq0_reset": {
         "ports": [
           "mts_0/freq0_reset",
-          "freq_low_46_0/reset",
-          "system_ila_0/resetn"
+          "freq_low_46_0/reset"
         ]
       },
       "mts_0_freq1_clk": {
@@ -7008,8 +6798,8 @@
           "comp_ana_high/pl_clk",
           "adc_control_0/clk",
           "mts_0/axi_clk",
-          "ana_low/config_clk",
-          "ana_high/config_clk"
+          "ana_high/config_clk",
+          "ana_low/config_clk"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
