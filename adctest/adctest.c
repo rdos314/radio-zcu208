@@ -1,3 +1,6 @@
+#include "xil_io.h"
+#include "xgpio_l.h"
+
 #include "xparameters.h"
 #include "xtmrctr.h"
 #include <stdbool.h>
@@ -6,6 +9,7 @@
 #include <stdlib.h>
 #include "math.h"
 #include "memory.h"
+
 
 #define PI              3.1415926535897932384626433832795028841971693993751
 #define DEG2RAD         (PI / 180.0)
@@ -294,10 +298,19 @@ void StartSim()
 	control->cmd = 0;
 }
 
+
+void TestGain(uint16_t val)
+{
+    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, val);
+}
+
+
 int main()
 {
     int i;
     double a;
+
+    TestGain(0x55AA);
 
     for (i = 0; i < 36; i++)
     {

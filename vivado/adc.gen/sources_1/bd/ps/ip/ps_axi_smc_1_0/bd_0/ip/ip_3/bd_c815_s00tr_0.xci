@@ -27,7 +27,7 @@
         "NUM_WRITE_OUTSTANDING": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "NUM_READ_OUTSTANDING": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SUPPORTS_READ_DEADLOCK": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "SUPPORTS_WRITE_DEADLOCK": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "SUPPORTS_WRITE_DEADLOCK": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SINGLE_ISSUING": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "bd_c815_s00tr_0", "resolve_type": "user", "usage": "all" } ]
       },
@@ -46,7 +46,7 @@
         "C_M_ID_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ADDR_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_SUPPORTS_READ_DEADLOCK": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_SUPPORTS_WRITE_DEADLOCK": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SUPPORTS_WRITE_DEADLOCK": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_READ_ACCEPTANCE": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_WRITE_ACCEPTANCE": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_NUM_READ_OUTSTANDING": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],

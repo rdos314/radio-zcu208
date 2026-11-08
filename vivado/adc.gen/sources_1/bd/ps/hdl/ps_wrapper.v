@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Sat Nov  7 16:19:50 2026
+//Date        : Sat Nov  7 21:29:36 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps_wrapper.bd
 //Design      : ps_wrapper
@@ -38,6 +38,10 @@ module ps_wrapper
     pl_sysref_n,
     pl_sysref_p,
     reset,
+    rf_clk,
+    rf_in,
+    rf_out,
+    rf_sel,
     sysref_in_diff_n,
     sysref_in_diff_p,
     vin0_01_v_n,
@@ -81,6 +85,10 @@ module ps_wrapper
   input pl_sysref_n;
   input pl_sysref_p;
   input reset;
+  output rf_clk;
+  input rf_in;
+  output rf_out;
+  output [2:0]rf_sel;
   input sysref_in_diff_n;
   input sysref_in_diff_p;
   input vin0_01_v_n;
@@ -125,6 +133,10 @@ module ps_wrapper
   wire pl_sysref_n;
   wire pl_sysref_p;
   wire reset;
+  wire rf_clk;
+  wire rf_in;
+  wire rf_out;
+  wire [2:0]rf_sel;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
   wire vin0_01_v_n;
@@ -170,6 +182,10 @@ module ps_wrapper
         .pl_sysref_n(pl_sysref_n),
         .pl_sysref_p(pl_sysref_p),
         .reset(reset),
+        .rf_clk(rf_clk),
+        .rf_in(rf_in),
+        .rf_out(rf_out),
+        .rf_sel(rf_sel),
         .sysref_in_diff_n(sysref_in_diff_n),
         .sysref_in_diff_p(sysref_in_diff_p),
         .vin0_01_v_n(vin0_01_v_n),

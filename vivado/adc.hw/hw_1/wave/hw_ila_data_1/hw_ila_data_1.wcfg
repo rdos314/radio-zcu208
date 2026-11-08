@@ -10,31 +10,59 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="8"></ZoomEndTime>
+      <ZoomEndTime time="2,049"></ZoomEndTime>
       <Cursor1Time time="0"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="327"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <NameColumnWidth column_width="326"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
-   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_W">
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_W[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_W[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="ps_i/ana_high/inst/ana_wr">
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/ana_wr</obj_property>
-      <obj_property name="ObjectShortName">ana_wr</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_E">
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_E[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_E[15:0]</obj_property>
+   <WVObjectSize size="6" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/axi_in">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/axi_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">axi_in[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ps_i/ana_high/inst/env_N">
-      <obj_property name="ElementShortName">ps_i/ana_high/inst/env_N[15:0]</obj_property>
-      <obj_property name="ObjectShortName">env_N[15:0]</obj_property>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/axi_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/axi_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">axi_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/spi_clk">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/spi_clk</obj_property>
+      <obj_property name="ObjectShortName">spi_clk</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/spi_in">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/spi_in</obj_property>
+      <obj_property name="ObjectShortName">spi_in</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/spi_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/spi_out</obj_property>
+      <obj_property name="ObjectShortName">spi_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/spi_sel">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/spi_sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">spi_sel[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
 </wave_config>

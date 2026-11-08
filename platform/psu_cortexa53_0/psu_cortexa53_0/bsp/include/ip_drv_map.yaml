@@ -1,6 +1,9 @@
 axi_bram_ctrl_0:
 - axi_bram_ctrl
 - bram
+axi_rf_gain:
+- axi_gpio
+- gpio
 clk104_mux:
 - axi_gpio
 - gpio

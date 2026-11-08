@@ -23,12 +23,12 @@
 module spi_gain(
     input wire clk,
     input wire resetn,
-    input wire axi_in[31:0],
-    output reg axi_out[31:0],
+    input wire [31:0] axi_in,
+    output reg [31:0] axi_out,
 	output reg spi_clk,
     input wire spi_in,
 	output reg spi_out,
-	output reg spi_sel[2:0]
+	output reg [2:0] spi_sel
     );
 
 	ila_2 ila_i (
