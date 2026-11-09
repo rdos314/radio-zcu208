@@ -307,6 +307,9 @@ void WriteGain(int band, int device, int address, char val)
     data |= device << 11;
     data |= band << 13;
 
+    while (XGpio_ReadReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA2_OFFSET) != 0)
+        ;
+
     XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data | 0x8000);
     XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data);
 }
@@ -318,6 +321,9 @@ char ReadGain(int band, int device, int address)
     data |= address << 8;
     data |= device << 11;
     data |= band << 13;
+
+    while (XGpio_ReadReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA2_OFFSET) != 0)
+        ;
 
     XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data | 0x8000);
     XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data);
