@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sat Nov  7 21:30:11 2026
+-- Date        : Sun Nov  8 20:53:46 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_spi_gain_0_0/ps_spi_gain_0_0_stub.vhdl
@@ -17,8 +17,8 @@ entity ps_spi_gain_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     resetn : in STD_LOGIC;
-    axi_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    axi_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    axi_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    axi_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     spi_clk : out STD_LOGIC;
     spi_in : in STD_LOGIC;
     spi_out : out STD_LOGIC;
@@ -39,7 +39,7 @@ architecture stub of ps_spi_gain_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,resetn,axi_in[31:0],axi_out[31:0],spi_clk,spi_in,spi_out,spi_sel[2:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,resetn,axi_in[15:0],axi_out[15:0],spi_clk,spi_in,spi_out,spi_sel[2:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

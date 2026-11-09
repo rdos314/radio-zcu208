@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Sat Nov  7 21:29:36 2026
+//Date        : Sun Nov  8 20:53:09 2026
 //Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target ps.bd
 //Design      : ps
@@ -221,7 +221,7 @@ module ps
   wire axi_int_0_low_full;
   wire axi_int_0_low_rd;
   wire [26:0]axi_int_0_wr_ptr;
-  wire [31:0]axi_rf_gain_gpio_io_o;
+  wire [15:0]axi_rf_gain_gpio_io_o;
   wire [48:0]axi_smc_1_M00_AXI_AWADDR;
   wire [1:0]axi_smc_1_M00_AXI_AWBURST;
   wire [3:0]axi_smc_1_M00_AXI_AWCACHE;
@@ -535,7 +535,7 @@ module ps
   wire smartconnect_0_M00_AXI_WREADY;
   wire [31:0]smartconnect_0_M00_AXI_WSTRB;
   wire smartconnect_0_M00_AXI_WVALID;
-  wire [31:0]spi_gain_0_axi_out;
+  wire [15:0]spi_gain_0_axi_out;
   wire sysref_in_diff_n;
   wire sysref_in_diff_p;
   wire [127:0]usp_rf_data_converter_0_m00_axis_tdata;

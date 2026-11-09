@@ -298,19 +298,40 @@ void StartSim()
 	control->cmd = 0;
 }
 
-
-void TestGain(uint16_t val)
+void WriteGain(int band, int device, int address, char val)
 {
-    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, val);
+    int data = 0;
+
+    data |= val;
+    data |= address << 8;
+    data |= device << 11;
+    data |= band << 13;
+
+    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data | 0x8000);
+    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data);
 }
 
+char ReadGain(int band, int device, int address)
+{
+    int data = 0x4000;
+
+    data |= address << 8;
+    data |= device << 11;
+    data |= band << 13;
+
+    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data | 0x8000);
+    XGpio_WriteReg(XPAR_AXI_RF_GAIN_BASEADDR, XGPIO_DATA_OFFSET, data);
+}
 
 int main()
 {
     int i;
     double a;
+    char val;
 
-    TestGain(0x55AA);
+    WriteGain(1, 1, 2, 5);
+    val = ReadGain(1, 1, 2);
+    val++;
 
     for (i = 0; i < 36; i++)
     {

@@ -5750,12 +5750,12 @@
           },
           "axi_in": {
             "direction": "I",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "axi_out": {
             "direction": "O",
-            "left": "31",
+            "left": "15",
             "right": "0"
           },
           "spi_clk": {
@@ -5788,6 +5788,12 @@
           },
           "C_ALL_OUTPUTS": {
             "value": "1"
+          },
+          "C_GPIO2_WIDTH": {
+            "value": "16"
+          },
+          "C_GPIO_WIDTH": {
+            "value": "16"
           },
           "C_IS_DUAL": {
             "value": "1"
