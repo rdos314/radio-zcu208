@@ -83,6 +83,7 @@ generate
 	       if (req_start != prev_start)
 	       begin
 	           prev_start <= req_start;
+
 	           if (req_start == 1)
 	               start <= 1;
 	           else
@@ -97,6 +98,7 @@ generate
 	       start <= 0;
 	   end
     end
+
 	always @(posedge clk) 
 	begin
 		if (resetn)
@@ -112,12 +114,15 @@ generate
     				end
 	    			else
 		    		begin
-			    		delay <= delay - 1;
 				    	toggle_clk <= 0;
+			    		delay <= delay - 1;
     				end
     			end
     			else
+                begin
+                    toggle_clk <= 0;
     			    delay <= 0;
+                end
 			end
 			else
 			begin
@@ -170,6 +175,7 @@ generate
         else
         begin
             busy <= 0;
+            counter <= 0;
             curr_clk <= 0;
             curr_out <= 0;
         end
@@ -196,6 +202,8 @@ generate
         else
         begin
             spi_sel <= 3'b111;
+            spi_clk <= 1;
+            spi_out <= 1;
             axi_out[15:8] <= 0;
         end
 	end
