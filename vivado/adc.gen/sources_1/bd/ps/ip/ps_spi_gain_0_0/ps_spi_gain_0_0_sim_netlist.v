@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun Nov  8 20:53:46 2026
+// Date        : Tue Nov 10 20:08:18 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_spi_gain_0_0/ps_spi_gain_0_0_sim_netlist.v
@@ -34,41 +34,22 @@ module ps_spi_gain_0_0
   output spi_out;
   output [2:0]spi_sel;
 
-  wire \<const0> ;
   wire [15:0]axi_in;
-  wire [15:15]\^axi_out ;
+  wire [15:0]axi_out;
   wire clk;
   wire resetn;
   wire spi_clk;
+  wire spi_in;
   wire spi_out;
   wire [2:0]spi_sel;
-  wire [14:0]NLW_inst_axi_out_UNCONNECTED;
 
-  assign axi_out[15] = \^axi_out [15];
-  assign axi_out[14] = \<const0> ;
-  assign axi_out[13] = \<const0> ;
-  assign axi_out[12] = \<const0> ;
-  assign axi_out[11] = \<const0> ;
-  assign axi_out[10] = \<const0> ;
-  assign axi_out[9] = \<const0> ;
-  assign axi_out[8] = \<const0> ;
-  assign axi_out[7] = \<const0> ;
-  assign axi_out[6] = \<const0> ;
-  assign axi_out[5] = \<const0> ;
-  assign axi_out[4] = \<const0> ;
-  assign axi_out[3] = \<const0> ;
-  assign axi_out[2] = \<const0> ;
-  assign axi_out[1] = \<const0> ;
-  assign axi_out[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
   ps_spi_gain_0_0_spi_gain inst
        (.axi_in(axi_in),
-        .axi_out({\^axi_out ,NLW_inst_axi_out_UNCONNECTED[14:0]}),
+        .axi_out(axi_out),
         .clk(clk),
         .resetn(resetn),
         .spi_clk(spi_clk),
-        .spi_in(1'b0),
+        .spi_in(spi_in),
         .spi_out(spi_out),
         .spi_sel(spi_sel));
 endmodule
@@ -95,7 +76,9 @@ module ps_spi_gain_0_0_ila_2
     probe15,
     probe16,
     probe17,
-    probe18);
+    probe18,
+    probe19,
+    probe20);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
@@ -108,14 +91,16 @@ module ps_spi_gain_0_0_ila_2
   input [2:0]probe8;
   input [0:0]probe9;
   input [0:0]probe10;
-  input [7:0]probe11;
+  input [0:0]probe11;
   input [3:0]probe12;
   input [14:0]probe13;
-  input [0:0]probe14;
+  input [7:0]probe14;
   input [0:0]probe15;
-  input [7:0]probe16;
-  input [0:0]probe17;
-  input [2:0]probe18;
+  input [15:0]probe16;
+  input [15:0]probe17;
+  input [0:0]probe18;
+  input [0:0]probe19;
+  input [2:0]probe20;
 
 
 endmodule
@@ -139,21 +124,21 @@ module ps_spi_gain_0_0_spi_gain
   output spi_out;
   output [2:0]spi_sel;
 
-  wire \<const0> ;
-  wire [15:15]\^axi_out ;
+  (* MARK_DEBUG *) wire [15:0]axi_out;
+  wire [7:1]axi_out0_in;
   (* MARK_DEBUG *) wire busy;
   wire clk;
   (* MARK_DEBUG *) wire [3:0]counter;
-  wire [3:0]counter0_in;
   (* MARK_DEBUG *) wire curr_clk;
   wire curr_clk0;
-  wire curr_clk3_out;
+  wire curr_clk2_out;
+  wire curr_in;
   (* MARK_DEBUG *) wire curr_out;
   wire curr_out0_out;
+  (* MARK_DEBUG *) wire curr_rd;
+  wire curr_rd6_out;
   (* MARK_DEBUG *) wire [2:0]curr_sel;
   (* MARK_DEBUG *) wire [7:0]delay;
-  (* MARK_DEBUG *) wire [7:0]out_data;
-  wire [7:5]p_0_in__0;
   wire [7:0]p_1_in__0;
   (* MARK_DEBUG *) wire prev_start;
   wire prev_start8_out;
@@ -165,16 +150,24 @@ module ps_spi_gain_0_0_spi_gain
   wire resetn;
   (* MARK_DEBUG *) wire [14:0]shift_data;
   (* MARK_DEBUG *) wire spi_clk;
+  wire \spi_gain.axi_out[0]_i_1_n_0 ;
+  wire \spi_gain.axi_out[0]_i_2_n_0 ;
   wire \spi_gain.axi_out[15]_i_1_n_0 ;
+  wire \spi_gain.axi_out[7]_i_1_n_0 ;
   wire \spi_gain.busy_i_1_n_0 ;
   wire \spi_gain.busy_i_2_n_0 ;
+  wire \spi_gain.counter[0]_i_1_n_0 ;
+  wire \spi_gain.counter[1]_i_1_n_0 ;
+  wire \spi_gain.counter[2]_i_1_n_0 ;
   wire \spi_gain.counter[3]_i_1_n_0 ;
-  wire \spi_gain.curr_out_i_2_n_0 ;
+  wire \spi_gain.counter[3]_i_2_n_0 ;
+  wire \spi_gain.counter[3]_i_3_n_0 ;
   wire \spi_gain.curr_sel[0]_i_1_n_0 ;
   wire \spi_gain.curr_sel[1]_i_1_n_0 ;
   wire \spi_gain.curr_sel[2]_i_1_n_0 ;
-  wire \spi_gain.delay[5]_i_3_n_0 ;
-  wire \spi_gain.delay[6]_i_2_n_0 ;
+  wire \spi_gain.delay[4]_i_1_n_0 ;
+  wire \spi_gain.delay[4]_i_2_n_0 ;
+  wire \spi_gain.delay[7]_i_1_n_0 ;
   wire \spi_gain.delay[7]_i_3_n_0 ;
   wire \spi_gain.delay[7]_i_4_n_0 ;
   wire \spi_gain.delay[7]_i_5_n_0 ;
@@ -193,80 +186,62 @@ module ps_spi_gain_0_0_spi_gain
   wire \spi_gain.shift_data[7]_i_1_n_0 ;
   wire \spi_gain.shift_data[8]_i_1_n_0 ;
   wire \spi_gain.shift_data[9]_i_1_n_0 ;
+  wire \spi_gain.spi_clk_i_1_n_0 ;
+  wire \spi_gain.spi_in_1_reg_n_0 ;
+  wire \spi_gain.spi_in_2_i_1_n_0 ;
   wire \spi_gain.spi_out_i_1_n_0 ;
   wire \spi_gain.spi_sel[0]_i_1_n_0 ;
   wire \spi_gain.spi_sel[1]_i_1_n_0 ;
   wire \spi_gain.spi_sel[2]_i_1_n_0 ;
   wire \spi_gain.start_i_1_n_0 ;
-  wire \spi_gain.toggle_clk_i_1_n_0 ;
+  wire spi_in;
+  wire spi_in_1;
+  wire spi_in_2;
   (* MARK_DEBUG *) wire spi_out;
   (* MARK_DEBUG *) wire [2:0]spi_sel;
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire toggle_clk;
 
-  assign axi_out[15] = \^axi_out [15];
-  assign axi_out[14] = \<const0> ;
-  assign axi_out[13] = \<const0> ;
-  assign axi_out[12] = \<const0> ;
-  assign axi_out[11] = \<const0> ;
-  assign axi_out[10] = \<const0> ;
-  assign axi_out[9] = \<const0> ;
-  assign axi_out[8] = \<const0> ;
-  assign axi_out[7] = \<const0> ;
-  assign axi_out[6] = \<const0> ;
-  assign axi_out[5] = \<const0> ;
-  assign axi_out[4] = \<const0> ;
-  assign axi_out[3] = \<const0> ;
-  assign axi_out[2] = \<const0> ;
-  assign axi_out[1] = \<const0> ;
-  assign axi_out[0] = \<const0> ;
   assign req_adr = axi_in[10:8];
   assign req_data = axi_in[7:0];
   assign req_read = axi_in[14];
   assign req_sel = axi_in[13:11];
   assign req_start = axi_in[15];
-  GND GND
-       (.G(\<const0> ));
   LUT1 #(
     .INIT(2'h2)) 
     i_0
        (.I0(1'b0),
-        .O(out_data[7]));
+        .O(axi_out[14]));
   LUT1 #(
     .INIT(2'h2)) 
     i_1
        (.I0(1'b0),
-        .O(out_data[6]));
+        .O(axi_out[13]));
   LUT1 #(
     .INIT(2'h2)) 
     i_2
        (.I0(1'b0),
-        .O(out_data[5]));
+        .O(axi_out[12]));
   LUT1 #(
     .INIT(2'h2)) 
     i_3
        (.I0(1'b0),
-        .O(out_data[4]));
+        .O(axi_out[11]));
   LUT1 #(
     .INIT(2'h2)) 
     i_4
        (.I0(1'b0),
-        .O(out_data[3]));
+        .O(axi_out[10]));
   LUT1 #(
     .INIT(2'h2)) 
     i_5
        (.I0(1'b0),
-        .O(out_data[2]));
+        .O(axi_out[9]));
   LUT1 #(
     .INIT(2'h2)) 
     i_6
        (.I0(1'b0),
-        .O(out_data[1]));
-  LUT1 #(
-    .INIT(2'h2)) 
-    i_7
-       (.I0(1'b0),
-        .O(out_data[0]));
+        .O(axi_out[8]));
   (* CHECK_LICENSE_TYPE = "ila_2,ila,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
@@ -275,15 +250,17 @@ module ps_spi_gain_0_0_spi_gain
         .probe0(req_start),
         .probe1(req_read),
         .probe10(curr_out),
-        .probe11(out_data),
+        .probe11(curr_rd),
         .probe12(counter),
         .probe13(shift_data),
-        .probe14(spi_clk),
+        .probe14(delay),
         .probe15(toggle_clk),
-        .probe16(delay),
-        .probe17(spi_out),
-        .probe18(spi_sel),
+        .probe16({req_start,req_read,req_sel,req_adr,req_data}),
+        .probe17(axi_out),
+        .probe18(spi_clk),
+        .probe19(spi_out),
         .probe2(req_sel),
+        .probe20(spi_sel),
         .probe3(req_adr),
         .probe4(req_data),
         .probe5(prev_start),
@@ -291,35 +268,158 @@ module ps_spi_gain_0_0_spi_gain
         .probe7(busy),
         .probe8(curr_sel),
         .probe9(curr_clk));
+  LUT6 #(
+    .INIT(64'h00000000BAAA8AAA)) 
+    \spi_gain.axi_out[0]_i_1 
+       (.I0(axi_out[0]),
+        .I1(curr_clk),
+        .I2(curr_rd),
+        .I3(toggle_clk),
+        .I4(curr_in),
+        .I5(\spi_gain.axi_out[0]_i_2_n_0 ),
+        .O(\spi_gain.axi_out[0]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \spi_gain.axi_out[0]_i_2 
+       (.I0(start),
+        .I1(resetn),
+        .O(\spi_gain.axi_out[0]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
     \spi_gain.axi_out[15]_i_1 
        (.I0(resetn),
         .I1(busy),
         .O(\spi_gain.axi_out[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[1]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[0]),
+        .O(axi_out0_in[1]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[2]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[1]),
+        .O(axi_out0_in[2]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[3]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[2]),
+        .O(axi_out0_in[3]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[4]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[3]),
+        .O(axi_out0_in[4]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[5]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[4]),
+        .O(axi_out0_in[5]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[6]_i_1 
+       (.I0(resetn),
+        .I1(axi_out[5]),
+        .O(axi_out0_in[6]));
+  LUT4 #(
+    .INIT(16'h40FF)) 
+    \spi_gain.axi_out[7]_i_1 
+       (.I0(curr_clk),
+        .I1(curr_rd),
+        .I2(toggle_clk),
+        .I3(resetn),
+        .O(\spi_gain.axi_out[7]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \spi_gain.axi_out[7]_i_2 
+       (.I0(resetn),
+        .I1(axi_out[6]),
+        .O(axi_out0_in[7]));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[0] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\spi_gain.axi_out[0]_i_1_n_0 ),
+        .Q(axi_out[0]),
+        .R(1'b0));
+  (* mark_debug = "yes" *) 
   FDRE \spi_gain.axi_out_reg[15] 
        (.C(clk),
         .CE(1'b1),
         .D(\spi_gain.axi_out[15]_i_1_n_0 ),
-        .Q(\^axi_out ),
+        .Q(axi_out[15]),
         .R(1'b0));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[1] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[1]),
+        .Q(axi_out[1]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[2] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[2]),
+        .Q(axi_out[2]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[3] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[3]),
+        .Q(axi_out[3]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[4] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[4]),
+        .Q(axi_out[4]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[5] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[5]),
+        .Q(axi_out[5]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[6] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[6]),
+        .Q(axi_out[6]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
+  (* mark_debug = "yes" *) 
+  FDRE \spi_gain.axi_out_reg[7] 
+       (.C(clk),
+        .CE(\spi_gain.axi_out[7]_i_1_n_0 ),
+        .D(axi_out0_in[7]),
+        .Q(axi_out[7]),
+        .R(\spi_gain.counter[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAA0000FEAA0000)) 
+    .INIT(64'hBFFF0000AAAA0000)) 
     \spi_gain.busy_i_1 
        (.I0(start),
-        .I1(counter[3]),
-        .I2(counter[2]),
-        .I3(busy),
+        .I1(\spi_gain.busy_i_2_n_0 ),
+        .I2(toggle_clk),
+        .I3(curr_clk),
         .I4(resetn),
-        .I5(\spi_gain.busy_i_2_n_0 ),
+        .I5(busy),
         .O(\spi_gain.busy_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hFFBF)) 
+    .INIT(16'h0001)) 
     \spi_gain.busy_i_2 
        (.I0(counter[0]),
-        .I1(curr_clk),
-        .I2(toggle_clk),
-        .I3(counter[1]),
+        .I1(counter[1]),
+        .I2(counter[2]),
+        .I3(counter[3]),
         .O(\spi_gain.busy_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.busy_reg 
@@ -329,120 +429,137 @@ module ps_spi_gain_0_0_spi_gain
         .Q(busy),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0FFFF0000FFFE000)) 
+    .INIT(64'h8888888822222220)) 
     \spi_gain.counter[0]_i_1 
-       (.I0(counter[3]),
-        .I1(counter[2]),
-        .I2(toggle_clk),
-        .I3(curr_clk),
-        .I4(counter[0]),
-        .I5(counter[1]),
-        .O(counter0_in[0]));
+       (.I0(resetn),
+        .I1(\spi_gain.counter[3]_i_3_n_0 ),
+        .I2(counter[3]),
+        .I3(counter[2]),
+        .I4(counter[1]),
+        .I5(counter[0]),
+        .O(\spi_gain.counter[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hBF40BF40BF40BF00)) 
+    .INIT(64'hAA00AA00AA0000A8)) 
     \spi_gain.counter[1]_i_1 
-       (.I0(counter[0]),
-        .I1(curr_clk),
-        .I2(toggle_clk),
+       (.I0(resetn),
+        .I1(counter[3]),
+        .I2(counter[2]),
+        .I3(counter[1]),
+        .I4(\spi_gain.counter[3]_i_3_n_0 ),
+        .I5(counter[0]),
+        .O(\spi_gain.counter[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAA80002AAA80000)) 
+    \spi_gain.counter[2]_i_1 
+       (.I0(resetn),
+        .I1(counter[0]),
+        .I2(\spi_gain.counter[3]_i_3_n_0 ),
         .I3(counter[1]),
         .I4(counter[2]),
         .I5(counter[3]),
-        .O(counter0_in[1]));
-  LUT6 #(
-    .INIT(64'hFFBF0040FFBF0000)) 
-    \spi_gain.counter[2]_i_1 
-       (.I0(counter[1]),
-        .I1(toggle_clk),
-        .I2(curr_clk),
-        .I3(counter[0]),
-        .I4(counter[2]),
-        .I5(counter[3]),
-        .O(counter0_in[2]));
+        .O(\spi_gain.counter[2]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
     \spi_gain.counter[3]_i_1 
-       (.I0(start),
-        .I1(resetn),
+       (.I0(resetn),
+        .I1(start),
         .O(\spi_gain.counter[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFEFFF00000000)) 
+    .INIT(64'hFFFE000000000000)) 
     \spi_gain.counter[3]_i_2 
-       (.I0(counter[2]),
-        .I1(counter[0]),
-        .I2(curr_clk),
-        .I3(toggle_clk),
-        .I4(counter[1]),
-        .I5(counter[3]),
-        .O(counter0_in[3]));
+       (.I0(counter[0]),
+        .I1(\spi_gain.counter[3]_i_3_n_0 ),
+        .I2(counter[1]),
+        .I3(counter[2]),
+        .I4(counter[3]),
+        .I5(resetn),
+        .O(\spi_gain.counter[3]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \spi_gain.counter[3]_i_3 
+       (.I0(curr_clk),
+        .I1(toggle_clk),
+        .O(\spi_gain.counter[3]_i_3_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDSE \spi_gain.counter_reg[0] 
        (.C(clk),
-        .CE(resetn),
-        .D(counter0_in[0]),
+        .CE(1'b1),
+        .D(\spi_gain.counter[0]_i_1_n_0 ),
         .Q(counter[0]),
         .S(\spi_gain.counter[3]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDSE \spi_gain.counter_reg[1] 
        (.C(clk),
-        .CE(resetn),
-        .D(counter0_in[1]),
+        .CE(1'b1),
+        .D(\spi_gain.counter[1]_i_1_n_0 ),
         .Q(counter[1]),
         .S(\spi_gain.counter[3]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDSE \spi_gain.counter_reg[2] 
        (.C(clk),
-        .CE(resetn),
-        .D(counter0_in[2]),
+        .CE(1'b1),
+        .D(\spi_gain.counter[2]_i_1_n_0 ),
         .Q(counter[2]),
         .S(\spi_gain.counter[3]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
   FDSE \spi_gain.counter_reg[3] 
        (.C(clk),
-        .CE(resetn),
-        .D(counter0_in[3]),
+        .CE(1'b1),
+        .D(\spi_gain.counter[3]_i_2_n_0 ),
         .Q(counter[3]),
         .S(\spi_gain.counter[3]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB040)) 
+    .INIT(16'hA208)) 
     \spi_gain.curr_clk_i_1 
-       (.I0(start),
+       (.I0(resetn),
         .I1(toggle_clk),
-        .I2(resetn),
+        .I2(start),
         .I3(curr_clk),
-        .O(curr_clk3_out));
+        .O(curr_clk2_out));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.curr_clk_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(curr_clk3_out),
+        .D(curr_clk2_out),
         .Q(curr_clk),
         .R(1'b0));
+  FDRE \spi_gain.curr_in_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(spi_in_2),
+        .Q(curr_in),
+        .R(\spi_gain.spi_in_2_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA0C0A0F0A0C0A000)) 
+    .INIT(64'hB080B0B0B0808080)) 
     \spi_gain.curr_out_i_1 
        (.I0(req_read),
-        .I1(curr_out),
+        .I1(start),
         .I2(resetn),
-        .I3(start),
-        .I4(\spi_gain.curr_out_i_2_n_0 ),
+        .I3(curr_out),
+        .I4(\spi_gain.counter[3]_i_3_n_0 ),
         .I5(shift_data[14]),
         .O(curr_out0_out));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \spi_gain.curr_out_i_2 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
-        .O(\spi_gain.curr_out_i_2_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.curr_out_reg 
        (.C(clk),
         .CE(1'b1),
         .D(curr_out0_out),
         .Q(curr_out),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hB080)) 
+    \spi_gain.curr_rd_i_1 
+       (.I0(req_read),
+        .I1(start),
+        .I2(resetn),
+        .I3(curr_rd),
+        .O(curr_rd6_out));
+  (* KEEP = "yes" *) 
+  FDRE \spi_gain.curr_rd_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(curr_rd6_out),
+        .Q(curr_rd),
         .R(1'b0));
   LUT3 #(
     .INIT(8'hB8)) 
@@ -489,137 +606,126 @@ module ps_spi_gain_0_0_spi_gain
         .D(\spi_gain.curr_sel[2]_i_1_n_0 ),
         .Q(curr_sel[2]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h44444440)) 
+  LUT6 #(
+    .INIT(64'h00000000FFFD0000)) 
     \spi_gain.delay[0]_i_1 
-       (.I0(delay[0]),
-        .I1(resetn),
-        .I2(delay[1]),
-        .I3(delay[2]),
-        .I4(\spi_gain.delay[7]_i_3_n_0 ),
-        .O(p_1_in__0[0]));
-  LUT5 #(
-    .INIT(32'hF00000E0)) 
-    \spi_gain.delay[1]_i_1 
        (.I0(\spi_gain.delay[7]_i_3_n_0 ),
-        .I1(delay[2]),
-        .I2(resetn),
-        .I3(delay[1]),
-        .I4(delay[0]),
-        .O(p_1_in__0[1]));
-  LUT5 #(
-    .INIT(32'hCCC00008)) 
-    \spi_gain.delay[2]_i_1 
-       (.I0(\spi_gain.delay[7]_i_3_n_0 ),
-        .I1(resetn),
-        .I2(delay[0]),
-        .I3(delay[1]),
-        .I4(delay[2]),
-        .O(p_1_in__0[2]));
-  LUT6 #(
-    .INIT(64'h8888888000000008)) 
-    \spi_gain.delay[3]_i_1 
-       (.I0(busy),
-        .I1(resetn),
-        .I2(delay[0]),
-        .I3(delay[1]),
-        .I4(delay[2]),
-        .I5(delay[3]),
-        .O(p_1_in__0[3]));
-  LUT6 #(
-    .INIT(64'hC9C9C9C800000000)) 
-    \spi_gain.delay[4]_i_1 
-       (.I0(\spi_gain.delay[7]_i_5_n_0 ),
-        .I1(delay[4]),
-        .I2(delay[3]),
-        .I3(delay[5]),
-        .I4(\spi_gain.delay[5]_i_3_n_0 ),
-        .I5(resetn),
-        .O(p_1_in__0[4]));
-  LUT6 #(
-    .INIT(64'h5557000055560000)) 
-    \spi_gain.delay[5]_i_1 
-       (.I0(busy),
-        .I1(\spi_gain.delay[7]_i_3_n_0 ),
+        .I1(delay[3]),
         .I2(delay[2]),
         .I3(delay[1]),
         .I4(resetn),
         .I5(delay[0]),
-        .O(p_0_in__0[5]));
+        .O(p_1_in__0[0]));
   LUT6 #(
-    .INIT(64'hCCC9CCC800000000)) 
-    \spi_gain.delay[5]_i_2 
-       (.I0(\spi_gain.delay[7]_i_5_n_0 ),
-        .I1(delay[5]),
-        .I2(delay[3]),
-        .I3(delay[4]),
-        .I4(\spi_gain.delay[5]_i_3_n_0 ),
-        .I5(resetn),
-        .O(p_1_in__0[5]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \spi_gain.delay[5]_i_3 
-       (.I0(delay[6]),
-        .I1(delay[7]),
-        .O(\spi_gain.delay[5]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h5555555400000001)) 
-    \spi_gain.delay[6]_i_1 
-       (.I0(\spi_gain.delay[6]_i_2_n_0 ),
-        .I1(delay[4]),
-        .I2(delay[3]),
-        .I3(delay[5]),
-        .I4(\spi_gain.delay[7]_i_5_n_0 ),
-        .I5(delay[6]),
-        .O(p_1_in__0[6]));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \spi_gain.delay[6]_i_2 
-       (.I0(busy),
-        .I1(resetn),
-        .O(\spi_gain.delay[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000080)) 
-    \spi_gain.delay[7]_i_1 
-       (.I0(busy),
-        .I1(resetn),
-        .I2(delay[0]),
-        .I3(delay[1]),
-        .I4(delay[2]),
-        .I5(\spi_gain.delay[7]_i_3_n_0 ),
-        .O(p_0_in__0[7]));
-  LUT6 #(
-    .INIT(64'h8800880088008008)) 
-    \spi_gain.delay[7]_i_2 
-       (.I0(busy),
-        .I1(resetn),
-        .I2(delay[6]),
-        .I3(delay[7]),
-        .I4(\spi_gain.delay[7]_i_4_n_0 ),
-        .I5(\spi_gain.delay[7]_i_5_n_0 ),
-        .O(p_1_in__0[7]));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \spi_gain.delay[7]_i_3 
-       (.I0(delay[5]),
-        .I1(delay[3]),
-        .I2(delay[4]),
-        .I3(delay[7]),
-        .I4(delay[6]),
-        .O(\spi_gain.delay[7]_i_3_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \spi_gain.delay[7]_i_4 
-       (.I0(delay[4]),
-        .I1(delay[3]),
-        .I2(delay[5]),
-        .O(\spi_gain.delay[7]_i_4_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \spi_gain.delay[7]_i_5 
-       (.I0(delay[2]),
+    .INIT(64'h8282828282828082)) 
+    \spi_gain.delay[1]_i_1 
+       (.I0(resetn),
         .I1(delay[1]),
         .I2(delay[0]),
+        .I3(\spi_gain.delay[7]_i_3_n_0 ),
+        .I4(delay[3]),
+        .I5(delay[2]),
+        .O(p_1_in__0[1]));
+  LUT5 #(
+    .INIT(32'h88820000)) 
+    \spi_gain.delay[2]_i_1 
+       (.I0(resetn),
+        .I1(delay[2]),
+        .I2(delay[0]),
+        .I3(delay[1]),
+        .I4(busy),
+        .O(p_1_in__0[2]));
+  LUT6 #(
+    .INIT(64'hCCCCCCC000000004)) 
+    \spi_gain.delay[3]_i_1 
+       (.I0(\spi_gain.delay[7]_i_3_n_0 ),
+        .I1(resetn),
+        .I2(delay[2]),
+        .I3(delay[0]),
+        .I4(delay[1]),
+        .I5(delay[3]),
+        .O(p_1_in__0[3]));
+  LUT6 #(
+    .INIT(64'h0010000000000000)) 
+    \spi_gain.delay[4]_i_1 
+       (.I0(delay[2]),
+        .I1(delay[3]),
+        .I2(delay[0]),
+        .I3(delay[1]),
+        .I4(\spi_gain.delay[7]_i_3_n_0 ),
+        .I5(\spi_gain.axi_out[15]_i_1_n_0 ),
+        .O(\spi_gain.delay[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFE000100000000)) 
+    \spi_gain.delay[4]_i_2 
+       (.I0(delay[0]),
+        .I1(delay[1]),
+        .I2(delay[2]),
+        .I3(delay[3]),
+        .I4(delay[4]),
+        .I5(\spi_gain.axi_out[15]_i_1_n_0 ),
+        .O(\spi_gain.delay[4]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hF0F000F00000E000)) 
+    \spi_gain.delay[5]_i_1 
+       (.I0(delay[7]),
+        .I1(delay[6]),
+        .I2(resetn),
+        .I3(\spi_gain.delay[7]_i_5_n_0 ),
+        .I4(delay[4]),
+        .I5(delay[5]),
+        .O(p_1_in__0[5]));
+  LUT6 #(
+    .INIT(64'hCCCCC0CC00000800)) 
+    \spi_gain.delay[6]_i_1 
+       (.I0(delay[7]),
+        .I1(resetn),
+        .I2(delay[4]),
+        .I3(\spi_gain.delay[7]_i_5_n_0 ),
+        .I4(delay[5]),
+        .I5(delay[6]),
+        .O(p_1_in__0[6]));
+  LUT6 #(
+    .INIT(64'h00080008AAAAAAA2)) 
+    \spi_gain.delay[7]_i_1 
+       (.I0(resetn),
+        .I1(\spi_gain.delay[7]_i_3_n_0 ),
+        .I2(\spi_gain.delay[7]_i_4_n_0 ),
+        .I3(delay[1]),
+        .I4(delay[0]),
+        .I5(busy),
+        .O(\spi_gain.delay[7]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFB000000000000)) 
+    \spi_gain.delay[7]_i_2 
+       (.I0(delay[4]),
+        .I1(\spi_gain.delay[7]_i_5_n_0 ),
+        .I2(delay[5]),
+        .I3(delay[6]),
+        .I4(delay[7]),
+        .I5(resetn),
+        .O(p_1_in__0[7]));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \spi_gain.delay[7]_i_3 
+       (.I0(delay[5]),
+        .I1(delay[6]),
+        .I2(delay[4]),
+        .I3(delay[7]),
+        .O(\spi_gain.delay[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \spi_gain.delay[7]_i_4 
+       (.I0(delay[3]),
+        .I1(delay[2]),
+        .O(\spi_gain.delay[7]_i_4_n_0 ));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \spi_gain.delay[7]_i_5 
+       (.I0(delay[0]),
+        .I1(delay[1]),
+        .I2(delay[2]),
+        .I3(delay[3]),
         .O(\spi_gain.delay[7]_i_5_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.delay_reg[0] 
@@ -627,56 +733,56 @@ module ps_spi_gain_0_0_spi_gain
         .CE(1'b1),
         .D(p_1_in__0[0]),
         .Q(delay[0]),
-        .R(p_0_in__0[5]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.delay_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[1]),
         .Q(delay[1]),
-        .R(p_0_in__0[5]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDRE \spi_gain.delay_reg[2] 
+  FDSE \spi_gain.delay_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[2]),
         .Q(delay[2]),
-        .R(p_0_in__0[5]));
+        .S(\spi_gain.delay[4]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDSE \spi_gain.delay_reg[3] 
+  FDRE \spi_gain.delay_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[3]),
         .Q(delay[3]),
-        .S(p_0_in__0[7]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDRE \spi_gain.delay_reg[4] 
+  FDSE \spi_gain.delay_reg[4] 
        (.C(clk),
         .CE(1'b1),
-        .D(p_1_in__0[4]),
+        .D(\spi_gain.delay[4]_i_2_n_0 ),
         .Q(delay[4]),
-        .R(p_0_in__0[5]));
+        .S(\spi_gain.delay[4]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.delay_reg[5] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[5]),
         .Q(delay[5]),
-        .R(p_0_in__0[5]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDSE \spi_gain.delay_reg[6] 
+  FDRE \spi_gain.delay_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[6]),
         .Q(delay[6]),
-        .S(p_0_in__0[7]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDSE \spi_gain.delay_reg[7] 
+  FDRE \spi_gain.delay_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(p_1_in__0[7]),
         .Q(delay[7]),
-        .S(p_0_in__0[7]));
+        .R(\spi_gain.delay[7]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
     \spi_gain.prev_start_i_1 
@@ -691,149 +797,149 @@ module ps_spi_gain_0_0_spi_gain
         .Q(prev_start),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'hAAAA0CCC)) 
+    .INIT(32'hCCCC0AAA)) 
     \spi_gain.shift_data[0]_i_1 
-       (.I0(req_data[0]),
-        .I1(shift_data[0]),
-        .I2(toggle_clk),
-        .I3(curr_clk),
+       (.I0(shift_data[0]),
+        .I1(req_data[0]),
+        .I2(curr_clk),
+        .I3(toggle_clk),
         .I4(start),
         .O(\spi_gain.shift_data[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[10]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_adr[2]),
+        .I1(start),
         .I2(shift_data[10]),
-        .I3(shift_data[9]),
-        .I4(start),
-        .I5(req_adr[2]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[9]),
         .O(\spi_gain.shift_data[10]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h0000ACCC)) 
+    .INIT(32'h0000CAAA)) 
     \spi_gain.shift_data[11]_i_1 
-       (.I0(shift_data[10]),
-        .I1(shift_data[11]),
+       (.I0(shift_data[11]),
+        .I1(shift_data[10]),
         .I2(toggle_clk),
         .I3(curr_clk),
         .I4(start),
         .O(\spi_gain.shift_data[11]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h0000ACCC)) 
+    .INIT(32'h0000CAAA)) 
     \spi_gain.shift_data[12]_i_1 
-       (.I0(shift_data[11]),
-        .I1(shift_data[12]),
+       (.I0(shift_data[12]),
+        .I1(shift_data[11]),
         .I2(toggle_clk),
         .I3(curr_clk),
         .I4(start),
         .O(\spi_gain.shift_data[12]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h0000ACCC)) 
+    .INIT(32'h0000CAAA)) 
     \spi_gain.shift_data[13]_i_1 
-       (.I0(shift_data[12]),
-        .I1(shift_data[13]),
+       (.I0(shift_data[13]),
+        .I1(shift_data[12]),
         .I2(toggle_clk),
         .I3(curr_clk),
         .I4(start),
         .O(\spi_gain.shift_data[13]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h0000ACCC)) 
+    .INIT(32'h0000CAAA)) 
     \spi_gain.shift_data[14]_i_1 
-       (.I0(shift_data[13]),
-        .I1(shift_data[14]),
+       (.I0(shift_data[14]),
+        .I1(shift_data[13]),
         .I2(toggle_clk),
         .I3(curr_clk),
         .I4(start),
         .O(\spi_gain.shift_data[14]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[1]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[1]),
+        .I1(start),
         .I2(shift_data[1]),
-        .I3(shift_data[0]),
-        .I4(start),
-        .I5(req_data[1]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[0]),
         .O(\spi_gain.shift_data[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[2]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[2]),
+        .I1(start),
         .I2(shift_data[2]),
-        .I3(shift_data[1]),
-        .I4(start),
-        .I5(req_data[2]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[1]),
         .O(\spi_gain.shift_data[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[3]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[3]),
+        .I1(start),
         .I2(shift_data[3]),
-        .I3(shift_data[2]),
-        .I4(start),
-        .I5(req_data[3]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[2]),
         .O(\spi_gain.shift_data[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[4]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[4]),
+        .I1(start),
         .I2(shift_data[4]),
-        .I3(shift_data[3]),
-        .I4(start),
-        .I5(req_data[4]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[3]),
         .O(\spi_gain.shift_data[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[5]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[5]),
+        .I1(start),
         .I2(shift_data[5]),
-        .I3(shift_data[4]),
-        .I4(start),
-        .I5(req_data[5]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[4]),
         .O(\spi_gain.shift_data[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[6]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[6]),
+        .I1(start),
         .I2(shift_data[6]),
-        .I3(shift_data[5]),
-        .I4(start),
-        .I5(req_data[6]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[5]),
         .O(\spi_gain.shift_data[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[7]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_data[7]),
+        .I1(start),
         .I2(shift_data[7]),
-        .I3(shift_data[6]),
-        .I4(start),
-        .I5(req_data[7]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[6]),
         .O(\spi_gain.shift_data[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[8]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_adr[0]),
+        .I1(start),
         .I2(shift_data[8]),
-        .I3(shift_data[7]),
-        .I4(start),
-        .I5(req_adr[0]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[7]),
         .O(\spi_gain.shift_data[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8700000F870)) 
+    .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[9]_i_1 
-       (.I0(curr_clk),
-        .I1(toggle_clk),
+       (.I0(req_adr[1]),
+        .I1(start),
         .I2(shift_data[9]),
-        .I3(shift_data[8]),
-        .I4(start),
-        .I5(req_adr[1]),
+        .I3(curr_clk),
+        .I4(toggle_clk),
+        .I5(shift_data[8]),
         .O(\spi_gain.shift_data[9]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   (* mark_debug = "yes" *) 
@@ -958,49 +1064,77 @@ module ps_spi_gain_0_0_spi_gain
   LUT1 #(
     .INIT(2'h1)) 
     \spi_gain.spi_clk_i_1 
+       (.I0(resetn),
+        .O(\spi_gain.spi_clk_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \spi_gain.spi_clk_i_2 
        (.I0(curr_clk),
         .O(curr_clk0));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \spi_gain.spi_clk_reg 
+  FDSE \spi_gain.spi_clk_reg 
        (.C(clk),
-        .CE(resetn),
+        .CE(1'b1),
         .D(curr_clk0),
         .Q(spi_clk),
+        .S(\spi_gain.spi_clk_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h80)) 
+    \spi_gain.spi_in_1_i_1 
+       (.I0(spi_in),
+        .I1(curr_rd),
+        .I2(resetn),
+        .O(spi_in_1));
+  FDRE \spi_gain.spi_in_1_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(spi_in_1),
+        .Q(\spi_gain.spi_in_1_reg_n_0 ),
         .R(1'b0));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \spi_gain.spi_in_2_i_1 
+       (.I0(resetn),
+        .I1(curr_rd),
+        .O(\spi_gain.spi_in_2_i_1_n_0 ));
+  FDRE \spi_gain.spi_in_2_reg 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\spi_gain.spi_in_1_reg_n_0 ),
+        .Q(spi_in_2),
+        .R(\spi_gain.spi_in_2_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \spi_gain.spi_out_i_1 
        (.I0(curr_out),
         .O(\spi_gain.spi_out_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  (* mark_debug = "yes" *) 
-  FDRE \spi_gain.spi_out_reg 
+  FDSE \spi_gain.spi_out_reg 
        (.C(clk),
-        .CE(resetn),
+        .CE(1'b1),
         .D(\spi_gain.spi_out_i_1_n_0 ),
         .Q(spi_out),
-        .R(1'b0));
+        .S(\spi_gain.spi_clk_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hF7)) 
+    .INIT(8'hBF)) 
     \spi_gain.spi_sel[0]_i_1 
-       (.I0(resetn),
+       (.I0(curr_sel[0]),
         .I1(busy),
-        .I2(curr_sel[0]),
+        .I2(resetn),
         .O(\spi_gain.spi_sel[0]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hF7)) 
+    .INIT(8'hBF)) 
     \spi_gain.spi_sel[1]_i_1 
-       (.I0(resetn),
+       (.I0(curr_sel[1]),
         .I1(busy),
-        .I2(curr_sel[1]),
+        .I2(resetn),
         .O(\spi_gain.spi_sel[1]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hF7)) 
+    .INIT(8'hBF)) 
     \spi_gain.spi_sel[2]_i_1 
-       (.I0(resetn),
+       (.I0(curr_sel[2]),
         .I1(busy),
-        .I2(curr_sel[2]),
+        .I2(resetn),
         .O(\spi_gain.spi_sel[2]_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.spi_sel_reg[0] 
@@ -1027,8 +1161,8 @@ module ps_spi_gain_0_0_spi_gain
     .INIT(8'h40)) 
     \spi_gain.start_i_1 
        (.I0(prev_start),
-        .I1(req_start),
-        .I2(resetn),
+        .I1(resetn),
+        .I2(req_start),
         .O(\spi_gain.start_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.start_reg 
@@ -1037,22 +1171,13 @@ module ps_spi_gain_0_0_spi_gain
         .D(\spi_gain.start_i_1_n_0 ),
         .Q(start),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h20202000)) 
-    \spi_gain.toggle_clk_i_1 
-       (.I0(toggle_clk),
-        .I1(busy),
-        .I2(resetn),
-        .I3(\spi_gain.delay[7]_i_3_n_0 ),
-        .I4(\spi_gain.delay[7]_i_5_n_0 ),
-        .O(\spi_gain.toggle_clk_i_1_n_0 ));
   (* KEEP = "yes" *) 
-  FDSE \spi_gain.toggle_clk_reg 
+  FDRE \spi_gain.toggle_clk_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(\spi_gain.toggle_clk_i_1_n_0 ),
+        .D(\spi_gain.delay[4]_i_1_n_0 ),
         .Q(toggle_clk),
-        .S(p_0_in__0[7]));
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL
