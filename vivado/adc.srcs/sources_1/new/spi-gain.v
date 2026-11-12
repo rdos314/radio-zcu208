@@ -31,19 +31,13 @@ module spi_gain(
 	output reg [2:0] spi_sel
     );
 	
-	wire req_start = axi_in[15];
-	wire req_read = axi_in[14];
-	wire [2:0] req_sel = axi_in[13:11];
-	wire [2:0] req_adr = axi_in[10:8];
-	wire [7:0] req_data = axi_in[7:0];
-
     reg spi_in_1;
     reg spi_in_2;
     reg curr_in;
 
     reg toggle_clk;
 	reg [7:0] delay;
-	reg prev_start;
+	reg prev;
 	reg start;
 	reg busy;
 	reg curr_clk;
@@ -55,27 +49,22 @@ module spi_gain(
 
 	ila_2 ila_i (
 		.clk(clk),                    // input wire clk
-		.probe0(req_start),           // input wire [0:0]  probe3
-		.probe1(req_read),            // input wire [0:0]  probe3
-		.probe2(req_sel),             // input wire [2:0]  probe3
-		.probe3(req_adr),             // input wire [2:0]  probe3
-		.probe4(req_data),            // input wire [7:0]  probe3
-		.probe5(prev_start),          // input wire [0:0]  probe3
-		.probe6(start),               // input wire [0:0]  probe3
-		.probe7(busy),                // input wire [0:0]  probe3
-		.probe8(curr_sel),            // input wire [2:0]  probe3
-		.probe9(curr_clk),            // input wire [0:0]  probe3
-		.probe10(curr_out),            // input wire [0:0]  probe3
-		.probe11(curr_rd),             // input wire [0:0]  probe3        
-		.probe12(counter),             // input wire [3:0]  probe3
-		.probe13(shift_data),          // input wire [14:0]  probe3
-		.probe14(delay),               // input wire [7:0]  probe3
-		.probe15(toggle_clk),          // input wire [0:0]  probe3
-		.probe16(axi_in),             // input wire [15:0]  probe3
-		.probe17(axi_out),             // input wire [15:0]  probe3
-		.probe18(spi_clk),             // input wire [0:0]  probe3
-		.probe19(spi_out),             // input wire [0:0]  probe3
-		.probe20(spi_sel)              // input wire [2:0]  probe3
+		.probe0(prev),                // input wire [0:0]  probe3
+		.probe1(start),               // input wire [0:0]  probe3
+		.probe2(busy),                // input wire [0:0]  probe3
+		.probe3(curr_sel),            // input wire [2:0]  probe3
+		.probe4(curr_clk),            // input wire [0:0]  probe3
+		.probe5(curr_out),            // input wire [0:0]  probe3
+		.probe6(curr_rd),             // input wire [0:0]  probe3        
+		.probe7(counter),             // input wire [3:0]  probe3
+		.probe8(shift_data),          // input wire [14:0]  probe3
+		.probe9(delay),               // input wire [7:0]  probe3
+		.probe10(toggle_clk),          // input wire [0:0]  probe3
+		.probe11(axi_in),             // input wire [15:0]  probe3
+		.probe12(axi_out),             // input wire [15:0]  probe3
+		.probe13(spi_clk),             // input wire [0:0]  probe3
+		.probe14(spi_out),             // input wire [0:0]  probe3
+		.probe15(spi_sel)              // input wire [2:0]  probe3
 	);
 
 
@@ -102,11 +91,11 @@ generate
 	begin
 	   if (resetn)
 	   begin
-	       if (req_start != prev_start)
+	       if (axi_in[15] != prev)
 	       begin
-	           prev_start <= req_start;
+	           prev <= axi_in[15];
 
-	           if (req_start == 1)
+	           if (axi_in[15])
 	               start <= 1;
 	           else
 	               start <= 0;
@@ -116,7 +105,7 @@ generate
 	   end
 	   else
 	   begin
-	       prev_start <= 0;
+	       prev <= 0;
 	       start <= 0;
 	   end
     end
@@ -127,12 +116,11 @@ generate
 	   begin
     	   if (start)
 	       begin
-	           curr_sel <= req_sel;
-	           curr_out <= req_read;
-               curr_rd <= req_read;
+               curr_rd <= axi_in[14];
+	           curr_sel <= axi_in[13:11];
+	           curr_out <= axi_in[14];
 	           shift_data[14:11] <= 0;
-	           shift_data[10:8] <= req_adr;
-	           shift_data[7:0] <= req_data;
+	           shift_data[10:0] <= axi_in[10:0];
 	           counter <= 15;
 	           busy <= 1;
                axi_out[7:0] <= 0;
