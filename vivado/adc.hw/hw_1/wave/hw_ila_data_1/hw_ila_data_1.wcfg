@@ -9,17 +9,25 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="763"></ZoomStartTime>
-      <ZoomEndTime time="1,837"></ZoomEndTime>
-      <Cursor1Time time="1,178"></Cursor1Time>
+      <ZoomStartTime time="1,392"></ZoomStartTime>
+      <ZoomEndTime time="1,755"></ZoomEndTime>
+      <Cursor1Time time="1,022"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="322"></NameColumnWidth>
+      <NameColumnWidth column_width="318"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="25" />
    <wave_markers>
    </wave_markers>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/axi_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/axi_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">axi_out[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/busy">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/busy</obj_property>
@@ -49,6 +57,13 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/curr_rd">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/curr_rd</obj_property>
+      <obj_property name="ObjectShortName">curr_rd</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/curr_sel">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/curr_sel[2:0]</obj_property>
@@ -61,14 +76,6 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/delay[7:0]</obj_property>
       <obj_property name="ObjectShortName">delay[7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/out_data">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/out_data[7:0]</obj_property>
-      <obj_property name="ObjectShortName">out_data[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -88,10 +95,26 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/req_adr_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_adr_1[2:0]</obj_property>
+      <obj_property name="ObjectShortName">req_adr_1[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/req_data">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_data[7:0]</obj_property>
       <obj_property name="ObjectShortName">req_data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/req_data_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_data_1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">req_data_1[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -103,6 +126,13 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/req_read_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_read_1</obj_property>
+      <obj_property name="ObjectShortName">req_read_1</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/req_sel">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_sel[2:0]</obj_property>
@@ -111,10 +141,25 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="ps_i/spi_gain_0/inst/req_sel_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_sel_1[2:0]</obj_property>
+      <obj_property name="ObjectShortName">req_sel_1[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/req_start">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_start</obj_property>
       <obj_property name="ObjectShortName">req_start</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="ps_i/spi_gain_0/inst/req_start_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ps_i/spi_gain_0/inst/req_start_1</obj_property>
+      <obj_property name="ObjectShortName">req_start_1</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Sun Nov  8 20:53:46 2026
+-- Date        : Tue Nov 10 20:08:18 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_spi_gain_0_0/ps_spi_gain_0_0_sim_netlist.vhdl
@@ -47,38 +47,41 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
     probe8 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe12 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe13 : in STD_LOGIC_VECTOR ( 14 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 2 downto 0 )
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component ps_spi_gain_0_0_ila_2;
-  signal \<const0>\ : STD_LOGIC;
-  signal \^axi_out\ : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal busy : STD_LOGIC;
+  signal \^axi_out\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of \^axi_out\ : signal is std.standard.true;
+  signal axi_out0_in : STD_LOGIC_VECTOR ( 7 downto 1 );
+  signal busy : STD_LOGIC;
   attribute MARK_DEBUG of busy : signal is std.standard.true;
   signal counter : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute MARK_DEBUG of counter : signal is std.standard.true;
-  signal counter0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal curr_clk : STD_LOGIC;
   attribute MARK_DEBUG of curr_clk : signal is std.standard.true;
   signal curr_clk0 : STD_LOGIC;
-  signal curr_clk3_out : STD_LOGIC;
+  signal curr_clk2_out : STD_LOGIC;
+  signal curr_in : STD_LOGIC;
   signal curr_out : STD_LOGIC;
   attribute MARK_DEBUG of curr_out : signal is std.standard.true;
   signal curr_out0_out : STD_LOGIC;
+  signal curr_rd : STD_LOGIC;
+  attribute MARK_DEBUG of curr_rd : signal is std.standard.true;
+  signal curr_rd6_out : STD_LOGIC;
   signal curr_sel : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute MARK_DEBUG of curr_sel : signal is std.standard.true;
   signal delay : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of delay : signal is std.standard.true;
-  signal out_data : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute MARK_DEBUG of out_data : signal is std.standard.true;
-  signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 7 downto 5 );
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal prev_start : STD_LOGIC;
   attribute MARK_DEBUG of prev_start : signal is std.standard.true;
@@ -97,16 +100,24 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   attribute MARK_DEBUG of shift_data : signal is std.standard.true;
   signal \^spi_clk\ : STD_LOGIC;
   attribute MARK_DEBUG of spi_clk : signal is std.standard.true;
+  signal \spi_gain.axi_out[0]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.axi_out[0]_i_2_n_0\ : STD_LOGIC;
   signal \spi_gain.axi_out[15]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.axi_out[7]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.busy_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.busy_i_2_n_0\ : STD_LOGIC;
+  signal \spi_gain.counter[0]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.counter[1]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.counter[2]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.counter[3]_i_1_n_0\ : STD_LOGIC;
-  signal \spi_gain.curr_out_i_2_n_0\ : STD_LOGIC;
+  signal \spi_gain.counter[3]_i_2_n_0\ : STD_LOGIC;
+  signal \spi_gain.counter[3]_i_3_n_0\ : STD_LOGIC;
   signal \spi_gain.curr_sel[0]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.curr_sel[1]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.curr_sel[2]_i_1_n_0\ : STD_LOGIC;
-  signal \spi_gain.delay[5]_i_3_n_0\ : STD_LOGIC;
-  signal \spi_gain.delay[6]_i_2_n_0\ : STD_LOGIC;
+  signal \spi_gain.delay[4]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.delay[4]_i_2_n_0\ : STD_LOGIC;
+  signal \spi_gain.delay[7]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.delay[7]_i_3_n_0\ : STD_LOGIC;
   signal \spi_gain.delay[7]_i_4_n_0\ : STD_LOGIC;
   signal \spi_gain.delay[7]_i_5_n_0\ : STD_LOGIC;
@@ -125,12 +136,16 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   signal \spi_gain.shift_data[7]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.shift_data[8]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.shift_data[9]_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.spi_clk_i_1_n_0\ : STD_LOGIC;
+  signal \spi_gain.spi_in_1_reg_n_0\ : STD_LOGIC;
+  signal \spi_gain.spi_in_2_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.spi_out_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.spi_sel[0]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.spi_sel[1]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.spi_sel[2]_i_1_n_0\ : STD_LOGIC;
   signal \spi_gain.start_i_1_n_0\ : STD_LOGIC;
-  signal \spi_gain.toggle_clk_i_1_n_0\ : STD_LOGIC;
+  signal spi_in_1 : STD_LOGIC;
+  signal spi_in_2 : STD_LOGIC;
   signal \^spi_out\ : STD_LOGIC;
   attribute MARK_DEBUG of spi_out : signal is std.standard.true;
   signal \^spi_sel\ : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -145,19 +160,25 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   attribute DowngradeIPIdentifiedWarnings of ila_i : label is "yes";
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of ila_i : label is "ila,Vivado 2025.1";
+  attribute mark_debug_string : string;
+  attribute mark_debug_string of \spi_gain.axi_out_reg[0]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[15]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[1]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[2]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[3]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[4]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[5]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[6]\ : label is "yes";
+  attribute mark_debug_string of \spi_gain.axi_out_reg[7]\ : label is "yes";
   attribute KEEP : string;
   attribute KEEP of \spi_gain.busy_reg\ : label is "yes";
   attribute KEEP of \spi_gain.counter_reg[0]\ : label is "yes";
-  attribute mark_debug_string : string;
-  attribute mark_debug_string of \spi_gain.counter_reg[0]\ : label is "yes";
   attribute KEEP of \spi_gain.counter_reg[1]\ : label is "yes";
-  attribute mark_debug_string of \spi_gain.counter_reg[1]\ : label is "yes";
   attribute KEEP of \spi_gain.counter_reg[2]\ : label is "yes";
-  attribute mark_debug_string of \spi_gain.counter_reg[2]\ : label is "yes";
   attribute KEEP of \spi_gain.counter_reg[3]\ : label is "yes";
-  attribute mark_debug_string of \spi_gain.counter_reg[3]\ : label is "yes";
   attribute KEEP of \spi_gain.curr_clk_reg\ : label is "yes";
   attribute KEEP of \spi_gain.curr_out_reg\ : label is "yes";
+  attribute KEEP of \spi_gain.curr_rd_reg\ : label is "yes";
   attribute KEEP of \spi_gain.curr_sel_reg[0]\ : label is "yes";
   attribute mark_debug_string of \spi_gain.curr_sel_reg[0]\ : label is "yes";
   attribute KEEP of \spi_gain.curr_sel_reg[1]\ : label is "yes";
@@ -204,31 +225,14 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   attribute KEEP of \spi_gain.shift_data_reg[9]\ : label is "yes";
   attribute mark_debug_string of \spi_gain.shift_data_reg[9]\ : label is "yes";
   attribute KEEP of \spi_gain.spi_clk_reg\ : label is "yes";
-  attribute mark_debug_string of \spi_gain.spi_clk_reg\ : label is "yes";
   attribute KEEP of \spi_gain.spi_out_reg\ : label is "yes";
-  attribute mark_debug_string of \spi_gain.spi_out_reg\ : label is "yes";
   attribute KEEP of \spi_gain.spi_sel_reg[0]\ : label is "yes";
   attribute KEEP of \spi_gain.spi_sel_reg[1]\ : label is "yes";
   attribute KEEP of \spi_gain.spi_sel_reg[2]\ : label is "yes";
   attribute KEEP of \spi_gain.start_reg\ : label is "yes";
   attribute KEEP of \spi_gain.toggle_clk_reg\ : label is "yes";
 begin
-  axi_out(15) <= \^axi_out\(15);
-  axi_out(14) <= \<const0>\;
-  axi_out(13) <= \<const0>\;
-  axi_out(12) <= \<const0>\;
-  axi_out(11) <= \<const0>\;
-  axi_out(10) <= \<const0>\;
-  axi_out(9) <= \<const0>\;
-  axi_out(8) <= \<const0>\;
-  axi_out(7) <= \<const0>\;
-  axi_out(6) <= \<const0>\;
-  axi_out(5) <= \<const0>\;
-  axi_out(4) <= \<const0>\;
-  axi_out(3) <= \<const0>\;
-  axi_out(2) <= \<const0>\;
-  axi_out(1) <= \<const0>\;
-  axi_out(0) <= \<const0>\;
+  axi_out(15 downto 0) <= \^axi_out\(15 downto 0);
   req_adr(2 downto 0) <= axi_in(10 downto 8);
   req_data(7 downto 0) <= axi_in(7 downto 0);
   req_read <= axi_in(14);
@@ -237,17 +241,13 @@ begin
   spi_clk <= \^spi_clk\;
   spi_out <= \^spi_out\;
   spi_sel(2 downto 0) <= \^spi_sel\(2 downto 0);
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
-    );
 i_0: unisim.vcomponents.LUT1
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => '0',
-      O => out_data(7)
+      O => \^axi_out\(14)
     );
 i_1: unisim.vcomponents.LUT1
     generic map(
@@ -255,7 +255,7 @@ i_1: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(6)
+      O => \^axi_out\(13)
     );
 i_2: unisim.vcomponents.LUT1
     generic map(
@@ -263,7 +263,7 @@ i_2: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(5)
+      O => \^axi_out\(12)
     );
 i_3: unisim.vcomponents.LUT1
     generic map(
@@ -271,7 +271,7 @@ i_3: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(4)
+      O => \^axi_out\(11)
     );
 i_4: unisim.vcomponents.LUT1
     generic map(
@@ -279,7 +279,7 @@ i_4: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(3)
+      O => \^axi_out\(10)
     );
 i_5: unisim.vcomponents.LUT1
     generic map(
@@ -287,7 +287,7 @@ i_5: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(2)
+      O => \^axi_out\(9)
     );
 i_6: unisim.vcomponents.LUT1
     generic map(
@@ -295,15 +295,7 @@ i_6: unisim.vcomponents.LUT1
     )
         port map (
       I0 => '0',
-      O => out_data(1)
-    );
-i_7: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => out_data(0)
+      O => \^axi_out\(8)
     );
 ila_i: component ps_spi_gain_0_0_ila_2
      port map (
@@ -311,15 +303,21 @@ ila_i: component ps_spi_gain_0_0_ila_2
       probe0(0) => req_start,
       probe1(0) => req_read,
       probe10(0) => curr_out,
-      probe11(7 downto 0) => out_data(7 downto 0),
+      probe11(0) => curr_rd,
       probe12(3 downto 0) => counter(3 downto 0),
       probe13(14 downto 0) => shift_data(14 downto 0),
-      probe14(0) => \^spi_clk\,
+      probe14(7 downto 0) => delay(7 downto 0),
       probe15(0) => toggle_clk,
-      probe16(7 downto 0) => delay(7 downto 0),
-      probe17(0) => \^spi_out\,
-      probe18(2 downto 0) => \^spi_sel\(2 downto 0),
+      probe16(15) => req_start,
+      probe16(14) => req_read,
+      probe16(13 downto 11) => req_sel(2 downto 0),
+      probe16(10 downto 8) => req_adr(2 downto 0),
+      probe16(7 downto 0) => req_data(7 downto 0),
+      probe17(15 downto 0) => \^axi_out\(15 downto 0),
+      probe18(0) => \^spi_clk\,
+      probe19(0) => \^spi_out\,
       probe2(2 downto 0) => req_sel(2 downto 0),
+      probe20(2 downto 0) => \^spi_sel\(2 downto 0),
       probe3(2 downto 0) => req_adr(2 downto 0),
       probe4(7 downto 0) => req_data(7 downto 0),
       probe5(0) => prev_start,
@@ -327,6 +325,28 @@ ila_i: component ps_spi_gain_0_0_ila_2
       probe7(0) => busy,
       probe8(2 downto 0) => curr_sel(2 downto 0),
       probe9(0) => curr_clk
+    );
+\spi_gain.axi_out[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00000000BAAA8AAA"
+    )
+        port map (
+      I0 => \^axi_out\(0),
+      I1 => curr_clk,
+      I2 => curr_rd,
+      I3 => toggle_clk,
+      I4 => curr_in,
+      I5 => \spi_gain.axi_out[0]_i_2_n_0\,
+      O => \spi_gain.axi_out[0]_i_1_n_0\
+    );
+\spi_gain.axi_out[0]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"B"
+    )
+        port map (
+      I0 => start,
+      I1 => resetn,
+      O => \spi_gain.axi_out[0]_i_2_n_0\
     );
 \spi_gain.axi_out[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -337,6 +357,88 @@ ila_i: component ps_spi_gain_0_0_ila_2
       I1 => busy,
       O => \spi_gain.axi_out[15]_i_1_n_0\
     );
+\spi_gain.axi_out[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(0),
+      O => axi_out0_in(1)
+    );
+\spi_gain.axi_out[2]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(1),
+      O => axi_out0_in(2)
+    );
+\spi_gain.axi_out[3]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(2),
+      O => axi_out0_in(3)
+    );
+\spi_gain.axi_out[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(3),
+      O => axi_out0_in(4)
+    );
+\spi_gain.axi_out[5]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(4),
+      O => axi_out0_in(5)
+    );
+\spi_gain.axi_out[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(5),
+      O => axi_out0_in(6)
+    );
+\spi_gain.axi_out[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"40FF"
+    )
+        port map (
+      I0 => curr_clk,
+      I1 => curr_rd,
+      I2 => toggle_clk,
+      I3 => resetn,
+      O => \spi_gain.axi_out[7]_i_1_n_0\
+    );
+\spi_gain.axi_out[7]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \^axi_out\(6),
+      O => axi_out0_in(7)
+    );
+\spi_gain.axi_out_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.axi_out[0]_i_1_n_0\,
+      Q => \^axi_out\(0),
+      R => '0'
+    );
 \spi_gain.axi_out_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -345,28 +447,84 @@ ila_i: component ps_spi_gain_0_0_ila_2
       Q => \^axi_out\(15),
       R => '0'
     );
+\spi_gain.axi_out_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(1),
+      Q => \^axi_out\(1),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(2),
+      Q => \^axi_out\(2),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(3),
+      Q => \^axi_out\(3),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(4),
+      Q => \^axi_out\(4),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(5),
+      Q => \^axi_out\(5),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(6),
+      Q => \^axi_out\(6),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.axi_out_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \spi_gain.axi_out[7]_i_1_n_0\,
+      D => axi_out0_in(7),
+      Q => \^axi_out\(7),
+      R => \spi_gain.counter[3]_i_1_n_0\
+    );
 \spi_gain.busy_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFAA0000FEAA0000"
+      INIT => X"BFFF0000AAAA0000"
     )
         port map (
       I0 => start,
-      I1 => counter(3),
-      I2 => counter(2),
-      I3 => busy,
+      I1 => \spi_gain.busy_i_2_n_0\,
+      I2 => toggle_clk,
+      I3 => curr_clk,
       I4 => resetn,
-      I5 => \spi_gain.busy_i_2_n_0\,
+      I5 => busy,
       O => \spi_gain.busy_i_1_n_0\
     );
 \spi_gain.busy_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFBF"
+      INIT => X"0001"
     )
         port map (
       I0 => counter(0),
-      I1 => curr_clk,
-      I2 => toggle_clk,
-      I3 => counter(1),
+      I1 => counter(1),
+      I2 => counter(2),
+      I3 => counter(3),
       O => \spi_gain.busy_i_2_n_0\
     );
 \spi_gain.busy_reg\: unisim.vcomponents.FDRE
@@ -379,137 +537,145 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.counter[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0FFFF0000FFFE000"
+      INIT => X"8888888822222220"
     )
         port map (
-      I0 => counter(3),
-      I1 => counter(2),
-      I2 => toggle_clk,
-      I3 => curr_clk,
-      I4 => counter(0),
-      I5 => counter(1),
-      O => counter0_in(0)
+      I0 => resetn,
+      I1 => \spi_gain.counter[3]_i_3_n_0\,
+      I2 => counter(3),
+      I3 => counter(2),
+      I4 => counter(1),
+      I5 => counter(0),
+      O => \spi_gain.counter[0]_i_1_n_0\
     );
 \spi_gain.counter[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BF40BF40BF40BF00"
+      INIT => X"AA00AA00AA0000A8"
     )
         port map (
-      I0 => counter(0),
-      I1 => curr_clk,
-      I2 => toggle_clk,
+      I0 => resetn,
+      I1 => counter(3),
+      I2 => counter(2),
       I3 => counter(1),
-      I4 => counter(2),
-      I5 => counter(3),
-      O => counter0_in(1)
+      I4 => \spi_gain.counter[3]_i_3_n_0\,
+      I5 => counter(0),
+      O => \spi_gain.counter[1]_i_1_n_0\
     );
 \spi_gain.counter[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFBF0040FFBF0000"
+      INIT => X"AAA80002AAA80000"
     )
         port map (
-      I0 => counter(1),
-      I1 => toggle_clk,
-      I2 => curr_clk,
-      I3 => counter(0),
+      I0 => resetn,
+      I1 => counter(0),
+      I2 => \spi_gain.counter[3]_i_3_n_0\,
+      I3 => counter(1),
       I4 => counter(2),
       I5 => counter(3),
-      O => counter0_in(2)
+      O => \spi_gain.counter[2]_i_1_n_0\
     );
 \spi_gain.counter[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => start,
-      I1 => resetn,
+      I0 => resetn,
+      I1 => start,
       O => \spi_gain.counter[3]_i_1_n_0\
     );
 \spi_gain.counter[3]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFEFFF00000000"
+      INIT => X"FFFE000000000000"
     )
         port map (
-      I0 => counter(2),
-      I1 => counter(0),
-      I2 => curr_clk,
-      I3 => toggle_clk,
-      I4 => counter(1),
-      I5 => counter(3),
-      O => counter0_in(3)
+      I0 => counter(0),
+      I1 => \spi_gain.counter[3]_i_3_n_0\,
+      I2 => counter(1),
+      I3 => counter(2),
+      I4 => counter(3),
+      I5 => resetn,
+      O => \spi_gain.counter[3]_i_2_n_0\
     );
-\spi_gain.counter_reg[0]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => resetn,
-      D => counter0_in(0),
-      Q => counter(0),
-      S => \spi_gain.counter[3]_i_1_n_0\
-    );
-\spi_gain.counter_reg[1]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => resetn,
-      D => counter0_in(1),
-      Q => counter(1),
-      S => \spi_gain.counter[3]_i_1_n_0\
-    );
-\spi_gain.counter_reg[2]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => resetn,
-      D => counter0_in(2),
-      Q => counter(2),
-      S => \spi_gain.counter[3]_i_1_n_0\
-    );
-\spi_gain.counter_reg[3]\: unisim.vcomponents.FDSE
-     port map (
-      C => clk,
-      CE => resetn,
-      D => counter0_in(3),
-      Q => counter(3),
-      S => \spi_gain.counter[3]_i_1_n_0\
-    );
-\spi_gain.curr_clk_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"B040"
-    )
-        port map (
-      I0 => start,
-      I1 => toggle_clk,
-      I2 => resetn,
-      I3 => curr_clk,
-      O => curr_clk3_out
-    );
-\spi_gain.curr_clk_reg\: unisim.vcomponents.FDRE
-     port map (
-      C => clk,
-      CE => '1',
-      D => curr_clk3_out,
-      Q => curr_clk,
-      R => '0'
-    );
-\spi_gain.curr_out_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"A0C0A0F0A0C0A000"
-    )
-        port map (
-      I0 => req_read,
-      I1 => curr_out,
-      I2 => resetn,
-      I3 => start,
-      I4 => \spi_gain.curr_out_i_2_n_0\,
-      I5 => shift_data(14),
-      O => curr_out0_out
-    );
-\spi_gain.curr_out_i_2\: unisim.vcomponents.LUT2
+\spi_gain.counter[3]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => curr_clk,
       I1 => toggle_clk,
-      O => \spi_gain.curr_out_i_2_n_0\
+      O => \spi_gain.counter[3]_i_3_n_0\
+    );
+\spi_gain.counter_reg[0]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.counter[0]_i_1_n_0\,
+      Q => counter(0),
+      S => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.counter_reg[1]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.counter[1]_i_1_n_0\,
+      Q => counter(1),
+      S => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.counter_reg[2]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.counter[2]_i_1_n_0\,
+      Q => counter(2),
+      S => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.counter_reg[3]\: unisim.vcomponents.FDSE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.counter[3]_i_2_n_0\,
+      Q => counter(3),
+      S => \spi_gain.counter[3]_i_1_n_0\
+    );
+\spi_gain.curr_clk_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"A208"
+    )
+        port map (
+      I0 => resetn,
+      I1 => toggle_clk,
+      I2 => start,
+      I3 => curr_clk,
+      O => curr_clk2_out
+    );
+\spi_gain.curr_clk_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => curr_clk2_out,
+      Q => curr_clk,
+      R => '0'
+    );
+\spi_gain.curr_in_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => spi_in_2,
+      Q => curr_in,
+      R => \spi_gain.spi_in_2_i_1_n_0\
+    );
+\spi_gain.curr_out_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"B080B0B0B0808080"
+    )
+        port map (
+      I0 => req_read,
+      I1 => start,
+      I2 => resetn,
+      I3 => curr_out,
+      I4 => \spi_gain.counter[3]_i_3_n_0\,
+      I5 => shift_data(14),
+      O => curr_out0_out
     );
 \spi_gain.curr_out_reg\: unisim.vcomponents.FDRE
      port map (
@@ -517,6 +683,25 @@ ila_i: component ps_spi_gain_0_0_ila_2
       CE => '1',
       D => curr_out0_out,
       Q => curr_out,
+      R => '0'
+    );
+\spi_gain.curr_rd_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"B080"
+    )
+        port map (
+      I0 => req_read,
+      I1 => start,
+      I2 => resetn,
+      I3 => curr_rd,
+      O => curr_rd6_out
+    );
+\spi_gain.curr_rd_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => curr_rd6_out,
+      Q => curr_rd,
       R => '0'
     );
 \spi_gain.curr_sel[0]_i_1\: unisim.vcomponents.LUT3
@@ -573,181 +758,164 @@ ila_i: component ps_spi_gain_0_0_ila_2
       Q => curr_sel(2),
       R => '0'
     );
-\spi_gain.delay[0]_i_1\: unisim.vcomponents.LUT5
+\spi_gain.delay[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"44444440"
-    )
-        port map (
-      I0 => delay(0),
-      I1 => resetn,
-      I2 => delay(1),
-      I3 => delay(2),
-      I4 => \spi_gain.delay[7]_i_3_n_0\,
-      O => \p_1_in__0\(0)
-    );
-\spi_gain.delay[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F00000E0"
+      INIT => X"00000000FFFD0000"
     )
         port map (
       I0 => \spi_gain.delay[7]_i_3_n_0\,
-      I1 => delay(2),
-      I2 => resetn,
+      I1 => delay(3),
+      I2 => delay(2),
       I3 => delay(1),
-      I4 => delay(0),
+      I4 => resetn,
+      I5 => delay(0),
+      O => \p_1_in__0\(0)
+    );
+\spi_gain.delay[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8282828282828082"
+    )
+        port map (
+      I0 => resetn,
+      I1 => delay(1),
+      I2 => delay(0),
+      I3 => \spi_gain.delay[7]_i_3_n_0\,
+      I4 => delay(3),
+      I5 => delay(2),
       O => \p_1_in__0\(1)
     );
 \spi_gain.delay[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"CCC00008"
+      INIT => X"88820000"
     )
         port map (
-      I0 => \spi_gain.delay[7]_i_3_n_0\,
-      I1 => resetn,
+      I0 => resetn,
+      I1 => delay(2),
       I2 => delay(0),
       I3 => delay(1),
-      I4 => delay(2),
+      I4 => busy,
       O => \p_1_in__0\(2)
     );
 \spi_gain.delay[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8888888000000008"
+      INIT => X"CCCCCCC000000004"
     )
         port map (
-      I0 => busy,
+      I0 => \spi_gain.delay[7]_i_3_n_0\,
       I1 => resetn,
-      I2 => delay(0),
-      I3 => delay(1),
-      I4 => delay(2),
+      I2 => delay(2),
+      I3 => delay(0),
+      I4 => delay(1),
       I5 => delay(3),
       O => \p_1_in__0\(3)
     );
 \spi_gain.delay[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"C9C9C9C800000000"
+      INIT => X"0010000000000000"
     )
         port map (
-      I0 => \spi_gain.delay[7]_i_5_n_0\,
-      I1 => delay(4),
-      I2 => delay(3),
-      I3 => delay(5),
-      I4 => \spi_gain.delay[5]_i_3_n_0\,
-      I5 => resetn,
-      O => \p_1_in__0\(4)
+      I0 => delay(2),
+      I1 => delay(3),
+      I2 => delay(0),
+      I3 => delay(1),
+      I4 => \spi_gain.delay[7]_i_3_n_0\,
+      I5 => \spi_gain.axi_out[15]_i_1_n_0\,
+      O => \spi_gain.delay[4]_i_1_n_0\
+    );
+\spi_gain.delay[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFE000100000000"
+    )
+        port map (
+      I0 => delay(0),
+      I1 => delay(1),
+      I2 => delay(2),
+      I3 => delay(3),
+      I4 => delay(4),
+      I5 => \spi_gain.axi_out[15]_i_1_n_0\,
+      O => \spi_gain.delay[4]_i_2_n_0\
     );
 \spi_gain.delay[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"5557000055560000"
+      INIT => X"F0F000F00000E000"
     )
         port map (
-      I0 => busy,
-      I1 => \spi_gain.delay[7]_i_3_n_0\,
-      I2 => delay(2),
-      I3 => delay(1),
-      I4 => resetn,
-      I5 => delay(0),
-      O => \p_0_in__0\(5)
-    );
-\spi_gain.delay[5]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"CCC9CCC800000000"
-    )
-        port map (
-      I0 => \spi_gain.delay[7]_i_5_n_0\,
-      I1 => delay(5),
-      I2 => delay(3),
-      I3 => delay(4),
-      I4 => \spi_gain.delay[5]_i_3_n_0\,
-      I5 => resetn,
+      I0 => delay(7),
+      I1 => delay(6),
+      I2 => resetn,
+      I3 => \spi_gain.delay[7]_i_5_n_0\,
+      I4 => delay(4),
+      I5 => delay(5),
       O => \p_1_in__0\(5)
     );
-\spi_gain.delay[5]_i_3\: unisim.vcomponents.LUT2
+\spi_gain.delay[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"CCCCC0CC00000800"
+    )
+        port map (
+      I0 => delay(7),
+      I1 => resetn,
+      I2 => delay(4),
+      I3 => \spi_gain.delay[7]_i_5_n_0\,
+      I4 => delay(5),
+      I5 => delay(6),
+      O => \p_1_in__0\(6)
+    );
+\spi_gain.delay[7]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00080008AAAAAAA2"
+    )
+        port map (
+      I0 => resetn,
+      I1 => \spi_gain.delay[7]_i_3_n_0\,
+      I2 => \spi_gain.delay[7]_i_4_n_0\,
+      I3 => delay(1),
+      I4 => delay(0),
+      I5 => busy,
+      O => \spi_gain.delay[7]_i_1_n_0\
+    );
+\spi_gain.delay[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFB000000000000"
+    )
+        port map (
+      I0 => delay(4),
+      I1 => \spi_gain.delay[7]_i_5_n_0\,
+      I2 => delay(5),
+      I3 => delay(6),
+      I4 => delay(7),
+      I5 => resetn,
+      O => \p_1_in__0\(7)
+    );
+\spi_gain.delay[7]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => delay(5),
+      I1 => delay(6),
+      I2 => delay(4),
+      I3 => delay(7),
+      O => \spi_gain.delay[7]_i_3_n_0\
+    );
+\spi_gain.delay[7]_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
     )
         port map (
-      I0 => delay(6),
-      I1 => delay(7),
-      O => \spi_gain.delay[5]_i_3_n_0\
-    );
-\spi_gain.delay[6]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"5555555400000001"
-    )
-        port map (
-      I0 => \spi_gain.delay[6]_i_2_n_0\,
-      I1 => delay(4),
-      I2 => delay(3),
-      I3 => delay(5),
-      I4 => \spi_gain.delay[7]_i_5_n_0\,
-      I5 => delay(6),
-      O => \p_1_in__0\(6)
-    );
-\spi_gain.delay[6]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => busy,
-      I1 => resetn,
-      O => \spi_gain.delay[6]_i_2_n_0\
-    );
-\spi_gain.delay[7]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000080"
-    )
-        port map (
-      I0 => busy,
-      I1 => resetn,
-      I2 => delay(0),
-      I3 => delay(1),
-      I4 => delay(2),
-      I5 => \spi_gain.delay[7]_i_3_n_0\,
-      O => \p_0_in__0\(7)
-    );
-\spi_gain.delay[7]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8800880088008008"
-    )
-        port map (
-      I0 => busy,
-      I1 => resetn,
-      I2 => delay(6),
-      I3 => delay(7),
-      I4 => \spi_gain.delay[7]_i_4_n_0\,
-      I5 => \spi_gain.delay[7]_i_5_n_0\,
-      O => \p_1_in__0\(7)
-    );
-\spi_gain.delay[7]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => delay(5),
-      I1 => delay(3),
-      I2 => delay(4),
-      I3 => delay(7),
-      I4 => delay(6),
-      O => \spi_gain.delay[7]_i_3_n_0\
-    );
-\spi_gain.delay[7]_i_4\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => delay(4),
-      I1 => delay(3),
-      I2 => delay(5),
+      I0 => delay(3),
+      I1 => delay(2),
       O => \spi_gain.delay[7]_i_4_n_0\
     );
-\spi_gain.delay[7]_i_5\: unisim.vcomponents.LUT3
+\spi_gain.delay[7]_i_5\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FE"
+      INIT => X"0001"
     )
         port map (
-      I0 => delay(2),
+      I0 => delay(0),
       I1 => delay(1),
-      I2 => delay(0),
+      I2 => delay(2),
+      I3 => delay(3),
       O => \spi_gain.delay[7]_i_5_n_0\
     );
 \spi_gain.delay_reg[0]\: unisim.vcomponents.FDRE
@@ -756,7 +924,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       CE => '1',
       D => \p_1_in__0\(0),
       Q => delay(0),
-      R => \p_0_in__0\(5)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
 \spi_gain.delay_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -764,31 +932,31 @@ ila_i: component ps_spi_gain_0_0_ila_2
       CE => '1',
       D => \p_1_in__0\(1),
       Q => delay(1),
-      R => \p_0_in__0\(5)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
-\spi_gain.delay_reg[2]\: unisim.vcomponents.FDRE
+\spi_gain.delay_reg[2]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
       D => \p_1_in__0\(2),
       Q => delay(2),
-      R => \p_0_in__0\(5)
+      S => \spi_gain.delay[4]_i_1_n_0\
     );
-\spi_gain.delay_reg[3]\: unisim.vcomponents.FDSE
+\spi_gain.delay_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \p_1_in__0\(3),
       Q => delay(3),
-      S => \p_0_in__0\(7)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
-\spi_gain.delay_reg[4]\: unisim.vcomponents.FDRE
+\spi_gain.delay_reg[4]\: unisim.vcomponents.FDSE
      port map (
       C => clk,
       CE => '1',
-      D => \p_1_in__0\(4),
+      D => \spi_gain.delay[4]_i_2_n_0\,
       Q => delay(4),
-      R => \p_0_in__0\(5)
+      S => \spi_gain.delay[4]_i_1_n_0\
     );
 \spi_gain.delay_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -796,23 +964,23 @@ ila_i: component ps_spi_gain_0_0_ila_2
       CE => '1',
       D => \p_1_in__0\(5),
       Q => delay(5),
-      R => \p_0_in__0\(5)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
-\spi_gain.delay_reg[6]\: unisim.vcomponents.FDSE
+\spi_gain.delay_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \p_1_in__0\(6),
       Q => delay(6),
-      S => \p_0_in__0\(7)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
-\spi_gain.delay_reg[7]\: unisim.vcomponents.FDSE
+\spi_gain.delay_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
       D => \p_1_in__0\(7),
       Q => delay(7),
-      S => \p_0_in__0\(7)
+      R => \spi_gain.delay[7]_i_1_n_0\
     );
 \spi_gain.prev_start_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -833,36 +1001,36 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.shift_data[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"AAAA0CCC"
+      INIT => X"CCCC0AAA"
     )
         port map (
-      I0 => req_data(0),
-      I1 => shift_data(0),
-      I2 => toggle_clk,
-      I3 => curr_clk,
+      I0 => shift_data(0),
+      I1 => req_data(0),
+      I2 => curr_clk,
+      I3 => toggle_clk,
       I4 => start,
       O => \spi_gain.shift_data[0]_i_1_n_0\
     );
 \spi_gain.shift_data[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_adr(2),
+      I1 => start,
       I2 => shift_data(10),
-      I3 => shift_data(9),
-      I4 => start,
-      I5 => req_adr(2),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(9),
       O => \spi_gain.shift_data[10]_i_1_n_0\
     );
 \spi_gain.shift_data[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000ACCC"
+      INIT => X"0000CAAA"
     )
         port map (
-      I0 => shift_data(10),
-      I1 => shift_data(11),
+      I0 => shift_data(11),
+      I1 => shift_data(10),
       I2 => toggle_clk,
       I3 => curr_clk,
       I4 => start,
@@ -870,11 +1038,11 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.shift_data[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000ACCC"
+      INIT => X"0000CAAA"
     )
         port map (
-      I0 => shift_data(11),
-      I1 => shift_data(12),
+      I0 => shift_data(12),
+      I1 => shift_data(11),
       I2 => toggle_clk,
       I3 => curr_clk,
       I4 => start,
@@ -882,11 +1050,11 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.shift_data[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000ACCC"
+      INIT => X"0000CAAA"
     )
         port map (
-      I0 => shift_data(12),
-      I1 => shift_data(13),
+      I0 => shift_data(13),
+      I1 => shift_data(12),
       I2 => toggle_clk,
       I3 => curr_clk,
       I4 => start,
@@ -894,11 +1062,11 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.shift_data[14]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000ACCC"
+      INIT => X"0000CAAA"
     )
         port map (
-      I0 => shift_data(13),
-      I1 => shift_data(14),
+      I0 => shift_data(14),
+      I1 => shift_data(13),
       I2 => toggle_clk,
       I3 => curr_clk,
       I4 => start,
@@ -906,119 +1074,119 @@ ila_i: component ps_spi_gain_0_0_ila_2
     );
 \spi_gain.shift_data[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(1),
+      I1 => start,
       I2 => shift_data(1),
-      I3 => shift_data(0),
-      I4 => start,
-      I5 => req_data(1),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(0),
       O => \spi_gain.shift_data[1]_i_1_n_0\
     );
 \spi_gain.shift_data[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(2),
+      I1 => start,
       I2 => shift_data(2),
-      I3 => shift_data(1),
-      I4 => start,
-      I5 => req_data(2),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(1),
       O => \spi_gain.shift_data[2]_i_1_n_0\
     );
 \spi_gain.shift_data[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(3),
+      I1 => start,
       I2 => shift_data(3),
-      I3 => shift_data(2),
-      I4 => start,
-      I5 => req_data(3),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(2),
       O => \spi_gain.shift_data[3]_i_1_n_0\
     );
 \spi_gain.shift_data[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(4),
+      I1 => start,
       I2 => shift_data(4),
-      I3 => shift_data(3),
-      I4 => start,
-      I5 => req_data(4),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(3),
       O => \spi_gain.shift_data[4]_i_1_n_0\
     );
 \spi_gain.shift_data[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(5),
+      I1 => start,
       I2 => shift_data(5),
-      I3 => shift_data(4),
-      I4 => start,
-      I5 => req_data(5),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(4),
       O => \spi_gain.shift_data[5]_i_1_n_0\
     );
 \spi_gain.shift_data[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(6),
+      I1 => start,
       I2 => shift_data(6),
-      I3 => shift_data(5),
-      I4 => start,
-      I5 => req_data(6),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(5),
       O => \spi_gain.shift_data[6]_i_1_n_0\
     );
 \spi_gain.shift_data[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_data(7),
+      I1 => start,
       I2 => shift_data(7),
-      I3 => shift_data(6),
-      I4 => start,
-      I5 => req_data(7),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(6),
       O => \spi_gain.shift_data[7]_i_1_n_0\
     );
 \spi_gain.shift_data[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_adr(0),
+      I1 => start,
       I2 => shift_data(8),
-      I3 => shift_data(7),
-      I4 => start,
-      I5 => req_adr(0),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(7),
       O => \spi_gain.shift_data[8]_i_1_n_0\
     );
 \spi_gain.shift_data[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFF8700000F870"
+      INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => curr_clk,
-      I1 => toggle_clk,
+      I0 => req_adr(1),
+      I1 => start,
       I2 => shift_data(9),
-      I3 => shift_data(8),
-      I4 => start,
-      I5 => req_adr(1),
+      I3 => curr_clk,
+      I4 => toggle_clk,
+      I5 => shift_data(8),
       O => \spi_gain.shift_data[9]_i_1_n_0\
     );
 \spi_gain.shift_data_reg[0]\: unisim.vcomponents.FDRE
@@ -1146,16 +1314,59 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"1"
     )
         port map (
+      I0 => resetn,
+      O => \spi_gain.spi_clk_i_1_n_0\
+    );
+\spi_gain.spi_clk_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
       I0 => curr_clk,
       O => curr_clk0
     );
-\spi_gain.spi_clk_reg\: unisim.vcomponents.FDRE
+\spi_gain.spi_clk_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => resetn,
+      CE => '1',
       D => curr_clk0,
       Q => \^spi_clk\,
+      S => \spi_gain.spi_clk_i_1_n_0\
+    );
+\spi_gain.spi_in_1_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"80"
+    )
+        port map (
+      I0 => spi_in,
+      I1 => curr_rd,
+      I2 => resetn,
+      O => spi_in_1
+    );
+\spi_gain.spi_in_1_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => spi_in_1,
+      Q => \spi_gain.spi_in_1_reg_n_0\,
       R => '0'
+    );
+\spi_gain.spi_in_2_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => resetn,
+      I1 => curr_rd,
+      O => \spi_gain.spi_in_2_i_1_n_0\
+    );
+\spi_gain.spi_in_2_reg\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \spi_gain.spi_in_1_reg_n_0\,
+      Q => spi_in_2,
+      R => \spi_gain.spi_in_2_i_1_n_0\
     );
 \spi_gain.spi_out_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -1165,42 +1376,42 @@ ila_i: component ps_spi_gain_0_0_ila_2
       I0 => curr_out,
       O => \spi_gain.spi_out_i_1_n_0\
     );
-\spi_gain.spi_out_reg\: unisim.vcomponents.FDRE
+\spi_gain.spi_out_reg\: unisim.vcomponents.FDSE
      port map (
       C => clk,
-      CE => resetn,
+      CE => '1',
       D => \spi_gain.spi_out_i_1_n_0\,
       Q => \^spi_out\,
-      R => '0'
+      S => \spi_gain.spi_clk_i_1_n_0\
     );
 \spi_gain.spi_sel[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"F7"
+      INIT => X"BF"
     )
         port map (
-      I0 => resetn,
+      I0 => curr_sel(0),
       I1 => busy,
-      I2 => curr_sel(0),
+      I2 => resetn,
       O => \spi_gain.spi_sel[0]_i_1_n_0\
     );
 \spi_gain.spi_sel[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"F7"
+      INIT => X"BF"
     )
         port map (
-      I0 => resetn,
+      I0 => curr_sel(1),
       I1 => busy,
-      I2 => curr_sel(1),
+      I2 => resetn,
       O => \spi_gain.spi_sel[1]_i_1_n_0\
     );
 \spi_gain.spi_sel[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"F7"
+      INIT => X"BF"
     )
         port map (
-      I0 => resetn,
+      I0 => curr_sel(2),
       I1 => busy,
-      I2 => curr_sel(2),
+      I2 => resetn,
       O => \spi_gain.spi_sel[2]_i_1_n_0\
     );
 \spi_gain.spi_sel_reg[0]\: unisim.vcomponents.FDRE
@@ -1233,8 +1444,8 @@ ila_i: component ps_spi_gain_0_0_ila_2
     )
         port map (
       I0 => prev_start,
-      I1 => req_start,
-      I2 => resetn,
+      I1 => resetn,
+      I2 => req_start,
       O => \spi_gain.start_i_1_n_0\
     );
 \spi_gain.start_reg\: unisim.vcomponents.FDRE
@@ -1245,25 +1456,13 @@ ila_i: component ps_spi_gain_0_0_ila_2
       Q => start,
       R => '0'
     );
-\spi_gain.toggle_clk_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"20202000"
-    )
-        port map (
-      I0 => toggle_clk,
-      I1 => busy,
-      I2 => resetn,
-      I3 => \spi_gain.delay[7]_i_3_n_0\,
-      I4 => \spi_gain.delay[7]_i_5_n_0\,
-      O => \spi_gain.toggle_clk_i_1_n_0\
-    );
-\spi_gain.toggle_clk_reg\: unisim.vcomponents.FDSE
+\spi_gain.toggle_clk_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => \spi_gain.toggle_clk_i_1_n_0\,
+      D => \spi_gain.delay[4]_i_1_n_0\,
       Q => toggle_clk,
-      S => \p_0_in__0\(7)
+      R => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -1294,9 +1493,6 @@ entity ps_spi_gain_0_0 is
 end ps_spi_gain_0_0;
 
 architecture STRUCTURE of ps_spi_gain_0_0 is
-  signal \<const0>\ : STD_LOGIC;
-  signal \^axi_out\ : STD_LOGIC_VECTOR ( 15 to 15 );
-  signal NLW_inst_axi_out_UNCONNECTED : STD_LOGIC_VECTOR ( 14 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;
@@ -1310,35 +1506,14 @@ architecture STRUCTURE of ps_spi_gain_0_0 is
   attribute X_INTERFACE_MODE of spi_clk : signal is "master";
   attribute X_INTERFACE_PARAMETER of spi_clk : signal is "XIL_INTERFACENAME spi_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN ps_spi_gain_0_0_spi_clk, INSERT_VIP 0";
 begin
-  axi_out(15) <= \^axi_out\(15);
-  axi_out(14) <= \<const0>\;
-  axi_out(13) <= \<const0>\;
-  axi_out(12) <= \<const0>\;
-  axi_out(11) <= \<const0>\;
-  axi_out(10) <= \<const0>\;
-  axi_out(9) <= \<const0>\;
-  axi_out(8) <= \<const0>\;
-  axi_out(7) <= \<const0>\;
-  axi_out(6) <= \<const0>\;
-  axi_out(5) <= \<const0>\;
-  axi_out(4) <= \<const0>\;
-  axi_out(3) <= \<const0>\;
-  axi_out(2) <= \<const0>\;
-  axi_out(1) <= \<const0>\;
-  axi_out(0) <= \<const0>\;
-GND: unisim.vcomponents.GND
-     port map (
-      G => \<const0>\
-    );
 inst: entity work.ps_spi_gain_0_0_spi_gain
      port map (
       axi_in(15 downto 0) => axi_in(15 downto 0),
-      axi_out(15) => \^axi_out\(15),
-      axi_out(14 downto 0) => NLW_inst_axi_out_UNCONNECTED(14 downto 0),
+      axi_out(15 downto 0) => axi_out(15 downto 0),
       clk => clk,
       resetn => resetn,
       spi_clk => spi_clk,
-      spi_in => '0',
+      spi_in => spi_in,
       spi_out => spi_out,
       spi_sel(2 downto 0) => spi_sel(2 downto 0)
     );
