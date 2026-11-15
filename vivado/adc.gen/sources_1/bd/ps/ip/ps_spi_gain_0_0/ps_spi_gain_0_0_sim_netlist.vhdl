@@ -2,7 +2,7 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Nov 10 20:08:18 2026
+-- Date        : Thu Nov 12 22:49:58 2026
 -- Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_spi_gain_0_0/ps_spi_gain_0_0_sim_netlist.vhdl
@@ -38,25 +38,20 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 14 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 2 downto 0 )
+    probe11 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component ps_spi_gain_0_0_ila_2;
   signal \^axi_out\ : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -83,19 +78,9 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   signal delay : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of delay : signal is std.standard.true;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal prev_start : STD_LOGIC;
-  attribute MARK_DEBUG of prev_start : signal is std.standard.true;
-  signal prev_start8_out : STD_LOGIC;
-  signal req_adr : STD_LOGIC_VECTOR ( 2 downto 0 );
-  attribute MARK_DEBUG of req_adr : signal is std.standard.true;
-  signal req_data : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute MARK_DEBUG of req_data : signal is std.standard.true;
-  signal req_read : STD_LOGIC;
-  attribute MARK_DEBUG of req_read : signal is std.standard.true;
-  signal req_sel : STD_LOGIC_VECTOR ( 2 downto 0 );
-  attribute MARK_DEBUG of req_sel : signal is std.standard.true;
-  signal req_start : STD_LOGIC;
-  attribute MARK_DEBUG of req_start : signal is std.standard.true;
+  signal prev : STD_LOGIC;
+  attribute MARK_DEBUG of prev : signal is std.standard.true;
+  signal prev8_out : STD_LOGIC;
   signal shift_data : STD_LOGIC_VECTOR ( 14 downto 0 );
   attribute MARK_DEBUG of shift_data : signal is std.standard.true;
   signal \^spi_clk\ : STD_LOGIC;
@@ -193,7 +178,7 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   attribute KEEP of \spi_gain.delay_reg[5]\ : label is "yes";
   attribute KEEP of \spi_gain.delay_reg[6]\ : label is "yes";
   attribute KEEP of \spi_gain.delay_reg[7]\ : label is "yes";
-  attribute KEEP of \spi_gain.prev_start_reg\ : label is "yes";
+  attribute KEEP of \spi_gain.prev_reg\ : label is "yes";
   attribute KEEP of \spi_gain.shift_data_reg[0]\ : label is "yes";
   attribute mark_debug_string of \spi_gain.shift_data_reg[0]\ : label is "yes";
   attribute KEEP of \spi_gain.shift_data_reg[10]\ : label is "yes";
@@ -233,11 +218,6 @@ architecture STRUCTURE of ps_spi_gain_0_0_spi_gain is
   attribute KEEP of \spi_gain.toggle_clk_reg\ : label is "yes";
 begin
   axi_out(15 downto 0) <= \^axi_out\(15 downto 0);
-  req_adr(2 downto 0) <= axi_in(10 downto 8);
-  req_data(7 downto 0) <= axi_in(7 downto 0);
-  req_read <= axi_in(14);
-  req_sel(2 downto 0) <= axi_in(13 downto 11);
-  req_start <= axi_in(15);
   spi_clk <= \^spi_clk\;
   spi_out <= \^spi_out\;
   spi_sel(2 downto 0) <= \^spi_sel\(2 downto 0);
@@ -300,31 +280,22 @@ i_6: unisim.vcomponents.LUT1
 ila_i: component ps_spi_gain_0_0_ila_2
      port map (
       clk => clk,
-      probe0(0) => req_start,
-      probe1(0) => req_read,
-      probe10(0) => curr_out,
-      probe11(0) => curr_rd,
-      probe12(3 downto 0) => counter(3 downto 0),
-      probe13(14 downto 0) => shift_data(14 downto 0),
-      probe14(7 downto 0) => delay(7 downto 0),
-      probe15(0) => toggle_clk,
-      probe16(15) => req_start,
-      probe16(14) => req_read,
-      probe16(13 downto 11) => req_sel(2 downto 0),
-      probe16(10 downto 8) => req_adr(2 downto 0),
-      probe16(7 downto 0) => req_data(7 downto 0),
-      probe17(15 downto 0) => \^axi_out\(15 downto 0),
-      probe18(0) => \^spi_clk\,
-      probe19(0) => \^spi_out\,
-      probe2(2 downto 0) => req_sel(2 downto 0),
-      probe20(2 downto 0) => \^spi_sel\(2 downto 0),
-      probe3(2 downto 0) => req_adr(2 downto 0),
-      probe4(7 downto 0) => req_data(7 downto 0),
-      probe5(0) => prev_start,
-      probe6(0) => start,
-      probe7(0) => busy,
-      probe8(2 downto 0) => curr_sel(2 downto 0),
-      probe9(0) => curr_clk
+      probe0(0) => prev,
+      probe1(0) => start,
+      probe10(0) => toggle_clk,
+      probe11(15 downto 0) => axi_in(15 downto 0),
+      probe12(15 downto 0) => \^axi_out\(15 downto 0),
+      probe13(0) => \^spi_clk\,
+      probe14(0) => \^spi_out\,
+      probe15(2 downto 0) => \^spi_sel\(2 downto 0),
+      probe2(0) => busy,
+      probe3(2 downto 0) => curr_sel(2 downto 0),
+      probe4(0) => curr_clk,
+      probe5(0) => curr_out,
+      probe6(0) => curr_rd,
+      probe7(3 downto 0) => counter(3 downto 0),
+      probe8(14 downto 0) => shift_data(14 downto 0),
+      probe9(7 downto 0) => delay(7 downto 0)
     );
 \spi_gain.axi_out[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -669,7 +640,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"B080B0B0B0808080"
     )
         port map (
-      I0 => req_read,
+      I0 => axi_in(14),
       I1 => start,
       I2 => resetn,
       I3 => curr_out,
@@ -690,7 +661,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"B080"
     )
         port map (
-      I0 => req_read,
+      I0 => axi_in(14),
       I1 => start,
       I2 => resetn,
       I3 => curr_rd,
@@ -709,7 +680,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"B8"
     )
         port map (
-      I0 => req_sel(0),
+      I0 => axi_in(11),
       I1 => start,
       I2 => curr_sel(0),
       O => \spi_gain.curr_sel[0]_i_1_n_0\
@@ -719,7 +690,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"B8"
     )
         port map (
-      I0 => req_sel(1),
+      I0 => axi_in(12),
       I1 => start,
       I2 => curr_sel(1),
       O => \spi_gain.curr_sel[1]_i_1_n_0\
@@ -729,7 +700,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"B8"
     )
         port map (
-      I0 => req_sel(2),
+      I0 => axi_in(13),
       I1 => start,
       I2 => curr_sel(2),
       O => \spi_gain.curr_sel[2]_i_1_n_0\
@@ -982,21 +953,21 @@ ila_i: component ps_spi_gain_0_0_ila_2
       Q => delay(7),
       R => \spi_gain.delay[7]_i_1_n_0\
     );
-\spi_gain.prev_start_i_1\: unisim.vcomponents.LUT2
+\spi_gain.prev_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => resetn,
-      I1 => req_start,
-      O => prev_start8_out
+      I1 => axi_in(15),
+      O => prev8_out
     );
-\spi_gain.prev_start_reg\: unisim.vcomponents.FDRE
+\spi_gain.prev_reg\: unisim.vcomponents.FDRE
      port map (
       C => clk,
       CE => '1',
-      D => prev_start8_out,
-      Q => prev_start,
+      D => prev8_out,
+      Q => prev,
       R => '0'
     );
 \spi_gain.shift_data[0]_i_1\: unisim.vcomponents.LUT5
@@ -1005,7 +976,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
     )
         port map (
       I0 => shift_data(0),
-      I1 => req_data(0),
+      I1 => axi_in(0),
       I2 => curr_clk,
       I3 => toggle_clk,
       I4 => start,
@@ -1016,7 +987,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_adr(2),
+      I0 => axi_in(10),
       I1 => start,
       I2 => shift_data(10),
       I3 => curr_clk,
@@ -1077,7 +1048,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(1),
+      I0 => axi_in(1),
       I1 => start,
       I2 => shift_data(1),
       I3 => curr_clk,
@@ -1090,7 +1061,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(2),
+      I0 => axi_in(2),
       I1 => start,
       I2 => shift_data(2),
       I3 => curr_clk,
@@ -1103,7 +1074,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(3),
+      I0 => axi_in(3),
       I1 => start,
       I2 => shift_data(3),
       I3 => curr_clk,
@@ -1116,7 +1087,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(4),
+      I0 => axi_in(4),
       I1 => start,
       I2 => shift_data(4),
       I3 => curr_clk,
@@ -1129,7 +1100,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(5),
+      I0 => axi_in(5),
       I1 => start,
       I2 => shift_data(5),
       I3 => curr_clk,
@@ -1142,7 +1113,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(6),
+      I0 => axi_in(6),
       I1 => start,
       I2 => shift_data(6),
       I3 => curr_clk,
@@ -1155,7 +1126,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_data(7),
+      I0 => axi_in(7),
       I1 => start,
       I2 => shift_data(7),
       I3 => curr_clk,
@@ -1168,7 +1139,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_adr(0),
+      I0 => axi_in(8),
       I1 => start,
       I2 => shift_data(8),
       I3 => curr_clk,
@@ -1181,7 +1152,7 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"BBB8B8B888B8B8B8"
     )
         port map (
-      I0 => req_adr(1),
+      I0 => axi_in(9),
       I1 => start,
       I2 => shift_data(9),
       I3 => curr_clk,
@@ -1443,9 +1414,9 @@ ila_i: component ps_spi_gain_0_0_ila_2
       INIT => X"40"
     )
         port map (
-      I0 => prev_start,
+      I0 => prev,
       I1 => resetn,
-      I2 => req_start,
+      I2 => axi_in(15),
       O => \spi_gain.start_i_1_n_0\
     );
 \spi_gain.start_reg\: unisim.vcomponents.FDRE

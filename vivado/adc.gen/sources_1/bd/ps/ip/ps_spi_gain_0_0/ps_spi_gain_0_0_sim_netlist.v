@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Nov 10 20:08:18 2026
+// Date        : Thu Nov 12 22:49:58 2026
 // Host        : Ubuntu running 64-bit Ubuntu 22.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /media/ubuntu/large/radio-zcu208/vivado/adc.gen/sources_1/bd/ps/ip/ps_spi_gain_0_0/ps_spi_gain_0_0_sim_netlist.v
@@ -73,34 +73,24 @@ module ps_spi_gain_0_0_ila_2
     probe12,
     probe13,
     probe14,
-    probe15,
-    probe16,
-    probe17,
-    probe18,
-    probe19,
-    probe20);
+    probe15);
   (* syn_isclock = "1" *) input clk;
   input [0:0]probe0;
   input [0:0]probe1;
-  input [2:0]probe2;
+  input [0:0]probe2;
   input [2:0]probe3;
-  input [7:0]probe4;
+  input [0:0]probe4;
   input [0:0]probe5;
   input [0:0]probe6;
-  input [0:0]probe7;
-  input [2:0]probe8;
-  input [0:0]probe9;
+  input [3:0]probe7;
+  input [14:0]probe8;
+  input [7:0]probe9;
   input [0:0]probe10;
-  input [0:0]probe11;
-  input [3:0]probe12;
-  input [14:0]probe13;
-  input [7:0]probe14;
-  input [0:0]probe15;
-  input [15:0]probe16;
-  input [15:0]probe17;
-  input [0:0]probe18;
-  input [0:0]probe19;
-  input [2:0]probe20;
+  input [15:0]probe11;
+  input [15:0]probe12;
+  input [0:0]probe13;
+  input [0:0]probe14;
+  input [2:0]probe15;
 
 
 endmodule
@@ -124,6 +114,7 @@ module ps_spi_gain_0_0_spi_gain
   output spi_out;
   output [2:0]spi_sel;
 
+  (* MARK_DEBUG *) wire [15:0]axi_in;
   (* MARK_DEBUG *) wire [15:0]axi_out;
   wire [7:1]axi_out0_in;
   (* MARK_DEBUG *) wire busy;
@@ -140,13 +131,8 @@ module ps_spi_gain_0_0_spi_gain
   (* MARK_DEBUG *) wire [2:0]curr_sel;
   (* MARK_DEBUG *) wire [7:0]delay;
   wire [7:0]p_1_in__0;
-  (* MARK_DEBUG *) wire prev_start;
-  wire prev_start8_out;
-  (* MARK_DEBUG *) wire [2:0]req_adr;
-  (* MARK_DEBUG *) wire [7:0]req_data;
-  (* MARK_DEBUG *) wire req_read;
-  (* MARK_DEBUG *) wire [2:0]req_sel;
-  (* MARK_DEBUG *) wire req_start;
+  (* MARK_DEBUG *) wire prev;
+  wire prev8_out;
   wire resetn;
   (* MARK_DEBUG *) wire [14:0]shift_data;
   (* MARK_DEBUG *) wire spi_clk;
@@ -202,11 +188,6 @@ module ps_spi_gain_0_0_spi_gain
   (* MARK_DEBUG *) wire start;
   (* MARK_DEBUG *) wire toggle_clk;
 
-  assign req_adr = axi_in[10:8];
-  assign req_data = axi_in[7:0];
-  assign req_read = axi_in[14];
-  assign req_sel = axi_in[13:11];
-  assign req_start = axi_in[15];
   LUT1 #(
     .INIT(2'h2)) 
     i_0
@@ -247,27 +228,22 @@ module ps_spi_gain_0_0_spi_gain
   (* X_CORE_INFO = "ila,Vivado 2025.1" *) 
   ps_spi_gain_0_0_ila_2 ila_i
        (.clk(clk),
-        .probe0(req_start),
-        .probe1(req_read),
-        .probe10(curr_out),
-        .probe11(curr_rd),
-        .probe12(counter),
-        .probe13(shift_data),
-        .probe14(delay),
-        .probe15(toggle_clk),
-        .probe16({req_start,req_read,req_sel,req_adr,req_data}),
-        .probe17(axi_out),
-        .probe18(spi_clk),
-        .probe19(spi_out),
-        .probe2(req_sel),
-        .probe20(spi_sel),
-        .probe3(req_adr),
-        .probe4(req_data),
-        .probe5(prev_start),
-        .probe6(start),
-        .probe7(busy),
-        .probe8(curr_sel),
-        .probe9(curr_clk));
+        .probe0(prev),
+        .probe1(start),
+        .probe10(toggle_clk),
+        .probe11(axi_in),
+        .probe12(axi_out),
+        .probe13(spi_clk),
+        .probe14(spi_out),
+        .probe15(spi_sel),
+        .probe2(busy),
+        .probe3(curr_sel),
+        .probe4(curr_clk),
+        .probe5(curr_out),
+        .probe6(curr_rd),
+        .probe7(counter),
+        .probe8(shift_data),
+        .probe9(delay));
   LUT6 #(
     .INIT(64'h00000000BAAA8AAA)) 
     \spi_gain.axi_out[0]_i_1 
@@ -532,7 +508,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hB080B0B0B0808080)) 
     \spi_gain.curr_out_i_1 
-       (.I0(req_read),
+       (.I0(axi_in[14]),
         .I1(start),
         .I2(resetn),
         .I3(curr_out),
@@ -549,7 +525,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT4 #(
     .INIT(16'hB080)) 
     \spi_gain.curr_rd_i_1 
-       (.I0(req_read),
+       (.I0(axi_in[14]),
         .I1(start),
         .I2(resetn),
         .I3(curr_rd),
@@ -564,21 +540,21 @@ module ps_spi_gain_0_0_spi_gain
   LUT3 #(
     .INIT(8'hB8)) 
     \spi_gain.curr_sel[0]_i_1 
-       (.I0(req_sel[0]),
+       (.I0(axi_in[11]),
         .I1(start),
         .I2(curr_sel[0]),
         .O(\spi_gain.curr_sel[0]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \spi_gain.curr_sel[1]_i_1 
-       (.I0(req_sel[1]),
+       (.I0(axi_in[12]),
         .I1(start),
         .I2(curr_sel[1]),
         .O(\spi_gain.curr_sel[1]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \spi_gain.curr_sel[2]_i_1 
-       (.I0(req_sel[2]),
+       (.I0(axi_in[13]),
         .I1(start),
         .I2(curr_sel[2]),
         .O(\spi_gain.curr_sel[2]_i_1_n_0 ));
@@ -785,22 +761,22 @@ module ps_spi_gain_0_0_spi_gain
         .R(\spi_gain.delay[7]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
-    \spi_gain.prev_start_i_1 
+    \spi_gain.prev_i_1 
        (.I0(resetn),
-        .I1(req_start),
-        .O(prev_start8_out));
+        .I1(axi_in[15]),
+        .O(prev8_out));
   (* KEEP = "yes" *) 
-  FDRE \spi_gain.prev_start_reg 
+  FDRE \spi_gain.prev_reg 
        (.C(clk),
         .CE(1'b1),
-        .D(prev_start8_out),
-        .Q(prev_start),
+        .D(prev8_out),
+        .Q(prev),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hCCCC0AAA)) 
     \spi_gain.shift_data[0]_i_1 
        (.I0(shift_data[0]),
-        .I1(req_data[0]),
+        .I1(axi_in[0]),
         .I2(curr_clk),
         .I3(toggle_clk),
         .I4(start),
@@ -808,7 +784,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[10]_i_1 
-       (.I0(req_adr[2]),
+       (.I0(axi_in[10]),
         .I1(start),
         .I2(shift_data[10]),
         .I3(curr_clk),
@@ -854,7 +830,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[1]_i_1 
-       (.I0(req_data[1]),
+       (.I0(axi_in[1]),
         .I1(start),
         .I2(shift_data[1]),
         .I3(curr_clk),
@@ -864,7 +840,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[2]_i_1 
-       (.I0(req_data[2]),
+       (.I0(axi_in[2]),
         .I1(start),
         .I2(shift_data[2]),
         .I3(curr_clk),
@@ -874,7 +850,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[3]_i_1 
-       (.I0(req_data[3]),
+       (.I0(axi_in[3]),
         .I1(start),
         .I2(shift_data[3]),
         .I3(curr_clk),
@@ -884,7 +860,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[4]_i_1 
-       (.I0(req_data[4]),
+       (.I0(axi_in[4]),
         .I1(start),
         .I2(shift_data[4]),
         .I3(curr_clk),
@@ -894,7 +870,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[5]_i_1 
-       (.I0(req_data[5]),
+       (.I0(axi_in[5]),
         .I1(start),
         .I2(shift_data[5]),
         .I3(curr_clk),
@@ -904,7 +880,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[6]_i_1 
-       (.I0(req_data[6]),
+       (.I0(axi_in[6]),
         .I1(start),
         .I2(shift_data[6]),
         .I3(curr_clk),
@@ -914,7 +890,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[7]_i_1 
-       (.I0(req_data[7]),
+       (.I0(axi_in[7]),
         .I1(start),
         .I2(shift_data[7]),
         .I3(curr_clk),
@@ -924,7 +900,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[8]_i_1 
-       (.I0(req_adr[0]),
+       (.I0(axi_in[8]),
         .I1(start),
         .I2(shift_data[8]),
         .I3(curr_clk),
@@ -934,7 +910,7 @@ module ps_spi_gain_0_0_spi_gain
   LUT6 #(
     .INIT(64'hBBB8B8B888B8B8B8)) 
     \spi_gain.shift_data[9]_i_1 
-       (.I0(req_adr[1]),
+       (.I0(axi_in[9]),
         .I1(start),
         .I2(shift_data[9]),
         .I3(curr_clk),
@@ -1160,9 +1136,9 @@ module ps_spi_gain_0_0_spi_gain
   LUT3 #(
     .INIT(8'h40)) 
     \spi_gain.start_i_1 
-       (.I0(prev_start),
+       (.I0(prev),
         .I1(resetn),
-        .I2(req_start),
+        .I2(axi_in[15]),
         .O(\spi_gain.start_i_1_n_0 ));
   (* KEEP = "yes" *) 
   FDRE \spi_gain.start_reg 
