@@ -32,6 +32,8 @@
 // --- Protocol Address Map ---
 #define CMD_READ_BIT            0x80
 #define ADDR_KEY_CODE           0x00
+#define ADDR_DEVICE_ID          0x01   // Read 1 byte: returns 0xA5 (wire byte = 0x81)
+#define DEVICE_ID_MAGIC         0xA5   // Alternating bit pattern (1010_0101)
 
 #define ADDR_LATCH_START        0x10
 #define ADDR_LATCH_END          0x17
@@ -254,6 +256,10 @@ void __interrupt() isr(void)
                 {
                     SSP1BUF = key_pop_isr();
                 } 
+                else if (addr == ADDR_DEVICE_ID) 
+                {
+                    SSP1BUF = DEVICE_ID_MAGIC; // Returns 0xA5 so FPGA/CPU can verify PIC16 is alive
+                }
                 else if (addr >= ADDR_EEPROM_START && addr <= ADDR_EEPROM_END) 
                 {
                     uint8_t idx = (uint8_t)(addr - ADDR_EEPROM_START);
