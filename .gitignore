@@ -38,3 +38,9 @@ dacio/dacio/.history
 debug/debug/.history
 
 *.bak
+
+debug/Debug.X/build/
+debug/Debug.X/dist/
+debug/Debug.X/nbproject/private/
+debug/Debug.X/nbproject/Makefile-*.mk
+debug/Debug.X/nbproject/Package-*.bash
