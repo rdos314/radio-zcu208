@@ -29,6 +29,9 @@
 #define LCD_CS1_LAT     LATAbits.LATA6 // RA6: Left 64x64 controller select
 #define LCD_CS2_LAT     LATAbits.LATA7 // RA7: Right 64x64 controller select
 
+#define LATCH_OE_N_LAT  LATBbits.LATB4 // RB4: Active-low OE for 74HCT574s (10k pull-up to +5V)
+#define LCD_RST_N_LAT   LATBbits.LATB5 // RB5: Active-low RST for both LCDs (10k pull-down to GND)
+
 // --- Protocol Address Map ---
 #define CMD_READ_BIT            0x80
 #define ADDR_KEY_CODE           0x00   // Read 1 byte: pending key code (wire = 0x80)
@@ -39,18 +42,26 @@
 #define ADDR_METER_CH1          0x03   // Write 1 byte (0..16): Ch 1 16-LED dB bar (Latches 2 & 3)
 #define ADDR_STATUS_CH0         0x04   // Write 1 byte: [7:5]=sec, [4:3]=blend(0..2), [2:0]=err(0..7)
 #define ADDR_STATUS_CH1         0x05   // Write 1 byte: [7:5]=sec, [4:3]=blend(0..2), [2:0]=err(0..7)
-#define ADDR_GENERIC_LEDS       0x10   // Write 1 byte: Bits [7:2] = 6 generic LEDs on Latch 6
+#define ADDR_GENERIC_LEDS       0x06   // Write 1 byte: Bits [7:2] = 6 generic LEDs on Latch 6
 
-#define ADDR_LCD0_START         0x18   // Write 1+ bytes: LCD 0 stream (ctrl = addr & 0x07)
-#define ADDR_LCD0_END           0x1F
-#define ADDR_LCD1_START         0x20   // Write 1+ bytes: LCD 1 stream (ctrl = addr & 0x07)
-#define ADDR_LCD1_END           0x27
+#define ADDR_LCD0_START         0x10   // Write 1+ bytes: LCD 0 stream (ctrl = addr & 0x07)
+#define ADDR_LCD0_END           0x17
+#define ADDR_LCD1_START         0x18   // Write 1+ bytes: LCD 1 stream (ctrl = addr & 0x07)
+#define ADDR_LCD1_END           0x1F
 
 #define ADDR_EEPROM_CH0_START   0x40   // Read/Write 4 bytes: Ch 0 EEPROM DWORDs (0..31)
 #define ADDR_EEPROM_CH1_START   0x60   // Read/Write 4 bytes: Ch 1 EEPROM DWORDs (32..63)
 #define ADDR_EEPROM_START       0x40
 #define ADDR_EEPROM_END         0x7F
 #define TOTAL_CONFIG_DWORDS     0x40   // 64 DWORDs = 256 bytes (100% of EEPROM)
+
+// device addresses
+#define LED_VU_LOW				0
+#define LED_DIR_LOW				2
+#define LED_VU_HIGH				3
+#define LED_DIR_HIGH			5
+#define LED_STATE				6
+
 
 // --- Lookup Tables (Stored in Program Flash) ---
 // 16-LED cumulative thermometer bargraph lookup (0..16 lit LEDs)
@@ -60,6 +71,17 @@ static const uint16_t vu_bar_lut[] = {
     0x00FF, 0x01FF, 0x03FF, 0x07FF,
     0x0FFF, 0x1FFF, 0x3FFF, 0x7FFF,
     0xFFFF
+};
+
+// --- 4x5 Matrix to ASCII / Key-Code Lookup Table (Stored in Flash) ---
+// Non-ASCII keys use bit 7 = 1 so they never collide with standard ASCII:
+//   0x81 = UP, 0x82 = DOWN, 0x83 = RIGHT, 0x84 = LEFT, 0x91 = F1, 0x92 = F2
+static const uint8_t keymap_lut[4][5] = {
+    // Col 0 (RC0), Col 1 (RC1), Col 2 (RC6), Col 3 (RC7), Col 4 (RE0)
+    { '7',  '8',  '9',  0x08, 0x81 }, // Row 0 (RB0): 7, 8, 9, DEL, UP
+    { '4',  '5',  '6',  0x84, 0x0D }, // Row 1 (RB1): 4, 5, 6, LEFT, RET
+    { '1',  '2',  '3',  '0',  0x82 }, // Row 2 (RB2): 1, 2, 3, 0, DOWN
+    { 0x91, 0x1B, 0x83, '.',  0x92 }  // Row 3 (RB3): F1, ESC, RIGHT, '.', F2
 };
 
 // Maps 15-degree compass blend (0 = 0 deg, 1 = 15 deg, 2 = 30 deg) to 7-step PWM duty
@@ -78,7 +100,11 @@ static volatile uint8_t key_tail = 0;
 static volatile uint8_t comp_sec[]   = {0, 0}; // Primary LED index (0..7)
 static volatile uint8_t comp_duty[]  = {0, 0}; // Next-LED duty (0, 2, or 5 out of 7)
 static volatile uint8_t err_duty[]   = {0, 0}; // Error LED duty (0..7 out of 7)
-static volatile uint8_t latch6_static = 0x00;   // Upper 6 bits [7:2] of Latch 6
+
+static volatile uint8_t fpga_op_leds   = 0x00; // Bits [3:2] from FPGA (ADDR_GENERIC_LEDS = 0x10)
+static volatile uint8_t mcu_alive_led  = 0x00; // Bit 4 (0x10 when ON, 0x00 when OFF)
+static volatile uint8_t spi_comm_led   = 0x00; // Bit 5 (0x20 when ON, 0x00 when OFF)
+static volatile uint8_t spi_comm_ticks = 0;    // Retriggerable ~100 ms hold counter (in 5 ms units)
 
 // --- RAM-Cached EEPROM Configuration (256 Bytes) ---
 static volatile uint32_t config_ram[TOTAL_CONFIG_DWORDS];
@@ -271,6 +297,8 @@ void __interrupt() isr(void)
             SSP1CON1bits.SSPEN = 1; // Hands RC4 (MISO) to MSSP1 SDO1
             PIR3bits.SSP1IF = 0;
             PIE3bits.SSP1IE = 1;
+
+			spi_comm_ticks = 20; // Hold Bit 5 LED ON for 20 * 5 ms = 100 ms per SPI frame
         } 
 		else 
 		{
@@ -345,11 +373,11 @@ void __interrupt() isr(void)
 			{
 				if (addr == ADDR_METER_CH0) 
 				{
-					meter_write_isr(0, rx); // Latches 0 & 1
+					meter_write_isr(LED_VU_LOW, rx); // Latches 0 & 1
 				} 
 				else if (addr == ADDR_METER_CH1) 
 				{
-					meter_write_isr(2, rx); // Latches 2 & 3
+					meter_write_isr(LED_VU_HIGH, rx); // Latches 4 & 5
 				} 
 				else if (addr == ADDR_STATUS_CH0) 
 				{
@@ -365,8 +393,7 @@ void __interrupt() isr(void)
 				} 
 				else if (addr == ADDR_GENERIC_LEDS) 
 				{
-					// Updates the 6 generic LEDs on Bits [7:2] of Latch 6; PWM loop merges Error LEDs on [1:0]
-					latch6_static = rx;
+					fpga_op_leds = rx & 0x0C; // Keep only Bits 2 and 3 (Ch 0 & Ch 1 Operating)
 				}
 				else if (addr >= ADDR_LCD0_START && addr <= ADDR_LCD0_END) 
 				{
@@ -387,10 +414,10 @@ void __interrupt() isr(void)
 						if (spi_byte_idx == 4) 
 						{
 							uint8_t idx = (uint8_t)(addr - ADDR_EEPROM_START);
-							uint32_t val = ((uint32_t)spi_rx_buf << 0)  |
-											((uint32_t)spi_rx_buf << 8)  |
-											((uint32_t)spi_rx_buf << 16) |
-											((uint32_t)spi_rx_buf << 24);
+							uint32_t val = ((uint32_t)spi_rx_buf[0] << 0)  |
+											((uint32_t)spi_rx_buf[1] << 8)  |
+											((uint32_t)spi_rx_buf[2] << 16) |
+											((uint32_t)spi_rx_buf[3] << 24);
 							config_ram[idx] = val;
 							config_dirty_mask |= (1ULL << idx);
 						}
@@ -423,11 +450,15 @@ static void hardware_init(void)
 	LATE  = 0x00;
 	TRISE = 0x01;
 	WPUE  = 0x01;
-	
-// PORTB: RB0-RB3 keypad rows (outputs, idle high), RB4-RB5 unused (outputs low), RB6-RB7 ICSP
-	LATB  = 0x0F;
-	TRISB = 0xC0; // Only RB6 and RB7 are inputs
-	WPUB  = 0xC0; // Internal weak pull-ups on RB6/RB7 when PICkit 5 is unplugged
+
+ // PORTB:
+    //   RB0-RB3 = keypad rows (outputs, idle HIGH)
+    //   RB4     = LATCH_OE_N (output, starts HIGH = outputs disabled)
+    //   RB5     = LCD_RST_N  (output, starts LOW  = LCDs held in reset)
+    //   RB6-RB7 = ICSP inputs (weak pull-ups enabled)
+    LATB  = 0x1F; // RB0-RB4 = 1, RB5 = 0
+    TRISB = 0xC0; // RB0-RB5 outputs, RB6-RB7 inputs
+    WPUB  = 0xC0; // Weak pull-ups on RB6/RB7
 
 // PORTC: RC2=CS (in), RC3=SCK (in), RC4=MISO (out), RC5=MOSI (in)
 //        RC0, RC1, RC6, RC7 = keypad cols 0..3 (inputs w/ pull-ups)
@@ -436,11 +467,16 @@ static void hardware_init(void)
 	WPUC  = 0xC3;
 
 // Clear all 8 LED latches at boot
-	for (uint8_t i = 0; i < 8; i++) 
+	for (uint8_t i = 0; i < 7; i++) 
 	{
 		latch_write_isr(i, 0x00);
 	}
 
+// Hold LCDs in reset for 5 ms, then release LCD_RST_N and enable 74HCT574 outputs
+    __delay_ms(5);
+    LCD_RST_N_LAT  = 1; // Release both NHD-12864MZ LCDs from reset
+    LATCH_OE_N_LAT = 0; // Enable 74HCT574 outputs (all LEDs guaranteed 0x00)
+		
 // PPS Setup for MSSP1 SPI Client
 	bool state = INTCONbits.GIE;
 	INTCONbits.GIE = 0;
@@ -480,6 +516,9 @@ static void hardware_init(void)
 static void pwm_led_update_task(void) 
 {	
 	static uint8_t pwm_phase = 0;
+	uint8_t s;
+	uint8_t n;
+	uint8_t led;
 
 	if (++pwm_phase >= 7) 
 	{
@@ -487,22 +526,23 @@ static void pwm_led_update_task(void)
 	}
 
 // Channel 0 Compass (Latch 4)
-	uint8_t s0   = comp_sec[0];
-	uint8_t n0   = (uint8_t)((s0 + 1) & 0x07);
-	uint8_t led4 = (pwm_phase >= comp_duty[0]) ? (uint8_t)(1U << s0) : (uint8_t)(1U << n0);
-	latch_write_main(4, led4);
+	s   = comp_sec[0];
+	n   = (uint8_t)((s + 1) & 0x07);
+	led = (pwm_phase >= comp_duty[0]) ? (uint8_t)(1U << s) : (uint8_t)(1U << n);
+	latch_write_main(LED_DIR_LOW, led);
 
 // Channel 1 Compass (Latch 5)
-	uint8_t s1   = comp_sec[0];
-	uint8_t n1   = (uint8_t)((s1 + 1) & 0x07);
-	uint8_t led5 = (pwm_phase >= comp_duty[0]) ? (uint8_t)(1U << s1) : (uint8_t)(1U << n1);
-	latch_write_main(5, led5);
+	s   = comp_sec[1];
+	n   = (uint8_t)((s + 1) & 0x07);
+	led = (pwm_phase >= comp_duty[1]) ? (uint8_t)(1U << s) : (uint8_t)(1U << n);
+	latch_write_main(LED_DIR_HIGH, led);
 
-// Error LEDs on Latch 6 (Bit 0 = Ch 0 Error, Bit 1 = Ch 1 Error, Bits [7:2] = static)
-	uint8_t led6 = latch6_static & 0xFC;
-	if (pwm_phase < err_duty[0]) led6 |= 0x01;
-	if (pwm_phase < err_duty[1]) led6 |= 0x02;
-	latch_write_main(6, led6);
+
+// State latch: [5]=SPI Comm, [4]=MCU Heartbeat, [3]=Ch1 Op, [2]=Ch0 Op, [1]=Ch1 Err, [0]=Ch0 Err
+    led = (fpga_op_leds & 0x0C) | mcu_alive_led | spi_comm_led;
+	if (pwm_phase < err_duty[0]) led |= 0x01;
+	if (pwm_phase < err_duty[1]) led |= 0x02;
+	latch_write_main(LED_STATE, led);
 }
 
 // --- 4x5 Debounced Keypad Matrix Scanner ---
@@ -523,13 +563,14 @@ static void keypad_scan_task(void)
 		if (!PORTCbits.RC6) cols |= (1U << 2);
 		if (!PORTCbits.RC7) cols |= (1U << 3);
 		if (!PORTEbits.RE0) cols |= (1U << 4);
+
 		if (cols != 0) 
 		{
 			for (uint8_t col = 0; col < 5; col++) 
 			{
 				if (cols & (1U << col)) 
 				{
-					detected = (uint8_t)(row * 5 + col + 1);
+                    detected = keymap_lut[row][col];
 					break;
 				}
 			}
@@ -571,6 +612,7 @@ void main(void)
 	}
 	
 	uint16_t tick_5ms = 0;
+    static uint8_t heartbeat_cnt = 0;
 
 	while (1) 
 	{
@@ -582,9 +624,27 @@ void main(void)
 
 // Every 312 ticks (~5.0 ms), scan the 4x5 keypad matrix
 			if (++tick_5ms >= 312) 
-			{
+			{ // Every ~5.0 ms
 				tick_5ms = 0;
 				keypad_scan_task();
+
+// 1. MCU Heartbeat on Bit 4 (toggles every 50 * 5 ms = 250 ms -> 2 Hz blink)
+				if (++heartbeat_cnt >= 50) 
+				{
+					heartbeat_cnt = 0;
+					mcu_alive_led ^= 0x10;
+				}
+
+// 2. Retriggerable 100 ms pulse stretcher for FPGA SPI Activity on Bit 5
+				if (spi_comm_ticks > 0) 
+				{
+					spi_comm_ticks--;
+					spi_comm_led = 0x20;
+				} 
+				else 
+				{
+					spi_comm_led = 0x00;
+				}
 			}
 		}
 	
