@@ -393,7 +393,7 @@ void __interrupt() isr(void)
 				} 
 				else if (addr == ADDR_GENERIC_LEDS) 
 				{
-					fpga_op_leds = rx & 0x0C; // Keep only Bits 2 and 3 (Ch 0 & Ch 1 Operating)
+                    fpga_op_leds = rx & 0x0F; // Bits [3:0] from SPI
 				}
 				else if (addr >= ADDR_LCD0_START && addr <= ADDR_LCD0_END) 
 				{
@@ -538,10 +538,12 @@ static void pwm_led_update_task(void)
 	latch_write_main(LED_DIR_HIGH, led);
 
 
+latch_write_main(LED_STATE, led);
+
 // State latch: [5]=SPI Comm, [4]=MCU Heartbeat, [3]=Ch1 Op, [2]=Ch0 Op, [1]=Ch1 Err, [0]=Ch0 Err
-    led = (fpga_op_leds & 0x0C) | mcu_alive_led | spi_comm_led;
-	if (pwm_phase < err_duty[0]) led |= 0x01;
-	if (pwm_phase < err_duty[1]) led |= 0x02;
+    led = (fpga_op_leds & 0x0F) | spi_comm_led | mcu_alive_led;
+    if (pwm_phase < err_duty) led |= 0x40;
+    if (pwm_phase < err_duty) led |= 0x80;
 	latch_write_main(LED_STATE, led);
 }
 
