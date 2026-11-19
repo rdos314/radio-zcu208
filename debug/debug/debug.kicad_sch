@@ -4100,6 +4100,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 22.86) (xy 116.84 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4456b978-7348-4593-82e3-7620130578a6")
+	)
+	(wire
+		(pts
 			(xy 189.23 203.2) (xy 194.31 203.2)
 		)
 		(stroke
@@ -5230,16 +5240,6 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 22.86) (xy 116.84 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "afd9192d-c73f-4b1a-9f10-848387305a8f")
-	)
-	(wire
-		(pts
 			(xy 242.57 99.06) (xy 247.65 99.06)
 		)
 		(stroke
@@ -5487,6 +5487,16 @@
 			(type default)
 		)
 		(uuid "bf03f0e9-1099-40da-93e4-3cf1fcc856b7")
+	)
+	(wire
+		(pts
+			(xy 118.11 58.42) (xy 118.11 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf2fc9b3-984b-451e-a9ba-1c105021e304")
 	)
 	(wire
 		(pts
@@ -5910,6 +5920,16 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 113.03) (xy 115.57 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e19194ba-b1b5-42c4-8dad-24117dc0ebe2")
+	)
+	(wire
+		(pts
 			(xy 72.39 149.86) (xy 86.36 149.86)
 		)
 		(stroke
@@ -5997,16 +6017,6 @@
 			(type default)
 		)
 		(uuid "ecaabd4a-6557-4b92-9ed7-84ef1aa9bb6e")
-	)
-	(wire
-		(pts
-			(xy 115.57 113.03) (xy 115.57 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee02fbfb-5675-475a-9770-633fecb118af")
 	)
 	(wire
 		(pts
@@ -6170,26 +6180,6 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 58.42) (xy 118.11 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f73538df-ef2e-480d-a122-a94539013933")
-	)
-	(wire
-		(pts
-			(xy 114.3 74.93) (xy 114.3 80.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8236e96-e46f-410f-bae7-ee471297a7b8")
-	)
-	(wire
-		(pts
 			(xy 242.57 95.25) (xy 247.65 95.25)
 		)
 		(stroke
@@ -6217,6 +6207,16 @@
 			(type default)
 		)
 		(uuid "fadf1905-8e07-4669-ba9b-cffcdf7edb05")
+	)
+	(wire
+		(pts
+			(xy 114.3 76.2) (xy 114.3 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb0a0657-08d5-4648-bf0e-001ca3048dcf")
 	)
 	(wire
 		(pts
@@ -16119,6 +16119,26 @@
 				(justify right)
 			)
 		)
+		(pin "5v" input
+			(at 116.84 25.4 90)
+			(uuid "391ffbe1-39ed-484a-8cb2-2f8a839d6dbd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GND" input
+			(at 118.11 58.42 270)
+			(uuid "de9884e8-9314-4be9-85ef-4e52d434afd4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "debug"
 				(path "/13547e8d-bd01-4963-8fd0-73ab487e6012"
@@ -16292,6 +16312,26 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "5v" input
+			(at 114.3 80.01 90)
+			(uuid "3da013da-7394-421a-9336-9decf5aedb6f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GND" input
+			(at 115.57 113.03 270)
+			(uuid "58bd752e-d4c7-4981-af04-617f6f48e109")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances

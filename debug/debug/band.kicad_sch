@@ -1540,6 +1540,26 @@
 	)
 	(wire
 		(pts
+			(xy 17.78 166.37) (xy 25.4 166.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "016c5394-dee6-4b28-941c-e98204138762")
+	)
+	(wire
+		(pts
+			(xy 17.78 171.45) (xy 25.4 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01eb50cc-4d2e-45f7-92f3-f9e1ac7f8838")
+	)
+	(wire
+		(pts
 			(xy 54.61 25.4) (xy 64.77 25.4)
 		)
 		(stroke
@@ -2929,6 +2949,16 @@
 		(uuid "fe7706fc-d686-4aac-b798-33dd1f9596bc")
 	)
 	(label "GND"
+		(at 25.4 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "14bb100b-ba58-4abf-9fd5-619b9c7ae393")
+	)
+	(label "GND"
 		(at 78.74 148.59 0)
 		(effects
 			(font
@@ -3018,6 +3048,16 @@
 		)
 		(uuid "ce577630-34bb-4b13-a63f-be0d59c3dac1")
 	)
+	(label "5v"
+		(at 25.4 166.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dcfef969-7be5-4f52-ba64-e18bd839846a")
+	)
 	(hierarchical_label "LED_MSB_WR"
 		(shape input)
 		(at 26.67 93.98 180)
@@ -3062,6 +3102,17 @@
 		)
 		(uuid "3e9990db-d514-4372-85b0-1c13dc55771e")
 	)
+	(hierarchical_label "5v"
+		(shape input)
+		(at 17.78 166.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "829363d0-9b30-4144-8911-080f9653d138")
+	)
 	(hierarchical_label "RESET"
 		(shape input)
 		(at 20.32 146.05 180)
@@ -3094,6 +3145,17 @@
 			(justify right)
 		)
 		(uuid "aae60c4c-dc6c-4c1a-a430-b6bf36f20ee7")
+	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 17.78 171.45 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bb397601-0e28-4cc1-9be2-a2191aba743e")
 	)
 	(hierarchical_label "D6"
 		(shape input)
