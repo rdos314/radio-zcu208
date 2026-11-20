@@ -4570,7 +4570,7 @@
 				)
 			)
 		)
-		(property "Value" "."
+		(property "Value" "END"
 			(at -2.54 12.954 0)
 			(layer "F.Fab")
 			(uuid "391620ad-bb2a-4ad5-b75f-a44579340ab9")
@@ -5951,7 +5951,7 @@
 				)
 			)
 		)
-		(property "Value" "END"
+		(property "Value" "0"
 			(at -2.54 12.954 0)
 			(layer "F.Fab")
 			(uuid "07518932-11f6-45f3-8b8c-f3e522b9bae9")
@@ -10477,7 +10477,7 @@
 				)
 			)
 		)
-		(property "Value" "0"
+		(property "Value" "DOT"
 			(at -2.54 12.954 0)
 			(layer "F.Fab")
 			(uuid "6c866bca-cce2-4d50-a352-18a5adb7d8e7")
@@ -38484,6 +38484,12 @@
 		(path "/32fa0500-b0b0-4696-9496-406f169cfe08")
 		(sheetname "/")
 		(sheetfile "debug.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4" "5" "6" "7" "8")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect

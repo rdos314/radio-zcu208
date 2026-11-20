@@ -12190,7 +12190,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "END"
+		(property "Value" "0"
 			(at 99.06 185.4199 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12852,7 +12852,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "."
+		(property "Value" "END"
 			(at 87.63 240.0299 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15428,7 +15428,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "0"
+		(property "Value" "DOT"
 			(at 87.63 212.0899 90)
 			(show_name no)
 			(do_not_autoplace no)

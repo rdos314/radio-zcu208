@@ -79,9 +79,9 @@ static const uint16_t vu_bar_lut[] = {
 static const uint8_t keymap_lut[4][5] = {
     // Col 0 (RC0), Col 1 (RC1), Col 2 (RC6), Col 3 (RC7), Col 4 (RE0)
     { '7',  '8',  '9',  0x08, 0x81 }, // Row 0 (RB0): 7, 8, 9, DEL, UP
-    { '4',  '5',  '6',  0x84, 0x0D }, // Row 1 (RB1): 4, 5, 6, LEFT, RET
-    { '1',  '2',  '3',  '0',  0x82 }, // Row 2 (RB2): 1, 2, 3, 0, DOWN
-    { 0x91, 0x1B, 0x83, '.',  0x92 }  // Row 3 (RB3): F1, ESC, RIGHT, '.', F2
+    { '4',  '5',  '6',  0x84, '0' },  // Row 1 (RB1): 4, 5, 6, LEFT, 0
+    { '1',  '2',  '3',  '.',  0x82 }, // Row 2 (RB2): 1, 2, 3, '.', DOWN
+    { 0x91, 0x1B, 0x83, 0x0D,  0x92 } // Row 3 (RB3): F1, ESC, RIGHT, END, F2
 };
 
 // Maps 15-degree compass blend (0 = 0 deg, 1 = 15 deg, 2 = 30 deg) to 7-step PWM duty
@@ -542,8 +542,8 @@ latch_write_main(LED_STATE, led);
 
 // State latch: [5]=SPI Comm, [4]=MCU Heartbeat, [3]=Ch1 Op, [2]=Ch0 Op, [1]=Ch1 Err, [0]=Ch0 Err
     led = (fpga_op_leds & 0x0F) | spi_comm_led | mcu_alive_led;
-    if (pwm_phase < err_duty) led |= 0x40;
-    if (pwm_phase < err_duty) led |= 0x80;
+    if (pwm_phase < err_duty[0]) led |= 0x40;
+    if (pwm_phase < err_duty[1]) led |= 0x80;
 	latch_write_main(LED_STATE, led);
 }
 
