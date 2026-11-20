@@ -120,8 +120,8 @@
         "padstack": "warning",
         "pth_inside_courtyard": "error",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
+        "silk_edge_clearance": "ignore",
+        "silk_over_copper": "ignore",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
@@ -681,7 +681,7 @@
         "uuid": "13547e8d-bd01-4963-8fd0-73ab487e6012"
       }
     ],
-    "used_designators": "C1-21,D1-34,H1,J1-3,Q1-14,R1-54,RN1-34,SW1-20,T1,U1-27",
+    "used_designators": "C1-23,D1-34,H1,J1-3,Q1-14,R1-54,RN1-34,SW1-20,T1,U1-27",
     "variants": []
   },
   "sheets": [
