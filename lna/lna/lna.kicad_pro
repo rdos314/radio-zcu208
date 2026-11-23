@@ -702,7 +702,7 @@
         "uuid": "461f7b76-3c4a-4e4c-832f-83a45da2a2b5"
       }
     ],
-    "used_designators": "#FLG1-2,#PWR1-3,C1-12,D1,J1-3,L1-7,R1-6,U1-2",
+    "used_designators": "#FLG1-2,#PWR1-3,C1-14,D1,J1-3,L1-7,R1-6,U1-2",
     "variants": []
   },
   "sheets": [

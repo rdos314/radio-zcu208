@@ -2174,6 +2174,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 118.11) (xy 73.66 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42c3e600-287c-4398-b8d7-a496929accac")
+	)
+	(wire
+		(pts
 			(xy 191.77 92.71) (xy 203.2 92.71)
 		)
 		(stroke
@@ -2304,7 +2314,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 97.79) (xy 49.53 118.11)
+			(xy 35.56 97.79) (xy 35.56 118.11)
 		)
 		(stroke
 			(width 0)
@@ -2371,6 +2381,16 @@
 			(type default)
 		)
 		(uuid "6bec2702-b263-4488-a350-dfd42558bf95")
+	)
+	(wire
+		(pts
+			(xy 40.64 92.71) (xy 43.18 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6dc630d9-2ede-4ebc-85b1-f9e3dade19c5")
 	)
 	(wire
 		(pts
@@ -2494,13 +2514,23 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 92.71) (xy 73.66 92.71)
+			(xy 68.58 92.71) (xy 73.66 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "8ec03872-a7b4-430f-8dfc-4914651b7053")
+	)
+	(wire
+		(pts
+			(xy 50.8 92.71) (xy 60.96 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f17e817-5655-4b30-b4e3-249587ead0c0")
 	)
 	(wire
 		(pts
@@ -2764,16 +2794,6 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 92.71) (xy 58.42 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6320b5d-9fea-4545-96fd-dd599bf08f13")
-	)
-	(wire
-		(pts
 			(xy 114.3 114.3) (xy 114.3 118.11)
 		)
 		(stroke
@@ -2921,16 +2941,6 @@
 			(type default)
 		)
 		(uuid "fab8cabd-3f08-49d4-bb4e-833e04117ddc")
-	)
-	(wire
-		(pts
-			(xy 49.53 118.11) (xy 73.66 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fe71160f-de41-4c7f-b324-a438d6592e67")
 	)
 	(wire
 		(pts
@@ -3101,6 +3111,86 @@
 			(project "lna"
 				(path "/461f7b76-3c4a-4e4c-832f-83a45da2a2b5"
 					(reference "L7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 46.99 92.71 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1961e986-c8e1-43cf-b569-56ecaf0a9525")
+		(property "Reference" "C13"
+			(at 46.99 85.09 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10nF"
+			(at 46.99 87.63 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+			(at 50.8 91.7448 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 46.99 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c54cbadd-41b1-49cb-8409-0175ae7c9d37")
+		)
+		(pin "2"
+			(uuid "8bf7eaa4-5ced-4113-a78b-de9111d994f0")
+		)
+		(instances
+			(project "lna"
+				(path "/461f7b76-3c4a-4e4c-832f-83a45da2a2b5"
+					(reference "C13")
 					(unit 1)
 				)
 			)
@@ -3667,7 +3757,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_Coaxial")
-		(at 49.53 92.71 0)
+		(at 35.56 92.71 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -3678,7 +3768,7 @@
 		(dnp no)
 		(uuid "48de5b2a-1ebe-4082-bdf8-1469b8c7f73e")
 		(property "Reference" "J1"
-			(at 45.72 91.7331 0)
+			(at 31.75 91.7331 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3689,7 +3779,7 @@
 			)
 		)
 		(property "Value" "Input"
-			(at 45.72 94.2731 0)
+			(at 31.75 94.2731 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3700,7 +3790,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_132289_EdgeMount"
-			(at 49.53 92.71 0)
+			(at 35.56 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3711,7 +3801,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 49.53 92.71 0)
+			(at 35.56 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3722,7 +3812,7 @@
 			)
 		)
 		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 49.53 92.71 0)
+			(at 35.56 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4565,7 +4655,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 62.23 92.71 90)
+		(at 64.77 92.71 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4576,7 +4666,7 @@
 		(fields_autoplaced yes)
 		(uuid "a01ee6e3-22b6-4162-9219-c0952f280e0e")
 		(property "Reference" "R1"
-			(at 62.23 86.36 90)
+			(at 64.77 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4586,7 +4676,7 @@
 			)
 		)
 		(property "Value" "5.6"
-			(at 62.23 88.9 90)
+			(at 64.77 88.9 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4596,7 +4686,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 62.23 94.488 90)
+			(at 64.77 94.488 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4607,7 +4697,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 62.23 92.71 0)
+			(at 64.77 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4618,7 +4708,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 62.23 92.71 0)
+			(at 64.77 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
