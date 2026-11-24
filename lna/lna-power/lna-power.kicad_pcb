@@ -2809,10 +2809,114 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "W"
+		(at 117.856 124.333 0)
+		(layer "F.SilkS")
+		(uuid "d8d0832c-529c-4491-9c27-b41e83fa90dc")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "Low"
+		(at 130.556 127.508 0)
+		(layer "F.SilkS")
+		(uuid "0d2380df-79df-44d7-94a9-c99500347d30")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "E"
+		(at 131.826 124.333 0)
+		(layer "F.SilkS")
+		(uuid "3ab00b61-a705-49bb-853a-22271be07cf4")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "N"
+		(at 146.05 124.206 0)
+		(layer "F.SilkS")
+		(uuid "245c58e8-3327-425f-ae2b-c9fa5ce52b0e")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "RF amp power"
 		(at 146.685 134.62 0)
 		(layer "F.SilkS")
 		(uuid "698ed8bf-d879-420e-8a68-ed46bd9cf676")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "W"
+		(at 160.147 124.333 0)
+		(layer "F.SilkS")
+		(uuid "5832c5ce-a38c-49bd-a18f-0cd58bb93539")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "High"
+		(at 172.72 127.508 0)
+		(layer "F.SilkS")
+		(uuid "88eaa9e6-cca6-47f1-8e66-b27a8a150dcd")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "E"
+		(at 174.244 124.333 0)
+		(layer "F.SilkS")
+		(uuid "c8ef9617-90f0-4487-ae50-01b5887c9f5b")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "N"
+		(at 187.96 124.333 0)
+		(layer "F.SilkS")
+		(uuid "c45eba6f-852d-4755-b7c7-fb0af11c7446")
 		(effects
 			(font
 				(size 1.5 1.5)
